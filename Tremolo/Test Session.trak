@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Active Patch</key>
+	<integer>0</integer>
+	<key>DocumentMaxChannelsKey</key>
+	<integer>2</integer>
+	<key>DocumentVersionCompatibilityKey</key>
+	<real>1</real>
+	<key>Input Bus Info</key>
+	<array>
+		<dict>
+			<key>Bus Name</key>
+			<string>AU Source</string>
+			<key>Color</key>
+			<data>
+			BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2Jq
+			ZWN0AIWEAWMBhARmZmZmg6KzIT+D6vrpPoPE5UM/g83MTD+G
+			</data>
+			<key>isCollapsed</key>
+			<false/>
+		</dict>
+	</array>
+	<key>Output Bus Info</key>
+	<dict>
+		<key>Bus Name</key>
+		<string>Master Out</string>
+		<key>Color</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWE
+		AWMChARmZmZmg3WTmD6D/tS4PoNSuN4+g83MTD+G
+		</data>
+		<key>Track Names</key>
+		<array>
+			<string>Output 1</string>
+		</array>
+		<key>Track Types</key>
+		<array>
+			<integer>1</integer>
+		</array>
+		<key>device ID</key>
+		<integer>270</integer>
+		<key>isCollapsed</key>
+		<false/>
+	</dict>
+	<key>Patches</key>
+	<array/>
+	<key>Send Bus Info</key>
+	<array/>
+	<key>Session Data</key>
+	<dict>
+		<key>au source list</key>
+		<array>
+			<dict>
+				<key>aupreset</key>
+				<dict>
+					<key>data</key>
+					<data>
+					</data>
+					<key>file-references</key>
+					<dict>
+						<key>File 1</key>
+						<string>/Users/Dave/Music/Samples/Sonic Foundry Acid Loops/Guitar/Clean/Thwika Chika.wav</string>
+						<key>File 2</key>
+						<string>/Users/Dave/Documents/Developement/Audio Plugins/Tremolo/Constant Tone.aif</string>
+					</dict>
+					<key>kAUPresetPersistentStateKey</key>
+					<array>
+						<dict>
+							<key>FileName</key>
+							<string>/Users/Dave/Music/Samples/Sonic Foundry Acid Loops/Guitar/Clean/Thwika Chika.wav</string>
+							<key>Regions</key>
+							<array>
+								<dict>
+									<key>IsSelectedRegion</key>
+									<true/>
+									<key>RegionData</key>
+									<data>
+								AAAAAAAAAACA
+								t90W6OL/v+D4
+								i5GAt90WIMjd
+								FgA0MhdIx90W
+								IMjdFoC33Rag
+								JR6gBQAAACw+
+								Tl4BAAAAl6GM
+								kQAAAAAAAAAA
+								AAAAAAAAAAAA
+								AAAAAAAAAPLk
+								AgA=
+									</data>
+									<key>RegionDoesLoop</key>
+									<true/>
+									<key>RegionName</key>
+									<string>New Region</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>FileName</key>
+							<string>/Users/Dave/Documents/Developement/Audio Plugins/Tremolo/Constant Tone.aif</string>
+							<key>IsSelectedFile</key>
+							<true/>
+							<key>Regions</key>
+							<array>
+								<dict>
+									<key>IsSelectedRegion</key>
+									<true/>
+									<key>RegionData</key>
+									<data>
+								AAAAAAAAAACA
+								Z6MV6OL/v+D4
+								i5GAZ6MVIHij
+								FSDasxVId6MV
+								IHijFYBnoxWg
+								JR6gBQAAACw+
+								Tl4BAAAAl6GM
+								kQAAAAAAAAAA
+								AAAAAAAAAAAA
+								AAAAAAAAAAAS
+								AgA=
+									</data>
+									<key>RegionDoesLoop</key>
+									<true/>
+									<key>RegionName</key>
+									<string>New Region</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+					<key>manufacturer</key>
+					<integer>1634758764</integer>
+					<key>name</key>
+					<string>Untitled</string>
+					<key>subtype</key>
+					<integer>1634103404</integer>
+					<key>type</key>
+					<integer>1635084142</integer>
+					<key>version</key>
+					<integer>0</integer>
+				</dict>
+				<key>connections</key>
+				<array>
+					<dict>
+						<key>element ID</key>
+						<integer>0</integer>
+						<key>format</key>
+						<dict>
+							<key>channel bits</key>
+							<integer>32</integer>
+							<key>format</key>
+							<integer>1819304813</integer>
+							<key>format flags</key>
+							<integer>41</integer>
+							<key>frame bytes</key>
+							<integer>4</integer>
+							<key>frame channels</key>
+							<integer>2</integer>
+							<key>frame packets</key>
+							<integer>1</integer>
+							<key>packet bytes</key>
+							<integer>4</integer>
+							<key>sample rate</key>
+							<real>44100</real>
+						</dict>
+						<key>scope</key>
+						<integer>2</integer>
+					</dict>
+				</array>
+				<key>name</key>
+				<string>AU Source</string>
+				<key>unit</key>
+				<dict>
+					<key>manufacturer</key>
+					<integer>1634758764</integer>
+					<key>name</key>
+					<string>Apple: AUAudioFilePlayer</string>
+					<key>subtype</key>
+					<integer>1634103404</integer>
+					<key>type</key>
+					<integer>1635084142</integer>
+				</dict>
+			</dict>
+		</array>
+		<key>audio device used</key>
+		<dict>
+			<key>audio device uid</key>
+			<string>AppleHDAEngineOutput:0</string>
+			<key>in channels</key>
+			<integer>0</integer>
+			<key>io num frames</key>
+			<integer>512</integer>
+			<key>name</key>
+			<string>Built-in Output</string>
+			<key>out channels</key>
+			<integer>2</integer>
+			<key>out channels map</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+		<key>output stage</key>
+		<dict>
+			<key>au layout tags</key>
+			<array>
+				<integer>0</integer>
+			</array>
+			<key>channels</key>
+			<array>
+				<integer>2</integer>
+			</array>
+			<key>constrained</key>
+			<array>
+				<integer>1</integer>
+			</array>
+			<key>layouts</key>
+			<array>
+				<dict>
+					<key>acl tag</key>
+					<integer>6619138</integer>
+					<key>descriptions</key>
+					<array>
+						<dict>
+							<key>coords 0</key>
+							<real>-30</real>
+							<key>coords 1</key>
+							<real>0.0</real>
+							<key>coords 2</key>
+							<real>1</real>
+							<key>flags</key>
+							<integer>2</integer>
+							<key>label</key>
+							<integer>1</integer>
+						</dict>
+						<dict>
+							<key>coords 0</key>
+							<real>30</real>
+							<key>coords 1</key>
+							<real>0.0</real>
+							<key>coords 2</key>
+							<real>1</real>
+							<key>flags</key>
+							<integer>2</integer>
+							<key>label</key>
+							<integer>2</integer>
+						</dict>
+					</array>
+				</dict>
+			</array>
+			<key>mute</key>
+			<array>
+				<integer>0</integer>
+			</array>
+			<key>strips</key>
+			<array>
+				<dict>
+					<key>effects</key>
+					<array>
+						<dict>
+							<key>aupreset</key>
+							<dict>
+								<key>data</key>
+								<data>
+								AAAAAAAAAAAA
+								AAADAAAAAAAA
+								AAAAAAABAAAA
+								AAAAAAIAAAAA
+								</data>
+								<key>jucePluginState</key>
+								<data>
+								VkMyIXsAAAA8
+								TVlQTFVHSU5T
+								RVRUSU5HUyBw
+								bHVnaW5WZXJz
+								aW9uPSIxIiBn
+								YWluTGV2ZWw9
+								IjEiIHJhdGVB
+								bW91bnQ9IjAu
+								NSIgZGVwdGhB
+								bW91bnQ9IjAu
+								NjQ5OTk5OTc2
+								IiB1aVdpZHRo
+								PSI0MDAiIHVp
+								SGVpZ2h0PSIx
+								NDAiLz4AAw==
+								</data>
+								<key>manufacturer</key>
+								<integer>1683124087</integer>
+								<key>name</key>
+								<string>Untitled</string>
+								<key>subtype</key>
+								<integer>1416783213</integer>
+								<key>type</key>
+								<integer>1635083896</integer>
+								<key>version</key>
+								<integer>0</integer>
+							</dict>
+							<key>bypass</key>
+							<integer>0</integer>
+							<key>connections</key>
+							<array>
+								<dict>
+									<key>element ID</key>
+									<integer>0</integer>
+									<key>format</key>
+									<dict>
+										<key>channel bits</key>
+										<integer>32</integer>
+										<key>format</key>
+										<integer>1819304813</integer>
+										<key>format flags</key>
+										<integer>41</integer>
+										<key>frame bytes</key>
+										<integer>4</integer>
+										<key>frame channels</key>
+										<integer>2</integer>
+										<key>frame packets</key>
+										<integer>1</integer>
+										<key>packet bytes</key>
+										<integer>4</integer>
+										<key>sample rate</key>
+										<real>44100</real>
+									</dict>
+									<key>scope</key>
+									<integer>1</integer>
+								</dict>
+								<dict>
+									<key>element ID</key>
+									<integer>0</integer>
+									<key>format</key>
+									<dict>
+										<key>channel bits</key>
+										<integer>32</integer>
+										<key>format</key>
+										<integer>1819304813</integer>
+										<key>format flags</key>
+										<integer>41</integer>
+										<key>frame bytes</key>
+										<integer>4</integer>
+										<key>frame channels</key>
+										<integer>2</integer>
+										<key>frame packets</key>
+										<integer>1</integer>
+										<key>packet bytes</key>
+										<integer>4</integer>
+										<key>sample rate</key>
+										<real>44100</real>
+									</dict>
+									<key>scope</key>
+									<integer>2</integer>
+								</dict>
+							</array>
+							<key>unit</key>
+							<dict>
+								<key>manufacturer</key>
+								<integer>1683124087</integer>
+								<key>name</key>
+								<string>dRowAudio: dRowAudio Tremolo</string>
+								<key>subtype</key>
+								<integer>1416783213</integer>
+								<key>type</key>
+								<integer>1635083896</integer>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+			</array>
+			<key>volume</key>
+			<array>
+				<real>1</real>
+			</array>
+		</dict>
+		<key>track mixer</key>
+		<dict>
+			<key>strips</key>
+			<array>
+				<dict>
+					<key>active</key>
+					<integer>1</integer>
+					<key>au source</key>
+					<dict>
+						<key>source elementID</key>
+						<integer>0</integer>
+						<key>source index</key>
+						<integer>0</integer>
+					</dict>
+					<key>mute</key>
+					<integer>0</integer>
+					<key>name</key>
+					<string>Generator 1</string>
+					<key>output assignments</key>
+					<array>
+						<integer>1</integer>
+					</array>
+					<key>pan angle</key>
+					<real>1</real>
+					<key>pan azimuth</key>
+					<real>0.0</real>
+					<key>pan distance</key>
+					<real>1</real>
+					<key>pan elevation</key>
+					<real>0.0</real>
+					<key>pan mode</key>
+					<integer>4</integer>
+					<key>solo</key>
+					<integer>0</integer>
+					<key>user data</key>
+					<dict>
+						<key>Track Identifier</key>
+						<string>AU 0 0</string>
+					</dict>
+					<key>volume</key>
+					<real>1</real>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>User Data</key>
+	<dict>
+		<key>View Settings</key>
+		<dict>
+			<key>Active Tab Identifier</key>
+			<string>patches</string>
+			<key>Doc Drawer Open</key>
+			<false/>
+			<key>Filter flags</key>
+			<integer>1</integer>
+		</dict>
+		<key>Window Frame</key>
+		<string>{{2, 22}, {355, 577}}</string>
+		<key>Window Max</key>
+		<string>{2560, 1622}</string>
+		<key>Window Min</key>
+		<string>{360, 540}</string>
+		<key>kAUInspectorListKey</key>
+		<array>
+			<dict>
+				<key>kAUInspectorStateKey_BusIndex</key>
+				<integer>0</integer>
+				<key>kAUInspectorStateKey_BusType</key>
+				<string>kBusType_Input</string>
+				<key>kAUInspectorStateKey_Bypassed</key>
+				<false/>
+				<key>kAUInspectorStateKey_CurrentViewName</key>
+				<string>Apple's AUFilePlayer View</string>
+				<key>kAUInspectorStateKey_EffectIndex</key>
+				<integer>-1</integer>
+				<key>kAUInspectorStateKey_PresetDrawerExpandedItems</key>
+				<array>
+					<array>
+						<string>Local</string>
+						<true/>
+					</array>
+					<array>
+						<string>User</string>
+						<true/>
+					</array>
+				</array>
+				<key>kAUInspectorStateKey_PresetDrawerShowing</key>
+				<false/>
+				<key>kAUInspectorStateKey_TrackIndex</key>
+				<integer>0</integer>
+				<key>kAUInspectorStateKey_WindowLevel</key>
+				<integer>2147483647</integer>
+				<key>kAUInspectorStateKey_WindowRect</key>
+				<string>{{358, 22}, {340, 372}}</string>
+			</dict>
+			<dict>
+				<key>kAUInspectorStateKey_BusIndex</key>
+				<integer>0</integer>
+				<key>kAUInspectorStateKey_BusType</key>
+				<string>kBusType_Output</string>
+				<key>kAUInspectorStateKey_Bypassed</key>
+				<false/>
+				<key>kAUInspectorStateKey_CurrentViewName</key>
+				<string>dRowAudio Tremolo</string>
+				<key>kAUInspectorStateKey_EffectIndex</key>
+				<integer>0</integer>
+				<key>kAUInspectorStateKey_PresetDrawerExpandedItems</key>
+				<array>
+					<array>
+						<string>Local</string>
+						<true/>
+					</array>
+					<array>
+						<string>User</string>
+						<true/>
+					</array>
+				</array>
+				<key>kAUInspectorStateKey_PresetDrawerShowing</key>
+				<false/>
+				<key>kAUInspectorStateKey_TrackIndex</key>
+				<integer>0</integer>
+				<key>kAUInspectorStateKey_WindowLevel</key>
+				<integer>2147483647</integer>
+				<key>kAUInspectorStateKey_WindowRect</key>
+				<string>{{759, 68}, {400, 179}}</string>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>
