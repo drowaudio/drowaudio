@@ -654,7 +654,7 @@
 					ProjectRef = 55BBE0AC0F030A6A00BF1B2B /* Juce.xcodeproj */;
 				},
 			);
-			projectRoot = "";
+			projectRoot = ../..;
 			targets = (
 				8D01CCC60486CAD60068D4B7 /* dRowAudio_Tremolo AU */,
 				55BBE2460F0323B400BF1B2B /* dRowAudio_Tremolo VST */,

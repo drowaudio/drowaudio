@@ -39,7 +39,6 @@
 
 /** List of todo's:
 	
-	@todo Interpolate buffer value rather than using closest one
 	@todo Change buffer contents according to user
 	@todo Make stereo including a phase difference
  */
@@ -227,6 +226,7 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 {
 	// pointer to current sample
 	float* sample;
+	float currentSample = 0;
 	
 	// interpolation variables
 	unsigned int iPos1, iPos2;
@@ -263,7 +263,7 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 		for (int channel = 0; channel < getNumInputChannels(); ++channel)
 		{
 			// get pointer to current sample in current channel to process
-			sample = buffer.getSampleData(channel, numSamples);
+			sample = buffer.getSampleData(channel, currentSample);
 			
 			double fTremoloMultiplier = (((fInterpolatedData - 0.5) * depth) + 0.5);
 			
@@ -274,6 +274,9 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 		fTremoloBufferPosition += currentScalingFactor;
  		if ((uint32)fTremoloBufferPosition == tremoloBufferSize)
 			fTremoloBufferPosition = 0;	
+		
+		// incriment sample count
+		currentSample++;
     }
 	//===================================================================
 	

@@ -281,8 +281,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -332,7 +330,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>7</integer>
 									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -371,12 +369,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowTremoloEditorComponent.cpp</string>
+								<string>dRowTremoloFilter.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -384,11 +384,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowTremoloEditorComponent.cpp</string>
+										<string>dRowTremoloFilter.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55FF142A0F0575C200B5B962</string>
+										<string>55184D6E0F070CCB00C396B6</string>
 										<key>history</key>
 										<array>
 											<string>55BBE02E0F03033900BF1B2B</string>
@@ -398,14 +398,13 @@
 											<string>558ED9420F032B3200B430D1</string>
 											<string>55FF122E0F03AE8600B5B962</string>
 											<string>55FF12570F03C55500B5B962</string>
-											<string>55FF12B90F03CEB500B5B962</string>
 											<string>55FF12BC0F03CFB600B5B962</string>
 											<string>55FF12BE0F03CFB600B5B962</string>
-											<string>55FF14210F0575C200B5B962</string>
-											<string>55FF14220F0575C200B5B962</string>
-											<string>55FF14230F0575C200B5B962</string>
 											<string>55FF14240F0575C200B5B962</string>
-											<string>55FF12580F03C55500B5B962</string>
+											<string>551848310F05ED4800C396B6</string>
+											<string>551848B60F069D1E00C396B6</string>
+											<string>55184D540F070A6A00C396B6</string>
+											<string>55184D4B0F070A5F00C396B6</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -416,16 +415,12 @@
 											<string>55BBE05D0F03049C00BF1B2B</string>
 											<string>55BBE05E0F03049C00BF1B2B</string>
 											<string>55BBE09E0F0309BE00BF1B2B</string>
-											<string>55BBE0D50F030BAB00BF1B2B</string>
 											<string>55BBE0DA0F030BAB00BF1B2B</string>
 											<string>55BBE0DB0F030BAB00BF1B2B</string>
 											<string>55BBE0DC0F030BAB00BF1B2B</string>
 											<string>55BBE0DD0F030BAB00BF1B2B</string>
 											<string>55FF14250F0575C200B5B962</string>
-											<string>55FF14260F0575C200B5B962</string>
-											<string>55FF14270F0575C200B5B962</string>
-											<string>55FF14280F0575C200B5B962</string>
-											<string>55FF14290F0575C200B5B962</string>
+											<string>55184D550F070A6A00C396B6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -483,9 +478,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55FF142B0F0575C200B5B962</string>
+				<string>55184D570F070A6A00C396B6</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55FF142C0F0575C200B5B962</string>
+				<string>55184D580F070A6A00C396B6</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -604,7 +599,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>252016066.47426701</real>
+	<real>252120267.95107099</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -620,7 +615,8 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>55BBE0250F0301BB00BF1B2B</string>
-		<string>/Users/Dave/Documents/Developement/Audio Plugins/Tremolo Polymorphic/build/mac/dRow_Tremolo.xcodeproj</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>/Users/Dave/Documents/Developement/Audio Plugins/Tremolo/build/mac/dRow_Tremolo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1280 719 0 0 1280 778 </string>
@@ -700,7 +696,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>55BBE0250F0301BB00BF1B2B</string>
-				<string>55FF13C40F056B0F00B5B962</string>
+				<string>55184D510F070A6900C396B6</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -894,8 +890,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>55FF12020F03A7F900B5B962</string>
-				<string>55FF12030F03A7F900B5B962</string>
+				<string>55184D4D0F070A5F00C396B6</string>
+				<string>55184D4E0F070A5F00C396B6</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
