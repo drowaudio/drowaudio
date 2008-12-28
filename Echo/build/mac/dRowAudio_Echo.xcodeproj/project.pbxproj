@@ -654,7 +654,7 @@
 					ProjectRef = 55BBE0AC0F030A6A00BF1B2B /* Juce.xcodeproj */;
 				},
 			);
-			projectRoot = "";
+			projectRoot = ../..;
 			targets = (
 				8D01CCC60486CAD60068D4B7 /* dRowAudio_Echo AU */,
 				55BBE2460F0323B400BF1B2B /* dRowAudio_Echo VST */,
@@ -941,7 +941,7 @@
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/inc\\\"",
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/utils\\\"",
 				);
-				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Tremolo Polymorphic/build/mac/Info.plist";
+				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Echo/build/mac/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
 				MacBag = /Users/jules/stuff/PT_73_SDK/MacBag;
@@ -987,7 +987,7 @@
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/inc\\\"",
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/utils\\\"",
 				);
-				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Tremolo Polymorphic/build/mac/Info.plist";
+				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Echo/build/mac/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
 				OTHER_LDFLAGS = "-bundle";

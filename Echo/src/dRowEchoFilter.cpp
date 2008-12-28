@@ -212,7 +212,8 @@ void dRowEchoFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 
 void dRowEchoFilter::releaseResources()
 {
-    // when playback stops, you can use this as an opportunity to free up any
+    delete pfCircularBuffer;
+	// when playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
@@ -222,6 +223,7 @@ void dRowEchoFilter::processBlock (AudioSampleBuffer& buffer,
 {
 	// pointer to current sample
 	float* sample;
+	int currentSample = 0;
 				
 	// find the number of samples in the buffer to process
 	int numSamples = buffer.getNumSamples();
@@ -238,14 +240,12 @@ void dRowEchoFilter::processBlock (AudioSampleBuffer& buffer,
 		for (int channel = 0; channel < getNumInputChannels(); ++channel)
 		{
 			// get pointer to current sample in current channel to process
-			sample = buffer.getSampleData(channel, numSamples);
+			sample = buffer.getSampleData(channel, currentSample);
 			
 			// monoize sample
 			fMix = (fMix + *sample) * 0.5;
 		}
-		
-		
-		
+				
 		iBufferReadPos = iBufferWritePos - (currentSampleRate * 0.25);
 		if (iBufferReadPos < 0)
 			iBufferReadPos = iBufferReadPos + iBufferSize;
@@ -261,9 +261,11 @@ void dRowEchoFilter::processBlock (AudioSampleBuffer& buffer,
 		for (int channel = 0; channel < getNumInputChannels(); ++channel)
 		{
 			// get pointer to current sample in current channel to process
-			sample = buffer.getSampleData(channel, numSamples);
+			sample = buffer.getSampleData(channel, currentSample);
 			*sample = fMix;
 		}
+		// incriment current sample counter
+		currentSample++;
 	}
 	//===================================================================
 	

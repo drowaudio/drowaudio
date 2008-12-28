@@ -116,7 +116,7 @@ private:
 	// buffer variables
 	float* pfCircularBuffer;
 	int iBufferSize, iBufferWritePos, iBufferReadPos;
-	
+
 	double currentSampleRate;
 };
 
