@@ -224,10 +224,6 @@ void dRowTremoloFilter::releaseResources()
 void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
                                    MidiBuffer& midiMessages)
 {
-	// pointer to current sample
-	float* sample;
-	float currentSample = 0;
-	
 	// interpolation variables
 	unsigned int iPos1, iPos2;
 	float fDiff, fInterpolatedData; 
@@ -238,7 +234,14 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 		
 	// find the number of samples in the buffer to process
 	int numSamples = buffer.getNumSamples();
-		
+	
+	// initialise the pointer to samples
+	float* sample[getNumInputChannels()];
+	for (int channel = 0; channel < getNumInputChannels(); channel++)
+	{
+		sample[channel] = buffer.getSampleData(channel, 0);
+	}
+	
 	//===================================================================
 	// Main Sample Loop
 	//===================================================================
@@ -260,23 +263,20 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 		fInterpolatedData = tremoloBuffer[iPos2] * fDiff + tremoloBuffer[iPos1] * (1 - fDiff);
 		
 		// process channels
-		for (int channel = 0; channel < getNumInputChannels(); ++channel)
-		{
-			// get pointer to current sample in current channel to process
-			sample = buffer.getSampleData(channel, currentSample);
-			
+		for (int channel = 0; channel < getNumInputChannels(); channel++)
+		{			
 			double fTremoloMultiplier = (((fInterpolatedData - 0.5) * depth) + 0.5);
 			
-			*sample *= fTremoloMultiplier;
+			*sample[channel] *= fTremoloMultiplier;
+			
+			// incriment sample pointers
+			sample[channel]++;
 		}
 		
 		// incriment buffer position
 		fTremoloBufferPosition += currentScalingFactor;
- 		if ((uint32)fTremoloBufferPosition == tremoloBufferSize)
-			fTremoloBufferPosition = 0;	
-		
-		// incriment sample count
-		currentSample++;
+ 		if (fTremoloBufferPosition >= tremoloBufferSize)
+			fTremoloBufferPosition -= tremoloBufferSize;	
     }
 	//===================================================================
 	

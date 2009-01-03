@@ -93,6 +93,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	rateSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 	rateSlider->addListener (this);
     rateSlider->setRange (0.0, 1.0, 0.01);
+	rateSlider->setSkewFactor(2);
     rateSlider->setTooltip (T("Changes the rate of the tremolo effect"));
     rateSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Rate), false);
 	addAndMakeVisible(rateLabel = new Label(T("rateLabel"),TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Rate]));
