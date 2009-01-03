@@ -32,6 +32,7 @@
 #include "includes.h"
 #include "dRowTremoloCommon.h"
 #include "dRowTremoloEditorComponent.h"
+#include "dRowTremoloFilter.h"
 
 //==============================================================================
 // quick-and-dirty function to format a timecode string
@@ -109,6 +110,16 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(depthLabel = new Label(T("depthLabel"),TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Depth]));
 	depthLabel->setJustificationType(Justification::centred);
 	
+	addAndMakeVisible(shapeSlider = new Slider(T("shapeSlider")));
+	shapeSlider->setSliderStyle(Slider::Rotary);
+	shapeSlider->setRange(0.01f, 10, 0.01f);
+	shapeSlider->setValue(1);
+	shapeSlider->addListener(this);
+	
+	
+	// create the buffer view
+	addAndMakeVisible(bufferView1 = new dRowBufferView(ownerFilter->tremoloBuffer, ownerFilter->tremoloBufferSize));
+	bufferView1->setInterceptsMouseClicks(false, false);
 	
     // create and add the midi keyboard component..
     addAndMakeVisible (midiKeyboard
@@ -157,6 +168,10 @@ void dRowTremoloEditorComponent::resized()
 	
 	rateSlider->setBounds (10, 75, 50, 60);
 	depthSlider->setBounds (80, 75, 50, 60);
+	
+	shapeSlider->setBounds(getWidth()-100, getHeight()-40, 90, 40);
+	
+	bufferView1->setBounds (getWidth()-100, 5, 100, getHeight()-5);
 
 //    const int keyboardHeight = 70;
 //    midiKeyboard->setBounds (4, getHeight() - keyboardHeight - 4,
@@ -188,6 +203,12 @@ void dRowTremoloEditorComponent::sliderValueChanged (Slider* changedSlider)
 	
 	else if (changedSlider == depthSlider)
 		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Depth, (float)depthSlider->getValue());
+	
+	else if (changedSlider == shapeSlider)
+	{
+		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Shape, (float)shapeSlider->getValue());
+		bufferView1->resized();
+	}
 }
 
 //==============================================================================
@@ -205,6 +226,7 @@ void dRowTremoloEditorComponent::updateParametersFromFilter()
     const float newGain = filter->getParameter (TremoloInterface::Parameters::Gain);
 	const float newRate = filter->getParameter (TremoloInterface::Parameters::Rate);
 	const float newTremDepth = filter->getParameter (TremoloInterface::Parameters::Depth);
+	const float newShape = filter->getParameter (TremoloInterface::Parameters::Shape);
 
     // ..release the lock ASAP
     filter->getCallbackLock().exit();
@@ -234,6 +256,7 @@ void dRowTremoloEditorComponent::updateParametersFromFilter()
     gainSlider->setValue (newGain, false);
 	rateSlider->setValue (newRate, false);
 	depthSlider->setValue (newTremDepth, false);
+	shapeSlider->setValue (newShape, false);
 
     setSize (filter->lastUIWidth,
              filter->lastUIHeight);

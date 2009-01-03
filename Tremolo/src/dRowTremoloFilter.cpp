@@ -33,12 +33,15 @@
 #include "dRowTremoloCommon.h"
 #include "dRowTremoloFilter.h"
 #include "dRowTremoloEditorComponent.h"
+#include <cmath>
 
 #define pi 3.14159265358979323846264338327950288
 #define MAXIMUM_RATE 20
 
 /** List of todo's:
 	
+	@todo Improve replacing of buffer's content's
+	@todo Improve transfer function for filling buffer
 	@todo Change buffer contents according to user
 	@todo Make stereo including a phase difference
  */
@@ -61,8 +64,12 @@ dRowTremoloFilter::dRowTremoloFilter()
     gain = 1.0f;
 	rate = 1.0f;
 	depth = 1.0f;
+	shape = 1.0f;
     lastUIWidth = 400;
     lastUIHeight = 140;
+	
+	currentShape = shape;
+	fillBuffer(currentShape);
 
 	fTremoloBufferPosition = 0;
 	
@@ -102,6 +109,10 @@ float dRowTremoloFilter::getParameter (int index)
 	// depth parameter
 	else if (index == TremoloInterface::Parameters::Depth)
 		return depth;
+	
+	// shape parameter
+	else if (index == TremoloInterface::Parameters::Shape)
+		return shape;
 
 	else
 		return 0.0f;
@@ -136,6 +147,15 @@ void dRowTremoloFilter::setParameter (int index, float newValue)
             sendChangeMessage (this);
         }
     }
+	
+	else if (index == TremoloInterface::Parameters::Shape)
+    {
+        if (shape != newValue)
+        {
+            shape = newValue;
+            sendChangeMessage (this);
+        }
+    }
 }
 
 const String dRowTremoloFilter::getParameterName (int index)
@@ -147,6 +167,8 @@ const String dRowTremoloFilter::getParameterName (int index)
         return TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Rate];
 	else if (index == TremoloInterface::Parameters::Depth)
         return TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Depth];
+	else if (index == TremoloInterface::Parameters::Shape)
+        return TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Shape];
 	else
 		return String::empty;
 }
@@ -159,6 +181,8 @@ const String dRowTremoloFilter::getParameterText (int index)
         return String(rate, 2);
 	else if (index == TremoloInterface::Parameters::Depth)
         return String (depth, 2);
+	else if (index == TremoloInterface::Parameters::Shape)
+        return String (shape, 2);
 	else
 		return String::empty;
 }
@@ -203,14 +227,15 @@ void dRowTremoloFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	
 	currentSampleRate = sampleRate;
 	
-	// Set up modulation buffer	
-	for (uint32 i = 0; i < tremoloBufferSize; ++i)
-	{
-		// fill buffer with sine data
-		double radians = i * 2.0 * (pi / tremoloBufferSize);
-        tremoloBuffer[i] = (sin(radians) + 1.0) * 0.5;
-    }
-	// reset buffer position
+//	// Set up modulation buffer	
+//	for (uint32 i = 0; i < tremoloBufferSize; ++i)
+//	{
+//		// fill buffer with sine data
+//		double radians = i * 2.0 * (pi / tremoloBufferSize);
+//        tremoloBuffer[i] = (sin(radians) + 1.0) * 0.5;
+//    }
+//	// reset buffer position
+//	fillBuffer(shape);
 	fTremoloBufferPosition = 0;
 }
 
@@ -231,6 +256,8 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 	// scale rate to use
 	float samplesPerTremoloCycle = currentSampleRate / (MAXIMUM_RATE * rate);
 	float nextScalingFactor = tremoloBufferSize / samplesPerTremoloCycle;
+	
+	float nextShape = shape;
 		
 	// find the number of samples in the buffer to process
 	int numSamples = buffer.getNumSamples();
@@ -248,9 +275,17 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 	while (--numSamples >= 0)
 	{
 		// change the scaling factor if it is safe to do so and reset the buffer position
-		if ((nextScalingFactor != currentScalingFactor) && (fTremoloBufferPosition == 0))
+		if ((nextScalingFactor != currentScalingFactor) && (fTremoloBufferPosition < 1))
 		{
 			currentScalingFactor = nextScalingFactor;
+			fTremoloBufferPosition = 0;
+		}
+		
+		// refill buffer if safe to do so NB. probably not the bet idea to do this here!
+		if ((nextShape != currentShape) && (fTremoloBufferPosition < 1))
+		{
+			currentShape = nextShape;
+			fillBuffer(currentShape);
 			fTremoloBufferPosition = 0;
 		}
 		
@@ -380,4 +415,25 @@ void dRowTremoloFilter::setStateInformation (const void* data, int sizeInBytes)
 
         delete xmlState;
     }
+}
+
+void dRowTremoloFilter::fillBuffer(float shape)
+{
+	// create buffer with sine data
+	for (uint32 i = 0; i < tremoloBufferSize; ++i)
+	{
+		// fill buffer with sine data
+		double radians = i * 2.0 * (pi / tremoloBufferSize);
+		float rawBufferData = sin (radians);
+		
+		if (rawBufferData >= 0)
+			tremoloBuffer[i] = ( (pow(rawBufferData, shape) + 1) * 0.5);
+		else
+		{
+			rawBufferData *= -1;
+			rawBufferData = pow(rawBufferData, shape);
+			rawBufferData *= -1;
+			tremoloBuffer[i] = ( (rawBufferData + 1) * 0.5);
+		}
+    }	
 }

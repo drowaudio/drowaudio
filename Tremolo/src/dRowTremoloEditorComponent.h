@@ -34,6 +34,7 @@
 #define DROWTREMOLOEDITOR_H
 
 #include "dRowTremoloFilter.h"
+#include "dRowBufferView.h"
 
 
 //==============================================================================
@@ -85,11 +86,15 @@ private:
     Slider* gainSlider;
 	Slider* rateSlider;
 	Slider* depthSlider;
+	Slider* shapeSlider;
+	
     Label* gainLabel;
 	Label* rateLabel;
 	Label* depthLabel;
 	MidiKeyboardComponent* midiKeyboard;
 	Label* infoLabel;
+	
+	dRowBufferView* bufferView1;
     
 	ResizableCornerComponent* resizer;
     ComponentBoundsConstrainer resizeLimits;

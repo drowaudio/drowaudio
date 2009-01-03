@@ -106,21 +106,26 @@ public:
     //==============================================================================
     juce_UseDebuggingNewOperator
 
+	// buffer variables
+	static const unsigned int tremoloBufferSize = 2000;
+	float tremoloBuffer[tremoloBufferSize];
+	float fTremoloBufferPosition;
+	
 private:
 	
 	// UI parameters
 	float gain;
 	float rate;
 	float depth;
+	float shape;
 	
-	// buffer variables
-	static const unsigned int tremoloBufferSize = 2000;
-	float tremoloBuffer[tremoloBufferSize];
-	float fTremoloBufferPosition;
 	
 	float currentScalingFactor;
 	float nextScalingFactor;	
 	double currentSampleRate;
+	float currentShape;
+	
+	void fillBuffer(float shape);
 };
 
 

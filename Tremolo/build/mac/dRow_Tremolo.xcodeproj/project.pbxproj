@@ -10,6 +10,10 @@
 		3EEA126E089847F5002C6BFC /* CAVectorUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA126B089847F5002C6BFC /* CAVectorUnit.cpp */; };
 		3EEA126F089847F5002C6BFC /* CAVectorUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EEA126C089847F5002C6BFC /* CAVectorUnit.h */; };
 		3EEA1270089847F5002C6BFC /* CAVectorUnitTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EEA126D089847F5002C6BFC /* CAVectorUnitTypes.h */; };
+		5580B14F0F0F192E0043FE38 /* dRowBufferView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */; };
+		5580B1500F0F192E0043FE38 /* dRowBufferView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5580B14E0F0F192E0043FE38 /* dRowBufferView.h */; };
+		5580B1510F0F192E0043FE38 /* dRowBufferView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */; };
+		5580B1520F0F192E0043FE38 /* dRowBufferView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5580B14E0F0F192E0043FE38 /* dRowBufferView.h */; };
 		55BBE0710F03081C00BF1B2B /* dRowTremoloCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */; };
 		55BBE0720F03081C00BF1B2B /* dRowTremoloCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 55BBE06C0F03081C00BF1B2B /* dRowTremoloCommon.h */; };
 		55BBE0730F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BBE06D0F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp */; };
@@ -195,6 +199,8 @@
 		3EEA126B089847F5002C6BFC /* CAVectorUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = CAVectorUnit.cpp; sourceTree = "<group>"; };
 		3EEA126C089847F5002C6BFC /* CAVectorUnit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CAVectorUnit.h; sourceTree = "<group>"; };
 		3EEA126D089847F5002C6BFC /* CAVectorUnitTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CAVectorUnitTypes.h; sourceTree = "<group>"; };
+		5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowBufferView.cpp; path = ../../src/dRowBufferView.cpp; sourceTree = SOURCE_ROOT; };
+		5580B14E0F0F192E0043FE38 /* dRowBufferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowBufferView.h; path = ../../src/dRowBufferView.h; sourceTree = SOURCE_ROOT; };
 		55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowTremoloCommon.cpp; path = ../../src/dRowTremoloCommon.cpp; sourceTree = SOURCE_ROOT; };
 		55BBE06C0F03081C00BF1B2B /* dRowTremoloCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowTremoloCommon.h; path = ../../src/dRowTremoloCommon.h; sourceTree = SOURCE_ROOT; };
 		55BBE06D0F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowTremoloEditorComponent.cpp; path = ../../src/dRowTremoloEditorComponent.cpp; sourceTree = SOURCE_ROOT; };
@@ -357,6 +363,7 @@
 		08FB77ADFE841716C02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5580B1380F0F18780043FE38 /* GUI */,
 				8437929D0EFBF08E002A2725 /* Filter */,
 				8437929E0EFBF098002A2725 /* Wrapper Code */,
 			);
@@ -372,6 +379,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5580B1380F0F18780043FE38 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				55BBE06D0F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp */,
+				55BBE06E0F03081C00BF1B2B /* dRowTremoloEditorComponent.h */,
+				5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */,
+				5580B14E0F0F192E0043FE38 /* dRowBufferView.h */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
 		55BBE0AD0F030A6A00BF1B2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,8 +403,6 @@
 			children = (
 				55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */,
 				55BBE06C0F03081C00BF1B2B /* dRowTremoloCommon.h */,
-				55BBE06D0F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp */,
-				55BBE06E0F03081C00BF1B2B /* dRowTremoloEditorComponent.h */,
 				55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */,
 				55BBE0700F03081C00BF1B2B /* dRowTremoloFilter.h */,
 				843792A90EFBF14B002A2725 /* JucePluginCharacteristics.h */,
@@ -555,6 +571,7 @@
 				55BBE2610F0323B400BF1B2B /* dRowTremoloEditorComponent.h in Headers */,
 				55BBE2620F0323B400BF1B2B /* dRowTremoloFilter.h in Headers */,
 				55BBE2630F0323B400BF1B2B /* includes.h in Headers */,
+				5580B1520F0F192E0043FE38 /* dRowBufferView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +607,7 @@
 				55BBE0740F03081C00BF1B2B /* dRowTremoloEditorComponent.h in Headers */,
 				55BBE0760F03081C00BF1B2B /* dRowTremoloFilter.h in Headers */,
 				55BBE0C70F030BA000BF1B2B /* includes.h in Headers */,
+				5580B1500F0F192E0043FE38 /* dRowBufferView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +764,7 @@
 				55BBE2810F0323B400BF1B2B /* dRowTremoloCommon.cpp in Sources */,
 				55BBE2820F0323B400BF1B2B /* dRowTremoloEditorComponent.cpp in Sources */,
 				55BBE2830F0323B400BF1B2B /* dRowTremoloFilter.cpp in Sources */,
+				5580B1510F0F192E0043FE38 /* dRowBufferView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +801,7 @@
 				55BBE0710F03081C00BF1B2B /* dRowTremoloCommon.cpp in Sources */,
 				55BBE0730F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp in Sources */,
 				55BBE0750F03081C00BF1B2B /* dRowTremoloFilter.cpp in Sources */,
+				5580B14F0F0F192E0043FE38 /* dRowBufferView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
