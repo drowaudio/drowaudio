@@ -83,7 +83,9 @@ public:
 
 private:
     //==============================================================================
-    Slider* gainSlider;
+    Label* titleLabel;
+	
+	Slider* gainSlider;
 	Slider* rateSlider;
 	Slider* depthSlider;
 	Slider* shapeSlider;
@@ -91,6 +93,8 @@ private:
     Label* gainLabel;
 	Label* rateLabel;
 	Label* depthLabel;
+	Label* shapeLabel;
+	
 	MidiKeyboardComponent* midiKeyboard;
 	Label* infoLabel;
 	

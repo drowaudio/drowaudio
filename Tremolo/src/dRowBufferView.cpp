@@ -29,7 +29,7 @@ void dRowBufferView::resized ()
 {
 	// recalculate display scale
 	float displayScaleX = (tremoloBufferSize+1)/(getWidth()-4.0f);
-	float displayScaleY = (getHeight()-4.0f) * 0.7f;
+	float displayScaleY = (getHeight()-4.0f);
 	
 	displayPath.clear();	
     displayPath.startNewSubPath (2.0f, 2+displayScaleY*tremoloBuffer[0]);
@@ -45,9 +45,10 @@ void dRowBufferView::resized ()
 
 void dRowBufferView::paint (Graphics& g)
 {
-	g.setColour(Colour(0xA1AC0000));
+	g.fillAll(Colour::greyLevel(0.4f));
+	g.setColour(Colour(0xA100A0FF));
 	g.fillPath(displayPath);
-	g.setColour(Colour(0xB1F10000));
+	g.setColour(Colour(0xB1002DFF));
 	g.strokePath (displayPath, PathStrokeType (4.0000f));
 }
 
