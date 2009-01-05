@@ -42,8 +42,10 @@
 	
 	@todo Improve replacing of buffer's content's
 	@todo Improve transfer function for filling buffer
-	@todo Change buffer contents according to user
 	@todo Make stereo including a phase difference
+	@todo Make tempo dependant
+	@todo Correct generic parameter problems
+	@todo Correct text entering problems
  */
 
 //==============================================================================
@@ -248,14 +250,6 @@ void dRowTremoloFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	
 	currentSampleRate = sampleRate;
 	
-//	// Set up modulation buffer	
-//	for (uint32 i = 0; i < tremoloBufferSize; ++i)
-//	{
-//		// fill buffer with sine data
-//		double radians = i * 2.0 * (pi / tremoloBufferSize);
-//        tremoloBuffer[i] = (sin(radians) + 1.0) * 0.5;
-//    }
-//	// reset buffer position
 	fTremoloBufferPosition = 0;
 }
 
@@ -267,7 +261,7 @@ void dRowTremoloFilter::releaseResources()
 
 #pragma mark Main Process Function
 void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
-                                   MidiBuffer& midiMessages)
+									  MidiBuffer& midiMessages)
 {
 	// interpolation variables
 	unsigned int iPos1, iPos2;
@@ -328,23 +322,25 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 			fTremoloBufferPosition = 0;
 		}
 		
-		// calculte the tremolo multiplier to use based on the buffer position
+		// calculte the required buffer position
 		iPos1 = (int)fTremoloBufferPosition;
 		iPos2 = iPos1 + 1;
 		if (iPos2 == tremoloBufferSize)
 			iPos2 = 0;
-		fDiff = fTremoloBufferPosition - iPos1;
-		fInterpolatedData = tremoloBuffer[iPos2] * fDiff + tremoloBuffer[iPos1] * (1 - fDiff);
+		fDiff = fTremoloBufferPosition - iPos1;		
 		
 		// process channels
 		for (int channel = 0; channel < getNumInputChannels(); channel++)
 		{			
-			double fTremoloMultiplier = (fInterpolatedData);
-			
-			*sample[channel] *= fTremoloMultiplier;
+			if (channel%2 == 0) // even channel
+				fInterpolatedData = tremoloBuffer[iPos2] * fDiff + tremoloBuffer[iPos1] * (1 - fDiff);
+			else // odd channel
+				fInterpolatedData = tremoloBuffer2[iPos2] * fDiff + tremoloBuffer2[iPos1] * (1 - fDiff);				
+						
+			*sample[channel] *= fInterpolatedData;
 			
 			// incriment sample pointers
-			sample[channel]++;
+			sample[channel]++;			
 		}
 		
 		// incriment buffer position
