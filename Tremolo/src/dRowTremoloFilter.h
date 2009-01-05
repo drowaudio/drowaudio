@@ -109,6 +109,7 @@ public:
 	// buffer variables
 	static const unsigned int tremoloBufferSize = 2000;
 	float tremoloBuffer[tremoloBufferSize];
+	float tremoloBuffer2[tremoloBufferSize];
 	float fTremoloBufferPosition;
 	
 private:
@@ -128,7 +129,7 @@ private:
 	float currentDepth;
 	float currentPhase;
 	
-	void fillBuffer();
+	void fillBuffer(float *bufferToFill, float phaseAngle);
 };
 
 

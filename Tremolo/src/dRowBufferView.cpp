@@ -42,13 +42,11 @@ void dRowBufferView::resized ()
     displayPath.startNewSubPath (2.0f, height-(displayScaleY*tremoloBuffer[0])-2);
 	for (uint32 i = 25; i < tremoloBufferSize; i+=25)
 	{
-		int c = i;
-		c -= fBufferOffset;
-		if (c < 0)
-			c += tremoloBufferSize;
-		displayPath.lineTo((i/displayScaleX)+2, height-(displayScaleY*tremoloBuffer[c])-2);
+		displayPath.lineTo((i/displayScaleX)+2, height-(displayScaleY*tremoloBuffer[i])-2);
 	}
 	displayPath.lineTo(getWidth()-2, height-(displayScaleY*tremoloBuffer[0])-2);
+	displayPath.lineTo(getWidth()-2, height);
+	displayPath.lineTo(2.0f, height);
 	displayPath.closeSubPath();
 	
 	repaint();

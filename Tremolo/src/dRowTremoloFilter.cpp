@@ -65,14 +65,15 @@ dRowTremoloFilter::dRowTremoloFilter()
 	rate = 1.0f;
 	depth = 0.5f;
 	shape = 1.0f;
-	phase = 0.5f;
+	phase = 0.0f;
     lastUIWidth = 400;
     lastUIHeight = 200;
 	
 	currentShape = shape;
 	currentDepth = depth;
 	currentPhase = phase;
-	fillBuffer();
+	fillBuffer(tremoloBuffer, 0);
+	fillBuffer(tremoloBuffer2, currentPhase);
 
 	fTremoloBufferPosition = 0;
 	
@@ -255,7 +256,6 @@ void dRowTremoloFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 //        tremoloBuffer[i] = (sin(radians) + 1.0) * 0.5;
 //    }
 //	// reset buffer position
-//	fillBuffer(shape);
 	fTremoloBufferPosition = 0;
 }
 
@@ -323,7 +323,8 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 		if (refreshBuffer)
 		{
 			refreshBuffer = false;
-			fillBuffer();
+			fillBuffer(tremoloBuffer, 0);
+			fillBuffer(tremoloBuffer2, currentPhase);
 			fTremoloBufferPosition = 0;
 		}
 		
@@ -455,23 +456,26 @@ void dRowTremoloFilter::setStateInformation (const void* data, int sizeInBytes)
     }
 }
 
-void dRowTremoloFilter::fillBuffer()
+void dRowTremoloFilter::fillBuffer(float* bufferToFill, float phaseAngle)
 {
+	// Scale phase
+	phaseAngle = (phaseAngle * 2 * pi) - pi;
+	
 	// create buffer with sine data
 	for (uint32 i = 0; i < tremoloBufferSize; ++i)
 	{
 		// fill buffer with sine data
 		double radians = i * 2.0 * (pi / tremoloBufferSize);
-		float rawBufferData = sin (radians);
+		float rawBufferData = sin (radians + phaseAngle);
 		
 		if (rawBufferData >= 0)
-			tremoloBuffer[i] = ( (pow(rawBufferData, shape) * depth) + (1-depth));
+			bufferToFill[i] = ( (pow(rawBufferData, shape) * depth) + (1-depth));
 		else
 		{
 			rawBufferData *= -1;
 			rawBufferData = pow(rawBufferData, shape);
 			rawBufferData *= -1;
-			tremoloBuffer[i] = rawBufferData * depth + (1-depth);
+			bufferToFill[i] = rawBufferData * depth + (1-depth);
 		}
     }	
 }

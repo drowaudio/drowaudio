@@ -151,7 +151,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(phaseSlider = new Slider(T("phaseSlider")));
 	phaseSlider->setSliderStyle(Slider::Rotary);
 	phaseSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
-	phaseSlider->setRange(0.0, 1.0, 0.01);
+	phaseSlider->setRange(-0.5f, 0.5f, 0.01);
 	phaseSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Phase), false);
 	phaseSlider->addListener(this);
 	addAndMakeVisible(phaseLabel = new Label(T("phaseLabel"),T("Phase")));
@@ -167,7 +167,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	bufferView1Label->setFont(Font (30, Font::plain));
 	bufferView1Label->setColour(Label::textColourId, Colours::white);
 	
-	addAndMakeVisible(bufferView2 = new dRowBufferView(ownerFilter->tremoloBuffer, ownerFilter->tremoloBufferSize, 1000));
+	addAndMakeVisible(bufferView2 = new dRowBufferView(ownerFilter->tremoloBuffer2, ownerFilter->tremoloBufferSize, 1000));
 	bufferView2->setInterceptsMouseClicks(false, false);
 	addAndMakeVisible(bufferView2Label = new Label("rLabel", "R:"));
 	bufferView2Label->attachToComponent(bufferView2, true);
@@ -193,6 +193,15 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
     // class to tell us when something has changed, and this will call our changeListenerCallback()
     // method.
     ownerFilter->addChangeListener (this);
+	
+	// if plugin is mono set up the accordingly
+	if (ownerFilter->getNumInputChannels() < 2)
+	{
+		phaseSlider->setVisible(false);
+		bufferView2->setVisible(false);		
+		bufferView1Label->setVisible(false);
+		bufferView2Label->setVisible(false);
+	}
 }
 
 dRowTremoloEditorComponent::~dRowTremoloEditorComponent()
@@ -227,7 +236,6 @@ void dRowTremoloEditorComponent::resized()
 	bufferView1->setBounds (getWidth()-115, 4+40, 110, (getHeight()*0.5f)-6-20);
 	bufferView2->setBounds (getWidth()-115, (getHeight()*0.5f)+2+20, 110, (getHeight()*0.5f)-6-20);
 	
-
 //    const int keyboardHeight = 70;
 //    midiKeyboard->setBounds (4, getHeight() - keyboardHeight - 4,
 //                             getWidth() - 8, keyboardHeight);
