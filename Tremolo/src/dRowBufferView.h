@@ -19,16 +19,17 @@ class dRowBufferView  :  public Component
 {
 private:
 	//==============================================================================	
-	unsigned int tremoloBufferSize;
-	float* tremoloBuffer;
+	const unsigned int tremoloBufferSize;
+	const float* tremoloBuffer;
 	float fTremoloBufferPosition;
+	int fBufferOffset;
 	
 	Path displayPath;
 	
 	TooltipWindow tooltipWindow;
 public:
 	//==============================================================================
-	dRowBufferView (float* buffer, int size);
+	dRowBufferView (float* buffer, int size, int bufferOffset);
 	
 	~dRowBufferView ();
 	

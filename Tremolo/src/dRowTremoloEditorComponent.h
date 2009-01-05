@@ -89,19 +89,23 @@ private:
 	Slider* rateSlider;
 	Slider* depthSlider;
 	Slider* shapeSlider;
+	Slider* phaseSlider;
 	
     Label* gainLabel;
 	Label* rateLabel;
 	Label* depthLabel;
 	Label* shapeLabel;
+	Label* phaseLabel;
 	
 	MidiKeyboardComponent* midiKeyboard;
 	Label* infoLabel;
 	
 	dRowBufferView* bufferView1;
-    
-	ResizableCornerComponent* resizer;
-    ComponentBoundsConstrainer resizeLimits;
+	dRowBufferView* bufferView2;
+	
+	Label* bufferView1Label;
+    Label* bufferView2Label;
+	
     TooltipWindow tooltipWindow;
 
     void updateParametersFromFilter();

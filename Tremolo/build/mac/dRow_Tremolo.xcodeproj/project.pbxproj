@@ -417,10 +417,10 @@
 		8437929D0EFBF08E002A2725 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */,
-				55BBE06C0F03081C00BF1B2B /* dRowTremoloCommon.h */,
 				55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */,
 				55BBE0700F03081C00BF1B2B /* dRowTremoloFilter.h */,
+				55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */,
+				55BBE06C0F03081C00BF1B2B /* dRowTremoloCommon.h */,
 				843792A90EFBF14B002A2725 /* JucePluginCharacteristics.h */,
 				55BBE0C60F030BA000BF1B2B /* includes.h */,
 			);

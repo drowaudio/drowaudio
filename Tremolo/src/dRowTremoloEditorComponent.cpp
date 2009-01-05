@@ -82,7 +82,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	myLookAndFeel = new dRowAudioLookAndFeel;
 	setLookAndFeel(myLookAndFeel);
 	
-	// Instantiate the font
+	// Instantiate the bitwise font
 	Font* bitwiseFont = 0;
 	MemoryInputStream fontStream (bitwiseFontResource::bitwiseFontBinary, bitwiseFontResource::bitwiseFontBinary_Size, false);
 	Typeface* bitwiseTypeface = new Typeface (fontStream);
@@ -91,8 +91,10 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	
 	// title label
 	addAndMakeVisible(titleLabel = new Label(T("title"),T("dRowAudio: Tremolo")));
-	bitwiseFont->setHeight(28);
-	titleLabel->setColour(Label::textColourId, Colours::lightblue);
+	bitwiseFont->setHeight(34);
+	bitwiseFont->setStyleFlags(Font::italic);
+	titleLabel->setColour(Label::textColourId, (Colours::lightblue).withAlpha(0.9f));
+	titleLabel->setColour(Label::backgroundColourId, Colours::black);
 	titleLabel->setFont(*bitwiseFont);
 	
 	// create our gain slider..
@@ -105,9 +107,10 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
     gainSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Gain), false);
 	
 	addAndMakeVisible(gainLabel = new Label(T("gainLabel"),TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Gain]));
+	gainLabel->setColour(Label::textColourId, Colours::white);
 	
 	
-	// create the sliders
+	// create the sliders and their labels
 	addAndMakeVisible(rateSlider = new Slider (T("rateSlider")));
 	rateSlider->setSliderStyle(Slider::Rotary);
 	rateSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
@@ -119,17 +122,19 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(rateLabel = new Label(T("rateLabel"),TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Rate]));
 	rateLabel->setJustificationType(Justification::centred);
 	rateLabel->attachToComponent(rateSlider, false);
+	rateLabel->setColour(Label::textColourId, Colours::white);
 	
 	addAndMakeVisible(depthSlider = new Slider (T("depthSlider")));
 	depthSlider->setSliderStyle(Slider::Rotary);
 	depthSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 	depthSlider->addListener (this);
-    depthSlider->setRange (0.0, 1.0, 0.01);
+    depthSlider->setRange (0.0, 0.5f, 0.01);
     depthSlider->setTooltip (T("Changes the depth of the tremolo effect"));
     depthSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Depth), false);
 	addAndMakeVisible(depthLabel = new Label(T("depthLabel"),TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Depth]));
 	depthLabel->setJustificationType(Justification::centred);
 	depthLabel->attachToComponent(depthSlider, false);
+	depthLabel->setColour(Label::textColourId, Colours::white);
 	
 	addAndMakeVisible(shapeSlider = new Slider(T("shapeSlider")));
 	shapeSlider->setSliderStyle(Slider::Rotary);
@@ -141,10 +146,33 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(shapeLabel = new Label(T("shapeLabel"),T("Shape")));
 	shapeLabel->setJustificationType(Justification::centred);
 	shapeLabel->attachToComponent(shapeSlider, false);
+	shapeLabel->setColour(Label::textColourId, Colours::white);
 	
-	// create the buffer view
-	addAndMakeVisible(bufferView1 = new dRowBufferView(ownerFilter->tremoloBuffer, ownerFilter->tremoloBufferSize));
+	addAndMakeVisible(phaseSlider = new Slider(T("phaseSlider")));
+	phaseSlider->setSliderStyle(Slider::Rotary);
+	phaseSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
+	phaseSlider->setRange(0.0, 1.0, 0.01);
+	phaseSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Phase), false);
+	phaseSlider->addListener(this);
+	addAndMakeVisible(phaseLabel = new Label(T("phaseLabel"),T("Phase")));
+	phaseLabel->setJustificationType(Justification::centred);
+	phaseLabel->attachToComponent(phaseSlider, false);
+	phaseLabel->setColour(Label::textColourId, Colours::white);
+	
+	// create the buffer views
+	addAndMakeVisible(bufferView1 = new dRowBufferView(ownerFilter->tremoloBuffer, ownerFilter->tremoloBufferSize, 0));
 	bufferView1->setInterceptsMouseClicks(false, false);
+	addAndMakeVisible(bufferView1Label = new Label("lLabel", "L:"));
+	bufferView1Label->attachToComponent(bufferView1, true);
+	bufferView1Label->setFont(Font (30, Font::plain));
+	bufferView1Label->setColour(Label::textColourId, Colours::white);
+	
+	addAndMakeVisible(bufferView2 = new dRowBufferView(ownerFilter->tremoloBuffer, ownerFilter->tremoloBufferSize, 1000));
+	bufferView2->setInterceptsMouseClicks(false, false);
+	addAndMakeVisible(bufferView2Label = new Label("rLabel", "R:"));
+	bufferView2Label->attachToComponent(bufferView2, true);
+	bufferView2Label->setFont(Font (30, Font::plain));
+	bufferView2Label->setColour(Label::textColourId, Colours::white);
 	
     // create and add the midi keyboard component..
     addAndMakeVisible (midiKeyboard
@@ -154,13 +182,12 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
     // add a label that will display the current timecode and status..
     addAndMakeVisible (infoLabel = new Label (String::empty, String::empty));
 
-    // add the triangular resizer component for the bottom-right of the UI
-    addAndMakeVisible (resizer = new ResizableCornerComponent (this, &resizeLimits));
-    resizeLimits.setSizeLimits (150, 150, 800, 300);
 
     // set our component's initial size to be the last one that was stored in the filter's settings
     setSize (ownerFilter->lastUIWidth,
              ownerFilter->lastUIHeight);
+//    setSize (600,
+//             300);
 
     // register ourselves with the filter - it will use its ChangeBroadcaster base
     // class to tell us when something has changed, and this will call our changeListenerCallback()
@@ -180,35 +207,36 @@ void dRowTremoloEditorComponent::paint (Graphics& g)
 {
     // just clear the window
     g.fillAll (Colour::greyLevel (0.3f));
-//    g.fillAll (Colours::black);
-	g.setColour(Colour::greyLevel(0.4f));
-	g.fillRect(Rectangle(getWidth()-95, (getHeight()*0.5f)+5, 90, (getHeight()*0.5f)-10));
+//  g.fillAll (Colours::black);
+//	g.setColour(Colour::greyLevel(0.4f));
 }
 
 void dRowTremoloEditorComponent::resized()
 {
-    titleLabel->setBounds(0, 0, 200, 30);
+    titleLabel->setBounds(0, 0, getWidth(), 40);
 	
-	gainLabel->setBounds(10, 30, 40, 22);
-	gainSlider->setBounds (50, 30, 200, 22);
+	gainLabel->setBounds(10, 60, 40, 22);
+	gainSlider->setBounds (50, 60, 190, 22);
 //    infoLabel->setBounds (10, 35, 450, 20);
 		
-	rateSlider->setBounds (10, 75, 50, 60);
-	depthSlider->setBounds (80, 75, 50, 60);
-	shapeSlider->setBounds(150, 75, 50, 60);
+	rateSlider->setBounds (5, 130, 60, 60);
+	depthSlider->setBounds (65, 130, 60, 60);
+	shapeSlider->setBounds(125, 130, 60, 60);
+	phaseSlider->setBounds(185, 130, 60, 60);
 	
-	bufferView1->setBounds (getWidth()-95, 5, 90, (getHeight()*0.5f)-10);
+	bufferView1->setBounds (getWidth()-115, 4+40, 110, (getHeight()*0.5f)-6-20);
+	bufferView2->setBounds (getWidth()-115, (getHeight()*0.5f)+2+20, 110, (getHeight()*0.5f)-6-20);
+	
 
 //    const int keyboardHeight = 70;
 //    midiKeyboard->setBounds (4, getHeight() - keyboardHeight - 4,
 //                             getWidth() - 8, keyboardHeight);
 
-    resizer->setBounds (getWidth() - 16, getHeight() - 16, 16, 16);
 
     // if we've been resized, tell the filter so that it can store the new size
     // in its settings
-    getFilter()->lastUIWidth = getWidth();
-    getFilter()->lastUIHeight = getHeight();
+//    getFilter()->lastUIWidth = getWidth();
+//    getFilter()->lastUIHeight = getHeight();
 }
 
 //==============================================================================
@@ -232,6 +260,9 @@ void dRowTremoloEditorComponent::sliderValueChanged (Slider* changedSlider)
 	
 	else if (changedSlider == shapeSlider)
 		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Shape, (float)shapeSlider->getValue());
+	
+	else if (changedSlider == phaseSlider)
+		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Phase, (float)phaseSlider->getValue());
 }
 
 //==============================================================================
@@ -250,12 +281,14 @@ void dRowTremoloEditorComponent::updateParametersFromFilter()
 	const float newRate = filter->getParameter (TremoloInterface::Parameters::Rate);
 	const float newTremDepth = filter->getParameter (TremoloInterface::Parameters::Depth);
 	const float newShape = filter->getParameter (TremoloInterface::Parameters::Shape);
+	const float newPhase = filter->getParameter (TremoloInterface::Parameters::Phase);
 
     // ..release the lock ASAP
     filter->getCallbackLock().exit();
 	
-	// resize the buffer display
+	// refresh the buffer displays
 	bufferView1->resized();
+	bufferView2->resized();
 
     // ..and after releasing the lock, we're free to do the time-consuming UI stuff..
     String infoText;
@@ -282,6 +315,7 @@ void dRowTremoloEditorComponent::updateParametersFromFilter()
 	rateSlider->setValue (newRate, false);
 	depthSlider->setValue (newTremDepth, false);
 	shapeSlider->setValue (newShape, false);
+	phaseSlider->setValue (newPhase, false);
 
     setSize (filter->lastUIWidth,
              filter->lastUIHeight);

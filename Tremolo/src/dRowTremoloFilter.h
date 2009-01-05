@@ -118,14 +118,17 @@ private:
 	float rate;
 	float depth;
 	float shape;
+	float phase;
 	
 	
 	float currentScalingFactor;
 	float nextScalingFactor;	
 	double currentSampleRate;
 	float currentShape;
+	float currentDepth;
+	float currentPhase;
 	
-	void fillBuffer(float shape);
+	void fillBuffer();
 };
 
 

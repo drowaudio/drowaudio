@@ -22,12 +22,13 @@ public:
 	public:
 		static char* Names[];	
 		// these parameter names must be unique
-		#define TremoloInterfaceParameterNames { "Gain", "Rate", "Depth", "Shape" }
+		#define TremoloInterfaceParameterNames { "Gain", "Rate", "Depth", "Shape", "Phase" }
 		enum {
 			Gain = 0,
 			Rate,
 			Depth,
 			Shape,
+			Phase,
 			Count
 		};
 	};
