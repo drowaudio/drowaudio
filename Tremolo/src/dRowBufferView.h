@@ -29,7 +29,7 @@ private:
 	TooltipWindow tooltipWindow;
 public:
 	//==============================================================================
-	dRowBufferView (float* buffer, int size, int bufferOffset);
+	dRowBufferView (float* buffer, int size);
 	
 	~dRowBufferView ();
 	

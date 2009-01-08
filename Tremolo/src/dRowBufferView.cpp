@@ -13,14 +13,13 @@
 #define pi 3.14159265358979323846264338327950288
 
 //==============================================================================
-dRowBufferView::dRowBufferView (float* buffer, int size, int bufferOffset)
-	:	tremoloBuffer(buffer),
-		tremoloBufferSize(size)
+dRowBufferView::dRowBufferView (float* buffer, int size)
+	:	tremoloBufferSize(size),
+		tremoloBuffer(buffer)
 		
 {
 //	tremoloBufferSize = size;
 //	tremoloBuffer = buffer;
-	fBufferOffset = bufferOffset;
 }
 
 dRowBufferView::~dRowBufferView ()

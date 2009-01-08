@@ -40,9 +40,7 @@
 
 /** List of todo's:
 	
-	@todo Improve replacing of buffer's content's
 	@todo Improve transfer function for filling buffer
-	@todo Make stereo including a phase difference
 	@todo Make tempo dependant
 	@todo Correct generic parameter problems
 	@todo Correct text entering problems
@@ -63,7 +61,15 @@ AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 #pragma mark TremoloConstructor
 dRowTremoloFilter::dRowTremoloFilter()
 {
-    gain = 1.0f;
+    // set up the lookup table
+	float lookupScale = (2*pi) / 8192;
+	sinLookupTable = new float[8192];
+	for(int i = 0; i < 8192; i++)
+	{
+		sinLookupTable[i] = sin(lookupScale * i);
+	}
+	
+	gain = 1.0f;
 	rate = 1.0f;
 	depth = 0.5f;
 	shape = 1.0f;
@@ -83,10 +89,14 @@ dRowTremoloFilter::dRowTremoloFilter()
     lastPosInfo.timeSigNumerator = 4;
     lastPosInfo.timeSigDenominator = 4;
     lastPosInfo.bpm = 120;
+	
+	// start this here so all hosts see the UI update
+	startTimer(400);
 }
 
 dRowTremoloFilter::~dRowTremoloFilter()
 {
+	stopTimer();
 }
 #pragma mark -
 #pragma mark Tremolo Effect Methods
@@ -104,23 +114,18 @@ int dRowTremoloFilter::getNumParameters()
 // Deals with getting parameters from the UI components
 float dRowTremoloFilter::getParameter (int index)
 {
-    // gain parameter
 	if (index == TremoloInterface::Parameters::Gain)
 		return gain;
 	
-	// rate parameter
 	else if (index == TremoloInterface::Parameters::Rate)
 		return rate;
 	
-	// depth parameter
 	else if (index == TremoloInterface::Parameters::Depth)
 		return depth;
 	
-	// shape parameter
 	else if (index == TremoloInterface::Parameters::Shape)
 		return shape;
 	
-	// shape parameter
 	else if (index == TremoloInterface::Parameters::Phase)
 		return phase;
 
@@ -251,12 +256,15 @@ void dRowTremoloFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	currentSampleRate = sampleRate;
 	
 	fTremoloBufferPosition = 0;
+	startTimer(50);
 }
 
 void dRowTremoloFilter::releaseResources()
 {
     // when playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
+	// we can slow the timer down here as we are only updating the UI for some VST hosts
+	startTimer(400);
 }
 
 #pragma mark Main Process Function
@@ -266,15 +274,6 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 	// interpolation variables
 	unsigned int iPos1, iPos2;
 	float fDiff, fInterpolatedData; 
-	
-	// scale rate to use
-	float samplesPerTremoloCycle = currentSampleRate / (MAXIMUM_RATE * rate);
-	float nextScalingFactor = tremoloBufferSize / samplesPerTremoloCycle;
-	
-	float nextShape = shape;
-	float nextDepth = depth;
-	float nextPhase = phase;
-	bool refreshBuffer = false;
 		
 	// find the number of samples in the buffer to process
 	int numSamples = buffer.getNumSamples();
@@ -291,37 +290,6 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 	//===================================================================
 	while (--numSamples >= 0)
 	{
-		// change the scaling factor if it is safe to do so and reset the buffer position
-		if ((nextScalingFactor != currentScalingFactor) && (fTremoloBufferPosition < 1))
-		{
-			currentScalingFactor = nextScalingFactor;
-			fTremoloBufferPosition = 0;
-		}
-		
-		if ((nextShape != currentShape) && (fTremoloBufferPosition < 1))
-		{
-			refreshBuffer = true;
-			currentShape = nextShape;
-		}
-		if ((nextDepth != currentDepth) && (fTremoloBufferPosition < 1))
-		{
-			refreshBuffer = true;
-			currentDepth = nextDepth;
-		}
-		if ((nextPhase != currentPhase) && (fTremoloBufferPosition < 1))
-		{
-			refreshBuffer = true;
-			currentPhase = nextPhase;
-		}
-		// refill buffer if safe to do so NB. probably not the bet idea to do this here!
-		if (refreshBuffer)
-		{
-			refreshBuffer = false;
-			fillBuffer(tremoloBuffer, 0);
-			fillBuffer(tremoloBuffer2, currentPhase);
-			fTremoloBufferPosition = 0;
-		}
-		
 		// calculte the required buffer position
 		iPos1 = (int)fTremoloBufferPosition;
 		iPos2 = iPos1 + 1;
@@ -333,9 +301,9 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 		for (int channel = 0; channel < getNumInputChannels(); channel++)
 		{			
 			if (channel%2 == 0) // even channel
-				fInterpolatedData = tremoloBuffer[iPos2] * fDiff + tremoloBuffer[iPos1] * (1 - fDiff);
+				fInterpolatedData = (tremoloBuffer[iPos2] * fDiff) + (tremoloBuffer[iPos1] * (1 - fDiff));
 			else // odd channel
-				fInterpolatedData = tremoloBuffer2[iPos2] * fDiff + tremoloBuffer2[iPos1] * (1 - fDiff);				
+				fInterpolatedData = (tremoloBuffer2[iPos2] * fDiff) + (tremoloBuffer2[iPos1] * (1 - fDiff));				
 						
 			*sample[channel] *= fInterpolatedData;
 			
@@ -452,10 +420,57 @@ void dRowTremoloFilter::setStateInformation (const void* data, int sizeInBytes)
     }
 }
 
+void dRowTremoloFilter::timerCallback()
+{
+	bool refreshBuffer = false;
+	
+	// update parameter values...
+	float nextShape = shape;
+	float nextDepth = depth;
+	float nextPhase = phase;
+	
+	// ...and see if they've changed
+	if ((nextShape != currentShape))
+	{
+		refreshBuffer = true;
+		currentShape = nextShape;
+	}
+	if ((nextDepth != currentDepth))
+	{
+		refreshBuffer = true;
+		currentDepth = nextDepth;
+	}
+	if ((nextPhase != currentPhase))
+	{
+		refreshBuffer = true;
+		currentPhase = nextPhase;
+	}
+	
+	// and if any have refill buffers
+	if (refreshBuffer)
+	{
+		refreshBuffer = false;
+		fillBuffer(tremoloBuffer, 0);
+		fillBuffer(tremoloBuffer2, currentPhase);
+	}
+	
+	// calculate new scale rate to use
+	float samplesPerTremoloCycle = currentSampleRate / (MAXIMUM_RATE * rate);
+	nextScalingFactor = tremoloBufferSize / samplesPerTremoloCycle;
+	
+	// check if the rate has changed and update accordingly
+	if ((nextScalingFactor != currentScalingFactor))
+	{
+		currentScalingFactor = nextScalingFactor;
+	}	
+}
+
+
 void dRowTremoloFilter::fillBuffer(float* bufferToFill, float phaseAngle)
 {
 	// Scale phase
 	phaseAngle = (phaseAngle * 2 * pi) - pi;
+//	float lookupScale = 8192/(2*pi);// / 8192;
 	
 	// create buffer with sine data
 	for (uint32 i = 0; i < tremoloBufferSize; ++i)
@@ -463,6 +478,7 @@ void dRowTremoloFilter::fillBuffer(float* bufferToFill, float phaseAngle)
 		// fill buffer with sine data
 		double radians = i * 2.0 * (pi / tremoloBufferSize);
 		float rawBufferData = sin (radians + phaseAngle);
+//		float rawBufferData = sinLookupTable [(int)((radians + phaseAngle) * lookupScale)];
 		
 		if (rawBufferData >= 0)
 			bufferToFill[i] = ( (pow(rawBufferData, shape) * depth) + (1-depth));

@@ -39,7 +39,8 @@
     passing through it.
 */
 class dRowTremoloFilter  : public AudioProcessor,
-                        public ChangeBroadcaster
+                           public ChangeBroadcaster,
+						   public Timer
 {
 public:
     //==============================================================================
@@ -113,6 +114,7 @@ public:
 	float fTremoloBufferPosition;
 	
 private:
+	float* sinLookupTable;
 	
 	// UI parameters
 	float gain;
@@ -121,14 +123,23 @@ private:
 	float shape;
 	float phase;
 	
-	
+	double currentSampleRate;	
 	float currentScalingFactor;
 	float nextScalingFactor;	
-	double currentSampleRate;
 	float currentShape;
 	float currentDepth;
 	float currentPhase;
 	
+	
+	/** This will be used to check if parameters have changed and
+		to trigger a buffer refill if necessary
+	 */
+	void timerCallback();
+	
+	/**	This refills a buffer with a given phase angle and the current
+		parameters from the UI so as to be the most up to date even if
+		they have changed since the timer callback
+	 */
 	void fillBuffer(float *bufferToFill, float phaseAngle);
 };
 

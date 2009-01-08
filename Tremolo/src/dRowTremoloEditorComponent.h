@@ -70,7 +70,10 @@ public:
         its parameters changes.
     */
     void changeListenerCallback (void* source);
-
+	
+	/** Using the slider start and end points to start and stop the filter timer 
+		would the most efficient but doesn't let automation update the graphs
+	 */
     void sliderValueChanged (Slider*);
 
     //==============================================================================
@@ -83,7 +86,9 @@ public:
 
 private:
     //==============================================================================
-    Label* titleLabel;
+    dRowTremoloFilter* const ownerFilterGlobal;
+	
+	Label* titleLabel;
 	
 	Slider* gainSlider;
 	Slider* rateSlider;
@@ -105,6 +110,11 @@ private:
 	
 	Label* bufferView1Label;
     Label* bufferView2Label;
+	
+	// Binary resources:
+    static const char* tremoloTitleImage_jpg;
+    static const int tremoloTitleImage_jpgSize;
+	Image* cachedTitleImage;
 	
     TooltipWindow tooltipWindow;
 

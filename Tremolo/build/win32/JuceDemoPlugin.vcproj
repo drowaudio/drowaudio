@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="9.00"
 	Name="JuceDemoPlugin"
 	ProjectGUID="{39DADE4E-B715-4809-AD10-2F5A4213D633}"
 	RootNamespace="JuceDemoPlugin"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -70,6 +71,8 @@
 				DelayLoadDLLs="DAE.dll; DigiExt.dll; DSI.dll; PluginLib.dll; DSPManager.dll"
 				GenerateDebugInformation="true"
 				SubSystem="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -89,9 +92,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -152,6 +152,8 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -173,9 +175,6 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -192,31 +191,55 @@
 				Name="plugin"
 				>
 				<File
-					RelativePath="..\..\src\DemoEditorComponent.cpp"
+					RelativePath="..\..\src\BitwiseFontResource.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\DemoEditorComponent.h"
+					RelativePath="..\..\src\BitwiseFontResource.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\DemoJuceFilter.cpp"
+					RelativePath="..\..\src\dRowBufferView.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\DemoJuceFilter.h"
+					RelativePath="..\..\src\dRowBufferView.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowLookAndFeel.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowLookAndFeel.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowTremoloCommon.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowTremoloCommon.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowTremoloEditorComponent.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowTremoloEditorComponent.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowTremoloFilter.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowTremoloFilter.h"
 					>
 				</File>
 				<File
 					RelativePath="..\..\src\includes.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\juce_AppConfig.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\juce_LibrarySource.cpp"
 					>
 				</File>
 				<File
@@ -231,7 +254,7 @@
 					Name="VST"
 					>
 					<File
-						RelativePath="..\..\..\wrapper\VST\juce_VST_Wrapper.cpp"
+						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\VST\juce_VST_Wrapper.cpp"
 						>
 					</File>
 				</Filter>
@@ -239,90 +262,78 @@
 					Name="RTAS"
 					>
 					<File
-						RelativePath="..\..\..\wrapper\RTAS\juce_RTAS_DigiCode1.cpp"
+						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode1.cpp"
 						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								CallingConvention="2"
-							/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Release|Win32"
+							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
-								CallingConvention="2"
 							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\..\wrapper\RTAS\juce_RTAS_DigiCode2.cpp"
+						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode2.cpp"
 						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								CallingConvention="2"
-							/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Release|Win32"
+							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
-								CallingConvention="2"
 							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\..\wrapper\RTAS\juce_RTAS_DigiCode3.cpp"
+						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode3.cpp"
 						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								CallingConvention="2"
-							/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Release|Win32"
+							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
-								CallingConvention="2"
 							/>
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\..\wrapper\RTAS\juce_RTAS_DigiCode_Header.h"
+						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode_Header.h"
 						>
-					</File>
-					<File
-						RelativePath="..\..\..\wrapper\RTAS\juce_RTAS_WinUtilities.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\wrapper\RTAS\juce_RTAS_Wrapper.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								CallingConvention="2"
-							/>
-						</FileConfiguration>
 						<FileConfiguration
 							Name="Release|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCustomBuildTool"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_WinExports.def"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_WinUtilities.cpp"
+						>
+						<FileConfiguration
+							Name="Release|Win32"
+							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
-								CallingConvention="2"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_Wrapper.cpp"
+						>
+						<FileConfiguration
+							Name="Release|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
 							/>
 						</FileConfiguration>
 					</File>
