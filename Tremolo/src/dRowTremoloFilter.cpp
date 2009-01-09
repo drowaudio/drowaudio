@@ -103,7 +103,7 @@ dRowTremoloFilter::~dRowTremoloFilter()
 //==============================================================================
 const String dRowTremoloFilter::getName() const
 {
-    return "dRowAudio Tremolo";
+    return "dRowAudio: Tremolo";
 }
 
 int dRowTremoloFilter::getNumParameters()
@@ -452,6 +452,8 @@ void dRowTremoloFilter::timerCallback()
 		refreshBuffer = false;
 		fillBuffer(tremoloBuffer, 0);
 		fillBuffer(tremoloBuffer2, currentPhase);
+		// call this to refresh the buffer views
+		updateHostDisplay();
 	}
 	
 	// calculate new scale rate to use
@@ -462,7 +464,7 @@ void dRowTremoloFilter::timerCallback()
 	if ((nextScalingFactor != currentScalingFactor))
 	{
 		currentScalingFactor = nextScalingFactor;
-	}	
+	}
 }
 
 

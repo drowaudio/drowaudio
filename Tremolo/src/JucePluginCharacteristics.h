@@ -54,7 +54,7 @@
 
 /** The name of your plugin. (Try to keep this as short as possible)
 */
-#define JucePlugin_Name                     "dRowAudio Tremolo"
+#define JucePlugin_Name                     "dRowAudio: Tremolo"
 
 /** A longer decription of your plugin.
 */

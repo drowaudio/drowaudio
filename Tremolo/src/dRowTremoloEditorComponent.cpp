@@ -146,8 +146,8 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(shapeSlider = new Slider(T("shapeSlider")));
 	shapeSlider->setSliderStyle(Slider::Rotary);
 	shapeSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
+	shapeSlider->setRange(0.2, 10, 0.001);
 	shapeSlider->setSkewFactorFromMidPoint(1);
-	shapeSlider->setRange(0.0, 10, 0.001);
 	shapeSlider->setValue(1);
 	shapeSlider->addListener(this);
     shapeSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
@@ -244,6 +244,10 @@ void dRowTremoloEditorComponent::paint (Graphics& g)
                        0, 0, 400, 40,
                        RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize,
                        false);
+	
+	// there is probably a better way to do this so the whole UI is not repainted each time
+	bufferView1->resized();
+	bufferView2->resized();
 }
 
 void dRowTremoloEditorComponent::resized()
@@ -258,7 +262,7 @@ void dRowTremoloEditorComponent::resized()
 	phaseSlider->setBounds(185, 130, 60, 60);
 	
 	if (ownerFilterGlobal->getNumInputChannels() < 2)
-		bufferView1->setBounds (getWidth()-145, 4+40, 140, (getHeight())-4-50);
+		bufferView1->setBounds (getWidth()-145, 4+50, 140, (getHeight())-4-60);
 	if (ownerFilterGlobal->getNumInputChannels() > 1)
 		bufferView1->setBounds (getWidth()-115, 50, 110, 68);
 	bufferView2->setBounds (getWidth()-115, (getHeight()*0.5f)+2+20, 110, 68);
@@ -300,14 +304,14 @@ void dRowTremoloEditorComponent::sliderValueChanged (Slider* changedSlider)
 		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Phase, (float)phaseSlider->getValue());
 	
 	// refresh the buffer displays
-	if (changedSlider == depthSlider ||
-		changedSlider == shapeSlider)
-		{
-			bufferView1->resized();
-			bufferView2->resized();
-		}
-	if (changedSlider == phaseSlider)
-		bufferView2->resized();
+//	if (changedSlider == depthSlider ||
+//		changedSlider == shapeSlider)
+//		{
+//			bufferView1->resized();
+//			bufferView2->resized();
+//		}
+//	if (changedSlider == phaseSlider)
+//		bufferView2->resized();
 }
 
 //==============================================================================

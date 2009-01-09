@@ -110,7 +110,7 @@ void dRowAudioLookAndFeel::drawRotarySlider (Graphics& g,
 		float angleDiff = rotaryAngle/10;
 		Path p2;
         p2.addLineSegment (0.0f, -radius * 1.0f, 0.0f, 0.0f, rw * 0.03f);
-		g.setColour(Colours::black);
+		g.setColour(slider.findColour (Slider::trackColourId));
         for(int i = 0; i < 11; i++)
 			g.fillPath (p2, AffineTransform::rotation ((i * angleDiff)+rotaryStartAngle).translated (centreX, centreY));
 		

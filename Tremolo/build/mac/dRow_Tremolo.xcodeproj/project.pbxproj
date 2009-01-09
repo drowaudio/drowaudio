@@ -213,7 +213,7 @@
 		3EEA126C089847F5002C6BFC /* CAVectorUnit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CAVectorUnit.h; sourceTree = "<group>"; };
 		3EEA126D089847F5002C6BFC /* CAVectorUnitTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CAVectorUnitTypes.h; sourceTree = "<group>"; };
 		556685700F15A4D700E4474D /* TremoloTitleImageResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TremoloTitleImageResource.cpp; path = ../../src/TremoloTitleImageResource.cpp; sourceTree = SOURCE_ROOT; };
-		5566857C0F15A61800E4474D /* TremoloTitleImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TremoloTitleImageResource.h; sourceTree = "<group>"; };
+		5566857C0F15A61800E4474D /* TremoloTitleImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TremoloTitleImageResource.h; path = ../../src/TremoloTitleImageResource.h; sourceTree = "<group>"; };
 		5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowBufferView.cpp; path = ../../src/dRowBufferView.cpp; sourceTree = SOURCE_ROOT; };
 		5580B14E0F0F192E0043FE38 /* dRowBufferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowBufferView.h; path = ../../src/dRowBufferView.h; sourceTree = SOURCE_ROOT; };
 		55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowTremoloCommon.cpp; path = ../../src/dRowTremoloCommon.cpp; sourceTree = SOURCE_ROOT; };
@@ -398,6 +398,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5566861B0F1659F500E4474D /* Binary Resources */ = {
+			isa = PBXGroup;
+			children = (
+				55D1B1CE0F105C10002D6AFF /* BitwiseFontResource.cpp */,
+				55D1B1CF0F105C10002D6AFF /* BitwiseFontResource.h */,
+				556685700F15A4D700E4474D /* TremoloTitleImageResource.cpp */,
+				5566857C0F15A61800E4474D /* TremoloTitleImageResource.h */,
+			);
+			name = "Binary Resources";
+			sourceTree = "<group>";
+		};
 		5580B1380F0F18780043FE38 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,10 +418,7 @@
 				5580B14E0F0F192E0043FE38 /* dRowBufferView.h */,
 				55D1B2510F10680C002D6AFF /* dRowLookAndFeel.cpp */,
 				55D1B2500F10680C002D6AFF /* dRowLookAndFeel.h */,
-				55D1B1CE0F105C10002D6AFF /* BitwiseFontResource.cpp */,
-				55D1B1CF0F105C10002D6AFF /* BitwiseFontResource.h */,
-				556685700F15A4D700E4474D /* TremoloTitleImageResource.cpp */,
-				5566857C0F15A61800E4474D /* TremoloTitleImageResource.h */,
+				5566861B0F1659F500E4474D /* Binary Resources */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
