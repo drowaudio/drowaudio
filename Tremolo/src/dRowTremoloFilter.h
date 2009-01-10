@@ -32,6 +32,7 @@
 #ifndef DROWTREMOLOFILTER_H
 #define DROWTREMOLOFILTER_H
 
+#include "dRowParameter.h"
 
 //==============================================================================
 /**
@@ -106,13 +107,21 @@ public:
 
     //==============================================================================
     juce_UseDebuggingNewOperator
-
+	
+	float getScaledParameter(int index);
+	void setScaledParameter(int index, float newValue);
+	float getParameterMin(int index);
+	float getParameterMax(int index);
+	float getParameterDefault(int index);
+	
 	// buffer variables
 	static const unsigned int tremoloBufferSize = 2000;
 	float tremoloBuffer[tremoloBufferSize];
 	float tremoloBuffer2[tremoloBufferSize];
 	float fTremoloBufferPosition;
 	
+	dRowParameter* newPhase;
+
 private:
 	float* sinLookupTable;
 	

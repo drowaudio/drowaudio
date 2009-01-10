@@ -159,7 +159,8 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(phaseSlider = new Slider(T("phaseSlider")));
 	phaseSlider->setSliderStyle(Slider::Rotary);
 	phaseSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
-	phaseSlider->setRange(-0.5f, 0.5f, 0.01);
+//	phaseSlider->setRange(-0.5f, 0.5f, 0.01);
+	phaseSlider->setRange(ownerFilter->newPhase->getMin(), ownerFilter->newPhase->getMax(), 0.01);
 	phaseSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Phase), false);
 	phaseSlider->addListener(this);
 	phaseSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));

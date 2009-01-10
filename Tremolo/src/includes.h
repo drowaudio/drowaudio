@@ -29,4 +29,5 @@
   ==============================================================================
 */
 
-#include "juce/juce_amalgamated.h"
+#include <juce/juce.h>
+#define JUCE_HEADER <juce/juce.h>

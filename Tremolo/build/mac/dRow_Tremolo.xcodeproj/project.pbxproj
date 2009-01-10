@@ -14,6 +14,14 @@
 		5566857D0F15A61800E4474D /* TremoloTitleImageResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 5566857C0F15A61800E4474D /* TremoloTitleImageResource.h */; };
 		5566857E0F15A61800E4474D /* TremoloTitleImageResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 5566857C0F15A61800E4474D /* TremoloTitleImageResource.h */; };
 		5566857F0F15A6B200E4474D /* TremoloTitleImageResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556685700F15A4D700E4474D /* TremoloTitleImageResource.cpp */; };
+		556687210F17D53300E4474D /* dRowParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5566871F0F17D53300E4474D /* dRowParameter.h */; };
+		556687220F17D53300E4474D /* dRowParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556687200F17D53300E4474D /* dRowParameter.cpp */; };
+		556687230F17D53300E4474D /* dRowParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5566871F0F17D53300E4474D /* dRowParameter.h */; };
+		556687240F17D53300E4474D /* dRowParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556687200F17D53300E4474D /* dRowParameter.cpp */; };
+		556688450F18436900E4474D /* juce_AU_Resources.r in Rez */ = {isa = PBXBuildFile; fileRef = 556688430F18436900E4474D /* juce_AU_Resources.r */; };
+		556688460F18436900E4474D /* juce_AU_Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 556688440F18436900E4474D /* juce_AU_Wrapper.mm */; };
+		556688470F18436900E4474D /* juce_AU_Resources.r in Rez */ = {isa = PBXBuildFile; fileRef = 556688430F18436900E4474D /* juce_AU_Resources.r */; };
+		556688480F18436900E4474D /* juce_AU_Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 556688440F18436900E4474D /* juce_AU_Wrapper.mm */; };
 		5580B14F0F0F192E0043FE38 /* dRowBufferView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */; };
 		5580B1500F0F192E0043FE38 /* dRowBufferView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5580B14E0F0F192E0043FE38 /* dRowBufferView.h */; };
 		5580B1510F0F192E0043FE38 /* dRowBufferView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */; };
@@ -70,7 +78,6 @@
 		55BBE2720F0323B400BF1B2B /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BA05AE30720742100365D66 /* CAStreamBasicDescription.cpp */; };
 		55BBE2730F0323B400BF1B2B /* CAAUParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BA05B050720754400365D66 /* CAAUParameter.cpp */; };
 		55BBE2740F0323B400BF1B2B /* CAVectorUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA126B089847F5002C6BFC /* CAVectorUnit.cpp */; };
-		55BBE2750F0323B400BF1B2B /* juce_AU_Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 843792B40EFBF175002A2725 /* juce_AU_Wrapper.mm */; };
 		55BBE2760F0323B400BF1B2B /* AUMIDIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8437965F0EFBF357002A2725 /* AUMIDIBase.cpp */; };
 		55BBE2770F0323B400BF1B2B /* AUMIDIEffectBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843796610EFBF357002A2725 /* AUMIDIEffectBase.cpp */; };
 		55BBE2780F0323B400BF1B2B /* AUOutputBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843796630EFBF357002A2725 /* AUOutputBase.cpp */; };
@@ -98,7 +105,6 @@
 		55BBE28F0F0323B400BF1B2B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8437956D0EFBF323002A2725 /* WebKit.framework */; };
 		55BBE2900F0323B400BF1B2B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843796740EFBF416002A2725 /* CoreFoundation.framework */; };
 		55BBE2910F0323B400BF1B2B /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BBE0B40F030A6A00BF1B2B /* libjucedebug.a */; };
-		55BBE2930F0323B400BF1B2B /* juce_AU_Resources.r in Rez */ = {isa = PBXBuildFile; fileRef = 843792B30EFBF175002A2725 /* juce_AU_Resources.r */; };
 		55BBE2940F0323B400BF1B2B /* juce_RTAS_MacResources.r in Rez */ = {isa = PBXBuildFile; fileRef = 843796D90EFBFD16002A2725 /* juce_RTAS_MacResources.r */; };
 		55BBE2C30F03248F00BF1B2B /* dRowAudio_Tremolo.vst in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55BBE29A0F0323B400BF1B2B /* dRowAudio_Tremolo.vst */; };
 		55D1B1D00F105C10002D6AFF /* BitwiseFontResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D1B1CE0F105C10002D6AFF /* BitwiseFontResource.cpp */; };
@@ -111,8 +117,6 @@
 		55D1B2550F10680C002D6AFF /* dRowLookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D1B2510F10680C002D6AFF /* dRowLookAndFeel.cpp */; };
 		55D1B9980F11E73E002D6AFF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D01CCD10486CAD60068D4B7 /* Info.plist */; };
 		843792B10EFBF14B002A2725 /* JucePluginCharacteristics.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A90EFBF14B002A2725 /* JucePluginCharacteristics.h */; };
-		843792B50EFBF175002A2725 /* juce_AU_Resources.r in Rez */ = {isa = PBXBuildFile; fileRef = 843792B30EFBF175002A2725 /* juce_AU_Resources.r */; };
-		843792B60EFBF175002A2725 /* juce_AU_Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 843792B40EFBF175002A2725 /* juce_AU_Wrapper.mm */; };
 		8437956E0EFBF323002A2725 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843795630EFBF323002A2725 /* AudioToolbox.framework */; };
 		8437956F0EFBF323002A2725 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843795640EFBF323002A2725 /* AudioUnit.framework */; };
 		843795700EFBF323002A2725 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843795650EFBF323002A2725 /* Cocoa.framework */; };
@@ -214,6 +218,10 @@
 		3EEA126D089847F5002C6BFC /* CAVectorUnitTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CAVectorUnitTypes.h; sourceTree = "<group>"; };
 		556685700F15A4D700E4474D /* TremoloTitleImageResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TremoloTitleImageResource.cpp; path = ../../src/TremoloTitleImageResource.cpp; sourceTree = SOURCE_ROOT; };
 		5566857C0F15A61800E4474D /* TremoloTitleImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TremoloTitleImageResource.h; path = ../../src/TremoloTitleImageResource.h; sourceTree = "<group>"; };
+		5566871F0F17D53300E4474D /* dRowParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowParameter.h; path = ../../src/dRowParameter.h; sourceTree = SOURCE_ROOT; };
+		556687200F17D53300E4474D /* dRowParameter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowParameter.cpp; path = ../../src/dRowParameter.cpp; sourceTree = SOURCE_ROOT; };
+		556688430F18436900E4474D /* juce_AU_Resources.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = juce_AU_Resources.r; path = ../../src/Wrapper/AU/juce_AU_Resources.r; sourceTree = SOURCE_ROOT; };
+		556688440F18436900E4474D /* juce_AU_Wrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_AU_Wrapper.mm; path = ../../src/Wrapper/AU/juce_AU_Wrapper.mm; sourceTree = SOURCE_ROOT; };
 		5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowBufferView.cpp; path = ../../src/dRowBufferView.cpp; sourceTree = SOURCE_ROOT; };
 		5580B14E0F0F192E0043FE38 /* dRowBufferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowBufferView.h; path = ../../src/dRowBufferView.h; sourceTree = SOURCE_ROOT; };
 		55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowTremoloCommon.cpp; path = ../../src/dRowTremoloCommon.cpp; sourceTree = SOURCE_ROOT; };
@@ -230,8 +238,6 @@
 		55D1B2500F10680C002D6AFF /* dRowLookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowLookAndFeel.h; path = ../../src/dRowLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		55D1B2510F10680C002D6AFF /* dRowLookAndFeel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowLookAndFeel.cpp; path = ../../src/dRowLookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
 		843792A90EFBF14B002A2725 /* JucePluginCharacteristics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JucePluginCharacteristics.h; path = ../../src/JucePluginCharacteristics.h; sourceTree = SOURCE_ROOT; };
-		843792B30EFBF175002A2725 /* juce_AU_Resources.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = juce_AU_Resources.r; path = "../../../../juce_source/juce/extras/audio plugins/wrapper/AU/juce_AU_Resources.r"; sourceTree = SOURCE_ROOT; };
-		843792B40EFBF175002A2725 /* juce_AU_Wrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_AU_Wrapper.mm; path = "../../../../juce_source/juce/extras/audio plugins/wrapper/AU/juce_AU_Wrapper.mm"; sourceTree = SOURCE_ROOT; };
 		843795630EFBF323002A2725 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		843795640EFBF323002A2725 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = /System/Library/Frameworks/AudioUnit.framework; sourceTree = "<absolute>"; };
 		843795650EFBF323002A2725 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -436,6 +442,8 @@
 			children = (
 				55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */,
 				55BBE0700F03081C00BF1B2B /* dRowTremoloFilter.h */,
+				556687200F17D53300E4474D /* dRowParameter.cpp */,
+				5566871F0F17D53300E4474D /* dRowParameter.h */,
 				55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */,
 				55BBE06C0F03081C00BF1B2B /* dRowTremoloCommon.h */,
 				843792A90EFBF14B002A2725 /* JucePluginCharacteristics.h */,
@@ -459,8 +467,8 @@
 		843792B20EFBF157002A2725 /* Juce AU Wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				843792B30EFBF175002A2725 /* juce_AU_Resources.r */,
-				843792B40EFBF175002A2725 /* juce_AU_Wrapper.mm */,
+				556688430F18436900E4474D /* juce_AU_Resources.r */,
+				556688440F18436900E4474D /* juce_AU_Wrapper.mm */,
 			);
 			name = "Juce AU Wrapper";
 			sourceTree = "<group>";
@@ -608,6 +616,7 @@
 				55D1B1D30F105C10002D6AFF /* BitwiseFontResource.h in Headers */,
 				55D1B2540F10680C002D6AFF /* dRowLookAndFeel.h in Headers */,
 				5566857D0F15A61800E4474D /* TremoloTitleImageResource.h in Headers */,
+				556687210F17D53300E4474D /* dRowParameter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +656,7 @@
 				55D1B1D10F105C10002D6AFF /* BitwiseFontResource.h in Headers */,
 				55D1B2520F10680C002D6AFF /* dRowLookAndFeel.h in Headers */,
 				5566857E0F15A61800E4474D /* TremoloTitleImageResource.h in Headers */,
+				556687230F17D53300E4474D /* dRowParameter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,8 +764,8 @@
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55BBE2930F0323B400BF1B2B /* juce_AU_Resources.r in Rez */,
 				55BBE2940F0323B400BF1B2B /* juce_RTAS_MacResources.r in Rez */,
+				556688450F18436900E4474D /* juce_AU_Resources.r in Rez */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,8 +773,8 @@
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843792B50EFBF175002A2725 /* juce_AU_Resources.r in Rez */,
 				843796E00EFBFD16002A2725 /* juce_RTAS_MacResources.r in Rez */,
+				556688470F18436900E4474D /* juce_AU_Resources.r in Rez */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,7 +799,6 @@
 				55BBE2720F0323B400BF1B2B /* CAStreamBasicDescription.cpp in Sources */,
 				55BBE2730F0323B400BF1B2B /* CAAUParameter.cpp in Sources */,
 				55BBE2740F0323B400BF1B2B /* CAVectorUnit.cpp in Sources */,
-				55BBE2750F0323B400BF1B2B /* juce_AU_Wrapper.mm in Sources */,
 				55BBE2760F0323B400BF1B2B /* AUMIDIBase.cpp in Sources */,
 				55BBE2770F0323B400BF1B2B /* AUMIDIEffectBase.cpp in Sources */,
 				55BBE2780F0323B400BF1B2B /* AUOutputBase.cpp in Sources */,
@@ -808,6 +817,8 @@
 				55D1B1D20F105C10002D6AFF /* BitwiseFontResource.cpp in Sources */,
 				55D1B2550F10680C002D6AFF /* dRowLookAndFeel.cpp in Sources */,
 				556685720F15A4D700E4474D /* TremoloTitleImageResource.cpp in Sources */,
+				556687220F17D53300E4474D /* dRowParameter.cpp in Sources */,
+				556688460F18436900E4474D /* juce_AU_Wrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,7 +840,6 @@
 				8BA05AE90720742100365D66 /* CAStreamBasicDescription.cpp in Sources */,
 				8BA05B070720754400365D66 /* CAAUParameter.cpp in Sources */,
 				3EEA126E089847F5002C6BFC /* CAVectorUnit.cpp in Sources */,
-				843792B60EFBF175002A2725 /* juce_AU_Wrapper.mm in Sources */,
 				843796690EFBF357002A2725 /* AUMIDIBase.cpp in Sources */,
 				8437966B0EFBF357002A2725 /* AUMIDIEffectBase.cpp in Sources */,
 				8437966D0EFBF357002A2725 /* AUOutputBase.cpp in Sources */,
@@ -848,6 +858,8 @@
 				55D1B1D00F105C10002D6AFF /* BitwiseFontResource.cpp in Sources */,
 				55D1B2530F10680C002D6AFF /* dRowLookAndFeel.cpp in Sources */,
 				5566857F0F15A6B200E4474D /* TremoloTitleImageResource.cpp in Sources */,
+				556687240F17D53300E4474D /* dRowParameter.cpp in Sources */,
+				556688480F18436900E4474D /* juce_AU_Wrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

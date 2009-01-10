@@ -69,6 +69,11 @@ dRowTremoloFilter::dRowTremoloFilter()
 		sinLookupTable[i] = sin(lookupScale * i);
 	}
 	
+	// set up parameters
+	newPhase = new dRowParameter(T("Phase"), T("Degrees"), T("The level of offset of the second channel"),
+								 0.0f, -180.0f, 180.0f, 0.0f,
+								 360.0f, -180.0f);								 
+								 
 	gain = 1.0f;
 	rate = 1.0f;
 	depth = 0.5f;
@@ -79,7 +84,8 @@ dRowTremoloFilter::dRowTremoloFilter()
 	
 	currentShape = shape;
 	currentDepth = depth;
-	currentPhase = phase;
+//	currentPhase = phase;
+	newPhase->getValue();
 	fillBuffer(tremoloBuffer, 0);
 	fillBuffer(tremoloBuffer2, currentPhase);
 
@@ -126,11 +132,33 @@ float dRowTremoloFilter::getParameter (int index)
 	else if (index == TremoloInterface::Parameters::Shape)
 		return shape;
 	
+//	else if (index == TremoloInterface::Parameters::Phase)
+//		return phase;
 	else if (index == TremoloInterface::Parameters::Phase)
-		return phase;
+		return newPhase->getNormalisedValue();
 
 	else
 		return 0.0f;
+}
+
+float dRowTremoloFilter::getScaledParameter(int index)
+{
+	if (index == TremoloInterface::Parameters::Phase)
+		return newPhase->getValue();
+	else
+		return 0.0f;
+}
+
+void dRowTremoloFilter::setScaledParameter(int index, float newValue)
+{
+	if (index == TremoloInterface::Parameters::Phase)
+    {
+        if (newPhase->getValue() != newValue)
+        {
+            newPhase->setValue(newValue);
+            sendChangeMessage (this);
+        }
+    }
 }
 
 // Deals with setting the UI components
@@ -172,14 +200,23 @@ void dRowTremoloFilter::setParameter (int index, float newValue)
         }
     }
 	
+//	else if (index == TremoloInterface::Parameters::Phase)
+//    {
+//        if (phase != newValue)
+//        {
+//            phase = newValue;
+//            sendChangeMessage (this);
+//        }
+//    }
 	else if (index == TremoloInterface::Parameters::Phase)
     {
-        if (phase != newValue)
+        if (newPhase->getValue() != newValue)
         {
-            phase = newValue;
+            newPhase->setValue(newValue);
             sendChangeMessage (this);
         }
     }
+	
 }
 
 const String dRowTremoloFilter::getParameterName (int index)
@@ -210,10 +247,34 @@ const String dRowTremoloFilter::getParameterText (int index)
 	else if (index == TremoloInterface::Parameters::Shape)
         return String (shape, 2);
 	else if (index == TremoloInterface::Parameters::Phase)
-        return String (shape, 2);
+        return String (phase, 2);
 	else
 		return String::empty;
 }
+
+// custom methods for AU compatibility
+float dRowTremoloFilter::getParameterMin(int index)
+{
+	if (index == TremoloInterface::Parameters::Phase)
+		return newPhase->getMin();
+	else
+		return 0.0f;
+}
+float dRowTremoloFilter::getParameterMax(int index)
+{
+	if (index == TremoloInterface::Parameters::Phase)
+		return newPhase->getMax();
+	else
+		return 0.0f;
+}	
+float dRowTremoloFilter::getParameterDefault(int index)
+{
+	if (index == TremoloInterface::Parameters::Phase)
+		return newPhase->getDefault();
+	else
+		return 0.0f;
+}	
+
 
 const String dRowTremoloFilter::getInputChannelName (const int channelIndex) const
 {
@@ -427,7 +488,8 @@ void dRowTremoloFilter::timerCallback()
 	// update parameter values...
 	float nextShape = shape;
 	float nextDepth = depth;
-	float nextPhase = phase;
+//	float nextPhase = phase;
+	float nextPhase = newPhase->getValue();
 	
 	// ...and see if they've changed
 	if ((nextShape != currentShape))
@@ -471,6 +533,7 @@ void dRowTremoloFilter::timerCallback()
 void dRowTremoloFilter::fillBuffer(float* bufferToFill, float phaseAngle)
 {
 	// Scale phase
+	phaseAngle /= newPhase->getScale();
 	phaseAngle = (phaseAngle * 2 * pi) - pi;
 //	float lookupScale = 8192/(2*pi);// / 8192;
 	
