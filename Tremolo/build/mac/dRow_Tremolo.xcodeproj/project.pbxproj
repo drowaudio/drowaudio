@@ -139,13 +139,6 @@
 		843796750EFBF416002A2725 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843796740EFBF416002A2725 /* CoreFoundation.framework */; };
 		8437967F0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8437967D0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp */; };
 		843796800EFBF5E4002A2725 /* juce_VST_Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8437967E0EFBF5E4002A2725 /* juce_VST_Wrapper.mm */; };
-		843796DC0EFBFD16002A2725 /* juce_RTAS_DigiCode1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843796D50EFBFD16002A2725 /* juce_RTAS_DigiCode1.cpp */; };
-		843796DD0EFBFD16002A2725 /* juce_RTAS_DigiCode2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843796D60EFBFD16002A2725 /* juce_RTAS_DigiCode2.cpp */; };
-		843796DE0EFBFD16002A2725 /* juce_RTAS_DigiCode3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843796D70EFBFD16002A2725 /* juce_RTAS_DigiCode3.cpp */; };
-		843796DF0EFBFD16002A2725 /* juce_RTAS_DigiCode_Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 843796D80EFBFD16002A2725 /* juce_RTAS_DigiCode_Header.h */; };
-		843796E00EFBFD16002A2725 /* juce_RTAS_MacResources.r in Rez */ = {isa = PBXBuildFile; fileRef = 843796D90EFBFD16002A2725 /* juce_RTAS_MacResources.r */; };
-		843796E10EFBFD16002A2725 /* juce_RTAS_MacUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 843796DA0EFBFD16002A2725 /* juce_RTAS_MacUtilities.mm */; };
-		843796E20EFBFD16002A2725 /* juce_RTAS_Wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843796DB0EFBFD16002A2725 /* juce_RTAS_Wrapper.cpp */; };
 		8BA05AAE072073D300365D66 /* AUBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BA05A7F072073D200365D66 /* AUBase.cpp */; };
 		8BA05AAF072073D300365D66 /* AUBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA05A80072073D200365D66 /* AUBase.h */; };
 		8BA05AB0072073D300365D66 /* AUDispatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BA05A81072073D200365D66 /* AUDispatch.cpp */; };
@@ -221,7 +214,7 @@
 		5566871F0F17D53300E4474D /* dRowParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowParameter.h; path = ../../src/dRowParameter.h; sourceTree = SOURCE_ROOT; };
 		556687200F17D53300E4474D /* dRowParameter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowParameter.cpp; path = ../../src/dRowParameter.cpp; sourceTree = SOURCE_ROOT; };
 		556688430F18436900E4474D /* juce_AU_Resources.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = juce_AU_Resources.r; path = ../../src/Wrapper/AU/juce_AU_Resources.r; sourceTree = SOURCE_ROOT; };
-		556688440F18436900E4474D /* juce_AU_Wrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_AU_Wrapper.mm; path = ../../src/Wrapper/AU/juce_AU_Wrapper.mm; sourceTree = SOURCE_ROOT; };
+		556688440F18436900E4474D /* juce_AU_Wrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_AU_Wrapper.mm; path = "/Users/Dave/Documents/Developement/Audio Plugins/Tremolo/src/Wrapper/AU/juce_AU_Wrapper.mm"; sourceTree = "<absolute>"; };
 		5580B14D0F0F192E0043FE38 /* dRowBufferView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowBufferView.cpp; path = ../../src/dRowBufferView.cpp; sourceTree = SOURCE_ROOT; };
 		5580B14E0F0F192E0043FE38 /* dRowBufferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowBufferView.h; path = ../../src/dRowBufferView.h; sourceTree = SOURCE_ROOT; };
 		55BBE06B0F03081C00BF1B2B /* dRowTremoloCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowTremoloCommon.cpp; path = ../../src/dRowTremoloCommon.cpp; sourceTree = SOURCE_ROOT; };
@@ -258,8 +251,8 @@
 		843796670EFBF357002A2725 /* MusicDeviceBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicDeviceBase.cpp; path = Examples/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.cpp; sourceTree = DEVELOPER_DIR; };
 		843796680EFBF357002A2725 /* MusicDeviceBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicDeviceBase.h; path = Examples/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.h; sourceTree = DEVELOPER_DIR; };
 		843796740EFBF416002A2725 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		8437967D0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = juce_VST_Wrapper.cpp; path = "../../../../juce_source/juce/extras/audio plugins/wrapper/VST/juce_VST_Wrapper.cpp"; sourceTree = SOURCE_ROOT; };
-		8437967E0EFBF5E4002A2725 /* juce_VST_Wrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_VST_Wrapper.mm; path = "../../../../juce_source/juce/extras/audio plugins/wrapper/VST/juce_VST_Wrapper.mm"; sourceTree = SOURCE_ROOT; };
+		8437967D0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = juce_VST_Wrapper.cpp; path = "/Users/Dave/Documents/Developement/juce_source/juce/extras/audio plugins/wrapper/VST/juce_VST_Wrapper.cpp"; sourceTree = "<absolute>"; };
+		8437967E0EFBF5E4002A2725 /* juce_VST_Wrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_VST_Wrapper.mm; path = "/Users/Dave/Documents/Developement/juce_source/juce/extras/audio plugins/wrapper/VST/juce_VST_Wrapper.mm"; sourceTree = "<absolute>"; };
 		843796D50EFBFD16002A2725 /* juce_RTAS_DigiCode1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = juce_RTAS_DigiCode1.cpp; path = "../../../../juce_source/juce/extras/audio plugins/wrapper/RTAS/juce_RTAS_DigiCode1.cpp"; sourceTree = SOURCE_ROOT; };
 		843796D60EFBFD16002A2725 /* juce_RTAS_DigiCode2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = juce_RTAS_DigiCode2.cpp; path = "../../../../juce_source/juce/extras/audio plugins/wrapper/RTAS/juce_RTAS_DigiCode2.cpp"; sourceTree = SOURCE_ROOT; };
 		843796D70EFBFD16002A2725 /* juce_RTAS_DigiCode3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = juce_RTAS_DigiCode3.cpp; path = "../../../../juce_source/juce/extras/audio plugins/wrapper/RTAS/juce_RTAS_DigiCode3.cpp"; sourceTree = SOURCE_ROOT; };
@@ -647,7 +640,6 @@
 				8437966C0EFBF357002A2725 /* AUMIDIEffectBase.h in Headers */,
 				8437966E0EFBF357002A2725 /* AUOutputBase.h in Headers */,
 				843796720EFBF357002A2725 /* MusicDeviceBase.h in Headers */,
-				843796DF0EFBFD16002A2725 /* juce_RTAS_DigiCode_Header.h in Headers */,
 				55BBE0720F03081C00BF1B2B /* dRowTremoloCommon.h in Headers */,
 				55BBE0740F03081C00BF1B2B /* dRowTremoloEditorComponent.h in Headers */,
 				55BBE0760F03081C00BF1B2B /* dRowTremoloFilter.h in Headers */,
@@ -773,7 +765,6 @@
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843796E00EFBFD16002A2725 /* juce_RTAS_MacResources.r in Rez */,
 				556688470F18436900E4474D /* juce_AU_Resources.r in Rez */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -846,11 +837,6 @@
 				843796710EFBF357002A2725 /* MusicDeviceBase.cpp in Sources */,
 				8437967F0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp in Sources */,
 				843796800EFBF5E4002A2725 /* juce_VST_Wrapper.mm in Sources */,
-				843796DC0EFBFD16002A2725 /* juce_RTAS_DigiCode1.cpp in Sources */,
-				843796DD0EFBFD16002A2725 /* juce_RTAS_DigiCode2.cpp in Sources */,
-				843796DE0EFBFD16002A2725 /* juce_RTAS_DigiCode3.cpp in Sources */,
-				843796E10EFBFD16002A2725 /* juce_RTAS_MacUtilities.mm in Sources */,
-				843796E20EFBFD16002A2725 /* juce_RTAS_Wrapper.cpp in Sources */,
 				55BBE0710F03081C00BF1B2B /* dRowTremoloCommon.cpp in Sources */,
 				55BBE0730F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp in Sources */,
 				55BBE0750F03081C00BF1B2B /* dRowTremoloFilter.cpp in Sources */,

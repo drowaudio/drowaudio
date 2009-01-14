@@ -35,7 +35,9 @@
 #include <AudioToolbox/AudioUnitUtilities.h>
 #include "AUMIDIEffectBase.h"
 #include "MusicDeviceBase.h"
-#include "juce/extras/audio Plugins/wrapper/juce_PluginHeaders.h"
+//#include "juce/extras/audio Plugins/wrapper/juce_PluginHeaders.h"
+#include "juce/extras/audio Plugins/wrapper/juce_IncludeCharacteristics.h"
+#include <juce/juce.h>
 #include "../../dRowTremoloFilter.h"
 
 #if JucePlugin_Build_AU
@@ -61,7 +63,8 @@ END_JUCE_NAMESPACE
 /** Somewhere in the codebase of your plugin, you need to implement this function
     and make it create an instance of the filter subclass that you're building.
 */
-extern AudioProcessor* JUCE_CALLTYPE createPluginFilter();
+//extern AudioProcessor* JUCE_CALLTYPE createPluginFilter();
+extern dRowTremoloFilter* JUCE_CALLTYPE createPluginFilter(); //<<DR>>
 class JuceAUView;
 
 //==============================================================================
@@ -343,7 +346,7 @@ public:
 //            outParameterInfo.minValue = 0.0f;
 //            outParameterInfo.maxValue = 1.0f;
 //            outParameterInfo.defaultValue = 0.0f;
-            outParameterInfo.unit = kAudioUnitParameterUnit_Generic;
+//            outParameterInfo.unit = kAudioUnitParameterUnit_Generic;
 			
             outParameterInfo.minValue = juceFilter->getParameterMin(index); //0.0f;//changed this <<DR>>
             outParameterInfo.maxValue = juceFilter->getParameterMax(index); //1.0f;//changed this <<DR>>
@@ -872,7 +875,8 @@ protected:
 
     //==============================================================================
 private:
-    AudioProcessor* juceFilter;
+//	AudioProcessor* juceFilter;	<<DR>>
+	dRowTremoloFilter* juceFilter;
     AudioSampleBuffer bufferSpace;
     float** channels;
     MidiBuffer midiEvents;

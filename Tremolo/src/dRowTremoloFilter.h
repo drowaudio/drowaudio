@@ -106,20 +106,25 @@ public:
     int lastUIWidth, lastUIHeight;
 
     //==============================================================================
-    juce_UseDebuggingNewOperator
 	
-	float getScaledParameter(int index);
+	juce_UseDebuggingNewOperator
+
+	double getScaledParameter(int index);
 	void setScaledParameter(int index, float newValue);
-	float getParameterMin(int index);
-	float getParameterMax(int index);
-	float getParameterDefault(int index);
-	
+	double getParameterMin(int index);
+	double getParameterMax(int index);
+	double getParameterDefault(int index);
+
 	// buffer variables
 	static const unsigned int tremoloBufferSize = 2000;
 	float tremoloBuffer[tremoloBufferSize];
 	float tremoloBuffer2[tremoloBufferSize];
 	float fTremoloBufferPosition;
 	
+	dRowParameter* newGain;
+	dRowParameter* newRate;
+	dRowParameter* newDepth;
+	dRowParameter* newShape;
 	dRowParameter* newPhase;
 
 private:

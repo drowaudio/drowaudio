@@ -109,7 +109,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
     gainSlider->setTooltip (T("Changes the volume of the audio that runs through the plugin"));
 
     // get the gain parameter from the filter and use it to set up our slider
-    gainSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Gain), false);
+    gainSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Gain), false);
 	
 	addAndMakeVisible(gainLabel = new Label(T("gainLabel"),TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Gain]));
 	gainLabel->setColour(Label::textColourId, Colours::white);
@@ -120,10 +120,11 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	rateSlider->setSliderStyle(Slider::Rotary);
 	rateSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 	rateSlider->addListener (this);
-    rateSlider->setRange (0.0, 1.0, 0.01);
-	rateSlider->setSkewFactor(2);
+//  rateSlider->setRange (0.0, 1.0, 0.01);
+	rateSlider->setRange(ownerFilter->newRate->getMin(), ownerFilter->newRate->getMax(), 0.01);
+//	rateSlider->setSkewFactorFromMidPoint(5);
     rateSlider->setTooltip (T("Changes the rate of the tremolo effect"));
-    rateSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Rate), false);
+    rateSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Rate), false);
 	rateSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
 	addAndMakeVisible(rateLabel = new Label(T("rateLabel"),TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Rate]));
 	rateLabel->setJustificationType(Justification::centred);
@@ -134,9 +135,10 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	depthSlider->setSliderStyle(Slider::Rotary);
 	depthSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 	depthSlider->addListener (this);
-    depthSlider->setRange (0.0, 0.5f, 0.01);
+//  depthSlider->setRange (0.0, 0.5f, 0.01);
+	depthSlider->setRange(ownerFilter->newDepth->getMin(), ownerFilter->newDepth->getMax(), 0.01);
     depthSlider->setTooltip (T("Changes the depth of the tremolo effect"));
-    depthSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Depth), false);
+    depthSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Depth), false);
 	depthSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
 	addAndMakeVisible(depthLabel = new Label(T("depthLabel"),TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Depth]));
 	depthLabel->setJustificationType(Justification::centred);
@@ -146,9 +148,10 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(shapeSlider = new Slider(T("shapeSlider")));
 	shapeSlider->setSliderStyle(Slider::Rotary);
 	shapeSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
-	shapeSlider->setRange(0.2, 10, 0.001);
+//	shapeSlider->setRange(0.2, 10, 0.001);
+	shapeSlider->setRange(ownerFilter->newShape->getMin(), ownerFilter->newShape->getMax(), 0.01);
 	shapeSlider->setSkewFactorFromMidPoint(1);
-	shapeSlider->setValue(1);
+	shapeSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Shape), false);
 	shapeSlider->addListener(this);
     shapeSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
 	addAndMakeVisible(shapeLabel = new Label(T("shapeLabel"),T("Shape")));
@@ -161,7 +164,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	phaseSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 //	phaseSlider->setRange(-0.5f, 0.5f, 0.01);
 	phaseSlider->setRange(ownerFilter->newPhase->getMin(), ownerFilter->newPhase->getMax(), 0.01);
-	phaseSlider->setValue (ownerFilter->getParameter (TremoloInterface::Parameters::Phase), false);
+	phaseSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Phase), false);
 	phaseSlider->addListener(this);
 	phaseSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
 	addAndMakeVisible(phaseLabel = new Label(T("phaseLabel"),T("Phase")));
@@ -327,11 +330,11 @@ void dRowTremoloEditorComponent::updateParametersFromFilter()
 
     // take a local copy of the info we need while we've got the lock..
     const AudioPlayHead::CurrentPositionInfo positionInfo (filter->lastPosInfo);
-    const float newGain = filter->getParameter (TremoloInterface::Parameters::Gain);
-	const float newRate = filter->getParameter (TremoloInterface::Parameters::Rate);
-	const float newTremDepth = filter->getParameter (TremoloInterface::Parameters::Depth);
-	const float newShape = filter->getParameter (TremoloInterface::Parameters::Shape);
-	const float newPhase = filter->getParameter (TremoloInterface::Parameters::Phase);
+    const float newGain = filter->getScaledParameter (TremoloInterface::Parameters::Gain);
+	const float newRate = filter->getScaledParameter (TremoloInterface::Parameters::Rate);
+	const float newTremDepth = filter->getScaledParameter (TremoloInterface::Parameters::Depth);
+	const float newShape = filter->getScaledParameter (TremoloInterface::Parameters::Shape);
+	const float newPhase = filter->getScaledParameter (TremoloInterface::Parameters::Phase);
 
     // ..release the lock ASAP
     filter->getCallbackLock().exit();
