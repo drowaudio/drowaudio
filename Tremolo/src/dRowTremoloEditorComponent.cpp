@@ -292,20 +292,22 @@ void dRowTremoloEditorComponent::changeListenerCallback (void* source)
 
 void dRowTremoloEditorComponent::sliderValueChanged (Slider* changedSlider)
 {
-    if (changedSlider == gainSlider)
-		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Gain, (float)gainSlider->getValue());
+    dRowTremoloFilter* const filter = getFilter();
+	
+	if (changedSlider == gainSlider)
+		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Gain, (float)gainSlider->getValue());
 	
 	else if (changedSlider == rateSlider)
-		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Rate, (float)rateSlider->getValue());
+		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Rate, (float)rateSlider->getValue());
 	
 	else if (changedSlider == depthSlider)
-		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Depth, (float)depthSlider->getValue());
+		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Depth, (float)depthSlider->getValue());
 	
 	else if (changedSlider == shapeSlider)
-		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Shape, (float)shapeSlider->getValue());
+		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Shape, (float)shapeSlider->getValue());
 	
 	else if (changedSlider == phaseSlider)
-		getFilter()->setParameterNotifyingHost (TremoloInterface::Parameters::Phase, (float)phaseSlider->getValue());
+		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Phase, (float)phaseSlider->getValue());
 	
 	// refresh the buffer displays
 //	if (changedSlider == depthSlider ||
@@ -354,7 +356,7 @@ void dRowTremoloEditorComponent::updateParametersFromFilter()
 
     infoLabel->setText (infoText, false);
 
-    /* Update our slider.
+    /* Update our sliders.
 
        (note that it's important here to tell the slider not to send a change
        message, because that would cause it to call the filter with a parameter

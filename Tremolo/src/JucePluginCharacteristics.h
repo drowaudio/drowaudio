@@ -165,7 +165,7 @@
 */
 #define JucePlugin_VersionCode              0x00001100
 
-#define JucePlugin_VersionString            "0.5"
+#define JucePlugin_VersionString            "0.7"
 
 
 //==============================================================================

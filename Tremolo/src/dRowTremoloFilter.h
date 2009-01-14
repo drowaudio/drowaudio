@@ -111,6 +111,7 @@ public:
 
 	double getScaledParameter(int index);
 	void setScaledParameter(int index, float newValue);
+	void setScaledParameterNotifyingHost(int index, float newValue);
 	double getParameterMin(int index);
 	double getParameterMax(int index);
 	double getParameterDefault(int index);

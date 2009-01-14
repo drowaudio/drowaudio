@@ -50,7 +50,12 @@ double dRowParameter::getValue()
 
 double dRowParameter::getNormalisedValue()
 {
-	return ((value * scale) + offset);
+	return normaliseValue(value);
+}
+
+double dRowParameter::normaliseValue(double scaledValue)
+{
+	return ((scaledValue - min) / (max-min));
 }
 
 double dRowParameter::getMin()

@@ -31,6 +31,7 @@ class dRowParameter
 
 	double getValue();
 	double getNormalisedValue();
+	double normaliseValue(double scaledValue);
 	double getMin();
 	double getMax();
 	double getDefault();

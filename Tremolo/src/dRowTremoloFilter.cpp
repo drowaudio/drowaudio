@@ -33,16 +33,12 @@
 #include "dRowTremoloCommon.h"
 #include "dRowTremoloFilter.h"
 #include "dRowTremoloEditorComponent.h"
-#include <cmath>
 
-#define pi 3.14159265358979323846264338327950288
-#define MAXIMUM_RATE 20
 
 /** List of todo's:
 	
 	@todo Improve transfer function for filling buffer
 	@todo Make tempo dependant
-	@todo Correct generic parameter problems
 	@todo Correct text entering problems
  */
 
@@ -62,7 +58,7 @@ dRowTremoloFilter* JUCE_CALLTYPE createPluginFilter()
 dRowTremoloFilter::dRowTremoloFilter()
 {
     // set up the lookup table
-	float lookupScale = (2*pi) / 8192;
+	float lookupScale = (2*double_Pi) / 8192;
 	sinLookupTable = new float[8192];
 	for(int i = 0; i < 8192; i++)
 	{
@@ -115,7 +111,7 @@ dRowTremoloFilter::dRowTremoloFilter()
     lastPosInfo.bpm = 120;
 	
 	// start this here so all hosts see the UI update
-	startTimer(400);
+	startTimer(200);
 }
 
 dRowTremoloFilter::~dRowTremoloFilter()
@@ -251,36 +247,51 @@ void dRowTremoloFilter::setParameter (int index, float newValue)
     }*/
 	if (index == TremoloInterface::Parameters::Gain) {
         if (newGain->getValue() != newValue) {
-            newGain->setValue(newValue);
+            newGain->setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Rate) {
         if (newRate->getValue() != newValue) {
-            newRate->setValue(newValue);
+            newRate->setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Depth) {
         if (newDepth->getValue() != newValue) {
-            newDepth->setValue(newValue);
+            newDepth->setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Shape) {
         if (newShape->getValue() != newValue) {
-            newShape->setValue(newValue);
+            newShape->setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }	
 	else if (index == TremoloInterface::Parameters::Phase) {
         if (newPhase->getValue() != newValue) {
-            newPhase->setValue(newValue);
+            newPhase->setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }
 	
 }
+
+void dRowTremoloFilter::setScaledParameterNotifyingHost(int index, float newValue)
+{
+	if (index == TremoloInterface::Parameters::Gain)
+        setParameterNotifyingHost(index, newGain->normaliseValue(newValue));
+	else if (index == TremoloInterface::Parameters::Rate)
+		setParameterNotifyingHost(index, newRate->normaliseValue(newValue));
+	else if (index == TremoloInterface::Parameters::Depth)
+        setParameterNotifyingHost(index, newDepth->normaliseValue(newValue));
+	else if (index == TremoloInterface::Parameters::Shape)
+        setParameterNotifyingHost(index, newShape->normaliseValue(newValue));
+	else if (index == TremoloInterface::Parameters::Phase)
+        setParameterNotifyingHost(index, newPhase->normaliseValue(newValue));
+}
+
 
 const String dRowTremoloFilter::getParameterName (int index)
 {
@@ -412,7 +423,7 @@ void dRowTremoloFilter::releaseResources()
     // when playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 	// we can slow the timer down here as we are only updating the UI for some VST hosts
-	startTimer(400);
+	startTimer(200);
 }
 
 #pragma mark Main Process Function
@@ -626,14 +637,14 @@ void dRowTremoloFilter::fillBuffer(float* bufferToFill, float phaseAngle)
 	depth = newDepth->getValue() / newDepth->getScale();
 	shape = (newShape->getValue() / newShape->getScale()) - newShape->getOffset();
 	phaseAngle /= newPhase->getScale();
-	phaseAngle = (phaseAngle * 2 * pi) - pi;
+	phaseAngle = (phaseAngle * 2 * double_Pi) - double_Pi;
 //	float lookupScale = 8192/(2*pi);// / 8192;
 	
 	// create buffer with sine data
 	for (uint32 i = 0; i < tremoloBufferSize; ++i)
 	{
 		// fill buffer with sine data
-		double radians = i * 2.0 * (pi / tremoloBufferSize);
+		double radians = i * 2.0 * (double_Pi / tremoloBufferSize);
 		float rawBufferData = sin (radians + phaseAngle);
 //		float rawBufferData = sinLookupTable [(int)((radians + phaseAngle) * lookupScale)];
 		
