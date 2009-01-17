@@ -9,7 +9,7 @@
 
 #include "dRowParameter.h"
 
-dRowParameter::dRowParameter(const String& name_, String unit_, String description_,
+dRowParameter::dRowParameter(const String& name_, ParameterUnit unit_, String description_,
 							 double value_, double min_, double max_, double default_,
 							 double scale_, double offset_)
 {
@@ -27,7 +27,7 @@ dRowParameter::dRowParameter(const String& name_, String unit_, String descripti
 
 //dRowParameter::dRowParameter(){}
 
-void dRowParameter::init(const String& name_, String unit_, String description_,
+void dRowParameter::init(const String& name_, ParameterUnit unit_, String description_,
 					 double value_, double min_, double max_, double default_,
 					 double scale_, double offset_)
 {
@@ -94,4 +94,9 @@ bool dRowParameter::setValue(double value_)
 bool dRowParameter::setNormalisedValue(double nvalue)
 {
 	return setValue((max-min) * jlimit(0.0, 1.0, nvalue) + min);
+}
+
+ParameterUnit dRowParameter::getUnit()
+{
+	return unit;
 }

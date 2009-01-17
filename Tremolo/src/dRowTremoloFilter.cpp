@@ -37,6 +37,7 @@
 
 /** List of todo's:
 	
+	@todo Smooth parameters
 	@todo Improve transfer function for filling buffer
 	@todo Make tempo dependant
 	@todo Correct text entering problems
@@ -66,22 +67,22 @@ dRowTremoloFilter::dRowTremoloFilter()
 	}
 	
 	// set up parameters
-/*	dRowParameter::dRowParameter(const String& name_, String unit_, String description_,
+/*	dRowParameter::dRowParameter(const String& name_, ParameterUnit unit_, String description_,
 								 double value_, double min_, double max_, double default_,
 								 double scale_, double offset_)*/	
-	newGain = new dRowParameter(T("Gain"), T(""), T("The gain level of the audio"),
+	newGain = new dRowParameter(T("Gain"), UnitGeneric, T("The gain level of the audio"),
 								 1.0f, 0.0f, 1.0f, 1.0f,
 								 1.0f, 0.0f);
-	newRate = new dRowParameter(T("Rate"), T("Hz"), T("The rate of the effect"),
+	newRate = new dRowParameter(T("Rate"), UnitHertz, T("The rate of the effect"),
 								 5.0f, 0.0f, 20.0f, 5.0f,
 								 20.0f, 0.0f);								 
-	newDepth = new dRowParameter(T("Depth"), T("%"), T("The depth of the effect"),
+	newDepth = new dRowParameter(T("Depth"), UnitPercent, T("The depth of the effect"),
 								 100.0f, 0.0f, 100.0f, 100.0f,
 								 200.0f, 0.0f);
-	newShape = new dRowParameter(T("Shape"), T(""), T("The shape of the tremolo effect"),
+	newShape = new dRowParameter(T("Shape"),UnitGeneric, T("The shape of the tremolo effect"),
 								 1.0f, 0.2f, 10.0f, 1.0f,
 								 1.0f, 0.0f);
-	newPhase = new dRowParameter(T("Phase"), T("Degrees"), T("The level of offset of the second channel"),
+	newPhase = new dRowParameter(T("Phase"), UnitDegrees, T("The level of offset of the second channel"),
 								 0.0f, -180.0f, 180.0f, 0.0f,
 								 360.0f, -180.0f);
 //	gain = 1.0f;
@@ -89,8 +90,8 @@ dRowTremoloFilter::dRowTremoloFilter()
 //	depth = 0.5f;
 //	shape = 1.0f;
 //	phase = 0.0f;
-    lastUIWidth = 400;
-    lastUIHeight = 200;
+//    lastUIWidth = 400;
+//    lastUIHeight = 200;
 	
 //	currentShape = shape;
 //	currentDepth = depth;
@@ -372,7 +373,21 @@ double dRowTremoloFilter::getParameterDefault(int index)
 	else
 		return 0.0f;
 }	
-
+ParameterUnit dRowTremoloFilter::getParameterUnit(int index)
+{
+	if (index == TremoloInterface::Parameters::Gain)
+		return newGain->getUnit();
+	else if (index == TremoloInterface::Parameters::Rate)
+		return newRate->getUnit();
+	else if (index == TremoloInterface::Parameters::Depth)
+		return newDepth->getUnit();
+	else if (index == TremoloInterface::Parameters::Shape)
+		return newShape->getUnit();
+	else if (index == TremoloInterface::Parameters::Phase)
+		return newPhase->getUnit();
+	else
+		return (ParameterUnit)0;
+}
 
 const String dRowTremoloFilter::getInputChannelName (const int channelIndex) const
 {
@@ -541,9 +556,11 @@ void dRowTremoloFilter::getStateInformation (MemoryBlock& destData)
 
     // add some attributes to it..
     xmlState.setAttribute (T("pluginVersion"), 1);
-    xmlState.setAttribute (T("gainLevel"), gain);
-	xmlState.setAttribute (T("rateAmount"), rate);
-	xmlState.setAttribute (T("depthAmount"), depth);
+    xmlState.setAttribute (T("gainLevel"), newGain->getValue());
+	xmlState.setAttribute (T("rateAmount"), newRate->getValue());
+	xmlState.setAttribute (T("depthAmount"), newDepth->getValue());
+	xmlState.setAttribute (T("shapeAmount"), newShape->getValue());
+	xmlState.setAttribute (T("phaseAmount"), newPhase->getValue());
 //    xmlState.setAttribute (T("uiWidth"), lastUIWidth);
 //    xmlState.setAttribute (T("uiHeight"), lastUIHeight);
 
@@ -565,9 +582,11 @@ void dRowTremoloFilter::setStateInformation (const void* data, int sizeInBytes)
         if (xmlState->hasTagName (T("MYPLUGINSETTINGS")))
         {
             // ok, now pull out our parameters..
-            gain = (float) xmlState->getDoubleAttribute (T("gainLevel"), gain);
-			rate = (float) xmlState->getDoubleAttribute (T("rateAmount"), rate);
-			depth = (float) xmlState->getDoubleAttribute (T("depthAmount"), depth);
+            newGain->setValue( (float) xmlState->getDoubleAttribute (T("gainLevel"), newGain->getValue()) );
+			newRate->setValue( (float) xmlState->getDoubleAttribute (T("rateAmount"), newRate->getValue()) );
+			newDepth->setValue( (float) xmlState->getDoubleAttribute (T("depthAmount"), newDepth->getValue()) );
+			newShape->setValue( (float) xmlState->getDoubleAttribute (T("shapeAmount"), newShape->getValue()) );
+			newPhase->setValue( (float) xmlState->getDoubleAttribute (T("phaseAmount"), newPhase->getValue()) );			
 
 //            lastUIWidth = xmlState->getIntAttribute (T("uiWidth"), lastUIWidth);
 //            lastUIHeight = xmlState->getIntAttribute (T("uiHeight"), lastUIHeight);
@@ -614,8 +633,6 @@ void dRowTremoloFilter::timerCallback()
 		refreshBuffer = false;
 		fillBuffer(tremoloBuffer, 0);
 		fillBuffer(tremoloBuffer2, currentPhase);
-		// call this to refresh the buffer views
-		updateHostDisplay();
 	}
 	
 	// calculate new scale rate to use

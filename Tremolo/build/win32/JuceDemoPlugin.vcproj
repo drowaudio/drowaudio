@@ -191,27 +191,11 @@
 				Name="plugin"
 				>
 				<File
-					RelativePath="..\..\src\BitwiseFontResource.cpp"
+					RelativePath="..\..\src\dRowParameter.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\BitwiseFontResource.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dRowBufferView.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dRowBufferView.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dRowLookAndFeel.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dRowLookAndFeel.h"
+					RelativePath="..\..\src\dRowParameter.h"
 					>
 				</File>
 				<File
@@ -220,14 +204,6 @@
 				</File>
 				<File
 					RelativePath="..\..\src\dRowTremoloCommon.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dRowTremoloEditorComponent.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dRowTremoloEditorComponent.h"
 					>
 				</File>
 				<File
@@ -240,6 +216,10 @@
 				</File>
 				<File
 					RelativePath="..\..\src\includes.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\juce_AppConfig.h"
 					>
 				</File>
 				<File
@@ -336,6 +316,54 @@
 								Name="VCCLCompilerTool"
 							/>
 						</FileConfiguration>
+					</File>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="GUI"
+				>
+				<File
+					RelativePath="..\..\src\dRowBufferView.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowBufferView.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowLookAndFeel.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowLookAndFeel.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowTremoloEditorComponent.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\dRowTremoloEditorComponent.h"
+					>
+				</File>
+				<Filter
+					Name="Resources"
+					>
+					<File
+						RelativePath="..\..\src\BitwiseFontResource.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\BitwiseFontResource.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\TremoloTitleImageResource.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\TremoloTitleImageResource.h"
+						>
 					</File>
 				</Filter>
 			</Filter>

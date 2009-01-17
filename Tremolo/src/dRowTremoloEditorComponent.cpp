@@ -197,10 +197,9 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 
 
     // set our component's initial size to be the last one that was stored in the filter's settings
-    setSize (ownerFilter->lastUIWidth,
-             ownerFilter->lastUIHeight);
-//    setSize (600,
-//             300);
+//    setSize (ownerFilter->lastUIWidth,
+//             ownerFilter->lastUIHeight);
+    setSize (400, 200);
 
     // register ourselves with the filter - it will use its ChangeBroadcaster base
     // class to tell us when something has changed, and this will call our changeListenerCallback()
@@ -250,8 +249,8 @@ void dRowTremoloEditorComponent::paint (Graphics& g)
                        false);
 	
 	// there is probably a better way to do this so the whole UI is not repainted each time
-	bufferView1->resized();
-	bufferView2->resized();
+//	bufferView1->resized();
+//	bufferView2->resized();
 }
 
 void dRowTremoloEditorComponent::resized()
@@ -287,7 +286,11 @@ void dRowTremoloEditorComponent::changeListenerCallback (void* source)
 {
     // this is the filter telling us that it's changed, so we'll update our
     // display of the time, midi message, etc.
+
     updateParametersFromFilter();
+	
+	bufferView1->resized();
+	bufferView2->resized();
 }
 
 void dRowTremoloEditorComponent::sliderValueChanged (Slider* changedSlider)
@@ -368,6 +371,6 @@ void dRowTremoloEditorComponent::updateParametersFromFilter()
 	shapeSlider->setValue (newShape, false);
 	phaseSlider->setValue (newPhase, false);
 
-    setSize (filter->lastUIWidth,
-             filter->lastUIHeight);
+//    setSize (filter->lastUIWidth,
+//             filter->lastUIHeight);
 }

@@ -351,7 +351,7 @@ public:
             outParameterInfo.minValue = juceFilter->getParameterMin(index); //0.0f;//changed this <<DR>>
             outParameterInfo.maxValue = juceFilter->getParameterMax(index); //1.0f;//changed this <<DR>>
             outParameterInfo.defaultValue = juceFilter->getParameterDefault(index); //0.0f;//changed this <<DR>>
-            outParameterInfo.unit = kAudioUnitParameterUnit_Generic;//juceFilter->getParameterUnit(index);//<<DR>>
+            outParameterInfo.unit = juceFilter->getParameterUnit(index);//<<DR>>
 
             return noErr;
         }

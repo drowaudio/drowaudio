@@ -10,7 +10,7 @@
 #ifndef _dRowAudioLookAndFeel_H_
 #define _dRowAudioLookAndFeel_H_
 
-#include <juce/juce.h>
+#include "includes.h"
 
 class dRowAudioLookAndFeel : public LookAndFeel
 {

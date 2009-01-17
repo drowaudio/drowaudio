@@ -13,7 +13,7 @@
 #ifndef _DROWBUFFERVIEW_H_
 #define _DROWBUFFERVIEW_H_
 
-#include <juce/juce.h>
+#include "includes.h"
 
 class dRowBufferView  :  public Component
 {

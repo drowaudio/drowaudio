@@ -71,6 +71,7 @@ public:
     */
     void changeListenerCallback (void* source);
 	
+	
 	/** Using the slider start and end points to start and stop the filter timer 
 		would the most efficient but doesn't let automation update the graphs
 	 */
