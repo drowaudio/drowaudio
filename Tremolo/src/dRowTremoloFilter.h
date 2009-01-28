@@ -118,30 +118,25 @@ public:
 	ParameterUnit getParameterUnit(int index);
 
 	// buffer variables
-	static const unsigned int tremoloBufferSize = 2000;
-	float tremoloBuffer[tremoloBufferSize];
-	float tremoloBuffer2[tremoloBufferSize];
-	float fTremoloBufferPosition;
+	const uint32 tremoloBufferSize;
+	float* tremoloBuffer;
+	float* tremoloBuffer2;
 	
-	dRowParameter* newGain;
-	dRowParameter* newRate;
-	dRowParameter* newDepth;
-	dRowParameter* newShape;
-	dRowParameter* newPhase;
+	// UI parameters
+	dRowParameter* gainParam;
+	dRowParameter* rateParam;
+	dRowParameter* depthParam;
+	dRowParameter* shapeParam;
+	dRowParameter* phaseParam;
 
 private:
 	float* sinLookupTable;
-	
-	// UI parameters
-	float gain;
-	float rate;
-	float depth;
-	float shape;
-	float phase;
+	float fTremoloBufferPosition;
 	
 	double currentSampleRate;	
 	float currentScalingFactor;
 	float nextScalingFactor;	
+	float currentRate;
 	float currentShape;
 	float currentDepth;
 	float currentPhase;

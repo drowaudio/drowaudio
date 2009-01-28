@@ -83,7 +83,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	dRowAudioLookAndFeel* myLookAndFeel;
 	myLookAndFeel = new dRowAudioLookAndFeel;
 	setLookAndFeel(myLookAndFeel);
-	
+
 	// load title image to memory cache
 	cachedTitleImage = ImageCache::getFromMemory (tremoloTitleImage::tremoloTitleImage_jpg, tremoloTitleImage::tremoloTitleImage_jpgSize);
 	
@@ -91,21 +91,22 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	Font* bitwiseFont = 0;
 	MemoryInputStream fontStream (bitwiseFontResource::bitwiseFontBinary, bitwiseFontResource::bitwiseFontBinary_Size, false);
 	Typeface* bitwiseTypeface = new Typeface (fontStream);
+	bitwiseTypeface->setName(T("BitwiseFont"));
 	bitwiseFont = new Font (*bitwiseTypeface);
 	delete bitwiseTypeface;			// Because the font stores it's own typeface
-	
+
 	// title label
-	addAndMakeVisible(titleLabel = new Label(T("title"),T("dRowAudio: Tremolo")));
-	bitwiseFont->setHeight(34);
-	bitwiseFont->setStyleFlags(Font::italic);
-	titleLabel->setColour(Label::textColourId, (Colours::lightblue).withAlpha(0.9f));
-	titleLabel->setColour(Label::backgroundColourId, Colours::black);
-	titleLabel->setFont(*bitwiseFont);
+//	addAndMakeVisible(titleLabel = new Label(T("title"),T("dRowAudio: Tremolo")));
+//	bitwiseFont->setHeight(34);
+//	bitwiseFont->setStyleFlags(Font::italic);
+//	titleLabel->setColour(Label::textColourId, (Colours::lightblue).withAlpha(0.9f));
+//	titleLabel->setColour(Label::backgroundColourId, Colours::black);
+//	titleLabel->setFont(*bitwiseFont);
 	
 	// create our gain slider..
     addAndMakeVisible (gainSlider = new Slider (T("gainSlider")));
     gainSlider->addListener (this);
-    gainSlider->setRange (0.0, 1.0, 0.01);
+    gainSlider->setRange (ownerFilter->gainParam->getMin(), ownerFilter->gainParam->getMax(), 0.01);
     gainSlider->setTooltip (T("Changes the volume of the audio that runs through the plugin"));
 
     // get the gain parameter from the filter and use it to set up our slider
@@ -120,9 +121,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	rateSlider->setSliderStyle(Slider::Rotary);
 	rateSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 	rateSlider->addListener (this);
-//  rateSlider->setRange (0.0, 1.0, 0.01);
-	rateSlider->setRange(ownerFilter->newRate->getMin(), ownerFilter->newRate->getMax(), 0.01);
-//	rateSlider->setSkewFactorFromMidPoint(5);
+	rateSlider->setRange(ownerFilter->rateParam->getMin(), ownerFilter->rateParam->getMax(), 0.01);
     rateSlider->setTooltip (T("Changes the rate of the tremolo effect"));
     rateSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Rate), false);
 	rateSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
@@ -135,8 +134,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	depthSlider->setSliderStyle(Slider::Rotary);
 	depthSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 	depthSlider->addListener (this);
-//  depthSlider->setRange (0.0, 0.5f, 0.01);
-	depthSlider->setRange(ownerFilter->newDepth->getMin(), ownerFilter->newDepth->getMax(), 0.01);
+	depthSlider->setRange(ownerFilter->depthParam->getMin(), ownerFilter->depthParam->getMax(), 0.01);
     depthSlider->setTooltip (T("Changes the depth of the tremolo effect"));
     depthSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Depth), false);
 	depthSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
@@ -148,8 +146,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(shapeSlider = new Slider(T("shapeSlider")));
 	shapeSlider->setSliderStyle(Slider::Rotary);
 	shapeSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
-//	shapeSlider->setRange(0.2, 10, 0.001);
-	shapeSlider->setRange(ownerFilter->newShape->getMin(), ownerFilter->newShape->getMax(), 0.01);
+	shapeSlider->setRange(ownerFilter->shapeParam->getMin(), ownerFilter->shapeParam->getMax(), 0.01);
 	shapeSlider->setSkewFactorFromMidPoint(1);
 	shapeSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Shape), false);
 	shapeSlider->addListener(this);
@@ -162,8 +159,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(phaseSlider = new Slider(T("phaseSlider")));
 	phaseSlider->setSliderStyle(Slider::Rotary);
 	phaseSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
-//	phaseSlider->setRange(-0.5f, 0.5f, 0.01);
-	phaseSlider->setRange(ownerFilter->newPhase->getMin(), ownerFilter->newPhase->getMax(), 0.01);
+	phaseSlider->setRange(ownerFilter->phaseParam->getMin(), ownerFilter->phaseParam->getMax(), 0.01);
 	phaseSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Phase), false);
 	phaseSlider->addListener(this);
 	phaseSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
@@ -195,10 +191,6 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
     // add a label that will display the current timecode and status..
     addAndMakeVisible (infoLabel = new Label (String::empty, String::empty));
 
-
-    // set our component's initial size to be the last one that was stored in the filter's settings
-//    setSize (ownerFilter->lastUIWidth,
-//             ownerFilter->lastUIHeight);
     setSize (400, 200);
 
     // register ourselves with the filter - it will use its ChangeBroadcaster base
@@ -273,12 +265,6 @@ void dRowTremoloEditorComponent::resized()
 //    const int keyboardHeight = 70;
 //    midiKeyboard->setBounds (4, getHeight() - keyboardHeight - 4,
 //                             getWidth() - 8, keyboardHeight);
-
-
-    // if we've been resized, tell the filter so that it can store the new size
-    // in its settings
-//    getFilter()->lastUIWidth = getWidth();
-//    getFilter()->lastUIHeight = getHeight();
 }
 
 //==============================================================================
@@ -288,9 +274,6 @@ void dRowTremoloEditorComponent::changeListenerCallback (void* source)
     // display of the time, midi message, etc.
 
     updateParametersFromFilter();
-	
-	bufferView1->resized();
-	bufferView2->resized();
 }
 
 void dRowTremoloEditorComponent::sliderValueChanged (Slider* changedSlider)
@@ -303,24 +286,19 @@ void dRowTremoloEditorComponent::sliderValueChanged (Slider* changedSlider)
 	else if (changedSlider == rateSlider)
 		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Rate, (float)rateSlider->getValue());
 	
-	else if (changedSlider == depthSlider)
-		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Depth, (float)depthSlider->getValue());
-	
-	else if (changedSlider == shapeSlider)
-		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Shape, (float)shapeSlider->getValue());
-	
-	else if (changedSlider == phaseSlider)
-		filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Phase, (float)phaseSlider->getValue());
-	
-	// refresh the buffer displays
-//	if (changedSlider == depthSlider ||
-//		changedSlider == shapeSlider)
-//		{
-//			bufferView1->resized();
-//			bufferView2->resized();
-//		}
-//	if (changedSlider == phaseSlider)
-//		bufferView2->resized();
+	else {
+		if (changedSlider == depthSlider)
+			filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Depth, (float)depthSlider->getValue());
+		
+		else if (changedSlider == shapeSlider)
+			filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Shape, (float)shapeSlider->getValue());
+		
+		else if (changedSlider == phaseSlider)
+			filter->setScaledParameterNotifyingHost (TremoloInterface::Parameters::Phase, (float)phaseSlider->getValue());
+		
+		bufferView1->resized();
+		bufferView2->resized();
+	}
 }
 
 //==============================================================================
@@ -370,7 +348,8 @@ void dRowTremoloEditorComponent::updateParametersFromFilter()
 	depthSlider->setValue (newTremDepth, false);
 	shapeSlider->setValue (newShape, false);
 	phaseSlider->setValue (newPhase, false);
-
-//    setSize (filter->lastUIWidth,
-//             filter->lastUIHeight);
+	
+	
+	bufferView1->resized();
+	bufferView2->resized();	
 }

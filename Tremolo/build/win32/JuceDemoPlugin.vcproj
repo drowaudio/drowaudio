@@ -234,7 +234,7 @@
 					Name="VST"
 					>
 					<File
-						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\VST\juce_VST_Wrapper.cpp"
+						RelativePath="C:\Documents and Settings\Dave\My Documents\Development\juce\extras\audio plugins\wrapper\VST\juce_VST_Wrapper.cpp"
 						>
 					</File>
 				</Filter>
@@ -242,80 +242,32 @@
 					Name="RTAS"
 					>
 					<File
-						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode1.cpp"
-						>
-						<FileConfiguration
-							Name="Release|Win32"
-							ExcludedFromBuild="true"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode2.cpp"
-						>
-						<FileConfiguration
-							Name="Release|Win32"
-							ExcludedFromBuild="true"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode3.cpp"
-						>
-						<FileConfiguration
-							Name="Release|Win32"
-							ExcludedFromBuild="true"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode_Header.h"
-						>
-						<FileConfiguration
-							Name="Release|Win32"
-							ExcludedFromBuild="true"
-							>
-							<Tool
-								Name="VCCustomBuildTool"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_WinExports.def"
+						RelativePath="C:\Documents and Settings\Dave\My Documents\Development\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode1.cpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_WinUtilities.cpp"
+						RelativePath="C:\Documents and Settings\Dave\My Documents\Development\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode2.cpp"
 						>
-						<FileConfiguration
-							Name="Release|Win32"
-							ExcludedFromBuild="true"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-							/>
-						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\..\..\juce_source\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_Wrapper.cpp"
+						RelativePath="C:\Documents and Settings\Dave\My Documents\Development\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode3.cpp"
 						>
-						<FileConfiguration
-							Name="Release|Win32"
-							ExcludedFromBuild="true"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-							/>
-						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="C:\Documents and Settings\Dave\My Documents\Development\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_DigiCode_Header.h"
+						>
+					</File>
+					<File
+						RelativePath="C:\Documents and Settings\Dave\My Documents\Development\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_WinExports.def"
+						>
+					</File>
+					<File
+						RelativePath="C:\Documents and Settings\Dave\My Documents\Development\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_WinUtilities.cpp"
+						>
+					</File>
+					<File
+						RelativePath="C:\Documents and Settings\Dave\My Documents\Development\juce\extras\audio plugins\wrapper\RTAS\juce_RTAS_Wrapper.cpp"
+						>
 					</File>
 				</Filter>
 			</Filter>
