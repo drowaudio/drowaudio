@@ -54,7 +54,7 @@ enum ParameterUnit
 class dRowParameter
 {
 	public:
-//	dRowParameter();
+	dRowParameter();
 
 	dRowParameter(const String& name_, ParameterUnit unit_, String description_,
 				  double value_, double min_ =0.0f, double max_ =1.0f, double default_ =0.0f,
@@ -73,6 +73,8 @@ class dRowParameter
 	double getScale();
 	double getOffset();
 	
+	void smooth();
+	
 	const String getName();
 	ParameterUnit getUnit();
 	
@@ -83,6 +85,7 @@ class dRowParameter
 	private:
 	String name, description;
 	double value, min, max, defaultValue, scale, offset;
+	double smoothCoeff, smoothValue;
 	ParameterUnit unit;
 };
 

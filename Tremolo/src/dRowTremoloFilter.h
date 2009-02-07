@@ -116,6 +116,7 @@ public:
 	double getParameterMax(int index);
 	double getParameterDefault(int index);
 	ParameterUnit getParameterUnit(int index);
+	void smoothParameters();
 
 	// buffer variables
 	const uint32 tremoloBufferSize;

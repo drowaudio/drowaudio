@@ -347,6 +347,16 @@ ParameterUnit dRowTremoloFilter::getParameterUnit(int index)
 		return (ParameterUnit)0;
 }
 
+void dRowTremoloFilter::smoothParameters()
+{
+	gainParam->smooth();
+	rateParam->smooth();
+	depthParam->smooth();
+	shapeParam->smooth();
+	phaseParam->smooth();
+}
+
+
 const String dRowTremoloFilter::getInputChannelName (const int channelIndex) const
 {
     return String (channelIndex + 1);
@@ -403,6 +413,9 @@ void dRowTremoloFilter::releaseResources()
 void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
 									  MidiBuffer& midiMessages)
 {
+	// smooth out parameters
+	smoothParameters();
+	
 	// interpolation variables
 	unsigned int iPos1, iPos2;
 	float fDiff, fInterpolatedData; 

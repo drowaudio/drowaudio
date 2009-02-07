@@ -9,6 +9,10 @@
 
 #include "dRowParameter.h"
 
+dRowParameter::dRowParameter()
+{
+}
+
 dRowParameter::dRowParameter(const String& name_, ParameterUnit unit_, String description_,
 							 double value_, double min_, double max_, double default_,
 							 double scale_, double offset_)
@@ -23,9 +27,10 @@ dRowParameter::dRowParameter(const String& name_, ParameterUnit unit_, String de
 	defaultValue = default_;
 	scale = scale_;
 	offset = offset_;
+	
+	smoothCoeff = 0.1f;
+	smoothValue = value;
 }
-
-//dRowParameter::dRowParameter(){}
 
 void dRowParameter::init(const String& name_, ParameterUnit unit_, String description_,
 					 double value_, double min_, double max_, double default_,
@@ -40,7 +45,10 @@ void dRowParameter::init(const String& name_, ParameterUnit unit_, String descri
 	max = max_;
 	defaultValue = default_;
 	scale = scale_;
-	offset = offset_;	
+	offset = offset_;
+	
+	smoothCoeff = 0.1f;
+	smoothValue = value;
 }
 
 double dRowParameter::getValue()
@@ -99,4 +107,16 @@ bool dRowParameter::setNormalisedValue(double nvalue)
 ParameterUnit dRowParameter::getUnit()
 {
 	return unit;
+}
+
+void dRowParameter::smooth()
+{
+	if(smoothValue != value)
+	{
+		//if( (smoothCoeff == 1.0) || (abs(smoothValue-value) < 0.0001) )
+		if( (smoothCoeff == 1.0) )
+			smoothValue = value; 
+		else
+			smoothValue = ((value - smoothValue) * smoothCoeff) + smoothValue;
+	}
 }
