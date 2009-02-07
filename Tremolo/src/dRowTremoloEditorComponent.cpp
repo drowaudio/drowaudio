@@ -106,7 +106,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	// create our gain slider..
     addAndMakeVisible (gainSlider = new Slider (T("gainSlider")));
     gainSlider->addListener (this);
-    gainSlider->setRange (ownerFilter->gainParam->getMin(), ownerFilter->gainParam->getMax(), 0.01);
+    gainSlider->setRange (ownerFilter->gainParam.getMin(), ownerFilter->gainParam.getMax(), 0.01);
     gainSlider->setTooltip (T("Changes the volume of the audio that runs through the plugin"));
 
     // get the gain parameter from the filter and use it to set up our slider
@@ -121,7 +121,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	rateSlider->setSliderStyle(Slider::Rotary);
 	rateSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 	rateSlider->addListener (this);
-	rateSlider->setRange(ownerFilter->rateParam->getMin(), ownerFilter->rateParam->getMax(), 0.01);
+	rateSlider->setRange(ownerFilter->rateParam.getMin(), ownerFilter->rateParam.getMax(), 0.01);
     rateSlider->setTooltip (T("Changes the rate of the tremolo effect"));
     rateSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Rate), false);
 	rateSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
@@ -134,7 +134,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	depthSlider->setSliderStyle(Slider::Rotary);
 	depthSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
 	depthSlider->addListener (this);
-	depthSlider->setRange(ownerFilter->depthParam->getMin(), ownerFilter->depthParam->getMax(), 0.01);
+	depthSlider->setRange(ownerFilter->depthParam.getMin(), ownerFilter->depthParam.getMax(), 0.01);
     depthSlider->setTooltip (T("Changes the depth of the tremolo effect"));
     depthSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Depth), false);
 	depthSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));
@@ -146,7 +146,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(shapeSlider = new Slider(T("shapeSlider")));
 	shapeSlider->setSliderStyle(Slider::Rotary);
 	shapeSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
-	shapeSlider->setRange(ownerFilter->shapeParam->getMin(), ownerFilter->shapeParam->getMax(), 0.01);
+	shapeSlider->setRange(ownerFilter->shapeParam.getMin(), ownerFilter->shapeParam.getMax(), 0.01);
 	shapeSlider->setSkewFactorFromMidPoint(1);
 	shapeSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Shape), false);
 	shapeSlider->addListener(this);
@@ -159,7 +159,7 @@ dRowTremoloEditorComponent::dRowTremoloEditorComponent (dRowTremoloFilter* const
 	addAndMakeVisible(phaseSlider = new Slider(T("phaseSlider")));
 	phaseSlider->setSliderStyle(Slider::Rotary);
 	phaseSlider->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 15);
-	phaseSlider->setRange(ownerFilter->phaseParam->getMin(), ownerFilter->phaseParam->getMax(), 0.01);
+	phaseSlider->setRange(ownerFilter->phaseParam.getMin(), ownerFilter->phaseParam.getMax(), 0.01);
 	phaseSlider->setValue (ownerFilter->getScaledParameter (TremoloInterface::Parameters::Phase), false);
 	phaseSlider->addListener(this);
 	phaseSlider->setColour(Slider::rotarySliderFillColourId, Colour(0xB1002DFF));

@@ -33,8 +33,8 @@ dRowParameter::dRowParameter(const String& name_, ParameterUnit unit_, String de
 }
 
 void dRowParameter::init(const String& name_, ParameterUnit unit_, String description_,
-					 double value_, double min_, double max_, double default_,
-					 double scale_, double offset_)
+						 double value_, double min_, double max_, double default_,
+						 double scale_, double offset_)
 {
 	name = name_;
 	unit = unit_;

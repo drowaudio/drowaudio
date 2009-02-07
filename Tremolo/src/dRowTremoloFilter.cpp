@@ -71,28 +71,28 @@ dRowTremoloFilter::dRowTremoloFilter()
 	}
 	
 	// set up parameters
-/*	dRowParameter::dRowParameter(const String& name_, ParameterUnit unit_, String description_,
-								 double value_, double min_, double max_, double default_,
-								 double scale_, double offset_)*/	
-	gainParam = new dRowParameter(T("Gain"), UnitGeneric, T("The gain level of the audio"),
-								 1.0f, 0.0f, 1.0f, 1.0f,
-								 1.0f, 0.0f);
-	rateParam = new dRowParameter(T("Rate"), UnitHertz, T("The rate of the effect"),
-								 5.0f, 0.0f, 20.0f, 5.0f,
-								 20.0f, 0.0f);								 
-	depthParam = new dRowParameter(T("Depth"), UnitPercent, T("The depth of the effect"),
-								 100.0f, 0.0f, 100.0f, 100.0f,
-								 200.0f, 0.0f);
-	shapeParam = new dRowParameter(T("Shape"),UnitGeneric, T("The shape of the tremolo effect"),
-								 1.0f, 0.2f, 10.0f, 1.0f,
-								 1.0f, 0.0f);
-	phaseParam = new dRowParameter(T("Phase"), UnitDegrees, T("The level of offset of the second channel"),
-								 0.0f, -180.0f, 180.0f, 0.0f,
-								 360.0f, -180.0f);
+/*	dRowParameter::init(const String& name_, ParameterUnit unit_, String description_,
+						double value_, double min_, double max_, double default_,
+						double scale_, double offset_)*/	
+	gainParam.init(T("Gain"), UnitGeneric, T("The gain level of the audio"),
+					 1.0f, 0.0f, 1.0f, 1.0f,
+					 1.0f, 0.0f);
+	rateParam.init(T("Rate"), UnitHertz, T("The rate of the effect"),
+					 5.0f, 0.0f, 20.0f, 5.0f,
+					 20.0f, 0.0f);								 
+	depthParam.init(T("Depth"), UnitPercent, T("The depth of the effect"),
+					 100.0f, 0.0f, 100.0f, 100.0f,
+					 200.0f, 0.0f);
+	shapeParam.init(T("Shape"),UnitGeneric, T("The shape of the tremolo effect"),
+					 1.0f, 0.2f, 10.0f, 1.0f,
+					 1.0f, 0.0f);
+	phaseParam.init(T("Phase"), UnitDegrees, T("The level of offset of the second channel"),
+					 0.0f, -180.0f, 180.0f, 0.0f,
+					 360.0f, -180.0f);
 
-	currentShape = shapeParam->getValue();
-	currentDepth = depthParam->getValue();
-	currentPhase = phaseParam->getValue();
+	currentShape = shapeParam.getValue();
+	currentDepth = depthParam.getValue();
+	currentPhase = phaseParam.getValue();
 	
 	// fill initial buffers
 	fillBuffer(tremoloBuffer, 0);
@@ -116,11 +116,6 @@ dRowTremoloFilter::~dRowTremoloFilter()
 	delete tremoloBuffer;
 	delete tremoloBuffer2;
 	delete sinLookupTable;
-	delete gainParam;
-	delete rateParam;
-	delete depthParam;
-	delete shapeParam;
-	delete phaseParam;
 }
 #pragma mark -
 #pragma mark Tremolo Effect Methods
@@ -139,15 +134,15 @@ int dRowTremoloFilter::getNumParameters()
 float dRowTremoloFilter::getParameter (int index)
 {
 	if (index == TremoloInterface::Parameters::Gain)
-		return gainParam->getNormalisedValue();
+		return gainParam.getNormalisedValue();
 	else if (index == TremoloInterface::Parameters::Rate)
-		return rateParam->getNormalisedValue();
+		return rateParam.getNormalisedValue();
 	else if (index == TremoloInterface::Parameters::Depth)
-		return depthParam->getNormalisedValue();
+		return depthParam.getNormalisedValue();
 	else if (index == TremoloInterface::Parameters::Shape)
-		return shapeParam->getNormalisedValue();
+		return shapeParam.getNormalisedValue();
 	else if (index == TremoloInterface::Parameters::Phase)
-		return phaseParam->getNormalisedValue();
+		return phaseParam.getNormalisedValue();
 	else
 		return 0.0f;
 }
@@ -155,15 +150,15 @@ float dRowTremoloFilter::getParameter (int index)
 double dRowTremoloFilter::getScaledParameter(int index)
 {
 	if (index == TremoloInterface::Parameters::Gain)
-		return gainParam->getValue();
+		return gainParam.getValue();
 	else if (index == TremoloInterface::Parameters::Rate)
-		return rateParam->getValue();
+		return rateParam.getValue();
 	else if (index == TremoloInterface::Parameters::Depth)
-		return depthParam->getValue();
+		return depthParam.getValue();
 	else if (index == TremoloInterface::Parameters::Shape)
-		return shapeParam->getValue();
+		return shapeParam.getValue();
 	else if (index == TremoloInterface::Parameters::Phase)
-		return phaseParam->getValue();
+		return phaseParam.getValue();
 	else
 		return 0.0f;
 }
@@ -171,32 +166,32 @@ double dRowTremoloFilter::getScaledParameter(int index)
 void dRowTremoloFilter::setScaledParameter(int index, float newValue)
 {
 	if (index == TremoloInterface::Parameters::Gain) {
-        if (gainParam->getValue() != newValue) {
-            gainParam->setValue(newValue);
+        if (gainParam.getValue() != newValue) {
+            gainParam.setValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Rate) {
-        if (rateParam->getValue() != newValue) {
-            rateParam->setValue(newValue);
+        if (rateParam.getValue() != newValue) {
+            rateParam.setValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Depth) {
-        if (depthParam->getValue() != newValue) {
-            depthParam->setValue(newValue);
+        if (depthParam.getValue() != newValue) {
+            depthParam.setValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Shape) {
-        if (shapeParam->getValue() != newValue) {
-            shapeParam->setValue(newValue);
+        if (shapeParam.getValue() != newValue) {
+            shapeParam.setValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Phase) {
-        if (phaseParam->getValue() != newValue) {
-            phaseParam->setValue(newValue);
+        if (phaseParam.getValue() != newValue) {
+            phaseParam.setValue(newValue);
             sendChangeMessage (this);
         }
     }
@@ -206,32 +201,32 @@ void dRowTremoloFilter::setScaledParameter(int index, float newValue)
 void dRowTremoloFilter::setParameter (int index, float newValue)
 {
 	if (index == TremoloInterface::Parameters::Gain) {
-        if (gainParam->getValue() != newValue) {
-            gainParam->setNormalisedValue(newValue);
+        if (gainParam.getValue() != newValue) {
+            gainParam.setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Rate) {
-        if (rateParam->getValue() != newValue) {
-            rateParam->setNormalisedValue(newValue);
+        if (rateParam.getValue() != newValue) {
+            rateParam.setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Depth) {
-        if (depthParam->getValue() != newValue) {
-            depthParam->setNormalisedValue(newValue);
+        if (depthParam.getValue() != newValue) {
+            depthParam.setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }
 	else if (index == TremoloInterface::Parameters::Shape) {
-        if (shapeParam->getValue() != newValue) {
-            shapeParam->setNormalisedValue(newValue);
+        if (shapeParam.getValue() != newValue) {
+            shapeParam.setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }	
 	else if (index == TremoloInterface::Parameters::Phase) {
-        if (phaseParam->getValue() != newValue) {
-            phaseParam->setNormalisedValue(newValue);
+        if (phaseParam.getValue() != newValue) {
+            phaseParam.setNormalisedValue(newValue);
             sendChangeMessage (this);
         }
     }
@@ -240,21 +235,20 @@ void dRowTremoloFilter::setParameter (int index, float newValue)
 void dRowTremoloFilter::setScaledParameterNotifyingHost(int index, float newValue)
 {
 	if (index == TremoloInterface::Parameters::Gain)
-        setParameterNotifyingHost(index, gainParam->normaliseValue(newValue));
+        setParameterNotifyingHost(index, gainParam.normaliseValue(newValue));
 	else if (index == TremoloInterface::Parameters::Rate)
-		setParameterNotifyingHost(index, rateParam->normaliseValue(newValue));
+		setParameterNotifyingHost(index, rateParam.normaliseValue(newValue));
 	else if (index == TremoloInterface::Parameters::Depth)
-        setParameterNotifyingHost(index, depthParam->normaliseValue(newValue));
+        setParameterNotifyingHost(index, depthParam.normaliseValue(newValue));
 	else if (index == TremoloInterface::Parameters::Shape)
-        setParameterNotifyingHost(index, shapeParam->normaliseValue(newValue));
+        setParameterNotifyingHost(index, shapeParam.normaliseValue(newValue));
 	else if (index == TremoloInterface::Parameters::Phase)
-        setParameterNotifyingHost(index, phaseParam->normaliseValue(newValue));
+        setParameterNotifyingHost(index, phaseParam.normaliseValue(newValue));
 }
 
 
 const String dRowTremoloFilter::getParameterName (int index)
 {
-    // Name parameters
 	if (index == TremoloInterface::Parameters::Gain)
         return TremoloInterface::Parameters::Names[TremoloInterface::Parameters::Gain];
 	else if (index == TremoloInterface::Parameters::Rate)
@@ -272,15 +266,15 @@ const String dRowTremoloFilter::getParameterName (int index)
 const String dRowTremoloFilter::getParameterText (int index)
 {
     if (index == TremoloInterface::Parameters::Gain)
-        return String (gainParam->getValue(), 2);
+        return String (gainParam.getValue(), 2);
 	else if (index == TremoloInterface::Parameters::Rate)
-        return String(rateParam->getValue(), 2);
+        return String(rateParam.getValue(), 2);
 	else if (index == TremoloInterface::Parameters::Depth)
-        return String (depthParam->getValue(), 2);
+        return String (depthParam.getValue(), 2);
 	else if (index == TremoloInterface::Parameters::Shape)
-        return String (shapeParam->getValue(), 2);
+        return String (shapeParam.getValue(), 2);
 	else if (index == TremoloInterface::Parameters::Phase)
-        return String (phaseParam->getValue(), 2);
+        return String (phaseParam.getValue(), 2);
 	else
 		return String::empty;
 }
@@ -289,71 +283,71 @@ const String dRowTremoloFilter::getParameterText (int index)
 double dRowTremoloFilter::getParameterMin(int index)
 {
 	if (index == TremoloInterface::Parameters::Gain)
-		return gainParam->getMin();
+		return gainParam.getMin();
 	else if (index == TremoloInterface::Parameters::Rate)
-		return rateParam->getMin();
+		return rateParam.getMin();
 	else if (index == TremoloInterface::Parameters::Depth)
-		return depthParam->getMin();
+		return depthParam.getMin();
 	else if (index == TremoloInterface::Parameters::Shape)
-		return shapeParam->getMin();
+		return shapeParam.getMin();
 	else if (index == TremoloInterface::Parameters::Phase)
-		return phaseParam->getMin();
+		return phaseParam.getMin();
 	else
 		return 0.0f;
 }
 double dRowTremoloFilter::getParameterMax(int index)
 {
 	if (index == TremoloInterface::Parameters::Gain)
-		return gainParam->getMax();
+		return gainParam.getMax();
 	else if (index == TremoloInterface::Parameters::Rate)
-		return rateParam->getMax();
+		return rateParam.getMax();
 	else if (index == TremoloInterface::Parameters::Depth)
-		return depthParam->getMax();
+		return depthParam.getMax();
 	else if (index == TremoloInterface::Parameters::Shape)
-		return shapeParam->getMax();
+		return shapeParam.getMax();
 	else if (index == TremoloInterface::Parameters::Phase)
-		return phaseParam->getMax();
+		return phaseParam.getMax();
 	else
 		return 0.0f;
 }	
 double dRowTremoloFilter::getParameterDefault(int index)
 {
 	if (index == TremoloInterface::Parameters::Gain)
-		return gainParam->getDefault();
+		return gainParam.getDefault();
 	else if (index == TremoloInterface::Parameters::Rate)
-		return rateParam->getDefault();
+		return rateParam.getDefault();
 	else if (index == TremoloInterface::Parameters::Depth)
-		return depthParam->getDefault();
+		return depthParam.getDefault();
 	else if (index == TremoloInterface::Parameters::Shape)
-		return shapeParam->getDefault();
+		return shapeParam.getDefault();
 	else if (index == TremoloInterface::Parameters::Phase)
-		return phaseParam->getDefault();
+		return phaseParam.getDefault();
 	else
 		return 0.0f;
 }	
 ParameterUnit dRowTremoloFilter::getParameterUnit(int index)
 {
 	if (index == TremoloInterface::Parameters::Gain)
-		return gainParam->getUnit();
+		return gainParam.getUnit();
 	else if (index == TremoloInterface::Parameters::Rate)
-		return rateParam->getUnit();
+		return rateParam.getUnit();
 	else if (index == TremoloInterface::Parameters::Depth)
-		return depthParam->getUnit();
+		return depthParam.getUnit();
 	else if (index == TremoloInterface::Parameters::Shape)
-		return shapeParam->getUnit();
+		return shapeParam.getUnit();
 	else if (index == TremoloInterface::Parameters::Phase)
-		return phaseParam->getUnit();
+		return phaseParam.getUnit();
 	else
 		return (ParameterUnit)0;
 }
 
 void dRowTremoloFilter::smoothParameters()
 {
-	gainParam->smooth();
-	rateParam->smooth();
-	depthParam->smooth();
-	shapeParam->smooth();
-	phaseParam->smooth();
+	gainParam.smooth();
+	rateParam.smooth();
+	depthParam.smooth();
+	shapeParam.smooth();
+	phaseParam.smooth();
 }
 
 
@@ -467,7 +461,7 @@ void dRowTremoloFilter::processBlock (AudioSampleBuffer& buffer,
     // amount that our volume parameter is set to.
     for (int channel = 0; channel < getNumInputChannels(); ++channel)
     {
-        buffer.applyGain (channel, 0, buffer.getNumSamples(), gainParam->getValue());
+        buffer.applyGain (channel, 0, buffer.getNumSamples(), gainParam.getValue());
     }	
 	
     // in case we have more outputs than inputs, we'll clear any output
@@ -527,11 +521,11 @@ void dRowTremoloFilter::getStateInformation (MemoryBlock& destData)
 
     // add some attributes to it..
     xmlState.setAttribute (T("pluginVersion"), 1);
-    xmlState.setAttribute (T("gainLevel"), gainParam->getValue());
-	xmlState.setAttribute (T("rateAmount"), rateParam->getValue());
-	xmlState.setAttribute (T("depthAmount"), depthParam->getValue());
-	xmlState.setAttribute (T("shapeAmount"), shapeParam->getValue());
-	xmlState.setAttribute (T("phaseAmount"), phaseParam->getValue());
+    xmlState.setAttribute (T("gainLevel"), gainParam.getValue());
+	xmlState.setAttribute (T("rateAmount"), rateParam.getValue());
+	xmlState.setAttribute (T("depthAmount"), depthParam.getValue());
+	xmlState.setAttribute (T("shapeAmount"), shapeParam.getValue());
+	xmlState.setAttribute (T("phaseAmount"), phaseParam.getValue());
 
     // then use this helper function to stuff it into the binary blob and return it..
     copyXmlToBinary (xmlState, destData);
@@ -548,11 +542,11 @@ void dRowTremoloFilter::setStateInformation (const void* data, int sizeInBytes)
         if (xmlState->hasTagName (T("MYPLUGINSETTINGS")))
         {
             // ok, now pull out our parameters..
-            gainParam->setValue( (float) xmlState->getDoubleAttribute (T("gainLevel"), gainParam->getValue()) );
-			rateParam->setValue( (float) xmlState->getDoubleAttribute (T("rateAmount"), rateParam->getValue()) );
-			depthParam->setValue( (float) xmlState->getDoubleAttribute (T("depthAmount"), depthParam->getValue()) );
-			shapeParam->setValue( (float) xmlState->getDoubleAttribute (T("shapeAmount"), shapeParam->getValue()) );
-			phaseParam->setValue( (float) xmlState->getDoubleAttribute (T("phaseAmount"), phaseParam->getValue()) );			
+            gainParam.setValue( (float) xmlState->getDoubleAttribute (T("gainLevel"), gainParam.getValue()) );
+			rateParam.setValue( (float) xmlState->getDoubleAttribute (T("rateAmount"), rateParam.getValue()) );
+			depthParam.setValue( (float) xmlState->getDoubleAttribute (T("depthAmount"), depthParam.getValue()) );
+			shapeParam.setValue( (float) xmlState->getDoubleAttribute (T("shapeAmount"), shapeParam.getValue()) );
+			phaseParam.setValue( (float) xmlState->getDoubleAttribute (T("phaseAmount"), phaseParam.getValue()) );			
 
             sendChangeMessage (this);
         }
@@ -566,10 +560,10 @@ void dRowTremoloFilter::timerCallback()
 	bool refreshBuffer = false;
 	
 	// update parameter values...
-	float nextRate = rateParam->getValue();
-	float nextShape = shapeParam->getValue();
-	float nextDepth = depthParam->getValue();
-	float nextPhase = phaseParam->getValue();
+	float nextRate = rateParam.getValue();
+	float nextShape = shapeParam.getValue();
+	float nextDepth = depthParam.getValue();
+	float nextPhase = phaseParam.getValue();
 	
 	// ...and see if they've changed
 	if ((nextShape != currentShape))
@@ -613,9 +607,9 @@ void dRowTremoloFilter::timerCallback()
 void dRowTremoloFilter::fillBuffer(float* bufferToFill, float phaseAngle)
 {
 	// Scale parameters
-	float depth = depthParam->getValue() / depthParam->getScale();
-	float shape = (shapeParam->getValue() / shapeParam->getScale()) - shapeParam->getOffset();
-	phaseAngle /= phaseParam->getScale();
+	float depth = depthParam.getValue() / depthParam.getScale();
+	float shape = (shapeParam.getValue() / shapeParam.getScale()) - shapeParam.getOffset();
+	phaseAngle /= phaseParam.getScale();
 	phaseAngle = (phaseAngle * 2 * double_Pi) - double_Pi;
 //	float lookupScale = 8192/(2*pi);// / 8192;
 	

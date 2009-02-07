@@ -54,12 +54,15 @@ enum ParameterUnit
 class dRowParameter
 {
 	public:
+	/// Create an uninitialised parameter
 	dRowParameter();
-
+	
+	/// Create an initialised parameter
 	dRowParameter(const String& name_, ParameterUnit unit_, String description_,
 				  double value_, double min_ =0.0f, double max_ =1.0f, double default_ =0.0f,
 				  double scale_ =1, double offset_=0);
-		
+	
+	/// Initialise parameter
 	void init(const String& name_, ParameterUnit unit_, String description_,
 			  double value_, double min_ =0.0f, double max_ =1.0f, double default_ =0.0f,
 			  double scale_ =1, double offset_ =0);

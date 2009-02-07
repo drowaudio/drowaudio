@@ -124,11 +124,11 @@ public:
 	float* tremoloBuffer2;
 	
 	// UI parameters
-	dRowParameter* gainParam;
-	dRowParameter* rateParam;
-	dRowParameter* depthParam;
-	dRowParameter* shapeParam;
-	dRowParameter* phaseParam;
+	dRowParameter gainParam;
+	dRowParameter rateParam;
+	dRowParameter depthParam;
+	dRowParameter shapeParam;
+	dRowParameter phaseParam;
 
 private:
 	float* sinLookupTable;

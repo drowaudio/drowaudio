@@ -281,8 +281,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -330,7 +328,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>11</integer>
+									<integer>14</integer>
 									<integer>10</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -369,12 +367,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowTremoloFilter.cpp</string>
+								<string>dRowParameter.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -382,11 +382,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowTremoloFilter.cpp</string>
+										<string>dRowParameter.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>550D5F170F3D2C7F006F902A</string>
+										<string>550D5F3B0F3D3498006F902A</string>
 										<key>history</key>
 										<array>
 											<string>55BBE02E0F03033900BF1B2B</string>
@@ -420,10 +420,10 @@
 											<string>55E19A810F30CF1D0049BC99</string>
 											<string>55E19AA90F32395D0049BC99</string>
 											<string>555D6C2F0F355D0B0099F634</string>
+											<string>550D5F260F3D32F8006F902A</string>
+											<string>550D5F370F3D3498006F902A</string>
+											<string>550D5F380F3D3498006F902A</string>
 											<string>550D5F0C0F3D2C7F006F902A</string>
-											<string>550D5F0D0F3D2C7F006F902A</string>
-											<string>550D5F0E0F3D2C7F006F902A</string>
-											<string>550D5F0F0F3D2C7F006F902A</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -481,6 +481,14 @@
 											<string>550D5F140F3D2C7F006F902A</string>
 											<string>550D5F150F3D2C7F006F902A</string>
 											<string>550D5F160F3D2C7F006F902A</string>
+											<string>550D5F290F3D32F8006F902A</string>
+											<string>550D5F2A0F3D32F8006F902A</string>
+											<string>550D5F2B0F3D32F8006F902A</string>
+											<string>550D5F2C0F3D32F8006F902A</string>
+											<string>550D5F2D0F3D32F8006F902A</string>
+											<string>550D5F2E0F3D32F8006F902A</string>
+											<string>550D5F390F3D3498006F902A</string>
+											<string>550D5F3A0F3D3498006F902A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -659,7 +667,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>255667327.54729199</real>
+	<real>255669400.507994</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -674,6 +682,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>55BBE0250F0301BB00BF1B2B</string>
 		<string>/Users/Dave/Documents/Developement/Audio Plugins/Tremolo/build/mac/dRow_Tremolo.xcodeproj</string>
@@ -696,12 +705,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>dRowTremoloFilter.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -910,14 +921,12 @@
 							<key>Dock</key>
 							<array>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>juce_AU_Wrapper.mm</string>
+										<string></string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -938,6 +947,8 @@
 							<string>352pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -973,8 +984,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>55E199A10F3089A60049BC99</string>
-				<string>55E199A20F3089A60049BC99</string>
+				<string>550D5F1F0F3D3266006F902A</string>
+				<string>550D5F200F3D3266006F902A</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -983,7 +994,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

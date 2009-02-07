@@ -9,9 +9,9 @@
 			8D01CCC60486CAD60068D4B7 /* dRowAudio_Tremolo AU */,
 		);
 		breakpoints = (
-			55E199CE0F308F1F0049BC99 /* dRowTremoloFilter.cpp:577 */,
+			55E199CE0F308F1F0049BC99 /* dRowTremoloFilter.cpp:141 */,
 			55E199DF0F3090210049BC99 /* dRowTremoloEditorComponent.cpp:200 */,
-			55E19A350F3099580049BC99 /* dRowTremoloFilter.cpp:566 */,
+			55E19A350F3099580049BC99 /* dRowTremoloFilter.cpp:139 */,
 			55E19A3C0F309B500049BC99 /* dRowTremoloFilter.cpp:109 */,
 		);
 		codeSenseManager = 55BBE01F0F03004000BF1B2B /* Code sense */;
@@ -139,6 +139,26 @@
 			550D5F150F3D2C7F006F902A /* PBXTextBookmark */ = 550D5F150F3D2C7F006F902A /* PBXTextBookmark */;
 			550D5F160F3D2C7F006F902A /* PBXTextBookmark */ = 550D5F160F3D2C7F006F902A /* PBXTextBookmark */;
 			550D5F170F3D2C7F006F902A /* PBXTextBookmark */ = 550D5F170F3D2C7F006F902A /* PBXTextBookmark */;
+			550D5F230F3D32F8006F902A /* PBXTextBookmark */ = 550D5F230F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F240F3D32F8006F902A /* PBXTextBookmark */ = 550D5F240F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F250F3D32F8006F902A /* PBXTextBookmark */ = 550D5F250F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F260F3D32F8006F902A /* PBXTextBookmark */ = 550D5F260F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F270F3D32F8006F902A /* PBXTextBookmark */ = 550D5F270F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F280F3D32F8006F902A /* PBXTextBookmark */ = 550D5F280F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F290F3D32F8006F902A /* PBXTextBookmark */ = 550D5F290F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F2A0F3D32F8006F902A /* PBXTextBookmark */ = 550D5F2A0F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F2B0F3D32F8006F902A /* PBXTextBookmark */ = 550D5F2B0F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F2C0F3D32F8006F902A /* PBXTextBookmark */ = 550D5F2C0F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F2D0F3D32F8006F902A /* PBXTextBookmark */ = 550D5F2D0F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F2E0F3D32F8006F902A /* PBXTextBookmark */ = 550D5F2E0F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F2F0F3D32F8006F902A /* PBXTextBookmark */ = 550D5F2F0F3D32F8006F902A /* PBXTextBookmark */;
+			550D5F350F3D3496006F902A /* PBXTextBookmark */ = 550D5F350F3D3496006F902A /* PBXTextBookmark */;
+			550D5F360F3D3496006F902A /* PBXTextBookmark */ = 550D5F360F3D3496006F902A /* PBXTextBookmark */;
+			550D5F370F3D3498006F902A /* PBXTextBookmark */ = 550D5F370F3D3498006F902A /* PBXTextBookmark */;
+			550D5F380F3D3498006F902A /* PBXTextBookmark */ = 550D5F380F3D3498006F902A /* PBXTextBookmark */;
+			550D5F390F3D3498006F902A /* PBXTextBookmark */ = 550D5F390F3D3498006F902A /* PBXTextBookmark */;
+			550D5F3A0F3D3498006F902A /* PBXTextBookmark */ = 550D5F3A0F3D3498006F902A /* PBXTextBookmark */;
+			550D5F3B0F3D3498006F902A /* PBXTextBookmark */ = 550D5F3B0F3D3498006F902A /* PBXTextBookmark */;
 			551BAF4E0F1A607000032FD7 = 551BAF4E0F1A607000032FD7 /* PBXTextBookmark */;
 			551BAF500F1A607000032FD7 = 551BAF500F1A607000032FD7 /* PBXTextBookmark */;
 			551BAF8F0F1A62A100032FD7 = 551BAF8F0F1A62A100032FD7 /* PBXTextBookmark */;
@@ -222,7 +242,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 88";
 		rLen = 0;
-		rLoc = 3592;
+		rLoc = 3694;
 		rType = 0;
 		vrLen = 1285;
 		vrLoc = 2360;
@@ -252,7 +272,7 @@
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
 		rLen = 0;
-		rLoc = 13672;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1306;
 		vrLoc = 13145;
@@ -262,7 +282,7 @@
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 13933;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1491;
 		vrLoc = 13192;
@@ -272,7 +292,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 76";
 		rLen = 0;
-		rLoc = 3291;
+		rLoc = 3393;
 		rType = 0;
 		vrLen = 1384;
 		vrLoc = 2223;
@@ -282,7 +302,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 45";
 		rLen = 11;
-		rLoc = 979;
+		rLoc = 981;
 		rType = 0;
 		vrLen = 797;
 		vrLoc = 1288;
@@ -292,7 +312,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 87";
 		rLen = 0;
-		rLoc = 3617;
+		rLoc = 3719;
 		rType = 0;
 		vrLen = 1288;
 		vrLoc = 2360;
@@ -302,7 +322,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 108";
 		rLen = 11;
-		rLoc = 1921;
+		rLoc = 1923;
 		rType = 0;
 		vrLen = 796;
 		vrLoc = 1290;
@@ -312,7 +332,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 87";
 		rLen = 0;
-		rLoc = 3616;
+		rLoc = 3718;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 2360;
@@ -322,7 +342,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 114";
 		rLen = 0;
-		rLoc = 2143;
+		rLoc = 2145;
 		rType = 0;
 		vrLen = 792;
 		vrLoc = 1290;
@@ -332,7 +352,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 88";
 		rLen = 0;
-		rLoc = 3592;
+		rLoc = 3694;
 		rType = 0;
 		vrLen = 1285;
 		vrLoc = 2360;
@@ -362,7 +382,7 @@
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
 		rLen = 0;
-		rLoc = 13672;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1306;
 		vrLoc = 13145;
@@ -382,7 +402,7 @@
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
 		rLen = 0;
-		rLoc = 13672;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1248;
 		vrLoc = 13145;
@@ -391,8 +411,8 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1250;
 		vrLoc = 13145;
@@ -401,8 +421,8 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 970;
 		vrLoc = 11887;
@@ -412,7 +432,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 88";
 		rLen = 0;
-		rLoc = 3592;
+		rLoc = 3694;
 		rType = 0;
 		vrLen = 1286;
 		vrLoc = 2358;
@@ -431,8 +451,8 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 970;
 		vrLoc = 11887;
@@ -442,7 +462,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 88";
 		rLen = 0;
-		rLoc = 3592;
+		rLoc = 3694;
 		rType = 0;
 		vrLen = 1286;
 		vrLoc = 2358;
@@ -462,7 +482,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 88";
 		rLen = 0;
-		rLoc = 3592;
+		rLoc = 3694;
 		rType = 0;
 		vrLen = 1286;
 		vrLoc = 2358;
@@ -472,7 +492,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 49";
 		rLen = 0;
-		rLoc = 1020;
+		rLoc = 1022;
 		rType = 0;
 		vrLen = 794;
 		vrLoc = 328;
@@ -482,7 +502,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 49";
 		rLen = 0;
-		rLoc = 1020;
+		rLoc = 1022;
 		rType = 0;
 		vrLen = 792;
 		vrLoc = 1357;
@@ -491,8 +511,8 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 938;
 		vrLoc = 11919;
@@ -502,7 +522,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 49";
 		rLen = 0;
-		rLoc = 1020;
+		rLoc = 1022;
 		rType = 0;
 		vrLen = 792;
 		vrLoc = 1357;
@@ -511,8 +531,8 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 13231;
@@ -521,8 +541,8 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1359;
 		vrLoc = 13231;
@@ -532,7 +552,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 57";
 		rLen = 18;
-		rLoc = 2657;
+		rLoc = 2696;
 		rType = 0;
 		vrLen = 1284;
 		vrLoc = 2358;
@@ -561,8 +581,8 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1477;
 		vrLoc = 13231;
@@ -571,8 +591,8 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1477;
 		vrLoc = 13231;
@@ -582,7 +602,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 49";
 		rLen = 0;
-		rLoc = 1020;
+		rLoc = 1022;
 		rType = 0;
 		vrLen = 922;
 		vrLoc = 137;
@@ -602,7 +622,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 49";
 		rLen = 0;
-		rLoc = 1020;
+		rLoc = 1022;
 		rType = 0;
 		vrLen = 976;
 		vrLoc = 0;
@@ -612,7 +632,7 @@
 		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
 		name = "dRowParameter.h: 57";
 		rLen = 18;
-		rLoc = 2657;
+		rLoc = 2696;
 		rType = 0;
 		vrLen = 1284;
 		vrLoc = 2358;
@@ -641,11 +661,209 @@
 		isa = PBXTextBookmark;
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 417";
-		rLen = 21;
-		rLoc = 13652;
+		rLen = 0;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1711;
 		vrLoc = 6940;
+	};
+	550D5F230F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: type 'class dRowParameter' argument given to 'delete', expected pointer";
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		rLen = 0;
+		rLoc = 118;
+		rType = 1;
+	};
+	550D5F240F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 119";
+		rLen = 0;
+		rLoc = 3865;
+		rType = 0;
+		vrLen = 781;
+		vrLoc = 3792;
+	};
+	550D5F250F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 119";
+		rLen = 0;
+		rLoc = 3865;
+		rType = 0;
+		vrLen = 781;
+		vrLoc = 3792;
+	};
+	550D5F260F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE0700F03081C00BF1B2B /* dRowTremoloFilter.h */;
+		name = "dRowTremoloFilter.h: 131";
+		rLen = 0;
+		rLoc = 5148;
+		rType = 0;
+		vrLen = 1212;
+		vrLoc = 4565;
+	};
+	550D5F270F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
+		name = "dRowParameter.cpp: 36";
+		rLen = 72;
+		rLoc = 707;
+		rType = 0;
+		vrLen = 918;
+		vrLoc = 141;
+	};
+	550D5F280F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 77";
+		rLen = 0;
+		rLoc = 2613;
+		rType = 0;
+		vrLen = 1702;
+		vrLoc = 2068;
+	};
+	550D5F290F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 257";
+		rLen = 0;
+		rLoc = 4356;
+		rType = 0;
+		vrLen = 2077;
+		vrLoc = 8153;
+	};
+	550D5F2A0F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE0700F03081C00BF1B2B /* dRowTremoloFilter.h */;
+		name = "dRowTremoloFilter.h: 119";
+		rLen = 0;
+		rLoc = 4905;
+		rType = 0;
+		vrLen = 1217;
+		vrLoc = 4566;
+	};
+	550D5F2B0F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
+		name = "dRowParameter.cpp: 36";
+		rLen = 72;
+		rLoc = 707;
+		rType = 0;
+		vrLen = 920;
+		vrLoc = 141;
+	};
+	550D5F2C0F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE0700F03081C00BF1B2B /* dRowTremoloFilter.h */;
+		name = "dRowTremoloFilter.h: 131";
+		rLen = 0;
+		rLoc = 5148;
+		rType = 0;
+		vrLen = 1212;
+		vrLoc = 4565;
+	};
+	550D5F2D0F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 77";
+		rLen = 0;
+		rLoc = 2613;
+		rType = 0;
+		vrLen = 1702;
+		vrLoc = 2068;
+	};
+	550D5F2E0F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
+		name = "dRowParameter.cpp: 36";
+		rLen = 72;
+		rLoc = 707;
+		rType = 0;
+		vrLen = 918;
+		vrLoc = 141;
+	};
+	550D5F2F0F3D32F8006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 612";
+		rLen = 0;
+		rLoc = 20194;
+		rType = 0;
+		vrLen = 1330;
+		vrLoc = 3776;
+	};
+	550D5F350F3D3496006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 119";
+		rLen = 0;
+		rLoc = 3865;
+		rType = 0;
+		vrLen = 835;
+		vrLoc = 3794;
+	};
+	550D5F360F3D3496006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 119";
+		rLen = 0;
+		rLoc = 3865;
+		rType = 0;
+		vrLen = 835;
+		vrLoc = 3794;
+	};
+	550D5F370F3D3498006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 612";
+		rLen = 0;
+		rLoc = 20194;
+		rType = 0;
+		vrLen = 1418;
+		vrLoc = 3776;
+	};
+	550D5F380F3D3498006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
+		name = "dRowParameter.cpp: 36";
+		rLen = 72;
+		rLoc = 707;
+		rType = 0;
+		vrLen = 918;
+		vrLoc = 141;
+	};
+	550D5F390F3D3498006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
+		name = "dRowTremoloFilter.cpp: 612";
+		rLen = 0;
+		rLoc = 20194;
+		rType = 0;
+		vrLen = 1418;
+		vrLoc = 3776;
+	};
+	550D5F3A0F3D3498006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
+		name = "dRowParameter.cpp: 36";
+		rLen = 72;
+		rLoc = 707;
+		rType = 0;
+		vrLen = 918;
+		vrLoc = 141;
+	};
+	550D5F3B0F3D3498006F902A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5566871F0F17D53300E4474D /* dRowParameter.h */;
+		name = "dRowParameter.h: 65";
+		rLen = 0;
+		rLoc = 2964;
+		rType = 0;
+		vrLen = 1326;
+		vrLoc = 2360;
 	};
 	551BAF4E0F1A607000032FD7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -720,7 +938,7 @@
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 13913;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1435;
 		vrLoc = 19593;
@@ -730,7 +948,7 @@
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 13933;
+		rLoc = 4356;
 		rType = 0;
 		vrLen = 1516;
 		vrLoc = 13192;
@@ -820,7 +1038,7 @@
 		fRef = 55BBE06D0F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp */;
 		name = "dRowTremoloEditorComponent.cpp: 277";
 		rLen = 0;
-		rLoc = 12569;
+		rLoc = 12559;
 		rType = 0;
 		vrLen = 1814;
 		vrLoc = 10523;
@@ -881,16 +1099,16 @@
 	};
 	5566871F0F17D53300E4474D /* dRowParameter.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {892, 1288}}";
-			sepNavSelRange = "{2657, 18}";
-			sepNavVisRange = "{2358, 1284}";
+			sepNavIntBoundsRect = "{{0, 0}, {892, 1330}}";
+			sepNavSelRange = "{2964, 0}";
+			sepNavVisRange = "{2360, 1326}";
 		};
 	};
 	556687200F17D53300E4474D /* dRowParameter.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {892, 1680}}";
-			sepNavSelRange = "{203, 0}";
-			sepNavVisRange = "{0, 940}";
+			sepNavIntBoundsRect = "{{0, 0}, {892, 1624}}";
+			sepNavSelRange = "{707, 72}";
+			sepNavVisRange = "{141, 918}";
 		};
 	};
 	5566875D0F17E1FA00E4474D /* PBXTextBookmark */ = {
@@ -908,7 +1126,7 @@
 		fRef = 556687200F17D53300E4474D /* dRowParameter.cpp */;
 		name = "dRowParameter.cpp: 63";
 		rLen = 0;
-		rLoc = 1727;
+		rLoc = 1729;
 		rType = 0;
 		vrLen = 823;
 		vrLoc = 0;
@@ -1228,16 +1446,16 @@
 	};
 	55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {892, 8946}}";
-			sepNavSelRange = "{13652, 21}";
-			sepNavVisRange = "{6940, 1711}";
+			sepNavIntBoundsRect = "{{0, 0}, {1014, 8974}}";
+			sepNavSelRange = "{3865, 0}";
+			sepNavVisRange = "{3794, 835}";
 		};
 	};
 	55BBE0700F03081C00BF1B2B /* dRowTremoloFilter.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {892, 2240}}";
-			sepNavSelRange = "{4905, 0}";
-			sepNavVisRange = "{4566, 1218}";
+			sepNavSelRange = "{5148, 0}";
+			sepNavVisRange = "{4565, 1212}";
 		};
 	};
 	55BBE09E0F0309BE00BF1B2B /* PBXTextBookmark */ = {
@@ -1419,7 +1637,7 @@
 		vrLen = 1980;
 		vrLoc = 440;
 	};
-	55E199CE0F308F1F0049BC99 /* dRowTremoloFilter.cpp:577 */ = {
+	55E199CE0F308F1F0049BC99 /* dRowTremoloFilter.cpp:141 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -1431,7 +1649,7 @@
 		functionName = "dRowTremoloFilter::timerCallback()";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 577;
+		lineNumber = 141;
 		location = dRowAudio_Tremolo;
 		modificationTime = 255409782.417854;
 		state = 2;
@@ -1441,7 +1659,7 @@
 		fRef = 55BBE06D0F03081C00BF1B2B /* dRowTremoloEditorComponent.cpp */;
 		name = "dRowTremoloEditorComponent.cpp: 299";
 		rLen = 0;
-		rLoc = 13491;
+		rLoc = 13481;
 		rType = 0;
 		vrLen = 1847;
 		vrLoc = 11686;
@@ -1499,7 +1717,7 @@
 		path = "/Users/Dave/Documents/Developement/juce_source/juce/extras/audio plugin host/build/mac/build/Debug/Juce Plugin Host.app";
 		sourceTree = "<absolute>";
 	};
-	55E19A350F3099580049BC99 /* dRowTremoloFilter.cpp:566 */ = {
+	55E19A350F3099580049BC99 /* dRowTremoloFilter.cpp:139 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -1511,7 +1729,7 @@
 		functionName = "dRowTremoloFilter::timerCallback()";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 566;
+		lineNumber = 139;
 		location = dRowAudio_Tremolo;
 		modificationTime = 255409782.41797;
 		state = 2;
@@ -1559,7 +1777,7 @@
 		fRef = 55BBE06F0F03081C00BF1B2B /* dRowTremoloFilter.cpp */;
 		name = "dRowTremoloFilter.cpp: 114";
 		rLen = 1;
-		rLoc = 3914;
+		rLoc = 3791;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 3523;
@@ -1639,7 +1857,7 @@
 		fRef = 55BBE0700F03081C00BF1B2B /* dRowTremoloFilter.h */;
 		name = "dRowTremoloFilter.h: 140";
 		rLen = 21;
-		rLoc = 5337;
+		rLoc = 5332;
 		rType = 0;
 		vrLen = 1529;
 		vrLoc = 1328;
