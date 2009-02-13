@@ -53,7 +53,7 @@ DRowAudioFilter::DRowAudioFilter()
 
 {
 	setupParams();
-
+	
     zeromem (&lastPosInfo, sizeof (lastPosInfo));
     lastPosInfo.timeSigNumerator = 4;
     lastPosInfo.timeSigDenominator = 4;
@@ -268,21 +268,24 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 	smoothParameters();
 	
 	const int numInputChannels = getNumInputChannels();
-	if (numInputChannels == 2)
+	const float oneOverNumInputChannels = 1.0f / numInputChannels;
+
+	if (numInputChannels > 0)
 	{
 		// create parameters to use
-//		float fThresh = params[THRESH].getNormalisedValue() * params[THRESH].getNormalisedValue() * params[THRESH].getNormalisedValue();
+		float fThresh = params[THRESH].getSmoothedNormalisedValue() * params[THRESH].getSmoothedNormalisedValue();
 		float fReduction = params[REDUCTION].getNormalisedValue()*params[REDUCTION].getNormalisedValue()*params[REDUCTION].getNormalisedValue();
 		float fAttack = (params[ATTACK].getNormalisedValue()*params[ATTACK].getNormalisedValue()*params[ATTACK].getNormalisedValue()*0.099f) + 0.001;
 		float fRelease = (params[RELEASE].getNormalisedValue()*params[RELEASE].getNormalisedValue()*params[RELEASE].getNormalisedValue()*0.0099) + 0.0001;
 		float fGain = params[GAIN].getNormalisedValue()*params[GAIN].getNormalisedValue()*params[GAIN].getValue();
 		
-		float fThresh = params[THRESH].getSmoothedNormalisedValue() * params[THRESH].getSmoothedNormalisedValue();
 		
+		// set up array of pointers to samples
 		int numSamples = buffer.getNumSamples();
 		float* pfSample[numInputChannels];
 		for (int channel = 0; channel < getNumInputChannels(); channel++)
 			pfSample[channel] = buffer.getSampleData(channel);
+		
 		
 		// set-up mixed mono buffer
 		AudioSampleBuffer mixedBuffer(1, buffer.getNumSamples());
@@ -290,14 +293,24 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		
 		// fill mono mixed buffer
 		for(int i = 0; i < mixedBuffer.getNumSamples(); i++) {
-			*pfMixedSample = 0.5f * (*pfSample[0] + *pfSample[1]);
+			*pfMixedSample = 0.0;
 			pfMixedSample++;
-			pfSample[0]++;
-			pfSample[1]++;
+		}
+		pfMixedSample = mixedBuffer.getSampleData(0);
+
+		for(int i = 0; i < mixedBuffer.getNumSamples(); i++)
+		{
+			for(int channel = 0; channel < numInputChannels; channel++)
+			{
+				*pfMixedSample += oneOverNumInputChannels * (*pfSample[channel]);
+				pfSample[channel]++;
+			}
+			pfMixedSample++;
 		}
 		
 		// filter mixed buffer
 		bandpassFilter.processSamples(mixedBuffer.getSampleData(0), mixedBuffer.getNumSamples());
+		
 		
 		// reset buffer pointers
 		for (int channel = 0; channel < getNumInputChannels(); channel++)
@@ -335,8 +348,8 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			// process channels as interleaved
 			for (int channel = 0; channel < numInputChannels; channel++)
 			{			
-				*pfSample[channel] *= fOutMultCurrent;
-//				*pfSample[channel] = fMix;
+//				*pfSample[channel] *= fOutMultCurrent;
+				*pfSample[channel] = fMix;
 				
 				// apply gain
 				*pfSample[channel] *= fGain;
@@ -349,10 +362,9 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		
 		// update the sample to use in the meter display
 		RMSLeft = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
-		RMSRight = buffer.getRMSLevel(1, 0, buffer.getNumSamples());
 		peakLeft = buffer.getMagnitude(0, 0, buffer.getNumSamples());
-		peakRight = buffer.getMagnitude(1, 0, buffer.getNumSamples());
-		//	peakLeft = fOutMultCurrent;		
+		RMSRight = buffer.getRMSLevel(1 & (numInputChannels-1), 0, buffer.getNumSamples());
+		peakRight = buffer.getMagnitude(1 & (numInputChannels-1), 0, buffer.getNumSamples());
 	}
 
 		
