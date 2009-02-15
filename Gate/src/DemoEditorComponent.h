@@ -32,8 +32,8 @@
 #ifndef DEMOJUCEPLUGINEDITOR_H
 #define DEMOJUCEPLUGINEDITOR_H
 
+#include "includes.h"
 #include "DRowAudioFilter.h"
-#include "MeterComponent.h"
 #include "Parameters.h"
 
 
@@ -53,6 +53,7 @@
 class DemoEditorComponent   : public AudioProcessorEditor,
                               public ChangeListener,
                               public SliderListener,
+							  public ButtonListener,
 							  public Timer
 {
 public:
@@ -73,6 +74,8 @@ public:
     void changeListenerCallback (void* source);
 
     void sliderValueChanged (Slider*);
+	
+	void buttonClicked(Button* clickedButton);
 	
 	void timerCallback();
 

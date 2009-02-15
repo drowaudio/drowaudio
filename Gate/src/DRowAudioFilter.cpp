@@ -29,7 +29,6 @@
   ==============================================================================
 */
 
-#include "includes.h"
 #include "DRowAudioFilter.h"
 #include "DemoEditorComponent.h"
 
@@ -78,15 +77,18 @@ void DRowAudioFilter::setupParams()
 	params[THRESH].init(parameterNames[THRESH], UnitPercent, T("Changes the threshold"),
 						50.0, 0.0, 100.0, 50.0);
 	params[REDUCTION].init(parameterNames[REDUCTION], UnitPercent, T("Changes the reduction ammount"),
-						   50.0, 0.0, 100.0, 50.0);
+						   20.0, 0.0, 100.0, 20.0);
 	params[ATTACK].init(parameterNames[ATTACK], UnitMilliseconds, T("Changes the attack time"),
-						100.0, 0.0, 1000.0, 100.0);
+						1000.0, 0.0, 1000.0, 1000.0);
 	params[RELEASE].init(parameterNames[RELEASE], UnitMilliseconds, T("Changes the release time"),
-						 100.0, 0.0, 1000.0, 100.0);
+						 1000.0, 0.0, 1000.0, 1000.0);
 	params[BANDCF].init(parameterNames[BANDCF], UnitHertz, T("Changes the filter centre frequency"),
 						1000.0, 200.0, 5000.0, 1000.0);
 	params[BANDQ].init(parameterNames[BANDQ], UnitGeneric, T("Changes the filter bandwith"),
-						0.0, 0.0, 10.0, 0.0);
+					   0.0, 0.0, 10.0, 0.0);
+	params[BANDQ].setSkewFactor(0.3);
+	params[MONITOR].init(parameterNames[MONITOR], UnitBoolean, T("Monitors the trigger signal"),
+						 0.0, 0.0, 1.0, 0.0);
 	params[GAIN].init(parameterNames[GAIN], UnitGeneric, T("Changes the Output Gain"),
 					  1.0, 0.0, 1.0, 1.0);
 }
@@ -198,6 +200,21 @@ ParameterUnit DRowAudioFilter::getParameterUnit(int index)
 		if (index == i)
 			return params[i].getUnit();	
     return (ParameterUnit)0;
+}
+
+double  DRowAudioFilter::getParameterStep(int index)
+{
+	for (int i = 0; i < noParams; i++)
+		if (index == i)
+			return params[i].getStep();	
+    return 0.0f;
+}
+double  DRowAudioFilter::getParameterSkewFactor(int index)
+{
+	for (int i = 0; i < noParams; i++)
+		if (index == i)
+			return params[i].getSkewFactor();	
+    return 0.0f;
 }
 
 void DRowAudioFilter::smoothParameters()
@@ -347,9 +364,12 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			
 			// process channels as interleaved
 			for (int channel = 0; channel < numInputChannels; channel++)
-			{			
-//				*pfSample[channel] *= fOutMultCurrent;
-				*pfSample[channel] = fMix;
+			{	
+				if (params[MONITOR].getNormalisedValue() > 0.5f)
+					*pfSample[channel] = fMix;
+				else
+					*pfSample[channel] *= fOutMultCurrent;
+
 				
 				// apply gain
 				*pfSample[channel] *= fGain;
@@ -454,10 +474,9 @@ void DRowAudioFilter::setStateInformation (const void* data, int sizeInBytes)
 
 void DRowAudioFilter::updateFilters()
 {
-	const float bandCf = (params[BANDCF].getNormalisedValue()*params[BANDCF].getNormalisedValue()*9800) + 200;
-	const float bandQ = ((1-(0.9f*params[BANDQ].getNormalisedValue()*params[BANDQ].getNormalisedValue()))*10);
+	const float bandCf = params[BANDCF].getSmoothedValue();
+	const float bandQ = (params[BANDQ].getSmoothedValue());
 
 	bandpassFilter.createBandPass(currentSampleRate, bandCf, bandQ);
-	
 }
 

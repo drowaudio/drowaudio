@@ -29,7 +29,6 @@
   ==============================================================================
 */
 
-#include "includes.h"
 #include "DemoEditorComponent.h"
 
 //==============================================================================
@@ -86,20 +85,28 @@ DemoEditorComponent::DemoEditorComponent (DRowAudioFilter* const ownerFilter)
 		(new Label(String(T("Label")) << String(i), labelName))->attachToComponent(sliders[i], true);
 			
 		sliders[i]->addListener (this);
-		sliders[i]->setRange (ownerFilter->getParameterMin(i), ownerFilter->getParameterMax(i), 0.01);
+		sliders[i]->setRange (ownerFilter->getParameterMin(i), ownerFilter->getParameterMax(i), ownerFilter->getParameterStep(i));
+		sliders[i]->setSkewFactor(ownerFilter->getParameterSkewFactor(i));
 		sliders[i]->setTextBoxStyle(Slider::TextBoxRight, false, 50, 20);
 		sliders[i]->setValue (ownerFilter->getScaledParameter(i), false);
 	}
-	
+		
 	for ( int i = 0; i < noButtons; i++ )
 	{
 		buttons.add(new TextButton(String(T("Button ")) << String(i)));
 		addAndMakeVisible(buttons[i]);
 	}
+	buttons[0]->setButtonText(T("Monitor"));
+	buttons[0]->setClickingTogglesState(true);
+	buttons[0]->addButtonListener(this);
+	
+	buttons[1]->setButtonText(T("Use RMS"));
+	buttons[1]->setClickingTogglesState(true);
+	buttons[1]->addButtonListener(this);
 	
 	// set up the meters
-	addAndMakeVisible(meterLeft = new MeterComponent());
-	addAndMakeVisible(meterRight = new MeterComponent());
+	addAndMakeVisible(meterLeft = new MeterComponent(&ownerFilter->RMSLeft, &ownerFilter->peakLeft, ownerFilter->getCallbackLock()));
+	addAndMakeVisible(meterRight = new MeterComponent(&ownerFilter->RMSRight, &ownerFilter->peakRight, ownerFilter->getCallbackLock()));
 	
     // create and add the midi keyboard component..
     addAndMakeVisible (midiKeyboard
@@ -176,9 +183,21 @@ void DemoEditorComponent::sliderValueChanged (Slider* changedSlider)
     DRowAudioFilter* currentFilter = getFilter();
 	
 	for (int i = 0; i < noParams; i++)
-		if ( changedSlider == sliders[i] ) {
+		if ( changedSlider == sliders[i] )
 			currentFilter->setScaledParameterNotifyingHost (i, (float) sliders[i]->getValue());
-		}
+}
+
+void DemoEditorComponent::buttonClicked(Button* clickedButton)
+{
+	DRowAudioFilter* currentFilter = getFilter();
+	
+	if (clickedButton == buttons[0])
+	{
+		if(clickedButton->getToggleState())
+			currentFilter->setScaledParameterNotifyingHost(MONITOR, 1.0);
+		else
+			currentFilter->setScaledParameterNotifyingHost(MONITOR, 0.0);	
+	}
 }
 
 void DemoEditorComponent::changeListenerCallback (void* source)
@@ -238,8 +257,8 @@ void DemoEditorComponent::updateParametersFromFilter()
 
 void DemoEditorComponent::timerCallback()
 {
-	DRowAudioFilter* currentFilter = getFilter();
-	
-	meterLeft->setMeterLevel(currentFilter->peakLeft, currentFilter->peakLeft);
-	meterRight->setMeterLevel(currentFilter->peakRight, currentFilter->peakRight);
+//	DRowAudioFilter* currentFilter = getFilter();
+//	
+//	meterLeft->setMeterLevel(currentFilter->peakLeft, currentFilter->peakLeft);
+//	meterRight->setMeterLevel(currentFilter->peakRight, currentFilter->peakRight);
 }

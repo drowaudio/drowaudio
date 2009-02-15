@@ -32,9 +32,8 @@
 #ifndef DEMOJUCEPLUGINFILTER_H
 #define DEMOJUCEPLUGINFILTER_H
 
+#include "includes.h"
 #include "Parameters.h"
-#include "dRowParameter.h"
-#include "dRowAudioIIRFilter.h"
 
 //==============================================================================
 /**
@@ -104,6 +103,8 @@ public:
 	double getParameterMax(int index);
 	double getParameterDefault(int index);
 	ParameterUnit getParameterUnit(int index);
+	double getParameterStep(int index);
+	double getParameterSkewFactor(int index);
 	void smoothParameters();
 	
 	
@@ -146,7 +147,7 @@ private:
 	
 	float fOutMultTarget, fOutMultCurrent;
 	
-	CustomFilter bandpassFilter;
+	BiquadFilter bandpassFilter;
 };
 
 

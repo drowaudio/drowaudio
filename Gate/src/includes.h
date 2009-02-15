@@ -31,3 +31,4 @@
 
 //#include "../../../../juce_amalgamated.h"
 #include <juce/juce.h>
+#include <dRowAudio/dRowAudio.h>
