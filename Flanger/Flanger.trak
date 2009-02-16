@@ -356,16 +356,10 @@
 								<key>data</key>
 								<data>
 								AAAAAAAAAAAA
-								AAAKAAAAAAAA
+								AAAEAAAAAAAA
 								AAAAAAABAAAA
 								AAAAAAIAAAAA
-								AAAAAwAAAAAA
-								AAAEAAAAAAAA
-								AAUAAAAAAAAA
-								BgAAAAAAAAAH
-								AAAAAAAAAAgA
-								AAAAAAAACQAA
-								AAA=
+								AAAAAwAAAAA=
 								</data>
 								<key>jucePluginState</key>
 								<data>
@@ -584,7 +578,7 @@
 				<key>kAUInspectorStateKey_WindowLevel</key>
 				<integer>2147483647</integer>
 				<key>kAUInspectorStateKey_WindowRect</key>
-				<string>{{705, 22}, {400, 539}}</string>
+				<string>{{707, 22}, {340, 319}}</string>
 			</dict>
 		</array>
 	</dict>

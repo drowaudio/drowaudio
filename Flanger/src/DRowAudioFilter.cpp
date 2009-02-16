@@ -82,10 +82,12 @@ void DRowAudioFilter::setupParams()
 					   20.0, 0.0, 100.0, 20.0);
 	params[DEPTH].setSkewFactor(0.7f);
 	params[DEPTH].setSmoothCoeff(0.1);
-	params[FEEDBACK].init(parameterNames[FEEDBACK], UnitPercent, T("Changes the depth"),
-						  0.0, 0.0, 100.0, 0.0);
-	params[GAIN].init(parameterNames[GAIN], UnitGeneric, T("Changes the Output Gain"),
-					  1.0, 0.0, 1.0, 1.0);
+	params[FEEDBACK].init(parameterNames[FEEDBACK], UnitPercent, T("Changes the feedback ammount"),
+						  0.0, 0.0, 99.0, 0.0);
+	params[FEEDBACK].setStep(1);
+	params[MIX].init(parameterNames[MIX], UnitPercent, T("Changes the output mix"),
+					 100.0, 0.0, 100.0, 100.0);
+	params[MIX].setStep(1);
 }
 
 int DRowAudioFilter::getNumParameters()
@@ -312,10 +314,9 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 
 		// create parameters to use
 		float fRate = params[RATE].getSmoothedValue();
-//		float fDepth = (params[DEPTH].getSmoothedNormalisedValue() * 0.0015) + 0.0005f;
 		float fDepth = (params[DEPTH].getSmoothedNormalisedValue() * 0.006f) + 0.0001f;
 		float fFeedback = params[FEEDBACK].getSmoothedNormalisedValue();
-		float fGain = params[GAIN].getSmoothedNormalisedValue();
+		float fWetDryMix = params[MIX].getSmoothedNormalisedValue();
 		
 		// calculate current phase step
 		float samplesPerCycle = currentSampleRate / fRate;
@@ -362,7 +363,7 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			fDiff = fBufferReadPos1 - iPos1;
 			fDel = pfCircularBuffer[iPos2]*fDiff + pfCircularBuffer[iPos1]*(1-fDiff);
 			
-		    float fOut = 0.5f * (fMix + fDel);
+		    float fOut = 0.5f * (fMix + fWetDryMix*fDel);
 			
 			pfCircularBuffer[iBufferWritePos] = fMix + (fFeedback * fDel);
 			
@@ -371,9 +372,6 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			for (int channel = 0; channel < numInputChannels; channel++)
 			{	
 				*pfSample[channel] = fOut;
-				
-				// apply gain
-				*pfSample[channel] *= fGain;
 				
 				// incriment sample pointers
 				pfSample[channel]++;			

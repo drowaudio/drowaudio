@@ -35,6 +35,7 @@
 #include "includes.h"
 #include "DRowAudioFilter.h"
 #include "Parameters.h"
+#include "flanger_title.h"
 
 
 //==============================================================================
@@ -76,8 +77,6 @@ public:
 	
 	void buttonClicked(Button* clickedButton);
 	
-	void timerCallback();
-
     //==============================================================================
     /** Standard Juce paint callback. */
     void paint (Graphics& g);
@@ -88,14 +87,22 @@ public:
 
 private:
     //==============================================================================
+	dRowLookAndFeel* customLookAndFeel;
+	
 	ComboBox* comboBox;
 	OwnedArray <Slider> sliders;
+	OwnedArray <Label> sliderLabels;
 	OwnedArray <TextButton> buttons;
 	
 	MeterComponent* meterLeft;
 	MeterComponent* meterRight;
 	
 	int noButtons;
+	
+	// Binary resources:
+    static const char* flanger_title;
+    static const int flanger_title_size;
+	Image* cachedTitleImage;
 	
     MidiKeyboardComponent* midiKeyboard;
     Label* infoLabel;

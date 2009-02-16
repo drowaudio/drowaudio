@@ -36,13 +36,7 @@ enum parameters
 	RATE,
 	DEPTH,
 	FEEDBACK,
-	param3,
-	param4,
-	param5,
-	param6,
-	param7,
-	param8,
-	GAIN,
+	MIX,
 	noParams
 };
 
@@ -50,13 +44,7 @@ static const char UNUSED_NOWARN *parameterNames[] = {
 	"Rate",					// 0
 	"Depth",					// 1
 	"Feedback",						// 2
-	"param3",						// 3
-	"param4",					// 4
-	"param5",					// 5
-	"param6",						// 6
-	"param7",						// 7
-	"param8",				// 8
-	"Gain"							// 9
+	"Wet/Dry Mix",						// 3
 };
 
 #endif //_PARAMETERS_H_

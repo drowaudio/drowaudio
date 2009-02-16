@@ -74,6 +74,13 @@ DemoEditorComponent::DemoEditorComponent (DRowAudioFilter* const ownerFilter)
     : AudioProcessorEditor (ownerFilter),
 	noButtons(3)
 {
+	customLookAndFeel = new dRowLookAndFeel;
+	setLookAndFeel(customLookAndFeel);
+	customLookAndFeel->setColour(Label::textColourId, Colours::white);
+	
+	// load title image to memory cache
+	cachedTitleImage = ImageCache::getFromMemory (Resource::flanger_title, Resource::flanger_title_size);
+	
 	addAndMakeVisible( comboBox = new ComboBox(T("comboBox")) );
 	
 	for (int i = 0; i < noParams; i++)
@@ -82,14 +89,37 @@ DemoEditorComponent::DemoEditorComponent (DRowAudioFilter* const ownerFilter)
 		addAndMakeVisible( sliders[i]);
 		
 		String labelName = ownerFilter->getParameterName(i);
-		(new Label(String(T("Label")) << String(i), labelName))->attachToComponent(sliders[i], true);
+		sliderLabels.add(new Label(String(T("Label")) << String(i), labelName));
+		addAndMakeVisible(sliderLabels[i]);
+		sliderLabels[i]->setJustificationType(Justification::left);
+		sliderLabels[i]->attachToComponent(sliders[i], false);
 			
 		sliders[i]->addListener (this);
 		sliders[i]->setRange (ownerFilter->getParameterMin(i), ownerFilter->getParameterMax(i), ownerFilter->getParameterStep(i));
 		sliders[i]->setSkewFactor(ownerFilter->getParameterSkewFactor(i));
-		sliders[i]->setTextBoxStyle(Slider::TextBoxRight, false, 50, 20);
+		sliders[i]->setTextBoxStyle(Slider::TextBoxRight, false, 40, 15);
 		sliders[i]->setValue (ownerFilter->getScaledParameter(i), false);
+		
+		sliders[i]->setColour (Slider::thumbColourId, Colours::grey);
+		sliders[i]->setColour (Slider::textBoxTextColourId, Colour (0xff78f4ff));
+		sliders[i]->setColour (Slider::textBoxBackgroundColourId, Colours::black);
+		sliders[i]->setColour (Slider::textBoxOutlineColourId, Colour (0xff0D2474));
 	}
+//	sliders[FEEDBACK]->setSliderStyle(Slider::LinearVertical);
+//	sliders[FEEDBACK]->setTextBoxStyle(Slider::TextBoxBelow, false, 60, 20);
+	sliders[RATE]->setSliderStyle(Slider::RotaryVerticalDrag);
+	sliders[RATE]->setColour(Slider::rotarySliderFillColourId, Colours::grey);
+	sliders[RATE]->setTextBoxStyle(Slider::TextBoxBelow, false, 60, 15);
+	sliderLabels[RATE]->attachToComponent(sliders[RATE], false);
+	sliderLabels[RATE]->setJustificationType(Justification::centred);
+	sliders[DEPTH]->setSliderStyle(Slider::RotaryVerticalDrag);
+	sliders[DEPTH]->setColour(Slider::rotarySliderFillColourId, Colours::grey);
+	sliders[DEPTH]->setTextBoxStyle(Slider::TextBoxBelow, false, 60, 15);
+	sliderLabels[DEPTH]->attachToComponent(sliders[DEPTH], false);
+	sliderLabels[DEPTH]->setJustificationType(Justification::centred);
+//	sliders[MIX]->setSliderStyle(Slider::LinearVertical);
+//	sliders[MIX]->setTextBoxStyle(Slider::TextBoxBelow, false, 60, 20);
+
 		
 	for ( int i = 0; i < noButtons; i++ )
 	{
@@ -122,7 +152,7 @@ DemoEditorComponent::DemoEditorComponent (DRowAudioFilter* const ownerFilter)
 //    resizeLimits.setSizeLimits (150, 150, 800, 300);
 
     // set our component's initial size to be the last one that was stored in the filter's settings
-    setSize (400, 500);
+    setSize (250, 260);
 
     // register ourselves with the filter - it will use its ChangeBroadcaster base
     // class to tell us when something has changed, and this will call our changeListenerCallback()
@@ -133,46 +163,69 @@ DemoEditorComponent::DemoEditorComponent (DRowAudioFilter* const ownerFilter)
 DemoEditorComponent::~DemoEditorComponent()
 {
     getFilter()->removeChangeListener (this);
+	ImageCache::release (cachedTitleImage);
 	sliders.clear();
+	sliderLabels.clear();
 	buttons.clear();
     deleteAllChildren();
+	delete customLookAndFeel;
 }
 
 //==============================================================================
 void DemoEditorComponent::paint (Graphics& g)
 {
-    // just clear the window
-    g.fillAll (Colour::greyLevel (0.9f));
+	// just clear the window
+	Colour backgroundColour(0xFFE9E9F4);
+	backgroundColour = backgroundColour.withBrightness(0.5f);
+	ColourGradient backgroundGradient(backgroundColour.withBrightness(0.0f),
+									  0, 40,
+									  backgroundColour.withBrightness(0.0f),
+									  0, getHeight(),
+									  false);
+	backgroundGradient.addColour(0.025f, backgroundColour);
+	backgroundGradient.addColour(0.975f, backgroundColour);
+	GradientBrush backgroundBrush(backgroundGradient);
+	g.setBrush(&backgroundBrush);
+    g.fillRect(0, 40, getWidth(), getHeight()-40);
 	
-	g.setColour(Colours::red);
-	g.setFont(30);
-	g.drawFittedText(T("dRowAudio: Flanger"),
-					 getWidth()/2 - (getWidth()/2), 5,
-					 getWidth(), getHeight(),
-					 Justification::centredTop,
-					 1);
+//	g.setColour(Colour(0xFFE9E9F4));
+//	g.setFont(25);
+//	g.drawFittedText(T("dRowAudio: Flanger"),
+//					 getWidth()/2 - (getWidth()/2), 5,
+//					 getWidth(), getHeight(),
+//					 Justification::centredTop,
+//					 1);
+	g.drawImageWithin (cachedTitleImage,
+                       0, 0, 250, 40,
+                       RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize,
+                       false);
 }
 
 void DemoEditorComponent::resized()
 {
-    comboBox->setBounds (getWidth()/2 - 100, 40,
-						200, 20);
+//    comboBox->setBounds (getWidth()/2 - 100, 40,
+//						200, 20);
 	
-	for (int i = 0; i < noParams; i++)
-		sliders[i]->setBounds (70, 70 + (30*i), getWidth()-140, 20);
+//	for (int i = 0; i < noParams; i++)
+//		sliders[i]->setBounds (70, 70 + (30*i), getWidth()-140, 20);
+	sliders[RATE]->setBounds(getWidth()*0.5f - 100, getHeight()-195, 100, 100);
+	sliders[DEPTH]->setBounds(getWidth()*0.5f, getHeight()-195, 90, 100);
+	sliders[FEEDBACK]->setBounds(5, getHeight()-70, getWidth()-10, 20);
+	sliders[MIX]->setBounds(5, getHeight()-25, getWidth()-10, 20);
 	
-	meterLeft->setBounds(getWidth()-65, 70, 25, 290);
-	meterRight->setBounds(getWidth()-35, 70, 25, 290);
+	
+//	meterLeft->setBounds(getWidth()-65, 70, 25, 290);
+//	meterRight->setBounds(getWidth()-35, 70, 25, 290);
 		
-	for ( int i = 0; i < noButtons; i++ )
-		buttons[i]->setBounds( 10 + (i * ((getWidth()-20)/noButtons) + ((noButtons-1)*5)), 370,
-							  ((getWidth()-20)/noButtons)-(((noButtons-1)*5)), 20);
-	
-	infoLabel->setBounds(10, 400, getWidth(), 20);
-	
-    const int keyboardHeight = 70;
-    midiKeyboard->setBounds (4, getHeight() - keyboardHeight - 4,
-                             getWidth() - 8, keyboardHeight);
+//	for ( int i = 0; i < noButtons; i++ )
+//		buttons[i]->setBounds( 10 + (i * ((getWidth()-20)/noButtons) + ((noButtons-1)*5)), 370,
+//							  ((getWidth()-20)/noButtons)-(((noButtons-1)*5)), 20);
+//	
+//	infoLabel->setBounds(10, 400, getWidth(), 20);
+//	
+//    const int keyboardHeight = 70;
+//    midiKeyboard->setBounds (4, getHeight() - keyboardHeight - 4,
+//                             getWidth() - 8, keyboardHeight);
 }
 
 //==============================================================================
@@ -187,7 +240,7 @@ void DemoEditorComponent::sliderValueChanged (Slider* changedSlider)
 
 void DemoEditorComponent::buttonClicked(Button* clickedButton)
 {
-	DRowAudioFilter* currentFilter = getFilter();
+//	DRowAudioFilter* currentFilter = getFilter();
 	
 	if (clickedButton == buttons[0])
 	{
@@ -249,13 +302,4 @@ void DemoEditorComponent::updateParametersFromFilter()
     */
 	for(int i = 0; i < noParams; i++)
 		sliders[i]->setValue (tempParamVals[i], false);
-}
-
-
-void DemoEditorComponent::timerCallback()
-{
-//	DRowAudioFilter* currentFilter = getFilter();
-//	
-//	meterLeft->setMeterLevel(currentFilter->peakLeft, currentFilter->peakLeft);
-//	meterRight->setMeterLevel(currentFilter->peakRight, currentFilter->peakRight);
 }
