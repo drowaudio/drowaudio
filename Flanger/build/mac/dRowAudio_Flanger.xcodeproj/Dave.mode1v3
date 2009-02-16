@@ -386,7 +386,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55DDDB230F49064800894F8B</string>
+										<string>55DDDB5B0F49216700894F8B</string>
 										<key>history</key>
 										<array>
 											<string>550D638C0F41F978006F902A</string>
@@ -405,11 +405,11 @@
 											<string>555938830F48F0C20044FC32</string>
 											<string>55DDDA6B0F48F65200894F8B</string>
 											<string>55DDDA900F48FA5400894F8B</string>
-											<string>55DDDAA80F48FA6C00894F8B</string>
 											<string>55DDDABC0F48FCD700894F8B</string>
 											<string>55DDDAE20F48FFE100894F8B</string>
 											<string>55DDDAFC0F4904EF00894F8B</string>
-											<string>55DDDAFD0F4904EF00894F8B</string>
+											<string>55DDDB450F491BD100894F8B</string>
+											<string>55DDDB460F491BD100894F8B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -432,31 +432,9 @@
 											<string>55592F0C0F4715C00044FC32</string>
 											<string>555936500F48827A0044FC32</string>
 											<string>555938490F48EB9C0044FC32</string>
-											<string>55DDDA6C0F48F65200894F8B</string>
-											<string>55DDDA930F48FA5400894F8B</string>
-											<string>55DDDA940F48FA5400894F8B</string>
 											<string>55DDDA950F48FA5400894F8B</string>
-											<string>55DDDA960F48FA5400894F8B</string>
-											<string>55DDDA970F48FA5400894F8B</string>
-											<string>55DDDA980F48FA5400894F8B</string>
-											<string>55DDDA990F48FA5400894F8B</string>
-											<string>55DDDA9A0F48FA5400894F8B</string>
-											<string>55DDDA9B0F48FA5400894F8B</string>
-											<string>55DDDA9C0F48FA5400894F8B</string>
-											<string>55DDDA9D0F48FA5400894F8B</string>
-											<string>55DDDA9E0F48FA5400894F8B</string>
-											<string>55DDDA9F0F48FA5400894F8B</string>
-											<string>55DDDAAA0F48FA6C00894F8B</string>
-											<string>55DDDABE0F48FCD700894F8B</string>
-											<string>55DDDABF0F48FCD700894F8B</string>
-											<string>55DDDAC00F48FCD700894F8B</string>
-											<string>55DDDAC10F48FCD700894F8B</string>
-											<string>55DDDAC90F48FD9B00894F8B</string>
-											<string>55DDDACA0F48FD9B00894F8B</string>
-											<string>55DDDAE40F48FFE100894F8B</string>
-											<string>55DDDAE50F48FFE100894F8B</string>
-											<string>55DDDAFE0F4904EF00894F8B</string>
-											<string>55DDDAFF0F4904EF00894F8B</string>
+											<string>55DDDB470F491BD100894F8B</string>
+											<string>55DDDB480F491BD100894F8B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -514,9 +492,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55DDDA6E0F48F65200894F8B</string>
+				<string>55DDDB410F49095600894F8B</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55DDDA6F0F48F65200894F8B</string>
+				<string>55DDDB420F49095600894F8B</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -635,7 +613,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>256443976.23979801</real>
+	<real>256450919.422878</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -650,9 +628,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>555D6A180F34DA010099F634</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>555D6A180F34DA010099F634</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/Dave/Documents/Developement/Audio Plugins/Flanger/build/mac/dRowAudio_Flanger.xcodeproj</string>
 	</array>
@@ -678,7 +655,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DRowAudioFilter.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -736,7 +713,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>555D6A180F34DA010099F634</string>
-				<string>55DDDA830F48FA4200894F8B</string>
+				<string>55DDDB370F4906FD00894F8B</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -856,13 +833,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>55DDDA840F48FA4200894F8B</string>
+				<string>55DDDB390F49095600894F8B</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>55DDDA850F48FA4200894F8B</string>
-				<string>55DDDA860F48FA4200894F8B</string>
-				<string>55DDDA870F48FA4200894F8B</string>
-				<string>55DDDA880F48FA4200894F8B</string>
-				<string>55DDDA890F48FA4200894F8B</string>
+				<string>55DDDB3A0F49095600894F8B</string>
+				<string>55DDDB3B0F49095600894F8B</string>
+				<string>55DDDB3C0F49095600894F8B</string>
+				<string>55DDDB3D0F49095600894F8B</string>
+				<string>55DDDB3E0F49095600894F8B</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -1018,7 +995,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>55DDDAA10F48FA5400894F8B</string>
+				<string>55DDDB3F0F49095600894F8B</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

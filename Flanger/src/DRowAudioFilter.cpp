@@ -79,9 +79,11 @@ void DRowAudioFilter::setupParams()
 	params[RATE].setSkewFactor(0.5f);
 	params[RATE].setSmoothCoeff(0.1);
 	params[DEPTH].init(parameterNames[DEPTH], UnitPercent, T("Changes the depth"),
-					   0.0, 0.0, 100.0, 0.0);
-	params[DEPTH].setSkewFactor(0.5f);
+					   20.0, 0.0, 100.0, 20.0);
+	params[DEPTH].setSkewFactor(0.7f);
 	params[DEPTH].setSmoothCoeff(0.1);
+	params[FEEDBACK].init(parameterNames[FEEDBACK], UnitPercent, T("Changes the depth"),
+						  0.0, 0.0, 100.0, 0.0);
 	params[GAIN].init(parameterNames[GAIN], UnitGeneric, T("Changes the Output Gain"),
 					  1.0, 0.0, 1.0, 1.0);
 }
@@ -253,15 +255,25 @@ void DRowAudioFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	currentSampleRate = sampleRate;
 	oneOverCurrentSampleRate = 1.0f/currentSampleRate;
 	
-	// set up wave buffer
+	// set up wave buffer and fill with triangle data
 	iLookupTableSize = 8192;
 	iLookupTableSizeMask =  iLookupTableSize-1;
 	
 	pfLookupTable = new float[iLookupTableSize];
 	float fPhaseStep = (2 * double_Pi) / iLookupTableSize;
+//	for(int i = 0; i < iLookupTableSize; i++){
+//		float val = sin(i*fPhaseStep);
+//		pfLookupTable[i] = val;
+//	}
 	for(int i = 0; i < iLookupTableSize; i++){
-		float val = sin(i*fPhaseStep);
-		pfLookupTable[i] = val;
+		if(i < iLookupTableSize * 0.5) {
+			float val = -1.0f + (2.0/double_Pi)*i*fPhaseStep;
+			pfLookupTable[i] = val;
+		}
+		else {
+			float val = 3.0f - (2.0/double_Pi)*i*fPhaseStep;
+			pfLookupTable[i] = val;
+		}
 	}
 	iLookupTablePos = 0;
 	iSamplesProcessed = 0;
@@ -294,14 +306,15 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 	
 	const int numInputChannels = getNumInputChannels();
 
-	if (numInputChannels > 0)
+	if (numInputChannels == 2)
 	{
-		const float oneOverNumInputChannels = 1.0f / numInputChannels;
+//		const float oneOverNumInputChannels = 1.0f / numInputChannels;
 
 		// create parameters to use
 		float fRate = params[RATE].getSmoothedValue();
 //		float fDepth = (params[DEPTH].getSmoothedNormalisedValue() * 0.0015) + 0.0005f;
 		float fDepth = (params[DEPTH].getSmoothedNormalisedValue() * 0.006f) + 0.0001f;
+		float fFeedback = params[FEEDBACK].getSmoothedNormalisedValue();
 		float fGain = params[GAIN].getSmoothedNormalisedValue();
 		
 		// calculate current phase step
@@ -326,10 +339,11 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			iBufferWritePos++;
 			if (iBufferWritePos >= iBufferSize)
 				iBufferWritePos = 0;
-			pfCircularBuffer[iBufferWritePos] = fMix;
+//			pfCircularBuffer[iBufferWritePos] = fMix;
 			
 			
 			int index =  (int)(iSamplesProcessed * phaseStep) &	iLookupTableSizeMask;
+
 			iSamplesProcessed++;
 			float fOsc = (pfLookupTable[index] * fDepth) + fDepth;
 			
@@ -349,6 +363,8 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			fDel = pfCircularBuffer[iPos2]*fDiff + pfCircularBuffer[iPos1]*(1-fDiff);
 			
 		    float fOut = 0.5f * (fMix + fDel);
+			
+			pfCircularBuffer[iBufferWritePos] = fMix + (fFeedback * fDel);
 			
 			
 			// process channels as interleaved

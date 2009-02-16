@@ -35,7 +35,7 @@ enum parameters
 {
 	RATE,
 	DEPTH,
-	param2,
+	FEEDBACK,
 	param3,
 	param4,
 	param5,
@@ -49,7 +49,7 @@ enum parameters
 static const char UNUSED_NOWARN *parameterNames[] = { 
 	"Rate",					// 0
 	"Depth",					// 1
-	"param2",						// 2
+	"Feedback",						// 2
 	"param3",						// 3
 	"param4",					// 4
 	"param5",					// 5
