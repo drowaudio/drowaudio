@@ -38,7 +38,7 @@
 //#include "juce/extras/audio Plugins/wrapper/juce_PluginHeaders.h"
 #include "juce/extras/audio Plugins/wrapper/juce_IncludeCharacteristics.h"
 #include <juce/juce.h>
-#include "../../../BaseFilter/DRowAudioFilter.h"
+#include "../general/DRowAudioFilter.h"
 
 #if JucePlugin_Build_AU
 

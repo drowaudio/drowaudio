@@ -10,14 +10,13 @@
 #include "dRowAudio_OnePoleFilter.h"
 
 OnePoleFilter::OnePoleFilter()
-	:	x(0.0), x1(0.0)
+	:	x(0.0), y1(0.0), b0(1.0), a1(0.0)
 {
 	
 }
 
 OnePoleFilter::~OnePoleFilter()
 {
-	
 }
 
 void OnePoleFilter::processSamples(float* const pfSamples,
@@ -28,8 +27,8 @@ void OnePoleFilter::processSamples(float* const pfSamples,
 	
 	for (int i = 0; i < numSamples; ++i)
 	{
-		pfSamples[i] = (b0 * pfSamples[i]) + (a1 * x1);
-		x1 = pfSamples[i];
+		pfSamples[i] = (b0 * pfSamples[i]) + (a1 * y1);
+		y1 = pfSamples[i];
 	}
 	
 	lock.exit();
@@ -37,7 +36,7 @@ void OnePoleFilter::processSamples(float* const pfSamples,
 
 float OnePoleFilter::processSingleSample(const float sampleToProcess)
 {
-	return x1 = (b0 * sampleToProcess) + (a1 * x1);
+	return y1 = (b0 * sampleToProcess) + (a1 * y1);
 }
 
 void OnePoleFilter::makeLowPass(const double sampleRate,

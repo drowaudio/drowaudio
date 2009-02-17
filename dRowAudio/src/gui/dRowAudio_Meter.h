@@ -14,16 +14,23 @@
 /**	This is a class used to display a meter component.
 	
 	The slow decay and logarithmic scaling is implimented internally 
-	so all you need to do is pass it the Bar and Line levels to 
-	display at the required update interval.
+	so all you need to do is pass it some pointers to the Bar and Line levels to 
+	display. A critical section is also required to avoid corruptind data from different threads.
  */
 class MeterComponent	:	public Component,
 							public Timer
 {	
 public:
 	
-	/// Create the meter component
+	/** Create the meter component.
+		The default refresh rate is 50ms but this can be changed with setUpdateInterval()
+		
+		@param barValueToUse	A pointer to the value for the bar to display
+		@param lineValueToUse	A pointer to the value for the line to display
+		@param lockToUse		The Critical section to use
+	 */
 	MeterComponent(float* barValueToUse, float* lineValueToUse, const CriticalSection& lockToUse);
+	/// Destructor
 	~MeterComponent();
 	
 	//========================================
@@ -33,11 +40,14 @@ public:
 	
 	void timerCallback();
 	//========================================
-
+	/**	Changes the refresh rate of the meter.
+		This can be used to change how frequently the meters update.
+		This could be useful for turning them off or slowing them down to release some resources.
+	 */
+	void setUpdateInterval(const int intervalInMilliseconds);
+	
 	/** Sets the new level of the meter.
-		Repeatedly call this to update the levels. The suggested rate is 50ms.
-		The two levels are provided so you can meter different things if needs
-		be eg. RMS and peak levels.
+		This can be called to explicitly set the meter levels although this is not recomended.
 	 */
 	void setMeterLevel(const float newBarLevel, const float newLineLevel =0.0f);
 	//========================================

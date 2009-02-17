@@ -11,7 +11,7 @@
 
 #include <juce/juce.h>
 
-/* parameter units - currently values are the same as the AudioUnit enums for this purpose */
+/** Parameter Units - currently values are the same as the AudioUnit enums for this purpose */
 enum ParameterUnit
 {
 	UnitGeneric				= 0,	/* untyped value generally between 0.0 and 1.0 */
@@ -55,13 +55,15 @@ class dRowParameter
 	public:
 	/** Create a default initialised parameter.
 	 
-	 This is called from a default constructor so can be used as a placeholder.
-	 Call init() once you know the parameter values.
-	 @see dRowParameter::init
+		This is called from a default constructor so can be used as a placeholder.
+		Call init() once you know the parameter values.
+		@see init()
 	 */
 	dRowParameter();
 		
-	/// Initialise parameter
+	/** Initialise the parameter.
+		Used to set up the parameter as required.
+	 */
 	void init(const String& name_, ParameterUnit unit_, String description_,
 			  double value_, double min_ =0.0f, double max_ =1.0f, double default_ =0.0f,
 			  double skewFactor_ =1.0f, double smoothCoeff_ =0.1f, double step_ =0.001);

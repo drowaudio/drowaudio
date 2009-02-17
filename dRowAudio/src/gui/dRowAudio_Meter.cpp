@@ -95,6 +95,11 @@ void MeterComponent::timerCallback()
 }
 //========================================
 
+void MeterComponent::setUpdateInterval(const int intervalInMilliseconds)
+{
+	startTimer(intervalInMilliseconds);
+}
+
 void MeterComponent::setMeterLevel(const float newBarLevel, const float newLineLevel)
 {
 	prevBarLevel = currentBarLevel;

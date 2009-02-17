@@ -281,6 +281,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -305,10 +307,12 @@
 						<dict>
 							<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 							<array>
-								<real>295</real>
+								<real>22</real>
+								<real>273</real>
 							</array>
 							<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 							<array>
+								<string>SCMStatusColumn</string>
 								<string>MainColumn</string>
 							</array>
 						</dict>
@@ -324,12 +328,11 @@
 								<string>55592FEE0F4720C10044FC32</string>
 								<string>32C88DFF0371C24200C91783</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
+									<integer>6</integer>
 									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -351,8 +354,10 @@
 						<string>{{0, 0}, {312, 678}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
+							<string>SCMStatusColumn</string>
+							<real>22</real>
 							<string>MainColumn</string>
-							<real>295</real>
+							<real>273</real>
 						</array>
 						<key>RubberWindowFrame</key>
 						<string>0 59 1280 719 0 0 1280 778 </string>
@@ -366,14 +371,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_OnePoleFilter.cpp</string>
+								<string>dRowAudio_BiquadFilter.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -381,22 +384,25 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_OnePoleFilter.cpp</string>
+										<string>dRowAudio_BiquadFilter.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55DDE2540F4B118600894F8B</string>
+										<string>55BE28AD0F4B22B000F7CC9B</string>
 										<key>history</key>
 										<array>
-											<string>555934A00F47222C0044FC32</string>
-											<string>55DDE01B0F4A4BCC00894F8B</string>
 											<string>55DDE01C0F4A4BCC00894F8B</string>
-											<string>55DDE01D0F4A4BCC00894F8B</string>
-											<string>55DDE01F0F4A4BCC00894F8B</string>
-											<string>55DDE0800F4A4FD300894F8B</string>
-											<string>55DDE0990F4A64C600894F8B</string>
-											<string>55DDE1460F4A6FBF00894F8B</string>
-											<string>55DDE1470F4A6FBF00894F8B</string>
+											<string>55BE28820F4B17C900F7CC9B</string>
+											<string>55BE288B0F4B21C200F7CC9B</string>
+											<string>55BE288C0F4B21C200F7CC9B</string>
+											<string>55BE288D0F4B21C200F7CC9B</string>
+											<string>55BE288E0F4B21C200F7CC9B</string>
+											<string>55BE288F0F4B21C200F7CC9B</string>
+											<string>55BE28A50F4B22B000F7CC9B</string>
+											<string>55BE28A60F4B22B000F7CC9B</string>
+											<string>55BE28A70F4B22B000F7CC9B</string>
+											<string>55BE28A80F4B22B000F7CC9B</string>
+											<string>55BE28900F4B21C200F7CC9B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -407,38 +413,33 @@
 											<string>555936F60F48B27D0044FC32</string>
 											<string>55DDDD800F4A179B00894F8B</string>
 											<string>55DDDD810F4A179B00894F8B</string>
-											<string>55DDE0200F4A4BCC00894F8B</string>
-											<string>55DDE0210F4A4BCC00894F8B</string>
 											<string>55DDE0230F4A4BCC00894F8B</string>
 											<string>55DDE0240F4A4BCC00894F8B</string>
-											<string>55DDE0250F4A4BCC00894F8B</string>
-											<string>55DDE0260F4A4BCC00894F8B</string>
-											<string>55DDE0270F4A4BCC00894F8B</string>
-											<string>55DDE0280F4A4BCC00894F8B</string>
-											<string>55DDE0290F4A4BCC00894F8B</string>
-											<string>55DDE02A0F4A4BCC00894F8B</string>
-											<string>55DDE02B0F4A4BCC00894F8B</string>
-											<string>55DDE02C0F4A4BCC00894F8B</string>
-											<string>55DDE02D0F4A4BCC00894F8B</string>
-											<string>55DDE02F0F4A4BCC00894F8B</string>
-											<string>55DDE0310F4A4BCC00894F8B</string>
-											<string>55DDE0330F4A4BCC00894F8B</string>
-											<string>55DDE0350F4A4BCC00894F8B</string>
-											<string>55DDE0370F4A4BCC00894F8B</string>
-											<string>55DDE0390F4A4BCC00894F8B</string>
-											<string>55DDE0820F4A4FD300894F8B</string>
-											<string>55DDE0830F4A4FD300894F8B</string>
-											<string>55DDE0840F4A4FD300894F8B</string>
-											<string>55DDE0850F4A4FD300894F8B</string>
-											<string>55DDE09A0F4A64C600894F8B</string>
-											<string>55DDE0B80F4A680300894F8B</string>
-											<string>55DDE0B90F4A680300894F8B</string>
-											<string>55DDE1300F4A6F8800894F8B</string>
-											<string>55DDE1310F4A6F8800894F8B</string>
-											<string>55DDE13B0F4A6F9F00894F8B</string>
-											<string>55DDE13C0F4A6F9F00894F8B</string>
-											<string>55DDE13D0F4A6F9F00894F8B</string>
-											<string>55DDE1480F4A6FBF00894F8B</string>
+											<string>55BE28840F4B17C900F7CC9B</string>
+											<string>55BE28850F4B17C900F7CC9B</string>
+											<string>55BE28860F4B17C900F7CC9B</string>
+											<string>55BE28870F4B17C900F7CC9B</string>
+											<string>55BE28880F4B17C900F7CC9B</string>
+											<string>55BE28920F4B21C200F7CC9B</string>
+											<string>55BE28930F4B21C200F7CC9B</string>
+											<string>55BE28940F4B21C200F7CC9B</string>
+											<string>55BE28950F4B21C200F7CC9B</string>
+											<string>55BE28960F4B21C200F7CC9B</string>
+											<string>55BE28970F4B21C200F7CC9B</string>
+											<string>55BE28980F4B21C200F7CC9B</string>
+											<string>55BE28990F4B21C200F7CC9B</string>
+											<string>55BE289A0F4B21C200F7CC9B</string>
+											<string>55BE289B0F4B21C200F7CC9B</string>
+											<string>55BE289C0F4B21C200F7CC9B</string>
+											<string>55BE289D0F4B21C200F7CC9B</string>
+											<string>55BE289E0F4B21C200F7CC9B</string>
+											<string>55BE289F0F4B21C200F7CC9B</string>
+											<string>55BE28A00F4B21C200F7CC9B</string>
+											<string>55BE28A10F4B21C200F7CC9B</string>
+											<string>55BE28A90F4B22B000F7CC9B</string>
+											<string>55BE28AA0F4B22B000F7CC9B</string>
+											<string>55BE28AB0F4B22B000F7CC9B</string>
+											<string>55BE28AC0F4B22B000F7CC9B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -496,9 +497,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55DDDFF80F4A467400894F8B</string>
+				<string>55BE28230F4B140A00F7CC9B</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55DDDFF90F4A467400894F8B</string>
+				<string>55BE28240F4B140A00F7CC9B</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -617,7 +618,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>256577926.40215799</real>
+	<real>256582320.14559999</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -632,6 +633,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>55592FD60F47202C0044FC32</string>
 		<string>/Users/Dave/Documents/Developement/dRowAudio/build/macosx/dRowAudio.xcodeproj</string>
 	</array>
@@ -657,7 +659,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_AudioFilePlayer.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -674,8 +676,6 @@
 							<string>272pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -715,7 +715,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>55592FD60F47202C0044FC32</string>
-				<string>55DDE0040F4A493700894F8B</string>
+				<string>55BE28200F4B13FE00F7CC9B</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -909,8 +909,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>55DDDE390F4A2EBC00894F8B</string>
-				<string>55DDDE3A0F4A2EBC00894F8B</string>
+				<string>55BE287F0F4B17B900F7CC9B</string>
+				<string>55BE28800F4B17B900F7CC9B</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>

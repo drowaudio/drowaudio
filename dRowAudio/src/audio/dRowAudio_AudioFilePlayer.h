@@ -2,7 +2,7 @@
  *  AudioFilePlayer.h
  *  dRowAudio
  *
- *	Derived from Martin Robinson
+ *	Derived from code by Martin Robinson 2008
  *  Created by David Rowland on 10/01/2009.
  *  Copyright 2009 UWE. All rights reserved.
  *
@@ -29,7 +29,7 @@ public:
 	/// Creates an empty AudioFilePlayer.
 	AudioFilePlayer();
 	
-	/** Creates an AudioFilePlayer from a given path
+	/** Creates an AudioFilePlayer from a given absolute path
 	 */
 	AudioFilePlayer(const String& path);
 	

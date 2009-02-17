@@ -75,7 +75,7 @@
 		55DDDD850F4A17AB00894F8B /* dRowAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio.h; path = ../../dRowAudio.h; sourceTree = SOURCE_ROOT; };
 		55DDDFFB0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_AudioFilePlayer.cpp; path = ../../src/audio/dRowAudio_AudioFilePlayer.cpp; sourceTree = SOURCE_ROOT; };
 		55DDDFFC0F4A468300894F8B /* dRowAudio_AudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_AudioFilePlayer.h; path = ../../src/audio/dRowAudio_AudioFilePlayer.h; sourceTree = SOURCE_ROOT; };
-		D2AAC07E0554694100DB518D /* libdRowAudiodebug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdRowAudiodebug.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AAC07E0554694100DB518D /* libdRowAudio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdRowAudio.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2AAC07E0554694100DB518D /* libdRowAudiodebug.a */,
+				D2AAC07E0554694100DB518D /* libdRowAudio.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,7 +246,7 @@
 			);
 			name = dRowAudio;
 			productName = dRowAudio;
-			productReference = D2AAC07E0554694100DB518D /* libdRowAudiodebug.a */;
+			productReference = D2AAC07E0554694100DB518D /* libdRowAudio.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
