@@ -43,7 +43,10 @@ public:
 		Less efficient method but leaves the sample unchanged,
 		returning a filterd copy of it.
 	 */
-	float processSingleSample(const float sampleToProcess);
+	forcedinline float processSingleSample(const float sampleToProcess)
+	{
+		return y1 = (b0 * sampleToProcess) + (a1 * y1);
+	}
 	
 	/**	Turns the filter into a Low-pass.
 	 */
@@ -57,7 +60,7 @@ public:
 private:
 	CriticalSection lock;
 	
-	float a1, b0, x, y1;
+	float x, y1, b0, a1;
 };
 
 

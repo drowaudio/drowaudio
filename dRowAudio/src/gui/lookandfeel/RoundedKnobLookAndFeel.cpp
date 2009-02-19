@@ -45,9 +45,9 @@ void dRowLookAndFeel::drawRotarySlider (Graphics& g,
 		g.fillEllipse (rx, ry, rw, rw);
 		
 		// draw rounding highlight
-		GradientBrush highlight (Colour (0x91ffffff),
-								  rx+(rw/2), ry+(rw * 0.15f),
-								  Colour (0x00ffff),
+		GradientBrush highlight (Colours::white.withAlpha(0.45f),//Colour (0x91ffffff),
+								  rx+(rw/2), ry+(rw * 0.2f),
+								  Colours::transparentWhite,//Colour (0x00ffff),
 								  rx+(rw/2), ry+(rw/2),
 								  true);
 		g.setBrush (&highlight);
@@ -68,10 +68,9 @@ void dRowLookAndFeel::drawRotarySlider (Graphics& g,
 		const float thumbX = posX - (thumbW * 0.5f);
 		const float thumbY = posY - (thumbW * 0.5f);
 		
-		GradientBrush thumbGradient ( (Colours::black),
-									  //Colour().greyLevel(-0.2f*cos(0.5f*angle)),
+		GradientBrush thumbGradient ( slider.findColour(Slider::rotarySliderFillColourId).withBrightness(0.05f),//(Colours::black),
 									  thumbX, thumbY,
-									  Colour().greyLevel(0.7f),
+									  slider.findColour(Slider::rotarySliderFillColourId).withBrightness(0.75f),//Colour().greyLevel(0.7f),
 									  thumbX, thumbY+thumbW,
 									  false);
 		g.setBrush (&thumbGradient);
@@ -84,3 +83,90 @@ void dRowLookAndFeel::drawRotarySlider (Graphics& g,
 		//======================================================================
 //	}
 }
+
+// creates the 3D-effect text box
+void dRowLookAndFeel::drawLabel (Graphics& g, Label& label)
+{
+	int innerBoxHeight = label.getHeight();
+	int innerBoxWidth = label.getWidth();	
+	bool hasTransparentBackground = label.findColour(Label::backgroundColourId).isTransparent();
+	
+	// increase the border to allow the extra highlight
+	if (! hasTransparentBackground)
+	{
+		innerBoxHeight -= 3;
+		innerBoxWidth -= 2;
+		
+	}
+
+	// fill background
+	g.setColour(label.findColour (Label::backgroundColourId));
+	g.fillRoundedRectangle(0, 0, label.getWidth(), label.getHeight()-1, 2);
+	
+    if (! label.isBeingEdited())
+    {
+        const float alpha = label.isEnabled() ? 1.0f : 0.5f;
+		
+        g.setColour (label.findColour (Label::textColourId).withMultipliedAlpha (alpha));
+		if (! hasTransparentBackground)
+		{
+			Font font(label.getFont());
+			g.setFont(font.getHeight()-2);
+		}
+		else
+		{
+			g.setFont (label.getFont());
+		}
+		g.drawFittedText (label.getText(),
+                          label.getHorizontalBorderSize()+3,
+                          label.getVerticalBorderSize()+5,
+                          innerBoxWidth - 2 * (label.getHorizontalBorderSize()+2),
+                          innerBoxHeight - 2 * (label.getVerticalBorderSize()+4),
+                          label.getJustificationType(),
+                          jmax (1, (int) (innerBoxHeight / label.getFont().getHeight())),
+                          label.getMinimumHorizontalScale());
+		
+        g.setColour (label.findColour (Label::outlineColourId).withMultipliedAlpha (alpha));
+        g.drawRect (1, 1, innerBoxWidth, innerBoxHeight);
+    }
+    else if (label.isEnabled())
+    {
+        g.setColour (label.findColour (Label::outlineColourId));
+        g.drawRect (0, 0, innerBoxWidth, innerBoxHeight);
+    }
+	
+	// draw the 3-d aspects only if the background is not transparent
+	if (! hasTransparentBackground)
+	{
+		//draw inner shaddow and highlight
+		GradientBrush innerShaddow(Colour(findColour(Label::backgroundColourId)).withBrightness(1.0f).withAlpha(0.3f),
+								   0, 0,
+								   Colours::black.withAlpha(0.4f),
+								   0, label.getHeight(),
+								   false);
+		g.setBrush(&innerShaddow);
+		g.fillRect(1, 1, innerBoxWidth, innerBoxHeight);
+		
+		// draw outer shaddow and highlight
+//		GradientBrush outerShaddow(Colours::black.withAlpha(0.5f),
+//								   0, 0,
+//								   Colours::white.withAlpha(0.5f),
+//								   0, label.getHeight(),
+//								   false);
+//		g.setBrush(&outerShaddow);
+//		g.drawRoundedRectangle(0, 0, label.getWidth(), label.getHeight()-1, 2, 1);
+		
+		// draw bottom edge highlight
+		ColourGradient bottomHighlight(Colours::transparentWhite,
+									   0, label.getHeight()-1,
+									   Colours::transparentWhite,
+									   label.getWidth(), label.getHeight()-1,
+									   false);
+		bottomHighlight.addColour(0.05f, Colours::white.withAlpha(0.7f));
+		bottomHighlight.addColour(0.95f, Colours::white.withAlpha(0.7f));
+		GradientBrush bottomBrush(bottomHighlight);
+		g.setBrush(&bottomBrush);
+		g.drawLine(0, label.getHeight(), label.getWidth(), label.getHeight());
+	}
+}
+

@@ -29,6 +29,8 @@
 		5559348E0F4721440044FC32 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5559347F0F4721440044FC32 /* OpenGL.framework */; };
 		5559348F0F4721440044FC32 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934800F4721440044FC32 /* WebKit.framework */; };
 		555934940F4721870044FC32 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934920F4721440044FC32 /* libjuce.a */; };
+		55BE2C010F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BE2BFF0F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.cpp */; };
+		55BE2C020F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.h in Headers */ = {isa = PBXBuildFile; fileRef = 55BE2C000F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.h */; };
 		55DDDD730F4A13E900894F8B /* dRowAudio_OnePoleFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 55DDDD710F4A13E900894F8B /* dRowAudio_OnePoleFilter.h */; };
 		55DDDD740F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55DDDD720F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp */; };
 		55DDDFFD0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55DDDFFB0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp */; };
@@ -69,6 +71,8 @@
 		5559347E0F4721440044FC32 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5559347F0F4721440044FC32 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		555934800F4721440044FC32 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		55BE2BFF0F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RoundedKnobLookAndFeel.cpp; path = ../../src/gui/lookandfeel/RoundedKnobLookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
+		55BE2C000F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundedKnobLookAndFeel.h; path = ../../src/gui/lookandfeel/RoundedKnobLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		55DDDD710F4A13E900894F8B /* dRowAudio_OnePoleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_OnePoleFilter.h; path = ../../src/audio/dRowAudio_OnePoleFilter.h; sourceTree = SOURCE_ROOT; };
 		55DDDD720F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_OnePoleFilter.cpp; path = ../../src/audio/dRowAudio_OnePoleFilter.cpp; sourceTree = SOURCE_ROOT; };
 		55DDDD770F4A177600894F8B /* dRowAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio.cpp; path = ../../dRowAudio.cpp; sourceTree = SOURCE_ROOT; };
@@ -193,6 +197,8 @@
 			children = (
 				55592FF50F4720DF0044FC32 /* dRowAudio_Parameter.h */,
 				55592FF40F4720DF0044FC32 /* dRowAudio_Parameter.cpp */,
+				55BE2C000F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.h */,
+				55BE2BFF0F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.cpp */,
 			);
 			name = parameters;
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 				55592FFB0F4720EB0044FC32 /* dRowAudio_BiquadFilter.h in Headers */,
 				55DDDD730F4A13E900894F8B /* dRowAudio_OnePoleFilter.h in Headers */,
 				55DDDFFE0F4A468300894F8B /* dRowAudio_AudioFilePlayer.h in Headers */,
+				55BE2C020F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +300,7 @@
 				55592FFA0F4720EB0044FC32 /* dRowAudio_BiquadFilter.cpp in Sources */,
 				55DDDD740F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp in Sources */,
 				55DDDFFD0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp in Sources */,
+				55BE2C010F4CD4DA00F7CC9B /* RoundedKnobLookAndFeel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

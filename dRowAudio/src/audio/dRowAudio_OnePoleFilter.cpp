@@ -34,10 +34,6 @@ void OnePoleFilter::processSamples(float* const pfSamples,
 	lock.exit();
 }
 
-float OnePoleFilter::processSingleSample(const float sampleToProcess)
-{
-	return y1 = (b0 * sampleToProcess) + (a1 * y1);
-}
 
 void OnePoleFilter::makeLowPass(const double sampleRate,
 								const double frequency)

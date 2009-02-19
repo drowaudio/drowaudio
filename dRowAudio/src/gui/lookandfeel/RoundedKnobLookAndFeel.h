@@ -1,6 +1,5 @@
 /*
  *  dRowLookAndFeel.h
- *  haydxn_tutorial
  *
  *  Created by David Rowland on 23/01/2009.
  *  Copyright 2009 UWE. All rights reserved.
@@ -22,6 +21,8 @@ class dRowLookAndFeel : public LookAndFeel
 									   const float rotaryStartAngle,
 									   const float rotaryEndAngle,
 									   Slider& slider);
+				
+		virtual void drawLabel (Graphics& g, Label& label);
 	};
 
 #endif
