@@ -28,7 +28,7 @@
 		555934F80F47A1850044FC32 /* CAAUParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA05B060720754400365D66 /* CAAUParameter.h */; };
 		555934F90F47A1850044FC32 /* CAVectorUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EEA126C089847F5002C6BFC /* CAVectorUnit.h */; };
 		555934FA0F47A1850044FC32 /* CAVectorUnitTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EEA126D089847F5002C6BFC /* CAVectorUnitTypes.h */; };
-		555934FB0F47A1850044FC32 /* DemoEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DemoEditorComponent.h */; };
+		555934FB0F47A1850044FC32 /* DRowAudioEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */; };
 		555934FC0F47A1850044FC32 /* DRowAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A50EFBF14B002A2725 /* DRowAudioFilter.h */; };
 		555934FD0F47A1850044FC32 /* includes.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A60EFBF14B002A2725 /* includes.h */; };
 		555934FE0F47A1850044FC32 /* JucePluginCharacteristics.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A90EFBF14B002A2725 /* JucePluginCharacteristics.h */; };
@@ -52,7 +52,7 @@
 		555935120F47A1850044FC32 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BA05AE30720742100365D66 /* CAStreamBasicDescription.cpp */; };
 		555935130F47A1850044FC32 /* CAAUParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BA05B050720754400365D66 /* CAAUParameter.cpp */; };
 		555935140F47A1850044FC32 /* CAVectorUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA126B089847F5002C6BFC /* CAVectorUnit.cpp */; };
-		555935150F47A1850044FC32 /* DemoEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DemoEditorComponent.cpp */; };
+		555935150F47A1850044FC32 /* DRowAudioEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */; };
 		555935160F47A1850044FC32 /* DRowAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */; };
 		555935170F47A1850044FC32 /* juce_AU_Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 843792B40EFBF175002A2725 /* juce_AU_Wrapper.mm */; };
 		555935180F47A1850044FC32 /* AUMIDIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8437965F0EFBF357002A2725 /* AUMIDIBase.cpp */; };
@@ -74,7 +74,7 @@
 		555935290F47A1850044FC32 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8437956D0EFBF323002A2725 /* WebKit.framework */; };
 		5559352A0F47A1850044FC32 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843796740EFBF416002A2725 /* CoreFoundation.framework */; };
 		5559352E0F47A1850044FC32 /* juce_AU_Resources.r in Rez */ = {isa = PBXBuildFile; fileRef = 843792B30EFBF175002A2725 /* juce_AU_Resources.r */; };
-		5559354B0F47A1E20044FC32 /* dRowAudio_Flanger.component in CopyFiles */ = {isa = PBXBuildFile; fileRef = 555935340F47A1860044FC32 /* dRowAudio_Flanger.component */; };
+		5559354B0F47A1E20044FC32 /* dRowAudio_Flanger.vst in CopyFiles */ = {isa = PBXBuildFile; fileRef = 555935340F47A1860044FC32 /* dRowAudio_Flanger.vst */; };
 		555936FC0F48B6AF0044FC32 /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55592F3D0F4719860044FC32 /* dRowAudio.cpp */; };
 		555936FD0F48B6C20044FC32 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555928F40F45C5AC0044FC32 /* libjuce.a */; };
 		5559372F0F48C05C0044FC32 /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55592F3D0F4719860044FC32 /* dRowAudio.cpp */; };
@@ -83,8 +83,9 @@
 		555D6D870F3765130099F634 /* Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 555D6D860F3765130099F634 /* Parameters.h */; };
 		55DDDCFD0F49DE7100894F8B /* flanger_title.h in Headers */ = {isa = PBXBuildFile; fileRef = 55DDDCFB0F49DE7100894F8B /* flanger_title.h */; };
 		55DDDCFE0F49DE7100894F8B /* flanger_title.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55DDDCFC0F49DE7100894F8B /* flanger_title.cpp */; };
-		843792AA0EFBF14B002A2725 /* DemoEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DemoEditorComponent.cpp */; };
-		843792AB0EFBF14B002A2725 /* DemoEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DemoEditorComponent.h */; };
+		55DDE1F90F4A89E200894F8B /* flanger_title.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55DDDCFC0F49DE7100894F8B /* flanger_title.cpp */; };
+		843792AA0EFBF14B002A2725 /* DRowAudioEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */; };
+		843792AB0EFBF14B002A2725 /* DRowAudioEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */; };
 		843792AC0EFBF14B002A2725 /* DRowAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */; };
 		843792AD0EFBF14B002A2725 /* DRowAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A50EFBF14B002A2725 /* DRowAudioFilter.h */; };
 		843792AE0EFBF14B002A2725 /* includes.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A60EFBF14B002A2725 /* includes.h */; };
@@ -160,6 +161,13 @@
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = dRowAudio;
 		};
+		55BE36D30F4E26F600F7CC9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 555934E70F47A1850044FC32 /* PluginVST */;
+			remoteInfo = PluginVST;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -169,7 +177,7 @@
 			dstPath = "$HOME/Library/Audio/Plug-Ins/VST";
 			dstSubfolderSpec = 0;
 			files = (
-				5559354B0F47A1E20044FC32 /* dRowAudio_Flanger.component in CopyFiles */,
+				5559354B0F47A1E20044FC32 /* dRowAudio_Flanger.vst in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,13 +204,12 @@
 		55592F5B0F471C9F0044FC32 /* dRowAudio_Meter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_Meter.cpp; path = ../../../../dRowAudio/src/gui/dRowAudio_Meter.cpp; sourceTree = SOURCE_ROOT; };
 		55592F5D0F471CA60044FC32 /* dRowAudio_Parameter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_Parameter.cpp; path = ../../../../dRowAudio/src/parameters/dRowAudio_Parameter.cpp; sourceTree = SOURCE_ROOT; };
 		555934B10F4722720044FC32 /* dRowAudio.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = dRowAudio.xcodeproj; path = ../../../../dRowAudio/build/macosx/dRowAudio.xcodeproj; sourceTree = SOURCE_ROOT; };
-		555935340F47A1860044FC32 /* dRowAudio_Flanger.component */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dRowAudio_Flanger.component; sourceTree = BUILT_PRODUCTS_DIR; };
-		555935350F47A1860044FC32 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info copy.plist"; sourceTree = "<group>"; };
+		555935340F47A1860044FC32 /* dRowAudio_Flanger.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dRowAudio_Flanger.vst; sourceTree = BUILT_PRODUCTS_DIR; };
 		555D6D860F3765130099F634 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = ../../src/Parameters.h; sourceTree = SOURCE_ROOT; };
 		55DDDCFB0F49DE7100894F8B /* flanger_title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flanger_title.h; path = ../../src/Resources/flanger_title.h; sourceTree = SOURCE_ROOT; };
 		55DDDCFC0F49DE7100894F8B /* flanger_title.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flanger_title.cpp; path = ../../src/Resources/flanger_title.cpp; sourceTree = SOURCE_ROOT; };
-		843792A20EFBF14B002A2725 /* DemoEditorComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoEditorComponent.cpp; path = ../../src/DemoEditorComponent.cpp; sourceTree = SOURCE_ROOT; };
-		843792A30EFBF14B002A2725 /* DemoEditorComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoEditorComponent.h; path = ../../src/DemoEditorComponent.h; sourceTree = SOURCE_ROOT; };
+		843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DRowAudioEditorComponent.cpp; path = ../../src/DRowAudioEditorComponent.cpp; sourceTree = "<group>"; };
+		843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DRowAudioEditorComponent.h; path = ../../src/DRowAudioEditorComponent.h; sourceTree = "<group>"; };
 		843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DRowAudioFilter.cpp; path = ../../src/DRowAudioFilter.cpp; sourceTree = SOURCE_ROOT; };
 		843792A50EFBF14B002A2725 /* DRowAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DRowAudioFilter.h; path = ../../src/DRowAudioFilter.h; sourceTree = SOURCE_ROOT; };
 		843792A60EFBF14B002A2725 /* includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = includes.h; path = ../../src/includes.h; sourceTree = SOURCE_ROOT; };
@@ -353,7 +360,6 @@
 			children = (
 				8D01CCD10486CAD60068D4B7 /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
-				555935350F47A1860044FC32 /* Info copy.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -373,7 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				8D01CCD20486CAD60068D4B7 /* dRowAudio_Flanger.component */,
-				555935340F47A1860044FC32 /* dRowAudio_Flanger.component */,
+				555935340F47A1860044FC32 /* dRowAudio_Flanger.vst */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -417,8 +423,8 @@
 		555D71050F38C20E0099F634 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				843792A20EFBF14B002A2725 /* DemoEditorComponent.cpp */,
-				843792A30EFBF14B002A2725 /* DemoEditorComponent.h */,
+				843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */,
+				843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */,
 				55DDDBE50F49BD6C00894F8B /* Resources */,
 			);
 			name = GUI;
@@ -594,7 +600,7 @@
 				555934F80F47A1850044FC32 /* CAAUParameter.h in Headers */,
 				555934F90F47A1850044FC32 /* CAVectorUnit.h in Headers */,
 				555934FA0F47A1850044FC32 /* CAVectorUnitTypes.h in Headers */,
-				555934FB0F47A1850044FC32 /* DemoEditorComponent.h in Headers */,
+				555934FB0F47A1850044FC32 /* DRowAudioEditorComponent.h in Headers */,
 				555934FC0F47A1850044FC32 /* DRowAudioFilter.h in Headers */,
 				555934FD0F47A1850044FC32 /* includes.h in Headers */,
 				555934FE0F47A1850044FC32 /* JucePluginCharacteristics.h in Headers */,
@@ -628,7 +634,7 @@
 				8BA05B080720754400365D66 /* CAAUParameter.h in Headers */,
 				3EEA126F089847F5002C6BFC /* CAVectorUnit.h in Headers */,
 				3EEA1270089847F5002C6BFC /* CAVectorUnitTypes.h in Headers */,
-				843792AB0EFBF14B002A2725 /* DemoEditorComponent.h in Headers */,
+				843792AB0EFBF14B002A2725 /* DRowAudioEditorComponent.h in Headers */,
 				843792AD0EFBF14B002A2725 /* DRowAudioFilter.h in Headers */,
 				843792AE0EFBF14B002A2725 /* includes.h in Headers */,
 				843792B10EFBF14B002A2725 /* JucePluginCharacteristics.h in Headers */,
@@ -644,9 +650,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		555934E70F47A1850044FC32 /* JuceDemoPluginVST */ = {
+		555934E70F47A1850044FC32 /* PluginVST */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 555935310F47A1850044FC32 /* Build configuration list for PBXNativeTarget "JuceDemoPluginVST" */;
+			buildConfigurationList = 555935310F47A1850044FC32 /* Build configuration list for PBXNativeTarget "PluginVST" */;
 			buildPhases = (
 				555934E80F47A1850044FC32 /* Headers */,
 				555935040F47A1850044FC32 /* Resources */,
@@ -659,15 +665,15 @@
 			);
 			dependencies = (
 			);
-			name = JuceDemoPluginVST;
+			name = PluginVST;
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = JuceDemoPlugin;
-			productReference = 555935340F47A1860044FC32 /* dRowAudio_Flanger.component */;
+			productReference = 555935340F47A1860044FC32 /* dRowAudio_Flanger.vst */;
 			productType = "com.apple.product-type.bundle";
 		};
-		8D01CCC60486CAD60068D4B7 /* JuceDemoPlugin */ = {
+		8D01CCC60486CAD60068D4B7 /* PluginAU */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E4BA243089833B7007656EC /* Build configuration list for PBXNativeTarget "JuceDemoPlugin" */;
+			buildConfigurationList = 3E4BA243089833B7007656EC /* Build configuration list for PBXNativeTarget "PluginAU" */;
 			buildPhases = (
 				8D01CCC70486CAD60068D4B7 /* Headers */,
 				8D01CCC90486CAD60068D4B7 /* Resources */,
@@ -679,8 +685,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				55BE36D40F4E26F600F7CC9B /* PBXTargetDependency */,
 			);
-			name = JuceDemoPlugin;
+			name = PluginAU;
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = JuceDemoPlugin;
 			productReference = 8D01CCD20486CAD60068D4B7 /* dRowAudio_Flanger.component */;
@@ -708,8 +715,8 @@
 			);
 			projectRoot = ../..;
 			targets = (
-				8D01CCC60486CAD60068D4B7 /* JuceDemoPlugin */,
-				555934E70F47A1850044FC32 /* JuceDemoPluginVST */,
+				8D01CCC60486CAD60068D4B7 /* PluginAU */,
+				555934E70F47A1850044FC32 /* PluginVST */,
 			);
 		};
 /* End PBXProject section */
@@ -788,7 +795,7 @@
 				555935120F47A1850044FC32 /* CAStreamBasicDescription.cpp in Sources */,
 				555935130F47A1850044FC32 /* CAAUParameter.cpp in Sources */,
 				555935140F47A1850044FC32 /* CAVectorUnit.cpp in Sources */,
-				555935150F47A1850044FC32 /* DemoEditorComponent.cpp in Sources */,
+				555935150F47A1850044FC32 /* DRowAudioEditorComponent.cpp in Sources */,
 				555935160F47A1850044FC32 /* DRowAudioFilter.cpp in Sources */,
 				555935170F47A1850044FC32 /* juce_AU_Wrapper.mm in Sources */,
 				555935180F47A1850044FC32 /* AUMIDIBase.cpp in Sources */,
@@ -798,6 +805,7 @@
 				5559351C0F47A1850044FC32 /* juce_VST_Wrapper.cpp in Sources */,
 				5559351D0F47A1850044FC32 /* juce_VST_Wrapper.mm in Sources */,
 				5559372F0F48C05C0044FC32 /* dRowAudio.cpp in Sources */,
+				55DDE1F90F4A89E200894F8B /* flanger_title.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,7 +827,7 @@
 				8BA05AE90720742100365D66 /* CAStreamBasicDescription.cpp in Sources */,
 				8BA05B070720754400365D66 /* CAAUParameter.cpp in Sources */,
 				3EEA126E089847F5002C6BFC /* CAVectorUnit.cpp in Sources */,
-				843792AA0EFBF14B002A2725 /* DemoEditorComponent.cpp in Sources */,
+				843792AA0EFBF14B002A2725 /* DRowAudioEditorComponent.cpp in Sources */,
 				843792AC0EFBF14B002A2725 /* DRowAudioFilter.cpp in Sources */,
 				843792B60EFBF175002A2725 /* juce_AU_Wrapper.mm in Sources */,
 				843796690EFBF357002A2725 /* AUMIDIBase.cpp in Sources */,
@@ -834,6 +842,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		55BE36D40F4E26F600F7CC9B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 555934E70F47A1850044FC32 /* PluginVST */;
+			targetProxy = 55BE36D30F4E26F600F7CC9B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
@@ -943,6 +959,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				INFOPLIST_PREPROCESS = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx10.5;
 			};
@@ -954,6 +971,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "PROJECT_NAME=\\\"$(PROJECT_NAME)\\\"";
+				INFOPLIST_PREPROCESS = YES;
 				SDKROOT = macosx10.5;
 			};
 			name = Release;
@@ -988,7 +1006,7 @@
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/inc\\\"",
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/utils\\\"",
 				);
-				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Gate/build/mac/Info copy.plist";
+				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Flanger/build/mac/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
 				MacBag = /Users/jules/stuff/PT_73_SDK/MacBag;
@@ -1033,7 +1051,7 @@
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/inc\\\"",
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/utils\\\"",
 				);
-				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Gate/build/mac/Info copy.plist";
+				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Flanger/build/mac/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
 				OTHER_LDFLAGS = "-bundle";
@@ -1044,14 +1062,14 @@
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
 				);
-				WRAPPER_EXTENSION = component;
+				WRAPPER_EXTENSION = vst;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3E4BA243089833B7007656EC /* Build configuration list for PBXNativeTarget "JuceDemoPlugin" */ = {
+		3E4BA243089833B7007656EC /* Build configuration list for PBXNativeTarget "PluginAU" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E4BA244089833B7007656EC /* Debug */,
@@ -1069,7 +1087,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		555935310F47A1850044FC32 /* Build configuration list for PBXNativeTarget "JuceDemoPluginVST" */ = {
+		555935310F47A1850044FC32 /* Build configuration list for PBXNativeTarget "PluginVST" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				555935320F47A1850044FC32 /* Debug */,

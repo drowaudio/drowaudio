@@ -29,13 +29,13 @@
   ==============================================================================
 */
 
-#ifndef DEMOJUCEPLUGINEDITOR_H
-#define DEMOJUCEPLUGINEDITOR_H
+#ifndef DROWAUDIOEDITORCOMPONENT_H
+#define DROWAUDIOEDITORCOMPONENT_H
 
 #include "includes.h"
 #include "DRowAudioFilter.h"
 #include "Parameters.h"
-#include "flanger_title.h"
+#include "resources/flanger_title.h"
 
 
 //==============================================================================
@@ -51,10 +51,9 @@
     when it's destroyed. When the filter's parameters are changed, it broadcasts
     a message and this editor responds by updating its display.
 */
-class DemoEditorComponent   : public AudioProcessorEditor,
-                              public ChangeListener,
-                              public SliderListener,
-							  public ButtonListener
+class DRowAudioEditorComponent   : public AudioProcessorEditor,
+								   public ChangeListener,
+								   public SliderListener
 {
 public:
     /** Constructor.
@@ -62,10 +61,10 @@ public:
         When created, this will register itself with the filter for changes. It's
         safe to assume that the filter won't be deleted before this object is.
     */
-    DemoEditorComponent (DRowAudioFilter* const ownerFilter);
+    DRowAudioEditorComponent (DRowAudioFilter* const ownerFilter);
 
     /** Destructor. */
-    ~DemoEditorComponent();
+    ~DRowAudioEditorComponent();
 
     //==============================================================================
     /** Our demo filter is a ChangeBroadcaster, and will call us back when one of
@@ -74,8 +73,8 @@ public:
     void changeListenerCallback (void* source);
 
     void sliderValueChanged (Slider*);
-	
-	void buttonClicked(Button* clickedButton);
+	void sliderDragStarted(Slider*);
+	void sliderDragEnded(Slider*);
 	
     //==============================================================================
     /** Standard Juce paint callback. */
@@ -84,18 +83,12 @@ public:
     /** Standard Juce resize callback. */
     void resized();
 
-
 private:
     //==============================================================================
 	dRowLookAndFeel* customLookAndFeel;
 	
-	ComboBox* comboBox;
 	OwnedArray <Slider> sliders;
 	OwnedArray <Label> sliderLabels;
-	OwnedArray <TextButton> buttons;
-	
-	MeterComponent* meterLeft;
-	MeterComponent* meterRight;
 	
 	int noButtons;
 	
@@ -104,10 +97,6 @@ private:
     static const int flanger_title_size;
 	Image* cachedTitleImage;
 	
-    MidiKeyboardComponent* midiKeyboard;
-    Label* infoLabel;
-    ResizableCornerComponent* resizer;
-    ComponentBoundsConstrainer resizeLimits;
     TooltipWindow tooltipWindow;
 
     void updateParametersFromFilter();

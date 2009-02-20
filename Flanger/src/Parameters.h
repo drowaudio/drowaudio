@@ -29,7 +29,7 @@
 
 #endif
 
-#endif // #ifndef UNUSED_NOWARN
+#endif //UNUSED_NOWARN
 
 enum parameters
 {
@@ -42,7 +42,7 @@ enum parameters
 
 static const char UNUSED_NOWARN *parameterNames[] = { 
 	"Rate",					// 0
-	"Depth",					// 1
+	"Intensity",					// 1
 	"Feedback",						// 2
 	"Wet/Dry Mix",						// 3
 };

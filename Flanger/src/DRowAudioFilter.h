@@ -107,31 +107,10 @@ public:
 	double getParameterStep(int index);
 	double getParameterSkewFactor(int index);
 	void smoothParameters();
+	dRowParameter* getParameterPointer(int index);	
 	
-	
-    //==============================================================================
-    // These properties are public so that our editor component can access them
-    //  - a bit of a hacky way to do it, but it's only a demo!
-
-    // this is kept up to date with the midi messages that arrive, and the UI component
-    // registers with it so it can represent the incoming messages
-    MidiKeyboardState keyboardState;
-
-    // this keeps a copy of the last set of time info that was acquired during an audio
-    // callback - the UI component will read this and display it.
-    AudioPlayHead::CurrentPositionInfo lastPosInfo;
-
-    // these are used to persist the UI's size - the values are stored along with the
-    // filter's other parameters, and the UI component will update them when it gets
-    // resized.
-
     //==============================================================================
     juce_UseDebuggingNewOperator
-
-	float RMSLeft;
-	float RMSRight;
-	float peakLeft;
-	float peakRight;
 	
 private:
 	
@@ -140,17 +119,13 @@ private:
 	
 	double currentSampleRate, oneOverCurrentSampleRate;
 		
-	float* pfCircularBuffer;
+	float* pfCircularBufferL;
+	float* pfCircularBufferR;
 	int iBufferSize, iBufferWritePos;
 	
 	float* pfLookupTable;
 	int iLookupTableSize, iLookupTableSizeMask, iLookupTablePos;
 	uint32 iSamplesProcessed;
-		
-	IIRFilter filter1_L;
-	IIRFilter filter1_R;
-	IIRFilter filter2_L;
-	IIRFilter filter2_R;
 };
 
 

@@ -30,7 +30,7 @@
 */
 
 #include "DRowAudioFilter.h"
-#include "DemoEditorComponent.h"
+#include "DRowAudioEditorComponent.h"
 
 
 //==============================================================================
@@ -45,18 +45,8 @@ AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 
 //==============================================================================
 DRowAudioFilter::DRowAudioFilter()
-	:	RMSLeft(0),
-		RMSRight(0),
-		peakLeft(0),
-		peakRight(0)
-
 {
 	setupParams();
-	
-    zeromem (&lastPosInfo, sizeof (lastPosInfo));
-    lastPosInfo.timeSigNumerator = 4;
-    lastPosInfo.timeSigDenominator = 4;
-    lastPosInfo.bpm = 120;
 }
 
 DRowAudioFilter::~DRowAudioFilter()
@@ -78,16 +68,20 @@ void DRowAudioFilter::setupParams()
 					  0.5, 0.0, 20.0, 0.5);
 	params[RATE].setSkewFactor(0.5f);
 	params[RATE].setSmoothCoeff(0.1);
+	params[RATE].setUnitSuffix(" Hz");
 	params[DEPTH].init(parameterNames[DEPTH], UnitPercent, T("Changes the depth"),
 					   20.0, 0.0, 100.0, 20.0);
 	params[DEPTH].setSkewFactor(0.7f);
 	params[DEPTH].setSmoothCoeff(0.1);
+	params[DEPTH].setUnitSuffix(" %");
 	params[FEEDBACK].init(parameterNames[FEEDBACK], UnitPercent, T("Changes the feedback ammount"),
 						  0.0, 0.0, 99.0, 0.0);
 	params[FEEDBACK].setStep(1);
+	params[FEEDBACK].setUnitSuffix(" %");
 	params[MIX].init(parameterNames[MIX], UnitPercent, T("Changes the output mix"),
 					 100.0, 0.0, 100.0, 100.0);
 	params[MIX].setStep(1);
+	params[MIX].setUnitSuffix(" %");
 }
 
 int DRowAudioFilter::getNumParameters()
@@ -165,6 +159,14 @@ const String DRowAudioFilter::getParameterText (int index)
     return String::empty;
 }
 
+dRowParameter* DRowAudioFilter::getParameterPointer(int index)
+{
+	for (int i = 0; i < noParams; i++)
+		if (index == i)
+			return &params[i];	
+	
+    return 0;
+}
 //=====================================================================
 // methods for AU Compatibility
 double DRowAudioFilter::getParameterMin(int index)
@@ -263,10 +265,6 @@ void DRowAudioFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	
 	pfLookupTable = new float[iLookupTableSize];
 	float fPhaseStep = (2 * double_Pi) / iLookupTableSize;
-//	for(int i = 0; i < iLookupTableSize; i++){
-//		float val = sin(i*fPhaseStep);
-//		pfLookupTable[i] = val;
-//	}
 	for(int i = 0; i < iLookupTableSize; i++){
 		if(i < iLookupTableSize * 0.5) {
 			float val = -1.0f + (2.0/double_Pi)*i*fPhaseStep;
@@ -281,68 +279,57 @@ void DRowAudioFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	iSamplesProcessed = 0;
 	
 	
-	// set up circular buffer
+	// set up circular buffers
 	iBufferSize = (int)sampleRate;
-	pfCircularBuffer = new float[iBufferSize];
+	pfCircularBufferL = new float[iBufferSize];
 	for (int i = 0; i < iBufferSize; i++)
-		pfCircularBuffer[i] = 0;
+		pfCircularBufferL[i] = 0;
+	
+	if (getNumInputChannels() == 2) {
+		pfCircularBufferR = new float[iBufferSize];
+		for (int i = 0; i < iBufferSize; i++)
+			pfCircularBufferR[i] = 0;
+	}
 	iBufferWritePos = 0;
-	
-	
-	// do your pre-playback setup stuff here..
-    keyboardState.reset();
-	
+		
 	updateFilters();
 }
 
 void DRowAudioFilter::releaseResources()
 {
 	delete[] pfLookupTable;
-	delete[] pfCircularBuffer;
+	delete[] pfCircularBufferL;
+	if (getNumInputChannels() == 2)
+		delete[] pfCircularBufferR;
 }
 
 void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
-                                   MidiBuffer& midiMessages)
+									MidiBuffer& midiMessages)
 {
 	smoothParameters();
 	
 	const int numInputChannels = getNumInputChannels();
 
-	if (numInputChannels == 2)
-	{
-//		const float oneOverNumInputChannels = 1.0f / numInputChannels;
+	// create parameters to use
+	float fRate = params[RATE].getSmoothedValue();
+	float fDepth = (params[DEPTH].getSmoothedNormalisedValue() * 0.006f) + 0.0001f;
+	float fFeedback = params[FEEDBACK].getSmoothedNormalisedValue();
+	float fWetDryMix = params[MIX].getSmoothedNormalisedValue();
 
-		// create parameters to use
-		float fRate = params[RATE].getSmoothedValue();
-		float fDepth = (params[DEPTH].getSmoothedNormalisedValue() * 0.006f) + 0.0001f;
-		float fFeedback = params[FEEDBACK].getSmoothedNormalisedValue();
-		float fWetDryMix = params[MIX].getSmoothedNormalisedValue();
+	// calculate current phase step
+	float phaseStep = iLookupTableSize * oneOverCurrentSampleRate * fRate;
+
+	// set up array of pointers to samples
+	int numSamples = buffer.getNumSamples();
+	float* pfSample[numInputChannels];
+	for (int channel = 0; channel < getNumInputChannels(); channel++)
+		pfSample[channel] = buffer.getSampleData(channel);
 		
-		// calculate current phase step
-		float samplesPerCycle = currentSampleRate / fRate;
-		float phaseStep = iLookupTableSize / samplesPerCycle;
-		
-		
-		// set up array of pointers to samples
-		int numSamples = buffer.getNumSamples();
-		float* pfSample[numInputChannels];
-		for (int channel = 0; channel < getNumInputChannels(); channel++)
-			pfSample[channel] = buffer.getSampleData(channel);
-		
-		
-		
-				
+	if (numInputChannels == 2)
+	{		
 		//========================================================================
 		while (--numSamples >= 0)
 		{
-			float fMix = 0.5f * (*pfSample[0] + *pfSample[1]);
-			
-			iBufferWritePos++;
-			if (iBufferWritePos >= iBufferSize)
-				iBufferWritePos = 0;
-//			pfCircularBuffer[iBufferWritePos] = fMix;
-			
-			
 			int index =  (int)(iSamplesProcessed * phaseStep) &	iLookupTableSizeMask;
 
 			iSamplesProcessed++;
@@ -352,40 +339,79 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			if (fBufferReadPos1 < 0)
 				fBufferReadPos1 += iBufferSize;
 			
-			// linear interpolation section
+			// read values from buffers
 			int iPos1, iPos2;
-			float fDiff, fDel;
+			float fDiff, fDelL, fDelR;
 			
 			iPos1 = (int)fBufferReadPos1;
 			iPos2 = iPos1 + 1;
 			if (iPos2 == iBufferSize)
 				iPos2 = 0;
 			fDiff = fBufferReadPos1 - iPos1;
-			fDel = pfCircularBuffer[iPos2]*fDiff + pfCircularBuffer[iPos1]*(1-fDiff);
+			fDelL = pfCircularBufferL[iPos2]*fDiff + pfCircularBufferL[iPos1]*(1-fDiff);
+			fDelR = pfCircularBufferR[iPos2]*fDiff + pfCircularBufferR[iPos1]*(1-fDiff);
 			
-		    float fOut = 0.5f * (fMix + fWetDryMix*fDel);
+			// store current samples in buffers
+			iBufferWritePos++;
+			if (iBufferWritePos >= iBufferSize)
+				iBufferWritePos = 0;			
+			pfCircularBufferL[iBufferWritePos] = *pfSample[0] + (fFeedback * fDelL);
+			pfCircularBufferR[iBufferWritePos] = *pfSample[1] + (fFeedback * fDelR);
 			
-			pfCircularBuffer[iBufferWritePos] = fMix + (fFeedback * fDel);
+			// calculate output samples
+			float fOutL = 0.5f * (*pfSample[0] + fWetDryMix*fDelL);
+			float fOutR = 0.5f * (*pfSample[1] + fWetDryMix*fDelR);
+
+			*pfSample[0] = fOutL;
+			*pfSample[1] = fOutR;
 			
-			
-			// process channels as interleaved
-			for (int channel = 0; channel < numInputChannels; channel++)
-			{	
-				*pfSample[channel] = fOut;
-				
-				// incriment sample pointers
-				pfSample[channel]++;			
-			}
+			// incriment sample pointers
+			pfSample[0]++;
+			pfSample[1]++;
 		}
 		//========================================================================	
-		
-		// update the sample to use in the meter display
-		RMSLeft = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
-		peakLeft = buffer.getMagnitude(0, 0, buffer.getNumSamples());
-		RMSRight = buffer.getRMSLevel(1 & (numInputChannels-1), 0, buffer.getNumSamples());
-		peakRight = buffer.getMagnitude(1 & (numInputChannels-1), 0, buffer.getNumSamples());
 	}
-
+	else if (numInputChannels == 1)
+	{		
+		//========================================================================
+		while (--numSamples >= 0)
+		{
+			int index =  (int)(iSamplesProcessed * phaseStep) &	iLookupTableSizeMask;
+			
+			iSamplesProcessed++;
+			float fOsc = (pfLookupTable[index] * fDepth) + fDepth;
+			
+			float fBufferReadPos1 = (iBufferWritePos - (fOsc * iBufferSize));
+			if (fBufferReadPos1 < 0)
+				fBufferReadPos1 += iBufferSize;
+			
+			// read values from buffers
+			int iPos1, iPos2;
+			float fDiff, fDelL;
+			
+			iPos1 = (int)fBufferReadPos1;
+			iPos2 = iPos1 + 1;
+			if (iPos2 == iBufferSize)
+				iPos2 = 0;
+			fDiff = fBufferReadPos1 - iPos1;
+			fDelL = pfCircularBufferL[iPos2]*fDiff + pfCircularBufferL[iPos1]*(1-fDiff);
+			
+			// store current samples in buffers
+			iBufferWritePos++;
+			if (iBufferWritePos >= iBufferSize)
+				iBufferWritePos = 0;			
+			pfCircularBufferL[iBufferWritePos] = *pfSample[0] + (fFeedback * fDelL);
+			
+			// calculate output samples
+			float fOutL = 0.5f * (*pfSample[0] + fWetDryMix*fDelL);
+			
+			*pfSample[0] = fOutL;
+			
+			// incriment sample pointers
+			pfSample[0]++;
+		}
+		//========================================================================	
+	}
 		
     // in case we have more outputs than inputs, we'll clear any output
     // channels that didn't contain input data, (because these aren't
@@ -394,38 +420,12 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
     {
         buffer.clear (i, 0, buffer.getNumSamples());
     }
-
-    // if any midi messages come in, use them to update the keyboard state object. This
-    // object sends notification to the UI component about key up/down changes
-    keyboardState.processNextMidiBuffer (midiMessages,
-                                         0, buffer.getNumSamples(),
-                                         true);
-
-    // have a go at getting the current time from the host, and if it's changed, tell
-    // our UI to update itself.
-    AudioPlayHead::CurrentPositionInfo pos;
-
-    if (getPlayHead() != 0 && getPlayHead()->getCurrentPosition (pos))
-    {
-        if (memcmp (&pos, &lastPosInfo, sizeof (pos)) != 0)
-        {
-            lastPosInfo = pos;
-            sendChangeMessage (this);
-        }
-    }
-    else
-    {
-        zeromem (&lastPosInfo, sizeof (lastPosInfo));
-        lastPosInfo.timeSigNumerator = 4;
-        lastPosInfo.timeSigDenominator = 4;
-        lastPosInfo.bpm = 120;
-    }
 }
 
 //==============================================================================
 AudioProcessorEditor* DRowAudioFilter::createEditor()
 {
-    return new DemoEditorComponent (this);
+    return new DRowAudioEditorComponent (this);
 }
 
 //==============================================================================
@@ -441,10 +441,9 @@ void DRowAudioFilter::getStateInformation (MemoryBlock& destData)
 
     // add some attributes to it..
     xmlState.setAttribute (T("pluginVersion"), 1);
-//    xmlState.setAttribute (T("gainLevel"), gain);
-
-    // you could also add as many child elements as you need to here..
-
+	for(int i = 0; i < noParams; i++) {
+		params[i].writeXml(xmlState);
+	}
 
     // then use this helper function to stuff it into the binary blob and return it..
     copyXmlToBinary (xmlState, destData);
@@ -461,8 +460,9 @@ void DRowAudioFilter::setStateInformation (const void* data, int sizeInBytes)
         if (xmlState->hasTagName (T("MYPLUGINSETTINGS")))
         {
             // ok, now pull out our parameters..
-//            gain = (float) xmlState->getDoubleAttribute (T("gainLevel"), gain);
-
+			for(int i = 0; i < noParams; i++) {
+				params[i].readXml(xmlState);
+			}
 
             sendChangeMessage (this);
         }
