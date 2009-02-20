@@ -40,9 +40,6 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 	setLookAndFeel(customLookAndFeel);
 	customLookAndFeel->setColour(Label::textColourId, Colours::white);
 	
-	// load title image to memory cache
-	cachedTitleImage = ImageCache::getFromMemory (Resource::flanger_title, Resource::flanger_title_size);
-	
 	for (int i = 0; i < noParams; i++)
 	{
 		sliders.add( new Slider(String(T("param")) << String(i)) );
@@ -76,7 +73,7 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 
 		
     // set our component's size
-    setSize (250, 260);
+    setSize (250, 225);
 
     // register ourselves with the filter - it will use its ChangeBroadcaster base
     // class to tell us when something has changed, and this will call our changeListenerCallback()
@@ -87,7 +84,6 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 DRowAudioEditorComponent::~DRowAudioEditorComponent()
 {
     getFilter()->removeChangeListener (this);
-	ImageCache::release (cachedTitleImage);
 	sliders.clear();
 	sliderLabels.clear();
     deleteAllChildren();
@@ -97,25 +93,29 @@ DRowAudioEditorComponent::~DRowAudioEditorComponent()
 //==============================================================================
 void DRowAudioEditorComponent::paint (Graphics& g)
 {
-	// just clear the window
 	Colour backgroundColour(0xFF455769);
 
-	backgroundColour = backgroundColour.withBrightness(0.4f);
-	ColourGradient backgroundGradient(backgroundColour.withBrightness(0.0f),
-									  0, 40,
-									  backgroundColour.withBrightness(0.0f),
-									  0, getHeight(),
-									  false);
-	backgroundGradient.addColour(0.025f, backgroundColour);
-	backgroundGradient.addColour(0.975f, backgroundColour);
-	GradientBrush backgroundBrush(backgroundGradient);
-	g.setBrush(&backgroundBrush);
-    g.fillRect(0, 40, getWidth(), getHeight()-40);
+	g.setColour(backgroundColour);
+	g.fillRoundedRectangle(0, 0, getWidth(), getHeight(), 10);
 	
-	g.drawImageWithin (cachedTitleImage,
-                       0, 0, 250, 40,
-                       RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize,
-                       false);
+	ColourGradient topHighlight(Colours::white.withAlpha(0.3f),
+								0, 0,
+								Colours::white.withAlpha(0.0f),
+								0, 0 + 15,
+								false);
+	
+	GradientBrush topBrush(topHighlight);
+	g.setBrush(&topBrush);
+	g.fillRoundedRectangle(0, 0, getWidth(), 30, 10);	
+	
+	GradientBrush outlineGradient(Colours::white,
+								  0, 00,
+								  backgroundColour.withBrightness(0.5f),
+								  0, 20,
+								  false);
+	g.setBrush(&outlineGradient);
+	g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 10, 1.0f);
+	
 }
 
 void DRowAudioEditorComponent::resized()

@@ -91,12 +91,7 @@ private:
 	OwnedArray <Label> sliderLabels;
 	
 	int noButtons;
-	
-	// Binary resources:
-    static const char* flanger_title;
-    static const int flanger_title_size;
-	Image* cachedTitleImage;
-	
+		
     TooltipWindow tooltipWindow;
 
     void updateParametersFromFilter();

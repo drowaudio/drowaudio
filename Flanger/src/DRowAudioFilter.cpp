@@ -266,14 +266,10 @@ void DRowAudioFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	pfLookupTable = new float[iLookupTableSize];
 	float fPhaseStep = (2 * double_Pi) / iLookupTableSize;
 	for(int i = 0; i < iLookupTableSize; i++){
-		if(i < iLookupTableSize * 0.5) {
-			float val = -1.0f + (2.0/double_Pi)*i*fPhaseStep;
-			pfLookupTable[i] = val;
-		}
-		else {
-			float val = 3.0f - (2.0/double_Pi)*i*fPhaseStep;
-			pfLookupTable[i] = val;
-		}
+		if(i < iLookupTableSize * 0.5)
+			pfLookupTable[i] = -1.0f + (2.0/double_Pi)*i*fPhaseStep;
+		else
+			pfLookupTable[i] = 3.0f - (2.0/double_Pi)*i*fPhaseStep;
 	}
 	iLookupTablePos = 0;
 	iSamplesProcessed = 0;
