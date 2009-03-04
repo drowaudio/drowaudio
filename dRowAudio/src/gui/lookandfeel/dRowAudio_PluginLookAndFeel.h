@@ -12,24 +12,34 @@
 #include <juce/juce.h>
 
 class dRowLookAndFeel : public LookAndFeel
-	{
-	public:
-		/**
-		 Draws a shiny, rounded-top knob rotary slider.
-		 */
-		virtual void drawRotarySlider (Graphics& g,
-									   int x, int y,
-									   int width, int height,
-									   float sliderPosProportional,
-									   const float rotaryStartAngle,
-									   const float rotaryEndAngle,
-									   Slider& slider);
-		
-		/**
-		 Draws a label.
-		 If the label's background is not transparent then it will draw a 3D label.
-		 */
-		virtual void drawLabel (Graphics& g, Label& label);
-	};
+{
+public:
+	/**
+	 Draws a shiny, rounded-top knob rotary slider.
+	 */
+	virtual void drawRotarySlider (Graphics& g,
+								   int x, int y,
+								   int width, int height,
+								   float sliderPosProportional,
+								   const float rotaryStartAngle,
+								   const float rotaryEndAngle,
+								   Slider& slider);
+	
+	/**
+	 Draws a label.
+	 If the label's background is not transparent then it will draw a 3D label.
+	 */
+	virtual void drawLabel (Graphics& g, Label& label);
+	
+	/**
+	 Draws a line that will look like it is inset to it background.
+	 */
+	static void drawInsetLine (Graphics& g,
+							   const float startX,
+							   const float startY,
+							   const float endX,
+							   const float endY,
+							   const float lineThickness);
+};
 
 #endif

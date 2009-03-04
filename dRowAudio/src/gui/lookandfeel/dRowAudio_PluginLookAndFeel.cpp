@@ -9,6 +9,7 @@
 
 #include "dRowAudio_PluginLookAndFeel.h"
 
+//=====================================================================================
 void dRowLookAndFeel::drawRotarySlider (Graphics& g,
 									  int x, int y,
 									  int width, int height,
@@ -77,7 +78,7 @@ void dRowLookAndFeel::drawRotarySlider (Graphics& g,
 	g.drawEllipse (thumbX, thumbY, thumbW, thumbW, thumbW * 0.02f);
 }
 
-
+//=====================================================================================
 void dRowLookAndFeel::drawLabel (Graphics& g, Label& label)
 {
 	int innerBoxHeight = label.getHeight();
@@ -158,3 +159,30 @@ void dRowLookAndFeel::drawLabel (Graphics& g, Label& label)
 	}
 }
 
+//=====================================================================================
+void dRowLookAndFeel::drawInsetLine (Graphics& g,
+									 const float startX,
+									 const float startY,
+									 const float endX,
+									 const float endY,
+									 const float lineThickness)
+{
+	Colour currentColour(g.getCurrentColour());
+	const float firstThickness = lineThickness * 0.5f;
+	const float secondThickness = lineThickness * 0.25f;
+	
+	if (startX < endX)
+	{
+		g.setColour(currentColour.withBrightness(0.2f));
+		g.drawLine(startX, startY, endX, endY, firstThickness);
+		g.setColour(currentColour.withBrightness(1.0f).withAlpha(0.6f));
+		g.drawLine(startX, startY+secondThickness, endX, endY+secondThickness, secondThickness);
+	}
+	else if (startY < endY)
+	{
+		g.setColour(currentColour.withBrightness(0.2f));
+		g.drawLine(startX, startY, endX, endY, firstThickness);
+		g.setColour(currentColour.withBrightness(1.0f).withAlpha(0.6f));
+		g.drawLine(startX+secondThickness, startY, endX+secondThickness, endY, secondThickness);
+	}
+}
