@@ -18,10 +18,12 @@
 
 // Audio
 #include "src/audio/dRowAudio_BiquadFilter.h"
-
 #include "src/audio/dRowAudio_OnePoleFilter.h"
 
 #include "src/audio/dRowAudio_AudioFilePlayer.h"
+#include "src/audio/dRowAudio_DraggableWaveDisplay.h"
+#include "src/audio/dRowAudio_PositionableWaveDisplay.h"
+
 
 // Gui
 #include "src/gui/lookandfeel/dRowAudio_LookAndFeel.h"

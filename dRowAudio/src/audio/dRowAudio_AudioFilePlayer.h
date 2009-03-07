@@ -44,11 +44,13 @@ public:
 	
 	/// Open and get ready to play a given audio file from an absolute path
 	bool setFile(const String& path);
+
+	/// Returns the absolute path of the current audio file
+	String getFile();
 	
 	/// Returns the name of the currently loaded file
 	String getFileName();
-
-	
+		
 private:	
 	/// Create the reader from a given path
 	AudioFormatReader* audioFormatReaderFromFile(const String& path);
@@ -56,6 +58,7 @@ private:
 	/// Create the actual stream that's going to read from the audio file
 	AudioFormatReaderSource* currentAudioFileSource;
 	
+	String filePath;
 	String fileName;
 };
 

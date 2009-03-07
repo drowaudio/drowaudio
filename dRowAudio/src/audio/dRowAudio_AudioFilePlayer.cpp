@@ -50,6 +50,8 @@ bool AudioFilePlayer::setFile(const String& path)
 	setSource (0);
 	deleteAndZero (currentAudioFileSource);
 	
+	filePath = path;
+	
 	// OK now let's add the new file
 	AudioFormatReader* reader = audioFormatReaderFromFile(path);
 	
@@ -63,10 +65,18 @@ bool AudioFilePlayer::setFile(const String& path)
 				   32768, // tells it to buffer this many samples ahead
 				   reader->sampleRate);
 		
+		// let our listeners know that we have loaded a new file
+		sendChangeMessage(this);
+		
 		return true;
 	}
 	
 	return false;
+}
+
+String AudioFilePlayer::getFile()
+{
+	return filePath;
 }
 
 String AudioFilePlayer::getFileName()

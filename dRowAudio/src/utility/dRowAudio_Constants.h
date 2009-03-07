@@ -16,5 +16,6 @@
  */
 
 const double oneOver180 = 1.0 / 180.0;
+const double oneOverPi = 1.0 / double_Pi;
 
 #endif //_DROWAUDIOCONSTANTS_H_

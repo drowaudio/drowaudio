@@ -21,6 +21,10 @@
 
 #include "src/audio/dRowAudio_AudioFilePlayer.cpp"
 
+#include "src/audio/dRowAudio_DraggableWaveDisplay.cpp"
+#include "src/audio/dRowAudio_PositionableWaveDisplay.cpp"
+
+
 // Gui
 #include "src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp"
 

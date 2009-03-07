@@ -29,11 +29,15 @@
 		5559348D0F4721440044FC32 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5559347E0F4721440044FC32 /* IOKit.framework */; };
 		5559348E0F4721440044FC32 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5559347F0F4721440044FC32 /* OpenGL.framework */; };
 		5559348F0F4721440044FC32 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934800F4721440044FC32 /* WebKit.framework */; };
-		555934940F4721870044FC32 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934920F4721440044FC32 /* libjuce.a */; };
+		555934940F4721870044FC32 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934920F4721440044FC32 /* libjucedebug.a */; };
 		55880ACB0F5DECF1003E3953 /* dRowAudio_Utility.h in Headers */ = {isa = PBXBuildFile; fileRef = 55880ACA0F5DECF1003E3953 /* dRowAudio_Utility.h */; };
 		55880BED0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h in Headers */ = {isa = PBXBuildFile; fileRef = 55880BEC0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h */; };
 		55BE2C010F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BE2BFF0F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp */; };
 		55BE2C020F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.h in Headers */ = {isa = PBXBuildFile; fileRef = 55BE2C000F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.h */; };
+		55C56D0F0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C56D0B0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.cpp */; };
+		55C56D100F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C56D0C0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.h */; };
+		55C56D110F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C56D0D0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.cpp */; };
+		55C56D120F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C56D0E0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.h */; };
 		55DDDD730F4A13E900894F8B /* dRowAudio_OnePoleFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 55DDDD710F4A13E900894F8B /* dRowAudio_OnePoleFilter.h */; };
 		55DDDD740F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55DDDD720F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp */; };
 		55DDDFFD0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55DDDFFB0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp */; };
@@ -79,6 +83,10 @@
 		55880BEC0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_LookAndFeel.h; path = ../../src/gui/lookandfeel/dRowAudio_LookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		55BE2BFF0F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_PluginLookAndFeel.cpp; path = ../../src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp; sourceTree = "<group>"; };
 		55BE2C000F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_PluginLookAndFeel.h; path = ../../src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.h; sourceTree = "<group>"; };
+		55C56D0B0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_DraggableWaveDisplay.cpp; path = ../../src/audio/dRowAudio_DraggableWaveDisplay.cpp; sourceTree = SOURCE_ROOT; };
+		55C56D0C0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_DraggableWaveDisplay.h; path = ../../src/audio/dRowAudio_DraggableWaveDisplay.h; sourceTree = SOURCE_ROOT; };
+		55C56D0D0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_PositionableWaveDisplay.cpp; path = ../../src/audio/dRowAudio_PositionableWaveDisplay.cpp; sourceTree = SOURCE_ROOT; };
+		55C56D0E0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_PositionableWaveDisplay.h; path = ../../src/audio/dRowAudio_PositionableWaveDisplay.h; sourceTree = SOURCE_ROOT; };
 		55DDDD710F4A13E900894F8B /* dRowAudio_OnePoleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_OnePoleFilter.h; path = ../../src/audio/dRowAudio_OnePoleFilter.h; sourceTree = SOURCE_ROOT; };
 		55DDDD720F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_OnePoleFilter.cpp; path = ../../src/audio/dRowAudio_OnePoleFilter.cpp; sourceTree = SOURCE_ROOT; };
 		55DDDD770F4A177600894F8B /* dRowAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio.cpp; path = ../../dRowAudio.cpp; sourceTree = SOURCE_ROOT; };
@@ -108,7 +116,7 @@
 				5559348D0F4721440044FC32 /* IOKit.framework in Frameworks */,
 				5559348E0F4721440044FC32 /* OpenGL.framework in Frameworks */,
 				5559348F0F4721440044FC32 /* WebKit.framework in Frameworks */,
-				555934940F4721870044FC32 /* libjuce.a in Frameworks */,
+				555934940F4721870044FC32 /* libjucedebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +203,10 @@
 				55DDDD720F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp */,
 				55DDDFFC0F4A468300894F8B /* dRowAudio_AudioFilePlayer.h */,
 				55DDDFFB0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp */,
+				55C56D0C0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.h */,
+				55C56D0B0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.cpp */,
+				55C56D0E0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.h */,
+				55C56D0D0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.cpp */,
 			);
 			name = audio;
 			sourceTree = "<group>";
@@ -223,7 +235,7 @@
 		555934700F4721440044FC32 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				555934920F4721440044FC32 /* libjuce.a */,
+				555934920F4721440044FC32 /* libjucedebug.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,6 +265,8 @@
 				5519B7AA0F51D10900801715 /* dRowAudio_Constants.h in Headers */,
 				55880ACB0F5DECF1003E3953 /* dRowAudio_Utility.h in Headers */,
 				55880BED0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h in Headers */,
+				55C56D100F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.h in Headers */,
+				55C56D120F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,10 +315,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		555934920F4721440044FC32 /* libjuce.a */ = {
+		555934920F4721440044FC32 /* libjucedebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libjuce.a;
+			path = libjucedebug.a;
 			remoteRef = 555934910F4721440044FC32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -321,6 +335,8 @@
 				55DDDD740F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp in Sources */,
 				55DDDFFD0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp in Sources */,
 				55BE2C010F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp in Sources */,
+				55C56D0F0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.cpp in Sources */,
+				55C56D110F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
