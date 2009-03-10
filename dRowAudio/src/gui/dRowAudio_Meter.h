@@ -29,7 +29,7 @@ public:
 		@param lineValueToUse	A pointer to the value for the line to display
 		@param lockToUse		The Critical section to use
 	 */
-	MeterComponent(float* barValueToUse, float* lineValueToUse, const CriticalSection& lockToUse);
+	MeterComponent(float* barValueToUse, float* lineValueToUse, const CriticalSection* lockToUse =0);
 	/// Destructor
 	~MeterComponent();
 	
@@ -56,7 +56,8 @@ private:
 	
 	float* pCurrentBarLevel;
 	float* pCurrentLineLevel;
-	const CriticalSection& lock;
+	const CriticalSection* lock;
+	CriticalSection* dummyLock;
 
 	float currentBarLevel, prevBarLevel;
 	float currentLineLevel, prevLineLevel;
@@ -65,6 +66,7 @@ private:
 	unsigned short lineCounter;
 	bool dropLineLevel;
 	bool clipped;
+	bool deleteDummyLock;
 };
 
 #endif //_METERCOMPONENT_H_

@@ -11,7 +11,9 @@
 DraggableWaveDisplay::DraggableWaveDisplay(AudioFilePlayer* sourceToBeUsed, double sampleRate)
 	:	filePlayer(sourceToBeUsed),
 		currentSampleRate(sampleRate),
-		zoomFactor(1.0f)
+		playheadPos(0.25f),
+		zoomFactor(1.0f),
+		isDraggable(true)
 {
 	// set up the format manager to read basic formats
 	formatManager = new AudioFormatManager();
@@ -43,7 +45,7 @@ void DraggableWaveDisplay::resized()
 
 void DraggableWaveDisplay::paint(Graphics &g)
 {
-	double centreTime = 0.5 * zoomFactor * fileLength;
+	double centreTime = playheadPos * zoomFactor * fileLength;
 	
 	g.fillAll(Colours::black);
 	
@@ -55,8 +57,12 @@ void DraggableWaveDisplay::paint(Graphics &g)
 								  0.0+currentPos-centreTime, (zoomFactor*fileLength+currentPos)-centreTime,
 								  1, 1.0f);
 	
+	g.setColour (Colours::black);
+	g.drawVerticalLine(currentWidth * playheadPos - 1, 0, currentHeight);
+	g.drawVerticalLine(currentWidth * playheadPos + 1, 0, currentHeight);
+
 	g.setColour(Colours::white);
-	g.drawLine(currentWidth * 0.5 - 1, 0, currentWidth * 0.5 - 1, currentHeight, 2);	
+	g.drawVerticalLine(currentWidth * playheadPos, 0, currentHeight);
 }
 //====================================================================================
 void DraggableWaveDisplay::timerCallback(const int timerId)
@@ -76,9 +82,22 @@ void DraggableWaveDisplay::timerCallback(const int timerId)
 			
 			currentXDrag = currentMouseX - lastMouseX;
 			
-			double position = currentXDrag * currentXScale;
+			double position = currentPos - (currentXDrag * currentXScale);
+			// limit position to the bounds of the file
+			if (position < 0.0)
+				position = 0.0;
+			else if (position > fileLength)
+				position = fileLength;
 						
-			filePlayer->setPosition(currentPos-position);
+			filePlayer->setPosition(position);
+			
+			if (currentXDrag == 0) {
+				if(filePlayer->isPlaying())
+					filePlayer->stop();
+			}
+			else
+				if(!filePlayer->isPlaying())
+					filePlayer->start();
 			
 			repaint();
 		}
@@ -107,36 +126,76 @@ void DraggableWaveDisplay::changeListenerCallback(void* changedObject)
 	}
 }
 //====================================================================================
+void DraggableWaveDisplay::setSampleRate (double newSampleRate)
+{
+	currentSampleRate = newSampleRate;
+	
+	fileLength = filePlayer->getTotalLength() / currentSampleRate;
+}
+
 void DraggableWaveDisplay::setZoomFactor (float newZoomFactor)
 {
 	zoomFactor = newZoomFactor;
-	currentXScale = ( (zoomFactor)*fileLength ) / currentWidth;
+	currentXScale = (zoomFactor * fileLength) / currentWidth;
 	
 	repaint();
 }
 
+void DraggableWaveDisplay::setPlayheadPosition(float newPlayheadPosition)
+{
+	jlimit(0.0f, 1.0f, newPlayheadPosition);
+	playheadPos = newPlayheadPosition;
+	
+	repaint();
+}
+
+void DraggableWaveDisplay::setDraggable (bool isWaveformDraggable)
+{
+	isDraggable = isWaveformDraggable;
+}
+bool DraggableWaveDisplay::getDraggable ()
+{
+	return isDraggable;
+}
 //==============================================================================
 void DraggableWaveDisplay::mouseDown(const MouseEvent &e)
 {
 	// update scale
-	currentXScale = ( (zoomFactor)*fileLength ) / currentWidth;
+	currentXScale = (zoomFactor * fileLength) / currentWidth;
 	
 	lastMouseX = e.x;
 	currentMouseX = e.x;
 	isMouseDown = true;
 	
-	setMouseCursor(MouseCursor::DraggingHandCursor);
-	
-	startTimer(waveformMoved, 40);
+	if (isDraggable)
+	{
+		if (filePlayer->isPlaying())
+			shouldBePlaying = true;
+		else
+			shouldBePlaying = false;
+		
+		setMouseCursor(MouseCursor::DraggingHandCursor);
+		enableUnboundedMouseMovement(true, true);
+		
+		startTimer(waveformMoved, 40);
+	}
 }
 
 void DraggableWaveDisplay::mouseUp(const MouseEvent &e)
 {
 	isMouseDown = false;
 	
-	setMouseCursor(MouseCursor::NormalCursor);
-	
-	stopTimer(waveformMoved);
+	if (isDraggable)
+	{
+		if (shouldBePlaying && !filePlayer->isPlaying())
+			filePlayer->start();
+		else if ( !shouldBePlaying && filePlayer->isPlaying() )
+			filePlayer->stop();
+		
+		setMouseCursor(MouseCursor::NormalCursor);
+		
+		stopTimer(waveformMoved);
+	}
 }
 
 void DraggableWaveDisplay::mouseDrag(const MouseEvent &e)

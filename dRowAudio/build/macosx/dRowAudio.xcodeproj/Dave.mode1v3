@@ -330,7 +330,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>13</integer>
+									<integer>15</integer>
 									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -376,7 +376,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_DraggableWaveDisplay.cpp</string>
+								<string>dRowAudio_PositionableWaveDisplay.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -384,11 +384,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_DraggableWaveDisplay.cpp</string>
+										<string>dRowAudio_PositionableWaveDisplay.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55C56D8B0F62344300DF9CCE</string>
+										<string>55D4181E0F66EE9D005CC24B</string>
 										<key>history</key>
 										<array>
 											<string>55BE28A80F4B22B000F7CC9B</string>
@@ -398,19 +398,19 @@
 											<string>55880B9D0F5DF89B003E3953</string>
 											<string>55880B9E0F5DF89B003E3953</string>
 											<string>55880BF80F5DFC75003E3953</string>
-											<string>55880BFB0F5DFC75003E3953</string>
 											<string>559FC22E0F5E15C70039EA1D</string>
 											<string>55D738280F5F138900C676E0</string>
 											<string>55D738290F5F138900C676E0</string>
 											<string>557223920F5F8E4F000DF1DB</string>
 											<string>557223A50F5F9085000DF1DB</string>
-											<string>55C56D400F6219FF00DF9CCE</string>
 											<string>55C56D410F6219FF00DF9CCE</string>
-											<string>55C56D420F6219FF00DF9CCE</string>
-											<string>55C56D450F6219FF00DF9CCE</string>
-											<string>55C56D6B0F621F3C00DF9CCE</string>
-											<string>55C56D790F621FC700DF9CCE</string>
-											<string>55C56D7E0F62340C00DF9CCE</string>
+											<string>55C56E7C0F64635900DF9CCE</string>
+											<string>55C56EF00F646D0800DF9CCE</string>
+											<string>55C56F5D0F66E27700DF9CCE</string>
+											<string>55C56F7A0F66E3AF00DF9CCE</string>
+											<string>55C570370F66EE8100DF9CCE</string>
+											<string>55C570380F66EE8100DF9CCE</string>
+											<string>55C5703C0F66EE8100DF9CCE</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -424,39 +424,17 @@
 											<string>55DDE0230F4A4BCC00894F8B</string>
 											<string>55DDE0240F4A4BCC00894F8B</string>
 											<string>55BE28940F4B21C200F7CC9B</string>
-											<string>55BE28AB0F4B22B000F7CC9B</string>
 											<string>55BE2DFF0F4CFD5E00F7CC9B</string>
 											<string>55BE2E000F4CFD5E00F7CC9B</string>
 											<string>5519B7D90F51D5F300801715</string>
 											<string>5519B87B0F51DC4B00801715</string>
 											<string>55880B2F0F5DF473003E3953</string>
 											<string>55880C040F5DFC75003E3953</string>
-											<string>55C56D470F6219FF00DF9CCE</string>
-											<string>55C56D480F6219FF00DF9CCE</string>
-											<string>55C56D490F6219FF00DF9CCE</string>
 											<string>55C56D4A0F6219FF00DF9CCE</string>
 											<string>55C56D4B0F6219FF00DF9CCE</string>
 											<string>55C56D4C0F6219FF00DF9CCE</string>
-											<string>55C56D4D0F6219FF00DF9CCE</string>
-											<string>55C56D4E0F6219FF00DF9CCE</string>
-											<string>55C56D4F0F6219FF00DF9CCE</string>
 											<string>55C56D500F6219FF00DF9CCE</string>
-											<string>55C56D510F6219FF00DF9CCE</string>
-											<string>55C56D520F6219FF00DF9CCE</string>
-											<string>55C56D530F6219FF00DF9CCE</string>
-											<string>55C56D540F6219FF00DF9CCE</string>
-											<string>55C56D550F6219FF00DF9CCE</string>
-											<string>55C56D560F6219FF00DF9CCE</string>
-											<string>55C56D570F6219FF00DF9CCE</string>
-											<string>55C56D580F6219FF00DF9CCE</string>
-											<string>55C56D590F6219FF00DF9CCE</string>
-											<string>55C56D5A0F6219FF00DF9CCE</string>
-											<string>55C56D5B0F6219FF00DF9CCE</string>
-											<string>55C56D5C0F6219FF00DF9CCE</string>
-											<string>55C56D5D0F6219FF00DF9CCE</string>
-											<string>55C56D6E0F621F3C00DF9CCE</string>
-											<string>55C56D6F0F621F3C00DF9CCE</string>
-											<string>55C56D7B0F621FC700DF9CCE</string>
+											<string>55C56EF50F646D0800DF9CCE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -514,9 +492,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55C56D080F62119200DF9CCE</string>
+				<string>55D4181F0F66EE9D005CC24B</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55C56D090F62119200DF9CCE</string>
+				<string>55D418200F66EE9D005CC24B</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -635,7 +613,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>258094147.89597401</real>
+	<real>258403982.31178001</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -650,8 +628,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>55592FD60F47202C0044FC32</string>
 		<string>/Users/Dave/Documents/Developement/dRowAudio/build/macosx/dRowAudio.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -671,8 +647,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -695,6 +669,8 @@
 							<string>272pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -745,7 +721,7 @@
 			<key>WindowToolGUID</key>
 			<string>55592FD60F47202C0044FC32</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -872,7 +848,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_DraggableWaveDisplay.cpp</string>
+										<string>dRowAudio_PositionableWaveDisplay.cpp</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -881,7 +857,7 @@
 										<key>Frame</key>
 										<string>{{0, 0}, {1118, 419}}</string>
 										<key>RubberWindowFrame</key>
-										<string>63 55 1118 677 0 0 1280 778 </string>
+										<string>136 52 1118 677 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXNavigatorGroup</string>
@@ -905,7 +881,7 @@
 								<key>Frame</key>
 								<string>{{0, 424}, {1118, 212}}</string>
 								<key>RubberWindowFrame</key>
-								<string>63 55 1118 677 0 0 1280 778 </string>
+								<string>136 52 1118 677 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXProjectFindModule</string>
@@ -934,7 +910,7 @@
 				<string>1CD0528E0623707200166675</string>
 			</array>
 			<key>WindowString</key>
-			<string>63 55 1118 677 0 0 1280 778 </string>
+			<string>136 52 1118 677 0 0 1280 778 </string>
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>

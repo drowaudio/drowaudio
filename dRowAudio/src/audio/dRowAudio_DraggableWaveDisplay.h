@@ -58,6 +58,18 @@ public:
 	
 	/// Sets the current horizontal zoom
 	void setZoomFactor (float newZoomFactor);
+	
+	/**
+		Sets the offset of the white line that marks the current position.
+		This is as a fraction of the width of the display.
+	 */
+	void setPlayheadPosition(float newPlayheadPosition);
+	
+	/// Turns dragging to reposition the transport on or off
+	void setDraggable (bool isWaveformDraggable);
+	/// Returns true if dragging the waveform will reposition the audio source 
+	bool getDraggable ();
+	
 	//==============================================================================
 	void mouseDown(const MouseEvent &e);
 	
@@ -83,10 +95,11 @@ private:
 	
 	int currentWidth, currentHeight;
 	double currentPos;
+	float playheadPos;
 	
 	float zoomFactor, currentXScale;
 	
-	bool isMouseDown;
+	bool isMouseDown, isDraggable, shouldBePlaying;
 	int currentXDrag, currentMouseX, lastMouseX;
 };
 

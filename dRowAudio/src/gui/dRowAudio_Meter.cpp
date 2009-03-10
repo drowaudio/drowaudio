@@ -8,15 +8,22 @@
 
 #include "dRowAudio_Meter.h"
 
-MeterComponent::MeterComponent(float* barValueToUse, float* lineValueToUse, const CriticalSection& lockToUse)
+MeterComponent::MeterComponent(float* barValueToUse, float* lineValueToUse, const CriticalSection* lockToUse)
 	:	pCurrentBarLevel(barValueToUse),
 		pCurrentLineLevel(lineValueToUse),
 		lock(lockToUse),
 		currentBarLevel(0.0f),
 		currentLineLevel(0.0f),
 		lineCounter(0),
-		dropLineLevel(false)
+		dropLineLevel(false),
+		deleteDummyLock(false)
 {
+	if (lock == 0)
+	{
+		dummyLock = new CriticalSection();
+		lock = dummyLock;
+		deleteDummyLock = true;
+	}
 	startTimer(50);
 }
 
@@ -24,6 +31,8 @@ MeterComponent::~MeterComponent()
 {
 	stopTimer();
 	
+	if (deleteDummyLock)
+		deleteAndZero(dummyLock);
 	deleteAllChildren();
 }
 
@@ -86,10 +95,10 @@ void MeterComponent::resized()
 
 void MeterComponent::timerCallback()
 {
-	lock.enter();
+	lock->enter();
 	float tempBarLevel = *pCurrentBarLevel;
 	float tempLineLevel = *pCurrentLineLevel;
-	lock.exit();
+	lock->exit();
 	
 	setMeterLevel(fabsf(tempBarLevel), fabsf(tempLineLevel));
 }

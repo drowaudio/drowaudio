@@ -30,8 +30,7 @@ public:
 	enum
 	{
 		waveformUpdated,
-		waveformLoading,
-		cursorMoved
+		waveformLoading
 	};
 	
 	/**

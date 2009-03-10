@@ -11,7 +11,7 @@
 PositionableWaveDisplay::PositionableWaveDisplay(AudioFilePlayer* sourceToBeUsed, double sampleRate)
 	:	filePlayer(sourceToBeUsed),
 		currentSampleRate(sampleRate),
-		currentPos(2.0),
+		currentPos(0.0),
 		zoomFactor(1.0f)
 {
 	// set up the format manager to read basic formats
@@ -28,6 +28,8 @@ PositionableWaveDisplay::PositionableWaveDisplay(AudioFilePlayer* sourceToBeUsed
 
 PositionableWaveDisplay::~PositionableWaveDisplay()
 {
+	stopTimer(waveformUpdated);
+
 	deleteAndZero(formatManager);
 	deleteAndZero(thumbnailCache);
 	deleteAndZero(thumbnailViewLow);
@@ -54,9 +56,14 @@ void PositionableWaveDisplay::paint(Graphics &g)
 								  0.0, fileLength,
 								  1, 1.0f);
 	
-	g.setColour(Colours::white);
-	g.drawLine(currentWidth * oneOverFileLength * currentPos -1, 0,
-			   currentWidth * oneOverFileLength * currentPos -1, currentHeight,
+	
+	int transportLineXCoord = currentWidth * oneOverFileLength * currentPos - 1;
+	if (transportLineXCoord < 0)
+		transportLineXCoord = 0;
+	
+	g.setColour(Colours::white);	
+	g.drawLine(transportLineXCoord, 0,
+			   transportLineXCoord, currentHeight,
 			   2);	
 }
 //====================================================================================
@@ -66,17 +73,6 @@ void PositionableWaveDisplay::timerCallback(const int timerId)
 	{
 		currentPos = filePlayer->getCurrentPosition();
 		repaint();
-	}
-	else if (timerId == cursorMoved)
-	{
-		if (isMouseDown)
-		{
-			double position = currentXScale * currentMouseX;
-			
-			filePlayer->setPosition(position);
-			
-			repaint();
-		}
 	}
 	else if (timerId == waveformLoading)
 	{
@@ -111,6 +107,13 @@ void PositionableWaveDisplay::setZoomFactor (float newZoomFactor)
 	repaint();
 }
 
+void PositionableWaveDisplay::setSampleRate (double newSampleRate)
+{
+	currentSampleRate = newSampleRate;
+	
+	fileLength = filePlayer->getTotalLength() / currentSampleRate;
+	oneOverFileLength = 1.0 / fileLength;
+}
 //==============================================================================
 void PositionableWaveDisplay::mouseDown(const MouseEvent &e)
 {
@@ -122,7 +125,9 @@ void PositionableWaveDisplay::mouseDown(const MouseEvent &e)
 	
 	setMouseCursor(MouseCursor::IBeamCursor);
 	
-	startTimer(cursorMoved, 40);
+	double position = currentXScale * currentMouseX;
+	filePlayer->setPosition(position);
+	repaint();		
 }
 
 void PositionableWaveDisplay::mouseUp(const MouseEvent &e)
@@ -130,13 +135,16 @@ void PositionableWaveDisplay::mouseUp(const MouseEvent &e)
 	isMouseDown = false;
 	
 	setMouseCursor(MouseCursor::NormalCursor);
-	
-	stopTimer(cursorMoved);
 }
 
 void PositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 {
 	currentMouseX = e.x;
+	
+	double position = currentXScale * currentMouseX;
+	filePlayer->setPosition(position);
+	
+	repaint();	
 }
 //==============================================================================
 bool PositionableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
