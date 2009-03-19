@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5519B7AA0F51D10900801715 /* dRowAudio_Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 5519B7A90F51D10900801715 /* dRowAudio_Constants.h */; };
+		551D36960F688A6F00D9DE2A /* dRowAudio_TriBandAudioThumbnail.h in Headers */ = {isa = PBXBuildFile; fileRef = 55D418470F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.h */; };
+		551D36970F688A7500D9DE2A /* dRowAudio_TriBandAudioThumbnail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D418480F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.cpp */; };
 		55592FF20F4720D60044FC32 /* dRowAudio_Meter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55592FF00F4720D60044FC32 /* dRowAudio_Meter.cpp */; };
 		55592FF30F4720D60044FC32 /* dRowAudio_Meter.h in Headers */ = {isa = PBXBuildFile; fileRef = 55592FF10F4720D60044FC32 /* dRowAudio_Meter.h */; };
 		55592FF60F4720DF0044FC32 /* dRowAudio_Parameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55592FF40F4720DF0044FC32 /* dRowAudio_Parameter.cpp */; };
@@ -87,6 +89,8 @@
 		55C56D0C0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_DraggableWaveDisplay.h; path = ../../src/audio/dRowAudio_DraggableWaveDisplay.h; sourceTree = SOURCE_ROOT; };
 		55C56D0D0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_PositionableWaveDisplay.cpp; path = ../../src/audio/dRowAudio_PositionableWaveDisplay.cpp; sourceTree = SOURCE_ROOT; };
 		55C56D0E0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_PositionableWaveDisplay.h; path = ../../src/audio/dRowAudio_PositionableWaveDisplay.h; sourceTree = SOURCE_ROOT; };
+		55D418470F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_TriBandAudioThumbnail.h; path = ../../src/audio/dRowAudio_TriBandAudioThumbnail.h; sourceTree = "<group>"; };
+		55D418480F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_TriBandAudioThumbnail.cpp; path = ../../src/audio/dRowAudio_TriBandAudioThumbnail.cpp; sourceTree = "<group>"; };
 		55DDDD710F4A13E900894F8B /* dRowAudio_OnePoleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_OnePoleFilter.h; path = ../../src/audio/dRowAudio_OnePoleFilter.h; sourceTree = SOURCE_ROOT; };
 		55DDDD720F4A13E900894F8B /* dRowAudio_OnePoleFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_OnePoleFilter.cpp; path = ../../src/audio/dRowAudio_OnePoleFilter.cpp; sourceTree = SOURCE_ROOT; };
 		55DDDD770F4A177600894F8B /* dRowAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio.cpp; path = ../../dRowAudio.cpp; sourceTree = SOURCE_ROOT; };
@@ -207,6 +211,8 @@
 				55C56D0B0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.cpp */,
 				55C56D0E0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.h */,
 				55C56D0D0F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.cpp */,
+				55D418470F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.h */,
+				55D418480F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.cpp */,
 			);
 			name = audio;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 				55880BED0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h in Headers */,
 				55C56D100F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.h in Headers */,
 				55C56D120F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.h in Headers */,
+				551D36960F688A6F00D9DE2A /* dRowAudio_TriBandAudioThumbnail.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +344,7 @@
 				55BE2C010F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp in Sources */,
 				55C56D0F0F6211A400DF9CCE /* dRowAudio_DraggableWaveDisplay.cpp in Sources */,
 				55C56D110F6211A400DF9CCE /* dRowAudio_PositionableWaveDisplay.cpp in Sources */,
+				551D36970F688A7500D9DE2A /* dRowAudio_TriBandAudioThumbnail.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

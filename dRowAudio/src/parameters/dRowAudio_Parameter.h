@@ -10,7 +10,7 @@
 #define DROWPARAMETER_H
 
 #include <juce/juce.h>
-#include "dRowAudio.h"
+#include <dRowAudio/dRowAudio.h>
 
 /** Parameter Units - currently values are the same as the AudioUnit enums for this purpose */
 enum ParameterUnit

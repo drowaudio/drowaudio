@@ -23,23 +23,23 @@ public:
 	
 	/**	Makes the filter a Low-pass filter.
 	 */
-	void createLowPass(const double sampleRate,
+	void makeLowPass(const double sampleRate,
 					   const double frequency);
 	
 	/**	Makes the filter a High-pass filter.
 	 */
-	void createHighPass(const double sampleRate,
+	void makeHighPass(const double sampleRate,
 						const double frequency);
 	
 	/**	Makes the filter a Band-pass filter.
 	 */
-	void createBandPass(const double sampleRate,
+	void makeBandPass(const double sampleRate,
 						const double frequency,
 						const double Q);
 	
 	/**	Makes the filter a Band-stop filter.
 	 */
-	void createBandStop(const double sampleRate,
+	void makeBandStop(const double sampleRate,
 						const double frequency,
 						const double Q);
 	
@@ -47,7 +47,7 @@ public:
 		This type of filter has a complex phase response so will give a comb 
 		filtered effect when combined with an unfilterd copy of the signal.
 	 */
-	void createAllpass(const double sampleRate,
+	void makeAllpass(const double sampleRate,
 					   const double frequency,
 					   const double Q);
 };

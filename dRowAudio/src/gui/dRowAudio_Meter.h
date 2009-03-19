@@ -27,7 +27,7 @@ public:
 		
 		@param barValueToUse	A pointer to the value for the bar to display
 		@param lineValueToUse	A pointer to the value for the line to display
-		@param lockToUse		The Critical section to use
+		@param lockToUse		An optional pointer to a Critical Section to use.
 	 */
 	MeterComponent(float* barValueToUse, float* lineValueToUse, const CriticalSection* lockToUse =0);
 	/// Destructor

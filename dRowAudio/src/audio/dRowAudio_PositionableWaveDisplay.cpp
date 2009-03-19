@@ -17,6 +17,7 @@ PositionableWaveDisplay::PositionableWaveDisplay(AudioFilePlayer* sourceToBeUsed
 	// set up the format manager to read basic formats
 	formatManager = new AudioFormatManager();
 	formatManager->registerBasicFormats();
+	formatManager->registerFormat(new QuickTimeAudioFormat, false);
 	
 	// instansiate the cache and the thumbnail
 	thumbnailCache = new AudioThumbnailCache(2);
@@ -150,7 +151,8 @@ void PositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 bool PositionableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
 {
 	if (files[0].containsIgnoreCase(T(".wav"))
-		|| files[0].containsIgnoreCase(T(".aif")))
+		|| files[0].containsIgnoreCase(T(".aif"))
+		|| files[0].containsIgnoreCase(T(".mp3")))
 		return true;
 	else
 		return false;

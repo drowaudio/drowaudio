@@ -23,6 +23,7 @@
 
 #include "src/audio/dRowAudio_DraggableWaveDisplay.cpp"
 #include "src/audio/dRowAudio_PositionableWaveDisplay.cpp"
+#include "src/audio/dRowAudio_TriBandAudioThumbnail.cpp"
 
 
 // Gui

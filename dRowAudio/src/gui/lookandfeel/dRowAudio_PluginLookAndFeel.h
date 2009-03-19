@@ -15,7 +15,7 @@ class dRowLookAndFeel : public LookAndFeel
 {
 public:
 	/**
-	 Draws a shiny, rounded-top knob rotary slider.
+		Draws a shiny, rounded-top knob rotary slider.
 	 */
 	virtual void drawRotarySlider (Graphics& g,
 								   int x, int y,
@@ -26,13 +26,13 @@ public:
 								   Slider& slider);
 	
 	/**
-	 Draws a label.
-	 If the label's background is not transparent then it will draw a 3D label.
+		Draws a label.
+		If the label's background is not transparent then it will draw a 3D label.
 	 */
 	virtual void drawLabel (Graphics& g, Label& label);
 	
 	/**
-	 Draws a line that will look like it is inset to it background.
+		Draws a line that will look like it is inset in its background.
 	 */
 	static void drawInsetLine (Graphics& g,
 							   const float startX,

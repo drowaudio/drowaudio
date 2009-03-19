@@ -8,7 +8,7 @@
 
 #include "dRowAudio_BiquadFilter.h"
 
-void BiquadFilter::createLowPass(const double sampleRate,
+void BiquadFilter::makeLowPass(const double sampleRate,
 								 const double frequency)
 {
 	double oneOverCurrentSampleRate = 1/sampleRate; 
@@ -24,7 +24,7 @@ void BiquadFilter::createLowPass(const double sampleRate,
 					(1.0f - alpha));
 }
 
-void BiquadFilter::createHighPass(const double sampleRate,
+void BiquadFilter::makeHighPass(const double sampleRate,
 								  const double frequency)
 {
 	double oneOverCurrentSampleRate = 1/sampleRate; 
@@ -40,7 +40,7 @@ void BiquadFilter::createHighPass(const double sampleRate,
 					(1.0f - alpha));	
 }
 
-void BiquadFilter::createBandPass(const double sampleRate,
+void BiquadFilter::makeBandPass(const double sampleRate,
 								  const double frequency,
 								  const double Q)
 {
@@ -62,7 +62,7 @@ void BiquadFilter::createBandPass(const double sampleRate,
 					1.0f - alpha);
 }
 
-void BiquadFilter::createBandStop(const double sampleRate,
+void BiquadFilter::makeBandStop(const double sampleRate,
 								  const double frequency,
 								  const double Q)
 {
@@ -83,7 +83,7 @@ void BiquadFilter::createBandStop(const double sampleRate,
 					1.0f - alpha);
 }
 
-void BiquadFilter::createAllpass(const double sampleRate,
+void BiquadFilter::makeAllpass(const double sampleRate,
 								 const double frequency,
 								 const double Q)
 {
