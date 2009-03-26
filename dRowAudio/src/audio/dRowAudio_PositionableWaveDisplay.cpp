@@ -8,7 +8,7 @@
 
 #include "dRowAudio_PositionableWaveDisplay.h"
 
-PositionableWaveDisplay::PositionableWaveDisplay(AudioFilePlayer* sourceToBeUsed, double sampleRate)
+PositionableWaveDisplay::PositionableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate)
 	:	filePlayer(sourceToBeUsed),
 		currentSampleRate(sampleRate),
 		currentPos(0.0),
@@ -91,7 +91,7 @@ void PositionableWaveDisplay::changeListenerCallback(void* changedObject)
 		fileLength = filePlayer->getTotalLength() / currentSampleRate;
 		oneOverFileLength = 1.0 / fileLength;
 	
-		File newFile(((AudioFilePlayer*)changedObject)->getFile());
+		File newFile(((FilteringAudioFilePlayer*)changedObject)->getFile());
 		FileInputSource* fileInputSource = new FileInputSource (newFile);
 		thumbnailViewLow->setSource(fileInputSource);
 		

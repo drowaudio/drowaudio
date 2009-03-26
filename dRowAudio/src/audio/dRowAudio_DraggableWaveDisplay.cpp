@@ -8,10 +8,10 @@
 
 #include "dRowAudio_DraggableWaveDisplay.h"
 
-DraggableWaveDisplay::DraggableWaveDisplay(AudioFilePlayer* sourceToBeUsed, double sampleRate)
+DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate)
 	:	filePlayer(sourceToBeUsed),
 		currentSampleRate(sampleRate),
-		playheadPos(0.25f),
+		playheadPos(0.5f),
 		zoomFactor(1.0f),
 		isDraggable(true)
 {
@@ -45,16 +45,16 @@ void DraggableWaveDisplay::resized()
 
 void DraggableWaveDisplay::paint(Graphics &g)
 {
-	double centreTime = playheadPos * zoomFactor * fileLength;
+	double centreTime = playheadPos * zoomFactor;
 	
 	g.fillAll(Colours::black);
 	
 	g.setColour(Colours::lightgreen);
 	thumbnailViewLow->drawChannel(g, 0, 0, currentWidth, currentHeight*0.5f,
-								  0.0+currentPos-centreTime, (zoomFactor*fileLength+currentPos)-centreTime,
+								  currentPos-centreTime, zoomFactor+currentPos-centreTime,
 								  0, 1.0f);
 	thumbnailViewLow->drawChannel(g, 0, currentHeight*0.5f, currentWidth, currentHeight*0.5f,
-								  0.0+currentPos-centreTime, (zoomFactor*fileLength+currentPos)-centreTime,
+								  currentPos-centreTime, zoomFactor+currentPos-centreTime,
 								  1, 1.0f);
 	
 	g.setColour (Colours::black);
@@ -62,7 +62,7 @@ void DraggableWaveDisplay::paint(Graphics &g)
 	g.drawVerticalLine(currentWidth * playheadPos + 1, 0, currentHeight);
 
 	g.setColour(Colours::white);
-	g.drawVerticalLine(currentWidth * playheadPos, 0, currentHeight);
+	g.drawVerticalLine(currentWidth * playheadPos, 0, currentHeight);	
 }
 //====================================================================================
 void DraggableWaveDisplay::timerCallback(const int timerId)
@@ -117,7 +117,7 @@ void DraggableWaveDisplay::changeListenerCallback(void* changedObject)
 	{
 		fileLength = filePlayer->getTotalLength() / currentSampleRate;
 	
-		File newFile(((AudioFilePlayer*)changedObject)->getFile());
+		File newFile(((FilteringAudioFilePlayer*)changedObject)->getFile());
 		FileInputSource* fileInputSource = new FileInputSource (newFile);
 		thumbnailViewLow->setSource(fileInputSource);
 		
@@ -136,7 +136,7 @@ void DraggableWaveDisplay::setSampleRate (double newSampleRate)
 void DraggableWaveDisplay::setZoomFactor (float newZoomFactor)
 {
 	zoomFactor = newZoomFactor;
-	currentXScale = (zoomFactor * fileLength) / currentWidth;
+	currentXScale = zoomFactor / currentWidth;
 	
 	repaint();
 }
@@ -161,7 +161,7 @@ bool DraggableWaveDisplay::getDraggable ()
 void DraggableWaveDisplay::mouseDown(const MouseEvent &e)
 {
 	// update scale
-	currentXScale = (zoomFactor * fileLength) / currentWidth;
+	currentXScale = zoomFactor / currentWidth;
 	
 	lastMouseX = e.x;
 	currentMouseX = e.x;

@@ -12,6 +12,8 @@
 #include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 
+class FilteringAudioFilePlayer;
+
 /**
 	A class to display the waveform of an audio file.
 	
@@ -39,7 +41,7 @@ public:
 		The file player associated with the display must be passed in along with
 		the current sample rate. This can later be changed with setSampleRate.
 	 */
-	DraggableWaveDisplay (AudioFilePlayer* sourceToBeUsed, double sampleRate);
+	DraggableWaveDisplay (FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate);
 	
 	/// Destructor
 	~DraggableWaveDisplay ();
@@ -85,7 +87,7 @@ public:
 	
 private:
 	
-	AudioFilePlayer* filePlayer;
+	FilteringAudioFilePlayer* filePlayer;
 	double fileLength, currentSampleRate;
 	
 	// thumbnail classes

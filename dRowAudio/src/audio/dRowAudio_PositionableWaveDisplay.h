@@ -38,7 +38,7 @@ public:
 		The file player associated with the display must be passed in along with
 		the current sample rate. This can later be changed with setSampleRate.
 	 */
-	PositionableWaveDisplay (AudioFilePlayer* sourceToBeUsed, double sampleRate);
+	PositionableWaveDisplay (FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate);
 	
 	/// Destructor
 	~PositionableWaveDisplay ();
@@ -72,7 +72,7 @@ public:
 	
 private:
 	
-	AudioFilePlayer* filePlayer;
+	FilteringAudioFilePlayer* filePlayer;
 	double fileLength, oneOverFileLength, currentSampleRate;
 	
 	// thumbnail classes

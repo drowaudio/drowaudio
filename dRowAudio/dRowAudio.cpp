@@ -20,6 +20,8 @@
 #include "src/audio/dRowAudio_OnePoleFilter.cpp"
 
 #include "src/audio/dRowAudio_AudioFilePlayer.cpp"
+#include "src/audio/dRowAudio_FilteringAudioTransportSource.cpp"
+#include "src/audio/dRowAudio_FilteringAudioFilePlayer.cpp"
 
 #include "src/audio/dRowAudio_DraggableWaveDisplay.cpp"
 #include "src/audio/dRowAudio_PositionableWaveDisplay.cpp"

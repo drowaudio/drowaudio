@@ -46,7 +46,7 @@ public:
     /** Returns the length of the audio file.
 	 */
     double getTotalLength() const throw();
-	
+		
     /** Renders the waveform shape for a channel.
 	 
 	 The waveform will be drawn within  the specified rectangle, where startTime
@@ -68,6 +68,7 @@ public:
 	 */
     bool isFullyLoaded() const throw();
 	
+    /** @internal */
 	bool buildWaveform();
 	
     //==============================================================================
@@ -88,6 +89,7 @@ private:
 
 
 	int orginalSamplesPerThumbnailSample, noChannels, noSourceSamples, noCacheSamples;
+	double sampleRate;
 	int noSamplesCached;
 	
 	float **sourceData, *sourceDataMixedMono;
@@ -103,6 +105,9 @@ private:
 	void buildLowpassedWave(MemoryBlock originalWaveform);
 	void buildBandpassedWave(MemoryBlock originalWaveform);
 	void buildHighpassedWave(MemoryBlock originalWaveform);
+	
+	void findMaxMin(float* sourceStartSampleHighest, float* sourceStartSampleLowest, int sourceNumSamples,
+					float* destBufferHighest, float* destBufferLowest, int destBufferSize);
 };
 
 #endif //_TRIBANDAUDIOTHUMBNAIL_H_

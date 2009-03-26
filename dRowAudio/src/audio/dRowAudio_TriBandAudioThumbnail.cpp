@@ -73,6 +73,7 @@ bool TriBandAudioThumbnail::initialiseFromAudioFile (AudioFormatReader& reader)
 {
 	noSourceSamples = reader.lengthInSamples;
     noChannels = reader.numChannels;
+	sampleRate = reader.sampleRate;
     noSamplesCached = 0;
 	
 	noCacheSamples = (int)(noSourceSamples / orginalSamplesPerThumbnailSample);
@@ -83,74 +84,41 @@ bool TriBandAudioThumbnail::initialiseFromAudioFile (AudioFormatReader& reader)
 
 bool TriBandAudioThumbnail::buildWaveform ()
 {
+	// create raw data from source file 
 	MemoryBlock initialData(noSourceSamples * sizeof(int));
 	int *initialDataPointer = (int*)initialData.getData();
 	int **sourceDataOriginal = new int*[2];
 	sourceDataOriginal[0] = initialDataPointer;
 	sourceDataOriginal[1] = 0;
-	
 
-	MemoryBlock data(noSourceSamples * sizeof(float));	
-	float *sourceDataMixedMono = (float*)data.getData();
+	// and read the file into the array
+	reader->read(sourceDataOriginal,
+				 0,
+				 noSourceSamples);	
 
+	// create a mixed mono copy of the source file
+	MemoryBlock floatData(noSourceSamples * sizeof(float));	
+	float *sourceDataMixedMono = (float*)floatData.getData();
 	sourceData = new float*[2];
 	sourceData[0] = sourceDataMixedMono;
 	sourceData[1] = 0;
 	
-	// reads the file into the array
-	reader->read((int**)sourceDataOriginal,
-				 0,
-				 noSourceSamples);
 	
-	// convert data to float
-	unsigned long int max = 0;
+	// find maximum sample
+	uint32 max = 0;
 	for (int i = 0; i < noSourceSamples; i++)
-	{
 		if (abs(initialDataPointer[i]) > max)
 			max = abs(initialDataPointer[i]);
-	}
+
+	// convert data to float
 	double oneOverMax = 1.0 / max;
 	for (int i = 0; i < noSourceSamples; i++)
-	{
 		sourceDataMixedMono[i] = initialDataPointer[i] * oneOverMax;
-	}
 
-	
-	buildLowpassedWave(data);
-	buildBandpassedWave(data);
-	buildHighpassedWave(data);
-	
-	
-	//=============================================================
-	lowResCacheHighest = new float[noCacheSamples];
-	lowResCacheLowest = new float[noCacheSamples];
-
-	for (int i = 0; i < noCacheSamples; i++)
-	{
-		const int sourceStart = i * orginalSamplesPerThumbnailSample;
-		const int sourceEnd = sourceStart + orginalSamplesPerThumbnailSample;		
-		
-//		float lowestLeft, highestLeft, lowestRight, highestRight;
-//		
-//		reader->readMaxLevels (sourceStart,
-//							   sourceEnd - sourceStart,
-//							   lowestLeft,
-//							   highestLeft,
-//							   lowestRight,
-//							   highestRight);
-		
-		float lowest = 0.0f, highest = 0.0f;
-		
-		for ( int c = sourceStart; c < sourceEnd; c++)
-		{
-			if ( sourceDataMixedMono[c] < lowest )
-				lowest = sourceDataMixedMono[c];
-			else if ( sourceDataMixedMono[c] > highest )
-				highest = sourceDataMixedMono[c];
-		}
-		lowResCacheHighest[i] = highest;
-		lowResCacheLowest[i] = lowest;
-	}
+	// build filtered waves
+	buildLowpassedWave(floatData);
+	buildBandpassedWave(floatData);
+	buildHighpassedWave(floatData);
 	
 	return true;
 }
@@ -158,17 +126,21 @@ bool TriBandAudioThumbnail::buildWaveform ()
 void TriBandAudioThumbnail::buildLowpassedWave(MemoryBlock sourceData)
 {
 	float *originalWaveform = (float*)sourceData.getData();
+	const int noOriginalWaveformSamples = sourceData.getSize()/sizeof(float);
 
 	// filter the copy of the source data
-	filter.makeLowPass(reader->sampleRate, 100);
+	filter.makeLowPass(reader->sampleRate, 75);
 	filter.reset();
-	filter.processSamples(originalWaveform, sourceData.getSize()/sizeof(float));
+	filter.processSamples(originalWaveform, noOriginalWaveformSamples);
 
 	lowpassedCacheHighest = new float[noCacheSamples];
 	lowpassedCacheLowest = new float[noCacheSamples];
 	
 	// find max and min
-	for (int i = 0; i < noCacheSamples; i++)
+	findMaxMin(originalWaveform, originalWaveform, noOriginalWaveformSamples,
+			   lowpassedCacheHighest, lowpassedCacheLowest, noCacheSamples);
+	
+/*	for (int i = 0; i < noCacheSamples; i++)
 	{
 		const int sourceStart = i * orginalSamplesPerThumbnailSample;
 		const int sourceEnd = sourceStart + orginalSamplesPerThumbnailSample;		
@@ -185,7 +157,7 @@ void TriBandAudioThumbnail::buildLowpassedWave(MemoryBlock sourceData)
 		
 		lowpassedCacheHighest[i] = highest;
 		lowpassedCacheLowest[i] = lowest;
-	}
+	}*/
 }
 
 void TriBandAudioThumbnail::buildBandpassedWave(MemoryBlock sourceData)
@@ -193,7 +165,7 @@ void TriBandAudioThumbnail::buildBandpassedWave(MemoryBlock sourceData)
 	float *originalWaveform = (float*)sourceData.getData();
 	
 	// filter the copy of the source data
-	filter.makeBandPass(reader->sampleRate, 2000, 4);
+	filter.makeBandPass(reader->sampleRate, 2000, 2);
 	filter.reset();
 	filter.processSamples(originalWaveform, sourceData.getSize()/sizeof(float));
 	
@@ -226,7 +198,7 @@ void TriBandAudioThumbnail::buildHighpassedWave(MemoryBlock sourceData)
 	float *originalWaveform = (float*)sourceData.getData();
 	
 	// filter the copy of the source data
-	filter.makeHighPass(reader->sampleRate, 3500);
+	filter.makeHighPass(reader->sampleRate, 4500);
 	filter.reset();
 	filter.processSamples(originalWaveform, sourceData.getSize()/sizeof(float));
 	
@@ -254,6 +226,42 @@ void TriBandAudioThumbnail::buildHighpassedWave(MemoryBlock sourceData)
 	}
 }
 
+void TriBandAudioThumbnail::findMaxMin(float* sourceStartSampleHighest, float* sourceStartSampleLowest, int sourceNumSamples,
+									   float* destBufferHighest, float* destBufferLowest, int destBufferSize)
+{
+	float sourceSamplesPerDestSamples = (float)sourceNumSamples / destBufferSize;
+	DBG(String("No. source samples: ")<<sourceNumSamples);
+	DBG(String("No. dest samples: ")<<destBufferSize);
+	DBG(String("sourceSamplesPerDestSamples: ")<<sourceSamplesPerDestSamples);
+	
+	for (int i = 0; i < destBufferSize; i++)
+	{
+		int sourceStart = roundFloatToInt(i * sourceSamplesPerDestSamples);
+		int sourceEnd = roundFloatToInt(sourceStart + sourceSamplesPerDestSamples);
+//		jlimit(0, sourceNumSamples, sourceStart);
+//		jlimit(0, sourceNumSamples, sourceEnd);
+		
+		float lowest = 0.0f, highest = 0.0f;
+
+		if ( sourceEnd < sourceNumSamples )
+		{
+			jlimit(0, sourceNumSamples, sourceStart);
+			jlimit(0, sourceNumSamples, sourceEnd);
+
+			for ( int c = sourceStart; c < sourceEnd; c++)
+			{
+				if ( sourceStartSampleLowest[c] < lowest )
+					lowest = sourceStartSampleLowest[c];
+				if ( sourceStartSampleHighest[c] > highest )
+					highest = sourceStartSampleHighest[c];
+			}
+		}
+
+		destBufferHighest[i] = highest;
+		destBufferLowest[i] = lowest;
+	}	
+}
+
 void TriBandAudioThumbnail::timerCallback()
 {
 }
@@ -265,50 +273,80 @@ void TriBandAudioThumbnail::drawChannel (Graphics& g,
 										 int channelNum,
 										 const float verticalZoomFactor)
 {
-	int centreY = y + (h * 0.5f);
-	float scale = h * 0.5f;
-	
+	const int centreY = y + (h * 0.5f);
+	const float scale = h * 0.5f * verticalZoomFactor;
 	const Rectangle clip (g.getClipBounds());
-//	g.setColour(Colours::green);
-//	for (int i = 0; i < noCacheSamples; i++)
-//	{
-//		g.drawLine(x + i, centreY + (lowResCacheHighest[i] * scale),
-//				   x + i, centreY + (lowResCacheLowest[i] * scale));
-//		
-//		if ((x + i) >= clip.getRight())
-//			break;
-//	}
 	
+	int startCacheSample = roundFloatToInt( (startTime * 60.0f * sampleRate) / orginalSamplesPerThumbnailSample );
+	int endCacheSample = roundFloatToInt( (endTime * 60.0f * sampleRate) / orginalSamplesPerThumbnailSample );
+	jlimit(0, noSourceSamples, startCacheSample);
+	jlimit(0, noSourceSamples, endCacheSample);
+	
+	// calculate section to draw
+	const int noCacheSamples = endCacheSample - startCacheSample;
+	const int noPixelsNeeded = w;
+	DBG(String("No. cache samples: ")<<noCacheSamples);
+	DBG(String("No. pixels needed: ")<<noPixelsNeeded<<"\n");
+	
+	
+	//====================================================================================
+//	float* lowpassedBufferHighest = new float[noPixelsNeeded];
+//	float* lowpassedBufferLowest = new float[noPixelsNeeded];
+	
+	{
+		float lowpassedBufferHighest[noPixelsNeeded];
+		float lowpassedBufferLowest[noPixelsNeeded];
+		
+	//	findMaxMin(&lowpassedCacheHighest[startCacheSample], &lowpassedCacheLowest[startCacheSample], noCacheSamples,
+	//			   lowpassedBufferHighest, lowpassedBufferLowest, noPixelsNeeded);
+		findMaxMin(&lowpassedCacheHighest[startCacheSample], &lowpassedCacheLowest[startCacheSample], noCacheSamples,
+				   lowpassedBufferHighest, lowpassedBufferLowest, noPixelsNeeded);
+		
+		// draw wave
+		g.setColour(Colours::red);
+		for (int i = 0; i < noPixelsNeeded; i++)
+		{
+			g.drawLine(x + i, centreY + (lowpassedBufferHighest[i] * scale),
+			x + i, centreY + (lowpassedBufferLowest[i] * scale));
+		 
+			if ((x + i) >= clip.getRight())
+			break;
+		}
+	}
+//	delete[] lowpassedBufferHighest;
+//	delete[] lowpassedBufferLowest;
+	//====================================================================================
+
 	// draw lowpassed wave
-	g.setColour(Colours::red);
+/*	g.setColour(Colours::red.withAlpha(0.8f));
 	for (int i = 0; i < noCacheSamples; i++)
 	{
-		g.drawLine(x + i, centreY + (lowpassedCacheHighest[i] * scale),
-				   x + i, centreY + (lowpassedCacheLowest[i] * scale));
+		g.drawLine(x + i, centreY + (lowpassedCacheHighest[i + startCacheSample] * scale),
+				   x + i, centreY + (lowpassedCacheLowest[i + startCacheSample] * scale));
 		
 		if ((x + i) >= clip.getRight())
 			break;
 	}
 	
 	// draw bandpassed wave
-	g.setColour(Colours::blue);
+	g.setColour(Colours::blue.withAlpha(0.5f));
 	for (int i = 0; i < noCacheSamples; i++)
 	{
-		g.drawLine(x + i, centreY + (bandpassedCacheHighest[i] * scale),
-				   x + i, centreY + (bandpassedCacheLowest[i] * scale));
+		g.drawLine(x + i, centreY + (bandpassedCacheHighest[i + startCacheSample] * scale),
+				   x + i, centreY + (bandpassedCacheLowest[i + startCacheSample] * scale));
 		
 		if ((x + i) >= clip.getRight())
 			break;
 	}
 	
 	// draw highpassed wave
-	g.setColour(Colours::green.withBrightness(0.8));
+	g.setColour(Colours::green.withBrightness(0.8).withAlpha(0.5f));
 	for (int i = 0; i < noCacheSamples; i++)
 	{
-		g.drawLine(x + i, centreY + (highpassedCacheHighest[i] * scale),
-				   x + i, centreY + (highpassedCacheLowest[i] * scale));
+		g.drawLine(x + i, centreY + (highpassedCacheHighest[i + startCacheSample] * scale),
+				   x + i, centreY + (highpassedCacheLowest[i + startCacheSample] * scale));
 		
 		if ((x + i) >= clip.getRight())
 			break;
-	}
+	}*/
 }
