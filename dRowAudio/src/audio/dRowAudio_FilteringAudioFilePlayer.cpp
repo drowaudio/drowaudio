@@ -10,13 +10,17 @@
 #include "dRowAudio_FilteringAudioFilePlayer.h"
 
 FilteringAudioFilePlayer::FilteringAudioFilePlayer()
+	: currentAudioFileSource(0)
 {
-	currentAudioFileSource = 0;
+	// set up the format manager
+	formatManager = new AudioFormatManager();
+	formatManager->registerBasicFormats();
+	formatManager->registerFormat(new MADAudioFormat(), false);	
 }
 
 FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)
+	:	currentAudioFileSource(0)
 {
-	currentAudioFileSource = 0;
 	setFile(path);
 }
 
@@ -91,10 +95,6 @@ AudioFormatReader* FilteringAudioFilePlayer::audioFormatReaderFromFile(const Str
 	File audioFile (path);
 	
 	fileName = audioFile.getFileName();
-	
-	// get a format manager and set it up with the basic types (wav and aiff).
-	AudioFormatManager formatManager;
-	formatManager.registerBasicFormats();
-	
-	return formatManager.createReaderFor (audioFile);
+		
+	return formatManager->createReaderFor (audioFile);
 }

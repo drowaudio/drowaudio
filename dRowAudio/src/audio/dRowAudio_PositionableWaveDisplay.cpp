@@ -8,20 +8,19 @@
 
 #include "dRowAudio_PositionableWaveDisplay.h"
 
+#include "MADAudioFormat.h"
+
 PositionableWaveDisplay::PositionableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate)
 	:	filePlayer(sourceToBeUsed),
 		currentSampleRate(sampleRate),
 		currentPos(0.0),
 		zoomFactor(1.0f)
 {
-	// set up the format manager to read basic formats
-	formatManager = new AudioFormatManager();
-	formatManager->registerBasicFormats();
-	formatManager->registerFormat(new QuickTimeAudioFormat, false);
+	formatManager = filePlayer->getaudioFormatManager();
 	
 	// instansiate the cache and the thumbnail
 	thumbnailCache = new AudioThumbnailCache(2);
-	thumbnailViewLow = new AudioThumbnail(512, *formatManager, *thumbnailCache);
+	thumbnailViewLow = new AudioThumbnail(5024, *formatManager, *thumbnailCache);
 	
 	// register with the file player to recieve update messages
 	filePlayer->addChangeListener(this);
@@ -31,7 +30,6 @@ PositionableWaveDisplay::~PositionableWaveDisplay()
 {
 	stopTimer(waveformUpdated);
 
-	deleteAndZero(formatManager);
 	deleteAndZero(thumbnailCache);
 	deleteAndZero(thumbnailViewLow);
 	
@@ -58,14 +56,16 @@ void PositionableWaveDisplay::paint(Graphics &g)
 								  1, 1.0f);
 	
 	
-	int transportLineXCoord = currentWidth * oneOverFileLength * currentPos - 1;
-	if (transportLineXCoord < 0)
+	int transportLineXCoord = currentWidth * oneOverFileLength * currentPos;
+	if ((transportLineXCoord - 1) < 0)
 		transportLineXCoord = 0;
 	
-	g.setColour(Colours::white);	
-	g.drawLine(transportLineXCoord, 0,
-			   transportLineXCoord, currentHeight,
-			   2);	
+	g.setColour(Colours::black);	
+	g.drawVerticalLine(transportLineXCoord - 1, 0, currentHeight);
+	g.drawVerticalLine(transportLineXCoord + 1, 0, currentHeight);
+
+	g.setColour(Colours::white);
+	g.drawVerticalLine(transportLineXCoord, 0, currentHeight);		
 }
 //====================================================================================
 void PositionableWaveDisplay::timerCallback(const int timerId)
@@ -150,9 +150,8 @@ void PositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 //==============================================================================
 bool PositionableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
 {
-	if (files[0].containsIgnoreCase(T(".wav"))
-		|| files[0].containsIgnoreCase(T(".aif"))
-		|| files[0].containsIgnoreCase(T(".mp3")))
+	File droppedFile(files[0]);
+	if (matchesAudioWildcard(droppedFile.getFileExtension(), formatManager->getWildcardForAllFormats(), true))
 		return true;
 	else
 		return false;

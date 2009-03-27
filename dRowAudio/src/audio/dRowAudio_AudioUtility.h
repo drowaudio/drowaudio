@@ -19,6 +19,12 @@
 //==============================================================================
 
 /**
+	Converts a time in seconds to minutes.
+ */
+forcedinline static double minsToSeconds(double minutes)
+{	return minutes / 60.0; }
+
+/**
 	Converts a time in seconds to a timecode string.
  */
 static const String timeToTimecodeString (const double seconds)
@@ -36,10 +42,24 @@ static const String timeToTimecodeString (const double seconds)
 }
 
 /**
+ Converts a time in seconds to a timecode string displaying mins, secs and 1/10th secs.
+ */
+static const String timeToTimecodeStringLowRes (const double seconds)
+{
+    const double absSecs = fabs (seconds);
+    const tchar* const sign = (seconds < 0) ? T("-") : T("");
+	
+    const int mins  = ((int) (absSecs / 60.0)) % 60;
+    const int secs  = ((int) absSecs) % 60;
+	
+    return String::formatted (T("%s%02d:%02d:%01d"),
+                              sign, mins, secs,
+                              (roundDoubleToInt (absSecs * 1000) % 1000) & 0x9);
+}
+
+/**
 	Formats a CurretPositionInfo to a bars/beats string.
  */
-
-// quick-and-dirty function to format a bars/beats string
 static const String ppqToBarsBeatsString (const double ppq,
                                           const double lastBarPPQ,
                                           const int numerator,
@@ -58,6 +78,18 @@ static const String ppqToBarsBeatsString (const double ppq,
     String s;
     s << bar << T('|') << beat << T('|') << ticks;
     return s;
+}
+
+/**
+	Compares a filename extension with a wildcard string.
+ */
+static bool matchesAudioWildcard (const String &extensionToTest, const String &wildcard, const bool ignoreCase)
+{
+	if (ignoreCase	?	wildcard.containsIgnoreCase(extensionToTest)
+					:	wildcard.contains(extensionToTest))
+		return true;
+	else
+		return false;
 }
 
 #endif //_DROWAUDIOAUDIOUTILITY_H_

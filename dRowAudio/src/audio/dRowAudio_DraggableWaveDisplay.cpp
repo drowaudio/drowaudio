@@ -15,10 +15,8 @@ DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeU
 		zoomFactor(1.0f),
 		isDraggable(true)
 {
-	// set up the format manager to read basic formats
-	formatManager = new AudioFormatManager();
-	formatManager->registerBasicFormats();
-	
+	formatManager = filePlayer->getaudioFormatManager();
+
 	// instansiate the cache and the thumbnail
 	thumbnailCache = new AudioThumbnailCache(2);
 	thumbnailViewLow = new AudioThumbnail(512, *formatManager, *thumbnailCache);
@@ -29,7 +27,6 @@ DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeU
 
 DraggableWaveDisplay::~DraggableWaveDisplay()
 {
-	deleteAndZero(formatManager);
 	deleteAndZero(thumbnailCache);
 	deleteAndZero(thumbnailViewLow);
 	
@@ -205,8 +202,8 @@ void DraggableWaveDisplay::mouseDrag(const MouseEvent &e)
 //==============================================================================
 bool DraggableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
 {
-	if (files[0].containsIgnoreCase(T(".wav"))
-		|| files[0].containsIgnoreCase(T(".aif")))
+	File droppedFile(files[0]);
+	if (matchesAudioWildcard(droppedFile.getFileExtension(), formatManager->getWildcardForAllFormats(), true))
 		return true;
 	else
 		return false;

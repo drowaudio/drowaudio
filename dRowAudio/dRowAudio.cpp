@@ -27,6 +27,7 @@
 #include "src/audio/dRowAudio_PositionableWaveDisplay.cpp"
 #include "src/audio/dRowAudio_TriBandAudioThumbnail.cpp"
 
+#include "src/audio/MADAudioFormat.cpp"
 
 // Gui
 #include "src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp"

@@ -49,6 +49,9 @@
 		55FC06E70F7AFE5D00978B1B /* dRowAudio_FilteringAudioTransportSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 55FC06E30F7AFE5D00978B1B /* dRowAudio_FilteringAudioTransportSource.h */; };
 		55FC076B0F7B03F200978B1B /* dRowAudio_FilteringAudioFilePlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 55FC06E10F7AFE5D00978B1B /* dRowAudio_FilteringAudioFilePlayer.h */; };
 		55FC076F0F7B03FC00978B1B /* dRowAudio_FilteringAudioFilePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FC06E00F7AFE5D00978B1B /* dRowAudio_FilteringAudioFilePlayer.cpp */; };
+		55FC0AF00F7C8E1A00978B1B /* MADAudioFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FC0AEE0F7C8E1A00978B1B /* MADAudioFormat.cpp */; };
+		55FC0AF10F7C8E1A00978B1B /* MADAudioFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 55FC0AEF0F7C8E1A00978B1B /* MADAudioFormat.h */; };
+		55FC0AF30F7C8E3400978B1B /* _libmad_.c in Sources */ = {isa = PBXBuildFile; fileRef = 55FC0AF20F7C8E3400978B1B /* _libmad_.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,9 @@
 		55FC06E10F7AFE5D00978B1B /* dRowAudio_FilteringAudioFilePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_FilteringAudioFilePlayer.h; path = ../../src/audio/dRowAudio_FilteringAudioFilePlayer.h; sourceTree = SOURCE_ROOT; };
 		55FC06E20F7AFE5D00978B1B /* dRowAudio_FilteringAudioTransportSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_FilteringAudioTransportSource.cpp; path = ../../src/audio/dRowAudio_FilteringAudioTransportSource.cpp; sourceTree = SOURCE_ROOT; };
 		55FC06E30F7AFE5D00978B1B /* dRowAudio_FilteringAudioTransportSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_FilteringAudioTransportSource.h; path = ../../src/audio/dRowAudio_FilteringAudioTransportSource.h; sourceTree = SOURCE_ROOT; };
+		55FC0AEE0F7C8E1A00978B1B /* MADAudioFormat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MADAudioFormat.cpp; path = ../../src/audio/MADAudioFormat.cpp; sourceTree = SOURCE_ROOT; };
+		55FC0AEF0F7C8E1A00978B1B /* MADAudioFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MADAudioFormat.h; path = ../../src/audio/MADAudioFormat.h; sourceTree = SOURCE_ROOT; };
+		55FC0AF20F7C8E3400978B1B /* _libmad_.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = _libmad_.c; path = ../../src/audio/MAD/_libmad_.c; sourceTree = SOURCE_ROOT; };
 		D2AAC07E0554694100DB518D /* libdRowAudiodebug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdRowAudiodebug.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -211,6 +217,7 @@
 		55592FDD0F4720A60044FC32 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				55FC0AEC0F7C8E0200978B1B /* MADAudioFormat */,
 				55FC06AA0F7AEC4200978B1B /* dRowAudio_AudioUtility.h */,
 				55592FF90F4720EB0044FC32 /* dRowAudio_BiquadFilter.h */,
 				55592FF80F4720EB0044FC32 /* dRowAudio_BiquadFilter.cpp */,
@@ -270,6 +277,16 @@
 			name = Header;
 			sourceTree = "<group>";
 		};
+		55FC0AEC0F7C8E0200978B1B /* MADAudioFormat */ = {
+			isa = PBXGroup;
+			children = (
+				55FC0AEF0F7C8E1A00978B1B /* MADAudioFormat.h */,
+				55FC0AEE0F7C8E1A00978B1B /* MADAudioFormat.cpp */,
+				55FC0AF20F7C8E3400978B1B /* _libmad_.c */,
+			);
+			name = MADAudioFormat;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -292,6 +309,7 @@
 				55FC06AB0F7AEC4200978B1B /* dRowAudio_AudioUtility.h in Headers */,
 				55FC06E70F7AFE5D00978B1B /* dRowAudio_FilteringAudioTransportSource.h in Headers */,
 				55FC076B0F7B03F200978B1B /* dRowAudio_FilteringAudioFilePlayer.h in Headers */,
+				55FC0AF10F7C8E1A00978B1B /* MADAudioFormat.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +383,8 @@
 				551D36970F688A7500D9DE2A /* dRowAudio_TriBandAudioThumbnail.cpp in Sources */,
 				55FC06E60F7AFE5D00978B1B /* dRowAudio_FilteringAudioTransportSource.cpp in Sources */,
 				55FC076F0F7B03FC00978B1B /* dRowAudio_FilteringAudioFilePlayer.cpp in Sources */,
+				55FC0AF00F7C8E1A00978B1B /* MADAudioFormat.cpp in Sources */,
+				55FC0AF30F7C8E3400978B1B /* _libmad_.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

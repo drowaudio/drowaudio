@@ -30,6 +30,9 @@
 
 #include "src/audio/dRowAudio_AudioUtility.h"
 
+#include "src/audio/MADAudioFormat.h"
+
+
 // Gui
 #include "src/gui/lookandfeel/dRowAudio_LookAndFeel.h"
 

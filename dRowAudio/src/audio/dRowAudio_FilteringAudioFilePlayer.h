@@ -36,6 +36,12 @@ public:
 	/// Destructor
 	~FilteringAudioFilePlayer();
 	
+	/// Returns the AudioFormatReaderSource currently being used
+	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
+	
+	/// Returns the AudioFormatManager being used
+	AudioFormatManager* getaudioFormatManager() { return formatManager; }
+	
 	/// Play the audio file from the start
 	void startFromZero();
 	
@@ -52,6 +58,9 @@ public:
 	String getFileName();
 	
 private:	
+	/// The AudioFormatManager
+	AudioFormatManager* formatManager;
+
 	/// Create the reader from a given path
 	AudioFormatReader* audioFormatReaderFromFile(const String& path);
 	
