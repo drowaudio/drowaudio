@@ -52,6 +52,8 @@
 		55FC0AF00F7C8E1A00978B1B /* MADAudioFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FC0AEE0F7C8E1A00978B1B /* MADAudioFormat.cpp */; };
 		55FC0AF10F7C8E1A00978B1B /* MADAudioFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 55FC0AEF0F7C8E1A00978B1B /* MADAudioFormat.h */; };
 		55FC0AF30F7C8E3400978B1B /* _libmad_.c in Sources */ = {isa = PBXBuildFile; fileRef = 55FC0AF20F7C8E3400978B1B /* _libmad_.c */; };
+		55FC0D760F7D3C6600978B1B /* dRowAudio_StereoMeter.h in Headers */ = {isa = PBXBuildFile; fileRef = 55FC0D740F7D3C6600978B1B /* dRowAudio_StereoMeter.h */; };
+		55FC0D770F7D3C6600978B1B /* dRowAudio_StereoMeter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FC0D750F7D3C6600978B1B /* dRowAudio_StereoMeter.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +115,9 @@
 		55FC0AEE0F7C8E1A00978B1B /* MADAudioFormat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MADAudioFormat.cpp; path = ../../src/audio/MADAudioFormat.cpp; sourceTree = SOURCE_ROOT; };
 		55FC0AEF0F7C8E1A00978B1B /* MADAudioFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MADAudioFormat.h; path = ../../src/audio/MADAudioFormat.h; sourceTree = SOURCE_ROOT; };
 		55FC0AF20F7C8E3400978B1B /* _libmad_.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = _libmad_.c; path = ../../src/audio/MAD/_libmad_.c; sourceTree = SOURCE_ROOT; };
-		D2AAC07E0554694100DB518D /* libdRowAudiodebug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdRowAudiodebug.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		55FC0D740F7D3C6600978B1B /* dRowAudio_StereoMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_StereoMeter.h; path = ../../src/gui/dRowAudio_StereoMeter.h; sourceTree = "<group>"; };
+		55FC0D750F7D3C6600978B1B /* dRowAudio_StereoMeter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_StereoMeter.cpp; path = ../../src/gui/dRowAudio_StereoMeter.cpp; sourceTree = "<group>"; };
+		D2AAC07E0554694100DB518D /* libdRowAudio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdRowAudio.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +150,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2AAC07E0554694100DB518D /* libdRowAudiodebug.a */,
+				D2AAC07E0554694100DB518D /* libdRowAudio.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,6 +251,8 @@
 				55BE2BFF0F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp */,
 				55592FF10F4720D60044FC32 /* dRowAudio_Meter.h */,
 				55592FF00F4720D60044FC32 /* dRowAudio_Meter.cpp */,
+				55FC0D740F7D3C6600978B1B /* dRowAudio_StereoMeter.h */,
+				55FC0D750F7D3C6600978B1B /* dRowAudio_StereoMeter.cpp */,
 			);
 			name = gui;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 				55FC06E70F7AFE5D00978B1B /* dRowAudio_FilteringAudioTransportSource.h in Headers */,
 				55FC076B0F7B03F200978B1B /* dRowAudio_FilteringAudioFilePlayer.h in Headers */,
 				55FC0AF10F7C8E1A00978B1B /* MADAudioFormat.h in Headers */,
+				55FC0D760F7D3C6600978B1B /* dRowAudio_StereoMeter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +337,7 @@
 			);
 			name = dRowAudio;
 			productName = dRowAudio;
-			productReference = D2AAC07E0554694100DB518D /* libdRowAudiodebug.a */;
+			productReference = D2AAC07E0554694100DB518D /* libdRowAudio.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -385,6 +392,7 @@
 				55FC076F0F7B03FC00978B1B /* dRowAudio_FilteringAudioFilePlayer.cpp in Sources */,
 				55FC0AF00F7C8E1A00978B1B /* MADAudioFormat.cpp in Sources */,
 				55FC0AF30F7C8E3400978B1B /* _libmad_.c in Sources */,
+				55FC0D770F7D3C6600978B1B /* dRowAudio_StereoMeter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeU
 		zoomFactor(1.0f),
 		isDraggable(true)
 {
-	formatManager = filePlayer->getaudioFormatManager();
+	formatManager = filePlayer->getAudioFormatManager();
 
 	// instansiate the cache and the thumbnail
 	thumbnailCache = new AudioThumbnailCache(2);
@@ -47,12 +47,12 @@ void DraggableWaveDisplay::paint(Graphics &g)
 	g.fillAll(Colours::black);
 	
 	g.setColour(Colours::lightgreen);
-	thumbnailViewLow->drawChannel(g, 0, 0, currentWidth, currentHeight*0.5f,
+	thumbnailViewLow->drawChannel(g, 0, 0, currentWidth, currentHeight,
 								  currentPos-centreTime, zoomFactor+currentPos-centreTime,
 								  0, 1.0f);
-	thumbnailViewLow->drawChannel(g, 0, currentHeight*0.5f, currentWidth, currentHeight*0.5f,
-								  currentPos-centreTime, zoomFactor+currentPos-centreTime,
-								  1, 1.0f);
+//	thumbnailViewLow->drawChannel(g, 0, currentHeight*0.5f, currentWidth, currentHeight*0.5f,
+//								  currentPos-centreTime, zoomFactor+currentPos-centreTime,
+//								  1, 1.0f);
 	
 	g.setColour (Colours::black);
 	g.drawVerticalLine(currentWidth * playheadPos - 1, 0, currentHeight);

@@ -37,6 +37,8 @@
 #include "src/gui/lookandfeel/dRowAudio_LookAndFeel.h"
 
 #include "src/gui/dRowAudio_Meter.h"
+#include "src/gui/dRowAudio_StereoMeter.h"
+
 
 // Utility
 #include "src/parameters/dRowAudio_Parameter.h"

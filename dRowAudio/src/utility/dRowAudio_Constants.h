@@ -15,6 +15,8 @@
 	to avoid using expensive divides in programs.
  */
 
+const double oneOver60 = 1.0 / 60.0;
+const double oneOver60Squared = 1.0 / (60.0 * 60.0);
 const double oneOver180 = 1.0 / 180.0;
 const double oneOverPi = 1.0 / double_Pi;
 

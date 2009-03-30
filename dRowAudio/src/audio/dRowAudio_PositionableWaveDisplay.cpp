@@ -16,7 +16,7 @@ PositionableWaveDisplay::PositionableWaveDisplay(FilteringAudioFilePlayer* sourc
 		currentPos(0.0),
 		zoomFactor(1.0f)
 {
-	formatManager = filePlayer->getaudioFormatManager();
+	formatManager = filePlayer->getAudioFormatManager();
 	
 	// instansiate the cache and the thumbnail
 	thumbnailCache = new AudioThumbnailCache(2);
@@ -48,12 +48,12 @@ void PositionableWaveDisplay::paint(Graphics &g)
 	g.fillAll(Colours::black);
 	
 	g.setColour(Colours::lightgreen);
-	thumbnailViewLow->drawChannel(g, 0, 0, currentWidth, currentHeight*0.5f,
+	thumbnailViewLow->drawChannel(g, 0, 0, currentWidth, currentHeight,
 								  0.0, fileLength,
 								  0, 1.0f);
-	thumbnailViewLow->drawChannel(g, 0, currentHeight*0.5f, currentWidth, currentHeight*0.5f,
-								  0.0, fileLength,
-								  1, 1.0f);
+//	thumbnailViewLow->drawChannel(g, 0, currentHeight*0.5f, currentWidth, currentHeight*0.5f,
+//								  0.0, fileLength,
+//								  1, 1.0f);
 	
 	
 	int transportLineXCoord = currentWidth * oneOverFileLength * currentPos;

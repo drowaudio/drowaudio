@@ -21,6 +21,7 @@ playing (false),
 stopped (true),
 sampleRate (44100.0),
 sourceSampleRate (0.0),
+resamplingRatio (1.0),
 blockSize (128),
 readAheadBufferSize (0),
 isPrepared (false),
@@ -38,12 +39,12 @@ filterSource(true)
 	highEQFilterLeft = new IIRFilter();
 	highEQFilterRight = new IIRFilter();
 	
-	lowEQFilterLeft->makeLowShelf(sampleRate, 500, 2, lowEQGain);
-	lowEQFilterRight->makeLowShelf(sampleRate, 500, 2, lowEQGain);
-	midEQFilterLeft->makeBandPass(sampleRate, 2000, 2, midEQGain);
-	midEQFilterRight->makeBandPass(sampleRate, 2000, 2, midEQGain);
-	highEQFilterLeft->makeHighShelf(sampleRate, 3500, 2, highEQGain);
-	highEQFilterRight->makeHighShelf(sampleRate, 3500, 2, highEQGain);	
+	lowEQFilterLeft->makeLowShelf(sampleRate, 70, 1.5, lowEQGain);
+	lowEQFilterRight->makeLowShelf(sampleRate, 70, 1.5, lowEQGain);
+	midEQFilterLeft->makeBandPass(sampleRate, 1000, 1.5, midEQGain);
+	midEQFilterRight->makeBandPass(sampleRate, 1000, 1.5, midEQGain);
+	highEQFilterLeft->makeHighShelf(sampleRate, 1300, 1.5, highEQGain);
+	highEQFilterRight->makeHighShelf(sampleRate, 1300, 1.5, highEQGain);	
 }
 
 FilteringAudioTransportSource::~FilteringAudioTransportSource()
@@ -237,8 +238,8 @@ void FilteringAudioTransportSource::setMidEQGain(float newMidEQGain)
 {
 	midEQGain = newMidEQGain;
 	
-	midEQFilterLeft->makeBandPass(sampleRate, 2000, 2, midEQGain);
-	midEQFilterRight->makeBandPass(sampleRate, 2000, 2, midEQGain);
+	midEQFilterLeft->makeBandPass(sampleRate, 2000, 1, midEQGain);
+	midEQFilterRight->makeBandPass(sampleRate, 2000, 1, midEQGain);
 }
 
 void FilteringAudioTransportSource::setHighEQGain(float newHighEQGain)
@@ -252,6 +253,14 @@ void FilteringAudioTransportSource::setHighEQGain(float newHighEQGain)
 void FilteringAudioTransportSource::setFilterSource(bool shouldFilter)
 {
 	filterSource = shouldFilter;
+}
+
+void FilteringAudioTransportSource::setResamplingRatio (const double samplesInPerOutputSample)
+{
+	resamplingRatio = samplesInPerOutputSample;
+	
+	if (resamplerSource != 0)
+		resamplerSource->setResamplingRatio ((sourceSampleRate / sampleRate) * resamplingRatios);
 }
 
 void FilteringAudioTransportSource::prepareToPlay (int samplesPerBlockExpected,

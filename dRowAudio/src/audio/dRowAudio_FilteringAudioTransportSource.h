@@ -118,7 +118,15 @@ public:
 
 	/** Returns whether the source is being filtered or not.
 	 */
-	bool setFilterSource()				{ return filterSource; }
+	bool getFilterSource()				{ return filterSource; }
+	
+	/** Sets the resampling ratio to use.
+	 */
+	void setResamplingRatio (const double samplesInPerOutputSample);
+	
+	/** Return the current resampling ratio being used
+	 */
+	double getResamplingRatio()			{ return resamplingRatio; }
 	
     //==============================================================================
     /** Implementation of the AudioSource method. */
@@ -156,7 +164,7 @@ private:
     CriticalSection callbackLock;
     float volatile gain, lastGain;
     bool volatile playing, stopped;
-    double sampleRate, sourceSampleRate;
+    double sampleRate, sourceSampleRate, resamplingRatio;
     int blockSize, readAheadBufferSize;
     bool isPrepared, inputStreamEOF;
 	

@@ -33,6 +33,7 @@
 #include "src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp"
 
 #include "src/gui/dRowAudio_Meter.cpp"
+#include "src/gui/dRowAudio_StereoMeter.cpp"
 
 // Utility
 #include "src/parameters/dRowAudio_Parameter.cpp"

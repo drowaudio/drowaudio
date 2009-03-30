@@ -11,6 +11,7 @@
 #define _DROWAUDIOAUDIOUTILITY_H_
 
 #include <juce/juce.h>
+#include "../utility/dRowAudio_Constants.h"
 
 //==============================================================================
 /**
@@ -49,12 +50,13 @@ static const String timeToTimecodeStringLowRes (const double seconds)
     const double absSecs = fabs (seconds);
     const tchar* const sign = (seconds < 0) ? T("-") : T("");
 	
-    const int mins  = ((int) (absSecs / 60.0)) % 60;
+    const int hours = (int) (absSecs * oneOver60Squared);
+    const int mins  = ((int) (absSecs * oneOver60)) % 60;
     const int secs  = ((int) absSecs) % 60;
+	const int tenthSecs  = (int) ((absSecs - (int)absSecs) * 10);
 	
-    return String::formatted (T("%s%02d:%02d:%01d"),
-                              sign, mins, secs,
-                              (roundDoubleToInt (absSecs * 1000) % 1000) & 0x9);
+    return String::formatted (T("%s%02d:%02d.%i"),
+                              sign, mins, secs, tenthSecs);
 }
 
 /**

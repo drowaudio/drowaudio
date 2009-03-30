@@ -99,8 +99,8 @@ void MeterComponent::timerCallback()
 	float tempBarLevel = *pCurrentBarLevel;
 	float tempLineLevel = *pCurrentLineLevel;
 	lock->exit();
-	
-	setMeterLevel(fabsf(tempBarLevel), fabsf(tempLineLevel));
+
+	setMeterLevel(tempBarLevel, tempLineLevel);
 }
 //========================================
 
@@ -111,8 +111,8 @@ void MeterComponent::setUpdateInterval(const int intervalInMilliseconds)
 
 void MeterComponent::setMeterLevel(const float newBarLevel, const float newLineLevel)
 {
-	prevBarLevel = currentBarLevel;
-	currentBarLevel = newBarLevel;
+	prevBarLevel = fabsf(currentBarLevel);
+	currentBarLevel = fabsf(newBarLevel);
 
 	// impliment slow decay
 	if(currentBarLevel < prevBarLevel)

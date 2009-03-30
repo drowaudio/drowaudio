@@ -40,7 +40,7 @@ public:
 	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
 	
 	/// Returns the AudioFormatManager being used
-	AudioFormatManager* getaudioFormatManager() { return formatManager; }
+	AudioFormatManager* getAudioFormatManager() { return formatManager; }
 	
 	/// Play the audio file from the start
 	void startFromZero();
