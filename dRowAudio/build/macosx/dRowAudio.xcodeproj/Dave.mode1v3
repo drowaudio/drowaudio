@@ -281,8 +281,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -332,7 +330,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>20</integer>
+									<integer>21</integer>
 									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -371,12 +369,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_FilteringAudioTransportSource.h</string>
+								<string>dRowAudio_FilteringAudioTransportSource.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -384,11 +384,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_FilteringAudioTransportSource.h</string>
+										<string>dRowAudio_FilteringAudioTransportSource.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55FC14DC0F8192FE00978B1B</string>
+										<string>55FC15860F819EA000978B1B</string>
 										<key>history</key>
 										<array>
 											<string>55BE28A80F4B22B000F7CC9B</string>
@@ -420,12 +420,12 @@
 											<string>55FC143D0F81719500978B1B</string>
 											<string>55FC14940F817D9500978B1B</string>
 											<string>55FC14950F817D9500978B1B</string>
-											<string>55FC14C40F81862D00978B1B</string>
-											<string>55FC14D10F8192FE00978B1B</string>
 											<string>55FC14D20F8192FE00978B1B</string>
 											<string>55FC14D30F8192FE00978B1B</string>
 											<string>55FC14D40F8192FE00978B1B</string>
-											<string>55FC14C50F81862D00978B1B</string>
+											<string>55FC154E0F81983B00978B1B</string>
+											<string>55FC15830F819EA000978B1B</string>
+											<string>55FC15840F819EA000978B1B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -611,6 +611,13 @@
 											<string>55FC14D90F8192FE00978B1B</string>
 											<string>55FC14DA0F8192FE00978B1B</string>
 											<string>55FC14DB0F8192FE00978B1B</string>
+											<string>55FC150B0F81955800978B1B</string>
+											<string>55FC150C0F81955800978B1B</string>
+											<string>55FC150D0F81955800978B1B</string>
+											<string>55FC150E0F81955800978B1B</string>
+											<string>55FC154F0F81983B00978B1B</string>
+											<string>55FC155D0F81996100978B1B</string>
+											<string>55FC15850F819EA000978B1B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -789,7 +796,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>260150014.38762501</real>
+	<real>260152992.98860601</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -1047,7 +1054,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_DraggableWaveDisplay.cpp</string>
+										<string>dRowAudio_FilteringAudioTransportSource.h</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>

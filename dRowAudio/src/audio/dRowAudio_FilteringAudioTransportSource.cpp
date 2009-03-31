@@ -62,8 +62,8 @@ FilteringAudioTransportSource::~FilteringAudioTransportSource()
 }
 
 void FilteringAudioTransportSource::setSource (PositionableAudioSource* const newSource,
-                                      int readAheadBufferSize_,
-                                      double sourceSampleRateToCorrectFor)
+											   int readAheadBufferSize_,
+											   double sourceSampleRateToCorrectFor)
 {
     if (source == newSource)
     {
@@ -95,16 +95,14 @@ void FilteringAudioTransportSource::setSource (PositionableAudioSource* const ne
 		
         newPositionableSource->setNextReadPosition (0);
 		
-        if (sourceSampleRateToCorrectFor != 0)
-            newMasterSource = newResamplerSource
-			= new ResamplingAudioSource (newPositionableSource, false);
-        else
-            newMasterSource = newPositionableSource;
+		// create the resampling source to adjust the speed
+		newMasterSource = newResamplerSource
+		= new ResamplingAudioSource (newPositionableSource, false);
 		
         if (isPrepared)
         {
             if (newResamplerSource != 0 && sourceSampleRate > 0 && sampleRate > 0)
-                newResamplerSource->setResamplingRatio (sourceSampleRate / sampleRate);
+                newResamplerSource->setResamplingRatio ((sourceSampleRate / sampleRate) * resamplingRatio);
 			
             newMasterSource->prepareToPlay (blockSize, sampleRate);
         }
@@ -260,7 +258,7 @@ void FilteringAudioTransportSource::setResamplingRatio (const double samplesInPe
 	resamplingRatio = samplesInPerOutputSample;
 	
 	if (resamplerSource != 0)
-		resamplerSource->setResamplingRatio ((sourceSampleRate / sampleRate) * resamplingRatios);
+		resamplerSource->setResamplingRatio ((sourceSampleRate / sampleRate) * resamplingRatio);
 }
 
 void FilteringAudioTransportSource::prepareToPlay (int samplesPerBlockExpected,
@@ -275,7 +273,7 @@ void FilteringAudioTransportSource::prepareToPlay (int samplesPerBlockExpected,
         masterSource->prepareToPlay (samplesPerBlockExpected, sampleRate);
 	
     if (resamplerSource != 0 && sourceSampleRate != 0)
-        resamplerSource->setResamplingRatio (sourceSampleRate / sampleRate);
+        resamplerSource->setResamplingRatio ((sourceSampleRate / sampleRate) * resamplingRatio);
 	
     isPrepared = true;
 }

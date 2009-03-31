@@ -11,6 +11,10 @@
 
 #include <juce/juce.h>
 
+/**	An AudioSource that contains three settable filters to EQ the audio stream.
+	This also creates an internal resampler source that is adjustable.
+	
+ */
 class FilteringAudioTransportSource : public PositionableAudioSource,
 									  public ChangeBroadcaster
 {
