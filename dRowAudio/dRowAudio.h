@@ -17,8 +17,11 @@
 
 
 // Audio
-#include "src/audio/dRowAudio_BiquadFilter.h"
-#include "src/audio/dRowAudio_OnePoleFilter.h"
+#include "src/audio/filters/dRowAudio_BiquadFilter.h"
+#include "src/audio/filters/dRowAudio_OnePoleFilter.h"
+#include "src/audio/filters/dRowAudio_CombFilter.h"
+#include "src/audio/filters/dRowAudio_AllpassFilter.h"
+#include "src/audio/filters/dRowAudio_LBCF.h"
 
 #include "src/audio/dRowAudio_AudioFilePlayer.h"
 #include "src/audio/dRowAudio_FilteringAudioTransportSource.h"
