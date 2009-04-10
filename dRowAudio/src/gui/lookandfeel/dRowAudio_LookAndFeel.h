@@ -3,7 +3,7 @@
  *  haydxn_tutorial
  *
  *  Created by David Rowland on 25/01/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 

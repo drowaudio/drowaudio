@@ -4,7 +4,7 @@
  *
  *	Derived from code by Martin Robinson 2008
  *  Created by David Rowland on 10/01/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 

@@ -2,14 +2,14 @@
  *  dRowAudio_BiquadFilter.cpp
  *
  *  Created by David Rowland on 11/02/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
 #include "dRowAudio_BiquadFilter.h"
 
 void BiquadFilter::makeLowPass(const double sampleRate,
-								 const double frequency)
+								 const double frequency) throw()
 {
 	double oneOverCurrentSampleRate = 1/sampleRate; 
 	float w0 = 2.0f * float_Pi * frequency * oneOverCurrentSampleRate;
@@ -25,7 +25,7 @@ void BiquadFilter::makeLowPass(const double sampleRate,
 }
 
 void BiquadFilter::makeHighPass(const double sampleRate,
-								  const double frequency)
+								  const double frequency) throw()
 {
 	double oneOverCurrentSampleRate = 1/sampleRate; 
 	float w0 = 2.0f * float_Pi * frequency * oneOverCurrentSampleRate;
@@ -42,7 +42,7 @@ void BiquadFilter::makeHighPass(const double sampleRate,
 
 void BiquadFilter::makeBandPass(const double sampleRate,
 								  const double frequency,
-								  const double Q)
+								  const double Q) throw()
 {
 	const double qFactor = jlimit(0.00001, 1000.0, Q);
 	const double oneOverCurrentSampleRate = 1/sampleRate;
@@ -64,7 +64,7 @@ void BiquadFilter::makeBandPass(const double sampleRate,
 
 void BiquadFilter::makeBandStop(const double sampleRate,
 								  const double frequency,
-								  const double Q)
+								  const double Q) throw()
 {
 	const double qFactor = jlimit(0.00001, 1000.0, Q);
 	const double oneOverCurrentSampleRate = 1/sampleRate;
@@ -108,7 +108,7 @@ void BiquadFilter::makePeakNotch (const double sampleRate,
 
 void BiquadFilter::makeAllpass(const double sampleRate,
 								 const double frequency,
-								 const double Q)
+								 const double Q) throw()
 {
 	const double qFactor = jlimit(0.00001, 1000.0, Q);
 	const double oneOverCurrentSampleRate = 1/sampleRate;

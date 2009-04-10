@@ -2,7 +2,7 @@
  *  MeterComponent.h
  *
  *  Created by David Rowland on 03/02/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 

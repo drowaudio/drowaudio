@@ -1,19 +1,19 @@
 /*
  *  dRowAudio_CombFilter.cpp
- *  dRowAudio_Reverb
  *
  *  Created by David Rowland on 06/04/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
 #include "dRowAudio_CombFilter.h"
 
-CombFilter::CombFilter()
+CombFilter::CombFilter() throw()
 	:	delaySamples(5),
 		gain(1),
 		ffCoeff(0.5),
-		allpassCoeff(1)
+		allpassCoeff(1),
+		bufferWritePos(0)
 {
 	registerSize = BUFFERSIZE;
 	registerSizeMask = registerSize - 1;
@@ -21,29 +21,27 @@ CombFilter::CombFilter()
 	// zero register
 	for (int i = 0; i < BUFFERSIZE; i++)
 		delayRegister[i] = 0;
-	
-	bufferWritePos = 0;
 }
 
-CombFilter::~CombFilter()
+CombFilter::~CombFilter() throw()
 {
 	delete[] delayRegister;
 }
 
-void CombFilter::setGain(float newGain)
+void CombFilter::setGain(float newGain) throw()
 {
 	gain = newGain;
 }
-void CombFilter::setFFCoeff(float newFFCoeff)
+void CombFilter::setFFCoeff(float newFFCoeff) throw()
 {
 	ffCoeff = newFFCoeff;
 }
-void CombFilter::setFBCoeff(float newFBCoeff)
+void CombFilter::setFBCoeff(float newFBCoeff) throw()
 {
 	fbCoeff = newFBCoeff;
 }
 
-void CombFilter::setDelayTime(double sampleRate, float newDelayTime)
+void CombFilter::setDelayTime(double sampleRate, float newDelayTime) throw()
 {
 	delayTime = newDelayTime;
 	
@@ -56,7 +54,7 @@ void CombFilter::setDelayTime(double sampleRate, float newDelayTime)
 	}
 }
 
-void CombFilter::setAllpass(bool isAllpass_)
+void CombFilter::setAllpass(bool isAllpass_) throw()
 {
 	if (isAllpass_)
 		allpassCoeff = -1;
@@ -64,7 +62,7 @@ void CombFilter::setAllpass(bool isAllpass_)
 		allpassCoeff = 1;
 }
 
-float CombFilter::processSingleSample(float newSample)
+float CombFilter::processSingleSample(float newSample) throw()
 {
 	bufferWritePos = ++bufferWritePos & registerSizeMask;
 	
@@ -78,16 +76,16 @@ float CombFilter::processSingleSample(float newSample)
 	float fDiff = bufferReadPos - iPos1;
 	float fDel = delayRegister[iPos2]*fDiff + delayRegister[iPos1]*(1.0f-fDiff);
 	
-	float fOut = (gain * newSample) + (fDel);	
-
 	// feedback
-	delayRegister[bufferWritePos] = ((allpassCoeff * ffCoeff) * newSample) + (fOut * fbCoeff);
-	
+	float fBuff = (gain * newSample) + (fDel * fbCoeff);
+	delayRegister[bufferWritePos] = fBuff;
+	float fOut = fDel + (allpassCoeff * ffCoeff * fBuff);	
+
 	return fOut;
 }
 
 void CombFilter::processSamples (float* const samples,
-								 const int numSamples)
+								 const int numSamples) throw()
 {
     const ScopedLock sl (processLock);
 	
@@ -106,15 +104,11 @@ void CombFilter::processSamples (float* const samples,
 		int iPos2 = (iPos1 + 1)  & registerSizeMask;
 		float fDiff = bufferReadPos - iPos1;
 		float fDel = delayRegister[iPos2]*fDiff + delayRegister[iPos1]*(1.0f-fDiff);
+				
+		float fBuff = (gain * in) + (fDel * fbCoeff);
+		delayRegister[bufferWritePos] = fBuff;
+		float fOut = fDel + (allpassCoeff * ffCoeff * fBuff);	
 		
-//		float fOut = (ffCoeff * in) + fDel;
-//		delayRegister[bufferWritePos] = (fbCoeff * fDel) + in;
-		
-		float fOut = (gain * in) + (fDel);	
-		
-		// feedback
-		delayRegister[bufferWritePos] = ((allpassCoeff * ffCoeff) * in) + (fOut * fbCoeff);
-					
 		samples[i] = fOut;
 	}
 }

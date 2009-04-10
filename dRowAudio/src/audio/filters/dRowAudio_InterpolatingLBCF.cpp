@@ -2,13 +2,13 @@
  *  dRowAudio_LBCF.cpp
  *
  *  Created by David Rowland on 07/04/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
 #include "dRowAudio_InterpolatingLBCF.h"
 
-InterpolatingLBCF::InterpolatingLBCF()
+InterpolatingLBCF::InterpolatingLBCF() throw()
 	:	gain(1),
 		fbCoeff(0.5),
 		bufferWritePos(0)
@@ -22,22 +22,22 @@ InterpolatingLBCF::InterpolatingLBCF()
 		delayRegister[i] = 0;
 }
 
-InterpolatingLBCF::~InterpolatingLBCF()
+InterpolatingLBCF::~InterpolatingLBCF() throw()
 {
 	delete[] delayRegister;
 }
 
-void InterpolatingLBCF::setGain(float newGain)
+void InterpolatingLBCF::setGain(float newGain) throw()
 {
 	gain = newGain;
 }
 
-void InterpolatingLBCF::setFBCoeff(float newFBCoeff)
+void InterpolatingLBCF::setFBCoeff(float newFBCoeff) throw()
 {
 	fbCoeff = newFBCoeff;
 }
 
-void InterpolatingLBCF::setDelayTime(double sampleRate, float newDelayTime)
+void InterpolatingLBCF::setDelayTime(double sampleRate, float newDelayTime) throw()
 {
 	delayTime = newDelayTime;
 	
@@ -50,12 +50,12 @@ void InterpolatingLBCF::setDelayTime(double sampleRate, float newDelayTime)
 	}
 }
 
-void InterpolatingLBCF::setLowpassCutoff(double sampleRate, float cutoffFrequency)
+void InterpolatingLBCF::setLowpassCutoff(double sampleRate, float cutoffFrequency) throw()
 {
 	lowpassFilter.makeLowPass(sampleRate, cutoffFrequency);
 }
 
-float InterpolatingLBCF::processSingleSample(float newSample)
+float InterpolatingLBCF::processSingleSample(float newSample) throw()
 {
 	bufferWritePos = ++bufferWritePos & registerSizeMask;
 	
@@ -78,7 +78,7 @@ float InterpolatingLBCF::processSingleSample(float newSample)
 }
 
 void InterpolatingLBCF::processSamples (float* const samples,
-						   const int numSamples)
+										const int numSamples) throw()
 {
 	const ScopedLock sl (processLock);
 	

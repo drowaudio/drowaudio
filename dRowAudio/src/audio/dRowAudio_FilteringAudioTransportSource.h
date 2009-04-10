@@ -2,7 +2,7 @@
  *  FilteringAudioTransportSource.h
  *
  *  Created by David Rowland on 24/03/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 

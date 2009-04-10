@@ -2,7 +2,7 @@
  *  dRowAudio_AllpassFilter.h
  *
  *  Created by David Rowland on 09/04/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
@@ -40,7 +40,7 @@ public:
 	///	Sets the time the samples are delayed for.
 	void setDelayTime(double sampleRate, float newDelayTime) throw();
 	
-	/// Processes a single sample return a new, filtered value.
+	/// Processes a single sample and returns a new, filtered value.
 	float processSingleSample(float newSample) throw();
 	
 	/// Processes an array of samples which are modified.

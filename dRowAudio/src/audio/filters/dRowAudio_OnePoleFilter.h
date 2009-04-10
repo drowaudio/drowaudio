@@ -3,7 +3,7 @@
  *  dRowAudio
  *
  *  Created by David Rowland on 16/02/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
@@ -27,23 +27,23 @@ public:
 		This will not perform any filtering yet, call a make... method
 		to turn it into that particular type of filter.
 	 */
-	OnePoleFilter();
+	OnePoleFilter() throw();
 	
 	/// Destructor
-	~OnePoleFilter();
+	~OnePoleFilter() throw();
 	
 	/**	Process a number of samples in one go.
 		This is the most effecient method of filtering.
 		Note that the samples passed to it actually get changed.
 	 */
 	void processSamples(float* const pfSamples,
-						const int numSamples);
+						const int numSamples) throw();
 	
 	/**	Process a single sample.
 		Less efficient method but leaves the sample unchanged,
 		returning a filterd copy of it.
 	 */
-	forcedinline float processSingleSample(const float sampleToProcess)
+	forcedinline float processSingleSample(const float sampleToProcess) throw()
 	{
 		return y1 = (b0 * sampleToProcess) + (a1 * y1);
 	}
@@ -51,11 +51,11 @@ public:
 	/**	Turns the filter into a Low-pass.
 	 */
 	void makeLowPass(const double sampleRate,
-					 const double frequency);
+					 const double frequency) throw();
 	/**	Turns the filter into a High-pass.
 	 */
 	void makeHighPass(const double sampleRate,
-					  const double frequency);
+					  const double frequency) throw();
 
 private:
 	CriticalSection lock;

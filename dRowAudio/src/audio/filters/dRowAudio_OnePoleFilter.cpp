@@ -3,24 +3,24 @@
  *  dRowAudio
  *
  *  Created by David Rowland on 16/02/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
 #include "dRowAudio_OnePoleFilter.h"
 
-OnePoleFilter::OnePoleFilter()
+OnePoleFilter::OnePoleFilter() throw()
 	:	y1(0.0), b0(1.0), a1(0.0)
 {
 	
 }
 
-OnePoleFilter::~OnePoleFilter()
+OnePoleFilter::~OnePoleFilter() throw()
 {
 }
 
 void OnePoleFilter::processSamples(float* const pfSamples,
-								   const int numSamples)
+								   const int numSamples) throw()
 {
 	// make sure sample values are locked
 	lock.enter();
@@ -36,7 +36,7 @@ void OnePoleFilter::processSamples(float* const pfSamples,
 
 
 void OnePoleFilter::makeLowPass(const double sampleRate,
-								const double frequency)
+								const double frequency) throw()
 {
 	float w0 = 2.0*double_Pi*(frequency/sampleRate);
 	float cos_w0 = cos(w0);
@@ -47,7 +47,7 @@ void OnePoleFilter::makeLowPass(const double sampleRate,
 }
 
 void OnePoleFilter::makeHighPass(const double sampleRate,
-								 const double frequency)
+								 const double frequency) throw()
 {
 	float w0 = 2.0*double_Pi*(frequency/sampleRate);
 	float cos_w0 = cos(w0);

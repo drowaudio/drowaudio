@@ -1,9 +1,8 @@
 /*
  *  dRowAudio_CombFilter.h
- *  dRowAudio_Reverb
  *
  *  Created by David Rowland on 06/04/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
@@ -14,23 +13,56 @@
 
 #define BUFFERSIZE 4096
 
+/**
+	This is an interpolating Comb Filter with both feedforward and feedback delay lines.
+	This filter can be used as a building block of many effects.
+ */
 class CombFilter
 {
 public:
 	
-	CombFilter();
-	~CombFilter();
+	/** Constructor.
+		Creates a default CombFilter.
+	 */
+	CombFilter() throw();
+
+	///	Destructor.
+	~CombFilter() throw();
 	
-	void setGain(float newGain);
-	void setFFCoeff(float newFFCoeff);
-	void setFBCoeff(float newFBCoeff);
-	void setDelayTime(double sampleRate, float newDelayTime);
+	/// Sets the input gain of the filter.
+	void setGain(float newGain) throw();
 	
-	void setAllpass(bool isAllpass_);
+	/// Sets the feedforward coefficient.
+	void setFFCoeff(float newFFCoeff) throw();
+
+	/// Sets the feedback coefficient.
+	void setFBCoeff(float newFBCoeff) throw();
 	
-	float processSingleSample(float newSample);
+	/**	Sets the delay time for the filter to use.
+	 
+		As the delay buffer is interpolated from the delay time can be
+		any positive number as long as its within the buffer size.
+		This parameter can also be swept for modulating effects such as
+		chorus or flange.
+	 */
+	void setDelayTime(double sampleRate, float newDelayTime) throw();
+	
+	/** Setting this to true inverts the feedforward coefficient making
+		the filter a posible allpass.
+		
+		To use the filter as an allpass set this to true and then use the
+		same coefficient for feedforward and feedback. This will give unity
+		gain across all frequencies but will have a complex frequency response
+		typically delaying sharp transients.
+	 */
+	void setAllpass(bool isAllpass_) throw();
+	
+	/// Processes a single sample and returns a new, filtered value.
+	float processSingleSample(float newSample) throw();
+	
+	/// Processes an array of samples which are modified.
 	void processSamples (float* const samples,
-						 const int numSamples);
+						 const int numSamples) throw();
 
 	
 protected:

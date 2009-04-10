@@ -2,7 +2,7 @@
  *  dRowAudio_BiquadFilter.h
  *
  *  Created by David Rowland on 11/02/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
@@ -24,24 +24,24 @@ public:
 	/**	Makes the filter a Low-pass filter.
 	 */
 	void makeLowPass(const double sampleRate,
-					   const double frequency);
+					   const double frequency) throw();
 	
 	/**	Makes the filter a High-pass filter.
 	 */
 	void makeHighPass(const double sampleRate,
-						const double frequency);
+						const double frequency) throw();
 	
 	/**	Makes the filter a Band-pass filter.
 	 */
 	void makeBandPass(const double sampleRate,
 						const double frequency,
-						const double Q);
+						const double Q) throw();
 	
 	/**	Makes the filter a Band-stop filter.
 	 */
 	void makeBandStop(const double sampleRate,
 						const double frequency,
-						const double Q);
+						const double Q) throw();
 	
 	/**	Makes the filter a peak/notch filter. This type of filter
 		adds or subtracts from the unfiltered signal.
@@ -57,7 +57,7 @@ public:
 	 */
 	void makeAllpass(const double sampleRate,
 					   const double frequency,
-					   const double Q);
+					   const double Q) throw();
 };
 
 #endif //_BIQUADFILTER_H_

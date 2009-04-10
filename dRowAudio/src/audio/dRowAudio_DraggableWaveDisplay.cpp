@@ -2,7 +2,7 @@
  *  dRowAudio_DraggableWaveDisplay.cpp
  *
  *  Created by David Rowland on 05/03/2009.
- *  Copyright 2009 UWE. All rights reserved.
+ *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
 
