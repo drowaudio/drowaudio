@@ -34,13 +34,26 @@
 
 #include "Parameters.h"
 
-#define filterMult1 0.932615816565278f
-#define filterMult2 0.926743602609132f
-#define filterMult3 0.962100703844071f
+#define filterMult1 0.962894248608534f
+#define filterMult2 0.962894248608534f
+#define filterMult3 0.953722334004024f
+#define filterMult4 0.953586497890295f
+#define filterMult5 0.941740412979351f
+#define filterMult6 0.930305403288958f
+#define filterMult7 0.939393939393939f
 
-#define filterMult4 0.218908272369162f
-#define filterMult5 0.326478149100257f
-#define filterMult6 0.338582677165354f
+#define allpassMult1 0.498207885304659f
+#define allpassMult2 0.793165467625899f
+#define allpassMult3 0.773242630385488f
+#define allpassMult4 0.659824046920821f
+
+//#define filterMult1 0.932615816565278f
+//#define filterMult2 0.926743602609132f
+//#define filterMult3 0.962100703844071f
+//
+//#define filterMult4 0.218908272369162f
+//#define filterMult5 0.326478149100257f
+//#define filterMult6 0.338582677165354f
 
 //==============================================================================
 /**
@@ -142,10 +155,15 @@ public:
 private:
 	
 	dRowParameter params[noParams];
-	LBCF combFilter1L, combFilter1R, combFilter2L, combFilter2R, combFilter3L, combFilter3R, combFilter4L, combFilter4R;
-	AllpassFilter allpassFilter1L, allpassFilter1R, allpassFilter2L, allpassFilter2R, allpassFilter3L, allpassFilter3R;
+	LBCF combFilter1L, combFilter1R, combFilter2L, combFilter2R, combFilter3L, combFilter3R, combFilter4L, combFilter4R,
+		 combFilter5L, combFilter5R, combFilter6L, combFilter6R, combFilter7L, combFilter7R, combFilter8L, combFilter8R;
+	AllpassFilter allpassFilter1L, allpassFilter1R, allpassFilter2L, allpassFilter2R,
+				  allpassFilter3L, allpassFilter3R, allpassFilter4L, allpassFilter4R;
 	
 	double currentSampleRate;
+	
+	void setupFilter(LBCF &filter, float fbCoeff, float delayTime, float filterCf);
+
 //	IIRFilter filter1_L;
 //	IIRFilter filter1_R;
 //	IIRFilter filter2_L;

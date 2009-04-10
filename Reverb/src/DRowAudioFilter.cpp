@@ -52,8 +52,12 @@ DRowAudioFilter::DRowAudioFilter()
     lastPosInfo.timeSigDenominator = 4;
     lastPosInfo.bpm = 120;
 	
+	params[GAIN].setValue(0.5);
+	
+	params[FBCOEFF].setValue(0.9);
+	
 	params[DELTIME].init(parameterNames[DELTIME], UnitGeneric, String::empty,
-						10, 0.001, 1000, 10);
+						80, 0.001, 100, 80);
 	params[DELTIME].setSkewFactor(0.5);
 //	params[DELTIME].setStep(0.001);
 	
@@ -62,10 +66,13 @@ DRowAudioFilter::DRowAudioFilter()
 	params[ALLPASS].setStep(1);
 	
 	params[FILTERCF].init(parameterNames[FILTERCF], UnitHertz, String::empty,
-						  200, 50, 16000, 200);
+						  1500, 50, 16000, 1500);
 	params[FILTERCF].setSkewFactor(0.5);
 	
 	params[DIFFUSION].setValue(0.7);
+	
+	params[SPREAD].init(parameterNames[SPREAD], UnitGeneric, String::empty,
+						0.0, 0, 2, 0.0);
 }
 
 DRowAudioFilter::~DRowAudioFilter()
@@ -284,86 +291,105 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		float delayTime = params[DELTIME].getSmoothedValue();
 		float filterCf = params[FILTERCF].getSmoothedValue();
 		float allpassCoeff = params[DIFFUSION].getSmoothedValue();
-
-		combFilter1L.setGain(gain);			combFilter1R.setGain(gain);
-		combFilter1L.setFBCoeff(fbCoeff);	combFilter1R.setFBCoeff(fbCoeff);
-		combFilter1L.setDelayTime(currentSampleRate, delayTime);
-		combFilter1R.setDelayTime(currentSampleRate, delayTime);
-		combFilter1L.setLowpassCutoff(currentSampleRate, filterCf);
-		combFilter1R.setLowpassCutoff(currentSampleRate, filterCf);
-
-//		fbCoeff *= 0.9f;
-		delayTime *= filterMult1;
+		float spread = params[SPREAD].getSmoothedValue();
+		float wetDryRatio = params[WETDRYMIX].getSmoothedNormalisedValue();
 		
-		combFilter2L.setGain(gain);			combFilter2R.setGain(gain);
-		combFilter2L.setFBCoeff(fbCoeff);	combFilter2R.setFBCoeff(fbCoeff);
-		combFilter2L.setDelayTime(currentSampleRate, delayTime);
-		combFilter2R.setDelayTime(currentSampleRate, delayTime);
-		combFilter2L.setLowpassCutoff(currentSampleRate, filterCf);
-		combFilter2R.setLowpassCutoff(currentSampleRate, filterCf);
+		// comb filter section
+		setupFilter(combFilter1L, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter1R, fbCoeff, delayTime, filterCf);
 
-//		fbCoeff *= 0.93f;
+		delayTime *= filterMult1;
+		setupFilter(combFilter2L, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter2R, fbCoeff, delayTime, filterCf);
+		
 		delayTime *= filterMult2;
-
-		combFilter3L.setGain(gain);			combFilter3R.setGain(gain);
-		combFilter3L.setFBCoeff(fbCoeff);	combFilter3R.setFBCoeff(fbCoeff);
-		combFilter3L.setDelayTime(currentSampleRate, delayTime);
-		combFilter3R.setDelayTime(currentSampleRate, delayTime);
-		combFilter3L.setLowpassCutoff(currentSampleRate, filterCf);
-		combFilter3R.setLowpassCutoff(currentSampleRate, filterCf);
+		setupFilter(combFilter3L, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter3R, fbCoeff, delayTime, filterCf);
 
 		delayTime *= filterMult3;
+		setupFilter(combFilter4L, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter4R, fbCoeff, delayTime, filterCf);
+
+		delayTime *= filterMult4;
+		setupFilter(combFilter5L, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter5R, fbCoeff, delayTime, filterCf);
 		
-		combFilter4L.setGain(gain);			combFilter4R.setGain(gain);
-		combFilter4L.setFBCoeff(fbCoeff);	combFilter4R.setFBCoeff(fbCoeff);
-		combFilter4L.setDelayTime(currentSampleRate, delayTime);
-		combFilter4R.setDelayTime(currentSampleRate, delayTime);
-		combFilter4L.setLowpassCutoff(currentSampleRate, filterCf);
-		combFilter4R.setLowpassCutoff(currentSampleRate, filterCf);
+		delayTime *= filterMult5;
+		setupFilter(combFilter6L, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter6R, fbCoeff, delayTime, filterCf);
+		
+		delayTime *= filterMult6;
+		setupFilter(combFilter7L, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter7R, fbCoeff, delayTime, filterCf);
+		
+		delayTime *= filterMult7;
+		setupFilter(combFilter8L, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter8R, fbCoeff, delayTime, filterCf);
+		
 		
 		// allpass section
-		delayTime *= filterMult4;
+		delayTime *= allpassMult1;
 		allpassFilter1L.setGain(allpassCoeff);		allpassFilter1R.setGain(allpassCoeff);
 		allpassFilter1L.setDelayTime(currentSampleRate, delayTime);
 		allpassFilter1R.setDelayTime(currentSampleRate, delayTime);
 		
-		delayTime *= filterMult5;
+		delayTime *= allpassMult2;
 		allpassFilter2L.setGain(allpassCoeff);		allpassFilter2R.setGain(allpassCoeff);
 		allpassFilter2L.setDelayTime(currentSampleRate, delayTime);
 		allpassFilter2R.setDelayTime(currentSampleRate, delayTime);
 
-		delayTime *= filterMult6;
+		delayTime *= allpassMult3;
 		allpassFilter3L.setGain(allpassCoeff);		allpassFilter3R.setGain(allpassCoeff);
 		allpassFilter3L.setDelayTime(currentSampleRate, delayTime);
 		allpassFilter3R.setDelayTime(currentSampleRate, delayTime);
-		
-//		combFilter1L.processSamples(pfSample[0], numSamples);
-//		combFilter1R.processSamples(pfSample[1], numSamples);
+
+		delayTime *= allpassMult4;
+		allpassFilter4L.setGain(allpassCoeff);		allpassFilter4R.setGain(allpassCoeff);
+		allpassFilter4L.setDelayTime(currentSampleRate, delayTime);
+		allpassFilter4R.setDelayTime(currentSampleRate, delayTime);
 		
 		//========================================================================
 		while (--numSamples >= 0)
 		{
+			float dryL = *pfSample[0];
+			float dryR = *pfSample[1];
 			float inL = *pfSample[0] * 0.25f;
 			float inR = *pfSample[1] * 0.25f;
 			
+			// comb filter for reflection and absorption
 			*pfSample[0] = combFilter1L.processSingleSample(inL)
 							+ combFilter2L.processSingleSample(inL)
 							+ combFilter3L.processSingleSample(inL)
-							+ combFilter4L.processSingleSample(inL);
-			
+							+ combFilter4L.processSingleSample(inL)
+							+ combFilter5L.processSingleSample(inL)
+							+ combFilter6L.processSingleSample(inL)
+							+ combFilter7L.processSingleSample(inL)
+							+ combFilter8L.processSingleSample(inL);
+							
 			*pfSample[1] = combFilter1R.processSingleSample(inR)
 							+ combFilter2R.processSingleSample(inR)
 							+ combFilter3R.processSingleSample(inR)
-							+ combFilter4R.processSingleSample(inR);
+							+ combFilter4R.processSingleSample(inR)
+							+ combFilter5R.processSingleSample(inR)
+							+ combFilter6R.processSingleSample(inR)
+							+ combFilter7R.processSingleSample(inR)
+							+ combFilter8R.processSingleSample(inR);
 			
 			// allpass section for disperstion
 			*pfSample[0] = allpassFilter1L.processSingleSample(*pfSample[0]);
 			*pfSample[0] = allpassFilter2L.processSingleSample(*pfSample[0]);
 			*pfSample[0] = allpassFilter3L.processSingleSample(*pfSample[0]);
+			*pfSample[0] = allpassFilter4L.processSingleSample(*pfSample[0]);
 			
 			*pfSample[1] = allpassFilter1R.processSingleSample(*pfSample[1]);
 			*pfSample[1] = allpassFilter2R.processSingleSample(*pfSample[1]);
 			*pfSample[1] = allpassFilter3R.processSingleSample(*pfSample[1]);
+			*pfSample[1] = allpassFilter4R.processSingleSample(*pfSample[1]);
+			
+			
+			*pfSample[0] = wetDryRatio*((*pfSample[0] * gain) + (*pfSample[1] * (1.0f-gain))) + (dryL * (1.0f-wetDryRatio));
+			*pfSample[1] = wetDryRatio*((*pfSample[1] * gain) + (*pfSample[0] * (1.0f-gain))) + (dryR * (1.0f-wetDryRatio));
+			
 			
 			// process channels as interleaved
 			for (int channel = 0; channel < numInputChannels; channel++)
@@ -410,6 +436,13 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
         lastPosInfo.timeSigDenominator = 4;
         lastPosInfo.bpm = 120;
     }
+}
+
+void DRowAudioFilter::setupFilter(LBCF &filter, float fbCoeff, float delayTime, float filterCf)
+{
+	filter.setFBCoeff(fbCoeff);
+	filter.setDelayTime(currentSampleRate, delayTime);
+	filter.setLowpassCutoff(currentSampleRate, filterCf);
 }
 
 //==============================================================================

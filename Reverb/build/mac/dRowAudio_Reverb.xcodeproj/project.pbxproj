@@ -10,7 +10,6 @@
 		3EEA126E089847F5002C6BFC /* CAVectorUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEA126B089847F5002C6BFC /* CAVectorUnit.cpp */; };
 		3EEA126F089847F5002C6BFC /* CAVectorUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EEA126C089847F5002C6BFC /* CAVectorUnit.h */; };
 		3EEA1270089847F5002C6BFC /* CAVectorUnitTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EEA126D089847F5002C6BFC /* CAVectorUnitTypes.h */; };
-		5556C1740F864C1F00CB223E /* _libmad_.c in Sources */ = {isa = PBXBuildFile; fileRef = 5556C1730F864C1F00CB223E /* _libmad_.c */; };
 		5556C1760F864C2D00CB223E /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5556C1750F864C2D00CB223E /* dRowAudio.cpp */; };
 		5556C18C0F864F6C00CB223E /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5556C17F0F864DF200CB223E /* libjucedebug.a */; };
 		5556C2750F86583300CB223E /* AUBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA05A80072073D200365D66 /* AUBase.h */; };
@@ -64,7 +63,6 @@
 		5556C2A70F86583300CB223E /* MusicDeviceBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843796670EFBF357002A2725 /* MusicDeviceBase.cpp */; };
 		5556C2A80F86583300CB223E /* juce_VST_Wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8437967D0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp */; };
 		5556C2A90F86583300CB223E /* juce_VST_Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8437967E0EFBF5E4002A2725 /* juce_VST_Wrapper.mm */; };
-		5556C2AA0F86583300CB223E /* _libmad_.c in Sources */ = {isa = PBXBuildFile; fileRef = 5556C1730F864C1F00CB223E /* _libmad_.c */; };
 		5556C2AB0F86583300CB223E /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5556C1750F864C2D00CB223E /* dRowAudio.cpp */; };
 		5556C2AD0F86583300CB223E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843795630EFBF323002A2725 /* AudioToolbox.framework */; };
 		5556C2AE0F86583300CB223E /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843795640EFBF323002A2725 /* AudioUnit.framework */; };
@@ -83,6 +81,8 @@
 		5556C4EF0F8A258B00CB223E /* dRowAudio_Reverb.vst in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5556C2C10F86583300CB223E /* dRowAudio_Reverb.vst */; };
 		555D6A110F34D9370099F634 /* dRowAudio_Reverb.component in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D01CCD20486CAD60068D4B7 /* dRowAudio_Reverb.component */; };
 		555D6D870F3765130099F634 /* Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 555D6D860F3765130099F634 /* Parameters.h */; };
+		55CFA16A0F8ED43B00A8B624 /* _libmad_.c in Sources */ = {isa = PBXBuildFile; fileRef = 5556C1730F864C1F00CB223E /* _libmad_.c */; };
+		55CFA1720F8ED48000A8B624 /* _libmad_.c in Sources */ = {isa = PBXBuildFile; fileRef = 5556C1730F864C1F00CB223E /* _libmad_.c */; };
 		843792AA0EFBF14B002A2725 /* DRowAudioEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */; };
 		843792AB0EFBF14B002A2725 /* DRowAudioEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */; };
 		843792AC0EFBF14B002A2725 /* DRowAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */; };
@@ -756,8 +756,8 @@
 				5556C2A70F86583300CB223E /* MusicDeviceBase.cpp in Sources */,
 				5556C2A80F86583300CB223E /* juce_VST_Wrapper.cpp in Sources */,
 				5556C2A90F86583300CB223E /* juce_VST_Wrapper.mm in Sources */,
-				5556C2AA0F86583300CB223E /* _libmad_.c in Sources */,
 				5556C2AB0F86583300CB223E /* dRowAudio.cpp in Sources */,
+				55CFA1720F8ED48000A8B624 /* _libmad_.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,8 +788,8 @@
 				843796710EFBF357002A2725 /* MusicDeviceBase.cpp in Sources */,
 				8437967F0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp in Sources */,
 				843796800EFBF5E4002A2725 /* juce_VST_Wrapper.mm in Sources */,
-				5556C1740F864C1F00CB223E /* _libmad_.c in Sources */,
 				5556C1760F864C2D00CB223E /* dRowAudio.cpp in Sources */,
+				55CFA16A0F8ED43B00A8B624 /* _libmad_.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -992,7 +992,7 @@
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/inc\\\"",
 					"\\\"$(MacBag)/../AvidCode/AVX2sdk/AVX/avx2/avx2sdk/utils\\\"",
 				);
-				INFOPLIST_FILE = "/Users/Dave/Documents/Developement/Audio Plugins/Base Plugin/build/mac/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
 				OTHER_LDFLAGS = "-bundle";

@@ -281,8 +281,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -325,15 +323,16 @@
 								<string>8437929D0EFBF08E002A2725</string>
 								<string>5556C4A70F8A150200CB223E</string>
 								<string>5556C23B0F86562300CB223E</string>
-								<string>089C167CFE841241C02AAC07</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>31</integer>
-									<integer>30</integer>
+									<integer>5</integer>
+									<integer>2</integer>
+									<integer>1</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -369,12 +368,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DRowAudioFilter.h</string>
+								<string>DRowAudioFilter.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -382,11 +383,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DRowAudioFilter.h</string>
+										<string>DRowAudioFilter.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>554E4FD60F8E0DC700412A82</string>
+										<string>55CFA1D20F8EE6EB00A8B624</string>
 										<key>history</key>
 										<array>
 											<string>55592D320F465E940044FC32</string>
@@ -397,16 +398,20 @@
 											<string>5556C1BC0F86501800CB223E</string>
 											<string>5556C2E10F865A7100CB223E</string>
 											<string>5556C2E30F865A7100CB223E</string>
-											<string>5556C2E40F865A7100CB223E</string>
 											<string>5556C30B0F86CE3B00CB223E</string>
 											<string>5556C4AF0F8A224600CB223E</string>
 											<string>5556C8310F8A9F6000CB223E</string>
 											<string>55ABC7210F8AD4BB00B00537</string>
 											<string>55ABC7470F8AD6C000B00537</string>
 											<string>5546AAFE0F8D56F40044E955</string>
-											<string>5546ABE70F8D98030044E955</string>
-											<string>5546AC180F8DA3D60044E955</string>
-											<string>5546AC890F8E0AD40044E955</string>
+											<string>554E50360F8E778700412A82</string>
+											<string>554E50D10F8E820000412A82</string>
+											<string>55CFA17A0F8ED4DE00A8B624</string>
+											<string>55CFA17B0F8ED4DE00A8B624</string>
+											<string>55CFA17C0F8ED4DE00A8B624</string>
+											<string>55CFA18D0F8EDB6A00A8B624</string>
+											<string>55CFA1C40F8EE4C400A8B624</string>
+											<string>55CFA1B70F8EE3F700A8B624</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -425,7 +430,31 @@
 											<string>5556C1C10F86501800CB223E</string>
 											<string>5556C1C20F86501800CB223E</string>
 											<string>55ABC7260F8AD4BB00B00537</string>
-											<string>5546ABB30F8D81510044E955</string>
+											<string>554E503A0F8E778700412A82</string>
+											<string>554E50490F8E77C200412A82</string>
+											<string>554E50D30F8E820000412A82</string>
+											<string>55CFA0D50F8E9FA100A8B624</string>
+											<string>55CFA0D60F8E9FA100A8B624</string>
+											<string>55CFA0D70F8E9FA100A8B624</string>
+											<string>55CFA0D80F8E9FA100A8B624</string>
+											<string>55CFA1130F8EB40600A8B624</string>
+											<string>55CFA1140F8EB40600A8B624</string>
+											<string>55CFA1280F8EB5A100A8B624</string>
+											<string>55CFA1290F8EB5A100A8B624</string>
+											<string>55CFA17F0F8ED4DE00A8B624</string>
+											<string>55CFA1800F8ED4DE00A8B624</string>
+											<string>55CFA1810F8ED4DE00A8B624</string>
+											<string>55CFA1820F8ED4DE00A8B624</string>
+											<string>55CFA1830F8ED4DE00A8B624</string>
+											<string>55CFA1840F8ED4DE00A8B624</string>
+											<string>55CFA18F0F8EDB6A00A8B624</string>
+											<string>55CFA1900F8EDB6A00A8B624</string>
+											<string>55CFA1AC0F8EE03400A8B624</string>
+											<string>55CFA1AF0F8EE07E00A8B624</string>
+											<string>55CFA1B90F8EE3F700A8B624</string>
+											<string>55CFA1BA0F8EE3F700A8B624</string>
+											<string>55CFA1BB0F8EE3F700A8B624</string>
+											<string>55CFA1C50F8EE4C400A8B624</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -437,14 +466,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {975, 471}}</string>
+								<string>{{0, 0}, {975, 673}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 59 1280 719 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>471pt</string>
+							<string>673pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -457,14 +486,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 476}, {975, 202}}</string>
+								<string>{{0, 678}, {975, 0}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 59 1280 719 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>202pt</string>
+							<string>0pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -483,9 +512,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>554E4FD30F8E0DB700412A82</string>
+				<string>55CFA0C60F8E9D8F00A8B624</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>554E4FD40F8E0DB700412A82</string>
+				<string>55CFA0C70F8E9D8F00A8B624</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -604,7 +633,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>260967850.84713599</real>
+	<real>261023467.15525299</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -619,6 +648,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>555D6A180F34DA010099F634</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/Dave/Documents/Developement/Audio Plugins/Reverb/build/mac/dRowAudio_Reverb.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -638,14 +671,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DRowAudioFilter.h</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -662,6 +693,8 @@
 							<string>294pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -701,7 +734,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>555D6A180F34DA010099F634</string>
-				<string>5546AAB60F8D3B720044E955</string>
+				<string>55CFA0D10F8E9FA100A8B624</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -821,13 +854,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>5546AAB70F8D3BE80044E955</string>
+				<string>55CFA0C80F8E9D8F00A8B624</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>5546AAB80F8D3BE80044E955</string>
-				<string>5546AAB90F8D3BE80044E955</string>
-				<string>5546AABA0F8D3BE80044E955</string>
-				<string>5546AABB0F8D3BE80044E955</string>
-				<string>5546AABC0F8D3BE80044E955</string>
+				<string>55CFA0C90F8E9D8F00A8B624</string>
+				<string>55CFA0CA0F8E9D8F00A8B624</string>
+				<string>55CFA0CB0F8E9D8F00A8B624</string>
+				<string>55CFA0CC0F8E9D8F00A8B624</string>
+				<string>55CFA0CD0F8E9D8F00A8B624</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -859,7 +892,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string></string>
+										<string>DRowAudioFilter.cpp</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -917,8 +950,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>5546AABE0F8D3BE80044E955</string>
-				<string>5546AABF0F8D3BE80044E955</string>
+				<string>55CFA0DF0F8EA09E00A8B624</string>
+				<string>55CFA0E00F8EA09E00A8B624</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -983,7 +1016,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>5546AAC00F8D3BE80044E955</string>
+				<string>55CFA0DA0F8E9FA100A8B624</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

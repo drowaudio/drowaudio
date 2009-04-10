@@ -101,6 +101,8 @@
 						<dict>
 							<key>FileName</key>
 							<string>/Users/Dave/Music/Samples/Sonic Foundry Acid Loops/Guitar/Clean/Arpeggie.wav</string>
+							<key>IsSelectedFile</key>
+							<true/>
 							<key>Regions</key>
 							<array>
 								<dict>
@@ -130,8 +132,6 @@
 						<dict>
 							<key>FileName</key>
 							<string>/Users/Dave/Music/Samples/Test Samples/Stereo.aif</string>
-							<key>IsSelectedFile</key>
-							<true/>
 							<key>Regions</key>
 							<array>
 								<dict>

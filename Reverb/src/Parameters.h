@@ -19,9 +19,9 @@ enum parameters
 	DELTIME,
 	FILTERCF,
 	DIFFUSION,
-	param6,
+	SPREAD,
 	param7,
-	param8,
+	WETDRYMIX,
 	ALLPASS,
 	noParams
 };
@@ -33,9 +33,9 @@ static const char UNUSED_NOWARN *parameterNames[] = {
 	"DelTime",						// 3
 	"Cuttoff F",						// 4
 	"Allpass Coeff",						// 5
-	"param6",						// 6
+	"Stereo Spread",						// 6
 	"param7",						// 7
-	"param8",						// 8
+	"Wet/Dry Mix",						// 8
 	"Allpass"						// 9
 };
 
