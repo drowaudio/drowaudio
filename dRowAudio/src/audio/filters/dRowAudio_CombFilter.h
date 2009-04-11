@@ -11,8 +11,6 @@
 
 #include <juce/juce.h>
 
-#define BUFFERSIZE 4096
-
 /**
 	This is an interpolating Comb Filter with both feedforward and feedback delay lines.
 	This filter can be used as a building block of many effects.
@@ -21,13 +19,36 @@ class CombFilter
 {
 public:
 	
-	/** Constructor.
-		Creates a default CombFilter.
+	/** Creates a default CombFilter.
+		You can optionally set the size of the buffer in samples.
 	 */
-	CombFilter() throw();
+	CombFilter(int bufferSize =4096) throw();
 
 	///	Destructor.
 	~CombFilter() throw();
+
+	/**	Resizes the buffer to a specified sample size.
+	 
+		Please note that as the buffer size has to be a power of 2, the maximum delay time
+		possible may be larger than that specified. Use getMaxDelayTime() to find the
+		actual maximum possible.
+	 */
+	void setBufferSize (int newBufferSize) throw();
+	
+	/// Returns the current size of the buffer.
+	int getBufferSize ()	{	return registerSize;	}
+	
+	/**	Resizes the buffer to a specified size based on a given sample rate and delay time in Milliseconds.
+		
+		Please note that as the buffer size has to be a power of 2, the maximum delay time
+		possible may be larger than that specified. Use getMaxDelayTime() to find the
+		actual maximum possible.
+	 */
+	void setMaxDelayTime(double sampleRate, float maxDelayTimeMs) throw();
+	
+	/** Returns the maximum delay time possible for a given sample rate.
+	 */
+	float getMaxDelayTime(double sampleRate) {	return (registerSize / sampleRate) * 1000.0f;	}
 	
 	/// Sets the input gain of the filter.
 	void setGain(float newGain) throw();

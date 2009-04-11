@@ -8,24 +8,41 @@
 
 #include "dRowAudio_CombFilter.h"
 
-CombFilter::CombFilter() throw()
-	:	delaySamples(5),
+CombFilter::CombFilter(int bufferSize) throw()
+	:	delayRegister(0),
+		delaySamples(5),
 		gain(1),
 		ffCoeff(0.5),
-		allpassCoeff(1),
-		bufferWritePos(0)
+		fbCoeff(0.5),
+		bufferWritePos(0),
+		bufferReadPos(0),
+		allpassCoeff(1)
 {
-	registerSize = BUFFERSIZE;
-	registerSizeMask = registerSize - 1;
-	delayRegister = new float[BUFFERSIZE];
-	// zero register
-	for (int i = 0; i < BUFFERSIZE; i++)
-		delayRegister[i] = 0;
+	setBufferSize(bufferSize);
 }
 
 CombFilter::~CombFilter() throw()
 {
 	delete[] delayRegister;
+	delayRegister = 0;
+}
+
+void CombFilter::setBufferSize (int newBufferSize) throw()
+{
+	registerSize = pow(2, ((int)log2(newBufferSize)) + 1);
+	registerSizeMask = registerSize - 1;
+
+	delete[] delayRegister;
+	delayRegister = new float[registerSize];
+	// zero register
+	for (int i = 0; i < registerSize; i++)
+		delayRegister[i] = 0;	
+}
+
+void CombFilter::setMaxDelayTime(double sampleRate, float maxDelayTimeMs) throw()
+{
+	int newBufferSize = (maxDelayTimeMs * 0.001 ) * sampleRate;
+	setBufferSize(newBufferSize );
 }
 
 void CombFilter::setGain(float newGain) throw()
@@ -47,10 +64,10 @@ void CombFilter::setDelayTime(double sampleRate, float newDelayTime) throw()
 	
 	delaySamples = (delayTime * (sampleRate * 0.001));
 	
-	if ((int)delaySamples >= BUFFERSIZE)
+	if ((int)delaySamples >= registerSize)
 	{
-		jassert(delaySamples < BUFFERSIZE);
-		delaySamples = (float)BUFFERSIZE;
+		jassert(delaySamples < registerSize);
+		delaySamples = (float)registerSize;
 	}
 }
 
@@ -68,7 +85,7 @@ float CombFilter::processSingleSample(float newSample) throw()
 	
 	bufferReadPos = bufferWritePos - delaySamples;
 	if (bufferReadPos < 0)
-		bufferReadPos += BUFFERSIZE;
+		bufferReadPos += registerSize;
 
 	// feedforward interpolation
 	int iPos1 = (int)bufferReadPos;
@@ -97,7 +114,7 @@ void CombFilter::processSamples (float* const samples,
 		
 		bufferReadPos = bufferWritePos - delaySamples;
 		if (bufferReadPos < 0)
-			bufferReadPos += BUFFERSIZE;
+			bufferReadPos += registerSize;
 		
 		// feedforward interpolation
 		int iPos1 = (int)bufferReadPos;
