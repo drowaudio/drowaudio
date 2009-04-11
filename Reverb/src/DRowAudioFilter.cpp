@@ -72,10 +72,10 @@ DRowAudioFilter::DRowAudioFilter()
 	params[SPREAD].init(parameterNames[SPREAD], UnitGeneric, String::empty,
 						0.5, 0.5, 1, 0.5);
 	
-	params[HIGHEQ].init(parameterNames[HIGHEQ], UnitHertz, String::empty,
+	params[LOWEQ].init(parameterNames[LOWEQ], UnitHertz, String::empty,
 						1, 0, 2, 1);
 
-	params[LOWEQ].init(parameterNames[LOWEQ], UnitHertz, String::empty,
+	params[HIGHEQ].init(parameterNames[HIGHEQ], UnitHertz, String::empty,
 						1, 0, 2, 1);
 
 	DBG(String((int)sizeof(DRowAudioFilter)));
@@ -267,7 +267,7 @@ void DRowAudioFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	
 	preDelayFilterL.setMaxDelayTime(currentSampleRate, params[PREDELAY].getMax());
 	preDelayFilterR.setMaxDelayTime(currentSampleRate, params[PREDELAY].getMax());
-	
+
     // do your pre-playback setup stuff here..
     keyboardState.reset();
 	
@@ -306,6 +306,8 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		float highEQGain = (float)params[HIGHEQ].getSmoothedValue();
 		float wetDryRatio = (float)params[WETDRYMIX].getSmoothedNormalisedValue();
 		
+		float width = (spread-0.5f) * 10.0f;
+		
 		preDelayFilterL.setDelayTime(currentSampleRate, preDelay);
 		preDelayFilterL.setFBCoeff(0.0);
 		preDelayFilterL.setFFCoeff(0.0);
@@ -316,57 +318,57 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		
 		// comb filter section
 		setupFilter(combFilter1L, fbCoeff, delayTime, filterCf);
-		setupFilter(combFilter1R, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter1R, fbCoeff, delayTime+width, filterCf);
 
 		delayTime *= filterMult1;
 		setupFilter(combFilter2L, fbCoeff, delayTime, filterCf);
-		setupFilter(combFilter2R, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter2R, fbCoeff, delayTime+width, filterCf);
 		
 		delayTime *= filterMult2;
 		setupFilter(combFilter3L, fbCoeff, delayTime, filterCf);
-		setupFilter(combFilter3R, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter3R, fbCoeff, delayTime+width, filterCf);
 
 		delayTime *= filterMult3;
 		setupFilter(combFilter4L, fbCoeff, delayTime, filterCf);
-		setupFilter(combFilter4R, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter4R, fbCoeff, delayTime+width, filterCf);
 
 		delayTime *= filterMult4;
 		setupFilter(combFilter5L, fbCoeff, delayTime, filterCf);
-		setupFilter(combFilter5R, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter5R, fbCoeff, delayTime+width, filterCf);
 		
 		delayTime *= filterMult5;
 		setupFilter(combFilter6L, fbCoeff, delayTime, filterCf);
-		setupFilter(combFilter6R, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter6R, fbCoeff, delayTime+width, filterCf);
 		
 		delayTime *= filterMult6;
 		setupFilter(combFilter7L, fbCoeff, delayTime, filterCf);
-		setupFilter(combFilter7R, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter7R, fbCoeff, delayTime+width, filterCf);
 		
 		delayTime *= filterMult7;
 		setupFilter(combFilter8L, fbCoeff, delayTime, filterCf);
-		setupFilter(combFilter8R, fbCoeff, delayTime, filterCf);
+		setupFilter(combFilter8R, fbCoeff, delayTime+width, filterCf);
 		
 		
 		// allpass section
 		delayTime *= allpassMult1;
 		allpassFilter1L.setGain(allpassCoeff);		allpassFilter1R.setGain(allpassCoeff);
 		allpassFilter1L.setDelayTime(currentSampleRate, delayTime);
-		allpassFilter1R.setDelayTime(currentSampleRate, delayTime);
+		allpassFilter1R.setDelayTime(currentSampleRate, delayTime+width);
 		
 		delayTime *= allpassMult2;
 		allpassFilter2L.setGain(allpassCoeff);		allpassFilter2R.setGain(allpassCoeff);
 		allpassFilter2L.setDelayTime(currentSampleRate, delayTime);
-		allpassFilter2R.setDelayTime(currentSampleRate, delayTime);
+		allpassFilter2R.setDelayTime(currentSampleRate, delayTime+width);
 
 		delayTime *= allpassMult3;
 		allpassFilter3L.setGain(allpassCoeff);		allpassFilter3R.setGain(allpassCoeff);
 		allpassFilter3L.setDelayTime(currentSampleRate, delayTime);
-		allpassFilter3R.setDelayTime(currentSampleRate, delayTime);
+		allpassFilter3R.setDelayTime(currentSampleRate, delayTime+width);
 
 		delayTime *= allpassMult4;
 		allpassFilter4L.setGain(allpassCoeff);		allpassFilter4R.setGain(allpassCoeff);
 		allpassFilter4L.setDelayTime(currentSampleRate, delayTime);
-		allpassFilter4R.setDelayTime(currentSampleRate, delayTime);
+		allpassFilter4R.setDelayTime(currentSampleRate, delayTime+width);
 		
 		lowEQL.makeLowShelf(currentSampleRate, 500, 1, lowEQGain);
 		lowEQR.makeLowShelf(currentSampleRate, 500, 1, lowEQGain);
@@ -378,8 +380,8 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		{
 			float dryL = *pfSample[0];
 			float dryR = *pfSample[1];
-			float inL = *pfSample[0] * 0.25f;
-			float inR = *pfSample[1] * 0.25f;
+			float inR;
+			float inL = inR = (dryL + dryR) * 0.15f;
 			
 			// pre-delay
 			inL = preDelayFilterL.processSingleSample(inL); 
@@ -387,22 +389,22 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			
 			// comb filter for reflection and absorption
 			inL = combFilter1L.processSingleSample(inL)
-							+ combFilter2L.processSingleSample(inL)
-							+ combFilter3L.processSingleSample(inL)
-							+ combFilter4L.processSingleSample(inL)
-							+ combFilter5L.processSingleSample(inL)
-							+ combFilter6L.processSingleSample(inL)
-							+ combFilter7L.processSingleSample(inL)
-							+ combFilter8L.processSingleSample(inL);
+				  + combFilter2L.processSingleSample(inL)
+				  + combFilter3L.processSingleSample(inL)
+				  + combFilter4L.processSingleSample(inL)
+				  + combFilter5L.processSingleSample(inL)
+				  + combFilter6L.processSingleSample(inL)
+				  + combFilter7L.processSingleSample(inL)
+				  + combFilter8L.processSingleSample(inL);
 							
 			inR = combFilter1R.processSingleSample(inR)
-							+ combFilter2R.processSingleSample(inR)
-							+ combFilter3R.processSingleSample(inR)
-							+ combFilter4R.processSingleSample(inR)
-							+ combFilter5R.processSingleSample(inR)
-							+ combFilter6R.processSingleSample(inR)
-							+ combFilter7R.processSingleSample(inR)
-							+ combFilter8R.processSingleSample(inR);
+				  + combFilter2R.processSingleSample(inR)
+				  + combFilter3R.processSingleSample(inR)
+				  + combFilter4R.processSingleSample(inR)
+				  + combFilter5R.processSingleSample(inR)
+				  + combFilter6R.processSingleSample(inR)
+				  + combFilter7R.processSingleSample(inR)
+				  + combFilter8R.processSingleSample(inR);
 			
 			// allpass section for disperstion
 			inL = allpassFilter1L.processSingleSample(inL);
@@ -415,21 +417,18 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			inR = allpassFilter3R.processSingleSample(inR);
 			inR = allpassFilter4R.processSingleSample(inR);
 			
-			*pfSample[0] = lowEQL.processSingleSampleRaw(inL);
-			*pfSample[1] = lowEQR.processSingleSampleRaw(inR);
-			*pfSample[0] = highEQL.processSingleSampleRaw(inL);
-			*pfSample[1] = highEQR.processSingleSampleRaw(inR);
+			inL = lowEQL.processSingleSampleRaw(inL);
+			inR = lowEQR.processSingleSampleRaw(inR);
+			inL = highEQL.processSingleSampleRaw(inL);
+			inR = highEQR.processSingleSampleRaw(inR);
 			
-			*pfSample[0] = wetDryRatio*((*pfSample[0] * spread) + (*pfSample[1] * (1.0f-spread))) + (dryL * (1.0f-wetDryRatio));
-			*pfSample[1] = wetDryRatio*((*pfSample[1] * spread) + (*pfSample[0] * (1.0f-spread))) + (dryR * (1.0f-wetDryRatio));
+			*pfSample[0] = wetDryRatio*((inL * spread) + (inR * (1.0f-spread))) + (dryL * (1.0f-wetDryRatio));
+			*pfSample[1] = wetDryRatio*((inR * spread) + (inL * (1.0f-spread))) + (dryR * (1.0f-wetDryRatio));
 			
 			
-			// process channels as interleaved
-			for (int channel = 0; channel < numInputChannels; channel++)
-			{
-				// incriment sample pointers
-				pfSample[channel]++;			
-			}
+			// incriment sample pointers
+			pfSample[0]++;			
+			pfSample[1]++;			
 		}
 		//========================================================================
 		
@@ -446,7 +445,7 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 
     // if any midi messages come in, use them to update the keyboard state object. This
     // object sends notification to the UI component about key up/down changes
-    keyboardState.processNextMidiBuffer (midiMessages,
+/*    keyboardState.processNextMidiBuffer (midiMessages,
                                          0, buffer.getNumSamples(),
                                          true);
 
@@ -468,7 +467,7 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
         lastPosInfo.timeSigNumerator = 4;
         lastPosInfo.timeSigDenominator = 4;
         lastPosInfo.bpm = 120;
-    }
+    }*/
 }
 
 void DRowAudioFilter::setupFilter(LBCF &filter, float fbCoeff, float delayTime, float filterCf)
