@@ -66,6 +66,8 @@
 						<string>/Users/Dave/Music/Samples/Sonic Foundry Acid Loops/Guitar/Clean/Arpeggie.wav</string>
 						<key>File 3</key>
 						<string>/Users/Dave/Music/Samples/Test Samples/Stereo.aif</string>
+						<key>File 4</key>
+						<string>/Users/Dave/Music/Samples/Test Samples/Backroads Banjo 24.aif</string>
 					</dict>
 					<key>kAUPresetPersistentStateKey</key>
 					<array>
@@ -101,8 +103,6 @@
 						<dict>
 							<key>FileName</key>
 							<string>/Users/Dave/Music/Samples/Sonic Foundry Acid Loops/Guitar/Clean/Arpeggie.wav</string>
-							<key>IsSelectedFile</key>
-							<true/>
 							<key>Regions</key>
 							<array>
 								<dict>
@@ -150,6 +150,37 @@
 								AAAAAAAAAAAA
 								AAAAAAAAADDs
 								AQA=
+									</data>
+									<key>RegionDoesLoop</key>
+									<true/>
+									<key>RegionName</key>
+									<string>New Region</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>FileName</key>
+							<string>/Users/Dave/Music/Samples/Test Samples/Backroads Banjo 24.aif</string>
+							<key>IsSelectedFile</key>
+							<true/>
+							<key>Regions</key>
+							<array>
+								<dict>
+									<key>IsSelectedRegion</key>
+									<true/>
+									<key>RegionData</key>
+									<data>
+								AAAAAAAAAACA
+								l4sVyN3/v+CY
+								2pKAl4sVIKiL
+								FUDDkxVIp4sV
+								IKiLFYCXixWg
+								9USgBAAAACw+
+								Tl4BAAAAl0Hb
+								kgAAAAAAAAAA
+								AAAAAAAAAAAA
+								AAAAAAAAACBi
+								BQA=
 									</data>
 									<key>RegionDoesLoop</key>
 									<true/>

@@ -166,11 +166,7 @@ void DRowAudioEditorComponent::sliderDragEnded(Slider* changedSlider)
 
 void DRowAudioEditorComponent::buttonClicked (Button* button)
 {
-	if(button == buttons[0])
-		if(getFilter()->getParameter(ALLPASS) < 0.5)
-			getFilter()->setParameter(ALLPASS, 1.0);
-		else 
-			getFilter()->setParameter(ALLPASS, 0.0);
+	if(button == buttons[0]);
 }
 
 void DRowAudioEditorComponent::changeListenerCallback (void* source)

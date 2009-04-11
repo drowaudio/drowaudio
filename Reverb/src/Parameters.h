@@ -14,29 +14,29 @@
 enum parameters
 {
 	GAIN,
-	FFCOEFF,
+	PREDELAY,
 	FBCOEFF,
 	DELTIME,
 	FILTERCF,
 	DIFFUSION,
 	SPREAD,
-	param7,
+	LOWEQ,
+	HIGHEQ,
 	WETDRYMIX,
-	ALLPASS,
 	noParams
 };
 
 static const char UNUSED_NOWARN *parameterNames[] = { 
 	"Gain",						// 0
-	"ffCoeff",						// 1
+	"Pre Delay",						// 1
 	"fbCoeff",						// 2
 	"DelTime",						// 3
 	"Cuttoff F",						// 4
 	"Allpass Coeff",						// 5
 	"Stereo Spread",						// 6
-	"param7",						// 7
-	"Wet/Dry Mix",						// 8
-	"Allpass"						// 9
+	"Low EQ",						// 7
+	"High EQ",						// 8
+	"Wet/Dry Mix"						// 9
 };
 
 #endif //_PARAMETERS_H_

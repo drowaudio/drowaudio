@@ -329,7 +329,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>6</integer>
 									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -375,7 +375,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DRowAudioFilter.cpp</string>
+								<string>dRowAudio_CombFilter.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -383,11 +383,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DRowAudioFilter.cpp</string>
+										<string>dRowAudio_CombFilter.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55CFA1D20F8EE6EB00A8B624</string>
+										<string>55CFA3B10F901EBC00A8B624</string>
 										<key>history</key>
 										<array>
 											<string>55592D320F465E940044FC32</string>
@@ -403,15 +403,18 @@
 											<string>5556C8310F8A9F6000CB223E</string>
 											<string>55ABC7210F8AD4BB00B00537</string>
 											<string>55ABC7470F8AD6C000B00537</string>
-											<string>5546AAFE0F8D56F40044E955</string>
 											<string>554E50360F8E778700412A82</string>
 											<string>554E50D10F8E820000412A82</string>
 											<string>55CFA17A0F8ED4DE00A8B624</string>
 											<string>55CFA17B0F8ED4DE00A8B624</string>
 											<string>55CFA17C0F8ED4DE00A8B624</string>
-											<string>55CFA18D0F8EDB6A00A8B624</string>
-											<string>55CFA1C40F8EE4C400A8B624</string>
-											<string>55CFA1B70F8EE3F700A8B624</string>
+											<string>55CFA25F0F8FD80E00A8B624</string>
+											<string>55CFA2F00F8FE5A400A8B624</string>
+											<string>55CFA3510F90034100A8B624</string>
+											<string>55CFA35C0F9006DD00A8B624</string>
+											<string>55CFA35D0F9006DD00A8B624</string>
+											<string>55CFA3AF0F901EBC00A8B624</string>
+											<string>55CFA3930F901EBB00A8B624</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -455,6 +458,25 @@
 											<string>55CFA1BA0F8EE3F700A8B624</string>
 											<string>55CFA1BB0F8EE3F700A8B624</string>
 											<string>55CFA1C50F8EE4C400A8B624</string>
+											<string>55CFA2460F8FBC6F00A8B624</string>
+											<string>55CFA2470F8FBC6F00A8B624</string>
+											<string>55CFA2480F8FBC6F00A8B624</string>
+											<string>55CFA24C0F8FC88700A8B624</string>
+											<string>55CFA24D0F8FC88700A8B624</string>
+											<string>55CFA24E0F8FC88700A8B624</string>
+											<string>55CFA24F0F8FC88700A8B624</string>
+											<string>55CFA2580F8FC9A100A8B624</string>
+											<string>55CFA2630F8FD80E00A8B624</string>
+											<string>55CFA2640F8FD80E00A8B624</string>
+											<string>55CFA2650F8FD80E00A8B624</string>
+											<string>55CFA2660F8FD80E00A8B624</string>
+											<string>55CFA2D40F8FE4D100A8B624</string>
+											<string>55CFA2F20F8FE5A400A8B624</string>
+											<string>55CFA3520F90034100A8B624</string>
+											<string>55CFA3530F90034100A8B624</string>
+											<string>55CFA35F0F9006DD00A8B624</string>
+											<string>55CFA3600F9006DD00A8B624</string>
+											<string>55CFA3B00F901EBC00A8B624</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -633,7 +655,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>261023467.15525299</real>
+	<real>261103292.60964099</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -651,8 +673,8 @@
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>555D6A180F34DA010099F634</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/Dave/Documents/Developement/Audio Plugins/Reverb/build/mac/dRowAudio_Reverb.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1280 719 0 0 1280 778 </string>
@@ -671,12 +693,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>dRowAudio_CombFilter.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -693,8 +717,6 @@
 							<string>294pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

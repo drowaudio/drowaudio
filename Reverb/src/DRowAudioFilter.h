@@ -154,13 +154,17 @@ public:
 	
 private:
 	
+	double currentSampleRate;
+	
 	dRowParameter params[noParams];
+	
+	CombFilter preDelayFilterL, preDelayFilterR;
 	LBCF combFilter1L, combFilter1R, combFilter2L, combFilter2R, combFilter3L, combFilter3R, combFilter4L, combFilter4R,
 		 combFilter5L, combFilter5R, combFilter6L, combFilter6R, combFilter7L, combFilter7R, combFilter8L, combFilter8R;
 	AllpassFilter allpassFilter1L, allpassFilter1R, allpassFilter2L, allpassFilter2R,
 				  allpassFilter3L, allpassFilter3R, allpassFilter4L, allpassFilter4R;
 	
-	double currentSampleRate;
+	IIRFilter lowEQL, lowEQR, highEQL, highEQR;
 	
 	void setupFilter(LBCF &filter, float fbCoeff, float delayTime, float filterCf);
 
