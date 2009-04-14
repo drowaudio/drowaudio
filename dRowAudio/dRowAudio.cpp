@@ -21,7 +21,9 @@
 #include "src/audio/filters/dRowAudio_AllpassFilter.cpp"
 #include "src/audio/filters/dRowAudio_InterpolatingAllpassFilter.cpp"
 #include "src/audio/filters/dRowAudio_LBCF.cpp"
+#include "src/audio/filters/dRowAudio_LBCFPointer.cpp"
 #include "src/audio/filters/dRowAudio_InterpolatingLBCF.cpp"
+#include "src/audio/filters/dRowAudio_TappedDelayLine.cpp"
 
 #include "src/audio/dRowAudio_AudioFilePlayer.cpp"
 #include "src/audio/dRowAudio_FilteringAudioTransportSource.cpp"
