@@ -15,10 +15,12 @@
 struct Tap
 {
 	int delaySamples;
+	int originalDelaySamples;
 	int sampleRateWhenCreated;
 	float tapGain;
-/*	float tapFeedBack;
-	float tapPan;
+	float tapFeedback;
+	float originalTapFeedback;
+/*	float tapPan;
 	float tapHPCutoff;
 	float tapLPCutoff;
  */
@@ -46,6 +48,22 @@ public:
 		to recalculate the number of samples for the taps to delay by.
 	 */
 	void addTapAtTime(int newTapPosMs, double sampleRate);
+	
+	/**	Scales the spacing between the taps.
+		This value must be greater than 0. Values < 1 will squash the taps, 
+		creating a denser delay, values greater than 1 will expand the taps
+		spacing creating a more sparse delay.
+		The value is a proportion of the original spacing.
+		This is simple than namually setting all of the taps positions.
+	 */
+	void setTapSpacing(float newSpacingCoefficient);
+
+	/**	Scales all of the taps feedback coeficients in one go.
+		This should be between 0 and 1 to avoid blowing up the line.
+		The value is a proportion of the original feedback coefficient
+		for each tap so setting this to 1 will return them all to their default.
+	 */
+	void scaleFeedbacks(float newFeedbackCoefficient);
 
 	/**	Returns an array of sample positions where there are taps.
 		This can then be used to remove a specific tap.
@@ -87,7 +105,9 @@ private:
 	float inputGain, feedbackGain;
 	int noTaps;
 	Array<Tap> readTaps;
-		
+	
+	float spacingCoefficient, feedbackCoefficient;
+	
 	void initialiseBuffer(int bufferSize);
 };
 
