@@ -68,6 +68,12 @@
 						<string>/Users/Dave/Music/Samples/Test Samples/Stereo.aif</string>
 						<key>File 4</key>
 						<string>/Users/Dave/Music/Samples/Test Samples/Backroads Banjo 24.aif</string>
+						<key>File 5</key>
+						<string>/Users/Dave/Music/Samples/388 Drum Samples/snar_13c.wav</string>
+						<key>File 6</key>
+						<string>/Users/Dave/Music/Samples/PS-28 WAV Vocal House/WAV Drum &amp; Perc/WAV snaredrums/28-sde02.wav</string>
+						<key>File 7</key>
+						<string>/Users/Dave/Music/Samples/PS-28 WAV Vocal House/WAV All_Vocals/WAV female_vox/28b-voc35.wav</string>
 					</dict>
 					<key>kAUPresetPersistentStateKey</key>
 					<array>
@@ -161,8 +167,6 @@
 						<dict>
 							<key>FileName</key>
 							<string>/Users/Dave/Music/Samples/Test Samples/Backroads Banjo 24.aif</string>
-							<key>IsSelectedFile</key>
-							<true/>
 							<key>Regions</key>
 							<array>
 								<dict>
@@ -181,6 +185,95 @@
 								AAAAAAAAAAAA
 								AAAAAAAAACBi
 								BQA=
+									</data>
+									<key>RegionDoesLoop</key>
+									<true/>
+									<key>RegionName</key>
+									<string>New Region</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>FileName</key>
+							<string>/Users/Dave/Music/Samples/388 Drum Samples/snar_13c.wav</string>
+							<key>Regions</key>
+							<array>
+								<dict>
+									<key>IsSelectedRegion</key>
+									<true/>
+									<key>RegionData</key>
+									<data>
+								AAAAAAAAAACA
+								x6kVyN3/v+CY
+								2pKAx6kVINip
+								FfAHlBVI16kV
+								INipFYDHqRWg
+								9USgBAAAACw+
+								Tl4BAAAAl0Hb
+								kgAAAAAAAAAA
+								AAAAAAAAAAAA
+								AAAAAAAAAF40
+								AAA=
+									</data>
+									<key>RegionDoesLoop</key>
+									<false/>
+									<key>RegionName</key>
+									<string>New Region</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>FileName</key>
+							<string>/Users/Dave/Music/Samples/PS-28 WAV Vocal House/WAV Drum &amp; Perc/WAV snaredrums/28-sde02.wav</string>
+							<key>Regions</key>
+							<array>
+								<dict>
+									<key>IsSelectedRegion</key>
+									<true/>
+									<key>RegionData</key>
+									<data>
+								AAAAAAAAAACA
+								h6oVyN3/v+CY
+								2pKAh6oVIJiq
+								FXDTkxVIl6oV
+								IJiqFYCHqhWg
+								9USgBgAAACw+
+								Tl4BAAAAl0Hb
+								kgAAAAAAAAAA
+								AAAAAAAAAAAA
+								AAAAAAAAAMAY
+								AAA=
+									</data>
+									<key>RegionDoesLoop</key>
+									<false/>
+									<key>RegionName</key>
+									<string>New Region</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>FileName</key>
+							<string>/Users/Dave/Music/Samples/PS-28 WAV Vocal House/WAV All_Vocals/WAV female_vox/28b-voc35.wav</string>
+							<key>IsSelectedFile</key>
+							<true/>
+							<key>Regions</key>
+							<array>
+								<dict>
+									<key>IsSelectedRegion</key>
+									<true/>
+									<key>RegionData</key>
+									<data>
+								AAAAAAAAAACA
+								h6oVyN3/v+CY
+								2pKAh6oVIJiq
+								FXDTkxVIl6oV
+								IJiqFYCHqhWg
+								9USgBgAAACw+
+								Tl4BAAAAl0Hb
+								kgAAAAAAAAAA
+								AAAAAAAAAAAA
+								AAAAAAAAAN5p
+								BAA=
 									</data>
 									<key>RegionDoesLoop</key>
 									<true/>
@@ -325,7 +418,7 @@
 								<key>data</key>
 								<data>
 								AAAAAAAAAAAA
-								AAAKAAAAAAAA
+								AAAMAAAAAAAA
 								AAAAAAABAAAA
 								AAAAAAIAAAAA
 								AAAAAwAAAAAA
@@ -334,7 +427,8 @@
 								BgAAAAAAAAAH
 								AAAAAAAAAAgA
 								AAAAAAAACQAA
-								AAA=
+								AAAAAAAKAAAA
+								AAAAAAsAAAAA
 								</data>
 								<key>jucePluginState</key>
 								<data>
@@ -531,7 +625,7 @@
 				<key>kAUInspectorStateKey_WindowLevel</key>
 				<integer>2147483647</integer>
 				<key>kAUInspectorStateKey_WindowRect</key>
-				<string>{{364, 22}, {340, 372}}</string>
+				<string>{{364, 22}, {340, 390}}</string>
 			</dict>
 			<dict>
 				<key>kAUInspectorStateKey_BusIndex</key>
@@ -553,7 +647,7 @@
 				<key>kAUInspectorStateKey_WindowLevel</key>
 				<integer>2147483647</integer>
 				<key>kAUInspectorStateKey_WindowRect</key>
-				<string>{{708, 22}, {400, 539}}</string>
+				<string>{{713, 22}, {400, 529}}</string>
 			</dict>
 		</array>
 	</dict>

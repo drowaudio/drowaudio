@@ -64,14 +64,6 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 	buttons[0]->setButtonText(T("Make Allpass"));
 	buttons[0]->setClickingTogglesState(true);
 	
-	// set up the meters
-//	addAndMakeVisible(meterLeft = new MeterComponent(&ownerFilter->RMSLeft, &ownerFilter->RMSLeft, &ownerFilter->getCallbackLock()));
-//	addAndMakeVisible(meterRight = new MeterComponent(&ownerFilter->RMSRight, &ownerFilter->RMSRight, &ownerFilter->getCallbackLock()));
-	
-    // create and add the midi keyboard component..
-    addAndMakeVisible (midiKeyboard
-        = new MidiKeyboardComponent (ownerFilter->keyboardState,
-                                     MidiKeyboardComponent::horizontalKeyboard));
 
     // add a label that will display the current timecode and status..
     addAndMakeVisible (infoLabel = new Label (String::empty, String::empty));
@@ -110,7 +102,7 @@ void DRowAudioEditorComponent::paint (Graphics& g)
 	g.setFont(30);
 	g.drawFittedText(T("UWE Plug-in"),
 					 getWidth()/2 - (getWidth()/2), 5,
-					 getWidth(), getHeight(),
+					 getWidth(), 100,
 					 Justification::centredTop,
 					 1);
 }
@@ -120,21 +112,24 @@ void DRowAudioEditorComponent::resized()
     comboBox->setBounds (getWidth()/2 - 100, 40,
 						200, 20);
 	
-	for (int i = 0; i < noParams; i++)
-		sliders[i]->setBounds (70, 70 + (30*i), getWidth()-140, 20);
+	int height = comboBox->getBottom();
 	
-//	meterLeft->setBounds(getWidth()-65, 70, 25, 290);
-//	meterRight->setBounds(getWidth()-35, 70, 25, 290);
-		
+	for (int i = 0; i < noParams; i++)	{
+		sliders[i]->setBounds (70, 70 + (30*i), getWidth()-140, 20);
+		height += 30;
+	}
+	
+	height += 10;
+	
 	for ( int i = 0; i < noButtons; i++ )
-		buttons[i]->setBounds( 10 + (i * ((getWidth()-20)/noButtons) + ((noButtons-1)*5)), 370,
+		buttons[i]->setBounds( 10 + (i * ((getWidth()-20)/noButtons) + ((noButtons-1)*5)), height,
 							  ((getWidth()-20)/noButtons)-(((noButtons-1)*5)), 20);
 	
-	infoLabel->setBounds(10, 400, getWidth(), 20);
+	height += 30;
 	
-    const int keyboardHeight = 70;
-    midiKeyboard->setBounds (4, getHeight() - keyboardHeight - 4,
-                             getWidth() - 8, keyboardHeight);
+	infoLabel->setBounds(10, height +=30, getWidth(), 20);
+	
+	setSize(400, height);
 }
 
 //==============================================================================

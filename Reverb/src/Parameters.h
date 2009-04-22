@@ -15,6 +15,8 @@ enum parameters
 {
 	GAIN,
 	PREDELAY,
+	ROOMSHAPE,
+	EARLYLATEMIX,
 	FBCOEFF,
 	DELTIME,
 	FILTERCF,
@@ -29,6 +31,8 @@ enum parameters
 static const char UNUSED_NOWARN *parameterNames[] = { 
 	"Gain",						// 0
 	"Pre Delay",						// 1
+	"Room Shape",
+	"Early/Late Mix",
 	"fbCoeff",						// 2
 	"DelTime",						// 3
 	"Cuttoff F",						// 4

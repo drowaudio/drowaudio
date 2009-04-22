@@ -89,13 +89,9 @@ private:
 	ComboBox* comboBox;
 	OwnedArray <Slider> sliders;
 	OwnedArray <TextButton> buttons;
-	
-	MeterComponent* meterLeft;
-	MeterComponent* meterRight;
-	
+		
 	int noButtons;
 	
-    MidiKeyboardComponent* midiKeyboard;
     Label* infoLabel;
     ResizableCornerComponent* resizer;
     ComponentBoundsConstrainer resizeLimits;
