@@ -62,6 +62,8 @@ DRowAudioFilter::DRowAudioFilter()
 	params[ROOMSHAPE].setStep(1);
 	prevRoomShape = 0;
 	
+	params[EARLYLATEMIX].setValue(0.5);
+	
 	params[FBCOEFF].setValue(0.9);
 	
 	params[DELTIME].init(parameterNames[DELTIME], UnitGeneric, String::empty,
@@ -350,7 +352,7 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			prevRoomShape = roomShape;
 		}
 
-		float delayCoeff = 10 * (float)params[DELTIME].getSmoothedNormalisedValue();
+		float delayCoeff = 10.0f * (float)params[DELTIME].getSmoothedNormalisedValue();
 		float earlyReflectionWidth = (float)params[SPREAD].getSmoothedNormalisedValue();
 		delayLineL.setTapSpacing(delayCoeff);
 		delayLineL.scaleFeedbacks(fbCoeff);
@@ -384,9 +386,101 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		lowEQR.makeLowShelf(currentSampleRate, 500, 1, lowEQGain);
 		highEQL.makeHighShelf(currentSampleRate, 3000, 1, highEQGain);
 		highEQR.makeHighShelf(currentSampleRate, 3000, 1, highEQGain);
+
+		//========================================================================
+		int noSamples = buffer.getNumSamples();
+		int noChannels = buffer.getNumChannels();
+		
+		AudioSampleBuffer wetBuffer(noChannels, noSamples);
+		wetBuffer.copyFrom(0, 0, buffer, 0, 0, noSamples);
+		wetBuffer.copyFrom(1, 0, buffer, 1, 0, noSamples);
+		
+		// mono mix wet buffer
+		float *pfWetL = wetBuffer.getSampleData(0);
+		float *pfWetR = wetBuffer.getSampleData(1);
+		while (--numSamples >= 0)
+		{
+			*pfWetL = *pfWetR = (0.15f * (*pfWetL + *pfWetL) );
+			pfWetL++;
+			pfWetR++;
+		}
+		numSamples = buffer.getNumSamples();
+		
+		preDelayFilterL.processSamples(wetBuffer.getSampleData(0), noSamples);
+		preDelayFilterR.processSamples(wetBuffer.getSampleData(1), noSamples);
+		
+
+		AudioSampleBuffer earlyReflections(noChannels, noSamples);
+		earlyReflections.copyFrom(0, 0, wetBuffer, 0, 0, noSamples);
+		earlyReflections.copyFrom(1, 0, wetBuffer, 1, 0, noSamples);
+
+		delayLineL.processSamples(earlyReflections.getSampleData(0), noSamples);
+		delayLineR.processSamples(earlyReflections.getSampleData(1), noSamples);
+
+		
+		AudioSampleBuffer lateReverb(noChannels, noSamples);
+		lateReverb.clear();
+		
+		// comb filter section
+		for (int i = 0; i < 8; ++i)
+		{
+			AudioSampleBuffer combFilterBuffer(noChannels, noSamples);
+			combFilterBuffer.copyFrom(0, 0, wetBuffer, 0, 0, noSamples);
+			combFilterBuffer.copyFrom(1, 0, wetBuffer, 1, 0, noSamples);
+			
+			combFilterL[i].processSamples(combFilterBuffer.getSampleData(0), noSamples);
+			combFilterR[i].processSamples(combFilterBuffer.getSampleData(1), noSamples);
+			
+			lateReverb.addFrom(0, 0, combFilterBuffer, 0, 0, noSamples);
+			lateReverb.addFrom(1, 0, combFilterBuffer, 1, 0, noSamples);
+		}
+		
+		// allpass filter section
+		for (int i = 0; i < 4; ++i)
+		{
+			allpassFilterL[i].processSamples(lateReverb.getSampleData(0), noSamples);
+			allpassFilterR[i].processSamples(lateReverb.getSampleData(1), noSamples);
+		}
+		
+		
+		// clear wet buffer
+		wetBuffer.clear();
+		// add early reflections to output buffer
+		wetBuffer.addFrom(0, 0, earlyReflections, 0, 0, noSamples, early);
+		wetBuffer.addFrom(1, 0, earlyReflections, 1, 0, noSamples, early);
+		// add early reflections to output buffer
+		wetBuffer.addFrom(0, 0, lateReverb, 0, 0, noSamples, late);
+		wetBuffer.addFrom(1, 0, lateReverb, 1, 0, noSamples, late);
+		
+		// final EQ
+		lowEQL.processSamples(wetBuffer.getSampleData(0), noSamples);
+		lowEQR.processSamples(wetBuffer.getSampleData(1), noSamples);
+
+		highEQL.processSamples(wetBuffer.getSampleData(0), noSamples);
+		highEQR.processSamples(wetBuffer.getSampleData(1), noSamples);
+		
+		// create stereo spread
+		pfWetL = wetBuffer.getSampleData(0);
+		pfWetR = wetBuffer.getSampleData(1);
+		while (--numSamples >= 0)
+		{
+			float fLeft = *pfWetL;
+			float fRight = *pfWetR;
+			*pfWetL = (fLeft * spread1) + (fRight * spread2);
+			*pfWetR = (fRight * spread1) + (fLeft * spread2);
+			pfWetL++;
+			pfWetR++;
+		}
+		numSamples = buffer.getNumSamples();
+		
+		// add wet buffer to output buffer
+		wetBuffer.applyGain(0, noSamples, wet);
+		buffer.applyGain(0, noSamples, dry);
+		buffer.addFrom(0, 0, wetBuffer, 0, 0, noSamples);
+		buffer.addFrom(1, 0, wetBuffer, 1, 0, noSamples);
 		
 		//========================================================================
-		while (--numSamples >= 0)
+/*		while (--numSamples >= 0)
 		{
 			float dryL = *pfSample[0];
 			float dryR = *pfSample[1];
@@ -448,7 +542,7 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			pfSample[1]++;			
 		}
 		//========================================================================
-		
+*/		
 	}
 
 	

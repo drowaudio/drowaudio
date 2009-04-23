@@ -37,6 +37,14 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
     : AudioProcessorEditor (ownerFilter),
 	noButtons(3)
 {
+	lookAndFeel = new dRowLookAndFeel();
+	setLookAndFeel(lookAndFeel);
+	lookAndFeel->setColour(Label::textColourId, (Colours::black).withBrightness(0.9f));
+	lookAndFeel->setColour (Slider::thumbColourId, Colours::grey);
+	lookAndFeel->setColour (Slider::textBoxTextColourId, Colour (0xff78f4ff));
+	lookAndFeel->setColour (Slider::textBoxBackgroundColourId, Colours::black);
+	lookAndFeel->setColour (Slider::textBoxOutlineColourId, Colour (0xff0D2474));
+	
 	addAndMakeVisible( comboBox = new ComboBox(T("comboBox")) );
 	
 	for (int i = 0; i < noParams; i++)
@@ -90,21 +98,37 @@ DRowAudioEditorComponent::~DRowAudioEditorComponent()
 	sliders.clear();
 	buttons.clear();
     deleteAllChildren();
+	
+	delete lookAndFeel;
 }
 
 //==============================================================================
 void DRowAudioEditorComponent::paint (Graphics& g)
 {
     // just clear the window
-    g.fillAll (Colour::greyLevel (0.9f));
+	Colour backgroundColour(0xFF455769);
+	backgroundColour = backgroundColour.withBrightness(0.4f);
+
+	g.setColour(backgroundColour);
+	g.fillRoundedRectangle(0, 0, getWidth(), getHeight(), 10);
 	
-	g.setColour(Colours::red);
-	g.setFont(30);
-	g.drawFittedText(T("UWE Plug-in"),
-					 getWidth()/2 - (getWidth()/2), 5,
-					 getWidth(), 100,
-					 Justification::centredTop,
-					 1);
+	ColourGradient topHighlight(Colours::white.withAlpha(0.3f),
+								0, 0,
+								Colours::white.withAlpha(0.0f),
+								0, 0 + 15,
+								false);
+	
+	GradientBrush topBrush(topHighlight);
+	g.setBrush(&topBrush);
+	g.fillRoundedRectangle(0, 0, getWidth(), 30, 10);	
+	
+	GradientBrush outlineGradient(Colours::white,
+								  0, 00,
+								  backgroundColour.withBrightness(0.5f),
+								  0, 20,
+								  false);
+	g.setBrush(&outlineGradient);
+	g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 10, 1.0f);
 }
 
 void DRowAudioEditorComponent::resized()

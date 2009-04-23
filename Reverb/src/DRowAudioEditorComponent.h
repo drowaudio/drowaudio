@@ -86,6 +86,8 @@ public:
 
 private:
     //==============================================================================
+	dRowLookAndFeel *lookAndFeel;
+	
 	ComboBox* comboBox;
 	OwnedArray <Slider> sliders;
 	OwnedArray <TextButton> buttons;

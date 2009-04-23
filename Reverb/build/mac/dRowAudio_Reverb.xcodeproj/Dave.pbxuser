@@ -488,6 +488,158 @@
 			5534A2A40F9F54F6004A81B9 /* PBXTextBookmark */ = 5534A2A40F9F54F6004A81B9 /* PBXTextBookmark */;
 			5534A2A50F9F54F6004A81B9 /* PBXTextBookmark */ = 5534A2A50F9F54F6004A81B9 /* PBXTextBookmark */;
 			5534A2A60F9F5794004A81B9 /* PBXTextBookmark */ = 5534A2A60F9F5794004A81B9 /* PBXTextBookmark */;
+			5534A2AA0F9F5B1E004A81B9 /* PBXTextBookmark */ = 5534A2AA0F9F5B1E004A81B9 /* PBXTextBookmark */;
+			5534A2AB0F9F5B1E004A81B9 /* PBXTextBookmark */ = 5534A2AB0F9F5B1E004A81B9 /* PBXTextBookmark */;
+			5534A2AC0F9F5B1E004A81B9 /* PBXTextBookmark */ = 5534A2AC0F9F5B1E004A81B9 /* PBXTextBookmark */;
+			5534A2AD0F9F5B1E004A81B9 /* PBXTextBookmark */ = 5534A2AD0F9F5B1E004A81B9 /* PBXTextBookmark */;
+			5534A2AE0F9F5B1F004A81B9 /* PBXTextBookmark */ = 5534A2AE0F9F5B1F004A81B9 /* PBXTextBookmark */;
+			5534A3220F9F7609004A81B9 /* PBXTextBookmark */ = 5534A3220F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A3230F9F7609004A81B9 /* PBXTextBookmark */ = 5534A3230F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A3240F9F7609004A81B9 /* PBXTextBookmark */ = 5534A3240F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A3250F9F7609004A81B9 /* PBXTextBookmark */ = 5534A3250F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A3260F9F7609004A81B9 /* PBXTextBookmark */ = 5534A3260F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A3270F9F7609004A81B9 /* PBXTextBookmark */ = 5534A3270F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A3280F9F7609004A81B9 /* PBXTextBookmark */ = 5534A3280F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A3290F9F7609004A81B9 /* PBXTextBookmark */ = 5534A3290F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A32A0F9F7609004A81B9 /* PBXTextBookmark */ = 5534A32A0F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A32B0F9F7609004A81B9 /* PBXTextBookmark */ = 5534A32B0F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A32C0F9F7609004A81B9 /* PBXTextBookmark */ = 5534A32C0F9F7609004A81B9 /* PBXTextBookmark */;
+			5534A32F0F9F76AD004A81B9 /* PBXTextBookmark */ = 5534A32F0F9F76AD004A81B9 /* PBXTextBookmark */;
+			5534A3300F9F76AD004A81B9 /* PBXTextBookmark */ = 5534A3300F9F76AD004A81B9 /* PBXTextBookmark */;
+			5534A3310F9F76AD004A81B9 /* PBXTextBookmark */ = 5534A3310F9F76AD004A81B9 /* PBXTextBookmark */;
+			5534A3320F9F76AD004A81B9 /* PBXTextBookmark */ = 5534A3320F9F76AD004A81B9 /* PBXTextBookmark */;
+			5534A3330F9F76AD004A81B9 /* PBXTextBookmark */ = 5534A3330F9F76AD004A81B9 /* PBXTextBookmark */;
+			5534A3340F9F76AD004A81B9 /* PBXTextBookmark */ = 5534A3340F9F76AD004A81B9 /* PBXTextBookmark */;
+			5534A3350F9F76AD004A81B9 /* PBXTextBookmark */ = 5534A3350F9F76AD004A81B9 /* PBXTextBookmark */;
+			5534A3360F9F76AE004A81B9 /* PBXTextBookmark */ = 5534A3360F9F76AE004A81B9 /* PBXTextBookmark */;
+			5534A3380F9F76AE004A81B9 /* PBXTextBookmark */ = 5534A3380F9F76AE004A81B9 /* PBXTextBookmark */;
+			5534A3390F9F76AE004A81B9 /* PBXTextBookmark */ = 5534A3390F9F76AE004A81B9 /* PBXTextBookmark */;
+			5534A33B0F9F76AE004A81B9 /* PBXTextBookmark */ = 5534A33B0F9F76AE004A81B9 /* PBXTextBookmark */;
+			5534A33E0F9F7739004A81B9 /* PBXTextBookmark */ = 5534A33E0F9F7739004A81B9 /* PBXTextBookmark */;
+			5534A33F0F9F7739004A81B9 /* PBXTextBookmark */ = 5534A33F0F9F7739004A81B9 /* PBXTextBookmark */;
+			5534A3400F9F7739004A81B9 /* PBXTextBookmark */ = 5534A3400F9F7739004A81B9 /* PBXTextBookmark */;
+			5534A3410F9F7739004A81B9 /* PBXTextBookmark */ = 5534A3410F9F7739004A81B9 /* PBXTextBookmark */;
+			5534A3420F9F7739004A81B9 /* PBXTextBookmark */ = 5534A3420F9F7739004A81B9 /* PBXTextBookmark */;
+			5534A3430F9F773A004A81B9 /* PBXTextBookmark */ = 5534A3430F9F773A004A81B9 /* PBXTextBookmark */;
+			5534A3440F9F773A004A81B9 /* PBXTextBookmark */ = 5534A3440F9F773A004A81B9 /* PBXTextBookmark */;
+			5534A3450F9F773A004A81B9 /* PBXTextBookmark */ = 5534A3450F9F773A004A81B9 /* PBXTextBookmark */;
+			5534A3460F9F773A004A81B9 /* PBXTextBookmark */ = 5534A3460F9F773A004A81B9 /* PBXTextBookmark */;
+			5534A3480F9F7784004A81B9 /* PBXTextBookmark */ = 5534A3480F9F7784004A81B9 /* PBXTextBookmark */;
+			5534A3490F9F7784004A81B9 /* PBXTextBookmark */ = 5534A3490F9F7784004A81B9 /* PBXTextBookmark */;
+			5534A34A0F9F7784004A81B9 /* PBXTextBookmark */ = 5534A34A0F9F7784004A81B9 /* PBXTextBookmark */;
+			5534A34B0F9F7784004A81B9 /* PBXTextBookmark */ = 5534A34B0F9F7784004A81B9 /* PBXTextBookmark */;
+			5534A34C0F9F7785004A81B9 /* PBXTextBookmark */ = 5534A34C0F9F7785004A81B9 /* PBXTextBookmark */;
+			5534A34E0F9F77DD004A81B9 /* PBXTextBookmark */ = 5534A34E0F9F77DD004A81B9 /* PBXTextBookmark */;
+			5534A34F0F9F77DD004A81B9 /* PBXTextBookmark */ = 5534A34F0F9F77DD004A81B9 /* PBXTextBookmark */;
+			5534A3500F9F77DD004A81B9 /* PBXTextBookmark */ = 5534A3500F9F77DD004A81B9 /* PBXTextBookmark */;
+			5534A3510F9F77DD004A81B9 /* PBXTextBookmark */ = 5534A3510F9F77DD004A81B9 /* PBXTextBookmark */;
+			5534A3520F9F77DE004A81B9 /* PBXTextBookmark */ = 5534A3520F9F77DE004A81B9 /* PBXTextBookmark */;
+			5534A3530F9F7808004A81B9 /* PBXTextBookmark */ = 5534A3530F9F7808004A81B9 /* PBXTextBookmark */;
+			5534A3540F9F79E1004A81B9 /* PBXTextBookmark */ = 5534A3540F9F79E1004A81B9 /* PBXTextBookmark */;
+			5534A3550F9F79E1004A81B9 /* PBXTextBookmark */ = 5534A3550F9F79E1004A81B9 /* PBXTextBookmark */;
+			5534A36E0FA09564004A81B9 /* PBXTextBookmark */ = 5534A36E0FA09564004A81B9 /* PBXTextBookmark */;
+			5534A36F0FA09564004A81B9 /* PBXTextBookmark */ = 5534A36F0FA09564004A81B9 /* PBXTextBookmark */;
+			5534A3700FA09564004A81B9 /* PBXTextBookmark */ = 5534A3700FA09564004A81B9 /* PBXTextBookmark */;
+			5534A3710FA09564004A81B9 /* PBXTextBookmark */ = 5534A3710FA09564004A81B9 /* PBXTextBookmark */;
+			5534A3720FA09565004A81B9 /* PBXTextBookmark */ = 5534A3720FA09565004A81B9 /* PBXTextBookmark */;
+			5534A3740FA09565004A81B9 /* PBXTextBookmark */ = 5534A3740FA09565004A81B9 /* PBXTextBookmark */;
+			5534A3760FA09565004A81B9 /* PBXTextBookmark */ = 5534A3760FA09565004A81B9 /* PBXTextBookmark */;
+			5534A3780FA09565004A81B9 /* PBXTextBookmark */ = 5534A3780FA09565004A81B9 /* PBXTextBookmark */;
+			5534A3790FA09565004A81B9 /* PBXTextBookmark */ = 5534A3790FA09565004A81B9 /* PBXTextBookmark */;
+			5534A37A0FA09565004A81B9 /* PBXTextBookmark */ = 5534A37A0FA09565004A81B9 /* PBXTextBookmark */;
+			5534A37C0FA09565004A81B9 /* PBXTextBookmark */ = 5534A37C0FA09565004A81B9 /* PBXTextBookmark */;
+			5534A37D0FA09565004A81B9 /* PBXTextBookmark */ = 5534A37D0FA09565004A81B9 /* PBXTextBookmark */;
+			5534A37F0FA09582004A81B9 /* PBXTextBookmark */ = 5534A37F0FA09582004A81B9 /* PBXTextBookmark */;
+			5534A3800FA09582004A81B9 /* PBXTextBookmark */ = 5534A3800FA09582004A81B9 /* PBXTextBookmark */;
+			5534A3810FA09582004A81B9 /* PBXTextBookmark */ = 5534A3810FA09582004A81B9 /* PBXTextBookmark */;
+			5534A3820FA09582004A81B9 /* PBXTextBookmark */ = 5534A3820FA09582004A81B9 /* PBXTextBookmark */;
+			5534A3830FA09583004A81B9 /* PBXTextBookmark */ = 5534A3830FA09583004A81B9 /* PBXTextBookmark */;
+			5534A3850FA096EC004A81B9 /* PBXTextBookmark */ = 5534A3850FA096EC004A81B9 /* PBXTextBookmark */;
+			5534A3860FA096EC004A81B9 /* PBXTextBookmark */ = 5534A3860FA096EC004A81B9 /* PBXTextBookmark */;
+			5534A3870FA096ED004A81B9 /* PBXTextBookmark */ = 5534A3870FA096ED004A81B9 /* PBXTextBookmark */;
+			5534A3880FA096ED004A81B9 /* PBXTextBookmark */ = 5534A3880FA096ED004A81B9 /* PBXTextBookmark */;
+			5534A3890FA096ED004A81B9 /* PBXTextBookmark */ = 5534A3890FA096ED004A81B9 /* PBXTextBookmark */;
+			5534A38B0FA0973A004A81B9 /* PBXTextBookmark */ = 5534A38B0FA0973A004A81B9 /* PBXTextBookmark */;
+			5534A38C0FA0973A004A81B9 /* PBXTextBookmark */ = 5534A38C0FA0973A004A81B9 /* PBXTextBookmark */;
+			5534A38D0FA0973A004A81B9 /* PBXTextBookmark */ = 5534A38D0FA0973A004A81B9 /* PBXTextBookmark */;
+			5534A38E0FA0973A004A81B9 /* PBXTextBookmark */ = 5534A38E0FA0973A004A81B9 /* PBXTextBookmark */;
+			5534A38F0FA0973B004A81B9 /* PBXTextBookmark */ = 5534A38F0FA0973B004A81B9 /* PBXTextBookmark */;
+			5534A3910FA099BE004A81B9 /* PBXTextBookmark */ = 5534A3910FA099BE004A81B9 /* PBXTextBookmark */;
+			5534A3920FA099BE004A81B9 /* PBXTextBookmark */ = 5534A3920FA099BE004A81B9 /* PBXTextBookmark */;
+			5534A3930FA099BE004A81B9 /* PBXTextBookmark */ = 5534A3930FA099BE004A81B9 /* PBXTextBookmark */;
+			5534A3940FA099BE004A81B9 /* PBXTextBookmark */ = 5534A3940FA099BE004A81B9 /* PBXTextBookmark */;
+			5534A3950FA099BF004A81B9 /* PBXTextBookmark */ = 5534A3950FA099BF004A81B9 /* PBXTextBookmark */;
+			5534A3970FA09A44004A81B9 /* PBXTextBookmark */ = 5534A3970FA09A44004A81B9 /* PBXTextBookmark */;
+			5534A3980FA09A44004A81B9 /* PBXTextBookmark */ = 5534A3980FA09A44004A81B9 /* PBXTextBookmark */;
+			5534A3990FA09A45004A81B9 /* PBXTextBookmark */ = 5534A3990FA09A45004A81B9 /* PBXTextBookmark */;
+			5534A39A0FA09A45004A81B9 /* PBXTextBookmark */ = 5534A39A0FA09A45004A81B9 /* PBXTextBookmark */;
+			5534A39B0FA09A45004A81B9 /* PBXTextBookmark */ = 5534A39B0FA09A45004A81B9 /* PBXTextBookmark */;
+			5534A39D0FA09AA4004A81B9 /* PBXTextBookmark */ = 5534A39D0FA09AA4004A81B9 /* PBXTextBookmark */;
+			5534A39E0FA09AA4004A81B9 /* PBXTextBookmark */ = 5534A39E0FA09AA4004A81B9 /* PBXTextBookmark */;
+			5534A39F0FA09AA7004A81B9 /* PBXTextBookmark */ = 5534A39F0FA09AA7004A81B9 /* PBXTextBookmark */;
+			5534A3A10FA09AEC004A81B9 /* PBXTextBookmark */ = 5534A3A10FA09AEC004A81B9 /* PBXTextBookmark */;
+			5534A3A20FA09AEC004A81B9 /* PBXTextBookmark */ = 5534A3A20FA09AEC004A81B9 /* PBXTextBookmark */;
+			5534A3A30FA09AED004A81B9 /* PBXTextBookmark */ = 5534A3A30FA09AED004A81B9 /* PBXTextBookmark */;
+			5534A3A40FA09AED004A81B9 /* PBXTextBookmark */ = 5534A3A40FA09AED004A81B9 /* PBXTextBookmark */;
+			5534A3A50FA09AED004A81B9 /* PBXTextBookmark */ = 5534A3A50FA09AED004A81B9 /* PBXTextBookmark */;
+			5534A3A60FA09C08004A81B9 /* PBXTextBookmark */ = 5534A3A60FA09C08004A81B9 /* PBXTextBookmark */;
+			5534A3A80FA09F79004A81B9 /* PBXTextBookmark */ = 5534A3A80FA09F79004A81B9 /* PBXTextBookmark */;
+			5534A3A90FA09F79004A81B9 /* PBXTextBookmark */ = 5534A3A90FA09F79004A81B9 /* PBXTextBookmark */;
+			5534A3AA0FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3AA0FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3AB0FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3AB0FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3AC0FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3AC0FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3AD0FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3AD0FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3AE0FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3AE0FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3AF0FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3AF0FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3B00FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3B00FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3B10FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3B10FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3B20FA09F7A004A81B9 /* PBXTextBookmark */ = 5534A3B20FA09F7A004A81B9 /* PBXTextBookmark */;
+			5534A3B40FA0A05A004A81B9 /* PBXTextBookmark */ = 5534A3B40FA0A05A004A81B9 /* PBXTextBookmark */;
+			5534A3B50FA0A05A004A81B9 /* PBXTextBookmark */ = 5534A3B50FA0A05A004A81B9 /* PBXTextBookmark */;
+			5534A3B60FA0A05A004A81B9 /* PBXTextBookmark */ = 5534A3B60FA0A05A004A81B9 /* PBXTextBookmark */;
+			5534A3B70FA0A05A004A81B9 /* PBXTextBookmark */ = 5534A3B70FA0A05A004A81B9 /* PBXTextBookmark */;
+			5534A3B80FA0A05B004A81B9 /* PBXTextBookmark */ = 5534A3B80FA0A05B004A81B9 /* PBXTextBookmark */;
+			5534A3BA0FA0A1CC004A81B9 /* PBXTextBookmark */ = 5534A3BA0FA0A1CC004A81B9 /* PBXTextBookmark */;
+			5534A3BB0FA0A1CC004A81B9 /* PBXTextBookmark */ = 5534A3BB0FA0A1CC004A81B9 /* PBXTextBookmark */;
+			5534A3BC0FA0A1CC004A81B9 /* PBXTextBookmark */ = 5534A3BC0FA0A1CC004A81B9 /* PBXTextBookmark */;
+			5534A3BD0FA0A1CC004A81B9 /* PBXTextBookmark */ = 5534A3BD0FA0A1CC004A81B9 /* PBXTextBookmark */;
+			5534A3BE0FA0A1CD004A81B9 /* PBXTextBookmark */ = 5534A3BE0FA0A1CD004A81B9 /* PBXTextBookmark */;
+			5534A3C20FA0A391004A81B9 /* PBXTextBookmark */ = 5534A3C20FA0A391004A81B9 /* PBXTextBookmark */;
+			5534A3C30FA0A391004A81B9 /* PBXTextBookmark */ = 5534A3C30FA0A391004A81B9 /* PBXTextBookmark */;
+			5534A3C40FA0A391004A81B9 /* PBXTextBookmark */ = 5534A3C40FA0A391004A81B9 /* PBXTextBookmark */;
+			5534A3C50FA0A391004A81B9 /* PBXTextBookmark */ = 5534A3C50FA0A391004A81B9 /* PBXTextBookmark */;
+			5534A3C60FA0A391004A81B9 /* PBXTextBookmark */ = 5534A3C60FA0A391004A81B9 /* PBXTextBookmark */;
+			5534A3C70FA0A391004A81B9 /* PBXTextBookmark */ = 5534A3C70FA0A391004A81B9 /* PBXTextBookmark */;
+			5534A3C80FA0A391004A81B9 /* PBXTextBookmark */ = 5534A3C80FA0A391004A81B9 /* PBXTextBookmark */;
+			5534A3C90FA0A392004A81B9 /* PBXTextBookmark */ = 5534A3C90FA0A392004A81B9 /* PBXTextBookmark */;
+			5534A3CB0FA0A3C3004A81B9 /* PBXTextBookmark */ = 5534A3CB0FA0A3C3004A81B9 /* PBXTextBookmark */;
+			5534A3CC0FA0A3C3004A81B9 /* PBXTextBookmark */ = 5534A3CC0FA0A3C3004A81B9 /* PBXTextBookmark */;
+			5534A3CD0FA0A3C3004A81B9 /* PBXTextBookmark */ = 5534A3CD0FA0A3C3004A81B9 /* PBXTextBookmark */;
+			5534A3CE0FA0A3C3004A81B9 /* PBXTextBookmark */ = 5534A3CE0FA0A3C3004A81B9 /* PBXTextBookmark */;
+			5534A3CF0FA0A3C4004A81B9 /* PBXTextBookmark */ = 5534A3CF0FA0A3C4004A81B9 /* PBXTextBookmark */;
+			5534A3D10FA0A40D004A81B9 /* PBXTextBookmark */ = 5534A3D10FA0A40D004A81B9 /* PBXTextBookmark */;
+			5534A3D20FA0A40D004A81B9 /* PBXTextBookmark */ = 5534A3D20FA0A40D004A81B9 /* PBXTextBookmark */;
+			5534A3D30FA0A40D004A81B9 /* PBXTextBookmark */ = 5534A3D30FA0A40D004A81B9 /* PBXTextBookmark */;
+			5534A3D40FA0A40D004A81B9 /* PBXTextBookmark */ = 5534A3D40FA0A40D004A81B9 /* PBXTextBookmark */;
+			5534A3D50FA0A40E004A81B9 /* PBXTextBookmark */ = 5534A3D50FA0A40E004A81B9 /* PBXTextBookmark */;
+			5534A3D70FA0A491004A81B9 /* PBXTextBookmark */ = 5534A3D70FA0A491004A81B9 /* PBXTextBookmark */;
+			5534A3D80FA0A491004A81B9 /* PBXTextBookmark */ = 5534A3D80FA0A491004A81B9 /* PBXTextBookmark */;
+			5534A3D90FA0A491004A81B9 /* PBXTextBookmark */ = 5534A3D90FA0A491004A81B9 /* PBXTextBookmark */;
+			5534A3DA0FA0A491004A81B9 /* PBXTextBookmark */ = 5534A3DA0FA0A491004A81B9 /* PBXTextBookmark */;
+			5534A3DB0FA0A492004A81B9 /* PBXTextBookmark */ = 5534A3DB0FA0A492004A81B9 /* PBXTextBookmark */;
+			5534A3DE0FA0A673004A81B9 /* PBXTextBookmark */ = 5534A3DE0FA0A673004A81B9 /* PBXTextBookmark */;
+			5534A3E20FA0B277004A81B9 /* PBXTextBookmark */ = 5534A3E20FA0B277004A81B9 /* PBXTextBookmark */;
+			5534A3E40FA0B2A0004A81B9 /* PBXTextBookmark */ = 5534A3E40FA0B2A0004A81B9 /* PBXTextBookmark */;
+			5534A3E50FA0B2A0004A81B9 /* PBXTextBookmark */ = 5534A3E50FA0B2A0004A81B9 /* PBXTextBookmark */;
+			5534A3E60FA0B2A0004A81B9 /* PBXTextBookmark */ = 5534A3E60FA0B2A0004A81B9 /* PBXTextBookmark */;
+			5534A3E70FA0B2A0004A81B9 /* PBXTextBookmark */ = 5534A3E70FA0B2A0004A81B9 /* PBXTextBookmark */;
+			5534A3E80FA0B2A1004A81B9 /* PBXTextBookmark */ = 5534A3E80FA0B2A1004A81B9 /* PBXTextBookmark */;
+			5534A3EC0FA0B32F004A81B9 /* PBXTextBookmark */ = 5534A3EC0FA0B32F004A81B9 /* PBXTextBookmark */;
+			5534A3ED0FA0B32F004A81B9 /* PBXTextBookmark */ = 5534A3ED0FA0B32F004A81B9 /* PBXTextBookmark */;
+			5534A3EE0FA0B32F004A81B9 /* PBXTextBookmark */ = 5534A3EE0FA0B32F004A81B9 /* PBXTextBookmark */;
+			5534A3EF0FA0B32F004A81B9 /* PBXTextBookmark */ = 5534A3EF0FA0B32F004A81B9 /* PBXTextBookmark */;
+			5534A3F00FA0B330004A81B9 /* PBXTextBookmark */ = 5534A3F00FA0B330004A81B9 /* PBXTextBookmark */;
+			5534A3F50FA0B3DD004A81B9 /* PBXTextBookmark */ = 5534A3F50FA0B3DD004A81B9 /* PBXTextBookmark */;
 			554E50490F8E77C200412A82 = 554E50490F8E77C200412A82 /* PBXTextBookmark */;
 			5556C1AF0F864F8400CB223E = 5556C1AF0F864F8400CB223E /* PBXTextBookmark */;
 			5556C1BA0F86501800CB223E = 5556C1BA0F86501800CB223E /* PBXTextBookmark */;
@@ -542,7 +694,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 322";
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 		vrLen = 1761;
 		vrLoc = 8251;
@@ -552,7 +704,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 322";
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 		vrLen = 1761;
 		vrLoc = 8251;
@@ -572,7 +724,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 322";
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 		vrLen = 2017;
 		vrLoc = 8975;
@@ -582,7 +734,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 322";
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 		vrLen = 2017;
 		vrLoc = 8975;
@@ -592,7 +744,7 @@
 		comments = "error: 'setHeight' was not declared in this scope";
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		rLen = 0;
-		rLoc = 131;
+		rLoc = 155;
 		rType = 1;
 	};
 	55349FAC0F955C71004A81B9 /* PBXTextBookmark */ = {
@@ -600,7 +752,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 4138;
@@ -610,7 +762,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 4138;
@@ -620,7 +772,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1973;
 		vrLoc = 9748;
@@ -630,7 +782,7 @@
 		fRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */;
 		name = "DRowAudioEditorComponent.h: 95";
 		rLen = 22;
-		rLoc = 3474;
+		rLoc = 3507;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 2572;
@@ -640,7 +792,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1973;
 		vrLoc = 9748;
@@ -650,7 +802,7 @@
 		fRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */;
 		name = "DRowAudioEditorComponent.h: 95";
 		rLen = 22;
-		rLoc = 3474;
+		rLoc = 3507;
 		rType = 0;
 		vrLen = 1344;
 		vrLoc = 2572;
@@ -660,7 +812,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 1250;
 		vrLoc = 3647;
@@ -670,7 +822,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 4138;
@@ -680,7 +832,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 4138;
@@ -690,7 +842,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 4138;
@@ -700,7 +852,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 1220;
 		vrLoc = 3438;
@@ -710,7 +862,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 4138;
@@ -720,7 +872,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 4138;
@@ -730,7 +882,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 3438;
@@ -750,7 +902,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 3438;
@@ -770,7 +922,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 566;
 		vrLoc = 4130;
@@ -780,7 +932,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 129";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 566;
 		vrLoc = 4130;
@@ -810,7 +962,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1975;
 		vrLoc = 9801;
@@ -840,7 +992,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1975;
 		vrLoc = 9801;
@@ -850,7 +1002,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 128";
 		rLen = 0;
-		rLoc = 4440;
+		rLoc = 5390;
 		rType = 0;
 		vrLen = 1215;
 		vrLoc = 3481;
@@ -860,7 +1012,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 131";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 4130;
@@ -870,7 +1022,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 131";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 4130;
@@ -880,7 +1032,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 126";
 		rLen = 0;
-		rLoc = 4379;
+		rLoc = 5329;
 		rType = 0;
 		vrLen = 1211;
 		vrLoc = 3481;
@@ -890,7 +1042,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 131";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 548;
 		vrLoc = 4130;
@@ -900,7 +1052,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 131";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 548;
 		vrLoc = 4130;
@@ -910,7 +1062,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 126";
 		rLen = 0;
-		rLoc = 4378;
+		rLoc = 5328;
 		rType = 0;
 		vrLen = 1197;
 		vrLoc = 3481;
@@ -920,7 +1072,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -930,7 +1082,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -940,7 +1092,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4440;
+		rLoc = 5390;
 		rType = 0;
 		vrLen = 1132;
 		vrLoc = 3616;
@@ -950,7 +1102,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -960,7 +1112,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -970,7 +1122,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -980,7 +1132,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4440;
+		rLoc = 5390;
 		rType = 0;
 		vrLen = 1221;
 		vrLoc = 3616;
@@ -990,7 +1142,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1975;
 		vrLoc = 9801;
@@ -1000,7 +1152,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4440;
+		rLoc = 5390;
 		rType = 0;
 		vrLen = 1221;
 		vrLoc = 3616;
@@ -1010,7 +1162,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 9801;
@@ -1020,7 +1172,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1030,7 +1182,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1040,7 +1192,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1050,7 +1202,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 9801;
@@ -1060,7 +1212,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1070,7 +1222,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1080,7 +1232,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1975;
 		vrLoc = 9801;
@@ -1090,7 +1242,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1975;
 		vrLoc = 9801;
@@ -1110,7 +1262,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1120,7 +1272,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1140,7 +1292,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1150,7 +1302,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1170,7 +1322,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 125;
-		rLoc = 7988;
+		rLoc = 8027;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 9801;
@@ -1190,7 +1342,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 308";
 		rLen = 0;
-		rLoc = 8644;
+		rLoc = 8683;
 		rType = 0;
 		vrLen = 1854;
 		vrLoc = 7480;
@@ -1200,7 +1352,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1210,7 +1362,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1219,7 +1371,7 @@
 		isa = PBXTextBookmark;
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 	};
 	5534A0010F95637D004A81B9 /* PBXTextBookmark */ = {
@@ -1227,7 +1379,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 406";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 735;
 		vrLoc = 8305;
@@ -1237,7 +1389,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1247,7 +1399,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 406";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 735;
 		vrLoc = 8305;
@@ -1257,7 +1409,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1267,7 +1419,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 406";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 735;
 		vrLoc = 8305;
@@ -1287,7 +1439,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 406";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 1823;
 		vrLoc = 11081;
@@ -1297,7 +1449,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 308";
 		rLen = 0;
-		rLoc = 8644;
+		rLoc = 8683;
 		rType = 0;
 		vrLen = 1885;
 		vrLoc = 7480;
@@ -1317,7 +1469,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 319";
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 		vrLen = 1951;
 		vrLoc = 7628;
@@ -1337,7 +1489,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 406";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 1823;
 		vrLoc = 11081;
@@ -1357,7 +1509,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 406";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 1746;
 		vrLoc = 11158;
@@ -1367,7 +1519,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1377,7 +1529,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 706;
 		vrLoc = 8305;
@@ -1387,7 +1539,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1397,7 +1549,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 706;
 		vrLoc = 8305;
@@ -1417,7 +1569,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 323";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 1858;
 		vrLoc = 7878;
@@ -1427,7 +1579,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 406";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 8302;
@@ -1447,7 +1599,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 323";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 1858;
 		vrLoc = 7878;
@@ -1467,7 +1619,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 327";
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 		vrLen = 1743;
 		vrLoc = 8568;
@@ -1477,7 +1629,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1487,7 +1639,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 706;
 		vrLoc = 8305;
@@ -1497,7 +1649,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1507,7 +1659,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 706;
 		vrLoc = 8305;
@@ -1517,7 +1669,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1527,7 +1679,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 706;
 		vrLoc = 8305;
@@ -1537,7 +1689,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 327";
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 		vrLen = 1743;
 		vrLoc = 8568;
@@ -1554,7 +1706,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 327";
 		rLen = 0;
-		rLoc = 10298;
+		rLoc = 10340;
 		rType = 0;
 		vrLen = 1743;
 		vrLoc = 8568;
@@ -1574,7 +1726,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1584,7 +1736,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 699;
 		vrLoc = 8305;
@@ -1594,7 +1746,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1604,7 +1756,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 414";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 699;
 		vrLoc = 8305;
@@ -1634,7 +1786,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 319";
 		rLen = 0;
-		rLoc = 10073;
+		rLoc = 10115;
 		rType = 0;
 		vrLen = 1826;
 		vrLoc = 8209;
@@ -1654,7 +1806,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 319";
 		rLen = 0;
-		rLoc = 10073;
+		rLoc = 10115;
 		rType = 0;
 		vrLen = 1826;
 		vrLoc = 8209;
@@ -1674,7 +1826,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 319";
 		rLen = 0;
-		rLoc = 10073;
+		rLoc = 10115;
 		rType = 0;
 		vrLen = 1791;
 		vrLoc = 8209;
@@ -1684,7 +1836,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1694,7 +1846,7 @@
 		comments = "error: invalid operands of types 'const char [19]' and 'const float' to binary 'operator<<'";
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 0;
-		rLoc = 367;
+		rLoc = 369;
 		rType = 1;
 	};
 	5534A03C0F9566FE004A81B9 /* PBXTextBookmark */ = {
@@ -1702,7 +1854,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 132";
 		rLen = 0;
-		rLoc = 4461;
+		rLoc = 5411;
 		rType = 0;
 		vrLen = 493;
 		vrLoc = 4130;
@@ -1712,7 +1864,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 736;
 		vrLoc = 8533;
@@ -1722,7 +1874,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 416";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 667;
 		vrLoc = 8305;
@@ -1732,7 +1884,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 736;
 		vrLoc = 8533;
@@ -1742,7 +1894,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 416";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 667;
 		vrLoc = 8305;
@@ -1752,7 +1904,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 1901;
 		vrLoc = 7568;
@@ -1762,7 +1914,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 1901;
 		vrLoc = 7568;
@@ -1782,7 +1934,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 736;
 		vrLoc = 8533;
@@ -1792,7 +1944,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 416";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 667;
 		vrLoc = 8305;
@@ -1802,7 +1954,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 7565;
@@ -1832,7 +1984,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 7565;
@@ -1852,7 +2004,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 736;
 		vrLoc = 8533;
@@ -1862,7 +2014,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 416";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 667;
 		vrLoc = 8305;
@@ -1872,7 +2024,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 736;
 		vrLoc = 8533;
@@ -1882,7 +2034,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 416";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 667;
 		vrLoc = 8305;
@@ -1892,7 +2044,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 736;
 		vrLoc = 8533;
@@ -1902,7 +2054,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 416";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 667;
 		vrLoc = 8305;
@@ -1912,7 +2064,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 323";
 		rLen = 0;
-		rLoc = 10166;
+		rLoc = 10208;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 7565;
@@ -1942,7 +2094,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 7565;
@@ -1962,7 +2114,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 325";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 7565;
@@ -1982,7 +2134,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 323";
 		rLen = 0;
-		rLoc = 10166;
+		rLoc = 10208;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 7565;
@@ -2002,7 +2154,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 324";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 733;
 		vrLoc = 8533;
@@ -2012,7 +2164,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 412";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 8305;
@@ -2022,7 +2174,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 324";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 733;
 		vrLoc = 8533;
@@ -2032,7 +2184,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 412";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 8305;
@@ -2062,7 +2214,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 318";
 		rLen = 0;
-		rLoc = 10024;
+		rLoc = 10066;
 		rType = 0;
 		vrLen = 1879;
 		vrLoc = 7815;
@@ -2072,7 +2224,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 326";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 663;
 		vrLoc = 8490;
@@ -2082,7 +2234,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 383";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 601;
 		vrLoc = 8259;
@@ -2092,7 +2244,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 326";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 663;
 		vrLoc = 8490;
@@ -2102,7 +2254,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 383";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 601;
 		vrLoc = 8259;
@@ -2122,7 +2274,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 318";
 		rLen = 0;
-		rLoc = 10024;
+		rLoc = 10066;
 		rType = 0;
 		vrLen = 1953;
 		vrLoc = 7815;
@@ -2132,7 +2284,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 318";
 		rLen = 0;
-		rLoc = 10024;
+		rLoc = 10066;
 		rType = 0;
 		vrLen = 1953;
 		vrLoc = 7815;
@@ -2152,7 +2304,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 402";
 		rLen = 0;
-		rLoc = 13106;
+		rLoc = 16367;
 		rType = 0;
 		vrLen = 1751;
 		vrLoc = 11190;
@@ -2162,7 +2314,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 326";
 		rLen = 0;
-		rLoc = 10295;
+		rLoc = 10337;
 		rType = 0;
 		vrLen = 683;
 		vrLoc = 8551;
@@ -2172,7 +2324,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 383";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 601;
 		vrLoc = 8259;
@@ -2182,7 +2334,7 @@
 		comments = "error: expected `;' before ')' token";
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 1;
-		rLoc = 442;
+		rLoc = 536;
 		rType = 1;
 	};
 	5534A0730F956C1C004A81B9 /* PBXTextBookmark */ = {
@@ -2190,7 +2342,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2200,7 +2352,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 8259;
@@ -2210,7 +2362,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2220,7 +2372,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 8259;
@@ -2230,7 +2382,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13143;
+		rLoc = 16404;
 		rType = 0;
 		vrLen = 1788;
 		vrLoc = 10514;
@@ -2240,7 +2392,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2250,7 +2402,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2260,7 +2412,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2270,7 +2422,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2280,7 +2432,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13143;
+		rLoc = 16404;
 		rType = 0;
 		vrLen = 1905;
 		vrLoc = 8259;
@@ -2290,7 +2442,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13143;
+		rLoc = 16404;
 		rType = 0;
 		vrLen = 895;
 		vrLoc = 6480;
@@ -2300,7 +2452,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2310,7 +2462,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2320,7 +2472,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2330,7 +2482,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2340,7 +2492,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13143;
+		rLoc = 16404;
 		rType = 0;
 		vrLen = 868;
 		vrLoc = 6461;
@@ -2350,7 +2502,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2360,7 +2512,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2370,7 +2522,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2380,7 +2532,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2390,7 +2542,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2400,7 +2552,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2410,7 +2562,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2420,7 +2572,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2430,7 +2582,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11805;
@@ -2440,7 +2592,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 575;
 		vrLoc = 8206;
@@ -2460,7 +2612,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13143;
+		rLoc = 16404;
 		rType = 0;
 		vrLen = 1709;
 		vrLoc = 6706;
@@ -2470,7 +2622,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13143;
+		rLoc = 16404;
 		rType = 0;
 		vrLen = 1709;
 		vrLoc = 6706;
@@ -2490,7 +2642,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13143;
+		rLoc = 16404;
 		rType = 0;
 		vrLen = 1762;
 		vrLoc = 7149;
@@ -2500,7 +2652,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11806;
@@ -2510,7 +2662,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2520,7 +2672,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11806;
@@ -2530,7 +2682,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2540,7 +2692,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 0;
-		rLoc = 8007;
+		rLoc = 8046;
 		rType = 0;
 		vrLen = 1763;
 		vrLoc = 7149;
@@ -2550,7 +2702,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11806;
@@ -2560,7 +2712,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2570,7 +2722,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11806;
@@ -2580,7 +2732,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2590,7 +2742,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 404";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 11806;
@@ -2600,7 +2752,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 385";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2610,7 +2762,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 0;
-		rLoc = 8007;
+		rLoc = 8046;
 		rType = 0;
 		vrLen = 1763;
 		vrLoc = 7149;
@@ -2620,7 +2772,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 413";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 770;
 		vrLoc = 11699;
@@ -2638,7 +2790,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 413";
 		rLen = 0;
-		rLoc = 13158;
+		rLoc = 16419;
 		rType = 0;
 		vrLen = 770;
 		vrLoc = 11699;
@@ -2658,7 +2810,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 394";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2678,7 +2830,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 394";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2698,7 +2850,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 0;
-		rLoc = 8007;
+		rLoc = 8046;
 		rType = 0;
 		vrLen = 1769;
 		vrLoc = 7149;
@@ -2708,7 +2860,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 0;
-		rLoc = 8007;
+		rLoc = 8046;
 		rType = 0;
 		vrLen = 1772;
 		vrLoc = 7149;
@@ -2728,7 +2880,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 299";
 		rLen = 0;
-		rLoc = 8007;
+		rLoc = 8046;
 		rType = 0;
 		vrLen = 1769;
 		vrLoc = 7149;
@@ -2748,7 +2900,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 397";
 		rLen = 0;
-		rLoc = 12364;
+		rLoc = 15625;
 		rType = 0;
 		vrLen = 1750;
 		vrLoc = 10471;
@@ -2768,7 +2920,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 394";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2788,7 +2940,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 394";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2808,7 +2960,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 394";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 860;
 		vrLoc = 7691;
@@ -2818,7 +2970,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 397";
 		rLen = 0;
-		rLoc = 12364;
+		rLoc = 15625;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 10471;
@@ -2828,7 +2980,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 397";
 		rLen = 0;
-		rLoc = 12364;
+		rLoc = 15625;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 10471;
@@ -2858,7 +3010,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 376";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -2878,7 +3030,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 376";
 		rLen = 0;
-		rLoc = 12269;
+		rLoc = 15530;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -2908,7 +3060,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 339";
 		rLen = 0;
-		rLoc = 10672;
+		rLoc = 10714;
 		rType = 0;
 		vrLen = 1762;
 		vrLoc = 9622;
@@ -2927,7 +3079,7 @@
 		isa = PBXTextBookmark;
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 	};
 	5534A0F10F98C29F004A81B9 /* PBXTextBookmark */ = {
@@ -2935,7 +3087,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -2955,7 +3107,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -2975,7 +3127,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -2995,7 +3147,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3014,7 +3166,7 @@
 		isa = PBXTextBookmark;
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 5;
-		rLoc = 8568;
+		rLoc = 8607;
 		rType = 0;
 	};
 	5534A0FB0F98C2A1004A81B9 /* PBXTextBookmark */ = {
@@ -3022,7 +3174,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 339";
 		rLen = 0;
-		rLoc = 10672;
+		rLoc = 10714;
 		rType = 0;
 		vrLen = 1703;
 		vrLoc = 7947;
@@ -3042,7 +3194,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 310";
 		rLen = 5;
-		rLoc = 8568;
+		rLoc = 8607;
 		rType = 0;
 		vrLen = 1726;
 		vrLoc = 7816;
@@ -3062,7 +3214,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 868;
 		vrLoc = 7691;
@@ -3082,7 +3234,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 868;
 		vrLoc = 7691;
@@ -3092,7 +3244,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 328";
 		rLen = 8;
-		rLoc = 10274;
+		rLoc = 10316;
 		rType = 0;
 		vrLen = 1537;
 		vrLoc = 7816;
@@ -3112,7 +3264,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3132,7 +3284,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3142,7 +3294,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 336";
 		rLen = 0;
-		rLoc = 10436;
+		rLoc = 10478;
 		rType = 0;
 		vrLen = 1681;
 		vrLoc = 7816;
@@ -3152,7 +3304,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 337";
 		rLen = 0;
-		rLoc = 10444;
+		rLoc = 10486;
 		rType = 0;
 		vrLen = 1768;
 		vrLoc = 7332;
@@ -3162,7 +3314,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 337";
 		rLen = 0;
-		rLoc = 10444;
+		rLoc = 10486;
 		rType = 0;
 		vrLen = 1750;
 		vrLoc = 7816;
@@ -3182,7 +3334,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3202,7 +3354,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3212,7 +3364,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 342";
 		rLen = 0;
-		rLoc = 10672;
+		rLoc = 10714;
 		rType = 0;
 		vrLen = 1538;
 		vrLoc = 8207;
@@ -3232,7 +3384,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3252,7 +3404,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3262,7 +3414,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 352";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1610;
 		vrLoc = 8868;
@@ -3282,7 +3434,7 @@
 		comments = "error: 'class juce::AudioSampleBuffer' has no member named 'getChannelData'";
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 0;
-		rLoc = 387;
+		rLoc = 481;
 		rType = 1;
 	};
 	5534A1B00F9E1679004A81B9 /* PBXTextBookmark */ = {
@@ -3290,7 +3442,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 353";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1658;
 		vrLoc = 8868;
@@ -3310,7 +3462,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 353";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1704;
 		vrLoc = 8930;
@@ -3340,7 +3492,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 356";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 833;
 		vrLoc = 9572;
@@ -3350,7 +3502,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3360,7 +3512,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 356";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 833;
 		vrLoc = 9572;
@@ -3370,7 +3522,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3380,7 +3532,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 353";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1726;
 		vrLoc = 8930;
@@ -3390,7 +3542,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 356";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 833;
 		vrLoc = 9572;
@@ -3400,7 +3552,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3410,7 +3562,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 354";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1437;
 		vrLoc = 8930;
@@ -3420,7 +3572,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 357";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 864;
 		vrLoc = 9572;
@@ -3430,7 +3582,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3440,7 +3592,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 357";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 864;
 		vrLoc = 9572;
@@ -3450,7 +3602,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3460,7 +3612,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 354";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1757;
 		vrLoc = 8930;
@@ -3470,7 +3622,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 357";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 864;
 		vrLoc = 9572;
@@ -3480,7 +3632,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3490,7 +3642,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 359";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 922;
 		vrLoc = 9572;
@@ -3500,7 +3652,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3510,7 +3662,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 359";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 922;
 		vrLoc = 9572;
@@ -3520,7 +3672,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3540,7 +3692,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 354";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1757;
 		vrLoc = 8930;
@@ -3560,7 +3712,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 354";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1767;
 		vrLoc = 9000;
@@ -3570,7 +3722,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 359";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 922;
 		vrLoc = 9572;
@@ -3580,7 +3732,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3590,7 +3742,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 360";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 900;
 		vrLoc = 9572;
@@ -3600,7 +3752,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3610,7 +3762,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 360";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 900;
 		vrLoc = 9572;
@@ -3620,7 +3772,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3630,7 +3782,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 359";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1745;
 		vrLoc = 9000;
@@ -3640,7 +3792,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 360";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 900;
 		vrLoc = 9572;
@@ -3650,7 +3802,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3660,7 +3812,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 360";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 900;
 		vrLoc = 9572;
@@ -3670,7 +3822,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3680,7 +3832,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 360";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 900;
 		vrLoc = 9572;
@@ -3690,7 +3842,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3700,7 +3852,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 359";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1745;
 		vrLoc = 9000;
@@ -3710,7 +3862,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 359";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 777;
 		vrLoc = 9572;
@@ -3720,7 +3872,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3730,7 +3882,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 359";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 729;
 		vrLoc = 9572;
@@ -3740,7 +3892,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3750,7 +3902,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 354";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 1574;
 		vrLoc = 9000;
@@ -3760,7 +3912,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 350";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 712;
 		vrLoc = 9572;
@@ -3770,7 +3922,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3780,7 +3932,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 350";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 712;
 		vrLoc = 9572;
@@ -3790,7 +3942,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3800,7 +3952,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 359";
 		rLen = 103;
-		rLoc = 11182;
+		rLoc = 14443;
 		rType = 0;
 		vrLen = 1724;
 		vrLoc = 9103;
@@ -3810,7 +3962,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 350";
 		rLen = 0;
-		rLoc = 10935;
+		rLoc = 14194;
 		rType = 0;
 		vrLen = 712;
 		vrLoc = 9572;
@@ -3820,7 +3972,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 311";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 7691;
@@ -3830,7 +3982,7 @@
 		comments = "error: 'delayCoeff' was not declared in this scope";
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 1;
-		rLoc = 354;
+		rLoc = 356;
 		rType = 1;
 	};
 	5534A25D0F9E31F0004A81B9 /* PBXTextBookmark */ = {
@@ -3838,7 +3990,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -3848,7 +4000,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -3858,7 +4010,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -3868,7 +4020,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -3898,7 +4050,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 306";
 		rLen = 77;
-		rLoc = 8427;
+		rLoc = 8466;
 		rType = 0;
 		vrLen = 1759;
 		vrLoc = 7302;
@@ -3918,7 +4070,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 364";
 		rLen = 0;
-		rLoc = 11466;
+		rLoc = 14727;
 		rType = 0;
 		vrLen = 1669;
 		vrLoc = 9006;
@@ -3958,7 +4110,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 349";
 		rLen = 40;
-		rLoc = 9839;
+		rLoc = 9881;
 		rType = 0;
 		vrLen = 1462;
 		vrLoc = 8809;
@@ -3968,7 +4120,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -3978,7 +4130,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -3988,7 +4140,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -3998,7 +4150,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4008,7 +4160,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -4018,7 +4170,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4028,7 +4180,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -4038,7 +4190,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4048,7 +4200,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 349";
 		rLen = 40;
-		rLoc = 9839;
+		rLoc = 9881;
 		rType = 0;
 		vrLen = 1299;
 		vrLoc = 1688;
@@ -4068,7 +4220,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 349";
 		rLen = 40;
-		rLoc = 9839;
+		rLoc = 9881;
 		rType = 0;
 		vrLen = 1299;
 		vrLoc = 1688;
@@ -4088,7 +4240,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -4098,7 +4250,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4108,7 +4260,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -4118,7 +4270,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4138,7 +4290,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -4148,7 +4300,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4158,7 +4310,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -4168,7 +4320,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4178,7 +4330,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 9302;
@@ -4188,7 +4340,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4208,7 +4360,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 349";
 		rLen = 40;
-		rLoc = 9839;
+		rLoc = 9881;
 		rType = 0;
 		vrLen = 1296;
 		vrLoc = 1691;
@@ -4228,7 +4380,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 349";
 		rLen = 40;
-		rLoc = 9839;
+		rLoc = 9881;
 		rType = 0;
 		vrLen = 1474;
 		vrLoc = 8712;
@@ -4238,7 +4390,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 347";
 		rLen = 0;
-		rLoc = 9700;
+		rLoc = 9742;
 		rType = 0;
 		vrLen = 1552;
 		vrLoc = 8579;
@@ -4248,7 +4400,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 609;
 		vrLoc = 9302;
@@ -4258,7 +4410,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4268,7 +4420,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 348";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 609;
 		vrLoc = 9302;
@@ -4278,7 +4430,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 316";
 		rLen = 5;
-		rLoc = 8690;
+		rLoc = 8729;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 7718;
@@ -4288,7 +4440,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 347";
 		rLen = 0;
-		rLoc = 9700;
+		rLoc = 9742;
 		rType = 0;
 		vrLen = 1549;
 		vrLoc = 8579;
@@ -4298,7 +4450,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 347";
 		rLen = 0;
-		rLoc = 9700;
+		rLoc = 9742;
 		rType = 0;
 		vrLen = 1552;
 		vrLoc = 8579;
@@ -4308,7 +4460,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 354";
 		rLen = 0;
-		rLoc = 9756;
+		rLoc = 9798;
 		rType = 0;
 		vrLen = 753;
 		vrLoc = 9261;
@@ -4317,7 +4469,7 @@
 		isa = PBXTextBookmark;
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 0;
-		rLoc = 11289;
+		rLoc = 14550;
 		rType = 0;
 	};
 	5534A2930F9F5348004A81B9 /* PBXTextBookmark */ = {
@@ -4325,7 +4477,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 399";
 		rLen = 0;
-		rLoc = 11289;
+		rLoc = 14550;
 		rType = 0;
 		vrLen = 543;
 		vrLoc = 11064;
@@ -4335,7 +4487,7 @@
 		comments = "error: no matching function for call to 'AllpassFilter::processSingleSample(<type error>)'";
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 1;
-		rLoc = 433;
+		rLoc = 527;
 		rType = 1;
 	};
 	5534A2970F9F54A2004A81B9 /* PBXTextBookmark */ = {
@@ -4343,7 +4495,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 393";
 		rLen = 0;
-		rLoc = 11117;
+		rLoc = 14378;
 		rType = 0;
 		vrLen = 599;
 		vrLoc = 10857;
@@ -4353,7 +4505,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 400";
 		rLen = 0;
-		rLoc = 11289;
+		rLoc = 14550;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 11064;
@@ -4363,7 +4515,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 393";
 		rLen = 0;
-		rLoc = 11117;
+		rLoc = 14378;
 		rType = 0;
 		vrLen = 599;
 		vrLoc = 10857;
@@ -4373,7 +4525,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 400";
 		rLen = 0;
-		rLoc = 11289;
+		rLoc = 14550;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 11064;
@@ -4392,7 +4544,7 @@
 		isa = PBXTextBookmark;
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		rLen = 10;
-		rLoc = 9330;
+		rLoc = 9369;
 		rType = 0;
 	};
 	5534A29D0F9F54A2004A81B9 /* PBXTextBookmark */ = {
@@ -4420,7 +4572,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 443";
 		rLen = 0;
-		rLoc = 13103;
+		rLoc = 16364;
 		rType = 0;
 		vrLen = 1813;
 		vrLoc = 11506;
@@ -4430,7 +4582,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 393";
 		rLen = 0;
-		rLoc = 11117;
+		rLoc = 14378;
 		rType = 0;
 		vrLen = 599;
 		vrLoc = 10867;
@@ -4440,7 +4592,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 400";
 		rLen = 0;
-		rLoc = 11289;
+		rLoc = 14550;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 11040;
@@ -4450,7 +4602,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 393";
 		rLen = 0;
-		rLoc = 11117;
+		rLoc = 14378;
 		rType = 0;
 		vrLen = 599;
 		vrLoc = 10867;
@@ -4460,7 +4612,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 400";
 		rLen = 0;
-		rLoc = 11289;
+		rLoc = 14550;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 11040;
@@ -4470,7 +4622,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 304";
 		rLen = 0;
-		rLoc = 7923;
+		rLoc = 7962;
 		rType = 0;
 		vrLen = 1750;
 		vrLoc = 7485;
@@ -4480,10 +4632,1566 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 336";
 		rLen = 0;
-		rLoc = 9151;
+		rLoc = 9190;
 		rType = 0;
 		vrLen = 1528;
 		vrLoc = 8697;
+	};
+	5534A2AA0F9F5B1E004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 393";
+		rLen = 0;
+		rLoc = 14378;
+		rType = 0;
+		vrLen = 621;
+		vrLoc = 10741;
+	};
+	5534A2AB0F9F5B1E004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A2AC0F9F5B1E004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 393";
+		rLen = 0;
+		rLoc = 14378;
+		rType = 0;
+		vrLen = 621;
+		vrLoc = 10741;
+	};
+	5534A2AD0F9F5B1E004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A2AE0F9F5B1F004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 336";
+		rLen = 0;
+		rLoc = 9190;
+		rType = 0;
+		vrLen = 1516;
+		vrLoc = 9558;
+	};
+	5534A3220F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 393";
+		rLen = 0;
+		rLoc = 14378;
+		rType = 0;
+		vrLen = 621;
+		vrLoc = 10741;
+	};
+	5534A3230F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A3240F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 393";
+		rLen = 0;
+		rLoc = 14378;
+		rType = 0;
+		vrLen = 621;
+		vrLoc = 10741;
+	};
+	5534A3250F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A3260F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 388";
+		rLen = 0;
+		rLoc = 14207;
+		rType = 0;
+		vrLen = 1710;
+		vrLoc = 10489;
+	};
+	5534A3270F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */;
+		name = "DRowAudioEditorComponent.h: 89";
+		rLen = 0;
+		rLoc = 3386;
+		rType = 0;
+		vrLen = 1406;
+		vrLoc = 2505;
+	};
+	5534A3280F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 40";
+		rLen = 11;
+		rLoc = 1621;
+		rType = 0;
+		vrLen = 1511;
+		vrLoc = 1069;
+	};
+	5534A3290F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 388";
+		rLen = 0;
+		rLoc = 14207;
+		rType = 0;
+		vrLen = 1710;
+		vrLoc = 10489;
+	};
+	5534A32A0F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 40";
+		rLen = 11;
+		rLoc = 1621;
+		rType = 0;
+		vrLen = 1511;
+		vrLoc = 1069;
+	};
+	5534A32B0F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */;
+		name = "DRowAudioEditorComponent.h: 89";
+		rLen = 0;
+		rLoc = 3386;
+		rType = 0;
+		vrLen = 1406;
+		vrLoc = 2505;
+	};
+	5534A32C0F9F7609004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 96";
+		rLen = 0;
+		rLoc = 3933;
+		rType = 0;
+		vrLen = 1596;
+		vrLoc = 754;
+	};
+	5534A32F0F9F76AD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 393";
+		rLen = 0;
+		rLoc = 14378;
+		rType = 0;
+		vrLen = 621;
+		vrLoc = 10741;
+	};
+	5534A3300F9F76AD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: 'customLookAndFeel' was not declared in this scope";
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		rLen = 1;
+		rLoc = 41;
+		rType = 1;
+	};
+	5534A3310F9F76AD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 393";
+		rLen = 0;
+		rLoc = 14378;
+		rType = 0;
+		vrLen = 621;
+		vrLoc = 10741;
+	};
+	5534A3320F9F76AD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 42";
+		rLen = 0;
+		rLoc = 1700;
+		rType = 0;
+		vrLen = 676;
+		vrLoc = 1474;
+	};
+	5534A3330F9F76AD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A3340F9F76AD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 42";
+		rLen = 0;
+		rLoc = 1700;
+		rType = 0;
+		vrLen = 676;
+		vrLoc = 1474;
+	};
+	5534A3350F9F76AD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A3360F9F76AE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534A3370F9F76AE004A81B9 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 132";
+		rLen = 1206;
+		rLoc = 5638;
+		rType = 0;
+		vrLen = 1528;
+		vrLoc = 5321;
+	};
+	5534A3370F9F76AE004A81B9 /* DRowAudioEditorComponent.cpp */ = {
+		isa = PBXFileReference;
+		name = DRowAudioEditorComponent.cpp;
+		path = "/Users/Dave/Documents/Developement/Audio Plugins/Distortion/src/DRowAudioEditorComponent.cpp";
+		sourceTree = "<absolute>";
+	};
+	5534A3380F9F76AE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 2070;
+		rType = 0;
+		vrLen = 1656;
+		vrLoc = 1247;
+	};
+	5534A3390F9F76AE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534A33A0F9F76AE004A81B9 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 132";
+		rLen = 1206;
+		rLoc = 5638;
+		rType = 0;
+		vrLen = 1528;
+		vrLoc = 5321;
+	};
+	5534A33A0F9F76AE004A81B9 /* DRowAudioEditorComponent.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = DRowAudioEditorComponent.cpp;
+		path = "/Users/Dave/Documents/Developement/Audio Plugins/Distortion/src/DRowAudioEditorComponent.cpp";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {914, 3626}}";
+			sepNavSelRange = "{2530, 573}";
+			sepNavVisRange = "{1371, 2363}";
+		};
+	};
+	5534A33B0F9F76AE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 106";
+		rLen = 0;
+		rLoc = 4159;
+		rType = 0;
+		vrLen = 1209;
+		vrLoc = 3574;
+	};
+	5534A33E0F9F7739004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: 'class dRowLookAndFeel' has no member named 'setTextBoxStyle'";
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		rLen = 1;
+		rLoc = 42;
+		rType = 1;
+	};
+	5534A33F0F9F7739004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3400F9F7739004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A3410F9F7739004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3420F9F7739004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A3430F9F773A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534A33A0F9F76AE004A81B9 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 63";
+		rLen = 573;
+		rLoc = 2530;
+		rType = 0;
+		vrLen = 2363;
+		vrLoc = 1371;
+	};
+	5534A3440F9F773A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 106";
+		rLen = 0;
+		rLoc = 4159;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 3574;
+	};
+	5534A3450F9F773A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534A33A0F9F76AE004A81B9 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 63";
+		rLen = 573;
+		rLoc = 2530;
+		rType = 0;
+		vrLen = 2363;
+		vrLoc = 1371;
+	};
+	5534A3460F9F773A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 46";
+		rLen = 0;
+		rLoc = 2002;
+		rType = 0;
+		vrLen = 1746;
+		vrLoc = 988;
+	};
+	5534A3480F9F7784004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 872;
+		vrLoc = 1474;
+	};
+	5534A3490F9F7784004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A34A0F9F7784004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 872;
+		vrLoc = 1474;
+	};
+	5534A34B0F9F7784004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A34C0F9F7785004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 45";
+		rLen = 0;
+		rLoc = 1913;
+		rType = 0;
+		vrLen = 1819;
+		vrLoc = 988;
+	};
+	5534A34E0F9F77DD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 870;
+		vrLoc = 1474;
+	};
+	5534A34F0F9F77DD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A3500F9F77DD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 870;
+		vrLoc = 1474;
+	};
+	5534A3510F9F77DD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A3520F9F77DE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 45";
+		rLen = 0;
+		rLoc = 1913;
+		rType = 0;
+		vrLen = 1817;
+		vrLoc = 988;
+	};
+	5534A3530F9F7808004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 45";
+		rLen = 0;
+		rLoc = 1913;
+		rType = 0;
+		vrLen = 1851;
+		vrLoc = 988;
+	};
+	5534A3540F9F79E1004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3550F9F79E1004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 10935;
+	};
+	5534A36E0FA09564004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A36F0FA09564004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 414";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 931;
+		vrLoc = 10932;
+	};
+	5534A3700FA09564004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3710FA09564004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 414";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 931;
+		vrLoc = 10932;
+	};
+	5534A3720FA09565004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534A3730FA09565004A81B9 /* juce_LookAndFeel.h */;
+		name = "juce_LookAndFeel.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2467;
+		vrLoc = 30173;
+	};
+	5534A3730FA09565004A81B9 /* juce_LookAndFeel.h */ = {
+		isa = PBXFileReference;
+		name = juce_LookAndFeel.h;
+		path = /Users/Dave/Documents/Developement/juce_source/juce/src/juce_appframework/gui/components/lookandfeel/juce_LookAndFeel.h;
+		sourceTree = "<absolute>";
+	};
+	5534A3740FA09565004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534A3750FA09565004A81B9 /* juce_Slider.cpp */;
+		name = "juce_Slider.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1443;
+		vrLoc = 42573;
+	};
+	5534A3750FA09565004A81B9 /* juce_Slider.cpp */ = {
+		isa = PBXFileReference;
+		name = juce_Slider.cpp;
+		path = /Users/Dave/Documents/Developement/juce_source/juce/src/juce_appframework/gui/components/controls/juce_Slider.cpp;
+		sourceTree = "<absolute>";
+	};
+	5534A3760FA09565004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534A3770FA09565004A81B9 /* juce_Slider.h */;
+		name = "juce_Slider.h: 655";
+		rLen = 4;
+		rLoc = 31825;
+		rType = 0;
+		vrLen = 2438;
+		vrLoc = 30722;
+	};
+	5534A3770FA09565004A81B9 /* juce_Slider.h */ = {
+		isa = PBXFileReference;
+		name = juce_Slider.h;
+		path = /Users/Dave/Documents/Developement/juce_source/juce/src/juce_appframework/gui/components/controls/juce_Slider.h;
+		sourceTree = "<absolute>";
+	};
+	5534A3780FA09565004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 45";
+		rLen = 0;
+		rLoc = 1913;
+		rType = 0;
+		vrLen = 1812;
+		vrLoc = 988;
+	};
+	5534A3790FA09565004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 45";
+		rLen = 0;
+		rLoc = 1913;
+		rType = 0;
+		vrLen = 1851;
+		vrLoc = 988;
+	};
+	5534A37A0FA09565004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534A37B0FA09565004A81B9 /* juce_Slider.h */;
+		name = "juce_Slider.h: 655";
+		rLen = 4;
+		rLoc = 31825;
+		rType = 0;
+		vrLen = 2438;
+		vrLoc = 30722;
+	};
+	5534A37B0FA09565004A81B9 /* juce_Slider.h */ = {
+		isa = PBXFileReference;
+		name = juce_Slider.h;
+		path = /Users/Dave/Documents/Developement/juce_source/juce/src/juce_appframework/gui/components/controls/juce_Slider.h;
+		sourceTree = "<absolute>";
+	};
+	5534A37C0FA09565004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 45";
+		rLen = 0;
+		rLoc = 1913;
+		rType = 0;
+		vrLen = 1812;
+		vrLoc = 988;
+	};
+	5534A37D0FA09565004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 400";
+		rLen = 0;
+		rLoc = 12732;
+		rType = 0;
+		vrLen = 1867;
+		vrLoc = 10679;
+	};
+	5534A37F0FA09582004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3800FA09582004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 414";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 933;
+		vrLoc = 10932;
+	};
+	5534A3810FA09582004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3820FA09582004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 414";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 933;
+		vrLoc = 10932;
+	};
+	5534A3830FA09583004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 465";
+		rLen = 0;
+		rLoc = 16586;
+		rType = 0;
+		vrLen = 1781;
+		vrLoc = 10295;
+	};
+	5534A3850FA096EC004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3860FA096EC004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 422";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 818;
+		vrLoc = 10932;
+	};
+	5534A3870FA096ED004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3880FA096ED004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 422";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 818;
+		vrLoc = 10932;
+	};
+	5534A3890FA096ED004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 408";
+		rLen = 0;
+		rLoc = 12732;
+		rType = 0;
+		vrLen = 1832;
+		vrLoc = 10398;
+	};
+	5534A38B0FA0973A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A38C0FA0973A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 424";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 882;
+		vrLoc = 10906;
+	};
+	5534A38D0FA0973A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A38E0FA0973A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 424";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 882;
+		vrLoc = 10906;
+	};
+	5534A38F0FA0973B004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 65";
+		rLen = 0;
+		rLoc = 2296;
+		rType = 0;
+		vrLen = 1297;
+		vrLoc = 1688;
+	};
+	5534A3910FA099BE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3920FA099BE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 444";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 880;
+		vrLoc = 10906;
+	};
+	5534A3930FA099BE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3940FA099BE004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 444";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 880;
+		vrLoc = 10906;
+	};
+	5534A3950FA099BF004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 426";
+		rLen = 0;
+		rLoc = 12694;
+		rType = 0;
+		vrLen = 1622;
+		vrLoc = 11295;
+	};
+	5534A3970FA09A44004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3980FA09A44004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 448";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 741;
+		vrLoc = 10906;
+	};
+	5534A3990FA09A45004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A39A0FA09A45004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 448";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 741;
+		vrLoc = 10906;
+	};
+	5534A39B0FA09A45004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 399";
+		rLen = 0;
+		rLoc = 11577;
+		rType = 0;
+		vrLen = 1856;
+		vrLoc = 10718;
+	};
+	5534A39D0FA09AA4004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A39E0FA09AA4004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 448";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 692;
+		vrLoc = 10906;
+	};
+	5534A39F0FA09AA7004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 396";
+		rLen = 0;
+		rLoc = 11298;
+		rType = 0;
+		vrLen = 1717;
+		vrLoc = 10719;
+	};
+	5534A3A10FA09AEC004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3A20FA09AEC004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 449";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 722;
+		vrLoc = 10906;
+	};
+	5534A3A30FA09AED004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3A40FA09AED004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 449";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 722;
+		vrLoc = 10906;
+	};
+	5534A3A50FA09AED004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 397";
+		rLen = 0;
+		rLoc = 11538;
+		rType = 0;
+		vrLen = 1899;
+		vrLoc = 10719;
+	};
+	5534A3A60FA09C08004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 428";
+		rLen = 0;
+		rLoc = 12582;
+		rType = 0;
+		vrLen = 1681;
+		vrLoc = 11342;
+	};
+	5534A3A80FA09F79004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3A90FA09F79004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 471";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 779;
+		vrLoc = 10906;
+	};
+	5534A3AA0FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3AB0FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 471";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 779;
+		vrLoc = 10906;
+	};
+	5534A3AC0FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A50EFBF14B002A2725 /* DRowAudioFilter.h */;
+		name = "DRowAudioFilter.h: 163";
+		rLen = 0;
+		rLoc = 6072;
+		rType = 0;
+		vrLen = 1619;
+		vrLoc = 5291;
+	};
+	5534A3AD0FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 441";
+		rLen = 0;
+		rLoc = 12783;
+		rType = 0;
+		vrLen = 1686;
+		vrLoc = 11563;
+	};
+	5534A3AE0FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 441";
+		rLen = 0;
+		rLoc = 12842;
+		rType = 0;
+		vrLen = 1698;
+		vrLoc = 11490;
+	};
+	5534A3AF0FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A50EFBF14B002A2725 /* DRowAudioFilter.h */;
+		name = "DRowAudioFilter.h: 163";
+		rLen = 0;
+		rLoc = 6072;
+		rType = 0;
+		vrLen = 1619;
+		vrLoc = 5291;
+	};
+	5534A3B00FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 441";
+		rLen = 0;
+		rLoc = 12783;
+		rType = 0;
+		vrLen = 1686;
+		vrLoc = 11563;
+	};
+	5534A3B10FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A50EFBF14B002A2725 /* DRowAudioFilter.h */;
+		name = "DRowAudioFilter.h: 163";
+		rLen = 0;
+		rLoc = 6072;
+		rType = 0;
+		vrLen = 1619;
+		vrLoc = 5291;
+	};
+	5534A3B20FA09F7A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 457";
+		rLen = 0;
+		rLoc = 14174;
+		rType = 0;
+		vrLen = 1765;
+		vrLoc = 11917;
+	};
+	5534A3B40FA0A05A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3B50FA0A05A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 471";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 779;
+		vrLoc = 10906;
+	};
+	5534A3B60FA0A05A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3B70FA0A05A004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 471";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 779;
+		vrLoc = 10906;
+	};
+	5534A3B80FA0A05B004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 426";
+		rLen = 0;
+		rLoc = 12694;
+		rType = 0;
+		vrLen = 1700;
+		vrLoc = 11895;
+	};
+	5534A3BA0FA0A1CC004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3BB0FA0A1CC004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 480";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 632;
+		vrLoc = 10906;
+	};
+	5534A3BC0FA0A1CC004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3BD0FA0A1CC004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 480";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 632;
+		vrLoc = 10906;
+	};
+	5534A3BE0FA0A1CD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 405";
+		rLen = 0;
+		rLoc = 11530;
+		rType = 0;
+		vrLen = 1605;
+		vrLoc = 10841;
+	};
+	5534A3C20FA0A391004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3C30FA0A391004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: redeclaration of 'float* pfWetL'";
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		rLen = 1;
+		rLoc = 462;
+		rType = 1;
+	};
+	5534A3C40FA0A391004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
+		name = "DRowAudioEditorComponent.cpp: 43";
+		rLen = 0;
+		rLoc = 1773;
+		rType = 0;
+		vrLen = 799;
+		vrLoc = 1474;
+	};
+	5534A3C50FA0A391004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 464";
+		rLen = 0;
+		rLoc = 13628;
+		rType = 0;
+		vrLen = 564;
+		vrLoc = 13465;
+	};
+	5534A3C60FA0A391004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 492";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10906;
+	};
+	5534A3C70FA0A391004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 464";
+		rLen = 0;
+		rLoc = 13628;
+		rType = 0;
+		vrLen = 564;
+		vrLoc = 13465;
+	};
+	5534A3C80FA0A391004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 492";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10906;
+	};
+	5534A3C90FA0A392004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 463";
+		rLen = 0;
+		rLoc = 13628;
+		rType = 0;
+		vrLen = 1558;
+		vrLoc = 12763;
+	};
+	5534A3CB0FA0A3C3004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 473";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 584;
+		vrLoc = 13465;
+	};
+	5534A3CC0FA0A3C3004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 492";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10906;
+	};
+	5534A3CD0FA0A3C3004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 473";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 584;
+		vrLoc = 13465;
+	};
+	5534A3CE0FA0A3C3004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 492";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10906;
+	};
+	5534A3CF0FA0A3C4004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 463";
+		rLen = 338;
+		rLoc = 13628;
+		rType = 0;
+		vrLen = 1578;
+		vrLoc = 12763;
+	};
+	5534A3D10FA0A40D004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 473";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 564;
+		vrLoc = 13465;
+	};
+	5534A3D20FA0A40D004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 492";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10906;
+	};
+	5534A3D30FA0A40D004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 473";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 564;
+		vrLoc = 13465;
+	};
+	5534A3D40FA0A40D004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 492";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10906;
+	};
+	5534A3D50FA0A40E004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 463";
+		rLen = 338;
+		rLoc = 13628;
+		rType = 0;
+		vrLen = 1431;
+		vrLoc = 13337;
+	};
+	5534A3D70FA0A491004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 475";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 13465;
+	};
+	5534A3D80FA0A491004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 494";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10906;
+	};
+	5534A3D90FA0A491004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 475";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 13465;
+	};
+	5534A3DA0FA0A491004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 494";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10906;
+	};
+	5534A3DB0FA0A492004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 469";
+		rLen = 0;
+		rLoc = 13827;
+		rType = 0;
+		vrLen = 1441;
+		vrLoc = 13152;
+	};
+	5534A3DE0FA0A673004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 355";
+		rLen = 0;
+		rLoc = 9742;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 8692;
+	};
+	5534A3E20FA0B277004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 355";
+		rLen = 0;
+		rLoc = 9742;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 8692;
+	};
+	5534A3E40FA0B2A0004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 475";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 13468;
+	};
+	5534A3E50FA0B2A0004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 494";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10909;
+	};
+	5534A3E60FA0B2A0004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 475";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 13468;
+	};
+	5534A3E70FA0B2A0004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 494";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10909;
+	};
+	5534A3E80FA0B2A1004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 355";
+		rLen = 0;
+		rLoc = 9742;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 8692;
+	};
+	5534A3EC0FA0B32F004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 475";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 13468;
+	};
+	5534A3ED0FA0B32F004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 494";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10909;
+	};
+	5534A3EE0FA0B32F004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 475";
+		rLen = 0;
+		rLoc = 13966;
+		rType = 0;
+		vrLen = 538;
+		vrLoc = 13468;
+	};
+	5534A3EF0FA0B32F004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 494";
+		rLen = 0;
+		rLoc = 14550;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 10909;
+	};
+	5534A3F00FA0B330004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 355";
+		rLen = 0;
+		rLoc = 9742;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 8692;
+	};
+	5534A3F50FA0B3DD004A81B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
+		name = "DRowAudioFilter.cpp: 355";
+		rLen = 0;
+		rLoc = 9742;
+		rType = 0;
+		vrLen = 1513;
+		vrLoc = 8692;
 	};
 	5546AC830F8E0AC10044E955 /* dRowAudio_AllpassFilter.cpp */ = {
 		uiCtxt = {
@@ -4532,7 +6240,7 @@
 		fRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */;
 		name = "DRowAudioFilter.cpp: 349";
 		rLen = 0;
-		rLoc = 8435;
+		rLoc = 8474;
 		rType = 0;
 		vrLen = 2016;
 		vrLoc = 9082;
@@ -4877,7 +6585,7 @@
 		fRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */;
 		name = "DRowAudioEditorComponent.cpp: 170";
 		rLen = 0;
-		rLoc = 5422;
+		rLoc = 6372;
 		rType = 0;
 		vrLen = 1432;
 		vrLoc = 5304;
@@ -4904,31 +6612,31 @@
 	};
 	843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {966, 3262}}";
-			sepNavSelRange = "{4461, 0}";
-			sepNavVisRange = "{4130, 493}";
+			sepNavIntBoundsRect = "{{0, 0}, {966, 3248}}";
+			sepNavSelRange = "{1773, 0}";
+			sepNavVisRange = "{1474, 799}";
 		};
 	};
 	843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {914, 1526}}";
-			sepNavSelRange = "{3474, 22}";
-			sepNavVisRange = "{2572, 1344}";
+			sepNavIntBoundsRect = "{{0, 0}, {914, 1554}}";
+			sepNavSelRange = "{3386, 0}";
+			sepNavVisRange = "{2505, 1406}";
 			sepNavWindowFrame = "{{15, -1}, {687, 774}}";
 		};
 	};
 	843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {914, 7378}}";
-			sepNavSelRange = "{9151, 0}";
-			sepNavVisRange = "{8697, 1528}";
+			sepNavIntBoundsRect = "{{0, 0}, {914, 8904}}";
+			sepNavSelRange = "{9742, 0}";
+			sepNavVisRange = "{8692, 1513}";
 		};
 	};
 	843792A50EFBF14B002A2725 /* DRowAudioFilter.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {914, 2520}}";
+			sepNavIntBoundsRect = "{{0, 0}, {914, 2534}}";
 			sepNavSelRange = "{6072, 0}";
-			sepNavVisRange = "{5358, 1552}";
+			sepNavVisRange = "{5291, 1619}";
 		};
 	};
 	843792A60EFBF14B002A2725 /* includes.h */ = {
