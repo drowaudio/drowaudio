@@ -418,7 +418,7 @@
 								<key>data</key>
 								<data>
 								AAAAAAAAAAAA
-								AAAMAAAAAAAA
+								AAANAAAAAAAA
 								AAAAAAABAAAA
 								AAAAAAIAAAAA
 								AAAAAwAAAAAA
@@ -429,6 +429,7 @@
 								AAAAAAAACQAA
 								AAAAAAAKAAAA
 								AAAAAAsAAAAA
+								AAAADAAAAAA=
 								</data>
 								<key>jucePluginState</key>
 								<data>
@@ -575,9 +576,9 @@
 		<key>Secondary Windows</key>
 		<dict>
 			<key>CPU Load Window Frame</key>
-			<string>{{1115, 606}, {122, 175}}</string>
+			<string>{{1213, 607}, {122, 175}}</string>
 			<key>CPU Load Window top offset</key>
-			<real>19</real>
+			<real>18</real>
 		</dict>
 		<key>View Settings</key>
 		<dict>
@@ -647,7 +648,7 @@
 				<key>kAUInspectorStateKey_WindowLevel</key>
 				<integer>2147483647</integer>
 				<key>kAUInspectorStateKey_WindowRect</key>
-				<string>{{713, 22}, {400, 529}}</string>
+				<string>{{708, 22}, {500, 339}}</string>
 			</dict>
 		</array>
 	</dict>

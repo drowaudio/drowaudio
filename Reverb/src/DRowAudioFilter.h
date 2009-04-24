@@ -34,7 +34,17 @@
 
 #include "Parameters.h"
 
-static const int earlyReflectionCoeffs[] = {21, 40, 64, 108, 154, 171, 197};
+//static const int earlyReflectionCoeffs[] = {21, 40, 64, 108, 154, 171, 197};
+//static const int earlyReflectionCoeffs[] = {29, 53, 172, 198, 212, 252, 265};
+static const int earlyReflectionCoeffs[7][7] = {
+												{29, 53, 173, 199, 212, 253, 265},
+												{29, 37, 47, 61, 73, 103, 127},
+												{29, 37, 47, 61, 73, 103, 127},
+												{29, 37, 47, 61, 73, 103, 127},
+												{29, 37, 47, 61, 73, 103, 127},
+												{29, 37, 47, 61, 73, 103, 127},
+												{29, 37, 47, 61, 73, 103, 127}
+};
 
 static const float filterMultCoeffs[] = { 1.000000000000000f,
 										  0.962894248608534f,
@@ -131,29 +141,8 @@ public:
 	dRowParameter* getParameterPointer(int index);
 
     //==============================================================================
-    // These properties are public so that our editor component can access them
-    //  - a bit of a hacky way to do it, but it's only a demo!
-
-    // this is kept up to date with the midi messages that arrive, and the UI component
-    // registers with it so it can represent the incoming messages
-    MidiKeyboardState keyboardState;
-
-    // this keeps a copy of the last set of time info that was acquired during an audio
-    // callback - the UI component will read this and display it.
-    AudioPlayHead::CurrentPositionInfo lastPosInfo;
-
-    // these are used to persist the UI's size - the values are stored along with the
-    // filter's other parameters, and the UI component will update them when it gets
-    // resized.
-
-    //==============================================================================
     juce_UseDebuggingNewOperator
 
-	float RMSLeft;
-	float RMSRight;
-	float peakLeft;
-	float peakRight;
-	
 private:
 	
 	dRowParameter params[noParams];
@@ -161,23 +150,14 @@ private:
 	double currentSampleRate;
 	int prevRoomShape;
 	
-	CombFilter preDelayFilterL, preDelayFilterR;
+	DelayRegister preDelayFilterL, preDelayFilterR;
 	TappedDelayLine delayLineL, delayLineR;
-//	LBCF combFilter1L, combFilter1R, combFilter2L, combFilter2R, combFilter3L, combFilter3R, combFilter4L, combFilter4R,
-//		 combFilter5L, combFilter5R, combFilter6L, combFilter6R, combFilter7L, combFilter7R, combFilter8L, combFilter8R;
 	LBCF combFilterL[8], combFilterR[8];
-//	AllpassFilter allpassFilter1L, allpassFilter1R, allpassFilter2L, allpassFilter2R,
-//				  allpassFilter3L, allpassFilter3R, allpassFilter4L, allpassFilter4R;
 	AllpassFilter allpassFilterL[4], allpassFilterR[4];
-	
 	IIRFilter lowEQL, lowEQR, highEQL, highEQR;
 	
 	void setupFilter(LBCF &filter, float fbCoeff, float delayTime, float filterCf);
 
-//	IIRFilter filter1_L;
-//	IIRFilter filter1_R;
-//	IIRFilter filter2_L;
-//	IIRFilter filter2_R;
 };
 
 #endif //_DROWAUDIOFILTER_H_

@@ -88,15 +88,12 @@ private:
     //==============================================================================
 	dRowLookAndFeel *lookAndFeel;
 	
-	ComboBox* comboBox;
 	OwnedArray <Slider> sliders;
+	OwnedArray <Label> labels;
 	OwnedArray <TextButton> buttons;
 		
 	int noButtons;
 	
-    Label* infoLabel;
-    ResizableCornerComponent* resizer;
-    ComponentBoundsConstrainer resizeLimits;
     TooltipWindow tooltipWindow;
 
     void updateParametersFromFilter();
@@ -104,6 +101,14 @@ private:
     // handy wrapper method to avoid having to cast the filter to a DRowAudioFilter
     // every time we need it..
     DRowAudioFilter* getFilter() const throw()       { return (DRowAudioFilter*) getAudioProcessor(); }
+
+	enum labelNames {
+		LABELGENERAL = noParams,
+		LABELEARLYREFLECTIONS,
+		LABELREVERB,
+		LABELOUTPUT,
+		noLabels
+	};
 };
 
 

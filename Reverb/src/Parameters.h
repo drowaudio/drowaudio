@@ -16,6 +16,7 @@ enum parameters
 	GAIN,
 	PREDELAY,
 	ROOMSHAPE,
+	EARLYDECAY,
 	EARLYLATEMIX,
 	FBCOEFF,
 	DELTIME,
@@ -32,15 +33,16 @@ static const char UNUSED_NOWARN *parameterNames[] = {
 	"Gain",						// 0
 	"Pre Delay",						// 1
 	"Room Shape",
+	"Early Decay Time",
 	"Early/Late Mix",
-	"fbCoeff",						// 2
-	"DelTime",						// 3
-	"Cuttoff F",						// 4
-	"Allpass Coeff",						// 5
+	"Rev. Time",						// 2
+	"Room Size",						// 3
+	"Absorption",						// 4
+	"Diffusion",						// 5
 	"Stereo Spread",						// 6
 	"Low EQ",						// 7
 	"High EQ",						// 8
-	"Wet/Dry Mix"						// 9
+	"Wet Mix"						// 9
 };
 
 #endif //_PARAMETERS_H_

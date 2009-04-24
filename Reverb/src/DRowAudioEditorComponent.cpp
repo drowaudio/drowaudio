@@ -45,7 +45,6 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 	lookAndFeel->setColour (Slider::textBoxBackgroundColourId, Colours::black);
 	lookAndFeel->setColour (Slider::textBoxOutlineColourId, Colour (0xff0D2474));
 	
-	addAndMakeVisible( comboBox = new ComboBox(T("comboBox")) );
 	
 	for (int i = 0; i < noParams; i++)
 	{
@@ -53,7 +52,10 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 		addAndMakeVisible( sliders[i]);
 		
 		String labelName = parameterNames[i];
-		(new Label(String(T("Label")) << String(i), labelName))->attachToComponent(sliders[i], true);
+		labels.add(new Label(String(T("Label")) << String(i), labelName));
+		labels[i]->setJustificationType(Justification::topLeft);
+		labels[i]->attachToComponent(sliders[i], false);
+		labels[i]->setFont(12);
 			
 		sliders[i]->addListener (this);
 		sliders[i]->setRange (0.0, 1.0, 0.01);
@@ -62,40 +64,55 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 		
 		ownerFilter->getParameterPointer(i)->setupSlider(*sliders[i]);
 	}
-	
-	for ( int i = 0; i < noButtons; i++ )
-	{
-		buttons.add(new TextButton(String(T("Button ")) << String(i)));
-		buttons[i]->addButtonListener(this);
-		addAndMakeVisible(buttons[i]);
+
+	labels.add(new Label(String(T("General")), String(T("--- General ---"))));
+	labels.add(new Label(String(T("Early Reflections")), String(T("--- Early Reflections ---"))));
+	labels.add(new Label(String(T("Reverb")), String(T("--- Reverb ---"))));
+	labels.add(new Label(String(T("Output")), String(T("--- Output ---"))));
+	for(int i = LABELGENERAL; i < noLabels; ++i) {
+		addAndMakeVisible(labels[i]);
+		labels[i]->setJustificationType(Justification::centredTop);
 	}
-	buttons[0]->setButtonText(T("Make Allpass"));
-	buttons[0]->setClickingTogglesState(true);
+	
+	sliders[DELTIME]->setSliderStyle(Slider::LinearVertical);
+	sliders[DELTIME]->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+	labels[DELTIME]->setJustificationType(Justification::centredTop);
+
+	sliders[FBCOEFF]->setSliderStyle(Slider::LinearVertical);
+	sliders[FBCOEFF]->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+
+	sliders[LOWEQ]->setSliderStyle(Slider::LinearVertical);
+	sliders[LOWEQ]->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+	sliders[HIGHEQ]->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+	sliders[HIGHEQ]->setSliderStyle(Slider::LinearVertical);
+	sliders[WETDRYMIX]->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+	sliders[WETDRYMIX]->setSliderStyle(Slider::LinearVertical);
+	
+//	for ( int i = 0; i < noButtons; i++ )
+//	{
+//		buttons.add(new TextButton(String(T("Button ")) << String(i)));
+//		buttons[i]->addButtonListener(this);
+//		addAndMakeVisible(buttons[i]);
+//	}
+//	buttons[0]->setButtonText(T("Make Allpass"));
+//	buttons[0]->setClickingTogglesState(true);
 	
 
-    // add a label that will display the current timecode and status..
-    addAndMakeVisible (infoLabel = new Label (String::empty, String::empty));
-
-    // add the triangular resizer component for the bottom-right of the UI
-//    addAndMakeVisible (resizer = new ResizableCornerComponent (this, &resizeLimits));
-//    resizeLimits.setSizeLimits (150, 150, 800, 300);
 
     // set our component's initial size to be the last one that was stored in the filter's settings
-    setSize (400, 500);
+    setSize (500, 300);
 
     // register ourselves with the filter - it will use its ChangeBroadcaster base
     // class to tell us when something has changed, and this will call our changeListenerCallback()
     // method.
     ownerFilter->addChangeListener (this);
-	
-	// start the timer to update the meters
-//	startTimer(50);
 }
 
 DRowAudioEditorComponent::~DRowAudioEditorComponent()
 {
     getFilter()->removeChangeListener (this);
 	sliders.clear();
+	labels.clear();
 	buttons.clear();
     deleteAllChildren();
 	
@@ -129,17 +146,48 @@ void DRowAudioEditorComponent::paint (Graphics& g)
 								  false);
 	g.setBrush(&outlineGradient);
 	g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 10, 1.0f);
+	
+
+	int height = getHeight();
+	int width = getWidth();
+
+	lookAndFeel->drawInsetLine(g, width-170, 2, width-170, height, 2);
+	lookAndFeel->drawInsetLine(g, 0, height-120, width-170, height-120, 2);
+	lookAndFeel->drawInsetLine(g, (width-170)*0.5f, height-120, (width-170)*0.5f, height, 2);
 }
 
 void DRowAudioEditorComponent::resized()
 {
-    comboBox->setBounds (getWidth()/2 - 100, 40,
-						200, 20);
+	int height = getHeight();
+	int width = getWidth();
 	
-	int height = comboBox->getBottom();
+	labels[LABELGENERAL]->setBounds(0, 10, width-170, 20);
+	sliders[PREDELAY]->setBounds(5, 50, 210, 20);
+	sliders[SPREAD]->setBounds(5, 105, 210, 20);
+	sliders[EARLYLATEMIX]->setBounds(5, 155, 210, 20);
+
+	sliders[DELTIME]->setBounds(220, 55, 50, 120); 
+	sliders[FBCOEFF]->setBounds(275, 55, 50, 120);
+	labels[DELTIME]->setSize(50, 24);
+	labels[FBCOEFF]->setSize(50, 24);
+	
+	labels[LABELEARLYREFLECTIONS]->setBounds(0, 180, 165, 20);
+	sliders[ROOMSHAPE]->setBounds(5, 225, 150, 20);
+	sliders[EARLYDECAY]->setBounds(5, 275, 150, 20);
+	
+	labels[LABELREVERB]->setBounds(165, 180, 165, 20);
+	sliders[FILTERCF]->setBounds(170, 225, 150, 20);
+	sliders[DIFFUSION]->setBounds(170, 275, 150, 20);
+
+	labels[LABELOUTPUT]->setBounds(width-170, 10, 170, 20);
+	sliders[LOWEQ]->setBounds(width-165, 55, 50, height-60);	
+	sliders[HIGHEQ]->setBounds(width-110, 55, 50, height-60);	
+	sliders[WETDRYMIX]->setBounds(width-55, 55, 50, height-60);
+	
+/*	int height = 10;
 	
 	for (int i = 0; i < noParams; i++)	{
-		sliders[i]->setBounds (70, 70 + (30*i), getWidth()-140, 20);
+		sliders[i]->setBounds (70, height, getWidth()-140, 20);
 		height += 30;
 	}
 	
@@ -150,10 +198,8 @@ void DRowAudioEditorComponent::resized()
 							  ((getWidth()-20)/noButtons)-(((noButtons-1)*5)), 20);
 	
 	height += 30;
-	
-	infoLabel->setBounds(10, height +=30, getWidth(), 20);
-	
-	setSize(400, height);
+		
+	setSize(400, height);*/
 }
 
 //==============================================================================
@@ -206,9 +252,6 @@ void DRowAudioEditorComponent::updateParametersFromFilter()
     // lastMidiMessage variable while we're trying to read it, but be extra-careful to
     // only hold the lock for a minimum amount of time..
     filter->getCallbackLock().enter();
-
-    // take a local copy of the info we need while we've got the lock..
-    const AudioPlayHead::CurrentPositionInfo positionInfo (filter->lastPosInfo);
 	
 	for(int i = 0; i < noParams; i++)
 		tempParamVals[i] =  filter->getScaledParameter (i);
@@ -217,27 +260,8 @@ void DRowAudioEditorComponent::updateParametersFromFilter()
     filter->getCallbackLock().exit();
 
 
-    // ..and after releasing the lock, we're free to do the time-consuming UI stuff..
-    String infoText;
-    infoText << String (positionInfo.bpm, 2) << T(" bpm, ")
-             << positionInfo.timeSigNumerator << T("/") << positionInfo.timeSigDenominator
-             << T("  -  ") << timeToTimecodeString (positionInfo.timeInSeconds)
-             << T("  -  ") << ppqToBarsBeatsString (positionInfo.ppqPosition,
-                                                    positionInfo.ppqPositionOfLastBarStart,
-                                                    positionInfo.timeSigNumerator,
-                                                    positionInfo.timeSigDenominator);
 
-    if (positionInfo.isPlaying)
-        infoText << T("  (playing)");
-
-    infoLabel->setText (infoText, false);
-
-    /* Update our slider.
-
-       (note that it's important here to tell the slider not to send a change
-       message, because that would cause it to call the filter with a parameter
-       change message again, and the values would drift out.
-    */
+    // Update our sliders
 	for(int i = 0; i < noParams; i++)
 		sliders[i]->setValue (tempParamVals[i], false);
 }
