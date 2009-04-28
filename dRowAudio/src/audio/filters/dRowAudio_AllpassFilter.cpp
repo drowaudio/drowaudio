@@ -62,5 +62,22 @@ float AllpassFilter::processSingleSample(float newSample) throw()
 void AllpassFilter::processSamples (float* const samples,
 									const int numSamples) throw()
 {
+	const ScopedLock sl (processLock);
 	
+	for (int i = 0; i < numSamples; ++i)
+	{
+		const float in = samples[i];
+
+		bufferWritePos = ++bufferWritePos & registerSizeMask;
+		
+		bufferReadPos = bufferWritePos - delaySamples;
+		if (bufferReadPos < 0)
+			bufferReadPos += BUFFERSIZE;
+		
+		float fDel = delayRegister[bufferReadPos];
+		delayRegister[bufferWritePos] = (gain * fDel) + in;
+		float fOut = fDel - (gain * delayRegister[bufferWritePos]);
+		
+		samples[i] = fOut;
+	}
 }

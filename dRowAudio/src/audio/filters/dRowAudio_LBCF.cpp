@@ -88,3 +88,28 @@ void LBCF::processSamples (float* const samples,
 		samples[i] = fOut;
 	}	
 }
+
+void LBCF::processSamplesAdding (float* const sourceSamples, float* const destSamples,
+								 const int numSamples) throw()
+{
+	const ScopedLock sl (processLock);
+	
+	for (int i = 0; i < numSamples; ++i)
+	{
+		const float in = sourceSamples[i];
+
+		
+		bufferWritePos = ++bufferWritePos & registerSizeMask;
+		
+		bufferReadPos = bufferWritePos - delaySamples;
+		if (bufferReadPos < 0)
+			bufferReadPos += BUFFERSIZE;
+		
+		float fOut = in + delayRegister[bufferReadPos];	
+		
+		// feedback and lowpass
+		delayRegister[bufferWritePos] = lowpassFilter.processSingleSample(fbCoeff * fOut);
+		
+		destSamples[i] += fOut;
+	}	
+}

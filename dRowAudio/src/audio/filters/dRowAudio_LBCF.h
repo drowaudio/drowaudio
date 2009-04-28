@@ -51,6 +51,12 @@ public:
 	/// Processes an array of samples which are modified.
 	void processSamples (float* const samples,
 						 const int numSamples) throw();
+
+	/** Processes an array of samples and then adds them to another location.
+		This is a handy method for parallel processing of filter banks.
+	 */
+	void processSamplesAdding (float* const sourceSamples, float* const destSamples,
+							   const int numSamples) throw();
 	
 private:
 	

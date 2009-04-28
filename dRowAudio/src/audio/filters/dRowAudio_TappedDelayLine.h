@@ -29,6 +29,9 @@ struct Tap
 class TappedDelayLine
 {
 public:
+	/** Creates a TappedDelayline with a given size in samples.
+		If no size is specified a default of 9600 is used.
+	 */
 	TappedDelayLine(int initialBufferSize =96000);
 	TappedDelayLine(float bufferLengthMs, double sampleRate);
 	
@@ -49,18 +52,28 @@ public:
 	 */
 	void addTapAtTime(int newTapPosMs, double sampleRate);
 	
+	/** Moves a specific tap to a new delay position.
+		This will return true if a tap was actually changed.
+	 */
+	bool setTapDelayTime(int tapIndex, int newTapPosMs, double sampleRate);
+
+	/** Changes the number of samples a specific tap will delay.
+		This will return true if a tap was actually changed.
+	 */
+	bool setTapDelaySamples(int tapIndex, int newDelaySamples);
+	
 	/**	Scales the spacing between the taps.
 		This value must be greater than 0. Values < 1 will squash the taps, 
 		creating a denser delay, values greater than 1 will expand the taps
 		spacing creating a more sparse delay.
-		The value is a proportion of the original spacing.
-		This is simple than namually setting all of the taps positions.
+		The value is used as a proportion of the explicitly set delay time.
+		This is simpler than manually setting all of the tap positions.
 	 */
 	void setTapSpacing(float newSpacingCoefficient);
 
 	/**	Scales all of the taps feedback coeficients in one go.
 		This should be between 0 and 1 to avoid blowing up the line.
-		The value is a proportion of the original feedback coefficient
+		The value is a proportion of the explicitly set feedback coefficient
 		for each tap so setting this to 1 will return them all to their default.
 	 */
 	void scaleFeedbacks(float newFeedbackCoefficient);
@@ -91,13 +104,41 @@ public:
 	
 	/**	Updates the delay samples of all the taps based on their time.
 		Call this if you change sample rates to make sure the taps are
-		still positioned at the right time. 
+		still positioned at the right time.
 	 */
 	void updateDelayTimes(double newSampleRate);
 	
+	/** Resizes the buffer to a given number of samples.
+		This will return the number of taps that have been removed if
+		they overrun the new buffer size.
+	 */
+	int setBufferSize(int noSamples);
+	
+	/** Resizes the buffer to a size given the time and sample rate.
+		This will return the number of taps that have been removed if
+		they overrun the new buffer size.
+	 */
+	int setBufferSize(int timeMs, double sampleRate);
+	
+	/// Returns the current size in samples of the buffer.
+	int getBufferSize()	{	return bufferSize;	}
+	
+	/// Returns the current length in milliseconds of the buffer for a given sample rate.
+	int getBufferLengthMs(double sampleRate)	{	return bufferSize * sampleRate;	}
+	
+	/// Returns the number of taps currently being used.
+	int getNumberOfTaps()	{	return readTaps.size();	}
+	
+	/// Processes a single sample returning a new sample with summed delays.
 	float processSingleSample(float newSample) throw();
 	
+	/// Processes a number of samples in one go.
+	void processSamples(float* const samples,
+						const int numSamples) throw();
+	
 private:
+	
+	CriticalSection processLock;
 	
 	float *pfDelayBuffer;
 	int bufferSize, bufferWritePos;

@@ -20,10 +20,28 @@
 //==============================================================================
 
 /**
+ Converts an absolute value to decibels.
+ */
+forcedinline static double toDeibels(double absoluteValue)
+{	return 20.0 * log10(absoluteValue); }
+
+/**
+ Converts a value in decibels to an absolute value.
+ */
+forcedinline static double decibelsToAbsolute(double decibelsValue)
+{	return pow(10, (decibelsValue * 0.05)); }
+
+/**
 	Converts a time in seconds to minutes.
  */
 forcedinline static double minsToSeconds(double minutes)
 {	return minutes / 60.0; }
+
+/**
+ Converts a time in milliseconds to a number of samples for a given sample rate.
+ */
+forcedinline static int msToSamples(float timeMs, double sampleRate)
+{	return (int)(timeMs * 0.001 * sampleRate);	}
 
 /**
 	Converts a time in seconds to a timecode string.

@@ -27,7 +27,7 @@ void TappedDelayLine::initialiseBuffer(int bufferSize_)
 	bufferSize = bufferSize_;
 	bufferWritePos = 0;
 	inputGain = 1.0f;
-	feedbackGain = 0.5f;
+	feedbackGain = 0.99f;
 	spacingCoefficient = 1.0f;
 	feedbackCoefficient = 1.0f;
 	
@@ -69,6 +69,22 @@ void TappedDelayLine::addTapAtTime(int newTapPosMs, double sampleRate)
 	int newTapPosSamples = (int)((newTapPosMs * 0.001) * sampleRate);
 	
 	addTap(newTapPosSamples, sampleRate);
+}
+
+bool TappedDelayLine::setTapDelayTime(int tapIndex, int newTapPosMs, double sampleRate)
+{
+	return setTapDelaySamples(tapIndex, msToSamples(newTapPosMs, sampleRate));
+}
+
+bool TappedDelayLine::setTapDelaySamples(int tapIndex, int newDelaySamples)
+{
+	if ( tapIndex < readTaps.size() )
+	{
+		readTaps.getReference(tapIndex).delaySamples = newDelaySamples;
+		
+		return true;
+	}
+	return false;
 }
 
 void TappedDelayLine::setTapSpacing(float newSpacingCoefficient)
@@ -148,11 +164,11 @@ void TappedDelayLine::updateDelayTimes(double newSampleRate)
 	for (int i = 0; i < readTaps.size(); i++)
 	{
 		if ( (int)readTaps[i].sampleRateWhenCreated != 0
-			 && !almostEqual(newSampleRate, readTaps[i].sampleRateWhenCreated) )
+			 && !almostEqual(newSampleRate, readTaps.getReference(i).sampleRateWhenCreated) )
 		{
-			double scale = (newSampleRate / readTaps[i].sampleRateWhenCreated);
-			readTaps[i].delaySamples *= scale;
-			readTaps[i].sampleRateWhenCreated = newSampleRate;
+			double scale = (newSampleRate / readTaps.getReference(i).sampleRateWhenCreated);
+			readTaps.getReference(i).delaySamples *= scale;
+			readTaps.getReference(i).sampleRateWhenCreated = newSampleRate;
 		}
 	}
 }
@@ -162,12 +178,13 @@ float TappedDelayLine::processSingleSample(float newSample) throw()
 	// incriment buffer position and store new sample
 	if(++bufferWritePos > bufferSize)
 		bufferWritePos = 0;
-	pfDelayBuffer[bufferWritePos] = 0;
+	float *bufferInput = &pfDelayBuffer[bufferWritePos];
+	*bufferInput = 0;
 	
 	float fOut = (inputGain * newSample);
 	for (int i = 0; i < noTaps; i++)
 	{
-		Tap currentTap = readTaps.getUnchecked(i);
+		const Tap currentTap = readTaps.getReference(i);
 
 		int tapReadPos = bufferWritePos - currentTap.delaySamples;
 		if (tapReadPos < 0)
@@ -175,10 +192,45 @@ float TappedDelayLine::processSingleSample(float newSample) throw()
 		
 		float tapOutput = currentTap.tapGain * pfDelayBuffer[tapReadPos];
 		fOut += tapOutput;
-		pfDelayBuffer[bufferWritePos] += currentTap.tapFeedback * tapOutput;
+		*bufferInput += currentTap.tapFeedback * tapOutput;
 	}
 	
-	pfDelayBuffer[bufferWritePos] += newSample;//(newSample + (feedbackGain * fOut));
+	*bufferInput += newSample;
 
 	return fOut;
+}
+
+void TappedDelayLine::processSamples (float* const samples,
+									  const int numSamples) throw()
+{
+    const ScopedLock sl (processLock);
+	
+	for (int i = 0; i < numSamples; ++i)
+	{
+		const float in = samples[i];
+		
+		// incriment buffer position and store new sample
+		if(++bufferWritePos > bufferSize)
+			bufferWritePos = 0;
+		float *bufferInput = &pfDelayBuffer[bufferWritePos];
+		*bufferInput = 0;
+		
+		float fOut = (inputGain * in);
+		for (int t = 0; t < noTaps; t++)
+		{
+			const Tap currentTap = readTaps.getReference(t);
+			
+			int tapReadPos = bufferWritePos - currentTap.delaySamples;
+			if (tapReadPos < 0)
+				tapReadPos += bufferSize;
+			
+			float tapOutput = currentTap.tapGain * pfDelayBuffer[tapReadPos];
+			fOut += tapOutput;
+			*bufferInput += currentTap.tapFeedback * tapOutput;
+		}
+		
+		*bufferInput += in;
+		
+		samples[i] = fOut;
+	}
 }
