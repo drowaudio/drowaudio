@@ -329,7 +329,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
+									<integer>3</integer>
 									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -375,7 +375,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DRowAudioEditorComponent.cpp</string>
+								<string>DRowAudioFilter.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -383,11 +383,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DRowAudioEditorComponent.cpp</string>
+										<string>DRowAudioFilter.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5534A7120FA21C0B004A81B9</string>
+										<string>55F08BF50FA73A1000D62013</string>
 										<key>history</key>
 										<array>
 											<string>55592DEB0F4676F00044FC32</string>
@@ -403,91 +403,40 @@
 											<string>5534A3430F9F773A004A81B9</string>
 											<string>5534A3720FA09565004A81B9</string>
 											<string>5534A3740FA09565004A81B9</string>
-											<string>5534A3760FA09565004A81B9</string>
-											<string>5534A55A0FA0DEAB004A81B9</string>
-											<string>5534A6940FA21550004A81B9</string>
-											<string>5534A6F80FA21B3A004A81B9</string>
-											<string>5534A7050FA21B97004A81B9</string>
-											<string>5534A7060FA21B97004A81B9</string>
+											<string>55F08A3D0FA626CA00D62013</string>
+											<string>55F08BE40FA739C900D62013</string>
+											<string>55F08BE50FA739C900D62013</string>
+											<string>55F08BE60FA739C900D62013</string>
+											<string>55F08BE70FA739C900D62013</string>
+											<string>55F08BE80FA739C900D62013</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>555D6A250F34DA7A0099F634</string>
 											<string>555D6A270F34DA7A0099F634</string>
 											<string>555D6A280F34DA7A0099F634</string>
-											<string>555D6A2B0F34DA7A0099F634</string>
 											<string>555D6A410F34DBCF0099F634</string>
 											<string>555D6A8D0F351FBD0099F634</string>
-											<string>55592D730F4665850044FC32</string>
 											<string>5556C1AF0F864F8400CB223E</string>
 											<string>5556C1C10F86501800CB223E</string>
 											<string>55ABC7260F8AD4BB00B00537</string>
-											<string>55349FB80F955C72004A81B9</string>
-											<string>55349FCD0F955DEB004A81B9</string>
-											<string>5534A00A0F9563A9004A81B9</string>
-											<string>5534A00C0F9563A9004A81B9</string>
-											<string>5534A00E0F9563A9004A81B9</string>
-											<string>5534A0180F956568004A81B9</string>
-											<string>5534A01A0F956568004A81B9</string>
-											<string>5534A0330F95660B004A81B9</string>
-											<string>5534A0480F956957004A81B9</string>
-											<string>5534A0550F9569F3004A81B9</string>
-											<string>5534A0570F9569F3004A81B9</string>
-											<string>5534A0590F9569F3004A81B9</string>
-											<string>5534A0620F956A26004A81B9</string>
-											<string>5534A06C0F956B4E004A81B9</string>
-											<string>5534A0BB0F95A5BF004A81B9</string>
-											<string>5534A0D90F98C102004A81B9</string>
-											<string>5534A0DB0F98C102004A81B9</string>
-											<string>5534A0ED0F98C255004A81B9</string>
-											<string>5534A0FC0F98C2A1004A81B9</string>
-											<string>5534A1B10F9E1679004A81B9</string>
-											<string>5534A2640F9E31F1004A81B9</string>
-											<string>5534A2680F9E31F1004A81B9</string>
 											<string>5534A29D0F9F54A2004A81B9</string>
-											<string>5534A32B0F9F7609004A81B9</string>
-											<string>5534A3790FA09565004A81B9</string>
 											<string>5534A37A0FA09565004A81B9</string>
-											<string>5534A37C0FA09565004A81B9</string>
-											<string>5534A3AF0FA09F7A004A81B9</string>
-											<string>5534A3B10FA09F7A004A81B9</string>
-											<string>5534A4240FA0B5C1004A81B9</string>
-											<string>5534A47E0FA0BB92004A81B9</string>
-											<string>5534A48D0FA0BCB0004A81B9</string>
-											<string>5534A49F0FA0C10A004A81B9</string>
-											<string>5534A4C90FA0C892004A81B9</string>
-											<string>5534A4F60FA0CFA2004A81B9</string>
-											<string>5534A4F70FA0CFA2004A81B9</string>
-											<string>5534A4F90FA0CFA2004A81B9</string>
-											<string>5534A4FA0FA0CFA2004A81B9</string>
-											<string>5534A5120FA0D23D004A81B9</string>
-											<string>5534A5140FA0D23D004A81B9</string>
-											<string>5534A5500FA0DE37004A81B9</string>
-											<string>5534A5520FA0DE37004A81B9</string>
-											<string>5534A55B0FA0DEAB004A81B9</string>
-											<string>5534A5BE0FA20584004A81B9</string>
-											<string>5534A5BF0FA20584004A81B9</string>
-											<string>5534A6060FA208A4004A81B9</string>
-											<string>5534A6070FA208A4004A81B9</string>
-											<string>5534A6080FA208A4004A81B9</string>
-											<string>5534A6090FA208A4004A81B9</string>
-											<string>5534A6510FA2103F004A81B9</string>
-											<string>5534A65C0FA21192004A81B9</string>
-											<string>5534A6730FA213F0004A81B9</string>
-											<string>5534A6740FA213F0004A81B9</string>
-											<string>5534A6750FA213F0004A81B9</string>
-											<string>5534A6760FA213F0004A81B9</string>
-											<string>5534A6820FA214B9004A81B9</string>
-											<string>5534A6830FA214B9004A81B9</string>
-											<string>5534A6960FA21550004A81B9</string>
-											<string>5534A6970FA21550004A81B9</string>
-											<string>5534A6980FA21550004A81B9</string>
-											<string>5534A6990FA21550004A81B9</string>
-											<string>5534A6C60FA21760004A81B9</string>
-											<string>5534A6CF0FA217C1004A81B9</string>
-											<string>5534A6E50FA21885004A81B9</string>
-											<string>5534A6EE0FA218C1004A81B9</string>
 											<string>5534A7070FA21B97004A81B9</string>
+											<string>559AC01E0FA5F61B002DB064</string>
+											<string>55F08A3F0FA626CA00D62013</string>
+											<string>55F08A400FA626CA00D62013</string>
+											<string>55F08A540FA6517D00D62013</string>
+											<string>55F08A550FA6517D00D62013</string>
+											<string>55F08BE90FA739C900D62013</string>
+											<string>55F08BEA0FA739C900D62013</string>
+											<string>55F08BEB0FA739C900D62013</string>
+											<string>55F08BEC0FA739C900D62013</string>
+											<string>55F08BED0FA739C900D62013</string>
+											<string>55F08BEE0FA739C900D62013</string>
+											<string>55F08BEF0FA739C900D62013</string>
+											<string>55F08BF00FA739C900D62013</string>
+											<string>55F08BF10FA739C900D62013</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -545,9 +494,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55349CCE0F94FDC1004A81B9</string>
+				<string>55F08A420FA626CA00D62013</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55349CCF0F94FDC1004A81B9</string>
+				<string>55F08A430FA626CA00D62013</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -666,7 +615,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>262282251.10749599</real>
+	<real>262617616.11574599</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -681,8 +630,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>5534A0270F9565A2004A81B9</string>
-		<string>5534A0280F9565A2004A81B9</string>
+		<string>55F08B260FA6A18D00D62013</string>
+		<string>55F08B270FA6A18D00D62013</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>555D6A180F34DA010099F634</string>
@@ -713,7 +662,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DRowAudioEditorComponent.cpp</string>
+								<string>DRowAudioFilter.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -769,7 +718,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>555D6A180F34DA010099F634</string>
-				<string>55349EEB0F95436E004A81B9</string>
+				<string>55F08A300FA6210000D62013</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -889,13 +838,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>55349FAD0F955C71004A81B9</string>
+				<string>55F08A310FA6267D00D62013</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>55349FAE0F955C71004A81B9</string>
-				<string>55349FAF0F955C71004A81B9</string>
-				<string>55349FB00F955C71004A81B9</string>
-				<string>55349FB10F955C71004A81B9</string>
-				<string>55349FB20F955C71004A81B9</string>
+				<string>55F08A320FA6267D00D62013</string>
+				<string>55F08A330FA6267D00D62013</string>
+				<string>55F08A340FA6267D00D62013</string>
+				<string>55F08A350FA6267D00D62013</string>
+				<string>55F08A360FA6267D00D62013</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -985,8 +934,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>55349FFC0F95623C004A81B9</string>
-				<string>55349FFD0F95623C004A81B9</string>
+				<string>55F08A3B0FA626C800D62013</string>
+				<string>55F08A3C0FA626C800D62013</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -1051,7 +1000,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>55349FB30F955C71004A81B9</string>
+				<string>55F08A370FA6267D00D62013</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

@@ -13,7 +13,6 @@
 
 enum parameters
 {
-	GAIN,
 	PREDELAY,
 	ROOMSHAPE,
 	EARLYDECAY,
@@ -30,19 +29,18 @@ enum parameters
 };
 
 static const char UNUSED_NOWARN *parameterNames[] = { 
-	"Gain",						// 0
-	"Pre Delay",						// 1
+	"Pre Delay",						
 	"Room Shape",
 	"Early Decay Time",
 	"Early/Late Mix",
-	"Rev. Time",						// 2
-	"Room Size",						// 3
-	"Absorption",						// 4
-	"Diffusion",						// 5
-	"Stereo Spread",						// 6
-	"Low EQ",						// 7
-	"High EQ",						// 8
-	"Wet Mix"						// 9
+	"Rev. Time",						
+	"Room Size",						
+	"Absorption",						
+	"Diffusion",						
+	"Stereo Spread",						
+	"Low EQ",						
+	"High EQ",						
+	"Wet Mix"						
 };
 
 #endif //_PARAMETERS_H_

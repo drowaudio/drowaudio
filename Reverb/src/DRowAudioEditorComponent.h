@@ -51,8 +51,7 @@
 */
 class DRowAudioEditorComponent   :  public AudioProcessorEditor,
 									public ChangeListener,
-									public SliderListener,
-									public ButtonListener
+									public SliderListener
 {
 public:
     /** Constructor.
@@ -70,12 +69,14 @@ public:
         its parameters changes.
     */
     void changeListenerCallback (void* source);
-
+	
+	/*	we need to alert the host when a parameter is about to change or has ended
+		in order for automation to work correctly 
+	 */
     void sliderValueChanged (Slider* slider);
 	void sliderDragStarted (Slider* slider);
 	void sliderDragEnded (Slider* slider);
 	
-	void buttonClicked (Button* button);
     //==============================================================================
     /** Standard Juce paint callback. */
     void paint (Graphics& g);
@@ -90,10 +91,7 @@ private:
 	
 	OwnedArray <Slider> sliders;
 	OwnedArray <Label> labels;
-	OwnedArray <TextButton> buttons;
-		
-	int noButtons;
-	
+			
     TooltipWindow tooltipWindow;
 
     void updateParametersFromFilter();

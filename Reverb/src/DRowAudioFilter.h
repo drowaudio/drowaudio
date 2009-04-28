@@ -69,9 +69,8 @@ static const float allpassMultCoeffs[] = { 0.201612903225806f,
 
 //==============================================================================
 /**
-    A simple plugin filter that just applies a gain change to the audio
-    passing through it.
-
+    A reverb filter that impliments a Schoeder/Moorer model with adjustable
+	pre-delay, early reflections and reverb tail.
 */
 class DRowAudioFilter  : public AudioProcessor,
                          public ChangeBroadcaster
@@ -124,7 +123,6 @@ public:
     //==============================================================================
 	// Custom Methods
 	void setupParams();
-	void updateFilters();
 	void updateParameters();
 	
 	// AU Compatibility Methods
@@ -150,14 +148,15 @@ private:
 	double currentSampleRate;
 	int prevRoomShape;
 	
-	DelayRegister preDelayFilterL, preDelayFilterR;
-	TappedDelayLine delayLineL, delayLineR;
-	LBCF combFilterL[8], combFilterR[8];
-	AllpassFilter allpassFilterL[4], allpassFilterR[4];
-	IIRFilter lowEQL, lowEQR, highEQL, highEQR;
+	// reverb filters
+	DelayRegister preDelayFilterL, preDelayFilterR;			// pre delay
+	TappedDelayLine delayLineL, delayLineR;					// early reflections
+	LBCF combFilterL[8], combFilterR[8];					// late reverb
+	AllpassFilter allpassFilterL[4], allpassFilterR[4];		// late reverb diffusion
+	IIRFilter lowEQL, lowEQR, highEQL, highEQR;				// room EQ
 	
-	void setupFilter(LBCF &filter, float fbCoeff, float delayTime, float filterCf);
-
+	// helper method to set up a LBCF filter
+	inline void setupFilter(LBCF &filter, float fbCoeff, float delayTime, float filterCf);
 };
 
 #endif //_DROWAUDIOFILTER_H_

@@ -34,9 +34,9 @@
 
 //==============================================================================
 DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const ownerFilter)
-    : AudioProcessorEditor (ownerFilter),
-	noButtons(3)
+    : AudioProcessorEditor (ownerFilter)
 {
+	// set up the custom look and feel
 	lookAndFeel = new dRowLookAndFeel();
 	setLookAndFeel(lookAndFeel);
 	lookAndFeel->setColour(Label::textColourId, (Colours::black).withBrightness(0.9f));
@@ -46,6 +46,7 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 	lookAndFeel->setColour (Slider::textBoxOutlineColourId, Colour (0xff0D2474));
 	
 	
+	// set up the sliders and labels based on their parameters
 	for (int i = 0; i < noParams; i++)
 	{
 		sliders.add( new Slider(String(T("param")) << String(i)) );
@@ -65,15 +66,17 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 		ownerFilter->getParameterPointer(i)->setupSlider(*sliders[i]);
 	}
 
-	labels.add(new Label(String(T("General")), String(T("--- General ---"))));
-	labels.add(new Label(String(T("Early Reflections")), String(T("--- Early Reflections ---"))));
-	labels.add(new Label(String(T("Reverb")), String(T("--- Reverb ---"))));
-	labels.add(new Label(String(T("Output")), String(T("--- Output ---"))));
+	// add a few labels for the section headings
+	labels.add(new Label(String(T("General")), String(T("General"))));
+	labels.add(new Label(String(T("Early Reflections")), String(T("Early Reflections"))));
+	labels.add(new Label(String(T("Reverb")), String(T("Reverb"))));
+	labels.add(new Label(String(T("Output")), String(T("Output"))));
 	for(int i = LABELGENERAL; i < noLabels; ++i) {
 		addAndMakeVisible(labels[i]);
 		labels[i]->setJustificationType(Justification::centredTop);
 	}
 	
+	// set up a few slider to be vertical instead of the dfault horizontal
 	sliders[DELTIME]->setSliderStyle(Slider::LinearVertical);
 	sliders[DELTIME]->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
 	labels[DELTIME]->setJustificationType(Justification::centredTop);
@@ -88,18 +91,8 @@ DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const owner
 	sliders[WETDRYMIX]->setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
 	sliders[WETDRYMIX]->setSliderStyle(Slider::LinearVertical);
 	
-//	for ( int i = 0; i < noButtons; i++ )
-//	{
-//		buttons.add(new TextButton(String(T("Button ")) << String(i)));
-//		buttons[i]->addButtonListener(this);
-//		addAndMakeVisible(buttons[i]);
-//	}
-//	buttons[0]->setButtonText(T("Make Allpass"));
-//	buttons[0]->setClickingTogglesState(true);
-	
 
-
-    // set our component's initial size to be the last one that was stored in the filter's settings
+    // set the UI component's size
     setSize (500, 300);
 
     // register ourselves with the filter - it will use its ChangeBroadcaster base
@@ -113,7 +106,6 @@ DRowAudioEditorComponent::~DRowAudioEditorComponent()
     getFilter()->removeChangeListener (this);
 	sliders.clear();
 	labels.clear();
-	buttons.clear();
     deleteAllChildren();
 	
 	delete lookAndFeel;
@@ -122,7 +114,7 @@ DRowAudioEditorComponent::~DRowAudioEditorComponent()
 //==============================================================================
 void DRowAudioEditorComponent::paint (Graphics& g)
 {
-    // just clear the window
+	// draw rounded background with highlight at top
 	Colour backgroundColour(0xFF455769);
 	backgroundColour = backgroundColour.withBrightness(0.4f);
 
@@ -151,9 +143,24 @@ void DRowAudioEditorComponent::paint (Graphics& g)
 	int height = getHeight();
 	int width = getWidth();
 
+	// draw section dividing lines
 	lookAndFeel->drawInsetLine(g, width-170, 2, width-170, height, 2);
 	lookAndFeel->drawInsetLine(g, 0, height-120, width-170, height-120, 2);
 	lookAndFeel->drawInsetLine(g, (width-170)*0.5f, height-120, (width-170)*0.5f, height, 2);
+	
+	// draw section heading lines
+	g.setColour(Colours::white.withAlpha(0.6f));
+	g.drawHorizontalLine(24, 10, 130);
+	g.drawHorizontalLine(24, 200, 320);
+	
+	g.drawHorizontalLine(24, 340, 385);
+	g.drawHorizontalLine(24, 445, 490);
+	
+	g.drawHorizontalLine(194, 10, 25);
+	g.drawHorizontalLine(194, 140, 155);
+
+	g.drawHorizontalLine(194, 175, 215);
+	g.drawHorizontalLine(194, 280, 320);
 }
 
 void DRowAudioEditorComponent::resized()
@@ -162,8 +169,8 @@ void DRowAudioEditorComponent::resized()
 	int width = getWidth();
 	
 	labels[LABELGENERAL]->setBounds(0, 10, width-170, 20);
-	sliders[PREDELAY]->setBounds(5, 50, 210, 20);
-	sliders[SPREAD]->setBounds(5, 105, 210, 20);
+	sliders[PREDELAY]->setBounds(5, 60, 210, 20);
+	sliders[SPREAD]->setBounds(5, 110, 210, 20);
 	sliders[EARLYLATEMIX]->setBounds(5, 155, 210, 20);
 
 	sliders[DELTIME]->setBounds(220, 55, 50, 120); 
@@ -183,23 +190,6 @@ void DRowAudioEditorComponent::resized()
 	sliders[LOWEQ]->setBounds(width-165, 55, 50, height-60);	
 	sliders[HIGHEQ]->setBounds(width-110, 55, 50, height-60);	
 	sliders[WETDRYMIX]->setBounds(width-55, 55, 50, height-60);
-	
-/*	int height = 10;
-	
-	for (int i = 0; i < noParams; i++)	{
-		sliders[i]->setBounds (70, height, getWidth()-140, 20);
-		height += 30;
-	}
-	
-	height += 10;
-	
-	for ( int i = 0; i < noButtons; i++ )
-		buttons[i]->setBounds( 10 + (i * ((getWidth()-20)/noButtons) + ((noButtons-1)*5)), height,
-							  ((getWidth()-20)/noButtons)-(((noButtons-1)*5)), 20);
-	
-	height += 30;
-		
-	setSize(400, height);*/
 }
 
 //==============================================================================
@@ -227,11 +217,6 @@ void DRowAudioEditorComponent::sliderDragEnded(Slider* changedSlider)
 	for (int i = 0; i < noParams; i++)
 		if ( changedSlider == sliders[i] )
 			currentFilter->endParameterChangeGesture(i);
-}
-
-void DRowAudioEditorComponent::buttonClicked (Button* button)
-{
-	if(button == buttons[0]);
 }
 
 void DRowAudioEditorComponent::changeListenerCallback (void* source)
