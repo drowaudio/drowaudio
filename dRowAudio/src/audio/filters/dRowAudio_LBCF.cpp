@@ -97,7 +97,6 @@ void LBCF::processSamplesAdding (float* const sourceSamples, float* const destSa
 	for (int i = 0; i < numSamples; ++i)
 	{
 		const float in = sourceSamples[i];
-
 		
 		bufferWritePos = ++bufferWritePos & registerSizeMask;
 		

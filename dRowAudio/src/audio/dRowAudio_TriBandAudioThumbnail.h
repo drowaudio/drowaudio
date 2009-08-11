@@ -13,6 +13,8 @@
 #include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 
+class AudioFilePlayer;
+
 class TriBandAudioThumbnail : public Timer,
 							  public ChangeBroadcaster
 {
@@ -38,6 +40,8 @@ public:
 	 */
     void setSource (InputSource* const newSource);
 	
+	void setSource (AudioFilePlayer* const newFilePlayer);
+
 	//==============================================================================
     /** Returns the number of channels in the file.
 	 */

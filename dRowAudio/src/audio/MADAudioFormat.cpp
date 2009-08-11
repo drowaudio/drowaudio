@@ -91,7 +91,9 @@ public:
 		mad_stream_finish(&_madStream);
 	}
 
-	bool read (int** destSamples, int64 startSampleInFile, int numSamples)
+	bool readSamples (int** destSamples, int numDestChannels, int startOffsetInDestBuffer,
+                      int64 startSampleInFile, int numSamples)
+//	bool read (int** destSamples, int64 startSampleInFile, int numSamples)
 	{
 		if(startSampleInFile >= lengthInSamples)
 			return true;

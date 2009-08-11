@@ -19,6 +19,7 @@
 // Audio
 #include "src/audio/filters/dRowAudio_BiquadFilter.h"
 #include "src/audio/filters/dRowAudio_OnePoleFilter.h"
+#include "src/audio/filters/dRowAudio_OnePoleOneZeroFilter.h"
 #include "src/audio/filters/dRowAudio_CombFilter.h"
 #include "src/audio/filters/dRowAudio_AllpassFilter.h"
 #include "src/audio/filters/dRowAudio_InterpolatingAllpassFilter.h"
@@ -44,8 +45,11 @@
 // Gui
 #include "src/gui/lookandfeel/dRowAudio_LookAndFeel.h"
 
+#include "src/gui/dRowAudio_SimpleAudioScope.h"
+#include "src/gui/dRowAudio_AudioOscilloscope.h"
 #include "src/gui/dRowAudio_Meter.h"
 #include "src/gui/dRowAudio_StereoMeter.h"
+#include "src/gui/dRowAudio_FilmstripSlider.h"
 
 
 // Utility

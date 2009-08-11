@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550D5BF1102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550D5BEF102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp */; };
+		550D5BF2102272A3001F996D /* dRowAudio_SimpleAudioScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 550D5BF0102272A3001F996D /* dRowAudio_SimpleAudioScope.h */; };
 		5519B7AA0F51D10900801715 /* dRowAudio_Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 5519B7A90F51D10900801715 /* dRowAudio_Constants.h */; };
 		551D36960F688A6F00D9DE2A /* dRowAudio_TriBandAudioThumbnail.h in Headers */ = {isa = PBXBuildFile; fileRef = 55D418470F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.h */; };
 		551D36970F688A7500D9DE2A /* dRowAudio_TriBandAudioThumbnail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D418480F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.cpp */; };
@@ -48,6 +50,12 @@
 		5559348E0F4721440044FC32 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5559347F0F4721440044FC32 /* OpenGL.framework */; };
 		5559348F0F4721440044FC32 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934800F4721440044FC32 /* WebKit.framework */; };
 		555934940F4721870044FC32 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934920F4721440044FC32 /* libjucedebug.a */; };
+		5560C0501018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5560C04E1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h */; };
+		5560C0511018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560C04F1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp */; };
+		5560C31A102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h in Headers */ = {isa = PBXBuildFile; fileRef = 5560C318102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h */; };
+		5560C31B102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560C319102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp */; };
+		5583CB3E0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5583CB3C0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.cpp */; };
+		5583CB3F0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5583CB3D0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.h */; };
 		55880ACB0F5DECF1003E3953 /* dRowAudio_Utility.h in Headers */ = {isa = PBXBuildFile; fileRef = 55880ACA0F5DECF1003E3953 /* dRowAudio_Utility.h */; };
 		55880BED0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h in Headers */ = {isa = PBXBuildFile; fileRef = 55880BEC0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h */; };
 		55BE2C010F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BE2BFF0F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp */; };
@@ -84,6 +92,8 @@
 
 /* Begin PBXFileReference section */
 		32DBCF5E0370ADEE00C91783 /* dRowAudio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dRowAudio_Prefix.pch; sourceTree = "<group>"; };
+		550D5BEF102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_SimpleAudioScope.cpp; path = ../../src/gui/dRowAudio_SimpleAudioScope.cpp; sourceTree = SOURCE_ROOT; };
+		550D5BF0102272A3001F996D /* dRowAudio_SimpleAudioScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_SimpleAudioScope.h; path = ../../src/gui/dRowAudio_SimpleAudioScope.h; sourceTree = SOURCE_ROOT; };
 		5519B7A90F51D10900801715 /* dRowAudio_Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Constants.h; path = ../../src/utility/dRowAudio_Constants.h; sourceTree = "<group>"; };
 		55349A4F0F93EF64004A81B9 /* dRowAudio_TappedDelayLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_TappedDelayLine.h; path = ../../src/audio/filters/dRowAudio_TappedDelayLine.h; sourceTree = SOURCE_ROOT; };
 		55349A500F93EF64004A81B9 /* dRowAudio_TappedDelayLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_TappedDelayLine.cpp; path = ../../src/audio/filters/dRowAudio_TappedDelayLine.cpp; sourceTree = SOURCE_ROOT; };
@@ -123,6 +133,12 @@
 		5559347E0F4721440044FC32 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5559347F0F4721440044FC32 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		555934800F4721440044FC32 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		5560C04E1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_FilmstripSlider.h; path = ../../src/gui/dRowAudio_FilmstripSlider.h; sourceTree = SOURCE_ROOT; };
+		5560C04F1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_FilmstripSlider.cpp; path = ../../src/gui/dRowAudio_FilmstripSlider.cpp; sourceTree = SOURCE_ROOT; };
+		5560C318102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_AudioOscilloscope.h; path = ../../src/gui/dRowAudio_AudioOscilloscope.h; sourceTree = SOURCE_ROOT; };
+		5560C319102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_AudioOscilloscope.cpp; path = ../../src/gui/dRowAudio_AudioOscilloscope.cpp; sourceTree = SOURCE_ROOT; };
+		5583CB3C0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_OnePoleOneZeroFilter.cpp; path = ../../src/audio/filters/dRowAudio_OnePoleOneZeroFilter.cpp; sourceTree = SOURCE_ROOT; };
+		5583CB3D0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_OnePoleOneZeroFilter.h; path = ../../src/audio/filters/dRowAudio_OnePoleOneZeroFilter.h; sourceTree = SOURCE_ROOT; };
 		55880ACA0F5DECF1003E3953 /* dRowAudio_Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Utility.h; path = ../../src/utility/dRowAudio_Utility.h; sourceTree = SOURCE_ROOT; };
 		55880BEC0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_LookAndFeel.h; path = ../../src/gui/lookandfeel/dRowAudio_LookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		55BE2BFF0F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_PluginLookAndFeel.cpp; path = ../../src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp; sourceTree = "<group>"; };
@@ -257,6 +273,8 @@
 				5546AC6B0F8E09370044E955 /* dRowAudio_BiquadFilter.cpp */,
 				5546AC6E0F8E09370044E955 /* dRowAudio_OnePoleFilter.h */,
 				5546AC6D0F8E09370044E955 /* dRowAudio_OnePoleFilter.cpp */,
+				5583CB3D0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.h */,
+				5583CB3C0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.cpp */,
 				5546AC620F8E09220044E955 /* dRowAudio_CombFilter.h */,
 				5546AC610F8E09220044E955 /* dRowAudio_CombFilter.cpp */,
 				5546AC600F8E09220044E955 /* dRowAudio_AllpassFilter.h */,
@@ -302,6 +320,10 @@
 		55592FEC0F4720B00044FC32 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				550D5BF0102272A3001F996D /* dRowAudio_SimpleAudioScope.h */,
+				550D5BEF102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp */,
+				5560C318102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h */,
+				5560C319102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp */,
 				55880BEC0F5DFC31003E3953 /* dRowAudio_LookAndFeel.h */,
 				55BE2C000F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.h */,
 				55BE2BFF0F4CD4DA00F7CC9B /* dRowAudio_PluginLookAndFeel.cpp */,
@@ -309,6 +331,8 @@
 				55592FF00F4720D60044FC32 /* dRowAudio_Meter.cpp */,
 				55FC0D740F7D3C6600978B1B /* dRowAudio_StereoMeter.h */,
 				55FC0D750F7D3C6600978B1B /* dRowAudio_StereoMeter.cpp */,
+				5560C04E1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h */,
+				5560C04F1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp */,
 			);
 			name = gui;
 			sourceTree = "<group>";
@@ -381,6 +405,10 @@
 				55CFA56E0F9153C300A8B624 /* dRowAudio_LBCFPointer.h in Headers */,
 				55349A510F93EF64004A81B9 /* dRowAudio_TappedDelayLine.h in Headers */,
 				5534A4400FA0B902004A81B9 /* dRowAudio_DelayRegister.h in Headers */,
+				5583CB3F0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.h in Headers */,
+				5560C0501018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h in Headers */,
+				5560C31A102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h in Headers */,
+				550D5BF2102272A3001F996D /* dRowAudio_SimpleAudioScope.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +493,10 @@
 				55CFA56D0F9153C300A8B624 /* dRowAudio_LBCFPointer.cpp in Sources */,
 				55349A520F93EF64004A81B9 /* dRowAudio_TappedDelayLine.cpp in Sources */,
 				5534A43F0FA0B902004A81B9 /* dRowAudio_DelayRegister.cpp in Sources */,
+				5583CB3E0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.cpp in Sources */,
+				5560C0511018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp in Sources */,
+				5560C31B102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp in Sources */,
+				550D5BF1102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

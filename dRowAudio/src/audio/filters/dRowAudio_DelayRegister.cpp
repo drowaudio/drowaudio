@@ -25,6 +25,7 @@ DelayRegister::~DelayRegister() throw()
 
 void DelayRegister::setBufferSize (int newBufferSize) throw()
 {
+	// find the next power of 2 for the buffer size
 	registerSize = pow(2, ((int)log2(newBufferSize)) + 1);
 	registerSizeMask = registerSize - 1;
 

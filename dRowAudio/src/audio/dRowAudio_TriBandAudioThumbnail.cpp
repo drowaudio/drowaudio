@@ -56,6 +56,24 @@ void TriBandAudioThumbnail::setSource (InputSource* const newSource)
     }	
 }
 
+void TriBandAudioThumbnail::setSource (AudioFilePlayer* const newFilePlayer)
+{
+    if (newFilePlayer != 0)
+    {
+        {
+            const ScopedLock sl (readerLock);
+            reader = newFilePlayer->getAudioFormatReaderSource()->getAudioFormatReader();
+        }
+		
+        if (reader != 0)
+        {
+            initialiseFromAudioFile (*reader);
+			buildWaveform();
+        }
+    }	
+}
+
+
 AudioFormatReader* TriBandAudioThumbnail::createReader() const
 {
     if (source != 0)
@@ -92,10 +110,15 @@ bool TriBandAudioThumbnail::buildWaveform ()
 	sourceDataOriginal[1] = 0;
 
 	// and read the file into the array
-	reader->read(sourceDataOriginal,
-				 0,
-				 noSourceSamples);	
-
+//	reader->read(sourceDataOriginal,
+//				 0,
+//				 noSourceSamples);	
+    reader->read (sourceDataOriginal, 
+				  1,
+				  0, 
+				  noSourceSamples,
+				  true);
+	
 	// create a mixed mono copy of the source file
 	MemoryBlock floatData(noSourceSamples * sizeof(float));	
 	float *sourceDataMixedMono = (float*)floatData.getData();

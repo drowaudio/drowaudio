@@ -14,6 +14,7 @@
 
 //==============================================================================
 /**
+	@file
 	This file contains some useful utility functions and macros.
  */
 //==============================================================================
@@ -21,12 +22,21 @@
 /**
 	Checks to see if two values are equal within a given precision.
  */
-inline bool almostEqual(double firstValue, double secondValue, double precision =0.00001)
+inline static bool almostEqual(double firstValue, double secondValue, double precision =0.00001)
 {
 	if ( fabs(firstValue - secondValue) < precision )
 		return true;
 	else
 		return false;
+}
+
+/**
+	Returns the Resources folder in the package contents on a Mac and if an equivalent exists on Windows.
+	This will return File::nonexistent if the file does not exist so check for this first.
+ */
+inline static File getResourcesFolder()
+{
+	return File::getSpecialLocation(File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile("Resources");
 }
 
 //==============================================================================
@@ -54,6 +64,25 @@ inline bool almostEqual(double firstValue, double secondValue, double precision 
 	#endif
 
 #endif // #ifndef UNUSED_NOWARN
+
+//==============================================================================
+/**
+	This is a platform independent way of aligning variables.
+ */
+#ifndef ALIGN_DATA
+
+	#if defined(JUCE_MAC)		// gcc
+		#define ALIGN_DATA(x) __attribute__ ((aligned (x)))
+
+	#elif defined(JUCE_MSVC)	// MSVC
+		#define ALIGN_DATA(x) __declspec (align(x))
+
+	#else
+		#define ALIGN_DATA(x)
+
+	#endif
+
+#endif // ALIGN_DATA
 //==============================================================================
 
 #endif //_DROWAUDIOUTILITY_H_

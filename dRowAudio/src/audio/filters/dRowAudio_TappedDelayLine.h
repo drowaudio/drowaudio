@@ -71,6 +71,11 @@ public:
 	 */
 	void setTapSpacing(float newSpacingCoefficient);
 
+	/**	This has the same effect as setTapSpacing() but does not check to
+		see if the coeficient has changed so will always update the spacing.
+	 */
+	void setTapSpacingExplicitly(float newSpacingCoefficient);
+
 	/**	Scales all of the taps feedback coeficients in one go.
 		This should be between 0 and 1 to avoid blowing up the line.
 		The value is a proportion of the explicitly set feedback coefficient

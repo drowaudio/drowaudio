@@ -12,6 +12,7 @@
 #define AUDIOFILEPLAYER_H
 
 #include <juce/juce.h>
+#include <dRowAudio/dRowAudio.h>
 
 /**
 	This class can be used to load and play an audio file from disk.
@@ -46,17 +47,27 @@ public:
 	bool setFile(const String& path);
 
 	/// Returns the absolute path of the current audio file
-	String getFile();
+	String getFile() 	{	return filePath;	}
 	
 	/// Returns the name of the currently loaded file
-	String getFileName();
+	String getFileName()	{	return fileName;	}
+	
+	/// Togles Loop Mode
+	void setLooping(bool shouldLoop);
 		
+	/// Returns the AudioFormatReaderSource currently being used
+	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
+	
+	/// Returns the AudioFormatManager being used
+	AudioFormatManager* getAudioFormatManager() { return formatManager; }
+
 private:	
+	AudioFormatManager* formatManager;
+	AudioFormatReaderSource* currentAudioFileSource;
+	
 	/// Create the reader from a given path
 	AudioFormatReader* audioFormatReaderFromFile(const String& path);
 	
-	/// Create the actual stream that's going to read from the audio file
-	AudioFormatReaderSource* currentAudioFileSource;
 	
 	String filePath;
 	String fileName;

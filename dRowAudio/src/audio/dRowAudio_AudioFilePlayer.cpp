@@ -9,8 +9,12 @@
 #include "dRowAudio_AudioFilePlayer.h"
 
 AudioFilePlayer::AudioFilePlayer()
+:	formatManager(0),
+	currentAudioFileSource(0)
 {
-	currentAudioFileSource = 0;
+	formatManager = new AudioFormatManager();
+	formatManager->registerBasicFormats();
+	formatManager->registerFormat(new MADAudioFormat(), false);	
 }
 
 AudioFilePlayer::AudioFilePlayer(const String& path)
@@ -74,14 +78,10 @@ bool AudioFilePlayer::setFile(const String& path)
 	return false;
 }
 
-String AudioFilePlayer::getFile()
+void AudioFilePlayer::setLooping(bool shouldLoop)
 {
-	return filePath;
-}
-
-String AudioFilePlayer::getFileName()
-{
-	return fileName;
+	if (currentAudioFileSource != 0)
+		currentAudioFileSource->setLooping(shouldLoop);
 }
 
 AudioFormatReader* AudioFilePlayer::audioFormatReaderFromFile(const String& path)
@@ -90,9 +90,5 @@ AudioFormatReader* AudioFilePlayer::audioFormatReaderFromFile(const String& path
 	
 	fileName = audioFile.getFileName();
 	
-	// get a format manager and set it up with the basic types (wav and aiff).
-	AudioFormatManager formatManager;
-	formatManager.registerBasicFormats();
-	
-	return formatManager.createReaderFor (audioFile);
+	return formatManager->createReaderFor (audioFile);
 }

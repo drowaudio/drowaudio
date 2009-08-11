@@ -102,6 +102,18 @@ void TappedDelayLine::setTapSpacing(float newSpacingCoefficient)
 	}
 }
 
+void TappedDelayLine::setTapSpacingExplicitly(float newSpacingCoefficient)
+{
+	spacingCoefficient = fabsf(newSpacingCoefficient);
+	
+	for (int i = 0; i < readTaps.size(); i++)
+	{
+		int newDelaySamples = (readTaps[i].originalDelaySamples * spacingCoefficient);
+		jlimit(0, bufferSize, newDelaySamples);
+		readTaps.getReference(i).delaySamples = newDelaySamples;
+	}
+}
+
 void TappedDelayLine::scaleFeedbacks(float newFeedbackCoefficient)
 {
 	if ( !almostEqual(feedbackCoefficient, newFeedbackCoefficient) )
@@ -182,7 +194,7 @@ float TappedDelayLine::processSingleSample(float newSample) throw()
 	*bufferInput = 0;
 	
 	float fOut = (inputGain * newSample);
-	for (int i = 0; i < noTaps; i++)
+	for (int i = 0; i < noTaps; ++i)
 	{
 		const Tap currentTap = readTaps.getReference(i);
 
@@ -216,7 +228,7 @@ void TappedDelayLine::processSamples (float* const samples,
 		*bufferInput = 0;
 		
 		float fOut = (inputGain * in);
-		for (int t = 0; t < noTaps; t++)
+		for (int t = 0; t < noTaps; ++t)
 		{
 			const Tap currentTap = readTaps.getReference(t);
 			
