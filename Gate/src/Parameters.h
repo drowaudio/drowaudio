@@ -36,11 +36,11 @@ enum parameters
 	THRESH,
 	REDUCTION,
 	ATTACK,
+	HOLD,
 	RELEASE,
 	BANDCF,
 	BANDQ,
 	MONITOR,
-	RMS,
 	FILTER,
 	PARAM09,
 	noParams
@@ -50,13 +50,13 @@ static const char UNUSED_NOWARN *parameterNames[] = {
 	"Threshold",					// 0
 	"Reduction",					// 1
 	"Attack",						// 2
-	"Release",						// 3
-	"Bandpass Cf",					// 4
-	"Bandpass Q",					// 5
-	"Monitor",						// 6
-	"Use RMS",						// 7
+	"Hold",							// 3
+	"Release",						// 4
+	"Bandpass Cf",					// 5
+	"Bandpass Q",					// 6
+	"Monitor",						// 7
 	"Filter Trigger",				// 8
-	"Param09"							// 9
+	"Param09"						// 9
 };
 
 // this is used to map a button enum to a parameter

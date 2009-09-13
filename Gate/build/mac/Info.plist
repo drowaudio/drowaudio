@@ -12,6 +12,8 @@
 	<string>com.dRowAudio.${PRODUCT_NAME:identifier}</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleGetInfoString</key>
+	<string>${PRODUCT_NAME} Version 1.0, Copyright 2009 David Rowland</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

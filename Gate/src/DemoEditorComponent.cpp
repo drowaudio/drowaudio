@@ -216,4 +216,6 @@ void DemoEditorComponent::timerCallback()
 {
 	incLabel->setText(String(getFilter()->RMSLeft), false);
 	currentLabel->setText(String(getFilter()->RMSRight), false);
+	currentLabel->setText(String(getFilter()->RMSRight), false);
+	currentLabel->setColour(Label::backgroundColourId, Colours::black.withBrightness(getFilter()->RMSRight));
 }

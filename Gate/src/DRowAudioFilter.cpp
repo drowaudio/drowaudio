@@ -73,16 +73,20 @@ void DRowAudioFilter::setupParams()
 			  double value_, double min_ =0.0f, double max_ =1.0f, double default_ =0.0f);*/
 	
 	params[THRESH].init(parameterNames[THRESH], UnitPercent, T("Changes the threshold"),
-						50.0, 0.0, 100.0, 50.0);
+						80.0, 0.0, 100.0, 80.0);
 	params[THRESH].setSkewFactor(0.5f);
 	params[THRESH].setSmoothCoeff(1.0);
 	params[REDUCTION].init(parameterNames[REDUCTION], UnitPercent, T("Changes the reduction ammount"),
 						   20.0, 0.0, 100.0, 20.0);
 	params[REDUCTION].setSkewFactor(0.5f);
+	
 	params[ATTACK].init(parameterNames[ATTACK], UnitMilliseconds, T("Changes the attack time"),
 						1000.0, 0.1, 1000.0, 1000.0);
+	params[HOLD].init(parameterNames[HOLD], UnitMilliseconds, T("Changes the hold time"),
+					  1000.0, 0.1, 1000.0, 1000.0);
 	params[RELEASE].init(parameterNames[RELEASE], UnitMilliseconds, T("Changes the release time"),
 						 1000.0, 0.1, 1000.0, 1000.0);
+	
 	params[BANDCF].init(parameterNames[BANDCF], UnitHertz, T("Changes the filter centre frequency"),
 						1000.0, 200.0, 5000.0, 1000.0);
 	params[BANDQ].init(parameterNames[BANDQ], UnitGeneric, T("Changes the filter bandwith"),
@@ -264,11 +268,14 @@ void DRowAudioFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	oneOverCurrentSampleRate = 1.0f/currentSampleRate;
 	
 	// set up meter variables
-	iMeasureLength = (int)sampleRate * 0.001f;
+	iMeasureLength = (int)sampleRate * 0.01f;
 	iMeasuredItems = 0;
 	fMax = 0;
 		
-	fOutMultCurrent = fOutMultTarget = 0;
+	fOutMultCurrent = fOutMultIncriment = 0;
+	currentStageSample = 0;
+	currentState = closed;
+	changingState = false;
 	
 	// do your pre-playback setup stuff here..
 	
@@ -283,10 +290,6 @@ void DRowAudioFilter::releaseResources()
 
 void DRowAudioFilter::updateParameters()
 {
-	// time based attack/release
-	numAttackSamples = params[ATTACK].getSmoothedValue() * 0.001f * currentSampleRate;
-	fAttackStep = (fOutMultTarget  - fOutMultCurrent) / numAttackSamples;
-	
 }
 
 void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
@@ -306,6 +309,7 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		float fClosedLevel = params[REDUCTION].getSmoothedNormalisedValue();
 
 		float fAttack	= params[ATTACK].getSmoothedValue();
+		float fHold	= params[HOLD].getSmoothedValue();
 		float fRelease	= params[RELEASE].getSmoothedValue();
 		
 		float fMonitor = params[MONITOR].getNormalisedValue();
@@ -354,25 +358,37 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		while (--numSamples >= 0)
 		{
 			float fMix = *pfMixedSample;
+			float fAbsMix = fabsf(fMix);
 			pfMixedSample++;
 			
-			if (fabsf(fMix) <= fThresh)		// closing gate
-				if (fMixLast > fThresh)
+			if (fAbsMix > fMax)
+				fMax = fAbsMix;
+			
+			if (iMeasuredItems >= iMeasureLength)
+			{
+				if ( (fMax >= fThresh) && (currentState != attack) )		// opening gate
 				{
-					currentState = release;
-					noStageSamples = fRelease * currentSampleRate * 0.001;
-					fOutMultIncriment = -((fOutMultCurrent - fClosedLevel) / noStageSamples);
-					currentStageSample = 0;
-				}
-			if (fabsf(fMix) >= fThresh)		// opening gate
-				if (fMixLast < fThresh)
-				{
+					DBG("Attack");
 					currentState = attack;
 					noStageSamples = fAttack * currentSampleRate * 0.001;
 					fOutMultIncriment = (1.0 - fOutMultCurrent) / noStageSamples;
 					currentStageSample = 0;
+					changingState = true;
 				}
-			fMixLast = fabsf(fMix);
+				else if ( (fMax < fThresh) && ((currentState == attack) || (currentState == open)) ) // closing gate, hold
+				{
+					DBG("Hold");
+					currentState = hold;
+					noStageSamples = fHold * currentSampleRate * 0.001;
+					fOutMultIncriment = 0;
+					currentStageSample = 0;
+					changingState = true;
+				}
+				
+				fMax = 0;
+				iMeasuredItems = 0;
+			}
+			iMeasuredItems++;
 			
 /*			if(fabsf(fMix) > fMax)
 				fMax = fabs(fMix);
@@ -416,11 +432,33 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			
 			fOutMultCurrent += fOutMultIncriment;
 			currentStageSample++;
-			if (currentStageSample == noStageSamples)
+			if ( (currentStageSample == noStageSamples) && changingState)
 			{
+				DBG("Stage finished");
 				fOutMultIncriment = 0.0;
 				currentStageSample = 1;
 				noStageSamples = 0;
+				
+				// if ended hold do release stage
+				if (currentState == hold)
+				{
+					DBG("Release");
+					currentState = release;
+					noStageSamples = fRelease * currentSampleRate * 0.001;
+					fOutMultIncriment = -((fOutMultCurrent - fClosedLevel) / noStageSamples);
+					currentStageSample = 0;
+					changingState = true;
+				}
+				else if (currentState == release)	{
+					DBG("Closed");
+					currentState = closed;
+					changingState = false;
+				}
+				else if (currentState == attack)	{
+					DBG("Open");
+					currentState = open;
+					changingState = false;
+				}
 			}
 		}
 		//========================================================================	

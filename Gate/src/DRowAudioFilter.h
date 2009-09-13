@@ -135,6 +135,7 @@ private:
 	double currentSampleRate, oneOverCurrentSampleRate;
 	
 	gateState currentState;
+	bool changingState;
 	
 	// level variables
 	int iMeasureLength, iMeasuredItems;

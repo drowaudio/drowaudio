@@ -54,7 +54,7 @@
 
 /** The name of your plugin. (Try to keep this as short as possible)
 */
-#define JucePlugin_Name                     "dRowAudio: Gate"
+#define JucePlugin_Name                     "Gate"
 
 /** A longer decription of your plugin.
 */
