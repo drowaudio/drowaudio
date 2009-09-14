@@ -45,6 +45,10 @@
 #include "src/gui/dRowAudio_Meter.cpp"
 #include "src/gui/dRowAudio_StereoMeter.cpp"
 #include "src/gui/dRowAudio_FilmstripSlider.cpp"
+#include "src/gui/dRowAudio_CachedThumbnail.cpp"
+#include "src/gui/dRowAudio_CpuMeter.cpp"
+//#include "src/gui/dRowAudio_Thumbnail.cpp"
+
 
 // Utility
 #include "src/parameters/dRowAudio_Parameter.cpp"

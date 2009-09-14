@@ -50,6 +50,9 @@
 #include "src/gui/dRowAudio_Meter.h"
 #include "src/gui/dRowAudio_StereoMeter.h"
 #include "src/gui/dRowAudio_FilmstripSlider.h"
+#include "src/gui/dRowAudio_CachedThumbnail.h"
+#include "src/gui/dRowAudio_CpuMeter.h"
+//#include "src/gui/dRowAudio_Thumbnail.h"
 
 
 // Utility

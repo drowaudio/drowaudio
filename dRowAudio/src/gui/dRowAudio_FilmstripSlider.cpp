@@ -7,22 +7,51 @@
  *
  */
 
-#include <dRowAudio/dRowAudio.h>
+#include "dRowAudio_FilmstripSlider.h"
 
 FilmstripSlider::FilmstripSlider (String &componentName, File const& image, const int numFrames, const bool showTextBox, const bool stripIsHorizontal)
 	:   Slider(componentName),
 		filmStripImage(image.exists() ? ImageFileFormat::loadFrom(image) : 0),
-		numFrames_(numFrames),
+		fileConstructorUsed(true),
 		showTextBox_(showTextBox),
-		isHorizontal_(stripIsHorizontal)
+		isHorizontal_(stripIsHorizontal),
+		numFrames_(numFrames)
 {
+	if (!showTextBox)
+		setTextBoxStyle(NoTextBox, 0, 0, 0);
+	else
+		setTextBoxStyle(Slider::TextBoxBelow, false, getTextBoxWidth(), getTextBoxHeight());
+		
 	if(filmStripImage)
 	{
-		if (!showTextBox)
-			setTextBoxStyle(NoTextBox, 0, 0, 0);
+		if(isHorizontal_)
+		{
+			frameHeight = filmStripImage->getHeight();
+			frameWidth = filmStripImage->getWidth() / numFrames_;
+		}
 		else
-			setTextBoxStyle(Slider::TextBoxBelow, false, getTextBoxWidth(), getTextBoxHeight());
+		{
+			frameHeight = filmStripImage->getHeight() / numFrames_;
+			frameWidth = filmStripImage->getWidth();
+		}
+	}
+}
+
+FilmstripSlider::FilmstripSlider (String &componentName, Image *image, const int numFrames, const bool showTextBox, const bool stripIsHorizontal)
+:   Slider(componentName),
+	filmStripImage(image),
+	fileConstructorUsed(false),
+	showTextBox_(showTextBox),
+	isHorizontal_(stripIsHorizontal),
+	numFrames_(numFrames)
+{
+	if (!showTextBox)
+		setTextBoxStyle(NoTextBox, 0, 0, 0);
+	else
+		setTextBoxStyle(Slider::TextBoxBelow, false, getTextBoxWidth(), getTextBoxHeight());
 		
+	if(filmStripImage)
+	{
 		if(isHorizontal_)
 		{
 			frameHeight = filmStripImage->getHeight();
@@ -38,7 +67,8 @@ FilmstripSlider::FilmstripSlider (String &componentName, File const& image, cons
 
 FilmstripSlider::~FilmstripSlider()
 {
-	delete filmStripImage;
+	if (fileConstructorUsed)
+		delete filmStripImage;
 }
 
 void FilmstripSlider::paint(Graphics& g)
@@ -65,4 +95,6 @@ void FilmstripSlider::paint(Graphics& g)
 			g.drawImage(filmStripImage, 0, 0, imageWidth, imageHeight,
 						0, value * frameHeight, frameWidth, frameHeight);
 	}
+	else
+		Slider::paint(g);
 }

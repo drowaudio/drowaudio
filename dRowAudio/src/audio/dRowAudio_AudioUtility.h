@@ -69,8 +69,8 @@ static const String timeToTimecodeStringLowRes (const double seconds)
     const tchar* const sign = (seconds < 0) ? T("-") : T("");
 	
     const int hours = (int) (absSecs * oneOver60Squared);
-    const int mins  = ((int) (absSecs * oneOver60)) % 60;
-    const int secs  = ((int) absSecs) % 60;
+    const int mins  = ((unsigned int) (absSecs * oneOver60)) % 60u;
+    const int secs  = ((unsigned int) absSecs) % 60u;
 	const int tenthSecs  = (int) ((absSecs - (int)absSecs) * 10);
 	
     return String::formatted (T("%s%02d:%02d.%i"),

@@ -54,17 +54,17 @@ public:
 	/// @internal
     void paint (Graphics& g)
     {
-        g.fillAll (backgroundColour);
-        g.setColour (traceColour);
+		g.fillAll (backgroundColour);
+		g.setColour (traceColour);
 		
 		const int width = getWidth();
-        const float halfHeight = getHeight() * 0.5f;
+		const float halfHeight = getHeight() * 0.5f;
 		
-        const int bp = bufferPos + bufferSize;
+		const int bp = bufferPos + bufferSize;
 		
-        for (int x = width; --x >= 0;)
-        {
-            const int samplesAgo = width - x;
+		for (int x = width; --x >= 0;)
+		{
+			const int samplesAgo = width - x;
 
 			float max = circularBufferMax [(bp - samplesAgo) &bufferSizeMask];
 			float min = circularBufferMin [(bp - samplesAgo) &bufferSizeMask];
@@ -79,7 +79,7 @@ public:
 			
 			g.drawLine ((float) x, halfHeight + (halfHeight * verticalZoomFactor * max),
 						(float) x, halfHeight + (halfHeight * verticalZoomFactor * min));
-        }
+		}
     }
 
 	/// @internal
@@ -150,7 +150,6 @@ public:
 	/// Sets the trace colour of the scope.
 	void setTraceColour (Colour newTraceColour)	{	traceColour = newTraceColour;	}
 
-	
 private:
     float *circularBufferMax, *circularBufferMin;
 	int bufferSizeMask;

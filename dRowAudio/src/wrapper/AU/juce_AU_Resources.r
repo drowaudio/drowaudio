@@ -2,32 +2,27 @@
   ==============================================================================
 
    This file is part of the JUCE library - "Jules' Utility Class Extensions"
-   Copyright 2004-7 by Raw Material Software ltd.
+   Copyright 2004-9 by Raw Material Software Ltd.
 
   ------------------------------------------------------------------------------
 
-   JUCE can be redistributed and/or modified under the terms of the
-   GNU General Public License, as published by the Free Software Foundation;
-   either version 2 of the License, or (at your option) any later version.
+   JUCE can be redistributed and/or modified under the terms of the GNU General
+   Public License (Version 2), as published by the Free Software Foundation.
+   A copy of the license is included in the JUCE distribution, or can be found
+   online at www.gnu.org/licenses.
 
-   JUCE is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with JUCE; if not, visit www.gnu.org/licenses or write to the
-   Free Software Foundation, Inc., 59 Temple Place, Suite 330, 
-   Boston, MA 02111-1307 USA
+   JUCE is distributed in the hope that it will be useful, but WITHOUT ANY
+   WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+   A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
   ------------------------------------------------------------------------------
 
-   If you'd like to release a closed-source product which uses JUCE, commercial
-   licenses are also available: visit www.rawmaterialsoftware.com/juce for
-   more information.
+   To release a closed-source product which uses JUCE, commercial licenses are
+   available: visit www.rawmaterialsoftware.com/juce for more information.
 
   ==============================================================================
 */
+
 
 #include <AudioUnit/AudioUnit.r>
 
@@ -44,14 +39,33 @@
 
 //==============================================================================
 // component resources for Audio Unit
-#define RES_ID			1000
-#define COMP_TYPE		JucePlugin_AUMainType
-#define COMP_SUBTYPE	JucePlugin_AUSubType
-#define COMP_MANUF		JucePlugin_AUManufacturerCode
-#define VERSION			JucePlugin_VersionCode
-#define NAME			JucePlugin_Manufacturer ": " JucePlugin_Name
-#define DESCRIPTION		JucePlugin_Desc
-#define ENTRY_POINT		JucePlugin_AUExportPrefixQuoted "Entry"
+#define RES_ID          1000
+#define COMP_TYPE       JucePlugin_AUMainType
+#define COMP_SUBTYPE    JucePlugin_AUSubType
+#define COMP_MANUF      JucePlugin_AUManufacturerCode
+#define VERSION         JucePlugin_VersionCode
+#define NAME            JucePlugin_Manufacturer ": " JucePlugin_Name
+#define DESCRIPTION     JucePlugin_Desc
+#define ENTRY_POINT     JucePlugin_AUExportPrefixQuoted "Entry"
 
 #include "AUResources.r"
 
+//==============================================================================
+// component resources for Audio Unit Carbon View
+
+#ifndef BUILD_AU_CARBON_UI
+ #define BUILD_AU_CARBON_UI 1
+#endif
+
+#if BUILD_AU_CARBON_UI
+ #define RES_ID         2000
+ #define COMP_TYPE      kAudioUnitCarbonViewComponentType
+ #define COMP_SUBTYPE   JucePlugin_AUSubType
+ #define COMP_MANUF		JucePlugin_AUManufacturerCode
+ #define VERSION        JucePlugin_VersionCode
+ #define NAME           JucePlugin_Manufacturer ": " JucePlugin_Name " View"
+ #define DESCRIPTION    NAME
+ #define ENTRY_POINT    JucePlugin_AUExportPrefixQuoted "ViewEntry"
+
+ #include "AUResources.r"
+#endif

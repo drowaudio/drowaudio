@@ -9,9 +9,15 @@
 /* Begin PBXBuildFile section */
 		550D5BF1102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550D5BEF102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp */; };
 		550D5BF2102272A3001F996D /* dRowAudio_SimpleAudioScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 550D5BF0102272A3001F996D /* dRowAudio_SimpleAudioScope.h */; };
+		550DDA72105AC6C8005CF4DD /* dRowAudio_CpuMeter.h in Headers */ = {isa = PBXBuildFile; fileRef = 550DDA70105AC6C8005CF4DD /* dRowAudio_CpuMeter.h */; };
+		550DDA73105AC6C8005CF4DD /* dRowAudio_CpuMeter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 550DDA71105AC6C8005CF4DD /* dRowAudio_CpuMeter.cpp */; };
 		5519B7AA0F51D10900801715 /* dRowAudio_Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 5519B7A90F51D10900801715 /* dRowAudio_Constants.h */; };
 		551D36960F688A6F00D9DE2A /* dRowAudio_TriBandAudioThumbnail.h in Headers */ = {isa = PBXBuildFile; fileRef = 55D418470F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.h */; };
 		551D36970F688A7500D9DE2A /* dRowAudio_TriBandAudioThumbnail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55D418480F688046005CC24B /* dRowAudio_TriBandAudioThumbnail.cpp */; };
+		552345E81039ED5800C2185E /* dRowAudio_Thumbnail.h in Headers */ = {isa = PBXBuildFile; fileRef = 552345E61039ED5800C2185E /* dRowAudio_Thumbnail.h */; };
+		552345E91039ED5800C2185E /* dRowAudio_Thumbnail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552345E71039ED5800C2185E /* dRowAudio_Thumbnail.cpp */; };
+		5523477D103A22EE00C2185E /* dRowAudio_CachedThumbnail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5523477B103A22EE00C2185E /* dRowAudio_CachedThumbnail.cpp */; };
+		5523477E103A22EE00C2185E /* dRowAudio_CachedThumbnail.h in Headers */ = {isa = PBXBuildFile; fileRef = 5523477C103A22EE00C2185E /* dRowAudio_CachedThumbnail.h */; };
 		55349A510F93EF64004A81B9 /* dRowAudio_TappedDelayLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 55349A4F0F93EF64004A81B9 /* dRowAudio_TappedDelayLine.h */; };
 		55349A520F93EF64004A81B9 /* dRowAudio_TappedDelayLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55349A500F93EF64004A81B9 /* dRowAudio_TappedDelayLine.cpp */; };
 		5534A43F0FA0B902004A81B9 /* dRowAudio_DelayRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5534A43D0FA0B902004A81B9 /* dRowAudio_DelayRegister.cpp */; };
@@ -94,7 +100,13 @@
 		32DBCF5E0370ADEE00C91783 /* dRowAudio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dRowAudio_Prefix.pch; sourceTree = "<group>"; };
 		550D5BEF102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_SimpleAudioScope.cpp; path = ../../src/gui/dRowAudio_SimpleAudioScope.cpp; sourceTree = SOURCE_ROOT; };
 		550D5BF0102272A3001F996D /* dRowAudio_SimpleAudioScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_SimpleAudioScope.h; path = ../../src/gui/dRowAudio_SimpleAudioScope.h; sourceTree = SOURCE_ROOT; };
+		550DDA70105AC6C8005CF4DD /* dRowAudio_CpuMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_CpuMeter.h; path = ../../src/gui/dRowAudio_CpuMeter.h; sourceTree = SOURCE_ROOT; };
+		550DDA71105AC6C8005CF4DD /* dRowAudio_CpuMeter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_CpuMeter.cpp; path = ../../src/gui/dRowAudio_CpuMeter.cpp; sourceTree = SOURCE_ROOT; };
 		5519B7A90F51D10900801715 /* dRowAudio_Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Constants.h; path = ../../src/utility/dRowAudio_Constants.h; sourceTree = "<group>"; };
+		552345E61039ED5800C2185E /* dRowAudio_Thumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Thumbnail.h; path = ../../src/gui/dRowAudio_Thumbnail.h; sourceTree = SOURCE_ROOT; };
+		552345E71039ED5800C2185E /* dRowAudio_Thumbnail.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_Thumbnail.cpp; path = ../../src/gui/dRowAudio_Thumbnail.cpp; sourceTree = SOURCE_ROOT; };
+		5523477B103A22EE00C2185E /* dRowAudio_CachedThumbnail.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_CachedThumbnail.cpp; path = ../../src/gui/dRowAudio_CachedThumbnail.cpp; sourceTree = SOURCE_ROOT; };
+		5523477C103A22EE00C2185E /* dRowAudio_CachedThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_CachedThumbnail.h; path = ../../src/gui/dRowAudio_CachedThumbnail.h; sourceTree = SOURCE_ROOT; };
 		55349A4F0F93EF64004A81B9 /* dRowAudio_TappedDelayLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_TappedDelayLine.h; path = ../../src/audio/filters/dRowAudio_TappedDelayLine.h; sourceTree = SOURCE_ROOT; };
 		55349A500F93EF64004A81B9 /* dRowAudio_TappedDelayLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_TappedDelayLine.cpp; path = ../../src/audio/filters/dRowAudio_TappedDelayLine.cpp; sourceTree = SOURCE_ROOT; };
 		5534A43D0FA0B902004A81B9 /* dRowAudio_DelayRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_DelayRegister.cpp; path = ../../src/audio/filters/dRowAudio_DelayRegister.cpp; sourceTree = SOURCE_ROOT; };
@@ -333,6 +345,12 @@
 				55FC0D750F7D3C6600978B1B /* dRowAudio_StereoMeter.cpp */,
 				5560C04E1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h */,
 				5560C04F1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp */,
+				5523477C103A22EE00C2185E /* dRowAudio_CachedThumbnail.h */,
+				5523477B103A22EE00C2185E /* dRowAudio_CachedThumbnail.cpp */,
+				552345E61039ED5800C2185E /* dRowAudio_Thumbnail.h */,
+				552345E71039ED5800C2185E /* dRowAudio_Thumbnail.cpp */,
+				550DDA70105AC6C8005CF4DD /* dRowAudio_CpuMeter.h */,
+				550DDA71105AC6C8005CF4DD /* dRowAudio_CpuMeter.cpp */,
 			);
 			name = gui;
 			sourceTree = "<group>";
@@ -409,6 +427,9 @@
 				5560C0501018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h in Headers */,
 				5560C31A102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h in Headers */,
 				550D5BF2102272A3001F996D /* dRowAudio_SimpleAudioScope.h in Headers */,
+				552345E81039ED5800C2185E /* dRowAudio_Thumbnail.h in Headers */,
+				5523477E103A22EE00C2185E /* dRowAudio_CachedThumbnail.h in Headers */,
+				550DDA72105AC6C8005CF4DD /* dRowAudio_CpuMeter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +518,9 @@
 				5560C0511018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp in Sources */,
 				5560C31B102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp in Sources */,
 				550D5BF1102272A3001F996D /* dRowAudio_SimpleAudioScope.cpp in Sources */,
+				552345E91039ED5800C2185E /* dRowAudio_Thumbnail.cpp in Sources */,
+				5523477D103A22EE00C2185E /* dRowAudio_CachedThumbnail.cpp in Sources */,
+				550DDA73105AC6C8005CF4DD /* dRowAudio_CpuMeter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

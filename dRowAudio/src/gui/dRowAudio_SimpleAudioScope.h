@@ -111,14 +111,14 @@ public:
     }
 		
 	/** Adjusts the vertical zoom of the scope.
-	 0 = nothing, 1 = normal >1 = zoomed.
+		0 = nothing, 1 = normal >1 = zoomed.
 	 */
 	void setVerticalZoom(float newVerticalZoomFactor)	{	verticalZoomFactor = newVerticalZoomFactor;	}
 	
 	/**	Adjusts the horizontal zoom of the scope.
-	 The lower this value is the more zoomed in and detailed the image will be. However, as more information
-	 is passing the scope will move quicker and be difficult to see. Consider using juce::Component::createComponentSnapshot()
-	 to capture an image of the scope.
+		The lower this value is the more zoomed in and detailed the image will be. However, as more information
+		is passing the scope will move quicker and be difficult to see. Consider using juce::Component::createComponentSnapshot()
+		to capture an image of the scope.
 	 */
 	void setHorizontalZoom(float newHorizontalZoomFactor)	{	horizontalZoomFactor = newHorizontalZoomFactor;	}
 	

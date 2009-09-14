@@ -33,7 +33,7 @@
 #define DROWAUDIOFILTER_H
 
 
-#include "Parameters.h"
+#include "DRowAudioParameters.h"
 #include <dRowAudio/dRowAudio.h>
 
 //==============================================================================

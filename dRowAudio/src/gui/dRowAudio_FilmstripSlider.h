@@ -13,7 +13,7 @@
 #include <juce/juce.h>
 
 /**
-	A slider class that takes a film strip image to display the graphics of it.
+	A slider class that takes a film strip image to display as its graphics.
  */
 class FilmstripSlider : public Slider
 {
@@ -24,7 +24,14 @@ public:
 		Optional arguments show or hide the default number box and if the filmstrip image is horizontal or vertical.
 	 */
 	FilmstripSlider(String &componentName, File const& image, const int numFrames, const bool showTextBox =false, const bool stripIsHorizontal =true);
-		
+	
+	/**
+		Constructor.
+		Use this if you want to use the same image for many sliders in order to save memory.
+		Remember to delete the Image passed to the slider yourself.
+	 */
+	FilmstripSlider (String &componentName, Image *image, const int numFrames, const bool showTextBox =false, const bool stripIsHorizontal =true);
+
 	///	Destructor.
 	~FilmstripSlider();
 
@@ -42,9 +49,10 @@ public:
 
 private:
 	Image* filmStripImage;
-	const int numFrames_;
+	const bool fileConstructorUsed;
 	bool showTextBox_;
 	const bool isHorizontal_;
+	const int numFrames_;
 	int frameWidth, frameHeight;
 };
 

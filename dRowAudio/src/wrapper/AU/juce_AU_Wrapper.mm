@@ -2,29 +2,23 @@
   ==============================================================================
 
    This file is part of the JUCE library - "Jules' Utility Class Extensions"
-   Copyright 2004-7 by Raw Material Software ltd.
+   Copyright 2004-9 by Raw Material Software Ltd.
 
   ------------------------------------------------------------------------------
 
-   JUCE can be redistributed and/or modified under the terms of the
-   GNU General Public License, as published by the Free Software Foundation;
-   either version 2 of the License, or (at your option) any later version.
+   JUCE can be redistributed and/or modified under the terms of the GNU General
+   Public License (Version 2), as published by the Free Software Foundation.
+   A copy of the license is included in the JUCE distribution, or can be found
+   online at www.gnu.org/licenses.
 
-   JUCE is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with JUCE; if not, visit www.gnu.org/licenses or write to the
-   Free Software Foundation, Inc., 59 Temple Place, Suite 330,
-   Boston, MA 02111-1307 USA
+   JUCE is distributed in the hope that it will be useful, but WITHOUT ANY
+   WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+   A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
   ------------------------------------------------------------------------------
 
-   If you'd like to release a closed-source product which uses JUCE, commercial
-   licenses are also available: visit www.rawmaterialsoftware.com/juce for
-   more information.
+   To release a closed-source product which uses JUCE, commercial licenses are
+   available: visit www.rawmaterialsoftware.com/juce for more information.
 
   ==============================================================================
 */
@@ -35,23 +29,33 @@
 #include <AudioToolbox/AudioUnitUtilities.h>
 #include "AUMIDIEffectBase.h"
 #include "MusicDeviceBase.h"
-//#include "juce/extras/audio Plugins/wrapper/juce_PluginHeaders.h"
+//#include "../juce_PluginHeaders.h"
 #include "juce/extras/audio Plugins/wrapper/juce_IncludeCharacteristics.h"
 #include <juce/juce.h>
 #include "../general/DRowAudioFilter.h"
 
 #if JucePlugin_Build_AU
 
+/** The BUILD_AU_CARBON_UI flag lets you specify whether old-school carbon hosts are supported as
+    well as ones that can open a cocoa view. If this is enabled, you'll need to also add the AUCarbonBase
+    files to your project.
+*/
+#ifndef BUILD_AU_CARBON_UI
+ #define BUILD_AU_CARBON_UI 1
+#endif
+
+#if BUILD_AU_CARBON_UI
+ #undef Button
+ #include "AUCarbonViewBase.h"
+ class JuceAUView;
+#endif
+
 //==============================================================================
 #define juceFilterObjectPropertyID 0x1a45ffe9
-static VoidArray activePlugins;
+static VoidArray activePlugins, activeUIs;
 
 static const short channelConfigs[][2] = { JucePlugin_PreferredChannelConfigurations };
 static const int numChannelConfigs = numElementsInArray (channelConfigs);
-
-BEGIN_JUCE_NAMESPACE
-extern void juce_setCurrentExecutableFileNameFromBundleId (const String& bundleId) throw();
-END_JUCE_NAMESPACE
 
 #if JucePlugin_IsSynth
  #define JuceAUBaseClass MusicDeviceBase
@@ -63,14 +67,20 @@ END_JUCE_NAMESPACE
 /** Somewhere in the codebase of your plugin, you need to implement this function
     and make it create an instance of the filter subclass that you're building.
 */
-//extern AudioProcessor* JUCE_CALLTYPE createPluginFilter();
 extern DRowAudioFilter* JUCE_CALLTYPE createPluginFilter(); //<<DR>>
-class JuceAUView;
 
 //==============================================================================
-#define CONCAT_MACRO(Part1, Part2) Part1 ## Part2
-#define JuceUICreationClass  CONCAT_MACRO (JucePlugin_AUExportPrefix, _UICreationClass)
+#define appendMacro1(a, b, c, d) a ## _ ## b ## _ ## c ## _ ## d
+#define appendMacro2(a, b, c, d) appendMacro1(a, b, c, d)
+#define MakeObjCClassName(rootName)  appendMacro2 (rootName, JUCE_MAJOR_VERSION, JUCE_MINOR_VERSION, JucePlugin_AUExportPrefix)
 
+#define JuceUICreationClass     MakeObjCClassName(JuceUICreationClass)
+#define JuceUIViewClass         MakeObjCClassName(JuceUIViewClass)
+
+class JuceAU;
+class EditorCompHolder;
+
+//==============================================================================
 @interface JuceUICreationClass   : NSObject <AUCocoaUIBase>
 {
 }
@@ -81,6 +91,25 @@ class JuceAUView;
 - (NSString *) description;
 - (NSView*) uiViewForAudioUnit: (AudioUnit) inAudioUnit
                       withSize: (NSSize) inPreferredSize;
+@end
+
+//==============================================================================
+@interface JuceUIViewClass : NSView
+{
+    AudioProcessor* filter;
+    JuceAU* au;
+    EditorCompHolder* editorComp;
+}
+
+- (JuceUIViewClass*) initWithFilter: (AudioProcessor*) filter
+                             withAU: (JuceAU*) au
+                      withComponent: (AudioProcessorEditor*) editorComp;
+- (void) dealloc;
+- (void) viewDidMoveToWindow;
+- (BOOL) mouseDownCanMoveWindow;
+- (void) filterBeingDeleted: (JuceAU*) au_;
+- (void) deleteEditor;
+
 @end
 
 
@@ -103,13 +132,13 @@ public:
           channels (0),
           prepared (false)
     {
-        if (activePlugins.size() == 0)
+        if (activePlugins.size() + activeUIs.size() == 0)
         {
-            initialiseJuce_GUI();
-
-#ifdef JucePlugin_CFBundleIdentifier
-            juce_setCurrentExecutableFileNameFromBundleId (JucePlugin_CFBundleIdentifier);
+#if BUILD_AU_CARBON_UI
+            NSApplicationLoad();
 #endif
+
+            initialiseJuce_GUI();
         }
 
         juceFilter = createPluginFilter();
@@ -129,6 +158,9 @@ public:
 
     ~JuceAU()
     {
+        for (int i = activeUIs.size(); --i >= 0;)
+            [((JuceUIViewClass*) activeUIs.getUnchecked(i)) filterBeingDeleted: this];
+
         delete juceFilter;
         juceFilter = 0;
 
@@ -138,7 +170,7 @@ public:
         jassert (activePlugins.contains (this));
         activePlugins.removeValue (this);
 
-        if (activePlugins.size() == 0)
+        if (activePlugins.size() + activeUIs.size() == 0)
             shutdownJuce_GUI();
     }
 
@@ -205,6 +237,8 @@ public:
             }
             else if (inID == kAudioUnitProperty_CocoaUI)
             {
+                const ScopedAutoReleasePool pool;
+
                 AudioUnitCocoaViewInfo* info = (AudioUnitCocoaViewInfo*) outData;
                 NSBundle* b = [NSBundle bundleForClass: [JuceUICreationClass class]];
 
@@ -347,11 +381,10 @@ public:
 //            outParameterInfo.maxValue = 1.0f;
 //            outParameterInfo.defaultValue = 0.0f;
 //            outParameterInfo.unit = kAudioUnitParameterUnit_Generic;
-			
-            outParameterInfo.minValue = juceFilter->getParameterMin(index); //0.0f;//changed this <<DR>>
-            outParameterInfo.maxValue = juceFilter->getParameterMax(index); //1.0f;//changed this <<DR>>
-            outParameterInfo.defaultValue = juceFilter->getParameterDefault(index); //0.0f;//changed this <<DR>>
-            outParameterInfo.unit = juceFilter->getParameterUnit(index);//<<DR>>
+			outParameterInfo.minValue = juceFilter->getParameterMin(index); //0.0f;//changed this <<DR>>
+			outParameterInfo.maxValue = juceFilter->getParameterMax(index); //1.0f;//changed this <<DR>>
+			outParameterInfo.defaultValue = juceFilter->getParameterDefault(index); //0.0f;//changed this <<DR>>
+			outParameterInfo.unit = juceFilter->getParameterUnit(index);//<<DR>>
 
             return noErr;
         }
@@ -370,7 +403,7 @@ public:
         {
 //            outValue = juceFilter->getParameter ((int) inID);
             outValue = juceFilter->getScaledParameter ((int) inID);
-            return noErr;	//<<DR>>
+            return noErr;
         }
 
         return AUBase::GetParameter (inID, inScope, inElement, outValue);
@@ -386,7 +419,7 @@ public:
         {
 //            juceFilter->setParameter ((int) inID, inValue);
             juceFilter->setScaledParameter ((int) inID, inValue);
-            return noErr;	//<<DR>>
+            return noErr;
         }
 
         return AUBase::SetParameter (inID, inScope, inElement, inValue, inBufferOffsetInFrames);
@@ -412,6 +445,20 @@ public:
 
         return juceFilter->getLatencySamples() / GetSampleRate();
     }
+
+    //==============================================================================
+#if BUILD_AU_CARBON_UI
+    int GetNumCustomUIComponents()              { return 1; }
+
+    void GetUIComponentDescs (ComponentDescription* inDescArray)
+    {
+        inDescArray[0].componentType = kAudioUnitCarbonViewComponentType;
+        inDescArray[0].componentSubType = JucePlugin_AUSubType;
+        inDescArray[0].componentManufacturer = JucePlugin_AUManufacturerCode;
+        inDescArray[0].componentFlags = 0;
+        inDescArray[0].componentFlagsMask = 0;
+    }
+#endif
 
     //==============================================================================
     bool getCurrentPosition (AudioPlayHead::CurrentPositionInfo& info)
@@ -568,6 +615,7 @@ public:
 
         bufferSpace.setSize (2, 16);
         midiEvents.clear();
+        incomingEvents.clear();
         prepared = false;
     }
 
@@ -602,6 +650,7 @@ public:
                                        GetMaxFramesPerSlice());
 
             midiEvents.clear();
+            incomingEvents.clear();
 
             juce_free (channels);
             channels = (float**) juce_calloc (sizeof (float*) * jmax (juceFilter->getNumInputChannels(),
@@ -627,7 +676,6 @@ public:
         return ProcessBufferLists (ioActionFlags, inBuffer, GetOutput(0)->GetBufferList(), nFrames);
 #endif
     }
-
 
     OSStatus ProcessBufferLists (AudioUnitRenderActionFlags& ioActionFlags,
                                  const AudioBufferList& inBuffer,
@@ -709,6 +757,12 @@ public:
 
                 if (numInChans >= numIn)
                     break;
+            }
+
+            {
+                const ScopedLock sl (incomingMidiLock);
+                midiEvents.clear();
+                incomingEvents.swap (midiEvents);
             }
 
             {
@@ -796,12 +850,13 @@ protected:
 #endif
     {
 #if JucePlugin_WantsMidiInput
+        const ScopedLock sl (incomingMidiLock);
         JUCE_NAMESPACE::uint8 data [4];
         data[0] = nStatus | inChannel;
         data[1] = inData1;
         data[2] = inData2;
 
-        midiEvents.addEvent (data, 3, inStartFrame);
+        incomingEvents.addEvent (data, 3, inStartFrame);
 #endif
 
         return noErr;
@@ -810,7 +865,8 @@ protected:
     OSStatus HandleSysEx (const UInt8* inData, UInt32 inLength)
     {
 #if JucePlugin_WantsMidiInput
-        midiEvents.addEvent (inData, inLength, 0);
+        const ScopedLock sl (incomingMidiLock);
+        incomingEvents.addEvent (inData, inLength, 0);
 #endif
         return noErr;
     }
@@ -875,35 +931,73 @@ protected:
 
     //==============================================================================
 private:
-//	AudioProcessor* juceFilter;	<<DR>>
+//    AudioProcessor* juceFilter;
 	DRowAudioFilter* juceFilter;
     AudioSampleBuffer bufferSpace;
     float** channels;
-    MidiBuffer midiEvents;
+    MidiBuffer midiEvents, incomingEvents;
     bool prepared;
     SMPTETime lastSMPTETime;
     AUChannelInfo channelInfo [numChannelConfigs];
     AudioUnitEvent auEvent;
     mutable MemoryBlock presetsArray;
+    CriticalSection incomingMidiLock;
 };
 
 //==============================================================================
-@interface JuceUIViewClass : NSView
+class EditorCompHolder : public Component,
+                         public ComponentListener
 {
-    AudioProcessor* filter;
-    JuceAU* au;
-    AudioProcessorEditor* editorComp;
-}
+public:
+    EditorCompHolder (AudioProcessorEditor* const editorComp)
+    {
+        setSize (editorComp->getWidth(), editorComp->getHeight());
+        addAndMakeVisible (editorComp);
+        editorComp->addComponentListener (this);
 
-- (JuceUIViewClass*) initWithFilter: (AudioProcessor*) filter
-                             withAU: (JuceAU*) au
-                      withComponent: (AudioProcessorEditor*) editorComp;
-- (void) dealloc;
-- (void) viewDidMoveToWindow;
-- (BOOL) mouseDownCanMoveWindow;
+#if ! JucePlugin_EditorRequiresKeyboardFocus
+        setWantsKeyboardFocus (false);
+#else
+        setComponentProperty ("juce_disallowFocus", true);
+        setWantsKeyboardFocus (true);
+#endif
+    }
 
-@end
+    ~EditorCompHolder()
+    {
+        deleteAllChildren();
+    }
 
+    void componentParentHierarchyChanged (Component& component)
+    {
+        if (component.getParentComponent() != this)
+            component.removeComponentListener (this);
+    }
+
+    void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized)
+    {
+        Component* comp = getChildComponent(0);
+
+        if (comp != 0 && wasResized)
+        {
+            const int w = jmax (32, comp->getWidth());
+            const int h = jmax (32, comp->getHeight());
+
+            if (getWidth() != w || getHeight() != h)
+                setSize (w, h);
+
+            NSView* view = (NSView*) getWindowHandle();
+            NSRect r = [[view superview] frame];
+            r.size.width = component.getWidth();
+            r.size.height = component.getHeight();
+            [[view superview] setFrame: r];
+            [view setFrame: NSMakeRect (0, 0, component.getWidth(), component.getHeight())];
+            [view setNeedsDisplay: YES];
+        }
+    }
+};
+
+//==============================================================================
 @implementation JuceUIViewClass
 
 - (JuceUIViewClass*) initWithFilter: (AudioProcessor*) filter_
@@ -912,15 +1006,16 @@ private:
 {
     filter = filter_;
     au = au_;
-    editorComp = editorComp_;
+    editorComp = new EditorCompHolder (editorComp_);
 
     [super initWithFrame: NSMakeRect (0, 0, editorComp_->getWidth(), editorComp_->getHeight())];
     [self setHidden: NO];
     [self setPostsFrameChangedNotifications: YES];
 
+    activeUIs.add (self);
+
     editorComp->addToDesktop (0, (void*) self);
     editorComp->setVisible (true);
-    editorComp->addComponentListener (au);
 
     return self;
 }
@@ -931,10 +1026,12 @@ private:
     // is trying to delete our plugin..
     jassert (Component::getCurrentlyModalComponent() == 0);
 
-    if (editorComp != 0)
-        filter->editorBeingDeleted (editorComp);
+    [self deleteEditor];
 
-    deleteAndZero (editorComp);
+    jassert (activeUIs.contains (self));
+    activeUIs.removeValue (self);
+    if (activePlugins.size() + activeUIs.size() == 0)
+        shutdownJuce_GUI();
 
     [super dealloc];
 }
@@ -955,8 +1052,29 @@ private:
     return NO;
 }
 
+- (void) deleteEditor
+{
+    if (editorComp != 0 && editorComp->isValidComponent())
+    {
+        if (editorComp->getChildComponent(0) != 0)
+            if (activePlugins.contains ((void*) au)) // plugin may have been deleted before the UI
+                filter->editorBeingDeleted ((AudioProcessorEditor*) editorComp->getChildComponent(0));
+
+        deleteAndZero (editorComp);
+    }
+
+    editorComp = 0;
+}
+
+- (void) filterBeingDeleted: (JuceAU*) au_
+{
+    if (au_ == au)
+        [self deleteEditor];
+}
+
 @end
 
+//==============================================================================
 @implementation JuceUICreationClass
 
 - (JuceUICreationClass*) init
@@ -1010,6 +1128,258 @@ private:
 }
 @end
 
+
+#if BUILD_AU_CARBON_UI
+
+//==============================================================================
+class JuceAUView  : public AUCarbonViewBase
+{
+    AudioProcessor* juceFilter;
+    Component* windowComp;
+
+public:
+    JuceAUView (AudioUnitCarbonView auview)
+      : AUCarbonViewBase (auview),
+        juceFilter (0),
+        windowComp (0)
+    {
+    }
+
+    ~JuceAUView()
+    {
+        deleteUI();
+    }
+
+    ComponentResult CreateUI (Float32 /*inXOffset*/, Float32 /*inYOffset*/)
+    {
+        const ScopedAutoReleasePool pool;
+
+        if (juceFilter == 0)
+        {
+            void* pointers[2];
+            UInt32 propertySize = sizeof (pointers);
+
+            AudioUnitGetProperty (GetEditAudioUnit(),
+                                  juceFilterObjectPropertyID,
+                                  kAudioUnitScope_Global,
+                                  0,
+                                  pointers,
+                                  &propertySize);
+
+            juceFilter = (AudioProcessor*) pointers[0];
+        }
+
+        if (juceFilter != 0)
+        {
+            deleteUI();
+
+            AudioProcessorEditor* editorComp = juceFilter->createEditorIfNeeded();
+            editorComp->setOpaque (true);
+            windowComp = new ComponentInHIView (editorComp, mCarbonPane);
+        }
+        else
+        {
+            jassertfalse // can't get a pointer to our effect
+        }
+
+        return noErr;
+    }
+
+    AudioUnitCarbonViewEventListener getEventListener() const throw()   { return mEventListener; }
+    void* getEventListenerUserData() const throw()  { return mEventListenerUserData; }
+
+private:
+    void deleteUI()
+    {
+        if (windowComp != 0)
+        {
+            PopupMenu::dismissAllActiveMenus();
+
+            // there's some kind of component currently modal, but the host
+            // is trying to delete our plugin..
+            jassert (Component::getCurrentlyModalComponent() == 0);
+
+            if (windowComp != 0 && windowComp->getChildComponent(0) != 0)
+                juceFilter->editorBeingDeleted ((AudioProcessorEditor*) windowComp->getChildComponent(0));
+
+            deleteAndZero (windowComp);
+        }
+    }
+
+    //==============================================================================
+    // Uses a child NSWindow to sit in front of a HIView and display our component
+    class ComponentInHIView  : public Component,
+                               public ComponentListener
+    {
+    public:
+        //==============================================================================
+        ComponentInHIView (Component* const contentComp, HIViewRef parentHIView)
+            : parentView (parentHIView),
+              recursive (false)
+        {
+            const ScopedAutoReleasePool pool;
+
+            jassert (contentComp != 0);
+            addAndMakeVisible (contentComp);
+            setOpaque (true);
+            setVisible (true);
+            setBroughtToFrontOnMouseClick (true);
+
+            setSize (contentComp->getWidth(), contentComp->getHeight());
+            SizeControl (parentHIView, contentComp->getWidth(), contentComp->getHeight());
+
+            WindowRef windowRef = HIViewGetWindow (parentHIView);
+            hostWindow = [[NSWindow alloc] initWithWindowRef: windowRef];
+
+            [hostWindow retain];
+            [hostWindow setCanHide: YES];
+            [hostWindow setReleasedWhenClosed: YES];
+
+            updateWindowPos();
+
+#if ! JucePlugin_EditorRequiresKeyboardFocus
+            addToDesktop (ComponentPeer::windowIsTemporary | ComponentPeer::windowIgnoresKeyPresses);
+            setWantsKeyboardFocus (false);
+            setComponentProperty ("juce_disallowFocus", true);
+#else
+            addToDesktop (ComponentPeer::windowIsTemporary);
+            setWantsKeyboardFocus (true);
+#endif
+
+            setVisible (true);
+            toFront (false);
+
+            addSubWindow();
+
+            NSWindow* pluginWindow = [((NSView*) getWindowHandle()) window];
+            [pluginWindow setNextResponder: hostWindow];
+
+            // Adds a callback bodge to work around some problems with wrapped
+            // carbon windows..
+            const EventTypeSpec eventsToCatch[] = {
+                { kEventClassWindow, kEventWindowShown },
+                { kEventClassWindow, kEventWindowHidden }
+            };
+
+            InstallWindowEventHandler ((WindowRef) windowRef,
+                                       NewEventHandlerUPP (windowVisibilityBodge),
+                                       GetEventTypeCount (eventsToCatch), eventsToCatch,
+                                       (void*) hostWindow, 0);
+
+            contentComp->addComponentListener (this);
+        }
+
+        ~ComponentInHIView()
+        {
+            Component* const comp = getChildComponent(0);
+
+            if (comp != 0)
+                comp->removeComponentListener (this);
+
+            const ScopedAutoReleasePool pool;
+
+            NSWindow* pluginWindow = [((NSView*) getWindowHandle()) window];
+            [hostWindow removeChildWindow: pluginWindow];
+            removeFromDesktop();
+
+            [hostWindow release];
+            hostWindow = 0;
+
+            deleteAllChildren();
+        }
+
+        void updateWindowPos()
+        {
+            HIPoint f;
+            f.x = f.y = 0;
+            HIPointConvert (&f, kHICoordSpaceView, parentView, kHICoordSpaceScreenPixel, 0);
+            setTopLeftPosition ((int) f.x, (int) f.y);
+        }
+
+        void addSubWindow()
+        {
+            NSWindow* pluginWindow = [((NSView*) getWindowHandle()) window];
+            [pluginWindow setExcludedFromWindowsMenu: YES];
+            [pluginWindow setCanHide: YES];
+
+            [hostWindow addChildWindow: pluginWindow
+                               ordered: NSWindowAbove];
+            [hostWindow orderFront: nil];
+            [pluginWindow orderFront: nil];
+        }
+
+        void resized()
+        {
+            if (getChildComponent(0) != 0)
+                getChildComponent(0)->setBounds (0, 0, getWidth(), getHeight());
+        }
+
+        void paint (Graphics& g) {}
+
+        void componentParentHierarchyChanged (Component& component)
+        {
+            if (component.getParentComponent() != this)
+                component.removeComponentListener (this);
+        }
+
+        void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized)
+        {
+            if (! recursive)
+            {
+                recursive = true;
+
+                Component* comp = getChildComponent(0);
+
+                if (comp != 0 && wasResized)
+                {
+                    const int w = jmax (32, comp->getWidth());
+                    const int h = jmax (32, comp->getHeight());
+
+                    SizeControl (parentView, w, h);
+
+                    if (getWidth() != w || getHeight() != h)
+                        setSize (w, h);
+
+                    comp->repaint();
+
+                    updateWindowPos();
+                    addSubWindow(); // (need this for AULab)
+                }
+
+                recursive = false;
+            }
+        }
+
+    private:
+        HIViewRef parentView;
+        NSWindow* hostWindow;
+        bool recursive;
+
+        /* When you wrap a WindowRef as an NSWindow, it seems to bugger up the HideWindow
+           function, so when the host tries (and fails) to hide the window, this catches
+           the event and does the job properly.
+        */
+        static pascal OSStatus windowVisibilityBodge (EventHandlerCallRef, EventRef e, void* user)
+        {
+            NSWindow* hostWindow = (NSWindow*) user;
+
+            switch (GetEventKind (e))
+            {
+            case kEventWindowShown:
+                [hostWindow orderFront: nil];
+                break;
+            case kEventWindowHidden:
+                [hostWindow orderOut: nil];
+                break;
+            }
+
+            return eventNotHandledErr;
+        }
+    };
+};
+
+#endif
+
 //==============================================================================
 #define JUCE_COMPONENT_ENTRYX(Class, Name, Suffix) \
 extern "C" __attribute__((visibility("default"))) ComponentResult Name ## Suffix (ComponentParameters* params, Class* obj); \
@@ -1021,6 +1391,9 @@ extern "C" __attribute__((visibility("default"))) ComponentResult Name ## Suffix
 #define JUCE_COMPONENT_ENTRY(Class, Name, Suffix) JUCE_COMPONENT_ENTRYX(Class, Name, Suffix)
 
 JUCE_COMPONENT_ENTRY (JuceAU, JucePlugin_AUExportPrefix, Entry)
-//JUCE_COMPONENT_ENTRY (JuceAUView, JucePlugin_AUExportPrefix, ViewEntry)
+
+#if BUILD_AU_CARBON_UI
+  JUCE_COMPONENT_ENTRY (JuceAUView, JucePlugin_AUExportPrefix, ViewEntry)
+#endif
 
 #endif

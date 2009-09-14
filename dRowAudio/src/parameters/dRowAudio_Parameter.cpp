@@ -21,7 +21,6 @@ dRowParameter::dRowParameter()
 		 0.1f,				// smooth coeff
 		 0.01,				// step
 		 String::empty);	// unit suffix
-	
 }
 
 void dRowParameter::init(const String& name_, ParameterUnit unit_, String description_,
@@ -43,7 +42,39 @@ void dRowParameter::init(const String& name_, ParameterUnit unit_, String descri
 	skewFactor = skewFactor_;
 	step = step_;
 	
-	unitSuffix = unitSuffix;
+	unitSuffix = unitSuffix_;
+	
+	// default label suffix's, these can be changed later
+	switch (unit)
+	{
+		case UnitPercent:
+			setUnitSuffix(T("%"));
+			break;
+		case UnitSeconds:
+			setUnitSuffix(T("s"));
+			break;
+		case UnitPhase:
+			setUnitSuffix(T("°"));
+			break;
+		case UnitHertz:
+			setUnitSuffix(T("Hz"));
+			break;
+		case UnitDecibels:
+			setUnitSuffix(T("dB"));
+			break;
+		case UnitDegrees:
+			setUnitSuffix(T("°"));
+			break;
+		case UnitMeters:
+			setUnitSuffix(T("m"));
+			break;
+		case UnitBPM:
+			setUnitSuffix(T("BPM"));
+			break;
+		case UnitMilliseconds:
+			setUnitSuffix(T("ms"));
+			break;
+	}	
 }
 
 double dRowParameter::getValue()
