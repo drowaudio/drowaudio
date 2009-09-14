@@ -108,13 +108,13 @@
 		550DDCAD105B1C6D005CF4DD /* AUTimestampGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 550DDC49105B1C6D005CF4DD /* AUTimestampGenerator.h */; };
 		550DDCD9105B1CAA005CF4DD /* dRowAudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 550DDCD8105B1CAA005CF4DD /* dRowAudio.c */; };
 		550DDCDA105B1CAA005CF4DD /* dRowAudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 550DDCD8105B1CAA005CF4DD /* dRowAudio.c */; };
-		555934FB0F47A1850044FC32 /* DemoEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DemoEditorComponent.h */; };
+		555934FB0F47A1850044FC32 /* DRowAudioEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */; };
 		555934FC0F47A1850044FC32 /* DRowAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A50EFBF14B002A2725 /* DRowAudioFilter.h */; };
 		555934FD0F47A1850044FC32 /* includes.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A60EFBF14B002A2725 /* includes.h */; };
 		555934FE0F47A1850044FC32 /* JucePluginCharacteristics.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A90EFBF14B002A2725 /* JucePluginCharacteristics.h */; };
-		555935030F47A1850044FC32 /* Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 555D6D860F3765130099F634 /* Parameters.h */; };
+		555935030F47A1850044FC32 /* DRowAudioParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 555D6D860F3765130099F634 /* DRowAudioParameters.h */; };
 		555935050F47A1850044FC32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
-		555935150F47A1850044FC32 /* DemoEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DemoEditorComponent.cpp */; };
+		555935150F47A1850044FC32 /* DRowAudioEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */; };
 		555935160F47A1850044FC32 /* DRowAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */; };
 		555935170F47A1850044FC32 /* juce_AU_Wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 843792B40EFBF175002A2725 /* juce_AU_Wrapper.mm */; };
 		5559351C0F47A1850044FC32 /* juce_VST_Wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8437967D0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp */; };
@@ -132,15 +132,15 @@
 		555935290F47A1850044FC32 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8437956D0EFBF323002A2725 /* WebKit.framework */; };
 		5559352A0F47A1850044FC32 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843796740EFBF416002A2725 /* CoreFoundation.framework */; };
 		5559352E0F47A1850044FC32 /* juce_AU_Resources.r in Rez */ = {isa = PBXBuildFile; fileRef = 843792B30EFBF175002A2725 /* juce_AU_Resources.r */; };
-		5559354B0F47A1E20044FC32 /* dRowAudio_Gate.component in CopyFiles */ = {isa = PBXBuildFile; fileRef = 555935340F47A1860044FC32 /* dRowAudio_Gate.component */; };
+		5559354B0F47A1E20044FC32 /* dRowAudio_Gate.vst in CopyFiles */ = {isa = PBXBuildFile; fileRef = 555935340F47A1860044FC32 /* dRowAudio_Gate.vst */; };
 		555936FC0F48B6AF0044FC32 /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55592F3D0F4719860044FC32 /* dRowAudio.cpp */; };
 		555936FD0F48B6C20044FC32 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555928F40F45C5AC0044FC32 /* libjuce.a */; };
 		5559372F0F48C05C0044FC32 /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55592F3D0F4719860044FC32 /* dRowAudio.cpp */; };
 		555937300F48C06E0044FC32 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555928F40F45C5AC0044FC32 /* libjuce.a */; };
 		555D6A110F34D9370099F634 /* dRowAudio_Gate.component in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D01CCD20486CAD60068D4B7 /* dRowAudio_Gate.component */; };
-		555D6D870F3765130099F634 /* Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 555D6D860F3765130099F634 /* Parameters.h */; };
-		843792AA0EFBF14B002A2725 /* DemoEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DemoEditorComponent.cpp */; };
-		843792AB0EFBF14B002A2725 /* DemoEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DemoEditorComponent.h */; };
+		555D6D870F3765130099F634 /* DRowAudioParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 555D6D860F3765130099F634 /* DRowAudioParameters.h */; };
+		843792AA0EFBF14B002A2725 /* DRowAudioEditorComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */; };
+		843792AB0EFBF14B002A2725 /* DRowAudioEditorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */; };
 		843792AC0EFBF14B002A2725 /* DRowAudioFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */; };
 		843792AD0EFBF14B002A2725 /* DRowAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A50EFBF14B002A2725 /* DRowAudioFilter.h */; };
 		843792AE0EFBF14B002A2725 /* includes.h in Headers */ = {isa = PBXBuildFile; fileRef = 843792A60EFBF14B002A2725 /* includes.h */; };
@@ -181,7 +181,7 @@
 			dstPath = "$HOME/Library/Audio/Plug-Ins/VST";
 			dstSubfolderSpec = 0;
 			files = (
-				5559354B0F47A1E20044FC32 /* dRowAudio_Gate.component in CopyFiles */,
+				5559354B0F47A1E20044FC32 /* dRowAudio_Gate.vst in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,10 +252,10 @@
 		550DDCD8105B1CAA005CF4DD /* dRowAudio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dRowAudio.c; path = ../../../../dRowAudio/dRowAudio.c; sourceTree = SOURCE_ROOT; };
 		555928EF0F45C5AC0044FC32 /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../../../../juce_source/juce/build/macosx/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
 		55592F3D0F4719860044FC32 /* dRowAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio.cpp; path = ../../../../dRowAudio/dRowAudio.cpp; sourceTree = SOURCE_ROOT; };
-		555935340F47A1860044FC32 /* dRowAudio_Gate.component */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dRowAudio_Gate.component; sourceTree = BUILT_PRODUCTS_DIR; };
-		555D6D860F3765130099F634 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = ../../src/Parameters.h; sourceTree = SOURCE_ROOT; };
-		843792A20EFBF14B002A2725 /* DemoEditorComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoEditorComponent.cpp; path = ../../src/DemoEditorComponent.cpp; sourceTree = SOURCE_ROOT; };
-		843792A30EFBF14B002A2725 /* DemoEditorComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoEditorComponent.h; path = ../../src/DemoEditorComponent.h; sourceTree = SOURCE_ROOT; };
+		555935340F47A1860044FC32 /* dRowAudio_Gate.vst */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dRowAudio_Gate.vst; sourceTree = BUILT_PRODUCTS_DIR; };
+		555D6D860F3765130099F634 /* DRowAudioParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DRowAudioParameters.h; path = ../../src/DRowAudioParameters.h; sourceTree = "<group>"; };
+		843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DRowAudioEditorComponent.cpp; path = ../../src/DRowAudioEditorComponent.cpp; sourceTree = "<group>"; };
+		843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DRowAudioEditorComponent.h; path = ../../src/DRowAudioEditorComponent.h; sourceTree = "<group>"; };
 		843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DRowAudioFilter.cpp; path = ../../src/DRowAudioFilter.cpp; sourceTree = SOURCE_ROOT; };
 		843792A50EFBF14B002A2725 /* DRowAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DRowAudioFilter.h; path = ../../src/DRowAudioFilter.h; sourceTree = SOURCE_ROOT; };
 		843792A60EFBF14B002A2725 /* includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = includes.h; path = ../../src/includes.h; sourceTree = SOURCE_ROOT; };
@@ -378,6 +378,7 @@
 			children = (
 				555D71050F38C20E0099F634 /* GUI */,
 				8437929D0EFBF08E002A2725 /* Filter */,
+				555929400F45CAFA0044FC32 /* Config */,
 				8437929E0EFBF098002A2725 /* Wrapper Code */,
 			);
 			name = Source;
@@ -387,7 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				8D01CCD20486CAD60068D4B7 /* dRowAudio_Gate.component */,
-				555935340F47A1860044FC32 /* dRowAudio_Gate.component */,
+				555935340F47A1860044FC32 /* dRowAudio_Gate.vst */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -523,8 +524,8 @@
 		555D71050F38C20E0099F634 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				843792A20EFBF14B002A2725 /* DemoEditorComponent.cpp */,
-				843792A30EFBF14B002A2725 /* DemoEditorComponent.h */,
+				843792A20EFBF14B002A2725 /* DRowAudioEditorComponent.cpp */,
+				843792A30EFBF14B002A2725 /* DRowAudioEditorComponent.h */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -534,8 +535,7 @@
 			children = (
 				843792A40EFBF14B002A2725 /* DRowAudioFilter.cpp */,
 				843792A50EFBF14B002A2725 /* DRowAudioFilter.h */,
-				555D6D860F3765130099F634 /* Parameters.h */,
-				555929400F45CAFA0044FC32 /* Config */,
+				555D6D860F3765130099F634 /* DRowAudioParameters.h */,
 			);
 			name = Filter;
 			sourceTree = "<group>";
@@ -591,11 +591,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				555934FB0F47A1850044FC32 /* DemoEditorComponent.h in Headers */,
+				555934FB0F47A1850044FC32 /* DRowAudioEditorComponent.h in Headers */,
 				555934FC0F47A1850044FC32 /* DRowAudioFilter.h in Headers */,
 				555934FD0F47A1850044FC32 /* includes.h in Headers */,
 				555934FE0F47A1850044FC32 /* JucePluginCharacteristics.h in Headers */,
-				555935030F47A1850044FC32 /* Parameters.h in Headers */,
+				555935030F47A1850044FC32 /* DRowAudioParameters.h in Headers */,
 				550DDC7C105B1C6D005CF4DD /* CADebugMacros.h in Headers */,
 				550DDC7E105B1C6D005CF4DD /* CAAUParameter.h in Headers */,
 				550DDC80105B1C6D005CF4DD /* CAAudioChannelLayout.h in Headers */,
@@ -630,11 +630,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843792AB0EFBF14B002A2725 /* DemoEditorComponent.h in Headers */,
+				843792AB0EFBF14B002A2725 /* DRowAudioEditorComponent.h in Headers */,
 				843792AD0EFBF14B002A2725 /* DRowAudioFilter.h in Headers */,
 				843792AE0EFBF14B002A2725 /* includes.h in Headers */,
 				843792B10EFBF14B002A2725 /* JucePluginCharacteristics.h in Headers */,
-				555D6D870F3765130099F634 /* Parameters.h in Headers */,
+				555D6D870F3765130099F634 /* DRowAudioParameters.h in Headers */,
 				550DDC4A105B1C6D005CF4DD /* CADebugMacros.h in Headers */,
 				550DDC4C105B1C6D005CF4DD /* CAAUParameter.h in Headers */,
 				550DDC4E105B1C6D005CF4DD /* CAAudioChannelLayout.h in Headers */,
@@ -686,7 +686,7 @@
 			name = "VST Plugin";
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = JuceDemoPlugin;
-			productReference = 555935340F47A1860044FC32 /* dRowAudio_Gate.component */;
+			productReference = 555935340F47A1860044FC32 /* dRowAudio_Gate.vst */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8D01CCC60486CAD60068D4B7 /* AU Plugin */ = {
@@ -788,7 +788,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				555935150F47A1850044FC32 /* DemoEditorComponent.cpp in Sources */,
+				555935150F47A1850044FC32 /* DRowAudioEditorComponent.cpp in Sources */,
 				555935160F47A1850044FC32 /* DRowAudioFilter.cpp in Sources */,
 				555935170F47A1850044FC32 /* juce_AU_Wrapper.mm in Sources */,
 				5559351C0F47A1850044FC32 /* juce_VST_Wrapper.cpp in Sources */,
@@ -824,7 +824,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843792AA0EFBF14B002A2725 /* DemoEditorComponent.cpp in Sources */,
+				843792AA0EFBF14B002A2725 /* DRowAudioEditorComponent.cpp in Sources */,
 				843792AC0EFBF14B002A2725 /* DRowAudioFilter.cpp in Sources */,
 				843792B60EFBF175002A2725 /* juce_AU_Wrapper.mm in Sources */,
 				8437967F0EFBF5E4002A2725 /* juce_VST_Wrapper.cpp in Sources */,
@@ -971,6 +971,8 @@
 					"PROJECT_DIR=\\\"${PROJECT_DIR}\\\"",
 					"PROJECT_NAME=\\\"$(PROJECT_NAME)\\\"",
 					"PRODUCT_NAME=\\\"${PRODUCT_NAME}\\\"",
+					"_DEBUG=1",
+					"DEBUG=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = 4.2;
@@ -991,6 +993,8 @@
 					"PROJECT_DIR=\\\"${PROJECT_DIR}\\\"",
 					"PROJECT_NAME=\\\"$(PROJECT_NAME)\\\"",
 					"PRODUCT_NAME=\\\"${PRODUCT_NAME}\\\"",
+					"_NDEBUG=1",
+					"NDEBUG=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = 4.2;

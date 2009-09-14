@@ -29,12 +29,12 @@
   ==============================================================================
 */
 
-#include "DemoEditorComponent.h"
+#include "DRowAudioEditorComponent.h"
 
 //==============================================================================
-DemoEditorComponent::DemoEditorComponent (DRowAudioFilter* const ownerFilter)
-    : AudioProcessorEditor (ownerFilter),
-	noButtons(3)
+DRowAudioEditorComponent::DRowAudioEditorComponent (DRowAudioFilter* const ownerFilter)
+    :	AudioProcessorEditor (ownerFilter),
+		noButtons(3)
 {
 	customLookAndFeel = new dRowLookAndFeel;
 	setLookAndFeel(customLookAndFeel);
@@ -53,8 +53,10 @@ DemoEditorComponent::DemoEditorComponent (DRowAudioFilter* const ownerFilter)
 		sliders[i]->addListener (this);
 		sliders[i]->setRange (ownerFilter->getParameterMin(i), ownerFilter->getParameterMax(i), ownerFilter->getParameterStep(i));
 		sliders[i]->setSkewFactor(ownerFilter->getParameterSkewFactor(i));
-		sliders[i]->setTextBoxStyle(Slider::TextBoxRight, false, 50, 20);
+		sliders[i]->setTextBoxStyle(Slider::TextBoxRight, false, 70, 20);
 		sliders[i]->setValue (ownerFilter->getScaledParameter(i), false);
+		
+		ownerFilter->getParameterPointer(i)->setupSlider(*sliders[i]);
 	}
 		
 	for ( int i = 0; i < noButtons; i++ )
@@ -96,7 +98,7 @@ DemoEditorComponent::DemoEditorComponent (DRowAudioFilter* const ownerFilter)
 	startTimer(50);
 }
 
-DemoEditorComponent::~DemoEditorComponent()
+DRowAudioEditorComponent::~DRowAudioEditorComponent()
 {
     getFilter()->removeChangeListener (this);
 	sliders.clear();
@@ -105,7 +107,7 @@ DemoEditorComponent::~DemoEditorComponent()
 }
 
 //==============================================================================
-void DemoEditorComponent::paint (Graphics& g)
+void DRowAudioEditorComponent::paint (Graphics& g)
 {
     // just clear the window
     g.fillAll (Colour::greyLevel (0.9f));
@@ -120,7 +122,7 @@ void DemoEditorComponent::paint (Graphics& g)
 	
 }
 
-void DemoEditorComponent::resized()
+void DRowAudioEditorComponent::resized()
 {
     comboBox->setBounds (getWidth()/2 - 100, 40,
 						200, 20);
@@ -146,7 +148,7 @@ void DemoEditorComponent::resized()
 }
 
 //==============================================================================
-void DemoEditorComponent::sliderValueChanged (Slider* changedSlider)
+void DRowAudioEditorComponent::sliderValueChanged (Slider* changedSlider)
 {
     DRowAudioFilter* currentFilter = getFilter();
 	
@@ -159,7 +161,7 @@ void DemoEditorComponent::sliderValueChanged (Slider* changedSlider)
 	}
 }
 
-void DemoEditorComponent::buttonClicked(Button* clickedButton)
+void DRowAudioEditorComponent::buttonClicked(Button* clickedButton)
 {
 	DRowAudioFilter* currentFilter = getFilter();
 	
@@ -179,7 +181,7 @@ void DemoEditorComponent::buttonClicked(Button* clickedButton)
 	}
 }
 
-void DemoEditorComponent::changeListenerCallback (void* source)
+void DRowAudioEditorComponent::changeListenerCallback (void* source)
 {
     // this is the filter telling us that it's changed, so we'll update our
     // display of the time, midi message, etc.
@@ -187,7 +189,7 @@ void DemoEditorComponent::changeListenerCallback (void* source)
 }
 
 //==============================================================================
-void DemoEditorComponent::updateParametersFromFilter()
+void DRowAudioEditorComponent::updateParametersFromFilter()
 {
     DRowAudioFilter* const filter = getFilter();
 	
@@ -212,7 +214,7 @@ void DemoEditorComponent::updateParametersFromFilter()
 }
 
 
-void DemoEditorComponent::timerCallback()
+void DRowAudioEditorComponent::timerCallback()
 {
 	incLabel->setText(String(getFilter()->RMSLeft), false);
 	currentLabel->setText(String(getFilter()->RMSRight), false);

@@ -1,35 +1,15 @@
 /*
- *  Parameters.h
+ *  DRowAudioParameters.h
  *
  *  Created by David Rowland on 02/02/2009.
  *  Copyright 2009 UWE. All rights reserved.
  *
  */
 
-#ifndef _PARAMETERS_H_
-#define _PARAMETERS_H_
+#ifndef _DROWAUDIOPARAMETERS_H_
+#define _DROWAUDIOPARAMETERS_H_
 
-#ifndef UNUSED_NOWARN
-
-#if defined(JUCE_MAC)
-// enable supression of unused variable is GCC
-#define UNUSED_NOWARN __attribute__((unused))
-
-#elif defined(JUCE_MSVC)
-
-#define UNUSED_NOWARN
-
-// disable unused variable warnings in MSVC (Windows)
-#pragma warning( push )
-#pragma warning( disable : 4705 )
-
-#else
-
-#define UNUSED_NOWARN
-
-#endif
-
-#endif // #ifndef UNUSED_NOWARN
+#include <dRowAudio/dRowAudio.h>
 
 enum parameters
 {
@@ -68,4 +48,4 @@ namespace buttons
 	};
 }
 
-#endif //_PARAMETERS_H_
+#endif //_DROWAUDIOPARAMETERS_H_

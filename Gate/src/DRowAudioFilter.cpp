@@ -30,7 +30,7 @@
 */
 
 #include "DRowAudioFilter.h"
-#include "DemoEditorComponent.h"
+#include "DRowAudioEditorComponent.h"
 
 
 //==============================================================================
@@ -77,7 +77,7 @@ void DRowAudioFilter::setupParams()
 	params[THRESH].setSkewFactor(0.5f);
 	params[THRESH].setSmoothCoeff(1.0);
 	params[REDUCTION].init(parameterNames[REDUCTION], UnitPercent, T("Changes the reduction ammount"),
-						   20.0, 0.0, 100.0, 20.0);
+						   0.0, 0.0, 100.0, 0.0);
 	params[REDUCTION].setSkewFactor(0.5f);
 	
 	params[ATTACK].init(parameterNames[ATTACK], UnitMilliseconds, T("Changes the attack time"),
@@ -88,9 +88,9 @@ void DRowAudioFilter::setupParams()
 						 1000.0, 0.1, 1000.0, 1000.0);
 	
 	params[BANDCF].init(parameterNames[BANDCF], UnitHertz, T("Changes the filter centre frequency"),
-						1000.0, 200.0, 5000.0, 1000.0);
+						200.0, 20.0, 5000.0, 200.0);
 	params[BANDQ].init(parameterNames[BANDQ], UnitGeneric, T("Changes the filter bandwith"),
-					   0.0, 0.0, 10.0, 0.0);
+					   1.0, 0.0, 10.0, 1.0);
 	params[BANDQ].setSkewFactor(0.3);
 	params[MONITOR].init(parameterNames[MONITOR], UnitBoolean, T("Monitors the trigger signal"),
 						 0.0, 0.0, 1.0, 0.0);
@@ -175,6 +175,14 @@ const String DRowAudioFilter::getParameterText (int index)
     return String::empty;
 }
 
+dRowParameter* DRowAudioFilter::getParameterPointer(int index)
+{
+	for (int i = 0; i < noParams; i++)
+		if (index == i)
+			return &params[i];	
+	
+    return 0;
+}
 //=====================================================================
 // methods for AU Compatibility
 double DRowAudioFilter::getParameterMin(int index)
@@ -268,7 +276,7 @@ void DRowAudioFilter::prepareToPlay (double sampleRate, int samplesPerBlock)
 	oneOverCurrentSampleRate = 1.0f/currentSampleRate;
 	
 	// set up meter variables
-	iMeasureLength = (int)sampleRate * 0.01f;
+	iMeasureLength = (int)sampleRate * 0.001f;
 	iMeasuredItems = 0;
 	fMax = 0;
 		
@@ -293,7 +301,7 @@ void DRowAudioFilter::updateParameters()
 }
 
 void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
-                                   MidiBuffer& midiMessages)
+									MidiBuffer& midiMessages)
 {
 	waveformDisplayPre->processBlock(buffer.getSampleData(0), buffer.getNumSamples());
 	
@@ -301,25 +309,27 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 	
 	const int numInputChannels = getNumInputChannels();
 	const float oneOverNumInputChannels = 1.0f / numInputChannels;
+	int numSamples = buffer.getNumSamples();
 
-	if (numInputChannels > 0)
+
+	// create parameters to use
+	float fThresh = params[THRESH].getNormalisedValue();
+	float fClosedLevel = params[REDUCTION].getSmoothedNormalisedValue();
+	
+	float fAttack	= params[ATTACK].getSmoothedValue();
+	float fHold	= params[HOLD].getSmoothedValue();
+	float fRelease	= params[RELEASE].getSmoothedValue();
+	
+	float fMonitor = params[MONITOR].getNormalisedValue();
+	float fFilter = params[FILTER].getNormalisedValue();
+	
+	// stereo
+	if (numInputChannels == 2)
 	{
-		// create parameters to use
-		float fThresh = params[THRESH].getNormalisedValue();
-		float fClosedLevel = params[REDUCTION].getSmoothedNormalisedValue();
-
-		float fAttack	= params[ATTACK].getSmoothedValue();
-		float fHold	= params[HOLD].getSmoothedValue();
-		float fRelease	= params[RELEASE].getSmoothedValue();
-		
-		float fMonitor = params[MONITOR].getNormalisedValue();
-		float fFilter = params[FILTER].getNormalisedValue();
-		
 		// set up array of pointers to samples
-		int numSamples = buffer.getNumSamples();
-		float* pfSample[numInputChannels];
-		for (int channel = 0; channel < getNumInputChannels(); channel++)
-			pfSample[channel] = buffer.getSampleData(channel);
+		float* pfSample[2];
+		pfSample[0] = buffer.getSampleData(0);
+		pfSample[1] = buffer.getSampleData(1);
 		
 		
 		// set-up mixed mono buffer
@@ -335,11 +345,10 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 
 		for(int i = 0; i < mixedBuffer.getNumSamples(); i++)
 		{
-			for(int channel = 0; channel < numInputChannels; channel++)
-			{
-				*pfMixedSample += oneOverNumInputChannels * (*pfSample[channel]);
-				pfSample[channel]++;
-			}
+			*pfMixedSample += oneOverNumInputChannels * (*pfSample[0]);
+			pfSample[0]++;
+			*pfMixedSample += oneOverNumInputChannels * (*pfSample[1]);
+			pfSample[1]++;
 			pfMixedSample++;
 		}
 		
@@ -349,8 +358,8 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 		
 		
 		// reset buffer pointers
-		for (int channel = 0; channel < getNumInputChannels(); channel++)
-			pfSample[channel] = buffer.getSampleData(channel);
+		pfSample[0] = buffer.getSampleData(0);
+		pfSample[1] = buffer.getSampleData(1);
 		pfMixedSample = mixedBuffer.getSampleData(0);
 		
 				
@@ -390,46 +399,22 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 			}
 			iMeasuredItems++;
 			
-/*			if(fabsf(fMix) > fMax)
-				fMax = fabs(fMix);
 			
-			if (iMeasuredItems >= iMeasureLength)
-			{
-				if (fThresh < fMax)
-					fOutMultTarget = fClosedLevel;
-				else
-					fOutMultTarget = 1.0f;
-				
-				if (fOutMultTarget > fOutMultCurrent)
-				{
-					fOutMultCurrent += (fOutMultTarget - fOutMultCurrent) * fAttack;
-				}
-				else
-				{
-					fOutMultCurrent -= (fOutMultCurrent - fOutMultTarget) * fRelease;
-				}
-				
-				fMax = 0;
-				iMeasuredItems = 0;
+			// apply appropriate gains to output
+			if (fMonitor > 0.5f)	{
+				*pfSample[0] = fMix;
+				*pfSample[1] = fMix;
 			}
-			iMeasuredItems++;
-*/			
-			
-			
-			
-			// process channels as interleaved
-			for (int channel = 0; channel < numInputChannels; channel++)
-			{	
-				if (fMonitor > 0.5f)
-					*pfSample[channel] = fMix;
-				else
-					*pfSample[channel] *= fOutMultCurrent;
+			else	{
+				*pfSample[0] *= fOutMultCurrent;
+				*pfSample[1] *= fOutMultCurrent;
+			}
 
-				
-				// incriment sample pointers
-				pfSample[channel]++;			
-			}
+			// incriment sample pointers
+			pfSample[0]++;			
+			pfSample[1]++;			
 			
+
 			fOutMultCurrent += fOutMultIncriment;
 			currentStageSample++;
 			if ( (currentStageSample == noStageSamples) && changingState)
@@ -490,7 +475,7 @@ void DRowAudioFilter::processBlock (AudioSampleBuffer& buffer,
 //==============================================================================
 AudioProcessorEditor* DRowAudioFilter::createEditor()
 {
-    return new DemoEditorComponent (this);
+    return new DRowAudioEditorComponent (this);
 }
 
 //==============================================================================

@@ -29,11 +29,11 @@
   ==============================================================================
 */
 
-#ifndef DEMOJUCEPLUGINFILTER_H
-#define DEMOJUCEPLUGINFILTER_H
+#ifndef _DROWAUDIOFILTER_H_
+#define _DROWAUDIOFILTER_H_
 
 #include "includes.h"
-#include "Parameters.h"
+#include "DRowAudioParameters.h"
 
 //==============================================================================
 /**
@@ -107,7 +107,8 @@ public:
 	double getParameterStep(int index);
 	double getParameterSkewFactor(int index);
 	void smoothParameters();
-	
+	dRowParameter* getParameterPointer(int index);
+
 	
     juce_UseDebuggingNewOperator
 
@@ -150,7 +151,8 @@ private:
 	float fOutMultTarget, fOutMultCurrent, fOutMultIncriment;
 	
 	BiquadFilter bandpassFilter;
+	OnePoleFilter envelopeFilter;
 };
 
 
-#endif
+#endif	//_DROWAUDIOFILTER_H_

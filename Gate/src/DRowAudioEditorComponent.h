@@ -29,12 +29,12 @@
   ==============================================================================
 */
 
-#ifndef DEMOJUCEPLUGINEDITOR_H
-#define DEMOJUCEPLUGINEDITOR_H
+#ifndef _DROWAUDIOEDITORCOMPONENT_H_
+#define _DROWAUDIOEDITORCOMPONENT_H_
 
 #include "includes.h"
 #include "DRowAudioFilter.h"
-#include "Parameters.h"
+#include "DRowAudioParameters.h"
 
 
 //==============================================================================
@@ -50,11 +50,11 @@
     when it's destroyed. When the filter's parameters are changed, it broadcasts
     a message and this editor responds by updating its display.
 */
-class DemoEditorComponent   : public AudioProcessorEditor,
-                              public ChangeListener,
-                              public SliderListener,
-							  public ButtonListener,
-							  public Timer
+class DRowAudioEditorComponent   :	public AudioProcessorEditor,
+									public ChangeListener,
+									public SliderListener,
+									public ButtonListener,
+									public Timer
 {
 public:
     /** Constructor.
@@ -62,10 +62,10 @@ public:
         When created, this will register itself with the filter for changes. It's
         safe to assume that the filter won't be deleted before this object is.
     */
-    DemoEditorComponent (DRowAudioFilter* const ownerFilter);
+    DRowAudioEditorComponent (DRowAudioFilter* const ownerFilter);
 
     /** Destructor. */
-    ~DemoEditorComponent();
+    ~DRowAudioEditorComponent();
 
     //==============================================================================
     /** Our demo filter is a ChangeBroadcaster, and will call us back when one of
@@ -112,4 +112,4 @@ private:
 };
 
 
-#endif
+#endif	//_DROWAUDIOEDITORCOMPONENT_H_

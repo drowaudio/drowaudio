@@ -290,6 +290,7 @@
 								<string>08FB77ADFE841716C02AAC07</string>
 								<string>555D71050F38C20E0099F634</string>
 								<string>8437929D0EFBF08E002A2725</string>
+								<string>555929400F45CAFA0044FC32</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 							</array>
@@ -354,7 +355,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55D35D44105D717300A06007</string>
+										<string>55D35ED6105E633F00A06007</string>
 										<key>history</key>
 										<array>
 											<string>555929EE0F45D7340044FC32</string>
@@ -364,19 +365,20 @@
 											<string>5559383F0F48E9BB0044FC32</string>
 											<string>55C0BC49105B1DA100BF276F</string>
 											<string>55C0BE72105BFCC200BF276F</string>
-											<string>55C0BEA5105C022100BF276F</string>
 											<string>55E66322105D44C30061C56A</string>
 											<string>55E6638D105D53600061C56A</string>
 											<string>55E663B6105D5E240061C56A</string>
 											<string>55E663B7105D5E240061C56A</string>
 											<string>55E663B8105D5E240061C56A</string>
-											<string>55E663B9105D5E240061C56A</string>
-											<string>55E663BA105D5E240061C56A</string>
-											<string>55E663BB105D5E240061C56A</string>
 											<string>55E663BC105D5E240061C56A</string>
-											<string>55D35D0E105D6ADB00A06007</string>
-											<string>55D35D3F105D70EF00A06007</string>
-											<string>55D35D38105D707300A06007</string>
+											<string>55D35D6E105DA0FA00A06007</string>
+											<string>55D35D6F105DA0FA00A06007</string>
+											<string>55D35DBE105DCAED00A06007</string>
+											<string>55D35DCA105DCB3400A06007</string>
+											<string>55D35DDA105DCD8900A06007</string>
+											<string>55D35DEC105DCE3E00A06007</string>
+											<string>55D35DED105DCE3E00A06007</string>
+											<string>55D35ED1105E62F500A06007</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -557,7 +559,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>274559347.54066402</real>
+	<real>274621247.89795101</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -572,6 +574,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>55D35CDF105D5FA200A06007</string>
 		<string>55D35CE0105D5FA200A06007</string>
 		<string>1CD10A99069EF8BA00B06720</string>
@@ -601,7 +604,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DemoEditorComponent.cpp</string>
+								<string>DRowAudioFilter.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -670,7 +673,7 @@
 			<key>WindowToolGUID</key>
 			<string>555D6A180F34DA010099F634</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -819,7 +822,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DRowAudioFilter.cpp</string>
+										<string>DRowAudioParameters.h</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -875,8 +878,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>55E663A4105D568B0061C56A</string>
-				<string>55E663A5105D568B0061C56A</string>
+				<string>55D35D5E105DA00700A06007</string>
+				<string>55D35D5F105DA00700A06007</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
