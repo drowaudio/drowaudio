@@ -58,6 +58,15 @@ public:
 	void makeAllpass(const double sampleRate,
 					   const double frequency,
 					   const double Q) throw();
+	
+    /** Makes this filter duplicate the set-up of another one.
+	 */
+    void copyCoefficientsFrom (const BiquadFilter& other) throw();
+	
+	/** Makes this filter duplicate the set-up of another one.
+	 */
+    void copyOutputsFrom (const BiquadFilter& other) throw();
+	
 };
 
 #endif //_BIQUADFILTER_H_

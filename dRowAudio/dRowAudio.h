@@ -17,18 +17,6 @@
 
 
 // Audio
-#include "src/audio/filters/dRowAudio_BiquadFilter.h"
-#include "src/audio/filters/dRowAudio_OnePoleFilter.h"
-#include "src/audio/filters/dRowAudio_OnePoleOneZeroFilter.h"
-#include "src/audio/filters/dRowAudio_CombFilter.h"
-#include "src/audio/filters/dRowAudio_AllpassFilter.h"
-#include "src/audio/filters/dRowAudio_InterpolatingAllpassFilter.h"
-#include "src/audio/filters/dRowAudio_LBCF.h"
-#include "src/audio/filters/dRowAudio_LBCFPointer.h"
-#include "src/audio/filters/dRowAudio_DelayRegister.h"
-#include "src/audio/filters/dRowAudio_InterpolatingLBCF.h"
-#include "src/audio/filters/dRowAudio_TappedDelayLine.h"
-
 #include "src/audio/dRowAudio_AudioFilePlayer.h"
 #include "src/audio/dRowAudio_FilteringAudioTransportSource.h"
 #include "src/audio/dRowAudio_FilteringAudioFilePlayer.h"
@@ -40,6 +28,21 @@
 #include "src/audio/dRowAudio_AudioUtility.h"
 
 #include "src/audio/MADAudioFormat.h"
+
+#include "src/audio/dRowAudio_EnvelopeFollower.h"
+
+#include "src/audio/filters/dRowAudio_OnePoleFilter.h"
+#include "src/audio/filters/dRowAudio_OnePoleOneZeroFilter.h"
+#include "src/audio/filters/dRowAudio_BiquadFilter.h"
+#include "src/audio/filters/dRowAudio_CascadedBiquadFilter.h"
+#include "src/audio/filters/dRowAudio_CombFilter.h"
+#include "src/audio/filters/dRowAudio_AllpassFilter.h"
+#include "src/audio/filters/dRowAudio_InterpolatingAllpassFilter.h"
+#include "src/audio/filters/dRowAudio_LBCF.h"
+#include "src/audio/filters/dRowAudio_LBCFPointer.h"
+#include "src/audio/filters/dRowAudio_DelayRegister.h"
+#include "src/audio/filters/dRowAudio_InterpolatingLBCF.h"
+#include "src/audio/filters/dRowAudio_TappedDelayLine.h"
 
 
 // Gui

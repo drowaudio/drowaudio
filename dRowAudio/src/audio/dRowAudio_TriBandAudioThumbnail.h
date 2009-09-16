@@ -11,7 +11,9 @@
 #define _TRIBANDAUDIOTHUMBNAIL_H_
 
 #include <juce/juce.h>
-#include <dRowAudio/dRowAudio.h>
+//#include <dRowAudio/dRowAudio.h>
+#include "dRowAudio_AudioFilePlayer.h"
+#include "filters/dRowAudio_BiquadFilter.h"
 
 class AudioFilePlayer;
 

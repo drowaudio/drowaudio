@@ -126,3 +126,19 @@ void BiquadFilter::makeAllpass(const double sampleRate,
 					-2.0f * cos_w0, 
 					1.0f - alpha);
 }
+
+void BiquadFilter::copyCoefficientsFrom (const BiquadFilter& other) throw()
+{
+    const ScopedLock sl (processLock);
+	
+    memcpy (coefficients, other.coefficients, sizeof (coefficients));
+    active = other.active;
+}
+
+void BiquadFilter::copyOutputsFrom (const BiquadFilter& other) throw()
+{
+	x1 = other.x1;
+	x2 = other.x2;
+	y1 = other.y1;
+	y2 = other.y2;
+}
