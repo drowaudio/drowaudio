@@ -63,7 +63,7 @@ public:
 private:
 	CriticalSection lock;
 	
-	float x1, y1, a0, b1, a1;
+	float x1, y1, a0, a1, b1;
 };
 
 

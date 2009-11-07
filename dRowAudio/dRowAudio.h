@@ -33,6 +33,7 @@
 
 #include "src/audio/filters/dRowAudio_OnePoleFilter.h"
 #include "src/audio/filters/dRowAudio_OnePoleOneZeroFilter.h"
+#include "src/audio/filters/dRowAudio_TwoPoleTwoZeroFilter.h"
 #include "src/audio/filters/dRowAudio_BiquadFilter.h"
 #include "src/audio/filters/dRowAudio_CascadedBiquadFilter.h"
 #include "src/audio/filters/dRowAudio_CombFilter.h"
@@ -55,6 +56,8 @@
 #include "src/gui/dRowAudio_FilmstripSlider.h"
 #include "src/gui/dRowAudio_CachedThumbnail.h"
 #include "src/gui/dRowAudio_CpuMeter.h"
+#include "src/gui/dRowAudio_ColumnFileBrowser.h"
+
 //#include "src/gui/dRowAudio_Thumbnail.h"
 
 

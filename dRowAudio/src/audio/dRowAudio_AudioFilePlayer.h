@@ -8,11 +8,11 @@
  *
  */
 
-#ifndef AUDIOFILEPLAYER_H
-#define AUDIOFILEPLAYER_H
+#ifndef _DROWAUDIO_AUDIOFILEPLAYER__H_
+#define _DROWAUDIO_AUDIOFILEPLAYER__H_
 
 #include <juce/juce.h>
-#include <dRowAudio/dRowAudio.h>
+#include "MADAudioFormat.h"
 
 /**
 	This class can be used to load and play an audio file from disk.
@@ -73,4 +73,4 @@ private:
 	String fileName;
 };
 
-#endif //AUDIOFILEPLAYER_H
+#endif //_DROWAUDIO_AUDIOFILEPLAYER__H_

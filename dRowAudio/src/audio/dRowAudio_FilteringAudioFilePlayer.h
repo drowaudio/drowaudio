@@ -71,4 +71,63 @@ private:
 	String fileName;
 };
 
+//#include <juce/juce.h>
+//#include "dRowAudio_AudioFilePlayer.h"
+//
+//class FilteringAudioFilePlayer	:	public AudioFilePlayer
+//{
+//public:
+//	FilteringAudioFilePlayer();
+//	
+//	~FilteringAudioFilePlayer();
+//	
+//	/** Changes the gain of the lowShelfFilter to apply to the output.
+//	 */
+//	void setLowEQGain(float newLowEQGain);
+//	
+//	/** Changes the gain of the bandPassFilter to apply to the output.
+//	 */
+//	void setMidEQGain(float newMidEQGain);
+//	
+//	/** Changes the gain of the highShelfFilter to apply to the output.
+//	 */
+//	void setHighEQGain(float newHighEQGain);
+//	
+//	/** Toggles the filtering of the transport source.
+//	 */
+//	void setFilterSource(bool shouldFilter);
+//	
+//	/** Returns whether the source is being filtered or not.
+//	 */
+//	bool getFilterSource()				{ return filterSource; }
+//	
+//	void setResamplingRatio (double resamplingRatio);
+//	
+////========================================================================
+//	/** Implementation of the AudioSource method. */
+//    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
+//		
+//    /** Implementation of the AudioSource method. */
+//    void releaseResources();
+//	
+//    /** Implementation of the AudioSource method. */
+//    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
+//
+////========================================================================
+//	
+//private:
+//	
+//	// resampler methods
+//	double currentResamplingRatio;
+//	
+//	// filter members
+//	IIRFilter *lowEQFilterLeft, *midEQFilterLeft, *highEQFilterLeft;
+//	IIRFilter *lowEQFilterRight, *midEQFilterRight, *highEQFilterRight;
+//	
+//	double currentSampleRate;
+//	float lowEQGain, midEQGain, highEQGain;
+//	bool filterSource;
+//	
+//};
+
 #endif //_FILTERINGAUDIOFILEPLAYER_H_

@@ -74,6 +74,8 @@ void dRowParameter::init(const String& name_, ParameterUnit unit_, String descri
 		case UnitMilliseconds:
 			setUnitSuffix(T("ms"));
 			break;
+		default:
+			break;
 	}	
 }
 

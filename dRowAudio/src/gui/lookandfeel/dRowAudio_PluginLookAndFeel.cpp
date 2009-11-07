@@ -167,7 +167,7 @@ void dRowLookAndFeel::drawInsetLine (Graphics& g,
 									 const float endY,
 									 const float lineThickness)
 {
-	Colour currentColour(g.getCurrentColour());
+	Colour currentColour(Colours::grey);//(g.getCurrentColour());
 	const float firstThickness = lineThickness * 0.5f;
 	const float secondThickness = lineThickness * 0.25f;
 	
