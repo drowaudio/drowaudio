@@ -250,8 +250,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -300,20 +298,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>43</integer>
-									<integer>17</integer>
-									<integer>1</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>44</integer>
+									<integer>45</integer>
 									<integer>17</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 236}, {295, 660}}</string>
+							<string>{{0, 210}, {295, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -345,12 +337,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_ColumnFileBrowser.cpp</string>
+								<string>dRowAudio_ColumnFileBrowser.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -358,11 +352,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_ColumnFileBrowser.cpp</string>
+										<string>dRowAudio_ColumnFileBrowser.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55E5B09410A52C3D007C7769</string>
+										<string>55E5B4F910A62A55007C7769</string>
 										<key>history</key>
 										<array>
 											<string>55FC0E210F7D469100978B1B</string>
@@ -423,22 +417,15 @@
 											<string>55D363E610722E5700A06007</string>
 											<string>5530199C10A1CD8B00ED9F4C</string>
 											<string>553019A810A1CD8B00ED9F4C</string>
-											<string>55E5A7B710A23F15007C7769</string>
-											<string>55E5A82F10A24E2F007C7769</string>
-											<string>55E5A83010A24E2F007C7769</string>
-											<string>55E5A84710A24F5A007C7769</string>
-											<string>55E5A88610A31ED6007C7769</string>
-											<string>55E5A88710A31ED6007C7769</string>
-											<string>55E5A88810A31ED6007C7769</string>
-											<string>55E5A8FB10A323E2007C7769</string>
-											<string>55E5A8FD10A323E2007C7769</string>
-											<string>55E5A8FE10A323E2007C7769</string>
-											<string>55E5AC7C10A4CFE7007C7769</string>
-											<string>55E5AC7D10A4CFE7007C7769</string>
-											<string>55E5AC7E10A4CFE7007C7769</string>
-											<string>55E5AF8610A517F7007C7769</string>
-											<string>55E5B05A10A529CB007C7769</string>
-											<string>55E5B05B10A529CB007C7769</string>
+											<string>55E5B1A210A5E188007C7769</string>
+											<string>55E5B1FF10A5F677007C7769</string>
+											<string>55E5B2BA10A6133A007C7769</string>
+											<string>55E5B4B310A61FA0007C7769</string>
+											<string>55E5B4B410A61FA0007C7769</string>
+											<string>55E5B4B510A61FA0007C7769</string>
+											<string>55E5B4B710A61FA0007C7769</string>
+											<string>55E5B4F210A62A27007C7769</string>
+											<string>55E5B4F310A62A27007C7769</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -619,7 +606,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>279260221.629906</real>
+	<real>279325269.13352901</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -661,7 +648,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_ColumnFileBrowser.cpp</string>
+								<string>dRowAudio_ColumnFileBrowser.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -877,7 +864,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_FilteringAudioFilePlayer.cpp</string>
+										<string>&lt;No Editor&gt;</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -886,7 +873,7 @@
 										<key>Frame</key>
 										<string>{{0, 0}, {1118, 371}}</string>
 										<key>RubberWindowFrame</key>
-										<string>145 59 1118 677 0 0 1280 778 </string>
+										<string>107 52 1118 677 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXNavigatorGroup</string>
@@ -898,8 +885,6 @@
 							<string>371pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -912,7 +897,7 @@
 								<key>Frame</key>
 								<string>{{0, 376}, {1118, 260}}</string>
 								<key>RubberWindowFrame</key>
-								<string>145 59 1118 677 0 0 1280 778 </string>
+								<string>107 52 1118 677 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXProjectFindModule</string>
@@ -941,7 +926,7 @@
 				<string>1CD0528E0623707200166675</string>
 			</array>
 			<key>WindowString</key>
-			<string>145 59 1118 677 0 0 1280 778 </string>
+			<string>107 52 1118 677 0 0 1280 778 </string>
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>

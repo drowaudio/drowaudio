@@ -11,20 +11,25 @@
 #define _DROWAUDIO_COLUMNFILEBROWSER__H_
 
 #include <juce/juce.h>
+#include "dRowAudio_BasicFileBrowser.h"
 
+class ColumnFileBrowserContents;
 
 //==================================================================================
-class BrowserColumn :	public FileBrowserComponent,
+class BrowserColumn :	public BasicFileBrowser,
 						public DragAndDropContainer
 {
 public:
-	BrowserColumn(WildcardFileFilter *filesToDisplay_)
-	:	FileBrowserComponent(FileBrowserComponent::loadFileMode,
+	BrowserColumn(ColumnFileBrowserContents* parent, WildcardFileFilter *filesToDisplay_, int _columnNumber)
+	:	BasicFileBrowser(BasicFileBrowser::loadFileMode,
 							 File::getSpecialLocation(File::userMusicDirectory),
 							 filesToDisplay_,
 							 0, false),
-		active(false)
+		parentContainer(parent),
+		active(false),
+		columnNumber(_columnNumber)
 	{
+		addMouseListener(this, true);
 		resizer = new ResizableCornerComponent(this, &resizeLimits);
 		addAndMakeVisible(resizer);
 	}
@@ -34,19 +39,70 @@ public:
 		deleteAllChildren();
 	}
 	
-	void fileClicked (const File &file, const MouseEvent &e)
+	void mouseDrag (const MouseEvent& e)
 	{
-		active = true;
-		FileBrowserComponent::fileClicked(file, e);
-		active = false;
+		dragging = true;
 		
-		if (file.existsAsFile())
+		if (enableFile)
 		{
 			StringArray files;
-			files.add(file.getFullPathName());
-			performExternalDragDropOfFiles(files, false);
-		}	
+			files.add(currentFile);
+
+			File file(files[0]);
+			if (file.existsAsFile()) {
+				performExternalDragDropOfFiles(files, false);
+			}			
+		}
+//		if (! e.mouseWasClicked())
+//		{
+//			StringArray files;
+//			files.add(currentFile);
+//
+//			File file(files[0]);
+//			fileClicked (file, e);
+//		}		
+////		if (file.existsAsFile())
+////		{
+////			performExternalDragDropOfFiles(files, false);
+////		}			
 	}
+	
+	void mouseUp (const MouseEvent& e)
+	{
+		DBG("mouse up");
+		dragging = false;
+		enableFile = false;
+	}
+	
+	void fileClicked (const File &file, const MouseEvent &e)
+	{
+//		parentContainer->setActiveColumn(columnNumber);
+
+		currentFile = file.getFullPathName();
+
+		if (! dragging)
+		{
+			DBG("clicked");
+			active = true;
+			BasicFileBrowser::fileClicked(file, e);
+			active = false;
+		}
+		if (dragging)//! e.mouseWasClicked())
+		{
+			enableFile = true;
+			DBG("dragged");
+			StringArray files;
+			files.add(file.getFullPathName());
+
+			if (file.existsAsFile())
+			{
+				performExternalDragDropOfFiles(files, false);
+			}
+			dragging = false;
+		}
+	}
+	
+	void fileDoubleClicked (const File& f){}
 		
 	void resized()
 	{
@@ -57,18 +113,32 @@ public:
 		resizeLimits.setSizeLimits (150, height, 800, height);
 		resizer->setBounds(width - size, height - size, size, size);
 		
-		FileBrowserComponent::resized();
+		BasicFileBrowser::resized();
 		sendChangeMessage(this);
 	}
-		
+
+private:
 	int columnNumber;
-	bool active;
+	bool active, dragging, enableFile;
+	String currentFile;
+	ColumnFileBrowserContents* parentContainer;
 	ResizableCornerComponent* resizer;
 	ComponentBoundsConstrainer resizeLimits;
+	
+	friend class ColumnFileBrowserContents;
 };
 
 class BrowserColumnLookAndFeel : public LookAndFeel
 {
+public:
+	
+	BrowserColumnLookAndFeel()
+	{
+		setColour(ListBox::backgroundColourId, Colour::greyLevel(0.2));
+		setColour(DirectoryContentsDisplayComponent::highlightColourId, Colour::greyLevel(0.9));
+		setColour(DirectoryContentsDisplayComponent::textColourId, Colour::greyLevel(0.9));
+	}
+	
 	void layoutFileBrowserComponent (FileBrowserComponent& browserComp,
 									 DirectoryContentsDisplayComponent* fileListComponent,
 									 FilePreviewComponent* previewComp,
@@ -96,8 +166,14 @@ class BrowserColumnLookAndFeel : public LookAndFeel
 	{
 		if (isItemSelected)
 			g.fillAll (findColour (DirectoryContentsDisplayComponent::highlightColourId));
+//		else if ((itemIndex % 2) != 0)
+//			g.fillAll (findColour(ListBox::backgroundColourId).withBrightness(0.95f));
+//		else if ((itemIndex % 2) == 0)
+//			g.fillAll (browserColumnRow.withAlpha(0.05f));
 		
 		g.setColour (findColour (DirectoryContentsDisplayComponent::textColourId));
+		if (isItemSelected)
+			g.setColour (findColour (DirectoryContentsDisplayComponent::textColourId).contrasting(1.0f));
 		g.setFont (height * 0.7f);
 		
 		Image* im = icon;
@@ -178,8 +254,8 @@ public:
 	~ColumnFileBrowserContents();
 	
 	void resized();
-	
-	void selectionChanged () {}
+			
+	void selectionChanged ();
 	void fileClicked (const File &file, const MouseEvent &e);
 	void fileDoubleClicked (const File &file)	{}
 	
@@ -190,14 +266,34 @@ public:
 	{
 		resized();
 	}
+		
+	bool keyPressed (const KeyPress& key)
+	{
+		if (key.isKeyCode (KeyPress::leftKey))
+		{
+			DBG("left key");
+		}
+		else if (key.isKeyCode (KeyPress::rightKey))
+		{
+			// if last column add a new one
+			if (activeColumn == columns.getLast()->columnNumber)
+				addColumn(columns[activeColumn]->getHighlightedFile());
+		}
+		
+		return false;
+	}
 	
+	int getActiveColumn()	{	return activeColumn;	}
+	void setActiveColumn(int newActiveColumn)	{	activeColumn = newActiveColumn;	}
+		
 private:
 		
 	WildcardFileFilter* filesToDisplay;
 	Viewport* viewport;
 	OwnedArray <BrowserColumn> columns;
+	String currentFilePath;
 	
-	int totalWidth;
+	int startingWidth, activeColumn;
 	
 	BrowserColumnLookAndFeel* lookAndFeel;
 };
@@ -208,6 +304,8 @@ class ColumnFileBrowser :	public Viewport
 public:
 	ColumnFileBrowser (WildcardFileFilter *filesToDisplay_)
 	{
+		addMouseListener(this, true);
+		
 		fileBrowser = new ColumnFileBrowserContents(filesToDisplay_, this);
 		setViewedComponent(fileBrowser);
 	}
@@ -217,10 +315,31 @@ public:
 		fileBrowser->setSize(fileBrowser->getWidth(), getMaximumVisibleHeight());
 	}
 	
+	//====================================================================================
 	void visibleAreaChanged (int visibleX, int visibleY, int visibleW, int visibleH)
 	{
 		resized();
 	}
+	
+	//====================================================================================	
+	void mouseWheelMove (const MouseEvent &e, float wheelIncrementX, float wheelIncrementY)
+	{
+		if (! (e.mods.isAltDown() || e.mods.isCtrlDown()))
+		{
+			if (getHorizontalScrollBar()->isVisible())
+				Viewport::useMouseWheelMoveIfNeeded(e, wheelIncrementX, 0);
+			else
+				Viewport::useMouseWheelMoveIfNeeded(e, wheelIncrementX, wheelIncrementY);
+		}
+	}
+	//====================================================================================
+	//	bool keyPressed (const KeyPress& key)
+//	{
+//		printf("key pressed");
+////		Viewport::keyPressed(key);
+//		
+//		return false;
+//	}
 	
 private:
 	

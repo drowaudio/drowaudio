@@ -56,6 +56,7 @@
 #include "src/gui/dRowAudio_FilmstripSlider.h"
 #include "src/gui/dRowAudio_CachedThumbnail.h"
 #include "src/gui/dRowAudio_CpuMeter.h"
+#include "src/gui/dRowAudio_BasicFileBrowser.h"
 #include "src/gui/dRowAudio_ColumnFileBrowser.h"
 
 //#include "src/gui/dRowAudio_Thumbnail.h"

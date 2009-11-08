@@ -52,6 +52,7 @@
 #include "src/gui/dRowAudio_FilmstripSlider.cpp"
 #include "src/gui/dRowAudio_CachedThumbnail.cpp"
 #include "src/gui/dRowAudio_CpuMeter.cpp"
+#include "src/gui/dRowAudio_BasicFileBrowser.cpp"
 #include "src/gui/dRowAudio_ColumnFileBrowser.cpp"
 //#include "src/gui/dRowAudio_Thumbnail.cpp"
 
