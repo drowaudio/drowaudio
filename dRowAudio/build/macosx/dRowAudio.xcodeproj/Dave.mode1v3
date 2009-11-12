@@ -298,14 +298,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>45</integer>
+									<integer>43</integer>
 									<integer>17</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 210}, {295, 660}}</string>
+							<string>{{0, 236}, {295, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -344,7 +344,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_ColumnFileBrowser.h</string>
+								<string>dRowAudio_BasicFileBrowser.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -352,11 +352,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_ColumnFileBrowser.h</string>
+										<string>dRowAudio_BasicFileBrowser.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55E5B4F910A62A55007C7769</string>
+										<string>5572313C10AC745200CD72BC</string>
 										<key>history</key>
 										<array>
 											<string>55FC0E210F7D469100978B1B</string>
@@ -420,12 +420,17 @@
 											<string>55E5B1A210A5E188007C7769</string>
 											<string>55E5B1FF10A5F677007C7769</string>
 											<string>55E5B2BA10A6133A007C7769</string>
-											<string>55E5B4B310A61FA0007C7769</string>
 											<string>55E5B4B410A61FA0007C7769</string>
-											<string>55E5B4B510A61FA0007C7769</string>
-											<string>55E5B4B710A61FA0007C7769</string>
-											<string>55E5B4F210A62A27007C7769</string>
-											<string>55E5B4F310A62A27007C7769</string>
+											<string>553E4F0410A645E300C1FB16</string>
+											<string>553E4F0610A645E300C1FB16</string>
+											<string>553E4F0810A645E300C1FB16</string>
+											<string>55722DDD10AB264100CD72BC</string>
+											<string>55722E7910AB837800CD72BC</string>
+											<string>55722F5C10AB940C00CD72BC</string>
+											<string>55722F5E10AB940C00CD72BC</string>
+											<string>55722F6010AB940C00CD72BC</string>
+											<string>5572311A10AC731900CD72BC</string>
+											<string>557230F510AC6FF900CD72BC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -483,9 +488,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55E5A7BC10A23F15007C7769</string>
+				<string>55722DE210AB264100CD72BC</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55E5A7BD10A23F15007C7769</string>
+				<string>55722DE310AB264100CD72BC</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -606,7 +611,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>279325269.13352901</real>
+	<real>279737426.99680603</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -621,8 +626,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>55592FD60F47202C0044FC32</string>
 		<string>/Users/Dave/Documents/Developement/dRowAudio/dRowAudio/build/macosx/dRowAudio.xcodeproj</string>
 	</array>
@@ -648,7 +651,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_ColumnFileBrowser.h</string>
+								<string>dRowAudio_ColumnFileBrowser.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -706,7 +709,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>55592FD60F47202C0044FC32</string>
-				<string>55E5A7A910A23DCA007C7769</string>
+				<string>55722DCF10AB257800CD72BC</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

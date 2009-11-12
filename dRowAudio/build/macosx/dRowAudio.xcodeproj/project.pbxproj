@@ -55,7 +55,7 @@
 		5559348D0F4721440044FC32 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5559347E0F4721440044FC32 /* IOKit.framework */; };
 		5559348E0F4721440044FC32 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5559347F0F4721440044FC32 /* OpenGL.framework */; };
 		5559348F0F4721440044FC32 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934800F4721440044FC32 /* WebKit.framework */; };
-		555934940F4721870044FC32 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934920F4721440044FC32 /* libjucedebug.a */; };
+		555934940F4721870044FC32 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934920F4721440044FC32 /* libjuce.a */; };
 		5560C0501018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5560C04E1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h */; };
 		5560C0511018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560C04F1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp */; };
 		5560C31A102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h in Headers */ = {isa = PBXBuildFile; fileRef = 5560C318102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h */; };
@@ -231,7 +231,7 @@
 				5559348D0F4721440044FC32 /* IOKit.framework in Frameworks */,
 				5559348E0F4721440044FC32 /* OpenGL.framework in Frameworks */,
 				5559348F0F4721440044FC32 /* WebKit.framework in Frameworks */,
-				555934940F4721870044FC32 /* libjucedebug.a in Frameworks */,
+				555934940F4721870044FC32 /* libjuce.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,8 +410,8 @@
 		555934700F4721440044FC32 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				555934920F4721440044FC32 /* libjucedebug.a */,
-				55C5B00310A2358700CC6C23 /* libjucedebug.a */,
+				555934920F4721440044FC32 /* libjuce.a */,
+				55C5B00310A2358700CC6C23 /* libjuce.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -528,17 +528,17 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		555934920F4721440044FC32 /* libjucedebug.a */ = {
+		555934920F4721440044FC32 /* libjuce.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libjucedebug.a;
+			path = libjuce.a;
 			remoteRef = 555934910F4721440044FC32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		55C5B00310A2358700CC6C23 /* libjucedebug.a */ = {
+		55C5B00310A2358700CC6C23 /* libjuce.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libjucedebug.a;
+			path = libjuce.a;
 			remoteRef = 55C5B00210A2358700CC6C23 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

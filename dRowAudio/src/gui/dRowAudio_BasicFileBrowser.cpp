@@ -22,16 +22,17 @@ public:
 
 //==============================================================================
 BasicFileBrowser::BasicFileBrowser (FileChooserMode mode_,
-                                            const File& initialFileOrDirectory,
-                                            const FileFilter* fileFilter,
-                                            FilePreviewComponent* previewComp_,
-                                            const bool useTreeView,
-                                            const bool filenameTextBoxIsReadOnly)
+                                    const File& initialFileOrDirectory,
+                                    const FileFilter* fileFilter,
+                                    FilePreviewComponent* previewComp_,
+                                    const bool useTreeView,
+                                    const bool filenameTextBoxIsReadOnly)
 : directoriesOnlyFilter (0),
 mode (mode_),
 listeners (2),
 previewComp (previewComp_),
-thread ("Juce FileBrowser")
+thread ("Juce FileBrowser"),
+isTree(useTreeView)
 {
     String filename;
 	
@@ -69,7 +70,8 @@ thread ("Juce FileBrowser")
     }
 	
     fileListComponent->addListener (this);
-		
+	((FileListComponent*)fileListComponent)->getViewport()->getVerticalScrollBar()->setAutoHide(false);
+	
     StringArray rootNames, rootPaths;
     const BitArray separators (getRoots (rootNames, rootPaths));
 	
@@ -78,7 +80,7 @@ thread ("Juce FileBrowser")
         addAndMakeVisible (previewComp);
 	
     setRoot (currentRoot);
-	
+		
     thread.startThread (4);
 }
 
@@ -118,7 +120,7 @@ const File BasicFileBrowser::getCurrentFile() const throw()
 const File BasicFileBrowser::getHighlightedFile(bool onlyInterestedFiles) const throw()
 {
     const File selected (fileListComponent->getSelectedFile());
-	
+
     if (!onlyInterestedFiles)
 		return fileListComponent->getSelectedFile();
     else
@@ -227,8 +229,6 @@ void BasicFileBrowser::sendListenerChangeMessage()
 
 void BasicFileBrowser::selectionChanged()
 {
-    const File selected (fileListComponent->getSelectedFile());
-		
     sendListenerChangeMessage();
 }
 
@@ -280,8 +280,6 @@ bool BasicFileBrowser::keyPressed (const KeyPress& key)
         return true;
     }
 #endif
-	
-	
 	
     return false;
 }

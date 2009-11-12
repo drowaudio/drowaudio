@@ -14,17 +14,18 @@ ColumnFileBrowserContents::ColumnFileBrowserContents(WildcardFileFilter *filesTo
 	viewport(parentViewport),
 	startingWidth(300)
 {
+	addMouseListener(this, true);
+	
 	lookAndFeel = new BrowserColumnLookAndFeel;
 	setLookAndFeel(lookAndFeel);
 
-	addMouseListener(this, true);
-
-	columns.add(new BrowserColumn(this, filesToDisplay_, 0));
+	columns.add(new BrowserColumn(filesToDisplay_, 0));
 	addAndMakeVisible(columns[0]);
 	columns[0]->setSize(startingWidth, 50);
-	columns[0]->columnNumber = 0;
+	columns[0]->columnNumber = columns.size()-1;
 	columns[0]->addListener(this);
 	columns[0]->addChangeListener(this);
+	columns[0]->addComponentListener(this);
 }
 
 ColumnFileBrowserContents::~ColumnFileBrowserContents()
@@ -49,18 +50,12 @@ void ColumnFileBrowserContents::resized()
 	setSize(width, height);
 }
 
-void ColumnFileBrowserContents::selectionChanged()
-{
-//	columns[1]->setRoot(columns[0]->getHighlightedFile());
-}
-
-void ColumnFileBrowserContents::fileClicked (const File &file, const MouseEvent &e)
+void ColumnFileBrowserContents::selectedFileChanged (const File &file)
 {
 	currentFilePath = file.getFullPathName();
-	DBG( String("File: ")<<currentFilePath );
-
+	
 	// if last column clicked add new column
-	if (columns.getLast()->active)
+	if (columns[activeColumn] == columns.getLast())
 	{
 		addColumn(file);
 	}
@@ -69,9 +64,9 @@ void ColumnFileBrowserContents::fileClicked (const File &file, const MouseEvent 
 	{
 		for (int i = 0; i < columns.size(); i++)
 		{
-			if (columns[i]->active) {
+			if (columns[activeColumn] == columns[i]) {
 				removeColumn(columns.size()-i-(file.isDirectory()?1:0));
-
+				
 				if (file.isDirectory())
 					columns.getLast()->setRoot(file);
 			}
@@ -79,11 +74,11 @@ void ColumnFileBrowserContents::fileClicked (const File &file, const MouseEvent 
 		
 		resized();
 	}
-
+	
 	// stick to edges of viewport
 	if (getWidth() < viewport->getWidth())
 		viewport->setViewPosition(0, 0);
-	else if ( file.isDirectory() )
+	else if ( file.exists())//.isDirectory() )
 		viewport->setViewPosition(viewport->getViewPositionX() - (viewport->getRight() - getRight()), 0);
 	else if (getRight() < viewport->getRight())
 	{
@@ -96,14 +91,15 @@ void ColumnFileBrowserContents::fileClicked (const File &file, const MouseEvent 
 
 bool ColumnFileBrowserContents::addColumn(const File &file)
 {
-	if (file.isDirectory())
+	if (file.isDirectory() && file.exists())
 	{
-		columns.add(new BrowserColumn(this, filesToDisplay, columns.size() - 1));
+		columns.add(new BrowserColumn(filesToDisplay, columns.size()));
 		addAndMakeVisible(columns.getLast());
 		columns.getLast()->setRoot(file);
 		columns.getLast()->setSize(startingWidth, 50);
 		columns.getLast()->addListener(this);
 		columns.getLast()->addChangeListener(this);
+		columns.getLast()->addComponentListener(this);
 		
 		resized();
 		
@@ -118,6 +114,7 @@ void ColumnFileBrowserContents::removeColumn(int noColumns)
 	for (int i = noColumns; i <= 0; --i) {
 		columns[i]->removeListener(this);
 		columns[i]->removeChangeListener(this);
+		columns[i]->removeComponentListener(this);
 	}
 	columns.removeLast(noColumns-1);
 }

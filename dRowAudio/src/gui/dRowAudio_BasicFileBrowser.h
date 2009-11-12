@@ -111,8 +111,24 @@ public:
 	 @see addListener
 	 */
     void removeListener (FileBrowserListener* const listener) throw();
-	
-	
+
+	//==============================================================================
+
+	int getNumRows()
+	{	
+		if (!isTree)
+			((FileListComponent*)fileListComponent)->getNumRows();
+	}
+	void selectRow(int rowNumber)
+	{	
+		if (!isTree)
+			((FileListComponent*)fileListComponent)->selectRow(rowNumber);
+	}
+	void deselectAllRows()
+	{	
+		if (!isTree)
+			((FileListComponent*)fileListComponent)->deselectAllRows();		
+	}
     //==============================================================================
     /** @internal */
     void resized();
@@ -146,6 +162,8 @@ private:
     TimeSliceThread thread;
 	
     void sendListenerChangeMessage();
+	
+	bool isTree;
 	
     BasicFileBrowser (const BasicFileBrowser&);
     const BasicFileBrowser& operator= (const BasicFileBrowser&);
