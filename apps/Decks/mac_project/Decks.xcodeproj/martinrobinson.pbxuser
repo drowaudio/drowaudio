@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	20286C28FDCF999611CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = A8D890F10E8E1AF200440CAD /* juce_application */;
+		activeSDKPreference = macosx10.5;
+		activeTarget = 8D0C4E890486CD37000505A6 /* juce_application */;
+		addToTargets = (
+		);
+		breakpoints = (
+			A88F64CF0E8EC5A400F2D7F0 /* AudioDemo.h:165 */,
+		);
+		codeSenseManager = A8D891280E8E1B1200440CAD /* Code sense */;
+		executables = (
+			A8D890F10E8E1AF200440CAD /* juce_application */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					823,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 246239941;
+			PBXWorkspaceStateSaveDate = 246239941;
+		};
+		perUserProjectItems = {
+			A86277AD0EA6175E00DF4F4F = A86277AD0EA6175E00DF4F4F /* PBXTextBookmark */;
+			A86277AF0EA6175E00DF4F4F = A86277AF0EA6175E00DF4F4F /* PBXTextBookmark */;
+			A86277B70EA6175E00DF4F4F = A86277B70EA6175E00DF4F4F /* PBXTextBookmark */;
+			A86277B90EA6175E00DF4F4F = A86277B90EA6175E00DF4F4F /* PBXTextBookmark */;
+			A86277C00EA6175E00DF4F4F = A86277C00EA6175E00DF4F4F /* PBXTextBookmark */;
+			A86277E50EA618E800DF4F4F = A86277E50EA618E800DF4F4F /* PBXTextBookmark */;
+			A86278200EA63C9B00DF4F4F = A86278200EA63C9B00DF4F4F /* PBXTextBookmark */;
+			A87ED56A0E8FD74E00083532 = A87ED56A0E8FD74E00083532 /* PBXTextBookmark */;
+			A87F10770EAD3C4C0069A03E = A87F10770EAD3C4C0069A03E /* PBXBookmark */;
+			A87F10860EAD3C5E0069A03E = A87F10860EAD3C5E0069A03E /* PBXTextBookmark */;
+			A88F64F10E8EC66D00F2D7F0 = A88F64F10E8EC66D00F2D7F0 /* PlistBookmark */;
+			A88F64F70E8EC66D00F2D7F0 = A88F64F70E8EC66D00F2D7F0 /* PlistBookmark */;
+			A89B01D20EAD52C9007E00C2 /* PBXTextBookmark */ = A89B01D20EAD52C9007E00C2 /* PBXTextBookmark */;
+			A89B01D70EAD52C9007E00C2 /* PBXTextBookmark */ = A89B01D70EAD52C9007E00C2 /* PBXTextBookmark */;
+		};
+		sourceControlManager = A8D891270E8E1B1200440CAD /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D0C4E890486CD37000505A6 /* juce_application */ = {
+		activeExec = 0;
+		executables = (
+			A8D890F10E8E1AF200440CAD /* juce_application */,
+		);
+	};
+	A86277AD0EA6175E00DF4F4F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A86277AE0EA6175E00DF4F4F /* juce_CharacterFunctions.h */;
+		name = "juce_CharacterFunctions.h: 55";
+		rLen = 10;
+		rLoc = 2272;
+		rType = 0;
+		vrLen = 1097;
+		vrLoc = 1361;
+	};
+	A86277AE0EA6175E00DF4F4F /* juce_CharacterFunctions.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = juce_CharacterFunctions.h;
+		path = /Users/martinrobinson/development/juce_code/juce/src/juce_core/text/juce_CharacterFunctions.h;
+		sourceTree = "<absolute>";
+	};
+	A86277AF0EA6175E00DF4F4F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A86277B00EA6175E00DF4F4F /* juce_MathsFunctions.h */;
+		name = "juce_MathsFunctions.h: 100";
+		rLen = 7;
+		rLoc = 4609;
+		rType = 0;
+		vrLen = 2063;
+		vrLoc = 3812;
+	};
+	A86277B00EA6175E00DF4F4F /* juce_MathsFunctions.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = juce_MathsFunctions.h;
+		path = /Users/martinrobinson/development/juce_code/juce/src/juce_core/basics/juce_MathsFunctions.h;
+		sourceTree = "<absolute>";
+	};
+	A86277B70EA6175E00DF4F4F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A86277B80EA6175E00DF4F4F /* juce_CharacterFunctions.h */;
+		name = "juce_CharacterFunctions.h: 55";
+		rLen = 10;
+		rLoc = 2272;
+		rType = 0;
+		vrLen = 1097;
+		vrLoc = 1361;
+	};
+	A86277B80EA6175E00DF4F4F /* juce_CharacterFunctions.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = juce_CharacterFunctions.h;
+		path = /Users/martinrobinson/development/juce_code/juce/src/juce_core/text/juce_CharacterFunctions.h;
+		sourceTree = "<absolute>";
+	};
+	A86277B90EA6175E00DF4F4F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A86277BA0EA6175E00DF4F4F /* juce_MathsFunctions.h */;
+		name = "juce_MathsFunctions.h: 100";
+		rLen = 7;
+		rLoc = 4609;
+		rType = 0;
+		vrLen = 2063;
+		vrLoc = 3812;
+	};
+	A86277BA0EA6175E00DF4F4F /* juce_MathsFunctions.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = juce_MathsFunctions.h;
+		path = /Users/martinrobinson/development/juce_code/juce/src/juce_core/basics/juce_MathsFunctions.h;
+		sourceTree = "<absolute>";
+	};
+	A86277C00EA6175E00DF4F4F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A86277C10EA6175E00DF4F4F /* juce_Component.h */;
+		name = "juce_Component.h: 1228";
+		rLen = 39;
+		rLoc = 53980;
+		rType = 0;
+		vrLen = 1906;
+		vrLoc = 47629;
+	};
+	A86277C10EA6175E00DF4F4F /* juce_Component.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = juce_Component.h;
+		path = /Users/martinrobinson/development/juce_code/juce/src/juce_appframework/gui/components/juce_Component.h;
+		sourceTree = "<absolute>";
+	};
+	A86277E50EA618E800DF4F4F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A86277C10EA6175E00DF4F4F /* juce_Component.h */;
+		name = "juce_Component.h: 794";
+		rLen = 0;
+		rLoc = 34703;
+		rType = 0;
+		vrLen = 2122;
+		vrLoc = 33488;
+	};
+	A86278200EA63C9B00DF4F4F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A88F65F20E8EE8FA00F2D7F0 /* juce.h */;
+		name = "juce.h: 180";
+		rLen = 141;
+		rLoc = 6100;
+		rType = 0;
+		vrLen = 1406;
+		vrLoc = 5379;
+	};
+	A87ED55D0E8FD6CD00083532 /* ApplicationStartup.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1001, 2338}}";
+			sepNavSelRange = "{7080, 22}";
+			sepNavVisRange = "{5807, 1273}";
+		};
+	};
+	A87ED55F0E8FD6F300083532 /* MainAppWindow.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1001, 924}}";
+			sepNavSelRange = "{957, 0}";
+			sepNavVisRange = "{85, 1397}";
+		};
+	};
+	A87ED5600E8FD6F300083532 /* MainAppWindow.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1001, 1176}}";
+			sepNavSelRange = "{1621, 0}";
+			sepNavVisRange = "{607, 1792}";
+		};
+	};
+	A87ED5620E8FD72700083532 /* MainComponent.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1001, 2114}}";
+			sepNavSelRange = "{1430, 0}";
+			sepNavVisRange = "{0, 1407}";
+		};
+	};
+	A87ED56A0E8FD74E00083532 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A88F65F20E8EE8FA00F2D7F0 /* juce.h */;
+		name = "juce.h: 179";
+		rLen = 46;
+		rLoc = 6054;
+		rType = 0;
+		vrLen = 1458;
+		vrLoc = 5641;
+	};
+	A87F10770EAD3C4C0069A03E /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = A87ED5620E8FD72700083532 /* MainComponent.h */;
+	};
+	A87F10860EAD3C5E0069A03E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A87ED5620E8FD72700083532 /* MainComponent.h */;
+		name = "MainComponent.h: 42";
+		rLen = 0;
+		rLoc = 1430;
+		rType = 0;
+		vrLen = 1430;
+		vrLoc = 0;
+	};
+	A88F64CB0E8EC53E00F2D7F0 /* AudioDemo.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = AudioDemo.h;
+		path = "/Users/martinrobinson/development/juce_code/applications/MyJuceTemplateApp /AudioDemo.h";
+		sourceTree = "<absolute>";
+	};
+	A88F64CF0E8EC5A400F2D7F0 /* AudioDemo.h:165 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = A88F64CB0E8EC53E00F2D7F0 /* AudioDemo.h */;
+		functionName = "audioDeviceAboutToStart (AudioIODevice* device)";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 165;
+		modificationTime = 246236417.430015;
+		state = 0;
+	};
+	A88F64F10E8EC66D00F2D7F0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D0C4E960486CD37000505A6 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/martinrobinson/development/juce_code/applications/MyJuceTemplateApp /Info.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	A88F64F70E8EC66D00F2D7F0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D0C4E960486CD37000505A6 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/martinrobinson/development/juce_code/applications/MyJuceTemplateApp /Info.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	A88F65F20E8EE8FA00F2D7F0 /* juce.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = juce.h;
+		path = /Users/martinrobinson/development/juce_code/juce/juce.h;
+		sourceTree = "<absolute>";
+	};
+	A89B01D20EAD52C9007E00C2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A87ED5620E8FD72700083532 /* MainComponent.h */;
+		name = "MainComponent.h: 42";
+		rLen = 0;
+		rLoc = 1430;
+		rType = 0;
+		vrLen = 1430;
+		vrLoc = 0;
+	};
+	A89B01D70EAD52C9007E00C2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A87ED5620E8FD72700083532 /* MainComponent.h */;
+		name = "MainComponent.h: 42";
+		rLen = 0;
+		rLoc = 1430;
+		rType = 0;
+		vrLen = 1407;
+		vrLoc = 0;
+	};
+	A8D890F10E8E1AF200440CAD /* juce_application */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = juce_application;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	A8D891270E8E1B1200440CAD /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	A8D891280E8E1B1200440CAD /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
