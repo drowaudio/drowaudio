@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+		D0BEE33CD8AB2C577C6AFA19 = { isa = PBXBuildFile; fileRef = 80F6A8B63729A6DF729887AB; };
+		ED9FFAB1D624059659719C4B = { isa = PBXBuildFile; fileRef = 52A39482801CDAD7C80771DB; };
+		2CE5081168C98CE6A7C939CF = { isa = PBXBuildFile; fileRef = CFF4CE67C2BBE6845F2A1453; };
+		F86B25AC2387D2A08F616E35 = { isa = PBXBuildFile; fileRef = 3D2AA657DE0F5DF15F81ACC3; };
+		B4774EAD1D560D11B49A1EC3 = { isa = PBXBuildFile; fileRef = FC53E9DD51E94107FD486251; };
+		E84C80C5DCACDDFE589949BB = { isa = PBXBuildFile; fileRef = 6AE0B7CBAE2ADE75C53B6447; };
+		9F7A7F13113B822AC97333E4 = { isa = PBXBuildFile; fileRef = 67242842297782815FFB94C3; };
+		6C9111989B6F487A8B611771 = { isa = PBXBuildFile; fileRef = 342DAFA1747A6C731022DBFC; };
+		E1C37F7BF0772A00EEDE57F2 = { isa = PBXBuildFile; fileRef = 75E4F1D02D4324E833E2AB38; };
+		095EE384B807EB3B24D19F4C = { isa = PBXBuildFile; fileRef = 2C6D05330CE43257C6EEF3FB; };
+		C03637BDF14CE773A2EB2DAA = { isa = PBXBuildFile; fileRef = 0C648E93ABE49244CBC7DBF4; };
+		70907C01255F6EC48A973F1A = { isa = PBXBuildFile; fileRef = 180BDA3231D2DCC2B887A5A2; };
+		71F00C8EA46C100F30023F74 = { isa = PBXBuildFile; fileRef = 81EEA219C740584AD974F680; };
+		992E7E2A85BC2B0DA91CE4D1 = { isa = PBXBuildFile; fileRef = 425D6C09710560CAD13B64C5; };
+		107FD22A0CF75C115E7C0E98 = { isa = PBXBuildFile; fileRef = EA03A3D554673EBFB93B0114; };
+		950FB4F0C78DC7E007D889DD = { isa = PBXBuildFile; fileRef = 56AF2CD6832F42B03DD64DFD; };
+		DE761B07B4378012249A219A = { isa = PBXBuildFile; fileRef = 1CF02085B2E92C13E060CD82; };
+		D26BE6FC18104431FFBA8DF2 = { isa = PBXBuildFile; fileRef = 824C20D102FB8069BE1A808F; };
+		B3AE7DFD2D22DAB9D3CB6F56 = { isa = PBXBuildFile; fileRef = 902FBCF7E76529D2D40EDC52; };
+		EE10433CD3B6DA34B8C97316 = { isa = PBXBuildFile; fileRef = 0735B04B431D98AD78BFA858; };
+		66A178CFE8C3BEBD22836BB8 = { isa = PBXBuildFile; fileRef = 70C9CB9C386D8C937451F08D; };
+		E516D163C99889F122A1BC73 = { isa = PBXBuildFile; fileRef = 37E1E04CBA55B23BA5A93467; };
+		4B437B92A78362E7333D9845 = { isa = PBXBuildFile; fileRef = 30E1F16FAB65BBAACA849F69; };
+		28EAFEE2B4342C7B80A78E91 = { isa = PBXBuildFile; fileRef = 5D0B6763DF3FE6EAFDB02F5D; };
+		EDAEB7FBFDBBCD260E732461 = { isa = PBXBuildFile; fileRef = D713F3EB0C0ADC86982CDC19; };
+		41A664A86809A86631F074A0 = { isa = PBXBuildFile; fileRef = 900185FA9AA3D660772E3D4C; };
+		452B9A09C04FB0903CE700EE = { isa = PBXBuildFile; fileRef = F014390255E38DC7C7A46BDD; };
+		325FC2FDC0892B2AFA289123 = { isa = PBXBuildFile; fileRef = A8ACA0B29345EFF5769D9DA8; };
+		80F6A8B63729A6DF729887AB = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		52A39482801CDAD7C80771DB = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CFF4CE67C2BBE6845F2A1453 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3D2AA657DE0F5DF15F81ACC3 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FC53E9DD51E94107FD486251 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6AE0B7CBAE2ADE75C53B6447 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		EB76E0210168B8B95BC9EC13 = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD5A4E23328FF2B91B579FA1 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		67242842297782815FFB94C3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationStartup.cpp; path = ../../Source/main/ApplicationStartup.cpp; sourceTree = SOURCE_ROOT; };
+		40F437461414DDC8F5114067 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultSettings.h; path = ../../Source/main/DefaultSettings.h; sourceTree = SOURCE_ROOT; };
+		8C2BB5F921175543CCCA8659 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../../Source/main/Settings.h; sourceTree = SOURCE_ROOT; };
+		342DAFA1747A6C731022DBFC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Settings.cpp; path = ../../Source/main/Settings.cpp; sourceTree = SOURCE_ROOT; };
+		868FAD8819764D9DF712ECF1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeckManager.h; path = ../../Source/main/DeckManager.h; sourceTree = SOURCE_ROOT; };
+		75E4F1D02D4324E833E2AB38 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckManager.cpp; path = ../../Source/main/DeckManager.cpp; sourceTree = SOURCE_ROOT; };
+		B68C3E4EDD8FA27FC6C113C5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerSettings.h; path = ../../Source/main/MixerSettings.h; sourceTree = SOURCE_ROOT; };
+		32AA67C67D2072FA2C7A62DD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioEngine.h; path = ../../Source/main/AudioEngine.h; sourceTree = SOURCE_ROOT; };
+		2C6D05330CE43257C6EEF3FB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioEngine.cpp; path = ../../Source/main/AudioEngine.cpp; sourceTree = SOURCE_ROOT; };
+		6E9749BC4FAAD9949A00C732 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksLookAndFeel.h; path = ../../Source/ui/DecksLookAndFeel.h; sourceTree = SOURCE_ROOT; };
+		0C648E93ABE49244CBC7DBF4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksLookAndFeel.cpp; path = ../../Source/ui/DecksLookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
+		181AB0DA7C77E51D953A3D24 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainAppWindow.h; path = ../../Source/ui/MainAppWindow.h; sourceTree = SOURCE_ROOT; };
+		180BDA3231D2DCC2B887A5A2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainAppWindow.cpp; path = ../../Source/ui/MainAppWindow.cpp; sourceTree = SOURCE_ROOT; };
+		162D4DD3589A083BB4224DC0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ContainerComponent.h; path = ../../Source/ui/ContainerComponent.h; sourceTree = SOURCE_ROOT; };
+		81EEA219C740584AD974F680 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ContainerComponent.cpp; path = ../../Source/ui/ContainerComponent.cpp; sourceTree = SOURCE_ROOT; };
+		FABCFCA068AFF382EC0780C5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ControlComponent.h; path = ../../Source/ui/controls/ControlComponent.h; sourceTree = SOURCE_ROOT; };
+		425D6C09710560CAD13B64C5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ControlComponent.cpp; path = ../../Source/ui/controls/ControlComponent.cpp; sourceTree = SOURCE_ROOT; };
+		4AE6BDB56E02299E5EC730D5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Transport.h; path = ../../Source/ui/controls/transport/Transport.h; sourceTree = SOURCE_ROOT; };
+		EA03A3D554673EBFB93B0114 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Transport.cpp; path = ../../Source/ui/controls/transport/Transport.cpp; sourceTree = SOURCE_ROOT; };
+		EA3ED4C7BA4566967E202186 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeckTransport.h; path = ../../Source/ui/controls/transport/DeckTransport.h; sourceTree = SOURCE_ROOT; };
+		56AF2CD6832F42B03DD64DFD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckTransport.cpp; path = ../../Source/ui/controls/transport/DeckTransport.cpp; sourceTree = SOURCE_ROOT; };
+		4CC12202EAE06D0E02A6AFBC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackInfo.h; path = ../../Source/ui/controls/transport/TrackInfo.h; sourceTree = SOURCE_ROOT; };
+		1CF02085B2E92C13E060CD82 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackInfo.cpp; path = ../../Source/ui/controls/transport/TrackInfo.cpp; sourceTree = SOURCE_ROOT; };
+		C97BCA57A45504F5CB230048 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DraggableDisplay.h; path = ../../Source/ui/controls/draggable_display/DraggableDisplay.h; sourceTree = SOURCE_ROOT; };
+		824C20D102FB8069BE1A808F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DraggableDisplay.cpp; path = ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp; sourceTree = SOURCE_ROOT; };
+		5DBB4D4F6E1842D181843161 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mixer.h; path = ../../Source/ui/controls/mixer/Mixer.h; sourceTree = SOURCE_ROOT; };
+		902FBCF7E76529D2D40EDC52 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Mixer.cpp; path = ../../Source/ui/controls/mixer/Mixer.cpp; sourceTree = SOURCE_ROOT; };
+		25935F7B889DDAED4A18A9FF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerChannelStrip.h; path = ../../Source/ui/controls/mixer/MixerChannelStrip.h; sourceTree = SOURCE_ROOT; };
+		0735B04B431D98AD78BFA858 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixerChannelStrip.cpp; path = ../../Source/ui/controls/mixer/MixerChannelStrip.cpp; sourceTree = SOURCE_ROOT; };
+		8ED22032CA501E9368A28C66 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CrossFader.h; path = ../../Source/ui/controls/mixer/CrossFader.h; sourceTree = SOURCE_ROOT; };
+		70C9CB9C386D8C937451F08D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CrossFader.cpp; path = ../../Source/ui/controls/mixer/CrossFader.cpp; sourceTree = SOURCE_ROOT; };
+		B87450A9B14162D2371EBED6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MasterChannelStrip.h; path = ../../Source/ui/controls/mixer/MasterChannelStrip.h; sourceTree = SOURCE_ROOT; };
+		37E1E04CBA55B23BA5A93467 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MasterChannelStrip.cpp; path = ../../Source/ui/controls/mixer/MasterChannelStrip.cpp; sourceTree = SOURCE_ROOT; };
+		30E1F16FAB65BBAACA849F69 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_SegmentedMeter.cpp; path = ../../Source/ui/controls/mixer/dRowAudio_SegmentedMeter.cpp; sourceTree = SOURCE_ROOT; };
+		F95B81E47AACBEC079F6937D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_SegmentedMeter.h; path = ../../Source/ui/controls/mixer/dRowAudio_SegmentedMeter.h; sourceTree = SOURCE_ROOT; };
+		E35C43256F242051E83FC23A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SettingsComponent.h; path = ../../Source/ui/settings/SettingsComponent.h; sourceTree = SOURCE_ROOT; };
+		5D0B6763DF3FE6EAFDB02F5D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SettingsComponent.cpp; path = ../../Source/ui/settings/SettingsComponent.cpp; sourceTree = SOURCE_ROOT; };
+		C313D1FAB5DEFB0EBBC2E62F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerSettingsComponent.h; path = ../../Source/ui/settings/MixerSettingsComponent.h; sourceTree = SOURCE_ROOT; };
+		D713F3EB0C0ADC86982CDC19 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixerSettingsComponent.cpp; path = ../../Source/ui/settings/MixerSettingsComponent.cpp; sourceTree = SOURCE_ROOT; };
+		CD7C3F8A6D6179A5755D8936 = { isa = PBXFileReference; lastKnownFileType = file.svg; name = controls_pause.svg; path = ../../Source/resources/buttons/controls_pause.svg; sourceTree = SOURCE_ROOT; };
+		275A4621AC85A0D21467F58C = { isa = PBXFileReference; lastKnownFileType = file.svg; name = controls_play.svg; path = ../../Source/resources/buttons/controls_play.svg; sourceTree = SOURCE_ROOT; };
+		E31AE855F185F57E9F23A278 = { isa = PBXFileReference; lastKnownFileType = file.svg; name = controls_stop.svg; path = ../../Source/resources/buttons/controls_stop.svg; sourceTree = SOURCE_ROOT; };
+		FA320CB3B231EF36E177A2A9 = { isa = PBXFileReference; lastKnownFileType = file.icns; name = Decks.icns; path = ../../Source/resources/Decks.icns; sourceTree = SOURCE_ROOT; };
+		4EA63BBA9D40D629510BFE98 = { isa = PBXFileReference; lastKnownFileType = image.png; name = Decks_icon.png; path = ../../Source/resources/Decks_icon.png; sourceTree = SOURCE_ROOT; };
+		FDE938E69232BBD87153DD5C = { isa = PBXFileReference; lastKnownFileType = file.psd; name = Decks_icon.psd; path = ../../Source/resources/Decks_icon.psd; sourceTree = SOURCE_ROOT; };
+		900185FA9AA3D660772E3D4C = { isa = PBXFileReference; lastKnownFileType = file.c; name = dRowAudio.c; path = ../../../../dRowAudio/dRowAudio.c; sourceTree = SOURCE_ROOT; };
+		F014390255E38DC7C7A46BDD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio.cpp; path = ../../../../dRowAudio/dRowAudio.cpp; sourceTree = SOURCE_ROOT; };
+		91F404BD205EDEC23BBE9FD2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
+		5870DB6A2318032290CB0331 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
+		A8ACA0B29345EFF5769D9DA8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = SOURCE_ROOT; };
+		8E3B1D49C63A28EAEC9CF2A3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
+		48E05EEBC0DCD23ECF8E3DBF = { isa = PBXGroup; children = (
+				67242842297782815FFB94C3,
+				40F437461414DDC8F5114067,
+				8C2BB5F921175543CCCA8659,
+				342DAFA1747A6C731022DBFC,
+				868FAD8819764D9DF712ECF1,
+				75E4F1D02D4324E833E2AB38,
+				B68C3E4EDD8FA27FC6C113C5,
+				32AA67C67D2072FA2C7A62DD,
+				2C6D05330CE43257C6EEF3FB ); name = main; sourceTree = "<group>"; };
+		DEC2A5CD412C6D13C8E3D3AB = { isa = PBXGroup; children = (
+				4AE6BDB56E02299E5EC730D5,
+				EA03A3D554673EBFB93B0114,
+				EA3ED4C7BA4566967E202186,
+				56AF2CD6832F42B03DD64DFD,
+				4CC12202EAE06D0E02A6AFBC,
+				1CF02085B2E92C13E060CD82 ); name = transport; sourceTree = "<group>"; };
+		E4BB6FF10B6E6FEE1C836D1D = { isa = PBXGroup; children = (
+				C97BCA57A45504F5CB230048,
+				824C20D102FB8069BE1A808F ); name = draggable_display; sourceTree = "<group>"; };
+		017AA0A061CF080DBD504663 = { isa = PBXGroup; children = (
+				5DBB4D4F6E1842D181843161,
+				902FBCF7E76529D2D40EDC52,
+				25935F7B889DDAED4A18A9FF,
+				0735B04B431D98AD78BFA858,
+				8ED22032CA501E9368A28C66,
+				70C9CB9C386D8C937451F08D,
+				B87450A9B14162D2371EBED6,
+				37E1E04CBA55B23BA5A93467,
+				30E1F16FAB65BBAACA849F69,
+				F95B81E47AACBEC079F6937D ); name = mixer; sourceTree = "<group>"; };
+		1A0CC1B0E6D406FE1366DC19 = { isa = PBXGroup; children = (
+				FABCFCA068AFF382EC0780C5,
+				425D6C09710560CAD13B64C5,
+				DEC2A5CD412C6D13C8E3D3AB,
+				E4BB6FF10B6E6FEE1C836D1D,
+				017AA0A061CF080DBD504663 ); name = controls; sourceTree = "<group>"; };
+		A2EA70C17C62F78392BB60B7 = { isa = PBXGroup; children = (
+				E35C43256F242051E83FC23A,
+				5D0B6763DF3FE6EAFDB02F5D,
+				C313D1FAB5DEFB0EBBC2E62F,
+				D713F3EB0C0ADC86982CDC19 ); name = settings; sourceTree = "<group>"; };
+		890674A826B0DF06A65FE9B2 = { isa = PBXGroup; children = (
+				6E9749BC4FAAD9949A00C732,
+				0C648E93ABE49244CBC7DBF4,
+				181AB0DA7C77E51D953A3D24,
+				180BDA3231D2DCC2B887A5A2,
+				162D4DD3589A083BB4224DC0,
+				81EEA219C740584AD974F680,
+				1A0CC1B0E6D406FE1366DC19,
+				A2EA70C17C62F78392BB60B7 ); name = ui; sourceTree = "<group>"; };
+		0B8C1255792DAABC0CE129EA = { isa = PBXGroup; children = (
+				CD7C3F8A6D6179A5755D8936,
+				275A4621AC85A0D21467F58C,
+				E31AE855F185F57E9F23A278 ); name = buttons; sourceTree = "<group>"; };
+		92A1BDF5F64141B310A7A8EE = { isa = PBXGroup; children = (
+				0B8C1255792DAABC0CE129EA,
+				FA320CB3B231EF36E177A2A9,
+				4EA63BBA9D40D629510BFE98,
+				FDE938E69232BBD87153DD5C ); name = resources; sourceTree = "<group>"; };
+		9718D55145510452C82EC162 = { isa = PBXGroup; children = (
+				48E05EEBC0DCD23ECF8E3DBF,
+				890674A826B0DF06A65FE9B2,
+				92A1BDF5F64141B310A7A8EE ); name = Source; sourceTree = "<group>"; };
+		F29C2B4CEB7FCC057AA03247 = { isa = PBXGroup; children = (
+				900185FA9AA3D660772E3D4C,
+				F014390255E38DC7C7A46BDD ); name = Libraries; sourceTree = "<group>"; };
+		0EEBC810E95FF71D45330402 = { isa = PBXGroup; children = (
+				91F404BD205EDEC23BBE9FD2,
+				5870DB6A2318032290CB0331,
+				A8ACA0B29345EFF5769D9DA8,
+				8E3B1D49C63A28EAEC9CF2A3 ); name = "Juce Library Code"; sourceTree = "<group>"; };
+		C35938F44DCB2C4B16470924 = { isa = PBXGroup; children = (
+				CD5A4E23328FF2B91B579FA1 ); name = Resources; sourceTree = "<group>"; };
+		D608FFC92435DE338695B475 = { isa = PBXGroup; children = (
+				80F6A8B63729A6DF729887AB,
+				52A39482801CDAD7C80771DB,
+				CFF4CE67C2BBE6845F2A1453,
+				3D2AA657DE0F5DF15F81ACC3,
+				FC53E9DD51E94107FD486251,
+				6AE0B7CBAE2ADE75C53B6447 ); name = Frameworks; sourceTree = "<group>"; };
+		E10DCC458375397A609A08D1 = { isa = PBXGroup; children = (
+				EB76E0210168B8B95BC9EC13 ); name = Products; sourceTree = "<group>"; };
+		A7C59CEB977298DA713A6166 = { isa = PBXGroup; children = (
+				9718D55145510452C82EC162,
+				F29C2B4CEB7FCC057AA03247,
+				0EEBC810E95FF71D45330402,
+				C35938F44DCB2C4B16470924,
+				D608FFC92435DE338695B475,
+				E10DCC458375397A609A08D1 ); name = Source; sourceTree = "<group>"; };
+		B618935E07D7A9187A9C8662 = { isa = XCBuildConfiguration; buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				PREBINDING = NO;
+				HEADER_SEARCH_PATHS = " $(inherited)";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				SDKROOT = iphonesimulator3.0;
+				OTHER_LDFLAGS = "-ljucedebug";
+				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"$(SRCROOT)/../../../../../juce_source/juce/bin\"");
+				ONLY_ACTIVE_ARCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+				"_DEBUG=1",
+				"DEBUG=1 "); }; name = Debug; };
+		40B42CC1214F4EF280E8053A = { isa = XCBuildConfiguration; buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				PREBINDING = NO;
+				HEADER_SEARCH_PATHS = " $(inherited)";
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				SDKROOT = iphonesimulator3.0;
+				OTHER_LDFLAGS = "-ljucedebug";
+				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"$(SRCROOT)/../../../../../juce_source/juce/bin\"");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+				"_NDEBUG=1",
+				"NDEBUG=1 "); }; name = Release; };
+		3166EA8BE6D9BEF189879A07 = { isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				ZERO_LINK = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = "Decks"; }; name = Debug; };
+		24FC9DF6BF90C087BE65AC1A = { isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				ZERO_LINK = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = "Decks"; }; name = Release; };
+		EDEF46A152A4E4ED0BE677D4 = { isa = XCConfigurationList; buildConfigurations = (
+				3166EA8BE6D9BEF189879A07,
+				24FC9DF6BF90C087BE65AC1A ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+		852153EC32089D35AAE69CC8 = { isa = XCConfigurationList; buildConfigurations = (
+				B618935E07D7A9187A9C8662,
+				40B42CC1214F4EF280E8053A ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+		505064D4AB4FB1E60837F09C = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (  ); runOnlyForDeploymentPostprocessing = 0; };
+		3CF760437A4BCB4372493539 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				9F7A7F13113B822AC97333E4,
+				6C9111989B6F487A8B611771,
+				E1C37F7BF0772A00EEDE57F2,
+				095EE384B807EB3B24D19F4C,
+				C03637BDF14CE773A2EB2DAA,
+				70907C01255F6EC48A973F1A,
+				71F00C8EA46C100F30023F74,
+				992E7E2A85BC2B0DA91CE4D1,
+				107FD22A0CF75C115E7C0E98,
+				950FB4F0C78DC7E007D889DD,
+				DE761B07B4378012249A219A,
+				D26BE6FC18104431FFBA8DF2,
+				B3AE7DFD2D22DAB9D3CB6F56,
+				EE10433CD3B6DA34B8C97316,
+				66A178CFE8C3BEBD22836BB8,
+				E516D163C99889F122A1BC73,
+				4B437B92A78362E7333D9845,
+				28EAFEE2B4342C7B80A78E91,
+				EDAEB7FBFDBBCD260E732461,
+				41A664A86809A86631F074A0,
+				452B9A09C04FB0903CE700EE,
+				325FC2FDC0892B2AFA289123 ); runOnlyForDeploymentPostprocessing = 0; };
+		E01C919C5337055BFB1B233A = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
+				D0BEE33CD8AB2C577C6AFA19,
+				ED9FFAB1D624059659719C4B,
+				2CE5081168C98CE6A7C939CF,
+				F86B25AC2387D2A08F616E35,
+				B4774EAD1D560D11B49A1EC3,
+				E84C80C5DCACDDFE589949BB ); runOnlyForDeploymentPostprocessing = 0; };
+		B428EAAFF8BB2A792CA5A0F8 = { isa = PBXNativeTarget; buildConfigurationList = 852153EC32089D35AAE69CC8; buildPhases = (
+				505064D4AB4FB1E60837F09C,
+				3CF760437A4BCB4372493539,
+				E01C919C5337055BFB1B233A ); buildRules = ( ); dependencies = ( ); name = Decks; productName = Decks; productReference = EB76E0210168B8B95BC9EC13; productInstallPath = "$(HOME)/Applications"; productType = "com.apple.product-type.application"; };
+		AFC27DE8E9C1486A98ABD55F = { isa = PBXProject; buildConfigurationList = EDEF46A152A4E4ED0BE677D4; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = A7C59CEB977298DA713A6166; projectDirPath = ""; projectRoot = ""; targets = ( B428EAAFF8BB2A792CA5A0F8 ); };
+	};
+	rootObject = AFC27DE8E9C1486A98ABD55F;
+}

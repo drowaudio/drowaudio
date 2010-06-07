@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 8.00
+# Visual C++ Express 2005
+Project("{AC561BA9-52CA-A929-9757-C467FC5545F6}") = "Decks", "Decks.vcproj", "{45A5DA3C-2166-31BD-583C-BFF18CF2F895}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45A5DA3C-2166-31BD-583C-BFF18CF2F895}.Debug|Win32.ActiveCfg = Debug|Win32
+		{45A5DA3C-2166-31BD-583C-BFF18CF2F895}.Debug|Win32.Build.0 = Debug|Win32
+		{45A5DA3C-2166-31BD-583C-BFF18CF2F895}.Release|Win32.ActiveCfg = Release|Win32
+		{45A5DA3C-2166-31BD-583C-BFF18CF2F895}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

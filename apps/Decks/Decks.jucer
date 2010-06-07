@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="dJzUUhKMr" name="Decks" projectType="guiapp" version="1.0.0"
+              juceLinkage="static" buildVST="1" buildRTAS="0" buildAU="1" pluginName="Juce Project"
+              pluginDesc="Juce Project" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
+              pluginCode="Abcd" pluginChannelConfigs="{1, 1}, {2, 2}" pluginIsSynth="0"
+              pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0"
+              pluginTailLength="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="JuceProjectAU"
+              pluginAUViewClass="JuceProjectAU_V1" pluginRTASCategory="" bundleIdentifier="com.dRowAudio.Decks"
+              jucerVersion="3.0.0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+               juceFolder="../../../juce_source/juce"/>
+    <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+                  juceFolder="../../../juce_source/juce"/>
+    <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
+           juceFolder="../../../juce_source/juce"/>
+    <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce_source/juce"/>
+    <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce_source/juce"/>
+    <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4" juceFolder="../../../juce_source/juce"/>
+  </EXPORTFORMATS>
+  <CONFIGURATIONS>
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Decks"
+                   osxSDK="default" osxCompatibility="default"/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="Decks"
+                   osxSDK="default" osxCompatibility="default"/>
+  </CONFIGURATIONS>
+  <MAINGROUP id="LdDaBcHXR" name="Decks">
+    <GROUP id="o2BFbRoCU" name="Source">
+      <GROUP id="cPvwJXytK" name="main">
+        <FILE id="EVLi2hfhh" name="ApplicationStartup.cpp" compile="1" resource="0"
+              file="Source/main/ApplicationStartup.cpp"/>
+        <FILE id="WMOAcAECD" name="DefaultSettings.h" compile="0" resource="0"
+              file="Source/main/DefaultSettings.h"/>
+        <FILE id="l5H7nTOFh" name="Settings.h" compile="0" resource="0" file="Source/main/Settings.h"/>
+        <FILE id="DrhCCFDvc" name="Settings.cpp" compile="1" resource="0" file="Source/main/Settings.cpp"/>
+        <FILE id="XMrUwZizd" name="DeckManager.h" compile="0" resource="0"
+              file="Source/main/DeckManager.h"/>
+        <FILE id="EqS7YWGJ7" name="DeckManager.cpp" compile="1" resource="0"
+              file="Source/main/DeckManager.cpp"/>
+        <FILE id="ZOcVatnBQ" name="MixerSettings.h" compile="0" resource="0"
+              file="Source/main/MixerSettings.h"/>
+        <FILE id="8gRlA2ONz" name="AudioEngine.h" compile="0" resource="0"
+              file="Source/main/AudioEngine.h"/>
+        <FILE id="nMCYSJylF" name="AudioEngine.cpp" compile="1" resource="0"
+              file="Source/main/AudioEngine.cpp"/>
+      </GROUP>
+      <GROUP id="FsBCWm8L" name="ui">
+        <FILE id="4QlMJlZKr" name="DecksLookAndFeel.h" compile="0" resource="0"
+              file="Source/ui/DecksLookAndFeel.h"/>
+        <FILE id="MUIhZOHMV" name="DecksLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/ui/DecksLookAndFeel.cpp"/>
+        <FILE id="uRUZS4WSI" name="MainAppWindow.h" compile="0" resource="0"
+              file="Source/ui/MainAppWindow.h"/>
+        <FILE id="YicBl8sBh" name="MainAppWindow.cpp" compile="1" resource="0"
+              file="Source/ui/MainAppWindow.cpp"/>
+        <FILE id="GPsPd9AF2" name="ContainerComponent.h" compile="0" resource="0"
+              file="Source/ui/ContainerComponent.h"/>
+        <FILE id="UgSI9foQO" name="ContainerComponent.cpp" compile="1" resource="0"
+              file="Source/ui/ContainerComponent.cpp"/>
+        <GROUP id="ujgs7pwvo" name="controls">
+          <FILE id="9YaO03Alq" name="ControlComponent.h" compile="0" resource="0"
+                file="Source/ui/controls/ControlComponent.h"/>
+          <FILE id="39puMfr8Q" name="ControlComponent.cpp" compile="1" resource="0"
+                file="Source/ui/controls/ControlComponent.cpp"/>
+          <GROUP id="PidJuhai" name="transport">
+            <FILE id="Oo8nOZDjO" name="Transport.h" compile="0" resource="0" file="Source/ui/controls/transport/Transport.h"/>
+            <FILE id="kflisWUfP" name="Transport.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/transport/Transport.cpp"/>
+            <FILE id="noa5QTQ7R" name="DeckTransport.h" compile="0" resource="0"
+                  file="Source/ui/controls/transport/DeckTransport.h"/>
+            <FILE id="EFIa8PnSD" name="DeckTransport.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/transport/DeckTransport.cpp"/>
+            <FILE id="vajm0lLmx" name="TrackInfo.h" compile="0" resource="0" file="Source/ui/controls/transport/TrackInfo.h"/>
+            <FILE id="8QQ0IzJwo" name="TrackInfo.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/transport/TrackInfo.cpp"/>
+          </GROUP>
+          <GROUP id="P09TluKEA" name="draggable_display">
+            <FILE id="awhZon8GG" name="DraggableDisplay.h" compile="0" resource="0"
+                  file="Source/ui/controls/draggable_display/DraggableDisplay.h"/>
+            <FILE id="Fkb9NVLgd" name="DraggableDisplay.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/draggable_display/DraggableDisplay.cpp"/>
+          </GROUP>
+          <GROUP id="7oNbtMyUO" name="mixer">
+            <FILE id="ZfNll0ZYZ" name="Mixer.h" compile="0" resource="0" file="Source/ui/controls/mixer/Mixer.h"/>
+            <FILE id="qbal3rRC" name="Mixer.cpp" compile="1" resource="0" file="Source/ui/controls/mixer/Mixer.cpp"/>
+            <FILE id="K87ax6f0K" name="MixerChannelStrip.h" compile="0" resource="0"
+                  file="Source/ui/controls/mixer/MixerChannelStrip.h"/>
+            <FILE id="xWtafNjeL" name="MixerChannelStrip.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/mixer/MixerChannelStrip.cpp"/>
+            <FILE id="WQhw1lUx" name="CrossFader.h" compile="0" resource="0" file="Source/ui/controls/mixer/CrossFader.h"/>
+            <FILE id="AemyOTJir" name="CrossFader.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/mixer/CrossFader.cpp"/>
+            <FILE id="Kihdw2lhp" name="MasterChannelStrip.h" compile="0" resource="0"
+                  file="Source/ui/controls/mixer/MasterChannelStrip.h"/>
+            <FILE id="6TBUJVOGX" name="MasterChannelStrip.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/mixer/MasterChannelStrip.cpp"/>
+            <FILE id="ct4JdGcwA" name="dRowAudio_SegmentedMeter.cpp" compile="1"
+                  resource="0" file="Source/ui/controls/mixer/dRowAudio_SegmentedMeter.cpp"/>
+            <FILE id="8uFl6Q5rY" name="dRowAudio_SegmentedMeter.h" compile="0"
+                  resource="0" file="Source/ui/controls/mixer/dRowAudio_SegmentedMeter.h"/>
+          </GROUP>
+        </GROUP>
+        <GROUP id="ILMF0iyCj" name="settings">
+          <FILE id="wV0WRi5BZ" name="SettingsComponent.h" compile="0" resource="0"
+                file="Source/ui/settings/SettingsComponent.h"/>
+          <FILE id="qZO6QS11c" name="SettingsComponent.cpp" compile="1" resource="0"
+                file="Source/ui/settings/SettingsComponent.cpp"/>
+          <FILE id="gfUtUad1u" name="MixerSettingsComponent.h" compile="0" resource="0"
+                file="Source/ui/settings/MixerSettingsComponent.h"/>
+          <FILE id="0cMmbq2Lg" name="MixerSettingsComponent.cpp" compile="1"
+                resource="0" file="Source/ui/settings/MixerSettingsComponent.cpp"/>
+        </GROUP>
+      </GROUP>
+      <GROUP id="SzcsvFko0" name="resources">
+        <GROUP id="O3kKlqJi4" name="buttons">
+          <FILE id="SLw8OQppL" name="controls_pause.svg" compile="0" resource="1"
+                file="Source/resources/buttons/controls_pause.svg"/>
+          <FILE id="qwHsWQTDG" name="controls_play.svg" compile="0" resource="1"
+                file="Source/resources/buttons/controls_play.svg"/>
+          <FILE id="Ez7oXPAlJ" name="controls_stop.svg" compile="0" resource="1"
+                file="Source/resources/buttons/controls_stop.svg"/>
+        </GROUP>
+        <FILE id="4nPQR2cA2" name="Decks.icns" compile="0" resource="0" file="Source/resources/Decks.icns"/>
+        <FILE id="H0hwTQxn5" name="Decks_icon.png" compile="0" resource="1"
+              file="Source/resources/Decks_icon.png"/>
+        <FILE id="fRKIacRyj" name="Decks_icon.psd" compile="0" resource="0"
+              file="Source/resources/Decks_icon.psd"/>
+      </GROUP>
+    </GROUP>
+    <GROUP id="gCWqRquL9" name="Libraries">
+      <FILE id="k5CoAWWNu" name="dRowAudio.c" compile="1" resource="0" file="../../dRowAudio/dRowAudio.c"/>
+      <FILE id="F7ImfB9t" name="dRowAudio.cpp" compile="1" resource="0" file="../../dRowAudio/dRowAudio.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ASIO="default"
+               JUCE_WASAPI="default" JUCE_DIRECTSOUND="default" JUCE_ALSA="default"
+               JUCE_QUICKTIME="default" JUCE_OPENGL="default" JUCE_USE_FLAC="default"
+               JUCE_USE_OGGVORBIS="default" JUCE_USE_CDBURNER="default" JUCE_USE_CDREADER="default"
+               JUCE_USE_CAMERA="default" JUCE_ENABLE_REPAINT_DEBUGGING="default"
+               JUCE_USE_XINERAMA="default" JUCE_USE_XSHM="default" JUCE_USE_XRENDER="default"
+               JUCE_USE_XCURSOR="default" JUCE_PLUGINHOST_VST="default" JUCE_PLUGINHOST_AU="default"
+               JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_WEB_BROWSER="default"
+               JUCE_SUPPORT_CARBON="default" JUCE_CHECK_MEMORY_LEAKS="default"
+               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"/>
+</JUCERPROJECT>
