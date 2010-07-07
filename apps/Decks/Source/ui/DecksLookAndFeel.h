@@ -18,7 +18,7 @@ class DecksLookAndFeel :	public LookAndFeel,
 public:
 	juce_DeclareSingleton (DecksLookAndFeel, false) 
 
-	enum PanelColours {
+	enum DecksColours {
 		backgroundColour,
 		panelColour,
 		panelLineColour,
@@ -27,8 +27,10 @@ public:
 	};
 	
 	DecksLookAndFeel();
-	
-	Colour getDecksColour(PanelColours colour)	{	return decksColours[colour];	}
+
+	void setDecksColour(DecksColours colour, Colour newColour)	{	decksColours.getReference(colour) = newColour;	}
+
+	Colour getDecksColour(DecksColours colour)					{	return decksColours[colour];	}
 
 	//============================================================
 	int getSliderThumbRadius (Slider& slider);

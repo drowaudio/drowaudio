@@ -29,7 +29,7 @@ public:
 		gainSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 		gainSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 		gainSlider->setRange(Defaults::Mixer::Master::gainMin, Defaults::Mixer::Master::gainMax);
-		gainSlider->getValueObject().referTo(DeckManager::getInstance()->getMasterValueObject(DeckManager::gain));
+		gainSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfMasterAsValue(MASTER_SETTING(gain)));
 		
 		addAndMakeVisible(meterL = new SegmentedMeter());
 		addAndMakeVisible(meterR = new SegmentedMeter());
@@ -38,14 +38,14 @@ public:
 		cueButton->setClickingTogglesState(true);
 		cueButton->setColour(TextButton::buttonOnColourId, Colours::orangered);
 		cueButton->setToggleState(Defaults::Mixer::Master::cue, false);
-		cueButton->getToggleStateValue().referTo(DeckManager::getInstance()->getMasterValueObject(DeckManager::cue));
+		cueButton->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfMasterAsValue(MASTER_SETTING(cue)));
 		
 		addAndMakeVisible( faderCurveSlider = new Slider(T("faderCurveSlider")) );
 		faderCurveSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 		faderCurveSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 		faderCurveSlider->setRange(Defaults::Mixer::Master::faderCurveMin, Defaults::Mixer::Master::faderCurveMax);
 		faderCurveSlider->setValue(Defaults::Mixer::Master::faderCurve);
-		faderCurveSlider->getValueObject().referTo(DeckManager::getInstance()->getMasterValueObject(DeckManager::faderCurve));
+		faderCurveSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfMasterAsValue(MASTER_SETTING(faderCurve)));
 
 		addAndMakeVisible( faderCurveLabel = new Label(T("faderCurveLabel"), T("Ch Curve")) );
 		faderCurveLabel->setJustificationType(Justification::centred);
@@ -56,7 +56,7 @@ public:
 		xFaderCurveSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 		xFaderCurveSlider->setRange(Defaults::Mixer::Master::xFaderCurveMin, Defaults::Mixer::Master::xFaderCurveMax);
 		xFaderCurveSlider->setValue(Defaults::Mixer::Master::xFaderCurve);
-		xFaderCurveSlider->getValueObject().referTo(DeckManager::getInstance()->getMasterValueObject(DeckManager::xFaderCurve));
+		xFaderCurveSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfMasterAsValue(MASTER_SETTING(xFaderCurve)));
 		
 		addAndMakeVisible( xFaderCurveLabel = new Label(T("xFaderCurveLabel"), T("X Curve")) );
 		xFaderCurveLabel->setJustificationType(Justification::centred);

@@ -23,17 +23,10 @@
 #include "../../main/AudioEngine.h"
 #include "../DecksLookAndFeel.h"
 
-class ControlComponent  : public Component,
-					   public ButtonListener,
-					   public ApplicationCommandTarget
+class ControlComponent  : public Component
 {
 private:
-	
-//	enum CommandIDs
-//    {
-//        goToKioskMode              = 0x200f
-//    };
-	
+		
 	TooltipWindow tooltipWindow;
 	DeckManager *deckManager;
 	
@@ -43,7 +36,8 @@ private:
 		
 	TabbedComponent* tabbedComponent;
 	Viewport *mixerViewport;
-	Mixer *mixer;
+//	Mixer *mixer;
+	
 	ColumnFileBrowser* fileBrowser;
 		
 	double currentSampleRate;
@@ -60,23 +54,10 @@ public:
 	void resized ();
 	
 	void paint (Graphics& g);
-	
-	void paintOverChildren (Graphics& g);
+		
+	//==============================================================================
 	
 	//==============================================================================
-	void buttonClicked(Button *button);
-	
-	//==============================================================================
-    ApplicationCommandTarget* getNextCommandTarget();
-	
-    void getAllCommands (Array <CommandID>& commands);
-	
-	void getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result);
-	
-    bool perform (const InvocationInfo& info);
-	
-	//==============================================================================
-//	void setUpLookAndFeel();
 
 };
 

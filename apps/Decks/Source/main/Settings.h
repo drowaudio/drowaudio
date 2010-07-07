@@ -15,7 +15,8 @@
 #include <dRowAudio/dRowAudio.h>
 #include "MixerSettings.h"
 
-class Settings	:	public ValueTree::Listener
+class Settings	:	public ValueTree::Listener,
+					public DeletedAtShutdown
 {	
 public:
 
@@ -28,33 +29,65 @@ public:
 	ValueTree getValueTree()			{ return settings;	}
 	ValueTree* getValueTreePointer()	{ return &settings;	}
 	
+	//===============================================================================
 	// use these macros to shorten getting the various settings
 #define CHANNEL_SETTING(setting) MixerSettings::ChannelSettings::Names[MixerSettings::ChannelSettings::setting]
 #define XFADER_SETTING(setting) MixerSettings::xFaderSettings::Names[MixerSettings::xFaderSettings::setting]
 #define MASTER_SETTING(setting) MixerSettings::MasterSettings::Names[MixerSettings::MasterSettings::setting]
 	
-	var getPropertyOfChild(String child, String property)
+//	var getPropertyOfChild(String child, String property)
+//	{
+//		return settings.getChildWithName(child).getPropertyAsValue(property, 0).getValue();
+//	}
+//	
+//	var getPropertyOfChannel(int channelNo, String property)
+//	{
+//		String channelName(MixerSettings::ChannelSettings::SectionName);
+//		channelName << channelNo;
+//		return settings.getChildWithName(channelName).getPropertyAsValue(property, 0).getValue();
+//	}
+//	
+//	var getPropertyOfXFader(String property)
+//	{
+//		return getPropertyOfChild(MixerSettings::xFaderSettings::SectionName, property);
+//	}
+//	
+//	var getPropertyOfMaster(String property)
+//	{
+//		return getPropertyOfChild(MixerSettings::MasterSettings::SectionName, property);
+//	}
+	
+	Value getPropertyOfChildAsValue(String child, String property)
 	{
-		return settings.getChildWithName(child).getPropertyAsValue(property, 0).getValue();
+		return settings.getChildWithName(child).getPropertyAsValue(property, 0);
 	}
 	
-	var getPropertyOfChannel(int channelNo, String property)
+	Value getPropertyOfChannelAsValue(int channelNo, String property)
 	{
 		String channelName(MixerSettings::ChannelSettings::SectionName);
 		channelName << channelNo;
-		return settings.getChildWithName(channelName).getPropertyAsValue(property, 0).getValue();
+		return settings.getChildWithName(MixerSettings::ChannelSettings::SectionName).getChildWithName(channelName).getPropertyAsValue(property, 0);
 	}
-	
-	var getPropertyOfXFader(String property)
+		
+	Value getPropertyOfXFaderAsValue(String property)
 	{
-		return getPropertyOfChild(MixerSettings::xFaderSettings::SectionName, property);
+		return getPropertyOfChildAsValue(MixerSettings::xFaderSettings::SectionName, property);
 	}
 	
-	var getPropertyOfMaster(String property)
+	Value getPropertyOfMasterAsValue(String property)
 	{
-		return getPropertyOfChild(MixerSettings::MasterSettings::SectionName, property);
+		return getPropertyOfChildAsValue(MixerSettings::MasterSettings::SectionName, property);
 	}
 	
+	var getPropertyOfChild(String child, String property)		{ return getPropertyOfChildAsValue(child, property).getValue();	}
+	
+	var getPropertyOfChannel(int channelNo, String property)	{ return getPropertyOfChannelAsValue(channelNo, property).getValue(); }
+	
+	var getPropertyOfXFader(String property)					{ return getPropertyOfXFaderAsValue(property).getValue(); }
+	
+	var getPropertyOfMaster(String property)					{ return getPropertyOfMasterAsValue(property).getValue(); }
+	
+//===============================================================================
 	bool loadSettingsFile(String path, ValueTree &treeToFill);
 	
 	bool buildDefaultSettings(ValueTree &treeToFill);
@@ -62,13 +95,15 @@ public:
 	bool rebuildChannelsTree(int newNoChannels);
 	
 //===============================================================================
-	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const var::identifier  &property)
+	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property)
 	{
-		String message(property.name);
-		message << " *-* " << treeWhosePropertyHasChanged.getProperty(property).toString();
+		String message;
+		message << treeWhosePropertyHasChanged.getType().toString();
+		message << " - " << property.toString();
+		message << " - " << treeWhosePropertyHasChanged.getProperty(property).toString();
 		DBG(message);
 		
-		if (property.name == "noChannels")
+		if (property.toString() == MixerSettings::ChannelSettings::SectionName)
 			rebuildChannelsTree(treeWhosePropertyHasChanged.getProperty(property));
 	}
 	

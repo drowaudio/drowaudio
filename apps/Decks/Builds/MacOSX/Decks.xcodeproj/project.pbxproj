@@ -23,6 +23,7 @@
 		71F00C8EA46C100F30023F74 /* ContainerComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81EEA219C740584AD974F680 /* ContainerComponent.cpp */; };
 		7300D01BB1C7B77C1E0EB82A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A5C470278A8899ED6807B9 /* OpenGL.framework */; };
 		7B5E730C02A7145EE3B6382E /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFB51E91E2BBD5023776511 /* QTKit.framework */; };
+		836029042E33FC8B64526F09 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0C9B2FDA3A1D70C8F696227F /* Icon.icns */; };
 		9088445C006CCF8BC6B3FD08 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3AA196BDEF123F117FEF54 /* Carbon.framework */; };
 		950FB4F0C78DC7E007D889DD /* DeckTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56AF2CD6832F42B03DD64DFD /* DeckTransport.cpp */; };
 		992E7E2A85BC2B0DA91CE4D1 /* ControlComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 425D6C09710560CAD13B64C5 /* ControlComponent.cpp */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixerChannelStrip.cpp; path = ../../Source/ui/controls/mixer/MixerChannelStrip.cpp; sourceTree = SOURCE_ROOT; };
 		0C648E93ABE49244CBC7DBF4 /* DecksLookAndFeel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksLookAndFeel.cpp; path = ../../Source/ui/DecksLookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
+		0C9B2FDA3A1D70C8F696227F /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = SOURCE_ROOT; };
 		162D4DD3589A083BB4224DC0 /* ContainerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ContainerComponent.h; path = ../../Source/ui/ContainerComponent.h; sourceTree = SOURCE_ROOT; };
 		180BDA3231D2DCC2B887A5A2 /* MainAppWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainAppWindow.cpp; path = ../../Source/ui/MainAppWindow.cpp; sourceTree = SOURCE_ROOT; };
 		181AB0DA7C77E51D953A3D24 /* MainAppWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainAppWindow.h; path = ../../Source/ui/MainAppWindow.h; sourceTree = SOURCE_ROOT; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				CD5A4E23328FF2B91B579FA1 /* Info.plist */,
+				0C9B2FDA3A1D70C8F696227F /* Icon.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -353,7 +356,7 @@
 			hasScannedForEncodings = 0;
 			mainGroup = A7C59CEB977298DA713A6166 /* Source */;
 			projectDirPath = "";
-			projectRoot = "";
+			projectRoot = ../..;
 			targets = (
 				B428EAAFF8BB2A792CA5A0F8 /* Decks */,
 			);
@@ -365,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				836029042E33FC8B64526F09 /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,8 +413,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
@@ -428,8 +433,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
@@ -449,6 +455,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"_NDEBUG=1",
 					"NDEBUG=1",
 				);
@@ -463,7 +470,7 @@
 					"\"$(SRCROOT)/../../../../../juce_source/juce/bin\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_LDFLAGS = "-ljucedebug";
+				OTHER_LDFLAGS = "-ljuce";
 				PREBINDING = NO;
 			};
 			name = Release;
@@ -474,9 +481,10 @@
 				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"_DEBUG=1",
 					"DEBUG=1",
 				);

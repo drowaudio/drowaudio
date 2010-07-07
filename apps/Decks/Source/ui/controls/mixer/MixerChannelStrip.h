@@ -13,6 +13,7 @@
 #include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 #include "../../DecksLookAndFeel.h"
+#include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
 #include "dRowAudio_SegmentedMeter.h"
 
@@ -20,8 +21,8 @@
 class Mixer;
 
 class MixerChannelStrip :	public Component,
-							public ButtonListener,
-							public SliderListener
+//							public SliderListener,
+							public ValueTree::Listener
 {
 public:
 	
@@ -58,9 +59,11 @@ public:
 	void paint(Graphics &g);
 	
 	//================================================================
-	void buttonClicked(Button *button);
+//	void sliderValueChanged (Slider* slider);
 	
-	void sliderValueChanged (Slider* slider);
+	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
+	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged) {}
+	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged) {}
 	
 	//================================================================
 	SegmentedMeter* getMeter()	{	return meter;	}

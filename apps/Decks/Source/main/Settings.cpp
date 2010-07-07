@@ -74,53 +74,23 @@ bool Settings::loadSettingsFile(String path, ValueTree &treeToFill)
 
 bool Settings::buildDefaultSettings(ValueTree &treeToFill)
 {
-	ValueTree noChannels("noChannels");
-	noChannels.setProperty("noChannels", MixerSettings::noChannels, 0);
-	treeToFill.addChild(noChannels, -1, 0);
-	
-	ValueTree channels("channels");
-	for (int i = 0; i < MixerSettings::noChannels; i++)
-	{
-		String name("channel");
-		name<<i;
-		ValueTree deck(name);
-		
-		for (int p = 0; p < MixerSettings::ChannelSettings::noChannelSettings; p++)
-		{
-			deck.setProperty(MixerSettings::ChannelSettings::Names[p], MixerSettings::ChannelSettings::Values[p], 0);
-		}
-		
-		channels.addChild(deck, -1, 0);
-	}
-	treeToFill.addChild(channels, -1, 0);
-	
-	ValueTree xFaderTree("xFader");
-	for (int p = 0; p < MixerSettings::xFaderSettings::noXFaderSettings; p++)
-	{
-		xFaderTree.setProperty(MixerSettings::xFaderSettings::Names[p], MixerSettings::xFaderSettings::Values[p], 0);
-	}
-	treeToFill.addChild(xFaderTree, -1, 0);
-	
-	ValueTree masterTree("master");
-	for (int p = 0; p < MixerSettings::MasterSettings::noMasterSettings; p++)
-	{
-		masterTree.setProperty(MixerSettings::MasterSettings::Names[p], MixerSettings::MasterSettings::Values[p], 0);
-	}
-	treeToFill.addChild(masterTree, -1, 0);
+	MixerSettings::buildDefaultMixerSettings(treeToFill);
 	
 	return treeToFill.isValid();
 }
 
 bool Settings::rebuildChannelsTree(int newNoChannels)
 {
-	ValueTree channels = settings.getChildWithName("channels");
+	ValueTree channels = settings.getChildWithName(MixerSettings::ChannelSettings::SectionName);
 	int currentNoChannels = channels.getNumChildren();
-	DBG(String(currentNoChannels));
+	String message("rebuilding channels tree for ");
+	message << currentNoChannels;
+	DBG(message);
 	
 	if (newNoChannels > currentNoChannels) {
 		for (int i = currentNoChannels-1; i < newNoChannels; i++)
 		{
-			String name("channel");
+			String name(MixerSettings::ChannelSettings::SectionName);
 			name<<i;
 			ValueTree deck(name);
 			

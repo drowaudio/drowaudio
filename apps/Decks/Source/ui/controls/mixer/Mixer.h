@@ -13,27 +13,11 @@
 #include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 #include "../../DecksLookAndFeel.h"
+#include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
 #include "MixerChannelStrip.h"
 #include "MasterChannelStrip.h"
 #include "CrossFader.h"
-
-//class Mixer : public Viewport {
-//public:
-//	Mixer()
-//	{
-//		mixer = new MixerContent;
-//		setViewedComponent(mixer);
-//	}
-//	
-//	~Mixer()
-//	{
-//		deleteAllChildren();
-//	}
-//		
-//private:
-//	MixerContent *mixer;
-//};
 
 class Mixer : public  Component
 {
@@ -41,16 +25,16 @@ public:
 	Mixer()
 	{
 		addAndMakeVisible( masterStrip = new MasterChannelStrip() );
-		addAndMakeVisible( xFader = new CrossFader(this) );
+		addAndMakeVisible( xFader = new CrossFader() );
 
-		const int noDecks = DeckManager::getInstance()->getMaxNoDecks();
+		const int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
 		for (int i = 0; i < noDecks; i++)
 		{
 			channelStrips.add(new MixerChannelStrip(i, this));
 			addAndMakeVisible(channelStrips[i]);
 		}
 
-		setSize(815, 425);
+//		centreWithSize(815, 425);
 	}
 	
 	~Mixer()
@@ -65,7 +49,7 @@ public:
 		const int stripWidth = 130;
 		const int stripHeight = 320;
 		const int m = 2;
-		const int noDecks = DeckManager::getInstance()->getMaxNoDecks();
+		const int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
 
 		int currentDeck = 0;
 		channelStrips[currentDeck++]->setBounds(m, m, stripWidth, stripHeight);
@@ -87,18 +71,18 @@ public:
 	//================================================================
 	// Master acessor methods
 	//================================================================
-	double getMasterGain()	{	return masterStrip->getGainLevel();	}
-
+//	double getMasterGain()	{	return masterStrip->getGainLevel();	}
+//
 	const MasterChannelStrip* getMasterChannelStrip()	{	return masterStrip;	}
-
-	//================================================================
-	// XFader acessor methods
-	//================================================================
-	float getXFaderLevelX()		{	return xFader->getXFaderLevelX();	}
-	float getXFaderLevelY()		{	return xFader->getXFaderLevelY();	}
-
-	int getXFaderAssignX()		{	return xFader->getAssignX();		}
-	int getXFaderAssignY()		{	return xFader->getAssignY();		}
+//
+//	//================================================================
+//	// XFader acessor methods
+//	//================================================================
+//	float getXFaderLevelX()		{	return xFader->getXFaderLevelX();	}
+//	float getXFaderLevelY()		{	return xFader->getXFaderLevelY();	}
+//
+//	int getXFaderAssignX()		{	return xFader->getAssignX();		}
+//	int getXFaderAssignY()		{	return xFader->getAssignY();		}
 	//================================================================
 	void updateMeterForChannel(int deckNo, float **data, int numSamples, int numChannels)
 	{

@@ -16,26 +16,24 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	deckNo(deckNo_),
 	mixer(mixer_)
 {
-	mixer->getMasterChannelStrip()->faderCurveSlider->addListener(this);
-	
+//	mixer->getMasterChannelStrip()->faderCurveSlider->addListener(this);
+	Settings::getInstance()->getValueTreePointer()->addListener(this);
+		
 	addAndMakeVisible(onButon = new DrawableButton(T("onButon"), DrawableButton::ImageOnButtonBackground));
 	onButon->setBackgroundColours(Colours::darkgrey, Colours::lightgrey);
-//	onButon->addButtonListener(this);
 	onButon->setClickingTogglesState(true);
-	onButon->setToggleState(settings->getDeck(deckNo)->getDeckSettingVar(Deck::on), false);
-	onButon->getToggleStateValue().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::on));
+	onButon->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(on)));
 
 	addAndMakeVisible(bypassButton = new DrawableButton(T("bypass"), DrawableButton::ImageOnButtonBackground));
-	onButon->addButtonListener(this);
+//	onButon->addButtonListener(this);
 	bypassButton->setClickingTogglesState(true);
 	bypassButton->setBackgroundColours(Colours::darkgrey, Colours::lightgrey);
-//	bypassButton->setToggleState(settings->getDeck(deckNo)->getDeckSettingVar(Deck::bypass), false);
-	bypassButton->getToggleStateValue().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::bypass));
+	bypassButton->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(bypass)));
 
 	addAndMakeVisible(gainSlider = new Slider(T("gainSlider")));
 	gainSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	gainSlider->setRange(Defaults::Mixer::Channel::gainMin, Defaults::Mixer::Channel::gainMax);
-	gainSlider->getValueObject().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::gain));
+	gainSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(gain)));
 
 	addAndMakeVisible(meter = new SegmentedMeter());
 	
@@ -48,7 +46,6 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 		
 		eqKillButtons.add(new TextButton(T("K")));
 		addAndMakeVisible(eqKillButtons[i]);
-//		eqKillButtons[i]->addButtonListener(this);
 		eqKillButtons[i]->setClickingTogglesState(true);
 		
 		eqLabels.add(new Label(T(""), T("")));
@@ -61,33 +58,29 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	eqLabels[low]->setText(T("Low"), false);
 	
 	eqSliders[high]->setRange(Defaults::Mixer::Channel::HighEQ::gainMin, Defaults::Mixer::Channel::HighEQ::gainMax);
-	eqSliders[high]->getValueObject().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::highGain));
-	eqKillButtons[high]->getToggleStateValue().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::highKill));
-//	eqKillButtons[high]->setToggleState(settings->getDeck(deckNo)->getDeckSettingVar(Deck::highKill), false);
-
+	eqSliders[high]->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(highGain)));
+	eqKillButtons[high]->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(highKill)));
+	
 	eqSliders[mid]->setRange(Defaults::Mixer::Channel::MidEQ::gainMin, Defaults::Mixer::Channel::MidEQ::gainMax);
-	eqSliders[mid]->getValueObject().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::midGain));
-	eqKillButtons[mid]->getToggleStateValue().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::midKill));
-//	eqKillButtons[mid]->setToggleState(settings->getDeck(deckNo)->getDeckSettingVar(Deck::midKill), false);
+	eqSliders[mid]->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(midGain)));
+	eqKillButtons[mid]->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(midKill)));
 
 	eqSliders[low]->setRange(Defaults::Mixer::Channel::LowEQ::gainMin, Defaults::Mixer::Channel::LowEQ::gainMax);
-	eqSliders[low]->getValueObject().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::lowGain));
-	eqKillButtons[low]->getToggleStateValue().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::lowKill));
-//	eqKillButtons[low]->setToggleState(settings->getDeck(deckNo)->getDeckSettingVar(Deck::lowKill), false);
+	eqSliders[low]->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(lowGain)));
+	eqKillButtons[low]->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(lowKill)));
 	
 	
 	addAndMakeVisible(levelSlider = new Slider(T("levelSlider")));
 	levelSlider->setSliderStyle(Slider::LinearVertical);
 	levelSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	levelSlider->setRange(Defaults::Mixer::Channel::faderMin, Defaults::Mixer::Channel::faderMax);
-	levelSlider->getValueObject().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::level));
+	levelSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(level)));
 
 	addAndMakeVisible(cueButton = new TextButton(T("cue")));
-	cueButton->addButtonListener(this);
+//	cueButton->addButtonListener(this);
 	cueButton->setClickingTogglesState(true);
 	cueButton->setColour(TextButton::buttonOnColourId, Colours::orangered);
-//	cueButton->setToggleState(settings->getDeck(deckNo)->getDeckSettingVar(Deck::cue), false);
-	cueButton->getToggleStateValue().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::cue));
+	cueButton->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(cue)));
 	
 
 	addAndMakeVisible( fxASlider = new Slider(T("fxASlider")) );
@@ -95,14 +88,14 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	fxASlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	(new Label(T("fxALabel"), T("fxA")))->attachToComponent(fxASlider, true);
 	fxASlider->setRange(Defaults::Mixer::Channel::fxSendMin, Defaults::Mixer::Channel::fxSendMax);
-	fxASlider->getValueObject().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::fxASend));
+	fxASlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(fxASend)));
 
 	addAndMakeVisible( fxBSlider = new Slider(T("fxBSlider")) );
 	fxBSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	fxBSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	(new Label(T("fxBSlider"), T("fxB")))->attachToComponent(fxBSlider, true);
 	fxBSlider->setRange(Defaults::Mixer::Channel::fxSendMin, Defaults::Mixer::Channel::fxSendMax);
-	fxBSlider->getValueObject().referTo(settings->getDeck(deckNo)->getChannelSetting(Deck::fxBSend));
+	fxBSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(fxBSend)));
 }
 
 void MixerChannelStrip::resized()
@@ -113,9 +106,6 @@ void MixerChannelStrip::resized()
 	int m = 5;
 	
 	int topButtonSize = (w-m)/4 - m;//30;
-//	onButon->setBounds(m, m, topButtonSize, topButtonSize);
-//	bypassButton->setBounds(c-(topButtonSize/2), m, topButtonSize, topButtonSize);
-//	gainSlider->setBounds(w-m-topButtonSize, m, topButtonSize, topButtonSize);
 	onButon->setBounds(c-(topButtonSize+(m/2)), m, topButtonSize, topButtonSize);
 	bypassButton->setBounds(c+(m/2), m, topButtonSize, topButtonSize);
 	gainSlider->setBounds(c+(w/4)+(m/2), m, topButtonSize, topButtonSize);
@@ -176,36 +166,29 @@ void MixerChannelStrip::paint(Graphics &g)
 //	g.fillRect(5, 40, 5, 200);
 }
 
-void MixerChannelStrip::buttonClicked(Button *button)
-{
-//	if (button == onButon) {
-//		bool onValue(onButon->getToggleState());
-//		settings->getDeck(deckNo)->setDeckSetting(Deck::on, onValue);
+//void MixerChannelStrip::sliderValueChanged (Slider* slider)
+//{
+//	
+//	if (slider == mixer->getMasterChannelStrip()->faderCurveSlider)
+//	{
+//		// we need to keep the slider posisition the same and adjust the level
+//		double value = levelSlider->valueToProportionOfLength(levelSlider->getValue());
+//		levelSlider->setSkewFactor(slider->getValue());
+//		levelSlider->setValue(levelSlider->proportionOfLengthToValue(value));
 //	}
-//	else if (button == bypassButton) {
-//		bool bypassValue(bypassButton->getToggleState());
-//		settings->getDeck(deckNo)->setDeckSetting(Deck::bypass, bypassValue);
-//	}
-//	else if (button == cueButton) {
-//		bool cueValue(cueButton->getToggleState());
-//		settings->getDeck(deckNo)->setDeckSetting(Deck::cue, cueValue);
-//	}
-//	else if (button == eqKillButtons[high])
-//		settings->getDeck(deckNo)->setDeckSetting(Deck::highKill, eqKillButtons[high]->getToggleState());
-//	else if (button == eqKillButtons[mid])
-//		settings->getDeck(deckNo)->setDeckSetting(Deck::midKill, eqKillButtons[mid]->getToggleState());
-//	else if (button == eqKillButtons[low])
-//		settings->getDeck(deckNo)->setDeckSetting(Deck::lowKill, eqKillButtons[low]->getToggleState());
-}
+//}
 
-void MixerChannelStrip::sliderValueChanged (Slider* slider)
+void MixerChannelStrip::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property)
 {
-	
-	if (slider == mixer->getMasterChannelStrip()->faderCurveSlider)
+	DBG(property.toString());
+//	if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(faderCurve)))
+	if (property == Identifier(MASTER_SETTING(faderCurve)))
 	{
-		// we need to keep the slider posisition the same and adjust the level
-		double value = levelSlider->valueToProportionOfLength(levelSlider->getValue());
-		levelSlider->setSkewFactor(slider->getValue());
-		levelSlider->setValue(levelSlider->proportionOfLengthToValue(value));
+		DBG("fader curve adjusting");
+		DBG(treeWhosePropertyHasChanged.getProperty(property).toString());
+		double proportion = levelSlider->valueToProportionOfLength(levelSlider->getValue());
+		levelSlider->setSkewFactor(Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(faderCurve)));
+		levelSlider->setValue(levelSlider->proportionOfLengthToValue(proportion));
+		
 	}
 }

@@ -17,12 +17,12 @@ ifeq ($(CONFIG),Debug)
   LIBDIR := build
   OBJDIR := build/intermediate/Debug
   OUTDIR := build
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
+  CPPFLAGS := $(DEPFLAGS) -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0
   CXXFLAGS += $(CFLAGS) 
   LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../juce_source/juce/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound -ljuce 
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
+  RESFLAGS :=  -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
   TARGET := Decks
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
@@ -32,39 +32,39 @@ ifeq ($(CONFIG),Release)
   LIBDIR := build
   OBJDIR := build/intermediate/Release
   OUTDIR := build
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
+  CPPFLAGS := $(DEPFLAGS) -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "LINUX=1" -D "NDEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os
   CXXFLAGS += $(CFLAGS) 
   LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../juce_source/juce/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound -ljuce 
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
+  RESFLAGS :=  -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "LINUX=1" -D "NDEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
   TARGET := Decks
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
 
 OBJECTS := \
-  $(OBJDIR)/ApplicationStartup.o \
-  $(OBJDIR)/Settings.o \
-  $(OBJDIR)/DeckManager.o \
-  $(OBJDIR)/AudioEngine.o \
-  $(OBJDIR)/DecksLookAndFeel.o \
-  $(OBJDIR)/MainAppWindow.o \
-  $(OBJDIR)/ContainerComponent.o \
-  $(OBJDIR)/ControlComponent.o \
-  $(OBJDIR)/Transport.o \
-  $(OBJDIR)/DeckTransport.o \
-  $(OBJDIR)/TrackInfo.o \
-  $(OBJDIR)/DraggableDisplay.o \
-  $(OBJDIR)/Mixer.o \
-  $(OBJDIR)/MixerChannelStrip.o \
-  $(OBJDIR)/CrossFader.o \
-  $(OBJDIR)/MasterChannelStrip.o \
-  $(OBJDIR)/dRowAudio_SegmentedMeter.o \
-  $(OBJDIR)/SettingsComponent.o \
-  $(OBJDIR)/MixerSettingsComponent.o \
-  $(OBJDIR)/dRowAudio.o \
-  $(OBJDIR)/dRowAudio.o \
-  $(OBJDIR)/BinaryData.o \
+  $(OBJDIR)/ApplicationStartup_3272e644.o \
+  $(OBJDIR)/Settings_1a9966da.o \
+  $(OBJDIR)/DeckManager_dbb2a2b7.o \
+  $(OBJDIR)/AudioEngine_c12c07ab.o \
+  $(OBJDIR)/DecksLookAndFeel_6536b270.o \
+  $(OBJDIR)/MainAppWindow_b0560b46.o \
+  $(OBJDIR)/ContainerComponent_d4c380f8.o \
+  $(OBJDIR)/ControlComponent_abefc827.o \
+  $(OBJDIR)/Transport_fb740666.o \
+  $(OBJDIR)/DeckTransport_f4e0103d.o \
+  $(OBJDIR)/TrackInfo_bd3403d6.o \
+  $(OBJDIR)/DraggableDisplay_69d2841b.o \
+  $(OBJDIR)/Mixer_7f8f6326.o \
+  $(OBJDIR)/MixerChannelStrip_64f8d31b.o \
+  $(OBJDIR)/CrossFader_56140e3.o \
+  $(OBJDIR)/MasterChannelStrip_276542a4.o \
+  $(OBJDIR)/dRowAudio_SegmentedMeter_91bc80e3.o \
+  $(OBJDIR)/SettingsComponent_72d2086a.o \
+  $(OBJDIR)/MixerSettingsComponent_8a33bf8b.o \
+  $(OBJDIR)/dRowAudio_eb58b466.o \
+  $(OBJDIR)/dRowAudio_77fd40e6.o \
+  $(OBJDIR)/BinaryData_ce4232d4.o \
 
 .PHONY: clean
 
@@ -81,114 +81,114 @@ clean:
 	-@rm -rf $(OBJDIR)/*
 	-@rm -rf $(OBJDIR)
 
-$(OBJDIR)/ApplicationStartup.o: ../../Source/main/ApplicationStartup.cpp
+$(OBJDIR)/ApplicationStartup_3272e644.o: ../../Source/main/ApplicationStartup.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling ApplicationStartup.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/Settings.o: ../../Source/main/Settings.cpp
+$(OBJDIR)/Settings_1a9966da.o: ../../Source/main/Settings.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling Settings.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/DeckManager.o: ../../Source/main/DeckManager.cpp
+$(OBJDIR)/DeckManager_dbb2a2b7.o: ../../Source/main/DeckManager.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling DeckManager.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/AudioEngine.o: ../../Source/main/AudioEngine.cpp
+$(OBJDIR)/AudioEngine_c12c07ab.o: ../../Source/main/AudioEngine.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling AudioEngine.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/DecksLookAndFeel.o: ../../Source/ui/DecksLookAndFeel.cpp
+$(OBJDIR)/DecksLookAndFeel_6536b270.o: ../../Source/ui/DecksLookAndFeel.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling DecksLookAndFeel.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/MainAppWindow.o: ../../Source/ui/MainAppWindow.cpp
+$(OBJDIR)/MainAppWindow_b0560b46.o: ../../Source/ui/MainAppWindow.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling MainAppWindow.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/ContainerComponent.o: ../../Source/ui/ContainerComponent.cpp
+$(OBJDIR)/ContainerComponent_d4c380f8.o: ../../Source/ui/ContainerComponent.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling ContainerComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/ControlComponent.o: ../../Source/ui/controls/ControlComponent.cpp
+$(OBJDIR)/ControlComponent_abefc827.o: ../../Source/ui/controls/ControlComponent.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling ControlComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/Transport.o: ../../Source/ui/controls/transport/Transport.cpp
+$(OBJDIR)/Transport_fb740666.o: ../../Source/ui/controls/transport/Transport.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling Transport.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/DeckTransport.o: ../../Source/ui/controls/transport/DeckTransport.cpp
+$(OBJDIR)/DeckTransport_f4e0103d.o: ../../Source/ui/controls/transport/DeckTransport.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling DeckTransport.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/TrackInfo.o: ../../Source/ui/controls/transport/TrackInfo.cpp
+$(OBJDIR)/TrackInfo_bd3403d6.o: ../../Source/ui/controls/transport/TrackInfo.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling TrackInfo.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/DraggableDisplay.o: ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp
+$(OBJDIR)/DraggableDisplay_69d2841b.o: ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling DraggableDisplay.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/Mixer.o: ../../Source/ui/controls/mixer/Mixer.cpp
+$(OBJDIR)/Mixer_7f8f6326.o: ../../Source/ui/controls/mixer/Mixer.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling Mixer.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/MixerChannelStrip.o: ../../Source/ui/controls/mixer/MixerChannelStrip.cpp
+$(OBJDIR)/MixerChannelStrip_64f8d31b.o: ../../Source/ui/controls/mixer/MixerChannelStrip.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling MixerChannelStrip.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/CrossFader.o: ../../Source/ui/controls/mixer/CrossFader.cpp
+$(OBJDIR)/CrossFader_56140e3.o: ../../Source/ui/controls/mixer/CrossFader.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling CrossFader.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/MasterChannelStrip.o: ../../Source/ui/controls/mixer/MasterChannelStrip.cpp
+$(OBJDIR)/MasterChannelStrip_276542a4.o: ../../Source/ui/controls/mixer/MasterChannelStrip.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling MasterChannelStrip.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/dRowAudio_SegmentedMeter.o: ../../Source/ui/controls/mixer/dRowAudio_SegmentedMeter.cpp
+$(OBJDIR)/dRowAudio_SegmentedMeter_91bc80e3.o: ../../Source/ui/controls/mixer/dRowAudio_SegmentedMeter.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling dRowAudio_SegmentedMeter.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/SettingsComponent.o: ../../Source/ui/settings/SettingsComponent.cpp
+$(OBJDIR)/SettingsComponent_72d2086a.o: ../../Source/ui/settings/SettingsComponent.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling SettingsComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/MixerSettingsComponent.o: ../../Source/ui/settings/MixerSettingsComponent.cpp
+$(OBJDIR)/MixerSettingsComponent_8a33bf8b.o: ../../Source/ui/settings/MixerSettingsComponent.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling MixerSettingsComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/dRowAudio.o: ../../../../dRowAudio/dRowAudio.c
+$(OBJDIR)/dRowAudio_eb58b466.o: ../../../../dRowAudio/dRowAudio.c
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling dRowAudio.c"
 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/dRowAudio.o: ../../../../dRowAudio/dRowAudio.cpp
+$(OBJDIR)/dRowAudio_77fd40e6.o: ../../../../dRowAudio/dRowAudio.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling dRowAudio.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/BinaryData.o: ../../JuceLibraryCode/BinaryData.cpp
+$(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo $(notdir $<)
+	@echo "Compiling BinaryData.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)

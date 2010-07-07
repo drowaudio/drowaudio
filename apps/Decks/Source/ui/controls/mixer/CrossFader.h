@@ -12,18 +12,17 @@
 
 #include <juce/juce.h>
 #include "../../DecksLookAndFeel.h"
+#include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
 #include "../../../main/DefaultSettings.h"
 //#include "dRowAudio_IntegerSlider.h"
 
-class Mixer;
-
 class CrossFader :	public Component,
-					public ButtonListener,
-					public SliderListener
+					public SliderListener,
+					public ValueTree::Listener
 {
 public:
-	CrossFader(Mixer *mixer_);
+	CrossFader();
 	
 	~CrossFader()
 	{
@@ -36,27 +35,21 @@ public:
 	void paint(Graphics &g);
 	
 	//================================================================
-	void buttonClicked(Button *button) {}
-	
-	void sliderValueChanged (Slider* slider);
+	void sliderValueChanged (Slider* slider){}
 	
 	void sliderDragStarted (Slider *slider)
 	{
 		Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(true, false);
 	}
 	
-	//================================================================
-	float getXFaderLevelX()		{	return	1.0f-xFaderSlider->getValue();	}
-	float getXFaderLevelY()		{	return	xFaderSlider->getValue();		}
-	
-	int getAssignX()			{	return xAssignSlider->getValue();		}
-	int getAssignY()			{	return yAssignSlider->getValue();		}
+	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
+	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged);
+	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged);
 
 	//================================================================
 
 private:
 	DeckManager *manager;
-	Mixer *mixer;
 
 	Slider *xFaderSlider;
 	Slider *xAssignSlider, *yAssignSlider;

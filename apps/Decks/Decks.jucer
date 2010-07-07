@@ -7,18 +7,20 @@
               pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0"
               pluginTailLength="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="JuceProjectAU"
               pluginAUViewClass="JuceProjectAU_V1" pluginRTASCategory="" bundleIdentifier="com.dRowAudio.Decks"
-              jucerVersion="3.0.0">
+              jucerVersion="3.0.0" smallIcon="H0hwTQxn5" bigIcon="H0hwTQxn5">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                juceFolder="../../../juce_source/juce"/>
     <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                   juceFolder="../../../juce_source/juce"/>
     <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
-           juceFolder="../../../juce_source/juce"/>
+           juceFolder="../../../juce_source/juce" libraryType="1"/>
     <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
-            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce_source/juce"/>
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce_source/juce"
+            libraryType="1"/>
     <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
-            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce_source/juce"/>
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce_source/juce"
+            libraryType="1"/>
     <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4" juceFolder="../../../juce_source/juce"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>

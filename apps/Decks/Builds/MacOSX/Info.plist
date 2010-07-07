@@ -4,9 +4,9 @@
 <plist>
   <dict>
     <key>CFBundleExecutable</key>
-    <string>&#36;{EXECUTABLE_NAME}</string>
+    <string>${EXECUTABLE_NAME}</string>
     <key>CFBundleIconFile</key>
-    <string></string>
+    <string>Icon.icns</string>
     <key>CFBundleIdentifier</key>
     <string>com.dRowAudio.Decks</string>
     <key>CFBundleName</key>

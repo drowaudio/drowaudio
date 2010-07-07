@@ -10,7 +10,7 @@
   </Platforms>
   <ToolFiles/>
   <Configurations>
-    <Configuration Name="Debug&#124;Win32"
+    <Configuration Name="Debug|Win32"
                    OutputDirectory=".\Debug"
                    IntermediateDirectory=".\Debug"
                    ConfigurationType="1"
@@ -33,7 +33,7 @@
             BufferSecurityCheck=""
             DebugInformationFormat="4"
             AdditionalIncludeDirectories=""
-            PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
+            PreprocessorDefinitions="JUCER_VS2005_78A5003;WIN32;_WINDOWS;_DEBUG"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -41,7 +41,7 @@
             AssemblerListingLocation=".\Debug\"
             ObjectFile=".\Debug\"
             ProgramDataBaseFileName=".\Debug\"
-            WarningLevel="3"
+            WarningLevel="4"
             SuppressStartupBanner="true"/>
       <Tool Name="VCManagedResourceCompilerTool"/>
       <Tool Name="VCResourceCompilerTool"
@@ -55,8 +55,6 @@
             GenerateDebugInformation="true"
             ProgramDatabaseFile=".\Debug\Decks.pdb"
             SubSystem="2"
-            RandomizedBaseAddress="1"
-            DataExecutionPrevention="0"
             TargetMachine="1"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
@@ -68,7 +66,7 @@
       <Tool Name="VCAppVerifierTool"/>
       <Tool Name="VCPostBuildEventTool"/>
     </Configuration>
-    <Configuration Name="Release&#124;Win32"
+    <Configuration Name="Release|Win32"
                    OutputDirectory=".\Release"
                    IntermediateDirectory=".\Release"
                    ConfigurationType="1"
@@ -92,7 +90,7 @@
             InlineFunctionExpansion="1"
             StringPooling="true"
             AdditionalIncludeDirectories=""
-            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG"
+            PreprocessorDefinitions="JUCER_VS2005_78A5003;WIN32;_WINDOWS;NDEBUG"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -100,7 +98,7 @@
             AssemblerListingLocation=".\Release\"
             ObjectFile=".\Release\"
             ProgramDataBaseFileName=".\Release\"
-            WarningLevel="3"
+            WarningLevel="4"
             SuppressStartupBanner="true"/>
       <Tool Name="VCManagedResourceCompilerTool"/>
       <Tool Name="VCResourceCompilerTool"
@@ -117,8 +115,6 @@
             GenerateManifest="false"
             OptimizeReferences="2"
             EnableCOMDATFolding="2"
-            RandomizedBaseAddress="1"
-            DataExecutionPrevention="0"
             TargetMachine="1"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
@@ -191,31 +187,31 @@
         <Filter Name="resources">
           <Filter Name="buttons">
             <File RelativePath="..\..\Source\resources\buttons\controls_pause.svg">
-              <FileConfiguration Name="Debug&#124;Win32"
+              <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
-              <FileConfiguration Name="Release&#124;Win32"
+              <FileConfiguration Name="Release|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
             </File>
             <File RelativePath="..\..\Source\resources\buttons\controls_play.svg">
-              <FileConfiguration Name="Debug&#124;Win32"
+              <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
-              <FileConfiguration Name="Release&#124;Win32"
+              <FileConfiguration Name="Release|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
             </File>
             <File RelativePath="..\..\Source\resources\buttons\controls_stop.svg">
-              <FileConfiguration Name="Debug&#124;Win32"
+              <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
-              <FileConfiguration Name="Release&#124;Win32"
+              <FileConfiguration Name="Release|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
@@ -223,11 +219,11 @@
           </Filter>
           <File RelativePath="..\..\Source\resources\Decks.icns"/>
           <File RelativePath="..\..\Source\resources\Decks_icon.png">
-            <FileConfiguration Name="Debug&#124;Win32"
+            <FileConfiguration Name="Debug|Win32"
                                ExcludedFromBuild="true">
               <Tool Name="VCCLCompilerTool"/>
             </FileConfiguration>
-            <FileConfiguration Name="Release&#124;Win32"
+            <FileConfiguration Name="Release|Win32"
                                ExcludedFromBuild="true">
               <Tool Name="VCCLCompilerTool"/>
             </FileConfiguration>
@@ -245,6 +241,8 @@
       <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.cpp"/>
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
+      <File RelativePath="icon.ico"/>
+      <File RelativePath="resources.rc"/>
     </Filter>
   </Files>
   <Globals/>

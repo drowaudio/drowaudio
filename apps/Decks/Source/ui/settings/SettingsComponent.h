@@ -28,9 +28,9 @@ public:
 	void paint (Graphics& g);
 	
 	//==============================================================================
-	TabbedComponent *settingsSelector;
-
-	AudioDeviceSelectorComponent *mainAudioSettings, *monitorAudioSettings;
+//	TabbedComponent *settingsSelector;
+//
+//	AudioDeviceSelectorComponent *mainAudioSettings, *monitorAudioSettings;
 	//==============================================================================
 	
 private:

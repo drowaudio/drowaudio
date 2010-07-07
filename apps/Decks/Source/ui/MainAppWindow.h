@@ -38,7 +38,9 @@
  On other platforms just use juce.h making it available in the search path 
  */
 #include <juce/juce.h>
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "DecksLookAndFeel.h"
+#include "ContainerComponent.h"
 
 //==============================================================================
 class MainAppWindow  : public DocumentWindow
@@ -66,8 +68,8 @@ public:
 	// whole shebang, but that's probably not necessary, and can be tricky to maintain!
 	
 private:
-	DecksLookAndFeel* lookandFeel;
-
+	
+	ContainerComponent* contentComponent;
 	void setUpLookAndFeel();
 };
 

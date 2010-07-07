@@ -12,23 +12,24 @@
 
 #include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
+#include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
 #include "../../DecksLookAndFeel.h"
 
 class DraggableDisplay :	public Component,
-							public Deck::Listener,
-							public SliderListener
+							public SliderListener,
+							public ValueTree::Listener
 {
 public:
 	DraggableDisplay()
-	:	noDecks(DeckManager::getInstance()->getMaxNoDecks()),
+	:	noDecks(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")),
 		settings(DeckManager::getInstance())
 	{
+		Settings::getInstance()->getValueTreePointer()->addListener(this);
+
 		for (int i = 0; i < noDecks; i++)
 		{
-			settings->getDeck(i)->addListener(this);
-
-			draggableWaveDisplays.add(new DraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getFilePlayer(), 44100));
+			draggableWaveDisplays.add(new DraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(), 44100));
 			addAndMakeVisible(draggableWaveDisplays[i]);
 		}
 				
@@ -48,7 +49,7 @@ public:
 	}
 	
 	~DraggableDisplay()
-	{
+	{		
 		draggableWaveDisplays.clear();
 		
 		deleteAllChildren();
@@ -70,7 +71,7 @@ public:
 
 		
 		//================================================================
-		const int noDecks = settings->getMaxNoDecks();
+		const int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
 		int noEnabledDecks = DeckManager::getNoEnabledDecks();
 		
 		if (noEnabledDecks)
@@ -82,7 +83,7 @@ public:
 			int pos = 0;
 			for (int i = 0; i < noDecks; i++)
 			{
-				if (settings->getDeck(i)->getChannelSetting(Deck::on) == tempTrue) {
+				if (Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(on)) == tempTrue) {
 					draggableWaveDisplays[i]->setVisible(true);
 					draggableWaveDisplays[i]->setBounds(zoomSlider->getRight()+margin, margin+(pos*(waveDisplayHeight+margin)), waveDisplayWidth, waveDisplayHeight);
 					pos++;
@@ -125,11 +126,6 @@ public:
 	}
 	
 	//================================================================
-	void deckChanged (Deck *deck)
-	{
-		resized();
-	}
-
 	void sliderValueChanged(Slider *slider)
 	{
 		if (slider == zoomSlider)
@@ -145,12 +141,30 @@ public:
 		}
 	}
 	
+	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const var::identifier  &property)
+	{
+		for (int i = 0; i < int(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")); i++) {
+			if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfChannelAsValue(i, CHANNEL_SETTING(on))) {
+				resized();
+			}
+		}
+	}
+	
+	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged)
+	{
+	}
+	
+	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged)
+	{
+	}
+	
 	//================================================================
 private:
-	Slider *zoomSlider, *playheadPosSlider;
 
 	int noDecks;
 	DeckManager *settings;
+
+	Slider *zoomSlider, *playheadPosSlider;
 	OwnedArray <DraggableWaveDisplay> draggableWaveDisplays;
 	
 };

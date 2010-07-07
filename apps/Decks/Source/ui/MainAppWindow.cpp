@@ -28,9 +28,7 @@
  ==============================================================================
  */
 
-#include "../../JuceLibraryCode/JuceHeader.h"
 #include "MainAppWindow.h"
-#include "ContainerComponent.h"
 //#include "ControlComponent.h"
 
 //==============================================================================
@@ -45,8 +43,7 @@ DocumentWindow (
 				)
 {
 	setUpLookAndFeel();
-	lookandFeel = DecksLookAndFeel::getInstance();
-	LookAndFeel::setDefaultLookAndFeel(lookandFeel);
+	LookAndFeel::setDefaultLookAndFeel(DecksLookAndFeel::getInstance());
 
 	setResizable (true, false); // resizability is a property of ResizableWindow, which is
 	// a parent class of DocumentWindow (which is our base class),
@@ -56,7 +53,7 @@ DocumentWindow (
 		
 	// create the main component, which is described in MainComponent.h
 //    ControlComponent* contentComponent = new ControlComponent ();
-    ContainerComponent* contentComponent = new ContainerComponent ();
+	contentComponent = new ContainerComponent ();
 	
 	commandManager = new ApplicationCommandManager();
 	commandManager->registerAllCommandsForTarget (contentComponent);
@@ -77,6 +74,9 @@ MainAppWindow::~MainAppWindow()
 	// base class, and that will, in turn (assuming the MainComponent has been coded
 	// properly), clean up the other components contained inside it. Therefore, we have
 	// nothing much to do here!
+	
+	deleteAndZero(commandManager);
+//	deleteAndZero(contentComponent);
 }
 
 void MainAppWindow::closeButtonPressed()

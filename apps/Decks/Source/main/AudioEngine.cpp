@@ -12,8 +12,8 @@
 juce_ImplementSingleton (AudioEngine)
 
 AudioEngine::AudioEngine()
-:	deckManager(DeckManager::getInstance()),
-	currentMixer(0)
+:	deckManager(DeckManager::getInstance())//,
+//	currentMixer(0)
 {
 //	MixerSettings::getInstance();
 	
@@ -29,21 +29,23 @@ AudioEngine::AudioEngine()
 
 	buffer = new AudioSampleBuffer(2, currentBuffSize);
 
-	monitorAudioCallback = new MonitorAudioCallback(this);
-	// set up the main audio device
-	String error = monitorAudioDeviceManager.initialise (0, /* number of input channels */
-														 2, /* number of output channels */
-														 0, /* no XML settings.. */
-														 false  /* select default device on failure */);
-	DBG(error);
-	monitorAudioDeviceManager.addAudioCallback (monitorAudioCallback);
+//	monitorAudioCallback = new MonitorAudioCallback(this);
+//	// set up the main audio device
+//	String error = monitorAudioDeviceManager.initialise (0, /* number of input channels */
+//														 2, /* number of output channels */
+//														 0, /* no XML settings.. */
+//														 false  /* select default device on failure */);
+//	DBG(error);
+//	if (error == String::empty) {
+//		monitorAudioDeviceManager.addAudioCallback (monitorAudioCallback);
+//	}
 	
 
 
 	
 	for (int i = 0; i < deckManager->getMaxNoDecks(); i++) {
 		audioSourcePlayers.add(new AudioSourcePlayer());
-		audioSourcePlayers[i]->setSource(deckManager->getDeck(i)->getFilePlayer());
+		audioSourcePlayers[i]->setSource(deckManager->getDeck(i)->getMainFilePlayer());
 		audioSourcePlayers[i]->audioDeviceAboutToStart (mainAudioDeviceManager.getCurrentAudioDevice());
 	}
 }
@@ -52,7 +54,7 @@ AudioEngine::~AudioEngine()
 {
 	// zero the device manager and source player to avoid crashing
 	mainAudioDeviceManager.removeAudioCallback (this);
-	monitorAudioDeviceManager.removeAudioCallback (monitorAudioCallback);
+//	monitorAudioDeviceManager.removeAudioCallback (monitorAudioCallback);
 
 	audioSourcePlayers.clear();
 //	audioSourcePlayer.setSource (0);
@@ -78,8 +80,7 @@ void AudioEngine::audioDeviceIOCallback (const float** inputChannelData,
 	for (int i=0; i < audioSourcePlayers.size(); i++)
 	{
 		// if it is not bypassed
-//		if (!deckManager->getDeck(i)->getDeckSettingVar(Deck::bypass))
-		if (!Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(bypass)]))
+		if (!Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(bypass)))
 		{
 			audioSourcePlayers.getUnchecked(i)->audioDeviceIOCallback (inputChannelData, totalNumInputChannels, outputChannelData, totalNumOutputChannels, numSamples);
 				
@@ -140,31 +141,23 @@ void AudioEngine::audioDeviceStopped()
 		audioSourcePlayers[i]->audioDeviceStopped ();
 }
 
-//=================================================================
+//=========================================================================================
 // Monitor Audio Callback
 // This second callback deals with the monitoring system
-//=================================================================
-AudioEngine::MonitorAudioCallback::MonitorAudioCallback(AudioEngine *mainEngine_)
+//=========================================================================================
+/*AudioEngine::MonitorAudioCallback::MonitorAudioCallback(AudioEngine *mainEngine_)
 :	deckManager(DeckManager::getInstance()),
 	mainEngine(mainEngine_)
 {
-	String error = monitorAudioDeviceManager.initialise (0, /* number of input channels */
-														 2, /* number of output channels */
-														 0, /* no XML settings.. */
-														 false  /* select default device on failure */);
-	DBG(error);
-	monitorAudioDeviceManager.addAudioCallback (this);
-	
 	for (int i = 0; i < deckManager->getMaxNoDecks(); i++) {
 		audioSourcePlayers.add(new AudioSourcePlayer());
-		audioSourcePlayers[i]->setSource(deckManager->getDeck(i)->getFilePlayer());
-		audioSourcePlayers[i]->audioDeviceAboutToStart (monitorAudioDeviceManager.getCurrentAudioDevice());
+		audioSourcePlayers[i]->setSource(deckManager->getDeck(i)->getMonitorFilePlayer());
 	}
 }
 
 AudioEngine::MonitorAudioCallback::~MonitorAudioCallback(){}
 
-//=================================================================
+//=========================================================================================
 void AudioEngine::MonitorAudioCallback::audioDeviceIOCallback (const float** inputChannelData,
 															   int totalNumInputChannels,
 															   float** outputChannelData,
@@ -175,7 +168,7 @@ void AudioEngine::MonitorAudioCallback::audioDeviceIOCallback (const float** inp
 	{
 		if (Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(cue)))
 		{
-			audioSourcePlayers.getUnchecked(0)->audioDeviceIOCallback (inputChannelData, totalNumInputChannels, outputChannelData, totalNumOutputChannels, numSamples);
+			audioSourcePlayers.getUnchecked(i)->audioDeviceIOCallback (inputChannelData, totalNumInputChannels, outputChannelData, totalNumOutputChannels, numSamples);
 		}
 	}
 }
@@ -193,4 +186,5 @@ void AudioEngine::MonitorAudioCallback::audioDeviceStopped()
 	for (int i=0; i < audioSourcePlayers.size(); i++)
 		audioSourcePlayers[i]->audioDeviceStopped ();
 }
-//=================================================================
+//=========================================================================================
+*/

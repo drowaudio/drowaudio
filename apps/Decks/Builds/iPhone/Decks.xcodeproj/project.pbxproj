@@ -12,6 +12,7 @@
 		F86B25AC2387D2A08F616E35 = { isa = PBXBuildFile; fileRef = 3D2AA657DE0F5DF15F81ACC3; };
 		B4774EAD1D560D11B49A1EC3 = { isa = PBXBuildFile; fileRef = FC53E9DD51E94107FD486251; };
 		E84C80C5DCACDDFE589949BB = { isa = PBXBuildFile; fileRef = 6AE0B7CBAE2ADE75C53B6447; };
+		836029042E33FC8B64526F09 = { isa = PBXBuildFile; fileRef = 0C9B2FDA3A1D70C8F696227F; };
 		9F7A7F13113B822AC97333E4 = { isa = PBXBuildFile; fileRef = 67242842297782815FFB94C3; };
 		6C9111989B6F487A8B611771 = { isa = PBXBuildFile; fileRef = 342DAFA1747A6C731022DBFC; };
 		E1C37F7BF0772A00EEDE57F2 = { isa = PBXBuildFile; fileRef = 75E4F1D02D4324E833E2AB38; };
@@ -42,6 +43,7 @@
 		6AE0B7CBAE2ADE75C53B6447 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		EB76E0210168B8B95BC9EC13 = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5A4E23328FF2B91B579FA1 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		0C9B2FDA3A1D70C8F696227F = { isa = PBXFileReference; lastKnownFileType = file.icns; name = Icon.icns; path = Icon.icns; sourceTree = SOURCE_ROOT; };
 		67242842297782815FFB94C3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationStartup.cpp; path = ../../Source/main/ApplicationStartup.cpp; sourceTree = SOURCE_ROOT; };
 		40F437461414DDC8F5114067 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultSettings.h; path = ../../Source/main/DefaultSettings.h; sourceTree = SOURCE_ROOT; };
 		8C2BB5F921175543CCCA8659 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../../Source/main/Settings.h; sourceTree = SOURCE_ROOT; };
@@ -166,7 +168,8 @@
 				A8ACA0B29345EFF5769D9DA8,
 				8E3B1D49C63A28EAEC9CF2A3 ); name = "Juce Library Code"; sourceTree = "<group>"; };
 		C35938F44DCB2C4B16470924 = { isa = PBXGroup; children = (
-				CD5A4E23328FF2B91B579FA1 ); name = Resources; sourceTree = "<group>"; };
+				CD5A4E23328FF2B91B579FA1,
+				0C9B2FDA3A1D70C8F696227F ); name = Resources; sourceTree = "<group>"; };
 		D608FFC92435DE338695B475 = { isa = PBXGroup; children = (
 				80F6A8B63729A6DF729887AB,
 				52A39482801CDAD7C80771DB,
@@ -196,8 +199,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+				"JUCER_XCODE_IPHONE_25ADD7EF=1",
 				"_DEBUG=1",
 				"DEBUG=1 "); }; name = Debug; };
 		40B42CC1214F4EF280E8053A = { isa = XCBuildConfiguration; buildSettings = {
@@ -208,11 +212,12 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				SDKROOT = iphonesimulator3.0;
-				OTHER_LDFLAGS = "-ljucedebug";
+				OTHER_LDFLAGS = "-ljuce";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"$(SRCROOT)/../../../../../juce_source/juce/bin\"");
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+				"JUCER_XCODE_IPHONE_25ADD7EF=1",
 				"_NDEBUG=1",
 				"NDEBUG=1 "); }; name = Release; };
 		3166EA8BE6D9BEF189879A07 = { isa = XCBuildConfiguration; buildSettings = {
@@ -225,7 +230,8 @@
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				ZERO_LINK = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				PRODUCT_NAME = "Decks"; }; name = Debug; };
@@ -239,7 +245,8 @@
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				ZERO_LINK = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				PRODUCT_NAME = "Decks"; }; name = Release; };
@@ -249,7 +256,8 @@
 		852153EC32089D35AAE69CC8 = { isa = XCConfigurationList; buildConfigurations = (
 				B618935E07D7A9187A9C8662,
 				40B42CC1214F4EF280E8053A ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
-		505064D4AB4FB1E60837F09C = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (  ); runOnlyForDeploymentPostprocessing = 0; };
+		505064D4AB4FB1E60837F09C = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
+				836029042E33FC8B64526F09 ); runOnlyForDeploymentPostprocessing = 0; };
 		3CF760437A4BCB4372493539 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
 				9F7A7F13113B822AC97333E4,
 				6C9111989B6F487A8B611771,

@@ -121,6 +121,43 @@ namespace MixerSettings
 			0.5f		//xFaderCurve
 		};		
 	}
+	
+	static void buildDefaultMixerSettings(ValueTree& treeToFill)
+	{
+		ValueTree noChannels("noChannels");
+		noChannels.setProperty("noChannels", MixerSettings::noChannels, 0);
+		treeToFill.addChild(noChannels, -1, 0);
+		
+		ValueTree channels(MixerSettings::ChannelSettings::SectionName);
+		for (int i = 0; i < MixerSettings::noChannels; i++)
+		{
+			String name(MixerSettings::ChannelSettings::SectionName);
+			name<<i;
+			ValueTree deck(name);
+			
+			for (int p = 0; p < MixerSettings::ChannelSettings::noChannelSettings; p++)
+			{
+				deck.setProperty(MixerSettings::ChannelSettings::Names[p], MixerSettings::ChannelSettings::Values[p], 0);
+			}
+			
+			channels.addChild(deck, -1, 0);
+		}
+		treeToFill.addChild(channels, -1, 0);
+		
+		ValueTree xFaderTree(MixerSettings::xFaderSettings::SectionName);
+		for (int p = 0; p < MixerSettings::xFaderSettings::noXFaderSettings; p++)
+		{
+			xFaderTree.setProperty(MixerSettings::xFaderSettings::Names[p], MixerSettings::xFaderSettings::Values[p], 0);
+		}
+		treeToFill.addChild(xFaderTree, -1, 0);
+		
+		ValueTree masterTree(MixerSettings::MasterSettings::SectionName);
+		for (int p = 0; p < MixerSettings::MasterSettings::noMasterSettings; p++)
+		{
+			masterTree.setProperty(MixerSettings::MasterSettings::Names[p], MixerSettings::MasterSettings::Values[p], 0);
+		}
+		treeToFill.addChild(masterTree, -1, 0);
+	}
 };
 
 

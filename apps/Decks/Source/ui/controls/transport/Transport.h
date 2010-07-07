@@ -11,21 +11,22 @@
 #define _TRANSPORT__H_
 
 #include <juce/juce.h>
+#include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
 #include "DeckTransport.h"
 
 class Transport :	public Component,
-					public Deck::Listener,
-					public ButtonListener
+					public ButtonListener,
+					public ValueTree::Listener
 {
 public:
 	Transport()
 	:	settings(DeckManager::getInstance())
 	{
-		int noDecks = settings->getMaxNoDecks();
+		int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
+		Settings::getInstance()->getValueTreePointer()->addListener(this);
+
 		for (int i = 0; i < noDecks; i++) {
-			settings->getDeck(i)->addListener(this);
-			
 			decksTransports.add(new DeckTransport(i));
 			addAndMakeVisible(decksTransports[i]);
 		}
@@ -37,6 +38,8 @@ public:
 	
 	~Transport()
 	{
+//		Settings::getInstance()->getValueTreePointer()->removeListener(this);
+
 		decksTransports.clear();
 		deleteAllChildren();
 	}
@@ -51,19 +54,16 @@ public:
 		
 		
 		//============================================================
-		Value tempTrue(true);
-		
 		const int noDecks = decksTransports.size();
 		int noEnabledDecks = DeckManager::getNoEnabledDecks();
-		
 		if (noEnabledDecks)
 		{
-			const int deckWidth = ((width - ((noEnabledDecks-1)*margin)) / noEnabledDecks);
+			const int deckWidth = ((width - ((noEnabledDecks-1)*margin)) / (double)noEnabledDecks);
 
 			int pos = 0;
 			for (int i = 0; i < noDecks; i++)
 			{
-				if (settings->getDeck(i)->getChannelSetting(Deck::on) == tempTrue) {
+				if (bool(Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(on))) == true) {
 					decksTransports[i]->setVisible(true);
 					decksTransports[i]->setBounds((pos*(deckWidth+margin)), 0, deckWidth, height);
 					pos++;
@@ -91,15 +91,27 @@ public:
 		}
 	}
 
-	//================================================================
-	void deckChanged (Deck *deck)
-	{
-		resized();
-	}
-	
+	//================================================================	
 	void buttonClicked(Button *button)
 	{
 		getParentComponent()->resized();
+	}
+		
+	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property)
+	{
+		for (int i = 0; i < int(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")); i++) {
+			if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfChannelAsValue(i, CHANNEL_SETTING(on))) {
+				resized();
+			}
+		}
+	}
+	
+	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged)
+	{
+	}
+	
+	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged)
+	{
 	}
 	//================================================================
 	

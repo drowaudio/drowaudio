@@ -94,6 +94,10 @@ class AppClass : public JUCEApplication
 		//==============================================================================
 		void initialise (const String& commandLine)
 		{
+			Settings::getInstance();
+			DeckManager::getInstance();
+			AudioEngine::getInstance();
+			
 			// This is called automatically when the application is ready to launch.
 			// So far, it just exists in memory as an empty pocket of potential waiting
 			// to burst into life as a program. Nothing yet exists to act or be displayed.
@@ -128,6 +132,7 @@ class AppClass : public JUCEApplication
 			//     widgets using constant values instead of calculating relative positions from
 			//     the available dimensions (i.e. saying 'this button is 50 double_Pixels wide' instead
 			//     of 'this button is 1/3 of the width of its parent component').
+			
 		}
 		
 		void shutdown()
@@ -138,13 +143,16 @@ class AppClass : public JUCEApplication
 			
 			// All we need to do here is delete the MainAppWindow we created...
 			// stop the audio callbacks first
-			AudioEngine::getInstance()->getMainAudioDeviceManager()->closeAudioDevice();
+//			AudioEngine::getInstance()->getMainAudioDeviceManager()->closeAudioDevice();
 			
-			// and delete our singletons
-			Settings::deleteInstance();
-			DeckManager::deleteInstance();
 			
+			// delete the UI first
 			deleteAndZero (theMainWindow);
+
+			// and delete our singletons in order
+			AudioEngine::deleteInstance();
+			DeckManager::deleteInstance();
+			Settings::deleteInstance();
 		}
 		
 		//==============================================================================

@@ -418,7 +418,7 @@ void DecksLookAndFeel::drawDocumentWindowTitleBar (DocumentWindow& window,
     if (icon != 0)
     {
         g.setOpacity (isActive ? 1.0f : 0.6f);
-        g.drawImageWithin (icon, textX, (h - iconH) / 2, iconW, iconH,
+        g.drawImageWithin (*icon, textX, (h - iconH) / 2, iconW, iconH,
                            RectanglePlacement::centred, false);
         textX += iconW;
         textW -= iconW;

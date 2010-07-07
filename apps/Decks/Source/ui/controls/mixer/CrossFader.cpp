@@ -10,19 +10,20 @@
 #include "CrossFader.h"
 #include "Mixer.h"
 
-CrossFader::CrossFader(Mixer *mixer_)
-:	manager(DeckManager::getInstance()),
-	mixer(mixer_)
+CrossFader::CrossFader()
+:	manager(DeckManager::getInstance())
 {
 	// listen for the XFader curve slider in the master strip
-	mixer->getMasterChannelStrip()->xFaderCurveSlider->addListener(this);
-
+//	mixer->getMasterChannelStrip()->xFaderCurveSlider->addListener(this);
+//	Settings::getInstance()->getValueTreePointer()->getChildWithName("master").getPropertyAsValue("xFaderCurve", 0).addListener(this);
+	Settings::getInstance()->getValueTreePointer()->addListener(this);
+	
 	addAndMakeVisible( xFaderSlider = new Slider("xFaderSlider") );
 	xFaderSlider->setSliderStyle(Slider::LinearHorizontal);
 	xFaderSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	xFaderSlider->setRange(0.0f, 1.0f);
 //	xFaderSlider->setValue(Defaults::Mixer::XFader::fader);
-	xFaderSlider->getValueObject().referTo(manager->getXfaderValueObject(DeckManager::level));
+	xFaderSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfXFaderAsValue(XFADER_SETTING(level)));
 	
 	addAndMakeVisible( xAssignSlider = new Slider("xAssignSlider") );
 	xAssignSlider->setRange(0, manager->getMaxNoDecks(), 1);
@@ -31,7 +32,7 @@ CrossFader::CrossFader(Mixer *mixer_)
 	xAssignSlider->addListener(this);
 	xAssignSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 //	xAssignSlider->setValue(Defaults::Mixer::XFader::assignX);
-	xAssignSlider->getValueObject().referTo(manager->getXfaderValueObject(DeckManager::assignX));
+	xAssignSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfXFaderAsValue(XFADER_SETTING(assignX)));
 
 	addAndMakeVisible( xAssginLabel = new Label("xAssginLabel", "X Assign") );
 	xAssginLabel->setJustificationType(Justification::centred);
@@ -44,7 +45,7 @@ CrossFader::CrossFader(Mixer *mixer_)
 	yAssignSlider->addListener(this);
 	yAssignSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 //	yAssignSlider->setValue(Defaults::Mixer::XFader::assignY);
-	yAssignSlider->getValueObject().referTo(manager->getXfaderValueObject(DeckManager::assignY));
+	yAssignSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfXFaderAsValue(XFADER_SETTING(assignY)));
 	
 	addAndMakeVisible( yAssignLabel = new Label("yAssginLabel", "Y Assign") );
 	yAssignLabel->setJustificationType(Justification::centred);
@@ -94,7 +95,7 @@ void CrossFader::paint(Graphics &g)
 	
 		
 	g.setFont(12);
-	for (int i=0; i<=manager->getMaxNoDecks(); i++) {
+	for (int i=0; i <= int(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")); i++) {
 		AffineTransform xTranform(AffineTransform::identity.rotated((-1.5 + (i*anglePerDeck)), Xcx, Xcy));
 		g.strokePath(pX, PathStrokeType(2, PathStrokeType::curved, PathStrokeType::rounded), xTranform);
 
@@ -131,14 +132,22 @@ void CrossFader::paint(Graphics &g)
 	}
 }
 
-
-void CrossFader::sliderValueChanged (Slider* slider)
+void CrossFader::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property)
 {
-	if (slider == mixer->getMasterChannelStrip()->xFaderCurveSlider)
-	{
+	if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(xFaderCurve))) {
 		// we need to keep the slider posisition the same and adjust the level
-		double value = xFaderSlider->valueToProportionOfLength(xFaderSlider->getValue());
-		xFaderSlider->setSkewFactor(slider->getValue());
-		xFaderSlider->setValue(xFaderSlider->proportionOfLengthToValue(value));
+		double proportion = xFaderSlider->valueToProportionOfLength(xFaderSlider->getValue());
+		xFaderSlider->setSkewFactor(Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(xFaderCurve)));
+		xFaderSlider->setValue(xFaderSlider->proportionOfLengthToValue(proportion));
 	}
+}
+
+void CrossFader::valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged)
+{
+//	DBG("child changed");
+}
+
+void CrossFader::valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged)
+{
+//	DBG("parent changed");
 }

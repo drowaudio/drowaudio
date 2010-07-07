@@ -35,7 +35,7 @@ public:
 	DeckTransport(int deckNo_)
 	:	deckNo(deckNo_),
 		settings(DeckManager::getInstance()),
-		filePlayer(settings->getDeck(deckNo)->getFilePlayer())
+		filePlayer(settings->getDeck(deckNo)->getMainFilePlayer())
 	{
 		getLookAndFeel().setColour(TextButton::textColourOffId, Colour::greyLevel(0.8));
 		
@@ -120,15 +120,15 @@ public:
 	void buttonClicked(Button* button)
 	{
 		if (button == transportButtons[previous])
-			filePlayer->startFromZero();
+			settings->getDeck(deckNo)->startFromZero();
 		else if (button == transportButtons[stop])
 		{
-			filePlayer->stop();
-			filePlayer->setNextReadPosition(0);
+			settings->getDeck(deckNo)->stop();
+			settings->getDeck(deckNo)->setNextReadPosition(0);
 			transportButtons[playPause]->setToggleState(false, false);
 		}
 		else if (button == transportButtons[playPause])
-			filePlayer->pause();
+			settings->getDeck(deckNo)->pause();
 	}
 	
 	void buttonStateChanged (Button* button)
@@ -136,9 +136,9 @@ public:
 		if (button == transportButtons[shuffleForward])
 		{
 			if (transportButtons[shuffleForward]->isDown())
-				filePlayer->setResamplingRatio ((speedSlider->getValue() + jogSlider->getValue())*2);
+				settings->getDeck(deckNo)->setResamplingRatio ((speedSlider->getValue() + jogSlider->getValue())*2);
 			else
-				filePlayer->setResamplingRatio ((speedSlider->getValue() + jogSlider->getValue())*1);
+				settings->getDeck(deckNo)->setResamplingRatio ((speedSlider->getValue() + jogSlider->getValue())*1);
 		}
 		
 	}
@@ -146,9 +146,9 @@ public:
 	void sliderValueChanged(Slider* changedSlider)
 	{
 		if (changedSlider == speedSlider)
-			filePlayer->setResamplingRatio (speedSlider->getValue() + jogSlider->getValue());
+			settings->getDeck(deckNo)->setResamplingRatio (speedSlider->getValue() + jogSlider->getValue());
 		else if (changedSlider == jogSlider)
-			filePlayer->setResamplingRatio (speedSlider->getValue() + jogSlider->getValue());
+			settings->getDeck(deckNo)->setResamplingRatio (speedSlider->getValue() + jogSlider->getValue());
 	}
 	void sliderDragEnded(Slider* changedSlider)
 	{
@@ -170,33 +170,6 @@ private:
 	Slider *speedSlider, *jogSlider;
 	
 	//==============================================================================
-	Drawable* createDrawableFromSVGFile (const File& svgFile)
-	{
-		if (svgFile.existsAsFile()){
-			XmlDocument svgXmlDoc(svgFile);
-			Drawable *image = Drawable::createFromSVG(*svgXmlDoc.getDocumentElement());
-						
-			return image;
-		}
-		return 0;
-	}
-	Drawable* createPlayButton()
-	{
-		DrawablePath dp;
-		Path p;
-		
-		p.clear();
-		p.startNewSubPath ((float) (proportionOfWidth (0.0000f)), (float) (proportionOfHeight (0.0000f)));
-		p.lineTo ((float) (proportionOfWidth (1.0000f)), (float) (proportionOfHeight (0.5000f)));
-		p.lineTo ((float) (proportionOfWidth (0.0000f)), (float) (proportionOfHeight (1.0000f)));
-		p.closeSubPath();
-		
-		dp.setPath(p);
-		FillType fill(Colours::white);
-		dp.setFill(fill);
-		
-		return dp.createCopy();
-	}
 };
 
 #endif //_DECKTRANSPORT__H_
