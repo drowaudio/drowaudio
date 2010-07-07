@@ -300,8 +300,10 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
-									<integer>2</integer>
+									<integer>34</integer>
+									<integer>30</integer>
+									<integer>19</integer>
+									<integer>12</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -344,7 +346,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MixerSettings.h</string>
+								<string>MixerChannelStrip.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -352,11 +354,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MixerSettings.h</string>
+										<string>MixerChannelStrip.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5540747D11E4B7F9002EAF54</string>
+										<string>554074C411E4BDB0002EAF54</string>
 										<key>history</key>
 										<array>
 											<string>55AC9B6C1192F47D00382B1A</string>
@@ -402,12 +404,10 @@
 											<string>559FA6FB11E39592002C84C6</string>
 											<string>5540719411E3E0FE002EAF54</string>
 											<string>5540719611E3E0FE002EAF54</string>
-											<string>554071A011E3E0FE002EAF54</string>
 											<string>554071A111E3E0FE002EAF54</string>
 											<string>554071A311E3E0FE002EAF54</string>
 											<string>554071A511E3E0FE002EAF54</string>
 											<string>554071A611E3E0FE002EAF54</string>
-											<string>554071EB11E3E3A5002EAF54</string>
 											<string>554072B811E3F03F002EAF54</string>
 											<string>554072CC11E3F334002EAF54</string>
 											<string>554072D611E3F55B002EAF54</string>
@@ -431,17 +431,19 @@
 											<string>5540741C11E4B1DE002EAF54</string>
 											<string>5540741F11E4B1DE002EAF54</string>
 											<string>5540743611E4B407002EAF54</string>
-											<string>5540743711E4B407002EAF54</string>
 											<string>5540743A11E4B407002EAF54</string>
 											<string>5540743B11E4B407002EAF54</string>
 											<string>5540744F11E4B5DA002EAF54</string>
 											<string>5540745111E4B5DA002EAF54</string>
 											<string>5540745F11E4B728002EAF54</string>
-											<string>5540747811E4B7F9002EAF54</string>
-											<string>5540747911E4B7F9002EAF54</string>
 											<string>5540747A11E4B7F9002EAF54</string>
 											<string>5540747B11E4B7F9002EAF54</string>
-											<string>5540747C11E4B7F9002EAF54</string>
+											<string>5540749A11E4BB94002EAF54</string>
+											<string>5540749B11E4BB94002EAF54</string>
+											<string>5540749C11E4BB94002EAF54</string>
+											<string>554074AF11E4BD03002EAF54</string>
+											<string>554074B811E4BD8B002EAF54</string>
+											<string>554074B911E4BD8B002EAF54</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -622,7 +624,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>300201977.48396301</real>
+	<real>300203440.49157298</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -643,8 +645,8 @@
 		<string>554071AC11E3E0FE002EAF54</string>
 		<string>554071AD11E3E0FE002EAF54</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>55AC9B5C1192F33700382B1A</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>55AC9B5C1192F33700382B1A</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/Dave/Documents/Developement/dRowAudio/apps/Decks/Builds/MacOSX/Decks.xcodeproj</string>
 	</array>
@@ -670,7 +672,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MixerSettings.h</string>
+								<string>CrossFader.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -741,7 +743,7 @@
 			<key>WindowToolGUID</key>
 			<string>55AC9B5C1192F33700382B1A</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

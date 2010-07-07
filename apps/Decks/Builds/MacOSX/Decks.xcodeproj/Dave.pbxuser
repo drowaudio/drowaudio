@@ -2,9 +2,9 @@
 {
 	0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {950, 2613}}";
-			sepNavSelRange = "{8384, 0}";
-			sepNavVisRange = "{7908, 848}";
+			sepNavIntBoundsRect = "{{0, 0}, {1020, 2366}}";
+			sepNavSelRange = "{3900, 0}";
+			sepNavVisRange = "{1602, 2768}";
 		};
 	};
 	0C648E93ABE49244CBC7DBF4 /* DecksLookAndFeel.cpp */ = {
@@ -81,7 +81,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {956, 1235}}";
 			sepNavSelRange = "{149, 6}";
-			sepNavVisRange = "{0, 1141}";
+			sepNavVisRange = "{1137, 1249}";
 		};
 	};
 	425D6C09710560CAD13B64C5 /* ControlComponent.cpp */ = {
@@ -1343,9 +1343,9 @@
 		path = /Users/Dave/Documents/Developement/juce_source/juce/src/events/juce_MessageManager.cpp;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 4706}}";
-			sepNavSelRange = "{3796, 0}";
-			sepNavVisRange = "{3582, 453}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 4693}}";
+			sepNavSelRange = "{2367, 0}";
+			sepNavVisRange = "{2122, 491}";
 		};
 	};
 	5540726811E3EC87002EAF54 /* PBXTextBookmark */ = {
@@ -3043,7 +3043,7 @@
 		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
 		name = "Settings.h: 123";
 		rLen = 9;
-		rLoc = 4322;
+		rLoc = 4362;
 		rType = 0;
 		vrLen = 1724;
 		vrLoc = 2693;
@@ -3153,7 +3153,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 181";
 		rLen = 24;
-		rLoc = 8068;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1129;
 		vrLoc = 7541;
@@ -3173,7 +3173,7 @@
 		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
 		name = "CrossFader.cpp: 135";
 		rLen = 0;
-		rLoc = 5374;
+		rLoc = 5480;
 		rType = 0;
 		vrLen = 1077;
 		vrLoc = 4907;
@@ -3239,8 +3239,8 @@
 		isa = PBXTextBookmark;
 		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
 		name = "Settings.h: 88";
-		rLen = 107;
-		rLoc = 3070;
+		rLen = 111;
+		rLoc = 3106;
 		rType = 0;
 		vrLen = 1815;
 		vrLoc = 2602;
@@ -3250,7 +3250,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 181";
 		rLen = 24;
-		rLoc = 8068;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1964;
 		vrLoc = 6718;
@@ -3331,7 +3331,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 184;
+		rLoc = 183;
 		rType = 1;
 	};
 	5540744B11E4B564002EAF54 /* PBXTextBookmark */ = {
@@ -3339,7 +3339,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 185";
 		rLen = 0;
-		rLoc = 8327;
+		rLoc = 8269;
 		rType = 0;
 		vrLen = 882;
 		vrLoc = 7908;
@@ -3369,7 +3369,7 @@
 		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
 		name = "Settings.h: 88";
 		rLen = 3;
-		rLoc = 3071;
+		rLoc = 3107;
 		rType = 0;
 		vrLen = 1771;
 		vrLoc = 2602;
@@ -3388,8 +3388,8 @@
 		isa = PBXTextBookmark;
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 184";
-		rLen = 132;
-		rLoc = 8195;
+		rLen = 0;
+		rLoc = 8269;
 		rType = 0;
 		vrLen = 1955;
 		vrLoc = 6841;
@@ -3409,7 +3409,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 185";
 		rLen = 14;
-		rLoc = 8355;
+		rLoc = 8286;
 		rType = 0;
 		vrLen = 1977;
 		vrLoc = 6820;
@@ -3419,7 +3419,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 183";
 		rLen = 0;
-		rLoc = 8192;
+		rLoc = 8269;
 		rType = 0;
 		vrLen = 1910;
 		vrLoc = 6841;
@@ -3429,7 +3429,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 186";
 		rLen = 0;
-		rLoc = 8384;
+		rLoc = 8314;
 		rType = 0;
 		vrLen = 836;
 		vrLoc = 7908;
@@ -3458,8 +3458,8 @@
 		isa = PBXTextBookmark;
 		fRef = B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */;
 		name = "MixerSettings.h: 40";
-		rLen = 48;
-		rLoc = 736;
+		rLen = 53;
+		rLoc = 741;
 		rType = 0;
 		vrLen = 940;
 		vrLoc = 1526;
@@ -3479,7 +3479,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 185";
 		rLen = 14;
-		rLoc = 8355;
+		rLoc = 8286;
 		rType = 0;
 		vrLen = 1931;
 		vrLoc = 6820;
@@ -3489,7 +3489,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 185";
 		rLen = 0;
-		rLoc = 8382;
+		rLoc = 8312;
 		rType = 0;
 		vrLen = 1922;
 		vrLoc = 6841;
@@ -3499,7 +3499,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 186";
 		rLen = 0;
-		rLoc = 8384;
+		rLoc = 8314;
 		rType = 0;
 		vrLen = 848;
 		vrLoc = 7908;
@@ -3509,7 +3509,7 @@
 		fRef = B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */;
 		name = "MixerSettings.h: 109";
 		rLen = 0;
-		rLoc = 1896;
+		rLoc = 1926;
 		rType = 0;
 		vrLen = 282;
 		vrLoc = 1830;
@@ -3548,7 +3548,7 @@
 		fRef = B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */;
 		name = "MixerSettings.h: 109";
 		rLen = 0;
-		rLoc = 1896;
+		rLoc = 1926;
 		rType = 0;
 		vrLen = 283;
 		vrLoc = 1830;
@@ -3558,7 +3558,7 @@
 		fRef = B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */;
 		name = "MixerSettings.h: 109";
 		rLen = 0;
-		rLoc = 1896;
+		rLoc = 1926;
 		rType = 0;
 		vrLen = 352;
 		vrLoc = 2024;
@@ -3578,7 +3578,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 185";
 		rLen = 0;
-		rLoc = 8382;
+		rLoc = 8312;
 		rType = 0;
 		vrLen = 1943;
 		vrLoc = 6820;
@@ -3626,11 +3626,340 @@
 		isa = PBXTextBookmark;
 		fRef = B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */;
 		name = "MixerSettings.h: 109";
-		rLen = 4;
-		rLoc = 1876;
+		rLen = 10;
+		rLoc = 1901;
 		rType = 0;
 		vrLen = 940;
 		vrLoc = 1526;
+	};
+	5540748211E4B8BA002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */;
+		name = "MixerSettings.h: 21";
+		rLen = 0;
+		rLoc = 499;
+		rType = 0;
+		vrLen = 849;
+		vrLoc = 86;
+	};
+	5540748311E4B8BA002EAF54 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No matching function for call to 'Settings::getPropertyOfChildAsValue(const juce::Identifier&, juce::String&)'";
+		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 73;
+		rType = 1;
+	};
+	5540748411E4B8BA002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
+		name = "Settings.h: 74";
+		rLen = 0;
+		rLoc = 2464;
+		rType = 0;
+		vrLen = 1913;
+		vrLoc = 1768;
+	};
+	5540748711E4B8FF002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */;
+		name = "MixerSettings.h: 109";
+		rLen = 0;
+		rLoc = 1926;
+		rType = 0;
+		vrLen = 259;
+		vrLoc = 1822;
+	};
+	5540748811E4B8FF002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
+		name = "Settings.h: 88";
+		rLen = 0;
+		rLoc = 3141;
+		rType = 0;
+		vrLen = 802;
+		vrLoc = 2562;
+	};
+	5540748911E4B8FF002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32AA67C67D2072FA2C7A62DD /* AudioEngine.h */;
+		name = "AudioEngine.h: 94";
+		rLen = 11;
+		rLoc = 2579;
+		rType = 0;
+		vrLen = 668;
+		vrLoc = 1949;
+	};
+	5540748A11E4B900002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
+		name = "Settings.h: 74";
+		rLen = 0;
+		rLoc = 2464;
+		rType = 0;
+		vrLen = 1913;
+		vrLoc = 1768;
+	};
+	5540748D11E4B997002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
+		name = "Settings.h: 74";
+		rLen = 0;
+		rLoc = 2464;
+		rType = 0;
+		vrLen = 1977;
+		vrLoc = 1768;
+	};
+	5540748E11E4B997002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
+		name = "MixerChannelStrip.cpp: 183";
+		rLen = 45;
+		rLoc = 8269;
+		rType = 0;
+		vrLen = 1810;
+		vrLoc = 6780;
+	};
+	5540748F11E4B997002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 139";
+		rLen = 0;
+		rLoc = 5579;
+		rType = 0;
+		vrLen = 1738;
+		vrLoc = 4163;
+	};
+	5540749011E4B997002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 139";
+		rLen = 0;
+		rLoc = 5573;
+		rType = 0;
+		vrLen = 1669;
+		vrLoc = 4262;
+	};
+	5540749311E4BA10002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
+		name = "Settings.h: 88";
+		rLen = 0;
+		rLoc = 3141;
+		rType = 0;
+		vrLen = 857;
+		vrLoc = 2562;
+	};
+	5540749411E4BA10002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32AA67C67D2072FA2C7A62DD /* AudioEngine.h */;
+		name = "AudioEngine.h: 94";
+		rLen = 11;
+		rLoc = 2579;
+		rType = 0;
+		vrLen = 669;
+		vrLoc = 1949;
+	};
+	5540749511E4BA2C002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 139";
+		rLen = 0;
+		rLoc = 5573;
+		rType = 0;
+		vrLen = 2326;
+		vrLoc = 35;
+	};
+	5540749A11E4BB94002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
+		name = "Settings.h: 74";
+		rLen = 0;
+		rLoc = 2464;
+		rType = 0;
+		vrLen = 1977;
+		vrLoc = 1768;
+	};
+	5540749B11E4BB94002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 75E4F1D02D4324E833E2AB38 /* DeckManager.cpp */;
+		name = "DeckManager.cpp: 42";
+		rLen = 0;
+		rLoc = 810;
+		rType = 0;
+		vrLen = 1064;
+		vrLoc = 36;
+	};
+	5540749C11E4BB94002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */;
+		name = "MixerSettings.h: 21";
+		rLen = 0;
+		rLoc = 499;
+		rType = 0;
+		vrLen = 852;
+		vrLoc = 109;
+	};
+	5540749D11E4BB94002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 19";
+		rLen = 0;
+		rLoc = 561;
+		rType = 0;
+		vrLen = 2377;
+		vrLoc = 35;
+	};
+	5540749E11E4BB94002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 19";
+		rLen = 0;
+		rLoc = 561;
+		rType = 0;
+		vrLen = 2399;
+		vrLoc = 35;
+	};
+	554074A111E4BBB0002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 19";
+		rLen = 0;
+		rLoc = 561;
+		rType = 0;
+		vrLen = 2354;
+		vrLoc = 79;
+	};
+	554074A611E4BC0F002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 19";
+		rLen = 0;
+		rLoc = 562;
+		rType = 0;
+		vrLen = 2231;
+		vrLoc = 133;
+	};
+	554074AF11E4BD03002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 40F437461414DDC8F5114067 /* DefaultSettings.h */;
+		name = "DefaultSettings.h: 10";
+		rLen = 6;
+		rLoc = 149;
+		rType = 0;
+		vrLen = 1249;
+		vrLoc = 1137;
+	};
+	554074B011E4BD03002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 19";
+		rLen = 0;
+		rLoc = 562;
+		rType = 0;
+		vrLen = 2231;
+		vrLoc = 133;
+	};
+	554074B111E4BD03002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 27";
+		rLen = 0;
+		rLoc = 970;
+		rType = 0;
+		vrLen = 2115;
+		vrLoc = 3;
+	};
+	554074B811E4BD8B002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 26";
+		rLen = 105;
+		rLoc = 865;
+		rType = 0;
+		vrLen = 2360;
+		vrLoc = 79;
+	};
+	554074B911E4BD8B002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
+		name = "MixerChannelStrip.cpp: 183";
+		rLen = 45;
+		rLoc = 8269;
+		rType = 0;
+		vrLen = 1838;
+		vrLoc = 6752;
+	};
+	554074BA11E4BD8B002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
+		name = "MixerChannelStrip.cpp: 78";
+		rLen = 0;
+		rLoc = 3900;
+		rType = 0;
+		vrLen = 2765;
+		vrLoc = 1602;
+	};
+	554074BD11E4BDA0002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
+		name = "Settings.h: 88";
+		rLen = 0;
+		rLoc = 3141;
+		rType = 0;
+		vrLen = 857;
+		vrLoc = 2562;
+	};
+	554074BE11E4BDA0002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55E005A311C2A286006918A6 /* juce_amalgamated.cpp */;
+		name = "juce_amalgamated.cpp: 16734";
+		rLen = 2;
+		rLoc = 380648;
+		rType = 0;
+		vrLen = 408;
+		vrLoc = 381057;
+	};
+	554074BF11E4BDA0002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 19";
+		rLen = 0;
+		rLoc = 561;
+		rType = 0;
+		vrLen = 895;
+		vrLoc = 162;
+	};
+	554074C011E4BDA0002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */;
+		name = "CrossFader.cpp: 19";
+		rLen = 0;
+		rLoc = 562;
+		rType = 0;
+		vrLen = 925;
+		vrLoc = 162;
+	};
+	554074C111E4BDA0002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32AA67C67D2072FA2C7A62DD /* AudioEngine.h */;
+		name = "AudioEngine.h: 94";
+		rLen = 11;
+		rLoc = 2579;
+		rType = 0;
+		vrLen = 669;
+		vrLoc = 1949;
+	};
+	554074C411E4BDB0002EAF54 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
+		name = "MixerChannelStrip.cpp: 78";
+		rLen = 0;
+		rLoc = 3900;
+		rType = 0;
+		vrLen = 2768;
+		vrLoc = 1602;
 	};
 	559FA16C11E24E47002C84C6 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -3959,7 +4288,7 @@
 		fRef = 8C2BB5F921175543CCCA8659 /* Settings.h */;
 		name = "Settings.h: 104";
 		rLen = 4;
-		rLoc = 3851;
+		rLoc = 3891;
 		rType = 0;
 		vrLen = 1720;
 		vrLoc = 2665;
@@ -3979,7 +4308,7 @@
 		fRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */;
 		name = "MixerChannelStrip.cpp: 184";
 		rLen = 0;
-		rLoc = 8417;
+		rLoc = 8347;
 		rType = 0;
 		vrLen = 1833;
 		vrLoc = 6780;
@@ -4387,9 +4716,9 @@
 		path = /Users/Dave/Documents/Developement/juce_source/juce/juce_amalgamated.cpp;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {956, 3.62203e+06}}";
-			sepNavSelRange = "{1481003, 20}";
-			sepNavVisRange = "{1480272, 1152}";
+			sepNavIntBoundsRect = "{{0, 0}, {850, 3.62157e+06}}";
+			sepNavSelRange = "{380648, 2}";
+			sepNavVisRange = "{381057, 408}";
 		};
 	};
 	55E005A611C2A286006918A6 /* PBXTextBookmark */ = {
@@ -4598,23 +4927,23 @@
 	};
 	70C9CB9C386D8C937451F08D /* CrossFader.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1036, 2015}}";
-			sepNavSelRange = "{5374, 0}";
-			sepNavVisRange = "{4907, 1077}";
+			sepNavIntBoundsRect = "{{0, 0}, {950, 2054}}";
+			sepNavSelRange = "{562, 0}";
+			sepNavVisRange = "{162, 925}";
 		};
 	};
 	75E4F1D02D4324E833E2AB38 /* DeckManager.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {956, 741}}";
+			sepNavIntBoundsRect = "{{0, 0}, {956, 715}}";
 			sepNavSelRange = "{810, 0}";
 			sepNavVisRange = "{36, 1064}";
 		};
 	};
 	81EEA219C740584AD974F680 /* ContainerComponent.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 1755}}";
-			sepNavSelRange = "{780, 0}";
-			sepNavVisRange = "{585, 377}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 1768}}";
+			sepNavSelRange = "{561, 0}";
+			sepNavVisRange = "{358, 402}";
 		};
 	};
 	824C20D102FB8069BE1A808F /* DraggableDisplay.cpp */ = {
@@ -4633,9 +4962,9 @@
 	};
 	8C2BB5F921175543CCCA8659 /* Settings.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {956, 1742}}";
-			sepNavSelRange = "{1137, 5}";
-			sepNavVisRange = "{296, 1623}";
+			sepNavIntBoundsRect = "{{0, 0}, {1048, 1638}}";
+			sepNavSelRange = "{3141, 0}";
+			sepNavVisRange = "{2562, 857}";
 		};
 	};
 	8E3B1D49C63A28EAEC9CF2A3 /* BinaryData.h */ = {
@@ -5087,6 +5416,39 @@
 			5540747B11E4B7F9002EAF54 /* PBXTextBookmark */ = 5540747B11E4B7F9002EAF54 /* PBXTextBookmark */;
 			5540747C11E4B7F9002EAF54 /* XCBuildMessageTextBookmark */ = 5540747C11E4B7F9002EAF54 /* XCBuildMessageTextBookmark */;
 			5540747D11E4B7F9002EAF54 /* PBXTextBookmark */ = 5540747D11E4B7F9002EAF54 /* PBXTextBookmark */;
+			5540748211E4B8BA002EAF54 /* PBXTextBookmark */ = 5540748211E4B8BA002EAF54 /* PBXTextBookmark */;
+			5540748311E4B8BA002EAF54 /* XCBuildMessageTextBookmark */ = 5540748311E4B8BA002EAF54 /* XCBuildMessageTextBookmark */;
+			5540748411E4B8BA002EAF54 /* PBXTextBookmark */ = 5540748411E4B8BA002EAF54 /* PBXTextBookmark */;
+			5540748711E4B8FF002EAF54 /* PBXTextBookmark */ = 5540748711E4B8FF002EAF54 /* PBXTextBookmark */;
+			5540748811E4B8FF002EAF54 /* PBXTextBookmark */ = 5540748811E4B8FF002EAF54 /* PBXTextBookmark */;
+			5540748911E4B8FF002EAF54 /* PBXTextBookmark */ = 5540748911E4B8FF002EAF54 /* PBXTextBookmark */;
+			5540748A11E4B900002EAF54 /* PBXTextBookmark */ = 5540748A11E4B900002EAF54 /* PBXTextBookmark */;
+			5540748D11E4B997002EAF54 /* PBXTextBookmark */ = 5540748D11E4B997002EAF54 /* PBXTextBookmark */;
+			5540748E11E4B997002EAF54 /* PBXTextBookmark */ = 5540748E11E4B997002EAF54 /* PBXTextBookmark */;
+			5540748F11E4B997002EAF54 /* PBXTextBookmark */ = 5540748F11E4B997002EAF54 /* PBXTextBookmark */;
+			5540749011E4B997002EAF54 /* PBXTextBookmark */ = 5540749011E4B997002EAF54 /* PBXTextBookmark */;
+			5540749311E4BA10002EAF54 /* PBXTextBookmark */ = 5540749311E4BA10002EAF54 /* PBXTextBookmark */;
+			5540749411E4BA10002EAF54 /* PBXTextBookmark */ = 5540749411E4BA10002EAF54 /* PBXTextBookmark */;
+			5540749511E4BA2C002EAF54 /* PBXTextBookmark */ = 5540749511E4BA2C002EAF54 /* PBXTextBookmark */;
+			5540749A11E4BB94002EAF54 /* PBXTextBookmark */ = 5540749A11E4BB94002EAF54 /* PBXTextBookmark */;
+			5540749B11E4BB94002EAF54 /* PBXTextBookmark */ = 5540749B11E4BB94002EAF54 /* PBXTextBookmark */;
+			5540749C11E4BB94002EAF54 /* PBXTextBookmark */ = 5540749C11E4BB94002EAF54 /* PBXTextBookmark */;
+			5540749D11E4BB94002EAF54 /* PBXTextBookmark */ = 5540749D11E4BB94002EAF54 /* PBXTextBookmark */;
+			5540749E11E4BB94002EAF54 /* PBXTextBookmark */ = 5540749E11E4BB94002EAF54 /* PBXTextBookmark */;
+			554074A111E4BBB0002EAF54 /* PBXTextBookmark */ = 554074A111E4BBB0002EAF54 /* PBXTextBookmark */;
+			554074A611E4BC0F002EAF54 /* PBXTextBookmark */ = 554074A611E4BC0F002EAF54 /* PBXTextBookmark */;
+			554074AF11E4BD03002EAF54 /* PBXTextBookmark */ = 554074AF11E4BD03002EAF54 /* PBXTextBookmark */;
+			554074B011E4BD03002EAF54 /* PBXTextBookmark */ = 554074B011E4BD03002EAF54 /* PBXTextBookmark */;
+			554074B111E4BD03002EAF54 /* PBXTextBookmark */ = 554074B111E4BD03002EAF54 /* PBXTextBookmark */;
+			554074B811E4BD8B002EAF54 /* PBXTextBookmark */ = 554074B811E4BD8B002EAF54 /* PBXTextBookmark */;
+			554074B911E4BD8B002EAF54 /* PBXTextBookmark */ = 554074B911E4BD8B002EAF54 /* PBXTextBookmark */;
+			554074BA11E4BD8B002EAF54 /* PBXTextBookmark */ = 554074BA11E4BD8B002EAF54 /* PBXTextBookmark */;
+			554074BD11E4BDA0002EAF54 /* PBXTextBookmark */ = 554074BD11E4BDA0002EAF54 /* PBXTextBookmark */;
+			554074BE11E4BDA0002EAF54 /* PBXTextBookmark */ = 554074BE11E4BDA0002EAF54 /* PBXTextBookmark */;
+			554074BF11E4BDA0002EAF54 /* PBXTextBookmark */ = 554074BF11E4BDA0002EAF54 /* PBXTextBookmark */;
+			554074C011E4BDA0002EAF54 /* PBXTextBookmark */ = 554074C011E4BDA0002EAF54 /* PBXTextBookmark */;
+			554074C111E4BDA0002EAF54 /* PBXTextBookmark */ = 554074C111E4BDA0002EAF54 /* PBXTextBookmark */;
+			554074C411E4BDB0002EAF54 /* PBXTextBookmark */ = 554074C411E4BDB0002EAF54 /* PBXTextBookmark */;
 			559FA16C11E24E47002C84C6 = 559FA16C11E24E47002C84C6 /* PBXTextBookmark */;
 			559FA18111E2503C002C84C6 = 559FA18111E2503C002C84C6 /* PBXTextBookmark */;
 			559FA61411E36843002C84C6 = 559FA61411E36843002C84C6 /* PBXTextBookmark */;
@@ -5179,9 +5541,9 @@
 	};
 	B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {956, 2418}}";
-			sepNavSelRange = "{1876, 4}";
-			sepNavVisRange = "{1526, 940}";
+			sepNavIntBoundsRect = "{{0, 0}, {956, 2288}}";
+			sepNavSelRange = "{499, 0}";
+			sepNavVisRange = "{109, 852}";
 		};
 	};
 	B87450A9B14162D2371EBED6 /* MasterChannelStrip.h */ = {

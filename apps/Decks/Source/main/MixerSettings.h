@@ -18,7 +18,7 @@ namespace MixerSettings
 	static const int noChannels = 4;
 	
 	namespace ChannelSettings {
-		static const char *SectionName = "channel";
+		static const Identifier SectionName = "channel";
 
 		enum ChannelSettings{
 			on,
@@ -37,7 +37,7 @@ namespace MixerSettings
 			noChannelSettings
 		};
 		
-		static const char UNUSED_NOWARN *Names[] = {
+		static const Identifier UNUSED_NOWARN Names[] = {
 			"on",
 			"bypass",
 			"gain",
@@ -72,7 +72,7 @@ namespace MixerSettings
 	}
 		
 	namespace xFaderSettings {
-		static const char *SectionName = "xFader";
+		static const Identifier SectionName = "xFader";
 
 		enum xFaderSettings {
 			assignX,
@@ -81,7 +81,7 @@ namespace MixerSettings
 			noXFaderSettings
 		};
 		
-		static const char UNUSED_NOWARN *Names[] = {
+		static const Identifier UNUSED_NOWARN Names[] = {
 			"assignX",
 			"assignY",
 			"level"
@@ -96,7 +96,7 @@ namespace MixerSettings
 	}
 		
 	namespace MasterSettings {
-		static const char *SectionName = "master";
+		static const Identifier SectionName = "master";
 		
 		enum MasterSettings {
 			gain,
@@ -106,7 +106,7 @@ namespace MixerSettings
 			noMasterSettings
 		};
 		
-		static const char UNUSED_NOWARN *Names[] = {
+		static const Identifier UNUSED_NOWARN Names[] = {
 			"gain",
 			"cue",
 			"faderCurve",

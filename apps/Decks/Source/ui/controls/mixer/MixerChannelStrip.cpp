@@ -74,6 +74,7 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	levelSlider->setSliderStyle(Slider::LinearVertical);
 	levelSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	levelSlider->setRange(Defaults::Mixer::Channel::faderMin, Defaults::Mixer::Channel::faderMax);
+	levelSlider->setSkewFactor(Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(faderCurve)));
 	levelSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(level)));
 
 	addAndMakeVisible(cueButton = new TextButton(T("cue")));
@@ -180,9 +181,7 @@ void MixerChannelStrip::paint(Graphics &g)
 
 void MixerChannelStrip::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property)
 {
-	DBG(property.toString());
-//	if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(faderCurve)))
-	if (property == Identifier(MASTER_SETTING(faderCurve)))
+	if (property == MASTER_SETTING(faderCurve))
 	{
 		DBG("fader curve adjusting");
 		DBG(treeWhosePropertyHasChanged.getProperty(property).toString());

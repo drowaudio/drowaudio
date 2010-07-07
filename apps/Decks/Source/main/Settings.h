@@ -57,35 +57,35 @@ public:
 //		return getPropertyOfChild(MixerSettings::MasterSettings::SectionName, property);
 //	}
 	
-	Value getPropertyOfChildAsValue(String child, String property)
+	Value getPropertyOfChildAsValue(Identifier child, Identifier property)
 	{
 		return settings.getChildWithName(child).getPropertyAsValue(property, 0);
 	}
 	
-	Value getPropertyOfChannelAsValue(int channelNo, String property)
+	Value getPropertyOfChannelAsValue(int channelNo, Identifier property)
 	{
 		String channelName(MixerSettings::ChannelSettings::SectionName);
 		channelName << channelNo;
 		return settings.getChildWithName(MixerSettings::ChannelSettings::SectionName).getChildWithName(channelName).getPropertyAsValue(property, 0);
 	}
 		
-	Value getPropertyOfXFaderAsValue(String property)
+	Value getPropertyOfXFaderAsValue(Identifier property)
 	{
 		return getPropertyOfChildAsValue(MixerSettings::xFaderSettings::SectionName, property);
 	}
 	
-	Value getPropertyOfMasterAsValue(String property)
+	Value getPropertyOfMasterAsValue(Identifier property)
 	{
 		return getPropertyOfChildAsValue(MixerSettings::MasterSettings::SectionName, property);
 	}
 	
-	var getPropertyOfChild(String child, String property)		{ return getPropertyOfChildAsValue(child, property).getValue();	}
+	var getPropertyOfChild(Identifier child, Identifier property)		{ return getPropertyOfChildAsValue(child, property).getValue();	}
 	
-	var getPropertyOfChannel(int channelNo, String property)	{ return getPropertyOfChannelAsValue(channelNo, property).getValue(); }
+	var getPropertyOfChannel(int channelNo, Identifier property)	{ return getPropertyOfChannelAsValue(channelNo, property).getValue(); }
 	
-	var getPropertyOfXFader(String property)					{ return getPropertyOfXFaderAsValue(property).getValue(); }
+	var getPropertyOfXFader(Identifier property)					{ return getPropertyOfXFaderAsValue(property).getValue(); }
 	
-	var getPropertyOfMaster(String property)					{ return getPropertyOfMasterAsValue(property).getValue(); }
+	var getPropertyOfMaster(Identifier property)					{ return getPropertyOfMasterAsValue(property).getValue(); }
 	
 //===============================================================================
 	bool loadSettingsFile(String path, ValueTree &treeToFill);

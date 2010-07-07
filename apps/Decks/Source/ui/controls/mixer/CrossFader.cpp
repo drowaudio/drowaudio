@@ -23,7 +23,9 @@ CrossFader::CrossFader()
 	xFaderSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	xFaderSlider->setRange(0.0f, 1.0f);
 //	xFaderSlider->setValue(Defaults::Mixer::XFader::fader);
+	xFaderSlider->setSkewFactor(Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(xFaderCurve)));
 	xFaderSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfXFaderAsValue(XFADER_SETTING(level)));
+
 	
 	addAndMakeVisible( xAssignSlider = new Slider("xAssignSlider") );
 	xAssignSlider->setRange(0, manager->getMaxNoDecks(), 1);
@@ -134,7 +136,9 @@ void CrossFader::paint(Graphics &g)
 
 void CrossFader::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property)
 {
-	if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(xFaderCurve))) {
+	if (property == MASTER_SETTING(xFaderCurve))
+	{
+		DBG("xFader Curve adjusting");
 		// we need to keep the slider posisition the same and adjust the level
 		double proportion = xFaderSlider->valueToProportionOfLength(xFaderSlider->getValue());
 		xFaderSlider->setSkewFactor(Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(xFaderCurve)));
