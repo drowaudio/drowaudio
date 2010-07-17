@@ -32,5 +32,8 @@ void CpuMeter::resized()
 void CpuMeter::timerCallback()
 {
 	currentCpuUsage = (deviceManager->getCpuUsage() * 100.0);
-	setText(String(currentCpuUsage, 2) <<T("%"), false);
+	String usageString(currentCpuUsage, 2);
+	usageString << T("%");
+	setText(usageString, false);
+//	setText(String(currentCpuUsage, 2) <<T("%"), false);
 }

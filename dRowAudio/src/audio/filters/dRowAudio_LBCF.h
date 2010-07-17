@@ -35,7 +35,7 @@ public:
 	 */
 	void setFBCoeff(float newFBCoeff) throw();
 	
-	/**	Sets the time the samples are delayed for.
+	/**	Sets the time in ms the samples are delayed for.
 		Values < 20 will give flanging effects 20 - 90 for reverbs and 90+ to hear distinct echoes.
 	 */
 	void setDelayTime(double sampleRate, float newDelayTime) throw();

@@ -55,9 +55,20 @@ static const String timeToTimecodeString (const double seconds)
     const int mins  = ((int) (absSecs / 60.0)) % 60;
     const int secs  = ((int) absSecs) % 60;
 	
-    return String::formatted (T("%s%02d:%02d:%02d:%03d"),
-                              sign, hours, mins, secs,
-                              roundDoubleToInt (absSecs * 1000) % 1000);
+//	String formatted("");
+//	formatted << sign <<hours << mins << secs << (roundDoubleToInt (absSecs * 1000) % 1000);
+	
+	String t;
+        t = sign;
+	
+    t	<< String (hours).paddedLeft ('0', 2) << ":"
+		<< String (mins).paddedLeft ('0', 2) << ":"
+		<< String (secs).paddedLeft ('0', 2) << ":"
+		<< String (roundToInt (absSecs * 1000) % 1000).paddedLeft ('0', 2);
+	return t;
+	//    return String::formatted (T("%s%02d:%02d:%02d:%03d"),
+//                              sign, hours, mins, secs,
+//                              roundDoubleToInt (absSecs * 1000) % 1000);
 }
 
 /**
@@ -73,8 +84,15 @@ static const String timeToTimecodeStringLowRes (const double seconds)
     const int secs  = ((unsigned int) absSecs) % 60u;
 	const int tenthSecs  = (int) ((absSecs - (int)absSecs) * 10);
 	
-    return String::formatted (T("%s%02d:%02d.%i"),
-                              sign, mins, secs, tenthSecs);
+	String t;
+	t = sign;
+	
+    t	<< String (mins).paddedLeft ('0', 2) << ":"
+		<< String (secs).paddedLeft ('0', 2) << "."
+		<< String (tenthSecs).paddedLeft ('0', 0);
+	return t;
+	//    return String::formatted (T("%s%02d:%02d.%i"),
+//                              sign, mins, secs, tenthSecs);
 }
 
 /**
@@ -103,7 +121,7 @@ static const String ppqToBarsBeatsString (const double ppq,
 /**
 	Compares a filename extension with a wildcard string.
  */
-static bool matchesAudioWildcard (const String &extensionToTest, const String &wildcard, const bool ignoreCase)
+static bool matchesAudioWildcard (const String &extensionToTest, const String &wildcard, const bool ignoreCase=true)
 {
 	if (ignoreCase	?	wildcard.containsIgnoreCase(extensionToTest)
 					:	wildcard.contains(extensionToTest))

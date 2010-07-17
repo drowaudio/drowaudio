@@ -69,6 +69,7 @@ private:
 	
 	String filePath;
 	String fileName;
+	bool shouldBePlaying;
 };
 
 //#include <juce/juce.h>

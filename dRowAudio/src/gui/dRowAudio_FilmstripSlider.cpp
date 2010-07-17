@@ -11,7 +11,7 @@
 
 FilmstripSlider::FilmstripSlider (String &componentName, File const& image, const int numFrames, const bool showTextBox, const bool stripIsHorizontal)
 	:   Slider(componentName),
-		filmStripImage(image.exists() ? ImageFileFormat::loadFrom(image) : 0),
+		filmStripImage(ImageFileFormat::loadFrom(image)),
 		fileConstructorUsed(true),
 		showTextBox_(showTextBox),
 		isHorizontal_(stripIsHorizontal),
@@ -22,22 +22,22 @@ FilmstripSlider::FilmstripSlider (String &componentName, File const& image, cons
 	else
 		setTextBoxStyle(Slider::TextBoxBelow, false, getTextBoxWidth(), getTextBoxHeight());
 		
-	if(filmStripImage)
+	if(filmStripImage.isValid())
 	{
 		if(isHorizontal_)
 		{
-			frameHeight = filmStripImage->getHeight();
-			frameWidth = filmStripImage->getWidth() / numFrames_;
+			frameHeight = filmStripImage.getHeight();
+			frameWidth = filmStripImage.getWidth() / numFrames_;
 		}
 		else
 		{
-			frameHeight = filmStripImage->getHeight() / numFrames_;
-			frameWidth = filmStripImage->getWidth();
+			frameHeight = filmStripImage.getHeight() / numFrames_;
+			frameWidth = filmStripImage.getWidth();
 		}
 	}
 }
 
-FilmstripSlider::FilmstripSlider (String &componentName, Image *image, const int numFrames, const bool showTextBox, const bool stripIsHorizontal)
+FilmstripSlider::FilmstripSlider (String &componentName, Image image, const int numFrames, const bool showTextBox, const bool stripIsHorizontal)
 :   Slider(componentName),
 	filmStripImage(image),
 	fileConstructorUsed(false),
@@ -50,30 +50,28 @@ FilmstripSlider::FilmstripSlider (String &componentName, Image *image, const int
 	else
 		setTextBoxStyle(Slider::TextBoxBelow, false, getTextBoxWidth(), getTextBoxHeight());
 		
-	if(filmStripImage)
+	if(filmStripImage.isValid())
 	{
 		if(isHorizontal_)
 		{
-			frameHeight = filmStripImage->getHeight();
-			frameWidth = filmStripImage->getWidth() / numFrames_;
+			frameHeight = filmStripImage.getHeight();
+			frameWidth = filmStripImage.getWidth() / numFrames_;
 		}
 		else
 		{
-			frameHeight = filmStripImage->getHeight() / numFrames_;
-			frameWidth = filmStripImage->getWidth();
+			frameHeight = filmStripImage.getHeight() / numFrames_;
+			frameWidth = filmStripImage.getWidth();
 		}
 	}
 }
 
 FilmstripSlider::~FilmstripSlider()
 {
-	if (fileConstructorUsed)
-		delete filmStripImage;
 }
 
 void FilmstripSlider::paint(Graphics& g)
 {
-	if(filmStripImage)
+	if(filmStripImage.isValid())
 	{
 		int value = (getValue() - getMinimum()) / (getMaximum() - getMinimum()) * (numFrames_ - 1);
 

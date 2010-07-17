@@ -48,26 +48,26 @@ void MeterComponent::paint(Graphics &g)
 	
 	// draw meter level
 	float BarToDraw = pow(currentBarLevel, 0.25f);
-	ColourGradient meterGradientRaw (Colours::red,
-									 0, 0,
-									 Colours::green,
-									 0, meterHeight*0.5f,
-									 false);
-	meterGradientRaw.addColour(0.3f, Colours::yellow);
-	meterGradientRaw.addColour(0.4f, Colours::yellow);
-	GradientBrush meterGradientBrush(meterGradientRaw);
-	g.setBrush(&meterGradientBrush);
-	g.fillRect(0, (uint32)(meterHeight*(1.0f-BarToDraw)),
-			   getWidth(), (uint32)(meterHeight*BarToDraw));
-	
-	ColourGradient highlight (Colour(0x00000000),
-						      0, 0,
-							  Colour(0x00000000),
-							  getWidth(), 0,
-							  false);
-	highlight.addColour(0.5f, Colours::white.withAlpha(0.5f));
-	GradientBrush highlightBrush(highlight);
-	g.setBrush(&highlightBrush);
+//	ColourGradient meterGradientRaw (Colours::red,
+//									 0, 0,
+//									 Colours::green,
+//									 0, meterHeight*0.5f,
+//									 false);
+//	meterGradientRaw.addColour(0.3f, Colours::yellow);
+//	meterGradientRaw.addColour(0.4f, Colours::yellow);
+//	GradientBrush meterGradientBrush(meterGradientRaw);
+//	g.setBrush(&meterGradientBrush);
+//	g.fillRect(0, (uint32)(meterHeight*(1.0f-BarToDraw)),
+//			   getWidth(), (uint32)(meterHeight*BarToDraw));
+//	
+//	ColourGradient highlight (Colour(0x00000000),
+//						      0, 0,
+//							  Colour(0x00000000),
+//							  getWidth(), 0,
+//							  false);
+//	highlight.addColour(0.5f, Colours::white.withAlpha(0.5f));
+//	GradientBrush highlightBrush(highlight);
+//	g.setBrush(&highlightBrush);
 	g.fillRect(0, (uint32)(meterHeight*(1-BarToDraw)),
 			   getWidth(), (uint32)(meterHeight*BarToDraw));
 	

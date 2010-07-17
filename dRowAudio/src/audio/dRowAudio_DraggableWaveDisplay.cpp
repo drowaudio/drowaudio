@@ -73,9 +73,9 @@ void DraggableWaveDisplay::timerCallback(const int timerId)
 	{
 		if (isMouseDown)
 		{
-			int y;
 			lastMouseX = currentMouseX;
-			getMouseXYRelative(currentMouseX, y);
+			Point<int> mousePoint = getMouseXYRelative();
+			currentMouseX = mousePoint.getX();
 			
 			currentXDrag = currentMouseX - lastMouseX;
 			
@@ -119,7 +119,7 @@ void DraggableWaveDisplay::changeListenerCallback(void* changedObject)
 		thumbnailViewLow->setSource(fileInputSource);
 		
 		startTimer(waveformLoading, 25);
-		startTimer(waveformUpdated, 40);
+		startTimer(waveformUpdated, 60);
 	}
 }
 //====================================================================================
@@ -172,7 +172,7 @@ void DraggableWaveDisplay::mouseDown(const MouseEvent &e)
 			shouldBePlaying = false;
 		
 		setMouseCursor(MouseCursor::DraggingHandCursor);
-		enableUnboundedMouseMovement(true, true);
+//		enableUnboundedMouseMovement(true, true);
 		
 		startTimer(waveformMoved, 40);
 	}

@@ -54,6 +54,9 @@ public:
 	
 	/// Togles Loop Mode
 	void setLooping(bool shouldLoop);
+	
+	/// Returns the length of the file in seconds
+	double getTotalLengthInSeconds()		{ return lengthInSecs;	}
 		
 	/// Returns the AudioFormatReaderSource currently being used
 	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
@@ -71,6 +74,7 @@ private:
 	
 	String filePath;
 	String fileName;
+	double lengthInSecs;
 };
 
 #endif //_DROWAUDIO_AUDIOFILEPLAYER__H_

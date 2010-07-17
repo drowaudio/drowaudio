@@ -74,8 +74,8 @@ extern DRowAudioFilter* JUCE_CALLTYPE createPluginFilter(); //<<DR>>
 #define appendMacro2(a, b, c, d) appendMacro1(a, b, c, d)
 #define MakeObjCClassName(rootName)  appendMacro2 (rootName, JUCE_MAJOR_VERSION, JUCE_MINOR_VERSION, JucePlugin_AUExportPrefix)
 
-#define JuceUICreationClass     MakeObjCClassName(JuceUICreationClass)
-#define JuceUIViewClass         MakeObjCClassName(JuceUIViewClass)
+#define JuceUICreationClass         JucePlugin_AUCocoaViewClassName
+#define JuceUIViewClass             MakeObjCClassName(JuceUIViewClass)
 
 class JuceAU;
 class EditorCompHolder;
@@ -203,9 +203,15 @@ public:
             }
             else if (inID == kAudioUnitProperty_CocoaUI)
             {
-                outDataSize = sizeof (AudioUnitCocoaViewInfo);
-                outWritable = true;
-                return noErr;
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
+                // (On 10.4, there's a random obj-c dispatching crash when trying to load a cocoa UI)
+                if (PlatformUtilities::getOSXMinorVersionNumber() > 4)
+#endif
+                {
+                    outDataSize = sizeof (AudioUnitCocoaViewInfo);
+                    outWritable = true;
+                    return noErr;
+                }
             }
         }
 
@@ -237,15 +243,24 @@ public:
             }
             else if (inID == kAudioUnitProperty_CocoaUI)
             {
-                const ScopedAutoReleasePool pool;
+#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
+                // (On 10.4, there's a random obj-c dispatching crash when trying to load a cocoa UI)
+                if (PlatformUtilities::getOSXMinorVersionNumber() > 4)
+#endif
+                {
+                    const ScopedAutoReleasePool pool;
 
-                AudioUnitCocoaViewInfo* info = (AudioUnitCocoaViewInfo*) outData;
-                NSBundle* b = [NSBundle bundleForClass: [JuceUICreationClass class]];
+                    AudioUnitCocoaViewInfo* info = (AudioUnitCocoaViewInfo*) outData;
 
-                info->mCocoaAUViewClass[0] = (CFStringRef) [[[JuceUICreationClass class] className] retain];
-                info->mCocoaAUViewBundleLocation = (CFURLRef) [[NSURL fileURLWithPath: [b bundlePath]] retain];
+                    const File bundleFile (File::getSpecialLocation (File::currentApplicationFile));
+                    NSString* bundlePath = [NSString stringWithUTF8String: (const char*) bundleFile.getFullPathName().toUTF8()];
+                    NSBundle* b = [NSBundle bundleWithPath: bundlePath];
 
-                return noErr;
+                    info->mCocoaAUViewClass[0] = (CFStringRef) [[[JuceUICreationClass class] className] retain];
+                    info->mCocoaAUViewBundleLocation = (CFURLRef) [[NSURL fileURLWithPath: [b bundlePath]] retain];
+
+                    return noErr;
+                }
             }
         }
 
@@ -429,7 +444,7 @@ public:
     ComponentResult Version()                   { return JucePlugin_VersionCode; }
 
     bool SupportsTail()                         { return true; }
-    Float64 GetTailTime()                       { return 0; }
+    Float64 GetTailTime()                       { return (JucePlugin_TailLengthSeconds); }
 
     Float64 GetSampleRate()
     {
@@ -958,7 +973,6 @@ public:
 #if ! JucePlugin_EditorRequiresKeyboardFocus
         setWantsKeyboardFocus (false);
 #else
-        setComponentProperty ("juce_disallowFocus", true);
         setWantsKeyboardFocus (true);
 #endif
     }
@@ -1240,7 +1254,6 @@ private:
 #if ! JucePlugin_EditorRequiresKeyboardFocus
             addToDesktop (ComponentPeer::windowIsTemporary | ComponentPeer::windowIgnoresKeyPresses);
             setWantsKeyboardFocus (false);
-            setComponentProperty ("juce_disallowFocus", true);
 #else
             addToDesktop (ComponentPeer::windowIsTemporary);
             setWantsKeyboardFocus (true);
@@ -1348,6 +1361,19 @@ private:
 
                 recursive = false;
             }
+        }
+
+        bool keyPressed (const KeyPress& kp)
+        {
+            if (! kp.getModifiers().isCommandDown())
+            {
+                // If we have an unused keypress, move the key-focus to a host window
+                // and re-inject the event..
+                [[hostWindow parentWindow] makeKeyWindow];
+                [NSApp postEvent: [NSApp currentEvent] atStart: YES];
+            }
+
+            return false;
         }
 
     private:

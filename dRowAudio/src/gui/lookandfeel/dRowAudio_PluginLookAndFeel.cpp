@@ -18,7 +18,7 @@ void dRowLookAndFeel::drawRotarySlider (Graphics& g,
 									  const float rotaryEndAngle,
 									  Slider& slider)
 {
-    const float radius = jmin (width / 2, height / 2) - 2.0f;
+    const float radius = jmin (width / 2, height / 2) ;//- 2.0f;
     const float centreX = x + width * 0.5f;
     const float centreY = y + height * 0.5f;
     const float rx = centreX - radius;
@@ -34,21 +34,21 @@ void dRowLookAndFeel::drawRotarySlider (Graphics& g,
 			
 	//======================================================================
 	// draw dial top
-	GradientBrush bottomShaddowGradient ( slider.findColour(Slider::rotarySliderFillColourId).withBrightness(0.1f),
+	ColourGradient bottomShaddowGradient ( slider.findColour(Slider::rotarySliderFillColourId).withBrightness(0.1f),
 										  rx, ry+rw,
 										  slider.findColour(Slider::rotarySliderFillColourId),
 										  rx, (ry+rw)/2,
 										  false);
-	g.setBrush (&bottomShaddowGradient);
+	g.setGradientFill (bottomShaddowGradient);
 	g.fillEllipse (rx, ry, rw, rw);
 	
 	// draw rounding highlight
-	GradientBrush highlight (Colours::white.withAlpha(0.45f),
+	ColourGradient highlight (Colours::white.withAlpha(0.45f),
 							  rx+(rw/2), ry+(rw * 0.2f),
 							  Colours::transparentWhite,
 							  rx+(rw/2), ry+(rw/2),
 							  true);
-	g.setBrush (&highlight);
+	g.setGradientFill(highlight);
 	g.fillEllipse (rx, ry, rw, rw/2);
 	
 	// draw rim
@@ -65,12 +65,12 @@ void dRowLookAndFeel::drawRotarySlider (Graphics& g,
 	const float thumbX = posX - (thumbW * 0.5f);
 	const float thumbY = posY - (thumbW * 0.5f);
 	
-	GradientBrush thumbGradient ( slider.findColour(Slider::rotarySliderFillColourId).withBrightness(0.05f),
+	ColourGradient thumbGradient ( slider.findColour(Slider::rotarySliderFillColourId).withBrightness(0.05f),
 								  thumbX, thumbY,
 								  slider.findColour(Slider::rotarySliderFillColourId).withBrightness(0.75f),
 								  thumbX, thumbY+thumbW,
 								  false);
-	g.setBrush (&thumbGradient);
+	g.setGradientFill(thumbGradient);
 	g.fillEllipse (thumbX, thumbY, thumbW, thumbW);
 	
 	// draw thumb rim
@@ -140,8 +140,8 @@ void dRowLookAndFeel::drawLabel (Graphics& g, Label& label)
 		innerShaddow.addColour(0.35, findColour(Label::backgroundColourId));
 		innerShaddow.addColour(0.75, findColour(Label::backgroundColourId));
 		
-		GradientBrush innerShaddowBrush(innerShaddow);
-		g.setBrush(&innerShaddowBrush);
+//		GradientBrush innerShaddowBrush(innerShaddow);
+		g.setGradientFill(innerShaddow);
 		
 		g.fillRect(1, 1, innerBoxWidth, innerBoxHeight);
 		
@@ -153,8 +153,8 @@ void dRowLookAndFeel::drawLabel (Graphics& g, Label& label)
 									   false);
 		bottomHighlight.addColour(0.05f, Colours::white.withAlpha(0.7f));
 		bottomHighlight.addColour(0.95f, Colours::white.withAlpha(0.7f));
-		GradientBrush bottomBrush(bottomHighlight);
-		g.setBrush(&bottomBrush);
+//		GradientBrush bottomBrush(bottomHighlight);
+		g.setGradientFill(bottomHighlight);
 		g.drawLine(0, label.getHeight(), label.getWidth(), label.getHeight());
 	}
 }

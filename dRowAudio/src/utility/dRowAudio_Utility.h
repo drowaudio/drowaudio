@@ -39,6 +39,23 @@ inline static File getResourcesFolder()
 	return File::getSpecialLocation(File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile("Resources");
 }
 
+/**
+	If the String passed in is a local path, this will return a string with the file://localhost part
+	of the file path stripped as well as the %20 spaces
+ */
+inline static String stripFileProtocolForLocal(String pathToStrip)
+{
+	if (pathToStrip.startsWith(T("file://localhost")));
+	{
+		String temp1(pathToStrip.substring(pathToStrip.indexOf(7, T("/"))));//(T("file://localhost")));
+		String temp2(temp1.replace(T("%20"), T(" ")));
+
+		return temp2;
+	}
+	
+	return String::empty;
+}
+
 //==============================================================================
 /**
 	This handy macro is a platform independent way of stopping compiler

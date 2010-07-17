@@ -30,16 +30,16 @@ public:
 		Use this if you want to use the same image for many sliders in order to save memory.
 		Remember to delete the Image passed to the slider yourself.
 	 */
-	FilmstripSlider (String &componentName, Image *image, const int numFrames, const bool showTextBox =false, const bool stripIsHorizontal =true);
+	FilmstripSlider (String &componentName, Image image, const int numFrames, const bool showTextBox =false, const bool stripIsHorizontal =true);
 
 	///	Destructor.
 	~FilmstripSlider();
 
 	/// Returns the width of one frame of the filmstrip in pixels.
-	int getFrameWidth() const  { return filmStripImage ? frameWidth  : 100; }
+	int getFrameWidth() const  { return filmStripImage.isValid() ? frameWidth  : 100; }
 	
 	/// Returns the height of one frame of the filmstrip in pixels.
-	int getFrameHeight() const { return filmStripImage ? frameHeight : 24;  }
+	int getFrameHeight() const { return filmStripImage.isValid() ? frameHeight : 24;  }
 		
 	/// Returns ture is the text box is visible.
 	bool isTextBoxVisible() const { return showTextBox_; }
@@ -48,7 +48,7 @@ public:
 	void paint(Graphics& g);
 
 private:
-	Image* filmStripImage;
+	Image filmStripImage;
 	const bool fileConstructorUsed;
 	bool showTextBox_;
 	const bool isHorizontal_;

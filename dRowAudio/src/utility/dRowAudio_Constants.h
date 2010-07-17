@@ -31,5 +31,6 @@ static const double oneOverRoot3 = 1.0 / sqrt(3.0);
 
 
 #define squareNumber(x)	(x * x)
+#define cubeNumber(x)	(x * x * x)
 
 #endif //_DROWAUDIOCONSTANTS_H_

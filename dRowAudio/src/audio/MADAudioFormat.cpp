@@ -389,7 +389,7 @@ private:
 };
 
 static const tchar* const extensions[] =    { T(".mp3"), T(".mp2"), T(".mpg"), 0 };
-MADAudioFormat::MADAudioFormat() : AudioFormat(T("MPEG Audio Decoder (MAD)"), (const tchar**) extensions)
+MADAudioFormat::MADAudioFormat() : AudioFormat(T("MPEG Audio Decoder (MAD)"), StringArray(extensions, 4))
 {
 }
 

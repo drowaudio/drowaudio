@@ -14,12 +14,13 @@ AudioFilePlayer::AudioFilePlayer()
 {
 	formatManager = new AudioFormatManager();
 	formatManager->registerBasicFormats();
-	formatManager->registerFormat(new MADAudioFormat(), false);	
+	formatManager->registerFormat(new QuickTimeAudioFormat(), false);	
+//	formatManager->registerFormat(new MADAudioFormat(), false);	
 }
 
 AudioFilePlayer::AudioFilePlayer(const String& path)
+:	currentAudioFileSource(0)
 {
-	currentAudioFileSource = 0;
 	setFile(path);
 }
 
@@ -68,6 +69,8 @@ bool AudioFilePlayer::setFile(const String& path)
 		setSource (currentAudioFileSource,
 				   32768, // tells it to buffer this many samples ahead
 				   reader->sampleRate);
+		
+		lengthInSecs = getTotalLength()/reader->sampleRate;
 		
 		// let our listeners know that we have loaded a new file
 		sendChangeMessage(this);

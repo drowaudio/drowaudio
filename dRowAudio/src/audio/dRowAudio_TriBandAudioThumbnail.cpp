@@ -95,7 +95,8 @@ bool TriBandAudioThumbnail::initialiseFromAudioFile (AudioFormatReader& reader)
     noSamplesCached = 0;
 	
 	noCacheSamples = (int)(noSourceSamples / orginalSamplesPerThumbnailSample);
-	DBG(String("No cache samples = ")<<noCacheSamples);
+	
+//	DBG(String("No cache samples = ")<<noCacheSamples);
 	
     return noSourceSamples > 0;
 }
@@ -253,9 +254,9 @@ void TriBandAudioThumbnail::findMaxMin(float* sourceStartSampleHighest, float* s
 									   float* destBufferHighest, float* destBufferLowest, int destBufferSize)
 {
 	float sourceSamplesPerDestSamples = (float)sourceNumSamples / destBufferSize;
-	DBG(String("No. source samples: ")<<sourceNumSamples);
-	DBG(String("No. dest samples: ")<<destBufferSize);
-	DBG(String("sourceSamplesPerDestSamples: ")<<sourceSamplesPerDestSamples);
+//	DBG(String("No. source samples: ")<<sourceNumSamples);
+//	DBG(String("No. dest samples: ")<<destBufferSize);
+//	DBG(String("sourceSamplesPerDestSamples: ")<<sourceSamplesPerDestSamples);
 	
 	for (int i = 0; i < destBufferSize; i++)
 	{
@@ -298,7 +299,7 @@ void TriBandAudioThumbnail::drawChannel (Graphics& g,
 {
 	const int centreY = y + (h * 0.5f);
 	const float scale = h * 0.5f * verticalZoomFactor;
-	const Rectangle clip (g.getClipBounds());
+	const Rectangle<int> clip (g.getClipBounds());
 	
 	int startCacheSample = roundFloatToInt( (startTime * 60.0f * sampleRate) / orginalSamplesPerThumbnailSample );
 	int endCacheSample = roundFloatToInt( (endTime * 60.0f * sampleRate) / orginalSamplesPerThumbnailSample );
@@ -308,8 +309,8 @@ void TriBandAudioThumbnail::drawChannel (Graphics& g,
 	// calculate section to draw
 	const int noCacheSamples = endCacheSample - startCacheSample;
 	const int noPixelsNeeded = w;
-	DBG(String("No. cache samples: ")<<noCacheSamples);
-	DBG(String("No. pixels needed: ")<<noPixelsNeeded<<"\n");
+//	DBG(String("No. cache samples: ")<<noCacheSamples);
+//	DBG(String("No. pixels needed: ")<<noPixelsNeeded<<"\n");
 	
 	
 	//====================================================================================

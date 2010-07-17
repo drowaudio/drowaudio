@@ -10,7 +10,8 @@
 #include "dRowAudio_FilteringAudioFilePlayer.h"
 
 FilteringAudioFilePlayer::FilteringAudioFilePlayer()
-	: currentAudioFileSource(0)
+	: currentAudioFileSource(0),
+	  shouldBePlaying(false)
 {
 	// set up the format manager
 	formatManager = new AudioFormatManager();
@@ -41,10 +42,14 @@ void FilteringAudioFilePlayer::startFromZero()
 
 void FilteringAudioFilePlayer::pause()
 {
-	if (this->isPlaying())
+	if (this->isPlaying()) {
 		this->stop();
-	else
+		shouldBePlaying = false;
+	}
+	else {
 		this->start();
+		shouldBePlaying = true;
+	}
 }
 
 bool FilteringAudioFilePlayer::setFile(const String& path)
@@ -71,6 +76,9 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 				   32768, // tells it to buffer this many samples ahead
 				   reader->sampleRate);
 		
+		if (shouldBePlaying)
+			start();
+			
 		// let our listeners know that we have loaded a new file
 		sendChangeMessage(this);
 		

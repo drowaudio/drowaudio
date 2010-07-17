@@ -55,7 +55,7 @@ void MyLookAndFeel::drawRotarySlider (Graphics& g,
 	// draw background
 	float anglePerSpoke = (rotaryEndAngle - rotaryStartAngle)/10;
 	Path dialSpokes;
-	dialSpokes.addLineSegment (0.0f, -radius, 0.0f, 0.0f, rw * 0.03f);
+	dialSpokes.addLineSegment (Line<float> (0.0f, -radius, 0.0f, 0.0f), rw * 0.03f);
 	g.setColour(slider.findColour (Slider::trackColourId));
 	for(int i = 0; i < 11; i++)
 		g.fillPath (dialSpokes, AffineTransform::rotation ( (i * anglePerSpoke)+rotaryStartAngle ).translated (centreX, centreY));
@@ -67,28 +67,28 @@ void MyLookAndFeel::drawRotarySlider (Graphics& g,
 	const float ky = ry + ((0.2f * rw) * 0.5f);
 	
 	// dial top
-	GradientBrush dialTopGradient (slider.findColour (Slider::rotarySliderFillColourId).withAlpha (1.0f).brighter(1.5f),
+	ColourGradient dialTopGradient (slider.findColour (Slider::rotarySliderFillColourId).withAlpha (1.0f).brighter(1.5f),
 								   (float)centreX, (float)centreY,
 								   slider.findColour (Slider::rotarySliderFillColourId).withAlpha (1.0f),
 								   (float)kx, (float)ky,
 								   true);
-	g.setBrush (&dialTopGradient);
+	g.setGradientFill(dialTopGradient);
 	g.fillEllipse (kx, ky, kw, kw);
 	
 	// dial rim
-	GradientBrush dialRimGradient (Colours::white,
+	ColourGradient dialRimGradient (Colours::white,
 								   kw, 0,
 								   Colours::black,
 								   0, kw,
 								   false);
-	g.setBrush (&dialRimGradient);
+	g.setGradientFill (dialRimGradient);
 	g.drawEllipse (kx+(kw * 0.05f)/2, ky+(kw * 0.05f)/2,
 				   kw * 0.95f, kw * 0.95f,
 				   kw * 0.05f);
 	
 	// dial needle
 	Path needlePath;
-	needlePath.addLineSegment (0.0f, -kw*0.5f + kw*0.05f, 0.0f, 0.0f, rw * 0.05f);
+	needlePath.addLineSegment (Line<float> (0.0f, -kw*0.5f + kw*0.05f, 0.0f, 0.0f), rw * 0.05f);
 	g.setColour(slider.findColour (Slider::thumbColourId).withAlpha (isMouseOver ? 1.0f : 0.8f));
 	g.fillPath (needlePath, AffineTransform::rotation (angle).translated (centreX, centreY));
 }
@@ -208,21 +208,21 @@ void MyLookAndFeel::drawFaderKnob(Graphics& g,
 		g.fillRect (x, y, width, height);
 		
 		// knob outline
-		GradientBrush outlineGradient (Colour (0xff616161),
+		ColourGradient outlineGradient (Colour (0xff616161),
 									   x, y+height,
 									   Colours::white,
 									   x+width, y,
 									   false);
-		g.setBrush (&outlineGradient);
+		g.setGradientFill(outlineGradient);
 		g.drawRect (x, y, width, height, width*0.1f);
 		
 		// middle line
-		GradientBrush middleLineGradient (Colours::black,
+		ColourGradient middleLineGradient (Colours::black,
 										  x, y+height,
 										  Colours::white,
 										  x+width, y,
 										  false);
-		g.setBrush (&middleLineGradient);
+		g.setGradientFill (middleLineGradient);
 		
 		g.fillRect (x+(width / 2) - ((width * 0.3f) / 2),
 					y+(height / 2) - ((height * 0.8f) / 2),
@@ -236,21 +236,21 @@ void MyLookAndFeel::drawFaderKnob(Graphics& g,
 		g.fillRect (x, y, width, height);
 
 		// knob outline
-		GradientBrush outlineGradient (Colour (0xff616161),
+		ColourGradient outlineGradient (Colour (0xff616161),
 									   x, y+height,
 									   Colours::white,
 									   x+width, y,
 									   false);
-		g.setBrush (&outlineGradient);
+		g.setGradientFill (outlineGradient);
 		g.drawRect (x, y, width, height, height*0.1f);
 		
 		// middle line
-		GradientBrush middleLineGradient (Colours::black,
+		ColourGradient middleLineGradient (Colours::black,
 										  x+width, y,
 										  Colours::white,
 										  x, y+height,
 										  false);
-		g.setBrush (&middleLineGradient);
+		g.setGradientFill (middleLineGradient);
 		g.fillRect (x+(width / 2) - ((width * 0.8f) / 2),
 					y+(height / 2) - ((height * 0.3f) / 2),
 					(width) * 0.8f,

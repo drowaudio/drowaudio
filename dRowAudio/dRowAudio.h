@@ -26,6 +26,7 @@
 #include "src/audio/dRowAudio_TriBandAudioThumbnail.h"
 
 #include "src/audio/dRowAudio_AudioUtility.h"
+#include "src/audio/dRowAudio_Buffer.h"
 
 #include "src/audio/MADAudioFormat.h"
 
@@ -45,19 +46,27 @@
 #include "src/audio/filters/dRowAudio_InterpolatingLBCF.h"
 #include "src/audio/filters/dRowAudio_TappedDelayLine.h"
 
+// maths
+#include "src/maths/dRowAudio_MathsUtilities.h"
+#include "src/maths/dRowAudio_BezierCurve.h"
 
 // Gui
+#include "src/gui/dRowAudio_Layouts.h"
 #include "src/gui/lookandfeel/dRowAudio_LookAndFeel.h"
+#include "src/gui/lookandfeel/dRowAudio_GraphicalComponent.h"
+#include "src/gui/lookandfeel/dRowAudio_GraphicalComponentManager.h"
 
 #include "src/gui/dRowAudio_SimpleAudioScope.h"
 #include "src/gui/dRowAudio_AudioOscilloscope.h"
+#include "src/gui/dRowAudio_SegmentedMeter.h"
 #include "src/gui/dRowAudio_Meter.h"
 #include "src/gui/dRowAudio_StereoMeter.h"
 #include "src/gui/dRowAudio_FilmstripSlider.h"
 #include "src/gui/dRowAudio_CachedThumbnail.h"
 #include "src/gui/dRowAudio_CpuMeter.h"
-#include "src/gui/dRowAudio_BasicFileBrowser.h"
-#include "src/gui/dRowAudio_ColumnFileBrowser.h"
+#include "src/gui/dRowAudio_Clock.h"
+#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
+#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 
 //#include "src/gui/dRowAudio_Thumbnail.h"
 
@@ -66,6 +75,7 @@
 #include "src/parameters/dRowAudio_Parameter.h"
 #include "src/utility/dRowAudio_Constants.h"
 #include "src/utility/dRowAudio_Utility.h"
+#include "src/utility/dRowAudio_StateVariable.h"
 
 
 #endif //_DROWAUDIOHEADER_H_
