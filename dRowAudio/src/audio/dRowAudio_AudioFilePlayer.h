@@ -11,7 +11,8 @@
 #ifndef _DROWAUDIO_AUDIOFILEPLAYER__H_
 #define _DROWAUDIO_AUDIOFILEPLAYER__H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
+
 #include "MADAudioFormat.h"
 
 /**

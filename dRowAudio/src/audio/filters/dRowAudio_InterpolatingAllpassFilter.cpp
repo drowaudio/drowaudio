@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_InterpolatingAllpassFilter.h"
 
 InterpolatingAllpassFilter::InterpolatingAllpassFilter() throw()
@@ -69,3 +73,5 @@ void InterpolatingAllpassFilter::processSamples (float* const samples,
 {
 	
 }
+
+END_DROWAUDIO_NAMESPACE

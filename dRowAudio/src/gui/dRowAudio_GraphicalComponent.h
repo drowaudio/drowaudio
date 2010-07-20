@@ -11,7 +11,7 @@
 #ifndef __DROWAUDIO_GRAPHICALCOMPONENT_H_91791CE3__
 #define __DROWAUDIO_GRAPHICALCOMPONENT_H_91791CE3__
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 /**	This class is an abstract base blass for some kind of graphical component
 	that requires some intenisve processing.
@@ -59,6 +59,12 @@ public:
 	 */
 	void copyValues(float *values, int noValues);
 
+	/** Copies data from a number of channels to the component to use.
+		This is a lot slower than copyValues(float *values, int noValues) but if the
+		number of channels is 2 it will use the maximum sample from the pair of channels.
+	 */
+	void copyValues(float **values, int noValues, int noChannels);
+	
 	/** @internal */
 	bool useTimeSlice();
 	
@@ -76,7 +82,5 @@ protected:
 	int numSamples;
 	HeapBlock<float> samples;
 };
-
-
 
 #endif  // __DROWAUDIO_GRAPHICALCOMPONENT_H_91791CE3__

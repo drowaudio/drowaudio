@@ -1,6 +1,6 @@
 #pragma once
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 /**
 	This AudioFormat enables you to read and playback MP3 files using the MAD decoder.

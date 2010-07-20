@@ -11,8 +11,7 @@
 #ifndef __DROWAUDIO_CLOCK_H_80237209__
 #define __DROWAUDIO_CLOCK_H_80237209__
 
-#include <juce/juce.h>
-#include <dRowAudio/dRowAudio.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 /**	
 	A handy digital graphical clock.

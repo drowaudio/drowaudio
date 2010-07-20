@@ -9,7 +9,7 @@
 #ifndef _DROWAUDIOCOMBFILTER_H_
 #define _DROWAUDIOCOMBFILTER_H_
 
-#include <juce/juce.h>
+#include "../../core/dRowAudio_StandardHeader.h"
 
 /**
 	This is an interpolating Comb Filter with both feedforward and feedback delay lines.

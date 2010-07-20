@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_LBCF.h"
 
 LBCF::LBCF() throw()
@@ -112,3 +116,5 @@ void LBCF::processSamplesAdding (float* const sourceSamples, float* const destSa
 		destSamples[i] += fOut;
 	}	
 }
+
+END_DROWAUDIO_NAMESPACE

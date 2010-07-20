@@ -7,6 +7,11 @@
  *
  */
 
+#ifndef __DROWAUDIO_STATEVARIABLE_H__
+#define __DROWAUDIO_STATEVARIABLE_H__
+
+#include "../core/dRowAudio_StandardHeader.h"
+
 /**
 	Variable that holds its previous value.
  
@@ -79,3 +84,5 @@ private:
 	VariableType current;
 	VariableType previous;
 };
+
+#endif //__DROWAUDIO_STATEVARIABLE_H__

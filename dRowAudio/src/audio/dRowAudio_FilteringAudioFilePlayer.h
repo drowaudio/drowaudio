@@ -10,8 +10,11 @@
 #ifndef _FILTERINGAUDIOFILEPLAYER_H_
 #define _FILTERINGAUDIOFILEPLAYER_H_
 
-#include <juce/juce.h>
-#include <dRowAudio/dRowAudio.h>
+#include "../core/dRowAudio_StandardHeader.h"
+
+#include "dRowAudio_FilteringAudioTransportSource.h"
+#include "dRowAudio_ReversableAudioFormatReaderSource.h"
+#include "MADAudioFormat.h"
 
 /**
  This class can be used to load and play an audio file from disk.
@@ -37,7 +40,7 @@ public:
 	~FilteringAudioFilePlayer();
 	
 	/// Returns the AudioFormatReaderSource currently being used
-	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
+	ReversableAudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
 	
 	/// Returns the AudioFormatManager being used
 	AudioFormatManager* getAudioFormatManager() { return formatManager; }
@@ -57,6 +60,19 @@ public:
 	/// Returns the name of the currently loaded file
 	String getFileName();
 	
+	void setPlayDirection(bool shouldPlayForwards)
+	{	
+		if (currentAudioFileSource != 0) {
+			currentAudioFileSource->setPlayDirection(shouldPlayForwards);
+		}
+	}
+	bool getPlayDirection()
+	{
+		if (currentAudioFileSource != 0) {
+			return currentAudioFileSource->getPlayDirection();
+		}	
+	}
+	
 private:	
 	/// The AudioFormatManager
 	AudioFormatManager* formatManager;
@@ -65,7 +81,7 @@ private:
 	AudioFormatReader* audioFormatReaderFromFile(const String& path);
 	
 	/// Create the actual stream that's going to read from the audio file
-	AudioFormatReaderSource* currentAudioFileSource;
+	ReversableAudioFormatReaderSource* currentAudioFileSource;
 	
 	String filePath;
 	String fileName;

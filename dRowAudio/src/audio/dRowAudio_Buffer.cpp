@@ -7,6 +7,8 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
 #include "dRowAudio_Buffer.h"
 
 Buffer::Buffer(int size)

@@ -7,15 +7,17 @@
  *
  */
 
+#include "dRowAudio_Config.h"
+
 /*===============================================================================
 
 	This file can be used to include all of the dRowAudio files in one go.
 
  //============================================================================*/
 
-
 // Audio
 #include "src/audio/dRowAudio_AudioFilePlayer.cpp"
+#include "src/audio/dRowAudio_ReversableAudioFormatReaderSource.cpp"
 #include "src/audio/dRowAudio_FilteringAudioTransportSource.cpp"
 #include "src/audio/dRowAudio_FilteringAudioFilePlayer.cpp"
 
@@ -42,6 +44,9 @@
 #include "src/audio/filters/dRowAudio_DelayRegister.cpp"
 #include "src/audio/filters/dRowAudio_TappedDelayLine.cpp"
 
+#ifdef USE_VDSP
+	#include "src/audio/fft/dRowAudio_FFTEngine.cpp"
+#endif
 
 // maths
 #include "src/maths/dRowAudio_BezierCurve.cpp"
@@ -49,9 +54,9 @@
 // Gui
 #include "src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp"
 #include "src/gui/lookandfeel/GuitarAmpKnobLookAndFeel.cpp"
-#include "src/gui/lookandfeel/dRowAudio_GraphicalComponent.cpp"
-#include "src/gui/lookandfeel/dRowAudio_GraphicalComponentManager.cpp"
 
+#include "src/gui/dRowAudio_GraphicalComponent.cpp"
+#include "src/gui/dRowAudio_GraphicalComponentManager.cpp"
 #include "src/gui/dRowAudio_SimpleAudioScope.cpp"
 #include "src/gui/dRowAudio_AudioOscilloscope.cpp"
 #include "src/gui/dRowAudio_SegmentedMeter.cpp"

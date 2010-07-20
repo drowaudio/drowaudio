@@ -18,9 +18,9 @@
 #ifndef _DROWAUDIOLOOKANDFEEL_H_
 #define _DROWAUDIOLOOKANDFEEL_H_
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
 #include "dRowAudio_PluginLookAndFeel.h"
 #include "GuitarAmpKnobLookAndFeel.h"
-
-
 
 #endif //_DROWAUDIOLOOKANDFEEL_H_

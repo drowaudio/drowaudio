@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_AllpassFilter.h"
 
 AllpassFilter::AllpassFilter() throw()
@@ -81,3 +85,5 @@ void AllpassFilter::processSamples (float* const samples,
 		samples[i] = fOut;
 	}
 }
+
+END_DROWAUDIO_NAMESPACE

@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_InterpolatingLBCF.h"
 
 InterpolatingLBCF::InterpolatingLBCF() throw()
@@ -106,3 +110,5 @@ void InterpolatingLBCF::processSamples (float* const samples,
 		samples[i] = fOut;
 	}	
 }
+
+END_DROWAUDIO_NAMESPACE

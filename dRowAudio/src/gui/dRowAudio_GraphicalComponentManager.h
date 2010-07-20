@@ -11,8 +11,9 @@
 #ifndef __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H_C569FF3E__
 #define __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H_C569FF3E__
 
-#include <juce/juce.h>
-#include "dRowAudio_GraphicalComponent.h"
+#include "../core/dRowAudio_StandardHeader.h"
+
+#include "dRowAudio_GraphicalComponent.h";
 
 /**	This class manages a number of GraphicalComponents giving them each a
 	portion of time to do some processing they require on a background thread.
@@ -48,6 +49,5 @@ private:
 	
 	friend class GraphicalComponent;
 };
-
 
 #endif  // __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H_C569FF3E__

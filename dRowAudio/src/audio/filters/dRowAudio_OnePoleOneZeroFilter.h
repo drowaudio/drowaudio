@@ -10,7 +10,8 @@
 #ifndef _ONEPOLEONEZEROFILTER_H_
 #define _ONEPOLEONEZEROFILTER_H_
 
-#include <juce/juce.h>
+#include "../../core/dRowAudio_StandardHeader.h"
+
 #include "../../utility/dRowAudio_Constants.h"
 
 //==============================================================================
@@ -65,6 +66,5 @@ private:
 	
 	float x1, y1, a0, a1, b1;
 };
-
 
 #endif // _ONEPOLEONEZEROFILTER_H_

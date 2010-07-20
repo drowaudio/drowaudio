@@ -7,5 +7,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_SimpleAudioScope.h"
 
+END_DROWAUDIO_NAMESPACE

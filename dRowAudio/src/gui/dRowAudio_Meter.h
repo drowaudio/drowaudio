@@ -9,7 +9,7 @@
 #ifndef _METERCOMPONENT_H_
 #define _METERCOMPONENT_H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 /**	This is a class used to display a meter component.
 	

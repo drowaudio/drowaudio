@@ -7,6 +7,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_SegmentedMeter.h"
 
 SegmentedMeter::SegmentedMeter()
@@ -15,7 +19,7 @@ SegmentedMeter::SegmentedMeter()
 	noGreenSeg(9),
 	totalSegs(noRedSeg + noYellowSeg + noGreenSeg),
 	decibelsPerSeg(3.0f),
-	noSegs(1),
+	noSegs(0),
 	sampleCount(0),
 	samplesToCount(2048),
 	sampleMax(0.0f),
@@ -29,19 +33,16 @@ SegmentedMeter::~SegmentedMeter(){}
 
 void SegmentedMeter::paint (Graphics &g)
 {
-//	noSegs = pow(level.getCurrent(), 0.25) * (totalSegs-noRedSeg);
-
 	float noDecibels = 20*log10(level.getCurrent());
 	// map decibels to noSegs
-	noSegs = roundToInt((noDecibels / decibelsPerSeg) + (((totalSegs-noRedSeg)*decibelsPerSeg) / decibelsPerSeg));
+	noSegs = roundToInt((noDecibels / decibelsPerSeg) + (totalSegs-noRedSeg));
 		
-	// decay meter levels
-//	level *= 0.9f;
-	
-	
+	// impliment slow decay
+//	level.set((0.5f * level.getCurrent()) + (0.1f * level.getPrevious()));
+	level *= 0.8;
 
 	// only actually need to repaint if the noSegs has changed
-	if (((noSegs.getCurrent() >= 0) && !noSegs.areEqual()) || needsRepaint)
+	if (((noSegs.getCurrent() >= -1) && !noSegs.areEqual()) || needsRepaint)
 	{
 		needsRepaint = false;
 				
@@ -83,10 +84,6 @@ void SegmentedMeter::paint (Graphics &g)
 		g.setColour(Colours::black);
 		g.drawRect(0, 0, w, h, m);
 	}
-	
-	// impliment slow decay
-//	level.set((0.5f * level.getCurrent()) + (0.1f * level.getPrevious()));
-	level *= 0.7;
 }
 
 void SegmentedMeter::process()
@@ -190,3 +187,5 @@ void SegmentedMeter::process()
 //
 //	}
 //}
+
+END_DROWAUDIO_NAMESPACE

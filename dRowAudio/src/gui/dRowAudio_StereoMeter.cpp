@@ -7,6 +7,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_StereoMeter.h"
 
 StereoMeter::StereoMeter(float* leftBarValueToUse_, float* leftLineValueToUse_,
@@ -46,3 +50,5 @@ void StereoMeter::timerCallback()
 	leftMeter->setMeterLevel(*leftBarValueToUse, *leftBarValueToUse);
 	rightMeter->setMeterLevel(*rightBarValueToUse, *rightBarValueToUse);
 }
+
+END_DROWAUDIO_NAMESPACE

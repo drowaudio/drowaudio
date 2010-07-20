@@ -10,8 +10,8 @@
 #ifndef _TRIBANDAUDIOTHUMBNAIL_H_
 #define _TRIBANDAUDIOTHUMBNAIL_H_
 
-#include <juce/juce.h>
-//#include <dRowAudio/dRowAudio.h>
+#include "../core/dRowAudio_StandardHeader.h"
+
 #include "dRowAudio_AudioFilePlayer.h"
 #include "filters/dRowAudio_BiquadFilter.h"
 

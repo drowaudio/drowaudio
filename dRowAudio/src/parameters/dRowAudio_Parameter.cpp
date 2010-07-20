@@ -6,6 +6,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_Parameter.h"
 
 dRowParameter::dRowParameter()
@@ -208,3 +212,5 @@ void dRowParameter::setupSlider(Slider &slider)
 		slider.setValue (value, false);
 		slider.setTextValueSuffix (unitSuffix);
 }
+
+END_DROWAUDIO_NAMESPACE

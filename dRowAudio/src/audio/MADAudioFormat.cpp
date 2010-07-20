@@ -1,3 +1,8 @@
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
+
 #include "MADAudioFormat.h"
 
 #define FPM_64BIT
@@ -446,3 +451,5 @@ AudioFormatWriter* MADAudioFormat::createWriterFor(OutputStream* streamToWriteTo
 {
 	return 0;
 }
+
+END_DROWAUDIO_NAMESPACE

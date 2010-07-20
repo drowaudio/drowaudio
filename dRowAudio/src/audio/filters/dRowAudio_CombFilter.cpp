@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_CombFilter.h"
 
 CombFilter::CombFilter(int bufferSize) throw()
@@ -129,3 +133,5 @@ void CombFilter::processSamples (float* const samples,
 		samples[i] = fOut;
 	}
 }
+
+END_DROWAUDIO_NAMESPACE

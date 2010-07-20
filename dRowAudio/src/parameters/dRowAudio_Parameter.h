@@ -9,8 +9,9 @@
 #ifndef DROWPARAMETER_H
 #define DROWPARAMETER_H
 
-#include <juce/juce.h>
-#include <dRowAudio/dRowAudio.h>
+#include "../core/dRowAudio_StandardHeader.h"
+
+#include "../utility/dRowAudio_Utility.h"
 
 /** Parameter Units - currently values are the same as the AudioUnit enums for this purpose */
 enum ParameterUnit

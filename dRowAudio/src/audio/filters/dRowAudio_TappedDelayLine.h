@@ -9,8 +9,10 @@
 #ifndef _DROWAUDIO_TAPPEDDELAYLINE_H_
 #define _DROWAUDIO_TAPPEDDELAYLINE_H_
 
-#include <juce/juce.h>
-#include <dRowAudio/dRowAudio.h>
+#include "../../core/dRowAudio_StandardHeader.h"
+
+#include "../../utility/dRowAudio_Utility.h"
+#include "../dRowAudio_AudioUtility.h"
 
 struct Tap
 {

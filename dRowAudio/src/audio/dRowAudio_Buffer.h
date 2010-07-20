@@ -10,7 +10,7 @@
 #ifndef _DROWAUDIO_BUFFER__H_
 #define _DROWAUDIO_BUFFER__H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 //==============================================================================
 /**
@@ -127,7 +127,6 @@ public:
     //==============================================================================
 	
 private:
-	
 
 	HeapBlock <float> buffer;
 	int bufferSize;

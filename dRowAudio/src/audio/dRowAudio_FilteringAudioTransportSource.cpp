@@ -6,6 +6,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_FilteringAudioTransportSource.h"
 
 //========================================================================
@@ -348,3 +352,4 @@ void FilteringAudioTransportSource::getNextAudioBlock (const AudioSourceChannelI
     lastGain = gain;
 }
 
+END_DROWAUDIO_NAMESPACE

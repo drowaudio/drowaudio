@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_CascadedBiquadFilter.h"
 
 CascadedBiquadFilter::CascadedBiquadFilter()
@@ -127,3 +131,5 @@ void CascadedBiquadFilter::makeAllpass(const double sampleRate,
 		currentFrequency = frequency;
 	}
 }
+
+END_DROWAUDIO_NAMESPACE

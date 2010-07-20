@@ -6,6 +6,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_Meter.h"
 
 MeterComponent::MeterComponent(float* barValueToUse, float* lineValueToUse, const CriticalSection* lockToUse)
@@ -146,3 +150,5 @@ void MeterComponent::setMeterLevel(const float newBarLevel, const float newLineL
 	// update the meter displays
 	repaint();	
 }
+
+END_DROWAUDIO_NAMESPACE

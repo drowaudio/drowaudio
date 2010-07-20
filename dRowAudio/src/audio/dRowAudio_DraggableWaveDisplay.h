@@ -9,10 +9,10 @@
 #ifndef _DRAGGABLEWAVEDISPLAY_H_
 #define _DRAGGABLEWAVEDISPLAY_H_
 
-#include <juce/juce.h>
-#include <dRowAudio/dRowAudio.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
-class FilteringAudioFilePlayer;
+#include "dRowAudio_AudioUtility.h";
+#include "dRowAudio_FilteringAudioFilePlayer.h";
 
 /**
 	A class to display the waveform of an audio file.

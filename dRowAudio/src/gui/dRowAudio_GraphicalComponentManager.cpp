@@ -7,6 +7,9 @@
 
   ==============================================================================
 */
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
 
 #include "dRowAudio_GraphicalComponentManager.h"
 
@@ -29,3 +32,5 @@ void GraphicalComponentManager::removeGraphicalComponent(GraphicalComponent *com
 {
 	removeTimeSliceClient(component);
 }
+
+END_DROWAUDIO_NAMESPACE

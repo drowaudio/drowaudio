@@ -9,7 +9,7 @@
 #ifndef _DROWLOOKANDFEEL_H_
 #define _DROWLOOKANDFEEL_H_
 
-#include <juce/juce.h>
+#include "../../core/dRowAudio_StandardHeader.h"
 
 class dRowLookAndFeel : public LookAndFeel
 {

@@ -10,7 +10,7 @@
 #ifndef _DROWAUDIO_LAYOUTS__H_
 #define _DROWAUDIO_LAYOUTS__H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 static void distributeEvenly (int noElements)
 {

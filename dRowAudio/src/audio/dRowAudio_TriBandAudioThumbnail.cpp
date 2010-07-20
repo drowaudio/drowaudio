@@ -7,6 +7,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_TriBandAudioThumbnail.h"
 
 TriBandAudioThumbnail::TriBandAudioThumbnail(const int sourceSamplesPerThumbnailSample_,
@@ -374,3 +378,5 @@ void TriBandAudioThumbnail::drawChannel (Graphics& g,
 			break;
 	}*/
 }
+
+END_DROWAUDIO_NAMESPACE

@@ -9,7 +9,7 @@
 #ifndef _DROWAUDIO_ALLPASSFILTER_H_
 #define _DROWAUDIO_ALLPASSFILTER_H_
 
-#include <juce/juce.h>
+#include "../../core/dRowAudio_StandardHeader.h"
 
 #define BUFFERSIZE 4096
 

@@ -10,7 +10,7 @@
 #ifndef _DROWAUDIO_SIMPLEAUDIOSCOPE_H_
 #define _DROWAUDIO_SIMPLEAUDIOSCOPE_H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 /**
 	A simple oscilliscope class for displaying audio waveforms.

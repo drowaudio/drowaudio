@@ -8,6 +8,10 @@
   ==============================================================================
 */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_Clock.h"
 
 Clock::Clock()
@@ -60,3 +64,5 @@ void Clock::timerCallback()
 		
 	setText(timeAsString, false);
 }
+
+END_DROWAUDIO_NAMESPACE

@@ -7,6 +7,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_CpuMeter.h"
 
 CpuMeter::CpuMeter(AudioDeviceManager* deviceManagerToUse, int updateInterval)
@@ -37,3 +41,5 @@ void CpuMeter::timerCallback()
 	setText(usageString, false);
 //	setText(String(currentCpuUsage, 2) <<T("%"), false);
 }
+
+END_DROWAUDIO_NAMESPACE

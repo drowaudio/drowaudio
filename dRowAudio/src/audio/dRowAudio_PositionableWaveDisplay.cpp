@@ -6,9 +6,11 @@
  *
  */
 
-#include "dRowAudio_PositionableWaveDisplay.h"
+#include "../core/dRowAudio_StandardHeader.h"
 
-#include "MADAudioFormat.h"
+BEGIN_DROWAUDIO_NAMESPACE
+
+#include "dRowAudio_PositionableWaveDisplay.h"
 
 PositionableWaveDisplay::PositionableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate)
 	:	filePlayer(sourceToBeUsed),
@@ -171,4 +173,4 @@ void PositionableWaveDisplay::filesDropped (const StringArray &files, int x, int
 }
 //==============================================================================	
 
-
+END_DROWAUDIO_NAMESPACE

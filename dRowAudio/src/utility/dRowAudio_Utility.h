@@ -10,7 +10,7 @@
 #ifndef _DROWAUDIOUTILITY_H_
 #define _DROWAUDIOUTILITY_H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 //==============================================================================
 /**
@@ -54,6 +54,22 @@ inline static String stripFileProtocolForLocal(String pathToStrip)
 	}
 	
 	return String::empty;
+}
+
+/**	Reverses an array.
+ */
+template <class Type>
+void reverseArray(Type *array, int length)
+{
+    int a=0;
+    Type swap;
+	
+    for(a; a< --length; a++) //increment a and decrement b until they meet eachother
+    {
+        swap = array[a];       //put what's in a into swap space
+        array[a] = array[length];    //put what's in b into a
+        array[length] = swap;       //put what's in the swap (a) into b
+    }
 }
 
 //==============================================================================
@@ -101,5 +117,6 @@ inline static String stripFileProtocolForLocal(String pathToStrip)
 
 #endif // ALIGN_DATA
 //==============================================================================
+
 
 #endif //_DROWAUDIOUTILITY_H_

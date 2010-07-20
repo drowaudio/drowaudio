@@ -6,6 +6,9 @@
  *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
 
 #include "dRowAudio_EnvelopeFollower.h"
 
@@ -100,3 +103,5 @@ void EnvelopeFollower::setTimes(float sampleRate, float attack, float release, f
 	envRelease = (float) exp(-1/(release * sampleRate * 0.001));
 	holdLimit = hold * sampleRate * 0.001;	
 }
+
+END_DROWAUDIO_NAMESPACE

@@ -6,6 +6,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_AudioFilePlayer.h"
 
 AudioFilePlayer::AudioFilePlayer()
@@ -95,3 +99,5 @@ AudioFormatReader* AudioFilePlayer::audioFormatReaderFromFile(const String& path
 	
 	return formatManager->createReaderFor (audioFile);
 }
+
+END_DROWAUDIO_NAMESPACE

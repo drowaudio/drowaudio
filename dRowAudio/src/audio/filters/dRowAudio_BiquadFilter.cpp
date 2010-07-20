@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_BiquadFilter.h"
 
 void BiquadFilter::makeLowPass(const double sampleRate,
@@ -142,3 +146,5 @@ void BiquadFilter::copyOutputsFrom (const BiquadFilter& other) throw()
 	y1 = other.y1;
 	y2 = other.y2;
 }
+
+END_DROWAUDIO_NAMESPACE

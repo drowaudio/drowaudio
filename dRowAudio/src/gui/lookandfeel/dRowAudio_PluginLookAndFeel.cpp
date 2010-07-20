@@ -7,6 +7,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_PluginLookAndFeel.h"
 
 //=====================================================================================
@@ -186,3 +190,5 @@ void dRowLookAndFeel::drawInsetLine (Graphics& g,
 		g.drawLine(startX+secondThickness, startY, endX+secondThickness, endY, secondThickness);
 	}
 }
+
+END_DROWAUDIO_NAMESPACE

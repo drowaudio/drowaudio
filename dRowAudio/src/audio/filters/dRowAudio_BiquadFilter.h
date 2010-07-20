@@ -9,7 +9,7 @@
 #ifndef _BIQUADFILTER_H_
 #define _BIQUADFILTER_H_
 
-#include <juce/juce.h>
+#include "../../core/dRowAudio_StandardHeader.h"
 
 /**
 	A Biquad filter.

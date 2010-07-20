@@ -10,8 +10,9 @@
 #ifndef _DROWAUDIOSTEREOMETER_H_
 #define _DROWAUDIOSTEREOMETER_H_
 
-#include <juce/juce.h>
-#include <dRowAudio/dRowAudio.h>
+#include "../core/dRowAudio_StandardHeader.h"
+
+#include "dRowAudio_Meter.h"
 
 class StereoMeter	:	public Component,
 						public Timer

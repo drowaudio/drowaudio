@@ -7,6 +7,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_FilteringAudioFilePlayer.h"
 
 FilteringAudioFilePlayer::FilteringAudioFilePlayer()
@@ -69,11 +73,11 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 	if (reader != 0)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
-		currentAudioFileSource = new AudioFormatReaderSource (reader, true);
+		currentAudioFileSource = new ReversableAudioFormatReaderSource (reader, true);
 		
 		// ..and plug it into our transport source
 		setSource (currentAudioFileSource,
-				   32768, // tells it to buffer this many samples ahead
+				   0,//32768, // tells it to buffer this many samples ahead
 				   reader->sampleRate);
 		
 		if (shouldBePlaying)
@@ -208,3 +212,5 @@ AudioFormatReader* FilteringAudioFilePlayer::audioFormatReaderFromFile(const Str
 //		highEQFilterRight->processSamples(rightSampleData, bufferNumSamples);
 //	}	
 //}
+
+END_DROWAUDIO_NAMESPACE

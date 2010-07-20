@@ -7,6 +7,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_OnePoleFilter.h"
 
 OnePoleFilter::OnePoleFilter() throw()
@@ -56,3 +60,5 @@ void OnePoleFilter::makeHighPass(const double sampleRate,
 	b0 = alpha - 1.0;
 	a1 = -alpha;
 }
+
+END_DROWAUDIO_NAMESPACE

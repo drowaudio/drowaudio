@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_DelayRegister.h"
 
 DelayRegister::DelayRegister(int bufferSize) throw()
@@ -88,3 +92,5 @@ void DelayRegister::processSamples (float* const samples,
 		samples[i] = delayRegister[bufferReadPos];
 	}
 }
+
+END_DROWAUDIO_NAMESPACE

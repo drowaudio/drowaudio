@@ -10,7 +10,8 @@
 #ifndef _DROWAUDIO_SEGMENTEDMETER__H_
 #define _DROWAUDIO_SEGMENTEDMETER__H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
+
 #include "dRowAudio_GraphicalComponent.h"
 #include "../utility/dRowAudio_StateVariable.h"
 
@@ -69,7 +70,7 @@ public:
 	{
 		needsRepaint = true;
 	}
-	
+		
 	/**	Processes the channel data for the value to display.
 	 */
 	virtual void process();
@@ -110,6 +111,16 @@ public:
 		decibelsPerSeg = numDecibelsPerSegment;
 	}
 	
+	/**	Forces the meter to repaint itself.
+		You may need to use this if a container component moves without moving
+		or resizing its parent directly, eg. if you are housing your component
+		in a tabbed component.
+	 */
+	void flagForRepaint()
+	{	
+		needsRepaint = true;
+		repaint();
+	}
 	//================================================================
 
 private:

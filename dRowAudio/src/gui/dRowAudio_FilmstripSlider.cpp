@@ -7,6 +7,10 @@
  *
  */
 
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_FilmstripSlider.h"
 
 FilmstripSlider::FilmstripSlider (String &componentName, File const& image, const int numFrames, const bool showTextBox, const bool stripIsHorizontal)
@@ -96,3 +100,5 @@ void FilmstripSlider::paint(Graphics& g)
 	else
 		Slider::paint(g);
 }
+
+END_DROWAUDIO_NAMESPACE

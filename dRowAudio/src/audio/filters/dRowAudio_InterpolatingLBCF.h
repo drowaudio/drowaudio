@@ -9,7 +9,9 @@
 #ifndef _DROWAUDIO_INTERPOLATINGLBCF_H_
 #define _DROWAUDIO_INTERPOLATINGLBCF_H_
 
-#include <dRowAudio/dRowAudio.h>
+#include "../../core/dRowAudio_StandardHeader.h"
+
+#include "dRowAudio_OnePoleFilter.h"
 
 #define BUFFERSIZE 4096
 

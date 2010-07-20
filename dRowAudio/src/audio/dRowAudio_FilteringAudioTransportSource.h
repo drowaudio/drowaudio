@@ -9,7 +9,7 @@
 #ifndef _FILTERINGAUDIOTRANSPORTSOURCE_H_
 #define _FILTERINGAUDIOTRANSPORTSOURCE_H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 /**	An AudioSource that contains three settable filters to EQ the audio stream.
 	This also creates an internal resampler source that is adjustable.

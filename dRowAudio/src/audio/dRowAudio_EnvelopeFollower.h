@@ -10,6 +10,8 @@
 #ifndef _DROWAUDIO_ENVELOPEFOLLOWER__H_
 #define _DROWAUDIO_ENVELOPEFOLLOWER__H_
 
+#include "../core/dRowAudio_StandardHeader.h"
+
 #include "filters/dRowAudio_OnePoleFilter.h"
 
 /**

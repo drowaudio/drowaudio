@@ -10,7 +10,7 @@
 #ifndef _DROWAUDIO_CPUMETER_H_
 #define _DROWAUDIO_CPUMETER_H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 /**
 	Handy class that will display the cpu usage of a given AudioDeviceManager as a percentage.

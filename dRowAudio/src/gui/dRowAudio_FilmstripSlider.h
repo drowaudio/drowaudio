@@ -10,7 +10,7 @@
 #ifndef _FILMSTRIPSLIDER_H_
 #define _FILMSTRIPSLIDER_H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
 
 /**
 	A slider class that takes a film strip image to display as its graphics.

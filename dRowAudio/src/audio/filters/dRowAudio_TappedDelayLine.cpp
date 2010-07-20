@@ -6,6 +6,10 @@
  *
  */
 
+#include "../../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_TappedDelayLine.h"
 
 TappedDelayLine::TappedDelayLine(int initialBufferSize)
@@ -246,3 +250,5 @@ void TappedDelayLine::processSamples (float* const samples,
 		samples[i] = fOut;
 	}
 }
+
+END_DROWAUDIO_NAMESPACE

@@ -10,7 +10,8 @@
 #ifndef _DROWAUDIOAUDIOUTILITY_H_
 #define _DROWAUDIOAUDIOUTILITY_H_
 
-#include <juce/juce.h>
+#include "../core/dRowAudio_StandardHeader.h"
+
 #include "../utility/dRowAudio_Constants.h"
 
 //==============================================================================

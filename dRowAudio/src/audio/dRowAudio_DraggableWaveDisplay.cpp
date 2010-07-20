@@ -5,6 +5,9 @@
  *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
+#include "../core/dRowAudio_StandardHeader.h"
+
+BEGIN_DROWAUDIO_NAMESPACE
 
 #include "dRowAudio_DraggableWaveDisplay.h"
 
@@ -223,4 +226,4 @@ void DraggableWaveDisplay::filesDropped (const StringArray &files, int x, int y)
 }
 //==============================================================================	
 
-
+END_DROWAUDIO_NAMESPACE

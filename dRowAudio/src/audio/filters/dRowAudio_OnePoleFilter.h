@@ -10,7 +10,7 @@
 #ifndef _ONEPOLEFILTER_H_
 #define _ONEPOLEFILTER_H_
 
-#include <juce/juce.h>
+#include "../../core/dRowAudio_StandardHeader.h"
 
 //==============================================================================
 /**	One-Pole Filter
@@ -62,6 +62,5 @@ private:
 	
 	float y1, b0, a1;
 };
-
 
 #endif // _ONEPOLEFILTER_H_

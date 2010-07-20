@@ -9,7 +9,7 @@
 #ifndef _DROWAUDIODELAYREGISTER_H_
 #define _DROWAUDIODELAYREGISTER_H_
 
-#include <juce/juce.h>
+#include "../../core/dRowAudio_StandardHeader.h"
 
 /**
 	This is a simple delay register.

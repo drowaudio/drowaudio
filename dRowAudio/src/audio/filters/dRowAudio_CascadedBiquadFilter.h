@@ -9,7 +9,8 @@
 #ifndef _CASCADEDBIQUADFILTER_H_
 #define _CASCADEDBIQUADFILTER_H_
 
-#include <juce/juce.h>
+#include "../../core/dRowAudio_StandardHeader.h"
+
 #include "dRowAudio_BiquadFilter.h"
 
 /**
