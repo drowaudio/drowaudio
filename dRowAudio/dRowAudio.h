@@ -55,6 +55,7 @@ BEGIN_DROWAUDIO_NAMESPACE
 #ifdef USE_VDSP
 	#include "src/audio/fft/dRowAudio_FFTEngine.h"
 #endif
+#include "src/audio/fft/dRowAudio_Window.h"
 
 // maths
 #include "src/maths/dRowAudio_MathsUtilities.h"

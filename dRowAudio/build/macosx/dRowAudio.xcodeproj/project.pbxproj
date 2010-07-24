@@ -40,6 +40,8 @@
 		554A3E9411F608820009DFF4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A3E9311F608820009DFF4 /* Accelerate.framework */; };
 		554A3F8A11F61EF80009DFF4 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A3F8911F61EF00009DFF4 /* libjucedebug.a */; };
 		554A401511F626580009DFF4 /* dRowAudio_StandardHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 554A401411F626580009DFF4 /* dRowAudio_StandardHeader.h */; };
+		554A464311FB0C9F0009DFF4 /* dRowAudio_Window.h in Headers */ = {isa = PBXBuildFile; fileRef = 554A464111FB0C9F0009DFF4 /* dRowAudio_Window.h */; };
+		554A464411FB0C9F0009DFF4 /* dRowAudio_Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A464211FB0C9F0009DFF4 /* dRowAudio_Window.cpp */; };
 		554E504D0F8E7DEC00412A82 /* dRowAudio_InterpolatingLBCF.h in Headers */ = {isa = PBXBuildFile; fileRef = 554E504B0F8E7DEC00412A82 /* dRowAudio_InterpolatingLBCF.h */; };
 		554E504E0F8E7DEC00412A82 /* dRowAudio_InterpolatingLBCF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554E504C0F8E7DEC00412A82 /* dRowAudio_InterpolatingLBCF.cpp */; };
 		554E51090F8E909800412A82 /* dRowAudio_InterpolatingAllpassFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554E51070F8E909800412A82 /* dRowAudio_InterpolatingAllpassFilter.cpp */; };
@@ -164,6 +166,8 @@
 		554A3E9311F608820009DFF4 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		554A3F8111F61EF00009DFF4 /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../../../../juce_source/juce/Builds/MacOSX/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
 		554A401411F626580009DFF4 /* dRowAudio_StandardHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_StandardHeader.h; path = ../../src/core/dRowAudio_StandardHeader.h; sourceTree = SOURCE_ROOT; };
+		554A464111FB0C9F0009DFF4 /* dRowAudio_Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Window.h; path = ../../src/audio/fft/dRowAudio_Window.h; sourceTree = SOURCE_ROOT; };
+		554A464211FB0C9F0009DFF4 /* dRowAudio_Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_Window.cpp; path = ../../src/audio/fft/dRowAudio_Window.cpp; sourceTree = SOURCE_ROOT; };
 		554E504B0F8E7DEC00412A82 /* dRowAudio_InterpolatingLBCF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_InterpolatingLBCF.h; path = ../../src/audio/filters/dRowAudio_InterpolatingLBCF.h; sourceTree = SOURCE_ROOT; };
 		554E504C0F8E7DEC00412A82 /* dRowAudio_InterpolatingLBCF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_InterpolatingLBCF.cpp; path = ../../src/audio/filters/dRowAudio_InterpolatingLBCF.cpp; sourceTree = SOURCE_ROOT; };
 		554E51070F8E909800412A82 /* dRowAudio_InterpolatingAllpassFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_InterpolatingAllpassFilter.cpp; path = ../../src/audio/filters/dRowAudio_InterpolatingAllpassFilter.cpp; sourceTree = SOURCE_ROOT; };
@@ -402,6 +406,8 @@
 			children = (
 				554A3E3B11F600550009DFF4 /* dRowAudio_FFTEngine.h */,
 				554A3E3C11F600550009DFF4 /* dRowAudio_FFTEngine.cpp */,
+				554A464111FB0C9F0009DFF4 /* dRowAudio_Window.h */,
+				554A464211FB0C9F0009DFF4 /* dRowAudio_Window.cpp */,
 			);
 			name = fft;
 			sourceTree = "<group>";
@@ -587,6 +593,7 @@
 				554A3E3611F5FB5C0009DFF4 /* dRowAudio_Config.h in Headers */,
 				554A3E3D11F600550009DFF4 /* dRowAudio_FFTEngine.h in Headers */,
 				554A401511F626580009DFF4 /* dRowAudio_StandardHeader.h in Headers */,
+				554A464311FB0C9F0009DFF4 /* dRowAudio_Window.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +700,7 @@
 				55E25B8D11F22BE700E4698B /* dRowAudio_SegmentedMeter.cpp in Sources */,
 				554A3CDE11F3BBEA0009DFF4 /* dRowAudio_ReversableAudioFormatReaderSource.cpp in Sources */,
 				554A3E3E11F600550009DFF4 /* dRowAudio_FFTEngine.cpp in Sources */,
+				554A464411FB0C9F0009DFF4 /* dRowAudio_Window.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

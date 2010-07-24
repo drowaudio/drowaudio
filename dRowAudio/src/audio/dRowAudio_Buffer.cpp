@@ -9,6 +9,8 @@
 
 #include "../core/dRowAudio_StandardHeader.h"
 
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_Buffer.h"
 
 Buffer::Buffer(int size)
@@ -39,6 +41,18 @@ void Buffer::setSize(int newSize)
 	bufferSize = newSize;
 }
 
+void Buffer::applyBuffer(float *samples, int numSamples)
+{
+	const int numToApply = jmin(bufferSize, numSamples);
+	for (int i = 0; i < numToApply; i++) {
+		samples[i] *= buffer[i];
+	}
+
+	if (bufferSize < numSamples) {
+		zeromem((samples+numToApply), (numSamples - numToApply) * sizeof(float));
+	}
+}
+
 void Buffer::updateListeners()
 {
 	callListeners();
@@ -66,3 +80,5 @@ void Buffer::callListeners()
             l->bufferChanged (this);
     }
 }
+
+END_DROWAUDIO_NAMESPACE

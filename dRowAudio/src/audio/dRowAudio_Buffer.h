@@ -84,6 +84,11 @@ public:
 		
 		quickCopy(data, size);
 	}
+
+	/**	Applys the current buffer to a number of samples.
+		This is done via a straight multiplication and will zero any out of range source samples.
+	 */
+	void applyBuffer(float *samples, int numSamples);
 	
 	/**	This performs a very quick copy of some data given to it.
 		No resizing is done so if the size of the data passed is less than or equal to the size of the internal array

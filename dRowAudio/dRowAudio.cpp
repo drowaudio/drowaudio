@@ -47,6 +47,7 @@
 #ifdef USE_VDSP
 	#include "src/audio/fft/dRowAudio_FFTEngine.cpp"
 #endif
+#include "src/audio/fft/dRowAudio_Window.cpp"
 
 // maths
 #include "src/maths/dRowAudio_BezierCurve.cpp"
