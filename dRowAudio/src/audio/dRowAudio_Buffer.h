@@ -56,6 +56,13 @@ public:
 	 */
 	inline float operator[](const int index)	{	return buffer[index];		}
 	
+	/** Returns a reference to a value from the buffer.
+		This method returns a reference to an element from the buffer so can therefore be changed.
+		This method also performs no bounds checking so if the index is out of the internal array
+		bounds will contain garbage.
+	 */
+	inline float& getReference(const int index)	{	return buffer[index];		}
+	
 	/** Zeros the buffer's contents.
 	 */
 	inline void reset()			{	zeromem(buffer, bufferSize);	}
