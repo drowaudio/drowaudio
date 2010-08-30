@@ -39,7 +39,6 @@
 #include "src/audio/filters/dRowAudio_AllpassFilter.cpp"
 #include "src/audio/filters/dRowAudio_InterpolatingAllpassFilter.cpp"
 #include "src/audio/filters/dRowAudio_LBCF.cpp"
-#include "src/audio/filters/dRowAudio_LBCFPointer.cpp"
 #include "src/audio/filters/dRowAudio_InterpolatingLBCF.cpp"
 #include "src/audio/filters/dRowAudio_DelayRegister.cpp"
 #include "src/audio/filters/dRowAudio_TappedDelayLine.cpp"
@@ -64,11 +63,11 @@
 #include "src/gui/dRowAudio_Meter.cpp"
 #include "src/gui/dRowAudio_StereoMeter.cpp"
 #include "src/gui/dRowAudio_FilmstripSlider.cpp"
-#include "src/gui/dRowAudio_CachedThumbnail.cpp"
 #include "src/gui/dRowAudio_CpuMeter.cpp"
 #include "src/gui/dRowAudio_Clock.cpp"
-#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
-#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
+#include "src/gui/dRowAudio_CentreAlignViewport.cpp"
+//#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
+//#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
 //#include "src/gui/dRowAudio_Thumbnail.cpp"
 
 

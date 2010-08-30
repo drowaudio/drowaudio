@@ -250,8 +250,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -292,24 +290,22 @@
 								<string>08FB77AEFE84172EC02AAC07</string>
 								<string>55DDDD750F4A174700894F8B</string>
 								<string>554A401311F626350009DFF4</string>
-								<string>55592FDD0F4720A60044FC32</string>
-								<string>554A3F9011F620380009DFF4</string>
-								<string>559E8388110A31B400016A6C</string>
+								<string>55592FEC0F4720B00044FC32</string>
+								<string>55E2F5F310B1EAF10062FB77</string>
 								<string>5519B7D40F51D5DD00801715</string>
 								<string>1C37FBAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>26</integer>
-									<integer>24</integer>
-									<integer>8</integer>
+									<integer>30</integer>
+									<integer>11</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 224}, {295, 660}}</string>
+							<string>{{0, 194}, {295, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -341,12 +337,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_FFTEngine.cpp</string>
+								<string>dRowAudio_SegmentedMeter.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -354,11 +352,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_FFTEngine.cpp</string>
+										<string>dRowAudio_SegmentedMeter.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55D78AEA12005C1800A5A018</string>
+										<string>558220BA12174BA9002A0962</string>
 										<key>history</key>
 										<array>
 											<string>552348B3103C67C700C2185E</string>
@@ -384,14 +382,11 @@
 											<string>554A407811F62FA90009DFF4</string>
 											<string>554A407A11F62FA90009DFF4</string>
 											<string>554A408611F633200009DFF4</string>
-											<string>554A408811F633200009DFF4</string>
 											<string>554A408A11F633200009DFF4</string>
 											<string>554A408C11F633200009DFF4</string>
 											<string>554A408E11F633200009DFF4</string>
 											<string>554A409011F633200009DFF4</string>
 											<string>554A409211F633200009DFF4</string>
-											<string>554A409711F633200009DFF4</string>
-											<string>554A409911F633200009DFF4</string>
 											<string>554A409B11F633200009DFF4</string>
 											<string>554A409D11F633200009DFF4</string>
 											<string>554A40A311F633200009DFF4</string>
@@ -421,7 +416,6 @@
 											<string>554A412211F63B1D0009DFF4</string>
 											<string>554A412311F63B1D0009DFF4</string>
 											<string>554A412411F63B1D0009DFF4</string>
-											<string>554A412511F63B1D0009DFF4</string>
 											<string>554A412611F63B1D0009DFF4</string>
 											<string>554A412711F63B1D0009DFF4</string>
 											<string>554A412811F63B1D0009DFF4</string>
@@ -430,8 +424,6 @@
 											<string>554A412B11F63B1D0009DFF4</string>
 											<string>554A412C11F63B1D0009DFF4</string>
 											<string>554A412D11F63B1D0009DFF4</string>
-											<string>554A412E11F63B1D0009DFF4</string>
-											<string>554A412F11F63B1D0009DFF4</string>
 											<string>554A413011F63B1D0009DFF4</string>
 											<string>554A413111F63B1D0009DFF4</string>
 											<string>554A413411F63B1D0009DFF4</string>
@@ -444,7 +436,6 @@
 											<string>554A475C11FB38120009DFF4</string>
 											<string>554A475D11FB38120009DFF4</string>
 											<string>554A475F11FB38120009DFF4</string>
-											<string>554A476011FB38120009DFF4</string>
 											<string>554A476111FB38120009DFF4</string>
 											<string>554A476811FB38120009DFF4</string>
 											<string>554A47B111FB3F280009DFF4</string>
@@ -455,7 +446,20 @@
 											<string>55D78ACE120058D900A5A018</string>
 											<string>55D78ACF120058D900A5A018</string>
 											<string>55D78AD0120058D900A5A018</string>
-											<string>55D78AD2120058D900A5A018</string>
+											<string>55D78B521200A00200A5A018</string>
+											<string>55D78B531200A00200A5A018</string>
+											<string>55D78B541200A00200A5A018</string>
+											<string>55D78B551200A00200A5A018</string>
+											<string>55D78B571200A00200A5A018</string>
+											<string>55D78B591200A00200A5A018</string>
+											<string>55D78B5A1200A00200A5A018</string>
+											<string>55D78B5B1200A00200A5A018</string>
+											<string>5582209312170392002A0962</string>
+											<string>558220B512174BA9002A0962</string>
+											<string>558220B612174BA9002A0962</string>
+											<string>558220B712174BA9002A0962</string>
+											<string>558220B812174BA9002A0962</string>
+											<string>558220B912174BA9002A0962</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -513,9 +517,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55D78AEB12005C1800A5A018</string>
+				<string>558220BB12174BA9002A0962</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55D78AEC12005C1800A5A018</string>
+				<string>558220BC12174BA9002A0962</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -636,7 +640,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>302013464.33112198</real>
+	<real>303516585.91019899</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -732,7 +736,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>55592FD60F47202C0044FC32</string>
-				<string>55D78AED12005C1800A5A018</string>
+				<string>558220BD12174BA9002A0962</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -885,14 +889,12 @@
 							<key>Dock</key>
 							<array>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_ReversableAudioFormatReaderSource.h</string>
+										<string>dRowAudio_CentreAlignViewport.cpp</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -913,6 +915,8 @@
 							<string>371pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -948,8 +952,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>554A3CE511F3BD580009DFF4</string>
-				<string>554A3CE611F3BD580009DFF4</string>
+				<string>55D78B1712009D0600A5A018</string>
+				<string>55D78B1812009D0600A5A018</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>

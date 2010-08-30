@@ -47,7 +47,7 @@ bool GraphicalComponent::useTimeSlice()
 
 void GraphicalComponent::timerCallback()
 {
-	repaint();
+//	repaint();
 }
 
 void GraphicalComponent::copyValues(float *values, int noValues)

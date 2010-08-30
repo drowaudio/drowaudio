@@ -53,9 +53,17 @@ public:
 	 */
 	~SegmentedMeter();
 	
+	/**	Calculates the number of segments currently required and triggers a repaint if necessary.
+	 */
+	void calculateSegments();
+	
 	/**	Draws the meter.
 	 */
 	void paint (Graphics &g);
+	
+	/**	@internal
+	 */
+	void timerCallback();
 	
 	/**	@internal
 	 */

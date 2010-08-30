@@ -31,59 +31,67 @@ SegmentedMeter::SegmentedMeter()
 
 SegmentedMeter::~SegmentedMeter(){}
 
-void SegmentedMeter::paint (Graphics &g)
+void SegmentedMeter::calculateSegments()
 {
 	float noDecibels = 20*log10(level.getCurrent());
 	// map decibels to noSegs
 	noSegs = roundToInt((noDecibels / decibelsPerSeg) + (totalSegs-noRedSeg));
-		
+	
 	// impliment slow decay
-//	level.set((0.5f * level.getCurrent()) + (0.1f * level.getPrevious()));
+	//	level.set((0.5f * level.getCurrent()) + (0.1f * level.getPrevious()));
 	level *= 0.8;
-
+	
 	// only actually need to repaint if the noSegs has changed
 	if (((noSegs.getCurrent() >= -1) && !noSegs.areEqual()) || needsRepaint)
+		repaint();
+}
+
+void SegmentedMeter::timerCallback()
+{
+	calculateSegments();
+}
+
+void SegmentedMeter::paint (Graphics &g)
+{
+	needsRepaint = false;
+			
+	const int m = 2;
+	const int w = getWidth();
+	const int h = getHeight();
+	const int segWidth = w-(2*m);
+	
+	
+	const int noSeg = (noRedSeg + noYellowSeg + noGreenSeg);
+	const float segHeight = (h-m) / (float)noSeg;
+	
+
+	const int noReq = noSegs.getCurrent();
+	
+	for (int i=1; i <= noSeg; i++)
 	{
-		needsRepaint = false;
-				
-		const int m = 2;
-		const int w = getWidth();
-		const int h = getHeight();
-		const int segWidth = w-(2*m);
-		
-		
-		const int noSeg = (noRedSeg + noYellowSeg + noGreenSeg);
-		const float segHeight = (h-m) / (float)noSeg;
-		
-
-		const int noReq = noSegs.getCurrent();
-		
-		for (int i=1; i <= noSeg; i++)
+		if (i <= noGreenSeg)
 		{
-			if (i <= noGreenSeg)
-			{
-				i <= noReq ? g.setColour(Colours::green.brighter(0.8))
-							: g.setColour(Colours::green.darker());
-			}
-			else if (i <= (noYellowSeg+noGreenSeg))
-			{
-				i <= noReq ? g.setColour(Colours::orange.brighter())
-							: g.setColour(Colours::orange.darker());
-			}
-			else
-			{
-				i <= noReq ? g.setColour(Colours::red.brighter())
-							: g.setColour(Colours::red.darker());
-			}
-			g.fillRect((float)m, h-m-(i*(segHeight)), (float)segWidth, segHeight);
-
-			g.setColour(Colours::black);
-			g.drawLine((float)m, h-m-(i*segHeight), w-m, h-m-(i*segHeight), m);
+			i <= noReq ? g.setColour(Colours::green.brighter(0.8))
+						: g.setColour(Colours::green.darker());
 		}
-		
+		else if (i <= (noYellowSeg+noGreenSeg))
+		{
+			i <= noReq ? g.setColour(Colours::orange.brighter())
+						: g.setColour(Colours::orange.darker());
+		}
+		else
+		{
+			i <= noReq ? g.setColour(Colours::red.brighter())
+						: g.setColour(Colours::red.darker());
+		}
+		g.fillRect((float)m, h-m-(i*(segHeight)), (float)segWidth, segHeight);
+
 		g.setColour(Colours::black);
-		g.drawRect(0, 0, w, h, m);
+		g.drawLine((float)m, h-m-(i*segHeight), w-m, h-m-(i*segHeight), m);
 	}
+	
+	g.setColour(Colours::black);
+	g.drawRect(0, 0, w, h, m);
 }
 
 void SegmentedMeter::process()

@@ -47,7 +47,6 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/audio/filters/dRowAudio_AllpassFilter.h"
 #include "src/audio/filters/dRowAudio_InterpolatingAllpassFilter.h"
 #include "src/audio/filters/dRowAudio_LBCF.h"
-#include "src/audio/filters/dRowAudio_LBCFPointer.h"
 #include "src/audio/filters/dRowAudio_DelayRegister.h"
 #include "src/audio/filters/dRowAudio_InterpolatingLBCF.h"
 #include "src/audio/filters/dRowAudio_TappedDelayLine.h"
@@ -73,11 +72,11 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/gui/dRowAudio_Meter.h"
 #include "src/gui/dRowAudio_StereoMeter.h"
 #include "src/gui/dRowAudio_FilmstripSlider.h"
-#include "src/gui/dRowAudio_CachedThumbnail.h"
 #include "src/gui/dRowAudio_CpuMeter.h"
 #include "src/gui/dRowAudio_Clock.h"
-#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
-#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
+#include "src/gui/dRowAudio_CentreAlignViewport.h"
+//#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
+//#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 
 //#include "src/gui/dRowAudio_Thumbnail.h"
 
