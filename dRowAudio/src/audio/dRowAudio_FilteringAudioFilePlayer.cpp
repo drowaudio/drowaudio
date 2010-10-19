@@ -20,7 +20,7 @@ FilteringAudioFilePlayer::FilteringAudioFilePlayer()
 	// set up the format manager
 	formatManager = new AudioFormatManager();
 	formatManager->registerBasicFormats();
-	formatManager->registerFormat(new MADAudioFormat(), false);	
+//	formatManager->registerFormat(new MADAudioFormat(), false);	
 }
 
 FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)

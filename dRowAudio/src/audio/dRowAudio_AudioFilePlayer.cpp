@@ -18,7 +18,7 @@ AudioFilePlayer::AudioFilePlayer()
 {
 	formatManager = new AudioFormatManager();
 	formatManager->registerBasicFormats();
-	formatManager->registerFormat(new QuickTimeAudioFormat(), false);	
+//	formatManager->registerFormat(new QuickTimeAudioFormat(), false);	
 //	formatManager->registerFormat(new MADAudioFormat(), false);	
 }
 

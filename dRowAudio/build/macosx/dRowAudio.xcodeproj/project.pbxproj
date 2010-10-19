@@ -71,6 +71,8 @@
 		5560C31B102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560C319102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp */; };
 		557A3787113963BB00D2E4A1 /* dRowAudio_Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557A3785113963BB00D2E4A1 /* dRowAudio_Buffer.cpp */; };
 		557A3788113963BB00D2E4A1 /* dRowAudio_Buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 557A3786113963BB00D2E4A1 /* dRowAudio_Buffer.h */; };
+		55839B1712636EF9001DE572 /* dRowAudio_FFTOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 55839B1512636EF9001DE572 /* dRowAudio_FFTOperation.h */; };
+		55839B1812636EF9001DE572 /* dRowAudio_mac_FFTOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55839B1612636EF9001DE572 /* dRowAudio_mac_FFTOperation.cpp */; };
 		5583CB3E0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5583CB3C0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.cpp */; };
 		5583CB3F0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5583CB3D0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.h */; };
 		55880ACB0F5DECF1003E3953 /* dRowAudio_Utility.h in Headers */ = {isa = PBXBuildFile; fileRef = 55880ACA0F5DECF1003E3953 /* dRowAudio_Utility.h */; };
@@ -195,6 +197,8 @@
 		5560C319102233DE00EFE810 /* dRowAudio_AudioOscilloscope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_AudioOscilloscope.cpp; path = ../../src/gui/dRowAudio_AudioOscilloscope.cpp; sourceTree = SOURCE_ROOT; };
 		557A3785113963BB00D2E4A1 /* dRowAudio_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_Buffer.cpp; path = ../../src/audio/dRowAudio_Buffer.cpp; sourceTree = SOURCE_ROOT; };
 		557A3786113963BB00D2E4A1 /* dRowAudio_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Buffer.h; path = ../../src/audio/dRowAudio_Buffer.h; sourceTree = SOURCE_ROOT; };
+		55839B1512636EF9001DE572 /* dRowAudio_FFTOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_FFTOperation.h; path = ../../src/audio/fft/dRowAudio_FFTOperation.h; sourceTree = SOURCE_ROOT; };
+		55839B1612636EF9001DE572 /* dRowAudio_mac_FFTOperation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_mac_FFTOperation.cpp; path = ../../src/audio/fft/dRowAudio_mac_FFTOperation.cpp; sourceTree = SOURCE_ROOT; };
 		5583CB3C0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_OnePoleOneZeroFilter.cpp; path = ../../src/audio/filters/dRowAudio_OnePoleOneZeroFilter.cpp; sourceTree = SOURCE_ROOT; };
 		5583CB3D0FC78D1E00702EE0 /* dRowAudio_OnePoleOneZeroFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_OnePoleOneZeroFilter.h; path = ../../src/audio/filters/dRowAudio_OnePoleOneZeroFilter.h; sourceTree = SOURCE_ROOT; };
 		55880ACA0F5DECF1003E3953 /* dRowAudio_Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Utility.h; path = ../../src/utility/dRowAudio_Utility.h; sourceTree = SOURCE_ROOT; };
@@ -401,6 +405,8 @@
 				554A3E3C11F600550009DFF4 /* dRowAudio_FFTEngine.cpp */,
 				554A464111FB0C9F0009DFF4 /* dRowAudio_Window.h */,
 				554A464211FB0C9F0009DFF4 /* dRowAudio_Window.cpp */,
+				55839B1512636EF9001DE572 /* dRowAudio_FFTOperation.h */,
+				55839B1612636EF9001DE572 /* dRowAudio_mac_FFTOperation.cpp */,
 			);
 			name = fft;
 			sourceTree = "<group>";
@@ -589,6 +595,7 @@
 				554A401511F626580009DFF4 /* dRowAudio_StandardHeader.h in Headers */,
 				554A464311FB0C9F0009DFF4 /* dRowAudio_Window.h in Headers */,
 				55D78B11120096FA00A5A018 /* dRowAudio_CentreAlignViewport.h in Headers */,
+				55839B1712636EF9001DE572 /* dRowAudio_FFTOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +702,7 @@
 				554A3E3E11F600550009DFF4 /* dRowAudio_FFTEngine.cpp in Sources */,
 				554A464411FB0C9F0009DFF4 /* dRowAudio_Window.cpp in Sources */,
 				55D78B12120096FA00A5A018 /* dRowAudio_CentreAlignViewport.cpp in Sources */,
+				55839B1812636EF9001DE572 /* dRowAudio_mac_FFTOperation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

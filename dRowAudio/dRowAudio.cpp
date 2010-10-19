@@ -7,7 +7,7 @@
  *
  */
 
-#include "dRowAudio_Config.h"
+#include "src/core/dRowAudio_StandardHeader.h"
 
 /*===============================================================================
 
@@ -23,9 +23,9 @@
 
 #include "src/audio/dRowAudio_DraggableWaveDisplay.cpp"
 #include "src/audio/dRowAudio_PositionableWaveDisplay.cpp"
-#include "src/audio/dRowAudio_TriBandAudioThumbnail.cpp"
+//#include "src/audio/dRowAudio_TriBandAudioThumbnail.cpp"
 
-#include "src/audio/MADAudioFormat.cpp"
+//#include "src/audio/MADAudioFormat.cpp"
 #include "src/audio/dRowAudio_Buffer.cpp"
 
 #include "src/audio/dRowAudio_EnvelopeFollower.cpp"
@@ -43,10 +43,12 @@
 #include "src/audio/filters/dRowAudio_DelayRegister.cpp"
 #include "src/audio/filters/dRowAudio_TappedDelayLine.cpp"
 
-#ifdef USE_VDSP
-	#include "src/audio/fft/dRowAudio_FFTEngine.cpp"
-#endif
+#include "src/audio/fft/dRowAudio_FFTEngine.cpp"
 #include "src/audio/fft/dRowAudio_Window.cpp"
+
+#ifdef JUCE_MAC
+	#include "src/audio/fft/dRowAudio_mac_FFTOperation.cpp"
+#endif
 
 // maths
 #include "src/maths/dRowAudio_BezierCurve.cpp"

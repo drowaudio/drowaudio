@@ -14,7 +14,7 @@
 
 class JUCE_API  CentreAlignViewport  :	public Component,
 										private ComponentListener,
-										private ScrollBarListener
+										private ScrollBar::Listener
 {
 public:
     //==============================================================================

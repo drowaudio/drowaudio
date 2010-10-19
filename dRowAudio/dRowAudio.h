@@ -29,12 +29,12 @@ BEGIN_DROWAUDIO_NAMESPACE
 
 #include "src/audio/dRowAudio_DraggableWaveDisplay.h"
 #include "src/audio/dRowAudio_PositionableWaveDisplay.h"
-#include "src/audio/dRowAudio_TriBandAudioThumbnail.h"
+//#include "src/audio/dRowAudio_TriBandAudioThumbnail.h"
 
 #include "src/audio/dRowAudio_AudioUtility.h"
 #include "src/audio/dRowAudio_Buffer.h"
 
-#include "src/audio/MADAudioFormat.h"
+//#include "src/audio/MADAudioFormat.h"
 
 #include "src/audio/dRowAudio_EnvelopeFollower.h"
 
@@ -51,9 +51,8 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/audio/filters/dRowAudio_InterpolatingLBCF.h"
 #include "src/audio/filters/dRowAudio_TappedDelayLine.h"
 
-#ifdef USE_VDSP
-	#include "src/audio/fft/dRowAudio_FFTEngine.h"
-#endif
+#include "src/audio/fft/dRowAudio_FFTOperation.h"
+#include "src/audio/fft/dRowAudio_FFTEngine.h"
 #include "src/audio/fft/dRowAudio_Window.h"
 
 // maths

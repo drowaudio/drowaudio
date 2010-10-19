@@ -12,6 +12,7 @@
 
 #include "../../core/dRowAudio_StandardHeader.h"
 
+#include "dRowAudio_FFTOperation.h"
 #include "dRowAudio_Window.h"
 #include "../../utility/dRowAudio_Constants.h"
 
@@ -35,41 +36,17 @@ public:
 
 	void setWindowType(Window::WindowType type);
 	
-	int getFFTSize()	{	return fftProperties.fftSize;	}
+	int getFFTSize()				{	return getFFTProperties().fftSize;	}
 	Buffer* getMagnitudesBuffer()	{	return &magnitutes;	}
 	Window* getWindow()				{	return &windowProperties;	}
-	
-	class FFTProperties
-	{
-	public:
-		
-		FFTProperties(int fftSizeLog2);
-		
-		const long fftSizeLog2;;
-		const long fftSize;
-		const long fftSizeMinus1;
-		const long fftSizeHalved;
-		
-		const double oneOverFFTSizeMinus1;
-		const double oneOverFFTSize;	
-		
-	private:
-		
-		FFTProperties();
-	};
-		
-	const FFTProperties& getFFTProperties()	{	return fftProperties;	}
+			
+	const FFTProperties& getFFTProperties()	{	return fftOperation.getFFTProperties();	}
 
 private:
 	
-	FFTProperties fftProperties;
+	FFTOperation fftOperation;
 	Window windowProperties;
-	
-	FFTSetup fftvDSP;
-	DSPSplitComplex fftBufferSplit;
 	Buffer magnitutes;
-
-	HeapBlock<float> fftBuffer;
 };
 
 #endif //__DROWAUDIO_FFTENGINE__

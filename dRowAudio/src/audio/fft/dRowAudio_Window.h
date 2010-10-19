@@ -70,8 +70,8 @@ private:
 	void applyBlackmanNuttallWindow(float *samples,  const int numSamples);
 	void applyFlatTopWindow(float *samples,  const int numSamples);
 	
-	WindowType windowType;
 	int windowSize;
+	WindowType windowType;
 	float windowFactor;
 	float oneOverWindowFactor;
 	
