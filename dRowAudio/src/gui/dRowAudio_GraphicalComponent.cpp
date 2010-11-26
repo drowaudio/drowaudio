@@ -27,10 +27,6 @@ GraphicalComponent::~GraphicalComponent()
 {
 }
 
-void GraphicalComponent::process()
-{
-}
-
 bool GraphicalComponent::useTimeSlice()
 {
 	if (paused) {

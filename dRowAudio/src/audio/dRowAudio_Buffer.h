@@ -65,7 +65,7 @@ public:
 	
 	/** Zeros the buffer's contents.
 	 */
-	inline void reset()			{	zeromem(buffer, bufferSize);	}
+	inline void reset()			{	zeromem(buffer, bufferSize*sizeof(float));	}
 		
 	/** Returns a pointer to the beggining of the data.
 		Don't hang on to this pointer as it may change if the buffer is internally re-allocated.
@@ -106,7 +106,7 @@ public:
 		if (size > bufferSize)
 			size = bufferSize;
 		
-		memcpy(buffer, data, size);
+		memcpy(buffer, data, size*sizeof(float));
 	}
 	
 	/** Updates the buffer's listeners.

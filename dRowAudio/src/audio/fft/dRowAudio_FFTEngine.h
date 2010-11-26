@@ -31,8 +31,16 @@ public:
 	/**	This will fill the buffer with the magnitudes of the last performed FFT.
 		You can then get this buffer using getMagnitudesBuffer(). Remember that
 		the size of the buffer is the fftSizeHalved+1 to incorporate the Nyquist.
+		Optionally you can pass in a Buffer to be filled. Remember this must be
+		the correct size.
 	 */
-	void findMagnitudes();
+	void findMagnitudes(Buffer *bufferToFill=0);
+
+	/**	This will fill the buffer with the magnitudes of the last performed FFT if they are bigger.
+		You can then get this buffer using getMagnitudesBuffer(). Remember that
+		the size of the buffer is the fftSizeHalved+1 to incorporate the Nyquist.
+	 */
+	void updateMagnitudesIfBigger();
 
 	void setWindowType(Window::WindowType type);
 	

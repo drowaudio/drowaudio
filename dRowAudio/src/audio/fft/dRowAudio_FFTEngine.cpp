@@ -40,24 +40,56 @@ void FFTEngine::performFFT(float* samples)
 	fftOperation.performFFT(samples);
 }
 
-void FFTEngine::findMagnitudes()
+void FFTEngine::findMagnitudes(Buffer *bufferToFill)
 {
+	// local copies for speed
+	float* magBuf;
+	if (bufferToFill == 0)
+		magBuf = magnitutes.getData();
+	else
+		magBuf = bufferToFill->getData();
+
 	const DSPSplitComplex &fftSplit = fftOperation.getFFTBuffer();
+	const double oneOverFFTSize = getFFTProperties().oneOverFFTSize;
+	const int fftSizeHalved = getFFTProperties().fftSizeHalved;
+	const int oneOverWindowFactor = windowProperties.getOneOverWindowFactor();
 	
 	// find magnitudes
-	magnitutes.getReference(0) = magnitude(fftSplit.realp[0], 
-										   0.0,					// imag for DC is always zero 
-										   getFFTProperties().oneOverFFTSize, windowProperties.getOneOverWindowFactor()); 
-	for(int i = 1; i < getFFTProperties().fftSizeHalved; i++)
+	magBuf[0] = magnitude(fftSplit.realp[0], 0.0, oneOverFFTSize, oneOverWindowFactor); // imag for DC is always zero 
+	for(int i = 1; i < fftSizeHalved; i++)
 	{		
-		magnitutes.getReference(i) = magnitude(fftSplit.realp[i], 
-											   fftSplit.imagp[i], 
-											   getFFTProperties().oneOverFFTSize, windowProperties.getOneOverWindowFactor());
+		magBuf[i] = magnitude(fftSplit.realp[i], fftSplit.imagp[i], oneOverFFTSize, oneOverWindowFactor);
 	}
-	magnitutes.getReference(getFFTProperties().fftSizeHalved) = magnitude(fftSplit.realp[0], 
-																		  0.0,					// imag for Nyquist is always zero 
-																		  getFFTProperties().oneOverFFTSize,
-																		  windowProperties.getOneOverWindowFactor());	
+	magBuf[fftSizeHalved] = magnitude(fftSplit.realp[0], 0.0, oneOverFFTSize, oneOverWindowFactor); // imag for Nyquist is always zero 
+	
+	magnitutes.updateListeners();
+}
+
+void FFTEngine::updateMagnitudesIfBigger()
+{
+	// local copies for speed
+	const DSPSplitComplex &fftSplit = fftOperation.getFFTBuffer();
+	float* magBuf = magnitutes.getData();
+	const double oneOverFFTSize = getFFTProperties().oneOverFFTSize;
+	const int fftSizeHalved = getFFTProperties().fftSizeHalved;
+	const int oneOverWindowFactor = windowProperties.getOneOverWindowFactor();
+	
+	// find magnitudes
+	float newMag = magnitude(fftSplit.realp[0], 0.0, oneOverFFTSize, oneOverWindowFactor); // imag for DC is always zero 
+	if (newMag > magBuf[0]) {
+		magBuf[0] = newMag;
+	}
+	for(int i = 1; i < fftSizeHalved; i++)
+	{		
+		newMag = magnitude(fftSplit.realp[i], fftSplit.imagp[i], oneOverFFTSize, oneOverWindowFactor);
+		if(newMag > magBuf[i])
+			magBuf[i] = newMag;
+	}
+	newMag = magnitude(fftSplit.realp[0], 0.0, oneOverFFTSize, oneOverWindowFactor); // imag for Nyquist is always zero 
+	if(newMag > magBuf[fftSizeHalved])
+		magBuf[fftSizeHalved] = newMag;
+	
+	magnitutes.updateListeners();
 }
 
 void FFTEngine::setWindowType(Window::WindowType type)

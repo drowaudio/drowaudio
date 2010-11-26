@@ -23,7 +23,7 @@ Buffer::Buffer(const Buffer& otherBuffer)
 :	bufferSize(otherBuffer.bufferSize)
 {
 	buffer.allocate(bufferSize, false);
-	memcpy(buffer, otherBuffer.buffer, bufferSize);
+	memcpy(buffer, otherBuffer.buffer, bufferSize*sizeof(float));
 }
 
 Buffer::~Buffer()
@@ -36,7 +36,7 @@ void Buffer::setSize(int newSize)
 	buffer.realloc(newSize);
 	
 	if (newSize > bufferSize)
-		zeromem(buffer + bufferSize, newSize - bufferSize);
+		zeromem(buffer + bufferSize, (newSize - bufferSize)*sizeof(float));
 
 	bufferSize = newSize;
 }

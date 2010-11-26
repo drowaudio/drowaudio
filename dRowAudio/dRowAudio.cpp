@@ -26,7 +26,9 @@
 //#include "src/audio/dRowAudio_TriBandAudioThumbnail.cpp"
 
 //#include "src/audio/MADAudioFormat.cpp"
+#include "src/audio/dRowAudio_CircularBuffer.cpp"
 #include "src/audio/dRowAudio_Buffer.cpp"
+#include "src/audio/dRowAudio_BufferArray.cpp"
 
 #include "src/audio/dRowAudio_EnvelopeFollower.cpp"
 
@@ -68,8 +70,8 @@
 #include "src/gui/dRowAudio_CpuMeter.cpp"
 #include "src/gui/dRowAudio_Clock.cpp"
 #include "src/gui/dRowAudio_CentreAlignViewport.cpp"
-//#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
-//#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
+#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
+#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
 //#include "src/gui/dRowAudio_Thumbnail.cpp"
 
 

@@ -42,7 +42,7 @@ public:
 		has been set with copyValues(). The idea is that you push some new data to your
 		class with copyValues() then do whatever processing you require here.
 	 */
-	virtual void process();
+	virtual void process() =0;
 	
 	/**	Pauses the processing of the GraphicalComponent.
 	 */
@@ -55,15 +55,17 @@ public:
 	//==============================================================	
 	/** Copies data to the component to use.
 		This should be as quick as possible as is accessed from what
-		ever thread calls it so could cause blocking. 
+		ever thread calls it so could cause blocking.
+		By default this just copys the values passed to it into the samples heap block,
+		extending the memory if needed. You can overide this for more specialised behaviour.
 	 */
-	void copyValues(float *values, int noValues);
+	virtual void copyValues(float *values, int noValues);
 
 	/** Copies data from a number of channels to the component to use.
 		This is a lot slower than copyValues(float *values, int noValues) but if the
 		number of channels is 2 it will use the maximum sample from the pair of channels.
 	 */
-	void copyValues(float **values, int noValues, int noChannels);
+	virtual void copyValues(float **values, int noValues, int noChannels);
 	
 	/** @internal */
 	bool useTimeSlice();

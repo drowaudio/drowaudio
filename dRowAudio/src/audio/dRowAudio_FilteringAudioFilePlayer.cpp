@@ -73,11 +73,11 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 	if (reader != 0)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
-		currentAudioFileSource = new ReversableAudioFormatReaderSource (reader, true);
+		currentAudioFileSource = new AudioFormatReaderSource (reader, true);
 		
 		// ..and plug it into our transport source
 		setSource (currentAudioFileSource,
-				   0,//32768, // tells it to buffer this many samples ahead
+				   32768, // tells it to buffer this many samples ahead
 				   reader->sampleRate);
 		
 		if (shouldBePlaying)

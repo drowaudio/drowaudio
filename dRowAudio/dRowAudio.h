@@ -32,7 +32,9 @@ BEGIN_DROWAUDIO_NAMESPACE
 //#include "src/audio/dRowAudio_TriBandAudioThumbnail.h"
 
 #include "src/audio/dRowAudio_AudioUtility.h"
+#include "src/audio/dRowAudio_CircularBuffer.h"
 #include "src/audio/dRowAudio_Buffer.h"
+#include "src/audio/dRowAudio_BufferArray.h"
 
 //#include "src/audio/MADAudioFormat.h"
 
@@ -74,8 +76,8 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/gui/dRowAudio_CpuMeter.h"
 #include "src/gui/dRowAudio_Clock.h"
 #include "src/gui/dRowAudio_CentreAlignViewport.h"
-//#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
-//#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
+#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
+#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 
 //#include "src/gui/dRowAudio_Thumbnail.h"
 

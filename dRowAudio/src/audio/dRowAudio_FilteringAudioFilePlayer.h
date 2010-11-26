@@ -40,7 +40,7 @@ public:
 	~FilteringAudioFilePlayer();
 	
 	/// Returns the AudioFormatReaderSource currently being used
-	ReversableAudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
+	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
 	
 	/// Returns the AudioFormatManager being used
 	AudioFormatManager* getAudioFormatManager() { return formatManager; }
@@ -60,18 +60,18 @@ public:
 	/// Returns the name of the currently loaded file
 	String getFileName();
 	
-	void setPlayDirection(bool shouldPlayForwards)
-	{	
-		if (currentAudioFileSource != 0) {
-			currentAudioFileSource->setPlayDirection(shouldPlayForwards);
-		}
-	}
-	bool getPlayDirection()
-	{
-		if (currentAudioFileSource != 0) {
-			return currentAudioFileSource->getPlayDirection();
-		}	
-	}
+//	void setPlayDirection(bool shouldPlayForwards)
+//	{	
+//		if (currentAudioFileSource != 0) {
+//			currentAudioFileSource->setPlayDirection(shouldPlayForwards);
+//		}
+//	}
+//	bool getPlayDirection()
+//	{
+//		if (currentAudioFileSource != 0) {
+//			return currentAudioFileSource->getPlayDirection();
+//		}	
+//	}
 	
 private:	
 	/// The AudioFormatManager
@@ -81,7 +81,7 @@ private:
 	AudioFormatReader* audioFormatReaderFromFile(const String& path);
 	
 	/// Create the actual stream that's going to read from the audio file
-	ReversableAudioFormatReaderSource* currentAudioFileSource;
+	AudioFormatReaderSource* currentAudioFileSource;
 	
 	String filePath;
 	String fileName;

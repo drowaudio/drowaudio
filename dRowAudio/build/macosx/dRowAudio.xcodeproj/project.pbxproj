@@ -65,6 +65,10 @@
 		5559348D0F4721440044FC32 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5559347E0F4721440044FC32 /* IOKit.framework */; };
 		5559348E0F4721440044FC32 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5559347F0F4721440044FC32 /* OpenGL.framework */; };
 		5559348F0F4721440044FC32 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555934800F4721440044FC32 /* WebKit.framework */; };
+		555FF7AF126E207C00A57D03 /* dRowAudio_BufferArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555FF7AD126E207C00A57D03 /* dRowAudio_BufferArray.cpp */; };
+		555FF7B0126E207C00A57D03 /* dRowAudio_BufferArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 555FF7AE126E207C00A57D03 /* dRowAudio_BufferArray.h */; };
+		555FFA7D127083AD00A57D03 /* dRowAudio_CircularBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555FFA7B127083AD00A57D03 /* dRowAudio_CircularBuffer.cpp */; };
+		555FFA7E127083AD00A57D03 /* dRowAudio_CircularBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 555FFA7C127083AD00A57D03 /* dRowAudio_CircularBuffer.h */; };
 		5560C0501018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5560C04E1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h */; };
 		5560C0511018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5560C04F1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp */; };
 		5560C31A102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h in Headers */ = {isa = PBXBuildFile; fileRef = 5560C318102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h */; };
@@ -191,6 +195,10 @@
 		5559347E0F4721440044FC32 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5559347F0F4721440044FC32 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		555934800F4721440044FC32 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		555FF7AD126E207C00A57D03 /* dRowAudio_BufferArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_BufferArray.cpp; path = ../../src/audio/dRowAudio_BufferArray.cpp; sourceTree = SOURCE_ROOT; };
+		555FF7AE126E207C00A57D03 /* dRowAudio_BufferArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_BufferArray.h; path = ../../src/audio/dRowAudio_BufferArray.h; sourceTree = SOURCE_ROOT; };
+		555FFA7B127083AD00A57D03 /* dRowAudio_CircularBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_CircularBuffer.cpp; path = ../../src/audio/dRowAudio_CircularBuffer.cpp; sourceTree = SOURCE_ROOT; };
+		555FFA7C127083AD00A57D03 /* dRowAudio_CircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_CircularBuffer.h; path = ../../src/audio/dRowAudio_CircularBuffer.h; sourceTree = SOURCE_ROOT; };
 		5560C04E1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_FilmstripSlider.h; path = ../../src/gui/dRowAudio_FilmstripSlider.h; sourceTree = SOURCE_ROOT; };
 		5560C04F1018AB2D00EFE810 /* dRowAudio_FilmstripSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_FilmstripSlider.cpp; path = ../../src/gui/dRowAudio_FilmstripSlider.cpp; sourceTree = SOURCE_ROOT; };
 		5560C318102233DE00EFE810 /* dRowAudio_AudioOscilloscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_AudioOscilloscope.h; path = ../../src/gui/dRowAudio_AudioOscilloscope.h; sourceTree = SOURCE_ROOT; };
@@ -425,8 +433,12 @@
 				55FC0AEC0F7C8E0200978B1B /* MADAudioFormat */,
 				5546AC5B0F8E08C90044E955 /* filters */,
 				55FC06AA0F7AEC4200978B1B /* dRowAudio_AudioUtility.h */,
+				555FFA7C127083AD00A57D03 /* dRowAudio_CircularBuffer.h */,
+				555FFA7B127083AD00A57D03 /* dRowAudio_CircularBuffer.cpp */,
 				557A3786113963BB00D2E4A1 /* dRowAudio_Buffer.h */,
 				557A3785113963BB00D2E4A1 /* dRowAudio_Buffer.cpp */,
+				555FF7AE126E207C00A57D03 /* dRowAudio_BufferArray.h */,
+				555FF7AD126E207C00A57D03 /* dRowAudio_BufferArray.cpp */,
 				55DDDFFC0F4A468300894F8B /* dRowAudio_AudioFilePlayer.h */,
 				55DDDFFB0F4A468300894F8B /* dRowAudio_AudioFilePlayer.cpp */,
 				554A3CDD11F3BBEA0009DFF4 /* dRowAudio_ReversableAudioFormatReaderSource.h */,
@@ -596,6 +608,8 @@
 				554A464311FB0C9F0009DFF4 /* dRowAudio_Window.h in Headers */,
 				55D78B11120096FA00A5A018 /* dRowAudio_CentreAlignViewport.h in Headers */,
 				55839B1712636EF9001DE572 /* dRowAudio_FFTOperation.h in Headers */,
+				555FF7B0126E207C00A57D03 /* dRowAudio_BufferArray.h in Headers */,
+				555FFA7E127083AD00A57D03 /* dRowAudio_CircularBuffer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +717,8 @@
 				554A464411FB0C9F0009DFF4 /* dRowAudio_Window.cpp in Sources */,
 				55D78B12120096FA00A5A018 /* dRowAudio_CentreAlignViewport.cpp in Sources */,
 				55839B1812636EF9001DE572 /* dRowAudio_mac_FFTOperation.cpp in Sources */,
+				555FF7AF126E207C00A57D03 /* dRowAudio_BufferArray.cpp in Sources */,
+				555FFA7D127083AD00A57D03 /* dRowAudio_CircularBuffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
