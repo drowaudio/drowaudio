@@ -33,7 +33,7 @@
             BufferSecurityCheck=""
             DebugInformationFormat="4"
             AdditionalIncludeDirectories=""
-            PreprocessorDefinitions="JUCER_VS2008_78A5006;WIN32;_WINDOWS;_DEBUG"
+            PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -90,7 +90,7 @@
             InlineFunctionExpansion="1"
             StringPooling="true"
             AdditionalIncludeDirectories=""
-            PreprocessorDefinitions="JUCER_VS2008_78A5006;WIN32;_WINDOWS;NDEBUG"
+            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -149,6 +149,10 @@
           <File RelativePath="..\..\Source\ui\MainAppWindow.cpp"/>
           <File RelativePath="..\..\Source\ui\ContainerComponent.h"/>
           <File RelativePath="..\..\Source\ui\ContainerComponent.cpp"/>
+          <File RelativePath="..\..\Source\ui\TitleBarComponent.h"/>
+          <File RelativePath="..\..\Source\ui\TitleBarComponent.cpp"/>
+          <File RelativePath="..\..\Source\ui\QuitScreen.h"/>
+          <File RelativePath="..\..\Source\ui\QuitScreen.cpp"/>
           <Filter Name="controls">
             <File RelativePath="..\..\Source\ui\controls\ControlComponent.h"/>
             <File RelativePath="..\..\Source\ui\controls\ControlComponent.cpp"/>
@@ -159,6 +163,8 @@
               <File RelativePath="..\..\Source\ui\controls\transport\DeckTransport.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackInfo.h"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackInfo.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"/>
             </Filter>
             <Filter Name="draggable_display">
               <File RelativePath="..\..\Source\ui\controls\draggable_display\DraggableDisplay.h"/>
@@ -173,8 +179,6 @@
               <File RelativePath="..\..\Source\ui\controls\mixer\CrossFader.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\mixer\MasterChannelStrip.h"/>
               <File RelativePath="..\..\Source\ui\controls\mixer\MasterChannelStrip.cpp"/>
-              <File RelativePath="..\..\Source\ui\controls\mixer\dRowAudio_SegmentedMeter.cpp"/>
-              <File RelativePath="..\..\Source\ui\controls\mixer\dRowAudio_SegmentedMeter.h"/>
             </Filter>
           </Filter>
           <Filter Name="settings">

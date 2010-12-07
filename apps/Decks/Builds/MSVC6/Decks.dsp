@@ -37,12 +37,12 @@ RSC=rc.exe
 # PROP Intermediate_Dir ".\Debug"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /GX /Od /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /YX /FD /c /Gm /ZI /GZ /Zm1024
-# ADD CPP /nologo /MTd /W3 /GR /GX /Od /I  /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024 /Gm /ZI /GZ 
-# ADD BASE MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /mktyplib203 /win32
-# ADD MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /mktyplib203 /win32
-# ADD BASE RSC /l 0x40c /d JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG
-# ADD RSC /l 0x40c /d JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG
+# ADD BASE CPP /nologo /W3 /GX /Od /D WIN32 /D _WINDOWS /D DEBUG /D _DEBUG /D JUCER_MSVC6_734A9119=1 /YX /FD /c /Gm /ZI /GZ /Zm1024
+# ADD CPP /nologo /MTd /W3 /GR /GX /Od /I  /D WIN32 /D _WINDOWS /D DEBUG /D _DEBUG /D JUCER_MSVC6_734A9119=1 /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024 /Gm /ZI /GZ 
+# ADD BASE MTL /nologo /D WIN32 /D _WINDOWS /D DEBUG /D _DEBUG /D JUCER_MSVC6_734A9119=1 /mktyplib203 /win32
+# ADD MTL /nologo /D WIN32 /D _WINDOWS /D DEBUG /D _DEBUG /D JUCER_MSVC6_734A9119=1 /mktyplib203 /win32
+# ADD BASE RSC /l 0x40c /d WIN32 /D _WINDOWS /D DEBUG /D _DEBUG /D JUCER_MSVC6_734A9119=1
+# ADD RSC /l 0x40c /d WIN32 /D _WINDOWS /D DEBUG /D _DEBUG /D JUCER_MSVC6_734A9119=1
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
@@ -61,13 +61,13 @@ LINK32=link.exe
 # PROP Intermediate_Dir ".\Release"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /GX /O2 /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /YX /FD /c  /Zm1024
-# ADD CPP /nologo /MT /W3 /GR /GX /O2 /I  /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
+# ADD BASE CPP /nologo /W3 /GX /O2 /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /YX /FD /c  /Zm1024
+# ADD CPP /nologo /MT /W3 /GR /GX /O2 /I  /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
 # SUBTRACT CPP /YX
-# ADD BASE MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
-# ADD MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
-# ADD BASE RSC /l 0x40c /d JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG
-# ADD RSC /l 0x40c /d JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG
+# ADD BASE MTL /nologo /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /mktyplib203 /win32
+# ADD MTL /nologo /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /mktyplib203 /win32
+# ADD BASE RSC /l 0x40c /d WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1
+# ADD RSC /l 0x40c /d WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
@@ -79,11 +79,11 @@ LINK32=link.exe
 # Name "Decks - Win32 Debug"
 # Name "Decks - Win32 Release"
 # Begin Group "Decks"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Group "Source"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Group "main"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\Source\main\ApplicationStartup.cpp"
 # End Source File
@@ -113,7 +113,7 @@ SOURCE="..\..\Source\main\AudioEngine.cpp"
 # End Source File
 # End Group
 # Begin Group "ui"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\Source\ui\DecksLookAndFeel.h"
 # End Source File
@@ -132,8 +132,20 @@ SOURCE="..\..\Source\ui\ContainerComponent.h"
 # Begin Source File
 SOURCE="..\..\Source\ui\ContainerComponent.cpp"
 # End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\TitleBarComponent.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\TitleBarComponent.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\QuitScreen.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\QuitScreen.cpp"
+# End Source File
 # Begin Group "controls"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\ControlComponent.h"
 # End Source File
@@ -141,7 +153,7 @@ SOURCE="..\..\Source\ui\controls\ControlComponent.h"
 SOURCE="..\..\Source\ui\controls\ControlComponent.cpp"
 # End Source File
 # Begin Group "transport"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\Transport.h"
 # End Source File
@@ -160,9 +172,15 @@ SOURCE="..\..\Source\ui\controls\transport\TrackInfo.h"
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\TrackInfo.cpp"
 # End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"
+# End Source File
 # End Group
 # Begin Group "draggable_display"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\draggable_display\DraggableDisplay.h"
 # End Source File
@@ -171,7 +189,7 @@ SOURCE="..\..\Source\ui\controls\draggable_display\DraggableDisplay.cpp"
 # End Source File
 # End Group
 # Begin Group "mixer"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\mixer\Mixer.h"
 # End Source File
@@ -196,16 +214,10 @@ SOURCE="..\..\Source\ui\controls\mixer\MasterChannelStrip.h"
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\mixer\MasterChannelStrip.cpp"
 # End Source File
-# Begin Source File
-SOURCE="..\..\Source\ui\controls\mixer\dRowAudio_SegmentedMeter.cpp"
-# End Source File
-# Begin Source File
-SOURCE="..\..\Source\ui\controls\mixer\dRowAudio_SegmentedMeter.h"
-# End Source File
 # End Group
 # End Group
 # Begin Group "settings"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\Source\ui\settings\SettingsComponent.h"
 # End Source File
@@ -221,9 +233,9 @@ SOURCE="..\..\Source\ui\settings\MixerSettingsComponent.cpp"
 # End Group
 # End Group
 # Begin Group "resources"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Group "buttons"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\Source\resources\buttons\controls_pause.svg"
 # PROP Exclude_From_Build 1
@@ -250,7 +262,7 @@ SOURCE="..\..\Source\resources\Decks_icon.psd"
 # End Group
 # End Group
 # Begin Group "Libraries"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\..\..\dRowAudio\dRowAudio.c"
 # End Source File

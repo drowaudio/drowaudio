@@ -10,7 +10,7 @@
               jucerVersion="3.0.0" smallIcon="H0hwTQxn5" bigIcon="H0hwTQxn5">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../../../juce_source/juce"/>
+               juceFolder="../../../juce_source/juce" extraLinkerFlags="-framework Accelerate"/>
     <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                   juceFolder="../../../juce_source/juce"/>
     <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
@@ -62,6 +62,12 @@
               file="Source/ui/ContainerComponent.h"/>
         <FILE id="UgSI9foQO" name="ContainerComponent.cpp" compile="1" resource="0"
               file="Source/ui/ContainerComponent.cpp"/>
+        <FILE id="I2Tt3" name="TitleBarComponent.h" compile="0" resource="0"
+              file="Source/ui/TitleBarComponent.h"/>
+        <FILE id="v7TLxfT" name="TitleBarComponent.cpp" compile="1" resource="0"
+              file="Source/ui/TitleBarComponent.cpp"/>
+        <FILE id="mIkas3r" name="QuitScreen.h" compile="0" resource="0" file="Source/ui/QuitScreen.h"/>
+        <FILE id="9utsEoX" name="QuitScreen.cpp" compile="1" resource="0" file="Source/ui/QuitScreen.cpp"/>
         <GROUP id="ujgs7pwvo" name="controls">
           <FILE id="9YaO03Alq" name="ControlComponent.h" compile="0" resource="0"
                 file="Source/ui/controls/ControlComponent.h"/>
@@ -78,6 +84,10 @@
             <FILE id="vajm0lLmx" name="TrackInfo.h" compile="0" resource="0" file="Source/ui/controls/transport/TrackInfo.h"/>
             <FILE id="8QQ0IzJwo" name="TrackInfo.cpp" compile="1" resource="0"
                   file="Source/ui/controls/transport/TrackInfo.cpp"/>
+            <FILE id="Okb6kL" name="LoopAndCuePoints.h" compile="0" resource="0"
+                  file="Source/ui/controls/transport/LoopAndCuePoints.h"/>
+            <FILE id="6x2SCPq" name="LoopAndCuePoints.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/transport/LoopAndCuePoints.cpp"/>
           </GROUP>
           <GROUP id="P09TluKEA" name="draggable_display">
             <FILE id="awhZon8GG" name="DraggableDisplay.h" compile="0" resource="0"
@@ -99,10 +109,6 @@
                   file="Source/ui/controls/mixer/MasterChannelStrip.h"/>
             <FILE id="6TBUJVOGX" name="MasterChannelStrip.cpp" compile="1" resource="0"
                   file="Source/ui/controls/mixer/MasterChannelStrip.cpp"/>
-            <FILE id="ct4JdGcwA" name="dRowAudio_SegmentedMeter.cpp" compile="1"
-                  resource="0" file="Source/ui/controls/mixer/dRowAudio_SegmentedMeter.cpp"/>
-            <FILE id="8uFl6Q5rY" name="dRowAudio_SegmentedMeter.h" compile="0"
-                  resource="0" file="Source/ui/controls/mixer/dRowAudio_SegmentedMeter.h"/>
           </GROUP>
         </GROUP>
         <GROUP id="ILMF0iyCj" name="settings">
@@ -146,5 +152,5 @@
                JUCE_USE_XCURSOR="default" JUCE_PLUGINHOST_VST="default" JUCE_PLUGINHOST_AU="default"
                JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_WEB_BROWSER="default"
                JUCE_SUPPORT_CARBON="default" JUCE_CHECK_MEMORY_LEAKS="default"
-               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"/>
+               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_DIRECT2D="default"/>
 </JUCERPROJECT>

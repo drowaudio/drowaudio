@@ -17,12 +17,12 @@ ifeq ($(CONFIG),Debug)
   LIBDIR := build
   OBJDIR := build/intermediate/Debug
   OUTDIR := build
-  CPPFLAGS := $(DEPFLAGS) -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2"
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0
   CXXFLAGS += $(CFLAGS) 
   LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../juce_source/juce/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound -ljuce 
   LDDEPS :=
-  RESFLAGS :=  -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
+  RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2"
   TARGET := Decks
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
@@ -32,12 +32,12 @@ ifeq ($(CONFIG),Release)
   LIBDIR := build
   OBJDIR := build/intermediate/Release
   OUTDIR := build
-  CPPFLAGS := $(DEPFLAGS) -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "LINUX=1" -D "NDEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2"
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os
   CXXFLAGS += $(CFLAGS) 
   LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../juce_source/juce/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound -ljuce 
   LDDEPS :=
-  RESFLAGS :=  -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "LINUX=1" -D "NDEBUG=1" -I "/usr/include" -I "/usr/include/freetype2"
+  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2"
   TARGET := Decks
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
@@ -50,16 +50,18 @@ OBJECTS := \
   $(OBJDIR)/DecksLookAndFeel_6536b270.o \
   $(OBJDIR)/MainAppWindow_b0560b46.o \
   $(OBJDIR)/ContainerComponent_d4c380f8.o \
+  $(OBJDIR)/TitleBarComponent_240eab0.o \
+  $(OBJDIR)/QuitScreen_c63f3697.o \
   $(OBJDIR)/ControlComponent_abefc827.o \
   $(OBJDIR)/Transport_fb740666.o \
   $(OBJDIR)/DeckTransport_f4e0103d.o \
   $(OBJDIR)/TrackInfo_bd3403d6.o \
+  $(OBJDIR)/LoopAndCuePoints_1e85ecd0.o \
   $(OBJDIR)/DraggableDisplay_69d2841b.o \
   $(OBJDIR)/Mixer_7f8f6326.o \
   $(OBJDIR)/MixerChannelStrip_64f8d31b.o \
   $(OBJDIR)/CrossFader_56140e3.o \
   $(OBJDIR)/MasterChannelStrip_276542a4.o \
-  $(OBJDIR)/dRowAudio_SegmentedMeter_91bc80e3.o \
   $(OBJDIR)/SettingsComponent_72d2086a.o \
   $(OBJDIR)/MixerSettingsComponent_8a33bf8b.o \
   $(OBJDIR)/dRowAudio_eb58b466.o \
@@ -116,6 +118,16 @@ $(OBJDIR)/ContainerComponent_d4c380f8.o: ../../Source/ui/ContainerComponent.cpp
 	@echo "Compiling ContainerComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
+$(OBJDIR)/TitleBarComponent_240eab0.o: ../../Source/ui/TitleBarComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TitleBarComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/QuitScreen_c63f3697.o: ../../Source/ui/QuitScreen.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling QuitScreen.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
 $(OBJDIR)/ControlComponent_abefc827.o: ../../Source/ui/controls/ControlComponent.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling ControlComponent.cpp"
@@ -134,6 +146,11 @@ $(OBJDIR)/DeckTransport_f4e0103d.o: ../../Source/ui/controls/transport/DeckTrans
 $(OBJDIR)/TrackInfo_bd3403d6.o: ../../Source/ui/controls/transport/TrackInfo.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling TrackInfo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/LoopAndCuePoints_1e85ecd0.o: ../../Source/ui/controls/transport/LoopAndCuePoints.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LoopAndCuePoints.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/DraggableDisplay_69d2841b.o: ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp
@@ -159,11 +176,6 @@ $(OBJDIR)/CrossFader_56140e3.o: ../../Source/ui/controls/mixer/CrossFader.cpp
 $(OBJDIR)/MasterChannelStrip_276542a4.o: ../../Source/ui/controls/mixer/MasterChannelStrip.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling MasterChannelStrip.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/dRowAudio_SegmentedMeter_91bc80e3.o: ../../Source/ui/controls/mixer/dRowAudio_SegmentedMeter.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling dRowAudio_SegmentedMeter.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/SettingsComponent_72d2086a.o: ../../Source/ui/settings/SettingsComponent.cpp
