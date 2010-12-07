@@ -312,7 +312,6 @@ void CentreAlignViewport::scrollBarMoved (ScrollBar* scrollBarThatHasMoved, doub
 
 void CentreAlignViewport::mouseWheelMove (const MouseEvent& e, const float wheelIncrementX, const float wheelIncrementY)
 {
-	DBG("checking mouse wheel");
     if (! useMouseWheelMoveIfNeeded (e, wheelIncrementX, wheelIncrementY))
         Component::mouseWheelMove (e, wheelIncrementX, wheelIncrementY);
 }

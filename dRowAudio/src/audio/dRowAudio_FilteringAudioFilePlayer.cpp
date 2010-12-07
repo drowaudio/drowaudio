@@ -18,8 +18,9 @@ FilteringAudioFilePlayer::FilteringAudioFilePlayer()
 	  shouldBePlaying(false)
 {
 	// set up the format manager
-	formatManager = new AudioFormatManager();
-	formatManager->registerBasicFormats();
+	formatManager = AudioFormatManager::getInstance();//new AudioFormatManager();
+	if (formatManager->getNumKnownFormats() == 0)
+		formatManager->registerBasicFormats();
 //	formatManager->registerFormat(new MADAudioFormat(), false);	
 }
 
@@ -84,7 +85,7 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 			start();
 			
 		// let our listeners know that we have loaded a new file
-		sendChangeMessage(this);
+		sendChangeMessage();
 		
 		return true;
 	}
@@ -100,6 +101,12 @@ String FilteringAudioFilePlayer::getFile()
 String FilteringAudioFilePlayer::getFileName()
 {
 	return fileName;
+}
+
+void FilteringAudioFilePlayer::setLooping(bool shouldLoop)
+{
+	if (currentAudioFileSource != 0)
+		currentAudioFileSource->setLooping(shouldLoop);
 }
 
 AudioFormatReader* FilteringAudioFilePlayer::audioFormatReaderFromFile(const String& path)

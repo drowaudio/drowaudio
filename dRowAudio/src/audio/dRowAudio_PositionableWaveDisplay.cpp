@@ -86,7 +86,7 @@ void PositionableWaveDisplay::timerCallback(const int timerId)
 	}
 }
 
-void PositionableWaveDisplay::changeListenerCallback(void* changedObject)
+void PositionableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedObject)
 {
 	if (changedObject == filePlayer)
 	{

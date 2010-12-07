@@ -77,7 +77,7 @@ bool AudioFilePlayer::setFile(const String& path)
 		lengthInSecs = getTotalLength()/reader->sampleRate;
 		
 		// let our listeners know that we have loaded a new file
-		sendChangeMessage(this);
+		sendChangeMessage();
 		
 		return true;
 	}

@@ -144,7 +144,7 @@ void FilteringAudioTransportSource::start()
         inputStreamEOF = false;
         callbackLock.exit();
 		
-        sendChangeMessage (this);
+        sendChangeMessage ();
     }
 }
 
@@ -160,7 +160,7 @@ void FilteringAudioTransportSource::stop()
         while (--n >= 0 && ! stopped)
             Thread::sleep (2);
 		
-        sendChangeMessage (this);
+        sendChangeMessage ();
     }
 }
 
@@ -317,7 +317,7 @@ void FilteringAudioTransportSource::getNextAudioBlock (const AudioSourceChannelI
         {
             playing = false;
             inputStreamEOF = true;
-            sendChangeMessage (this);
+            sendChangeMessage ();
         }
 		
         stopped = ! playing;

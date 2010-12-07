@@ -111,7 +111,7 @@ void DraggableWaveDisplay::timerCallback(const int timerId)
 	}
 }
 
-void DraggableWaveDisplay::changeListenerCallback(void* changedObject)
+void DraggableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedObject)
 {
 	if (changedObject == filePlayer)
 	{

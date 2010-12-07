@@ -52,7 +52,7 @@ public:
 	//====================================================================================
 	void timerCallback (const int timerId);
 	
-	void changeListenerCallback(void* changedObject);
+	void changeListenerCallback(ChangeBroadcaster* changedObject);
 	//====================================================================================
 	/// Use this to update the sample rate if it changes
 	void setSampleRate (double newSampleRate);

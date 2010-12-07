@@ -27,7 +27,7 @@ Clock::~Clock()
 
 int Clock::getRequiredWidth()
 {
-	return getFont().getStringWidth(timeAsString);
+	return getFont().getStringWidth(timeAsString)+10;
 }
 
 void Clock::setTimeDisplayFormat(const int newFormat)
@@ -37,7 +37,7 @@ void Clock::setTimeDisplayFormat(const int newFormat)
 	if ((displayFormat & showDayShort) && (displayFormat & showDayLong))
 		displayFormat -= showDayShort;
 	if ((displayFormat & showTime))
-		startTimer(59000);
+		startTimer(5900);
 	if ((displayFormat & showSeconds))
 		startTimer(950);
 //	if ((displayFormat & showTenthSeconds))
@@ -61,7 +61,7 @@ void Clock::timerCallback()
 										 displayFormat & showTime,
 										 displayFormat & showSeconds,
 										 displayFormat & show24Hr);
-		
+
 	setText(timeAsString, false);
 }
 

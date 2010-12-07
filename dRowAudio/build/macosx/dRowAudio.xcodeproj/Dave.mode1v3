@@ -250,6 +250,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -291,14 +293,33 @@
 								<string>55DDDD750F4A174700894F8B</string>
 								<string>554A401311F626350009DFF4</string>
 								<string>55592FDD0F4720A60044FC32</string>
-								<string>554A3F9011F620380009DFF4</string>
+								<string>55592FEC0F4720B00044FC32</string>
+								<string>55E2F5F310B1EAF10062FB77</string>
 								<string>5519B7D40F51D5DD00801715</string>
 								<string>1C37FBAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>15</integer>
+									<integer>13</integer>
+									<integer>9</integer>
+									<integer>1</integer>
+									<integer>0</integer>
+								</array>
+								<array>
+									<integer>14</integer>
+									<integer>9</integer>
+									<integer>1</integer>
+									<integer>0</integer>
+								</array>
+								<array>
+									<integer>17</integer>
+									<integer>9</integer>
+									<integer>1</integer>
+									<integer>0</integer>
+								</array>
+								<array>
+									<integer>18</integer>
 									<integer>9</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -337,14 +358,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_Buffer.cpp</string>
+								<string>dRowAudio_BasicFileBrowser.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -352,11 +371,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_Buffer.cpp</string>
+										<string>dRowAudio_BasicFileBrowser.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55FB88B0129E92BA002F8211</string>
+										<string>55FB956D12A46EF6009ED199</string>
 										<key>history</key>
 										<array>
 											<string>552348B3103C67C700C2185E</string>
@@ -378,7 +397,6 @@
 											<string>554A406811F62FA90009DFF4</string>
 											<string>554A406C11F62FA90009DFF4</string>
 											<string>554A407211F62FA90009DFF4</string>
-											<string>554A407811F62FA90009DFF4</string>
 											<string>554A407A11F62FA90009DFF4</string>
 											<string>554A408C11F633200009DFF4</string>
 											<string>554A409011F633200009DFF4</string>
@@ -440,9 +458,7 @@
 											<string>555FFA931275AA6C00A57D03</string>
 											<string>555FFACA1275D4B300A57D03</string>
 											<string>555FFACC1275D4B300A57D03</string>
-											<string>555FFACD1275D4B300A57D03</string>
 											<string>555FFACE1275D4B300A57D03</string>
-											<string>555FFACF1275D4B300A57D03</string>
 											<string>555FFAE71275D59100A57D03</string>
 											<string>555FFBED1275FC5F00A57D03</string>
 											<string>555FFD021277917000A57D03</string>
@@ -457,9 +473,16 @@
 											<string>55FB88A5129E9258002F8211</string>
 											<string>55FB88A6129E9258002F8211</string>
 											<string>55FB88A7129E9258002F8211</string>
-											<string>55FB88A8129E9258002F8211</string>
 											<string>55FB88A9129E9258002F8211</string>
-											<string>555FFD0D1277917000A57D03</string>
+											<string>55FB8BC3129FEBE0002F8211</string>
+											<string>55FB8BC4129FEBE0002F8211</string>
+											<string>55FB8BC5129FEBE0002F8211</string>
+											<string>55FB8BC6129FEBE0002F8211</string>
+											<string>55FB8BC8129FEBE0002F8211</string>
+											<string>55FB8BC9129FEBE0002F8211</string>
+											<string>55FB8BCA129FEBE0002F8211</string>
+											<string>55FB956C12A46EF6009ED199</string>
+											<string>55FB956812A46EF2009ED199</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -517,9 +540,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55FB88AB129E9258002F8211</string>
+				<string>55FB956E12A46EF6009ED199</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55FB88AC129E9258002F8211</string>
+				<string>55FB956F12A46EF6009ED199</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -640,7 +663,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>312382138.49595898</real>
+	<real>312766198.82917899</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -655,6 +678,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>55592FD60F47202C0044FC32</string>
 		<string>/Users/Dave/Documents/Developement/dRowAudio/dRowAudio/build/macosx/dRowAudio.xcodeproj</string>
 	</array>
@@ -736,7 +760,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>55592FD60F47202C0044FC32</string>
-				<string>55FB88AD129E9258002F8211</string>
+				<string>55FB956612A46EF2009ED199</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -894,7 +918,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_FilteringAudioFilePlayer.cpp</string>
+										<string>dRowAudio_BasicFileBrowser.h</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -952,8 +976,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>555FF2D8126C925700A57D03</string>
-				<string>555FF2D9126C925700A57D03</string>
+				<string>55FB956A12A46EF2009ED199</string>
+				<string>55FB956B12A46EF2009ED199</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>

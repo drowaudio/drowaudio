@@ -60,6 +60,8 @@ public:
 	/// Returns the name of the currently loaded file
 	String getFileName();
 	
+	void setLooping(bool shouldLoop);
+	
 //	void setPlayDirection(bool shouldPlayForwards)
 //	{	
 //		if (currentAudioFileSource != 0) {
