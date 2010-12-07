@@ -26,7 +26,12 @@ public:
 	
 	~CrossFader()
 	{
+		xAssignSlider->removeListener(this);
+		yAssignSlider->removeListener(this);
+		Settings::getInstance()->getValueTreePointer()->removeListener(this);
+
 		deleteAllChildren();
+		DBG("CrossFader deleted");
 	}
 	
 	//================================================================

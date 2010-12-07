@@ -25,7 +25,10 @@ public:
 		MixerSettingsComponent::getInstance();
 	}
 	
-	~MixerSettingsComponent ();
+	~MixerSettingsComponent ()
+	{
+		DBG("MixerSettingComponent deleted");
+	}
 	
 	//==============================================================================
 	void resized ();

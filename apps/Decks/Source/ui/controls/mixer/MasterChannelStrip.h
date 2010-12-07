@@ -14,13 +14,8 @@
 #include "../../DecksLookAndFeel.h"
 #include "../../../main/DeckManager.h"
 #include "../../../main/DefaultSettings.h"
-#include "dRowAudio_SegmentedMeter.h"
 
-class MixerChannelStrip;
-
-class MasterChannelStrip :	public Component,
-							public ButtonListener,
-							public SliderListener
+class MasterChannelStrip :	public Component
 {
 public:
 	MasterChannelStrip()
@@ -66,6 +61,8 @@ public:
 	~MasterChannelStrip()
 	{
 		deleteAllChildren();
+		
+		DBG("MasterChannelStrip deleted");
 	}
 	
 	//================================================================
@@ -101,7 +98,7 @@ public:
 		const float segHeight = (meterL->getHeight()) / (float)noSegments;
 		const float offset = segHeight/2.0f;//meterL->getHeight()/ (float)(noSegments+1);
 		const int startY = meterL->getY()+offset;
-		const int endY = meterL->getBottom();
+//		const int endY = meterL->getBottom();
 		const int left = meterL->getRight() + 5;
 		const int right = meterR->getX() - 5;
 		const int centreX = left + (0.5f*(right - left));
@@ -126,31 +123,14 @@ public:
 	}
 	
 	//================================================================
-	void buttonClicked(Button *button)
-	{
-	}
-	
-	void sliderValueChanged (Slider* slider)
-	{
-	}
-	
-	void sliderDragStarted (Slider *slider)
-	{
-//		slider->enableUnboundedMouseMovement(true);
-	}
 
-	//================================================================
-	double getGainLevel()		{	return gainSlider->getValue();	}
-	
+	//================================================================	
 	SegmentedMeter* getMeterL()	{	return meterL;	}
 	SegmentedMeter* getMeterR()	{	return meterR;	}
 
 	//================================================================
 	
 private:
-	
-	friend class MixerChannelStrip;
-	friend class CrossFader;
 	
 	SegmentedMeter *meterL, *meterR;
 	TextButton *cueButton;

@@ -13,6 +13,15 @@
 
 #include <juce/juce.h>
 
+// use these macros to shorten getting the various settings
+#define CHANNEL_SETTING(setting) MixerSettings::ChannelSettings::Names[MixerSettings::ChannelSettings::setting]
+#define XFADER_SETTING(setting) MixerSettings::xFaderSettings::Names[MixerSettings::xFaderSettings::setting]
+#define MASTER_SETTING(setting) MixerSettings::MasterSettings::Names[MixerSettings::MasterSettings::setting]
+
+#define CHANNEL_SETTING_VALUE(setting) MixerSettings::ChannelSettings::Values[MixerSettings::ChannelSettings::setting]
+#define XFADER_SETTING_VALUE(setting) MixerSettings::xFaderSettings::Values[MixerSettings::xFaderSettings::setting]
+#define MASTER_SETTING_VALUE(setting) MixerSettings::MasterSettings::Values[MixerSettings::MasterSettings::setting]
+
 namespace MixerSettings
 {
 	static const int noChannels = 4;
@@ -21,6 +30,7 @@ namespace MixerSettings
 		static const Identifier SectionName = "channel";
 
 		enum ChannelSettings{
+			number,
 			on,
 			bypass,
 			gain,
@@ -38,6 +48,7 @@ namespace MixerSettings
 		};
 		
 		static const Identifier UNUSED_NOWARN Names[] = {
+			"number",
 			"on",
 			"bypass",
 			"gain",
@@ -55,6 +66,7 @@ namespace MixerSettings
 		
 		static const var Values[] = 
 		{
+			1,
 			true,		//on
 			false,		//bypass
 			1.0f,		//gain
@@ -135,7 +147,8 @@ namespace MixerSettings
 			name<<i;
 			ValueTree deck(name);
 			
-			for (int p = 0; p < MixerSettings::ChannelSettings::noChannelSettings; p++)
+			deck.setProperty(MixerSettings::ChannelSettings::Names[0], int(MixerSettings::ChannelSettings::Values[0])*i, 0);
+			for (int p = 1; p < MixerSettings::ChannelSettings::noChannelSettings; p++)
 			{
 				deck.setProperty(MixerSettings::ChannelSettings::Names[p], MixerSettings::ChannelSettings::Values[p], 0);
 			}

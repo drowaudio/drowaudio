@@ -94,6 +94,10 @@ class AppClass : public JUCEApplication
 		//==============================================================================
 		void initialise (const String& commandLine)
 		{
+			AudioFormatManager::getInstance()->registerBasicFormats();
+#ifdef JUCE_QUICKTIME
+			AudioFormatManager::getInstance()->registerFormat(new QuickTimeAudioFormat(), false);
+#endif
 			Settings::getInstance();
 			DeckManager::getInstance();
 			AudioEngine::getInstance();
@@ -106,6 +110,7 @@ class AppClass : public JUCEApplication
 			// of 'MainAppWindow' - which we have defined in MainAppWindow(.h/.cpp). The app's
 			// behaviour comes from that, so all we need is to bring it to life...
 			theMainWindow = new MainAppWindow();
+
 			// ... and plonk it onto the display...
 			theMainWindow->centreWithSize (800, 600);   // [*] (see below for a tip on this)
 			theMainWindow->setResizeLimits(800, 600, 4096, 4096);
@@ -132,7 +137,12 @@ class AppClass : public JUCEApplication
 			//     widgets using constant values instead of calculating relative positions from
 			//     the available dimensions (i.e. saying 'this button is 50 double_Pixels wide' instead
 			//     of 'this button is 1/3 of the width of its parent component').
-			
+		}
+		
+		void systemRequestedQuit()
+		{
+			DBG("\n\nAbout to close\n\n");
+			theMainWindow->showQuitScreen();
 		}
 		
 		void shutdown()
@@ -153,6 +163,7 @@ class AppClass : public JUCEApplication
 			AudioEngine::deleteInstance();
 			DeckManager::deleteInstance();
 			Settings::deleteInstance();
+			AudioFormatManager::deleteInstance();
 		}
 		
 		//==============================================================================

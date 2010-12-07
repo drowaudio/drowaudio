@@ -11,17 +11,21 @@
 
 ContainerComponent::ContainerComponent ()
 {
+	addAndMakeVisible( titlebarComponent = new TitleBarComponent() );
+	settingsButton = titlebarComponent->getSettingsButton();
+	settingsButton->addButtonListener(this);
+	
 	addAndMakeVisible( controlComponent = new ControlComponent() );
 	addChildComponent( settingsComponent = new SettingsComponent() );
-		
-	addAndMakeVisible(settingsButton = new TextButton("Settings"));
-	settingsButton->setClickingTogglesState(true);
-	settingsButton->addButtonListener(this);
+	addChildComponent( quitScreen = new QuitScreen() );
 }
 
 ContainerComponent::~ContainerComponent ()
 {
+	settingsButton->removeButtonListener(this);
+	
 	deleteAllChildren();
+	DBG("ContainerComponent deleted");
 }
 
 //==============================================================================
@@ -31,13 +35,20 @@ void ContainerComponent::resized ()
 	const int h = getHeight();
 	const int m = 2;
 	
-	controlComponent->setBounds(0, 0, w, h);
-	settingsComponent->setBounds(0, 0, w, h);
+	titlebarComponent->setBounds(0, 0, w, 30);
 	
-	settingsButton->setBounds(w-60, m, 60, 20);
+	quitScreen->setBounds(0, titlebarComponent->getBottom(), w, h - titlebarComponent->getHeight());
+	controlComponent->setBounds(0, titlebarComponent->getBottom(), w, h - titlebarComponent->getHeight());
+	settingsComponent->setBounds(0, titlebarComponent->getBottom(), w, h - titlebarComponent->getHeight());
+	
 }
 
 void ContainerComponent::paint (Graphics& g){}
+
+void ContainerComponent::showQuitScreen()
+{
+	quitScreen->setVisible(true);
+}
 
 //==============================================================================
 void ContainerComponent::buttonClicked(Button *button)
@@ -112,13 +123,15 @@ bool ContainerComponent::perform (const InvocationInfo& info)
 		case goToKioskMode:
 			if (Desktop::getInstance().getKioskModeComponent() == 0)
 			{
+				titlebarComponent->showTiteBarButtons(true);
 				TopLevelWindow::getActiveTopLevelWindow()->setUsingNativeTitleBar(false);
 				Desktop::getInstance().setKioskModeComponent (getTopLevelComponent(), false);
 			}
 			else
 			{
-				TopLevelWindow::getActiveTopLevelWindow()->setUsingNativeTitleBar(true);
+				titlebarComponent->showTiteBarButtons(false);
 				Desktop::getInstance().setKioskModeComponent (0);
+				TopLevelWindow::getActiveTopLevelWindow()->setUsingNativeTitleBar(true);
 			}
 			break;
 #endif

@@ -10,7 +10,6 @@
 #ifndef _DRAGGABLEDISPLAY__H_
 #define _DRAGGABLEDISPLAY__H_
 
-#include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 #include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
@@ -50,9 +49,14 @@ public:
 	
 	~DraggableDisplay()
 	{		
+		Settings::getInstance()->getValueTreePointer()->removeListener(this);
+		zoomSlider->removeListener(this);
+		playheadPosSlider->removeListener(this);
+		
 		draggableWaveDisplays.clear();
 		
 		deleteAllChildren();
+		DBG("DraggableDisplay deleted");
 	}
 	
 	//================================================================

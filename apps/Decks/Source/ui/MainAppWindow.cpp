@@ -49,7 +49,7 @@ DocumentWindow (
 	// a parent class of DocumentWindow (which is our base class),
 	// so we have access to this setting here.
 
-	setTitleBarHeight (20);      // Set the height of the titlebar on our window.
+	setTitleBarHeight (0);      // Set the height of the titlebar on our window.
 		
 	// create the main component, which is described in MainComponent.h
 //    ControlComponent* contentComponent = new ControlComponent ();
@@ -77,6 +77,7 @@ MainAppWindow::~MainAppWindow()
 	
 	deleteAndZero(commandManager);
 //	deleteAndZero(contentComponent);
+	DBG("MainAppWindow deleted");
 }
 
 void MainAppWindow::closeButtonPressed()
@@ -93,7 +94,18 @@ void MainAppWindow::closeButtonPressed()
 	
 	// So, here, we get the application instance (from the static getInstance()
 	// function in JUCEApplication), and call the function we need from it...
+
     JUCEApplication::getInstance()->systemRequestedQuit();
+}
+
+const BorderSize MainAppWindow::getBorderThickness()
+{
+    return BorderSize (isUsingNativeTitleBar() ? 0 : ((resizableBorder != 0 && ! isFullScreen()) ? 0 : 0));
+}
+
+void MainAppWindow::showQuitScreen()
+{
+	contentComponent->showQuitScreen();
 }
 
 //==============================================================================

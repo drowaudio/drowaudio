@@ -26,13 +26,14 @@ ControlComponent::ControlComponent ()
 	
 //	tabbedComponent->addTab(T("Library"), Colours::darkgrey, new TableDemoComponent(), true);
 
-//	mixerViewport = new Viewport(T("mixerViewport"));
-//	mixer = new Mixer();
-//	AudioEngine::getInstance()->setCurrentMixer(mixer);
-//	mixerViewport->setViewedComponent(new Mixer());
+	mixerViewport = new CentreAlignViewport(T("mixerViewport"));
 //	mixerViewport->getViewedComponent()->setSize(815, 425);
-	tabbedComponent->addTab(T("Mixer"), Colours::darkgrey, new Mixer()/*mixerViewport*/, true);
-	
+	mixer = new Mixer();
+	mixerViewport->setViewedComponent(mixer);
+	AudioEngine::getInstance()->setCurrentMixer(mixer);
+	tabbedComponent->addTab(T("Mixer"), Colours::darkgrey, mixerViewport, true);
+	tabbedComponent->addTab(T("Files"), Colours::darkgrey, new ColumnFileBrowser(new WildcardFileFilter(AudioFormatManager::getInstance()->getWildcardForAllFormats(), "*", "Audio Filter")), true);
+		
 //	fileBrowser = new ColumnFileBrowser(new WildcardFileFilter(deckManager->getDeck(0)->getMainFilePlayer()->getAudioFormatManager()->getWildcardForAllFormats(), T("*"), T("Audio Filter")));
 //	tabbedComponent->addTab(T("Browse"), Colours::darkgrey, fileBrowser, true);
 //	tabbedComponent->setCurrentTabIndex(1);
@@ -44,7 +45,11 @@ ControlComponent::ControlComponent ()
 
 ControlComponent::~ControlComponent ()
 {
+	// need to zero this as the AudioEngine does a null check on it
+	AudioEngine::getInstance()->setCurrentMixer(0);
+
 	deleteAllChildren();
+	DBG("ControlComponent deleted");
 }
 
 //==============================================================================
@@ -62,18 +67,17 @@ void ControlComponent::resized ()
 	
 	tabbedComponent->setBounds(2, draggableDisplay->getBottom(),
 							   getWidth()-4, h - draggableDisplay->getBottom() - 2);
-//	mixerViewport->setViewPosition((-(w/2)+(mixerViewport->getViewedComponent()->getWidth()*0.5)), 0);
-//	mixerViewport->setViewPosition(100, 0);
+	mixerViewport->setViewPosition(0, 0);
 	
-#ifdef JUCE_DEBUG
+//#ifdef JUCE_DEBUG
 	cpuMeter->setBounds(w-60, h-20, 60, 20);
-#endif
+//#endif
 }
 
 void ControlComponent::paint (Graphics& g)
 {
 }
-//==============================================================================
 
+//==============================================================================
 
 //==============================================================================

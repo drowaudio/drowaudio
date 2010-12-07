@@ -13,6 +13,8 @@
 #include <juce/juce.h>
 #include "../main/DeckManager.h"
 //#include "DecksLookAndFeel.h"
+#include "TitleBarComponent.h"
+#include "QuitScreen.h"
 #include "controls/ControlComponent.h"
 #include "settings/SettingsComponent.h"
 
@@ -37,6 +39,8 @@ public:
 	
 	void paint (Graphics& g);
 	
+	void showQuitScreen();
+	
 	//==============================================================================
 	void buttonClicked(Button *button);
 	
@@ -54,6 +58,8 @@ public:
 private:
 	TextButton *settingsButton;
 	
+	TitleBarComponent *titlebarComponent;
+	QuitScreen *quitScreen;
 	ControlComponent *controlComponent;
 	SettingsComponent *settingsComponent;
 };

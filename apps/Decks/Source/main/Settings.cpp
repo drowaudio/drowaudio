@@ -51,6 +51,7 @@ Settings::~Settings()
 		DBG("Settings not valid to save");
 	
 	settings.removeListener(this);
+	DBG("Settings deleted");
 }
 
 bool Settings::loadSettingsFile(String path, ValueTree &treeToFill)

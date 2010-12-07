@@ -17,7 +17,8 @@
 
 class Transport :	public Component,
 					public ButtonListener,
-					public ValueTree::Listener
+					public ValueTree::Listener,
+					public Value::Listener
 {
 public:
 	Transport()
@@ -26,29 +27,37 @@ public:
 		int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
 		Settings::getInstance()->getValueTreePointer()->addListener(this);
 
+		// = new TextButton(T("Loops"));
+		showLoopsValue.setValue(false);
+		showLoopsValue.addListener(this);
+		
 		for (int i = 0; i < noDecks; i++) {
 			decksTransports.add(new DeckTransport(i));
 			addAndMakeVisible(decksTransports[i]);
+			decksTransports[i]->setLoopAndCueValueToReferTo(showLoopsValue);
 		}
 
-		addAndMakeVisible( showLoopsButton = new TextButton(T("Loops")) );
-		showLoopsButton->setClickingTogglesState(true);
-		showLoopsButton->addButtonListener(this);
+//		addAndMakeVisible(showLoopsButton);
+//		showLoopsButton->setClickingTogglesState(true);
+//		showLoopsButton->addButtonListener(this);
 	}
 	
 	~Transport()
 	{
-//		Settings::getInstance()->getValueTreePointer()->removeListener(this);
+		showLoopsValue.removeListener(this);
+		Settings::getInstance()->getValueTreePointer()->removeListener(this);
 
 		decksTransports.clear();
 		deleteAllChildren();
+		
+		DBG("Transport deleted");
 	}
 	
 	//================================================================
 	void resized()
 	{
 		const int width = getWidth();
-		const int height = showLoopsButton->getToggleState() ? 250 : 150;
+		const int height = showLoopsValue.getValue() ? 250 : 132;
 		const int margin = 5;
 		setSize(width, height);
 		
@@ -77,7 +86,7 @@ public:
 				decksTransports[i]->setVisible(false);
 		}
 
-		showLoopsButton->setBounds(getWidth()-50, 125, 40, 20);
+//		showLoopsButton->setBounds(getWidth()-50, 125, 40, 20);
 	}
 	
 	void paint(Graphics &g)
@@ -113,12 +122,19 @@ public:
 	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged)
 	{
 	}
+	
+	void valueChanged (Value &value)
+	{
+		if (value.refersToSameSourceAs(showLoopsValue)) {
+			getParentComponent()->resized();
+		}
+	}
 	//================================================================
 	
 private:
 	DeckManager *settings;
 
-	TextButton *showLoopsButton;
+	Value showLoopsValue;
 	OwnedArray<DeckTransport> decksTransports;
 };
 

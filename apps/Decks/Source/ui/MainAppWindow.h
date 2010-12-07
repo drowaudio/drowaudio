@@ -54,6 +54,8 @@ public:
 	// called when the close button is pressed or esc is pushed
 	void closeButtonPressed();
 	
+	const BorderSize getBorderThickness();
+	
 	// the command manager object used to dispatch command events
 	ApplicationCommandManager* commandManager;
 	
@@ -66,6 +68,8 @@ public:
 	// want to put it here. You may even wish to step further outside of things and keep
 	// some higher management system within the JUCEApplication class that drives the
 	// whole shebang, but that's probably not necessary, and can be tricky to maintain!
+
+	void showQuitScreen();
 	
 private:
 	

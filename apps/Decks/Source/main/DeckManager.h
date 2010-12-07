@@ -10,17 +10,16 @@
 #ifndef _DeckManager__H_
 #define _DeckManager__H_
 
-#include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 #include "Settings.h"
 
-class Deck
+class Deck : public ValueTree::Listener
 {
 public:
 	
 	Deck(int deckNo_);
 	
-	~Deck(){}
+	~Deck();
 	
 	int getDeckNo()										{	return deckNo;				}
 //	FilteringAudioFilePlayer* getFilePlayer()			{	return filePlayer;			}
@@ -57,6 +56,13 @@ public:
 		monitorFilePlayer->setResamplingRatio(samplesInPerOutputSample);
 	}
 		
+	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
+	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged) {}
+	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged) {}
+	
+	void setSetting(const Identifier &setting, const var &newValue);
+	const var& getSetting(const Identifier &setting);
+	
 	//==============================================================================
     /** Receives callbacks when a Deck object changes.
 	 @see Deck::addListener
@@ -82,6 +88,27 @@ public:
 	//==============================================================================
 
 private:
+	
+	struct DeckSettings 
+	{
+		var number;
+		var on;
+		var bypass;
+		var gain;
+		var level;
+		var highGain;
+		var midGain;
+		var lowGain;
+		var highKill;
+		var midKill;
+		var lowKill;
+		var cue;
+		var fxASend;
+		var fxBSend;
+	} settings;
+	
+	CriticalSection lock;
+	ValueTree deckTree;
 	const int deckNo;
 	ScopedPointer<FilteringAudioFilePlayer> filePlayer;
 	ScopedPointer<FilteringAudioFilePlayer> monitorFilePlayer;
@@ -94,7 +121,8 @@ private:
 //==============================================================================
 //
 //==============================================================================
-class DeckManager	:	public DeletedAtShutdown
+class DeckManager	:	public ValueTree::Listener,
+						public DeletedAtShutdown
 {
 public:
 		
@@ -120,11 +148,40 @@ public:
 		
 		return noEnabledDecks;
 	}
-		
-	//==============================================================================
+	
+	const var& getDeckSetting(const int deckNo, const Identifier &setting)
+	{
+		return decks[deckNo]->getSetting(setting);
+	}
+	
+	void setMasterSetting(const Identifier &setting, const var &newValue);
+	const var& getMasterSetting(const Identifier &setting);
 
+	void setXFaderSetting(const Identifier &setting, const var &newValue);
+	const var& getXFaderSetting(const Identifier &setting);
+
+	//==============================================================================
+	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
+	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged) {}
+	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged) {}
+	
+	//==============================================================================
 private:
 	
+	struct MasterSettings {
+		var gain;
+		var cue;
+		var faderCurve;
+		var xFaderCurve;
+	} masterSettings;
+
+	struct XFaderSettings {
+		var assignX;
+		var assignY;
+		var level;
+	} xFaderSettings;
+	
+	CriticalSection lock;
 	OwnedArray <Deck> decks;
 };
 

@@ -11,7 +11,6 @@
 #ifndef __DECKS_SETTINGS_H_101B9845__
 #define __DECKS_SETTINGS_H_101B9845__
 
-#include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 #include "MixerSettings.h"
 
@@ -29,34 +28,7 @@ public:
 	ValueTree getValueTree()			{ return settings;	}
 	ValueTree* getValueTreePointer()	{ return &settings;	}
 	
-	//===============================================================================
-	// use these macros to shorten getting the various settings
-#define CHANNEL_SETTING(setting) MixerSettings::ChannelSettings::Names[MixerSettings::ChannelSettings::setting]
-#define XFADER_SETTING(setting) MixerSettings::xFaderSettings::Names[MixerSettings::xFaderSettings::setting]
-#define MASTER_SETTING(setting) MixerSettings::MasterSettings::Names[MixerSettings::MasterSettings::setting]
-	
-//	var getPropertyOfChild(String child, String property)
-//	{
-//		return settings.getChildWithName(child).getPropertyAsValue(property, 0).getValue();
-//	}
-//	
-//	var getPropertyOfChannel(int channelNo, String property)
-//	{
-//		String channelName(MixerSettings::ChannelSettings::SectionName);
-//		channelName << channelNo;
-//		return settings.getChildWithName(channelName).getPropertyAsValue(property, 0).getValue();
-//	}
-//	
-//	var getPropertyOfXFader(String property)
-//	{
-//		return getPropertyOfChild(MixerSettings::xFaderSettings::SectionName, property);
-//	}
-//	
-//	var getPropertyOfMaster(String property)
-//	{
-//		return getPropertyOfChild(MixerSettings::MasterSettings::SectionName, property);
-//	}
-	
+	//===============================================================================	
 	Value getPropertyOfChildAsValue(Identifier child, Identifier property)
 	{
 		return settings.getChildWithName(child).getPropertyAsValue(property, 0);
@@ -103,7 +75,7 @@ public:
 		message << " - " << treeWhosePropertyHasChanged.getProperty(property).toString();
 		DBG(message);
 		
-		if (property.toString() == MixerSettings::ChannelSettings::SectionName)
+		if (property == MixerSettings::ChannelSettings::SectionName)
 			rebuildChannelsTree(treeWhosePropertyHasChanged.getProperty(property));
 	}
 	

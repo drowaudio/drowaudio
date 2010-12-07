@@ -10,12 +10,10 @@
 #ifndef _DECKS_MIXERCHANNELSTRIP__H_
 #define _DECKS_MIXERCHANNELSTRIP__H_
 
-#include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 #include "../../DecksLookAndFeel.h"
 #include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
-#include "dRowAudio_SegmentedMeter.h"
 
 
 class Mixer;
@@ -47,10 +45,16 @@ public:
 	
 	~MixerChannelStrip()
 	{
+		Settings::getInstance()->getValueTreePointer()->removeListener(this);
+
 		eqSliders.clear();
 		eqKillButtons.clear();
 		eqLabels.clear();
 		deleteAllChildren();
+		
+		String message("MixerChannelStrip ");
+		message << deckNo << " deleted";
+		DBG(message);		
 	}
 	
 	//================================================================

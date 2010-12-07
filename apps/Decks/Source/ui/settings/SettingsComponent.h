@@ -28,12 +28,11 @@ public:
 	void paint (Graphics& g);
 	
 	//==============================================================================
-//	TabbedComponent *settingsSelector;
-//
-//	AudioDeviceSelectorComponent *mainAudioSettings, *monitorAudioSettings;
-	//==============================================================================
 	
 private:
+	TabbedComponent *settingsSelector;
+	
+	AudioDeviceSelectorComponent *mainAudioSettings, *monitorAudioSettings;
 };
 
 #endif //_DECKS_SETTINGSCOMPONENT__H_

@@ -19,13 +19,18 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 //	mixer->getMasterChannelStrip()->faderCurveSlider->addListener(this);
 	Settings::getInstance()->getValueTreePointer()->addListener(this);
 		
+	DrawablePath powerOffIcon(DecksLookAndFeel::createIcon(DecksLookAndFeel::Power, findColour(TextButton::textColourOffId)));
+	DrawablePath powerOnIcon(DecksLookAndFeel::createIcon(DecksLookAndFeel::Power, findColour(TextButton::textColourOnId)));
 	addAndMakeVisible(onButon = new DrawableButton(T("onButon"), DrawableButton::ImageOnButtonBackground));
+	onButon->setImages(&powerOffIcon, 0, 0, 0, &powerOnIcon);
 	onButon->setBackgroundColours(Colours::darkgrey, Colours::lightgrey);
 	onButon->setClickingTogglesState(true);
 	onButon->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(on)));
 
+	DrawablePath bypassOffIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Bypass, findColour(TextButton::textColourOffId)));
+	DrawablePath bypassOnIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Bypass, findColour(TextButton::textColourOnId)));
 	addAndMakeVisible(bypassButton = new DrawableButton(T("bypass"), DrawableButton::ImageOnButtonBackground));
-//	onButon->addButtonListener(this);
+	bypassButton->setImages(&bypassOffIcon, 0, 0, 0, &bypassOnIcon);
 	bypassButton->setClickingTogglesState(true);
 	bypassButton->setBackgroundColours(Colours::darkgrey, Colours::lightgrey);
 	bypassButton->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(bypass)));
@@ -111,8 +116,6 @@ void MixerChannelStrip::resized()
 	bypassButton->setBounds(c+(m/2), m, topButtonSize, topButtonSize);
 	gainSlider->setBounds(c+(w/4)+(m/2), m, topButtonSize, topButtonSize);
 	
-	meter->setBounds(m, 40, 8, 200);
-
 	int eqSize = 50;//w/3;
 	for (int i = 0; i < noBands; i++)
 	{
@@ -129,6 +132,9 @@ void MixerChannelStrip::resized()
 	int fxWidth = topButtonSize;//w/4;
 	fxASlider->setBounds(c-fxWidth, cueButton->getBottom()+m, fxWidth, fxWidth);
 	fxBSlider->setBounds(c+fxWidth, cueButton->getBottom()+m, fxWidth, fxWidth);
+	
+	meter->setBounds(m, 40, 8, 200);
+
 }
 
 void MixerChannelStrip::paint(Graphics &g)
@@ -188,6 +194,5 @@ void MixerChannelStrip::valueTreePropertyChanged (ValueTree  &treeWhosePropertyH
 		double proportion = levelSlider->valueToProportionOfLength(levelSlider->getValue());
 		levelSlider->setSkewFactor(Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(faderCurve)));
 		levelSlider->setValue(levelSlider->proportionOfLengthToValue(proportion));
-		
 	}
 }

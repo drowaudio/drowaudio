@@ -10,7 +10,6 @@
 #ifndef _TRACKINFO_H_
 #define _TRACKINFO_H_
 
-#include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 #include "../../DecksLookAndFeel.h"
 
@@ -29,7 +28,7 @@ public:
 	
 	void resized();
 	
-	void changeListenerCallback(void* changedObject);
+	void changeListenerCallback(ChangeBroadcaster* changedObject);
 	
 	void timerCallback();
 	//=================================================

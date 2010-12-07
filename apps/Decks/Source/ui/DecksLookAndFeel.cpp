@@ -351,7 +351,7 @@ void DecksLookAndFeel::drawButtonBackground (Graphics& g,
 						  indentT,
 						  width - indentL - indentR,
 						  height - indentT - indentB,
-						  baseColour, outlineThickness, 5);
+						  baseColour, outlineThickness, 3);
 }
 
 void DecksLookAndFeel::drawSquareButton (Graphics& g,
@@ -381,6 +381,119 @@ void DecksLookAndFeel::drawSquareButton (Graphics& g,
 }
 
 //==============================================================================
+//==============================================================================
+class GlassWindowButton   : public Button
+{
+public:
+    //==============================================================================
+    GlassWindowButton (const String& name, const Colour& col,
+                       const Path& normalShape_,
+                       const Path& toggledShape_) throw()
+	: Button (name),
+	colour (col),
+	normalShape (normalShape_),
+	toggledShape (toggledShape_)
+    {
+    }
+	
+    ~GlassWindowButton()
+    {
+    }
+	
+    //==============================================================================
+    void paintButton (Graphics& g, bool isMouseOverButton, bool isButtonDown)
+    {
+        float alpha = isMouseOverButton ? (isButtonDown ? 1.0f : 0.8f) : 0.55f;
+		
+        if (! isEnabled())
+            alpha *= 0.5f;
+		
+        float x = 0, y = 0, diam;
+		
+        if (getWidth() < getHeight())
+        {
+            diam = (float) getWidth();
+            y = (getHeight() - getWidth()) * 0.5f;
+        }
+        else
+        {
+            diam = (float) getHeight();
+            y = (getWidth() - getHeight()) * 0.5f;
+        }
+		
+//        x += diam * 0.05f;
+//        y += diam * 0.05f;
+//        diam *= 0.9f;
+//		
+//        g.setGradientFill (ColourGradient (Colour::greyLevel (0.9f).withAlpha (alpha), 0, y + diam,
+//                                           Colour::greyLevel (0.6f).withAlpha (alpha), 0, y, false));
+//        g.fillEllipse (x, y, diam, diam);
+//		
+//        x += 2.0f;
+//        y += 2.0f;
+//        diam -= 4.0f;
+		
+        LookAndFeel::drawGlassSphere (g, x, y, diam, colour.withAlpha (alpha), 1.0f);
+		
+        Path& p = getToggleState() ? toggledShape : normalShape;
+		
+        const AffineTransform t (p.getTransformToScaleToFit (x + diam * 0.3f, y + diam * 0.3f,
+                                                             diam * 0.4f, diam * 0.4f, true));
+		
+        g.setColour (Colours::black.withAlpha (alpha * 0.6f));
+        g.fillPath (p, t);
+    }
+	
+    //==============================================================================
+    juce_UseDebuggingNewOperator
+	
+private:
+    Colour colour;
+    Path normalShape, toggledShape;
+	
+    GlassWindowButton (const GlassWindowButton&);
+    GlassWindowButton& operator= (const GlassWindowButton&);
+};
+
+Button* DecksLookAndFeel::createDocumentWindowButton (int buttonType)
+{
+    Path shape;
+    const float crossThickness = 0.25f;
+	
+    if (buttonType == DocumentWindow::closeButton)
+    {
+        shape.addLineSegment (Line<float> (0.0f, 0.0f, 1.0f, 1.0f), crossThickness * 1.4f);
+        shape.addLineSegment (Line<float> (1.0f, 0.0f, 0.0f, 1.0f), crossThickness * 1.4f);
+		
+        return new GlassWindowButton ("close", Colour (0xffdd1100), shape, shape);
+    }
+    else if (buttonType == DocumentWindow::minimiseButton)
+    {
+        shape.addLineSegment (Line<float> (0.0f, 0.5f, 1.0f, 0.5f), crossThickness);
+		
+        return new GlassWindowButton ("minimise", Colour (0xffaa8811), shape, shape);
+    }
+    else if (buttonType == DocumentWindow::maximiseButton)
+    {
+        shape.addLineSegment (Line<float> (0.5f, 0.0f, 0.5f, 1.0f), crossThickness);
+        shape.addLineSegment (Line<float> (0.0f, 0.5f, 1.0f, 0.5f), crossThickness);
+		
+        Path fullscreenShape;
+        fullscreenShape.startNewSubPath (45.0f, 100.0f);
+        fullscreenShape.lineTo (0.0f, 100.0f);
+        fullscreenShape.lineTo (0.0f, 0.0f);
+        fullscreenShape.lineTo (100.0f, 0.0f);
+        fullscreenShape.lineTo (100.0f, 45.0f);
+        fullscreenShape.addRectangle (45.0f, 45.0f, 100.0f, 100.0f);
+        PathStrokeType (30.0f).createStrokedPath (fullscreenShape, fullscreenShape);
+		
+        return new GlassWindowButton ("maximise", Colour (0xff119911), shape, fullscreenShape);
+    }
+	
+    jassertfalse;
+    return 0;
+}
+
 void DecksLookAndFeel::drawDocumentWindowTitleBar (DocumentWindow& window,
 												   Graphics& g, int w, int h,
 												   int titleSpaceX, int titleSpaceW,
@@ -433,3 +546,251 @@ void DecksLookAndFeel::drawDocumentWindowTitleBar (DocumentWindow& window,
 }
 
 //==============================================================================
+DrawablePath DecksLookAndFeel::createIcon (IconType icon, Colour colour)
+{
+	switch (icon) {
+		case Stop:
+		{
+			Path squarePath;
+			squarePath.addRectangle(100.0f, 100.0f, 100.0f, 100.0f);
+			
+			DrawablePath squareImage;
+			squareImage.setFill (colour);
+			squareImage.setPath (squarePath);
+			
+			return squareImage;
+		}
+			break;
+		case Play:
+		{
+			Path trianglePath;
+			trianglePath.addTriangle(0.0f, 0.0f, 0.0f, 100.0f, 100.0f, 50.0f);
+			
+			DrawablePath triangleImage;
+			triangleImage.setFill(colour);
+			triangleImage.setPath(trianglePath);
+			
+			return triangleImage;
+		}
+		case Pause:
+		{
+			Path pausePath;
+			pausePath.addRectangle(0.0f, 0.0f, 20.0f, 100.0f);
+			pausePath.addRectangle(60.0f, 0.0f, 20.0f, 100.0f);
+			
+			DrawablePath pauseImage;
+			pauseImage.setFill(colour);
+			pauseImage.setPath(pausePath);
+			
+			return pauseImage;
+		}
+			break;
+		case Cue:
+		{
+			Path p;
+			p.addRectangle(0, 0, 30, 50);
+			p.addArrow (Line<float> (0.0f, 50.0f, 100.0f, 50.0f), 30.0f, 100.0f, 40.0f);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(colour);
+			drawablePath.setPath(p);
+			
+			return drawablePath;
+		}
+			break;
+		case Next:
+		{
+			Path p;
+			p.addTriangle(0.0f, 0.0f, 0.0f, 100.0f, 90.0f, 50.0f);
+			p.addRectangle(90, 0, 10, 100);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(colour);
+			drawablePath.setPath(p);
+			
+			return drawablePath;
+		}
+		case Previous:
+		{
+			Path p;
+			p.addTriangle(100.0f, 100.0f, 100.0f, 0.0f, 10.0f, 50.0f);
+			p.addRectangle(0, 0, 10, 100);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(colour);
+			drawablePath.setPath(p);
+			
+			return drawablePath;
+		}
+			break;
+		case ShuffleForward:
+		{
+			Path p;
+			p.addTriangle(0.0f, 0.0f, 0.0f, 100.0f, 50.0f, 50.0f);
+			p.addTriangle(50.0f, 0.0f, 50.0f, 100.0f, 100.0f, 50.0f);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(colour);
+			drawablePath.setPath(p);
+			
+			return drawablePath;
+		}			
+			break;
+		case ShuffleBack:
+		{
+			Path p;
+			p.addTriangle(50.0f, 0.0f, 50.0f, 100.0f, 0.0f, 50.0f);
+			p.addTriangle(100.0f, 0.0f, 100.0f, 100.0f, 50.0f, 50.0f);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(colour);
+			drawablePath.setPath(p);
+			
+			return drawablePath;
+		}
+			break;
+		case Eject:
+		{
+			Path p;
+			p.addTriangle(0, 65, 100, 65, 50, 0);
+			p.addRectangle(0, 80, 100, 20);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(colour);
+			drawablePath.setPath(p);
+			
+			return drawablePath;			
+		}
+			break;
+		case Cross:
+		{
+			Path p;
+			p.startNewSubPath (0.0f, 0.0f);
+			p.lineTo(100.0f, 100.0f);
+			p.startNewSubPath (100.0f, 0.0f);
+			p.lineTo(0.0f, 100.0f);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(Colours::white.withAlpha(0.0f));
+			drawablePath.setStrokeFill(colour);
+			drawablePath.setStrokeThickness(15);
+			drawablePath.setPath(p);
+			
+			return drawablePath;			
+		}
+			break;
+		case Add:
+		{
+			Path p;
+			p.startNewSubPath (50.0f, 0.0f);
+			p.lineTo(50.0f, 100.0f);
+			p.startNewSubPath (0.0f, 50.0f);
+			p.lineTo(100.0f, 50.0f);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(Colours::white.withAlpha(0.0f));
+			drawablePath.setStrokeFill(colour);
+			drawablePath.setStrokeThickness(15);
+			drawablePath.setPath(p);
+			
+			return drawablePath;			
+		}
+			break;
+		case Search:
+		{
+			Path p;
+			p.addEllipse(20, 0, 80, 80);
+			p.startNewSubPath (0.0f, 100.0f);
+			p.lineTo(35.0f, 65.0f);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(Colours::white.withAlpha(0.0f));
+			drawablePath.setStrokeFill(colour);
+			drawablePath.setStrokeThickness(15);
+			drawablePath.setPath(p);
+			
+			return drawablePath;			
+		}
+			break;
+		case Power:
+		{
+			Path p;
+			p.addArc(0, 20, 100, 100, 0.18*float_Pi, 2*float_Pi-(0.18*float_Pi), true);
+			p.startNewSubPath (50.0f, 0.0f);
+			p.lineTo(50.0f, 70.0f);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(Colours::white.withAlpha(0.0f));
+			drawablePath.setStrokeFill(colour);
+			drawablePath.setStrokeThickness(10);
+			drawablePath.setPath(p);
+			
+			return drawablePath;
+		}
+			break;
+		case Bypass:
+		{
+			Path p;
+			p.startNewSubPath (50.0f, 0.0f);
+			p.lineTo(50.0f, 30.0f);
+			p.lineTo(80.0f, 70.0f);
+			p.startNewSubPath (50.0f, 70.0f);
+			p.lineTo(50.0f, 100.0f);
+			
+			DrawablePath drawablePath;
+			drawablePath.setFill(Colours::white.withAlpha(0.0f));
+			drawablePath.setStrokeFill(colour);
+			drawablePath.setStrokeThickness(10);
+			drawablePath.setPath(p);
+			
+			return drawablePath;			
+		}
+			break;
+		case GoUp:
+		{
+			Path arrowPath;
+			arrowPath.addArrow (Line<float> (50.0f, 100.0f, 50.0f, 0.0f), 40.0f, 100.0f, 50.0f);
+			
+			DrawablePath arrowImage;
+			arrowImage.setFill (colour);
+			arrowImage.setPath (arrowPath);
+			
+			return arrowImage;			
+		}
+			break;
+		case Infinity:
+		{
+			Path infPath;
+			infPath.addEllipse(0.0f, 0.0f, 50.0f, 50.0f);
+			infPath.startNewSubPath(50.0f, 0.0f);
+			infPath.addEllipse(50.0f, 0.0f, 50.0f, 50.0f);
+			
+			DrawablePath infImg;
+			infImg.setFill (Colours::white.withAlpha(0.0f));
+			infImg.setStrokeFill(colour);
+			infImg.setStrokeThickness(10.0f);
+			infImg.setPath (infPath);
+						
+			return infImg;			
+		}
+			break;
+		case DownTriangle:
+		{
+			Path trianglePath;
+			trianglePath.addTriangle(0.0f, 0.0f, 100.0f, 0.0f, 50.0f, 100.0f);
+			
+			DrawablePath triangleImage;
+			triangleImage.setFill(colour);
+			triangleImage.setPath(trianglePath);
+			
+			return triangleImage;
+		}
+			break;
+		default:
+		{
+			DrawablePath blank;
+			return blank;
+		}
+			break;
+	}
+}

@@ -14,15 +14,19 @@
 #include "../../../main/DeckManager.h"
 #include "../../DecksLookAndFeel.h"
 #include "TrackInfo.h"
+#include "LoopAndCuePoints.h"
 
 class DeckTransport :	public Component,
 						public ButtonListener,
-						public SliderListener
+						public SliderListener,
+						public ChangeListener
 {
 public:
 	
 	enum TransportButtons {
 		eject,
+		loop,
+		cue,
 		previous,
 		shuffleBack,
 		stop,
@@ -34,40 +38,52 @@ public:
 	
 	DeckTransport(int deckNo_)
 	:	deckNo(deckNo_),
+		showLoopAndCuePoints(true),
 		settings(DeckManager::getInstance()),
 		filePlayer(settings->getDeck(deckNo)->getMainFilePlayer())
 	{
 		getLookAndFeel().setColour(TextButton::textColourOffId, Colour::greyLevel(0.8));
+		filePlayer->addChangeListener(this);
 		
 		addAndMakeVisible(infoBox = new TrackInfo(deckNo, filePlayer));
 		
 		for (int i = 0; i < noTransportButtons; i++) {
-//			transportButtons.add(new DrawableButton(String(i), DrawableButton::ImageOnButtonBackground));
+			transportButtons.add(new DrawableButton(String(i), DrawableButton::ImageOnButtonBackground));
 			
-			transportButtons.add(new TextButton(String(i)));
+//			transportButtons.add(new TextButton(String(i)));
 
 			addAndMakeVisible(transportButtons[i]);
 			transportButtons[i]->addButtonListener(this);
-//			transportButtons[i]->setBackgroundColours(Colours::darkgrey, Colours::lightgrey);
+			transportButtons[i]->setBackgroundColours(Colours::darkgrey, Colours::lightgrey);
 		}
+		transportButtons[loop]->setClickingTogglesState(true);
 		transportButtons[playPause]->setClickingTogglesState(true);
+
+		DrawablePath ejectIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Eject, findColour(TextButton::textColourOffId)));
+		DrawablePath loopOffIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Infinity, findColour(TextButton::textColourOffId)));
+		DrawablePath loopOnIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Infinity, findColour(TextButton::textColourOnId)));
+		DrawablePath cueIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Cue, findColour(TextButton::textColourOffId)));
+		DrawablePath previousIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Previous, findColour(TextButton::textColourOffId)));
+		DrawablePath shuffleBackIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::ShuffleBack, findColour(TextButton::textColourOffId)));
+		DrawablePath stopIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Stop, findColour(TextButton::textColourOffId)));
+		DrawablePath playIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Play, findColour(TextButton::textColourOffId)));
+		DrawablePath pauseIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Pause, findColour(TextButton::textColourOnId)));
+		DrawablePath shuffleForwardIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::ShuffleForward, findColour(TextButton::textColourOffId)));
+		DrawablePath nextIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Next, findColour(TextButton::textColourOffId)));
 		
-		transportButtons[eject]->setButtonText(T("ejct"));
-		transportButtons[previous]->setButtonText(T("<-"));
-		transportButtons[shuffleBack]->setButtonText(T("<<"));
-		transportButtons[stop]->setButtonText(T("[]"));
-		transportButtons[playPause]->setButtonText(T(">"));
-		transportButtons[shuffleForward]->setButtonText(T(">>"));
-		transportButtons[next]->setButtonText(T("->"));
-		
-		//================
-//		transportButtons[stop]->setImages(createDrawableFromSVGFile("/Users/Dave/Documents/Developement/dRowAudio/apps/Decks/src/resources/buttons/controls_stop.svg"));
-//		transportButtons[stop]->setImages(createDrawableFromSVGFile(getResourcesFolder().getChildFile("controls_stop.svg")));
-//		transportButtons[playPause]->setImages(createPlayButton(), 0, 0, 0,
-//											   createDrawableFromSVGFile(getResourcesFolder().getChildFile("controls_pause.svg")));
-		//================
+		transportButtons[eject]->setImages(&ejectIcon);
+		transportButtons[loop]->setImages(&loopOffIcon, 0, 0, 0, &loopOnIcon);
+		transportButtons[cue]->setImages(&cueIcon);
+		transportButtons[previous]->setImages(&previousIcon);
+		transportButtons[shuffleBack]->setImages(&shuffleBackIcon);
+		transportButtons[stop]->setImages(&stopIcon);
+		transportButtons[playPause]->setImages(&playIcon, 0, 0, 0, &pauseIcon);
+		transportButtons[shuffleForward]->setImages(&shuffleForwardIcon);
+		transportButtons[next]->setImages(&nextIcon);
 		
 		addAndMakeVisible(waveDisplay = new PositionableWaveDisplay(filePlayer, 44100));
+		
+		addAndMakeVisible(loopAndCuePoints = new LoopAndCuePoints());
 		
 		addAndMakeVisible(speedSlider = new Slider("speedSlider"));
 		speedSlider->setSliderStyle(Slider::LinearVertical);
@@ -86,28 +102,45 @@ public:
 	
 	~DeckTransport()
 	{
+		speedSlider->removeListener(this);
+		jogSlider->removeListener(this);
+		for (int i = 0; i < transportButtons.size(); i++) {
+			transportButtons[i]->removeButtonListener(this);
+		}
+		
 		transportButtons.clear();
 		deleteAllChildren();
+
+		String message("DeckTransport ");
+		message << deckNo << " deleted";
+		DBG(message);
 	}
 	
 	//==============================================================================
 	void resized()
 	{
-		const int width = getWidth();
-		const int height = getHeight();
-		const int margin = 5;
+		const int w = getWidth();
+		const int h = getHeight();
+		const int m = 5;
 		
-		infoBox->setBounds(0, 0, width-35, 50);
+		infoBox->setBounds(0, 0, w-35, 40);
 		
-		const int buttonWidth = /*jmin(*/((infoBox->getWidth()-2)/noTransportButtons)-1;//, 21);
+		const int buttonWidth = /*jmin(*/((infoBox->getWidth()-2)/(float)noTransportButtons) - 1;
 		for (int i = 0; i < noTransportButtons; i++) {
 			transportButtons[i]->setBounds(2+(i*(buttonWidth+1)), infoBox->getBottom()+2, buttonWidth, 20);
 		}
 		
-		waveDisplay->setBounds(0, 100, width-35, 50);
+		waveDisplay->setBounds(0, transportButtons[0]->getBottom()+2, w-35, 50);
 		
-		speedSlider->setBounds(width-30, 0, 10, waveDisplay->getBottom());
-		jogSlider->setBounds(width-15, 0, 10, waveDisplay->getBottom());
+		if (showLoopAndCuePoints) {
+			loopAndCuePoints->setBounds(0, waveDisplay->getBottom()+m, w, h - waveDisplay->getBottom() - m);
+		}
+		else {
+			loopAndCuePoints->setBounds(0, waveDisplay->getBottom()+m, w, h - waveDisplay->getBottom() - m);
+		}
+
+		speedSlider->setBounds(w-30, 0, 10, waveDisplay->getBottom());
+		jogSlider->setBounds(w-15, 0, 10, waveDisplay->getBottom());
 	}
 	
 	void paint(Graphics &g)
@@ -119,7 +152,13 @@ public:
 	//==============================================================================
 	void buttonClicked(Button* button)
 	{
-		if (button == transportButtons[previous])
+		if (button == transportButtons[loop])
+			settings->getDeck(deckNo)->getMainFilePlayer()->setLooping(transportButtons[loop]->getToggleState());
+		else if (button == transportButtons[cue])
+			settings->getDeck(deckNo)->startFromZero();
+		else if (button == transportButtons[eject])
+			settings->getDeck(deckNo)->getMainFilePlayer()->setFile(String::empty);
+		else if (button == transportButtons[previous])
 			settings->getDeck(deckNo)->startFromZero();
 		else if (button == transportButtons[stop])
 		{
@@ -156,16 +195,32 @@ public:
 			jogSlider->setValue(0.0);
 	}
 	
+	void changeListenerCallback(ChangeBroadcaster *object)
+	{
+//		filePlayer->setPlayDirection(false);
+
+		if (object == filePlayer) {
+			if (filePlayer->isPlaying())
+				transportButtons[playPause]->setToggleState(true, false);
+			else
+				transportButtons[playPause]->setToggleState(false, false);
+		}
+	}
+	//==============================================================================
+	void setLoopAndCueValueToReferTo(Value &valueToReferTo);
+	
 	//==============================================================================
 
 private:
 	const int deckNo;
+	bool showLoopAndCuePoints;
 	DeckManager *settings;
 	FilteringAudioFilePlayer *filePlayer;
 	
 	TrackInfo *infoBox;
-	OwnedArray<TextButton> transportButtons;
+	OwnedArray<DrawableButton> transportButtons;
 	PositionableWaveDisplay *waveDisplay;
+	LoopAndCuePoints *loopAndCuePoints;
 	
 	Slider *speedSlider, *jogSlider;
 	

@@ -10,7 +10,7 @@
 #ifndef _DECKS_CONTROLCOMPONENT__H_
 #define _DECKS_CONTROLCOMPONENT__H_
 
-#include <juce/juce.h>
+#include <dRowAudio/dRowAudio.h>
 #include "ControlComponent.h"
 //#include "TableDemo.h"
 //#include "mixer/MixerComponent.h"
@@ -35,10 +35,10 @@ private:
 	DraggableDisplay *draggableDisplay;
 		
 	TabbedComponent* tabbedComponent;
-	Viewport *mixerViewport;
-//	Mixer *mixer;
+	Mixer *mixer;
+	CentreAlignViewport *mixerViewport;
 	
-	ColumnFileBrowser* fileBrowser;
+//	ColumnFileBrowser* fileBrowser;
 		
 	double currentSampleRate;
 	

@@ -27,7 +27,7 @@ namespace Defaults
 			namespace HighEQ {
 				static const int cf = 1300;
 				static const float q = 1.5f;
-				static const float gainMin = 0.0f;
+				static const float gainMin = 0.05f;
 				static const float gainMax = 2.0f;				
 				static const float gain = 1.0f;
 				static const int killCf = 1300;
@@ -38,7 +38,7 @@ namespace Defaults
 			namespace MidEQ {
 				static const int cf = 1000;
 				static const float q = 1.5f;
-				static const float gainMin = 0.0f;
+				static const float gainMin = 0.05f;
 				static const float gainMax = 2.0f;				
 				static const float gain = 1.0f;
 				static const int killCf = 1000;
@@ -49,7 +49,7 @@ namespace Defaults
 			namespace LowEQ {
 				static const int cf = 70;
 				static const float q = 1.5f;
-				static const float gainMin = 0.0f;
+				static const float gainMin = 0.05f;
 				static const float gainMax = 2.0f;				
 				static const float gain = 1.0f;
 				static const int killCf = 70;

@@ -12,62 +12,59 @@
 juce_ImplementSingleton (AudioEngine)
 
 AudioEngine::AudioEngine()
-:	deckManager(DeckManager::getInstance())//,
-//	currentMixer(0)
-{
-//	MixerSettings::getInstance();
+:	deckManager(DeckManager::getInstance()),
+	currentMixer(0)
+{	
+	mainAudioCallback = new MainAudioCallback();
 	
 	// set up the main audio device
 	mainAudioDeviceManager.initialise (1, /* number of input channels */
 									   2, /* number of output channels */
 									   0, /* no XML settings.. */
 									   true  /* select default device on failure */);
-	mainAudioDeviceManager.addAudioCallback (this);
+	mainAudioDeviceManager.addAudioCallback (mainAudioCallback);
 	
-	currentSampleRate = (mainAudioDeviceManager.getCurrentAudioDevice())->getCurrentSampleRate();
-	currentBuffSize = mainAudioDeviceManager.getCurrentAudioDevice()->getCurrentBufferSizeSamples();
-
-	buffer = new AudioSampleBuffer(2, currentBuffSize);
-
-//	monitorAudioCallback = new MonitorAudioCallback(this);
-//	// set up the main audio device
-//	String error = monitorAudioDeviceManager.initialise (0, /* number of input channels */
-//														 2, /* number of output channels */
-//														 0, /* no XML settings.. */
-//														 false  /* select default device on failure */);
-//	DBG(error);
-//	if (error == String::empty) {
-//		monitorAudioDeviceManager.addAudioCallback (monitorAudioCallback);
-//	}
-	
-
-
-	
-	for (int i = 0; i < deckManager->getMaxNoDecks(); i++) {
-		audioSourcePlayers.add(new AudioSourcePlayer());
-		audioSourcePlayers[i]->setSource(deckManager->getDeck(i)->getMainFilePlayer());
-		audioSourcePlayers[i]->audioDeviceAboutToStart (mainAudioDeviceManager.getCurrentAudioDevice());
-	}
 }
 
 AudioEngine::~AudioEngine()
 {
 	// zero the device manager and source player to avoid crashing
-	mainAudioDeviceManager.removeAudioCallback (this);
-//	monitorAudioDeviceManager.removeAudioCallback (monitorAudioCallback);
+	mainAudioDeviceManager.removeAudioCallback (mainAudioCallback);
 
-	audioSourcePlayers.clear();
-//	audioSourcePlayer.setSource (0);
+	DBG("AudioEngine deleted");
 }
 
-void AudioEngine::audioDeviceIOCallback (const float** inputChannelData,
-										 int totalNumInputChannels,
-										 float** outputChannelData,
-										 int totalNumOutputChannels,
-										 int numSamples)
-{		
-	// pass the audio callback on to our player source
-//	audioSourcePlayer.audioDeviceIOCallback (inputChannelData, totalNumInputChannels, outputChannelData, totalNumOutputChannels, numSamples);
+//=========================================================================================
+// Main Audio Callback
+// This  callback deals with the main audio system
+//=========================================================================================
+AudioEngine::MainAudioCallback::MainAudioCallback()
+:	currentBuffSize(0)
+{
+	buffer = new AudioSampleBuffer(2, currentBuffSize);
+
+	for (int i = 0; i < DeckManager::getInstance()->getMaxNoDecks(); i++) {
+		audioSourcePlayers.add(new AudioSourcePlayer());
+		audioSourcePlayers[i]->setSource(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer());
+	}
+}
+
+AudioEngine::MainAudioCallback::~MainAudioCallback()
+{
+	for (int i=0; i < audioSourcePlayers.size(); i++)
+		audioSourcePlayers[i]->setSource(0);	
+	audioSourcePlayers.clear();
+
+	DBG("Main audio callback deleted");	
+}
+
+void AudioEngine::MainAudioCallback::audioDeviceIOCallback (const float** inputChannelData,
+															int totalNumInputChannels,
+															float** outputChannelData,
+															int totalNumOutputChannels,
+															int numSamples)
+{
+	DeckManager* manager = DeckManager::getInstance();
 	
 	if (currentBuffSize != numSamples)
 	{
@@ -77,69 +74,85 @@ void AudioEngine::audioDeviceIOCallback (const float** inputChannelData,
 	}
 	buffer->clear();
 	
-	for (int i=0; i < audioSourcePlayers.size(); i++)
-	{
-		// if it is not bypassed
-		if (!Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(bypass)))
-		{
-			audioSourcePlayers.getUnchecked(i)->audioDeviceIOCallback (inputChannelData, totalNumInputChannels, outputChannelData, totalNumOutputChannels, numSamples);
-				
-			// update the meters pre-fader
-//			if (currentMixer)
-//				currentMixer->updateMeterForChannel(i, outputChannelData, numSamples, totalNumOutputChannels);
-			
-			// apply xFader gain
-//			if (int(deckManager->getXFaderSettingVar(DeckManager::assignX)) == (i+1)) {
-			if (int(Settings::getInstance()->getPropertyOfXFader(XFADER_SETTING(assignX))) == (i+1)) {
-				float xGain = 1.0f-float(Settings::getInstance()->getPropertyOfXFader(XFADER_SETTING(level)));
-				for (int c=0; c<totalNumOutputChannels; c++)
-					for (int s=0; s<numSamples; s++) {
-						outputChannelData[c][s]*=xGain;
-					}
-			}
-//			if (int(deckManager->getXFaderSettingVar(DeckManager::assignY)) == (i+1)) {
-			if (int(Settings::getInstance()->getPropertyOfXFader(XFADER_SETTING(assignY))) == (i+1)) {
-				float yGain = float(Settings::getInstance()->getPropertyOfXFader(XFADER_SETTING(level)));
-				for (int c=0; c<totalNumOutputChannels; c++)
-					for (int s=0; s<numSamples; s++) {
-						outputChannelData[c][s]*=yGain;
-					}
-			}
+	float yGain = manager->getXFaderSetting(XFADER_SETTING(level));
+	float xGain = 1.0f-yGain;
 
-			// add the samples to the output buffer
-			for (int c=0; c<totalNumOutputChannels; c++)
-				buffer->addFrom(c, 0, outputChannelData[c], numSamples, Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(level)));
+	int assignX = manager->getXFaderSetting(XFADER_SETTING(assignX));
+	int assignY = manager->getXFaderSetting(XFADER_SETTING(assignY));
+	
+	float masterGain = manager->getMasterSetting(MASTER_SETTING(gain));
+	
+	for (int i=0; i < audioSourcePlayers.size(); i++)
+	{		
+		if (manager->getDeckSetting(i, CHANNEL_SETTING(on)))
+		{
+			bool bypassed = manager->getDeckSetting(i, CHANNEL_SETTING(bypass));
+			float channelLevel = manager->getDeckSetting(i, CHANNEL_SETTING(level));
+						
+			// if it is not bypassed
+			if (!bypassed && (channelLevel != 0.0f))
+			{
+				audioSourcePlayers.getUnchecked(i)->audioDeviceIOCallback (inputChannelData, totalNumInputChannels, outputChannelData, totalNumOutputChannels, numSamples);
+
+				if (AudioEngine::getInstance()->currentMixer)
+					AudioEngine::getInstance()->currentMixer->updateMeterForChannel(i, outputChannelData, numSamples, totalNumOutputChannels);
+				
+				// apply xFader gain
+				if (assignX == (i+1)) {
+					for (int c=0; c<totalNumOutputChannels; c++)
+						for (int s=0; s<numSamples; s++) {
+							outputChannelData[c][s]*=xGain;
+						}
+				}
+				if (assignY == (i+1)) {
+					for (int c=0; c<totalNumOutputChannels; c++)
+						for (int s=0; s<numSamples; s++) {
+							outputChannelData[c][s]*=yGain;
+						}
+				}
+				
+				// add the samples to the output buffer
+				for (int c=0; c<totalNumOutputChannels; c++)
+					buffer->addFrom(c, 0, outputChannelData[c], numSamples, channelLevel);
+			}
+			else // if bypassed we still need to update playhead positions
+			{
+				FilteringAudioFilePlayer *player = DeckManager::getInstance()->getDeck(i)->getMainFilePlayer();
+				if (player->isPlaying() && (player->getNextReadPosition() < player->getTotalLength()))
+					player->setNextReadPosition(player->getNextReadPosition() + numSamples);
+			}
 		}
 	}
-
+	
+	
 	// apply master fader level
-	buffer->applyGain(0, numSamples, Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(gain)));
-
+	buffer->applyGain(0, numSamples, masterGain);
+	
+	// copy local buffer to output buffer
 	for (int c=0; c < totalNumOutputChannels; c++) {
 		for (int s=0; s<numSamples; s++) {
 			outputChannelData[c][s] = buffer->getArrayOfChannels()[c][s];
 		}
-	}
-	
-//	if (currentMixer)
-//		currentMixer->updateMasterMeter(outputChannelData, numSamples, totalNumOutputChannels);
+	}	
+
+	if (AudioEngine::getInstance()->currentMixer)
+		AudioEngine::getInstance()->currentMixer->updateMasterMeter(outputChannelData, numSamples, totalNumOutputChannels);
 }
 
-void AudioEngine::audioDeviceAboutToStart (AudioIODevice* device)
+void AudioEngine::MainAudioCallback::audioDeviceAboutToStart (AudioIODevice* device)
 {
-	DBG("Audio Manager device about to start");
-//	audioSourcePlayer.audioDeviceAboutToStart (device);
+	DBG("Main audio device about to start");
 	for (int i=0; i < audioSourcePlayers.size(); i++)
-		audioSourcePlayers[i]->audioDeviceAboutToStart (device);
+		audioSourcePlayers[i]->audioDeviceAboutToStart (device);	
 }
 
-void AudioEngine::audioDeviceStopped()
+void AudioEngine::MainAudioCallback::audioDeviceStopped()
 {
-	DBG("Audio Manager device stopped");
-//	audioSourcePlayer.audioDeviceStopped();
+	DBG("Main audio device stopped");
 	for (int i=0; i < audioSourcePlayers.size(); i++)
-		audioSourcePlayers[i]->audioDeviceStopped ();
+		audioSourcePlayers[i]->audioDeviceStopped ();	
 }
+
 
 //=========================================================================================
 // Monitor Audio Callback

@@ -26,7 +26,33 @@ public:
 		noCustomColours
 	};
 	
+	enum IconType {
+		Stop,
+		Play,
+		Cue,
+		Pause,
+		Next,
+		Previous,
+		ShuffleForward,
+		ShuffleBack,
+		Eject,
+		Cross,
+		Add,
+		Search,
+		Power,
+		Bypass,
+		GoUp,
+		Infinity,
+		DownTriangle,
+		noIcons
+	};
+	
 	DecksLookAndFeel();
+	
+	~DecksLookAndFeel()
+	{
+		DBG("DecksLookAndFeel deleted");
+	}
 
 	void setDecksColour(DecksColours colour, Colour newColour)	{	decksColours.getReference(colour) = newColour;	}
 
@@ -73,6 +99,8 @@ public:
                                   const float outlineThickness,
                                   const float cornerSize) throw();
 	//============================================================
+	virtual Button* createDocumentWindowButton (int buttonType);
+	
 	virtual void drawDocumentWindowTitleBar (DocumentWindow& window,
                                              Graphics& g, int w, int h,
                                              int titleSpaceX, int titleSpaceW,
@@ -80,6 +108,8 @@ public:
                                              bool drawTitleTextOnLeft);
 		
 	//============================================================
+	static DrawablePath createIcon (IconType icon, Colour colour);
+	
 	
 private:
 	Array<Colour> decksColours;

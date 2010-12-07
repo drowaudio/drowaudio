@@ -9,3 +9,7 @@
 
 #include "DeckTransport.h"
 
+void DeckTransport::setLoopAndCueValueToReferTo(Value &valueToReferTo)
+{
+	loopAndCuePoints->setToggleValueToReferTo(valueToReferTo);
+}

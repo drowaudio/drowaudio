@@ -10,7 +10,6 @@
 #ifndef _DECKS_MIXER__H_
 #define _DECKS_MIXER__H_
 
-#include <juce/juce.h>
 #include <dRowAudio/dRowAudio.h>
 #include "../../DecksLookAndFeel.h"
 #include "../../../main/Settings.h"
@@ -24,23 +23,36 @@ class Mixer : public  Component
 public:
 	Mixer()
 	{
+		meterManager = new GraphicalComponentManager();
+		
 		addAndMakeVisible( masterStrip = new MasterChannelStrip() );
 		addAndMakeVisible( xFader = new CrossFader() );
+
+		meterManager->addGraphicalComponent(masterStrip->getMeterL());
+		meterManager->addGraphicalComponent(masterStrip->getMeterR());
 
 		const int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
 		for (int i = 0; i < noDecks; i++)
 		{
 			channelStrips.add(new MixerChannelStrip(i, this));
+			meterManager->addGraphicalComponent(channelStrips[i]->getMeter());
 			addAndMakeVisible(channelStrips[i]);
 		}
 
-//		centreWithSize(815, 425);
+		centreWithSize(815, 425);
 	}
 	
 	~Mixer()
 	{
+		const int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
+		meterManager->removeGraphicalComponent(masterStrip->getMeterL());
+		meterManager->removeGraphicalComponent(masterStrip->getMeterR());
+		for (int i = 0; i < noDecks; i++)
+			meterManager->removeGraphicalComponent(channelStrips[i]->getMeter());
+		
 		channelStrips.clear();
 		deleteAllChildren();
+		DBG("Mixer deleted");
 	}
 	
 	//================================================================
@@ -66,6 +78,16 @@ public:
 		setSize(masterStrip->getRight()+m, xFader->getBottom()+m);
 	}
 	
+	void moved()
+	{
+		const int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
+		for (int i = 0; i < noDecks; i++) {
+			channelStrips[i]->getMeter()->flagForRepaint();
+		}
+		masterStrip->getMeterL()->flagForRepaint();
+		masterStrip->getMeterR()->flagForRepaint();
+	}
+	
 	void paint(Graphics &g) {}
 	
 	//================================================================
@@ -88,7 +110,7 @@ public:
 	{
 		SegmentedMeter *meter = channelStrips[deckNo]->getMeter();
 		if (meter != 0)
-			meter->processBlock(data, numSamples, numChannels);
+			meter->copyValues(data, numSamples, numChannels);
 	}
 	
 	void updateMasterMeter(float **data, int numSamples, int numChannels)
@@ -97,15 +119,17 @@ public:
 		SegmentedMeter *meterR = masterStrip->getMeterR();
 
 		if (meterL != 0)
-			meterL->processBlock(data[0], numSamples);
+			meterL->copyValues(data[0], numSamples);
 
 		if (numChannels > 1)
-			meterR->processBlock(data[1], numSamples);
+			meterR->copyValues(data[1], numSamples);
 	}
 	//================================================================
 
 private:
 	
+	GraphicalComponentManager *meterManager;
+
 	OwnedArray <MixerChannelStrip> channelStrips;
 	CrossFader *xFader;
 	MasterChannelStrip *masterStrip;

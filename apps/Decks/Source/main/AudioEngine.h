@@ -16,8 +16,7 @@
 #include "MixerSettings.h"
 #include "../ui/controls/mixer/Mixer.h"
 
-class AudioEngine : public AudioIODeviceCallback,
-					public DeletedAtShutdown
+class AudioEngine : public DeletedAtShutdown
 {
 public:
 	
@@ -26,27 +25,47 @@ public:
 	AudioEngine();
 	
 	~AudioEngine();
-	
-	void audioDeviceIOCallback (const float** inputChannelData,
-								int totalNumInputChannels,
-								float** outputChannelData,
-								int totalNumOutputChannels,
-								int numSamples);
-	
-	void audioDeviceAboutToStart (AudioIODevice* device);	
-	
-	void audioDeviceStopped();
-	
+		
 	//=================================================================
 	AudioDeviceManager* getMainAudioDeviceManager()		{	return &mainAudioDeviceManager;	}
 //	AudioDeviceManager* getMonitorAudioDeviceManager()	{	return &monitorAudioDeviceManager;	}
 	
-//	void setCurrentMixer(Mixer *mixer)			{	currentMixer = mixer;		}
+	void setCurrentMixer(Mixer *mixer)			{	currentMixer = mixer;		}
+
 	//=================================================================	
-	
+	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
+	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged) {}
+	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged) {}
+		
 private:
 	
 	//=================================================================
+	class MainAudioCallback : public AudioIODeviceCallback
+	{
+	public:
+		MainAudioCallback();
+		~MainAudioCallback();
+		
+		void audioDeviceIOCallback (const float** inputChannelData,
+									int totalNumInputChannels,
+									float** outputChannelData,
+									int totalNumOutputChannels,
+									int numSamples);
+		
+		void audioDeviceAboutToStart (AudioIODevice* device);	
+		
+		void audioDeviceStopped();
+		
+	private:
+		friend class AudioEngine;
+		
+		int currentBuffSize;
+		ScopedPointer<AudioSampleBuffer> buffer;
+		OwnedArray<AudioSourcePlayer> audioSourcePlayers;
+		
+		CriticalSection lock;
+	};
+	
 //	class MonitorAudioCallback : public AudioIODeviceCallback
 //	{
 //	public:
@@ -75,23 +94,17 @@ private:
 //		ScopedPointer<AudioSampleBuffer> monitorBuffer;
 //	};
 	//=================================================================
-
+	
 	DeckManager *deckManager;
-
+	Mixer *currentMixer;
+	
 	// classes for audio playback
 	AudioDeviceManager mainAudioDeviceManager;
-//	AudioDeviceManager monitorAudioDeviceManager;
-//	ScopedPointer<MonitorAudioCallback> monitorAudioCallback;
+	ScopedPointer<MainAudioCallback> mainAudioCallback;
+	//	AudioDeviceManager monitorAudioDeviceManager;
+	//	ScopedPointer<MonitorAudioCallback> monitorAudioCallback;
 	
-	OwnedArray<AudioSourcePlayer> audioSourcePlayers;
-	ScopedPointer<AudioSampleBuffer> buffer;
-//	MixerAudioSource mixerSource;
-//	AudioSourcePlayer audioSourcePlayer;
-	
-	double currentSampleRate;
-	int currentBuffSize;
-	
-//	Component::SafePointer<Mixer> currentMixer;
+	// mixer settings
 };
 
 
