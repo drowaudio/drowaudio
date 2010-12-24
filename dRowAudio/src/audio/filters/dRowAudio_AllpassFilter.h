@@ -55,6 +55,8 @@ private:
 	int registerSize, registerSizeMask;
 	float delayTime, gain;
 	int delaySamples, bufferWritePos, bufferReadPos;
+	
+	JUCE_LEAK_DETECTOR (AllpassFilter);
 };
 
 #endif //_DROWAUDIO_ALLPASSFILTER_H_

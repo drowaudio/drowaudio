@@ -114,6 +114,8 @@ private:
 	
 	void findMaxMin(float* sourceStartSampleHighest, float* sourceStartSampleLowest, int sourceNumSamples,
 					float* destBufferHighest, float* destBufferLowest, int destBufferSize);
+	
+	JUCE_LEAK_DETECTOR (TriBandAudioThumbnail);
 };
 
 #endif //_TRIBANDAUDIOTHUMBNAIL_H_

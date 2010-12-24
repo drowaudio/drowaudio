@@ -61,6 +61,8 @@ private:
 	CriticalSection lock;
 	
 	float y1, b0, a1;
+	
+	JUCE_LEAK_DETECTOR (OnePoleFilter);
 };
 
 #endif // _ONEPOLEFILTER_H_

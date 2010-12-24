@@ -103,6 +103,8 @@ private:
 	
 	HeapBlock<float> buffer;
 	int bufferSize, readPos, writePos;
+	
+	JUCE_LEAK_DETECTOR (CircularBuffer);
 };
 
 

@@ -67,6 +67,9 @@ public:
 	 */
     void copyOutputsFrom (const BiquadFilter& other) throw();
 	
+private:
+	
+	JUCE_LEAK_DETECTOR (BiquadFilter);
 };
 
 #endif //_BIQUADFILTER_H_

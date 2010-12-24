@@ -54,6 +54,8 @@ private:
 	const bool isHorizontal_;
 	const int numFrames_;
 	int frameWidth, frameHeight;
+	
+	JUCE_LEAK_DETECTOR (FilmstripSlider);
 };
 
 #endif //_FILMSTRIPSLIDER_H_

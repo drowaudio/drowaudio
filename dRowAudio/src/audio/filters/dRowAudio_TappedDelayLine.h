@@ -157,6 +157,8 @@ private:
 	float spacingCoefficient, feedbackCoefficient;
 	
 	void initialiseBuffer(int bufferSize);
+	
+	JUCE_LEAK_DETECTOR (TappedDelayLine);
 };
 
 #endif //_DROWAUDIO_TAPPEDDELAYLINE_H_

@@ -76,6 +76,8 @@ private:
 	String filePath;
 	String fileName;
 	double lengthInSecs;
+	
+	JUCE_LEAK_DETECTOR (AudioFilePlayer);
 };
 
 #endif //_DROWAUDIO_AUDIOFILEPLAYER__H_

@@ -103,6 +103,8 @@ private:
 	
 	bool isMouseDown, isDraggable, shouldBePlaying;
 	int currentXDrag, currentMouseX, lastMouseX;
+	
+	JUCE_LEAK_DETECTOR (DraggableWaveDisplay);
 };
 
 #endif //_DRAGGABLEWAVEDISPLAY_H_

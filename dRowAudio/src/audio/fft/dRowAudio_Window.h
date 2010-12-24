@@ -76,6 +76,8 @@ private:
 	float oneOverWindowFactor;
 	
 	Buffer windowBuffer;
+	
+	JUCE_LEAK_DETECTOR (Window);
 };
 
 #endif //__DROWAUDIO_WINDOW_H__

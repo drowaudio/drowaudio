@@ -139,6 +139,8 @@ private:
     float sampleMax;
 	StateVariable<float> level;
 	bool needsRepaint;
+	
+	JUCE_LEAK_DETECTOR (SegmentedMeter);
 };
 
 #endif //_DROWAUDIO_SEGMENTEDMETER__H_

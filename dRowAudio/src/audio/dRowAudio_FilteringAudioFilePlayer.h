@@ -88,6 +88,8 @@ private:
 	String filePath;
 	String fileName;
 	bool shouldBePlaying;
+	
+	JUCE_LEAK_DETECTOR (FilteringAudioFilePlayer);
 };
 
 //#include <juce/juce.h>

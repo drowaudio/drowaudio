@@ -70,6 +70,8 @@ private:
 	float delayTime, delaySamples, gain, fbCoeff;
 	int bufferWritePos;
 	float bufferReadPos;
+	
+	JUCE_LEAK_DETECTOR (InterpolatingLBCF);
 };
 
 #endif //_DROWAUDIO_INTERPOLATINGLBCF_H_

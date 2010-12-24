@@ -181,6 +181,8 @@ private:
 	
 	float lowEQGain, midEQGain, highEQGain;
 	bool filterSource;
+	
+	JUCE_LEAK_DETECTOR (FilteringAudioTransportSource);
 };
 
 #endif //_FILTERINGAUDIOTRANSPORTSOURCE_H_

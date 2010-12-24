@@ -55,6 +55,8 @@ private:
 	FFTOperation fftOperation;
 	Window windowProperties;
 	Buffer magnitutes;
+	
+	JUCE_LEAK_DETECTOR (FFTEngine);
 };
 
 #endif //__DROWAUDIO_FFTENGINE__

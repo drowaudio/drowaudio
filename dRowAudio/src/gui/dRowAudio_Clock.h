@@ -67,6 +67,8 @@ private:
 	
 	int displayFormat;
 	String timeAsString;
+	
+	JUCE_LEAK_DETECTOR (Clock);
 };
 
 #endif  // __DROWAUDIO_CLOCK_H_80237209__

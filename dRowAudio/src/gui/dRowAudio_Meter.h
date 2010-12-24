@@ -67,6 +67,8 @@ private:
 	bool dropLineLevel;
 	bool clipped;
 	bool deleteDummyLock;
+	
+	JUCE_LEAK_DETECTOR (MeterComponent);
 };
 
 #endif //_METERCOMPONENT_H_

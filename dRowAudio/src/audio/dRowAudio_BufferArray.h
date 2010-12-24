@@ -102,6 +102,8 @@ private:
 	
 	void callListeners(Buffer& changedBuffer);
 	SortedSet <Listener*> listeners;
+	
+	JUCE_LEAK_DETECTOR (BufferArray);
 };
 
 

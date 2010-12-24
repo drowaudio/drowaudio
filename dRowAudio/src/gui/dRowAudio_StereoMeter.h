@@ -34,6 +34,8 @@ private:
 	MeterComponent *leftMeter, *rightMeter;
 	float *leftBarValueToUse, *leftLineValueToUse;
 	float *rightBarValueToUse, *rightLineValueToUse;
+	
+	JUCE_LEAK_DETECTOR (StereoMeter);
 };
 
 #endif //_DROWAUDIOSTEREOMETER_H_

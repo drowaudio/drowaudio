@@ -69,6 +69,8 @@ private:
 	int registerSize, registerSizeMask;
 	float delayTime, fbCoeff;
 	int delaySamples, bufferWritePos, bufferReadPos;
+	
+	JUCE_LEAK_DETECTOR (LBCF);
 };
 
 #endif //_DROWAUDIO_LBCF_H_

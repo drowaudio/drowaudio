@@ -88,6 +88,8 @@ private:
 	OwnedArray <BiquadFilter> filterArray;
 	double currentFrequency;
 	int currentOrder;
+	
+	JUCE_LEAK_DETECTOR (CascadedBiquadFilter);
 };
 
 #endif //_CASCADEDBIQUADFILTER_H_

@@ -48,6 +48,8 @@ public:
 private:
 	
 	friend class GraphicalComponent;
+	
+	JUCE_LEAK_DETECTOR (GraphicalComponentManager);
 };
 
 #endif  // __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H_C569FF3E__

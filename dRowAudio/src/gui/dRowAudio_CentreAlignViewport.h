@@ -242,6 +242,8 @@ private:
 	
     CentreAlignViewport (const CentreAlignViewport&);
     CentreAlignViewport& operator= (const CentreAlignViewport&);
+	
+	JUCE_LEAK_DETECTOR (CentreAlignViewport);
 };
 
 #endif //__DROWAUDIO_CENTREALIGNVIEWPORT_H__

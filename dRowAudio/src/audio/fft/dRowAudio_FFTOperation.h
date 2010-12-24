@@ -37,6 +37,8 @@ public:
 private:
 	
 	FFTProperties();
+	
+	JUCE_LEAK_DETECTOR (FFTProperties);
 };
 
 
@@ -64,6 +66,8 @@ private:
 	FFTSetup fftConfig;
 	DSPSplitComplex fftBufferSplit;
 #endif //JUCE_MAC
+	
+	JUCE_LEAK_DETECTOR (FFTOperation);
 };
 
 /*

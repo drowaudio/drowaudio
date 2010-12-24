@@ -158,6 +158,8 @@ private:
 	
 	float verticalZoomFactor, horizontalZoomFactor;
 	Colour backgroundColour, traceColour;
+	
+	JUCE_LEAK_DETECTOR (AudioOscilliscope);
 };
 
 #endif //_DROWAUDIO_AUDIOOSCILLISCOPE_H_

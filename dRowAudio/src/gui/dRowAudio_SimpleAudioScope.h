@@ -136,6 +136,8 @@ private:
 	
 	float verticalZoomFactor, horizontalZoomFactor;
 	Colour backgroundColour, traceColour;
+	
+	JUCE_LEAK_DETECTOR (SimpleAudioScope);
 };
 
 #endif //_DROWAUDIO_SIMPLEAUDIOSCOPE_H_

@@ -83,6 +83,8 @@ protected:
 	
 	int numSamples;
 	HeapBlock<float> samples;
+	
+	JUCE_LEAK_DETECTOR (GraphicalComponent);
 };
 
 #endif  // __DROWAUDIO_GRAPHICALCOMPONENT_H_91791CE3__

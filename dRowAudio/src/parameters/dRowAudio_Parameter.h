@@ -110,6 +110,8 @@ private:
 	double smoothCoeff, smoothValue;
 	double skewFactor, step;
 	ParameterUnit unit;
+	
+	JUCE_LEAK_DETECTOR (dRowParameter);
 };
 
 #endif //DROWPARAMETER_H

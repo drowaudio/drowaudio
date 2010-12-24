@@ -77,6 +77,8 @@ public:
 private:
 
 	float x1, x2, y1, y2, a0, a1, a2, b1, b2;
+	
+	JUCE_LEAK_DETECTOR (TwoPoleTwoZeroFilter);
 };
 
 #endif //_DROWAUDIO_TWOPOLETWOZEROFILTER__H_

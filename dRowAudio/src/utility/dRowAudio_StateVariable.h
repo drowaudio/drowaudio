@@ -83,6 +83,8 @@ public:
 private:
 	VariableType current;
 	VariableType previous;
+	
+	JUCE_LEAK_DETECTOR (StateVariable);
 };
 
 #endif //__DROWAUDIO_STATEVARIABLE_H__

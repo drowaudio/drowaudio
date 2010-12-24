@@ -70,6 +70,8 @@ private:
 	float envAttack, envRelease;
 	int holdCount, holdLimit;
 	bool hold;
+	
+	JUCE_LEAK_DETECTOR (EnvelopeFollower);
 };
 
 #endif //_DROWAUDIO_ENVELOPEFOLLOWER__H_

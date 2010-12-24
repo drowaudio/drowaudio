@@ -97,6 +97,8 @@ protected:
 	float bufferReadPos;
 	
 	int allpassCoeff;
+	
+	JUCE_LEAK_DETECTOR (CombFilter);
 };
 
 #endif //_DROWAUDIOCOMBFILTER_H_

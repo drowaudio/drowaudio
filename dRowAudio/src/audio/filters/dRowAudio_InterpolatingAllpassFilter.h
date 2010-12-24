@@ -59,6 +59,8 @@ private:
 	float delayTime, delaySamples, gain;
 	int bufferWritePos;
 	float bufferReadPos;
+	
+	JUCE_LEAK_DETECTOR (InterpolatingAllpassFilter);
 };
 
 #endif //_DROWAUDIO_INTERPOLATINGALLPASSFILTER_H_

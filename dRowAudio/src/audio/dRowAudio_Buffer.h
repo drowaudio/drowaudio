@@ -146,6 +146,7 @@ private:
 	void callListeners();
 	SortedSet <Listener*> listeners;
 	
+	JUCE_LEAK_DETECTOR (Buffer);
 };
 
 #endif //_DROWAUDIO_BUFFER__H_

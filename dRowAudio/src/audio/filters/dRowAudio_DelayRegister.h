@@ -75,6 +75,8 @@ private:
 	int registerSize, registerSizeMask;
 	float delayTime, delaySamples;
 	int bufferWritePos, bufferReadPos;
+	
+	JUCE_LEAK_DETECTOR (DelayRegister);
 };
 
 #endif //_DROWAUDIODELAYREGISTER_H_

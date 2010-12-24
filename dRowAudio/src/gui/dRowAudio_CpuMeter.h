@@ -45,6 +45,8 @@ private:
 	AudioDeviceManager* deviceManager;
 	int updateInterval_;
 	double currentCpuUsage;
+	
+	JUCE_LEAK_DETECTOR (CpuMeter);
 };
 
 #endif	//_DROWAUDIO_CPUMETER_H_
