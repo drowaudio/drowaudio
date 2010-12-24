@@ -12,17 +12,16 @@ BEGIN_DROWAUDIO_NAMESPACE
 
 #include "dRowAudio_PositionableWaveDisplay.h"
 
-PositionableWaveDisplay::PositionableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate)
-	:	filePlayer(sourceToBeUsed),
-		currentSampleRate(sampleRate),
-		currentPos(0.0),
-		zoomFactor(1.0f)
+PositionableWaveDisplay::PositionableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed)
+:	filePlayer(sourceToBeUsed),
+	currentSampleRate(44100.0),
+	zoomFactor(1.0f)
 {
 	formatManager = filePlayer->getAudioFormatManager();
 	
 	// instansiate the cache and the thumbnail
 	thumbnailCache = new AudioThumbnailCache(2);
-	thumbnailViewLow = new AudioThumbnail(5024, *formatManager, *thumbnailCache);
+	thumbnailView = new AudioThumbnail(5024, *formatManager, *thumbnailCache);
 	
 	// register with the file player to recieve update messages
 	filePlayer->addChangeListener(this);
@@ -31,9 +30,6 @@ PositionableWaveDisplay::PositionableWaveDisplay(FilteringAudioFilePlayer* sourc
 PositionableWaveDisplay::~PositionableWaveDisplay()
 {
 	stopTimer(waveformUpdated);
-
-	deleteAndZero(thumbnailCache);
-	deleteAndZero(thumbnailViewLow);
 	
 	filePlayer->removeChangeListener(this);
 }
@@ -41,48 +37,51 @@ PositionableWaveDisplay::~PositionableWaveDisplay()
 //====================================================================================
 void PositionableWaveDisplay::resized()
 {
-	currentWidth = getWidth();
-	currentHeight = getHeight();
+	const int w = getWidth();
+	const int h = getHeight();
+		
+	waveformImage = new Image(Image::RGB, w, h, true);
+	refreshWaveform();
 }
 
 void PositionableWaveDisplay::paint(Graphics &g)
 {
-	g.fillAll(Colours::black);
-	
-	g.setColour(Colours::lightgreen);
-	thumbnailViewLow->drawChannel(g, 0, 0, currentWidth, currentHeight,
-								  0.0, fileLength,
-								  0, 1.0f);
-//	thumbnailViewLow->drawChannel(g, 0, currentHeight*0.5f, currentWidth, currentHeight*0.5f,
-//								  0.0, fileLength,
-//								  1, 1.0f);
-	
-	
-	int transportLineXCoord = currentWidth * oneOverFileLength * currentPos;
-	if ((transportLineXCoord - 1) < 0)
-		transportLineXCoord = 0;
+	const int w = getWidth();
+	const int h = getHeight();
+
+	g.drawImage(*waveformImage, 0, 0, w, h,
+				0, 0, waveformImage->getWidth(), waveformImage->getHeight());
 	
 	g.setColour(Colours::black);	
-	g.drawVerticalLine(transportLineXCoord - 1, 0, currentHeight);
-	g.drawVerticalLine(transportLineXCoord + 1, 0, currentHeight);
+	g.drawVerticalLine(transportLineXCoord.getCurrent() - 1, 0, h);
+	g.drawVerticalLine(transportLineXCoord.getCurrent() + 1, 0, h);
 
 	g.setColour(Colours::white);
-	g.drawVerticalLine(transportLineXCoord, 0, currentHeight);		
+	g.drawVerticalLine(transportLineXCoord.getCurrent(), 0, h);		
 }
 //====================================================================================
 void PositionableWaveDisplay::timerCallback(const int timerId)
 {
 	if (timerId == waveformUpdated)
 	{
-		currentPos = filePlayer->getCurrentPosition();
-		repaint();
+		const int w = getWidth();
+		const int h = getHeight();
+
+		transportLineXCoord = w * oneOverFileLength * filePlayer->getCurrentPosition();
+		
+		// if the line has moved repaint the old and new positions of it
+		if (!transportLineXCoord.areEqual())
+		{
+			repaint(transportLineXCoord.getPrevious() - 2, 0, 5, h);
+			repaint(transportLineXCoord.getCurrent() - 2, 0, 5, h);
+		}
 	}
 	else if (timerId == waveformLoading)
-	{
-		repaint();
-		
-		if(thumbnailViewLow->isFullyLoaded())
+	{		
+		if(thumbnailView->isFullyLoaded())
 			stopTimer(waveformLoading);
+		
+		refreshWaveform();	
 	}
 }
 
@@ -90,12 +89,13 @@ void PositionableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedO
 {
 	if (changedObject == filePlayer)
 	{
+		currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
 		fileLength = filePlayer->getTotalLength() / currentSampleRate;
 		oneOverFileLength = 1.0 / fileLength;
 	
 		File newFile(((FilteringAudioFilePlayer*)changedObject)->getFile());
 		FileInputSource* fileInputSource = new FileInputSource (newFile);
-		thumbnailViewLow->setSource(fileInputSource);
+		thumbnailView->setSource(fileInputSource);
 		
 		startTimer(waveformLoading, 25);
 		startTimer(waveformUpdated, 40);
@@ -104,24 +104,21 @@ void PositionableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedO
 //====================================================================================
 void PositionableWaveDisplay::setZoomFactor (float newZoomFactor)
 {
+	const int w = getWidth();
+
 	zoomFactor = newZoomFactor;
-	currentXScale = ( (zoomFactor)*fileLength ) / currentWidth;
+	currentXScale = ( (zoomFactor)*fileLength ) / w;
 	
 	repaint();
 }
 
-void PositionableWaveDisplay::setSampleRate (double newSampleRate)
-{
-	currentSampleRate = newSampleRate;
-	
-	fileLength = filePlayer->getTotalLength() / currentSampleRate;
-	oneOverFileLength = 1.0 / fileLength;
-}
 //==============================================================================
 void PositionableWaveDisplay::mouseDown(const MouseEvent &e)
 {
 	// update scale
-	currentXScale = ( (zoomFactor)*fileLength ) / currentWidth;
+	const int w = getWidth();
+
+	currentXScale = ( (zoomFactor)*fileLength ) / w;
 	
 	currentMouseX = e.x;
 	isMouseDown = true;
@@ -146,8 +143,6 @@ void PositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 	
 	double position = currentXScale * currentMouseX;
 	filePlayer->setPosition(position);
-	
-	repaint();	
 }
 //==============================================================================
 bool PositionableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
@@ -160,7 +155,7 @@ bool PositionableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
 }
 void PositionableWaveDisplay::fileDragEnter (const StringArray &files, int x, int y)
 {
-		setMouseCursor(MouseCursor::CopyingCursor);
+	setMouseCursor(MouseCursor::CopyingCursor);
 }
 void PositionableWaveDisplay::fileDragExit (const StringArray &files)
 {
@@ -171,6 +166,27 @@ void PositionableWaveDisplay::filesDropped (const StringArray &files, int x, int
 	filePlayer->setFile(files[0]);
 	setMouseCursor(MouseCursor::NormalCursor);
 }
+//==============================================================================	
+void PositionableWaveDisplay::refreshWaveform()
+{
+	if(waveformImage != 0)
+	{
+		const int w = getWidth();
+		const int h = getHeight();
+
+		Graphics g(*waveformImage);
+		waveformImage->clear(waveformImage->getBounds());
+		
+		g.fillAll(Colours::black);
+		g.setColour(Colours::lightgreen);
+		thumbnailView->drawChannel(g, Rectangle<int> (0, 0, w, h),
+								   0.0, fileLength,
+								   0, 1.0f);
+		
+		repaint();
+	}	
+}
+
 //==============================================================================	
 
 END_DROWAUDIO_NAMESPACE

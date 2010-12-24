@@ -38,7 +38,7 @@
 		554A3E3D11F600550009DFF4 /* dRowAudio_FFTEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 554A3E3B11F600550009DFF4 /* dRowAudio_FFTEngine.h */; };
 		554A3E3E11F600550009DFF4 /* dRowAudio_FFTEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A3E3C11F600550009DFF4 /* dRowAudio_FFTEngine.cpp */; };
 		554A3E9411F608820009DFF4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A3E9311F608820009DFF4 /* Accelerate.framework */; };
-		554A3F8A11F61EF80009DFF4 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A3F8911F61EF00009DFF4 /* libjuce.a */; };
+		554A3F8A11F61EF80009DFF4 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554A3F8911F61EF00009DFF4 /* libjucedebug.a */; };
 		554A401511F626580009DFF4 /* dRowAudio_StandardHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 554A401411F626580009DFF4 /* dRowAudio_StandardHeader.h */; };
 		554A464311FB0C9F0009DFF4 /* dRowAudio_Window.h in Headers */ = {isa = PBXBuildFile; fileRef = 554A464111FB0C9F0009DFF4 /* dRowAudio_Window.h */; };
 		554A464411FB0C9F0009DFF4 /* dRowAudio_Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554A464211FB0C9F0009DFF4 /* dRowAudio_Window.cpp */; };
@@ -284,7 +284,7 @@
 				5559348E0F4721440044FC32 /* OpenGL.framework in Frameworks */,
 				5559348F0F4721440044FC32 /* WebKit.framework in Frameworks */,
 				554A3E9411F608820009DFF4 /* Accelerate.framework in Frameworks */,
-				554A3F8A11F61EF80009DFF4 /* libjuce.a in Frameworks */,
+				554A3F8A11F61EF80009DFF4 /* libjucedebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +401,7 @@
 		554A3F8211F61EF00009DFF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				554A3F8911F61EF00009DFF4 /* libjuce.a */,
+				554A3F8911F61EF00009DFF4 /* libjucedebug.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -658,10 +658,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		554A3F8911F61EF00009DFF4 /* libjuce.a */ = {
+		554A3F8911F61EF00009DFF4 /* libjucedebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libjuce.a;
+			path = libjucedebug.a;
 			remoteRef = 554A3F8811F61EF00009DFF4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

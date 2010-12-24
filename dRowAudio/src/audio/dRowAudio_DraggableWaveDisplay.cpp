@@ -50,7 +50,7 @@ void DraggableWaveDisplay::paint(Graphics &g)
 	g.fillAll(Colours::black);
 	
 	g.setColour(Colours::lightgreen);
-	thumbnailViewLow->drawChannel(g, 0, 0, currentWidth, currentHeight,
+	thumbnailViewLow->drawChannel(g, Rectangle<int> (0, 0, currentWidth, currentHeight),
 								  currentPos-centreTime, zoomFactor+currentPos-centreTime,
 								  0, 1.0f);
 //	thumbnailViewLow->drawChannel(g, 0, currentHeight*0.5f, currentWidth, currentHeight*0.5f,

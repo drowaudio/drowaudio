@@ -18,9 +18,8 @@ FilteringAudioFilePlayer::FilteringAudioFilePlayer()
 	  shouldBePlaying(false)
 {
 	// set up the format manager
-	formatManager = AudioFormatManager::getInstance();//new AudioFormatManager();
-	if (formatManager->getNumKnownFormats() == 0)
-		formatManager->registerBasicFormats();
+	formatManager = new AudioFormatManager();
+	formatManager->registerBasicFormats();
 //	formatManager->registerFormat(new MADAudioFormat(), false);	
 }
 
@@ -34,7 +33,8 @@ FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)
 FilteringAudioFilePlayer::~FilteringAudioFilePlayer()
 {
 	setSource (0);
-	deleteAndZero (currentAudioFileSource);
+	if (currentAudioFileSource != 0)
+		deleteAndZero (currentAudioFileSource);
 }
 
 void FilteringAudioFilePlayer::startFromZero()
@@ -69,7 +69,7 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 	filePath = path;
 	
 	// OK now let's add the new file
-	AudioFormatReader* reader = audioFormatReaderFromFile(path);
+	AudioFormatReader *reader = audioFormatReaderFromFile(path);
 	
 	if (reader != 0)
 	{										

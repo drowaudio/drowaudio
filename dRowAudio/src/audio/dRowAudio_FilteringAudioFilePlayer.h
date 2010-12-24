@@ -77,7 +77,7 @@ public:
 	
 private:	
 	/// The AudioFormatManager
-	AudioFormatManager* formatManager;
+	ScopedPointer<AudioFormatManager> formatManager;
 
 	/// Create the reader from a given path
 	AudioFormatReader* audioFormatReaderFromFile(const String& path);
