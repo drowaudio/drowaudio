@@ -56,6 +56,11 @@ public:
 		current = newValue;
 	}
 	
+	void setBoth(VariableType newValue)
+	{
+		current = previous = newValue;
+	}
+	
 	/**	Returns true if the current and previous states are equal.
 	 */
 	bool areEqual()
@@ -80,6 +85,13 @@ public:
 		current *= newValue;
 	}
 		
+	/**	This returns the difference between the current and the previous state.
+	 */
+	VariableType getDifference()
+	{
+		return current - previous;
+	}
+	
 private:
 	VariableType current;
 	VariableType previous;

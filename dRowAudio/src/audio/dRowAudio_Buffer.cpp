@@ -28,7 +28,6 @@ Buffer::Buffer(const Buffer& otherBuffer)
 
 Buffer::~Buffer()
 {
-	buffer.free();
 }
 
 void Buffer::setSize(int newSize)

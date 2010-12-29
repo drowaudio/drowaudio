@@ -12,16 +12,20 @@ BEGIN_DROWAUDIO_NAMESPACE
 
 #include "dRowAudio_PositionableWaveDisplay.h"
 
-PositionableWaveDisplay::PositionableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed)
+PositionableWaveDisplay::PositionableWaveDisplay (FilteringAudioFilePlayer *sourceToBeUsed, AudioThumbnailCache *cacheToUse)
 :	filePlayer(sourceToBeUsed),
 	currentSampleRate(44100.0),
-	zoomFactor(1.0f)
+	thumbnailCache(cacheToUse),
+	deleteCache(thumbnailCache ? false : true),
+	zoomFactor(1.0f),
+	firstLoad(true)
 {
 	formatManager = filePlayer->getAudioFormatManager();
 	
 	// instansiate the cache and the thumbnail
-	thumbnailCache = new AudioThumbnailCache(2);
-	thumbnailView = new AudioThumbnail(5024, *formatManager, *thumbnailCache);
+	if (thumbnailCache == 0)
+		thumbnailCache = new AudioThumbnailCache(2);
+	thumbnailView = new AudioThumbnail(5120, *formatManager, *thumbnailCache);
 	
 	// register with the file player to recieve update messages
 	filePlayer->addChangeListener(this);
@@ -32,6 +36,9 @@ PositionableWaveDisplay::~PositionableWaveDisplay()
 	stopTimer(waveformUpdated);
 	
 	filePlayer->removeChangeListener(this);
+	
+	if (!deleteCache)
+		thumbnailCache.release();
 }
 
 //====================================================================================
@@ -40,8 +47,13 @@ void PositionableWaveDisplay::resized()
 	const int w = getWidth();
 	const int h = getHeight();
 		
-	waveformImage = new Image(Image::RGB, w, h, true);
-	refreshWaveform();
+	if (firstLoad) {
+		firstLoad = false;
+		waveformImage = new Image(Image::RGB, getWidth(), getHeight(), true);
+		refreshWaveform();
+	}
+	
+	startTimer(waveformResizing, 500);
 }
 
 void PositionableWaveDisplay::paint(Graphics &g)
@@ -83,6 +95,13 @@ void PositionableWaveDisplay::timerCallback(const int timerId)
 		
 		refreshWaveform();	
 	}
+	else if (timerId == waveformResizing)
+	{
+		waveformImage = new Image(Image::RGB, getWidth(), getHeight(), true);
+		refreshWaveform();
+		stopTimer(waveformResizing);
+	}
+
 }
 
 void PositionableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedObject)
@@ -93,7 +112,7 @@ void PositionableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedO
 		fileLength = filePlayer->getTotalLength() / currentSampleRate;
 		oneOverFileLength = 1.0 / fileLength;
 	
-		File newFile(((FilteringAudioFilePlayer*)changedObject)->getFile());
+		File newFile(((FilteringAudioFilePlayer*)changedObject)->getFilePath());
 		FileInputSource* fileInputSource = new FileInputSource (newFile);
 		thumbnailView->setSource(fileInputSource);
 		

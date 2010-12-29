@@ -30,12 +30,8 @@ class FilteringAudioFilePlayer	:	public FilteringAudioTransportSource
 {
 public:
 	/// Creates an empty AudioFilePlayer.
-	FilteringAudioFilePlayer();
-	
-	/** Creates an AudioFilePlayer from a given absolute path
-	 */
-	FilteringAudioFilePlayer(const String& path);
-	
+	FilteringAudioFilePlayer(const String& path =String::empty);
+		
 	/// Destructor
 	~FilteringAudioFilePlayer();
 	
@@ -55,7 +51,7 @@ public:
 	bool setFile(const String& path);
 	
 	/// Returns the absolute path of the current audio file
-	String getFile();
+	String getFilePath();
 	
 	/// Returns the name of the currently loaded file
 	String getFileName();
@@ -74,6 +70,42 @@ public:
 //			return currentAudioFileSource->getPlayDirection();
 //		}	
 //	}
+	//==============================================================================
+    /** A class for receiving callbacks from a FilteringAudioFilePlayer.
+	 
+	 To be told when a player's file changes, you can register a FilteringAudioFilePlayer::Listener
+	 object using FilteringAudioFilePlayer::addListener().
+	 
+	 @see FilteringAudioFilePlayer::addListener, FilteringAudioFilePlayer::removeListener
+	 */
+    class  Listener
+    {
+    public:
+        //==============================================================================
+        /** Destructor. */
+        virtual ~Listener() {}
+		
+        //==============================================================================
+        /** Called when the player's file is changed.
+		 		 
+		 You can find out the new file path using FilteringAudioFilePlayer::getFilePath().
+		 */
+        virtual void fileChanged (FilteringAudioFilePlayer *player) = 0;
+		
+        //==============================================================================
+        /** Called when the the player is stopped or started.
+			You can find out if it is currently stopped with FilteringAudioFilePlayer::isPlaying().
+		 */
+//        virtual void playerStoppedOrStarted (FilteringAudioFilePlayer *player);
+    };
+	
+    /** Adds a listener to be called when this slider's value changes. */
+    void addListener (Listener* listener);
+	
+    /** Removes a previously-registered listener. */
+    void removeListener (Listener* listener);
+	
+    //==============================================================================
 	
 private:	
 	/// The AudioFormatManager
@@ -83,72 +115,15 @@ private:
 	AudioFormatReader* audioFormatReaderFromFile(const String& path);
 	
 	/// Create the actual stream that's going to read from the audio file
-	AudioFormatReaderSource* currentAudioFileSource;
+	ScopedPointer<AudioFormatReaderSource> currentAudioFileSource;
 	
 	String filePath;
 	String fileName;
 	bool shouldBePlaying;
 	
+	ListenerList <Listener> listeners;
+	
 	JUCE_LEAK_DETECTOR (FilteringAudioFilePlayer);
 };
-
-//#include <juce/juce.h>
-//#include "dRowAudio_AudioFilePlayer.h"
-//
-//class FilteringAudioFilePlayer	:	public AudioFilePlayer
-//{
-//public:
-//	FilteringAudioFilePlayer();
-//	
-//	~FilteringAudioFilePlayer();
-//	
-//	/** Changes the gain of the lowShelfFilter to apply to the output.
-//	 */
-//	void setLowEQGain(float newLowEQGain);
-//	
-//	/** Changes the gain of the bandPassFilter to apply to the output.
-//	 */
-//	void setMidEQGain(float newMidEQGain);
-//	
-//	/** Changes the gain of the highShelfFilter to apply to the output.
-//	 */
-//	void setHighEQGain(float newHighEQGain);
-//	
-//	/** Toggles the filtering of the transport source.
-//	 */
-//	void setFilterSource(bool shouldFilter);
-//	
-//	/** Returns whether the source is being filtered or not.
-//	 */
-//	bool getFilterSource()				{ return filterSource; }
-//	
-//	void setResamplingRatio (double resamplingRatio);
-//	
-////========================================================================
-//	/** Implementation of the AudioSource method. */
-//    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
-//		
-//    /** Implementation of the AudioSource method. */
-//    void releaseResources();
-//	
-//    /** Implementation of the AudioSource method. */
-//    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
-//
-////========================================================================
-//	
-//private:
-//	
-//	// resampler methods
-//	double currentResamplingRatio;
-//	
-//	// filter members
-//	IIRFilter *lowEQFilterLeft, *midEQFilterLeft, *highEQFilterLeft;
-//	IIRFilter *lowEQFilterRight, *midEQFilterRight, *highEQFilterRight;
-//	
-//	double currentSampleRate;
-//	float lowEQGain, midEQGain, highEQGain;
-//	bool filterSource;
-//	
-//};
 
 #endif //_FILTERINGAUDIOFILEPLAYER_H_

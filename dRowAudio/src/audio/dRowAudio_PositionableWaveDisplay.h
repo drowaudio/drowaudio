@@ -33,15 +33,18 @@ public:
 	enum
 	{
 		waveformUpdated,
-		waveformLoading
+		waveformLoading,
+		waveformResizing
 	};
 	
 	/**
 		Creates the display.
-		The file player associated with the display must be passed in along with
-		the current sample rate. This can later be changed with setSampleRate.
+		The file player associated with the display must be passed in.
+		To save on the number of threads in your program you can optionally pass in your own
+		AudioThumbnailCache. If you pass in your own the caller is responsible for deleting it,
+		if not the PositionableWaveform will create and delete its own when not needed.	 
 	 */
-	PositionableWaveDisplay (FilteringAudioFilePlayer* sourceToBeUsed);
+	explicit PositionableWaveDisplay (FilteringAudioFilePlayer *sourceToBeUsed, AudioThumbnailCache *cacheToUse =0);
 	
 	/// Destructor
 	~PositionableWaveDisplay ();
@@ -86,12 +89,14 @@ private:
 	AudioFormatManager* formatManager;
 	ScopedPointer<AudioThumbnailCache> thumbnailCache;
 	ScopedPointer<AudioThumbnail> thumbnailView;
+	bool deleteCache;
 	
 	ScopedPointer<Image> waveformImage;
 	
 	StateVariable<int> transportLineXCoord;
 	float zoomFactor, currentXScale;
 	
+	bool firstLoad;
 	bool isMouseDown;
 	double currentMouseX;
 	

@@ -42,6 +42,8 @@ void Clock::setTimeDisplayFormat(const int newFormat)
 		startTimer(950);
 //	if ((displayFormat & showTenthSeconds))
 //		startTimer(99);
+	
+	timerCallback();
 }
 
 void Clock::timerCallback()
@@ -52,16 +54,20 @@ void Clock::timerCallback()
 	String formatString;
 	
 	formatString << ((displayFormat & showDayShort) ? "%a " : "")
-	<< ((displayFormat & showDayLong) ? "%A " : "");
+	<< ((displayFormat & showDayLong) ? "%A " : "")
+	<< ((displayFormat & showDate) ? "%x " : "")
+	<< ((displayFormat & showTime) ? ((displayFormat & show24Hr) ? "%H:%M" : "%I:%M") : "")
+	<< ((displayFormat & showSeconds) ? ":%S " : "");
+
 	
 	if (formatString != String::empty)
 		timeAsString << currentTime.formatted(formatString);
 
-	timeAsString << currentTime.toString(displayFormat & showDate,
-										 displayFormat & showTime,
-										 displayFormat & showSeconds,
-										 displayFormat & show24Hr);
-
+//	timeAsString << currentTime.toString(displayFormat & showDate,
+//										 displayFormat & showTime,
+//										 displayFormat & showSeconds,
+//										 displayFormat & show24Hr);
+	
 	setText(timeAsString, false);
 }
 
