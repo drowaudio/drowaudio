@@ -88,6 +88,9 @@ LINK32=link.exe
 SOURCE="..\..\Source\main\ApplicationStartup.cpp"
 # End Source File
 # Begin Source File
+SOURCE="..\..\Source\main\CommandIDs.h"
+# End Source File
+# Begin Source File
 SOURCE="..\..\Source\main\DefaultSettings.h"
 # End Source File
 # Begin Source File

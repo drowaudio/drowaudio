@@ -34,6 +34,7 @@
       <GROUP id="cPvwJXytK" name="main">
         <FILE id="EVLi2hfhh" name="ApplicationStartup.cpp" compile="1" resource="0"
               file="Source/main/ApplicationStartup.cpp"/>
+        <FILE id="yTdZmHt" name="CommandIDs.h" compile="0" resource="0" file="Source/main/CommandIDs.h"/>
         <FILE id="WMOAcAECD" name="DefaultSettings.h" compile="0" resource="0"
               file="Source/main/DefaultSettings.h"/>
         <FILE id="l5H7nTOFh" name="Settings.h" compile="0" resource="0" file="Source/main/Settings.h"/>

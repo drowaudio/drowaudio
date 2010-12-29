@@ -133,6 +133,7 @@
       <Filter Name="Source">
         <Filter Name="main">
           <File RelativePath="..\..\Source\main\ApplicationStartup.cpp"/>
+          <File RelativePath="..\..\Source\main\CommandIDs.h"/>
           <File RelativePath="..\..\Source\main\DefaultSettings.h"/>
           <File RelativePath="..\..\Source\main\Settings.h"/>
           <File RelativePath="..\..\Source\main\Settings.cpp"/>

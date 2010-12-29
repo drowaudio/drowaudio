@@ -19,16 +19,9 @@
 #include "settings/SettingsComponent.h"
 
 class ContainerComponent  :	public Component,
-							public ButtonListener,
-							public ApplicationCommandTarget
+							public ButtonListener
 {
 public:
-	//==============================================================================
-	enum CommandIDs
-    {
-        goToKioskMode              = 0x200f
-    };
-	
 	//==============================================================================
 	ContainerComponent ();
 	
@@ -45,13 +38,7 @@ public:
 	void buttonClicked(Button *button);
 	
 	//==============================================================================
-    ApplicationCommandTarget* getNextCommandTarget();
-	
-    void getAllCommands (Array <CommandID>& commands);
-	
-	void getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result);
-	
-    bool perform (const InvocationInfo& info);
+	void showTitleBarButtons(bool shouldShowButtons);
 	
 	//==============================================================================
 	

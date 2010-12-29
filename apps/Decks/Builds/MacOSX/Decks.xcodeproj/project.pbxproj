@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 44;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -75,6 +75,7 @@
 		5D0B6763DF3FE6EAFDB02F5D /* SettingsComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SettingsComponent.cpp; path = ../../Source/ui/settings/SettingsComponent.cpp; sourceTree = SOURCE_ROOT; };
 		5DA6DC73F996FC74908B920A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5DBB4D4F6E1842D181843161 /* Mixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mixer.h; path = ../../Source/ui/controls/mixer/Mixer.h; sourceTree = SOURCE_ROOT; };
+		64A311A017026C898F97711C /* CommandIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandIDs.h; path = ../../Source/main/CommandIDs.h; sourceTree = SOURCE_ROOT; };
 		67242842297782815FFB94C3 /* ApplicationStartup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationStartup.cpp; path = ../../Source/main/ApplicationStartup.cpp; sourceTree = SOURCE_ROOT; };
 		6E9749BC4FAAD9949A00C732 /* DecksLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksLookAndFeel.h; path = ../../Source/ui/DecksLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		709F48E0586393177D674A23 /* TitleBarComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TitleBarComponent.h; path = ../../Source/ui/TitleBarComponent.h; sourceTree = SOURCE_ROOT; };
@@ -180,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				67242842297782815FFB94C3 /* ApplicationStartup.cpp */,
+				64A311A017026C898F97711C /* CommandIDs.h */,
 				40F437461414DDC8F5114067 /* DefaultSettings.h */,
 				8C2BB5F921175543CCCA8659 /* Settings.h */,
 				342DAFA1747A6C731022DBFC /* Settings.cpp */,
@@ -355,10 +357,7 @@
 			hasScannedForEncodings = 0;
 			mainGroup = A7C59CEB977298DA713A6166 /* Source */;
 			projectDirPath = "";
-			projectRoots = (
-				"",
-				../..,
-			);
+			projectRoot = ../..;
 			targets = (
 				B428EAAFF8BB2A792CA5A0F8 /* Decks */,
 			);
@@ -457,7 +456,8 @@
 		40B42CC1214F4EF280E8053A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -488,7 +488,7 @@
 		B618935E07D7A9187A9C8662 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -508,7 +508,7 @@
 					"\"$(SRCROOT)/../../../../../juce_source/juce/bin\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
 				OTHER_LDFLAGS = (
 					"-ljucedebug",
 					"-framework",

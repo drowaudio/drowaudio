@@ -39,11 +39,13 @@
  */
 #include <juce/juce.h>
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "../main/CommandIDs.h"
 #include "DecksLookAndFeel.h"
 #include "ContainerComponent.h"
 
 //==============================================================================
-class MainAppWindow  : public DocumentWindow
+class MainAppWindow  :  public DocumentWindow,
+						public ApplicationCommandTarget
 {
 public:
 	//==============================================================================
@@ -70,6 +72,17 @@ public:
 	// whole shebang, but that's probably not necessary, and can be tricky to maintain!
 
 	void showQuitScreen();
+	
+	//==============================================================================
+    ApplicationCommandTarget* getNextCommandTarget();
+	
+    void getAllCommands (Array <CommandID>& commands);
+	
+	void getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result);
+	
+    bool perform (const InvocationInfo& info);
+	
+	//==============================================================================
 	
 private:
 	

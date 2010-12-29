@@ -48,6 +48,7 @@
 		CD5A4E23328FF2B91B579FA1 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		0C9B2FDA3A1D70C8F696227F = { isa = PBXFileReference; lastKnownFileType = file.icns; name = Icon.icns; path = Icon.icns; sourceTree = SOURCE_ROOT; };
 		67242842297782815FFB94C3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationStartup.cpp; path = ../../Source/main/ApplicationStartup.cpp; sourceTree = SOURCE_ROOT; };
+		64A311A017026C898F97711C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandIDs.h; path = ../../Source/main/CommandIDs.h; sourceTree = SOURCE_ROOT; };
 		40F437461414DDC8F5114067 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultSettings.h; path = ../../Source/main/DefaultSettings.h; sourceTree = SOURCE_ROOT; };
 		8C2BB5F921175543CCCA8659 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../../Source/main/Settings.h; sourceTree = SOURCE_ROOT; };
 		342DAFA1747A6C731022DBFC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Settings.cpp; path = ../../Source/main/Settings.cpp; sourceTree = SOURCE_ROOT; };
@@ -102,6 +103,7 @@
 		8E3B1D49C63A28EAEC9CF2A3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
 		48E05EEBC0DCD23ECF8E3DBF = { isa = PBXGroup; children = (
 				67242842297782815FFB94C3,
+				64A311A017026C898F97711C,
 				40F437461414DDC8F5114067,
 				8C2BB5F921175543CCCA8659,
 				342DAFA1747A6C731022DBFC,

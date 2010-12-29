@@ -56,7 +56,7 @@ DocumentWindow (
 	contentComponent = new ContainerComponent ();
 	
 	commandManager = new ApplicationCommandManager();
-	commandManager->registerAllCommandsForTarget (contentComponent);
+	commandManager->registerAllCommandsForTarget (this);
 	commandManager->registerAllCommandsForTarget (JUCEApplication::getInstance());
 	addKeyListener (commandManager->getKeyMappings());
 	
@@ -117,4 +117,65 @@ void MainAppWindow::setUpLookAndFeel()
 	laf->setColour(Slider::rotarySliderOutlineColourId, Colour::greyLevel(1));
 	laf->setColour(Slider::trackColourId, Colour::greyLevel(0.1));
 	laf->setColour(Label::textColourId, Colour::greyLevel(0.4f));	
+}
+
+//==============================================================================
+// The following methods implement the ApplicationCommandTarget interface, allowing
+// this window to publish a set of actions it can perform, and which can be mapped
+// onto menus, keypresses, etc.
+
+ApplicationCommandTarget* MainAppWindow::getNextCommandTarget()
+{
+	// this will return the next parent component that is an ApplicationCommandTarget (in this
+	// case, there probably isn't one, but it's best to use this method in your own apps).
+	return 0;
+}
+
+void MainAppWindow::getAllCommands (Array <CommandID>& commands)
+{
+	const CommandID ids[] = { CommandIDs::goToKioskMode };
+	
+    commands.addArray (ids, numElementsInArray (ids));
+}
+
+void MainAppWindow::getCommandInfo (const CommandID commandID, ApplicationCommandInfo& result)
+{	
+	switch (commandID)
+	{
+		case CommandIDs::goToKioskMode:
+			result.setInfo ("Fullscreen", "Enters fullscreen mode", CommandCategories::view, 0);
+			result.setTicked (Desktop::getInstance().getKioskModeComponent() != 0);
+			result.defaultKeypresses.add (KeyPress ('f', ModifierKeys::commandModifier, 0));
+			break;
+		default:
+			break;
+			
+	};
+}
+
+// this is the ApplicationCommandTarget method that is used to actually perform one of our commands..
+bool MainAppWindow::perform (const InvocationInfo& info)
+{
+	DBG("Perform called");
+	switch (info.commandID)
+	{
+		case CommandIDs::goToKioskMode:
+			if (Desktop::getInstance().getKioskModeComponent() == 0)
+			{
+				contentComponent->showTitleBarButtons(true);
+				TopLevelWindow::getActiveTopLevelWindow()->setUsingNativeTitleBar(false);
+				Desktop::getInstance().setKioskModeComponent (getTopLevelComponent(), false);
+			}
+			else
+			{
+				contentComponent->showTitleBarButtons(false);
+				Desktop::getInstance().setKioskModeComponent (0);
+				TopLevelWindow::getActiveTopLevelWindow()->setUsingNativeTitleBar(true);
+			}
+			break;
+		default:
+			return false;
+	};
+	
+	return true;
 }
