@@ -41,6 +41,7 @@
  */
 
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "CommandIDs.h"
 #include "../ui/MainAppWindow.h"
 #include "DecksAudioFormatManager.h"
 #include "AudioEngine.h"
@@ -95,6 +96,8 @@ class AppClass : public JUCEApplication
 		//==============================================================================
 		void initialise (const String& commandLine)
 		{
+			commandManager = new ApplicationCommandManager();
+			
 			DecksAudioFormatManager::getInstance();
 			Settings::getInstance();
 			DeckManager::getInstance();
@@ -162,6 +165,8 @@ class AppClass : public JUCEApplication
 			DeckManager::deleteInstance();
 			Settings::deleteInstance();
 			DecksAudioFormatManager::deleteInstance();
+			
+			deleteAndZero (commandManager);
 		}
 		
 		//==============================================================================

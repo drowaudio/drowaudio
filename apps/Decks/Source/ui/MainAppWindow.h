@@ -57,10 +57,7 @@ public:
 	void closeButtonPressed();
 	
 	const BorderSize getBorderThickness();
-	
-	// the command manager object used to dispatch command events
-	ScopedPointer<ApplicationCommandManager> commandManager;
-	
+		
 	// It is most likely that your program will be happy thinking of the window's
 	// content component as the 'base' level of the application; it can be responsible
 	// for storing and maintaining anything considered crucial to the running of the

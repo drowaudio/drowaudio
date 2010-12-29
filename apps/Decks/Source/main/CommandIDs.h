@@ -11,6 +11,10 @@
 #ifndef __COMMANDIDS_H_CB5F4E77__
 #define __COMMANDIDS_H_CB5F4E77__
 
+#include <dRowAudio/dRowAudio.h>
+
+extern ApplicationCommandManager* commandManager;
+
 /**
     A namespace to hold all the possible command IDs.
 */

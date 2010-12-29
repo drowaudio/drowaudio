@@ -29,7 +29,8 @@
  */
 
 #include "MainAppWindow.h"
-//#include "ControlComponent.h"
+
+ApplicationCommandManager* commandManager = 0;
 
 //==============================================================================
 MainAppWindow::MainAppWindow()
@@ -55,7 +56,6 @@ DocumentWindow (
 //    ControlComponent* contentComponent = new ControlComponent ();
 	contentComponent = new ContainerComponent ();
 	
-	commandManager = new ApplicationCommandManager();
 	commandManager->registerAllCommandsForTarget (this);
 	commandManager->registerAllCommandsForTarget (JUCEApplication::getInstance());
 	addKeyListener (commandManager->getKeyMappings());
