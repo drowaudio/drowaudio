@@ -7,15 +7,6 @@
 
 namespace BinaryData
 {
-    extern const char*   controls_pause_svg;
-    const int            controls_pause_svgSize = 2496;
-
-    extern const char*   controls_play_svg;
-    const int            controls_play_svgSize = 2907;
-
-    extern const char*   controls_stop_svg;
-    const int            controls_stop_svgSize = 2159;
-
     extern const char*   Decks_icon_png;
     const int            Decks_icon_pngSize = 203489;
 

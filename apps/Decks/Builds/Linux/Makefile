@@ -46,6 +46,7 @@ OBJECTS := \
   $(OBJDIR)/ApplicationStartup_3272e644.o \
   $(OBJDIR)/Settings_1a9966da.o \
   $(OBJDIR)/DeckManager_dbb2a2b7.o \
+  $(OBJDIR)/DecksAudioFormatManager_c4d4a1fd.o \
   $(OBJDIR)/AudioEngine_c12c07ab.o \
   $(OBJDIR)/DecksLookAndFeel_6536b270.o \
   $(OBJDIR)/MainAppWindow_b0560b46.o \
@@ -96,6 +97,11 @@ $(OBJDIR)/Settings_1a9966da.o: ../../Source/main/Settings.cpp
 $(OBJDIR)/DeckManager_dbb2a2b7.o: ../../Source/main/DeckManager.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling DeckManager.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/DecksAudioFormatManager_c4d4a1fd.o: ../../Source/main/DecksAudioFormatManager.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling DecksAudioFormatManager.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/AudioEngine_c12c07ab.o: ../../Source/main/AudioEngine.cpp

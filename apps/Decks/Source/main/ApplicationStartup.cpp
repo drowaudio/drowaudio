@@ -42,6 +42,7 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../ui/MainAppWindow.h"
+#include "DecksAudioFormatManager.h"
 #include "AudioEngine.h"
 #include "Settings.h"
 #include "DeckManager.h"
@@ -94,10 +95,7 @@ class AppClass : public JUCEApplication
 		//==============================================================================
 		void initialise (const String& commandLine)
 		{
-			AudioFormatManager::getInstance()->registerBasicFormats();
-#ifdef JUCE_QUICKTIME
-			AudioFormatManager::getInstance()->registerFormat(new QuickTimeAudioFormat(), false);
-#endif
+			DecksAudioFormatManager::getInstance();
 			Settings::getInstance();
 			DeckManager::getInstance();
 			AudioEngine::getInstance();
@@ -163,7 +161,7 @@ class AppClass : public JUCEApplication
 			AudioEngine::deleteInstance();
 			DeckManager::deleteInstance();
 			Settings::deleteInstance();
-			AudioFormatManager::deleteInstance();
+			DecksAudioFormatManager::deleteInstance();
 		}
 		
 		//==============================================================================

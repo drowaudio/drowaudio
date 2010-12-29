@@ -83,7 +83,7 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	levelSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(level)));
 
 	addAndMakeVisible(cueButton = new TextButton(T("cue")));
-//	cueButton->addButtonListener(this);
+//	cueButton->addListener(this);
 	cueButton->setClickingTogglesState(true);
 	cueButton->setColour(TextButton::buttonOnColourId, Colours::orangered);
 	cueButton->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(cue)));

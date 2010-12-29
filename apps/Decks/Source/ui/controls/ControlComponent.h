@@ -19,6 +19,7 @@
 #include "mixer/Mixer.h"
 #include "transport/Transport.h"
 #include "draggable_display/DraggableDisplay.h"
+#include "../../main/DecksAudioFormatManager.h"
 #include "../../main/DeckManager.h"
 #include "../../main/AudioEngine.h"
 #include "../DecksLookAndFeel.h"

@@ -11,29 +11,20 @@
 #ifndef __MIXERSETTINGSCOMPONENT_H_E5B212E2__
 #define __MIXERSETTINGSCOMPONENT_H_E5B212E2__
 
-#include <juce/juce.h>
-#include "/Source/main/DeckManager.h"
-#include "/Source/main/AudioEngine.h"
-#include "/Source/main/Settings.h"
+#include <dRowAudio/dRowAudio.h>
 
 class MixerSettingsComponent  :	public Component
 {
 public:
 	//==============================================================================
-	MixerSettingsComponent ()
-	{
-		MixerSettingsComponent::getInstance();
-	}
+	MixerSettingsComponent();
 	
-	~MixerSettingsComponent ()
-	{
-		DBG("MixerSettingComponent deleted");
-	}
+	~MixerSettingsComponent();
 	
 	//==============================================================================
-	void resized ();
+	void resized();
 	
-	void paint (Graphics& g);
+	void paint(Graphics& g);
 	
 	//==============================================================================
 	//==============================================================================

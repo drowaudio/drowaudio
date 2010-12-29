@@ -32,7 +32,7 @@ ControlComponent::ControlComponent ()
 	mixerViewport->setViewedComponent(mixer);
 	AudioEngine::getInstance()->setCurrentMixer(mixer);
 	tabbedComponent->addTab(T("Mixer"), Colours::darkgrey, mixerViewport, true);
-	tabbedComponent->addTab(T("Files"), Colours::darkgrey, new ColumnFileBrowser(new WildcardFileFilter(AudioFormatManager::getInstance()->getWildcardForAllFormats(), "*", "Audio Filter")), true);
+	tabbedComponent->addTab(T("Files"), Colours::darkgrey, new ColumnFileBrowser(new WildcardFileFilter(DecksAudioFormatManager::getInstance()->getWildcardForAllFormats(), "*", "Audio Filter")), true);
 		
 //	fileBrowser = new ColumnFileBrowser(new WildcardFileFilter(deckManager->getDeck(0)->getMainFilePlayer()->getAudioFormatManager()->getWildcardForAllFormats(), T("*"), T("Audio Filter")));
 //	tabbedComponent->addTab(T("Browse"), Colours::darkgrey, fileBrowser, true);

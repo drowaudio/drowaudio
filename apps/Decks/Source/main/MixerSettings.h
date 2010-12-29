@@ -103,7 +103,7 @@ namespace MixerSettings
 		{
 			0.0f,		//assignX
 			0.0f,		//assignY
-			0.5f		//level
+			0.25f		//level
 		};
 	}
 		

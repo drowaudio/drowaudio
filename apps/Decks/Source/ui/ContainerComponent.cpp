@@ -13,7 +13,7 @@ ContainerComponent::ContainerComponent ()
 {
 	addAndMakeVisible( titlebarComponent = new TitleBarComponent() );
 	settingsButton = titlebarComponent->getSettingsButton();
-	settingsButton->addButtonListener(this);
+	settingsButton->addListener(this);
 	
 	addAndMakeVisible( controlComponent = new ControlComponent() );
 	addChildComponent( settingsComponent = new SettingsComponent() );
@@ -22,7 +22,7 @@ ContainerComponent::ContainerComponent ()
 
 ContainerComponent::~ContainerComponent ()
 {
-	settingsButton->removeButtonListener(this);
+	settingsButton->removeListener(this);
 	
 	deleteAllChildren();
 	DBG("ContainerComponent deleted");

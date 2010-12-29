@@ -14,9 +14,9 @@ TitleBarComponent::TitleBarComponent ()
 :	showButtons(Desktop::getInstance().getKioskModeComponent() == getTopLevelComponent() ? true : false)
 {
 	addAndMakeVisible(buttons[closeButton] = getLookAndFeel().createDocumentWindowButton (DocumentWindow::closeButton));
-	buttons[closeButton]->addButtonListener(this);
+	buttons[closeButton]->addListener(this);
 	addAndMakeVisible(buttons[maximiseButton] = getLookAndFeel().createDocumentWindowButton (DocumentWindow::maximiseButton));
-	buttons[maximiseButton]->addButtonListener(this);
+	buttons[maximiseButton]->addListener(this);
 	
 	addAndMakeVisible( clock = new Clock() );
 
@@ -36,7 +36,8 @@ void TitleBarComponent::resized ()
 	const int h = getHeight();
 	const int m = 5;
 	
-	if (showButtons) {
+	if (showButtons)
+	{
 		buttons[closeButton]->setVisible(true);
 		buttons[closeButton]->setBounds(m, (h*0.5)-8, 16, 16);
 		

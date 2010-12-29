@@ -75,7 +75,6 @@ MainAppWindow::~MainAppWindow()
 	// properly), clean up the other components contained inside it. Therefore, we have
 	// nothing much to do here!
 	
-	deleteAndZero(commandManager);
 //	deleteAndZero(contentComponent);
 	DBG("MainAppWindow deleted");
 }

@@ -15,15 +15,15 @@ QuitScreen::QuitScreen ()
 	setWantsKeyboardFocus(true);
 	
 	addAndMakeVisible( yesButton = new TextButton("Yes") );
-	yesButton->addButtonListener(this);
+	yesButton->addListener(this);
 	addAndMakeVisible( noButton = new TextButton("No") );
-	noButton->addButtonListener(this);	
+	noButton->addListener(this);	
 }
 
 QuitScreen::~QuitScreen ()
 {
-	yesButton->removeButtonListener(this);
-	noButton->removeButtonListener(this);
+	yesButton->removeListener(this);
+	noButton->removeListener(this);
 
 	deleteAllChildren();
 }

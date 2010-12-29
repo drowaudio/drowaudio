@@ -44,6 +44,10 @@
               file="Source/main/DeckManager.cpp"/>
         <FILE id="ZOcVatnBQ" name="MixerSettings.h" compile="0" resource="0"
               file="Source/main/MixerSettings.h"/>
+        <FILE id="UPdE3Mm" name="DecksAudioFormatManager.h" compile="0" resource="0"
+              file="Source/main/DecksAudioFormatManager.h"/>
+        <FILE id="z7BnitK" name="DecksAudioFormatManager.cpp" compile="1" resource="0"
+              file="Source/main/DecksAudioFormatManager.cpp"/>
         <FILE id="8gRlA2ONz" name="AudioEngine.h" compile="0" resource="0"
               file="Source/main/AudioEngine.h"/>
         <FILE id="nMCYSJylF" name="AudioEngine.cpp" compile="1" resource="0"
@@ -123,19 +127,9 @@
         </GROUP>
       </GROUP>
       <GROUP id="SzcsvFko0" name="resources">
-        <GROUP id="O3kKlqJi4" name="buttons">
-          <FILE id="SLw8OQppL" name="controls_pause.svg" compile="0" resource="1"
-                file="Source/resources/buttons/controls_pause.svg"/>
-          <FILE id="qwHsWQTDG" name="controls_play.svg" compile="0" resource="1"
-                file="Source/resources/buttons/controls_play.svg"/>
-          <FILE id="Ez7oXPAlJ" name="controls_stop.svg" compile="0" resource="1"
-                file="Source/resources/buttons/controls_stop.svg"/>
-        </GROUP>
         <FILE id="4nPQR2cA2" name="Decks.icns" compile="0" resource="0" file="Source/resources/Decks.icns"/>
         <FILE id="H0hwTQxn5" name="Decks_icon.png" compile="0" resource="1"
               file="Source/resources/Decks_icon.png"/>
-        <FILE id="fRKIacRyj" name="Decks_icon.psd" compile="0" resource="0"
-              file="Source/resources/Decks_icon.psd"/>
       </GROUP>
     </GROUP>
     <GROUP id="gCWqRquL9" name="Libraries">

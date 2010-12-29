@@ -8,3 +8,18 @@
   ==============================================================================
 */
 
+#include "MixerSettingsComponent.h"
+
+MixerSettingsComponent::MixerSettingsComponent()
+{
+
+}
+
+MixerSettingsComponent::~MixerSettingsComponent()
+{
+	DBG("MixerSettingComponent deleted");
+}
+
+void MixerSettingsComponent::resized() {}
+
+void MixerSettingsComponent::paint(Graphics& g) {}

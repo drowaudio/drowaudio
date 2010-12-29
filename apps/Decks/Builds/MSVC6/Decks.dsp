@@ -106,6 +106,12 @@ SOURCE="..\..\Source\main\DeckManager.cpp"
 SOURCE="..\..\Source\main\MixerSettings.h"
 # End Source File
 # Begin Source File
+SOURCE="..\..\Source\main\DecksAudioFormatManager.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\main\DecksAudioFormatManager.cpp"
+# End Source File
+# Begin Source File
 SOURCE="..\..\Source\main\AudioEngine.h"
 # End Source File
 # Begin Source File
@@ -234,30 +240,12 @@ SOURCE="..\..\Source\ui\settings\MixerSettingsComponent.cpp"
 # End Group
 # Begin Group "resources"
 # PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
-# Begin Group "buttons"
-# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
-# Begin Source File
-SOURCE="..\..\Source\resources\buttons\controls_pause.svg"
-# PROP Exclude_From_Build 1
-# End Source File
-# Begin Source File
-SOURCE="..\..\Source\resources\buttons\controls_play.svg"
-# PROP Exclude_From_Build 1
-# End Source File
-# Begin Source File
-SOURCE="..\..\Source\resources\buttons\controls_stop.svg"
-# PROP Exclude_From_Build 1
-# End Source File
-# End Group
 # Begin Source File
 SOURCE="..\..\Source\resources\Decks.icns"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\resources\Decks_icon.png"
 # PROP Exclude_From_Build 1
-# End Source File
-# Begin Source File
-SOURCE="..\..\Source\resources\Decks_icon.psd"
 # End Source File
 # End Group
 # End Group

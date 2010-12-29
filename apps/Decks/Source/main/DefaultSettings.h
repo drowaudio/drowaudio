@@ -70,7 +70,7 @@ namespace Defaults
 		
 		namespace XFader
 		{
-			static const float fader = 0.5f;
+			static const float fader = 0.25f;
 			static const int assignX = 0;
 			static const int assignY = 0;
 		}

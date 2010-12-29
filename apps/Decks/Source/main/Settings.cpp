@@ -40,7 +40,8 @@ Settings::~Settings()
 	
 	if (settings.isValid())
 	{
-		if (settings.createXml()->writeToFile(xmlFile, "DECKS_SETTINGS")) {
+		ScopedPointer<XmlElement> settingsXml(settings.createXml());
+		if (settingsXml->writeToFile(xmlFile, "DECKS_SETTINGS")) {
 			DBG("XML File written");
 		}
 		else {
@@ -60,14 +61,11 @@ bool Settings::loadSettingsFile(String path, ValueTree &treeToFill)
 	if (settingsFile.existsAsFile())
 	{			
 		XmlDocument settingsDoc (settingsFile);
-		XmlElement* settingsXML = settingsDoc.getDocumentElement();
+		ScopedPointer<XmlElement> settingsXML(settingsDoc.getDocumentElement());
 		
 		treeToFill = ValueTree::fromXml(*settingsXML);
 		
-		if (treeToFill.isValid())
-			return true;
-		else
-			return false;
+		return treeToFill.isValid();
 	}
 	
 	return false;

@@ -139,6 +139,8 @@
           <File RelativePath="..\..\Source\main\DeckManager.h"/>
           <File RelativePath="..\..\Source\main\DeckManager.cpp"/>
           <File RelativePath="..\..\Source\main\MixerSettings.h"/>
+          <File RelativePath="..\..\Source\main\DecksAudioFormatManager.h"/>
+          <File RelativePath="..\..\Source\main\DecksAudioFormatManager.cpp"/>
           <File RelativePath="..\..\Source\main\AudioEngine.h"/>
           <File RelativePath="..\..\Source\main\AudioEngine.cpp"/>
         </Filter>
@@ -189,38 +191,6 @@
           </Filter>
         </Filter>
         <Filter Name="resources">
-          <Filter Name="buttons">
-            <File RelativePath="..\..\Source\resources\buttons\controls_pause.svg">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\Source\resources\buttons\controls_play.svg">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\Source\resources\buttons\controls_stop.svg">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-          </Filter>
           <File RelativePath="..\..\Source\resources\Decks.icns"/>
           <File RelativePath="..\..\Source\resources\Decks_icon.png">
             <FileConfiguration Name="Debug|Win32"
@@ -232,7 +202,6 @@
               <Tool Name="VCCLCompilerTool"/>
             </FileConfiguration>
           </File>
-          <File RelativePath="..\..\Source\resources\Decks_icon.psd"/>
         </Filter>
       </Filter>
       <Filter Name="Libraries">
