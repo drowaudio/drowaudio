@@ -62,8 +62,6 @@ private:
 		int currentBuffSize;
 		ScopedPointer<AudioSampleBuffer> buffer;
 		OwnedArray<AudioSourcePlayer> audioSourcePlayers;
-		
-		CriticalSection lock;
 	};
 	
 //	class MonitorAudioCallback : public AudioIODeviceCallback

@@ -66,6 +66,7 @@ void AudioEngine::MainAudioCallback::audioDeviceIOCallback (const float** inputC
 {
 	DeckManager* manager = DeckManager::getInstance();
 	
+	// only need to change the buffer size if it needs to be bigger
 	if (currentBuffSize != numSamples)
 	{
 		currentBuffSize = numSamples;

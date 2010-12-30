@@ -61,7 +61,7 @@ public:
 	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged) {}
 	
 	void setSetting(const Identifier &setting, const var &newValue);
-	const var& getSetting(const Identifier &setting);
+	const var getSetting(const Identifier &setting);
 	
 	//==============================================================================
     /** Receives callbacks when a Deck object changes.
@@ -91,20 +91,20 @@ private:
 	
 	struct DeckSettings 
 	{
-		var number;
-		var on;
-		var bypass;
-		var gain;
-		var level;
-		var highGain;
-		var midGain;
-		var lowGain;
-		var highKill;
-		var midKill;
-		var lowKill;
-		var cue;
-		var fxASend;
-		var fxBSend;
+		Atomic<int> number;
+		Atomic<int> on;
+		Atomic<int> bypass;
+		Atomic<float> gain;
+		Atomic<float> level;
+		Atomic<float> highGain;
+		Atomic<float> midGain;
+		Atomic<float> lowGain;
+		Atomic<int> highKill;
+		Atomic<int> midKill;
+		Atomic<int> lowKill;
+		Atomic<int> cue;
+		Atomic<float> fxASend;
+		Atomic<float> fxBSend;
 	} settings;
 	
 	CriticalSection lock;
@@ -149,16 +149,16 @@ public:
 		return noEnabledDecks;
 	}
 	
-	const var& getDeckSetting(const int deckNo, const Identifier &setting)
+	const var getDeckSetting(const int deckNo, const Identifier &setting)
 	{
 		return decks[deckNo]->getSetting(setting);
 	}
 	
 	void setMasterSetting(const Identifier &setting, const var &newValue);
-	const var& getMasterSetting(const Identifier &setting);
+	const var getMasterSetting(const Identifier &setting);
 
 	void setXFaderSetting(const Identifier &setting, const var &newValue);
-	const var& getXFaderSetting(const Identifier &setting);
+	const var getXFaderSetting(const Identifier &setting);
 
 	//==============================================================================
 	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
@@ -169,16 +169,16 @@ public:
 private:
 	
 	struct MasterSettings {
-		var gain;
-		var cue;
-		var faderCurve;
-		var xFaderCurve;
+		Atomic<float> gain;
+		Atomic<int> cue;
+		Atomic<float> faderCurve;
+		Atomic<float> xFaderCurve;
 	} masterSettings;
 
 	struct XFaderSettings {
-		var assignX;
-		var assignY;
-		var level;
+		Atomic<int> assignX;
+		Atomic<int> assignY;
+		Atomic<float> level;
 	} xFaderSettings;
 	
 	CriticalSection lock;

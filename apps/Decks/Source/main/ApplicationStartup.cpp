@@ -181,7 +181,7 @@ class AppClass : public JUCEApplication
 			// Here we can give a 'version' indicator, to distinguish one build from
 			// another. If you update your program, it's a good idea to also update
 			// the string returned here.
-			return ProjectInfo::projectName;
+			return ProjectInfo::versionString;
 		}
 		
 		bool moreThanOneInstanceAllowed()

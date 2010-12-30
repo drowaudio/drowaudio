@@ -21,7 +21,7 @@ Deck::Deck(int deckNo_)
 	settings.on = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(on));
 	settings.bypass = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(bypass));
 	settings.gain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(gain));
-	filePlayer->setGain(settings.gain);
+	filePlayer->setGain(settings.gain.get());
 	settings.level = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(level));
 	settings.highGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(highGain));
 	settings.midGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(midGain));
@@ -59,76 +59,76 @@ void Deck::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, co
 void Deck::setSetting(const Identifier &setting, const var &newValue)
 {
 	// need to lock the variables when writing incase the audio thread is reading
-	ScopedLock currentLock(lock);
+//	ScopedLock currentLock(lock);
 	
 	if (setting == CHANNEL_SETTING(on))
-		settings.on = newValue;
+		settings.on.set(newValue);
 	else if (setting == CHANNEL_SETTING(bypass))
-		settings.bypass = newValue;
+		settings.bypass.set(newValue);
 	else if (setting == CHANNEL_SETTING(gain))
 	{
-		settings.gain = newValue;
-		filePlayer->setGain(settings.gain);
+		settings.gain.set(newValue);
+		filePlayer->setGain(settings.gain.get());
 	}
 	else if (setting == CHANNEL_SETTING(level))
-		settings.level = newValue;
+		settings.level.set(newValue);
 	else if (setting == CHANNEL_SETTING(highGain))
 	{
-		settings.highGain = newValue;
-		filePlayer->setHighEQGain(settings.highGain);
+		settings.highGain.set(newValue);
+		filePlayer->setHighEQGain(settings.highGain.get());
 	}
 	else if (setting == CHANNEL_SETTING(midGain))
 	{
-		settings.midGain = newValue;
-		filePlayer->setMidEQGain(settings.midGain);
+		settings.midGain.set(newValue);
+		filePlayer->setMidEQGain(settings.midGain.get());
 	}
 	else if (setting == CHANNEL_SETTING(lowGain))
 	{
-		settings.lowGain = newValue;
-		filePlayer->setLowEQGain(settings.lowGain);
+		settings.lowGain.set(newValue);
+		filePlayer->setLowEQGain(settings.lowGain.get());
 	}
 	else if (setting == CHANNEL_SETTING(highKill))
-		settings.highKill = newValue;
+		settings.highKill.set(newValue);
 	else if (setting == CHANNEL_SETTING(midKill))
-		settings.midKill = newValue;
+		settings.midKill.set(newValue);
 	else if (setting == CHANNEL_SETTING(lowKill))
-		settings.lowKill = newValue;
+		settings.lowKill.set(newValue);
 	else if (setting == CHANNEL_SETTING(cue))
-		settings.cue = newValue;
+		settings.cue.set(newValue);
 	else if (setting == CHANNEL_SETTING(fxASend))
-		settings.fxASend = newValue;
+		settings.fxASend.set(newValue);
 	else if (setting == CHANNEL_SETTING(fxBSend))
-		settings.fxBSend = newValue;
+		settings.fxBSend.set(newValue);
 }
 
-const var& Deck::getSetting(const Identifier &setting)
+const var Deck::getSetting(const Identifier &setting)
 {
 	if (setting == CHANNEL_SETTING(on))
-		return settings.on;
+		return settings.on.get();
 	else if (setting == CHANNEL_SETTING(bypass))
-		return settings.bypass;
+		return settings.bypass.get();
 	else if (setting == CHANNEL_SETTING(gain))
-		return settings.gain;
+		return settings.gain.get();
 	else if (setting == CHANNEL_SETTING(level))
-		return settings.level;
+		return settings.level.get();
 	else if (setting == CHANNEL_SETTING(highGain))
-		return settings.highGain;
+		return settings.highGain.get();
 	else if (setting == CHANNEL_SETTING(midGain))
-		return settings.midGain;
+		return settings.midGain.get();
 	else if (setting == CHANNEL_SETTING(lowGain))
-		return settings.lowGain;
+		return settings.lowGain.get();
 	else if (setting == CHANNEL_SETTING(highKill))
-		return settings.highKill;
+		return settings.highKill.get();
 	else if (setting == CHANNEL_SETTING(midKill))
-		return settings.midKill;
+		return settings.midKill.get();
 	else if (setting == CHANNEL_SETTING(lowKill))
-		return settings.lowKill;
+		return settings.lowKill.get();
 	else if (setting == CHANNEL_SETTING(cue))
-		return settings.cue;
+		return settings.cue.get();
 	else if (setting == CHANNEL_SETTING(fxASend))
-		return settings.fxASend;
+		return settings.fxASend.get();
 	else if (setting == CHANNEL_SETTING(fxBSend))
-		return settings.fxBSend;
+		return settings.fxBSend.get();
 	else
 		return var::null;
 }
@@ -165,14 +165,14 @@ DeckManager::DeckManager()
 {
 	Settings* settingsManager = Settings::getInstance();
 	
-	masterSettings.gain = settingsManager->getPropertyOfMaster(MASTER_SETTING(gain));
-	masterSettings.cue = settingsManager->getPropertyOfMaster(MASTER_SETTING(cue));
-	masterSettings.faderCurve = settingsManager->getPropertyOfMaster(MASTER_SETTING(faderCurve));
-	masterSettings.xFaderCurve = settingsManager->getPropertyOfMaster(MASTER_SETTING(xFaderCurve));
+	masterSettings.gain.set(settingsManager->getPropertyOfMaster(MASTER_SETTING(gain)));
+	masterSettings.cue.set(settingsManager->getPropertyOfMaster(MASTER_SETTING(cue)));
+	masterSettings.faderCurve.set(settingsManager->getPropertyOfMaster(MASTER_SETTING(faderCurve)));
+	masterSettings.xFaderCurve.set(settingsManager->getPropertyOfMaster(MASTER_SETTING(xFaderCurve)));
 
-	xFaderSettings.level = settingsManager->getPropertyOfXFader(XFADER_SETTING(level));
-	xFaderSettings.assignX = settingsManager->getPropertyOfXFader(XFADER_SETTING(assignX));
-	xFaderSettings.assignY = settingsManager->getPropertyOfXFader(XFADER_SETTING(assignY));
+	xFaderSettings.level.set(settingsManager->getPropertyOfXFader(XFADER_SETTING(level)));
+	xFaderSettings.assignX.set(settingsManager->getPropertyOfXFader(XFADER_SETTING(assignX)));
+	xFaderSettings.assignY.set(settingsManager->getPropertyOfXFader(XFADER_SETTING(assignY)));
 
 	for (int i = 0; i < int(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")); i++) {
 		decks.add( new Deck(i) );
@@ -205,28 +205,28 @@ void DeckManager::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChan
 void DeckManager::setMasterSetting(const Identifier &setting, const var &newValue)
 {
 	// need to lock the variables when writing incase the audio thread is reading
-	ScopedLock currentLock(lock);
+//	ScopedLock currentLock(lock);
 	
 	if (setting == MASTER_SETTING(gain))
-		masterSettings.gain = newValue;
+		masterSettings.gain.set(newValue);
 	else if (setting == MASTER_SETTING(cue))
-		masterSettings.cue = newValue;
+		masterSettings.cue.set(newValue);
 	else if (setting == MASTER_SETTING(faderCurve))
-		masterSettings.faderCurve = newValue;
+		masterSettings.faderCurve.set(newValue);
 	else if (setting == MASTER_SETTING(xFaderCurve))
-		masterSettings.xFaderCurve = newValue;
+		masterSettings.xFaderCurve.set(newValue);
 }
 
-const var& DeckManager::getMasterSetting(const Identifier &setting)
+const var DeckManager::getMasterSetting(const Identifier &setting)
 {
 	if (setting == MASTER_SETTING(gain))
-		return masterSettings.gain;
+		return masterSettings.gain.get();
 	else if (setting == MASTER_SETTING(cue))
-		return masterSettings.cue;
+		return masterSettings.cue.get();
 	else if (setting == MASTER_SETTING(faderCurve))
-		return masterSettings.faderCurve;
+		return masterSettings.faderCurve.get();
 	else if (setting == MASTER_SETTING(xFaderCurve))
-		return masterSettings.xFaderCurve;
+		return masterSettings.xFaderCurve.get();
 	else
 		return var::null;
 }
@@ -234,24 +234,24 @@ const var& DeckManager::getMasterSetting(const Identifier &setting)
 void DeckManager::setXFaderSetting(const Identifier &setting, const var &newValue)
 {
 	// need to lock the variables when writing incase the audio thread is reading
-	ScopedLock currentLock(lock);
+//	ScopedLock currentLock(lock);
 	
 	if (setting == XFADER_SETTING(level))
-		xFaderSettings.level = newValue;
+		xFaderSettings.level.set(newValue);
 	else if (setting == XFADER_SETTING(assignX))
-		xFaderSettings.assignX = newValue;
+		xFaderSettings.assignX.set(newValue);
 	else if (setting == XFADER_SETTING(assignY))
-		xFaderSettings.assignY = newValue;
+		xFaderSettings.assignY.set(newValue);
 }
 
-const var& DeckManager::getXFaderSetting(const Identifier &setting)
+const var DeckManager::getXFaderSetting(const Identifier &setting)
 {
 	if (setting == XFADER_SETTING(level))
-		return xFaderSettings.level;
+		return xFaderSettings.level.get();
 	else if (setting == XFADER_SETTING(assignX))
-		return xFaderSettings.assignX;
+		return xFaderSettings.assignX.get();
 	else if (setting == XFADER_SETTING(assignY))
-		return xFaderSettings.assignY;
+		return xFaderSettings.assignY.get();
 	else
 		return var::null;	
 }

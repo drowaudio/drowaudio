@@ -303,8 +303,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>19</integer>
-									<integer>15</integer>
+									<integer>13</integer>
+									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -349,7 +349,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MainAppWindow.cpp</string>
+								<string>AudioEngine.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -357,11 +357,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MainAppWindow.cpp</string>
+										<string>AudioEngine.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>551E6E1312CB973D0089DCB6</string>
+										<string>551E6EE512CCFF820089DCB6</string>
 										<key>history</key>
 										<array>
 											<string>55AC9B6C1192F47D00382B1A</string>
@@ -400,7 +400,6 @@
 											<string>55E25E3811F3A00100E4698B</string>
 											<string>554A456311F669620009DFF4</string>
 											<string>554A482A11FB6A770009DFF4</string>
-											<string>55839AF21261D35B001DE572</string>
 											<string>55FB903C12A06CCD009ED199</string>
 											<string>55FB91D912A08453009ED199</string>
 											<string>55FB91E812A084E7009ED199</string>
@@ -409,7 +408,6 @@
 											<string>55FB924612A2CEB9009ED199</string>
 											<string>55FB924712A2CEB9009ED199</string>
 											<string>55FB928D12A2D7E3009ED199</string>
-											<string>55FB928F12A2D7E3009ED199</string>
 											<string>55FB929012A2D7E3009ED199</string>
 											<string>55FB930312A2DA93009ED199</string>
 											<string>55FB936512A2E180009ED199</string>
@@ -439,7 +437,6 @@
 											<string>5518109B12C3E07600EEAD87</string>
 											<string>551811C312C3FA1000EEAD87</string>
 											<string>551811D512C3FB4900EEAD87</string>
-											<string>551811D612C3FB4900EEAD87</string>
 											<string>551811D712C3FB4900EEAD87</string>
 											<string>551811DA12C3FB4900EEAD87</string>
 											<string>551811DB12C3FB4900EEAD87</string>
@@ -482,14 +479,18 @@
 											<string>55F25D0B12CADA2900CB1C6A</string>
 											<string>55F25D3D12CADD0400CB1C6A</string>
 											<string>551E6DD812CB82DF0089DCB6</string>
-											<string>551E6DD912CB82DF0089DCB6</string>
 											<string>551E6DDC12CB82DF0089DCB6</string>
 											<string>551E6DDD12CB82DF0089DCB6</string>
-											<string>551E6E0812CB961C0089DCB6</string>
-											<string>551E6E0F12CB973D0089DCB6</string>
 											<string>551E6E1012CB973D0089DCB6</string>
 											<string>551E6E1112CB973D0089DCB6</string>
-											<string>551E6E1212CB973D0089DCB6</string>
+											<string>551E6E8812CBA3DE0089DCB6</string>
+											<string>551E6E8912CBA3DE0089DCB6</string>
+											<string>551E6EB012CCEA660089DCB6</string>
+											<string>551E6EB112CCEA660089DCB6</string>
+											<string>551E6EE112CCFF820089DCB6</string>
+											<string>551E6EE212CCFF820089DCB6</string>
+											<string>551E6EE312CCFF820089DCB6</string>
+											<string>551E6EE412CCFF820089DCB6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -670,7 +671,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>315332413.632801</real>
+	<real>315424642.84665102</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -687,14 +688,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>551E6E1412CB973D0089DCB6</string>
 		<string>551E6DE912CB82DF0089DCB6</string>
 		<string>551E6DEA12CB82DF0089DCB6</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>55AC9B5C1192F33700382B1A</string>
-		<string>/Users/Dave/Documents/Developement/dRowAudio/apps/Decks/Builds/MacOSX/Decks.xcodeproj</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/Dave/Documents/Developement/dRowAudio/apps/Decks/Builds/MacOSX/Decks.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1280 719 0 0 1280 778 </string>
@@ -718,7 +718,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MainAppWindow.cpp</string>
+								<string>DeckManager.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -913,7 +913,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -931,12 +931,14 @@
 							<key>Dock</key>
 							<array>
 								<dict>
+									<key>BecomeActive</key>
+									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string></string>
+										<string>DeckManager.cpp</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -957,8 +959,6 @@
 							<string>356pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
