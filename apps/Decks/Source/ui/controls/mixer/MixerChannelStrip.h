@@ -19,43 +19,13 @@
 class Mixer;
 
 class MixerChannelStrip :	public Component,
-//							public SliderListener,
 							public ValueTree::Listener
 {
 public:
-	
-	/** This holds all the possible settings a MixerChanelStrip can have. */
-	struct ChannelSettings {
-		bool on;
-		bool bypass;
-		float gain;
-		float level;
-		float highGain;
-		float midGain;
-		float lowGain;
-		bool highKill;
-		bool midKill;
-		bool lowKill;
-		bool cue;
-		float fxASend;
-		float fxBSend;
-	};
-	
+		
 	MixerChannelStrip(int deckNo_, Mixer *mixer_);
 	
-	~MixerChannelStrip()
-	{
-		Settings::getInstance()->getValueTreePointer()->removeListener(this);
-
-		eqSliders.clear();
-		eqKillButtons.clear();
-		eqLabels.clear();
-		deleteAllChildren();
-		
-		String message("MixerChannelStrip ");
-		message << deckNo << " deleted";
-		DBG(message);		
-	}
+	~MixerChannelStrip();
 	
 	//================================================================
 	void resized();
@@ -63,8 +33,6 @@ public:
 	void paint(Graphics &g);
 	
 	//================================================================
-//	void sliderValueChanged (Slider* slider);
-	
 	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
 	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged) {}
 	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged) {}

@@ -48,6 +48,7 @@ OBJECTS := \
   $(OBJDIR)/DeckManager_dbb2a2b7.o \
   $(OBJDIR)/DecksAudioFormatManager_c4d4a1fd.o \
   $(OBJDIR)/AudioEngine_c12c07ab.o \
+  $(OBJDIR)/DecksColours_f3e45819.o \
   $(OBJDIR)/DecksLookAndFeel_6536b270.o \
   $(OBJDIR)/MainAppWindow_b0560b46.o \
   $(OBJDIR)/ContainerComponent_d4c380f8.o \
@@ -107,6 +108,11 @@ $(OBJDIR)/DecksAudioFormatManager_c4d4a1fd.o: ../../Source/main/DecksAudioFormat
 $(OBJDIR)/AudioEngine_c12c07ab.o: ../../Source/main/AudioEngine.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling AudioEngine.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/DecksColours_f3e45819.o: ../../Source/ui/DecksColours.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling DecksColours.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/DecksLookAndFeel_6536b270.o: ../../Source/ui/DecksLookAndFeel.cpp

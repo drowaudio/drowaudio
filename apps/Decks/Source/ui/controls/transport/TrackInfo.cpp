@@ -63,7 +63,7 @@ void TrackInfo::paint(Graphics &g)
 					 fontSize + (4*m), m, w-timeWidth-fontSize-(8*m), h,
 					 Justification::topLeft, 2, 1);	
 	
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::panelLineColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::panelLineColour));
 	g.drawRect(0, 0, w, h, 1);
 	g.drawHorizontalLine(fontSize+(2*m), 0, w);
 	g.drawVerticalLine(fontSize+(2*m), 0, h);

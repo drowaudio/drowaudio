@@ -80,7 +80,7 @@ void Transport::resized()
 void Transport::paint(Graphics &g)
 {
 	if (!settings->getNoEnabledDecks()) {
-		g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::panelLineColour));
+		g.setColour(DecksColours::getInstance()->getColour(DecksColours::panelLineColour));
 		String message ("Enable Decks From The Mixer To Begin...");
 		g.setFont(getHeight()*0.15);
 		g.drawFittedText(message, getWidth()*0.25, getHeight()*0.25, getWidth()*0.5, getHeight()*0.5, Justification::centred, 1, 1);

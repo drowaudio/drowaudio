@@ -55,6 +55,9 @@
               file="Source/main/AudioEngine.cpp"/>
       </GROUP>
       <GROUP id="FsBCWm8L" name="ui">
+        <FILE id="gUuzWRU" name="DecksColours.h" compile="0" resource="0" file="Source/ui/DecksColours.h"/>
+        <FILE id="wPFLsAK" name="DecksColours.cpp" compile="1" resource="0"
+              file="Source/ui/DecksColours.cpp"/>
         <FILE id="4QlMJlZKr" name="DecksLookAndFeel.h" compile="0" resource="0"
               file="Source/ui/DecksLookAndFeel.h"/>
         <FILE id="MUIhZOHMV" name="DecksLookAndFeel.cpp" compile="1" resource="0"

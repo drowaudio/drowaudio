@@ -11,6 +11,7 @@
 #define _TRACKINFO_H_
 
 #include <dRowAudio/dRowAudio.h>
+#include "../../DecksColours.h"
 #include "../../DecksLookAndFeel.h"
 
 class TrackInfo : public Component,

@@ -17,7 +17,9 @@
 		3A45D6069BBDBDC80AF04683 /* LoopAndCuePoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4941BA01E8EFBED8D6B5B /* LoopAndCuePoints.cpp */; };
 		41A664A86809A86631F074A0 /* dRowAudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 900185FA9AA3D660772E3D4C /* dRowAudio.c */; };
 		452B9A09C04FB0903CE700EE /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F014390255E38DC7C7A46BDD /* dRowAudio.cpp */; };
+		523BC796DAB63590A8C2862F /* DecksColours.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42C38F1E71FE93C1BCE6EF42 /* DecksColours.cpp */; };
 		546479097D11645BAE395C9A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE4229007ADD1A44F3024B0 /* Cocoa.framework */; };
+		551E6FEC12CD56840089DCB6 /* DecksLookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C648E93ABE49244CBC7DBF4 /* DecksLookAndFeel.cpp */; };
 		66A178CFE8C3BEBD22836BB8 /* CrossFader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */; };
 		6C9111989B6F487A8B611771 /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342DAFA1747A6C731022DBFC /* Settings.cpp */; };
 		70907C01255F6EC48A973F1A /* MainAppWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 180BDA3231D2DCC2B887A5A2 /* MainAppWindow.cpp */; };
@@ -33,7 +35,6 @@
 		B3AE7DFD2D22DAB9D3CB6F56 /* Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 902FBCF7E76529D2D40EDC52 /* Mixer.cpp */; };
 		B4774EAD1D560D11B49A1EC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC53E9DD51E94107FD486251 /* QuartzCore.framework */; };
 		BEBBC50F2100D9B469DCB27E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA6DC73F996FC74908B920A /* WebKit.framework */; };
-		C03637BDF14CE773A2EB2DAA /* DecksLookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C648E93ABE49244CBC7DBF4 /* DecksLookAndFeel.cpp */; };
 		D26BE6FC18104431FFBA8DF2 /* DraggableDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 824C20D102FB8069BE1A808F /* DraggableDisplay.cpp */; };
 		DE761B07B4378012249A219A /* TrackInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF02085B2E92C13E060CD82 /* TrackInfo.cpp */; };
 		E1C37F7BF0772A00EEDE57F2 /* DeckManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75E4F1D02D4324E833E2AB38 /* DeckManager.cpp */; };
@@ -65,7 +66,9 @@
 		37E1E04CBA55B23BA5A93467 /* MasterChannelStrip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MasterChannelStrip.cpp; path = ../../Source/ui/controls/mixer/MasterChannelStrip.cpp; sourceTree = SOURCE_ROOT; };
 		40F437461414DDC8F5114067 /* DefaultSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultSettings.h; path = ../../Source/main/DefaultSettings.h; sourceTree = SOURCE_ROOT; };
 		425D6C09710560CAD13B64C5 /* ControlComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ControlComponent.cpp; path = ../../Source/ui/controls/ControlComponent.cpp; sourceTree = SOURCE_ROOT; };
+		42C38F1E71FE93C1BCE6EF42 /* DecksColours.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksColours.cpp; path = ../../Source/ui/DecksColours.cpp; sourceTree = SOURCE_ROOT; };
 		47A5C470278A8899ED6807B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		4A410750948391619D696866 /* DecksColours.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksColours.h; path = ../../Source/ui/DecksColours.h; sourceTree = SOURCE_ROOT; };
 		4AE6BDB56E02299E5EC730D5 /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Transport.h; path = ../../Source/ui/controls/transport/Transport.h; sourceTree = SOURCE_ROOT; };
 		4CC12202EAE06D0E02A6AFBC /* TrackInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackInfo.h; path = ../../Source/ui/controls/transport/TrackInfo.h; sourceTree = SOURCE_ROOT; };
 		4EA63BBA9D40D629510BFE98 /* Decks_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Decks_icon.png; path = ../../Source/resources/Decks_icon.png; sourceTree = SOURCE_ROOT; };
@@ -199,6 +202,8 @@
 		890674A826B0DF06A65FE9B2 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				4A410750948391619D696866 /* DecksColours.h */,
+				42C38F1E71FE93C1BCE6EF42 /* DecksColours.cpp */,
 				6E9749BC4FAAD9949A00C732 /* DecksLookAndFeel.h */,
 				0C648E93ABE49244CBC7DBF4 /* DecksLookAndFeel.cpp */,
 				181AB0DA7C77E51D953A3D24 /* MainAppWindow.h */,
@@ -385,7 +390,7 @@
 				E1C37F7BF0772A00EEDE57F2 /* DeckManager.cpp in Sources */,
 				1221215FE2731751C6197959 /* DecksAudioFormatManager.cpp in Sources */,
 				095EE384B807EB3B24D19F4C /* AudioEngine.cpp in Sources */,
-				C03637BDF14CE773A2EB2DAA /* DecksLookAndFeel.cpp in Sources */,
+				523BC796DAB63590A8C2862F /* DecksColours.cpp in Sources */,
 				70907C01255F6EC48A973F1A /* MainAppWindow.cpp in Sources */,
 				71F00C8EA46C100F30023F74 /* ContainerComponent.cpp in Sources */,
 				F31FA52310982AC923DEC137 /* TitleBarComponent.cpp in Sources */,
@@ -405,6 +410,7 @@
 				41A664A86809A86631F074A0 /* dRowAudio.c in Sources */,
 				452B9A09C04FB0903CE700EE /* dRowAudio.cpp in Sources */,
 				325FC2FDC0892B2AFA289123 /* BinaryData.cpp in Sources */,
+				551E6FEC12CD56840089DCB6 /* DecksLookAndFeel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

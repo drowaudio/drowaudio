@@ -81,7 +81,7 @@ void MasterChannelStrip::resized()
 
 void MasterChannelStrip::paint(Graphics &g)
 {
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::panelColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::panelColour));
 	g.fillAll();
 	
 	// draw meter numbers
@@ -96,7 +96,7 @@ void MasterChannelStrip::paint(Graphics &g)
 	const int dbInc = meterL->getNoDbPerSegment();
 	int db = dbInc*meterL->getNoOverSegments();
 	
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::meterLineColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::meterLineColour));
 	g.setFont(10);
 	for (int i=0; i < noSegments; i++) {
 		//			g.drawHorizontalLine(startY+(i*segHeight), left, right);

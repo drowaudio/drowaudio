@@ -124,6 +124,12 @@ SOURCE="..\..\Source\main\AudioEngine.cpp"
 # Begin Group "ui"
 # PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
+SOURCE="..\..\Source\ui\DecksColours.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\DecksColours.cpp"
+# End Source File
+# Begin Source File
 SOURCE="..\..\Source\ui\DecksLookAndFeel.h"
 # End Source File
 # Begin Source File

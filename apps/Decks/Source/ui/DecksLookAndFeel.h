@@ -16,15 +16,7 @@ class DecksLookAndFeel :	public LookAndFeel,
 							public DeletedAtShutdown
 {
 public:
-	juce_DeclareSingleton (DecksLookAndFeel, false) 
-
-	enum DecksColours {
-		backgroundColour,
-		panelColour,
-		panelLineColour,
-		meterLineColour,
-		noCustomColours
-	};
+	juce_DeclareSingleton (DecksLookAndFeel, false);
 	
 	enum IconType {
 		Stop,
@@ -47,16 +39,12 @@ public:
 		noIcons
 	};
 	
-	DecksLookAndFeel();
+	DecksLookAndFeel(){}
 	
 	~DecksLookAndFeel()
 	{
 		DBG("DecksLookAndFeel deleted");
 	}
-
-	void setDecksColour(DecksColours colour, Colour newColour)	{	decksColours.getReference(colour) = newColour;	}
-
-	Colour getDecksColour(DecksColours colour)					{	return decksColours[colour];	}
 
 	//============================================================
 	int getSliderThumbRadius (Slider& slider);
@@ -109,10 +97,11 @@ public:
 		
 	//============================================================
 	static DrawablePath createIcon (IconType icon, Colour colour);
-	
+
+	//============================================================
 	
 private:
-	Array<Colour> decksColours;
+
 };
 
 #endif //_DECKSLOOKANDFEEL__H_

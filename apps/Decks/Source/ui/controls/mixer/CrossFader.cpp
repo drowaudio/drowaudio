@@ -74,7 +74,7 @@ void CrossFader::resized()
 
 void CrossFader::paint(Graphics &g)
 {
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::panelColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::panelColour));
 	g.fillAll();
 	
 	// draw selection backgrounds
@@ -84,7 +84,7 @@ void CrossFader::paint(Graphics &g)
 	float Ycx = getCentreX(yAssignSlider);
 	float Ycy = getCentreY(yAssignSlider);
 
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::meterLineColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::meterLineColour));
 
 	Path pX, pY;
 	pX.clear();
@@ -123,7 +123,7 @@ void CrossFader::paint(Graphics &g)
 	const int bottom = xFaderSlider->getBottom()+5;
 	const float lineSpace = (end-start)/12.0f;
 
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::meterLineColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::meterLineColour));
 	g.drawLine(start, top, start, bottom, 2);
 	g.drawLine(end, top, end, bottom, 2);
 	for (int i=1; i<12; i++) {

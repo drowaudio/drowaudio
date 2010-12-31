@@ -104,6 +104,20 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	fxBSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(fxBSend)));
 }
 
+MixerChannelStrip::~MixerChannelStrip()
+{
+	Settings::getInstance()->getValueTreePointer()->removeListener(this);
+	
+	eqSliders.clear();
+	eqKillButtons.clear();
+	eqLabels.clear();
+	deleteAllChildren();
+	
+	String message("MixerChannelStrip ");
+	message << deckNo << " deleted";
+	DBG(message);		
+}
+
 void MixerChannelStrip::resized()
 {
 	int w = getWidth();
@@ -139,7 +153,7 @@ void MixerChannelStrip::resized()
 
 void MixerChannelStrip::paint(Graphics &g)
 {
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::panelColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::panelColour));
 	g.fillAll();
 	
 	int m = 5;
@@ -159,31 +173,13 @@ void MixerChannelStrip::paint(Graphics &g)
 	const int right = levelSlider->getRight()-5;
 	const float lineSpace = (end-start)/11.0f;
 	
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::meterLineColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::meterLineColour));
 	g.drawLine(left-5, start, right+5, start, 2);
 	g.drawLine(left-5, end, right+5, end, 2);
 	for (int i=1; i<11; i++) {
-//		if (i == 6)
-//			g.drawLine(start+(6*lineSpace), top, start+(6*lineSpace), bottom, 2);	
-//		else
-			g.drawHorizontalLine(start+(i*lineSpace), left, right);
+		g.drawHorizontalLine(start+(i*lineSpace), left, right);
 	}
-	
-//	g.setColour(Colours::yellow);
-//	g.fillRect(5, 40, 5, 200);
 }
-
-//void MixerChannelStrip::sliderValueChanged (Slider* slider)
-//{
-//	
-//	if (slider == mixer->getMasterChannelStrip()->faderCurveSlider)
-//	{
-//		// we need to keep the slider posisition the same and adjust the level
-//		double value = levelSlider->valueToProportionOfLength(levelSlider->getValue());
-//		levelSlider->setSkewFactor(slider->getValue());
-//		levelSlider->setValue(levelSlider->proportionOfLengthToValue(value));
-//	}
-//}
 
 void MixerChannelStrip::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property)
 {

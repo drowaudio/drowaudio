@@ -18,6 +18,7 @@
 		E1C37F7BF0772A00EEDE57F2 = { isa = PBXBuildFile; fileRef = 75E4F1D02D4324E833E2AB38; };
 		1221215FE2731751C6197959 = { isa = PBXBuildFile; fileRef = 5509BE7D3E60AF013A7E79ED; };
 		095EE384B807EB3B24D19F4C = { isa = PBXBuildFile; fileRef = 2C6D05330CE43257C6EEF3FB; };
+		523BC796DAB63590A8C2862F = { isa = PBXBuildFile; fileRef = 42C38F1E71FE93C1BCE6EF42; };
 		C03637BDF14CE773A2EB2DAA = { isa = PBXBuildFile; fileRef = 0C648E93ABE49244CBC7DBF4; };
 		70907C01255F6EC48A973F1A = { isa = PBXBuildFile; fileRef = 180BDA3231D2DCC2B887A5A2; };
 		71F00C8EA46C100F30023F74 = { isa = PBXBuildFile; fileRef = 81EEA219C740584AD974F680; };
@@ -59,6 +60,8 @@
 		5509BE7D3E60AF013A7E79ED = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksAudioFormatManager.cpp; path = ../../Source/main/DecksAudioFormatManager.cpp; sourceTree = SOURCE_ROOT; };
 		32AA67C67D2072FA2C7A62DD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioEngine.h; path = ../../Source/main/AudioEngine.h; sourceTree = SOURCE_ROOT; };
 		2C6D05330CE43257C6EEF3FB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioEngine.cpp; path = ../../Source/main/AudioEngine.cpp; sourceTree = SOURCE_ROOT; };
+		4A410750948391619D696866 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksColours.h; path = ../../Source/ui/DecksColours.h; sourceTree = SOURCE_ROOT; };
+		42C38F1E71FE93C1BCE6EF42 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksColours.cpp; path = ../../Source/ui/DecksColours.cpp; sourceTree = SOURCE_ROOT; };
 		6E9749BC4FAAD9949A00C732 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksLookAndFeel.h; path = ../../Source/ui/DecksLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		0C648E93ABE49244CBC7DBF4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksLookAndFeel.cpp; path = ../../Source/ui/DecksLookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
 		181AB0DA7C77E51D953A3D24 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainAppWindow.h; path = ../../Source/ui/MainAppWindow.h; sourceTree = SOURCE_ROOT; };
@@ -147,6 +150,8 @@
 				C313D1FAB5DEFB0EBBC2E62F,
 				D713F3EB0C0ADC86982CDC19 ); name = settings; sourceTree = "<group>"; };
 		890674A826B0DF06A65FE9B2 = { isa = PBXGroup; children = (
+				4A410750948391619D696866,
+				42C38F1E71FE93C1BCE6EF42,
 				6E9749BC4FAAD9949A00C732,
 				0C648E93ABE49244CBC7DBF4,
 				181AB0DA7C77E51D953A3D24,
@@ -273,6 +278,7 @@
 				E1C37F7BF0772A00EEDE57F2,
 				1221215FE2731751C6197959,
 				095EE384B807EB3B24D19F4C,
+				523BC796DAB63590A8C2862F,
 				C03637BDF14CE773A2EB2DAA,
 				70907C01255F6EC48A973F1A,
 				71F00C8EA46C100F30023F74,

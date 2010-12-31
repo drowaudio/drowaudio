@@ -9,7 +9,7 @@
 
 #include "DecksLookAndFeel.h"
 
-juce_ImplementSingleton(DecksLookAndFeel)
+juce_ImplementSingleton(DecksLookAndFeel);
 
 // creates the colours for components
 static const Colour createBaseColour (const Colour& buttonColour,
@@ -26,19 +26,6 @@ static const Colour createBaseColour (const Colour& buttonColour,
         return baseColour.contrasting (0.1f);
 	
     return baseColour;
-}
-
-//==============================================================================
-DecksLookAndFeel::DecksLookAndFeel()
-{
-	for (int i = 0; i < noCustomColours; i++) {
-		decksColours.add(Colour());
-	}
-	
-	decksColours.getReference(backgroundColour) = Colours::grey;
-	decksColours.getReference(panelColour) = Colour::greyLevel(0.2);
-	decksColours.getReference(panelLineColour) = Colour::greyLevel(0.6);
-	decksColours.getReference(meterLineColour) = Colour::greyLevel(0.5);
 }
 
 //==============================================================================

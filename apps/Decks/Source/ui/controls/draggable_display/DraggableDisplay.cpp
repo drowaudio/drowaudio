@@ -114,7 +114,7 @@ void DraggableDisplay::resized()
 
 void DraggableDisplay::paint (Graphics &g)
 {
-	g.setColour(DecksLookAndFeel::getInstance()->getDecksColour(DecksLookAndFeel::panelColour));
+	g.setColour(DecksColours::getInstance()->getColour(DecksColours::panelColour));
 	g.fillAll();
 }
 

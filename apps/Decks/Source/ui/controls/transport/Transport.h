@@ -11,6 +11,7 @@
 #define _TRANSPORT__H_
 
 #include <juce/juce.h>
+#include "../../../ui/DecksColours.h"
 #include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
 #include "DeckTransport.h"

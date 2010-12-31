@@ -13,7 +13,8 @@
 
 #include <dRowAudio/dRowAudio.h>
 
-class DecksAudioFormatManager : public AudioFormatManager
+class DecksAudioFormatManager : public AudioFormatManager,
+								public DeletedAtShutdown
 {
 public:
 		

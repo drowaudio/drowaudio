@@ -11,6 +11,7 @@
 #define _DECKS_MASTERCHANNELSTRIP__H_
 
 #include <juce/juce.h>
+#include "../../../ui/DecksColours.h"
 #include "../../DecksLookAndFeel.h"
 #include "../../../main/DeckManager.h"
 #include "../../../main/DefaultSettings.h"

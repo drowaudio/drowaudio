@@ -27,16 +27,6 @@
 #ifndef _MainAppWindow_H__
 #define _MainAppWindow_H__
 
-/*
- Using <juce/juce.h> here assumes the juce source tree is accessible via one
- of the following paths (depending on the Xcode project settings)
- 
- /Developer/SDKs/MacOSX10.5.sdk/usr/include/
- /Developer/SDKs/MacOSX10.4u.sdk/usr/include/
- /usr/include
- 
- On other platforms just use juce.h making it available in the search path 
- */
 #include <juce/juce.h>
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../main/CommandIDs.h"
@@ -69,6 +59,8 @@ public:
 	// whole shebang, but that's probably not necessary, and can be tricky to maintain!
 
 	void showQuitScreen();
+	
+	void lookAndFeelChanged();
 	
 	//==============================================================================
     ApplicationCommandTarget* getNextCommandTarget();

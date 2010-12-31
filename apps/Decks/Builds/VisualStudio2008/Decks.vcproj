@@ -146,6 +146,8 @@
           <File RelativePath="..\..\Source\main\AudioEngine.cpp"/>
         </Filter>
         <Filter Name="ui">
+          <File RelativePath="..\..\Source\ui\DecksColours.h"/>
+          <File RelativePath="..\..\Source\ui\DecksColours.cpp"/>
           <File RelativePath="..\..\Source\ui\DecksLookAndFeel.h"/>
           <File RelativePath="..\..\Source\ui\DecksLookAndFeel.cpp"/>
           <File RelativePath="..\..\Source\ui\MainAppWindow.h"/>

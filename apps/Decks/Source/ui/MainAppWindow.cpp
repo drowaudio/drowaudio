@@ -29,19 +29,16 @@
  */
 
 #include "MainAppWindow.h"
+#include "DecksColours.h"
 
 ApplicationCommandManager* commandManager = 0;
 
 //==============================================================================
 MainAppWindow::MainAppWindow()
-:   
-// Initialise the base 'DocumentWindow'...
-DocumentWindow (
-				ProjectInfo::projectName,		// Set the text to use for the title
-				Colours::darkgrey,				// Set the colour of the window
-				DocumentWindow::allButtons,		// Set which buttons are displayed
-				true							// This window should be added to the desktop
-				)
+:   DocumentWindow (ProjectInfo::projectName,		// Set the text to use for the title
+					Colours::darkgrey,				// Set the colour of the window
+					DocumentWindow::allButtons,		// Set which buttons are displayed
+					true)							// This window should be added to the desktop
 {
 	setUpLookAndFeel();
 	LookAndFeel::setDefaultLookAndFeel(DecksLookAndFeel::getInstance());
@@ -107,16 +104,28 @@ void MainAppWindow::showQuitScreen()
 	contentComponent->showQuitScreen();
 }
 
+void MainAppWindow::lookAndFeelChanged()
+{
+	DBG("Look and feel changed");
+}
+
 //==============================================================================
 void MainAppWindow::setUpLookAndFeel()
 {
+	DecksColours *decksColours = DecksColours::getInstance();
 	DecksLookAndFeel *laf = DecksLookAndFeel::getInstance();
-	laf->setColour(TextButton::buttonColourId, Colours::darkgrey);
-	laf->setColour(TextButton::buttonOnColourId, Colours::lightgrey);
-	laf->setColour(Slider::rotarySliderFillColourId, Colours::darkgrey);
-	laf->setColour(Slider::rotarySliderOutlineColourId, Colour::greyLevel(1));
+	
+//	laf->setColour(TextButton::buttonColourId, Colours::darkgrey);
+//	laf->setColour(TextButton::buttonOnColourId, Colours::lightgrey);
+	laf->setColour(TextButton::buttonColourId, decksColours->getColour(DecksColours::buttonColour).withBrightness(0.4));
+	laf->setColour(TextButton::buttonOnColourId, decksColours->getColour(DecksColours::buttonColour).withBrightness(0.8));
+//	laf->setColour(Slider::rotarySliderFillColourId, Colours::darkgrey);
+//	laf->setColour(Slider::rotarySliderOutlineColourId, Colour::greyLevel(1));
+	laf->setColour(Slider::rotarySliderFillColourId, decksColours->getColour(DecksColours::rotarySliderColour).withBrightness(0.4));
+	laf->setColour(Slider::rotarySliderOutlineColourId, decksColours->getColour(DecksColours::rotarySliderColour).withBrightness(0.8));
 	laf->setColour(Slider::trackColourId, Colour::greyLevel(0.1));
-	laf->setColour(Label::textColourId, Colour::greyLevel(0.4f));	
+//	laf->setColour(Label::textColourId, Colour::greyLevel(0.4f));	
+	laf->setColour(Label::textColourId, decksColours->getColour(DecksColours::rotarySliderColour));	
 }
 
 //==============================================================================

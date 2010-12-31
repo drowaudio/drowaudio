@@ -11,9 +11,10 @@
 #define _DRAGGABLEDISPLAY__H_
 
 #include <dRowAudio/dRowAudio.h>
+#include "../../DecksLookAndFeel.h"
+#include "../../DecksColours.h"
 #include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
-#include "../../DecksLookAndFeel.h"
 
 class DraggableDisplay :	public Component,
 							public SliderListener,
