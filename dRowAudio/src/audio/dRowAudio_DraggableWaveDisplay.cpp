@@ -11,140 +11,212 @@ BEGIN_DROWAUDIO_NAMESPACE
 
 #include "dRowAudio_DraggableWaveDisplay.h"
 
-DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate)
-	:	filePlayer(sourceToBeUsed),
-		currentSampleRate(sampleRate),
-		playheadPos(0.5f),
-		zoomFactor(1.0f),
-		isDraggable(true)
+DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed, AudioThumbnailCache *cacheToUse)
+:	filePlayer(sourceToBeUsed),
+	currentSampleRate(44100),
+	timePerPixel(1.0),
+	playheadPos(0.5f),
+	zoomFactor(1.0f),
+	sourceSamplesPerThumbSample(2048),
+	thumbnailCache(cacheToUse),
+	deleteCache(thumbnailCache ? false : true),
+	isDraggable(true)
 {
 	formatManager = filePlayer->getAudioFormatManager();
-
-	// instansiate the cache and the thumbnail
-	thumbnailCache = new AudioThumbnailCache(2);
-	thumbnailViewLow = new AudioThumbnail(512, *formatManager, *thumbnailCache);
 	
+	// instansiate the cache and the thumbnail
+	if (thumbnailCache == 0)
+		thumbnailCache = new AudioThumbnailCache(2);
+	thumbnailView = new AudioThumbnail(sourceSamplesPerThumbSample, *formatManager, *thumbnailCache);
+
+	for (int i = 0; i < numWaveformImages; i++) {
+		waveformImage.add(new WaveformSection());
+		waveformImage[i]->img = new Image();
+	}
+	
+	setZoomFactor(zoomFactor);
+	timerCallback(waveformZoomChanged);
+
 	// register with the file player to recieve update messages
+	filePlayer->addListener(this);
 	filePlayer->addChangeListener(this);
 }
 
 DraggableWaveDisplay::~DraggableWaveDisplay()
 {
-	deleteAndZero(thumbnailCache);
-	deleteAndZero(thumbnailViewLow);
-	
+	filePlayer->removeListener(this);
 	filePlayer->removeChangeListener(this);
+
+	if (!deleteCache)
+		thumbnailCache.release();
 }
 
 //====================================================================================
 void DraggableWaveDisplay::resized()
 {
-	currentWidth = getWidth();
-	currentHeight = getHeight();
+//	const int w = currentWidth = getWidth();
+//	const int h = currentHeight = getHeight();
 }
 
 void DraggableWaveDisplay::paint(Graphics &g)
 {
-	double centreTime = playheadPos * zoomFactor;
-	
-	g.fillAll(Colours::black);
-	
-	g.setColour(Colours::lightgreen);
-	thumbnailViewLow->drawChannel(g, Rectangle<int> (0, 0, currentWidth, currentHeight),
-								  currentPos-centreTime, zoomFactor+currentPos-centreTime,
-								  0, 1.0f);
-//	thumbnailViewLow->drawChannel(g, 0, currentHeight*0.5f, currentWidth, currentHeight*0.5f,
-//								  currentPos-centreTime, zoomFactor+currentPos-centreTime,
-//								  1, 1.0f);
+	const int w = getWidth();
+	const int h = getHeight();
+		
+	g.setColour(Colours::darkgrey);
+	g.fillAll();
+	if (waveformImage[currentImage]->img->isValid())
+	{
+		int startXPos = (playheadPos * w) - timeToPixels(filePlayer->getCurrentPosition());
+		startXPos += timeToPixels(waveformImage[currentImage]->startTime);
+		int nextXPos = startXPos + waveformImage[currentImage]->img->getWidth();
+		int prevXPos = startXPos - waveformImage[currentImage]->img->getWidth();
+		
+		// draw current image
+		g.drawImage(*waveformImage[currentImage]->img,
+					startXPos, 0, waveformImage[currentImage]->img->getWidth(), h,
+					0, 0,
+					waveformImage[currentImage]->img->getWidth(), waveformImage[currentImage]->img->getHeight());
+		
+		// draw next image
+		if (startXPos < -w)
+		{
+			g.drawImage(*waveformImage[nextImage]->img,
+						nextXPos, 0, waveformImage[nextImage]->img->getWidth(), h,
+						0, 0,
+						waveformImage[nextImage]->img->getWidth(), waveformImage[nextImage]->img->getHeight());
+		}
+		else if (startXPos > 0) // draw previous image
+		{
+			g.drawImage(*waveformImage[previousImage]->img,
+						prevXPos, 0, waveformImage[previousImage]->img->getWidth(), h,
+						0, 0,
+						waveformImage[previousImage]->img->getWidth(), waveformImage[previousImage]->img->getHeight());			
+		}
+
+		// cycle images if necessary
+		if (nextXPos < 0 ) {
+			DBG("cycle images forward");
+			cycleImages(true);
+		}
+		else if (startXPos > w) {
+			DBG("cycle images back");
+			cycleImages(false);
+		}
+	}
 	
 	g.setColour (Colours::black);
-	g.drawVerticalLine(currentWidth * playheadPos - 1, 0, currentHeight);
-	g.drawVerticalLine(currentWidth * playheadPos + 1, 0, currentHeight);
+	g.drawVerticalLine(w * playheadPos - 1, 0, h);
+	g.drawVerticalLine(w * playheadPos + 1, 0, h);
 
 	g.setColour(Colours::white);
-	g.drawVerticalLine(currentWidth * playheadPos, 0, currentHeight);	
+	g.drawVerticalLine(w * playheadPos, 0, h);	
 }
 //====================================================================================
 void DraggableWaveDisplay::timerCallback(const int timerId)
 {
 	if (timerId == waveformUpdated)
 	{
-		currentPos = filePlayer->getCurrentPosition();
-		repaint();
+		movedX = timeToPixels(filePlayer->getCurrentPosition());
+		
+		if (!movedX.areEqual())
+			repaint();
 	}
 	else if (timerId == waveformMoved)
 	{
 		if (isMouseDown)
 		{
-			lastMouseX = currentMouseX;
 			Point<int> mousePoint = getMouseXYRelative();
-			currentMouseX = mousePoint.getX();
+			mouseX = mousePoint.getX();
+			const int currentXDrag = mouseX.getDifference();
 			
-			currentXDrag = currentMouseX - lastMouseX;
-			
-			double position = currentPos - (currentXDrag * currentXScale);
-			// limit position to the bounds of the file
-			if (position < 0.0)
-				position = 0.0;
-			else if (position > fileLength)
-				position = fileLength;
-						
-			filePlayer->setPosition(position);
-			
-			if (currentXDrag == 0) {
-				if(filePlayer->isPlaying())
-					filePlayer->stop();
+			if (currentXDrag)
+			{
+				double position = (filePlayer->getCurrentPosition() - pixelsToTime(currentXDrag));
+							
+				filePlayer->setPosition(jlimit(0.0, fileLengthSecs, position));
+				
+//				if(!filePlayer->isPlaying())
+//					filePlayer->start();
+				
+				repaint();
 			}
-			else
-				if(!filePlayer->isPlaying())
-					filePlayer->start();
-			
-			repaint();
+//			else {
+//				if(filePlayer->isPlaying())
+//					filePlayer->stop();
+//			}			
+
 		}
 	}
 	else if (timerId == waveformLoading)
 	{
-		repaint();
-		
-		if(thumbnailViewLow->isFullyLoaded())
+		if(thumbnailView->isFullyLoaded())
 			stopTimer(waveformLoading);
+				
+		refreshWaveform(currentImage);
+		refreshWaveform(nextImage);
+	}
+	else if (timerId == waveformZoomChanged)
+	{
+		createNewImageForWaveform(previousImage);
+		createNewImageForWaveform(currentImage);
+		createNewImageForWaveform(nextImage);
+
+		refreshWaveform(previousImage);
+		refreshWaveform(currentImage);
+		refreshWaveform(nextImage);
+
+		stopTimer(waveformZoomChanged);
 	}
 }
 
 void DraggableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedObject)
 {
-	if (changedObject == filePlayer)
+}
+
+void DraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
+{
+	if (player == filePlayer)
 	{
-		fileLength = filePlayer->getTotalLength() / currentSampleRate;
-	
-		File newFile(((FilteringAudioFilePlayer*)changedObject)->getFile());
+		currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
+		fileLengthSecs = filePlayer->getTotalLength() / currentSampleRate;
+		
+		DBG(filePlayer->getFileName()<<" - "<<currentSampleRate<<" - "<<fileLengthSecs);
+		
+		File newFile(filePlayer->getFilePath());
 		FileInputSource* fileInputSource = new FileInputSource (newFile);
-		thumbnailViewLow->setSource(fileInputSource);
+		thumbnailView->setSource(fileInputSource);
+		
+		createNewImageForWaveform(currentImage);
+		createNewImageForWaveform(previousImage);
+		createNewImageForWaveform(nextImage);
+		
+		waveformImage[currentImage]->startTime = filePlayer->getCurrentPosition();
+		waveformImage[nextImage]->startTime = waveformImage[currentImage]->startTime + pixelsToTime(getWidth()*2);
 		
 		startTimer(waveformLoading, 25);
 		startTimer(waveformUpdated, 60);
 	}
 }
-//====================================================================================
-void DraggableWaveDisplay::setSampleRate (double newSampleRate)
-{
-	currentSampleRate = newSampleRate;
-	
-	fileLength = filePlayer->getTotalLength() / currentSampleRate;
-}
 
+//====================================================================================
 void DraggableWaveDisplay::setZoomFactor (float newZoomFactor)
 {
+	const int w = getWidth();
+	DBG("new zoom factor: "<<(float)zoomFactor);
 	zoomFactor = newZoomFactor;
-	currentXScale = zoomFactor / currentWidth;
 	
-	repaint();
+	samplesPerPixel = sourceSamplesPerThumbSample / zoomFactor;
+	timePerPixel = samplesPerPixel.getCurrent() / currentSampleRate;
+
+	if (!samplesPerPixel.areEqual()) {
+		startTimer(waveformZoomChanged, 500);
+	}
 }
 
 void DraggableWaveDisplay::setPlayheadPosition(float newPlayheadPosition)
 {
-	jlimit(0.0f, 1.0f, newPlayheadPosition);
-	playheadPos = newPlayheadPosition;
+	playheadPos = jlimit(0.0f, 1.0f, newPlayheadPosition);
 	
 	repaint();
 }
@@ -157,25 +229,26 @@ bool DraggableWaveDisplay::getDraggable ()
 {
 	return isDraggable;
 }
+
 //==============================================================================
 void DraggableWaveDisplay::mouseDown(const MouseEvent &e)
 {
-	// update scale
-	currentXScale = zoomFactor / currentWidth;
+	const int w = getWidth();
 	
-	lastMouseX = e.x;
-	currentMouseX = e.x;
+	mouseX.setBoth(e.x);
 	isMouseDown = true;
 	
 	if (isDraggable)
 	{
 		if (filePlayer->isPlaying())
+		{
 			shouldBePlaying = true;
+			filePlayer->stop();
+		}
 		else
 			shouldBePlaying = false;
 		
 		setMouseCursor(MouseCursor::DraggingHandCursor);
-//		enableUnboundedMouseMovement(true, true);
 		
 		startTimer(waveformMoved, 40);
 	}
@@ -200,8 +273,84 @@ void DraggableWaveDisplay::mouseUp(const MouseEvent &e)
 
 void DraggableWaveDisplay::mouseDrag(const MouseEvent &e)
 {
-//	currentMouseX = e.x;
 }
+
+//==============================================================================	
+double DraggableWaveDisplay::pixelsToTime(double numPixels)
+{
+	return numPixels * timePerPixel;
+}
+
+double DraggableWaveDisplay::timeToPixels(double timeInSecs)
+{
+	return timeInSecs / timePerPixel;
+}
+
+void DraggableWaveDisplay::createNewImageForWaveform(int waveformNumber)
+{
+	const int w = getWidth();
+	const int h = getHeight();
+
+	if (w > 0 && h > 0 && filePlayer->getFileName() != String::empty)
+	{
+		waveformImage.set(waveformNumber, new WaveformSection);
+		waveformImage[waveformNumber]->img = new Image(Image::RGB, (w * 2), h, true);
+	}	
+}
+
+void DraggableWaveDisplay::refreshWaveform(int waveNum)
+{	
+	if(waveformImage[waveNum]->img->isValid())
+	{
+		const int w = getWidth();
+		const int h = getHeight();
+		
+		Graphics g(*waveformImage[waveNum]->img);
+		waveformImage[waveNum]->img->clear(waveformImage[waveNum]->img->getBounds());
+
+		g.fillAll(Colours::black);
+		g.setColour(Colours::lightgreen);
+		thumbnailView->drawChannel(g, Rectangle<int> (0, 0, waveformImage[waveNum]->img->getWidth(), waveformImage[waveNum]->img->getHeight()),
+								   waveformImage[waveNum]->startTime, waveformImage[waveNum]->startTime + pixelsToTime(waveformImage[waveNum]->img->getWidth())/*fileLengthSecs*/,
+								   0, 1.0f);
+		
+//		if (waveNum == currentImage)
+//			g.setColour(Colours::red);
+//		else if (waveNum == nextImage)
+//			g.setColour(Colours::purple);
+//
+//		g.drawRect(0, 0, 2*w, h, 1);
+		repaint();
+	}	
+}
+
+void DraggableWaveDisplay::cycleImages(bool cycleForwards)
+{
+	if (cycleForwards) 
+	{
+		WaveformSection *temp = waveformImage[previousImage];
+		
+		waveformImage.set(previousImage, waveformImage[currentImage], false);
+		waveformImage.set(currentImage, waveformImage[nextImage], false);
+		waveformImage.set(nextImage, temp, false);
+		
+		waveformImage[nextImage]->startTime = waveformImage[currentImage]->startTime + pixelsToTime(getWidth() * 2);
+		refreshWaveform(nextImage);
+	}
+	else
+	{
+		WaveformSection *temp = waveformImage[nextImage];
+		
+		waveformImage.set(nextImage, waveformImage[currentImage], false);
+		waveformImage.set(currentImage, waveformImage[previousImage], false);
+		waveformImage.set(previousImage, temp, false);
+		
+		waveformImage[previousImage]->startTime = waveformImage[currentImage]->startTime - pixelsToTime(getWidth() * 2);
+		refreshWaveform(previousImage);
+	}
+
+}
+
 //==============================================================================
 bool DraggableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
 {
@@ -213,7 +362,7 @@ bool DraggableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
 }
 void DraggableWaveDisplay::fileDragEnter (const StringArray &files, int x, int y)
 {
-		setMouseCursor(MouseCursor::CopyingCursor);
+	setMouseCursor(MouseCursor::CopyingCursor);
 }
 void DraggableWaveDisplay::fileDragExit (const StringArray &files)
 {
@@ -224,6 +373,7 @@ void DraggableWaveDisplay::filesDropped (const StringArray &files, int x, int y)
 	filePlayer->setFile(files[0]);
 	setMouseCursor(MouseCursor::NormalCursor);
 }
-//==============================================================================	
+
+//==============================================================================
 
 END_DROWAUDIO_NAMESPACE

@@ -13,35 +13,51 @@
 
 #include "dRowAudio_AudioUtility.h";
 #include "dRowAudio_FilteringAudioFilePlayer.h";
+#include "../utility/dRowAudio_StateVariable.h"
 
 /**
 	A class to display the waveform of an audio file.
 	
 	This will load an audio file and display its waveform. The waveform can then
 	be dragged to reposition the transport source. The horizontal zoom can be
-	adjusted and you can change the file loaded by dragging a new file onto the display. 
+	adjusted and you can change the file loaded by dragging a new file onto the display.
+ 
+	@todo	On zoom change stretch image first then re-buffer after timeout (use a state variable for zoomFactor?)
+	@todo	Load 3 images, past, present and future and re-buffer when necessary, only re-buffer in the
+			current direction, swap pointers for the other.
+	@todo	Check to see if the cache has the wave data, if not just fill black
+	@todo	Render images on a background thread, possibly using a GraphicalComponentManager?
  */
-class DraggableWaveDisplay : public Component,
-							 public MultiTimer,
-							 public ChangeListener,
-							 public FileDragAndDropTarget
+class DraggableWaveDisplay :	public Component,
+								public MultiTimer,
+								public ChangeListener,
+								public FilteringAudioFilePlayer::Listener,
+								public FileDragAndDropTarget
 {
 public:
+	
+	enum WavefomImages {
+		previousImage = 0,
+		currentImage,
+		nextImage,
+		numWaveformImages
+	};
 	
 	/// Used to start and stop the various internal timers
 	enum
 	{
 		waveformUpdated,
 		waveformLoading,
-		waveformMoved
+		waveformMoved,
+		waveformZoomChanged
 	};
-	
+		
 	/**
 		Creates the display.
 		The file player associated with the display must be passed in along with
 		the current sample rate. This can later be changed with setSampleRate.
 	 */
-	DraggableWaveDisplay (FilteringAudioFilePlayer* sourceToBeUsed, double sampleRate);
+	explicit DraggableWaveDisplay (FilteringAudioFilePlayer* sourceToBeUsed, AudioThumbnailCache *cacheToUse =0);
 	
 	/// Destructor
 	~DraggableWaveDisplay ();
@@ -50,14 +66,15 @@ public:
 	void resized ();
 	
 	void paint (Graphics &g);
+	
 	//====================================================================================
 	void timerCallback (const int timerId);
 	
 	void changeListenerCallback(ChangeBroadcaster* changedObject);
-	//====================================================================================
-	/// Use this to update the sample rate if it changes
-	void setSampleRate (double newSampleRate);
 	
+	void fileChanged (FilteringAudioFilePlayer *player);
+	
+	//====================================================================================
 	/// Sets the current horizontal zoom
 	void setZoomFactor (float newZoomFactor);
 	
@@ -69,6 +86,7 @@ public:
 	
 	/// Turns dragging to reposition the transport on or off
 	void setDraggable (bool isWaveformDraggable);
+	
 	/// Returns true if dragging the waveform will reposition the audio source 
 	bool getDraggable ();
 	
@@ -78,31 +96,44 @@ public:
 	void mouseUp(const MouseEvent &e);
 	
 	void mouseDrag(const MouseEvent &e);
+	
 	//==============================================================================
 	bool isInterestedInFileDrag (const StringArray &files);
 	void fileDragEnter (const StringArray &files, int x, int y);
 	void fileDragExit (const StringArray &files);
 	void filesDropped (const StringArray &files, int x, int y);
+	
 	//==============================================================================	
 	
 private:
 	
+	struct WaveformSection {
+		double startTime;
+		ScopedPointer<Image> img;
+	};
+	
+	double pixelsToTime(double numPixels);
+	double timeToPixels(double timeInSecs);
+	void createNewImageForWaveform(int waveformNumber);
+	void refreshWaveform(int waveformNumber);
+	void cycleImages(bool cycleForwards);
+	
 	FilteringAudioFilePlayer* filePlayer;
-	double fileLength, currentSampleRate;
+	double fileLengthSecs, currentSampleRate, timePerPixel;
+	StateVariable<int> samplesPerPixel;
+	float playheadPos, zoomFactor;
 	
 	// thumbnail classes
-	AudioFormatManager* formatManager;
-	AudioThumbnailCache* thumbnailCache;
-	AudioThumbnail* thumbnailViewLow;
-	
-	int currentWidth, currentHeight;
-	double currentPos;
-	float playheadPos;
-	
-	float zoomFactor, currentXScale;
+	const int sourceSamplesPerThumbSample;
+	AudioFormatManager *formatManager;
+	ScopedPointer<AudioThumbnailCache> thumbnailCache;
+	ScopedPointer<AudioThumbnail> thumbnailView;
+	bool deleteCache;
+
+	OwnedArray<WaveformSection> waveformImage;
 	
 	bool isMouseDown, isDraggable, shouldBePlaying;
-	int currentXDrag, currentMouseX, lastMouseX;
+	StateVariable<int> mouseX, movedX;
 	
 	JUCE_LEAK_DETECTOR (DraggableWaveDisplay);
 };

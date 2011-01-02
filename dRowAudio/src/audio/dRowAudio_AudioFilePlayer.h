@@ -66,7 +66,7 @@ public:
 	AudioFormatManager* getAudioFormatManager() { return formatManager; }
 
 private:	
-	AudioFormatManager* formatManager;
+	ScopedPointer<AudioFormatManager> formatManager;
 	AudioFormatReaderSource* currentAudioFileSource;
 	
 	/// Create the reader from a given path
