@@ -15,8 +15,8 @@ DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeU
 :	filePlayer(sourceToBeUsed),
 	currentSampleRate(44100),
 	timePerPixel(1.0),
-	playheadPos(0.5f),
 	zoomFactor(1.0f),
+	playheadPos(0.5f),
 	sourceSamplesPerThumbSample(2048),
 	thumbnailCache(cacheToUse),
 	deleteCache(thumbnailCache ? false : true),
@@ -30,11 +30,11 @@ DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeU
 	thumbnailView = new AudioThumbnail(sourceSamplesPerThumbSample, *formatManager, *thumbnailCache);
 
 	for (int i = 0; i < numWaveformImages; i++) {
-		waveformImage.add(new WaveformSection());
-		waveformImage[i]->img = new Image();
+		waveImgs.add(new WaveformSection());
+		waveImgs[i]->img = new Image();
 	}
 	
-	setZoomFactor(zoomFactor);
+	setZoomFactor(zoomFactor.getCurrent());
 	timerCallback(waveformZoomChanged);
 
 	// register with the file player to recieve update messages
@@ -54,8 +54,7 @@ DraggableWaveDisplay::~DraggableWaveDisplay()
 //====================================================================================
 void DraggableWaveDisplay::resized()
 {
-//	const int w = currentWidth = getWidth();
-//	const int h = currentHeight = getHeight();
+	startTimer(waveformZoomChanged, 500);
 }
 
 void DraggableWaveDisplay::paint(Graphics &g)
@@ -63,44 +62,56 @@ void DraggableWaveDisplay::paint(Graphics &g)
 	const int w = getWidth();
 	const int h = getHeight();
 		
-	g.setColour(Colours::darkgrey);
+	g.setColour(Colours::black);
 	g.fillAll();
-	if (waveformImage[currentImage]->img->isValid())
-	{
-		int startXPos = (playheadPos * w) - timeToPixels(filePlayer->getCurrentPosition());
-		startXPos += timeToPixels(waveformImage[currentImage]->startTime);
-		int nextXPos = startXPos + waveformImage[currentImage]->img->getWidth();
-		int prevXPos = startXPos - waveformImage[currentImage]->img->getWidth();
-		
+	
+	if (waveImgs[currentImage]->img->isValid())
+	{		
+		float zoomLeftScale;
+		float zoomScale = zoomLeftScale = 1.0f;
+		if (!zoomFactor.areAlmostEqual(0.01))
+		{
+			zoomScale = zoomFactor.getCurrent() / zoomFactor.getPrevious();
+			zoomLeftScale = (1.0f + zoomScale) * 0.5;
+		}
+	
+		// calculate starting positions
+		const int startPixelOffset = (playheadPos * w) - (timeToPixels(filePlayer->getCurrentPosition()) * zoomScale);
+		int currXPos = startPixelOffset + (timeToPixels(waveImgs[currentImage]->startTime) * zoomScale);
+		int nextXPos = currXPos + waveImgs[currentImage]->img->getWidth() * zoomScale;
+		int prevXPos = currXPos - waveImgs[currentImage]->img->getWidth() * zoomScale;		
+				
 		// draw current image
-		g.drawImage(*waveformImage[currentImage]->img,
-					startXPos, 0, waveformImage[currentImage]->img->getWidth(), h,
+		g.drawImage(*waveImgs[currentImage]->img,
+					currXPos, 0, waveImgs[currentImage]->img->getWidth() * zoomScale, h,
 					0, 0,
-					waveformImage[currentImage]->img->getWidth(), waveformImage[currentImage]->img->getHeight());
+					waveImgs[currentImage]->img->getWidth(), waveImgs[currentImage]->img->getHeight());
 		
 		// draw next image
-		if (startXPos < -w)
+		if (currXPos < -w)
 		{
-			g.drawImage(*waveformImage[nextImage]->img,
-						nextXPos, 0, waveformImage[nextImage]->img->getWidth(), h,
+			g.drawImage(*waveImgs[nextImage]->img,
+						nextXPos, 0, waveImgs[nextImage]->img->getWidth() * zoomScale, h,
 						0, 0,
-						waveformImage[nextImage]->img->getWidth(), waveformImage[nextImage]->img->getHeight());
+						waveImgs[nextImage]->img->getWidth(), waveImgs[nextImage]->img->getHeight());
+//			g.setColour(Colours::green);
+//			g.drawRect(nextXPos, 0, int(waveImgs[nextImage]->img->getWidth() * zoomScale), h, 2);
 		}
-		else if (startXPos > 0) // draw previous image
+		else if (currXPos > 0 && waveImgs[currentImage]->startTime >= 0.00001) // draw previous image
 		{
-			g.drawImage(*waveformImage[previousImage]->img,
-						prevXPos, 0, waveformImage[previousImage]->img->getWidth(), h,
+			g.drawImage(*waveImgs[previousImage]->img,
+						prevXPos, 0, waveImgs[previousImage]->img->getWidth() * zoomScale, h,
 						0, 0,
-						waveformImage[previousImage]->img->getWidth(), waveformImage[previousImage]->img->getHeight());			
+						waveImgs[previousImage]->img->getWidth(), waveImgs[previousImage]->img->getHeight());			
+//			g.setColour(Colours::red);
+//			g.drawRect(prevXPos, 0, int(waveImgs[previousImage]->img->getWidth() * zoomScale), h, 2);
 		}
 
 		// cycle images if necessary
 		if (nextXPos < 0 ) {
-			DBG("cycle images forward");
 			cycleImages(true);
 		}
-		else if (startXPos > w) {
-			DBG("cycle images back");
+		else if (currXPos > w) {
 			cycleImages(false);
 		}
 	}
@@ -126,8 +137,7 @@ void DraggableWaveDisplay::timerCallback(const int timerId)
 	{
 		if (isMouseDown)
 		{
-			Point<int> mousePoint = getMouseXYRelative();
-			mouseX = mousePoint.getX();
+			mouseX = getMouseXYRelative().getX();;
 			const int currentXDrag = mouseX.getDifference();
 			
 			if (currentXDrag)
@@ -153,11 +163,17 @@ void DraggableWaveDisplay::timerCallback(const int timerId)
 		if(thumbnailView->isFullyLoaded())
 			stopTimer(waveformLoading);
 				
+		numSamplesFinished = thumbnailView->getNumSamplesFinished();
+		
 		refreshWaveform(currentImage);
 		refreshWaveform(nextImage);
 	}
 	else if (timerId == waveformZoomChanged)
 	{
+		zoomFactor = zoomFactor.getCurrent();
+		samplesPerPixel = sourceSamplesPerThumbSample / zoomFactor.getCurrent();
+		timePerPixel = samplesPerPixel.getCurrent() / currentSampleRate;
+
 		createNewImageForWaveform(previousImage);
 		createNewImageForWaveform(currentImage);
 		createNewImageForWaveform(nextImage);
@@ -191,10 +207,10 @@ void DraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
 		createNewImageForWaveform(previousImage);
 		createNewImageForWaveform(nextImage);
 		
-		waveformImage[currentImage]->startTime = filePlayer->getCurrentPosition();
-		waveformImage[nextImage]->startTime = waveformImage[currentImage]->startTime + pixelsToTime(getWidth()*2);
+		waveImgs[currentImage]->startTime = filePlayer->getCurrentPosition();
+		waveImgs[nextImage]->startTime = waveImgs[currentImage]->startTime + pixelsToTime(getWidth()*2);
 		
-		startTimer(waveformLoading, 25);
+		startTimer(waveformLoading, 40);
 		startTimer(waveformUpdated, 60);
 	}
 }
@@ -202,16 +218,16 @@ void DraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
 //====================================================================================
 void DraggableWaveDisplay::setZoomFactor (float newZoomFactor)
 {
-	const int w = getWidth();
-	DBG("new zoom factor: "<<(float)zoomFactor);
-	zoomFactor = newZoomFactor;
+	zoomFactor.setOnlyCurrent(newZoomFactor);
 	
-	samplesPerPixel = sourceSamplesPerThumbSample / zoomFactor;
-	timePerPixel = samplesPerPixel.getCurrent() / currentSampleRate;
+	int tempSamplesPerPixel = sourceSamplesPerThumbSample / zoomFactor.getCurrent();
+//	timePerPixel = samplesPerPixel.getCurrent() / currentSampleRate;
 
-	if (!samplesPerPixel.areEqual()) {
+	if (samplesPerPixel.getCurrent() != tempSamplesPerPixel) {
 		startTimer(waveformZoomChanged, 500);
 	}
+
+	repaint();
 }
 
 void DraggableWaveDisplay::setPlayheadPosition(float newPlayheadPosition)
@@ -291,35 +307,33 @@ void DraggableWaveDisplay::createNewImageForWaveform(int waveformNumber)
 	const int w = getWidth();
 	const int h = getHeight();
 
-	if (w > 0 && h > 0 && filePlayer->getFileName() != String::empty)
+	if (/*w > 0 && h > 0 &&*/ filePlayer->getFileName() != String::empty)
 	{
-		waveformImage.set(waveformNumber, new WaveformSection);
-		waveformImage[waveformNumber]->img = new Image(Image::RGB, (w * 2), h, true);
+		waveImgs.set(waveformNumber, new WaveformSection);
+		int imageWidth = w * 2;
+		waveImgs[waveformNumber]->img = new Image(Image::RGB, imageWidth, h, true);
 	}	
 }
 
 void DraggableWaveDisplay::refreshWaveform(int waveNum)
 {	
-	if(waveformImage[waveNum]->img->isValid())
+	if(waveImgs[waveNum]->img->isValid())
 	{
-		const int w = getWidth();
-		const int h = getHeight();
-		
-		Graphics g(*waveformImage[waveNum]->img);
-		waveformImage[waveNum]->img->clear(waveformImage[waveNum]->img->getBounds());
+		Graphics g(*waveImgs[waveNum]->img);
+		waveImgs[waveNum]->img->clear(waveImgs[waveNum]->img->getBounds());
 
-		g.fillAll(Colours::black);
-		g.setColour(Colours::lightgreen);
-		thumbnailView->drawChannel(g, Rectangle<int> (0, 0, waveformImage[waveNum]->img->getWidth(), waveformImage[waveNum]->img->getHeight()),
-								   waveformImage[waveNum]->startTime, waveformImage[waveNum]->startTime + pixelsToTime(waveformImage[waveNum]->img->getWidth())/*fileLengthSecs*/,
-								   0, 1.0f);
-		
-//		if (waveNum == currentImage)
-//			g.setColour(Colours::red);
-//		else if (waveNum == nextImage)
-//			g.setColour(Colours::purple);
-//
-//		g.drawRect(0, 0, 2*w, h, 1);
+		const double startTime = waveImgs[waveNum]->startTime;
+		const double endTime = startTime + pixelsToTime(waveImgs[waveNum]->img->getWidth());
+
+		if (thumbnailView->isFullyLoaded() || (numSamplesFinished > (startTime * currentSampleRate)))
+		{
+			g.fillAll(Colours::black);
+			g.setColour(Colours::lightgreen);
+			thumbnailView->drawChannel(g, Rectangle<int> (0, 0, waveImgs[waveNum]->img->getWidth(), waveImgs[waveNum]->img->getHeight()),
+									   startTime, endTime,
+									   0, 1.0f);
+		}
+
 		repaint();
 	}	
 }
@@ -328,24 +342,24 @@ void DraggableWaveDisplay::cycleImages(bool cycleForwards)
 {
 	if (cycleForwards) 
 	{
-		WaveformSection *temp = waveformImage[previousImage];
+		WaveformSection *temp = waveImgs[previousImage];
 		
-		waveformImage.set(previousImage, waveformImage[currentImage], false);
-		waveformImage.set(currentImage, waveformImage[nextImage], false);
-		waveformImage.set(nextImage, temp, false);
+		waveImgs.set(previousImage, waveImgs[currentImage], false);
+		waveImgs.set(currentImage, waveImgs[nextImage], false);
+		waveImgs.set(nextImage, temp, false);
 		
-		waveformImage[nextImage]->startTime = waveformImage[currentImage]->startTime + pixelsToTime(getWidth() * 2);
+		waveImgs[nextImage]->startTime = waveImgs[currentImage]->startTime + pixelsToTime(getWidth() * 2);
 		refreshWaveform(nextImage);
 	}
 	else
 	{
-		WaveformSection *temp = waveformImage[nextImage];
+		WaveformSection *temp = waveImgs[nextImage];
 		
-		waveformImage.set(nextImage, waveformImage[currentImage], false);
-		waveformImage.set(currentImage, waveformImage[previousImage], false);
-		waveformImage.set(previousImage, temp, false);
+		waveImgs.set(nextImage, waveImgs[currentImage], false);
+		waveImgs.set(currentImage, waveImgs[previousImage], false);
+		waveImgs.set(previousImage, temp, false);
 		
-		waveformImage[previousImage]->startTime = waveformImage[currentImage]->startTime - pixelsToTime(getWidth() * 2);
+		waveImgs[previousImage]->startTime = waveImgs[currentImage]->startTime - pixelsToTime(getWidth() * 2);
 		refreshWaveform(previousImage);
 	}
 

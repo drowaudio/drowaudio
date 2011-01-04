@@ -22,10 +22,6 @@
 	be dragged to reposition the transport source. The horizontal zoom can be
 	adjusted and you can change the file loaded by dragging a new file onto the display.
  
-	@todo	On zoom change stretch image first then re-buffer after timeout (use a state variable for zoomFactor?)
-	@todo	Load 3 images, past, present and future and re-buffer when necessary, only re-buffer in the
-			current direction, swap pointers for the other.
-	@todo	Check to see if the cache has the wave data, if not just fill black
 	@todo	Render images on a background thread, possibly using a GraphicalComponentManager?
  */
 class DraggableWaveDisplay :	public Component,
@@ -121,16 +117,18 @@ private:
 	FilteringAudioFilePlayer* filePlayer;
 	double fileLengthSecs, currentSampleRate, timePerPixel;
 	StateVariable<int> samplesPerPixel;
-	float playheadPos, zoomFactor;
+	StateVariable<float> zoomFactor;
+	float playheadPos;
 	
 	// thumbnail classes
 	const int sourceSamplesPerThumbSample;
 	AudioFormatManager *formatManager;
 	ScopedPointer<AudioThumbnailCache> thumbnailCache;
 	ScopedPointer<AudioThumbnail> thumbnailView;
+	int64 numSamplesFinished;
 	bool deleteCache;
 
-	OwnedArray<WaveformSection> waveformImage;
+	OwnedArray<WaveformSection> waveImgs;
 	
 	bool isMouseDown, isDraggable, shouldBePlaying;
 	StateVariable<int> mouseX, movedX;

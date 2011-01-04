@@ -250,6 +250,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -343,8 +345,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -362,7 +362,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>551E720D12D008200089DCB6</string>
+										<string>559A565412D3DF9C00CB367C</string>
 										<key>history</key>
 										<array>
 											<string>552348B3103C67C700C2185E</string>
@@ -473,7 +473,7 @@
 											<string>55F25D4112CADD0500CB1C6A</string>
 											<string>551E709412CEC14D0089DCB6</string>
 											<string>551E709512CEC14D0089DCB6</string>
-											<string>551E709612CEC14D0089DCB6</string>
+											<string>551E72F312D0E0580089DCB6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -531,9 +531,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>551E709812CEC14D0089DCB6</string>
+				<string>559A565512D3DF9C00CB367C</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>551E709912CEC14D0089DCB6</string>
+				<string>559A565612D3DF9C00CB367C</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -654,7 +654,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>315623456.14516902</real>
+	<real>315875228.63592601</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -669,8 +669,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>55592FD60F47202C0044FC32</string>
+		<string>/Users/Dave/Documents/Developement/dRowAudio/dRowAudio/build/macosx/dRowAudio.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1280 719 0 0 1280 778 </string>
@@ -750,7 +750,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>55592FD60F47202C0044FC32</string>
-				<string>551E708912CE79970089DCB6</string>
+				<string>559A565712D3DF9C00CB367C</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
