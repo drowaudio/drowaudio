@@ -91,7 +91,7 @@ void CircularBuffer::readSamples(float* bufferToFill, int numSamples)
 
 void CircularBuffer::readWithoutFreeing(float* bufferToFill, int numSamples)
 {
-	jassert(bufferSize > numSamples);
+	jassert(bufferSize >= numSamples);
 	
 	int numToEnd = bufferSize - readPos;
 	

@@ -102,8 +102,38 @@ static const String timeToTimecodeStringLowRes (const double seconds)
 //                              sign, mins, secs, tenthSecs);
 }
 
+/**	Converts a number of seconds to a time string.
+	This is useful when displaying times as hrs, mins secs etc.
+	as it will only display the units needed.
+ */
+static const String secondsToTimeLength(double numSeconds)
+{
+	double decimalTime = numSeconds / 60000.0;
+	
+	int hrs = 0;
+	int mins = (int)decimalTime;
+	int secs = roundToInt((decimalTime - mins) * 60.0);
+	
+	String timeString;
+	
+	if (mins > 59)
+	{
+		hrs = mins / 60;
+		mins -= hrs * 60;
+		
+		timeString << String (hrs) << ":"
+		<< String (mins).paddedLeft ('0', 2) << ":";
+	}
+	else
+		timeString << String (mins) << ":";
+	
+	timeString << String (secs).paddedLeft ('0', 2);
+	
+	return timeString;
+}
+
 /**
-	Formats a CurretPositionInfo to a bars/beats string.
+ Formats a CurretPositionInfo to a bars/beats string.
  */
 static const String ppqToBarsBeatsString (const double ppq,
                                           const double lastBarPPQ,
@@ -135,6 +165,22 @@ static bool matchesAudioWildcard (const String &extensionToTest, const String &w
 		return true;
 	else
 		return false;
+}
+
+static void convertToFloat(AudioFormatReader *reader, void *sourceBuffer, float *destBuffer, int numSamples)
+{
+	// convert data to float if needed
+	if (reader != 0)
+	{
+		if (!reader->usesFloatingPointData)
+		{
+#if JUCE_BIG_ENDIAN
+			AudioDataConverters::convertInt32BEToFloat((void*)sourceBuffer, destBuffer, numSamples, sizeof(int));
+#else
+			AudioDataConverters::convertInt32LEToFloat((void*)sourceBuffer, destBuffer, numSamples, sizeof(int));
+#endif
+		}
+	}
 }
 
 #endif //_DROWAUDIOAUDIOUTILITY_H_

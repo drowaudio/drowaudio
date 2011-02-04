@@ -64,7 +64,7 @@ void reverseArray(Type *array, int length)
     int a=0;
     Type swap;
 	
-    for(a; a< --length; a++) //increment a and decrement b until they meet eachother
+    for(a; a < --length; a++) //increment a and decrement b until they meet eachother
     {
         swap = array[a];       //put what's in a into swap space
         array[a] = array[length];    //put what's in b into a

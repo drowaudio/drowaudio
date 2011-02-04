@@ -387,6 +387,32 @@ void DraggableWaveDisplay::filesDropped (const StringArray &files, int x, int y)
 	filePlayer->setFile(files[0]);
 	setMouseCursor(MouseCursor::NormalCursor);
 }
+//==============================================================================
+bool DraggableWaveDisplay::isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent)
+{
+	if (sourceDescription.startsWith("<ITEMS>")) {
+		return true;
+	}
+	
+	return false;	
+}
+
+void DraggableWaveDisplay::itemDragExit (const String &sourceDescription, Component *sourceComponent)
+{
+}
+
+void DraggableWaveDisplay::itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y)
+{
+	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(sourceDescription));
+	
+	if (newTracks->getNumChildElements() > 0) {
+		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));
+
+		if (newFile.existsAsFile()) {
+			filePlayer->setFile(newFile.getFullPathName());
+		}
+	}
+}
 
 //==============================================================================
 

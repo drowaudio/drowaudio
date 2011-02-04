@@ -25,6 +25,7 @@
 class PositionableWaveDisplay : public Component,
 								public MultiTimer,
 								public ChangeListener,
+								public DragAndDropTarget,
 								public FileDragAndDropTarget
 {
 public:
@@ -75,6 +76,13 @@ public:
 	void fileDragEnter (const StringArray &files, int x, int y);
 	void fileDragExit (const StringArray &files);
 	void filesDropped (const StringArray &files, int x, int y);
+	
+	//==============================================================================
+	bool isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent);
+	
+	void itemDragExit (const String &sourceDescription, Component *sourceComponent);
+	
+	void itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y);
 	
 	//==============================================================================	
 	

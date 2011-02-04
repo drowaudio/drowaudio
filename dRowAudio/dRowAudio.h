@@ -76,6 +76,7 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/gui/dRowAudio_CpuMeter.h"
 #include "src/gui/dRowAudio_Clock.h"
 #include "src/gui/dRowAudio_CentreAlignViewport.h"
+#include "src/gui/dRowAudio_MusicLibraryTable.h"
 #include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
 #include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 
@@ -87,6 +88,8 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/utility/dRowAudio_Constants.h"
 #include "src/utility/dRowAudio_Utility.h"
 #include "src/utility/dRowAudio_StateVariable.h"
+#include "src/utility/dRowAudio_Comparators.h"
+#include "src/utility/dRowAudio_ITunesLibaryParser.h"
 
 END_DROWAUDIO_NAMESPACE
 

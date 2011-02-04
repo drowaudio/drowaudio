@@ -22,12 +22,20 @@
 	be dragged to reposition the transport source. The horizontal zoom can be
 	adjusted and you can change the file loaded by dragging a new file onto the display.
  
+	You can either drag normal audio files onto the waveform or XmlElements in the form:
+	@code
+	<ITEMS>
+		<ITEM Location="/absolutePathToFile"/>
+	<ITEMS>
+	@endcode
+ 
 	@todo	Render images on a background thread, possibly using a GraphicalComponentManager?
  */
 class DraggableWaveDisplay :	public Component,
 								public MultiTimer,
 								public ChangeListener,
 								public FilteringAudioFilePlayer::Listener,
+								public DragAndDropTarget,
 								public FileDragAndDropTarget
 {
 public:
@@ -98,6 +106,13 @@ public:
 	void fileDragEnter (const StringArray &files, int x, int y);
 	void fileDragExit (const StringArray &files);
 	void filesDropped (const StringArray &files, int x, int y);
+	
+	//==============================================================================
+	bool isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent);
+	
+	void itemDragExit (const String &sourceDescription, Component *sourceComponent);
+	
+	void itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y);
 	
 	//==============================================================================	
 	

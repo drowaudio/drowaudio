@@ -185,6 +185,34 @@ void PositionableWaveDisplay::filesDropped (const StringArray &files, int x, int
 	filePlayer->setFile(files[0]);
 	setMouseCursor(MouseCursor::NormalCursor);
 }
+//==============================================================================
+bool PositionableWaveDisplay::isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent)
+{
+	if (sourceDescription.startsWith("<ITEMS>")) {
+		return true;
+	}
+	
+	return false;	
+}
+
+void PositionableWaveDisplay::itemDragExit (const String &sourceDescription, Component *sourceComponent)
+{
+}
+
+void PositionableWaveDisplay::itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y)
+{
+	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(sourceDescription));
+	
+	if (newTracks->getNumChildElements() > 0) {
+		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));
+		
+		if (newFile.existsAsFile()) {
+			filePlayer->setFile(newFile.getFullPathName());
+		}
+	}
+}
+
+
 //==============================================================================	
 void PositionableWaveDisplay::refreshWaveform()
 {

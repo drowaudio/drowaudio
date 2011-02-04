@@ -27,8 +27,8 @@ CentreAlignViewport::CentreAlignViewport (const String& componentName)
 {
     // content holder is used to clip the contents so they don't overlap the scrollbars
     addAndMakeVisible (&contentHolder);
-    contentHolder.setInterceptsMouseClicks (false, true);
-	
+    contentHolder.setInterceptsMouseClicks (true, true);
+
     addChildComponent (&verticalScrollBar);
     addChildComponent (&horizontalScrollBar);
 	
@@ -183,7 +183,7 @@ void CentreAlignViewport::updateVisibleArea()
     bool vBarVisible = canShowVBar && ! verticalScrollBar.autoHides();
 	
     Rectangle<int> contentArea (getLocalBounds());
-	
+
     if (contentComp != 0 && ! contentArea.contains (contentComp->getBounds()))
     {
         hBarVisible = canShowHBar && (hBarVisible || contentComp->getX() < 0 || contentComp->getRight() > contentArea.getWidth());
