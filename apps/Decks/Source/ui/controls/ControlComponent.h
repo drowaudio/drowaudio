@@ -23,6 +23,7 @@
 #include "../../main/DeckManager.h"
 #include "../../main/AudioEngine.h"
 #include "../DecksLookAndFeel.h"
+#include "library/Library.h"
 
 class ControlComponent  : public Component
 {

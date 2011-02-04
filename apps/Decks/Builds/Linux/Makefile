@@ -64,6 +64,8 @@ OBJECTS := \
   $(OBJDIR)/MixerChannelStrip_64f8d31b.o \
   $(OBJDIR)/CrossFader_56140e3.o \
   $(OBJDIR)/MasterChannelStrip_276542a4.o \
+  $(OBJDIR)/Library_dab40b0a.o \
+  $(OBJDIR)/PrepareTable_3aa12962.o \
   $(OBJDIR)/SettingsComponent_72d2086a.o \
   $(OBJDIR)/MixerSettingsComponent_8a33bf8b.o \
   $(OBJDIR)/dRowAudio_eb58b466.o \
@@ -188,6 +190,16 @@ $(OBJDIR)/CrossFader_56140e3.o: ../../Source/ui/controls/mixer/CrossFader.cpp
 $(OBJDIR)/MasterChannelStrip_276542a4.o: ../../Source/ui/controls/mixer/MasterChannelStrip.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling MasterChannelStrip.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/Library_dab40b0a.o: ../../Source/ui/controls/library/Library.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling Library.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/PrepareTable_3aa12962.o: ../../Source/ui/controls/library/PrepareTable.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling PrepareTable.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/SettingsComponent_72d2086a.o: ../../Source/ui/settings/SettingsComponent.cpp

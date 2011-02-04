@@ -94,9 +94,9 @@ void MainAppWindow::closeButtonPressed()
     JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
-const BorderSize MainAppWindow::getBorderThickness()
+const BorderSize<int> MainAppWindow::getBorderThickness()
 {
-    return BorderSize (isUsingNativeTitleBar() ? 0 : ((resizableBorder != 0 && ! isFullScreen()) ? 0 : 0));
+    return BorderSize<int> (isUsingNativeTitleBar() ? 0 : ((resizableBorder != 0 && ! isFullScreen()) ? 0 : 0));
 }
 
 void MainAppWindow::showQuitScreen()
@@ -117,15 +117,21 @@ void MainAppWindow::setUpLookAndFeel()
 	
 //	laf->setColour(TextButton::buttonColourId, Colours::darkgrey);
 //	laf->setColour(TextButton::buttonOnColourId, Colours::lightgrey);
-	laf->setColour(TextButton::buttonColourId, decksColours->getColour(DecksColours::buttonColour).withBrightness(0.4));
+	laf->setColour(TextButton::buttonColourId, decksColours->getColour(DecksColours::buttonColour));//.withBrightness(0.4));
 	laf->setColour(TextButton::buttonOnColourId, decksColours->getColour(DecksColours::buttonColour).withBrightness(0.8));
+	laf->setColour(TextButton::textColourOffId, laf->findColour(TextButton::buttonOnColourId));
 //	laf->setColour(Slider::rotarySliderFillColourId, Colours::darkgrey);
 //	laf->setColour(Slider::rotarySliderOutlineColourId, Colour::greyLevel(1));
 	laf->setColour(Slider::rotarySliderFillColourId, decksColours->getColour(DecksColours::rotarySliderColour).withBrightness(0.4));
 	laf->setColour(Slider::rotarySliderOutlineColourId, decksColours->getColour(DecksColours::rotarySliderColour).withBrightness(0.8));
 	laf->setColour(Slider::trackColourId, Colour::greyLevel(0.1));
 //	laf->setColour(Label::textColourId, Colour::greyLevel(0.4f));	
-	laf->setColour(Label::textColourId, decksColours->getColour(DecksColours::rotarySliderColour));	
+	setColour(Label::textColourId, decksColours->getColour(DecksColours::rotarySliderColour));
+	
+	// scrollbars
+	laf->setColour(ScrollBar::backgroundColourId, Colour::greyLevel(0.5));
+	laf->setColour(ScrollBar::thumbColourId, Colour::greyLevel(0.8));
+	laf->setColour(ScrollBar::trackColourId, Colour::greyLevel(0.3));
 }
 
 //==============================================================================

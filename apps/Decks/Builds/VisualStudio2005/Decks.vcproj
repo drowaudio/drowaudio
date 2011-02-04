@@ -185,6 +185,12 @@
               <File RelativePath="..\..\Source\ui\controls\mixer\MasterChannelStrip.h"/>
               <File RelativePath="..\..\Source\ui\controls\mixer\MasterChannelStrip.cpp"/>
             </Filter>
+            <Filter Name="library">
+              <File RelativePath="..\..\Source\ui\controls\library\Library.h"/>
+              <File RelativePath="..\..\Source\ui\controls\library\Library.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\library\PrepareTable.h"/>
+              <File RelativePath="..\..\Source\ui\controls\library\PrepareTable.cpp"/>
+            </Filter>
           </Filter>
           <Filter Name="settings">
             <File RelativePath="..\..\Source\ui\settings\SettingsComponent.h"/>

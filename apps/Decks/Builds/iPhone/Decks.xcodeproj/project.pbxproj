@@ -34,6 +34,8 @@
 		EE10433CD3B6DA34B8C97316 = { isa = PBXBuildFile; fileRef = 0735B04B431D98AD78BFA858; };
 		66A178CFE8C3BEBD22836BB8 = { isa = PBXBuildFile; fileRef = 70C9CB9C386D8C937451F08D; };
 		E516D163C99889F122A1BC73 = { isa = PBXBuildFile; fileRef = 37E1E04CBA55B23BA5A93467; };
+		CE65A8C18113D8E6EA110797 = { isa = PBXBuildFile; fileRef = 07E489F85307F2098381C9F0; };
+		A1984571061AF3415BE612DB = { isa = PBXBuildFile; fileRef = C203CF68F13A57F4C1E9A21E; };
 		28EAFEE2B4342C7B80A78E91 = { isa = PBXBuildFile; fileRef = 5D0B6763DF3FE6EAFDB02F5D; };
 		EDAEB7FBFDBBCD260E732461 = { isa = PBXBuildFile; fileRef = D713F3EB0C0ADC86982CDC19; };
 		41A664A86809A86631F074A0 = { isa = PBXBuildFile; fileRef = 900185FA9AA3D660772E3D4C; };
@@ -92,6 +94,10 @@
 		70C9CB9C386D8C937451F08D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CrossFader.cpp; path = ../../Source/ui/controls/mixer/CrossFader.cpp; sourceTree = SOURCE_ROOT; };
 		B87450A9B14162D2371EBED6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MasterChannelStrip.h; path = ../../Source/ui/controls/mixer/MasterChannelStrip.h; sourceTree = SOURCE_ROOT; };
 		37E1E04CBA55B23BA5A93467 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MasterChannelStrip.cpp; path = ../../Source/ui/controls/mixer/MasterChannelStrip.cpp; sourceTree = SOURCE_ROOT; };
+		F9DDFA9F9B94BB4C568CC26C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Library.h; path = ../../Source/ui/controls/library/Library.h; sourceTree = SOURCE_ROOT; };
+		07E489F85307F2098381C9F0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Library.cpp; path = ../../Source/ui/controls/library/Library.cpp; sourceTree = SOURCE_ROOT; };
+		3143972EBC39C6C76456DF73 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrepareTable.h; path = ../../Source/ui/controls/library/PrepareTable.h; sourceTree = SOURCE_ROOT; };
+		C203CF68F13A57F4C1E9A21E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PrepareTable.cpp; path = ../../Source/ui/controls/library/PrepareTable.cpp; sourceTree = SOURCE_ROOT; };
 		E35C43256F242051E83FC23A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SettingsComponent.h; path = ../../Source/ui/settings/SettingsComponent.h; sourceTree = SOURCE_ROOT; };
 		5D0B6763DF3FE6EAFDB02F5D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SettingsComponent.cpp; path = ../../Source/ui/settings/SettingsComponent.cpp; sourceTree = SOURCE_ROOT; };
 		C313D1FAB5DEFB0EBBC2E62F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerSettingsComponent.h; path = ../../Source/ui/settings/MixerSettingsComponent.h; sourceTree = SOURCE_ROOT; };
@@ -138,12 +144,18 @@
 				70C9CB9C386D8C937451F08D,
 				B87450A9B14162D2371EBED6,
 				37E1E04CBA55B23BA5A93467 ); name = mixer; sourceTree = "<group>"; };
+		9645BE1FF36027BFB7A37F20 = { isa = PBXGroup; children = (
+				F9DDFA9F9B94BB4C568CC26C,
+				07E489F85307F2098381C9F0,
+				3143972EBC39C6C76456DF73,
+				C203CF68F13A57F4C1E9A21E ); name = library; sourceTree = "<group>"; };
 		1A0CC1B0E6D406FE1366DC19 = { isa = PBXGroup; children = (
 				FABCFCA068AFF382EC0780C5,
 				425D6C09710560CAD13B64C5,
 				DEC2A5CD412C6D13C8E3D3AB,
 				E4BB6FF10B6E6FEE1C836D1D,
-				017AA0A061CF080DBD504663 ); name = controls; sourceTree = "<group>"; };
+				017AA0A061CF080DBD504663,
+				9645BE1FF36027BFB7A37F20 ); name = controls; sourceTree = "<group>"; };
 		A2EA70C17C62F78392BB60B7 = { isa = PBXGroup; children = (
 				E35C43256F242051E83FC23A,
 				5D0B6763DF3FE6EAFDB02F5D,
@@ -294,6 +306,8 @@
 				EE10433CD3B6DA34B8C97316,
 				66A178CFE8C3BEBD22836BB8,
 				E516D163C99889F122A1BC73,
+				CE65A8C18113D8E6EA110797,
+				A1984571061AF3415BE612DB,
 				28EAFEE2B4342C7B80A78E91,
 				EDAEB7FBFDBBCD260E732461,
 				41A664A86809A86631F074A0,

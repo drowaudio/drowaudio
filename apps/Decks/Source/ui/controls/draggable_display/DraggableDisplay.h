@@ -46,6 +46,7 @@ private:
 	DeckManager *settings;
 
 	Slider *zoomSlider, *playheadPosSlider;
+	ScopedPointer<AudioThumbnailCache> thumbnailCache; 
 	OwnedArray <DraggableWaveDisplay> draggableWaveDisplays;
 	
 };

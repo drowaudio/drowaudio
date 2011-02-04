@@ -45,7 +45,7 @@ Transport::~Transport()
 void Transport::resized()
 {
 	const int width = getWidth();
-	const int height = showLoopsValue.getValue() ? 250 : 132;
+	const int height = showLoopsValue.getValue() ? 240 : 122;
 	const int margin = 5;
 	setSize(width, height);
 	

@@ -230,6 +230,21 @@ SOURCE="..\..\Source\ui\controls\mixer\MasterChannelStrip.h"
 SOURCE="..\..\Source\ui\controls\mixer\MasterChannelStrip.cpp"
 # End Source File
 # End Group
+# Begin Group "library"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\library\Library.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\library\Library.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\library\PrepareTable.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\library\PrepareTable.cpp"
+# End Source File
+# End Group
 # End Group
 # Begin Group "settings"
 # PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"

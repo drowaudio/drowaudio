@@ -35,7 +35,8 @@
 
 //==============================================================================
 class MainAppWindow  :  public DocumentWindow,
-						public ApplicationCommandTarget
+						public ApplicationCommandTarget,
+						public DragAndDropContainer
 {
 public:
 	//==============================================================================
@@ -46,7 +47,7 @@ public:
 	// called when the close button is pressed or esc is pushed
 	void closeButtonPressed();
 	
-	const BorderSize getBorderThickness();
+	const BorderSize<int> getBorderThickness();
 		
 	// It is most likely that your program will be happy thinking of the window's
 	// content component as the 'base' level of the application; it can be responsible

@@ -14,19 +14,20 @@ DraggableDisplay::DraggableDisplay()
 	settings(DeckManager::getInstance())
 {
 	Settings::getInstance()->getValueTreePointer()->addListener(this);
+	thumbnailCache = new AudioThumbnailCache(noDecks);
 	
 	for (int i = 0; i < noDecks; i++)
 	{
-		draggableWaveDisplays.add(new DraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer()));
+		draggableWaveDisplays.add(new DraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(), thumbnailCache));
 		addAndMakeVisible(draggableWaveDisplays[i]);
 	}
 	
 	// create the zoom & playhead sliders
 	addAndMakeVisible( zoomSlider = new Slider("zoomSlider") );
 	zoomSlider->setSliderStyle(Slider::LinearVertical);
-	zoomSlider->setRange(0.0, 200.0, 0.0001);
-	zoomSlider->setSkewFactorFromMidPoint(10);
-	zoomSlider->setValue(10);
+	zoomSlider->setRange(0.1, 20.0, 0.1);
+	zoomSlider->setSkewFactorFromMidPoint(10.0);
+	zoomSlider->setValue(10.0);
 	zoomSlider->addListener(this);
 	
 	addAndMakeVisible( playheadPosSlider = new Slider("playheadPosSlider") );
@@ -53,7 +54,7 @@ void DraggableDisplay::resized()
 {
 	const int height = getHeight();
 	const int width = getWidth();
-	const int margin = 5;
+	const int margin = 3;
 	const int sliderWidth = 20;
 	
 	zoomSlider->setBounds(margin, margin,
@@ -123,7 +124,7 @@ void DraggableDisplay::sliderValueChanged(Slider *slider)
 {
 	if (slider == zoomSlider)
 	{
-		const int zoomFactor = zoomSlider->getValue();
+		const double zoomFactor = zoomSlider->getValue();
 		for (int i = 0; i < noDecks; i++)
 			draggableWaveDisplays[i]->setZoomFactor(zoomFactor);
 	}

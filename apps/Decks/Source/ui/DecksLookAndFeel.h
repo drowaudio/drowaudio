@@ -87,6 +87,25 @@ public:
                                   const float outlineThickness,
                                   const float cornerSize) throw();
 	//============================================================
+	void drawScrollbarButton (Graphics& g,
+							  ScrollBar& scrollbar,
+							  int width, int height,
+							  int buttonDirection,
+							  bool isScrollbarVertical,
+							  bool isMouseOverButton,
+							  bool isButtonDown);
+	
+	void drawScrollbar (Graphics& g,
+						ScrollBar& scrollbar,
+						int x, int y,
+						int width, int height,
+						bool isScrollbarVertical,
+						int thumbStartPosition,
+						int thumbSize,
+						bool isMouseOver,
+						bool isMouseDown);
+
+	//============================================================
 	virtual Button* createDocumentWindowButton (int buttonType);
 	
 	virtual void drawDocumentWindowTitleBar (DocumentWindow& window,
@@ -95,6 +114,14 @@ public:
                                              const Image* icon,
                                              bool drawTitleTextOnLeft);
 		
+	//============================================================
+	virtual void drawTableHeaderBackground (Graphics& g, TableHeaderComponent& header);
+	
+    virtual void drawTableHeaderColumn (Graphics& g, const String& columnName, int columnId,
+                                        int width, int height,
+                                        bool isMouseOver, bool isMouseDown,
+                                        int columnFlags);
+
 	//============================================================
 	static DrawablePath createIcon (IconType icon, Colour colour);
 

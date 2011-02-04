@@ -15,7 +15,6 @@ DeckTransport::DeckTransport(int deckNo_)
 	settings(DeckManager::getInstance()),
 	filePlayer(settings->getDeck(deckNo)->getMainFilePlayer())
 {
-	getLookAndFeel().setColour(TextButton::textColourOffId, Colour::greyLevel(0.8));
 	filePlayer->addChangeListener(this);
 	
 	addAndMakeVisible(infoBox = new TrackInfo(deckNo, filePlayer));
@@ -29,28 +28,8 @@ DeckTransport::DeckTransport(int deckNo_)
 	}
 	transportButtons[loop]->setClickingTogglesState(true);
 	transportButtons[playPause]->setClickingTogglesState(true);
-	
-	DrawablePath ejectIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Eject, findColour(TextButton::textColourOffId)));
-	DrawablePath loopOffIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Infinity, findColour(TextButton::textColourOffId)));
-	DrawablePath loopOnIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Infinity, findColour(TextButton::textColourOnId)));
-	DrawablePath cueIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Cue, findColour(TextButton::textColourOffId)));
-	DrawablePath previousIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Previous, findColour(TextButton::textColourOffId)));
-	DrawablePath shuffleBackIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::ShuffleBack, findColour(TextButton::textColourOffId)));
-	DrawablePath stopIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Stop, findColour(TextButton::textColourOffId)));
-	DrawablePath playIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Play, findColour(TextButton::textColourOffId)));
-	DrawablePath pauseIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Pause, findColour(TextButton::textColourOnId)));
-	DrawablePath shuffleForwardIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::ShuffleForward, findColour(TextButton::textColourOffId)));
-	DrawablePath nextIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Next, findColour(TextButton::textColourOffId)));
-	
-	transportButtons[eject]->setImages(&ejectIcon);
-	transportButtons[loop]->setImages(&loopOffIcon, 0, 0, 0, &loopOnIcon);
-	transportButtons[cue]->setImages(&cueIcon);
-	transportButtons[previous]->setImages(&previousIcon);
-	transportButtons[shuffleBack]->setImages(&shuffleBackIcon);
-	transportButtons[stop]->setImages(&stopIcon);
-	transportButtons[playPause]->setImages(&playIcon, 0, 0, 0, &pauseIcon);
-	transportButtons[shuffleForward]->setImages(&shuffleForwardIcon);
-	transportButtons[next]->setImages(&nextIcon);
+
+	refreshTransportButtons();
 	
 	addAndMakeVisible(waveDisplay = new PositionableWaveDisplay(filePlayer));
 	
@@ -96,12 +75,13 @@ void DeckTransport::resized()
 	
 	infoBox->setBounds(0, 0, w-35, 40);
 	
-	const int buttonWidth = /*jmin(*/((infoBox->getWidth()-2)/(float)noTransportButtons) - 1;
+	const float buttonWidth = /*jmin(*/((infoBox->getWidth()-2)/(float)noTransportButtons) - 1;
 	for (int i = 0; i < noTransportButtons; i++) {
-		transportButtons[i]->setBounds(2+(i*(buttonWidth+1)), infoBox->getBottom()+2, buttonWidth, 20);
+//		transportButtons[i]->setBounds(2+(i*(buttonWidth+1)), infoBox->getBottom()+2, buttonWidth, 20);
+		transportButtons[i]->setBounds(RelativeRectangle(Rectangle<float>(2+(i*(buttonWidth+1)), infoBox->getBottom()+2, buttonWidth, 20)));
 	}
 	
-	waveDisplay->setBounds(0, transportButtons[0]->getBottom()+2, w-35, 50);
+	waveDisplay->setBounds(0, transportButtons[0]->getBottom()+2, w-35, 40);
 	
 	if (showLoopAndCuePoints) {
 		loopAndCuePoints->setBounds(0, waveDisplay->getBottom()+m, w, h - waveDisplay->getBottom() - m);
@@ -182,4 +162,32 @@ void DeckTransport::changeListenerCallback(ChangeBroadcaster *object)
 void DeckTransport::setLoopAndCueValueToReferTo(Value &valueToReferTo)
 {
 	loopAndCuePoints->setToggleValueToReferTo(valueToReferTo);
+}
+
+void DeckTransport::refreshTransportButtons()
+{
+	Colour offColour = findColour(TextButton::textColourOffId);
+	Colour onColour = findColour(TextButton::textColourOnId);
+	
+	DrawablePath ejectIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Eject, offColour));
+	DrawablePath loopOffIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Infinity, offColour));
+	DrawablePath loopOnIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Infinity, onColour));
+	DrawablePath cueIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Cue, offColour));
+	DrawablePath previousIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Previous, offColour));
+	DrawablePath shuffleBackIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::ShuffleBack, offColour));
+	DrawablePath stopIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Stop, offColour));
+	DrawablePath playIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Play, offColour));
+	DrawablePath pauseIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Pause, onColour));
+	DrawablePath shuffleForwardIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::ShuffleForward, offColour));
+	DrawablePath nextIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Next, offColour));
+	
+	transportButtons[eject]->setImages(&ejectIcon);
+	transportButtons[loop]->setImages(&loopOffIcon, 0, 0, 0, &loopOnIcon);
+	transportButtons[cue]->setImages(&cueIcon);
+	transportButtons[previous]->setImages(&previousIcon);
+	transportButtons[shuffleBack]->setImages(&shuffleBackIcon);
+	transportButtons[stop]->setImages(&stopIcon);
+	transportButtons[playPause]->setImages(&playIcon, 0, 0, 0, &pauseIcon);
+	transportButtons[shuffleForward]->setImages(&shuffleForwardIcon);
+	transportButtons[next]->setImages(&nextIcon);	
 }

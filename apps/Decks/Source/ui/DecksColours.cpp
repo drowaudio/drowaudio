@@ -22,7 +22,7 @@ DecksColours::DecksColours()
 	colours.getReference(panelColour) = Colour::greyLevel(0.2);
 	colours.getReference(panelLineColour) = Colour::greyLevel(0.6);
 	colours.getReference(meterLineColour) = Colour::greyLevel(0.5);
-	colours.getReference(buttonColour) = Colour::greyLevel(0.5);
+	colours.getReference(buttonColour) = Colours::darkgrey;//Colour::greyLevel(0.5);
 	colours.getReference(rotarySliderColour) = Colour::greyLevel(0.5);
 	colours.getReference(textColour) = Colour::greyLevel(0.4);
 	

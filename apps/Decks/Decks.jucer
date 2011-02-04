@@ -118,6 +118,13 @@
             <FILE id="6TBUJVOGX" name="MasterChannelStrip.cpp" compile="1" resource="0"
                   file="Source/ui/controls/mixer/MasterChannelStrip.cpp"/>
           </GROUP>
+          <GROUP id="lWr8htr" name="library">
+            <FILE id="02yuLk6" name="Library.h" compile="0" resource="0" file="Source/ui/controls/library/Library.h"/>
+            <FILE id="VEeMEz1" name="Library.cpp" compile="1" resource="0" file="Source/ui/controls/library/Library.cpp"/>
+            <FILE id="OXtHIcs" name="PrepareTable.h" compile="0" resource="0" file="Source/ui/controls/library/PrepareTable.h"/>
+            <FILE id="dyICDkC" name="PrepareTable.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/library/PrepareTable.cpp"/>
+          </GROUP>
         </GROUP>
         <GROUP id="ILMF0iyCj" name="settings">
           <FILE id="wV0WRi5BZ" name="SettingsComponent.h" compile="0" resource="0"

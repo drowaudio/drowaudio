@@ -65,7 +65,7 @@ void DecksLookAndFeel::drawRotarySlider (Graphics& g,
 	}
 	
 	// tapered sides
-	ColourGradient g1(baseColour.withBrightness(0.05),
+/*	ColourGradient g1(baseColour.withBrightness(0.05),
 					  centreX,
 					  height,
 					  baseColour.withBrightness(0.6),
@@ -84,7 +84,57 @@ void DecksLookAndFeel::drawRotarySlider (Graphics& g,
 	Path p3;
 	p3.addEllipse(-topRadius*0.5, -topRadius*0.5, topRadius, topRadius);
 //	p3.addEllipse(-0.4f * rw, -0.4f * rw, 0.8*rw, 0.8*rw);
-	g.fillPath(p3, AffineTransform::identity.translated (centreX, centreY-(0.1*radius)));
+	g.fillPath(p3, AffineTransform::identity.translated (centreX, centreY-(0.1*radius)));*/
+	
+	
+	ColourGradient g1(baseColour,
+					  centreX,
+					  centreY,
+					  baseColour.withBrightness(0.05),
+					  centreX,
+					  ry,
+					  true);
+	g1.addColour(0.8, baseColour);
+	g.setGradientFill(g1);
+	Path p2;
+	//	p2.addEllipse(-0.465f * rw, -0.465f * rw, 0.93*rw, 0.93*rw);
+	p2.addEllipse (-0.5f * rw, -0.5f * rw, rw, rw);
+	g.fillPath(p2, AffineTransform::translation (centreX, centreY));
+	
+	ColourGradient g2(Colours::white.withAlpha(0.4f),
+					  centreX,
+					  ry + (centreY - ry) * 0.15,
+					  Colours::transparentBlack,
+					  centreX,
+					  centreY,
+					  true);
+	g.setGradientFill(g2);
+	Path p3;
+	//	p2.addEllipse(-0.465f * rw, -0.465f * rw, 0.93*rw, 0.93*rw);
+	p3.addEllipse (-0.5f * rw, -0.5f * rw, rw, rw);
+	g.fillPath(p3, AffineTransform::translation (centreX, centreY));
+
+	ColourGradient g3(Colours::black.withAlpha(0.5f),
+					  centreX,
+					  y + height - (centreY - ry) * 0.15,
+					  Colours::transparentBlack,
+					  centreX,
+					  centreY,
+					  true);
+	g.setGradientFill(g3);
+	Path p5;
+	//	p2.addEllipse(-0.465f * rw, -0.465f * rw, 0.93*rw, 0.93*rw);
+	p5.addEllipse (-0.5f * rw, -0.5f * rw, rw, rw);
+	g.fillPath(p5, AffineTransform::translation (centreX, centreY));
+	
+	// top
+//	const float topRadius = 0.8*rw;
+//	g.setColour(baseColour);
+//	Path p3;
+//	p3.addEllipse(-topRadius*0.5, -topRadius*0.5, topRadius, topRadius);
+//	//	p3.addEllipse(-0.4f * rw, -0.4f * rw, 0.8*rw, 0.8*rw);
+//	g.fillPath(p3, AffineTransform::identity.translated (centreX, centreY-(0.1*radius)));
+	
 	
 	// outline
 	Path p;
@@ -442,6 +492,145 @@ private:
     GlassWindowButton& operator= (const GlassWindowButton&);
 };
 
+//============================================================
+void DecksLookAndFeel::drawScrollbarButton (Graphics& g,
+											ScrollBar& scrollbar,
+											int width, int height,
+											int buttonDirection,
+											bool /*isScrollbarVertical*/,
+											bool /*isMouseOverButton*/,
+											bool isButtonDown)
+{
+    Path p;
+	
+    if (buttonDirection == 0)
+        p.addTriangle (width * 0.5f, height * 0.2f,
+                       width * 0.1f, height * 0.7f,
+                       width * 0.9f, height * 0.7f);
+    else if (buttonDirection == 1)
+        p.addTriangle (width * 0.8f, height * 0.5f,
+                       width * 0.3f, height * 0.1f,
+                       width * 0.3f, height * 0.9f);
+    else if (buttonDirection == 2)
+        p.addTriangle (width * 0.5f, height * 0.8f,
+                       width * 0.1f, height * 0.3f,
+                       width * 0.9f, height * 0.3f);
+    else if (buttonDirection == 3)
+        p.addTriangle (width * 0.2f, height * 0.5f,
+                       width * 0.7f, height * 0.1f,
+                       width * 0.7f, height * 0.9f);
+	
+    if (isButtonDown)
+        g.setColour (scrollbar.findColour (ScrollBar::thumbColourId).contrasting (0.2f));
+    else
+        g.setColour (scrollbar.findColour (ScrollBar::thumbColourId));
+	
+    g.fillPath (p);
+	
+    g.setColour (Colour (0x80000000));
+    g.strokePath (p, PathStrokeType (0.5f));
+}
+
+void DecksLookAndFeel::drawScrollbar (Graphics& g,
+									  ScrollBar& scrollbar,
+									  int x, int y,
+									  int width, int height,
+									  bool isScrollbarVertical,
+									  int thumbStartPosition,
+									  int thumbSize,
+									  bool /*isMouseOver*/,
+									  bool /*isMouseDown*/)
+{
+    g.fillAll (scrollbar.findColour (ScrollBar::backgroundColourId));
+	
+    Path slotPath, thumbPath;
+		
+    float gx1 = 0.0f, gy1 = 0.0f, gx2 = 0.0f, gy2 = 0.0f;
+	
+    if (isScrollbarVertical)
+    {
+        slotPath.addRoundedRectangle (x,
+                                      y,
+                                      width,
+                                      height,
+                                      width * 0.5f);
+		
+        if (thumbSize > 0)
+            thumbPath.addRoundedRectangle (x,
+                                           thumbStartPosition,
+                                           width,
+                                           thumbSize,
+                                           (width) * 0.5f);
+        gx1 = (float) x;
+        gx2 = x + width * 0.7f;
+    }
+    else
+    {
+        slotPath.addRoundedRectangle (x,
+                                      y,
+                                      width,
+                                      height,
+                                      (height) * 0.5f);
+		
+        if (thumbSize > 0)
+            thumbPath.addRoundedRectangle (thumbStartPosition,
+                                           y,
+                                           thumbSize,
+                                           height,
+                                           (height) * 0.5f);
+        gy1 = (float) y;
+        gy2 = y + height * 0.7f;
+    }
+	
+    const Colour thumbColour (scrollbar.findColour (ScrollBar::thumbColourId));
+    Colour trackColour1, trackColour2;
+	
+	trackColour1 = scrollbar.findColour (ScrollBar::trackColourId);
+	trackColour2 = trackColour1.overlaidWith (Colour (0x19000000));
+	
+    g.setGradientFill (ColourGradient (trackColour1, gx1, gy1,
+                                       trackColour2, gx2, gy2, false));
+    g.fillPath (slotPath);
+	
+    if (isScrollbarVertical)
+    {
+        gx1 = x + width * 0.6f;
+        gx2 = (float) x + width;
+    }
+    else
+    {
+        gy1 = y + height * 0.6f;
+        gy2 = (float) y + height;
+    }
+	
+    g.setGradientFill (ColourGradient (Colours::transparentBlack,gx1, gy1,
+									   Colour (0x19000000), gx2, gy2, false));
+    g.fillPath (slotPath);
+	
+    g.setColour (thumbColour);
+    g.fillPath (thumbPath);
+	
+//    g.setGradientFill (ColourGradient (Colour (0x10000000), gx1, gy1,
+//									   Colours::transparentBlack, gx2, gy2, false));
+//	
+//    g.saveState();
+//	
+//    if (isScrollbarVertical)
+//        g.reduceClipRegion (x + width / 2, y, width, height);
+//    else
+//        g.reduceClipRegion (x, y + height / 2, width, height);
+//	
+//    g.fillPath (thumbPath);
+//    g.restoreState();
+	
+//    g.setColour (Colour (0x4c000000));
+//    g.setColour (thumbColour.brighter(0.5));
+//    g.strokePath (thumbPath, PathStrokeType (1.0f));
+}
+
+//============================================================
+
+
 Button* DecksLookAndFeel::createDocumentWindowButton (int buttonType)
 {
     Path shape;
@@ -530,6 +719,65 @@ void DecksLookAndFeel::drawDocumentWindowTitleBar (DocumentWindow& window,
         g.setColour (window.getBackgroundColour().contrasting (isActive ? 0.7f : 0.4f));
 	
     g.drawText (window.getName(), textX, 0, textW, h, Justification::centredLeft, true);
+}
+
+//============================================================
+void DecksLookAndFeel::drawTableHeaderBackground (Graphics& g, TableHeaderComponent& header)
+{
+	// background
+	g.fillAll (Colour::greyLevel(0.9));
+	
+    const int w = header.getWidth();
+    const int h = header.getHeight();
+	
+	// column lines
+    g.setColour (Colour::greyLevel(0.2));
+    g.fillRect (0, h - 1, w, 1);
+	
+    for (int i = header.getNumColumns (true); --i >= 0;)
+        g.fillRect (header.getColumnPosition (i).getRight() - 1, 0, 1, h - 1);
+	
+}
+
+void DecksLookAndFeel::drawTableHeaderColumn (Graphics& g, const String& columnName, int columnId,
+											  int width, int height,
+											  bool isMouseOver, bool isMouseDown,
+											  int columnFlags)
+{
+	if (isMouseDown) {
+        g.setColour(Colour::greyLevel(0.95));
+		g.fillRect(1, 1, width - 2, height - 2);
+	}
+    else if (isMouseOver) {
+        g.setColour(Colour::greyLevel(0.95));
+		g.fillRect(1, 1, width - 2, height - 2);
+	}
+	
+//	g.fillRect(1, 1, width - 2, height - 2);
+	
+    int rightOfText = width - 4;
+	
+    if ((columnFlags & (TableHeaderComponent::sortedForwards | TableHeaderComponent::sortedBackwards)) != 0)
+    {
+        const float top = height * ((columnFlags & TableHeaderComponent::sortedForwards) != 0 ? 0.35f : (1.0f - 0.35f));
+        const float bottom = height - top;
+		
+        const float w = height * 0.5f;
+        const float x = rightOfText - (w * 1.25f);
+        rightOfText = (int) x;
+		
+        Path sortArrow;
+        sortArrow.addTriangle (x, bottom, x + w * 0.5f, top, x + w, bottom);
+		
+        g.setColour (Colour::greyLevel(0.2));
+        g.fillPath (sortArrow);
+    }
+	
+    g.setColour (Colours::black);
+    g.setFont (height * 0.6f, Font::bold);
+    const int textX = 4;
+    g.drawFittedText (columnName, textX, 0, rightOfText - textX, height, Justification::centredLeft, 1);
+	
 }
 
 //==============================================================================

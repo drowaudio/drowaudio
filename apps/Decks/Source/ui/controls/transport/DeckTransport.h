@@ -62,6 +62,9 @@ public:
 	//==============================================================================
 
 private:
+	
+	void refreshTransportButtons();
+	
 	const int deckNo;
 	bool showLoopAndCuePoints;
 	DeckManager *settings;
@@ -69,6 +72,7 @@ private:
 	
 	TrackInfo *infoBox;
 	OwnedArray<DrawableButton> transportButtons;
+	ScopedPointer<AudioThumbnailCache> *thumbnailCache;
 	PositionableWaveDisplay *waveDisplay;
 	LoopAndCuePoints *loopAndCuePoints;
 	

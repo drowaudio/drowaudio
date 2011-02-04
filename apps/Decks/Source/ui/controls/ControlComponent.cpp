@@ -23,16 +23,23 @@ ControlComponent::ControlComponent ()
 	// set up the decks
 	addAndMakeVisible( tabbedComponent = new TabbedComponent(TabbedButtonBar::TabsAtTop) );
 	tabbedComponent->setTabBarDepth(25);
+	tabbedComponent->setOutline(0);
+	tabbedComponent->setIndent(0);
 	
 //	tabbedComponent->addTab(T("Library"), Colours::darkgrey, new TableDemoComponent(), true);
 
 	mixerViewport = new CentreAlignViewport(T("mixerViewport"));
+	mixerViewport->setScrollBarThickness(10);
 //	mixerViewport->getViewedComponent()->setSize(815, 425);
 	mixer = new Mixer();
 	mixerViewport->setViewedComponent(mixer);
 	AudioEngine::getInstance()->setCurrentMixer(mixer);
-	tabbedComponent->addTab(T("Mixer"), Colours::darkgrey, mixerViewport, true);
-	tabbedComponent->addTab(T("Files"), Colours::darkgrey, new ColumnFileBrowser(new WildcardFileFilter(DecksAudioFormatManager::getInstance()->getWildcardForAllFormats(), "*", "Audio Filter")), true);
+	tabbedComponent->addTab(T("Mixer"), Colour::greyLevel(0.4), mixerViewport, true);
+	tabbedComponent->addTab(T("Library"), Colour::greyLevel(0.4), new Library(), true);
+	ColumnFileBrowser *columnFileBrowser = new ColumnFileBrowser(new WildcardFileFilter(DecksAudioFormatManager::getInstance()->getWildcardForAllFormats(), "*", "Audio Filter"));
+//	columnFileBrowser->setScrollBarThickness(10);
+	tabbedComponent->addTab(T("Files"), Colour::greyLevel(0.4), columnFileBrowser, true);
+
 		
 //	fileBrowser = new ColumnFileBrowser(new WildcardFileFilter(deckManager->getDeck(0)->getMainFilePlayer()->getAudioFormatManager()->getWildcardForAllFormats(), T("*"), T("Audio Filter")));
 //	tabbedComponent->addTab(T("Browse"), Colours::darkgrey, fileBrowser, true);
@@ -60,13 +67,13 @@ void ControlComponent::resized ()
 	const int m = 5;
 		
 	const int transportHeight = transport->getHeight();
-	const int waveDisplayHeight = 150;//(meterHeight - margin) / 2;
+	const int waveDisplayHeight = 120;//(meterHeight - margin) / 2;
 		
 	transport->setBounds(m, m, w-2*m, transportHeight-2*m);
 	draggableDisplay->setBounds(m, transport->getBottom()+m, w-2*m, waveDisplayHeight);
 	
-	tabbedComponent->setBounds(2, draggableDisplay->getBottom(),
-							   getWidth()-4, h - draggableDisplay->getBottom() - 2);
+	tabbedComponent->setBounds(0, draggableDisplay->getBottom(),
+							   getWidth(), h - draggableDisplay->getBottom());
 	mixerViewport->setViewPosition(0, 0);
 	
 //#ifdef JUCE_DEBUG
