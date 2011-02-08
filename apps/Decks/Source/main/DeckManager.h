@@ -12,6 +12,7 @@
 
 #include <dRowAudio/dRowAudio.h>
 #include "Settings.h"
+#include "DecksAudioFormatManager.h"
 
 class Deck : public ValueTree::Listener
 {
@@ -57,7 +58,9 @@ public:
 	}
 		
 	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
-	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged) {}
+	void valueTreeChildAdded (ValueTree &parentTree, ValueTree &childWhichHasBeenAdded)	{}
+	void valueTreeChildRemoved (ValueTree &parentTree, ValueTree &childWhichHasBeenRemoved) {}
+	void valueTreeChildOrderChanged (ValueTree &parentTreeWhoseChildrenHaveMoved) {}
 	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged) {}
 	
 	void setSetting(const Identifier &setting, const var &newValue);
@@ -162,7 +165,9 @@ public:
 
 	//==============================================================================
 	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
-	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged) {}
+	void valueTreeChildAdded (ValueTree &parentTree, ValueTree &childWhichHasBeenAdded)	{}
+	void valueTreeChildRemoved (ValueTree &parentTree, ValueTree &childWhichHasBeenRemoved) {}
+	void valueTreeChildOrderChanged (ValueTree &parentTreeWhoseChildrenHaveMoved) {}
 	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged) {}
 	
 	//==============================================================================
@@ -173,6 +178,7 @@ private:
 		Atomic<int> cue;
 		Atomic<float> faderCurve;
 		Atomic<float> xFaderCurve;
+		Atomic<float> monitorGain;
 	} masterSettings;
 
 	struct XFaderSettings {

@@ -79,10 +79,9 @@ public:
 			rebuildChannelsTree(treeWhosePropertyHasChanged.getProperty(property));
 	}
 	
-	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged)
-	{
-		DBG("child changed");
-	}
+	void valueTreeChildAdded (ValueTree &parentTree, ValueTree &childWhichHasBeenAdded)	{}
+	void valueTreeChildRemoved (ValueTree &parentTree, ValueTree &childWhichHasBeenRemoved) {}
+	void valueTreeChildOrderChanged (ValueTree &parentTreeWhoseChildrenHaveMoved) {}
 	
 	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged)
 	{

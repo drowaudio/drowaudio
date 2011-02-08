@@ -100,13 +100,21 @@ SOURCE="..\..\Source\main\Settings.h"
 SOURCE="..\..\Source\main\Settings.cpp"
 # End Source File
 # Begin Source File
-SOURCE="..\..\Source\main\DeckManager.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\Source\main\DeckManager.cpp"
-# End Source File
-# Begin Source File
 SOURCE="..\..\Source\main\MixerSettings.h"
+# End Source File
+# Begin Group "audio"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Source File
+SOURCE="..\..\Source\main\dRowAudio_OverflowingAbstractFifo.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\main\dRowAudio_OverflowingAbstractFifo.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\main\dRowAudio_SampleRateConverter.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\main\dRowAudio_SampleRateConverter.cpp"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\main\DecksAudioFormatManager.h"
@@ -120,6 +128,13 @@ SOURCE="..\..\Source\main\AudioEngine.h"
 # Begin Source File
 SOURCE="..\..\Source\main\AudioEngine.cpp"
 # End Source File
+# Begin Source File
+SOURCE="..\..\Source\main\DeckManager.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\main\DeckManager.cpp"
+# End Source File
+# End Group
 # End Group
 # Begin Group "ui"
 # PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
@@ -186,6 +201,12 @@ SOURCE="..\..\Source\ui\controls\transport\TrackInfo.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\TrackInfo.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\TrackSuggestions.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\TrackSuggestions.cpp"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"

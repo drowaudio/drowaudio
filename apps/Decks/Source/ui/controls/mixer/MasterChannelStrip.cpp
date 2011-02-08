@@ -47,6 +47,17 @@ MasterChannelStrip::MasterChannelStrip()
 	addAndMakeVisible( xFaderCurveLabel = new Label(T("xFaderCurveLabel"), T("X Curve")) );
 	xFaderCurveLabel->setJustificationType(Justification::centred);
 	xFaderCurveLabel->setFont(12);
+	
+	addAndMakeVisible( monitorGainSlider = new Slider(T("monitorGainSlider")) );
+	monitorGainSlider->setSliderStyle(Slider::RotaryVerticalDrag);
+	monitorGainSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
+	monitorGainSlider->setRange(Defaults::Mixer::Master::monitorGainMin, Defaults::Mixer::Master::monitorGainMax);
+	monitorGainSlider->setValue(Defaults::Mixer::Master::monitorGain);
+	monitorGainSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfMasterAsValue(MASTER_SETTING(monitorGain)));
+	
+	addAndMakeVisible( monitorGainLabel = new Label("monitorGainLabel", "Monitor") );
+	monitorGainLabel->setJustificationType(Justification::centred);
+	monitorGainLabel->setFont(12);
 }
 
 MasterChannelStrip::~MasterChannelStrip()
@@ -61,7 +72,7 @@ void MasterChannelStrip::resized()
 {
 	int w = getWidth();
 	int c = w/2;
-	int r = 30;
+	int r = 26;//30;
 	int m = 5;
 	
 	gainSlider->setBounds(c-r/2, m, r, r);
@@ -71,12 +82,14 @@ void MasterChannelStrip::resized()
 	meterR->setBounds(c+1.75*meterW, 40, meterW, 200);
 	
 	int cueWidth = 0.6*w;
-	cueButton->setBounds(c-(cueWidth/2), 250, cueWidth, 15);
+	cueButton->setBounds(c-(cueWidth/2), 245, cueWidth, 15);
 	
 	faderCurveSlider->setBounds(c-r/2, cueButton->getBottom()+m, r, r);
 	faderCurveLabel->setBounds(0, faderCurveSlider->getBottom(), w, 12);
 	xFaderCurveSlider->setBounds(c-r/2, faderCurveSlider->getBottom()+5*m, r, r);
 	xFaderCurveLabel->setBounds(0, xFaderCurveSlider->getBottom(), w, 12);
+	monitorGainSlider->setBounds(c-r/2, xFaderCurveSlider->getBottom()+5*m, r, r);
+	monitorGainLabel->setBounds(0, monitorGainSlider->getBottom(), w, 12);
 }
 
 void MasterChannelStrip::paint(Graphics &g)

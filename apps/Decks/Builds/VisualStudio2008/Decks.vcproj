@@ -137,13 +137,19 @@
           <File RelativePath="..\..\Source\main\DefaultSettings.h"/>
           <File RelativePath="..\..\Source\main\Settings.h"/>
           <File RelativePath="..\..\Source\main\Settings.cpp"/>
-          <File RelativePath="..\..\Source\main\DeckManager.h"/>
-          <File RelativePath="..\..\Source\main\DeckManager.cpp"/>
           <File RelativePath="..\..\Source\main\MixerSettings.h"/>
-          <File RelativePath="..\..\Source\main\DecksAudioFormatManager.h"/>
-          <File RelativePath="..\..\Source\main\DecksAudioFormatManager.cpp"/>
-          <File RelativePath="..\..\Source\main\AudioEngine.h"/>
-          <File RelativePath="..\..\Source\main\AudioEngine.cpp"/>
+          <Filter Name="audio">
+            <File RelativePath="..\..\Source\main\dRowAudio_OverflowingAbstractFifo.h"/>
+            <File RelativePath="..\..\Source\main\dRowAudio_OverflowingAbstractFifo.cpp"/>
+            <File RelativePath="..\..\Source\main\dRowAudio_SampleRateConverter.h"/>
+            <File RelativePath="..\..\Source\main\dRowAudio_SampleRateConverter.cpp"/>
+            <File RelativePath="..\..\Source\main\DecksAudioFormatManager.h"/>
+            <File RelativePath="..\..\Source\main\DecksAudioFormatManager.cpp"/>
+            <File RelativePath="..\..\Source\main\AudioEngine.h"/>
+            <File RelativePath="..\..\Source\main\AudioEngine.cpp"/>
+            <File RelativePath="..\..\Source\main\DeckManager.h"/>
+            <File RelativePath="..\..\Source\main\DeckManager.cpp"/>
+          </Filter>
         </Filter>
         <Filter Name="ui">
           <File RelativePath="..\..\Source\ui\DecksColours.h"/>
@@ -168,6 +174,8 @@
               <File RelativePath="..\..\Source\ui\controls\transport\DeckTransport.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackInfo.h"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackInfo.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestions.h"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestions.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"/>
               <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"/>
             </Filter>

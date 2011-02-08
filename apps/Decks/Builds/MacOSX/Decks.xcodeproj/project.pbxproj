@@ -17,6 +17,7 @@
 		3A45D6069BBDBDC80AF04683 /* LoopAndCuePoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4941BA01E8EFBED8D6B5B /* LoopAndCuePoints.cpp */; };
 		41A664A86809A86631F074A0 /* dRowAudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 900185FA9AA3D660772E3D4C /* dRowAudio.c */; };
 		452B9A09C04FB0903CE700EE /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F014390255E38DC7C7A46BDD /* dRowAudio.cpp */; };
+		4F9A2A457DCADBDB3F444311 /* dRowAudio_OverflowingAbstractFifo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CFD9E8B45B5659F0DB5EE3B /* dRowAudio_OverflowingAbstractFifo.cpp */; };
 		523BC796DAB63590A8C2862F /* DecksColours.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42C38F1E71FE93C1BCE6EF42 /* DecksColours.cpp */; };
 		546479097D11645BAE395C9A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE4229007ADD1A44F3024B0 /* Cocoa.framework */; };
 		66A178CFE8C3BEBD22836BB8 /* CrossFader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */; };
@@ -24,8 +25,10 @@
 		70907C01255F6EC48A973F1A /* MainAppWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 180BDA3231D2DCC2B887A5A2 /* MainAppWindow.cpp */; };
 		71F00C8EA46C100F30023F74 /* ContainerComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81EEA219C740584AD974F680 /* ContainerComponent.cpp */; };
 		7300D01BB1C7B77C1E0EB82A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A5C470278A8899ED6807B9 /* OpenGL.framework */; };
+		7411A6083EE338A6F5E78FF0 /* TrackSuggestions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */; };
 		7B5E730C02A7145EE3B6382E /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFB51E91E2BBD5023776511 /* QTKit.framework */; };
 		836029042E33FC8B64526F09 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0C9B2FDA3A1D70C8F696227F /* Icon.icns */; };
+		8E434997C82DE2F8D71A94D1 /* dRowAudio_SampleRateConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC6C917B6681B62CAB653562 /* dRowAudio_SampleRateConverter.cpp */; };
 		9088445C006CCF8BC6B3FD08 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3AA196BDEF123F117FEF54 /* Carbon.framework */; };
 		950FB4F0C78DC7E007D889DD /* DeckTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56AF2CD6832F42B03DD64DFD /* DeckTransport.cpp */; };
 		992E7E2A85BC2B0DA91CE4D1 /* ControlComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 425D6C09710560CAD13B64C5 /* ControlComponent.cpp */; };
@@ -69,6 +72,7 @@
 		342DAFA1747A6C731022DBFC /* Settings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Settings.cpp; path = ../../Source/main/Settings.cpp; sourceTree = SOURCE_ROOT; };
 		37E1E04CBA55B23BA5A93467 /* MasterChannelStrip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MasterChannelStrip.cpp; path = ../../Source/ui/controls/mixer/MasterChannelStrip.cpp; sourceTree = SOURCE_ROOT; };
 		40F437461414DDC8F5114067 /* DefaultSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultSettings.h; path = ../../Source/main/DefaultSettings.h; sourceTree = SOURCE_ROOT; };
+		41AAD98A113E9B975FFE4BD5 /* dRowAudio_OverflowingAbstractFifo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_OverflowingAbstractFifo.h; path = ../../Source/main/dRowAudio_OverflowingAbstractFifo.h; sourceTree = SOURCE_ROOT; };
 		425D6C09710560CAD13B64C5 /* ControlComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ControlComponent.cpp; path = ../../Source/ui/controls/ControlComponent.cpp; sourceTree = SOURCE_ROOT; };
 		42C38F1E71FE93C1BCE6EF42 /* DecksColours.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksColours.cpp; path = ../../Source/ui/DecksColours.cpp; sourceTree = SOURCE_ROOT; };
 		47A5C470278A8899ED6807B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -93,24 +97,29 @@
 		824C20D102FB8069BE1A808F /* DraggableDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DraggableDisplay.cpp; path = ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp; sourceTree = SOURCE_ROOT; };
 		868FAD8819764D9DF712ECF1 /* DeckManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeckManager.h; path = ../../Source/main/DeckManager.h; sourceTree = SOURCE_ROOT; };
 		8C2BB5F921175543CCCA8659 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../../Source/main/Settings.h; sourceTree = SOURCE_ROOT; };
+		8CFD9E8B45B5659F0DB5EE3B /* dRowAudio_OverflowingAbstractFifo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_OverflowingAbstractFifo.cpp; path = ../../Source/main/dRowAudio_OverflowingAbstractFifo.cpp; sourceTree = SOURCE_ROOT; };
 		8D3921642AF1AE63DF470394 /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
 		8E3B1D49C63A28EAEC9CF2A3 /* BinaryData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
 		8ED22032CA501E9368A28C66 /* CrossFader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CrossFader.h; path = ../../Source/ui/controls/mixer/CrossFader.h; sourceTree = SOURCE_ROOT; };
 		900185FA9AA3D660772E3D4C /* dRowAudio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = dRowAudio.c; path = ../../../../dRowAudio/dRowAudio.c; sourceTree = SOURCE_ROOT; };
 		902FBCF7E76529D2D40EDC52 /* Mixer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Mixer.cpp; path = ../../Source/ui/controls/mixer/Mixer.cpp; sourceTree = SOURCE_ROOT; };
 		91F404BD205EDEC23BBE9FD2 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
+		96C4EEF2F522DCCA74718479 /* TrackSuggestions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackSuggestions.h; path = ../../Source/ui/controls/transport/TrackSuggestions.h; sourceTree = SOURCE_ROOT; };
 		9CF0B422990F5FE0B9F44614 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		9FB9A2B0558CC15CA0555634 /* dRowAudio_SampleRateConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_SampleRateConverter.h; path = ../../Source/main/dRowAudio_SampleRateConverter.h; sourceTree = SOURCE_ROOT; };
 		A2809A6C00A25BA650290D8D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		A8ACA0B29345EFF5769D9DA8 /* BinaryData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = SOURCE_ROOT; };
 		B315BE919D9B6E7E6D31E1BC /* LoopAndCuePoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopAndCuePoints.h; path = ../../Source/ui/controls/transport/LoopAndCuePoints.h; sourceTree = SOURCE_ROOT; };
 		B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerSettings.h; path = ../../Source/main/MixerSettings.h; sourceTree = SOURCE_ROOT; };
 		B87450A9B14162D2371EBED6 /* MasterChannelStrip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MasterChannelStrip.h; path = ../../Source/ui/controls/mixer/MasterChannelStrip.h; sourceTree = SOURCE_ROOT; };
+		BC6C917B6681B62CAB653562 /* dRowAudio_SampleRateConverter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_SampleRateConverter.cpp; path = ../../Source/main/dRowAudio_SampleRateConverter.cpp; sourceTree = SOURCE_ROOT; };
 		C203CF68F13A57F4C1E9A21E /* PrepareTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PrepareTable.cpp; path = ../../Source/ui/controls/library/PrepareTable.cpp; sourceTree = SOURCE_ROOT; };
 		C313D1FAB5DEFB0EBBC2E62F /* MixerSettingsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerSettingsComponent.h; path = ../../Source/ui/settings/MixerSettingsComponent.h; sourceTree = SOURCE_ROOT; };
 		C3CBF31A2F0BEA6FBBB510CD /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		C97BCA57A45504F5CB230048 /* DraggableDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DraggableDisplay.h; path = ../../Source/ui/controls/draggable_display/DraggableDisplay.h; sourceTree = SOURCE_ROOT; };
 		CD5A4E23328FF2B91B579FA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		D713F3EB0C0ADC86982CDC19 /* MixerSettingsComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixerSettingsComponent.cpp; path = ../../Source/ui/settings/MixerSettingsComponent.cpp; sourceTree = SOURCE_ROOT; };
+		DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackSuggestions.cpp; path = ../../Source/ui/controls/transport/TrackSuggestions.cpp; sourceTree = SOURCE_ROOT; };
 		E35C43256F242051E83FC23A /* SettingsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SettingsComponent.h; path = ../../Source/ui/settings/SettingsComponent.h; sourceTree = SOURCE_ROOT; };
 		EA03A3D554673EBFB93B0114 /* Transport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Transport.cpp; path = ../../Source/ui/controls/transport/Transport.cpp; sourceTree = SOURCE_ROOT; };
 		EA3ED4C7BA4566967E202186 /* DeckTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeckTransport.h; path = ../../Source/ui/controls/transport/DeckTransport.h; sourceTree = SOURCE_ROOT; };
@@ -195,15 +204,27 @@
 				40F437461414DDC8F5114067 /* DefaultSettings.h */,
 				8C2BB5F921175543CCCA8659 /* Settings.h */,
 				342DAFA1747A6C731022DBFC /* Settings.cpp */,
-				868FAD8819764D9DF712ECF1 /* DeckManager.h */,
-				75E4F1D02D4324E833E2AB38 /* DeckManager.cpp */,
 				B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */,
+				4E3A9B3216DFB0681EE1E4D7 /* audio */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		4E3A9B3216DFB0681EE1E4D7 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				41AAD98A113E9B975FFE4BD5 /* dRowAudio_OverflowingAbstractFifo.h */,
+				8CFD9E8B45B5659F0DB5EE3B /* dRowAudio_OverflowingAbstractFifo.cpp */,
+				9FB9A2B0558CC15CA0555634 /* dRowAudio_SampleRateConverter.h */,
+				BC6C917B6681B62CAB653562 /* dRowAudio_SampleRateConverter.cpp */,
 				F0AF0113CCE8D463737B9DBC /* DecksAudioFormatManager.h */,
 				5509BE7D3E60AF013A7E79ED /* DecksAudioFormatManager.cpp */,
 				32AA67C67D2072FA2C7A62DD /* AudioEngine.h */,
 				2C6D05330CE43257C6EEF3FB /* AudioEngine.cpp */,
+				868FAD8819764D9DF712ECF1 /* DeckManager.h */,
+				75E4F1D02D4324E833E2AB38 /* DeckManager.cpp */,
 			);
-			name = main;
+			name = audio;
 			sourceTree = "<group>";
 		};
 		890674A826B0DF06A65FE9B2 /* ui */ = {
@@ -317,6 +338,8 @@
 				56AF2CD6832F42B03DD64DFD /* DeckTransport.cpp */,
 				4CC12202EAE06D0E02A6AFBC /* TrackInfo.h */,
 				1CF02085B2E92C13E060CD82 /* TrackInfo.cpp */,
+				96C4EEF2F522DCCA74718479 /* TrackSuggestions.h */,
+				DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */,
 				B315BE919D9B6E7E6D31E1BC /* LoopAndCuePoints.h */,
 				2FD4941BA01E8EFBED8D6B5B /* LoopAndCuePoints.cpp */,
 			);
@@ -405,9 +428,11 @@
 			files = (
 				9F7A7F13113B822AC97333E4 /* ApplicationStartup.cpp in Sources */,
 				6C9111989B6F487A8B611771 /* Settings.cpp in Sources */,
-				E1C37F7BF0772A00EEDE57F2 /* DeckManager.cpp in Sources */,
+				4F9A2A457DCADBDB3F444311 /* dRowAudio_OverflowingAbstractFifo.cpp in Sources */,
+				8E434997C82DE2F8D71A94D1 /* dRowAudio_SampleRateConverter.cpp in Sources */,
 				1221215FE2731751C6197959 /* DecksAudioFormatManager.cpp in Sources */,
 				095EE384B807EB3B24D19F4C /* AudioEngine.cpp in Sources */,
+				E1C37F7BF0772A00EEDE57F2 /* DeckManager.cpp in Sources */,
 				523BC796DAB63590A8C2862F /* DecksColours.cpp in Sources */,
 				C03637BDF14CE773A2EB2DAA /* DecksLookAndFeel.cpp in Sources */,
 				70907C01255F6EC48A973F1A /* MainAppWindow.cpp in Sources */,
@@ -418,6 +443,7 @@
 				107FD22A0CF75C115E7C0E98 /* Transport.cpp in Sources */,
 				950FB4F0C78DC7E007D889DD /* DeckTransport.cpp in Sources */,
 				DE761B07B4378012249A219A /* TrackInfo.cpp in Sources */,
+				7411A6083EE338A6F5E78FF0 /* TrackSuggestions.cpp in Sources */,
 				3A45D6069BBDBDC80AF04683 /* LoopAndCuePoints.cpp in Sources */,
 				D26BE6FC18104431FFBA8DF2 /* DraggableDisplay.cpp in Sources */,
 				B3AE7DFD2D22DAB9D3CB6F56 /* Mixer.cpp in Sources */,
@@ -492,7 +518,9 @@
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -522,7 +550,9 @@
 					"DEBUG=1",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (

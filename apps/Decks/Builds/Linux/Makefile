@@ -45,9 +45,11 @@ endif
 OBJECTS := \
   $(OBJDIR)/ApplicationStartup_3272e644.o \
   $(OBJDIR)/Settings_1a9966da.o \
-  $(OBJDIR)/DeckManager_dbb2a2b7.o \
+  $(OBJDIR)/dRowAudio_OverflowingAbstractFifo_27f57822.o \
+  $(OBJDIR)/dRowAudio_SampleRateConverter_2c829ea.o \
   $(OBJDIR)/DecksAudioFormatManager_c4d4a1fd.o \
   $(OBJDIR)/AudioEngine_c12c07ab.o \
+  $(OBJDIR)/DeckManager_dbb2a2b7.o \
   $(OBJDIR)/DecksColours_f3e45819.o \
   $(OBJDIR)/DecksLookAndFeel_6536b270.o \
   $(OBJDIR)/MainAppWindow_b0560b46.o \
@@ -58,6 +60,7 @@ OBJECTS := \
   $(OBJDIR)/Transport_fb740666.o \
   $(OBJDIR)/DeckTransport_f4e0103d.o \
   $(OBJDIR)/TrackInfo_bd3403d6.o \
+  $(OBJDIR)/TrackSuggestions_83d5f51.o \
   $(OBJDIR)/LoopAndCuePoints_1e85ecd0.o \
   $(OBJDIR)/DraggableDisplay_69d2841b.o \
   $(OBJDIR)/Mixer_7f8f6326.o \
@@ -97,9 +100,14 @@ $(OBJDIR)/Settings_1a9966da.o: ../../Source/main/Settings.cpp
 	@echo "Compiling Settings.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/DeckManager_dbb2a2b7.o: ../../Source/main/DeckManager.cpp
+$(OBJDIR)/dRowAudio_OverflowingAbstractFifo_27f57822.o: ../../Source/main/dRowAudio_OverflowingAbstractFifo.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling DeckManager.cpp"
+	@echo "Compiling dRowAudio_OverflowingAbstractFifo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/dRowAudio_SampleRateConverter_2c829ea.o: ../../Source/main/dRowAudio_SampleRateConverter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling dRowAudio_SampleRateConverter.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/DecksAudioFormatManager_c4d4a1fd.o: ../../Source/main/DecksAudioFormatManager.cpp
@@ -110,6 +118,11 @@ $(OBJDIR)/DecksAudioFormatManager_c4d4a1fd.o: ../../Source/main/DecksAudioFormat
 $(OBJDIR)/AudioEngine_c12c07ab.o: ../../Source/main/AudioEngine.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling AudioEngine.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/DeckManager_dbb2a2b7.o: ../../Source/main/DeckManager.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling DeckManager.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/DecksColours_f3e45819.o: ../../Source/ui/DecksColours.cpp
@@ -160,6 +173,11 @@ $(OBJDIR)/DeckTransport_f4e0103d.o: ../../Source/ui/controls/transport/DeckTrans
 $(OBJDIR)/TrackInfo_bd3403d6.o: ../../Source/ui/controls/transport/TrackInfo.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling TrackInfo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/TrackSuggestions_83d5f51.o: ../../Source/ui/controls/transport/TrackSuggestions.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TrackSuggestions.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/LoopAndCuePoints_1e85ecd0.o: ../../Source/ui/controls/transport/LoopAndCuePoints.cpp

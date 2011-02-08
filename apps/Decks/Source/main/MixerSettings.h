@@ -77,7 +77,7 @@ namespace MixerSettings
 			false,		//highKill
 			false,		//midKill
 			false,		//lowKill
-			true,		//cue
+			false,		//cue
 			0.0f,		//fxASend
 			0.0f,		//fxBSend	
 		};
@@ -115,6 +115,7 @@ namespace MixerSettings
 			cue,
 			faderCurve,
 			xFaderCurve,
+			monitorGain,
 			noMasterSettings
 		};
 		
@@ -122,15 +123,17 @@ namespace MixerSettings
 			"gain",
 			"cue",
 			"faderCurve",
-			"xFaderCurve"
+			"xFaderCurve",
+			"monitorGain"
 		};
 		
 		static const var Values[] = 
 		{
 			1.0f,		//gain
 			false,		//cue
-			1.0f,		//faderCurve
-			0.5f		//xFaderCurve
+			0.5f,		//faderCurve
+			0.5f,		//xFaderCurve,
+			1.0f		//monitorGain
 		};		
 	}
 	

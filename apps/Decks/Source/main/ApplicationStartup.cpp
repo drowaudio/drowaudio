@@ -102,6 +102,7 @@ class AppClass : public JUCEApplication
 			Settings::getInstance();
 			DeckManager::getInstance();
 			AudioEngine::getInstance();
+			ITunesLibrary::getInstance();
 			
 			// This is called automatically when the application is ready to launch.
 			// So far, it just exists in memory as an empty pocket of potential waiting
@@ -161,6 +162,7 @@ class AppClass : public JUCEApplication
 			deleteAndZero (theMainWindow);
 
 			// and delete our singletons in order
+			ITunesLibrary::deleteInstance();
 			AudioEngine::deleteInstance();
 			DeckManager::deleteInstance();
 			Settings::deleteInstance();

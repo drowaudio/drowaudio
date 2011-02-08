@@ -146,11 +146,6 @@ void CrossFader::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChang
 	}
 }
 
-void CrossFader::valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged)
-{
-//	DBG("child changed");
-}
-
 void CrossFader::valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged)
 {
 //	DBG("parent changed");

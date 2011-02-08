@@ -12,20 +12,20 @@
 SettingsComponent::SettingsComponent ()
 {
 	addAndMakeVisible(settingsSelector = new TabbedComponent(TabbedButtonBar::TabsAtTop));
-	settingsSelector->addTab("Main Audio Out",
+	settingsSelector->addTab("Main Audio Setup",
 							 Colours::darkgrey,
 							 new AudioDeviceSelectorComponent(*(AudioEngine::getInstance()->getMainAudioDeviceManager()),
 																								   1, 2, 1, 2,
 																								   true, true,
 																								   true, false),
 							 true);
-//	settingsSelector->addTab("Audio Device 2",
-//							 Colours::darkgrey,
-//							 new AudioDeviceSelectorComponent(*(AudioEngine::getInstance()->getMonitorAudioDeviceManager()),
-//															  0, 2, 1, 2,
-//															  false, false,
-//															  true, false),
-//							 true);
+	settingsSelector->addTab("Monitor Audio Setup",
+							 Colours::darkgrey,
+							 new AudioDeviceSelectorComponent(*(AudioEngine::getInstance()->getMonitorAudioDeviceManager()),
+															  0, 2, 1, 2,
+															  false, false,
+															  true, false),
+							 true);
 	
 //	addAndMakeVisible(mainAudioSettings = new AudioDeviceSelectorComponent(*(AudioEngine::getInstance()->getMainAudioDeviceManager()),
 //																		   1, 2, 1, 2,

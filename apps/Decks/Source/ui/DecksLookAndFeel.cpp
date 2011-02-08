@@ -1021,6 +1021,18 @@ DrawablePath DecksLookAndFeel::createIcon (IconType icon, Colour colour)
 			return triangleImage;
 		}
 			break;
+		case Info:
+		{
+			Path circlePath;
+			circlePath.addEllipse(0.0f, 0.0f, 100.0f, 100.0f);
+			
+			DrawablePath circleImage;
+			circleImage.setFill(colour);
+			circleImage.setPath(circlePath);
+			
+			return circleImage;
+		}
+			break;
 		default:
 		{
 			DrawablePath blank;

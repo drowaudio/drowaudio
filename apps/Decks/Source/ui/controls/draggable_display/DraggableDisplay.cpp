@@ -144,10 +144,6 @@ void DraggableDisplay::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHa
 	}
 }
 
-void DraggableDisplay::valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged)
-{
-}
-
 void DraggableDisplay::valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged)
 {
 }

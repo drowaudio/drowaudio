@@ -38,8 +38,8 @@ private:
 	
 	SegmentedMeter *meterL, *meterR;
 	TextButton *cueButton;
-	Slider *gainSlider, *faderCurveSlider, *xFaderCurveSlider;
-	Label *faderCurveLabel, *xFaderCurveLabel;
+	Slider *gainSlider, *faderCurveSlider, *xFaderCurveSlider, *monitorGainSlider;
+	Label *faderCurveLabel, *xFaderCurveLabel, *monitorGainLabel;
 };
 
 #endif //_DECKS_MASTERCHANNELSTRIP__H_

@@ -39,20 +39,30 @@
               file="Source/main/DefaultSettings.h"/>
         <FILE id="l5H7nTOFh" name="Settings.h" compile="0" resource="0" file="Source/main/Settings.h"/>
         <FILE id="DrhCCFDvc" name="Settings.cpp" compile="1" resource="0" file="Source/main/Settings.cpp"/>
-        <FILE id="XMrUwZizd" name="DeckManager.h" compile="0" resource="0"
-              file="Source/main/DeckManager.h"/>
-        <FILE id="EqS7YWGJ7" name="DeckManager.cpp" compile="1" resource="0"
-              file="Source/main/DeckManager.cpp"/>
         <FILE id="ZOcVatnBQ" name="MixerSettings.h" compile="0" resource="0"
               file="Source/main/MixerSettings.h"/>
-        <FILE id="UPdE3Mm" name="DecksAudioFormatManager.h" compile="0" resource="0"
-              file="Source/main/DecksAudioFormatManager.h"/>
-        <FILE id="z7BnitK" name="DecksAudioFormatManager.cpp" compile="1" resource="0"
-              file="Source/main/DecksAudioFormatManager.cpp"/>
-        <FILE id="8gRlA2ONz" name="AudioEngine.h" compile="0" resource="0"
-              file="Source/main/AudioEngine.h"/>
-        <FILE id="nMCYSJylF" name="AudioEngine.cpp" compile="1" resource="0"
-              file="Source/main/AudioEngine.cpp"/>
+        <GROUP id="n4fIxnJ" name="audio">
+          <FILE id="wxjGlBV" name="dRowAudio_OverflowingAbstractFifo.h" compile="0"
+                resource="0" file="Source/main/dRowAudio_OverflowingAbstractFifo.h"/>
+          <FILE id="NcmkNhi" name="dRowAudio_OverflowingAbstractFifo.cpp" compile="1"
+                resource="0" file="Source/main/dRowAudio_OverflowingAbstractFifo.cpp"/>
+          <FILE id="4PPkEMN" name="dRowAudio_SampleRateConverter.h" compile="0"
+                resource="0" file="Source/main/dRowAudio_SampleRateConverter.h"/>
+          <FILE id="ReKoepW" name="dRowAudio_SampleRateConverter.cpp" compile="1"
+                resource="0" file="Source/main/dRowAudio_SampleRateConverter.cpp"/>
+          <FILE id="UPdE3Mm" name="DecksAudioFormatManager.h" compile="0" resource="0"
+                file="Source/main/DecksAudioFormatManager.h"/>
+          <FILE id="z7BnitK" name="DecksAudioFormatManager.cpp" compile="1" resource="0"
+                file="Source/main/DecksAudioFormatManager.cpp"/>
+          <FILE id="8gRlA2ONz" name="AudioEngine.h" compile="0" resource="0"
+                file="Source/main/AudioEngine.h"/>
+          <FILE id="nMCYSJylF" name="AudioEngine.cpp" compile="1" resource="0"
+                file="Source/main/AudioEngine.cpp"/>
+          <FILE id="XMrUwZizd" name="DeckManager.h" compile="0" resource="0"
+                file="Source/main/DeckManager.h"/>
+          <FILE id="EqS7YWGJ7" name="DeckManager.cpp" compile="1" resource="0"
+                file="Source/main/DeckManager.cpp"/>
+        </GROUP>
       </GROUP>
       <GROUP id="FsBCWm8L" name="ui">
         <FILE id="gUuzWRU" name="DecksColours.h" compile="0" resource="0" file="Source/ui/DecksColours.h"/>
@@ -92,6 +102,10 @@
             <FILE id="vajm0lLmx" name="TrackInfo.h" compile="0" resource="0" file="Source/ui/controls/transport/TrackInfo.h"/>
             <FILE id="8QQ0IzJwo" name="TrackInfo.cpp" compile="1" resource="0"
                   file="Source/ui/controls/transport/TrackInfo.cpp"/>
+            <FILE id="e50XDo7" name="TrackSuggestions.h" compile="0" resource="0"
+                  file="Source/ui/controls/transport/TrackSuggestions.h"/>
+            <FILE id="2N5wPSn" name="TrackSuggestions.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/transport/TrackSuggestions.cpp"/>
             <FILE id="Okb6kL" name="LoopAndCuePoints.h" compile="0" resource="0"
                   file="Source/ui/controls/transport/LoopAndCuePoints.h"/>
             <FILE id="6x2SCPq" name="LoopAndCuePoints.cpp" compile="1" resource="0"

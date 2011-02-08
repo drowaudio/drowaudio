@@ -60,7 +60,7 @@ namespace Defaults
 			static const float faderMin = 0.0f;
 			static const float faderMax = 1.0f;
 			static const float fader = 1.0f;
-			static const bool cue = true;
+			static const bool cue = false;
 			static const float fxSendMin = 0.0f;
 			static const float fxSendMax = 1.0f;
 			static const float fxASend = 0.0f;
@@ -87,6 +87,9 @@ namespace Defaults
 			static const float xFaderCurveMin = 0.001f;
 			static const float xFaderCurveMax = 1.0f;
 			static const float xFaderCurve = 0.5f;
+			static const float monitorGainMin = 0.001f;
+			static const float monitorGainMax = 2.0f;
+			static const float monitorGain = 1.0f;
 		}
 	}
 	

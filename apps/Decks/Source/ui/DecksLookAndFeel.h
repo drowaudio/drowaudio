@@ -36,6 +36,7 @@ public:
 		GoUp,
 		Infinity,
 		DownTriangle,
+		Info,
 		noIcons
 	};
 	

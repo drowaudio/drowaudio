@@ -19,6 +19,9 @@ TrackInfo::TrackInfo(int deckNo_, FilteringAudioFilePlayer* filePlayer_)
 	
 	currentTime = timeToTimecodeStringLowRes(time);
 	remainingTime = timeToTimecodeStringLowRes( fileLength - time );
+	
+	addAndMakeVisible(suggestButton = new TextButton("i"));
+	suggestButton->addListener(this);
 }
 
 TrackInfo::~TrackInfo()
@@ -28,6 +31,8 @@ TrackInfo::~TrackInfo()
 	String message("TrackInfo ");
 	message << deckNo << " deleted";
 	DBG(message);
+	
+	deleteAllChildren();
 }
 
 //=================================================
@@ -59,9 +64,15 @@ void TrackInfo::paint(Graphics &g)
 	g.drawFittedText(String(deckNo),
 					 m, m, fontSize+(2*m), (h * 0.5) - (2*m),
 					 Justification::centred, 2, 1);	
-	g.drawFittedText(fileName,
-					 fontSize + (4*m), m, w-timeWidth-fontSize-(8*m), h,
-					 Justification::topLeft, 2, 1);	
+//	g.drawFittedText(fileName,
+//					 fontSize + (4*m), m, w-timeWidth-fontSize-(8*m), h,
+//					 Justification::topLeft, 2, 1);	
+	g.drawFittedText(trackName,
+					 fontSize + (4*m), m, w-timeWidth-fontSize-(8*m), h*0.5,
+					 Justification::topLeft, 1, 1);	
+	g.drawFittedText(artistName,
+					 fontSize + (4*m), 2*m + h*0.5, w-timeWidth-fontSize-(8*m), h*0.5,
+					 Justification::topLeft, 1, 1);	
 	
 	g.setColour(DecksColours::getInstance()->getColour(DecksColours::panelLineColour));
 	g.drawRect(0, 0, w, h, 1);
@@ -72,7 +83,28 @@ void TrackInfo::paint(Graphics &g)
 
 void TrackInfo::resized()
 {
-	
+	const int h = getHeight();
+//	const int w = getWidth();
+	const int m = 1;
+
+	suggestButton->setBounds(2*m, h - ((h * 0.5) - (2*m)), (h * 0.5) - (3*m), (h * 0.5) - (3*m));
+}
+
+void TrackInfo::buttonClicked (Button* button)
+{
+	if(button == suggestButton)
+	{
+//		if (suggestButton->getToggleState()) {
+		TrackSuggestions content(filePlayer->getLibraryEntry(), ITunesLibrary::getInstance()->getLibraryTree());
+			content.setSize (300, 300);
+			
+			CallOutBox callOut (content, *suggestButton, getTopLevelComponent());
+			callOut.runModalLoop();
+//		}
+//		else {
+//			DBG("hide suggestions");
+//		}
+	}
 }
 
 void TrackInfo::changeListenerCallback(ChangeBroadcaster* changedObject)
@@ -86,8 +118,13 @@ void TrackInfo::changeListenerCallback(ChangeBroadcaster* changedObject)
 		
 		fileLength = filePlayer->getTotalLength() / sampleRate;
 		fileName = filePlayer->getFileName();
-			
+		
+		trackName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Song]);
+		artistName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Artist]);
 
+		if (trackName.isEmpty() && artistName.isEmpty())
+			trackName = fileName;
+		
 		if (filePlayer->isPlaying())
 			startTimer(100);
 		else {

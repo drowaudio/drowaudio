@@ -103,10 +103,6 @@ void Transport::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChange
 	}
 }
 
-void Transport::valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged)
-{
-}
-
 void Transport::valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged)
 {
 }

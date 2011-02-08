@@ -16,6 +16,7 @@ Deck::Deck(int deckNo_)
 	Settings* settingsManager = Settings::getInstance();
 
 	filePlayer = new FilteringAudioFilePlayer();
+	filePlayer->setAudioFormatManager(DecksAudioFormatManager::getInstance());
 	monitorFilePlayer = new FilteringAudioFilePlayer();
 
 	settings.on = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(on));
@@ -24,8 +25,11 @@ Deck::Deck(int deckNo_)
 	filePlayer->setGain(settings.gain.get());
 	settings.level = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(level));
 	settings.highGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(highGain));
+	filePlayer->setHighEQGain(settings.highGain.get());
 	settings.midGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(midGain));
+	filePlayer->setMidEQGain(settings.midGain.get());
 	settings.lowGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(lowGain));
+	filePlayer->setLowEQGain(settings.lowGain.get());
 	settings.highKill = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(highKill));
 	settings.midKill = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(midKill));
 	settings.lowKill = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(lowKill));
@@ -169,6 +173,7 @@ DeckManager::DeckManager()
 	masterSettings.cue.set(settingsManager->getPropertyOfMaster(MASTER_SETTING(cue)));
 	masterSettings.faderCurve.set(settingsManager->getPropertyOfMaster(MASTER_SETTING(faderCurve)));
 	masterSettings.xFaderCurve.set(settingsManager->getPropertyOfMaster(MASTER_SETTING(xFaderCurve)));
+	masterSettings.monitorGain.set(settingsManager->getPropertyOfMaster(MASTER_SETTING(monitorGain)));
 
 	xFaderSettings.level.set(settingsManager->getPropertyOfXFader(XFADER_SETTING(level)));
 	xFaderSettings.assignX.set(settingsManager->getPropertyOfXFader(XFADER_SETTING(assignX)));
@@ -215,6 +220,8 @@ void DeckManager::setMasterSetting(const Identifier &setting, const var &newValu
 		masterSettings.faderCurve.set(newValue);
 	else if (setting == MASTER_SETTING(xFaderCurve))
 		masterSettings.xFaderCurve.set(newValue);
+	else if (setting == MASTER_SETTING(monitorGain))
+		masterSettings.monitorGain.set(newValue);
 }
 
 const var DeckManager::getMasterSetting(const Identifier &setting)
@@ -227,6 +234,8 @@ const var DeckManager::getMasterSetting(const Identifier &setting)
 		return masterSettings.faderCurve.get();
 	else if (setting == MASTER_SETTING(xFaderCurve))
 		return masterSettings.xFaderCurve.get();
+	else if (setting == MASTER_SETTING(monitorGain))
+		return masterSettings.monitorGain.get();
 	else
 		return var::null;
 }

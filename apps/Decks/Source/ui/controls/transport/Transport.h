@@ -36,7 +36,9 @@ public:
 		
 	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
 	
-	void valueTreeChildrenChanged (ValueTree &treeWhoseChildHasChanged);
+	void valueTreeChildAdded (ValueTree &parentTree, ValueTree &childWhichHasBeenAdded)	{}
+	void valueTreeChildRemoved (ValueTree &parentTree, ValueTree &childWhichHasBeenRemoved) {}
+	void valueTreeChildOrderChanged (ValueTree &parentTreeWhoseChildrenHaveMoved) {}
 	
 	void valueTreeParentChanged (ValueTree &treeWhoseParentHasChanged);
 	

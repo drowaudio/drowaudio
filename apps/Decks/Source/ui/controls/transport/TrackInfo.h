@@ -13,8 +13,10 @@
 #include <dRowAudio/dRowAudio.h>
 #include "../../DecksColours.h"
 #include "../../DecksLookAndFeel.h"
+#include "TrackSuggestions.h"
 
 class TrackInfo : public Component,
+				  public Button::Listener,
 				  public ChangeListener,
 				  public Timer/*,
 				  public Thread*/
@@ -29,9 +31,13 @@ public:
 	
 	void resized();
 	
+	//=================================================
+	void buttonClicked (Button* button);
+	
 	void changeListenerCallback(ChangeBroadcaster* changedObject);
 	
 	void timerCallback();
+
 	//=================================================
 	
 	void setTime(double timeInSeconds);
@@ -42,7 +48,8 @@ private:
 	FilteringAudioFilePlayer *filePlayer;
 	
 	double time, fileLength;
-	String currentTime, remainingTime, bpm, fileName;// trackName, artistName;
+	String currentTime, remainingTime, bpm, fileName, trackName, artistName;
+	TextButton *suggestButton;
 };
 
 #endif //_TRACKINFO_H_

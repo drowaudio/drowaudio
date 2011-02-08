@@ -33,14 +33,12 @@ void ContainerComponent::resized ()
 {
 	const int w = getWidth();
 	const int h = getHeight();
-	const int m = 2;
 	
 	titlebarComponent->setBounds(0, 0, w, 30);
 	
 	quitScreen->setBounds(0, titlebarComponent->getBottom(), w, h - titlebarComponent->getHeight());
 	controlComponent->setBounds(0, titlebarComponent->getBottom(), w, h - titlebarComponent->getHeight());
 	settingsComponent->setBounds(0, titlebarComponent->getBottom(), w, h - titlebarComponent->getHeight());
-	
 }
 
 void ContainerComponent::paint (Graphics& g){}
