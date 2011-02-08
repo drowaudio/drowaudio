@@ -137,6 +137,7 @@ void CircularBuffer::setSize(int newSize)
 {
 	buffer.malloc(newSize);
 	readPos = writePos = 0;
+	bufferSize = newSize;
 }
 
 END_DROWAUDIO_NAMESPACE

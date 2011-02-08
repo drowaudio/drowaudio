@@ -28,6 +28,7 @@ namespace Columns {
 		Rating,
 		BPM,
 		Genre,
+		SubGenre,
 		Length,
 		Added,
 		Location,
@@ -44,6 +45,7 @@ namespace Columns {
 		"Rating",
 		"BPM",
 		"Genre",
+		"Sub_Genre",
 		"Length",						
 		"Added",
 		"Location"
@@ -59,6 +61,7 @@ namespace Columns {
 		"Rating",
 		"BPM",
 		"Genre",
+		"Grouping",
 		"Total Time",
 		"Date Added",
 		"Location"
@@ -74,6 +77,7 @@ namespace Columns {
 		60,
 		60,
 		80,
+		100,
 		80,
 		125,
 		300

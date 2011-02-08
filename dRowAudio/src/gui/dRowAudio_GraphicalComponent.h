@@ -68,7 +68,7 @@ public:
 	virtual void copyValues(float **values, int noValues, int noChannels);
 	
 	/** @internal */
-	bool useTimeSlice();
+	int useTimeSlice();
 	
 	/** @internal */
 	void timerCallback();

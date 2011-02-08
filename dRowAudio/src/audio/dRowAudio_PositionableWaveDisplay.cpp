@@ -49,7 +49,7 @@ void PositionableWaveDisplay::resized()
 		
 	if (firstLoad) {
 		firstLoad = false;
-		waveformImage = new Image(Image::RGB, getWidth(), getHeight(), true);
+		waveformImage = new Image(Image::RGB, w, h, true);
 		refreshWaveform();
 	}
 	
@@ -207,6 +207,7 @@ void PositionableWaveDisplay::itemDropped (const String &sourceDescription, Comp
 		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));
 		
 		if (newFile.existsAsFile()) {
+			filePlayer->setLibraryEntry(ValueTree::fromXml(*newTracks->getChildElement(0)));
 			filePlayer->setFile(newFile.getFullPathName());
 		}
 	}

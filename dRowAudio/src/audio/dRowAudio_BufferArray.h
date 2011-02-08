@@ -23,25 +23,35 @@
 class BufferArray
 {
 public:
+	/**	Creates an array of Buffer objects.
+		@param bufferSize The size of each of the Buffer objects it holds.
+		@param arraySizeLimit The maximum number of buffer ojects to hold. 
+	 */
 	BufferArray(int bufferSize, int arraySizeLimit);
 	
+	/**	Destructor.
+	 */
 	~BufferArray();
 
 	/**	Sets a limit on the number of Buffers the array can hold.
+		This will only increase the size of teh array at the moment.
+		If a smaller size than the current is specified no change will be made.
 	 */
 	void setSizeLimit(int newLimit);
 	
 	/** Returns the number of buffers the BufferArray can hold.
 	 */
-	int getNumBuffers()		{	return arraySize;	}
-	
-	Buffer& getLatest()		{	return bufferArray.getReference(currentIndex);	}
-	
-	Buffer& getBuffer(int indexFromCurrent);
-	
+	inline int getNumBuffers()		{	return arraySize;	}
+		
 	/**	Returns the size of the buffers within the array.
 	 */
-	int getBufferSize()	{	return bufferSize;	}
+	inline int getBufferSize()	{	return bufferSize;	}
+	
+	/**	Returns a buffer with a given offset from the most recent one written.
+		This must be > 0.
+	 */
+	Buffer& getBuffer(int indexFromCurrent =0);
+	
 	/** Returns a Buffer object with a given offset from the current one.
 		This is the same as using getBuffer() but uses the [] operator.
 		This can be useful when chaining operators
@@ -55,15 +65,28 @@ public:
 	 */
 	Buffer& operator[](int indexFromCurrent)	{	return getBuffer(indexFromCurrent);	}
 	
-	float getBufferValue(int indexFromCurrent, int bufferPosition);
-	
-	void incrimentCurrent(int numToIncrimentBy=1);
-	
-	/**	Returns the current index in the array. 
+	/**	Returns a value from one of the buffers at a given position.
+		This is the same as calling bufferArrayObject[0][5] to return
+		the 5th sample in teh most recent buffer.
 	 */
-	int getCurrentIndex()	{	return currentIndex;	}
+	//float getBufferValue(int indexFromCurrent, int bufferPosition);
 	
-//	void free(int numberToFree);
+	/**	Returns the number of buffers that haven't been read.
+	 i.e. Calling ba.getBuffer(ba.getNumBuffersInUse());
+	 will return the oldest one in the array.
+	 */
+	int getNumBuffersInUse();
+
+	/**	Incriments the next position to be written to.
+		You will need to call this manually as 
+	 */
+	void incrimentWritePos();
+	
+	/**	Frees a number of buffers in the array.
+		This effectively incriments the read position and as Buffers
+		are only taken as references is the only way to do it.
+	 */
+	void free(int numberToFree =1);
 	
 	//==============================================================================
     /** Receives callbacks when a Buffer object changes.
@@ -98,7 +121,7 @@ private:
 	Array<Buffer> bufferArray;
 	int bufferSize;
 	int arraySize;
-	int currentIndex;
+	int writePos, readPos;
 	
 	void callListeners(Buffer& changedBuffer);
 	SortedSet <Listener*> listeners;

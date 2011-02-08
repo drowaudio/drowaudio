@@ -27,7 +27,7 @@ GraphicalComponent::~GraphicalComponent()
 {
 }
 
-bool GraphicalComponent::useTimeSlice()
+int GraphicalComponent::useTimeSlice()
 {
 	if (paused) {
 		return false;

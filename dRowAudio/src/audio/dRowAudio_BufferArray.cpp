@@ -17,7 +17,8 @@ BEGIN_DROWAUDIO_NAMESPACE
 BufferArray::BufferArray(int bufferSize_, int arraySizeLimit)
 :	bufferSize(bufferSize_),
 	arraySize(arraySizeLimit),
-	currentIndex(0)
+	writePos(0),
+	readPos(0)
 {
 	bufferArray.insertMultiple(0, Buffer(bufferSize), arraySize);
 }
@@ -26,40 +27,61 @@ BufferArray::~BufferArray()
 {
 }
 
+void BufferArray::setSizeLimit(int newLimit)
+{
+	if (newLimit > arraySize) {
+		bufferArray.insertMultiple(-1, Buffer(bufferSize), newLimit - arraySize);
+		arraySize = newLimit;
+	}
+}
+
 Buffer& BufferArray::getBuffer(int indexFromCurrent)
 {
 	if (indexFromCurrent == 0)
 	{
-		return bufferArray.getReference(currentIndex);
+		return bufferArray.getReference(writePos);
 	}
-	else if (indexFromCurrent < currentIndex)
-	{
-		return bufferArray.getReference(currentIndex - indexFromCurrent);
+
+	indexFromCurrent = jlimit(0, arraySize-1, indexFromCurrent);
+	int actualIndex = writePos - indexFromCurrent;
+	
+	if ((writePos - indexFromCurrent) < 0) {
+		actualIndex = arraySize - (indexFromCurrent - writePos);
 	}
-	else if ((indexFromCurrent > currentIndex) && (indexFromCurrent < bufferArray.size()))
-	{
-		indexFromCurrent = bufferArray.size() - (indexFromCurrent - currentIndex);
-		return bufferArray.getReference(indexFromCurrent);
+	return bufferArray.getReference(actualIndex);
+}
+
+int BufferArray::getNumBuffersInUse()
+{
+	if (writePos >= readPos) {
+		return writePos - readPos;
 	}
 	else {
-		return bufferArray.getReference(currentIndex);
+		return writePos + (arraySize - readPos);
 	}
 
 }
 
-void BufferArray::incrimentCurrent(int numToIncrimentBy)
+void BufferArray::incrimentWritePos()
 {
-	if (numToIncrimentBy > 0) {
-		currentIndex += numToIncrimentBy;
-		if (currentIndex >= arraySize) {
-			currentIndex -= arraySize;
+//	if (++writePos >= arraySize)
+//		writePos -= arraySize;
+}
+
+void BufferArray::free(int numToFree)
+{
+	if (numToFree > 0)
+	{
+		readPos += numToFree;
+		
+		if (readPos > writePos) {
+			readPos = writePos;
+		}
+		else if (readPos >= arraySize) {
+			readPos -= arraySize;
 		}
 	}
 }
-
-//void BufferArray::free(int numberToFree)
-//{
-//}
 
 //==============================================================================
 
@@ -86,6 +108,5 @@ void BufferArray::callListeners(Buffer& changedBuffer)
     }
 }
 //==============================================================================
-
 
 END_DROWAUDIO_NAMESPACE

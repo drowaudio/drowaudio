@@ -31,6 +31,20 @@ FFTOperation::~FFTOperation()
 	destroy_fftsetup(fftConfig);
 }
 
+void FFTOperation::setFFTSizeLog2(int newFFTSizeLog2)
+{
+	if (newFFTSizeLog2 != fftProperties.fftSizeLog2) {
+		destroy_fftsetup(fftConfig);
+		
+		fftProperties.setFFTSizeLog2(newFFTSizeLog2);
+		fftBuffer.malloc(fftProperties.fftSize);
+		fftBufferSplit.realp = fftBuffer.getData();
+		fftBufferSplit.imagp = fftBufferSplit.realp + getFFTProperties().fftSizeHalved;	
+		
+		fftConfig = create_fftsetup (fftProperties.fftSizeLog2, 0);
+	}
+}
+
 void FFTOperation::performFFT(float* samples)
 {
 	ctoz ((COMPLEX *) samples, 2, &fftBufferSplit, 1, fftProperties.fftSizeHalved);

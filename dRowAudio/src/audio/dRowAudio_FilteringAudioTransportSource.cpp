@@ -178,7 +178,7 @@ double FilteringAudioTransportSource::getCurrentPosition() const
         return 0.0;
 }
 
-void FilteringAudioTransportSource::setNextReadPosition (int newPosition)
+void FilteringAudioTransportSource::setNextReadPosition (int64 newPosition)
 {
     if (positionableSource != 0)
     {
@@ -189,7 +189,7 @@ void FilteringAudioTransportSource::setNextReadPosition (int newPosition)
     }
 }
 
-int FilteringAudioTransportSource::getNextReadPosition() const
+int64 FilteringAudioTransportSource::getNextReadPosition() const
 {
     if (positionableSource != 0)
     {
@@ -201,7 +201,7 @@ int FilteringAudioTransportSource::getNextReadPosition() const
     return 0;
 }
 
-int FilteringAudioTransportSource::getTotalLength() const
+int64 FilteringAudioTransportSource::getTotalLength() const
 {
     const ScopedLock sl (callbackLock);
 	

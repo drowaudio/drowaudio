@@ -96,6 +96,33 @@ MusicLibraryTable::~MusicLibraryTable()
 }
 
 //==============================================================================
+void MusicLibraryTable::setLibraryToUse(ITunesLibrary *library)
+{
+	dataList = library->getLibraryTree();
+	library->addListener(this);
+}
+
+void MusicLibraryTable::libraryUpdated (ITunesLibrary *library)
+{
+	filteredNumRows = numRows = dataList.getNumChildren();
+	DBG("not finished: "<<filteredNumRows);
+	
+	table->updateContent();
+}
+
+void MusicLibraryTable::libraryFinished (ITunesLibrary *library)
+{
+	filteredNumRows = numRows = dataList.getNumChildren();
+	DBG("parser finished: "<<filteredNumRows);
+
+	table->getHeader().reSortTable();
+	table->updateContent();
+
+	library->removeListener(this);
+	DBG("finished loading MusicLibraryTable");
+}
+
+//==============================================================================
 int MusicLibraryTable::getNumRows()
 {
 	return filteredNumRows;
@@ -201,7 +228,7 @@ void MusicLibraryTable::setFilterText (String filterString)
 		{
 			for (int i = 0; i < dataList.getChild(e).getNumProperties(); i++)
 			{
-				if (dataList.getChild(e)[dataList.getChild(e).getPropertyName(i)].toString().containsIgnoreCase(filterString))
+				if (dataList.getChild(e)[Columns::columnNames[i]/*dataList.getChild(e).getPropertyName(i)*/].toString().containsIgnoreCase(filterString))
 				{
 					filteredDataList->addChild(dataList.getChild(e).createCopy(), -1, 0);
 					
@@ -239,9 +266,9 @@ void MusicLibraryTable::timerCallback()
 		DBG("parser finished: "<<filteredNumRows);
 		parser = 0;
 		stopTimer();
+		table->getHeader().reSortTable();
 	}
 	
-	table->getHeader().reSortTable();
 	table->updateContent();
 }
 
@@ -250,12 +277,12 @@ const String MusicLibraryTable::getDragSourceDescription (const SparseSet< int >
 	if(!currentlySelectedRows.isEmpty())
 	{
 		ScopedPointer<XmlElement> tracksToDrag (new XmlElement("ITEMS"));
+
 		for(int i = 0; i < currentlySelectedRows.size(); i++)
 		{
-			XmlElement *item (new XmlElement(*filteredDataList->getChild(currentlySelectedRows[i]).createXml()));
-			tracksToDrag->addChildElement(item);
+			tracksToDrag->addChildElement(filteredDataList->getChild(currentlySelectedRows[i]).createXml());
 		}
-
+		
 		return tracksToDrag->createDocument("", false, false);
 	}
 	return String::empty;

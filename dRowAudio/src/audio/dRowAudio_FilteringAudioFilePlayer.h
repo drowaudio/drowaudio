@@ -38,6 +38,9 @@ public:
 	/// Returns the AudioFormatReaderSource currently being used
 	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
 	
+	/// Sets the AudioFormatManager being used
+	void setAudioFormatManager(AudioFormatManager* newManager, bool deleteWhenNotNeeded=false);
+	
 	/// Returns the AudioFormatManager being used
 	AudioFormatManager* getAudioFormatManager() { return formatManager; }
 	
@@ -49,6 +52,15 @@ public:
 	
 	/// Open and get ready to play a given audio file from an absolute path
 	bool setFile(const String& path);
+	
+	/** Sets a ValueTree which can hold information about this track.
+		This is not build by default so you will need to explicitly set it when you load a new track;
+	 */
+	void setLibraryEntry(ValueTree newEntry);
+
+	/**	Returns the library entry that has been set with setLibraryEntry();
+	 */
+	ValueTree getLibraryEntry()		{	return libraryEntry;	}
 	
 	/// Returns the absolute path of the current audio file
 	String getFilePath();
@@ -120,9 +132,12 @@ private:
 	String filePath;
 	String fileName;
 	bool shouldBePlaying;
+	bool deleteFormatManager;
 	
 	ListenerList <Listener> listeners;
 	
+	ValueTree libraryEntry;
+
 	JUCE_LEAK_DETECTOR (FilteringAudioFilePlayer);
 };
 

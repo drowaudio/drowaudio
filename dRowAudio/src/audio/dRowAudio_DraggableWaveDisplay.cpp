@@ -249,8 +249,6 @@ bool DraggableWaveDisplay::getDraggable ()
 //==============================================================================
 void DraggableWaveDisplay::mouseDown(const MouseEvent &e)
 {
-	const int w = getWidth();
-	
 	mouseX.setBoth(e.x);
 	isMouseDown = true;
 	
@@ -409,6 +407,7 @@ void DraggableWaveDisplay::itemDropped (const String &sourceDescription, Compone
 		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));
 
 		if (newFile.existsAsFile()) {
+			filePlayer->setLibraryEntry(ValueTree::fromXml(*newTracks->getChildElement(0)));
 			filePlayer->setFile(newFile.getFullPathName());
 		}
 	}

@@ -56,7 +56,7 @@ forcedinline static double samplesToMs(int64 numSamples, double sampleRate)
 static const String timeToTimecodeString (const double seconds)
 {
     const double absSecs = fabs (seconds);
-    const tchar* const sign = (seconds < 0) ? T("-") : T("");
+    const String sign ((seconds < 0) ? T("-") : T(""));
 	
     const int hours = (int) (absSecs / (60.0 * 60.0));
     const int mins  = ((int) (absSecs / 60.0)) % 60;
@@ -84,7 +84,7 @@ static const String timeToTimecodeString (const double seconds)
 static const String timeToTimecodeStringLowRes (const double seconds)
 {
     const double absSecs = fabs (seconds);
-    const tchar* const sign = (seconds < 0) ? T("-") : T("");
+    const String sign ((seconds < 0) ? T("-") : T(""));
 	
 //    const int hours = (int) (absSecs * oneOver60Squared);
     const int mins  = ((unsigned int) (absSecs * oneOver60)) % 60u;

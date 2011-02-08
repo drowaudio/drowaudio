@@ -16,7 +16,8 @@ BEGIN_DROWAUDIO_NAMESPACE
 FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)
 :	currentAudioFileSource(0),
 	filePath(path),
-	shouldBePlaying(false)
+	shouldBePlaying(false),
+	deleteFormatManager(true)
 {
 	// set up the format manager
 	formatManager = new AudioFormatManager();
@@ -29,6 +30,18 @@ FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)
 FilteringAudioFilePlayer::~FilteringAudioFilePlayer()
 {
 	setSource (0);
+	if (deleteFormatManager == false) {
+		formatManager.release();
+	}
+}
+
+void FilteringAudioFilePlayer::setAudioFormatManager(AudioFormatManager* newManager,  bool deleteWhenNotNeeded)
+{
+	if (deleteFormatManager == false)
+		formatManager.release();
+	deleteFormatManager = deleteWhenNotNeeded;
+	
+	formatManager = newManager;
 }
 
 void FilteringAudioFilePlayer::startFromZero()
@@ -85,6 +98,11 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 	}
 	
 	return false;
+}
+
+void FilteringAudioFilePlayer::setLibraryEntry(ValueTree newEntry)
+{
+	libraryEntry = newEntry.createCopy();
 }
 
 String FilteringAudioFilePlayer::getFilePath()

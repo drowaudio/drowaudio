@@ -26,6 +26,7 @@
 //#include "src/audio/dRowAudio_TriBandAudioThumbnail.cpp"
 
 //#include "src/audio/MADAudioFormat.cpp"
+#include "src/audio/dRowAudio_FIFOBuffer.cpp"
 #include "src/audio/dRowAudio_CircularBuffer.cpp"
 #include "src/audio/dRowAudio_Buffer.cpp"
 #include "src/audio/dRowAudio_BufferArray.cpp"
@@ -79,4 +80,5 @@
 // Utility
 #include "src/parameters/dRowAudio_Parameter.cpp"
 //#include "src/utility/dRowAudio_StateVariable.cpp"
+#include "src/utility/dRowAudio_ITunesLibrary.cpp"
 #include "src/utility/dRowAudio_ITunesLibaryParser.cpp"

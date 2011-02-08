@@ -92,9 +92,9 @@ void ITunesLibraryParser::run()
 			DBG("total added now: "<<num);
 			DBG("from tree: "<<treeToFill.getNumChildren());
 			
-			File output(File::getSpecialLocation(File::userDesktopDirectory).getChildFile("library.xml"));
-			ScopedPointer<XmlElement> xmlOutput(treeToFill.createXml());
-			xmlOutput->writeToFile(output, "", "", 800);
+//			File output(File::getSpecialLocation(File::userDesktopDirectory).getChildFile("library.xml"));
+//			ScopedPointer<XmlElement> xmlOutput(treeToFill.createXml());
+//			xmlOutput->writeToFile(output, "", "", 800);
 		}
 	}
 }

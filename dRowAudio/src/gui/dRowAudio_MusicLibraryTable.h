@@ -29,6 +29,7 @@
 #include "../core/dRowAudio_StandardHeader.h"
 
 #include "../audio/dRowAudio_AudioUtility.h"
+#include "../utility/dRowAudio_ITunesLibrary.h"
 #include "../utility/dRowAudio_ITunesLibaryParser.h"
 #include "../utility/dRowAudio_Comparators.h"
 
@@ -38,7 +39,8 @@
 */
 class MusicLibraryTable	: public Component,
                           public TableListBoxModel,
-						  public Timer
+						  public Timer,
+						  public ITunesLibrary::Listener
 {
 public:
     //==============================================================================
@@ -46,6 +48,13 @@ public:
 
     ~MusicLibraryTable();
 
+    //==============================================================================
+	void setLibraryToUse(ITunesLibrary *library);
+
+	void libraryUpdated (ITunesLibrary *library);
+	
+	void libraryFinished (ITunesLibrary *library);
+	
     //==============================================================================
     // This is overloaded from TableListBoxModel, and must return the total number of rows in our table
     int getNumRows();
@@ -120,14 +129,14 @@ private:
 		columnList = demoData->getChildWithName("COLUMNS");
 		setUpColumns(columnList);
 		
-		demoData->addChild(ValueTree("DATA"), -1, 0);
-		dataList = demoData->getChildWithName("DATA");
-
-		File libraryFile ("/Users/Dave/Documents/Developement/Juce Projects/Music Library Test/iTunes Music Library.xml");
-		if (libraryFile.existsAsFile()) {
-			parser = new ITunesLibraryParser(libraryFile, dataList);
-			startTimer(500);
-		}
+//		demoData->addChild(ValueTree("DATA"), -1, 0);
+//		dataList = demoData->getChildWithName("DATA");
+//
+//		File libraryFile ("/Users/Dave/Documents/Developement/Juce Projects/Music Library Test/iTunes Music Library_small.xml");
+//		if (libraryFile.existsAsFile()) {
+//			parser = new ITunesLibraryParser(libraryFile, dataList);
+//			startTimer(500);
+//		}
 		
 		numRows = dataList.getNumChildren();
 	}

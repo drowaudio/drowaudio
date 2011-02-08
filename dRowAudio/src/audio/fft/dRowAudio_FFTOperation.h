@@ -26,17 +26,29 @@ public:
 	{
 	}
 	
-	const long fftSizeLog2;;
-	const long fftSize;
-	const long fftSizeMinus1;
-	const long fftSizeHalved;
+	long fftSizeLog2;;
+	long fftSize;
+	long fftSizeMinus1;
+	long fftSizeHalved;
 	
-	const double oneOverFFTSizeMinus1;
-	const double oneOverFFTSize;	
+	double oneOverFFTSizeMinus1;
+	double oneOverFFTSize;	
 	
 private:
 	
+	friend class FFTOperation;
+	
 	FFTProperties();
+	
+	void setFFTSizeLog2(int newFFTSizeLog2)
+	{
+		fftSizeLog2 = newFFTSizeLog2;
+		fftSize = (1L << fftSizeLog2);
+		fftSizeMinus1 = (fftSize-1);
+		fftSizeHalved = (fftSize >> 1);
+		oneOverFFTSizeMinus1 = (1.0 / fftSizeMinus1);
+		oneOverFFTSize = (1.0 / fftSize);
+	}
 	
 	JUCE_LEAK_DETECTOR (FFTProperties);
 };
@@ -52,6 +64,8 @@ public:
 
 	~FFTOperation();
 
+	void setFFTSizeLog2(int newFFTSize);
+	
 	const FFTProperties& getFFTProperties()	{	return fftProperties;	}
 	
 	const DSPSplitComplex& getFFTBuffer()	{	return fftBufferSplit;		}
