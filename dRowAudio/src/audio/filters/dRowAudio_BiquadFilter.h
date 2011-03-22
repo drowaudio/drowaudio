@@ -12,7 +12,7 @@
 #include "../../core/dRowAudio_StandardHeader.h"
 
 /**
-	A Biquad filter.
+ A Biquad filter.
  
 	This filter is a subclass of the Juce IIR filter but uses
 	some additional methods to give more filter designs.
@@ -20,6 +20,15 @@
 class BiquadFilter : public IIRFilter
 {
 public:
+	/** Performs the filter operation on the given set of int samples.
+	 */
+    void processSamples (float* samples,
+                         int numSamples) throw();
+	
+	/** Performs the filter operation on the given set of int samples.
+	 */
+    void processSamples (int* samples,
+                         int numSamples) throw();
 	
 	/**	Makes the filter a Low-pass filter.
 	 */
@@ -70,6 +79,43 @@ public:
 private:
 	
 	JUCE_LEAK_DETECTOR (BiquadFilter);
+};
+
+/**	Prinitive class to store the set-up info of a BiquadFilter
+ */
+class BiquadFilterSetup
+{
+public:
+	enum FilterType {
+		Lowpass = 0,
+		Bandpass,
+		Highpass,
+		NoFilter
+	};
+	
+	BiquadFilterSetup(FilterType filterType, double filterCf, double filterQ =-1)
+	{
+		type = filterType;
+		cf = filterCf;
+		q = filterQ;
+	}
+	
+	void setUpFilter(BiquadFilter &filter, double sampleRate)
+	{
+		if (type == Lowpass)
+			filter.makeLowPass(sampleRate, cf);
+		else if (type == Bandpass)
+			filter.makeBandPass(sampleRate, cf, q);
+		else if (type == Highpass)
+			filter.makeHighPass(sampleRate, cf);
+		else if (type == NoFilter)
+			filter.makeInactive();
+		
+		filter.reset();
+	}
+	
+	FilterType type;
+	double cf, q;
 };
 
 #endif //_BIQUADFILTER_H_

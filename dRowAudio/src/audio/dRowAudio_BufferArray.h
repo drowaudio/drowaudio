@@ -118,6 +118,7 @@ public:
 
 private:
 	
+	AbstractFifo abstractFifo;
 	Array<Buffer> bufferArray;
 	int bufferSize;
 	int arraySize;

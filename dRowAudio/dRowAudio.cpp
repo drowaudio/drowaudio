@@ -74,8 +74,14 @@
 #include "src/gui/dRowAudio_MusicLibraryTable.cpp"
 #include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
 #include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
-//#include "src/gui/dRowAudio_Thumbnail.cpp"
 
+#include "src/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"
+#include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.cpp"
+#include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.cpp"
+#include "src/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"
+#include "src/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.cpp"
+#include "src/gui/audiothumbnail/dRowAudio_TriBandDraggableWaveDisplay.cpp"
+#include "src/gui/audiothumbnail/dRowAudio_SwitchableDraggableWaveDisplay.cpp"
 
 // Utility
 #include "src/parameters/dRowAudio_Parameter.cpp"

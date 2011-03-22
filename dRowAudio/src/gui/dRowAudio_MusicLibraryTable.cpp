@@ -45,7 +45,8 @@ String parseDateString(String dateString)
 MusicLibraryTable::MusicLibraryTable()
 :	font (12.0f),
 	numRows(0),
-	filteredNumRows(0)
+	filteredNumRows(0),
+	finishedLoading(false)
 {
 	// Load some data from an embedded XML file..
 	loadData();
@@ -113,10 +114,11 @@ void MusicLibraryTable::libraryUpdated (ITunesLibrary *library)
 void MusicLibraryTable::libraryFinished (ITunesLibrary *library)
 {
 	filteredNumRows = numRows = dataList.getNumChildren();
+	finishedLoading = true;
 	DBG("parser finished: "<<filteredNumRows);
 
-	table->getHeader().reSortTable();
 	table->updateContent();
+	table->getHeader().reSortTable();
 
 	library->removeListener(this);
 	DBG("finished loading MusicLibraryTable");
@@ -167,7 +169,7 @@ void MusicLibraryTable::paintCell (Graphics& g,
 
 void MusicLibraryTable::sortOrderChanged (int newSortColumnId, const bool isForwards)
 {
-	if (newSortColumnId != 0 && parser == 0)
+	if (newSortColumnId != 0 && finishedLoading == true)
 	{
 		if (newSortColumnId == Columns::Length
 			|| newSortColumnId == Columns::BPM

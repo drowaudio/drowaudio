@@ -15,7 +15,8 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "dRowAudio_BufferArray.h"
 
 BufferArray::BufferArray(int bufferSize_, int arraySizeLimit)
-:	bufferSize(bufferSize_),
+:	abstractFifo(arraySizeLimit),
+	bufferSize(bufferSize_),
 	arraySize(arraySizeLimit),
 	writePos(0),
 	readPos(0)
@@ -64,8 +65,8 @@ int BufferArray::getNumBuffersInUse()
 
 void BufferArray::incrimentWritePos()
 {
-//	if (++writePos >= arraySize)
-//		writePos -= arraySize;
+	if (++writePos >= arraySize)
+		writePos -= arraySize;
 }
 
 void BufferArray::free(int numToFree)
@@ -74,10 +75,10 @@ void BufferArray::free(int numToFree)
 	{
 		readPos += numToFree;
 		
-		if (readPos > writePos) {
+/*		if (readPos > writePos) {
 			readPos = writePos;
 		}
-		else if (readPos >= arraySize) {
+		else */if (readPos >= arraySize) {
 			readPos -= arraySize;
 		}
 	}

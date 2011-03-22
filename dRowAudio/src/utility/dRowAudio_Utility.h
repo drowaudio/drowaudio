@@ -12,6 +12,8 @@
 
 #include "../core/dRowAudio_StandardHeader.h"
 
+#include "dRowAudio_XmlHelpers.h"
+
 //==============================================================================
 /**
 	@file
@@ -70,6 +72,73 @@ void reverseArray(Type *array, int length)
         array[a] = array[length];    //put what's in b into a
         array[length] = swap;       //put what's in the swap (a) into b
     }
+}
+
+static const String dRowReadEntireTextStream (URL *url, const bool usePostCommand)
+{
+    const ScopedPointer <InputStream> in (url->createInputStream (usePostCommand,
+																  0, 0, String::empty,
+																  2000));
+	
+    if (in != 0)
+        return in->readEntireStreamAsString();
+	
+    return String::empty;
+}
+
+static XmlElement* dRowReadEntireXmlStream (URL *url, const bool usePostCommand)
+{
+    return XmlDocument::parse (dRowReadEntireTextStream (url, usePostCommand));
+}
+
+/**	Finds the key for a given track from the chemical-records website.
+	This will attempt to find the key listed on the chemical website for a given release number
+	eg. "31R038" and track title eg. "Wait For Me".
+	This is in the Mixed in Key format eg. 11A and will return an empty string if nothing could be found.
+	
+	@param	releaseNo	The catalogue number to look for.
+	@param	trackName	The track name to look for.
+	@param	retryLimit	An optional number of retries as sometimes the URL won't load first time.
+ */
+static String findKeyFromChemicalWebsite(const String &releaseNo, const String &trackName, int retryLimit =10)
+{
+	URL chemicalURL("http://www.chemical-records.co.uk/sc/servlet/Info?Track="+releaseNo);
+	int attemptCount = 0;
+	DBG(chemicalURL.toString(true));
+	do
+	{
+		ScopedPointer<XmlElement> pageAsXML(chemicalURL.readEntireXmlStream());
+//		ScopedPointer<XmlElement> pageAsXML(dRowReadEntireXmlStream(&chemicalURL, false));
+
+		DBG(releaseNo<<" - "<<trackName<<" attempt: "<<attemptCount);
+
+		if (pageAsXML != 0)
+		{
+			XmlElement *tracksXml (XmlHelpers::findXmlElementWithAttributeWithValue(pageAsXML, "class", "tracks"));
+			
+			if (tracksXml)
+			{
+				attemptCount = retryLimit;
+				XmlElement *tracksElem (XmlHelpers::findXmlElementWithSubText(tracksXml, trackName));
+				
+				if (tracksElem)
+				{
+					XmlElement *keyElem = 0;
+					if (tracksElem->getNextElement() != 0)
+						keyElem = (tracksElem->getNextElement()->getFirstChildElement());
+					
+					if (keyElem != 0) {
+						return keyElem->getAllSubText();
+					}
+					else {
+						return String::empty;
+					}
+				}
+			}
+		}
+	} while (++attemptCount < retryLimit);
+	
+	return String::empty;
 }
 
 //==============================================================================

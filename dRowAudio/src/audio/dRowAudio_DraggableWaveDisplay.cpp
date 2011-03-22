@@ -17,7 +17,7 @@ DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeU
 	timePerPixel(1.0),
 	zoomFactor(1.0f),
 	playheadPos(0.5f),
-	sourceSamplesPerThumbSample(2048),
+	sourceSamplesPerThumbSample(64/*2048*/),
 	thumbnailCache(cacheToUse),
 	deleteCache(thumbnailCache ? false : true),
 	isDraggable(true)

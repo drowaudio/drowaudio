@@ -14,7 +14,8 @@
 #include "../core/dRowAudio_StandardHeader.h"
 #include "dRowAudio_ITunesLibaryParser.h"
 
-class ITunesLibrary : public Timer
+class ITunesLibrary : public Timer,
+					  public DeletedAtShutdown
 {
 public:
 	

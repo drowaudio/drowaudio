@@ -180,6 +180,10 @@ static void convertToFloat(AudioFormatReader *reader, void *sourceBuffer, float 
 			AudioDataConverters::convertInt32LEToFloat((void*)sourceBuffer, destBuffer, numSamples, sizeof(int));
 #endif
 		}
+		else {
+			memcpy(destBuffer, sourceBuffer, sizeof(float)*numSamples);
+		}
+
 	}
 }
 

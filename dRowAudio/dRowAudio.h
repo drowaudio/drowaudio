@@ -35,7 +35,7 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/audio/dRowAudio_FIFOBuffer.h"
 #include "src/audio/dRowAudio_CircularBuffer.h"
 #include "src/audio/dRowAudio_Buffer.h"
-#include "src/audio/dRowAudio_BufferArray.h"
+//#include "src/audio/dRowAudio_BufferArray.h"
 
 //#include "src/audio/MADAudioFormat.h"
 
@@ -81,14 +81,20 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
 #include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 
-//#include "src/gui/dRowAudio_Thumbnail.h"
-
+#include "src/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h"
+#include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.h"
+#include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h"
+#include "src/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
+#include "src/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.h"
+#include "src/gui/audiothumbnail/dRowAudio_TriBandDraggableWaveDisplay.h"
+#include "src/gui/audiothumbnail/dRowAudio_SwitchableDraggableWaveDisplay.h"
 
 // Utility
 #include "src/parameters/dRowAudio_Parameter.h"
 #include "src/utility/dRowAudio_Constants.h"
 #include "src/utility/dRowAudio_Utility.h"
 #include "src/utility/dRowAudio_StateVariable.h"
+#include "src/utility/dRowAudio_XmlHelpers.h"
 #include "src/utility/dRowAudio_Comparators.h"
 #include "src/utility/dRowAudio_ITunesLibrary.h"
 #include "src/utility/dRowAudio_ITunesLibaryParser.h"

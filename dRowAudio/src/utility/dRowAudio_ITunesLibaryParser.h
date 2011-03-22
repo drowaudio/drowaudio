@@ -29,9 +29,12 @@ namespace Columns {
 		BPM,
 		Genre,
 		SubGenre,
+		Label,
+		Key,
 		Length,
 		Added,
 		Location,
+		Score,
 		numColumns
 	};
 	
@@ -46,9 +49,12 @@ namespace Columns {
 		"BPM",
 		"Genre",
 		"Sub_Genre",
+		"Label",
+		"Key",
 		"Length",						
 		"Added",
-		"Location"
+		"Location",
+		"Score"
 	};
 	
 	static const char *iTunesNames[] = {
@@ -62,9 +68,12 @@ namespace Columns {
 		"BPM",
 		"Genre",
 		"Grouping",
+		"Comments",
+		"Series",
 		"Total Time",
 		"Date Added",
-		"Location"
+		"Location",
+		"Score"
 	};
 	
 	static const int columnWidths[] = {
@@ -78,9 +87,12 @@ namespace Columns {
 		60,
 		80,
 		100,
+		100,
+		30,
 		80,
 		125,
-		300
+		300,
+		60
 	};
 }
 

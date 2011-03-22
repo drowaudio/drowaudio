@@ -81,6 +81,8 @@ public:
 	// Call this to sort the table displaying only the items matched
 	void setFilterText (String filterText);
 		
+	//	Returns the table list box component.
+	TableListBox*	getTableListBox()	{	return table;	};
     //==============================================================================
     void resized();
 
@@ -106,18 +108,22 @@ private:
 	
 	ScopedPointer<ValueTree> filteredDataList;   // A pointer to the sub-node of demoData that contains the list of data rows
     int filteredNumRows;            // The number of rows of data we've got
-
+	bool finishedLoading;
+	
     //==============================================================================
 	void setUpColumns (ValueTree &elementToSetUp)
 	{
 		for (int i = 1; i < Columns::numColumns; i++)
 		{
-			ValueTree tempElement("COLUMN");
-			tempElement.setProperty("columnId", i, 0);
-			tempElement.setProperty("name", Columns::columnNames[i].toString(), 0);
-			tempElement.setProperty("width", Columns::columnWidths[i], 0);
-			
-			elementToSetUp.addChild(tempElement, -1, 0);
+			if (i != Columns::Score)
+			{
+				ValueTree tempElement("COLUMN");
+				tempElement.setProperty("columnId", i, 0);
+				tempElement.setProperty("name", Columns::columnNames[i].toString(), 0);
+				tempElement.setProperty("width", Columns::columnWidths[i], 0);
+				
+				elementToSetUp.addChild(tempElement, -1, 0);
+			}
 		}
 	}
 	
@@ -128,16 +134,7 @@ private:
 		demoData->addChild(ValueTree("COLUMNS"), -1, 0);
 		columnList = demoData->getChildWithName("COLUMNS");
 		setUpColumns(columnList);
-		
-//		demoData->addChild(ValueTree("DATA"), -1, 0);
-//		dataList = demoData->getChildWithName("DATA");
-//
-//		File libraryFile ("/Users/Dave/Documents/Developement/Juce Projects/Music Library Test/iTunes Music Library_small.xml");
-//		if (libraryFile.existsAsFile()) {
-//			parser = new ITunesLibraryParser(libraryFile, dataList);
-//			startTimer(500);
-//		}
-		
+				
 		numRows = dataList.getNumChildren();
 	}
 };

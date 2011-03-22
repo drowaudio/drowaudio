@@ -25,7 +25,7 @@ PositionableWaveDisplay::PositionableWaveDisplay (FilteringAudioFilePlayer *sour
 	// instansiate the cache and the thumbnail
 	if (thumbnailCache == 0)
 		thumbnailCache = new AudioThumbnailCache(2);
-	thumbnailView = new AudioThumbnail(5120, *formatManager, *thumbnailCache);
+	thumbnailView = new AudioThumbnail(1024, *formatManager, *thumbnailCache);
 	
 	// register with the file player to recieve update messages
 	filePlayer->addChangeListener(this);
@@ -44,11 +44,15 @@ PositionableWaveDisplay::~PositionableWaveDisplay()
 //====================================================================================
 void PositionableWaveDisplay::resized()
 {
-	const int w = getWidth();
-	const int h = getHeight();
+	int w = getWidth();
+	int h = getHeight();
 		
 	if (firstLoad) {
 		firstLoad = false;
+		if (w == 0)
+			w = 1;
+		if (h == 0)
+			h = 1;
 		waveformImage = new Image(Image::RGB, w, h, true);
 		refreshWaveform();
 	}

@@ -50,6 +50,7 @@ public:
 			memcpy(buffer.getData()+start2, samples+size1, size2 * sizeof(float));
 
 		abstractFifo.finishedWrite (size1 + size2);
+//		jassert((size1 + size2) == numSamples);
 	}
 	
 	void readSamples (float* bufferToFill, int numSamples)
@@ -64,6 +65,7 @@ public:
 			memcpy(bufferToFill + size1, buffer.getData() + start2, size2 * sizeof(float));
 		
 		abstractFifo.finishedRead (size1 + size2);
+//		jassert((size1 + size2) == numSamples);
 	}
 	
 private:
