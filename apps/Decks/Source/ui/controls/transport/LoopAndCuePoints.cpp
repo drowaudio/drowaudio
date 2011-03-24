@@ -23,7 +23,7 @@ LoopAndCuePoints::LoopAndCuePoints()
 	addAndMakeVisible(tabbedComponent);
 	tabbedComponent->setTabBarDepth(20);
 	tabbedComponent->setOutline(0);
-	tabbedComponent->addTab("Loops", Colour::greyLevel(0.3), 0, true);
+	tabbedComponent->addTab("Loop", Colour::greyLevel(0.3), 0, true);
 	tabbedComponent->addTab("Cue", Colour::greyLevel(0.3), 0, true);
 }
 

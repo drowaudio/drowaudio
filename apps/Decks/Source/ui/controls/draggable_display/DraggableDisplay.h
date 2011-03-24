@@ -48,8 +48,10 @@ private:
 	DeckManager *settings;
 
 	Slider *zoomSlider, *playheadPosSlider;
-	ScopedPointer<AudioThumbnailCache> thumbnailCache; 
-	OwnedArray <DraggableWaveDisplay> draggableWaveDisplays;
+//	ScopedPointer<AudioThumbnailCache> thumbnailCache; 
+//	OwnedArray <DraggableWaveDisplay> draggableWaveDisplays;
+	ScopedPointer<MultipleAudioThumbnailCache> thumbnailCache; 
+	OwnedArray <SwitchableDraggableWaveDisplay> draggableWaveDisplays;
 	
 };
 

@@ -18,7 +18,8 @@
 class TrackInfo : public Component,
 				  public Button::Listener,
 				  public ChangeListener,
-				  public Timer/*,
+				  public Timer,
+				  public FilteringAudioFilePlayer::Listener/*,
 				  public Thread*/
 {
 public:
@@ -34,6 +35,8 @@ public:
 	//=================================================
 	void buttonClicked (Button* button);
 	
+	void fileChanged (FilteringAudioFilePlayer *player);
+
 	void changeListenerCallback(ChangeBroadcaster* changedObject);
 	
 	void timerCallback();

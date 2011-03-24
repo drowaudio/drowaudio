@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 45;
 	objects = {
 
 		D0BEE33CD8AB2C577C6AFA19 = { isa = PBXBuildFile; fileRef = 80F6A8B63729A6DF729887AB; };
@@ -58,6 +58,7 @@
 		40F437461414DDC8F5114067 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultSettings.h; path = ../../Source/main/DefaultSettings.h; sourceTree = SOURCE_ROOT; };
 		8C2BB5F921175543CCCA8659 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../../Source/main/Settings.h; sourceTree = SOURCE_ROOT; };
 		342DAFA1747A6C731022DBFC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Settings.cpp; path = ../../Source/main/Settings.cpp; sourceTree = SOURCE_ROOT; };
+		4B94B3706DADFBFBFE570B35 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UISettings.h; path = ../../Source/main/UISettings.h; sourceTree = SOURCE_ROOT; };
 		B68C3E4EDD8FA27FC6C113C5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerSettings.h; path = ../../Source/main/MixerSettings.h; sourceTree = SOURCE_ROOT; };
 		41AAD98A113E9B975FFE4BD5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_OverflowingAbstractFifo.h; path = ../../Source/main/dRowAudio_OverflowingAbstractFifo.h; sourceTree = SOURCE_ROOT; };
 		8CFD9E8B45B5659F0DB5EE3B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_OverflowingAbstractFifo.cpp; path = ../../Source/main/dRowAudio_OverflowingAbstractFifo.cpp; sourceTree = SOURCE_ROOT; };
@@ -136,6 +137,7 @@
 				40F437461414DDC8F5114067,
 				8C2BB5F921175543CCCA8659,
 				342DAFA1747A6C731022DBFC,
+				4B94B3706DADFBFBFE570B35,
 				B68C3E4EDD8FA27FC6C113C5,
 				4E3A9B3216DFB0681EE1E4D7 ); name = main; sourceTree = "<group>"; };
 		DEC2A5CD412C6D13C8E3D3AB = { isa = PBXGroup; children = (
@@ -228,13 +230,11 @@
 				D608FFC92435DE338695B475,
 				E10DCC458375397A609A08D1 ); name = Source; sourceTree = "<group>"; };
 		B618935E07D7A9187A9C8662 = { isa = XCBuildConfiguration; buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				PREBINDING = NO;
 				HEADER_SEARCH_PATHS = " $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				SDKROOT = iphonesimulator3.2;
 				OTHER_LDFLAGS = "-ljucedebug";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"$(SRCROOT)/../../../../../juce_source/juce/bin\"");
 				ONLY_ACTIVE_ARCH = YES;
@@ -244,15 +244,14 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 				"_DEBUG=1",
 				"DEBUG=1",
+				"JUCE_ObjCExtraSuffix=pfrbIk",
 				"JUCER_XCODE_IPHONE_25ADD7EF=1"); }; name = Debug; };
 		40B42CC1214F4EF280E8053A = { isa = XCBuildConfiguration; buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				PREBINDING = NO;
 				HEADER_SEARCH_PATHS = " $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				SDKROOT = iphonesimulator3.2;
 				OTHER_LDFLAGS = "-ljuce";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"$(SRCROOT)/../../../../../juce_source/juce/bin\"");
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -260,6 +259,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 				"_NDEBUG=1",
 				"NDEBUG=1",
+				"JUCE_ObjCExtraSuffix=pfrbIk",
 				"JUCER_XCODE_IPHONE_25ADD7EF=1"); }; name = Release; };
 		3166EA8BE6D9BEF189879A07 = { isa = XCBuildConfiguration; buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -274,6 +274,9 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				ZERO_LINK = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf";
 				PRODUCT_NAME = "Decks"; }; name = Debug; };
@@ -290,6 +293,9 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				ZERO_LINK = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf";
 				PRODUCT_NAME = "Decks"; }; name = Release; };
@@ -344,7 +350,7 @@
 				505064D4AB4FB1E60837F09C,
 				3CF760437A4BCB4372493539,
 				E01C919C5337055BFB1B233A ); buildRules = ( ); dependencies = ( ); name = Decks; productName = Decks; productReference = EB76E0210168B8B95BC9EC13; productInstallPath = "$(HOME)/Applications"; productType = "com.apple.product-type.application"; };
-		AFC27DE8E9C1486A98ABD55F = { isa = PBXProject; buildConfigurationList = EDEF46A152A4E4ED0BE677D4; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = A7C59CEB977298DA713A6166; projectDirPath = ""; projectRoot = ""; targets = ( B428EAAFF8BB2A792CA5A0F8 ); };
+		AFC27DE8E9C1486A98ABD55F = { isa = PBXProject; buildConfigurationList = EDEF46A152A4E4ED0BE677D4; compatibilityVersion = "Xcode 3.1"; hasScannedForEncodings = 0; mainGroup = A7C59CEB977298DA713A6166; projectDirPath = ""; projectRoot = ""; targets = ( B428EAAFF8BB2A792CA5A0F8 ); };
 	};
 	rootObject = AFC27DE8E9C1486A98ABD55F;
 }

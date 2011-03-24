@@ -17,7 +17,6 @@
 #include "DeckTransport.h"
 
 class Transport :	public Component,
-					public ButtonListener,
 					public ValueTree::Listener,
 					public Value::Listener
 {

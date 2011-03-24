@@ -100,6 +100,9 @@ SOURCE="..\..\Source\main\Settings.h"
 SOURCE="..\..\Source\main\Settings.cpp"
 # End Source File
 # Begin Source File
+SOURCE="..\..\Source\main\UISettings.h"
+# End Source File
+# Begin Source File
 SOURCE="..\..\Source\main\MixerSettings.h"
 # End Source File
 # Begin Group "audio"

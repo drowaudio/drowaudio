@@ -14,7 +14,8 @@
 #include <dRowAudio/dRowAudio.h>
 
 class TrackSuggestions : public Component,
-						 public TableListBoxModel
+						 public TableListBoxModel,
+						 public ComboBox::Listener
 {
 public:
 	TrackSuggestions(ValueTree sourceToBaseSuggestionsOn, ValueTree libraryDatabase);
@@ -26,7 +27,9 @@ public:
 	void paint(Graphics &g);
 
 	//==============================================================================
-	void setSourceTrack(ValueTree newSource, ValueTree libraryDatabase);
+	void setSourceTrack(ValueTree newSource, ValueTree libraryDatabase, int mixType);
+	
+	void comboBoxChanged (ComboBox* comboBoxThatHasChanged);
 	
 	//==============================================================================
     // This is overloaded from TableListBoxModel, and must return the total number of rows in our table
@@ -67,7 +70,9 @@ private:
     ValueTree dataList;   // A pointer to the sub-node of demoData that contains the list of data rows
     int numRows;            // The number of rows of data we've got
 		
+	ComboBox *mixTypeBox;
     TableListBox* table;    // the table component itself
+	ValueTree currentSource, currentLibrary;
     //==============================================================================
 	void setUpColumns (ValueTree &elementToSetUp)
 	{
@@ -95,6 +100,18 @@ private:
 				
 		numRows = dataList.getNumChildren();
 	}	
+	//==============================================================================
+
+	enum mixTypes {
+		any,
+		plusOne,
+		minusOne,
+		moodChange,
+		plusTwoBoost,
+		numMixTypes
+	};
+	
+	static const char* mixTypeNames[];
 };
 
 

@@ -134,7 +134,7 @@ namespace MixerSettings
 			0.5f,		//faderCurve
 			0.5f,		//xFaderCurve,
 			1.0f		//monitorGain
-		};		
+		};
 	}
 	
 	static void buildDefaultMixerSettings(ValueTree& treeToFill)

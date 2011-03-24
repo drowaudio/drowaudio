@@ -137,6 +137,7 @@
           <File RelativePath="..\..\Source\main\DefaultSettings.h"/>
           <File RelativePath="..\..\Source\main\Settings.h"/>
           <File RelativePath="..\..\Source\main\Settings.cpp"/>
+          <File RelativePath="..\..\Source\main\UISettings.h"/>
           <File RelativePath="..\..\Source\main\MixerSettings.h"/>
           <Filter Name="audio">
             <File RelativePath="..\..\Source\main\dRowAudio_OverflowingAbstractFifo.h"/>

@@ -14,26 +14,28 @@ DraggableDisplay::DraggableDisplay()
 	settings(DeckManager::getInstance())
 {
 	Settings::getInstance()->getValueTreePointer()->addListener(this);
-	thumbnailCache = new AudioThumbnailCache(noDecks);
+	thumbnailCache = new MultipleAudioThumbnailCache(noDecks);
 	
 	for (int i = 0; i < noDecks; i++)
 	{
-		draggableWaveDisplays.add(new DraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(), thumbnailCache));
+		draggableWaveDisplays.add(new SwitchableDraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(), thumbnailCache));
 		addAndMakeVisible(draggableWaveDisplays[i]);
 	}
 	
 	// create the zoom & playhead sliders
 	addAndMakeVisible( zoomSlider = new Slider("zoomSlider") );
 	zoomSlider->setSliderStyle(Slider::LinearVertical);
-	zoomSlider->setRange(0.1, 20.0, 0.1);
-	zoomSlider->setSkewFactorFromMidPoint(10.0);
-	zoomSlider->setValue(10.0);
+	zoomSlider->setRange(-20.0, 0.999999, 0.0001);
+//	zoomSlider->setValue(0.0f);
+	zoomSlider->setSkewFactorFromMidPoint(0.0);	
+	zoomSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChildAsValue(UISettings::DraggableDisplaySettings::SectionName, DRAGGABLE_SETTING(zoom)));
 	zoomSlider->addListener(this);
 	
 	addAndMakeVisible( playheadPosSlider = new Slider("playheadPosSlider") );
 	playheadPosSlider->setSliderStyle(Slider::LinearVertical);
 	playheadPosSlider->setRange(0.0, 1.0, 0.0001);
-	playheadPosSlider->setValue(0.5);
+//	playheadPosSlider->setValue(0.5);
+	playheadPosSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChildAsValue(UISettings::DraggableDisplaySettings::SectionName, DRAGGABLE_SETTING(centrePos)));
 	playheadPosSlider->addListener(this);
 }
 
@@ -124,7 +126,7 @@ void DraggableDisplay::sliderValueChanged(Slider *slider)
 {
 	if (slider == zoomSlider)
 	{
-		const double zoomFactor = zoomSlider->getValue();
+		const double zoomFactor = 1.0f - zoomSlider->getValue();
 		for (int i = 0; i < noDecks; i++)
 			draggableWaveDisplays[i]->setZoomFactor(zoomFactor);
 	}
@@ -141,6 +143,9 @@ void DraggableDisplay::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHa
 		if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfChannelAsValue(i, CHANNEL_SETTING(on))) {
 			resized();
 		}
+//		else if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfChannelAsValue(i, CHANNEL_SETTING(on))) {
+//			resized();
+//		}
 	}
 }
 

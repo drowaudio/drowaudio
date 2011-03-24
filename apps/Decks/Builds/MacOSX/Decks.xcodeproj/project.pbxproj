@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 45;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -78,6 +78,7 @@
 		47A5C470278A8899ED6807B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		4A410750948391619D696866 /* DecksColours.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksColours.h; path = ../../Source/ui/DecksColours.h; sourceTree = SOURCE_ROOT; };
 		4AE6BDB56E02299E5EC730D5 /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Transport.h; path = ../../Source/ui/controls/transport/Transport.h; sourceTree = SOURCE_ROOT; };
+		4B94B3706DADFBFBFE570B35 /* UISettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UISettings.h; path = ../../Source/main/UISettings.h; sourceTree = SOURCE_ROOT; };
 		4CC12202EAE06D0E02A6AFBC /* TrackInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackInfo.h; path = ../../Source/ui/controls/transport/TrackInfo.h; sourceTree = SOURCE_ROOT; };
 		4EA63BBA9D40D629510BFE98 /* Decks_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Decks_icon.png; path = ../../Source/resources/Decks_icon.png; sourceTree = SOURCE_ROOT; };
 		5509BE7D3E60AF013A7E79ED /* DecksAudioFormatManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksAudioFormatManager.cpp; path = ../../Source/main/DecksAudioFormatManager.cpp; sourceTree = SOURCE_ROOT; };
@@ -204,6 +205,7 @@
 				40F437461414DDC8F5114067 /* DefaultSettings.h */,
 				8C2BB5F921175543CCCA8659 /* Settings.h */,
 				342DAFA1747A6C731022DBFC /* Settings.cpp */,
+				4B94B3706DADFBFBFE570B35 /* UISettings.h */,
 				B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */,
 				4E3A9B3216DFB0681EE1E4D7 /* audio */,
 			);
@@ -399,7 +401,7 @@
 		AFC27DE8E9C1486A98ABD55F /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = EDEF46A152A4E4ED0BE677D4 /* Build configuration list for PBXProject "Decks" */;
-			compatibilityVersion = "Xcode 3.0";
+			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 0;
 			mainGroup = A7C59CEB977298DA713A6166 /* Source */;
 			projectDirPath = "";
@@ -508,13 +510,12 @@
 		40B42CC1214F4EF280E8053A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
+					"JUCE_ObjCExtraSuffix=h0HpWI",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -540,7 +541,6 @@
 		B618935E07D7A9187A9C8662 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -548,6 +548,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
+					"JUCE_ObjCExtraSuffix=h0HpWI",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -560,7 +561,7 @@
 					"\"$(SRCROOT)/../../../../../juce_source/juce/bin\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ljucedebug",
 					"-framework",

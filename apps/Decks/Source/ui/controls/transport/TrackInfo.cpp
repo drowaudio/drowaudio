@@ -10,12 +10,13 @@
 #include "TrackInfo.h"
 
 TrackInfo::TrackInfo(int deckNo_, FilteringAudioFilePlayer* filePlayer_)
-	:	deckNo(deckNo_),
-		filePlayer(filePlayer_),
-		time(0.0),
-		fileLength(0.0)
+:	deckNo(deckNo_),
+	filePlayer(filePlayer_),
+	time(0.0),
+	fileLength(0.0)
 {
 	filePlayer->addChangeListener(this);
+	filePlayer->addListener(this);
 	
 	currentTime = timeToTimecodeStringLowRes(time);
 	remainingTime = timeToTimecodeStringLowRes( fileLength - time );
@@ -96,7 +97,7 @@ void TrackInfo::buttonClicked (Button* button)
 	{
 //		if (suggestButton->getToggleState()) {
 		TrackSuggestions content(filePlayer->getLibraryEntry(), ITunesLibrary::getInstance()->getLibraryTree());
-			content.setSize (300, 300);
+			content.setSize (400, 300);
 			
 			CallOutBox callOut (content, *suggestButton, getTopLevelComponent());
 			callOut.runModalLoop();
@@ -107,9 +108,9 @@ void TrackInfo::buttonClicked (Button* button)
 	}
 }
 
-void TrackInfo::changeListenerCallback(ChangeBroadcaster* changedObject)
+void TrackInfo::fileChanged (FilteringAudioFilePlayer *player)
 {
-	if (changedObject == filePlayer)
+	if (player == filePlayer)
 	{
 		AudioFormatReaderSource* readerSource = filePlayer->getAudioFormatReaderSource();
 		double sampleRate = 44100.0;
@@ -121,10 +122,19 @@ void TrackInfo::changeListenerCallback(ChangeBroadcaster* changedObject)
 		
 		trackName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Song]);
 		artistName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Artist]);
-
+		
+		// file was not loaded from the library
 		if (trackName.isEmpty() && artistName.isEmpty())
 			trackName = fileName;
-		
+			
+		repaint();
+	}
+}
+
+void TrackInfo::changeListenerCallback(ChangeBroadcaster* changedObject)
+{
+	if (changedObject == filePlayer)
+	{		
 		if (filePlayer->isPlaying())
 			startTimer(100);
 		else {

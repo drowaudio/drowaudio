@@ -13,6 +13,7 @@
 
 #include <dRowAudio/dRowAudio.h>
 #include "MixerSettings.h"
+#include "UISettings.h"
 
 class Settings	:	public ValueTree::Listener,
 					public DeletedAtShutdown

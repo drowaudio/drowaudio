@@ -89,11 +89,6 @@ void Transport::paint(Graphics &g)
 }
 
 //================================================================	
-void Transport::buttonClicked(Button *button)
-{
-	getParentComponent()->resized();
-}
-
 void Transport::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property)
 {
 	for (int i = 0; i < int(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")); i++) {

@@ -10,10 +10,28 @@
 
 #include "TrackSuggestions.h"
 
+const char* TrackSuggestions::mixTypeNames[] = {
+	"Any",
+	"Plus One",
+	"Minus One",
+	"Mood Change",
+	"Plus Two Boost"
+};
+
 TrackSuggestions::TrackSuggestions(ValueTree sourceToBaseSuggestionsOn, ValueTree libraryDatabase)
 :	font (12.0f),
-	numRows(0)
+	numRows(0),
+	currentSource(sourceToBaseSuggestionsOn),
+	currentLibrary(libraryDatabase)
 {
+	addAndMakeVisible( mixTypeBox = new ComboBox() );
+	for (int i = 0; i < numMixTypes; i++)
+	{
+		mixTypeBox->addItem(mixTypeNames[i], i+1);
+	}
+	mixTypeBox->setSelectedId(1);
+	mixTypeBox->addListener(this);
+	
 	loadData();
 	
 	// Create our table component and add it to this component..
@@ -48,7 +66,9 @@ TrackSuggestions::TrackSuggestions(ValueTree sourceToBaseSuggestionsOn, ValueTre
 	table->getHeader().setColumnVisible (Columns::Added, false);
 	table->getHeader().setColumnVisible (Columns::Location, false);
 	
-	setSourceTrack(sourceToBaseSuggestionsOn, libraryDatabase);
+	table->getHeader().setSortColumnId(Columns::Score, false);
+	
+	setSourceTrack(currentSource, currentLibrary, mixTypeBox->getSelectedId()-1);
 }
 
 TrackSuggestions::~TrackSuggestions()
@@ -58,7 +78,10 @@ TrackSuggestions::~TrackSuggestions()
 
 void TrackSuggestions::resized()
 {
-	table->setBounds(getLocalBounds());
+	const int m = 2;
+	
+	mixTypeBox->setBounds(m, m, getWidth()-2*m, 20);
+	table->setBounds(m, mixTypeBox->getBottom()+m, getWidth()-2*m, getHeight()-mixTypeBox->getBottom()-2*m);
 }
 
 void TrackSuggestions::paint(Graphics &g)
@@ -66,20 +89,151 @@ void TrackSuggestions::paint(Graphics &g)
 }
 
 //==============================================================================
-void TrackSuggestions::setSourceTrack(ValueTree newSource, ValueTree libraryDatabase)
+void TrackSuggestions::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 {
-	double minBpm = double(newSource.getProperty(Columns::columnNames[Columns::BPM], 0)) * 0.99;
-	double maxBpm = double(newSource.getProperty(Columns::columnNames[Columns::BPM], 0)) * 1.01;
+	if (comboBoxThatHasChanged == mixTypeBox)
+	{
+		setSourceTrack(currentSource, currentLibrary, mixTypeBox->getSelectedId()-1);
+	}
+}
+
+void TrackSuggestions::setSourceTrack(ValueTree newSource, ValueTree libraryDatabase, int mixType)
+{
+	if (!newSource.isValid()) {
+		return;
+	}
+	
+	dataList.removeAllChildren(0);
+	
+	const double sourceBpm = double(newSource.getProperty(Columns::columnNames[Columns::BPM], 0));
+	const double minBpm = sourceBpm * 0.95;
+	const double maxBpm = sourceBpm * 1.05;
+	
+	const String sourceGenre(newSource.getProperty(Columns::columnNames[Columns::Genre]).toString());
+	StringArray sourceSubGenre;
+	sourceSubGenre.addTokens(newSource.getProperty(Columns::columnNames[Columns::SubGenre]).toString(), true);
+	
+	const String sourceKey(newSource.getProperty(Columns::columnNames[Columns::Key]).toString().trim());
+	const String sourceKeyLetter (sourceKey.getLastCharacters(1));
+	int sourceKeyNumber = sourceKey.trimCharactersAtEnd(sourceKeyLetter).getIntValue();
+			
+	bool addTrack = false;
+	float totalScore = 0.0f;
+	
 	for(int i = 0; i < libraryDatabase.getNumChildren(); i++)
 	{
+		addTrack = false;
+		totalScore = 0.0f;
+		
+		// score bpm
 		double bpm = libraryDatabase.getChild(i).getProperty(Columns::columnNames[Columns::BPM]);
-		if (bpm >= minBpm && bpm <= maxBpm) {
-			dataList.addChild(libraryDatabase.getChild(i).createCopy(), -1, 0);
+		if (bpm >= minBpm && bpm <= maxBpm)
+		{
+			float bpmScore = 100.0f - (fabsf(sourceBpm - bpm) / (maxBpm - minBpm));
+			totalScore += bpmScore * 0.3;
+			
+			addTrack = true;
+		}
+		
+		// score genre
+		String genre = libraryDatabase.getChild(i).getProperty(Columns::columnNames[Columns::Genre]);
+		if (genre == sourceGenre)
+		{
+			totalScore += 20.0f;
+		}
+
+		// score sub genres
+		StringArray subGenre;
+		subGenre.addTokens(libraryDatabase.getChild(i).getProperty(Columns::columnNames[Columns::SubGenre]), false);
+		int numMatches = 0;
+		int numPossibleMatches = jmax(sourceSubGenre.size(), subGenre.size());
+		if (numPossibleMatches > 0)
+		{
+			for (int c = 0; c < sourceSubGenre.size(); c++)
+			{
+				for (int s = 0; s < subGenre.size(); s++) {
+					if (sourceSubGenre[c] == subGenre[s]) {
+						numMatches++;
+					}
+				}
+			}
+			totalScore += (numMatches / (float)numPossibleMatches) * 20.0f;
+		}
+		
+		// score key
+		String key (libraryDatabase.getChild(i).getProperty(Columns::columnNames[Columns::Key]).toString());
+		if (key.isNotEmpty())
+		{
+			String keyLetter (key.getLastCharacters(1));
+			int keyNumber = key.trimCharactersAtEnd(keyLetter).getIntValue();
+			bool keyMatch = false;
+
+			if (mixType == any)
+			{
+				if (keyNumber == sourceKeyNumber
+					&& keyLetter == sourceKeyLetter)
+				{
+					keyMatch = true;
+				}					
+			}	
+			if (mixType == any || mixType == plusOne)
+			{
+				int nextNumber = (sourceKeyNumber) % 12 + 1;
+				if (nextNumber == keyNumber
+					&& keyLetter == sourceKeyLetter)
+				{
+					keyMatch = true;
+				}					
+			}	
+			if (mixType == any || mixType == minusOne)
+			{
+				if (((sourceKeyNumber+10) % 12 + 1) == keyNumber
+					&& keyLetter == sourceKeyLetter)
+				{
+					keyMatch = true;
+				}										
+			}	
+			if (mixType == any || mixType == moodChange)
+			{
+				if (keyNumber == sourceKeyNumber)
+				{
+					if (sourceKeyLetter == String("A")) {
+						if (keyLetter == String("B")) {
+							keyMatch = true;
+						}
+					}
+					else if (sourceKeyLetter == String("B")) {
+						if (keyLetter == String("A")) {
+							keyMatch = true;
+						}
+					}
+				}
+			}	
+			if (mixType == any || mixType == plusTwoBoost)
+			{
+				if (((sourceKeyNumber+1) % 12 + 1) == keyNumber
+					&& keyLetter == sourceKeyLetter)
+				{
+					keyMatch = true;
+				}
+			}	
+			
+			if (keyMatch) {
+				totalScore += 30.0f;
+			}
+		}
+		
+		if (addTrack)
+		{
+			ValueTree newTree(libraryDatabase.getChild(i).createCopy());
+			newTree.setProperty(Columns::columnNames[Columns::Score], totalScore, 0);
+			dataList.addChild(newTree, -1, 0);
 		}
 	}
 	
 	numRows = dataList.getNumChildren();
 
+	table->getHeader().reSortTable();
 	table->updateContent();
 }
 
@@ -131,7 +285,8 @@ void TrackSuggestions::sortOrderChanged (int newSortColumnId, const bool isForwa
 		if (newSortColumnId == Columns::Length
 			|| newSortColumnId == Columns::BPM
 			|| newSortColumnId == Columns::LibID
-			|| newSortColumnId == Columns::ID)
+			|| newSortColumnId == Columns::ID
+			|| newSortColumnId == Columns::Score)
 		{
 			ValueTreeComparators::Numerical sorter (Columns::columnNames[newSortColumnId], isForwards);
 			dataList.sort (sorter, 0, false);

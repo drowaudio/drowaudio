@@ -60,7 +60,7 @@ MainAppWindow::MainAppWindow()
     // This sets the main content component for the window to be whatever MainComponent
     // is. The nature of DocumentWindow means that the contentComponent will fill the main
 	// area of the window, and will be deleted automatically when the window is deleted.
-    setContentComponent (contentComponent);
+    setContentOwned(contentComponent, false);
 	
 //	contentComponent->setApplicationCommandManagerToWatch (commandManager);
 }
@@ -120,6 +120,7 @@ void MainAppWindow::setUpLookAndFeel()
 	laf->setColour(TextButton::buttonColourId, decksColours->getColour(DecksColours::buttonColour));//.withBrightness(0.4));
 	laf->setColour(TextButton::buttonOnColourId, decksColours->getColour(DecksColours::buttonColour).withBrightness(0.8));
 	laf->setColour(TextButton::textColourOffId, laf->findColour(TextButton::buttonOnColourId));
+	laf->setColour(ComboBox::buttonColourId, decksColours->getColour(DecksColours::buttonColour));
 //	laf->setColour(Slider::rotarySliderFillColourId, Colours::darkgrey);
 //	laf->setColour(Slider::rotarySliderOutlineColourId, Colour::greyLevel(1));
 	laf->setColour(Slider::rotarySliderFillColourId, decksColours->getColour(DecksColours::rotarySliderColour).withBrightness(0.4));

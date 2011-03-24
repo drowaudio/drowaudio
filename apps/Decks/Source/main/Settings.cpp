@@ -74,6 +74,7 @@ bool Settings::loadSettingsFile(String path, ValueTree &treeToFill)
 bool Settings::buildDefaultSettings(ValueTree &treeToFill)
 {
 	MixerSettings::buildDefaultMixerSettings(treeToFill);
+	UISettings::buildDefaultUISettings(treeToFill);
 	
 	return treeToFill.isValid();
 }

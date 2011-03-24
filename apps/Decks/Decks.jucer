@@ -10,9 +10,10 @@
               jucerVersion="3.0.0" smallIcon="H0hwTQxn5" bigIcon="H0hwTQxn5">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../../../juce_source/juce" extraLinkerFlags="-framework Accelerate"/>
+               juceFolder="../../../juce_source/juce" extraLinkerFlags="-framework Accelerate"
+               objCExtraSuffix="h0HpWI"/>
     <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-                  juceFolder="../../../juce_source/juce"/>
+                  juceFolder="../../../juce_source/juce" objCExtraSuffix="pfrbIk"/>
     <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
            juceFolder="../../../juce_source/juce" libraryType="1"/>
     <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
@@ -25,7 +26,7 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Decks"
-                   osxSDK="default" osxCompatibility="default"/>
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="Decks"
                    osxSDK="default" osxCompatibility="default"/>
   </CONFIGURATIONS>
@@ -39,6 +40,7 @@
               file="Source/main/DefaultSettings.h"/>
         <FILE id="l5H7nTOFh" name="Settings.h" compile="0" resource="0" file="Source/main/Settings.h"/>
         <FILE id="DrhCCFDvc" name="Settings.cpp" compile="1" resource="0" file="Source/main/Settings.cpp"/>
+        <FILE id="YyQEZ3" name="UISettings.h" compile="0" resource="0" file="Source/main/UISettings.h"/>
         <FILE id="ZOcVatnBQ" name="MixerSettings.h" compile="0" resource="0"
               file="Source/main/MixerSettings.h"/>
         <GROUP id="n4fIxnJ" name="audio">

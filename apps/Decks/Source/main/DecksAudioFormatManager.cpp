@@ -17,7 +17,7 @@ DecksAudioFormatManager::DecksAudioFormatManager()
 {
 	registerBasicFormats();
 #ifdef JUCE_QUICKTIME
-//	registerFormat(new QuickTimeAudioFormat(), false);
+	registerFormat(new QuickTimeAudioFormat(), false);
 #endif
 }
 
