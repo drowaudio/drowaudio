@@ -28,6 +28,7 @@ PositionableWaveDisplay::PositionableWaveDisplay (FilteringAudioFilePlayer *sour
 	thumbnailView = new AudioThumbnail(1024, *formatManager, *thumbnailCache);
 	
 	// register with the file player to recieve update messages
+	filePlayer->addListener(this);
 	filePlayer->addChangeListener(this);
 }
 
@@ -108,20 +109,32 @@ void PositionableWaveDisplay::timerCallback(const int timerId)
 
 }
 
-void PositionableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedObject)
+void PositionableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
 {
-	if (changedObject == filePlayer)
+	if (player == filePlayer)
 	{
 		currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
 		fileLength = filePlayer->getTotalLength() / currentSampleRate;
 		oneOverFileLength = 1.0 / fileLength;
-	
-		File newFile(((FilteringAudioFilePlayer*)changedObject)->getFilePath());
-		FileInputSource* fileInputSource = new FileInputSource (newFile);
-		thumbnailView->setSource(fileInputSource);
+		
+		File newFile(filePlayer->getFilePath());
+		if (newFile.existsAsFile()) {
+			FileInputSource* fileInputSource = new FileInputSource (newFile);
+			thumbnailView->setSource(fileInputSource);
+		}
+		else {
+			thumbnailView->setSource(0);
+		}
 		
 		startTimer(waveformLoading, 25);
-		startTimer(waveformUpdated, 40);
+		startTimer(waveformUpdated, 40);		
+	}
+}
+
+void PositionableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedObject)
+{
+	if (changedObject == filePlayer)
+	{
 	}
 }
 //====================================================================================
@@ -230,10 +243,14 @@ void PositionableWaveDisplay::refreshWaveform()
 		waveformImage->clear(waveformImage->getBounds());
 		
 		g.fillAll(Colours::black);
-		g.setColour(Colours::lightgreen);
-		thumbnailView->drawChannel(g, Rectangle<int> (0, 0, w, h),
-								   0.0, fileLength,
-								   0, 1.0f);
+		
+		if (filePlayer->getFileName().isNotEmpty())
+		{
+			g.setColour(Colours::lightgreen);
+			thumbnailView->drawChannel(g, Rectangle<int> (0, 0, w, h),
+									   0.0, fileLength,
+									   0, 1.0f);
+		}
 		
 		repaint();
 	}	

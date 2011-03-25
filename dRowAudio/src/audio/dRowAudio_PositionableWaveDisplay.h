@@ -24,6 +24,7 @@
  */
 class PositionableWaveDisplay : public Component,
 								public MultiTimer,
+								public FilteringAudioFilePlayer::Listener,
 								public ChangeListener,
 								public DragAndDropTarget,
 								public FileDragAndDropTarget
@@ -57,6 +58,8 @@ public:
 	
 	//====================================================================================
 	void timerCallback (const int timerId);
+	
+	void fileChanged (FilteringAudioFilePlayer *player);
 	
 	void changeListenerCallback(ChangeBroadcaster* changedObject);
 	

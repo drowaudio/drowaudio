@@ -17,7 +17,8 @@ juce_ImplementSingleton(ITunesLibrary);
 ITunesLibrary::ITunesLibrary()
 :	libraryTree("DATA")
 {
-	File libraryFile ("/Users/Dave/Documents/Developement/Juce Projects/Music Library Test/iTunes Music Library.xml");
+//	File libraryFile ("/Users/Dave/Documents/Developement/Juce Projects/Music Library Test/iTunes Music Library.xml");
+	File libraryFile ("/Users/Dave/Music/iTunes/iTunes Music Library.xml");
 	
 	if (libraryFile.existsAsFile()) {
 		parser = new ITunesLibraryParser(libraryFile, libraryTree);

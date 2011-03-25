@@ -97,6 +97,11 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 		return true;
 	}
 	
+	setLibraryEntry(ValueTree::invalid);
+	
+	sendChangeMessage();
+	listeners.call (&Listener::fileChanged, this);
+
 	return false;
 }
 
