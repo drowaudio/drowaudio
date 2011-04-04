@@ -37,6 +37,8 @@ public:
 	
 	void fileChanged (FilteringAudioFilePlayer *player);
 
+	void resamplingRatioChanged(FilteringAudioFilePlayer *player);
+
 	void changeListenerCallback(ChangeBroadcaster* changedObject);
 	
 	void timerCallback();
@@ -50,8 +52,8 @@ private:
 	const int deckNo;
 	FilteringAudioFilePlayer *filePlayer;
 	
-	double time, fileLength;
-	String currentTime, remainingTime, bpm, fileName, trackName, artistName;
+	double time, fileLength, bpm;
+	String currentTime, remainingTime, currentBpm, fileName, trackName, artistName;
 	TextButton *suggestButton;
 };
 

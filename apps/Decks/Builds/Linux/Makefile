@@ -60,8 +60,10 @@ OBJECTS := \
   $(OBJDIR)/Transport_fb740666.o \
   $(OBJDIR)/DeckTransport_f4e0103d.o \
   $(OBJDIR)/TrackInfo_bd3403d6.o \
-  $(OBJDIR)/TrackSuggestions_83d5f51.o \
   $(OBJDIR)/LoopAndCuePoints_1e85ecd0.o \
+  $(OBJDIR)/TrackSuggestions_83d5f51.o \
+  $(OBJDIR)/MixTypeComponent_5b7bf314.o \
+  $(OBJDIR)/TrackSuggestionTable_623f988c.o \
   $(OBJDIR)/DraggableDisplay_69d2841b.o \
   $(OBJDIR)/Mixer_7f8f6326.o \
   $(OBJDIR)/MixerChannelStrip_64f8d31b.o \
@@ -175,14 +177,24 @@ $(OBJDIR)/TrackInfo_bd3403d6.o: ../../Source/ui/controls/transport/TrackInfo.cpp
 	@echo "Compiling TrackInfo.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
+$(OBJDIR)/LoopAndCuePoints_1e85ecd0.o: ../../Source/ui/controls/transport/LoopAndCuePoints.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LoopAndCuePoints.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
 $(OBJDIR)/TrackSuggestions_83d5f51.o: ../../Source/ui/controls/transport/TrackSuggestions.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling TrackSuggestions.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/LoopAndCuePoints_1e85ecd0.o: ../../Source/ui/controls/transport/LoopAndCuePoints.cpp
+$(OBJDIR)/MixTypeComponent_5b7bf314.o: ../../Source/ui/controls/transport/MixTypeComponent.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling LoopAndCuePoints.cpp"
+	@echo "Compiling MixTypeComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/TrackSuggestionTable_623f988c.o: ../../Source/ui/controls/transport/TrackSuggestionTable.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TrackSuggestionTable.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/DraggableDisplay_69d2841b.o: ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp

@@ -18,6 +18,7 @@ TrackInfo::TrackInfo(int deckNo_, FilteringAudioFilePlayer* filePlayer_)
 	filePlayer->addChangeListener(this);
 	filePlayer->addListener(this);
 	
+	currentBpm = String::empty;
 	currentTime = timeToTimecodeStringLowRes(time);
 	remainingTime = timeToTimecodeStringLowRes( fileLength - time );
 	
@@ -43,7 +44,7 @@ void TrackInfo::paint(Graphics &g)
 	const int w = getWidth();
 	const int m = 1;
 	const int timeWidth = 72;
-//	const int fontSize = getHeight() * 0.5;//28;
+	const int bpmWidth = 60;
 	const int fontSize = (h * 0.5) - (2*m);
 
 	g.fillAll(Colours::black);
@@ -51,34 +52,35 @@ void TrackInfo::paint(Graphics &g)
 	
 	g.setFont(fontSize);
 	g.drawText(String(currentTime),
-			   w-timeWidth, m, timeWidth-(2*m), fontSize,
+			   w-timeWidth, 0, timeWidth-(2*m), h*0.5,
 			   Justification::centredRight, true);
 	
 	String remainString("-");
 	remainString << String(remainingTime);
 	g.drawText(remainString,
-			   w-timeWidth, fontSize + (2*m) +(m), timeWidth-(2*m), fontSize,
+			   w-timeWidth, h*0.5, timeWidth-(2*m), h*0.5,
 			   Justification::centredRight, true);
 
 	g.setFont(fontSize);
-//	g.drawRect(0, 0, 20, timeHeight+1, 1);
-	g.drawFittedText(String(deckNo),
+	g.drawFittedText(String(deckNo+1),
 					 m, m, fontSize+(2*m), (h * 0.5) - (2*m),
 					 Justification::centred, 2, 1);	
-//	g.drawFittedText(fileName,
-//					 fontSize + (4*m), m, w-timeWidth-fontSize-(8*m), h,
-//					 Justification::topLeft, 2, 1);	
 	g.drawFittedText(trackName,
-					 fontSize + (4*m), m, w-timeWidth-fontSize-(8*m), h*0.5,
-					 Justification::topLeft, 1, 1);	
+					 fontSize + (5*m), 0, w-timeWidth-fontSize-(7*m), h*0.5,
+					 Justification::centredLeft, 1, 1);	
 	g.drawFittedText(artistName,
-					 fontSize + (4*m), 2*m + h*0.5, w-timeWidth-fontSize-(8*m), h*0.5,
-					 Justification::topLeft, 1, 1);	
+					 fontSize + (5*m), h*0.5, w-timeWidth-bpmWidth-fontSize-(7*m), h*0.5,
+					 Justification::centredLeft, 1, 1);	
+	
+	g.drawFittedText(currentBpm,
+					 w-timeWidth-bpmWidth-4*m, h*0.5, bpmWidth, h*0.5,
+					 Justification::centredRight, 1, 1);	
 	
 	g.setColour(DecksColours::getInstance()->getColour(DecksColours::panelLineColour));
 	g.drawRect(0, 0, w, h, 1);
 	g.drawHorizontalLine(fontSize+(2*m), 0, w);
 	g.drawVerticalLine(fontSize+(2*m), 0, h);
+	g.drawVerticalLine(w-timeWidth-bpmWidth, h*0.5, h);
 	g.drawVerticalLine(w-timeWidth-(2*m), 0, h);
 }
 
@@ -95,16 +97,11 @@ void TrackInfo::buttonClicked (Button* button)
 {
 	if(button == suggestButton)
 	{
-//		if (suggestButton->getToggleState()) {
 		TrackSuggestions content(filePlayer->getLibraryEntry(), ITunesLibrary::getInstance()->getLibraryTree());
-			content.setSize (400, 300);
-			
-			CallOutBox callOut (content, *suggestButton, getTopLevelComponent());
-			callOut.runModalLoop();
-//		}
-//		else {
-//			DBG("hide suggestions");
-//		}
+		content.setSize (400, 300);
+		
+		CallOutBox callOut (content, *suggestButton, getTopLevelComponent());
+		callOut.runModalLoop();
 	}
 }
 
@@ -122,11 +119,29 @@ void TrackInfo::fileChanged (FilteringAudioFilePlayer *player)
 		
 		trackName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Song]);
 		artistName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Artist]);
+		bpm = double(filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::BPM]));
+		currentBpm = String(bpm * filePlayer->getResamplingRatio(), 2);
 		
 		// file was not loaded from the library
 		if (trackName.isEmpty() && artistName.isEmpty())
+		{
 			trackName = fileName;
+			currentBpm = String::empty;
+		}
 			
+		repaint();
+	}
+}
+
+void TrackInfo::resamplingRatioChanged(FilteringAudioFilePlayer *player)
+{
+	if (player == filePlayer)
+	{
+		if (filePlayer->getLibraryEntry().isValid())
+			currentBpm = String(bpm * filePlayer->getResamplingRatio(), 2);
+		else
+			currentBpm = String::empty;
+		
 		repaint();
 	}
 }

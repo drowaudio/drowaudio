@@ -30,8 +30,10 @@
 		107FD22A0CF75C115E7C0E98 = { isa = PBXBuildFile; fileRef = EA03A3D554673EBFB93B0114; };
 		950FB4F0C78DC7E007D889DD = { isa = PBXBuildFile; fileRef = 56AF2CD6832F42B03DD64DFD; };
 		DE761B07B4378012249A219A = { isa = PBXBuildFile; fileRef = 1CF02085B2E92C13E060CD82; };
-		7411A6083EE338A6F5E78FF0 = { isa = PBXBuildFile; fileRef = DA0B0A13B80A8FED183AF447; };
 		3A45D6069BBDBDC80AF04683 = { isa = PBXBuildFile; fileRef = 2FD4941BA01E8EFBED8D6B5B; };
+		7411A6083EE338A6F5E78FF0 = { isa = PBXBuildFile; fileRef = DA0B0A13B80A8FED183AF447; };
+		83674BC58CDAFB35120BCB26 = { isa = PBXBuildFile; fileRef = 73488A74BA2DB98CE19BB585; };
+		64CF3A745B54B3C91094A7BD = { isa = PBXBuildFile; fileRef = 5C28FA4B86FBBD3E5C93A7FB; };
 		D26BE6FC18104431FFBA8DF2 = { isa = PBXBuildFile; fileRef = 824C20D102FB8069BE1A808F; };
 		B3AE7DFD2D22DAB9D3CB6F56 = { isa = PBXBuildFile; fileRef = 902FBCF7E76529D2D40EDC52; };
 		EE10433CD3B6DA34B8C97316 = { isa = PBXBuildFile; fileRef = 0735B04B431D98AD78BFA858; };
@@ -90,10 +92,14 @@
 		56AF2CD6832F42B03DD64DFD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckTransport.cpp; path = ../../Source/ui/controls/transport/DeckTransport.cpp; sourceTree = SOURCE_ROOT; };
 		4CC12202EAE06D0E02A6AFBC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackInfo.h; path = ../../Source/ui/controls/transport/TrackInfo.h; sourceTree = SOURCE_ROOT; };
 		1CF02085B2E92C13E060CD82 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackInfo.cpp; path = ../../Source/ui/controls/transport/TrackInfo.cpp; sourceTree = SOURCE_ROOT; };
-		96C4EEF2F522DCCA74718479 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackSuggestions.h; path = ../../Source/ui/controls/transport/TrackSuggestions.h; sourceTree = SOURCE_ROOT; };
-		DA0B0A13B80A8FED183AF447 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackSuggestions.cpp; path = ../../Source/ui/controls/transport/TrackSuggestions.cpp; sourceTree = SOURCE_ROOT; };
 		B315BE919D9B6E7E6D31E1BC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopAndCuePoints.h; path = ../../Source/ui/controls/transport/LoopAndCuePoints.h; sourceTree = SOURCE_ROOT; };
 		2FD4941BA01E8EFBED8D6B5B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopAndCuePoints.cpp; path = ../../Source/ui/controls/transport/LoopAndCuePoints.cpp; sourceTree = SOURCE_ROOT; };
+		96C4EEF2F522DCCA74718479 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackSuggestions.h; path = ../../Source/ui/controls/transport/TrackSuggestions.h; sourceTree = SOURCE_ROOT; };
+		DA0B0A13B80A8FED183AF447 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackSuggestions.cpp; path = ../../Source/ui/controls/transport/TrackSuggestions.cpp; sourceTree = SOURCE_ROOT; };
+		554920CAA015CC8AE0E0968D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixTypeComponent.h; path = ../../Source/ui/controls/transport/MixTypeComponent.h; sourceTree = SOURCE_ROOT; };
+		73488A74BA2DB98CE19BB585 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixTypeComponent.cpp; path = ../../Source/ui/controls/transport/MixTypeComponent.cpp; sourceTree = SOURCE_ROOT; };
+		E1819F0FF6A3DF647851AFB9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackSuggestionTable.h; path = ../../Source/ui/controls/transport/TrackSuggestionTable.h; sourceTree = SOURCE_ROOT; };
+		5C28FA4B86FBBD3E5C93A7FB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackSuggestionTable.cpp; path = ../../Source/ui/controls/transport/TrackSuggestionTable.cpp; sourceTree = SOURCE_ROOT; };
 		C97BCA57A45504F5CB230048 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DraggableDisplay.h; path = ../../Source/ui/controls/draggable_display/DraggableDisplay.h; sourceTree = SOURCE_ROOT; };
 		824C20D102FB8069BE1A808F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DraggableDisplay.cpp; path = ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp; sourceTree = SOURCE_ROOT; };
 		5DBB4D4F6E1842D181843161 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mixer.h; path = ../../Source/ui/controls/mixer/Mixer.h; sourceTree = SOURCE_ROOT; };
@@ -147,10 +153,14 @@
 				56AF2CD6832F42B03DD64DFD,
 				4CC12202EAE06D0E02A6AFBC,
 				1CF02085B2E92C13E060CD82,
+				B315BE919D9B6E7E6D31E1BC,
+				2FD4941BA01E8EFBED8D6B5B,
 				96C4EEF2F522DCCA74718479,
 				DA0B0A13B80A8FED183AF447,
-				B315BE919D9B6E7E6D31E1BC,
-				2FD4941BA01E8EFBED8D6B5B ); name = transport; sourceTree = "<group>"; };
+				554920CAA015CC8AE0E0968D,
+				73488A74BA2DB98CE19BB585,
+				E1819F0FF6A3DF647851AFB9,
+				5C28FA4B86FBBD3E5C93A7FB ); name = transport; sourceTree = "<group>"; };
 		E4BB6FF10B6E6FEE1C836D1D = { isa = PBXGroup; children = (
 				C97BCA57A45504F5CB230048,
 				824C20D102FB8069BE1A808F ); name = draggable_display; sourceTree = "<group>"; };
@@ -325,8 +335,10 @@
 				107FD22A0CF75C115E7C0E98,
 				950FB4F0C78DC7E007D889DD,
 				DE761B07B4378012249A219A,
-				7411A6083EE338A6F5E78FF0,
 				3A45D6069BBDBDC80AF04683,
+				7411A6083EE338A6F5E78FF0,
+				83674BC58CDAFB35120BCB26,
+				64CF3A745B54B3C91094A7BD,
 				D26BE6FC18104431FFBA8DF2,
 				B3AE7DFD2D22DAB9D3CB6F56,
 				EE10433CD3B6DA34B8C97316,

@@ -52,7 +52,7 @@ public:
 		return getPropertyOfChildAsValue(MixerSettings::MasterSettings::SectionName, property);
 	}
 	
-	var getPropertyOfChild(Identifier child, Identifier property)		{ return getPropertyOfChildAsValue(child, property).getValue();	}
+	var getPropertyOfChild(Identifier child, Identifier property)	{ return getPropertyOfChildAsValue(child, property).getValue();	}
 	
 	var getPropertyOfChannel(int channelNo, Identifier property)	{ return getPropertyOfChannelAsValue(channelNo, property).getValue(); }
 	

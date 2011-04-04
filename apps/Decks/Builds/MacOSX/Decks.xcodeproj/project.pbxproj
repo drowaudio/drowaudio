@@ -20,6 +20,7 @@
 		4F9A2A457DCADBDB3F444311 /* dRowAudio_OverflowingAbstractFifo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CFD9E8B45B5659F0DB5EE3B /* dRowAudio_OverflowingAbstractFifo.cpp */; };
 		523BC796DAB63590A8C2862F /* DecksColours.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42C38F1E71FE93C1BCE6EF42 /* DecksColours.cpp */; };
 		546479097D11645BAE395C9A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE4229007ADD1A44F3024B0 /* Cocoa.framework */; };
+		64CF3A745B54B3C91094A7BD /* TrackSuggestionTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C28FA4B86FBBD3E5C93A7FB /* TrackSuggestionTable.cpp */; };
 		66A178CFE8C3BEBD22836BB8 /* CrossFader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C9CB9C386D8C937451F08D /* CrossFader.cpp */; };
 		6C9111989B6F487A8B611771 /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342DAFA1747A6C731022DBFC /* Settings.cpp */; };
 		70907C01255F6EC48A973F1A /* MainAppWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 180BDA3231D2DCC2B887A5A2 /* MainAppWindow.cpp */; };
@@ -28,6 +29,7 @@
 		7411A6083EE338A6F5E78FF0 /* TrackSuggestions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */; };
 		7B5E730C02A7145EE3B6382E /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFB51E91E2BBD5023776511 /* QTKit.framework */; };
 		836029042E33FC8B64526F09 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0C9B2FDA3A1D70C8F696227F /* Icon.icns */; };
+		83674BC58CDAFB35120BCB26 /* MixTypeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 73488A74BA2DB98CE19BB585 /* MixTypeComponent.cpp */; };
 		8E434997C82DE2F8D71A94D1 /* dRowAudio_SampleRateConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC6C917B6681B62CAB653562 /* dRowAudio_SampleRateConverter.cpp */; };
 		9088445C006CCF8BC6B3FD08 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3AA196BDEF123F117FEF54 /* Carbon.framework */; };
 		950FB4F0C78DC7E007D889DD /* DeckTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56AF2CD6832F42B03DD64DFD /* DeckTransport.cpp */; };
@@ -82,8 +84,10 @@
 		4CC12202EAE06D0E02A6AFBC /* TrackInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackInfo.h; path = ../../Source/ui/controls/transport/TrackInfo.h; sourceTree = SOURCE_ROOT; };
 		4EA63BBA9D40D629510BFE98 /* Decks_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Decks_icon.png; path = ../../Source/resources/Decks_icon.png; sourceTree = SOURCE_ROOT; };
 		5509BE7D3E60AF013A7E79ED /* DecksAudioFormatManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksAudioFormatManager.cpp; path = ../../Source/main/DecksAudioFormatManager.cpp; sourceTree = SOURCE_ROOT; };
+		554920CAA015CC8AE0E0968D /* MixTypeComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixTypeComponent.h; path = ../../Source/ui/controls/transport/MixTypeComponent.h; sourceTree = SOURCE_ROOT; };
 		56AF2CD6832F42B03DD64DFD /* DeckTransport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckTransport.cpp; path = ../../Source/ui/controls/transport/DeckTransport.cpp; sourceTree = SOURCE_ROOT; };
 		5870DB6A2318032290CB0331 /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
+		5C28FA4B86FBBD3E5C93A7FB /* TrackSuggestionTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackSuggestionTable.cpp; path = ../../Source/ui/controls/transport/TrackSuggestionTable.cpp; sourceTree = SOURCE_ROOT; };
 		5D0B6763DF3FE6EAFDB02F5D /* SettingsComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SettingsComponent.cpp; path = ../../Source/ui/settings/SettingsComponent.cpp; sourceTree = SOURCE_ROOT; };
 		5DA6DC73F996FC74908B920A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5DBB4D4F6E1842D181843161 /* Mixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mixer.h; path = ../../Source/ui/controls/mixer/Mixer.h; sourceTree = SOURCE_ROOT; };
@@ -92,6 +96,7 @@
 		6E9749BC4FAAD9949A00C732 /* DecksLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksLookAndFeel.h; path = ../../Source/ui/DecksLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		709F48E0586393177D674A23 /* TitleBarComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TitleBarComponent.h; path = ../../Source/ui/TitleBarComponent.h; sourceTree = SOURCE_ROOT; };
 		70C9CB9C386D8C937451F08D /* CrossFader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CrossFader.cpp; path = ../../Source/ui/controls/mixer/CrossFader.cpp; sourceTree = SOURCE_ROOT; };
+		73488A74BA2DB98CE19BB585 /* MixTypeComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixTypeComponent.cpp; path = ../../Source/ui/controls/transport/MixTypeComponent.cpp; sourceTree = SOURCE_ROOT; };
 		74BC264C88ECA91E28AB0147 /* TitleBarComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TitleBarComponent.cpp; path = ../../Source/ui/TitleBarComponent.cpp; sourceTree = SOURCE_ROOT; };
 		75E4F1D02D4324E833E2AB38 /* DeckManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeckManager.cpp; path = ../../Source/main/DeckManager.cpp; sourceTree = SOURCE_ROOT; };
 		81EEA219C740584AD974F680 /* ContainerComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ContainerComponent.cpp; path = ../../Source/ui/ContainerComponent.cpp; sourceTree = SOURCE_ROOT; };
@@ -121,6 +126,7 @@
 		CD5A4E23328FF2B91B579FA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		D713F3EB0C0ADC86982CDC19 /* MixerSettingsComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixerSettingsComponent.cpp; path = ../../Source/ui/settings/MixerSettingsComponent.cpp; sourceTree = SOURCE_ROOT; };
 		DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackSuggestions.cpp; path = ../../Source/ui/controls/transport/TrackSuggestions.cpp; sourceTree = SOURCE_ROOT; };
+		E1819F0FF6A3DF647851AFB9 /* TrackSuggestionTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackSuggestionTable.h; path = ../../Source/ui/controls/transport/TrackSuggestionTable.h; sourceTree = SOURCE_ROOT; };
 		E35C43256F242051E83FC23A /* SettingsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SettingsComponent.h; path = ../../Source/ui/settings/SettingsComponent.h; sourceTree = SOURCE_ROOT; };
 		EA03A3D554673EBFB93B0114 /* Transport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Transport.cpp; path = ../../Source/ui/controls/transport/Transport.cpp; sourceTree = SOURCE_ROOT; };
 		EA3ED4C7BA4566967E202186 /* DeckTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeckTransport.h; path = ../../Source/ui/controls/transport/DeckTransport.h; sourceTree = SOURCE_ROOT; };
@@ -227,6 +233,19 @@
 				75E4F1D02D4324E833E2AB38 /* DeckManager.cpp */,
 			);
 			name = audio;
+			sourceTree = "<group>";
+		};
+		55744A4A133B888C0015F5EC /* track_suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				96C4EEF2F522DCCA74718479 /* TrackSuggestions.h */,
+				DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */,
+				554920CAA015CC8AE0E0968D /* MixTypeComponent.h */,
+				73488A74BA2DB98CE19BB585 /* MixTypeComponent.cpp */,
+				E1819F0FF6A3DF647851AFB9 /* TrackSuggestionTable.h */,
+				5C28FA4B86FBBD3E5C93A7FB /* TrackSuggestionTable.cpp */,
+			);
+			name = track_suggestions;
 			sourceTree = "<group>";
 		};
 		890674A826B0DF06A65FE9B2 /* ui */ = {
@@ -340,10 +359,9 @@
 				56AF2CD6832F42B03DD64DFD /* DeckTransport.cpp */,
 				4CC12202EAE06D0E02A6AFBC /* TrackInfo.h */,
 				1CF02085B2E92C13E060CD82 /* TrackInfo.cpp */,
-				96C4EEF2F522DCCA74718479 /* TrackSuggestions.h */,
-				DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */,
 				B315BE919D9B6E7E6D31E1BC /* LoopAndCuePoints.h */,
 				2FD4941BA01E8EFBED8D6B5B /* LoopAndCuePoints.cpp */,
+				55744A4A133B888C0015F5EC /* track_suggestions */,
 			);
 			name = transport;
 			sourceTree = "<group>";
@@ -445,8 +463,10 @@
 				107FD22A0CF75C115E7C0E98 /* Transport.cpp in Sources */,
 				950FB4F0C78DC7E007D889DD /* DeckTransport.cpp in Sources */,
 				DE761B07B4378012249A219A /* TrackInfo.cpp in Sources */,
-				7411A6083EE338A6F5E78FF0 /* TrackSuggestions.cpp in Sources */,
 				3A45D6069BBDBDC80AF04683 /* LoopAndCuePoints.cpp in Sources */,
+				7411A6083EE338A6F5E78FF0 /* TrackSuggestions.cpp in Sources */,
+				83674BC58CDAFB35120BCB26 /* MixTypeComponent.cpp in Sources */,
+				64CF3A745B54B3C91094A7BD /* TrackSuggestionTable.cpp in Sources */,
 				D26BE6FC18104431FFBA8DF2 /* DraggableDisplay.cpp in Sources */,
 				B3AE7DFD2D22DAB9D3CB6F56 /* Mixer.cpp in Sources */,
 				EE10433CD3B6DA34B8C97316 /* MixerChannelStrip.cpp in Sources */,
@@ -519,9 +539,7 @@
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -551,9 +569,7 @@
 					"JUCE_ObjCExtraSuffix=h0HpWI",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (

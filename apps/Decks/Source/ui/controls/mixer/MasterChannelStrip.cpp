@@ -86,9 +86,9 @@ void MasterChannelStrip::resized()
 	
 	faderCurveSlider->setBounds(c-r/2, cueButton->getBottom()+m, r, r);
 	faderCurveLabel->setBounds(0, faderCurveSlider->getBottom(), w, 12);
-	xFaderCurveSlider->setBounds(c-r/2, faderCurveSlider->getBottom()+5*m, r, r);
+	xFaderCurveSlider->setBounds(c-r/2, faderCurveSlider->getBottom()+3*m, r, r);
 	xFaderCurveLabel->setBounds(0, xFaderCurveSlider->getBottom(), w, 12);
-	monitorGainSlider->setBounds(c-r/2, xFaderCurveSlider->getBottom()+5*m, r, r);
+	monitorGainSlider->setBounds(c-r/2, xFaderCurveSlider->getBottom()+3*m, r, r);
 	monitorGainLabel->setBounds(0, monitorGainSlider->getBottom(), w, 12);
 }
 

@@ -41,13 +41,23 @@ DeckTransport::DeckTransport(int deckNo_)
 	speedSlider->setRange(0.8, 1.2, 0.0001);
 	speedSlider->setValue(1.0);
 	speedSlider->addListener(this);
+
+	addAndMakeVisible(speedLabel = new Label("speedLabel", "P"));
+	speedLabel->setBorderSize(0, 0);
+	speedLabel->setJustificationType(Justification(Justification::centred));
+	speedLabel->attachToComponent(speedSlider, false);
 	
 	addAndMakeVisible(jogSlider = new Slider("jogSlider"));
 	jogSlider->setSliderStyle(Slider::LinearVertical);
 	jogSlider->setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
 	jogSlider->setRange( -0.05, 0.05, 0.0001);
 	jogSlider->setValue(0.0);
-	jogSlider->addListener(this);		
+	jogSlider->addListener(this);
+	
+	addAndMakeVisible(jogLabel = new Label("jogLabel", "N"));
+	jogLabel->setBorderSize(0, 0);
+	jogLabel->setJustificationType(Justification(Justification::centred));
+	jogLabel->attachToComponent(jogSlider, false);	
 }
 
 DeckTransport::~DeckTransport()
@@ -90,8 +100,9 @@ void DeckTransport::resized()
 		loopAndCuePoints->setBounds(0, waveDisplay->getBottom()+m, w, h - waveDisplay->getBottom() - m);
 	}
 	
-	speedSlider->setBounds(w-30, 0, 10, waveDisplay->getBottom());
-	jogSlider->setBounds(w-15, 0, 10, waveDisplay->getBottom());
+	const int labelHeight = 20;
+	speedSlider->setBounds(w-30, labelHeight, 10, waveDisplay->getBottom()-labelHeight);
+	jogSlider->setBounds(w-15, labelHeight, 10, waveDisplay->getBottom()-labelHeight);
 }
 
 void DeckTransport::paint(Graphics &g)

@@ -175,10 +175,14 @@
               <File RelativePath="..\..\Source\ui\controls\transport\DeckTransport.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackInfo.h"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackInfo.cpp"/>
-              <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestions.h"/>
-              <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestions.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"/>
               <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestions.h"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestions.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\MixTypeComponent.h"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\MixTypeComponent.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestionTable.h"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestionTable.cpp"/>
             </Filter>
             <Filter Name="draggable_display">
               <File RelativePath="..\..\Source\ui\controls\draggable_display\DraggableDisplay.h"/>

@@ -104,14 +104,22 @@
             <FILE id="vajm0lLmx" name="TrackInfo.h" compile="0" resource="0" file="Source/ui/controls/transport/TrackInfo.h"/>
             <FILE id="8QQ0IzJwo" name="TrackInfo.cpp" compile="1" resource="0"
                   file="Source/ui/controls/transport/TrackInfo.cpp"/>
-            <FILE id="e50XDo7" name="TrackSuggestions.h" compile="0" resource="0"
-                  file="Source/ui/controls/transport/TrackSuggestions.h"/>
-            <FILE id="2N5wPSn" name="TrackSuggestions.cpp" compile="1" resource="0"
-                  file="Source/ui/controls/transport/TrackSuggestions.cpp"/>
             <FILE id="Okb6kL" name="LoopAndCuePoints.h" compile="0" resource="0"
                   file="Source/ui/controls/transport/LoopAndCuePoints.h"/>
             <FILE id="6x2SCPq" name="LoopAndCuePoints.cpp" compile="1" resource="0"
                   file="Source/ui/controls/transport/LoopAndCuePoints.cpp"/>
+            <FILE id="e50XDo7" name="TrackSuggestions.h" compile="0" resource="0"
+                  file="Source/ui/controls/transport/TrackSuggestions.h"/>
+            <FILE id="2N5wPSn" name="TrackSuggestions.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/transport/TrackSuggestions.cpp"/>
+            <FILE id="gIHSh1" name="MixTypeComponent.h" compile="0" resource="0"
+                  file="Source/ui/controls/transport/MixTypeComponent.h"/>
+            <FILE id="YFQ9X9" name="MixTypeComponent.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/transport/MixTypeComponent.cpp"/>
+            <FILE id="u5fxXf" name="TrackSuggestionTable.h" compile="0" resource="0"
+                  file="Source/ui/controls/transport/TrackSuggestionTable.h"/>
+            <FILE id="svrTFY" name="TrackSuggestionTable.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/transport/TrackSuggestionTable.cpp"/>
           </GROUP>
           <GROUP id="P09TluKEA" name="draggable_display">
             <FILE id="awhZon8GG" name="DraggableDisplay.h" compile="0" resource="0"

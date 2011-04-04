@@ -148,7 +148,6 @@ void MixerChannelStrip::resized()
 	fxBSlider->setBounds(c+fxWidth, cueButton->getBottom()+m, fxWidth, fxWidth);
 	
 	meter->setBounds(m, 40, 8, 200);
-
 }
 
 void MixerChannelStrip::paint(Graphics &g)
@@ -161,7 +160,7 @@ void MixerChannelStrip::paint(Graphics &g)
 	g.setColour(Colours::white);
 	g.setFont(noSize);
 	g.drawEllipse(m, m, noSize, noSize, 1);
-	g.drawFittedText(String(deckNo),
+	g.drawFittedText(String(deckNo+1),
 					 m, m, noSize, noSize,
 					 Justification::centred, 2, 1);	
 	

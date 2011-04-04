@@ -13,14 +13,7 @@ DraggableDisplay::DraggableDisplay()
 :	noDecks(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")),
 	settings(DeckManager::getInstance())
 {
-	Settings::getInstance()->getValueTreePointer()->addListener(this);
 	thumbnailCache = new MultipleAudioThumbnailCache(noDecks);
-	
-	for (int i = 0; i < noDecks; i++)
-	{
-		draggableWaveDisplays.add(new SwitchableDraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(), thumbnailCache));
-		addAndMakeVisible(draggableWaveDisplays[i]);
-	}
 	
 	// create the zoom & playhead sliders
 	addAndMakeVisible( zoomSlider = new Slider("zoomSlider") );
@@ -28,15 +21,24 @@ DraggableDisplay::DraggableDisplay()
 	zoomSlider->setRange(-20.0, 0.999999, 0.0001);
 //	zoomSlider->setValue(0.0f);
 	zoomSlider->setSkewFactorFromMidPoint(0.0);	
-	zoomSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChildAsValue(UISettings::DraggableDisplaySettings::SectionName, DRAGGABLE_SETTING(zoom)));
+	zoomSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChildAsValue(UISettings::SectionName, DRAGGABLE_SETTING(zoom)));
 	zoomSlider->addListener(this);
-	
+
 	addAndMakeVisible( playheadPosSlider = new Slider("playheadPosSlider") );
 	playheadPosSlider->setSliderStyle(Slider::LinearVertical);
 	playheadPosSlider->setRange(0.0, 1.0, 0.0001);
 //	playheadPosSlider->setValue(0.5);
-	playheadPosSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChildAsValue(UISettings::DraggableDisplaySettings::SectionName, DRAGGABLE_SETTING(centrePos)));
+	playheadPosSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChildAsValue(UISettings::SectionName, DRAGGABLE_SETTING(playheadPos)));
 	playheadPosSlider->addListener(this);
+	
+	for (int i = 0; i < noDecks; i++)
+	{
+		draggableWaveDisplays.add(new SwitchableDraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(), thumbnailCache));
+		addAndMakeVisible(draggableWaveDisplays[i]);
+		draggableWaveDisplays[i]->setZoomFactor(1.0 - zoomSlider->getValue());
+	}	
+	
+	Settings::getInstance()->getValueTreePointer()->addListener(this);
 }
 
 DraggableDisplay::~DraggableDisplay()
@@ -124,17 +126,17 @@ void DraggableDisplay::paint (Graphics &g)
 //================================================================
 void DraggableDisplay::sliderValueChanged(Slider *slider)
 {
-	if (slider == zoomSlider)
-	{
-		const double zoomFactor = 1.0f - zoomSlider->getValue();
-		for (int i = 0; i < noDecks; i++)
-			draggableWaveDisplays[i]->setZoomFactor(zoomFactor);
-	}
-	else if (slider == playheadPosSlider)
-	{
-		for (int i = 0; i < noDecks; i++)
-			draggableWaveDisplays[i]->setPlayheadPosition(playheadPosSlider->getValue());
-	}
+//	if (slider == zoomSlider)
+//	{
+//		const double zoomFactor = 1.0f - zoomSlider->getValue();
+//		for (int i = 0; i < noDecks; i++)
+//			draggableWaveDisplays[i]->setZoomFactor(zoomFactor);
+//	}
+//	else if (slider == playheadPosSlider)
+//	{
+//		for (int i = 0; i < noDecks; i++)
+//			draggableWaveDisplays[i]->setPlayheadPosition(playheadPosSlider->getValue());
+//	}
 }
 
 void DraggableDisplay::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const var::identifier  &property)
@@ -143,9 +145,16 @@ void DraggableDisplay::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHa
 		if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfChannelAsValue(i, CHANNEL_SETTING(on))) {
 			resized();
 		}
-//		else if (treeWhosePropertyHasChanged.getProperty(property) == Settings::getInstance()->getPropertyOfChannelAsValue(i, CHANNEL_SETTING(on))) {
-//			resized();
-//		}
+	}
+	
+	if (property == DRAGGABLE_SETTING(zoom)) {
+		const double zoomFactor = 1.0f - double(treeWhosePropertyHasChanged.getProperty(DRAGGABLE_SETTING(zoom)));
+		for (int i = 0; i < noDecks; i++)
+			draggableWaveDisplays[i]->setZoomFactor(zoomFactor);
+	}
+	else if (property == DRAGGABLE_SETTING(playheadPos)) {
+		for (int i = 0; i < noDecks; i++)
+			draggableWaveDisplays[i]->setPlayheadPosition(double(treeWhosePropertyHasChanged.getProperty(DRAGGABLE_SETTING(playheadPos))));
 	}
 }
 

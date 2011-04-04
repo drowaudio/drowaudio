@@ -47,7 +47,7 @@ Mixer::~Mixer()
 void Mixer::resized()
 {
 	const int stripWidth = 130;
-	const int stripHeight = 320;
+	const int stripHeight = 300;
 	const int m = 2;
 	const int noDecks = Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels");
 	

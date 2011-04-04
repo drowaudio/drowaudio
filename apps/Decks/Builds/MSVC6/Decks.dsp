@@ -206,16 +206,28 @@ SOURCE="..\..\Source\ui\controls\transport\TrackInfo.h"
 SOURCE="..\..\Source\ui\controls\transport\TrackInfo.cpp"
 # End Source File
 # Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"
+# End Source File
+# Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\TrackSuggestions.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\TrackSuggestions.cpp"
 # End Source File
 # Begin Source File
-SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"
+SOURCE="..\..\Source\ui\controls\transport\MixTypeComponent.h"
 # End Source File
 # Begin Source File
-SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"
+SOURCE="..\..\Source\ui\controls\transport\MixTypeComponent.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\TrackSuggestionTable.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\TrackSuggestionTable.cpp"
 # End Source File
 # End Group
 # Begin Group "draggable_display"

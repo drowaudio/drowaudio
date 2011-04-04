@@ -77,6 +77,7 @@ private:
 	LoopAndCuePoints *loopAndCuePoints;
 	
 	Slider *speedSlider, *jogSlider;
+	Label *speedLabel, *jogLabel;
 	
 	//==============================================================================
 };
