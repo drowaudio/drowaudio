@@ -109,6 +109,7 @@ public:
 	
 private:
 	CriticalSection lock;
+	int numAdded;
 	bool finished;
 	
 	ValueTree treeToFill, partialTree;

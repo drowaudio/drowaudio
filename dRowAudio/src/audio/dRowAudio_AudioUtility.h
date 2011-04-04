@@ -183,7 +183,6 @@ static void convertToFloat(AudioFormatReader *reader, void *sourceBuffer, float 
 		else {
 			memcpy(destBuffer, sourceBuffer, sizeof(float)*numSamples);
 		}
-
 	}
 }
 

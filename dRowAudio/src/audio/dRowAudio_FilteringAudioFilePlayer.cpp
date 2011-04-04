@@ -23,6 +23,10 @@ FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)
 	formatManager = new AudioFormatManager();
 	formatManager->registerBasicFormats();
 
+#ifdef JUCE_QUICKTIME
+	formatManager->registerFormat(new QuickTimeAudioFormat(), false);
+#endif
+	
 	if (filePath != String::empty)
 		setFile(path);
 }
@@ -90,7 +94,7 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 		// let our listeners know that we have loaded a new file
 		sendChangeMessage();
 		listeners.call (&Listener::fileChanged, this);
-		
+
 		if (shouldBePlaying)
 			start();
 		
@@ -124,6 +128,13 @@ void FilteringAudioFilePlayer::setLooping(bool shouldLoop)
 {
 	if (currentAudioFileSource != 0)
 		currentAudioFileSource->setLooping(shouldLoop);
+}
+
+void FilteringAudioFilePlayer::setResamplingRatio (const double samplesInPerOutputSample)
+{
+	FilteringAudioTransportSource::setResamplingRatio(samplesInPerOutputSample);
+	
+	listeners.call (&Listener::resamplingRatioChanged, this);
 }
 
 AudioFormatReader* FilteringAudioFilePlayer::audioFormatReaderFromFile(const String& path)

@@ -44,6 +44,7 @@ String parseDateString(String dateString)
 
 MusicLibraryTable::MusicLibraryTable()
 :	font (12.0f),
+	currentLibrary(0),
 	numRows(0),
 	filteredNumRows(0),
 	finishedLoading(false)
@@ -90,6 +91,9 @@ MusicLibraryTable::MusicLibraryTable()
 
 MusicLibraryTable::~MusicLibraryTable()
 {
+	if (currentLibrary != 0)
+		currentLibrary->removeListener(this);
+
 	deleteAllChildren();
 
 	if (*filteredDataList == dataList)
@@ -99,29 +103,52 @@ MusicLibraryTable::~MusicLibraryTable()
 //==============================================================================
 void MusicLibraryTable::setLibraryToUse(ITunesLibrary *library)
 {
+	currentLibrary = library;
+	
+	DBG("library to use changed");
 	dataList = library->getLibraryTree();
 	library->addListener(this);
 }
 
+void MusicLibraryTable::libraryChanged (ITunesLibrary *library)
+{
+	if (library == currentLibrary) 
+	{
+		DBG("library changed");
+		filteredDataList = &dataList;
+		dataList.removeAllChildren(0);
+		dataList = library->getLibraryTree();
+		filteredNumRows = numRows = dataList.getNumChildren();
+		finishedLoading = false;
+		
+		table->updateContent();
+	}
+}
+
 void MusicLibraryTable::libraryUpdated (ITunesLibrary *library)
 {
-	filteredNumRows = numRows = dataList.getNumChildren();
-	DBG("not finished: "<<filteredNumRows);
-	
-	table->updateContent();
+	if (library == currentLibrary) 
+	{
+		filteredNumRows = numRows = dataList.getNumChildren();
+		DBG("num finished: "<<filteredNumRows);
+		
+		table->updateContent();
+	}
 }
 
 void MusicLibraryTable::libraryFinished (ITunesLibrary *library)
 {
-	filteredNumRows = numRows = dataList.getNumChildren();
-	finishedLoading = true;
-	DBG("parser finished: "<<filteredNumRows);
+	if (library == currentLibrary) 
+	{
+		filteredNumRows = numRows = dataList.getNumChildren();
+		finishedLoading = true;
+		DBG("all finished: "<<filteredNumRows);
 
-	table->updateContent();
-	table->getHeader().reSortTable();
+		table->updateContent();
+		table->getHeader().reSortTable();
 
-	library->removeListener(this);
-	DBG("finished loading MusicLibraryTable");
+		DBG("finished loading MusicLibraryTable");
+	}
 }
 
 //==============================================================================
@@ -259,14 +286,11 @@ void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType cause)
 }
 void MusicLibraryTable::timerCallback()
 {
-	if (!parser->hasFinished()) {
+	if (!finishedLoading) {
 		filteredNumRows = numRows = dataList.getNumChildren();
-		DBG("not finished: "<<filteredNumRows);
 	}
 	else {
 		filteredNumRows = numRows = dataList.getNumChildren();
-		DBG("parser finished: "<<filteredNumRows);
-		parser = 0;
 		stopTimer();
 		table->getHeader().reSortTable();
 	}

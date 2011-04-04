@@ -59,7 +59,7 @@ public:
 		abstractFifo.prepareToRead (numSamples, start1, size1, start2, size2);
 		
 		if (size1 > 0)
-		memcpy(bufferToFill, buffer.getData() + start1, size1 * sizeof(float));
+			memcpy(bufferToFill, buffer.getData() + start1, size1 * sizeof(float));
 
 		if (size2 > 0)
 			memcpy(bufferToFill + size1, buffer.getData() + start2, size2 * sizeof(float));

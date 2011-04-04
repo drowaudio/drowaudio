@@ -25,6 +25,12 @@ public:
 	
 	~ITunesLibrary();
 	
+	/**	Sets a new library to base the ValueTree on.
+		This will delete any old tree data so either take a copy of it or be
+		prepared to lose it.
+	 */
+	void setLibraryFile(File newFile);
+	
 	ValueTree getLibraryTree()	{	return libraryTree;	}
 	
 	void timerCallback();
@@ -46,10 +52,17 @@ public:
         virtual ~Listener() {}
 		
         //==============================================================================
+        /** Called when the library file has changed, before it starts updating itself.
+			Use this callback to initialise any data storage you may be holding.
+		 */
+        virtual void libraryChanged (ITunesLibrary *library) {};
+
         /** Called when the library has been updated.
 		 */
         virtual void libraryUpdated (ITunesLibrary *library) = 0;
 
+        /** Called when the library has finished updating.
+		 */
         virtual void libraryFinished (ITunesLibrary *library) {}
     };
 	

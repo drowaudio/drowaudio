@@ -30,7 +30,7 @@
 
 #include "../audio/dRowAudio_AudioUtility.h"
 #include "../utility/dRowAudio_ITunesLibrary.h"
-#include "../utility/dRowAudio_ITunesLibaryParser.h"
+//#include "../utility/dRowAudio_ITunesLibaryParser.h"
 #include "../utility/dRowAudio_Comparators.h"
 
 //==============================================================================
@@ -51,6 +51,8 @@ public:
     //==============================================================================
 	void setLibraryToUse(ITunesLibrary *library);
 
+	void libraryChanged (ITunesLibrary *library);
+	
 	void libraryUpdated (ITunesLibrary *library);
 	
 	void libraryFinished (ITunesLibrary *library);
@@ -83,6 +85,7 @@ public:
 		
 	//	Returns the table list box component.
 	TableListBox*	getTableListBox()	{	return table;	};
+	
     //==============================================================================
     void resized();
 
@@ -97,7 +100,8 @@ public:
 
 private:
     Font font;	
-	ScopedPointer<ITunesLibraryParser> parser;	
+//	ScopedPointer<ITunesLibraryParser> parser;	
+	ITunesLibrary *currentLibrary;
 
     ScopedPointer<ValueTree> demoData;   // This is the XML document loaded from the embedded file "demo table data.xml"
     ValueTree columnList; // A pointer to the sub-node of demoData that contains the list of columns

@@ -14,6 +14,7 @@ BEGIN_DROWAUDIO_NAMESPACE
 
 ITunesLibraryParser::ITunesLibraryParser(File &iTunesLibraryFile, ValueTree elementToFill)
 :	Thread("iTunesLibraryParser"),
+	numAdded(0),
 	finished(false),
 	treeToFill(elementToFill)
 {
@@ -33,7 +34,6 @@ ITunesLibraryParser::~ITunesLibraryParser()
 
 void ITunesLibraryParser::run()
 {
-	static int num = 0;
 	while (!threadShouldExit())
 	{
 		if (currentElement->getTagName() == "dict")
@@ -47,8 +47,8 @@ void ITunesLibraryParser::run()
 				if (e2->getAllSubText() == "Kind") {
 					if (e2->getNextElement()->getAllSubText().contains("audio file"))
 					{
-						newElement.setProperty(Columns::columnNames[1], num, 0);
-						num++;
+						newElement.setProperty(Columns::columnNames[1], numAdded, 0);
+						numAdded++;
 						add = true;
 					}
 				}
@@ -89,8 +89,8 @@ void ITunesLibraryParser::run()
 		{
 			finished = true;
 			signalThreadShouldExit();
-			DBG("total added now: "<<num);
-			DBG("from tree: "<<treeToFill.getNumChildren());
+//			DBG("total added now: "<<numAdded);
+//			DBG("from tree: "<<treeToFill.getNumChildren());
 			
 //			File output(File::getSpecialLocation(File::userDesktopDirectory).getChildFile("library.xml"));
 //			ScopedPointer<XmlElement> xmlOutput(treeToFill.createXml());

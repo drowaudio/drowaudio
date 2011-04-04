@@ -17,18 +17,23 @@ juce_ImplementSingleton(ITunesLibrary);
 ITunesLibrary::ITunesLibrary()
 :	libraryTree("DATA")
 {
-//	File libraryFile ("/Users/Dave/Documents/Developement/Juce Projects/Music Library Test/iTunes Music Library.xml");
-	File libraryFile ("/Users/Dave/Music/iTunes/iTunes Music Library.xml");
-	
-	if (libraryFile.existsAsFile()) {
-		parser = new ITunesLibraryParser(libraryFile, libraryTree);
-		startTimer(500);
-	}
-	
+	File libraryFile (File::getSpecialLocation(File::userMusicDirectory).getChildFile("iTunes/iTunes Music Library.xml"));
+	setLibraryFile(libraryFile);
 }
 
 ITunesLibrary::~ITunesLibrary()
 {
+}
+
+void ITunesLibrary::setLibraryFile(File newFile)
+{
+	if (newFile.existsAsFile()) 
+	{
+		libraryTree.removeAllChildren(0);
+		listeners.call (&Listener::libraryChanged, this);
+		parser = new ITunesLibraryParser(newFile, libraryTree);
+		startTimer(500);
+	}	
 }
 
 void ITunesLibrary::timerCallback()
