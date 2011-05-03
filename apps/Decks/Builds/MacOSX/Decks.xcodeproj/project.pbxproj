@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -235,19 +235,6 @@
 			name = audio;
 			sourceTree = "<group>";
 		};
-		55744A4A133B888C0015F5EC /* track_suggestions */ = {
-			isa = PBXGroup;
-			children = (
-				96C4EEF2F522DCCA74718479 /* TrackSuggestions.h */,
-				DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */,
-				554920CAA015CC8AE0E0968D /* MixTypeComponent.h */,
-				73488A74BA2DB98CE19BB585 /* MixTypeComponent.cpp */,
-				E1819F0FF6A3DF647851AFB9 /* TrackSuggestionTable.h */,
-				5C28FA4B86FBBD3E5C93A7FB /* TrackSuggestionTable.cpp */,
-			);
-			name = track_suggestions;
-			sourceTree = "<group>";
-		};
 		890674A826B0DF06A65FE9B2 /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,7 +348,12 @@
 				1CF02085B2E92C13E060CD82 /* TrackInfo.cpp */,
 				B315BE919D9B6E7E6D31E1BC /* LoopAndCuePoints.h */,
 				2FD4941BA01E8EFBED8D6B5B /* LoopAndCuePoints.cpp */,
-				55744A4A133B888C0015F5EC /* track_suggestions */,
+				96C4EEF2F522DCCA74718479 /* TrackSuggestions.h */,
+				DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */,
+				554920CAA015CC8AE0E0968D /* MixTypeComponent.h */,
+				73488A74BA2DB98CE19BB585 /* MixTypeComponent.cpp */,
+				E1819F0FF6A3DF647851AFB9 /* TrackSuggestionTable.h */,
+				5C28FA4B86FBBD3E5C93A7FB /* TrackSuggestionTable.cpp */,
 			);
 			name = transport;
 			sourceTree = "<group>";
@@ -423,7 +415,10 @@
 			hasScannedForEncodings = 0;
 			mainGroup = A7C59CEB977298DA713A6166 /* Source */;
 			projectDirPath = "";
-			projectRoot = ../..;
+			projectRoots = (
+				"",
+				../..,
+			);
 			targets = (
 				B428EAAFF8BB2A792CA5A0F8 /* Decks */,
 			);
@@ -539,7 +534,9 @@
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -569,7 +566,9 @@
 					"JUCE_ObjCExtraSuffix=h0HpWI",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
