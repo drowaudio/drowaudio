@@ -887,6 +887,16 @@
 		vrLen = 1669;
 		vrLoc = 1507;
 	};
+	558004D513704AA800AC8E5A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 425D6C09710560CAD13B64C5 /* ControlComponent.cpp */;
+		name = "ControlComponent.cpp: 79";
+		rLen = 0;
+		rLoc = 2896;
+		rType = 0;
+		vrLen = 1669;
+		vrLoc = 1507;
+	};
 	5583DF5612FE0D23007203D6 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 5583DF5712FE0D23007203D6 /* juce_AbstractFifo.cpp */;
@@ -1045,7 +1055,6 @@
 		isSCMEnabled = 0;
 		scmConfiguration = {
 			repositoryNamesForRoots = {
-				"" = dRowAudio;
 				../.. = dRowAudio;
 			};
 		};
@@ -3292,6 +3301,7 @@
 			5578F4E8132BBF6C00A9725F = 5578F4E8132BBF6C00A9725F /* PBXTextBookmark */;
 			5578F4F4132BBF6C00A9725F = 5578F4F4132BBF6C00A9725F /* PBXTextBookmark */;
 			558004C3137049DA00AC8E5A /* PBXTextBookmark */ = 558004C3137049DA00AC8E5A /* PBXTextBookmark */;
+			558004D513704AA800AC8E5A /* PBXTextBookmark */ = 558004D513704AA800AC8E5A /* PBXTextBookmark */;
 			5583DF5612FE0D23007203D6 = 5583DF5612FE0D23007203D6 /* PBXTextBookmark */;
 			5583DF6C12FE0E7F007203D6 = 5583DF6C12FE0E7F007203D6 /* PBXTextBookmark */;
 			559A565C12D3E04000CB367C = 559A565C12D3E04000CB367C /* PBXTextBookmark */;

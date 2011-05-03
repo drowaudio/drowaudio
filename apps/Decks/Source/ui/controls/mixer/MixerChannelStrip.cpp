@@ -122,7 +122,7 @@ void MixerChannelStrip::resized()
 {
 	int w = getWidth();
 	int c = w/2;
-	int h = getHeight();
+	//int h = getHeight();
 	int m = 5;
 	
 	int topButtonSize = (w-m)/4 - m;//30;

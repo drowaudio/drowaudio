@@ -114,6 +114,7 @@ void MainAppWindow::setUpLookAndFeel()
 {
 	DecksColours *decksColours = DecksColours::getInstance();
 	DecksLookAndFeel *laf = DecksLookAndFeel::getInstance();
+	InvertedSliderLookAndFeel *laf2 = InvertedSliderLookAndFeel::getInstance();
 	
 //	laf->setColour(TextButton::buttonColourId, Colours::darkgrey);
 //	laf->setColour(TextButton::buttonOnColourId, Colours::lightgrey);
@@ -126,6 +127,7 @@ void MainAppWindow::setUpLookAndFeel()
 	laf->setColour(Slider::rotarySliderFillColourId, decksColours->getColour(DecksColours::rotarySliderColour).withBrightness(0.4));
 	laf->setColour(Slider::rotarySliderOutlineColourId, decksColours->getColour(DecksColours::rotarySliderColour).withBrightness(0.8));
 	laf->setColour(Slider::trackColourId, Colour::greyLevel(0.1));
+	laf2->setColour(Slider::trackColourId, Colour::greyLevel(0.1));
 	//laf->setColour(Label::textColourId, Colour::greyLevel(0.4f));	
 	//setColour(Label::textColourId, decksColours->getColour(DecksColours::rotarySliderColour));
 	

@@ -1041,3 +1041,105 @@ DrawablePath DecksLookAndFeel::createIcon (IconType icon, Colour colour)
 			break;
 	}
 }
+
+//===================================================================
+
+juce_ImplementSingleton (InvertedSliderLookAndFeel);
+
+//void InvertedSliderLookAndFeel::drawLinearSliderThumb (Graphics& g,
+//													   int x, int y,
+//													   int width, int height,
+//													   float sliderPos,
+//													   float minSliderPos,
+//													   float maxSliderPos,
+//													   const Slider::SliderStyle style,
+//													   Slider& slider)
+//{
+//}
+
+void InvertedSliderLookAndFeel::drawFaderKnob(Graphics& g,
+											  const Slider::SliderStyle style,
+											  const float x,
+											  const float y,
+											  const float width,
+											  const float height)
+{
+	float cy = y+(height/2);
+	float cx = x+(width/2);
+	float stripWidth;
+	float kx = x, ky = y;
+	
+	if (style == Slider::LinearVertical)
+	{
+		stripWidth = height/4;
+	}
+	else if (style == Slider::LinearHorizontal)
+	{
+		stripWidth = width/5;
+	}
+	
+	if (style == Slider::LinearVertical)
+	{
+		Colour bgColour(Colour::greyLevel(0.1));
+		
+		// main knob face
+		
+		ColourGradient g1(bgColour.brighter(0.5f),
+						  x,
+						  y+height,
+						  Colours::black,
+						  x,
+						  y,
+						  false);
+		g1.addColour(0.15, bgColour);
+		g1.addColour(0.85, bgColour);
+		//		g1.addColour(1.0, Colours::black);
+		g.setGradientFill(g1);// setColour(Colours::black);
+		g.fillRect (x, y, width, height);
+		
+		
+		// middle line
+		
+		ColourGradient g2(Colour::greyLevel(0.4),
+						  x,
+						  cy-stripWidth/2,
+						  Colours::white,
+						  x,
+						  cy+stripWidth/2,
+						  false);
+		g.setGradientFill(g2);
+		if (stripWidth < 2) {
+			g.setColour(Colours::white);
+		}
+		//		g.setColour (Colours::white);
+		g.fillRect ((int)kx,
+					(int)(cy+stripWidth/2),
+					(int)width,
+					(int)stripWidth);	
+	}
+	else if (style == Slider::LinearHorizontal)
+	{
+		// main knob face
+		Colour bgColour(Colours::black);
+		
+		// knob outline
+		ColourGradient g1 (bgColour.brighter(0.5f),
+						   x, y,
+						   bgColour,
+						   x, y+2,
+						   false);
+		g.setGradientFill (g1);
+		g.fillRect (x, y, width, height);
+		
+		// middle line
+		//		ColourGradient middleLineGradient (Colours::black,
+		//										   x+width, y,
+		//										   Colours::white,
+		//										   x, y+height,
+		//										   false);
+		//		g.setGradientFill (middleLineGradient);
+		g.setColour(Colours::white);
+		g.fillRect (cx-stripWidth/2, ky,
+					stripWidth, height);
+	}
+}

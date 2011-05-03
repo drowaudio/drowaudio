@@ -17,7 +17,7 @@ Deck::Deck(int deckNo_)
 
 	filePlayer = new FilteringAudioFilePlayer();
 	filePlayer->setAudioFormatManager(DecksAudioFormatManager::getInstance());
-	monitorFilePlayer = new FilteringAudioFilePlayer();
+	//monitorFilePlayer = new FilteringAudioFilePlayer();
 
 	settings.on = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(on));
 	settings.bypass = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(bypass));

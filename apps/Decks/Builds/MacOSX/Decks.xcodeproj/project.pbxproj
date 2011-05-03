@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 45;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -415,10 +415,7 @@
 			hasScannedForEncodings = 0;
 			mainGroup = A7C59CEB977298DA713A6166 /* Source */;
 			projectDirPath = "";
-			projectRoots = (
-				"",
-				../..,
-			);
+			projectRoot = ../..;
 			targets = (
 				B428EAAFF8BB2A792CA5A0F8 /* Decks */,
 			);

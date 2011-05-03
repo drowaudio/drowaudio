@@ -76,9 +76,9 @@ void ControlComponent::resized ()
 							   getWidth(), h - draggableDisplay->getBottom());
 	mixerViewport->setViewPosition(0, 0);
 	
-//#ifdef JUCE_DEBUG
+#ifdef JUCE_DEBUG
 	cpuMeter->setBounds(w-60, h-20, 60, 20);
-//#endif
+#endif
 }
 
 void ControlComponent::paint (Graphics& g)

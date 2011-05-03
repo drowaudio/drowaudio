@@ -57,7 +57,6 @@ CrossFader::CrossFader()
 void CrossFader::resized()
 {
 	int w = getWidth();
-	int c = w/2;
 	int h = getHeight();
 	int ch = h/2;
 	int m = 5;

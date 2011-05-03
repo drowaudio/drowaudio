@@ -25,36 +25,36 @@ public:
 	int getDeckNo()										{	return deckNo;				}
 //	FilteringAudioFilePlayer* getFilePlayer()			{	return filePlayer;			}
 	FilteringAudioFilePlayer* getMainFilePlayer()		{	return filePlayer;			}
-	FilteringAudioFilePlayer* getMonitorFilePlayer()	{	return monitorFilePlayer;	}
+	//FilteringAudioFilePlayer* getMonitorFilePlayer()	{	return monitorFilePlayer;	}
 		
 	void startFromZero()
 	{
 		filePlayer->startFromZero();
-		monitorFilePlayer->startFromZero();
+		//monitorFilePlayer->startFromZero();
 	}
 	
 	void stop()
 	{
 		filePlayer->stop();
-		monitorFilePlayer->stop();
+		//monitorFilePlayer->stop();
 	}
 	
 	void pause()
 	{
 		filePlayer->pause();
-		monitorFilePlayer->pause();
+		//monitorFilePlayer->pause();
 	}
 	
 	void setNextReadPosition(int position)
 	{
 		filePlayer->setNextReadPosition(position);
-		monitorFilePlayer->setNextReadPosition(position);
+		//monitorFilePlayer->setNextReadPosition(position);
 	}
 	
 	void setResamplingRatio(const double samplesInPerOutputSample)
 	{
 		filePlayer->setResamplingRatio(samplesInPerOutputSample);
-		monitorFilePlayer->setResamplingRatio(samplesInPerOutputSample);
+		//monitorFilePlayer->setResamplingRatio(samplesInPerOutputSample);
 	}
 		
 	void valueTreePropertyChanged (ValueTree  &treeWhosePropertyHasChanged, const Identifier  &property);
@@ -114,7 +114,7 @@ private:
 	ValueTree deckTree;
 	const int deckNo;
 	ScopedPointer<FilteringAudioFilePlayer> filePlayer;
-	ScopedPointer<FilteringAudioFilePlayer> monitorFilePlayer;
+	//ScopedPointer<FilteringAudioFilePlayer> monitorFilePlayer;
 		
 //	void callListeners();
 //	SortedSet <Listener*> listeners;

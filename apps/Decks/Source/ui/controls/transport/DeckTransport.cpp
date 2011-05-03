@@ -41,6 +41,7 @@ DeckTransport::DeckTransport(int deckNo_)
 	speedSlider->setRange(0.8, 1.2, 0.0001);
 	speedSlider->setValue(1.0);
 	speedSlider->addListener(this);
+	speedSlider->setLookAndFeel(InvertedSliderLookAndFeel::getInstance());
 
 	addAndMakeVisible(speedLabel = new Label("speedLabel", "P"));
 	speedLabel->setBorderSize(0, 0);
@@ -53,7 +54,8 @@ DeckTransport::DeckTransport(int deckNo_)
 	jogSlider->setRange( -0.05, 0.05, 0.0001);
 	jogSlider->setValue(0.0);
 	jogSlider->addListener(this);
-	
+	jogSlider->setLookAndFeel(InvertedSliderLookAndFeel::getInstance());
+
 	addAndMakeVisible(jogLabel = new Label("jogLabel", "N"));
 	jogLabel->setBorderSize(0, 0);
 	jogLabel->setJustificationType(Justification(Justification::centred));
@@ -71,9 +73,7 @@ DeckTransport::~DeckTransport()
 	transportButtons.clear();
 	deleteAllChildren();
 	
-	String message("DeckTransport ");
-	message << deckNo << " deleted";
-	DBG(message);
+	DBG("DeckTransport "<< deckNo << " deleted");
 }
 
 //==============================================================================
@@ -102,7 +102,13 @@ void DeckTransport::resized()
 	
 	const int labelHeight = 20;
 	speedSlider->setBounds(w-30, labelHeight, 10, waveDisplay->getBottom()-labelHeight);
+	speedSlider->setTransform(AffineTransform::rotation(float_Pi,
+														speedSlider->getX()+speedSlider->getWidth()*0.5,
+														speedSlider->getY()+speedSlider->getHeight()*0.5));
 	jogSlider->setBounds(w-15, labelHeight, 10, waveDisplay->getBottom()-labelHeight);
+	jogSlider->setTransform(AffineTransform::rotation(float_Pi,
+													  jogSlider->getX()+jogSlider->getWidth()*0.5,
+													  jogSlider->getY()+jogSlider->getHeight()*0.5));
 }
 
 void DeckTransport::paint(Graphics &g)
