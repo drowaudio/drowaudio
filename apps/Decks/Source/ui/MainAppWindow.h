@@ -47,6 +47,8 @@ public:
 	// called when the close button is pressed or esc is pushed
 	void closeButtonPressed();
 	
+	void maximiseButtonPressed();
+	
 	const BorderSize<int> getBorderThickness();
 		
 	// It is most likely that your program will be happy thinking of the window's

@@ -94,6 +94,11 @@ void MainAppWindow::closeButtonPressed()
     JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
+void MainAppWindow::maximiseButtonPressed()
+{
+	commandManager->invokeDirectly(CommandIDs::goToKioskMode, true);
+}
+
 const BorderSize<int> MainAppWindow::getBorderThickness()
 {
     return BorderSize<int> (isUsingNativeTitleBar() ? 0 : ((resizableBorder != 0 && ! isFullScreen()) ? 0 : 0));

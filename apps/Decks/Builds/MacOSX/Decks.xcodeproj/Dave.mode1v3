@@ -307,8 +307,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>36</integer>
-									<integer>34</integer>
+									<integer>27</integer>
 									<integer>21</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -354,7 +353,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ControlComponent.cpp</string>
+								<string>MainAppWindow.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -362,11 +361,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ControlComponent.cpp</string>
+										<string>MainAppWindow.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>558004D513704AA800AC8E5A</string>
+										<string>558007BE1370C44700AC8E5A</string>
 										<key>history</key>
 										<array>
 											<string>55AC9B6C1192F47D00382B1A</string>
@@ -409,7 +408,6 @@
 											<string>55FB928D12A2D7E3009ED199</string>
 											<string>55FB929012A2D7E3009ED199</string>
 											<string>55FB930312A2DA93009ED199</string>
-											<string>55FB93F812A2EA12009ED199</string>
 											<string>55FB940C12A2EE76009ED199</string>
 											<string>55FB944012A2F4CE009ED199</string>
 											<string>55FB97B712A67BDB009ED199</string>
@@ -435,15 +433,12 @@
 											<string>551E6FF412CD56AC0089DCB6</string>
 											<string>559A565C12D3E04000CB367C</string>
 											<string>559A566212D3E04000CB367C</string>
-											<string>55C4065612F78B4200800656</string>
-											<string>55C4065712F78B4200800656</string>
 											<string>55EF2C5B12F8822C00B68371</string>
 											<string>55C038C512F889AF006164D2</string>
 											<string>55C0391412F89AF6006164D2</string>
 											<string>55C0398712F89D9A006164D2</string>
 											<string>55C0398812F89D9A006164D2</string>
 											<string>55C03A9912F8B875006164D2</string>
-											<string>55C03B5412F8C4EC006164D2</string>
 											<string>55C03BE912F8D5AF006164D2</string>
 											<string>55C03CB612F8F194006164D2</string>
 											<string>55C03EA012F9C71C006164D2</string>
@@ -498,9 +493,7 @@
 											<string>55744B7B133BAED90015F5EC</string>
 											<string>55744C68133D44F40015F5EC</string>
 											<string>55744C6D133D44F40015F5EC</string>
-											<string>55744C6F133D44F40015F5EC</string>
 											<string>55744CA0133D493F0015F5EC</string>
-											<string>55744CBF133D4AEA0015F5EC</string>
 											<string>55744D1F133D57390015F5EC</string>
 											<string>55744D27133D577C0015F5EC</string>
 											<string>55744D39133D5FC60015F5EC</string>
@@ -528,20 +521,26 @@
 											<string>557456ED134A7E810015F5EC</string>
 											<string>55745714134A7FDC0015F5EC</string>
 											<string>55AE4475134F9D8E003B3F99</string>
-											<string>55AE44D213533A1C003B3F99</string>
 											<string>55AE44D313533A1C003B3F99</string>
 											<string>55AE44FE13533D9D003B3F99</string>
 											<string>55AE451C13534037003B3F99</string>
-											<string>55AE451D13534037003B3F99</string>
-											<string>55BF7C55136780CB0086663F</string>
 											<string>55BF7C7E136784B00086663F</string>
 											<string>55BF7C7F136784B00086663F</string>
 											<string>55BF7C80136784B00086663F</string>
 											<string>55BF7C8A136784E80086663F</string>
 											<string>55BF7CA71368C6210086663F</string>
-											<string>55BF7CA81368C6210086663F</string>
 											<string>55BF7CA91368C6210086663F</string>
-											<string>55BF7CB21368C7A90086663F</string>
+											<string>558006B91370A64600AC8E5A</string>
+											<string>5580072A1370B98000AC8E5A</string>
+											<string>5580072C1370B98000AC8E5A</string>
+											<string>5580072E1370B98000AC8E5A</string>
+											<string>558007451370BB5100AC8E5A</string>
+											<string>5580075E1370BEF600AC8E5A</string>
+											<string>5580076C1370BF6600AC8E5A</string>
+											<string>558007741370BF9600AC8E5A</string>
+											<string>5580078B1370C06E00AC8E5A</string>
+											<string>558007901370C0B600AC8E5A</string>
+											<string>558007911370C0B600AC8E5A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -722,7 +721,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>326126248.37621498</real>
+	<real>326157383.65995502</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -739,6 +738,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>5580052C13705DC900AC8E5A</string>
+		<string>5580052D13705DC900AC8E5A</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>55AC9B5C1192F33700382B1A</string>
 		<string>/Users/Dave/Documents/Developement/dRowAudio/apps/Decks/Builds/MacOSX/Decks.xcodeproj</string>
@@ -765,7 +768,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>dRowAudio_AbstractDraggableWaveDisplay.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -782,6 +785,8 @@
 							<string>292pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -834,7 +839,7 @@
 			<key>WindowToolGUID</key>
 			<string>55AC9B5C1192F33700382B1A</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -983,7 +988,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MainAppWindow.cpp</string>
+										<string>TitleBarComponent.cpp</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -1039,8 +1044,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>55BF7C7C136784AE0086663F</string>
-				<string>55BF7C7D136784AE0086663F</string>
+				<string>5580071E1370B8E300AC8E5A</string>
+				<string>5580071F1370B8E300AC8E5A</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -1105,7 +1110,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>55BF7C45136779D70086663F</string>
+				<string>558004E513704E6A00AC8E5A</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -1115,7 +1120,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

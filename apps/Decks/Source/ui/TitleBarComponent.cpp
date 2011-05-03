@@ -9,6 +9,7 @@
 */
 
 #include "TitleBarComponent.h"
+#include "../main/CommandIDs.h"
 
 TitleBarComponent::TitleBarComponent ()
 :	showButtons(Desktop::getInstance().getKioskModeComponent() == getTopLevelComponent() ? true : false)
@@ -86,7 +87,7 @@ void TitleBarComponent::buttonClicked(Button *button)
 		JUCEApplication::getInstance()->systemRequestedQuit();
 	}
 	else if (button == buttons[maximiseButton]) {
-		invokeDirectly(0x200f, true);
+		invokeDirectly(CommandIDs::goToKioskMode, true);
 	}
 
 }
