@@ -193,7 +193,7 @@
 			);
 			mainGroup = D8C159067DAFC8BFE4ABBC4F /* Source */;
 			projectDirPath = "";
-			projectRoot = "";
+			projectRoot = ../..;
 			targets = (
 				68EA63D40C40C90645BE36A5 /* Network Audio Streamer */,
 			);

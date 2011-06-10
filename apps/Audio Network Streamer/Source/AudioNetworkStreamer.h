@@ -93,8 +93,8 @@ private:
 	
 	struct AudioBlockHeader
 	{
-		int blockSize;
-		int isCompressed;
+		bool isCompressed;
+		int uncompressedBlockSize;
 		int numChannels;
 		int numSamples;
 	};

@@ -17,6 +17,7 @@ static const Identifier SettingsNames[] = {
 											"mode",
 											"port",
 											"host",
+											"compress",
 											"audioSettings"
 										  };
 
@@ -39,6 +40,7 @@ public:
 		mode,
 		port,
 		host,
+		compress,
 		audioSettings,
 		numControlSettings
 	};

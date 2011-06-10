@@ -62,6 +62,16 @@ void decompressMemory(const void *sourceBlock, size_t sourceBlockSize, MemoryBlo
 	DBG("Comp: "<<(int)sourceBlockSize<<" - Original: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlockSize)<<"\n");
 }
 
+void decompressMemoryWithKnownSize(const void *sourceBlock, size_t sourceBlockSize, MemoryBlock &destinationBlock, const int uncompressedSize)
+{
+	MemoryInputStream memoryStream(sourceBlock, sourceBlockSize, false);
+	GZIPDecompressorInputStream zipStream(&memoryStream, false, false, uncompressedSize);
+	
+	destinationBlock.setSize(uncompressedSize, false);
+	zipStream.read(destinationBlock.getData(), uncompressedSize);
+		
+	DBG("Comp: "<<(int)sourceBlockSize<<" - Original: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlockSize)<<"\n");
+}
 
 void serialiseAudio(MemoryBlock &serialisedBlock,
 					const int numChannels, const int numSamples, const float** channelData)
@@ -95,7 +105,7 @@ void deserialiseAudio(MemoryBlock &serialisedBlock,
 InterprocessCommsDemo::InterprocessCommsDemo()
 :	isConnected(false),
 	isSender(true),
-	compressAudio(0),
+	compressAudio(false),
 	settingsTree(Settings::getInstance()->getValueTree()),
 	audioBufferL(220500),
 	audioBufferR(220500)
@@ -134,6 +144,8 @@ InterprocessCommsDemo::InterprocessCommsDemo()
 	addAndMakeVisible(&compressAudioButton);
 	compressAudioButton.setButtonText("Compress");
 	compressAudioButton.addListener(this);
+	compressAudioButton.getToggleStateValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::compress], nullptr));
+	compressAudio = compressAudioButton.getToggleState();
 	
 	addAndMakeVisible(incomingMessages = new TextEditor (T("messages")));
 	incomingMessages->setReadOnly (true);
@@ -324,13 +336,19 @@ void InterprocessCommsDemo::audioDeviceIOCallback (const float** inputChannelDat
 		if (isConnected)
 		{
 			MemoryBlock audioData;
-			audioData.append(&compressAudio, sizeof(int));
-			
+
+			const int audioBlockSize = jlimit(0, 2, numInputChannels) * numSamples * sizeof(float);
+			AudioBlockHeader header = {
+				compressAudio,
+				audioBlockSize,
+				numInputChannels,
+				numSamples
+			};
+			audioData.append(&header, sizeof(AudioBlockHeader));
+
 			if (compressAudio)
 			{
 				MemoryBlock rawData;
-				rawData.append(&numInputChannels, sizeof(int));
-				rawData.append(&numSamples, sizeof(int));
 				if (numInputChannels > 0)
 					rawData.append(inputChannelData[0], numSamples * sizeof(float));
 				if (numInputChannels > 1)
@@ -343,8 +361,6 @@ void InterprocessCommsDemo::audioDeviceIOCallback (const float** inputChannelDat
 			}
 			else
 			{
-				audioData.append(&numInputChannels, sizeof(int));
-				audioData.append(&numSamples, sizeof(int));
 				if (numInputChannels > 0)
 					audioData.append(inputChannelData[0], numSamples * sizeof(float));
 				if (numInputChannels > 1)
@@ -364,10 +380,10 @@ void InterprocessCommsDemo::audioDeviceIOCallback (const float** inputChannelDat
 	{
 		if (numOutputChannels > 0)
 		{
-			if(audioBufferL.getNumAvailable() > 0)
+			if(audioBufferL.getNumAvailable() >= numSamples)
 				audioBufferL.readSamples(outputChannelData[0], numSamples);
 
-			if (numOutputChannels > 1 && audioBufferR.getNumAvailable() > 0)
+			if (numOutputChannels > 1 && audioBufferR.getNumAvailable() >= numSamples)
 				audioBufferR.readSamples(outputChannelData[1], numSamples);
 		}
 	}
@@ -426,30 +442,25 @@ void InterprocessCommsDemo::DemoInterprocessConnection::connectionLost()
 
 void InterprocessCommsDemo::DemoInterprocessConnection::messageReceived (const MemoryBlock& message)
 {
-	const int isDataCompressed = *static_cast<int*>(message.getData());
-	void* startOfBlock = addBytesToPointer(message.getData(), sizeof(int));
-	size_t sizeOfBlock = message.getSize()-sizeof(int);
-
-	if (isDataCompressed)
+	const AudioBlockHeader &header = *static_cast<AudioBlockHeader*>(message.getData());
+	void* startOfAudioBlock = addBytesToPointer(message.getData(), sizeof(AudioBlockHeader));
+	size_t sizeOfAudioBlock = message.getSize()-sizeof(AudioBlockHeader);
+	
+	MemoryBlock decompressedBlock;
+	if (header.isCompressed)
 	{
-		//uncompress here
-		MemoryBlock decompressedBlock;
-		decompressMemory(startOfBlock, sizeOfBlock, decompressedBlock);
-		
-		startOfBlock = decompressedBlock.getData();//uncompressed data
-		sizeOfBlock = decompressedBlock.getSize();
+		decompressMemoryWithKnownSize(startOfAudioBlock, sizeOfAudioBlock, decompressedBlock, header.uncompressedBlockSize);
+		startOfAudioBlock = decompressedBlock.getData();
 	}
-
-	const int numChannels = *static_cast<int*>(startOfBlock);
-	const int numSamples = *static_cast<int*>(addBytesToPointer(startOfBlock, sizeof(int)));
-	if (numChannels > 0)
+	
+	if (header.numChannels > 0)
 	{
-		const int bytesPerChannel = (sizeOfBlock-(2*sizeof(int)))/numChannels;
-
-		owner.audioBufferL.writeSamples((float*)addBytesToPointer(startOfBlock, 2*sizeof(int)), numSamples);
-
-		if (numChannels > 1)
-			owner.audioBufferR.writeSamples((float*)addBytesToPointer(startOfBlock, 2*sizeof(int)+bytesPerChannel), numSamples);
+		const int bytesPerChannel = header.numSamples * sizeof(float);
+		
+		owner.audioBufferL.writeSamples((float*)startOfAudioBlock, header.numSamples);
+		
+		if (header.numChannels > 1)
+			owner.audioBufferR.writeSamples((float*)addBytesToPointer(startOfAudioBlock, bytesPerChannel), header.numSamples);
 	}
 }
 	
