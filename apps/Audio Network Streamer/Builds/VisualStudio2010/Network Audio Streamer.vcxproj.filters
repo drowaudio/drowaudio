@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Network Audio Streamer">
+      <UniqueIdentifier>{370C337E-02B4-5A46-7F66-6A555C75B2CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network Audio Streamer\Source">
+      <UniqueIdentifier>{079E313F-880D-2C64-5BD0-B97371DB9CB3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Library Code">
+      <UniqueIdentifier>{F7048EA6-F4B2-F31B-E402-E05D678A1111}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Main.cpp">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Settings.cpp">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MainWindow.cpp">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MainComponent.cpp">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\AudioNetworkStreamer.cpp">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\dRowAudio_AudioOscilloscope.cpp">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\dRowAudio_FIFOBuffer.cpp">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Settings.h">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MainWindow.h">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MainComponent.h">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\AudioNetworkStreamer.h">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\dRowAudio_AudioOscilloscope.h">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\dRowAudio_FIFOBuffer.h">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="tMpJOu" name="Network Audio Streamer" projectType="guiapp"
+              version="1.0.0" juceLinkage="static" buildVST="1" buildRTAS="0"
+              buildAU="1" pluginName="Juce Project" pluginDesc="Juce Project"
+              pluginManufacturer="yourcompany" pluginManufacturerCode="Manu"
+              pluginCode="Plug" pluginChannelConfigs="{1, 1}, {2, 2}" pluginIsSynth="0"
+              pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0"
+              pluginTailLength="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="JuceProjectAU"
+              pluginAUViewClass="JuceProjectAU_V1" pluginRTASCategory="" bundleIdentifier="com.yourcompany.NetworkAudioStreamer"
+              jucerVersion="3.0.0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+               objCExtraSuffix="izkE3M" juceFolder="../../../juce_source/juce"
+               extraLinkerFlags="-framework Accelerate"/>
+    <XCODE_IPHONE targetFolder="Builds/iOS" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+                  objCExtraSuffix="DkY29E" juceFolder="../../juce_source/juce"/>
+    <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
+           libraryType="1" juceFolder="../../juce_source/juce"/>
+    <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" libraryType="1" juceFolder="../../juce_source/juce"/>
+    <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" libraryType="1" juceFolder="../../juce_source/juce"/>
+    <VS2010 targetFolder="Builds/VisualStudio2010" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" libraryType="1" juceFolder="../../juce_source/juce"/>
+  </EXPORTFORMATS>
+  <CONFIGURATIONS>
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Network Audio Streamer"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="64BitIntel"/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="Network Audio Streamer"/>
+  </CONFIGURATIONS>
+  <MAINGROUP id="OjEMlO" name="Network Audio Streamer">
+    <GROUP id="S3cO90" name="Source">
+      <FILE id="EP0bjY" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="VpBl8Z" name="Settings.h" compile="0" resource="0" file="Source/Settings.h"/>
+      <FILE id="KXwEDb" name="Settings.cpp" compile="1" resource="0" file="Source/Settings.cpp"/>
+      <FILE id="Yi7TLP" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
+      <FILE id="msXZqI" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
+      <FILE id="bfxLGI" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="TKQ3rc" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="ZCygP2" name="AudioNetworkStreamer.h" compile="0" resource="0"
+            file="Source/AudioNetworkStreamer.h"/>
+      <FILE id="XDVIRR" name="AudioNetworkStreamer.cpp" compile="1" resource="0"
+            file="Source/AudioNetworkStreamer.cpp"/>
+      <FILE id="XcFDiT" name="dRowAudio_AudioOscilloscope.h" compile="0"
+            resource="0" file="Source/dRowAudio_AudioOscilloscope.h"/>
+      <FILE id="sj3lHe" name="dRowAudio_AudioOscilloscope.cpp" compile="1"
+            resource="0" file="Source/dRowAudio_AudioOscilloscope.cpp"/>
+      <FILE id="saqK7M" name="dRowAudio_FIFOBuffer.h" compile="0" resource="0"
+            file="Source/dRowAudio_FIFOBuffer.h"/>
+      <FILE id="N2DGH7" name="dRowAudio_FIFOBuffer.cpp" compile="1" resource="0"
+            file="Source/dRowAudio_FIFOBuffer.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ASIO="default"
+               JUCE_WASAPI="default" JUCE_DIRECTSOUND="default" JUCE_ALSA="default"
+               JUCE_QUICKTIME="default" JUCE_OPENGL="default" JUCE_DIRECT2D="default"
+               JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_CDBURNER="default"
+               JUCE_USE_CDREADER="default" JUCE_USE_CAMERA="default" JUCE_ENABLE_REPAINT_DEBUGGING="default"
+               JUCE_USE_XINERAMA="default" JUCE_USE_XSHM="default" JUCE_USE_XRENDER="default"
+               JUCE_USE_XCURSOR="default" JUCE_PLUGINHOST_VST="default" JUCE_PLUGINHOST_AU="default"
+               JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_WEB_BROWSER="default"
+               JUCE_SUPPORT_CARBON="default" JUCE_CHECK_MEMORY_LEAKS="default"
+               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"/>
+</JUCERPROJECT>
