@@ -17,6 +17,7 @@ MainAppWindow::MainAppWindow()
                       Colours::lightgrey,
                       DocumentWindow::allButtons)
 {
+	setUsingNativeTitleBar(true);
     centreWithSize (800, 600);
     setVisible (true);
 	setResizable(true, true);

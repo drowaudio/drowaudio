@@ -21,6 +21,7 @@ class InterprocessCommsDemo  :	public Component,
 								public AsyncUpdater,
 								public Button::Listener,
 								public ComboBox::Listener,
+								public ValueTree::Listener,
 								public AudioIODeviceCallback
 {
 public:
@@ -31,9 +32,12 @@ public:
 	
 	void resized();
 	
+	void paint(Graphics &g);
+	
 	void handleAsyncUpdate();
 	
-    void buttonClicked (Button* button);
+	//==============================================================================
+	void buttonClicked (Button* button);
 	
     void comboBoxChanged (ComboBox*);
 	
@@ -55,6 +59,13 @@ public:
     void audioDeviceAboutToStart (AudioIODevice* device);
 	
     void audioDeviceStopped();
+	
+	//==============================================================================
+	void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property);
+	void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded) {}
+	void valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved) {}
+	void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved) {}
+	void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) {}
 	
     //==============================================================================
     class DemoInterprocessConnection  : public InterprocessConnection
@@ -116,7 +127,7 @@ private:
 		
 	AudioDeviceManager audioManager;
 	TextButton audioSettingsButton;
-	ToggleButton compressAudioButton;
+	//ToggleButton compressAudioButton;
 	
 	ScopedPointer<DemoInterprocessConnectionServer> server;
 	ScopedPointer<AudioData> audioBlock;

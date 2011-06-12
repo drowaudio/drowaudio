@@ -28,6 +28,9 @@
     <ClCompile Include="..\..\Source\AudioNetworkStreamer.cpp">
       <Filter>Network Audio Streamer\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SettingsComp.cpp">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\dRowAudio_AudioOscilloscope.cpp">
       <Filter>Network Audio Streamer\Source</Filter>
     </ClCompile>
@@ -46,6 +49,9 @@
       <Filter>Network Audio Streamer\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AudioNetworkStreamer.h">
+      <Filter>Network Audio Streamer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SettingsComp.h">
       <Filter>Network Audio Streamer\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\dRowAudio_AudioOscilloscope.h">

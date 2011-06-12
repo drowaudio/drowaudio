@@ -110,6 +110,7 @@ InterprocessCommsDemo::InterprocessCommsDemo()
 	audioBufferL(220500),
 	audioBufferR(220500)
 {
+	settingsTree.addListener(this);
 	server = new DemoInterprocessConnectionServer (*this);
  	
 	initialiseAudio();
@@ -121,10 +122,10 @@ InterprocessCommsDemo::InterprocessCommsDemo()
 	addAndMakeVisible (modeSelector = new ComboBox (T("mode:")));
 	(new Label (modeSelector->getName(), modeSelector->getName()))->attachToComponent (modeSelector, true);
 	
-	modeSelector->addItem (T("(Disconnected)"), 1);
+	modeSelector->addItem (T("Disconnected"), 1);
 	modeSelector->addSeparator();
-	modeSelector->addItem (T("Socket (listening)"), 2);
-	modeSelector->addItem (T("Socket (connect to existing socket)"), 3);
+	modeSelector->addItem ("Reciever", 2);
+	modeSelector->addItem ("Sender", 3);
 	
 	modeSelector->getSelectedIdAsValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::mode], nullptr));
 	modeSelector->addListener (this);
@@ -141,11 +142,11 @@ InterprocessCommsDemo::InterprocessCommsDemo()
 	(new Label (socketHost->getName(), socketHost->getName()))->attachToComponent (socketHost, true);
 	socketHost->getTextValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::host], nullptr));
 
-	addAndMakeVisible(&compressAudioButton);
-	compressAudioButton.setButtonText("Compress");
-	compressAudioButton.addListener(this);
-	compressAudioButton.getToggleStateValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::compress], nullptr));
-	compressAudio = compressAudioButton.getToggleState();
+//	addAndMakeVisible(&compressAudioButton);
+//	compressAudioButton.setButtonText("Compress");
+//	compressAudioButton.addListener(this);
+//	compressAudioButton.getToggleStateValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::compress], nullptr));
+	compressAudio = settingsTree[SettingsNames[Settings::compress]];//compressAudioButton.getToggleState();
 	
 	addAndMakeVisible(incomingMessages = new TextEditor (T("messages")));
 	incomingMessages->setReadOnly (true);
@@ -169,8 +170,10 @@ InterprocessCommsDemo::~InterprocessCommsDemo()
 	
 	///removeChildComponent(&scope);
 	removeChildComponent(&audioSettingsButton);
-	removeChildComponent(&compressAudioButton);
+	//removeChildComponent(&compressAudioButton);
 	deleteAllChildren();
+
+	settingsTree.removeListener(this);
 }
 
 void InterprocessCommsDemo::resized()
@@ -179,21 +182,27 @@ void InterprocessCommsDemo::resized()
 	const int h = getHeight();
 	const int m = 5;
 	
-	modeSelector->setBounds (60, 25, 200, 24);
-	socketNumber->setBounds (350, 25, 80, 24);
-	socketHost->setBounds (530, 25, 130, 24);
+	modeSelector->setBounds (100, m, 200, 20);
 		
-	audioSettingsButton.setBounds(socketHost->getRight()+m, socketHost->getY(), 100, socketHost->getHeight());
+	audioSettingsButton.setBounds(modeSelector->getRight()+m, modeSelector->getY(), 100, modeSelector->getHeight());
+
+	socketHost->setBounds (modeSelector->getX(), modeSelector->getBottom()+m, 80, 20);
+	socketNumber->setBounds (socketHost->getRight()+100, socketHost->getY(), 80, 20);
+
+	//compressAudioButton.setBounds(m, modeSelector->getBottom()+m, 100, 20);
 	
-	compressAudioButton.setBounds(m, modeSelector->getBottom()+m, 100, 20);
-	
-	incomingMessages->setBounds (30, compressAudioButton.getBottom()+m, w-2*m, 100);
+	incomingMessages->setBounds (m, socketHost->getBottom()+m, w-2*m, 100);
+}
+
+void InterprocessCommsDemo::paint(Graphics &g)
+{
+	g.fillAll(Colours::azure);
 }
 
 void InterprocessCommsDemo::handleAsyncUpdate()
 {
 	// call this to set up everything's state correctly.
-	comboBoxChanged (modeSelector);
+	//comboBoxChanged (modeSelector);
 }
 
 void InterprocessCommsDemo::buttonClicked (Button* button)
@@ -216,10 +225,10 @@ void InterprocessCommsDemo::buttonClicked (Button* button)
 									   Colours::azure,
 									   true);
 	}
-	else if(button == &compressAudioButton)
-	{
-		compressAudio = compressAudioButton.getToggleState();
-	}
+//	else if(button == &compressAudioButton)
+//	{
+//		//compressAudio = compressAudioButton.getToggleState();
+//	}
 }
 
 void InterprocessCommsDemo::comboBoxChanged (ComboBox* changedBox)
@@ -407,6 +416,17 @@ void InterprocessCommsDemo::audioDeviceStopped()
 }
 
 //==============================================================================
+void InterprocessCommsDemo::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
+{
+	DBG("value tree changed");
+	if (property == SettingsNames[Settings::compress])
+	{
+		DBG("compress button clicked");
+		compressAudio = settingsTree[SettingsNames[Settings::compress]]; //compressAudioButton.getToggleState();
+	}
+}
+
+//==============================================================================
 InterprocessCommsDemo::DemoInterprocessConnection::DemoInterprocessConnection (InterprocessCommsDemo& owner_)
 :	InterprocessConnection (true),
 	owner (owner_)
@@ -438,6 +458,9 @@ void InterprocessCommsDemo::DemoInterprocessConnection::connectionLost()
 	owner.audioManager.removeAudioCallback(&owner);
 	owner.isConnected = false;
 	owner.appendMessage (T("Connection #") + String (ourNumber) + T(" - connection lost"));
+	
+	if (owner.isSender)
+		owner.modeSelector->setSelectedId(1);
 }
 
 void InterprocessCommsDemo::DemoInterprocessConnection::messageReceived (const MemoryBlock& message)

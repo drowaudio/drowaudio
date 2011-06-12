@@ -140,6 +140,8 @@
         <File RelativePath="..\..\Source\MainComponent.cpp"/>
         <File RelativePath="..\..\Source\AudioNetworkStreamer.h"/>
         <File RelativePath="..\..\Source\AudioNetworkStreamer.cpp"/>
+        <File RelativePath="..\..\Source\SettingsComp.h"/>
+        <File RelativePath="..\..\Source\SettingsComp.cpp"/>
         <File RelativePath="..\..\Source\dRowAudio_AudioOscilloscope.h"/>
         <File RelativePath="..\..\Source\dRowAudio_AudioOscilloscope.cpp"/>
         <File RelativePath="..\..\Source\dRowAudio_FIFOBuffer.h"/>

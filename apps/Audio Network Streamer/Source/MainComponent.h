@@ -12,16 +12,19 @@
 #define __MAINCOMPONENT_H_CCF3F3A9__
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "AudioNetworkStreamer.h"
+#include "SettingsComp.h"
 
-/**	@todo	Add option to compress
-	@todo	Improve UI
+/**	@todo	Improve UI
 	@todo	Keep settings in a more convenient place
 	@todo	Repitition of buffer in listener mode
 	@todo	Sleep prevention when disconnected (possibly add and remove audio callback on connection)
-	@todo	Set a flag to determine if stream is compressed
+	@todo	Adjustable buffersize with overrun if size limit reached
+	@todo	Change samples to int (or short) for better compression
  */
 
-class MainComponent :	public Component
+class MainComponent :	public Component,
+						public Button::Listener
 {
 public:
 	MainComponent();
@@ -30,9 +33,15 @@ public:
 	
 	void resized();
 	
+	void buttonClicked(Button *button);
+	
 private:
 	
 	TabbedComponent tabbedComponent;
+	
+	TextButton settingsButton;
+	InterprocessCommsDemo connectionComp;
+	SettingsComponent settingsComp;
 };
 
 #endif  // __MAINCOMPONENT_H_CCF3F3A9__

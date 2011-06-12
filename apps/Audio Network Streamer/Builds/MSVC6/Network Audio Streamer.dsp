@@ -110,6 +110,12 @@ SOURCE="..\..\Source\AudioNetworkStreamer.h"
 SOURCE="..\..\Source\AudioNetworkStreamer.cpp"
 # End Source File
 # Begin Source File
+SOURCE="..\..\Source\SettingsComp.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\SettingsComp.cpp"
+# End Source File
+# Begin Source File
 SOURCE="..\..\Source\dRowAudio_AudioOscilloscope.h"
 # End Source File
 # Begin Source File

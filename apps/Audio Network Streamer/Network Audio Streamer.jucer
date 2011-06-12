@@ -43,6 +43,9 @@
             file="Source/AudioNetworkStreamer.h"/>
       <FILE id="XDVIRR" name="AudioNetworkStreamer.cpp" compile="1" resource="0"
             file="Source/AudioNetworkStreamer.cpp"/>
+      <FILE id="xMwsD" name="SettingsComp.h" compile="0" resource="0" file="Source/SettingsComp.h"/>
+      <FILE id="x0xd8N" name="SettingsComp.cpp" compile="1" resource="0"
+            file="Source/SettingsComp.cpp"/>
       <FILE id="XcFDiT" name="dRowAudio_AudioOscilloscope.h" compile="0"
             resource="0" file="Source/dRowAudio_AudioOscilloscope.h"/>
       <FILE id="sj3lHe" name="dRowAudio_AudioOscilloscope.cpp" compile="1"

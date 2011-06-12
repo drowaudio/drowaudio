@@ -208,6 +208,9 @@
 			55FF08CE13A578A900E2EE8B /* PBXTextBookmark */ = 55FF08CE13A578A900E2EE8B /* PBXTextBookmark */;
 			55FF08D213A578B900E2EE8B /* PBXTextBookmark */ = 55FF08D213A578B900E2EE8B /* PBXTextBookmark */;
 			55FF08D613A578E700E2EE8B /* PBXTextBookmark */ = 55FF08D613A578E700E2EE8B /* PBXTextBookmark */;
+			55FF08DF13A5797100E2EE8B /* PBXTextBookmark */ = 55FF08DF13A5797100E2EE8B /* PBXTextBookmark */;
+			55FF08E013A5797100E2EE8B /* PBXTextBookmark */ = 55FF08E013A5797100E2EE8B /* PBXTextBookmark */;
+			55FF08E113A5797100E2EE8B /* PBXTextBookmark */ = 55FF08E113A5797100E2EE8B /* PBXTextBookmark */;
 		};
 		sourceControlManager = 55A1D8101390572800DF5285 /* Source Control */;
 		userBuildSettings = {
@@ -772,7 +775,6 @@
 		isSCMEnabled = 0;
 		scmConfiguration = {
 			repositoryNamesForRoots = {
-				"" = dRowAudio;
 				../.. = "dRowAudio Root";
 			};
 		};
@@ -1868,6 +1870,36 @@
 		vrLen = 1282;
 		vrLoc = 7091;
 	};
+	55FF08DF13A5797100E2EE8B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 89F148544D8C9828E2D70542 /* AudioNetworkStreamer.cpp */;
+		name = "AudioNetworkStreamer.cpp: 194";
+		rLen = 0;
+		rLoc = 7858;
+		rType = 0;
+		vrLen = 1326;
+		vrLoc = 7091;
+	};
+	55FF08E013A5797100E2EE8B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9B3DAC851FFCDA65036363B /* SettingsComp.h */;
+		name = "SettingsComp.h: 30";
+		rLen = 12;
+		rLoc = 592;
+		rType = 0;
+		vrLen = 691;
+		vrLoc = 0;
+	};
+	55FF08E113A5797100E2EE8B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9B3DAC851FFCDA65036363B /* SettingsComp.h */;
+		name = "SettingsComp.h: 30";
+		rLen = 12;
+		rLoc = 592;
+		rType = 0;
+		vrLen = 691;
+		vrLoc = 0;
+	};
 	68EA63D40C40C90645BE36A5 /* Network Audio Streamer */ = {
 		activeExec = 0;
 		executables = (
@@ -1883,9 +1915,9 @@
 	};
 	89F148544D8C9828E2D70542 /* AudioNetworkStreamer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1011, 6435}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 6448}}";
 			sepNavSelRange = "{7858, 0}";
-			sepNavVisRange = "{7091, 1282}";
+			sepNavVisRange = "{7091, 1326}";
 		};
 	};
 	A0E6348BDD221C8BBAED4438 /* Main.cpp */ = {

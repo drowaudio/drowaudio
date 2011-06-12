@@ -127,6 +127,7 @@
     <ClCompile Include="..\..\Source\MainWindow.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\AudioNetworkStreamer.cpp"/>
+    <ClCompile Include="..\..\Source\SettingsComp.cpp"/>
     <ClCompile Include="..\..\Source\dRowAudio_AudioOscilloscope.cpp"/>
     <ClCompile Include="..\..\Source\dRowAudio_FIFOBuffer.cpp"/>
   </ItemGroup>
@@ -135,6 +136,7 @@
     <ClInclude Include="..\..\Source\MainWindow.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\AudioNetworkStreamer.h"/>
+    <ClInclude Include="..\..\Source\SettingsComp.h"/>
     <ClInclude Include="..\..\Source\dRowAudio_AudioOscilloscope.h"/>
     <ClInclude Include="..\..\Source\dRowAudio_FIFOBuffer.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>

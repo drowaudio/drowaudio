@@ -250,6 +250,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -294,7 +296,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>11</integer>
+									<integer>1</integer>
+									<integer>0</integer>
+								</array>
+								<array>
+									<integer>12</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -332,14 +339,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AudioNetworkStreamer.cpp</string>
+								<string>SettingsComp.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -347,11 +352,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AudioNetworkStreamer.cpp</string>
+										<string>SettingsComp.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55FF08D613A578E700E2EE8B</string>
+										<string>55FF08E113A5797100E2EE8B</string>
 										<key>history</key>
 										<array>
 											<string>55A1D8A6139067A300DF5285</string>
@@ -413,10 +418,10 @@
 											<string>55FF086C13A56DE600E2EE8B</string>
 											<string>55FF086F13A56DE600E2EE8B</string>
 											<string>55FF087C13A573C500E2EE8B</string>
-											<string>55FF088913A5765000E2EE8B</string>
 											<string>55FF088B13A5765000E2EE8B</string>
 											<string>55FF08C413A5786F00E2EE8B</string>
-											<string>55FF08C513A5786F00E2EE8B</string>
+											<string>55FF08DF13A5797100E2EE8B</string>
+											<string>55FF08E013A5797100E2EE8B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -597,7 +602,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>329611495.54649597</real>
+	<real>329611633.945014</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -614,13 +619,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>55FF08D713A578E700E2EE8B</string>
 		<string>55FF085113A56B0500E2EE8B</string>
 		<string>55FF085213A56B0500E2EE8B</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/Dave/Documents/Developement/dRowAudio/apps/Audio Network Streamer/Builds/MacOSX/Network Audio Streamer.xcodeproj</string>
 		<string>55A1D818139057DC00DF5285</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/Dave/Documents/Developement/dRowAudio/apps/Audio Network Streamer/Builds/MacOSX/Network Audio Streamer.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1280 719 0 0 1280 778 </string>
