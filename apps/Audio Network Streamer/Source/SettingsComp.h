@@ -27,9 +27,10 @@ public:
 	
 private:
 	
+	TooltipWindow tooltipWindo;
 	ValueTree settingsTree;
 	ToggleButton compressAudioButton;
-
+	ScopedPointer<AudioDeviceSelectorComponent> audioSettings; 
 };
 
 #endif  // __SETTINGSCOMP_H_34551A63__

@@ -22,7 +22,7 @@ public:
 		buffer.malloc(abstractFifo.getTotalSize());
 	}
 	
-	inline int getNumAvailable()
+	inline int getNumInUse()
 	{
 		return abstractFifo.getNumReady();
 	}
@@ -36,6 +36,11 @@ public:
 	inline int getSize()
 	{
 		return abstractFifo.getTotalSize();
+	}
+	
+	inline int getNumFree()
+	{
+		return abstractFifo.getFreeSpace();
 	}
 	
 	void writeSamples (const float* samples, int numSamples)

@@ -13,7 +13,6 @@
 MainComponent::MainComponent()
 :	tabbedComponent(TabbedButtonBar::TabsAtTop)
 {
-	addAndMakeVisible(&settingsButton);
 	settingsButton.setClickingTogglesState(true);
 	settingsButton.setButtonText("Settings");
 	settingsButton.addListener(this);
@@ -26,6 +25,7 @@ MainComponent::MainComponent()
 	
 	addAndMakeVisible(&connectionComp);
 	addChildComponent(&settingsComp);
+	addAndMakeVisible(&settingsButton);
 }
 
 MainComponent::~MainComponent()
@@ -40,8 +40,8 @@ void MainComponent::resized()
 	
 	settingsButton.setBounds(w-100-m, m, 100, 20);
 	//tabbedComponent.setBounds(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
-	connectionComp.setBounds(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
-	settingsComp.setBounds(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
+	connectionComp.setBounds(getLocalBounds());//(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
+	settingsComp.setBounds(getLocalBounds());//(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
 }
 
 void MainComponent::buttonClicked(Button *button)

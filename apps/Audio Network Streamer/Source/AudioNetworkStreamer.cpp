@@ -110,45 +110,30 @@ InterprocessCommsDemo::InterprocessCommsDemo()
 	audioBufferL(220500),
 	audioBufferR(220500)
 {
-	settingsTree.addListener(this);
 	server = new DemoInterprocessConnectionServer (*this);
  	
 	initialiseAudio();
-	audioBlock = new AudioData();
-	
-	setName (T("Interprocess Communication"));
-	
+		
 	// create all our UI bits and pieces..
-	addAndMakeVisible (modeSelector = new ComboBox (T("mode:")));
+	addAndMakeVisible (modeSelector = new ComboBox ("Mode:"));
 	(new Label (modeSelector->getName(), modeSelector->getName()))->attachToComponent (modeSelector, true);
 	
 	modeSelector->addItem (T("Disconnected"), 1);
 	modeSelector->addSeparator();
 	modeSelector->addItem ("Reciever", 2);
 	modeSelector->addItem ("Sender", 3);
-	
-	modeSelector->getSelectedIdAsValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::mode], nullptr));
-	modeSelector->addListener (this);
 		
-	addAndMakeVisible (socketNumber = new TextEditor (T("socket port:")));
+	addAndMakeVisible (socketNumber = new TextEditor (T("Port:")));
 	socketNumber->setMultiLine (false);
-	socketNumber->setInputRestrictions (5, T("0123456789"));
+	socketNumber->setInputRestrictions (5, "0123456789");
 	(new Label (socketNumber->getName(), socketNumber->getName()))->attachToComponent (socketNumber, true);
-	socketNumber->getTextValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::port], nullptr));
 	
-	addAndMakeVisible (socketHost = new TextEditor (T("socket host:")));
+	addAndMakeVisible (socketHost = new TextEditor ("Destination IP:"));
 	socketHost->setMultiLine (false);
 	socketNumber->setInputRestrictions (512);
 	(new Label (socketHost->getName(), socketHost->getName()))->attachToComponent (socketHost, true);
-	socketHost->getTextValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::host], nullptr));
 
-//	addAndMakeVisible(&compressAudioButton);
-//	compressAudioButton.setButtonText("Compress");
-//	compressAudioButton.addListener(this);
-//	compressAudioButton.getToggleStateValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::compress], nullptr));
-	compressAudio = settingsTree[SettingsNames[Settings::compress]];//compressAudioButton.getToggleState();
-	
-	addAndMakeVisible(incomingMessages = new TextEditor (T("messages")));
+	addAndMakeVisible(incomingMessages = new TextEditor ("messages"));
 	incomingMessages->setReadOnly (true);
 	incomingMessages->setMultiLine (true);
 	
@@ -156,7 +141,14 @@ InterprocessCommsDemo::InterprocessCommsDemo()
 	audioSettingsButton.setButtonText("Audio Settings");
 	audioSettingsButton.addListener(this);
 
-	triggerAsyncUpdate();
+	// bind UI to tree properties
+	settingsTree.addListener(this);
+	modeSelector->getSelectedIdAsValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::mode], nullptr));
+	socketHost->getTextValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::host], nullptr));
+	socketNumber->getTextValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::port], nullptr));
+
+	// local copy of settings
+	compressAudio = settingsTree[SettingsNames[Settings::compress]];//compressAudioButton.getToggleState();
 }
 
 InterprocessCommsDemo::~InterprocessCommsDemo()
@@ -181,28 +173,20 @@ void InterprocessCommsDemo::resized()
 	const int w = getWidth();
 	const int h = getHeight();
 	const int m = 5;
+	const int cx = w * 0.5;
 	
-	modeSelector->setBounds (100, m, 200, 20);
-		
-	audioSettingsButton.setBounds(modeSelector->getRight()+m, modeSelector->getY(), 100, modeSelector->getHeight());
+	modeSelector->setBounds (cx-75, 20+2*m, 150, 20);
+	socketHost->setBounds (cx - 75, modeSelector->getBottom()+2*m, 150, 20);
+	socketNumber->setBounds (cx - 75, socketHost->getBottom()+2*m, 150, 20);
 
-	socketHost->setBounds (modeSelector->getX(), modeSelector->getBottom()+m, 80, 20);
-	socketNumber->setBounds (socketHost->getRight()+100, socketHost->getY(), 80, 20);
-
-	//compressAudioButton.setBounds(m, modeSelector->getBottom()+m, 100, 20);
+	audioSettingsButton.setBounds(cx-75, socketNumber->getBottom()+2*m, 150, modeSelector->getHeight());
 	
-	incomingMessages->setBounds (m, socketHost->getBottom()+m, w-2*m, 100);
+	incomingMessages->setBounds (m, audioSettingsButton.getBottom()+2*m, w-2*m, 100);
 }
 
 void InterprocessCommsDemo::paint(Graphics &g)
 {
 	g.fillAll(Colours::azure);
-}
-
-void InterprocessCommsDemo::handleAsyncUpdate()
-{
-	// call this to set up everything's state correctly.
-	//comboBoxChanged (modeSelector);
 }
 
 void InterprocessCommsDemo::buttonClicked (Button* button)
@@ -229,22 +213,6 @@ void InterprocessCommsDemo::buttonClicked (Button* button)
 //	{
 //		//compressAudio = compressAudioButton.getToggleState();
 //	}
-}
-
-void InterprocessCommsDemo::comboBoxChanged (ComboBox* changedBox)
-{
-	if (changedBox == modeSelector)
-	{
-		// This is called when the user picks a different mode from the drop-down list..
-		const int modeId = modeSelector->getSelectedId();
-		
-		close();
-		
-		if (modeId > 1 && modeId < 4)
-		{
-			open ((modeId == 3) ? true : false);
-		}
-	}
 }
 
 //==============================================================================
@@ -313,7 +281,7 @@ void InterprocessCommsDemo::open (bool asSender)
 void InterprocessCommsDemo::appendMessage (const String& message)
 {
 	incomingMessages->setCaretPosition (INT_MAX);
-	incomingMessages->insertTextAtCaret (message + T("\n"));
+	incomingMessages->insertTextAtCaret ("- " + message + T("\n"));
 	incomingMessages->setCaretPosition (INT_MAX);
 }
 	
@@ -329,8 +297,8 @@ void InterprocessCommsDemo::initialiseAudio()
 	if (error.isNotEmpty())
 	{
 		AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-									 T("Audio Demo"),
-									 T("Couldn't open an output device!\n\n") + error);
+									 "Audio Error",
+									 "Couldn't open an output device!\n\n" + error);
 	}
 }
 
@@ -389,10 +357,10 @@ void InterprocessCommsDemo::audioDeviceIOCallback (const float** inputChannelDat
 	{
 		if (numOutputChannels > 0)
 		{
-			if(audioBufferL.getNumAvailable() >= numSamples)
+			if(audioBufferL.getNumInUse() >= numSamples)
 				audioBufferL.readSamples(outputChannelData[0], numSamples);
 
-			if (numOutputChannels > 1 && audioBufferR.getNumAvailable() >= numSamples)
+			if (numOutputChannels > 1 && audioBufferR.getNumInUse() >= numSamples)
 				audioBufferR.readSamples(outputChannelData[1], numSamples);
 		}
 	}
@@ -402,7 +370,6 @@ void InterprocessCommsDemo::audioDeviceIOCallback (const float** inputChannelDat
 			zeromem(outputChannelData[i], numSamples * sizeof(float));
 		}
 	}
-
 }
 
 void InterprocessCommsDemo::audioDeviceAboutToStart (AudioIODevice* device)
@@ -418,11 +385,22 @@ void InterprocessCommsDemo::audioDeviceStopped()
 //==============================================================================
 void InterprocessCommsDemo::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
-	DBG("value tree changed");
 	if (property == SettingsNames[Settings::compress])
 	{
 		DBG("compress button clicked");
 		compressAudio = settingsTree[SettingsNames[Settings::compress]]; //compressAudioButton.getToggleState();
+	}
+	else if(property == SettingsNames[Settings::mode])
+	{
+		DBG("mode changed");
+		const int modeId = modeSelector->getSelectedId();
+		
+		close();
+		
+		if (modeId > 1 && modeId < 4)
+		{
+			open ((modeId == 3) ? true : false);
+		}		
 	}
 }
 
@@ -443,7 +421,7 @@ void InterprocessCommsDemo::DemoInterprocessConnection::connectionMade()
 {
 	owner.audioManager.addAudioCallback(&owner);
 	owner.isConnected = true;
-	owner.appendMessage (T("Connection #") + String (ourNumber) + T(" - connection started"));
+	owner.appendMessage ("Connection #" + String (ourNumber) + " - connection started");
 	
 	if (owner.isSender) {
 		owner.appendMessage ("Sending Audio");
@@ -457,7 +435,7 @@ void InterprocessCommsDemo::DemoInterprocessConnection::connectionLost()
 {
 	owner.audioManager.removeAudioCallback(&owner);
 	owner.isConnected = false;
-	owner.appendMessage (T("Connection #") + String (ourNumber) + T(" - connection lost"));
+	owner.appendMessage ("Connection #" + String (ourNumber) + " - connection lost");
 	
 	if (owner.isSender)
 		owner.modeSelector->setSelectedId(1);
