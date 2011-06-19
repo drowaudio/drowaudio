@@ -92,6 +92,38 @@ SOURCE="..\..\Source\Settings.h"
 SOURCE="..\..\Source\Settings.cpp"
 # End Source File
 # Begin Source File
+SOURCE="..\..\Source\AudioNetworkStreamer.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\AudioNetworkStreamer.cpp"
+# End Source File
+# Begin Group "audio"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Source File
+SOURCE="..\..\Source\CompressionFunctions.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\AudioEngine.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\AudioEngine.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\dRowAudio_FIFOBuffer.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\dRowAudio_FIFOBuffer.cpp"
+# End Source File
+# End Group
+# Begin Group "ui"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Source File
+SOURCE="..\..\Source\StatusComp.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\StatusComp.cpp"
+# End Source File
+# Begin Source File
 SOURCE="..\..\Source\MainWindow.h"
 # End Source File
 # Begin Source File
@@ -104,16 +136,16 @@ SOURCE="..\..\Source\MainComponent.h"
 SOURCE="..\..\Source\MainComponent.cpp"
 # End Source File
 # Begin Source File
-SOURCE="..\..\Source\AudioNetworkStreamer.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\Source\AudioNetworkStreamer.cpp"
-# End Source File
-# Begin Source File
 SOURCE="..\..\Source\SettingsComp.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\SettingsComp.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\AudioSettingsComponent.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\AudioSettingsComponent.cpp"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\dRowAudio_AudioOscilloscope.h"
@@ -121,12 +153,7 @@ SOURCE="..\..\Source\dRowAudio_AudioOscilloscope.h"
 # Begin Source File
 SOURCE="..\..\Source\dRowAudio_AudioOscilloscope.cpp"
 # End Source File
-# Begin Source File
-SOURCE="..\..\Source\dRowAudio_FIFOBuffer.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\Source\dRowAudio_FIFOBuffer.cpp"
-# End Source File
+# End Group
 # End Group
 # End Group
 # Begin Group "Juce Library Code"
@@ -135,6 +162,18 @@ SOURCE="..\..\JuceLibraryCode\AppConfig.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\JuceLibraryCode\JuceHeader.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode1.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode2.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode3.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode4.cpp"
 # End Source File
 # End Group
 # End Target

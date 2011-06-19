@@ -11,35 +11,29 @@
 
 */
 
-/* NOTE: These configs aren't available when you're linking to the juce library statically!
-         If you need to set a configuration that differs from the default, you'll need
-         to include the amalgamated Juce files.
-
 //#define  JUCE_FORCE_DEBUG
 //#define  JUCE_LOG_ASSERTIONS
 //#define  JUCE_ASIO
 //#define  JUCE_WASAPI
 //#define  JUCE_DIRECTSOUND
 //#define  JUCE_ALSA
-//#define  JUCE_QUICKTIME
-//#define  JUCE_OPENGL
-//#define  JUCE_DIRECT2D
-//#define  JUCE_USE_FLAC
-//#define  JUCE_USE_OGGVORBIS
-//#define  JUCE_USE_CDBURNER
-//#define  JUCE_USE_CDREADER
-//#define  JUCE_USE_CAMERA
-//#define  JUCE_ENABLE_REPAINT_DEBUGGING
-//#define  JUCE_USE_XINERAMA
-//#define  JUCE_USE_XSHM
-//#define  JUCE_USE_XRENDER
-//#define  JUCE_USE_XCURSOR
-//#define  JUCE_PLUGINHOST_VST
-//#define  JUCE_PLUGINHOST_AU
+#define    JUCE_QUICKTIME 0
+#define    JUCE_OPENGL 0
+#define    JUCE_DIRECT2D 0
+#define    JUCE_USE_FLAC 0
+#define    JUCE_USE_OGGVORBIS 0
+#define    JUCE_USE_CDBURNER 0
+#define    JUCE_USE_CDREADER 0
+#define    JUCE_USE_CAMERA 0
+#define    JUCE_ENABLE_REPAINT_DEBUGGING 0
+#define    JUCE_USE_XINERAMA 0
+#define    JUCE_USE_XSHM 0
+#define    JUCE_USE_XRENDER 0
+#define    JUCE_USE_XCURSOR 0
+#define    JUCE_PLUGINHOST_VST 0
+#define    JUCE_PLUGINHOST_AU 0
 //#define  JUCE_ONLY_BUILD_CORE_LIBRARY
-//#define  JUCE_WEB_BROWSER
-//#define  JUCE_SUPPORT_CARBON
+#define    JUCE_WEB_BROWSER 0
+#define    JUCE_SUPPORT_CARBON 0
 //#define  JUCE_CHECK_MEMORY_LEAKS
 //#define  JUCE_CATCH_UNHANDLED_EXCEPTIONS
-
-*/

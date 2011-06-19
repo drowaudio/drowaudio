@@ -16,13 +16,7 @@ MainComponent::MainComponent()
 	settingsButton.setClickingTogglesState(true);
 	settingsButton.setButtonText("Settings");
 	settingsButton.addListener(this);
-	
-//	addAndMakeVisible(&tabbedComponent);
-//	ClientComponent *client = new ClientComponent();
-//	tabbedComponent.addTab("Server", Colours::azure, new ServerComponent(), true);
-//	tabbedComponent.addTab("Client", Colours::azure, client, true);
-//	tabbedComponent.addTab("Demo", Colours::azure, new InterprocessCommsDemo(), true);
-	
+		
 	addAndMakeVisible(&connectionComp);
 	addChildComponent(&settingsComp);
 	addAndMakeVisible(&settingsButton);
@@ -39,7 +33,6 @@ void MainComponent::resized()
 	const int m = 5;
 	
 	settingsButton.setBounds(w-100-m, m, 100, 20);
-	//tabbedComponent.setBounds(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
 	connectionComp.setBounds(getLocalBounds());//(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
 	settingsComp.setBounds(getLocalBounds());//(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
 }

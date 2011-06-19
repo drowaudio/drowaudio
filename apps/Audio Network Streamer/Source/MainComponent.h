@@ -21,6 +21,7 @@
 	@todo	Sleep prevention when disconnected (possibly add and remove audio callback on connection)
 	@todo	Adjustable buffersize with overrun if size limit reached
 	@todo	Change samples to int (or short) for better compression
+	@todo	Re-use memory blocks to avoid malloc on the audio thread
  */
 
 class MainComponent :	public Component,

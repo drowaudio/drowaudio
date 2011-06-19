@@ -14,13 +14,13 @@
 //==============================================================================
 MainAppWindow::MainAppWindow()
     : DocumentWindow (JUCEApplication::getInstance()->getApplicationName(),
-                      Colours::lightgrey,
+                      Colours::azure,
                       DocumentWindow::allButtons)
 {
+	setResizable(true, true);
 	setUsingNativeTitleBar(true);
     centreWithSize (400, 500);
     setVisible (true);
-	setResizable(true, true);
 	
 	setContentOwned(new MainComponent(), false);
 }

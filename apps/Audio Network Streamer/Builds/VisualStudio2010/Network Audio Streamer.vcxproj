@@ -124,21 +124,32 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\Settings.cpp"/>
+    <ClCompile Include="..\..\Source\AudioNetworkStreamer.cpp"/>
+    <ClCompile Include="..\..\Source\AudioEngine.cpp"/>
+    <ClCompile Include="..\..\Source\dRowAudio_FIFOBuffer.cpp"/>
+    <ClCompile Include="..\..\Source\StatusComp.cpp"/>
     <ClCompile Include="..\..\Source\MainWindow.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
-    <ClCompile Include="..\..\Source\AudioNetworkStreamer.cpp"/>
     <ClCompile Include="..\..\Source\SettingsComp.cpp"/>
+    <ClCompile Include="..\..\Source\AudioSettingsComponent.cpp"/>
     <ClCompile Include="..\..\Source\dRowAudio_AudioOscilloscope.cpp"/>
-    <ClCompile Include="..\..\Source\dRowAudio_FIFOBuffer.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode1.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode2.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode3.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode4.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Settings.h"/>
+    <ClInclude Include="..\..\Source\AudioNetworkStreamer.h"/>
+    <ClInclude Include="..\..\Source\CompressionFunctions.h"/>
+    <ClInclude Include="..\..\Source\AudioEngine.h"/>
+    <ClInclude Include="..\..\Source\dRowAudio_FIFOBuffer.h"/>
+    <ClInclude Include="..\..\Source\StatusComp.h"/>
     <ClInclude Include="..\..\Source\MainWindow.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
-    <ClInclude Include="..\..\Source\AudioNetworkStreamer.h"/>
     <ClInclude Include="..\..\Source\SettingsComp.h"/>
+    <ClInclude Include="..\..\Source\AudioSettingsComponent.h"/>
     <ClInclude Include="..\..\Source\dRowAudio_AudioOscilloscope.h"/>
-    <ClInclude Include="..\..\Source\dRowAudio_FIFOBuffer.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>

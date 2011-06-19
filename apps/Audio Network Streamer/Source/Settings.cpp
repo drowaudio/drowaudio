@@ -15,6 +15,8 @@ juce_ImplementSingleton(Settings);
 Settings::Settings()
 :	settingsTree("settings")
 {
+	audioManager = new AudioDeviceManager();
+	
 	// load previous settings if possible
 	File resourcesFolder(getResourcesFolder());
 	resourcesFolder.createDirectory();

@@ -50,7 +50,6 @@
       <Tool Name="VCLinkerTool"
             OutputFile=".\Debug\Network Audio Streamer.exe"
             SuppressStartupBanner="true"
-            AdditionalLibraryDirectories="..\..\..\..\juce_source\juce\bin"
             IgnoreDefaultLibraryNames="libcmt.lib, msvcrt.lib"
             GenerateDebugInformation="true"
             ProgramDatabaseFile=".\Debug\Network Audio Streamer.pdb"
@@ -107,7 +106,6 @@
       <Tool Name="VCLinkerTool"
             OutputFile=".\Release\Network Audio Streamer.exe"
             SuppressStartupBanner="true"
-            AdditionalLibraryDirectories="..\..\..\..\juce_source\juce\bin"
             IgnoreDefaultLibraryNames=""
             GenerateDebugInformation="false"
             ProgramDatabaseFile=".\Release\Network Audio Streamer.pdb"
@@ -134,23 +132,38 @@
         <File RelativePath="..\..\Source\Main.cpp"/>
         <File RelativePath="..\..\Source\Settings.h"/>
         <File RelativePath="..\..\Source\Settings.cpp"/>
-        <File RelativePath="..\..\Source\MainWindow.h"/>
-        <File RelativePath="..\..\Source\MainWindow.cpp"/>
-        <File RelativePath="..\..\Source\MainComponent.h"/>
-        <File RelativePath="..\..\Source\MainComponent.cpp"/>
         <File RelativePath="..\..\Source\AudioNetworkStreamer.h"/>
         <File RelativePath="..\..\Source\AudioNetworkStreamer.cpp"/>
-        <File RelativePath="..\..\Source\SettingsComp.h"/>
-        <File RelativePath="..\..\Source\SettingsComp.cpp"/>
-        <File RelativePath="..\..\Source\dRowAudio_AudioOscilloscope.h"/>
-        <File RelativePath="..\..\Source\dRowAudio_AudioOscilloscope.cpp"/>
-        <File RelativePath="..\..\Source\dRowAudio_FIFOBuffer.h"/>
-        <File RelativePath="..\..\Source\dRowAudio_FIFOBuffer.cpp"/>
+        <Filter Name="audio">
+          <File RelativePath="..\..\Source\CompressionFunctions.h"/>
+          <File RelativePath="..\..\Source\AudioEngine.h"/>
+          <File RelativePath="..\..\Source\AudioEngine.cpp"/>
+          <File RelativePath="..\..\Source\dRowAudio_FIFOBuffer.h"/>
+          <File RelativePath="..\..\Source\dRowAudio_FIFOBuffer.cpp"/>
+        </Filter>
+        <Filter Name="ui">
+          <File RelativePath="..\..\Source\StatusComp.h"/>
+          <File RelativePath="..\..\Source\StatusComp.cpp"/>
+          <File RelativePath="..\..\Source\MainWindow.h"/>
+          <File RelativePath="..\..\Source\MainWindow.cpp"/>
+          <File RelativePath="..\..\Source\MainComponent.h"/>
+          <File RelativePath="..\..\Source\MainComponent.cpp"/>
+          <File RelativePath="..\..\Source\SettingsComp.h"/>
+          <File RelativePath="..\..\Source\SettingsComp.cpp"/>
+          <File RelativePath="..\..\Source\AudioSettingsComponent.h"/>
+          <File RelativePath="..\..\Source\AudioSettingsComponent.cpp"/>
+          <File RelativePath="..\..\Source\dRowAudio_AudioOscilloscope.h"/>
+          <File RelativePath="..\..\Source\dRowAudio_AudioOscilloscope.cpp"/>
+        </Filter>
       </Filter>
     </Filter>
     <Filter Name="Juce Library Code">
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode1.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode2.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode3.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode4.cpp"/>
     </Filter>
   </Files>
   <Globals/>

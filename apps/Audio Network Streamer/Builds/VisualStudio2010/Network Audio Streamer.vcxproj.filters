@@ -8,6 +8,12 @@
     <Filter Include="Network Audio Streamer\Source">
       <UniqueIdentifier>{079E313F-880D-2C64-5BD0-B97371DB9CB3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Network Audio Streamer\Source\audio">
+      <UniqueIdentifier>{0141DC48-06AA-6FCD-6542-FA02346933A8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network Audio Streamer\Source\ui">
+      <UniqueIdentifier>{69F05620-30E0-C145-EC8E-8A351875BE3C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Library Code">
       <UniqueIdentifier>{F7048EA6-F4B2-F31B-E402-E05D678A1111}</UniqueIdentifier>
     </Filter>
@@ -19,46 +25,79 @@
     <ClCompile Include="..\..\Source\Settings.cpp">
       <Filter>Network Audio Streamer\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MainWindow.cpp">
-      <Filter>Network Audio Streamer\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\MainComponent.cpp">
-      <Filter>Network Audio Streamer\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\AudioNetworkStreamer.cpp">
       <Filter>Network Audio Streamer\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\SettingsComp.cpp">
-      <Filter>Network Audio Streamer\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\dRowAudio_AudioOscilloscope.cpp">
-      <Filter>Network Audio Streamer\Source</Filter>
+    <ClCompile Include="..\..\Source\AudioEngine.cpp">
+      <Filter>Network Audio Streamer\Source\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\dRowAudio_FIFOBuffer.cpp">
-      <Filter>Network Audio Streamer\Source</Filter>
+      <Filter>Network Audio Streamer\Source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StatusComp.cpp">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MainWindow.cpp">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MainComponent.cpp">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SettingsComp.cpp">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\AudioSettingsComponent.cpp">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\dRowAudio_AudioOscilloscope.cpp">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode1.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode2.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode3.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode4.cpp">
+      <Filter>Juce Library Code</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Settings.h">
       <Filter>Network Audio Streamer\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\MainWindow.h">
-      <Filter>Network Audio Streamer\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\MainComponent.h">
-      <Filter>Network Audio Streamer\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\AudioNetworkStreamer.h">
       <Filter>Network Audio Streamer\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\SettingsComp.h">
-      <Filter>Network Audio Streamer\Source</Filter>
+    <ClInclude Include="..\..\Source\CompressionFunctions.h">
+      <Filter>Network Audio Streamer\Source\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\dRowAudio_AudioOscilloscope.h">
-      <Filter>Network Audio Streamer\Source</Filter>
+    <ClInclude Include="..\..\Source\AudioEngine.h">
+      <Filter>Network Audio Streamer\Source\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\dRowAudio_FIFOBuffer.h">
-      <Filter>Network Audio Streamer\Source</Filter>
+      <Filter>Network Audio Streamer\Source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StatusComp.h">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MainWindow.h">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MainComponent.h">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SettingsComp.h">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\AudioSettingsComponent.h">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\dRowAudio_AudioOscilloscope.h">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
       <Filter>Juce Library Code</Filter>

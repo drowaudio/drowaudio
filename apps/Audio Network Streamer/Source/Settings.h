@@ -44,7 +44,9 @@ public:
 		audioSettings,
 		numControlSettings
 	};
-		
+	
+	ScopedPointer<AudioDeviceManager> audioManager;
+
 private:
 	
 	File getResourcesFolder();

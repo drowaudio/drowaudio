@@ -13,12 +13,13 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Settings.h"
+#include "StatusComp.h"
+#include "CompressionFunctions.h"
 #include "dRowAudio_AudioOscilloscope.h"
 #include "dRowAudio_FIFOBuffer.h"
 
 //==============================================================================
 class InterprocessCommsDemo  :	public Component,
-								public Button::Listener,
 								public ValueTree::Listener,
 								public AudioIODeviceCallback
 {
@@ -30,11 +31,9 @@ public:
 	
 	void resized();
 	
-	void paint(Graphics &g);
+	//void paint(Graphics &g);
 		
 	//==============================================================================
-	void buttonClicked (Button* button);
-		
     void close();
 	
     void open (bool asSender);
@@ -96,6 +95,14 @@ public:
 		
 private:
 	
+	enum CompressionType
+	{
+		noCompression,
+		simpleCompression,
+		intCompression,
+		intDerivativeCompression
+	};
+	
 	struct AudioBlockHeader
 	{
 		bool isCompressed;
@@ -108,7 +115,6 @@ private:
 	OwnedArray <DemoInterprocessConnection, CriticalSection> activeConnections;
 	bool isConnected;
 	bool isSender;
-	bool sendAudio;	
 	int compressAudio;
 	
 	ValueTree settingsTree;
@@ -116,11 +122,9 @@ private:
     ComboBox *modeSelector;
     TextEditor *socketNumber;
     TextEditor *socketHost;
-    TextEditor *incomingMessages;
+    //TextEditor *incomingMessages;
+	StatusComponent *status;
 		
-	AudioDeviceManager audioManager;
-	TextButton audioSettingsButton;
-	
 	ScopedPointer<DemoInterprocessConnectionServer> server;
 	FIFOBuffer audioBufferL, audioBufferR;
 };

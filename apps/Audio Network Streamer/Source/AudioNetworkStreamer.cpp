@@ -11,97 +11,6 @@
 #include "AudioNetworkStreamer.h"
 
 //==============================================================================
-void compressMemoryBlock(const MemoryBlock &sourceBlock, MemoryBlock &destinationBlock)
-{
-	MemoryOutputStream memoryStream(destinationBlock, true);
-	GZIPCompressorOutputStream zipStream(&memoryStream);
-	
-	zipStream.write(sourceBlock.getData(), sourceBlock.getSize());
-	zipStream.flush();
-	
-	DBG("Original: "<<(int)sourceBlock.getSize()<<" - Comp: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlock.getSize()));
-}
-
-void decompressMemoryBlock(const MemoryBlock &sourceBlock, MemoryBlock &destinationBlock, const int bufferSize =8192)
-{
-	MemoryInputStream memoryStream(sourceBlock, false);
-	GZIPDecompressorInputStream zipStream(memoryStream);
-		
-	destinationBlock.ensureSize(bufferSize, false);
-	void* currentPos = destinationBlock.getData();
-	int64 totalSize = 0;
-	while (! zipStream.isExhausted())
-	{
-		int64 bytesRead = zipStream.read(currentPos, bufferSize);
-		totalSize += bytesRead;
-		currentPos = addBytesToPointer(currentPos, bytesRead);
-		destinationBlock.ensureSize(destinationBlock.getSize()+bufferSize, false);
-	}
-	destinationBlock.setSize(totalSize, false);
-	
-	DBG("Comp: "<<(int)sourceBlock.getSize()<<" - Original: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlock.getSize())<<"\n");
-}
-
-void decompressMemory(const void *sourceBlock, size_t sourceBlockSize, MemoryBlock &destinationBlock, const int bufferSize =8192)
-{
-	MemoryInputStream memoryStream(sourceBlock, sourceBlockSize, false);
-	GZIPDecompressorInputStream zipStream(memoryStream);
-	
-	destinationBlock.ensureSize(bufferSize, false);
-	void* currentPos = destinationBlock.getData();
-	int64 totalSize = 0;
-	while (! zipStream.isExhausted())
-	{
-		int64 bytesRead = zipStream.read(currentPos, bufferSize);
-		totalSize += bytesRead;
-		currentPos = addBytesToPointer(currentPos, bytesRead);
-		destinationBlock.ensureSize(destinationBlock.getSize()+bufferSize, false);
-	}
-	destinationBlock.setSize(totalSize, false);
-	
-	DBG("Comp: "<<(int)sourceBlockSize<<" - Original: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlockSize)<<"\n");
-}
-
-void decompressMemoryWithKnownSize(const void *sourceBlock, size_t sourceBlockSize, MemoryBlock &destinationBlock, const int uncompressedSize)
-{
-	MemoryInputStream memoryStream(sourceBlock, sourceBlockSize, false);
-	GZIPDecompressorInputStream zipStream(&memoryStream, false, false, uncompressedSize);
-	
-	destinationBlock.setSize(uncompressedSize, false);
-	zipStream.read(destinationBlock.getData(), uncompressedSize);
-		
-	DBG("Comp: "<<(int)sourceBlockSize<<" - Original: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlockSize)<<"\n");
-}
-
-void serialiseAudio(MemoryBlock &serialisedBlock,
-					const int numChannels, const int numSamples, const float** channelData)
-{
-	serialisedBlock.append(&numChannels, sizeof(int));
-	serialisedBlock.append(&numSamples, sizeof(int));
-	if (numChannels > 0)
-		serialisedBlock.append(channelData[0], numSamples * sizeof(float));
-	if (numChannels > 1)
-		serialisedBlock.append(channelData[1], numSamples * sizeof(float));	
-}
-
-void deserialiseAudio(MemoryBlock &serialisedBlock,
-					  int &numChannels, int &numSamples, float** channelData)
-{
-	numChannels = *static_cast<int*>(serialisedBlock.getData());
-	numSamples = *static_cast<int*>(addBytesToPointer(serialisedBlock.getData(),sizeof(int)));
-	
-	if (numChannels > 0)
-	{
-		const int bytesPerChannel = (serialisedBlock.getSize()-(2*sizeof(int))) / numChannels;
-		
-		if (numChannels > 0)
-			memcpy(channelData[0], (float*)addBytesToPointer(serialisedBlock.getData(),2*sizeof(int)), bytesPerChannel);
-		if (numChannels > 1)
-			memcpy(channelData[1], (float*)addBytesToPointer(serialisedBlock.getData(),2*sizeof(int)+bytesPerChannel), bytesPerChannel);
-	}
-}
-
-//==============================================================================
 InterprocessCommsDemo::InterprocessCommsDemo()
 :	isConnected(false),
 	isSender(true),
@@ -114,6 +23,8 @@ InterprocessCommsDemo::InterprocessCommsDemo()
  	
 	initialiseAudio();
 		
+	addAndMakeVisible(status = new StatusComponent());
+	
 	// create all our UI bits and pieces..
 	addAndMakeVisible (modeSelector = new ComboBox ("Mode:"));
 	(new Label (modeSelector->getName(), modeSelector->getName()))->attachToComponent (modeSelector, true);
@@ -133,14 +44,10 @@ InterprocessCommsDemo::InterprocessCommsDemo()
 	socketNumber->setInputRestrictions (512);
 	(new Label (socketHost->getName(), socketHost->getName()))->attachToComponent (socketHost, true);
 
-	addAndMakeVisible(incomingMessages = new TextEditor ("messages"));
-	incomingMessages->setReadOnly (true);
-	incomingMessages->setMultiLine (true);
+//	addAndMakeVisible(incomingMessages = new TextEditor ("messages"));
+//	incomingMessages->setReadOnly (true);
+//	incomingMessages->setMultiLine (true);
 	
-	addAndMakeVisible(&audioSettingsButton);
-	audioSettingsButton.setButtonText("Audio Settings");
-	audioSettingsButton.addListener(this);
-
 	// bind UI to tree properties
 	settingsTree.addListener(this);
 	modeSelector->getSelectedIdAsValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::mode], nullptr));
@@ -155,14 +62,11 @@ InterprocessCommsDemo::~InterprocessCommsDemo()
 {
 	close();
 	
-	ScopedPointer<XmlElement> audioXml(audioManager.createStateXml());
+	ScopedPointer<XmlElement> audioXml(Settings::getInstance()->audioManager->createStateXml());
 	if (&*audioXml != nullptr) {
 		settingsTree.setProperty(SettingsNames[Settings::audioSettings], audioXml->createDocument(""), nullptr);
 	}
 	
-	///removeChildComponent(&scope);
-	removeChildComponent(&audioSettingsButton);
-	//removeChildComponent(&compressAudioButton);
 	deleteAllChildren();
 
 	settingsTree.removeListener(this);
@@ -175,44 +79,11 @@ void InterprocessCommsDemo::resized()
 	const int m = 5;
 	const int cx = w * 0.5;
 	
-	modeSelector->setBounds (cx-75, 20+2*m, 150, 20);
-	socketHost->setBounds (cx - 75, modeSelector->getBottom()+2*m, 150, 20);
-	socketNumber->setBounds (cx - 75, socketHost->getBottom()+2*m, 150, 20);
-
-	audioSettingsButton.setBounds(cx-75, socketNumber->getBottom()+2*m, 150, modeSelector->getHeight());
+	status->setBounds(m, m, 200, 20);
 	
-	incomingMessages->setBounds (m, audioSettingsButton.getBottom()+2*m, w-2*m, 100);
-}
-
-void InterprocessCommsDemo::paint(Graphics &g)
-{
-	g.fillAll(Colours::azure);
-}
-
-void InterprocessCommsDemo::buttonClicked (Button* button)
-{
-	if (button == &audioSettingsButton)
-	{
-		AudioDeviceSelectorComponent audioSettingsComp (audioManager,
-														1, 2,
-														1, 2,
-														false,
-														false,
-														false,
-														false);
-		
-		// ...and show it in a DialogWindow...
-		audioSettingsComp.setSize (500, 400);
-		DialogWindow::showModalDialog ("Audio Settings",
-									   &audioSettingsComp,
-									   this,
-									   Colours::azure,
-									   true);
-	}
-//	else if(button == &compressAudioButton)
-//	{
-//		//compressAudio = compressAudioButton.getToggleState();
-//	}
+	modeSelector->setBounds (cx-75, 20+4*m, 150, 20);
+	socketNumber->setBounds (cx - 75, modeSelector->getBottom()+2*m, 150, 20);
+	socketHost->setBounds (cx - 75, socketNumber->getBottom()+2*m, 150, 20);
 }
 
 //==============================================================================
@@ -223,12 +94,13 @@ void InterprocessCommsDemo::close()
 	activeConnections.clear();
 	
 	appendMessage ("Select a mode from the dropdown to begin.");
+	status->setStatus(StatusComponent::disconnected);//(TextButton::buttonColourId, Colours::red);
 }
 
 void InterprocessCommsDemo::open (bool asSender)
 {
 	isSender = asSender;
-	incomingMessages->setText (String::empty, false);
+	//incomingMessages->setText (String::empty, false);
 	close();
 	
 	// and try to open the socket or pipe...
@@ -242,12 +114,15 @@ void InterprocessCommsDemo::open (bool asSender)
 		// directly.
 		DemoInterprocessConnection* newConnection = new DemoInterprocessConnection (*this);
 		
-		openedOk = newConnection->connectToSocket (socketHost->getText(),
-												   socketNumber->getText().getIntValue(),
+		openedOk = newConnection->connectToSocket (settingsTree[SettingsNames[Settings::host]].toString(),//socketHost->getText(),
+												   int(settingsTree[SettingsNames[Settings::port]]),
 												   1000);
 		
 		if (openedOk)
+		{
 			activeConnections.add (newConnection);
+			status->setStatus(StatusComponent::waiting);//setColour(TextButton::buttonColourId, Colours::orange);
+		}
 		else
 			delete newConnection;
 	}
@@ -260,7 +135,10 @@ void InterprocessCommsDemo::open (bool asSender)
 		openedOk = server->beginWaitingForSocket (socketNumber->getText().getIntValue());
 		
 		if (openedOk)
-			appendMessage (T("Waiting for another app to connect to this socket.."));
+		{
+			appendMessage ("Waiting for another app to connect to this reciever..");
+			status->setStatus(StatusComponent::waiting);//setColour(TextButton::buttonColourId, Colours::orange);
+		}
 	}
 	
 	if (! openedOk)
@@ -268,31 +146,29 @@ void InterprocessCommsDemo::open (bool asSender)
 		modeSelector->setSelectedId (1);
 		
 		AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-									 T("Interprocess Comms Demo"),
-									 T("Failed to open the socket or pipe..."));
+									 "Audio Network Streamer",
+									 "Failed to open the socket...");
+		status->setStatus(StatusComponent::disconnected);//setColour(TextButton::buttonColourId, Colours::red);
 	}
-//	else {
-//		audioManager.addAudioCallback(this);
-//	}
 	
 	repaint();
 }
 
 void InterprocessCommsDemo::appendMessage (const String& message)
 {
-	incomingMessages->setCaretPosition (INT_MAX);
-	incomingMessages->insertTextAtCaret ("- " + message + T("\n"));
-	incomingMessages->setCaretPosition (INT_MAX);
+//	incomingMessages->setCaretPosition (INT_MAX);
+//	incomingMessages->insertTextAtCaret ("- " + message + T("\n"));
+//	incomingMessages->setCaretPosition (INT_MAX);
 }
 	
 //==============================================================================
 void InterprocessCommsDemo::initialiseAudio()
 {
 	ScopedPointer<XmlElement> savedSettings(XmlDocument::parse(settingsTree[SettingsNames[Settings::audioSettings]]));
-	const String error (audioManager.initialise (2, /* number of input channels */
-												 2, /* number of output channels */
-												 savedSettings, /* no XML settings.. */
-												 true  /* select default device on failure */));
+	const String error (Settings::getInstance()->audioManager->initialise (2, /* number of input channels */
+																		   2, /* number of output channels */
+																		   savedSettings, /* XML settings.. */
+																		   true  /* select default device on failure */));
 	
 	if (error.isNotEmpty())
 	{
@@ -359,9 +235,13 @@ void InterprocessCommsDemo::audioDeviceIOCallback (const float** inputChannelDat
 		{
 			if(audioBufferL.getNumInUse() >= numSamples)
 				audioBufferL.readSamples(outputChannelData[0], numSamples);
+			else
+				zeromem(outputChannelData[0], numSamples * sizeof(float));
 
 			if (numOutputChannels > 1 && audioBufferR.getNumInUse() >= numSamples)
 				audioBufferR.readSamples(outputChannelData[1], numSamples);
+			else
+				zeromem(outputChannelData[1], numSamples * sizeof(float));
 		}
 	}
 	else
@@ -415,30 +295,38 @@ InterprocessCommsDemo::DemoInterprocessConnection::DemoInterprocessConnection (I
 
 InterprocessCommsDemo::DemoInterprocessConnection::~DemoInterprocessConnection()
 {
+	Settings::getInstance()->audioManager->removeAudioCallback(&owner);
 }
 
 void InterprocessCommsDemo::DemoInterprocessConnection::connectionMade()
 {
-	owner.audioManager.addAudioCallback(&owner);
+	Settings::getInstance()->audioManager->addAudioCallback(&owner);
 	owner.isConnected = true;
 	owner.appendMessage ("Connection #" + String (ourNumber) + " - connection started");
 	
-	if (owner.isSender) {
+	if (owner.isSender) 
+	{
 		owner.appendMessage ("Sending Audio");
+		owner.status->setStatus(StatusComponent::connectedSender);
 	}
 	else {
 		owner.appendMessage ("Recieving Audio");
+		owner.status->setStatus(StatusComponent::connectedReciever);
 	}
+	
+	//owner.status->setStatus(StatusComponent::connected);//setColour(TextButton::buttonColourId, Colours::green);
 }
 
 void InterprocessCommsDemo::DemoInterprocessConnection::connectionLost()
 {
-	owner.audioManager.removeAudioCallback(&owner);
+	Settings::getInstance()->audioManager->removeAudioCallback(&owner);
 	owner.isConnected = false;
 	owner.appendMessage ("Connection #" + String (ourNumber) + " - connection lost");
 	
 	if (owner.isSender)
 		owner.modeSelector->setSelectedId(1);
+
+	owner.status->setStatus(StatusComponent::waiting);//setColour(TextButton::buttonColourId, Colours::green);
 }
 
 void InterprocessCommsDemo::DemoInterprocessConnection::messageReceived (const MemoryBlock& message)
