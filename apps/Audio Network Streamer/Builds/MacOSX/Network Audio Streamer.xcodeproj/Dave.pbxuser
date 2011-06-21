@@ -750,6 +750,7 @@
 			55FF0F7113B1272400E2EE8B /* PBXTextBookmark */ = 55FF0F7113B1272400E2EE8B /* PBXTextBookmark */;
 			55FF0F7213B1272400E2EE8B /* PBXTextBookmark */ = 55FF0F7213B1272400E2EE8B /* PBXTextBookmark */;
 			55FF0F7313B1272400E2EE8B /* PBXTextBookmark */ = 55FF0F7313B1272400E2EE8B /* PBXTextBookmark */;
+			55FF0F7C13B127A100E2EE8B /* PBXTextBookmark */ = 55FF0F7C13B127A100E2EE8B /* PBXTextBookmark */;
 		};
 		sourceControlManager = 55A1D8101390572800DF5285 /* Source Control */;
 		userBuildSettings = {
@@ -1324,7 +1325,6 @@
 		isSCMEnabled = 0;
 		scmConfiguration = {
 			repositoryNamesForRoots = {
-				"" = dRowAudio;
 				../.. = "dRowAudio Root";
 			};
 		};
@@ -7727,6 +7727,16 @@
 		vrLoc = 291;
 	};
 	55FF0F7313B1272400E2EE8B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A82C9F7FA75183D6527AD471 /* MainView.h */;
+		name = "MainView.h: 52";
+		rLen = 0;
+		rLoc = 1517;
+		rType = 0;
+		vrLen = 1402;
+		vrLoc = 291;
+	};
+	55FF0F7C13B127A100E2EE8B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = A82C9F7FA75183D6527AD471 /* MainView.h */;
 		name = "MainView.h: 52";

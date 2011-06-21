@@ -1,37 +1,32 @@
 /*
   ==============================================================================
 
-    StatusComp.h
-    Created: 11 Jun 2011 11:47:52am
+    MainView.h
+    Created: 12 Jun 2011 6:06:42am
     Author:  David Rowland
 
   ==============================================================================
 */
 
-#ifndef __STATUSCOMP_H_BD9DB0B2__
-#define __STATUSCOMP_H_BD9DB0B2__
+#ifndef __MAINVIEW_H_E96C7D0F__
+#define __MAINVIEW_H_E96C7D0F__
+
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Settings.h"
+#include "StatusComp.h"
 
-class StatusComponent : public Component,
-						public ValueTree::Listener
+//==============================================================================
+class MainView  :	public Component,
+					public ValueTree::Listener
 {
 public:
+    //==============================================================================
+    MainView();
 	
-	enum Status {
-		disconnected = 0,
-		waiting,
-		connectedSender,
-		connectedReciever,
-	};
-	
-	StatusComponent();
-	
-	~StatusComponent();
+    ~MainView();
 	
 	void resized();
-	
-	void setStatus(Status newStatus);
 	
 	//==============================================================================
 	void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property);
@@ -39,17 +34,26 @@ public:
 	void valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved) {}
 	void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved) {}
 	void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) {}
-	
+		
 	//==============================================================================
 
 private:
 	
-	ValueTree tree;
+	enum CompressionType
+	{
+		noCompression,
+		simpleCompression,
+		intCompression,
+		intDerivativeCompression
+	};
+			
+	ValueTree settingsTree;
 	
-	Status currentStatus;
-	TextButton statusButton;
-	Label statusLabel;
+	OwnedArray<Label> labels;
+    ComboBox modeSelector;
+    TextEditor socketNumber;
+    TextEditor socketHost;
+	StatusComponent status;
 };
 
-
-#endif  // __STATUSCOMP_H_BD9DB0B2__
+#endif  // __MAINVIEW_H_E96C7D0F__

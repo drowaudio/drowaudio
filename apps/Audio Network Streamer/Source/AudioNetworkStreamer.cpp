@@ -22,40 +22,11 @@ InterprocessCommsDemo::InterprocessCommsDemo()
 	server = new DemoInterprocessConnectionServer (*this);
  	
 	initialiseAudio();
-		
-	addAndMakeVisible(status = new StatusComponent());
-	
-	// create all our UI bits and pieces..
-	addAndMakeVisible (modeSelector = new ComboBox ("Mode:"));
-	(new Label (modeSelector->getName(), modeSelector->getName()))->attachToComponent (modeSelector, true);
-	
-	modeSelector->addItem (T("Disconnected"), 1);
-	modeSelector->addSeparator();
-	modeSelector->addItem ("Reciever", 2);
-	modeSelector->addItem ("Sender", 3);
-		
-	addAndMakeVisible (socketNumber = new TextEditor (T("Port:")));
-	socketNumber->setMultiLine (false);
-	socketNumber->setInputRestrictions (5, "0123456789");
-	(new Label (socketNumber->getName(), socketNumber->getName()))->attachToComponent (socketNumber, true);
-	
-	addAndMakeVisible (socketHost = new TextEditor ("Destination IP:"));
-	socketHost->setMultiLine (false);
-	socketNumber->setInputRestrictions (512);
-	(new Label (socketHost->getName(), socketHost->getName()))->attachToComponent (socketHost, true);
-
-//	addAndMakeVisible(incomingMessages = new TextEditor ("messages"));
-//	incomingMessages->setReadOnly (true);
-//	incomingMessages->setMultiLine (true);
-	
-	// bind UI to tree properties
-	settingsTree.addListener(this);
-	modeSelector->getSelectedIdAsValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::mode], nullptr));
-	socketHost->getTextValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::host], nullptr));
-	socketNumber->getTextValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::port], nullptr));
 
 	// local copy of settings
 	compressAudio = settingsTree[SettingsNames[Settings::compress]];//compressAudioButton.getToggleState();
+	
+	settingsTree.addListener(this);
 }
 
 InterprocessCommsDemo::~InterprocessCommsDemo()
@@ -67,23 +38,7 @@ InterprocessCommsDemo::~InterprocessCommsDemo()
 		settingsTree.setProperty(SettingsNames[Settings::audioSettings], audioXml->createDocument(""), nullptr);
 	}
 	
-	deleteAllChildren();
-
 	settingsTree.removeListener(this);
-}
-
-void InterprocessCommsDemo::resized()
-{
-	const int w = getWidth();
-	const int h = getHeight();
-	const int m = 5;
-	const int cx = w * 0.5;
-	
-	status->setBounds(m, m, 200, 20);
-	
-	modeSelector->setBounds (cx-75, 20+4*m, 150, 20);
-	socketNumber->setBounds (cx - 75, modeSelector->getBottom()+2*m, 150, 20);
-	socketHost->setBounds (cx - 75, socketNumber->getBottom()+2*m, 150, 20);
 }
 
 //==============================================================================
@@ -93,14 +48,13 @@ void InterprocessCommsDemo::close()
 	server->stop();
 	activeConnections.clear();
 	
-	appendMessage ("Select a mode from the dropdown to begin.");
-	status->setStatus(StatusComponent::disconnected);//(TextButton::buttonColourId, Colours::red);
+	settingsTree.setProperty(SettingsNames[Settings::status], (int)StatusComponent::disconnected, nullptr);
+	//status->setStatus(StatusComponent::disconnected);//(TextButton::buttonColourId, Colours::red);
 }
 
 void InterprocessCommsDemo::open (bool asSender)
 {
 	isSender = asSender;
-	//incomingMessages->setText (String::empty, false);
 	close();
 	
 	// and try to open the socket or pipe...
@@ -108,8 +62,6 @@ void InterprocessCommsDemo::open (bool asSender)
 	
 	if (asSender)
 	{
-		socketHost->setVisible(true);
-		
 		// if we're connecting to an existing server, we can just create a connection object
 		// directly.
 		DemoInterprocessConnection* newConnection = new DemoInterprocessConnection (*this);
@@ -121,46 +73,35 @@ void InterprocessCommsDemo::open (bool asSender)
 		if (openedOk)
 		{
 			activeConnections.add (newConnection);
-			status->setStatus(StatusComponent::waiting);//setColour(TextButton::buttonColourId, Colours::orange);
+			settingsTree.setProperty(SettingsNames[Settings::status], (int)StatusComponent::waiting, nullptr);
+			//status->setStatus(StatusComponent::waiting);//setColour(TextButton::buttonColourId, Colours::orange);
 		}
 		else
 			delete newConnection;
 	}
 	else
 	{
-		socketHost->setVisible(false);
-
 		// if we're starting up a server, we need to tell the server to start waiting for
 		// clients to connect. It'll then create connection objects for us when clients arrive.
-		openedOk = server->beginWaitingForSocket (socketNumber->getText().getIntValue());
+		openedOk = server->beginWaitingForSocket (settingsTree[SettingsNames[Settings::port]]);
 		
 		if (openedOk)
 		{
-			appendMessage ("Waiting for another app to connect to this reciever..");
-			status->setStatus(StatusComponent::waiting);//setColour(TextButton::buttonColourId, Colours::orange);
+			settingsTree.setProperty(SettingsNames[Settings::status], (int)StatusComponent::waiting, nullptr);
+			//status->setStatus(StatusComponent::waiting);//setColour(TextButton::buttonColourId, Colours::orange);
 		}
 	}
 	
 	if (! openedOk)
 	{
-		modeSelector->setSelectedId (1);
-		
 		AlertWindow::showMessageBox (AlertWindow::WarningIcon,
 									 "Audio Network Streamer",
 									 "Failed to open the socket...");
-		status->setStatus(StatusComponent::disconnected);//setColour(TextButton::buttonColourId, Colours::red);
+		settingsTree.setProperty(SettingsNames[Settings::status], (int)StatusComponent::disconnected, nullptr);
+		//status->setStatus(StatusComponent::disconnected);//setColour(TextButton::buttonColourId, Colours::red);
 	}
-	
-	repaint();
 }
 
-void InterprocessCommsDemo::appendMessage (const String& message)
-{
-//	incomingMessages->setCaretPosition (INT_MAX);
-//	incomingMessages->insertTextAtCaret ("- " + message + T("\n"));
-//	incomingMessages->setCaretPosition (INT_MAX);
-}
-	
 //==============================================================================
 void InterprocessCommsDemo::initialiseAudio()
 {
@@ -265,16 +206,17 @@ void InterprocessCommsDemo::audioDeviceStopped()
 //==============================================================================
 void InterprocessCommsDemo::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
+	DBG("InterprocessCommsDemo: "<<property.toString());
+
 	if (property == SettingsNames[Settings::compress])
 	{
 		DBG("compress button clicked");
-		compressAudio = settingsTree[SettingsNames[Settings::compress]]; //compressAudioButton.getToggleState();
+		compressAudio = settingsTree[SettingsNames[Settings::compress]];
 	}
 	else if(property == SettingsNames[Settings::mode])
 	{
 		DBG("mode changed");
-		const int modeId = modeSelector->getSelectedId();
-		
+		const int modeId = settingsTree[SettingsNames[Settings::mode]];		
 		close();
 		
 		if (modeId > 1 && modeId < 4)
@@ -302,31 +244,28 @@ void InterprocessCommsDemo::DemoInterprocessConnection::connectionMade()
 {
 	Settings::getInstance()->audioManager->addAudioCallback(&owner);
 	owner.isConnected = true;
-	owner.appendMessage ("Connection #" + String (ourNumber) + " - connection started");
 	
 	if (owner.isSender) 
 	{
-		owner.appendMessage ("Sending Audio");
-		owner.status->setStatus(StatusComponent::connectedSender);
+		owner.settingsTree.setProperty(SettingsNames[Settings::status], (int)StatusComponent::connectedSender, nullptr);
+		//owner.status->setStatus(StatusComponent::connectedSender);
 	}
 	else {
-		owner.appendMessage ("Recieving Audio");
-		owner.status->setStatus(StatusComponent::connectedReciever);
+		owner.settingsTree.setProperty(SettingsNames[Settings::status], (int)StatusComponent::connectedReciever, nullptr);
+		//owner.status->setStatus(StatusComponent::connectedReciever);
 	}
-	
-	//owner.status->setStatus(StatusComponent::connected);//setColour(TextButton::buttonColourId, Colours::green);
 }
 
 void InterprocessCommsDemo::DemoInterprocessConnection::connectionLost()
 {
 	Settings::getInstance()->audioManager->removeAudioCallback(&owner);
 	owner.isConnected = false;
-	owner.appendMessage ("Connection #" + String (ourNumber) + " - connection lost");
 	
 	if (owner.isSender)
-		owner.modeSelector->setSelectedId(1);
+		owner.settingsTree.setProperty(SettingsNames[Settings::mode], 1, nullptr);
 
-	owner.status->setStatus(StatusComponent::waiting);//setColour(TextButton::buttonColourId, Colours::green);
+	owner.settingsTree.setProperty(SettingsNames[Settings::status], (int)StatusComponent::waiting, nullptr);
+	//owner.status->setStatus(StatusComponent::waiting);
 }
 
 void InterprocessCommsDemo::DemoInterprocessConnection::messageReceived (const MemoryBlock& message)

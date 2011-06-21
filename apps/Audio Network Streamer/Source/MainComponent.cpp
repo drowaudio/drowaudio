@@ -17,7 +17,7 @@ MainComponent::MainComponent()
 	settingsButton.setButtonText("Settings");
 	settingsButton.addListener(this);
 		
-	addAndMakeVisible(&connectionComp);
+	addAndMakeVisible(&mainView);
 	addChildComponent(&settingsComp);
 	addAndMakeVisible(&settingsButton);
 }
@@ -33,8 +33,8 @@ void MainComponent::resized()
 	const int m = 5;
 	
 	settingsButton.setBounds(w-100-m, m, 100, 20);
-	connectionComp.setBounds(getLocalBounds());//(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
-	settingsComp.setBounds(getLocalBounds());//(0, settingsButton.getBottom()+m, w, h-settingsButton.getHeight()-m);
+	mainView.setBounds(getLocalBounds());
+	settingsComp.setBounds(getLocalBounds());
 }
 
 void MainComponent::buttonClicked(Button *button)
@@ -44,14 +44,13 @@ void MainComponent::buttonClicked(Button *button)
 		if (settingsButton.getToggleState())
 		{
 			settingsComp.setVisible(true);
-			connectionComp.setVisible(false);
+			mainView.setVisible(false);
 		}
 		else
 		{
-			connectionComp.setVisible(true);
+			mainView.setVisible(true);
 			settingsComp.setVisible(false);
 		}
-
 	}
 }
 

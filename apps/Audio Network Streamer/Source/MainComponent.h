@@ -14,6 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AudioNetworkStreamer.h"
 #include "SettingsComp.h"
+#include "MainView.h"
 
 /**	@todo	Improve UI
 	@todo	Keep settings in a more convenient place
@@ -21,7 +22,8 @@
 	@todo	Sleep prevention when disconnected (possibly add and remove audio callback on connection)
 	@todo	Adjustable buffersize with overrun if size limit reached
 	@todo	Change samples to int (or short) for better compression
-	@todo	Re-use memory blocks to avoid malloc on the audio thread
+	@todo	Re-use memory blocks to avoid malloc on the audio thread (only enlarge when needed & remember size)
+	@todo	Make buffersize slider and label as latency
  */
 
 class MainComponent :	public Component,
@@ -38,10 +40,8 @@ public:
 	
 private:
 	
-	TabbedComponent tabbedComponent;
-	
 	TextButton settingsButton;
-	InterprocessCommsDemo connectionComp;
+	MainView mainView;
 	SettingsComponent settingsComp;
 };
 

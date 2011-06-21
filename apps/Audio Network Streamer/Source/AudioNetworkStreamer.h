@@ -19,8 +19,7 @@
 #include "dRowAudio_FIFOBuffer.h"
 
 //==============================================================================
-class InterprocessCommsDemo  :	public Component,
-								public ValueTree::Listener,
+class InterprocessCommsDemo  :	public ValueTree::Listener,
 								public AudioIODeviceCallback
 {
 public:
@@ -29,16 +28,10 @@ public:
 	
     ~InterprocessCommsDemo();
 	
-	void resized();
-	
-	//void paint(Graphics &g);
-		
 	//==============================================================================
     void close();
 	
     void open (bool asSender);
-	
-    void appendMessage (const String& message);
 	
     //==============================================================================
 	void initialiseAudio();
@@ -119,12 +112,6 @@ private:
 	
 	ValueTree settingsTree;
 	
-    ComboBox *modeSelector;
-    TextEditor *socketNumber;
-    TextEditor *socketHost;
-    //TextEditor *incomingMessages;
-	StatusComponent *status;
-		
 	ScopedPointer<DemoInterprocessConnectionServer> server;
 	FIFOBuffer audioBufferL, audioBufferR;
 };

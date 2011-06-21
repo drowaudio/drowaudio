@@ -18,7 +18,8 @@ static const Identifier SettingsNames[] = {
 											"port",
 											"host",
 											"compress",
-											"audioSettings"
+											"audioSettings",
+											"status"
 										  };
 
 //==============================================================================
@@ -42,6 +43,7 @@ public:
 		host,
 		compress,
 		audioSettings,
+		status,
 		numControlSettings
 	};
 	

@@ -49,13 +49,15 @@
               file="Source/dRowAudio_FIFOBuffer.cpp"/>
       </GROUP>
       <GROUP id="wR60iR" name="ui">
-        <FILE id="Cx5Fnm" name="StatusComp.h" compile="0" resource="0" file="Source/StatusComp.h"/>
-        <FILE id="BCGRQ4" name="StatusComp.cpp" compile="1" resource="0" file="Source/StatusComp.cpp"/>
         <FILE id="Yi7TLP" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
         <FILE id="msXZqI" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
         <FILE id="bfxLGI" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
         <FILE id="TKQ3rc" name="MainComponent.cpp" compile="1" resource="0"
               file="Source/MainComponent.cpp"/>
+        <FILE id="F7J51f" name="MainView.h" compile="0" resource="0" file="Source/MainView.h"/>
+        <FILE id="Fr1zvc" name="MainView.cpp" compile="1" resource="0" file="Source/MainView.cpp"/>
+        <FILE id="Cx5Fnm" name="StatusComp.h" compile="0" resource="0" file="Source/StatusComp.h"/>
+        <FILE id="BCGRQ4" name="StatusComp.cpp" compile="1" resource="0" file="Source/StatusComp.cpp"/>
         <FILE id="xMwsD" name="SettingsComp.h" compile="0" resource="0" file="Source/SettingsComp.h"/>
         <FILE id="x0xd8N" name="SettingsComp.cpp" compile="1" resource="0"
               file="Source/SettingsComp.cpp"/>

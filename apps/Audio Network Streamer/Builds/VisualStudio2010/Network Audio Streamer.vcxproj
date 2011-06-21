@@ -127,9 +127,10 @@
     <ClCompile Include="..\..\Source\AudioNetworkStreamer.cpp"/>
     <ClCompile Include="..\..\Source\AudioEngine.cpp"/>
     <ClCompile Include="..\..\Source\dRowAudio_FIFOBuffer.cpp"/>
-    <ClCompile Include="..\..\Source\StatusComp.cpp"/>
     <ClCompile Include="..\..\Source\MainWindow.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
+    <ClCompile Include="..\..\Source\MainView.cpp"/>
+    <ClCompile Include="..\..\Source\StatusComp.cpp"/>
     <ClCompile Include="..\..\Source\SettingsComp.cpp"/>
     <ClCompile Include="..\..\Source\AudioSettingsComponent.cpp"/>
     <ClCompile Include="..\..\Source\dRowAudio_AudioOscilloscope.cpp"/>
@@ -144,9 +145,10 @@
     <ClInclude Include="..\..\Source\CompressionFunctions.h"/>
     <ClInclude Include="..\..\Source\AudioEngine.h"/>
     <ClInclude Include="..\..\Source\dRowAudio_FIFOBuffer.h"/>
-    <ClInclude Include="..\..\Source\StatusComp.h"/>
     <ClInclude Include="..\..\Source\MainWindow.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
+    <ClInclude Include="..\..\Source\MainView.h"/>
+    <ClInclude Include="..\..\Source\StatusComp.h"/>
     <ClInclude Include="..\..\Source\SettingsComp.h"/>
     <ClInclude Include="..\..\Source\AudioSettingsComponent.h"/>
     <ClInclude Include="..\..\Source\dRowAudio_AudioOscilloscope.h"/>

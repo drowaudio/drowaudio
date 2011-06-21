@@ -17,9 +17,10 @@
 		A924A09A7992C306CEFE6816 = { isa = PBXBuildFile; fileRef = 89F148544D8C9828E2D70542; };
 		47CCCB7357C619F1B6DC6CF5 = { isa = PBXBuildFile; fileRef = FABE5E40A60A20FD97F37CA3; };
 		E7CEB96BFFDEC941464FAB3A = { isa = PBXBuildFile; fileRef = F857522533EACC9E5D642AD7; };
-		060E63CCFE453441AC361E4B = { isa = PBXBuildFile; fileRef = D8447106147C1497813C4647; };
 		D3A2935D5F1951F88F175DD2 = { isa = PBXBuildFile; fileRef = 0E040333E6A753222BD76F24; };
 		53B77D7676EE1E1BFF010641 = { isa = PBXBuildFile; fileRef = D5466AE4F30AC53DE508C674; };
+		8DB04B0517DF657B028B6C7B = { isa = PBXBuildFile; fileRef = 42CE2C8B22CDECF9F0096537; };
+		060E63CCFE453441AC361E4B = { isa = PBXBuildFile; fileRef = D8447106147C1497813C4647; };
 		3DB6A0B11BF8793E3FAD141A = { isa = PBXBuildFile; fileRef = FF12558DDD866E33288408D9; };
 		ED510F6B0BD3FB290B3DFD5C = { isa = PBXBuildFile; fileRef = 62DCB6681646C60295473562; };
 		3EDEF444639934D1566CFE6B = { isa = PBXBuildFile; fileRef = FD24EA686F91457A52734BA9; };
@@ -45,12 +46,14 @@
 		FABE5E40A60A20FD97F37CA3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioEngine.cpp; path = ../../Source/AudioEngine.cpp; sourceTree = SOURCE_ROOT; };
 		1B21BF31607097D052AACD06 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_FIFOBuffer.h; path = ../../Source/dRowAudio_FIFOBuffer.h; sourceTree = SOURCE_ROOT; };
 		F857522533EACC9E5D642AD7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_FIFOBuffer.cpp; path = ../../Source/dRowAudio_FIFOBuffer.cpp; sourceTree = SOURCE_ROOT; };
-		CC7DCC8920B429926D40DA04 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StatusComp.h; path = ../../Source/StatusComp.h; sourceTree = SOURCE_ROOT; };
-		D8447106147C1497813C4647 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StatusComp.cpp; path = ../../Source/StatusComp.cpp; sourceTree = SOURCE_ROOT; };
 		C53F60610C71367C40C300F3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainWindow.h; path = ../../Source/MainWindow.h; sourceTree = SOURCE_ROOT; };
 		0E040333E6A753222BD76F24 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainWindow.cpp; path = ../../Source/MainWindow.cpp; sourceTree = SOURCE_ROOT; };
 		6A794B7585A1CA06BDDB7806 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = SOURCE_ROOT; };
 		D5466AE4F30AC53DE508C674 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
+		A82C9F7FA75183D6527AD471 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainView.h; path = ../../Source/MainView.h; sourceTree = SOURCE_ROOT; };
+		42CE2C8B22CDECF9F0096537 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainView.cpp; path = ../../Source/MainView.cpp; sourceTree = SOURCE_ROOT; };
+		CC7DCC8920B429926D40DA04 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StatusComp.h; path = ../../Source/StatusComp.h; sourceTree = SOURCE_ROOT; };
+		D8447106147C1497813C4647 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StatusComp.cpp; path = ../../Source/StatusComp.cpp; sourceTree = SOURCE_ROOT; };
 		C9B3DAC851FFCDA65036363B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SettingsComp.h; path = ../../Source/SettingsComp.h; sourceTree = SOURCE_ROOT; };
 		FF12558DDD866E33288408D9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SettingsComp.cpp; path = ../../Source/SettingsComp.cpp; sourceTree = SOURCE_ROOT; };
 		C875CE8D44DC1EA844F7CC53 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioSettingsComponent.h; path = ../../Source/AudioSettingsComponent.h; sourceTree = SOURCE_ROOT; };
@@ -70,12 +73,14 @@
 				1B21BF31607097D052AACD06,
 				F857522533EACC9E5D642AD7 ); name = audio; sourceTree = "<group>"; };
 		4CDC18AFFBB6F228B8546861 = { isa = PBXGroup; children = (
-				CC7DCC8920B429926D40DA04,
-				D8447106147C1497813C4647,
 				C53F60610C71367C40C300F3,
 				0E040333E6A753222BD76F24,
 				6A794B7585A1CA06BDDB7806,
 				D5466AE4F30AC53DE508C674,
+				A82C9F7FA75183D6527AD471,
+				42CE2C8B22CDECF9F0096537,
+				CC7DCC8920B429926D40DA04,
+				D8447106147C1497813C4647,
 				C9B3DAC851FFCDA65036363B,
 				FF12558DDD866E33288408D9,
 				C875CE8D44DC1EA844F7CC53,
@@ -192,9 +197,10 @@
 				A924A09A7992C306CEFE6816,
 				47CCCB7357C619F1B6DC6CF5,
 				E7CEB96BFFDEC941464FAB3A,
-				060E63CCFE453441AC361E4B,
 				D3A2935D5F1951F88F175DD2,
 				53B77D7676EE1E1BFF010641,
+				8DB04B0517DF657B028B6C7B,
+				060E63CCFE453441AC361E4B,
 				3DB6A0B11BF8793E3FAD141A,
 				ED510F6B0BD3FB290B3DFD5C,
 				3EDEF444639934D1566CFE6B,

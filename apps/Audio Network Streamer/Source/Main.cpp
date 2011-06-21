@@ -10,7 +10,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainWindow.h"
-
+#include "AudioNetworkStreamer.h"
 
 //==============================================================================
 class NetworkAudioStreamerApplication  : public JUCEApplication
@@ -66,6 +66,8 @@ public:
     }
 
 private:
+	
+	InterprocessCommsDemo connectionComp;
     ScopedPointer <MainAppWindow> mainWindow;
 };
 

@@ -9,18 +9,23 @@
 */
 
 #include "StatusComp.h"
+#include "Settings.h"
 
 StatusComponent::StatusComponent()
-:	currentStatus(waiting)
+:	tree(Settings::getInstance()->getValueTree()),
+	currentStatus(waiting)
 {
 	addAndMakeVisible(&statusButton);
 	addAndMakeVisible(&statusLabel);	
 
-	setStatus(disconnected);	
+	setStatus(disconnected);
+	
+	tree.addListener(this);
 }
 
 StatusComponent::~StatusComponent()
 {
+	tree.removeListener(this);
 }
 
 void StatusComponent::resized()
@@ -64,5 +69,17 @@ void StatusComponent::setStatus(Status newStatus)
 		statusButton.setColour(TextButton::buttonColourId, newColour);
 
 		repaint();
+	}
+}
+
+//==============================================================================
+void StatusComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
+{
+	DBG("StatusComponent: "<<property.toString());
+	
+	if (property == SettingsNames[Settings::status])
+	{
+		DBG("status changed");
+		setStatus(static_cast<StatusComponent::Status>(int(tree[SettingsNames[Settings::status]])));
 	}
 }

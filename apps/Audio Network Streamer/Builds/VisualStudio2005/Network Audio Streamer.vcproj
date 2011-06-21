@@ -142,12 +142,14 @@
           <File RelativePath="..\..\Source\dRowAudio_FIFOBuffer.cpp"/>
         </Filter>
         <Filter Name="ui">
-          <File RelativePath="..\..\Source\StatusComp.h"/>
-          <File RelativePath="..\..\Source\StatusComp.cpp"/>
           <File RelativePath="..\..\Source\MainWindow.h"/>
           <File RelativePath="..\..\Source\MainWindow.cpp"/>
           <File RelativePath="..\..\Source\MainComponent.h"/>
           <File RelativePath="..\..\Source\MainComponent.cpp"/>
+          <File RelativePath="..\..\Source\MainView.h"/>
+          <File RelativePath="..\..\Source\MainView.cpp"/>
+          <File RelativePath="..\..\Source\StatusComp.h"/>
+          <File RelativePath="..\..\Source\StatusComp.cpp"/>
           <File RelativePath="..\..\Source\SettingsComp.h"/>
           <File RelativePath="..\..\Source\SettingsComp.cpp"/>
           <File RelativePath="..\..\Source\AudioSettingsComponent.h"/>

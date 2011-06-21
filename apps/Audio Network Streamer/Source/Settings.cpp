@@ -65,6 +65,7 @@ bool Settings::buildDefaultSettings(ValueTree &treeToFill)
 	settingsTree.setProperty(SettingsNames[Settings::port], "12345", nullptr);
 	settingsTree.setProperty(SettingsNames[Settings::host], "192.168.0.2", nullptr);
 	settingsTree.setProperty(SettingsNames[Settings::compress], false, nullptr);
+	settingsTree.setProperty(SettingsNames[Settings::status], 0, nullptr);
 //	ValueTree audioTree(SettingsNames[Settings::audioSettings]);
 //	settingsTree.addChild(audioTree, -1, nullptr);
 	

@@ -118,12 +118,6 @@ SOURCE="..\..\Source\dRowAudio_FIFOBuffer.cpp"
 # Begin Group "ui"
 # PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
-SOURCE="..\..\Source\StatusComp.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\Source\StatusComp.cpp"
-# End Source File
-# Begin Source File
 SOURCE="..\..\Source\MainWindow.h"
 # End Source File
 # Begin Source File
@@ -134,6 +128,18 @@ SOURCE="..\..\Source\MainComponent.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\MainComponent.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\MainView.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\MainView.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\StatusComp.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\StatusComp.cpp"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\SettingsComp.h"

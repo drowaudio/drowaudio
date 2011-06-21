@@ -34,13 +34,16 @@
     <ClCompile Include="..\..\Source\dRowAudio_FIFOBuffer.cpp">
       <Filter>Network Audio Streamer\Source\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\StatusComp.cpp">
-      <Filter>Network Audio Streamer\Source\ui</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\MainWindow.cpp">
       <Filter>Network Audio Streamer\Source\ui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MainComponent.cpp">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MainView.cpp">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StatusComp.cpp">
       <Filter>Network Audio Streamer\Source\ui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SettingsComp.cpp">
@@ -81,13 +84,16 @@
     <ClInclude Include="..\..\Source\dRowAudio_FIFOBuffer.h">
       <Filter>Network Audio Streamer\Source\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\StatusComp.h">
-      <Filter>Network Audio Streamer\Source\ui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\MainWindow.h">
       <Filter>Network Audio Streamer\Source\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MainView.h">
+      <Filter>Network Audio Streamer\Source\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StatusComp.h">
       <Filter>Network Audio Streamer\Source\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SettingsComp.h">
