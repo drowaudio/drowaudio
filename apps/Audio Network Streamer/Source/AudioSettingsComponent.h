@@ -92,7 +92,9 @@ private:
     ScopedPointer<Label> midiInputsLabel, midiOutputLabel;
 	
 	int heightOfComponents;
-	
+
+	void updateAllControls();
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioSettingsComponent);
 };
 

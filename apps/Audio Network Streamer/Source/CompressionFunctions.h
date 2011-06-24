@@ -23,6 +23,17 @@ static void compressMemoryBlock(const MemoryBlock &sourceBlock, MemoryBlock &des
 	//DBG("Original: "<<(int)sourceBlock.getSize()<<" - Comp: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlock.getSize()));
 }
 
+static void compressMemoryBlockWithSize(const void *sourceBlock, size_t sourceSizeBytes, MemoryBlock &destinationBlock)
+{
+	MemoryOutputStream memoryStream(destinationBlock, false);
+	GZIPCompressorOutputStream zipStream(&memoryStream);
+	
+	zipStream.write(sourceBlock, sourceSizeBytes);
+	zipStream.flush();
+	
+	//DBG("Original: "<<(int)sourceBlock.getSize()<<" - Comp: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlock.getSize()));
+}
+
 static void decompressMemoryBlock(const MemoryBlock &sourceBlock, MemoryBlock &destinationBlock, const int bufferSize =8192)
 {
 	MemoryInputStream memoryStream(sourceBlock, false);
@@ -71,7 +82,7 @@ static void decompressMemoryWithKnownSize(const void *sourceBlock, size_t source
 	destinationBlock.setSize(uncompressedSize, false);
 	zipStream.read(destinationBlock.getData(), uncompressedSize);
 		
-	DBG("Comp: "<<(int)sourceBlockSize<<" - Original: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlockSize)<<"\n");
+	//DBG("Comp: "<<(int)sourceBlockSize<<" - Original: "<<(int)destinationBlock.getSize()<<" - Ratio: "<<(destinationBlock.getSize()/(float)sourceBlockSize)<<"\n");
 }
 
 static void serialiseAudio(MemoryBlock &serialisedBlock,

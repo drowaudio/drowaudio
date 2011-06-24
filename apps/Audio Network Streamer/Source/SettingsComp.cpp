@@ -13,11 +13,14 @@
 SettingsComponent::SettingsComponent()
 :	settingsTree(Settings::getInstance()->getValueTree())
 {
-	addAndMakeVisible(&compressAudioButton);
-	compressAudioButton.setButtonText("Compress Transfer When Sending");
-	compressAudioButton.getToggleStateValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::compress], nullptr));
-	compressAudioButton.setTooltip("Checking this will perform basic non-lossy compression on the audio that is transferred. "
-								   "This will reduce network load but increase CPU usage.");
+	addAndMakeVisible(&compressAudioComboBox);
+	for (int i = 1; i <= (Settings::numCompressionLevels); i++)
+	{
+		compressAudioComboBox.addItem(CompressionLevelNames[i-1], i);
+	}
+	compressAudioComboBox.getSelectedIdAsValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::compress], nullptr));
+	compressAudioComboBox.setTooltip("Checking this will perform basic non-lossy compression on the audio that is transferred. "
+									 "This will reduce network load but increase CPU usage.");
 	
 	audioSettings = new AudioSettingsComponent(*Settings::getInstance()->audioManager,
 											   1, 2,
@@ -27,14 +30,10 @@ SettingsComponent::SettingsComponent()
 											   true,
 											   false);
 	addAndMakeVisible(audioSettings);
-	//audioSettings->setSize(100, 200);
-	
-	Settings::getInstance()->audioManager->addChangeListener(this);
 }
 
 SettingsComponent::~SettingsComponent()
 {
-	Settings::getInstance()->audioManager->removeChangeListener(this);
 }
 
 void SettingsComponent::resized()
@@ -44,8 +43,8 @@ void SettingsComponent::resized()
 	const int m = 5;
 	const int cx = w * 0.5;
 	
-	compressAudioButton.setBounds(cx-125, 40+2*m, 250, 20);
-	audioSettings->setBounds(m, compressAudioButton.getBottom()+20+2*m, w-2*m, 343);
+	compressAudioComboBox.setBounds(cx-125, 40+2*m, 250, 20);
+	audioSettings->setBounds(m, compressAudioComboBox.getBottom()+20+2*m, w-2*m, audioSettings->getHeight());
 }
 
 void SettingsComponent::paint(Graphics &g)
@@ -55,42 +54,13 @@ void SettingsComponent::paint(Graphics &g)
 	const int fontH = 20;
 	g.setColour(Colours::black);
 	g.drawText("Compression Settings:",
-			   m, compressAudioButton.getY() - fontH - m,
+			   m, compressAudioComboBox.getY() - fontH - m,
 			   Font(fontH).getStringWidth("Compression Settings:"), fontH, Justification(Justification::centredLeft), true);
 	g.drawText("Audio Settings:",
-			   m, compressAudioButton.getBottom()+m,
+			   m, compressAudioComboBox.getBottom()+m,
 			   Font(fontH).getStringWidth("Audio Settings:"), fontH, Justification(Justification::centredLeft), true);
 	
 	g.setColour(Colours::azure.darker(0.1));
 	Rectangle<int> audioBounds(audioSettings->getBounds());
 	g.fillRoundedRectangle(audioBounds.getX(), audioBounds.getY(), audioBounds.getWidth(), audioSettings->getHeight(), 5);
-}
-
-void SettingsComponent::changeListenerCallback(ChangeBroadcaster *changedBroadcaster)
-{
-//	DBG("change callback");
-//	void* pointer = Settings::getInstance()->audioManager;
-//	
-//	if (changedBroadcaster == pointer)
-//	{
-//		DBG("audio manager changed "<<audioSettings->getHeightOfComponents());
-//		audioSettings->resized();
-//		DBG("now: "<<audioSettings->getHeightOfComponents());
-//		resized();
-//		repaint();
-//		triggerAsyncUpdate();
-//	}
-}
-
-void SettingsComponent::handleAsyncUpdate()
-{
-	DBG("async");
-	resized();
-}
-
-void SettingsComponent::childBoundsChanged(Component *child)
-{
-	if (child == &*audioSettings) {
-		DBG("audio settings size changed"<<audioSettings->getHeight());
-	}
 }

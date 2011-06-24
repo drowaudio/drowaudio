@@ -75,11 +75,8 @@ void StatusComponent::setStatus(Status newStatus)
 //==============================================================================
 void StatusComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
-	DBG("StatusComponent: "<<property.toString());
-	
 	if (property == SettingsNames[Settings::status])
 	{
-		DBG("status changed");
 		setStatus(static_cast<StatusComponent::Status>(int(tree[SettingsNames[Settings::status]])));
 	}
 }

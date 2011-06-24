@@ -81,5 +81,6 @@
                JUCE_USE_XCURSOR="disabled" JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_AU="disabled"
                JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_WEB_BROWSER="disabled"
                JUCE_SUPPORT_CARBON="disabled" JUCE_CHECK_MEMORY_LEAKS="default"
-               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"/>
+               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_DIRECTSHOW="default"
+               JUCE_MEDIAFOUNDATION="default"/>
 </JUCERPROJECT>

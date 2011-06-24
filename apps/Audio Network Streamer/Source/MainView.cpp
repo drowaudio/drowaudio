@@ -37,7 +37,7 @@ MainView::MainView()
 //	socketNumber.setInputRestrictions (512);
 	labels.add(new Label("Destination IP:", "Destination IP:"));
 	labels.getLast()->attachToComponent (&socketHost, true);
-	
+
 	// bind UI to tree properties
 	settingsTree.addListener(this);
 	modeSelector.getSelectedIdAsValue().referTo(settingsTree.getPropertyAsValue(SettingsNames[Settings::mode], nullptr));
@@ -67,11 +67,4 @@ void MainView::resized()
 //==============================================================================
 void MainView::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
-	DBG("MainView: "<<property.toString());
-
-//	if (property == SettingsNames[Settings::status])
-//	{
-//		DBG("status changed");
-//		status->setStatus(static_cast<StatusComponent::Status>(int(settingsTree[SettingsNames[Settings::status]])));
-//	}
 }

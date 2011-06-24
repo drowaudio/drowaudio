@@ -38,15 +38,7 @@ public:
 	//==============================================================================
 
 private:
-	
-	enum CompressionType
-	{
-		noCompression,
-		simpleCompression,
-		intCompression,
-		intDerivativeCompression
-	};
-			
+				
 	ValueTree settingsTree;
 	
 	OwnedArray<Label> labels;

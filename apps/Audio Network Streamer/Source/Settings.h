@@ -22,6 +22,14 @@ static const Identifier SettingsNames[] = {
 											"status"
 										  };
 
+static const String CompressionLevelNames[] = {
+	"No Compression",
+	"Basic",
+	"Short Lossy",
+	"Short GZip",
+	"Short Derivative Lossy"
+};
+
 //==============================================================================
 class Settings	:	public DeletedAtShutdown
 {
@@ -45,6 +53,16 @@ public:
 		audioSettings,
 		status,
 		numControlSettings
+	};
+	
+	enum CompressionLevel
+	{
+		noCompression = 1,
+		gZipCompression = 2,
+		shortCompression = 3,
+		shortGzipCompression = 4,
+		shortDerivativeCompression = 5,
+		numCompressionLevels = 5
 	};
 	
 	ScopedPointer<AudioDeviceManager> audioManager;

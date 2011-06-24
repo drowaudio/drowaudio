@@ -87,33 +87,36 @@ public:
     //==============================================================================
 		
 private:
-	
-	enum CompressionType
-	{
-		noCompression,
-		simpleCompression,
-		intCompression,
-		intDerivativeCompression
-	};
-	
+		
 	struct AudioBlockHeader
 	{
-		bool isCompressed;
+		Settings::CompressionLevel compressionLevel;
 		int uncompressedBlockSize;
 		int numChannels;
 		int numSamples;
 	};
 	
 	friend class DemoInterprocessConnection;
+	
 	OwnedArray <DemoInterprocessConnection, CriticalSection> activeConnections;
 	bool isConnected;
 	bool isSender;
-	int compressAudio;
+	Settings::CompressionLevel compressionLevel;
 	
 	ValueTree settingsTree;
 	
 	ScopedPointer<DemoInterprocessConnectionServer> server;
 	FIFOBuffer audioBufferL, audioBufferR;
+	
+	// sender
+	MemoryBlock audioData;
+	MemoryBlock sampleData;
+	MemoryBlock compressedData;
+	MemoryBlock shortData;
+	
+	// reciever
+	MemoryBlock decompressedBlock;
+	MemoryBlock shortBlock;
 };
 
 #endif  // __AUDIONETWORKSTREAMER_H_C786D4B4__

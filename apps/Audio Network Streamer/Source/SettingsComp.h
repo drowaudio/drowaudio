@@ -15,9 +15,7 @@
 #include "Settings.h"
 #include "AudioSettingsComponent.h"
 
-class SettingsComponent	:	public Component,
-							public ChangeListener,
-							public AsyncUpdater
+class SettingsComponent	:	public Component
 {
 public:
 	SettingsComponent();
@@ -28,17 +26,11 @@ public:
 	
 	void paint(Graphics &g);
 	
-	void changeListenerCallback(ChangeBroadcaster *changedBroadcaster);
-	
-	void handleAsyncUpdate();
-	
-	void childBoundsChanged(Component *child);
-	
 private:
 	
 	TooltipWindow tooltipWindo;
 	ValueTree settingsTree;
-	ToggleButton compressAudioButton;
+	ComboBox compressAudioComboBox;
 	ScopedPointer<AudioSettingsComponent> audioSettings; 
 };
 

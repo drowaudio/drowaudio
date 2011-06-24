@@ -11,7 +11,6 @@
 #include "MainComponent.h"
 
 MainComponent::MainComponent()
-:	tabbedComponent(TabbedButtonBar::TabsAtTop)
 {
 	settingsButton.setClickingTogglesState(true);
 	settingsButton.setButtonText("Settings");

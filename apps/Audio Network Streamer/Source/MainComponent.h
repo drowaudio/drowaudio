@@ -18,12 +18,11 @@
 
 /**	@todo	Improve UI
 	@todo	Keep settings in a more convenient place
-	@todo	Repitition of buffer in listener mode
 	@todo	Sleep prevention when disconnected (possibly add and remove audio callback on connection)
-	@todo	Adjustable buffersize with overrun if size limit reached
-	@todo	Change samples to int (or short) for better compression
-	@todo	Re-use memory blocks to avoid malloc on the audio thread (only enlarge when needed & remember size)
 	@todo	Make buffersize slider and label as latency
+	@todo	Sample rate conversion if needed
+	@todo	Reciever - adjustable buffersize with overrun if size limit reached
+	@todo	Sending - use buffer to add samples to which will send them one a certain number has been reached
  */
 
 class MainComponent :	public Component,

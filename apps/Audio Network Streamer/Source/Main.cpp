@@ -67,8 +67,8 @@ public:
 
 private:
 	
-	InterprocessCommsDemo connectionComp;
     ScopedPointer <MainAppWindow> mainWindow;
+	InterprocessCommsDemo connectionComp;
 };
 
 //==============================================================================
