@@ -8,6 +8,8 @@
   ==============================================================================
 */
 
+BEGIN_DROWAUDIO_NAMESPACE
+
 #include "dRowAudio_ColouredPositionableWaveDisplay.h"
 
 ColouredPositionableWaveDisplay::ColouredPositionableWaveDisplay (FilteringAudioFilePlayer *sourceToBeUsed,
@@ -292,3 +294,5 @@ void ColouredPositionableWaveDisplay::refreshWaveform()
 }
 
 //==============================================================================
+
+END_DROWAUDIO_NAMESPACE

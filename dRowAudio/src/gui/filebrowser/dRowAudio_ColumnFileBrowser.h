@@ -80,6 +80,8 @@ private:
 	String currentFile;
 	
 	friend class ColumnFileBrowserContents;
+	
+	JUCE_LEAK_DETECTOR (BrowserColumn);
 };
 
 
@@ -166,6 +168,8 @@ private:
 	int startingWidth, activeColumn;
 	
 //	BrowserColumnLookAndFeel* lookAndFeel;
+	
+	JUCE_LEAK_DETECTOR (ColumnFileBrowserContents);
 };
 
 //==================================================================================
@@ -180,7 +184,7 @@ public:
 		setWantsKeyboardFocus(false);
 		
 		setScrollBarsShown(false, true);
-		
+		setScrollBarThickness(10);
 		fileBrowser = new ColumnFileBrowserContents(filesToDisplay_, this);
 		setViewedComponent(fileBrowser);
 	}
@@ -195,8 +199,7 @@ public:
 		fileBrowser->setSize(fileBrowser->getWidth(), getMaximumVisibleHeight());
 	}
 		
-	void visibleAreaChanged(int visibleX, int visibleY,
-							int visibleW, int visibleH)
+	void visibleAreaChanged(const Rectangle<int>& newVisibleArea)
 	{
 		resized();
 	}
@@ -216,6 +219,8 @@ private:
 	
 	ScopedPointer<WildcardFileFilter> wildcard;
 	ColumnFileBrowserContents *fileBrowser;
+	
+	JUCE_LEAK_DETECTOR (ColumnFileBrowser);
 };
 //==================================================================================
 

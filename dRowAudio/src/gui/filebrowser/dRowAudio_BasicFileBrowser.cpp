@@ -36,7 +36,7 @@ BasicFileBrowser::BasicFileBrowser (FileChooserMode mode_,
 	lookAndFeel = new BasicFileBrowserLookAndFeel;
 	setLookAndFeel(lookAndFeel);
 //	setLookAndFeel(BasicFileBrowserLookAndFeel::getInstance());
-	
+		
     String filename;
 	
     if (initialFileOrDirectory == File::nonexistent)
@@ -60,6 +60,8 @@ BasicFileBrowser::BasicFileBrowser (FileChooserMode mode_,
 	
 	fileListComponent = new FileListComponent (*fileList);
 	fileListComponent->setOutlineThickness (0);
+	fileListComponent->getViewport()->setScrollBarThickness(10);
+	fileListComponent->setRowHeight(18);
 	addAndMakeVisible (fileListComponent);
 	
     fileListComponent->addListener (this);
@@ -192,14 +194,14 @@ void BasicFileBrowser::resized()
 		
     fileListComponent->setBounds (0, 0, width, height);
 	ScrollBar *bar = fileListComponent->getVerticalScrollBar();
-	const int size = bar->getWidth();
+	const int size = bar->getWidth() * 1.5;
 
 	if (showResizer)
 	{
 		bar->setTransform(AffineTransform::scale(1, (height - (float)size) / height));
 		
 		resizeLimits.setSizeLimits (150, height, 800, height);
-		resizer->setBounds(width - size, height - size, size, size);
+		resizer->setBounds(width - size*(2.0/3.0), height - size, size*(2.0/3.0), size);
 	}
 	else {
 		bar->setTransform(AffineTransform::identity);

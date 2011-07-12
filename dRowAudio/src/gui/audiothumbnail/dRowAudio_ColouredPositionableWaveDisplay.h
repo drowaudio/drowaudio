@@ -11,13 +11,15 @@
 #ifndef __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H_3C442B17__
 #define __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H_3C442B17__
 
-//#include "../utility/dRowAudio_StateVariable.h"
-//#include "dRowAudio_AudioUtility.h"
-//#include "dRowAudio_FilteringAudioFilePlayer.h";
-#include <dRowAudio/dRowAudio.h>
+#include "../../core/dRowAudio_StandardHeader.h"
+
+#include "../../audio/dRowAudio_FilteringAudioFilePlayer.h"
+#include "dRowAudio_MultipleAudioThumbnailCache.h"
+#include "dRowAudio_ColouredAudioThumbnail.h"
+#include "../../utility/dRowAudio_StateVariable.h"
 
 /**
-	A class to display the waveform of an audio file.
+ A class to display the waveform of an audio file.
 	
 	This will load an audio file and display its waveform. Clicking on the waveform will
 	reposition the transport source. You can change the file loaded by the associated 
