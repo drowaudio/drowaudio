@@ -78,6 +78,7 @@
 #include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
 
 #include "src/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"
+#include "src/gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.cpp"
 #include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.cpp"
 #include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.cpp"
 #include "src/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"

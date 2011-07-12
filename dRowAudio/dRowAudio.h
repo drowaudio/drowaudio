@@ -84,6 +84,7 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 
 #include "src/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h"
+#include "src/gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.h"
 #include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.h"
 #include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h"
 #include "src/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"

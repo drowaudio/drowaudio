@@ -146,7 +146,7 @@ static void readMaxLevelsFiltering (AudioFormatReader &reader,
 }
 
 static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
-											  BiquadFilter &filterLow, BiquadFilter &filterMid, BiquadFilter &filterHigh,
+											  BiquadFilter &filterLow, BiquadFilter &filterLowMid, BiquadFilter &filterHighMid, BiquadFilter &filterHigh,
 											  int64 startSampleInFile,
 											  int64 numSamples,
 											  float& lowestLeft, float& highestLeft,
@@ -167,17 +167,25 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
     }
 	
     const int bufferSize = (int) jmin (numSamples, (int64) 4096);
-    HeapBlock<int> tempSpace (bufferSize * 2 + 64);
-	
+    //HeapBlock<int> tempSpace (bufferSize * 2 + 64);
+	int tempSpace[bufferSize * 2 + 64];
+    
     int* tempBuffer[3];
-    tempBuffer[0] = tempSpace.getData();
-    tempBuffer[1] = tempSpace.getData() + bufferSize;
+    tempBuffer[0] = &tempSpace[0];//tempSpace.getData();
+    tempBuffer[1] = &tempSpace[bufferSize];//tempSpace.getData() + bufferSize;
     tempBuffer[2] = 0;
 	
-	HeapBlock<int> filteredBlock (bufferSize * 3);
-	int* filteredArray[3] = {filteredBlock.getData(), filteredBlock.getData()+bufferSize, filteredBlock.getData()+(bufferSize*2) };
-
-    const int numToAverage = numSamples;
+//	HeapBlock<int> filteredBlock (bufferSize * 4);
+//	int* filteredArray[4] = {filteredBlock.getData(),
+//							 filteredBlock.getData()+bufferSize,
+//							 filteredBlock.getData()+(bufferSize*2),
+//							 filteredBlock.getData()+(bufferSize*3)};
+	int filteredBlock[bufferSize * 4];
+	int* filteredArray[4] = {&filteredBlock[0],
+							 &filteredBlock[bufferSize],
+							 &filteredBlock[bufferSize * 2],
+							 &filteredBlock[bufferSize * 3]};
+    
     float avgLow = 0.0f, avgMid = 0.0f, avgHigh = 0.0f;
 
     if (reader.usesFloatingPointData)
@@ -196,18 +204,34 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
 			memcpy(filteredArray[0], tempBuffer[0], sizeof(int)*numToDo);
 			memcpy(filteredArray[1], tempBuffer[0], sizeof(int)*numToDo);
 			memcpy(filteredArray[2], tempBuffer[0], sizeof(int)*numToDo);
+			memcpy(filteredArray[3], tempBuffer[0], sizeof(int)*numToDo);
 			
 			// filter buffers
 			filterLow.processSamples(reinterpret_cast<float*> (filteredArray[0]), numToDo);
-			filterMid.processSamples(reinterpret_cast<float*> (filteredArray[1]), numToDo);
-			filterHigh.processSamples(reinterpret_cast<float*> (filteredArray[2]), numToDo);
+			filterLowMid.processSamples(reinterpret_cast<float*> (filteredArray[1]), numToDo);
+			filterHighMid.processSamples(reinterpret_cast<float*> (filteredArray[2]), numToDo);
+			filterHigh.processSamples(reinterpret_cast<float*> (filteredArray[3]), numToDo);
 			
 			// calculate colour
 			for (int i = 0; i < numToDo; i++)
 			{
-				avgLow += fabsf((reinterpret_cast<float*>(filteredArray[0]))[i]);
-				avgMid += fabsf((reinterpret_cast<float*>(filteredArray[1]))[i]);
-				avgHigh += fabsf((reinterpret_cast<float*>(filteredArray[2]))[i]);
+//				avgLow += fabsf((reinterpret_cast<float*>(filteredArray[0]))[i]);
+//				avgMid += fabsf((reinterpret_cast<float*>(filteredArray[1]))[i]);
+//				avgHigh += fabsf((reinterpret_cast<float*>(filteredArray[2]))[i]);
+			
+				float low = fabsf((reinterpret_cast<float*>(filteredArray[0]))[i]);
+				float mid = (fabsf((reinterpret_cast<float*>(filteredArray[1]))[i]) + fabsf((reinterpret_cast<float*>(filteredArray[2]))[i]));
+				float high = fabsf((reinterpret_cast<float*>(filteredArray[3]))[i]);
+				
+				if (low > avgLow) {
+					avgLow = low;
+				}
+				if (mid > avgMid) {
+					avgMid = mid;
+				}
+				if (high > avgHigh) {
+					avgHigh = high;
+				}
 			}
 			
             numSamples -= numToDo;
@@ -238,9 +262,9 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
         lowestRight = rmin;
         highestRight = rmax;
         
-        avgLow = (avgLow / numToAverage);
-        avgMid = (avgMid / numToAverage);
-        avgHigh = (avgHigh / numToAverage);
+//        avgLow = (avgLow / numToAverage);
+//        avgMid = (avgMid / numToAverage);
+//        avgHigh = (avgHigh / numToAverage);
     }
     else
     {
@@ -259,18 +283,35 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
 			memcpy(filteredArray[0], tempBuffer[0], sizeof(int)*numToDo);
 			memcpy(filteredArray[1], tempBuffer[0], sizeof(int)*numToDo);
 			memcpy(filteredArray[2], tempBuffer[0], sizeof(int)*numToDo);
+			memcpy(filteredArray[3], tempBuffer[0], sizeof(int)*numToDo);
 			
 			// filter buffers
 			filterLow.processSamples((filteredArray[0]), numToDo);
-			filterMid.processSamples((filteredArray[1]), numToDo);
-			filterHigh.processSamples((filteredArray[2]), numToDo);
+			filterLowMid.processSamples((filteredArray[1]), numToDo);
+			filterHighMid.processSamples((filteredArray[2]), numToDo);
+			filterHigh.processSamples((filteredArray[3]), numToDo);
 			
 			// calculate colour
 			for (int i = 0; i < numToDo; i++)
 			{
-				avgLow += abs(((filteredArray[0]))[i]);
-				avgMid += abs(((filteredArray[1]))[i]);
-				avgHigh += abs(((filteredArray[2]))[i]);
+//				avgLow += abs(((filteredArray[0]))[i]);
+//				avgMid += abs(((filteredArray[1]))[i]);
+//				avgHigh += abs(((filteredArray[2]))[i]);
+				
+				int low = abs(filteredArray[0][i]);
+				int mid = (abs(filteredArray[1][i]) + abs(filteredArray[2][i]));
+				int high = abs(filteredArray[3][i]);
+				
+				if (low > avgLow) {
+					avgLow = low;
+				}
+				if (mid > avgMid) {
+					avgMid = mid;
+				}
+				if (high > avgHigh) {
+					avgHigh = high;
+				}
+				
 			}
 
             numSamples -= numToDo;
@@ -305,9 +346,12 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
         lowestRight = rmin / (float) std::numeric_limits<int>::max();
         highestRight = rmax / (float) std::numeric_limits<int>::max();
 
-        avgLow = (avgLow / numToAverage) / (float) std::numeric_limits<int>::max();
-        avgMid = (avgMid / numToAverage) / (float) std::numeric_limits<int>::max();
-        avgHigh = (avgHigh / numToAverage) / (float) std::numeric_limits<int>::max();
+//        avgLow = (avgLow / numToAverage) / (float) std::numeric_limits<int>::max();
+//        avgMid = (avgMid / numToAverage) / (float) std::numeric_limits<int>::max();
+//        avgHigh = (avgHigh / numToAverage) / (float) std::numeric_limits<int>::max();
+        avgLow = avgLow / (float) std::numeric_limits<int>::max();
+        avgMid = avgMid / (float) std::numeric_limits<int>::max();
+        avgHigh = avgHigh / (float) std::numeric_limits<int>::max();
     }
     
     uint8 maxSize = std::numeric_limits<uint8>::max();
@@ -413,9 +457,14 @@ public:
 
 			//drow
 //			owner.filterSetup.setUpFilter(owner.filterLow, reader->sampleRate);
-			owner.filterLow.makeLowPass(reader->sampleRate, 150.0);
-			owner.filterMid.makeBandPass(reader->sampleRate, 1000.0, 1.0);
-			owner.filterHigh.makeHighPass(reader->sampleRate, 1000.0);
+			owner.filterLow.makeBandPass(reader->sampleRate, 130.0, 2);
+			owner.filterLowMid.makeBandPass(reader->sampleRate, 650.0, 2.0);
+			owner.filterHighMid.makeBandPass(reader->sampleRate, 1300.0, 2.0);
+			owner.filterHigh.makeHighPass(reader->sampleRate, 2700.0);
+//			owner.filterLow.makeBandPass(reader->sampleRate, 130.0, 1);
+//			owner.filterLowMid.makeBandPass(reader->sampleRate, 1000.0, 1.0);
+//			owner.filterHighMid.makeBandPass(reader->sampleRate, 1300.0, 1.0);
+//			owner.filterHigh.makeHighPass(reader->sampleRate, 2000.0);
 			
             if (lengthInSamples <= 0)
                 reader = 0;
@@ -436,7 +485,7 @@ public:
 			Colour colourLeft, colourRight;
             
 //            readMaxLevelsFiltering (*reader, owner.filterLow, startSample, numSamples, l[0], l[1], l[2], l[3]);
-            readMaxLevelsFilteringWithColour (*reader, owner.filterLow, owner.filterMid, owner.filterHigh, startSample, numSamples,
+            readMaxLevelsFilteringWithColour (*reader, owner.filterLow, owner.filterLowMid, owner.filterHighMid, owner.filterHigh, startSample, numSamples,
 											  l[0], l[1], l[2], l[3], colourLeft, colourRight);
             levels.clearQuick();
             levels.addArray ((const float*) l, 4);
@@ -556,7 +605,7 @@ private:
 //                    readMaxLevelsFiltering (*reader, owner.filterLow,
 //											(firstThumbIndex + i) * owner.samplesPerThumbSample, owner.samplesPerThumbSample,
 //											lowestLeft, highestLeft, lowestRight, highestRight);
-                    readMaxLevelsFilteringWithColour (*reader, owner.filterLow, owner.filterMid, owner.filterHigh,
+                    readMaxLevelsFilteringWithColour (*reader, owner.filterLow, owner.filterLowMid, owner.filterHighMid, owner.filterHigh,
 													  (firstThumbIndex + i) * owner.samplesPerThumbSample, owner.samplesPerThumbSample,
 													  lowestLeft, highestLeft, lowestRight, highestRight,
 													  colourLeft, colourRight);

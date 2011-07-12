@@ -15,6 +15,38 @@
 
 #include "../../audio/dRowAudio_FilteringAudioFilePlayer.h"
 #include "dRowAudio_MultipleAudioThumbnailCache.h"
+#include "../../utility/dRowAudio_StateVariable.h"
+
+class PlayheadComponent : public Component
+{
+public:
+    PlayheadComponent()
+    {
+    }
+    
+    void resized()
+    {
+        const int w = 3;
+        const int h = getHeight();
+        setSize(w, getHeight());
+        playheadImage = Image(Image::RGB, w, h, true);
+        Graphics g(playheadImage);
+        g.setColour (Colours::black);
+        g.drawVerticalLine(1, 0, h);
+        g.drawVerticalLine(3, 0, h);
+        
+        g.setColour(Colours::white);
+        g.drawVerticalLine(1, 0, h);	        
+    }
+    
+    void paint(Graphics& g)
+    {
+        g.drawImageAt(playheadImage, 0, playheadImage.getWidth());
+    }
+    
+private:
+    Image playheadImage;
+};
 
 /**
 	A base class to display the waveform of an audio file.
@@ -30,9 +62,10 @@
 class AbstractDraggableWaveDisplay :	public Component,
 										public Thread,
 										public MultiTimer,
-										public ChangeListener,
+                                        public ChangeListener,
 										public AsyncUpdater,
 										public FilteringAudioFilePlayer::Listener,
+										public DragAndDropTarget,
 										public FileDragAndDropTarget
 {
 public:
@@ -47,7 +80,6 @@ public:
 	/// Used to start and stop the various internal timers
 	enum
 	{
-		init,
 		waveformUpdated,
 		waveformLoading,
 		waveformMoved,
@@ -59,25 +91,35 @@ public:
 	 The file player associated with the display must be passed in along with
 	 the current sample rate. This can later be changed with setSampleRate.
 	 */
-	explicit AbstractDraggableWaveDisplay (int sourceSamplesPerThumbnailSample, FilteringAudioFilePlayer* sourceToBeUsed, MultipleAudioThumbnailCache *cacheToUse =0);
+	explicit AbstractDraggableWaveDisplay (int sourceSamplesPerThumbnailSample,
+										   FilteringAudioFilePlayer* sourceToBeUsed,
+										   MultipleAudioThumbnailCache *cacheToUse =0);
 	
 	/** Destructor.
 		Your subclass will need to call signalThreadShouldExit() in its destructor as
 		it will get destructed before this superclass.
 	 */
-	~AbstractDraggableWaveDisplay ();
+	~AbstractDraggableWaveDisplay();
 	
 	//====================================================================================
-	void resized ();
+	void resized();
 	
 	void paint (Graphics &g);
 	
 	//====================================================================================
 	void timerCallback (const int timerId);
-	
-	void changeListenerCallback(ChangeBroadcaster* changedObject);
-	
+		
+    /** Called when your waveform source has updated.
+        If you are using an AudioThumbnail equivalent make sure you register this class
+        as a listener to it.
+     */
+    void changeListenerCallback (ChangeBroadcaster* source);
+    
 	void fileChanged (FilteringAudioFilePlayer *player);
+	
+	/**	Re-freshes the waveform section times and re-draws the images for them.
+	 */
+	void markAsDirty();
 	
     void run();
     
@@ -97,18 +139,18 @@ public:
 	 Sets the offset of the white line that marks the current position.
 	 This is as a fraction of the width of the display.
 	 */
-	void setPlayheadPosition(float newPlayheadPosition);
+	void setPlayheadPosition (float newPlayheadPosition);
 	
 	/// Turns dragging to reposition the transport on or off
 	void setDraggable (bool isWaveformDraggable);
 	
 	/// Returns true if dragging the waveform will reposition the audio source 
-	bool getDraggable ();
+	bool getDraggable();
 	
 	//==============================================================================
-	void mouseDown(const MouseEvent &e);
+	void mouseDown (const MouseEvent &e);
 	
-	void mouseUp(const MouseEvent &e);
+	void mouseUp (const MouseEvent &e);
 	
 	//==============================================================================
 	bool isInterestedInFileDrag (const StringArray &files);
@@ -116,6 +158,11 @@ public:
 	void fileDragExit (const StringArray &files);
 	void filesDropped (const StringArray &files, int x, int y);
 	
+	//==============================================================================
+	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
+	void itemDragExit (const SourceDetails& dragSourceDetails);
+	void itemDropped (const SourceDetails& dragSourceDetails);
+
 	//==============================================================================	
 	
 protected:
@@ -123,7 +170,7 @@ protected:
 	struct WaveformSection {
 		double startTime;
 		bool needToRepaint;
-		ScopedPointer<Image> img;
+        Image img;
 	};
 	
 	double pixelsToTime(double numPixels);
@@ -145,8 +192,10 @@ protected:
 	 */
 	virtual void refreshWaveform(int waveformNumber) =0;
 
+	void createNewImagesForAllWaveforms();
 	void createNewImageForWaveform(int waveformNumber);
 	void cycleImages(bool cycleForwards);
+	void refreshWaveformsOnBackgroundThread();
 	
 	CriticalSection lock;
 	
@@ -155,20 +204,21 @@ protected:
 	StateVariable<int> samplesPerPixel;
 	StateVariable<float> zoomFactor;
 	float playheadPos;
+	bool shouldRefreshWaveforms;
 	
 	bool waveformIsFullyLoaded;
 	
 	// thumbnail classes
 	const int sourceSamplesPerThumbSample;
 	AudioFormatManager *formatManager;
-	ScopedPointer<MultipleAudioThumbnailCache> thumbnailCache;
+	OptionalScopedPointer<MultipleAudioThumbnailCache> thumbnailCache;
 	int64 numSamplesFinished;
-	bool deleteCache;
     bool cycleDirection;
 
+    Image playheadImage;
 	OwnedArray<WaveformSection> waveImgs;
 
-	bool  isMouseDown, isDraggable, shouldBePlaying, mouseShouldTogglePlay;
+	bool isMouseDown, isDraggable, shouldBePlaying, mouseShouldTogglePlay;
 	StateVariable<int> mouseX, movedX;
 
 	friend class SwitchableDraggableWaveDisplay;

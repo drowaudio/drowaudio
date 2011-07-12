@@ -18,8 +18,8 @@ SwitchableDraggableWaveDisplay::SwitchableDraggableWaveDisplay(FilteringAudioFil
 	togglePlay(true),
 	filePlayer(sourceToBeUsed)
 {
-	addAndMakeVisible(colouredWave = new ColouredDraggableWaveDisplay(64, sourceToBeUsed, cacheToUse));
-	addAndMakeVisible(separateWave = new TriBandDraggableWaveDisplay(64, sourceToBeUsed, cacheToUse));
+	addAndMakeVisible(colouredWave = new ColouredDraggableWaveDisplay(128, sourceToBeUsed, cacheToUse));
+	addChildComponent(separateWave = new TriBandDraggableWaveDisplay(128, sourceToBeUsed, cacheToUse));
 	
 	colouredWave->setInterceptsMouseClicks(false, false);
 	separateWave->setInterceptsMouseClicks(false, false);
@@ -44,15 +44,19 @@ void SwitchableDraggableWaveDisplay::setShowSeparate(bool shouldShowSperate)
 {
 	if (shouldShowSperate)
 	{
-		showSeparate = true;
 		separateWave->setVisible(true);
 		colouredWave->setVisible(false);
+		showSeparate = true;
+		
+		separateWave->markAsDirty();
 	}
 	else
 	{
-		showSeparate = false;
 		separateWave->setVisible(false);
 		colouredWave->setVisible(true);
+		showSeparate = false;
+
+		colouredWave->markAsDirty();
 	}
 	
 	resized();

@@ -37,8 +37,9 @@ public:
 	 the current sample rate. This can later be changed with setSampleRate.
 	 */
 	explicit ColouredDraggableWaveDisplay (int sourceSamplesPerThumbnailSample,
-										  FilteringAudioFilePlayer* sourceToBeUsed,
-										  MultipleAudioThumbnailCache *cacheToUse =0);
+                                           FilteringAudioFilePlayer* sourceToBeUsed,
+                                           MultipleAudioThumbnailCache *cacheToUse =nullptr,
+                                           ColouredAudioThumbnail *thumbnailToUse =nullptr);
 	
 	/// Destructor
 	~ColouredDraggableWaveDisplay ();
@@ -68,8 +69,8 @@ protected:
 private:
 	
 	// thumbnail classes
-	ScopedPointer<ColouredAudioThumbnail> thumbnailView;
-	ScopedPointer<Image> tempLargeImage;
+	OptionalScopedPointer<ColouredAudioThumbnail> thumbnailView;
+	Image tempLargeImage;
 	
 	JUCE_LEAK_DETECTOR (ColouredDraggableWaveDisplay);
 };

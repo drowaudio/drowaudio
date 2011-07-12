@@ -15,7 +15,7 @@ BEGIN_DROWAUDIO_NAMESPACE
 TriBandDraggableWaveDisplay::TriBandDraggableWaveDisplay (int sourceSamplesPerThumbnailSample, FilteringAudioFilePlayer* sourceToBeUsed, MultipleAudioThumbnailCache *cacheToUse)
 :	AbstractDraggableWaveDisplay(sourceSamplesPerThumbnailSample, sourceToBeUsed, cacheToUse)
 {
-	filterSetups.add(new BiquadFilterSetup(BiquadFilterSetup::Lowpass, 300.0));
+	filterSetups.add(new BiquadFilterSetup(BiquadFilterSetup::Bandpass, 130.0, 1.0));
 	filterSetups.add(new BiquadFilterSetup(BiquadFilterSetup::Bandpass, 1200.0, 1.0));
 	filterSetups.add(new BiquadFilterSetup(BiquadFilterSetup::Highpass, 2700.0));
 	
@@ -66,29 +66,32 @@ void TriBandDraggableWaveDisplay::thumbnailLoading(bool &isFullyLoaded, int64 &n
 
 void TriBandDraggableWaveDisplay::refreshWaveform(int waveNum)
 {
-	if(waveImgs[waveNum]->img->isValid() && waveImgs[waveNum]->needToRepaint)
+	ScopedLock sl(lock);
+	WaveformSection *sectionToRefresh = waveImgs[waveNum];
+
+	if(sectionToRefresh->img.isValid() && sectionToRefresh->needToRepaint)
 	{				
-		Graphics g(*waveImgs[waveNum]->img);
-		waveImgs[waveNum]->img->clear(waveImgs[waveNum]->img->getBounds());
+		Graphics g(sectionToRefresh->img);
+		sectionToRefresh->img.clear(sectionToRefresh->img.getBounds());
 		
-		const double startTime = waveImgs[waveNum]->startTime;
-		const double endTime = startTime + pixelsToTime(waveImgs[waveNum]->img->getWidth());
+		const double startTime = sectionToRefresh->startTime;
+		const double endTime = startTime + pixelsToTime(sectionToRefresh->img.getWidth());
 		
 		if (waveformIsFullyLoaded || (numSamplesFinished > (startTime * currentSampleRate)))
 		{
 			g.fillAll(Colours::black);
 			g.setColour(Colours::red);
 			
-			int wavHeight = waveImgs[waveNum]->img->getHeight() / 3;
+			int wavHeight = sectionToRefresh->img.getHeight() / 3;
 			for (int i = 0; i < waveforms.size(); i++)
 			{
-				waveforms[i]->drawChannel(g, Rectangle<int> (0, i * wavHeight, waveImgs[waveNum]->img->getWidth(), wavHeight),
+				waveforms[i]->drawChannel(g, Rectangle<int> (0, i * wavHeight, sectionToRefresh->img.getWidth(), wavHeight),
 										  startTime, endTime,
 										  0, 1.0f);
 			}
 		}
 		
-		waveImgs[waveNum]->needToRepaint = false;
+		sectionToRefresh->needToRepaint = false;
 		triggerAsyncUpdate();
 	}	
 }

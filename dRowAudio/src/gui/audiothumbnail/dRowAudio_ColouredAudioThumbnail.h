@@ -222,7 +222,7 @@ private:
     CriticalSection lock;
 
 	//drow
-	BiquadFilter filterLow, filterMid, filterHigh;
+	BiquadFilter filterLow, filterLowMid, filterHighMid, filterHigh;
 	
     bool setDataSource (LevelDataSource* newSource);
     void setLevels (const MinMaxColourValue* const* values, int thumbIndex, int numChans, int numValues);
