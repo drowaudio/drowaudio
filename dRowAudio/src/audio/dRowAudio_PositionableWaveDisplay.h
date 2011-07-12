@@ -25,7 +25,6 @@
 class PositionableWaveDisplay : public Component,
 								public MultiTimer,
 								public FilteringAudioFilePlayer::Listener,
-								public ChangeListener,
 								public DragAndDropTarget,
 								public FileDragAndDropTarget
 {
@@ -55,14 +54,12 @@ public:
 	void resized ();
 	
 	void paint (Graphics &g);
-	
+
 	//====================================================================================
 	void timerCallback (const int timerId);
 	
 	void fileChanged (FilteringAudioFilePlayer *player);
-	
-	void changeListenerCallback(ChangeBroadcaster* changedObject);
-	
+		
 	//====================================================================================
 	/// Sets the current horizontal zoom
 	void setZoomFactor (float newZoomFactor);
@@ -81,11 +78,13 @@ public:
 	void filesDropped (const StringArray &files, int x, int y);
 	
 	//==============================================================================
-	bool isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent);
+	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
 	
-	void itemDragExit (const String &sourceDescription, Component *sourceComponent);
+	void itemDragEnter (const SourceDetails& dragSourceDetails);
 	
-	void itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y);
+	void itemDragExit (const SourceDetails& dragSourceDetails);
+	
+	void itemDropped (const SourceDetails& dragSourceDetails);
 	
 	//==============================================================================	
 	
@@ -107,8 +106,7 @@ private:
 	StateVariable<int> transportLineXCoord;
 	float zoomFactor, currentXScale;
 	
-	bool firstLoad;
-	bool isMouseDown;
+	bool firstLoad, isMouseDown, interestedInDrag;
 	double currentMouseX;
 	
 	JUCE_LEAK_DETECTOR (PositionableWaveDisplay);

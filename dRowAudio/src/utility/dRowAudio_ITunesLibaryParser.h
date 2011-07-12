@@ -32,6 +32,7 @@ namespace Columns {
 		Label,
 		Key,
 		Length,
+		Kind,
 		Added,
 		Location,
 		Score,
@@ -51,7 +52,8 @@ namespace Columns {
 		"Sub_Genre",
 		"Label",
 		"Key",
-		"Length",						
+		"Length",
+		"Kind",
 		"Added",
 		"Location",
 		"Score"
@@ -71,6 +73,7 @@ namespace Columns {
 		"Comments",
 		"Series",
 		"Total Time",
+		"Kind",
 		"Date Added",
 		"Location",
 		"Score"
@@ -90,6 +93,7 @@ namespace Columns {
 		100,
 		30,
 		80,
+		60,
 		125,
 		300,
 		60

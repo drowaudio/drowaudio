@@ -31,7 +31,7 @@ public:
     {
         bufferPos = 0;
         bufferSize = 2048;		// Needs to be larger than the width of your scope in pixels!
-        circularBuffer = (float*) juce_calloc (sizeof (float) * bufferSize);
+        circularBuffer.calloc(bufferSize);
 		clear();
         currentInputLevel = 0.0f;
         numSamplesIn = 0;
@@ -43,7 +43,6 @@ public:
 	/// Descructor
     ~SimpleAudioScope()
     {
-        juce_free (circularBuffer);
     }
 	
 	/// @internal
@@ -130,7 +129,7 @@ public:
 	
 	
 private:
-    float* circularBuffer;
+    HeapBlock<float> circularBuffer;
     float currentInputLevel;
     int volatile bufferPos, bufferSize, numSamplesIn;
 	

@@ -32,8 +32,8 @@ public:
         bufferPos = 0;
         bufferSize = 2048;		// Needs to be a power of 2 and larger than the width of your scope!
 		bufferSizeMask = bufferSize - 1;
-        circularBufferMax = (float*) juce_calloc (sizeof (float) * bufferSize);
-        circularBufferMin = (float*) juce_calloc (sizeof (float) * bufferSize);
+        circularBufferMax.calloc(bufferSize);
+        circularBufferMin.calloc(bufferSize);
 		clear();
 		currentMin = bufferLastMin = 1.0e6f;
 		currentMax = bufferLastMax = -currentMin;
@@ -46,8 +46,6 @@ public:
 	/// Destructor
     ~AudioOscilliscope()
     {
-		juce_free (circularBufferMax);
-		juce_free (circularBufferMin);
     }
 	
 	/// @internal
@@ -150,7 +148,7 @@ public:
 	void setTraceColour (Colour newTraceColour)	{	traceColour = newTraceColour;	}
 
 private:
-    float *circularBufferMax, *circularBufferMin;
+    HeapBlock<float> circularBufferMax, circularBufferMin;
 	int bufferSizeMask;
     float currentMax, currentMin;
     int volatile bufferPos, bufferSize, numSamplesIn;

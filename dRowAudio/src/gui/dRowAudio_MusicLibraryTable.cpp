@@ -298,7 +298,7 @@ void MusicLibraryTable::timerCallback()
 	table->updateContent();
 }
 
-const String MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
+const var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
 {
 	if(!currentlySelectedRows.isEmpty())
 	{

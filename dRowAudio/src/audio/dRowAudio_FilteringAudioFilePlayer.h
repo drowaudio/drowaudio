@@ -12,9 +12,9 @@
 
 #include "../core/dRowAudio_StandardHeader.h"
 
-#include "dRowAudio_FilteringAudioTransportSource.h"
-#include "dRowAudio_ReversableAudioFormatReaderSource.h"
-#include "MADAudioFormat.h"
+//#include "dRowAudio_FilteringAudioTransportSource.h"
+#include "dRowAudio_ReversibleAudioSource.h"
+#include "dRowAudio_FilteringAudioSource.h"
 
 /**
  This class can be used to load and play an audio file from disk.
@@ -26,7 +26,7 @@
  @see AudioFormatReader
  @see AudioFormatReaderSource
  */
-class FilteringAudioFilePlayer	:	public FilteringAudioTransportSource
+class FilteringAudioFilePlayer	:	public AudioSource
 {
 public:
 	/// Creates an empty AudioFilePlayer.
@@ -36,7 +36,7 @@ public:
 	~FilteringAudioFilePlayer();
 	
 	/// Returns the AudioFormatReaderSource currently being used
-	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFileSource; }
+	AudioFormatReaderSource* getAudioFormatReaderSource() { return currentAudioFormatReaderSource; }
 	
 	/// Sets the AudioFormatManager being used
 	void setAudioFormatManager(AudioFormatManager* newManager, bool deleteWhenNotNeeded=false);
@@ -72,6 +72,8 @@ public:
 	
 	void setResamplingRatio (const double samplesInPerOutputSample);
 
+    double getResamplingRatio ()    {   return resamplingAudioSource->getResamplingRatio(); }
+
 //	void setPlayDirection(bool shouldPlayForwards)
 //	{	
 //		if (currentAudioFileSource != 0) {
@@ -84,6 +86,31 @@ public:
 //			return currentAudioFileSource->getPlayDirection();
 //		}	
 //	}
+    //==============================================================================
+    /** Implementation of the AudioSource method. */
+    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
+    
+    /** Implementation of the AudioSource method. */
+    void releaseResources();
+    
+    /** Implementation of the AudioSource method. */
+    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
+    
+	//==============================================================================
+//    void addChangeListener (ChangeListener* listener)       { audioTransportSource->addChangeListener(listener);   }
+//    void removeChangeListener (ChangeListener* listener)    { audioTransportSource->removeChangeListener(listener);   }
+//    void setPosition(double newPosition) const  { return audioTransportSource->setPosition(newPosition);   }
+//    double getCurrentPosition() const           { return audioTransportSource->getCurrentPosition();   }
+//    int64 getTotalLength() const                { return audioTransportSource->getTotalLength();       }
+//    bool isPlaying() const                      { return audioTransportSource->isPlaying();       }
+//    void stop() const                           { return audioTransportSource->stop();       }
+//    void start() const                          { return audioTransportSource->start();       }
+
+    AudioTransportSource*     getAudioTransportSource()   {   return audioTransportSource;    }
+    ReversibleAudioSource*    getReversibleAudioSource()  {   return reversibleAudioSource;   }
+//    ResamplingAudioSource*    getResamplingAudioSource()  {   return resamplingAudioSource;   }
+    FilteringAudioSource*     getFilteringAudioSource()   {   return filteringAudioSource;    }
+    
 	//==============================================================================
     /** A class for receiving callbacks from a FilteringAudioFilePlayer.
 	 
@@ -111,7 +138,7 @@ public:
 			You can find out the new ratio using FilteringAudioFilePlayer::getResamplingRatio().
 		 */
 		virtual void resamplingRatioChanged(FilteringAudioFilePlayer *player) {};
-		
+        
         //==============================================================================
         /** Called when the the player is stopped or started.
 			You can find out if it is currently stopped with FilteringAudioFilePlayer::isPlaying().
@@ -135,7 +162,12 @@ private:
 	AudioFormatReader* audioFormatReaderFromFile(const String& path);
 	
 	/// Create the actual stream that's going to read from the audio file
-	ScopedPointer<AudioFormatReaderSource> currentAudioFileSource;
+    AudioSource* masterSource;
+	ScopedPointer<AudioFormatReaderSource> currentAudioFormatReaderSource;
+	ScopedPointer<AudioTransportSource> audioTransportSource;
+	ScopedPointer<ReversibleAudioSource> reversibleAudioSource;
+	ScopedPointer<ResamplingAudioSource> resamplingAudioSource;
+	ScopedPointer<FilteringAudioSource> filteringAudioSource;
 	
 	String filePath;
 	String fileName;
@@ -146,7 +178,7 @@ private:
 	
 	ValueTree libraryEntry;
 
-	JUCE_LEAK_DETECTOR (FilteringAudioFilePlayer);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilteringAudioFilePlayer);
 };
 
 #endif //_FILTERINGAUDIOFILEPLAYER_H_

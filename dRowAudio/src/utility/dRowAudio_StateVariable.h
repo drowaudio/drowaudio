@@ -61,6 +61,11 @@ public:
 		current = previous = newValue;
 	}
 	
+	void setPrevious(VariableType newValue)
+	{
+		previous = newValue;
+	}
+	
 	/**	Returns true if the current and previous states are equal.
 	 */
 	bool areEqual()
@@ -93,8 +98,7 @@ public:
 	}
 	
 private:
-	VariableType current;
-	VariableType previous;
+	VariableType current, previous;
 	
 	JUCE_LEAK_DETECTOR (StateVariable);
 };

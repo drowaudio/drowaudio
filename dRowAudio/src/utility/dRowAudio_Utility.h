@@ -74,6 +74,26 @@ void reverseArray(Type *array, int length)
     }
 }
 
+/**	Reverses two arrays at once.
+	This will be quicker than calling reverseArray twice.
+	The arrays must be the same length.
+ */
+template <class Type>
+void reverseTwoArrays(Type *array1, Type *array2, int length)
+{
+    Type swap;
+    for(int a = 0; a < --length; a++) //increment a and decrement b until they meet eachother
+    {
+        swap = array1[a];       //put what's in a into swap space
+        array1[a] = array1[length];    //put what's in b into a
+        array1[length] = swap;       //put what's in the swap (a) into b
+
+        swap = array2[a];       //put what's in a into swap space
+        array2[a] = array2[length];    //put what's in b into a
+        array2[length] = swap;       //put what's in the swap (a) into b
+    }
+}
+
 static const String dRowReadEntireTextStream (URL *url, const bool usePostCommand)
 {
     const ScopedPointer <InputStream> in (url->createInputStream (usePostCommand,

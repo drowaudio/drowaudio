@@ -93,7 +93,7 @@ public:
 
 	void timerCallback();
 	
-	const String getDragSourceDescription (const SparseSet< int > &currentlySelectedRows);
+	const var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
 	
     //==============================================================================
     juce_UseDebuggingNewOperator

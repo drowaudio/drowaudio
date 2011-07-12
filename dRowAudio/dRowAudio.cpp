@@ -17,7 +17,9 @@
 
 // Audio
 #include "src/audio/dRowAudio_AudioFilePlayer.cpp"
-#include "src/audio/dRowAudio_ReversableAudioFormatReaderSource.cpp"
+#include "src/audio/dRowAudio_FilteringAudioSource.cpp"
+#include "src/audio/dRowAudio_SmoothingAudioSource.cpp"
+#include "src/audio/dRowAudio_ReversibleAudioSource.cpp"
 #include "src/audio/dRowAudio_FilteringAudioTransportSource.cpp"
 #include "src/audio/dRowAudio_FilteringAudioFilePlayer.cpp"
 

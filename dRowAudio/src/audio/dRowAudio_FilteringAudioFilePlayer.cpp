@@ -14,18 +14,22 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "dRowAudio_FilteringAudioFilePlayer.h"
 
 FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)
-:	currentAudioFileSource(0),
-	filePath(path),
+:	masterSource(nullptr),
+    filePath(path),
 	shouldBePlaying(false),
 	deleteFormatManager(true)
 {
+    audioTransportSource = new AudioTransportSource();
+    reversibleAudioSource = new ReversibleAudioSource(audioTransportSource, false);
+    resamplingAudioSource = new ResamplingAudioSource(reversibleAudioSource, false);
+    filteringAudioSource = new FilteringAudioSource(resamplingAudioSource, false);
+    //reversibleAudioSource->setPlayDirection(false);
+    //filteringAudioSource->setLowEQGain(0.001);
+    masterSource = filteringAudioSource;
+    
 	// set up the format manager
 	formatManager = new AudioFormatManager();
 	formatManager->registerBasicFormats();
-
-#ifdef JUCE_QUICKTIME
-	formatManager->registerFormat(new QuickTimeAudioFormat(), false);
-#endif
 	
 	if (filePath != String::empty)
 		setFile(path);
@@ -33,7 +37,7 @@ FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)
 
 FilteringAudioFilePlayer::~FilteringAudioFilePlayer()
 {
-	setSource (0);
+	audioTransportSource->setSource (0);
 	if (deleteFormatManager == false) {
 		formatManager.release();
 	}
@@ -50,21 +54,21 @@ void FilteringAudioFilePlayer::setAudioFormatManager(AudioFormatManager* newMana
 
 void FilteringAudioFilePlayer::startFromZero()
 {
-	if(currentAudioFileSource == 0)
+	if(currentAudioFormatReaderSource == nullptr)
 		return;
 	
-	setPosition (0.0);
-	start();
+	audioTransportSource->setPosition (0.0);
+	audioTransportSource->start();
 }
 
 void FilteringAudioFilePlayer::pause()
 {
-	if (isPlaying()) {
-		stop();
+	if (audioTransportSource->isPlaying()) {
+		audioTransportSource->stop();
 		shouldBePlaying = false;
 	}
 	else {
-		start();
+		audioTransportSource->start();
 		shouldBePlaying = true;
 	}
 }
@@ -73,8 +77,8 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 {
 	// should really delete/reset any exisiting data in case this method is callled more than once
 	// (which it isn't in this example)
-	stop();
-	setSource (0);
+	audioTransportSource->stop();
+	audioTransportSource->setSource (0);
 	
 	filePath = path;
 	
@@ -83,27 +87,27 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 	
 	if (reader != 0)
 	{										
-		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
-		currentAudioFileSource = new AudioFormatReaderSource (reader, true);
-		
+        // we SHOULD let the AudioFormatReaderSource delete the reader for us..
+		currentAudioFormatReaderSource = new AudioFormatReaderSource (reader, true);
+
 		// ..and plug it into our transport source
-		setSource (currentAudioFileSource,
-				   32768, // tells it to buffer this many samples ahead
-				   reader->sampleRate);
-		
+        audioTransportSource->setSource (currentAudioFormatReaderSource,
+                                         32768, // tells it to buffer this many samples ahead (this needs to be zero for it to play OOB)
+                                         reader->sampleRate);
+        
 		// let our listeners know that we have loaded a new file
-		sendChangeMessage();
+		audioTransportSource->sendChangeMessage();
 		listeners.call (&Listener::fileChanged, this);
 
 		if (shouldBePlaying)
-			start();
+			audioTransportSource->start();
 		
 		return true;
 	}
 	
 	setLibraryEntry(ValueTree::invalid);
 	
-	sendChangeMessage();
+	audioTransportSource->sendChangeMessage();
 	listeners.call (&Listener::fileChanged, this);
 
 	return false;
@@ -126,24 +130,39 @@ String FilteringAudioFilePlayer::getFileName()
 
 void FilteringAudioFilePlayer::setLooping(bool shouldLoop)
 {
-	if (currentAudioFileSource != 0)
-		currentAudioFileSource->setLooping(shouldLoop);
+	if (currentAudioFormatReaderSource != nullptr)
+		currentAudioFormatReaderSource->setLooping(shouldLoop);
 }
 
 void FilteringAudioFilePlayer::setResamplingRatio (const double samplesInPerOutputSample)
 {
-	FilteringAudioTransportSource::setResamplingRatio(samplesInPerOutputSample);
+	resamplingAudioSource->setResamplingRatio(samplesInPerOutputSample);
 	
 	listeners.call (&Listener::resamplingRatioChanged, this);
 }
 
-AudioFormatReader* FilteringAudioFilePlayer::audioFormatReaderFromFile(const String& path)
+//==============================================================================
+void FilteringAudioFilePlayer::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
-	File audioFile (path);
-	fileName = audioFile.getFileName();
-		
-	return formatManager->createReaderFor (audioFile);
+    if (masterSource != nullptr)
+        masterSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
+//    audioTransportSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
+
+void FilteringAudioFilePlayer::releaseResources()
+{
+    if (masterSource != nullptr)
+        masterSource->releaseResources();
+//    audioTransportSource->releaseResources();
+}
+
+void FilteringAudioFilePlayer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
+{
+//    audioTransportSource->getNextAudioBlock(bufferToFill);
+    if (masterSource != nullptr)
+        masterSource->getNextAudioBlock(bufferToFill);
+}
+
 //==============================================================================
 void FilteringAudioFilePlayer::addListener (FilteringAudioFilePlayer::Listener* const listener)
 {
@@ -153,6 +172,15 @@ void FilteringAudioFilePlayer::addListener (FilteringAudioFilePlayer::Listener* 
 void FilteringAudioFilePlayer::removeListener (FilteringAudioFilePlayer::Listener* const listener)
 {
     listeners.remove (listener);
+}
+
+//==============================================================================
+AudioFormatReader* FilteringAudioFilePlayer::audioFormatReaderFromFile(const String& path)
+{
+	File audioFile (path);
+	fileName = audioFile.getFileName();
+    
+	return formatManager->createReaderFor (audioFile);
 }
 
 //==============================================================================

@@ -23,7 +23,9 @@ BEGIN_DROWAUDIO_NAMESPACE
 
 // Audio
 #include "src/audio/dRowAudio_AudioFilePlayer.h"
-#include "src/audio/dRowAudio_ReversableAudioFormatReaderSource.h"
+#include "src/audio/dRowAudio_FilteringAudioSource.h"
+#include "src/audio/dRowAudio_SmoothingAudioSource.h"
+#include "src/audio/dRowAudio_ReversibleAudioSource.h"
 #include "src/audio/dRowAudio_FilteringAudioTransportSource.h"
 #include "src/audio/dRowAudio_FilteringAudioFilePlayer.h"
 
@@ -94,6 +96,7 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/utility/dRowAudio_Constants.h"
 #include "src/utility/dRowAudio_Utility.h"
 #include "src/utility/dRowAudio_StateVariable.h"
+#include "src/utility/dRowAudio_ChangeVariable.h"
 #include "src/utility/dRowAudio_XmlHelpers.h"
 #include "src/utility/dRowAudio_Comparators.h"
 #include "src/utility/dRowAudio_ITunesLibrary.h"

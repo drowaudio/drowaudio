@@ -39,13 +39,13 @@ DraggableWaveDisplay::DraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeU
 
 	// register with the file player to recieve update messages
 	filePlayer->addListener(this);
-	filePlayer->addChangeListener(this);
+	filePlayer->getAudioTransportSource()->addChangeListener(this);
 }
 
 DraggableWaveDisplay::~DraggableWaveDisplay()
 {
 	filePlayer->removeListener(this);
-	filePlayer->removeChangeListener(this);
+	filePlayer->getAudioTransportSource()->removeChangeListener(this);
 
 	if (!deleteCache)
 		thumbnailCache.release();
@@ -76,7 +76,7 @@ void DraggableWaveDisplay::paint(Graphics &g)
 		}
 	
 		// calculate starting positions
-		const int startPixelOffset = (playheadPos * w) - (timeToPixels(filePlayer->getCurrentPosition()) * zoomScale);
+		const int startPixelOffset = (playheadPos * w) - (timeToPixels(filePlayer->getAudioTransportSource()->getCurrentPosition()) * zoomScale);
 		int currXPos = startPixelOffset + (timeToPixels(waveImgs[currentImage]->startTime) * zoomScale);
 		int nextXPos = currXPos + waveImgs[currentImage]->img->getWidth() * zoomScale;
 		int prevXPos = currXPos - waveImgs[currentImage]->img->getWidth() * zoomScale;		
@@ -128,7 +128,7 @@ void DraggableWaveDisplay::timerCallback(const int timerId)
 {
 	if (timerId == waveformUpdated)
 	{
-		movedX = timeToPixels(filePlayer->getCurrentPosition());
+		movedX = timeToPixels(filePlayer->getAudioTransportSource()->getCurrentPosition());
 		
 		if (!movedX.areEqual())
 			repaint();
@@ -142,9 +142,9 @@ void DraggableWaveDisplay::timerCallback(const int timerId)
 			
 			if (currentXDrag)
 			{
-				double position = (filePlayer->getCurrentPosition() - pixelsToTime(currentXDrag));
+				double position = (filePlayer->getAudioTransportSource()->getCurrentPosition() - pixelsToTime(currentXDrag));
 							
-				filePlayer->setPosition(jlimit(0.0, fileLengthSecs, position));
+				filePlayer->getAudioTransportSource()->setPosition(jlimit(0.0, fileLengthSecs, position));
 				
 //				if(!filePlayer->isPlaying())
 //					filePlayer->start();
@@ -195,7 +195,7 @@ void DraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
 	if (player == filePlayer)
 	{
 		currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
-		fileLengthSecs = filePlayer->getTotalLength() / currentSampleRate;
+		fileLengthSecs = filePlayer->getAudioTransportSource()->getTotalLength() / currentSampleRate;
 		
 		DBG(filePlayer->getFileName()<<" - "<<currentSampleRate<<" - "<<fileLengthSecs);
 		
@@ -207,7 +207,7 @@ void DraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
 		createNewImageForWaveform(previousImage);
 		createNewImageForWaveform(nextImage);
 		
-		waveImgs[currentImage]->startTime = filePlayer->getCurrentPosition();
+		waveImgs[currentImage]->startTime = filePlayer->getAudioTransportSource()->getCurrentPosition();
 		waveImgs[nextImage]->startTime = waveImgs[currentImage]->startTime + pixelsToTime(getWidth()*2);
 		
 		startTimer(waveformLoading, 40);
@@ -254,10 +254,10 @@ void DraggableWaveDisplay::mouseDown(const MouseEvent &e)
 	
 	if (isDraggable)
 	{
-		if (filePlayer->isPlaying())
+		if (filePlayer->getAudioTransportSource()->isPlaying())
 		{
 			shouldBePlaying = true;
-			filePlayer->stop();
+			filePlayer->getAudioTransportSource()->stop();
 		}
 		else
 			shouldBePlaying = false;
@@ -274,10 +274,10 @@ void DraggableWaveDisplay::mouseUp(const MouseEvent &e)
 	
 	if (isDraggable)
 	{
-		if (shouldBePlaying && !filePlayer->isPlaying())
-			filePlayer->start();
-		else if ( !shouldBePlaying && filePlayer->isPlaying() )
-			filePlayer->stop();
+		if (shouldBePlaying && !filePlayer->getAudioTransportSource()->isPlaying())
+			filePlayer->getAudioTransportSource()->start();
+		else if ( !shouldBePlaying && filePlayer->getAudioTransportSource()->isPlaying() )
+			filePlayer->getAudioTransportSource()->stop();
 		
 		setMouseCursor(MouseCursor::NormalCursor);
 		
@@ -386,22 +386,22 @@ void DraggableWaveDisplay::filesDropped (const StringArray &files, int x, int y)
 	setMouseCursor(MouseCursor::NormalCursor);
 }
 //==============================================================================
-bool DraggableWaveDisplay::isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent)
+bool DraggableWaveDisplay::isInterestedInDragSource (const SourceDetails& dragSourceDetails)
 {
-	if (sourceDescription.startsWith("<ITEMS>")) {
+	if (dragSourceDetails.description.toString().startsWith("<ITEMS>")) {
 		return true;
 	}
 	
 	return false;	
 }
 
-void DraggableWaveDisplay::itemDragExit (const String &sourceDescription, Component *sourceComponent)
+void DraggableWaveDisplay::itemDragExit (const SourceDetails& dragSourceDetails)
 {
 }
 
-void DraggableWaveDisplay::itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y)
+void DraggableWaveDisplay::itemDropped (const SourceDetails& dragSourceDetails)
 {
-	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(sourceDescription));
+	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(dragSourceDetails.description.toString()));
 	
 	if (newTracks->getNumChildElements() > 0) {
 		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));

@@ -14,26 +14,26 @@ BEGIN_DROWAUDIO_NAMESPACE
 
 //========================================================================
 FilteringAudioTransportSource::FilteringAudioTransportSource()
-: source (0),
-resamplerSource (0),
-bufferingSource (0),
-positionableSource (0),
-masterSource (0),
-gain (1.0f),
-lastGain (1.0f),
-playing (false),
-stopped (true),
-sampleRate (44100.0),
-sourceSampleRate (0.0),
-resamplingRatio (1.0),
-blockSize (128),
-readAheadBufferSize (0),
-isPrepared (false),
-inputStreamEOF (false),
-lowEQGain(1.0),
-midEQGain(1.0),
-highEQGain(1.0),
-filterSource(true)
+:	source (0),
+	resamplerSource (0),
+	bufferingSource (0),
+	positionableSource (0),
+	masterSource (0),
+	gain (1.0f),
+	lastGain (1.0f),
+	playing (false),
+	stopped (true),
+	sampleRate (44100.0),
+	sourceSampleRate (0.0),
+	resamplingRatio (1.0),
+	blockSize (128),
+	readAheadBufferSize (0),
+	isPrepared (false),
+	inputStreamEOF (false),
+	lowEQGain(1.0),
+	midEQGain(1.0),
+	highEQGain(1.0),
+	filterSource(true)
 {
 	// instantiate the filters
 	lowEQFilterLeft = new IIRFilter();

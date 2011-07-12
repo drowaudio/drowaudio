@@ -108,11 +108,11 @@ public:
 	void filesDropped (const StringArray &files, int x, int y);
 	
 	//==============================================================================
-	bool isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent);
+	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
 	
-	void itemDragExit (const String &sourceDescription, Component *sourceComponent);
+	void itemDragExit (const SourceDetails& dragSourceDetails);
 	
-	void itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y);
+	void itemDropped (const SourceDetails& dragSourceDetails);
 	
 	//==============================================================================	
 	

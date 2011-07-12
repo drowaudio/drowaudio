@@ -51,6 +51,12 @@ forcedinline static double samplesToMs(int64 numSamples, double sampleRate)
 {	return (1000 * (numSamples / sampleRate));	}
 
 /**
+ Converts a number of samples to a time in seconds for a given sample rate.
+ */
+forcedinline static double samplesToSeconds(int64 numSamples, double sampleRate)
+{	return (numSamples / sampleRate);	}
+
+/**
 	Converts a time in seconds to a timecode string.
  */
 static const String timeToTimecodeString (const double seconds)

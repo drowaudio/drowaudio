@@ -18,7 +18,9 @@ PositionableWaveDisplay::PositionableWaveDisplay (FilteringAudioFilePlayer *sour
 	thumbnailCache(cacheToUse),
 	deleteCache(thumbnailCache ? false : true),
 	zoomFactor(1.0f),
-	firstLoad(true)
+	firstLoad(true),
+	isMouseDown(false),
+	interestedInDrag(false)
 {
 	formatManager = filePlayer->getAudioFormatManager();
 	
@@ -29,15 +31,12 @@ PositionableWaveDisplay::PositionableWaveDisplay (FilteringAudioFilePlayer *sour
 	
 	// register with the file player to recieve update messages
 	filePlayer->addListener(this);
-	filePlayer->addChangeListener(this);
 }
 
 PositionableWaveDisplay::~PositionableWaveDisplay()
 {
 	stopTimer(waveformUpdated);
-	
-	filePlayer->removeChangeListener(this);
-	
+		
 	if (!deleteCache)
 		thumbnailCache.release();
 }
@@ -74,7 +73,12 @@ void PositionableWaveDisplay::paint(Graphics &g)
 	g.drawVerticalLine(transportLineXCoord.getCurrent() + 1, 0, h);
 
 	g.setColour(Colours::white);
-	g.drawVerticalLine(transportLineXCoord.getCurrent(), 0, h);		
+	g.drawVerticalLine(transportLineXCoord.getCurrent(), 0, h);
+	
+	if (interestedInDrag) {
+		g.setColour(Colours::darkorange);
+		g.drawRect(0, 0, w, h, 2);
+	}
 }
 //====================================================================================
 void PositionableWaveDisplay::timerCallback(const int timerId)
@@ -84,7 +88,7 @@ void PositionableWaveDisplay::timerCallback(const int timerId)
 		const int w = getWidth();
 		const int h = getHeight();
 
-		transportLineXCoord = w * oneOverFileLength * filePlayer->getCurrentPosition();
+		transportLineXCoord = w * oneOverFileLength * filePlayer->getAudioTransportSource()->getCurrentPosition();
 		
 		// if the line has moved repaint the old and new positions of it
 		if (!transportLineXCoord.areEqual())
@@ -114,7 +118,7 @@ void PositionableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
 	if (player == filePlayer)
 	{
 		currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
-		fileLength = filePlayer->getTotalLength() / currentSampleRate;
+		fileLength = filePlayer->getAudioTransportSource()->getTotalLength() / currentSampleRate;
 		oneOverFileLength = 1.0 / fileLength;
 		
 		File newFile(filePlayer->getFilePath());
@@ -131,12 +135,6 @@ void PositionableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
 	}
 }
 
-void PositionableWaveDisplay::changeListenerCallback(ChangeBroadcaster* changedObject)
-{
-	if (changedObject == filePlayer)
-	{
-	}
-}
 //====================================================================================
 void PositionableWaveDisplay::setZoomFactor (float newZoomFactor)
 {
@@ -162,7 +160,7 @@ void PositionableWaveDisplay::mouseDown(const MouseEvent &e)
 	setMouseCursor(MouseCursor::IBeamCursor);
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->setPosition(position);
+	filePlayer->getAudioTransportSource()->setPosition(position);
 	repaint();		
 }
 
@@ -178,7 +176,7 @@ void PositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 	currentMouseX = e.x;
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->setPosition(position);
+	filePlayer->getAudioTransportSource()->setPosition(position);
 }
 //==============================================================================
 bool PositionableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
@@ -191,34 +189,52 @@ bool PositionableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
 }
 void PositionableWaveDisplay::fileDragEnter (const StringArray &files, int x, int y)
 {
+	interestedInDrag = true;
 	setMouseCursor(MouseCursor::CopyingCursor);
+	
+	repaint();
 }
 void PositionableWaveDisplay::fileDragExit (const StringArray &files)
 {
+	interestedInDrag = false;
 	setMouseCursor(MouseCursor::NormalCursor);	
+
+	repaint();
 }
 void PositionableWaveDisplay::filesDropped (const StringArray &files, int x, int y)
 {
+	interestedInDrag = false;
 	filePlayer->setFile(files[0]);
 	setMouseCursor(MouseCursor::NormalCursor);
+
+	repaint();
 }
+
 //==============================================================================
-bool PositionableWaveDisplay::isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent)
+bool PositionableWaveDisplay::isInterestedInDragSource (const SourceDetails& dragSourceDetails)
 {
-	if (sourceDescription.startsWith("<ITEMS>")) {
+	if (dragSourceDetails.description.toString().startsWith("<ITEMS>")) {
 		return true;
 	}
 	
 	return false;	
 }
 
-void PositionableWaveDisplay::itemDragExit (const String &sourceDescription, Component *sourceComponent)
+void PositionableWaveDisplay::itemDragEnter (const SourceDetails& dragSourceDetails)
 {
+	interestedInDrag = true;
+	repaint();
 }
 
-void PositionableWaveDisplay::itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y)
+void PositionableWaveDisplay::itemDragExit (const SourceDetails& dragSourceDetails)
 {
-	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(sourceDescription));
+	interestedInDrag = false;
+	repaint();
+}
+
+void PositionableWaveDisplay::itemDropped (const SourceDetails& dragSourceDetails)
+{
+	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(dragSourceDetails.description.toString()));
 	
 	if (newTracks->getNumChildElements() > 0) {
 		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));
@@ -228,6 +244,9 @@ void PositionableWaveDisplay::itemDropped (const String &sourceDescription, Comp
 			filePlayer->setFile(newFile.getFullPathName());
 		}
 	}
+	
+	interestedInDrag = false;
+	repaint();
 }
 
 
