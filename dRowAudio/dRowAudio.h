@@ -29,8 +29,6 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/audio/dRowAudio_FilteringAudioTransportSource.h"
 #include "src/audio/dRowAudio_FilteringAudioFilePlayer.h"
 
-#include "src/audio/dRowAudio_DraggableWaveDisplay.h"
-#include "src/audio/dRowAudio_PositionableWaveDisplay.h"
 //#include "src/audio/dRowAudio_TriBandAudioThumbnail.h"
 
 #include "src/audio/dRowAudio_AudioUtility.h"
@@ -83,11 +81,14 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
 #include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 
+// audiothumbnail
 #include "src/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h"
+#include "src/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h"
 #include "src/gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.h"
 #include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.h"
 #include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h"
 #include "src/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
+#include "src/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h"
 #include "src/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.h"
 #include "src/gui/audiothumbnail/dRowAudio_TriBandDraggableWaveDisplay.h"
 #include "src/gui/audiothumbnail/dRowAudio_SwitchableDraggableWaveDisplay.h"
