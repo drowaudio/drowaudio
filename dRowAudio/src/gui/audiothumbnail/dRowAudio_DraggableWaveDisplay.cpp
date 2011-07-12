@@ -5,7 +5,7 @@
  *  Copyright 2009 dRowAudio. All rights reserved.
  *
  */
-#include "../core/dRowAudio_StandardHeader.h"
+#include "../../core/dRowAudio_StandardHeader.h"
 
 BEGIN_DROWAUDIO_NAMESPACE
 

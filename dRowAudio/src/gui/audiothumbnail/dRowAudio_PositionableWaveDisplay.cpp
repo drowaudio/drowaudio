@@ -6,7 +6,7 @@
  *
  */
 
-#include "../core/dRowAudio_StandardHeader.h"
+#include "../../core/dRowAudio_StandardHeader.h"
 
 BEGIN_DROWAUDIO_NAMESPACE
 

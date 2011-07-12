@@ -9,11 +9,11 @@
 #ifndef _DRAGGABLEWAVEDISPLAY_H_
 #define _DRAGGABLEWAVEDISPLAY_H_
 
-#include "../core/dRowAudio_StandardHeader.h"
+#include "../../core/dRowAudio_StandardHeader.h"
 
-#include "dRowAudio_AudioUtility.h";
-#include "dRowAudio_FilteringAudioFilePlayer.h";
-#include "../utility/dRowAudio_StateVariable.h"
+#include "../../audio/dRowAudio_AudioUtility.h";
+#include "../../audio/dRowAudio_FilteringAudioFilePlayer.h";
+#include "../../utility/dRowAudio_StateVariable.h"
 
 /**
 	A class to display the waveform of an audio file.

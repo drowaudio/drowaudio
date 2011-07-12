@@ -23,8 +23,6 @@
 #include "src/audio/dRowAudio_FilteringAudioTransportSource.cpp"
 #include "src/audio/dRowAudio_FilteringAudioFilePlayer.cpp"
 
-#include "src/audio/dRowAudio_DraggableWaveDisplay.cpp"
-#include "src/audio/dRowAudio_PositionableWaveDisplay.cpp"
 //#include "src/audio/dRowAudio_TriBandAudioThumbnail.cpp"
 
 //#include "src/audio/MADAudioFormat.cpp"
