@@ -68,40 +68,56 @@ void ColouredDraggableWaveDisplay::thumbnailLoading(bool &isFullyLoaded, int64 &
 void ColouredDraggableWaveDisplay::refreshWaveform(int waveNum)
 {
 	WaveformSection* sectionToRefresh = waveImgs[waveNum];
-    
+
 	if(sectionToRefresh->img.isValid() && sectionToRefresh->needToRepaint)
 	{		
-		Graphics g(tempLargeImage);
-		g.fillAll(Colours::black);
-		
-		const double startTime = sectionToRefresh->startTime;
-		const double endTime = startTime + pixelsToTime(sectionToRefresh->img.getWidth());
-		bool sectionHasFullyRendered = samplesToSeconds(numSamplesFinished, currentSampleRate) >= endTime;
+		const double sectionStartTime = sectionToRefresh->lastTimeDrawn;
+        const double imageEndTime = sectionToRefresh->startTime + pixelsToTime(sectionToRefresh->img.getWidth());
+		const double sectionEndTime = jlimit(sectionStartTime, imageEndTime, numSamplesFinished * oneOverSampleRate);
+        const int startPixelX = roundToInt(timeToPixels(sectionStartTime - sectionToRefresh->startTime));
+        const int numPixels = roundToInt(timeToPixels(sectionEndTime - sectionStartTime));
+        
+        const int tempStartPixel = (roundToInt(timeToPixels(sectionStartTime - sectionToRefresh->startTime))) * 2;
+        const int tempNumPixels = numPixels * 2;
+        
+        Rectangle<int> tempRectangleToDraw (tempStartPixel, 0, tempNumPixels, tempLargeImage.getHeight());
+        Rectangle<int> destRectangleToDraw (startPixelX, 0, numPixels, sectionToRefresh->img.getHeight());
 
-		thumbnailView->drawColouredChannel(g, Rectangle<int> (0, 0, tempLargeImage.getWidth(), tempLargeImage.getHeight()),
-										   startTime, endTime,
+		Graphics g(tempLargeImage);
+        tempLargeImage.clear(tempRectangleToDraw, Colours::black);
+        
+		thumbnailView->drawColouredChannel(g, tempRectangleToDraw,
+										   sectionStartTime, sectionEndTime,
 										   0, 1.0f);
 
-		if (startTime < 0.0) {
-			g.setColour(Colours::darkgrey);
-			g.fillRect(0, 0, 2 * timeToPixels(-startTime), tempLargeImage.getHeight());
+        if (sectionStartTime < 0.0) 
+        {
+            g.setColour(Colours::darkgrey);
+            g.fillRect(tempStartPixel, 0, roundToInt(timeToPixels(-sectionStartTime * 2.0)), tempLargeImage.getHeight());
+        }
+        
+        // create temp image to draw onto to avoid locking
+        Image tempImage(sectionToRefresh->img);
+        tempImage.duplicateIfShared();
+        
+        Graphics g2(tempImage);
+        g2.drawImage(tempLargeImage,
+                     destRectangleToDraw.getX(), destRectangleToDraw.getY(), destRectangleToDraw.getWidth(), destRectangleToDraw.getHeight(),
+                     tempRectangleToDraw.getX(), tempRectangleToDraw.getY(), tempRectangleToDraw.getWidth(), tempRectangleToDraw.getHeight());
+        
+        // lock whilst copying
+        {
+            const MessageManagerLock mmLock;
+            sectionToRefresh->img = tempImage;
 		}
-		
-		ScopedLock sl(lock);
-		Graphics g2(sectionToRefresh->img);
-
-		g2.drawImage(tempLargeImage,
-					 0, 0, sectionToRefresh->img.getWidth(), sectionToRefresh->img.getHeight(),
-					 0, 0, tempLargeImage.getWidth(), tempLargeImage.getHeight(),
-					 false);
-		
 //		g2.setColour(Colours::red);
 //		g2.drawText(String(sectionToRefresh->startTime),
 //					0, sectionToRefresh->img.getHeight()*0.75,
 //					60, 20,
 //					Justification(Justification::left), false);
 
-		sectionToRefresh->needToRepaint = ! sectionHasFullyRendered;
+        sectionToRefresh->lastTimeDrawn = sectionEndTime;
+		sectionToRefresh->needToRepaint = sectionEndTime <= imageEndTime;
 
 		triggerAsyncUpdate();
 	}	

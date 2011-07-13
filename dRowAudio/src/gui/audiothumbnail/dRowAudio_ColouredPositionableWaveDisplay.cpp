@@ -17,13 +17,16 @@ ColouredPositionableWaveDisplay::ColouredPositionableWaveDisplay (FilteringAudio
                                                                   ColouredAudioThumbnail *thumbnailToUse)
 :	filePlayer (sourceToBeUsed),
 	currentSampleRate (44100.0),
+    oneOverSampleRate (1.0),
     thumbnailCache (cacheToUse, (cacheToUse == nullptr) ? true : false),
     thumbnailView (thumbnailToUse, (thumbnailToUse == nullptr) ? true : false),
 	zoomFactor (1.0f),
     isInitialised (false),
 	isMouseDown (false),
-	interestedInDrag (false)
+	interestedInDrag (false),
+    lastTimeDrawn(0.0)
 {
+    setOpaque(true);
     waveformImage = Image(Image::RGB, 1, 1, false);
 
 	formatManager = filePlayer->getAudioFormatManager();
@@ -107,6 +110,8 @@ void ColouredPositionableWaveDisplay::timerCallback(const int timerId)
 	{
         tempImage = Image(Image::RGB, getWidth() * 3, getHeight(), true);
 		waveformImage = Image(Image::RGB, getWidth(), getHeight(), true);
+        waveformImage.clear(waveformImage.getBounds(), Colours::black);
+        lastTimeDrawn = 0.0;
 		refreshWaveform();
 		stopTimer(waveformResizing);
 	}
@@ -135,20 +140,28 @@ void ColouredPositionableWaveDisplay::fileChanged (FilteringAudioFilePlayer *pla
 	if (player == filePlayer)
 	{
 		currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
-		fileLength = filePlayer->getAudioTransportSource()->getTotalLength() / currentSampleRate;
-		oneOverFileLength = 1.0 / fileLength;
-		
-		File newFile(filePlayer->getFilePath());
-		if (newFile.existsAsFile()) {
-			FileInputSource* fileInputSource = new FileInputSource (newFile);
-			thumbnailView->setSource(fileInputSource);
-		}
-		else {
-			thumbnailView->setSource(0);
-		}
-		
-		//startTimer(waveformLoading, 25);
-		startTimer(waveformUpdated, 40);		
+
+        if (currentSampleRate > 0.0)
+        {
+            oneOverSampleRate = 1.0 / currentSampleRate;
+            fileLength = filePlayer->getAudioTransportSource()->getTotalLength() * oneOverSampleRate;
+            oneOverFileLength = 1.0 / fileLength;
+            
+            waveformImage.clear(waveformImage.getBounds(), Colours::black);
+            lastTimeDrawn = 0.0;
+            triggerAsyncUpdate();
+
+            File newFile(filePlayer->getFilePath());
+            if (newFile.existsAsFile()) {
+                FileInputSource* fileInputSource = new FileInputSource (newFile);
+                thumbnailView->setSource(fileInputSource);
+            }
+            else {
+                thumbnailView->setSource(0);
+            }
+            
+            startTimer(waveformUpdated, 40);
+        }
 	}
 }
 
@@ -266,31 +279,39 @@ void ColouredPositionableWaveDisplay::itemDropped (const SourceDetails& dragSour
 	triggerAsyncUpdate();
 }
 
-
 //==============================================================================	
 void ColouredPositionableWaveDisplay::refreshWaveform()
 {
-	if(waveformImage.isValid())
+	if(waveformImage.isValid() && filePlayer->getFileName().isNotEmpty())
 	{
         Graphics gTemp(tempImage);
-        gTemp.fillAll(Colours::black);
         
-        if (filePlayer->getFileName().isNotEmpty())
-		{
-			thumbnailView->drawColouredChannel(gTemp, Rectangle<int> (0, 0, tempImage.getWidth(), tempImage.getHeight()),
-                                               0.0, fileLength,
-                                               0, 1.0f);
-		}
+        const double endTime = thumbnailView->getNumSamplesFinished() * oneOverSampleRate;
+        const int startPixelX = roundToInt(lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
+        const int numPixels = roundToInt((endTime - lastTimeDrawn) * oneOverFileLength * waveformImage.getWidth());
+
+        Rectangle<int> rectangleToDraw (startPixelX * 3, 0, numPixels * 3, tempImage.getHeight());
         
+        gTemp.setColour(Colours::black);
+        gTemp.fillRect(rectangleToDraw);
+        
+        thumbnailView->drawColouredChannel(gTemp, rectangleToDraw,
+                                           lastTimeDrawn, endTime,
+                                           0, 1.0f);
+        lastTimeDrawn = endTime;
         
 		Graphics g(waveformImage);
-		waveformImage.clear(waveformImage.getBounds(), Colours::black);
         g.drawImage(tempImage,
-                    0, 0, waveformImage.getWidth(), waveformImage.getHeight(),
-                    0, 0, tempImage.getWidth(), tempImage.getHeight());
+                    startPixelX, 0, numPixels, waveformImage.getHeight(),
+                    startPixelX * 3, 0, numPixels * 3, tempImage.getHeight());
 		
-		triggerAsyncUpdate();
-	}	
+        repaint(Rectangle<int>(startPixelX, 0, numPixels, waveformImage.getHeight()));
+	}
+	else
+    {
+        Graphics g(waveformImage);
+		waveformImage.clear(waveformImage.getBounds(), Colours::black);
+    }
 }
 
 //==============================================================================

@@ -104,7 +104,7 @@ private:
 	void refreshWaveform();
 	
 	FilteringAudioFilePlayer* filePlayer;
-	double fileLength, oneOverFileLength, currentSampleRate;
+	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
 	
 	// thumbnail classes
 	AudioFormatManager* formatManager;
@@ -119,6 +119,8 @@ private:
 	
 	bool isInitialised, isMouseDown, interestedInDrag;
 	double currentMouseX;
+    
+    double lastTimeDrawn;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColouredPositionableWaveDisplay);
 };

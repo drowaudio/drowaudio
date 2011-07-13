@@ -18,6 +18,7 @@ AbstractDraggableWaveDisplay::AbstractDraggableWaveDisplay(int sourceSamplesPerT
 :	Thread("DraggableWaveDisplayThread"),
 	filePlayer(sourceToBeUsed),
 	currentSampleRate(44100),
+    oneOverSampleRate(1.0 / currentSampleRate),
 	timePerPixel(1.0),
 	zoomFactor(0.5f),
 	playheadPos(0.5f),
@@ -44,7 +45,7 @@ AbstractDraggableWaveDisplay::AbstractDraggableWaveDisplay(int sourceSamplesPerT
 
 	zoomFactor = zoomFactor.getCurrent();
 	samplesPerPixel = sourceSamplesPerThumbSample / zoomFactor.getCurrent();
-	timePerPixel = samplesPerPixel.getCurrent() / currentSampleRate;
+	timePerPixel = samplesPerPixel.getCurrent() * oneOverSampleRate;
 		
 	createNewImagesForAllWaveforms();
 	
@@ -54,7 +55,7 @@ AbstractDraggableWaveDisplay::AbstractDraggableWaveDisplay(int sourceSamplesPerT
 
 AbstractDraggableWaveDisplay::~AbstractDraggableWaveDisplay()
 {
-	stopThread(5000);
+	stopThread(10000);
 
 	filePlayer->removeListener(this);
 }
@@ -229,7 +230,7 @@ void AbstractDraggableWaveDisplay::timerCallback(const int timerId)
 	{
 		zoomFactor = zoomFactor.getCurrent();
 		samplesPerPixel = sourceSamplesPerThumbSample / zoomFactor.getCurrent();
-		timePerPixel = samplesPerPixel.getCurrent() / currentSampleRate;
+		timePerPixel = samplesPerPixel.getCurrent() * oneOverSampleRate;
 		
 		createNewImagesForAllWaveforms();
 		markAsDirty();
@@ -272,17 +273,23 @@ void AbstractDraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player
 	if (player == filePlayer)
 	{
 		currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
-		fileLengthSecs = filePlayer->getAudioTransportSource()->getTotalLength() / currentSampleRate;
+        
+        if (currentSampleRate > 0.0)
+        {
+            oneOverSampleRate = (1.0 / currentSampleRate);
+            fileLengthSecs = filePlayer->getAudioTransportSource()->getTotalLength() * oneOverSampleRate;
+            oneOverFileLength = 1.0 / fileLengthSecs;
+            
+            // reset counters so waveform gets properly refreshed
+            waveformIsFullyLoaded = false;
+            numSamplesFinished = 0;
 
-        // reset counters so waveform gets properly refreshed
-        waveformIsFullyLoaded = false;
-        numSamplesFinished = 0;
-
-		newFileLoaded();
-		markAsDirty();
-		
-		//startTimer(waveformLoading, 40);
-		startTimer(waveformUpdated, 15);
+            newFileLoaded();
+            markAsDirty();
+            
+            //startTimer(waveformLoading, 40);
+            startTimer(waveformUpdated, 15);
+        }
 	}
 }
 
@@ -303,6 +310,10 @@ void AbstractDraggableWaveDisplay::markAsDirty()
 	waveImgs[previousImage]->startTime = waveImgs[currentImage]->startTime - timePerSection;
 	waveImgs[nextImage]->startTime = waveImgs[currentImage]->startTime + timePerSection;
 
+    waveImgs[currentImage]->lastTimeDrawn = waveImgs[currentImage]->startTime;
+    waveImgs[previousImage]->lastTimeDrawn = waveImgs[previousImage]->startTime;
+    waveImgs[nextImage]->lastTimeDrawn = waveImgs[nextImage]->startTime;
+    
 	refreshWaveformsOnBackgroundThread();
 }
 
@@ -463,6 +474,7 @@ void AbstractDraggableWaveDisplay::cycleImages(bool cycleForwards)
 		waveImgs.set(nextImage, temp, false);
 		
 		waveImgs[nextImage]->startTime = waveImgs[currentImage]->startTime + pixelsToTime(getWidth() * 2);
+        waveImgs[nextImage]->lastTimeDrawn = waveImgs[nextImage]->startTime;
 		waveImgs[nextImage]->needToRepaint = true;
 	}
 	else
@@ -476,7 +488,8 @@ void AbstractDraggableWaveDisplay::cycleImages(bool cycleForwards)
 		waveImgs.set(previousImage, temp, false);
 		
 		waveImgs[previousImage]->startTime = waveImgs[currentImage]->startTime - pixelsToTime(getWidth() * 2);
-		waveImgs[previousImage]->needToRepaint = true;
+        waveImgs[previousImage]->lastTimeDrawn = waveImgs[previousImage]->startTime;
+        waveImgs[previousImage]->needToRepaint = true;
 	}
 	
 	refreshWaveformsOnBackgroundThread();

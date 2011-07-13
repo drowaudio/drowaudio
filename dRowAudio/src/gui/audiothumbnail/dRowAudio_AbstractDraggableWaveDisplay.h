@@ -169,6 +169,7 @@ protected:
 	
 	struct WaveformSection {
 		double startTime;
+        double lastTimeDrawn;
 		bool needToRepaint;
         Image img;
 	};
@@ -200,7 +201,7 @@ protected:
 	CriticalSection lock;
 	
 	FilteringAudioFilePlayer* filePlayer;
-	double fileLengthSecs, currentSampleRate, timePerPixel;
+	double fileLengthSecs, oneOverFileLength, currentSampleRate, oneOverSampleRate, timePerPixel;
 	StateVariable<int> samplesPerPixel;
 	StateVariable<float> zoomFactor;
 	float playheadPos;
