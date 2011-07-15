@@ -15,10 +15,10 @@ BEGIN_DROWAUDIO_NAMESPACE
 juce_ImplementSingleton(ITunesLibrary);
 
 ITunesLibrary::ITunesLibrary()
-:	libraryTree("DATA")
+:	//libraryFile (getDefaultITunesLibraryFile()),
+    libraryTree("DATA")
 {
-	File libraryFile (File::getSpecialLocation(File::userMusicDirectory).getChildFile("iTunes/iTunes Music Library.xml"));
-	setLibraryFile(libraryFile);
+	//setLibraryFile(libraryFile);
 }
 
 ITunesLibrary::~ITunesLibrary()
@@ -29,11 +29,51 @@ void ITunesLibrary::setLibraryFile(File newFile)
 {
 	if (newFile.existsAsFile()) 
 	{
-		libraryTree.removeAllChildren(0);
+		//libraryTree.removeAllChildren(0);
 		listeners.call (&Listener::libraryChanged, this);
 		parser = new ITunesLibraryParser(newFile, libraryTree);
 		startTimer(500);
 	}	
+}
+
+bool ITunesLibrary::loadSavedLibraryIfNewer(File savedLibraryFile)
+{
+    ScopedPointer<XmlElement> elm(XmlDocument::parse(savedLibraryFile));
+    if (elm != nullptr)
+    {
+        ValueTree savedTree(ValueTree::fromXml(*elm));
+        
+        if (savedLibraryFile.getLastModificationTime() > getDefaultITunesLibraryFile().getLastModificationTime()) 
+        {
+            setLibraryTree(savedTree);
+            
+            return true;
+        }
+        else if (savedTree.hasType("DATA")) //attempt to update existing
+        {
+            libraryTree = savedTree;
+        }
+    }
+    
+    setLibraryFile(ITunesLibrary::getDefaultITunesLibraryFile());
+    
+    return false;
+}
+
+const File& ITunesLibrary::getLibraryFile()
+{
+    return libraryFile;
+}
+
+void ITunesLibrary::setLibraryTree(ValueTree newTreeToUse)
+{
+    if (newTreeToUse.hasType("DATA"))
+    {
+        libraryTree = newTreeToUse;
+        listeners.call (&Listener::libraryChanged, this);
+		listeners.call (&Listener::libraryUpdated, this);
+        listeners.call (&Listener::libraryFinished, this);
+    }
 }
 
 void ITunesLibrary::timerCallback()
@@ -48,6 +88,16 @@ void ITunesLibrary::timerCallback()
 			listeners.call (&Listener::libraryFinished, this);
 		}
 	}
+}
+
+//==============================================================================
+File ITunesLibrary::getDefaultITunesLibraryFile()
+{
+#ifdef JUCE_MAC
+    return File::getSpecialLocation(File::userMusicDirectory).getChildFile("iTunes/iTunes Music Library.xml");
+#else
+    return File::nonexistent;
+#endif
 }
 
 //==============================================================================

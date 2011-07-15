@@ -20,6 +20,7 @@ FilteringAudioFilePlayer::FilteringAudioFilePlayer(const String& path)
 	deleteFormatManager(true)
 {
     audioTransportSource = new AudioTransportSource();
+    //smoothingAudioSource = new SmoothingAudioSource(audioTransportSource, false);
     reversibleAudioSource = new ReversibleAudioSource(audioTransportSource, false);
     resamplingAudioSource = new ResamplingAudioSource(reversibleAudioSource, false);
     filteringAudioSource = new FilteringAudioSource(resamplingAudioSource, false);

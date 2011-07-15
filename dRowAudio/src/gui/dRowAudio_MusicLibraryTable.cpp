@@ -80,6 +80,7 @@ MusicLibraryTable::MusicLibraryTable()
 	table->getHeader().setColumnVisible (Columns::ID, false);
 	table->getHeader().setColumnVisible (Columns::Rating, false);
 	table->getHeader().setColumnVisible (Columns::Location, false);
+	table->getHeader().setColumnVisible (Columns::Modified, false);
 	
 	// un-comment this line to have a go of stretch-to-fit mode
 	// table->getHeader()->setStretchToFitActive (true);
@@ -116,7 +117,7 @@ void MusicLibraryTable::libraryChanged (ITunesLibrary *library)
 	{
 		DBG("library changed");
 		filteredDataList = &dataList;
-		dataList.removeAllChildren(0);
+		//dataList.removeAllChildren(nullptr);
 		dataList = library->getLibraryTree();
 		filteredNumRows = numRows = dataList.getNumChildren();
 		finishedLoading = false;
@@ -133,6 +134,7 @@ void MusicLibraryTable::libraryUpdated (ITunesLibrary *library)
 		DBG("num finished: "<<filteredNumRows);
 		
 		table->updateContent();
+        table->getHeader().reSortTable();
 	}
 }
 
@@ -181,8 +183,9 @@ void MusicLibraryTable::paintCell (Graphics& g,
 		String text;
 		if(columnId == Columns::Length)
 			text = secondsToTimeLength(rowElement[(Columns::columnNames[columnId])].toString().getIntValue());
-		else if(columnId == Columns::Added)
-			text = parseDateString(rowElement[Columns::columnNames[columnId]].toString());
+		else if(columnId == Columns::Added
+                || columnId == Columns::Modified)
+			text = Time(int64(rowElement[Columns::columnNames[columnId]])).formatted("%d/%m/%Y - %H:%M");
 		else
 			text = (rowElement[Columns::columnNames[columnId]].toString());
 
@@ -201,7 +204,9 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, const bool isForw
 		if (newSortColumnId == Columns::Length
 			|| newSortColumnId == Columns::BPM
 			|| newSortColumnId == Columns::LibID
-			|| newSortColumnId == Columns::ID)
+			|| newSortColumnId == Columns::ID
+            || newSortColumnId == Columns::Added
+            || newSortColumnId == Columns::Modified)
 		{
 			ValueTreeComparators::Numerical sorter (Columns::columnNames[newSortColumnId], isForwards);
 			filteredDataList->sort (sorter, 0, false);

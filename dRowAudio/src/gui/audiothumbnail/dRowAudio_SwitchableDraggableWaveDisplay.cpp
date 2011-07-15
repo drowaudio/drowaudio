@@ -13,12 +13,13 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "dRowAudio_SwitchableDraggableWaveDisplay.h"
 
 SwitchableDraggableWaveDisplay::SwitchableDraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed,
-															   MultipleAudioThumbnailCache *cacheToUse)
+															   MultipleAudioThumbnailCache *cacheToUse,
+                                                               ColouredAudioThumbnail *colouredThumbnailToUse)
 :	showSeparate(false),
 	togglePlay(true),
 	filePlayer(sourceToBeUsed)
 {
-	addAndMakeVisible(colouredWave = new ColouredDraggableWaveDisplay(128, sourceToBeUsed, cacheToUse));
+	addAndMakeVisible(colouredWave = new ColouredDraggableWaveDisplay(128, sourceToBeUsed, cacheToUse, colouredThumbnailToUse));
 	addChildComponent(separateWave = new TriBandDraggableWaveDisplay(128, sourceToBeUsed, cacheToUse));
 	
 	colouredWave->setInterceptsMouseClicks(false, false);

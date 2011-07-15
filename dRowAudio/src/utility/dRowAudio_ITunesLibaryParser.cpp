@@ -34,68 +34,137 @@ ITunesLibraryParser::~ITunesLibraryParser()
 
 void ITunesLibraryParser::run()
 {
+    Array<int> existingIds;
+    if (!threadShouldExit())
+    {
+        if (treeToFill.hasType("DATA"))
+        {
+            for (int i = 0; i < treeToFill.getNumChildren(); ++i)
+            {
+                int idOfChild = int(treeToFill.getChild(i).getProperty(Columns::columnNames[Columns::ID]));
+                existingIds.add(idOfChild);
+            }
+            
+        }
+    }
+
 	while (!threadShouldExit())
 	{
+        int currentItemId = -1;
+        ValueTree newElement;
+
+        bool alreadyExists = false;
+        bool needToModify = false;
+        bool isAudioFile = false;
+        
+        while (currentElement != nullptr)
+        {
+            if (currentElement->getTagName() == "key")
+            {
+                currentItemId = currentElement->getAllSubText().getIntValue();
+                
+                if (existingIds.contains(currentItemId))
+                {
+                    alreadyExists = true;
+                    existingIds.removeValue(currentItemId);
+                    newElement = treeToFill.getChildWithProperty(Columns::columnNames[Columns::ID], currentItemId);
+                }
+                else
+                {
+                    alreadyExists = false;
+                    newElement = ValueTree("ITEM");
+                    newElement.setProperty(Columns::columnNames[Columns::ID], currentItemId, nullptr);
+                }
+                
+                if (alreadyExists)
+                {
+                    XmlElement *trackDetails = currentElement->getNextElement();
+                    
+                    forEachXmlChildElement(*trackDetails, e)
+                    {
+                        if (e->getAllSubText() == Columns::iTunesNames[Columns::Modified])
+                        {
+                            int64 newModifiedTime = parseITunesDateString(e->getNextElement()->getAllSubText()).toMilliseconds();
+                            int64 currentModifiedTime = newElement.getProperty(Columns::columnNames[Columns::Modified]);
+                                                        
+                            if (newModifiedTime > currentModifiedTime)
+                                needToModify = true;
+                            
+                            break;
+                        }
+                    }
+                }
+            }
+
+            currentElement = currentElement->getNextElement();
+            
+            if (needToModify || (! alreadyExists))
+                break;
+        }
+        
+        // check to see if we have reached the end
+        if (currentElement == nullptr)
+		{
+			finished = true;
+			signalThreadShouldExit();
+            break;
+        }            
+        
 		if (currentElement->getTagName() == "dict")
 		{
-			ValueTree newElement("ITEM");
-			
-			bool add = false;
-			// cycle through items of each track
+            // cycle through items of each track
 			forEachXmlChildElement(*currentElement, e2)
 			{	
-				if (e2->getAllSubText() == "Kind") {
+                String elementKey (e2->getAllSubText());
+                
+				if (elementKey == "Kind")
+                {
 					if (e2->getNextElement()->getAllSubText().contains("audio file"))
 					{
-						newElement.setProperty(Columns::columnNames[1], numAdded, 0);
+                        isAudioFile = true;
+						newElement.setProperty(Columns::columnNames[Columns::LibID], numAdded, nullptr);
 						numAdded++;
-						add = true;
 					}
 				}
 				
 				for(int i = 2; i < Columns::numColumns; i++)
 				{					
-					if (e2->getAllSubText() == Columns::iTunesNames[i])
+					if (elementKey == Columns::iTunesNames[i])
 					{
 						String entry = e2->getNextElement()->getAllSubText();
 						
 						if (i == Columns::Length
 							|| i == Columns::BPM
-							|| i == Columns::LibID
-							|| i == Columns::ID)
+							|| i == Columns::LibID)
 						{
-							newElement.setProperty(Columns::columnNames[i], entry.getDoubleValue(), 0);
+							newElement.setProperty(Columns::columnNames[i], entry.getIntValue(), nullptr);
 						}
+                        else if (i == Columns::Added
+                                 || i == Columns::Modified)
+                        {            
+                            int64 timeInMilliseconds(parseITunesDateString(entry).toMilliseconds());
+                                                        
+                            newElement.setProperty(Columns::columnNames[i], timeInMilliseconds, nullptr);
+                        }
 						else
 						{
-							if (i == Columns::Location) {
+							if (i == Columns::Location)
 								entry = stripFileProtocolForLocal(entry);
-							}
-							newElement.setProperty(Columns::columnNames[i], entry, 0);
+
+							newElement.setProperty(Columns::columnNames[i], entry, nullptr);
 						}
 					}
 				}
 			}
 
-			if (add == true) {
+			if (isAudioFile == true)
+            {
 				ScopedLock sl(lock);
-				treeToFill.addChild(newElement, -1, 0);
+				treeToFill.addChild(newElement, -1, nullptr);
 			}
+            
+            currentElement = currentElement->getNextElement();
 		}		
-
-		currentElement = currentElement->getNextElement();
-		
-		if (currentElement == 0)
-		{
-			finished = true;
-			signalThreadShouldExit();
-//			DBG("total added now: "<<numAdded);
-//			DBG("from tree: "<<treeToFill.getNumChildren());
-			
-//			File output(File::getSpecialLocation(File::userDesktopDirectory).getChildFile("library.xml"));
-//			ScopedPointer<XmlElement> xmlOutput(treeToFill.createXml());
-//			xmlOutput->writeToFile(output, "", "", 800);
-		}
 	}
 }
 

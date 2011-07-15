@@ -34,6 +34,7 @@ namespace Columns {
 		Length,
 		Kind,
 		Added,
+        Modified,
 		Location,
 		Score,
 		numColumns
@@ -55,6 +56,7 @@ namespace Columns {
 		"Length",
 		"Kind",
 		"Added",
+        "Modified",
 		"Location",
 		"Score"
 	};
@@ -75,6 +77,7 @@ namespace Columns {
 		"Total Time",
 		"Kind",
 		"Date Added",
+        "Date Modified",
 		"Location",
 		"Score"
 	};
@@ -95,11 +98,18 @@ namespace Columns {
 		80,
 		60,
 		125,
+		125,
 		300,
 		60
 	};
 }
 
+/** Represents an iTunes Xml library into a value tree.
+ 
+    If the tree passed in already contains a generated library this will merge
+    any new data from the file into it preserving and sub-trees or attributes
+    that may have been added.
+ */
 class ITunesLibraryParser : public Thread
 {
 public:

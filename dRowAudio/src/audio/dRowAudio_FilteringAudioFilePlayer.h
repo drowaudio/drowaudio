@@ -14,6 +14,7 @@
 
 //#include "dRowAudio_FilteringAudioTransportSource.h"
 #include "dRowAudio_ReversibleAudioSource.h"
+#include "dRowAudio_smoothingAudioSource.h"
 #include "dRowAudio_FilteringAudioSource.h"
 
 /**
@@ -165,6 +166,7 @@ private:
     AudioSource* masterSource;
 	ScopedPointer<AudioFormatReaderSource> currentAudioFormatReaderSource;
 	ScopedPointer<AudioTransportSource> audioTransportSource;
+    //ScopedPointer<SmoothingAudioSource> smoothingAudioSource;
 	ScopedPointer<ReversibleAudioSource> reversibleAudioSource;
 	ScopedPointer<ResamplingAudioSource> resamplingAudioSource;
 	ScopedPointer<FilteringAudioSource> filteringAudioSource;

@@ -21,7 +21,9 @@
 class SwitchableDraggableWaveDisplay : public Component
 {
 public:
-	SwitchableDraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed, MultipleAudioThumbnailCache *cacheToUse =0);
+	SwitchableDraggableWaveDisplay(FilteringAudioFilePlayer* sourceToBeUsed,
+                                   MultipleAudioThumbnailCache *cacheToUse =nullptr,
+                                   ColouredAudioThumbnail *colouredThumbnailToUse =nullptr);
 	
 	~SwitchableDraggableWaveDisplay();
 

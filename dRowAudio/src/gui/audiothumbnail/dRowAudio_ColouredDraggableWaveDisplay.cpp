@@ -28,6 +28,7 @@ ColouredDraggableWaveDisplay::ColouredDraggableWaveDisplay (int sourceSamplesPer
                                                                    true);
         thumbnailView = newThumbnail;
     }
+
     thumbnailView->addChangeListener(this);
 }
 
