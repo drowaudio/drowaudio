@@ -53,7 +53,7 @@ MusicLibraryTable::MusicLibraryTable()
 	loadData();
 
 	// Create our table component and add it to this component..
-	addAndMakeVisible (table = new TableListBox (T("demo table"), this));
+	addAndMakeVisible (table = new TableListBox ("demo table", this));
 	table->setColour(ListBox::backgroundColourId, Colour::greyLevel(0.2));
 	table->setHeaderHeight(18);
 	table->setRowHeight(16);
@@ -244,8 +244,6 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
 //==========================================================================================
 void MusicLibraryTable::setFilterText (String filterString)
 {
-	DBG(filterString);
-	
 	if (filterString == String::empty)
 	{
 		filteredDataList = &dataList;

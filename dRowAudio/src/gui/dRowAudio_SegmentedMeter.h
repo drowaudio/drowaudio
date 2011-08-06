@@ -67,10 +67,7 @@ public:
 	
 	/**	@internal
 	 */
-	void resized()
-	{
-		needsRepaint = true;
-	}
+	void resized();
 
 	/**	@internal
 	 */
@@ -106,7 +103,7 @@ public:
 
 	/**	Returns the total number of segments that represent the safe level.
 	 */
-	int	getNoSafeSegments()	{	return noGreenSeg;	}
+	int	getNoSafeSegments()     {	return noGreenSeg;	}
 	
 	/**	Returns the number of decibels each segment represents.
 	 */
@@ -140,6 +137,8 @@ private:
 	StateVariable<float> level;
 	bool needsRepaint;
 	
+    Image onImage, offImage;
+    
 	JUCE_LEAK_DETECTOR (SegmentedMeter);
 };
 

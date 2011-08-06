@@ -15,12 +15,45 @@
 
 #include "dRowAudio_Utility.h"
 
+namespace LoopAndCueHelpers
+{
+
+    /** Returns the time from a give cue point index in a cue point tree.
+        The index starts at 0 and will return 0.0 if the index is out of range.
+     */
+    inline double getTimeFromCueString (ValueTree& cueTree, int index)
+    {
+        if (index < cueTree.getNumProperties())
+        {
+            const String property(cueTree.getProperty(cueTree.getPropertyName(index)).toString());
+            return property.upToFirstOccurrenceOf(",", false, false).getDoubleValue();
+        }
+        
+        return 0.0;
+    }
+
+    /** Returns the time from a give cue point index in a cue point tree.
+        The index starts at 0 and will return white if the index is out of range.
+     */
+    inline uint32 getColourFromCueString (ValueTree& cueTree, int index)
+    {
+        if (index < cueTree.getNumProperties())
+        {
+            const String property(cueTree.getProperty(cueTree.getPropertyName(index)).toString());
+            return (uint32)property.fromLastOccurrenceOf(",", false, false).getLargeIntValue();
+        }
+        
+        return 0xffffffff;
+    }    
+}
+
 /**	Details the colums of the table.
  */
 namespace Columns {
     
     static const Identifier libraryIdentifier ("DATA");
     static const Identifier libraryItemIdentifier ("ITEM");
+    static const Identifier libraryCuePointIdentifier ("CUE");
     
 	enum colums {
 		Dummy,

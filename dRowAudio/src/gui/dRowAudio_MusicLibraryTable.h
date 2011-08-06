@@ -49,7 +49,7 @@ public:
     ~MusicLibraryTable();
 
     //==============================================================================
-	void setLibraryToUse(ITunesLibrary *library);
+	void setLibraryToUse (ITunesLibrary *library);
 
 	void libraryChanged (ITunesLibrary *library);
 	
@@ -84,7 +84,7 @@ public:
 	void setFilterText (String filterText);
 		
 	//	Returns the table list box component.
-	TableListBox*	getTableListBox()	{	return table;	};
+	TableListBox* getTableListBox()	{	return table;	};
 	
     //==============================================================================
     void resized();
@@ -96,7 +96,6 @@ public:
 	const var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
 	
     //==============================================================================
-    juce_UseDebuggingNewOperator
 
 private:
     Font font;	

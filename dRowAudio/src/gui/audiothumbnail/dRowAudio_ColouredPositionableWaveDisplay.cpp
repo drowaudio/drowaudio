@@ -251,7 +251,7 @@ bool ColouredPositionableWaveDisplay::isInterestedInDragSource (const SourceDeta
   
     ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
 
-    if (libraryTree != nullptr && libraryTree->getValueTree().hasType(Columns::libraryItemIdentifier))
+    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (Columns::libraryItemIdentifier))
     {
         return true;
     }

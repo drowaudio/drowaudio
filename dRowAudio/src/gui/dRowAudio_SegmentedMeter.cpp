@@ -33,16 +33,16 @@ SegmentedMeter::~SegmentedMeter(){}
 
 void SegmentedMeter::calculateSegments()
 {
-	float noDecibels = 20*log10(level.getCurrent());
+	float numDecibels = toDecibels (level.getCurrent());
 	// map decibels to noSegs
-	noSegs = roundToInt((noDecibels / decibelsPerSeg) + (totalSegs-noRedSeg));
+	noSegs = jmax(0, roundToInt((numDecibels / decibelsPerSeg) + (totalSegs - noRedSeg)));
 	
 	// impliment slow decay
 	//	level.set((0.5f * level.getCurrent()) + (0.1f * level.getPrevious()));
 	level *= 0.8;
 	
 	// only actually need to repaint if the noSegs has changed
-	if (((noSegs.getCurrent() >= -1) && !noSegs.areEqual()) || needsRepaint)
+	if (! noSegs.areEqual() || needsRepaint)
 		repaint();
 }
 
@@ -51,62 +51,126 @@ void SegmentedMeter::timerCallback()
 	calculateSegments();
 }
 
-void SegmentedMeter::paint (Graphics &g)
+void SegmentedMeter::resized()
 {
-	needsRepaint = false;
-			
 	const int m = 2;
 	const int w = getWidth();
 	const int h = getHeight();
-	const int segWidth = w-(2*m);
-	
-	
-	const int noSeg = (noRedSeg + noYellowSeg + noGreenSeg);
-	const float segHeight = (h-m) / (float)noSeg;
-	
 
-	const int noReq = noSegs.getCurrent();
+    onImage = Image (Image::RGB,
+                     w, h,
+                     false);
+    offImage = Image (Image::RGB,
+                      w, h,
+                      false);
+    
+    Graphics gOn (onImage);
+    Graphics gOff (offImage);
+    
+    const int numSegments = (noRedSeg + noYellowSeg + noGreenSeg);
+	const float segmentHeight = (h - m) / (float)numSegments;
+    const int segWidth = w - (2 * m);
 	
-	for (int i=1; i <= noSeg; i++)
+	for (int i = 1; i <= numSegments; ++i)
 	{
 		if (i <= noGreenSeg)
 		{
-			i <= noReq ? g.setColour(Colours::green.brighter(0.8))
-						: g.setColour(Colours::green.darker());
+			gOn.setColour(Colours::green.brighter(0.8));
+            gOff.setColour(Colours::green.darker());
 		}
 		else if (i <= (noYellowSeg+noGreenSeg))
 		{
-			i <= noReq ? g.setColour(Colours::orange.brighter())
-						: g.setColour(Colours::orange.darker());
+			gOn.setColour(Colours::orange.brighter());
+            gOff.setColour(Colours::orange.darker());
 		}
 		else
 		{
-			i <= noReq ? g.setColour(Colours::red.brighter())
-						: g.setColour(Colours::red.darker());
+			gOn.setColour(Colours::red.brighter());
+            gOff.setColour(Colours::red.darker());
 		}
-		g.fillRect((float)m, h-m-(i*(segHeight)), (float)segWidth, segHeight);
 
-		g.setColour(Colours::black);
-		g.drawLine((float)m, h-m-(i*segHeight), w-m, h-m-(i*segHeight), m);
+		gOn.fillRect((float)m, h-m-(i*(segmentHeight)), (float)segWidth, segmentHeight);
+		gOn.setColour(Colours::black);
+		gOn.drawLine((float)m, h-m-(i*segmentHeight), w-m, h-m-(i*segmentHeight), m);
+		
+        gOff.fillRect((float)m, h-m-(i*(segmentHeight)), (float)segWidth, segmentHeight);
+		gOff.setColour(Colours::black);
+		gOff.drawLine((float)m, h-m-(i*segmentHeight), w-m, h-m-(i*segmentHeight), m);
 	}
 	
-	g.setColour(Colours::black);
-	g.drawRect(0, 0, w, h, m);
+	gOn.setColour(Colours::black);
+	gOn.drawRect(0, 0, w, h, m);    
+
+    gOff.setColour(Colours::black);
+	gOff.drawRect(0, 0, w, h, m);    
+
+    needsRepaint = true;
+}
+
+void SegmentedMeter::paint (Graphics &g)
+{
+	const int w = getWidth();
+	const int h = getHeight();
+
+    if (onImage.isValid()) 
+    {
+        const int onHeight = roundToInt ((noSegs.getCurrent() / (float)totalSegs) * onImage.getHeight());
+        const int offHeight = h - onHeight;
+        
+        g.drawImage(onImage,
+                    0, offHeight, w, onHeight, 
+                    0, offHeight, w, onHeight,
+                    false);
+
+        g.drawImage(offImage,
+                    0, 0, w, offHeight, 
+                    0, 0, w, offHeight,
+                    false);
+    }
+    
+    needsRepaint = false;
+
+//	for (int i=1; i <= noSeg; i++)
+//	{
+//		if (i <= noGreenSeg)
+//		{
+//			i <= noReq ? g.setColour(Colours::green.brighter(0.8))
+//						: g.setColour(Colours::green.darker());
+//		}
+//		else if (i <= (noYellowSeg+noGreenSeg))
+//		{
+//			i <= noReq ? g.setColour(Colours::orange.brighter())
+//						: g.setColour(Colours::orange.darker());
+//		}
+//		else
+//		{
+//			i <= noReq ? g.setColour(Colours::red.brighter())
+//						: g.setColour(Colours::red.darker());
+//		}
+//		g.fillRect((float)m, h-m-(i*(segHeight)), (float)segWidth, segHeight);
+//
+//		g.setColour(Colours::black);
+//		g.drawLine((float)m, h-m-(i*segHeight), w-m, h-m-(i*segHeight), m);
+//	}
+//	
+//	g.setColour(Colours::black);
+//	g.drawRect(0, 0, w, h, m);
 }
 
 void SegmentedMeter::process()
 {
 	// calculate current meter level
-	if (samples.getData() != 0)
+	if (samples.getData() != nullptr)
 	{
 		for (int i = 0; i < numSamples; ++i)
 		{
-			float sample = fabsf(samples[i]);
+			float sample = fabsf (samples[i]);
 			
 			if (sample > sampleMax)
 				sampleMax = sample;
 			
-			if (++sampleCount == samplesToCount) {
+			if (++sampleCount == samplesToCount) 
+            {
 				if (sampleMax > level.getCurrent())
 					level = sampleMax;
 				
