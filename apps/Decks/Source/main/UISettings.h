@@ -47,7 +47,7 @@ namespace UISettings {
 		
 		static const var Values[] = 
 		{
-			0.0,		//zoom
+			1.0,		//zoom
 			0.5,		//playheadPos
 			true,	//same
 			true,	//plusOne

@@ -15,7 +15,7 @@ TrackInfo::TrackInfo(int deckNo_, FilteringAudioFilePlayer* filePlayer_)
 	time(0.0),
 	fileLength(0.0)
 {
-	filePlayer->addChangeListener(this);
+	filePlayer->getAudioTransportSource()->addChangeListener(this);
 	filePlayer->addListener(this);
 	
 	currentBpm = String::empty;
@@ -28,7 +28,7 @@ TrackInfo::TrackInfo(int deckNo_, FilteringAudioFilePlayer* filePlayer_)
 
 TrackInfo::~TrackInfo()
 {
-	filePlayer->removeChangeListener(this);
+	filePlayer->getAudioTransportSource()->removeChangeListener(this);
 
 	String message("TrackInfo ");
 	message << deckNo << " deleted";
@@ -114,7 +114,7 @@ void TrackInfo::fileChanged (FilteringAudioFilePlayer *player)
 		if ( readerSource != 0)
 			sampleRate = readerSource->getAudioFormatReader()->sampleRate;
 		
-		fileLength = filePlayer->getTotalLength() / sampleRate;
+		fileLength = filePlayer->getAudioTransportSource()->getTotalLength() / sampleRate;
 		fileName = filePlayer->getFileName();
 		
 		trackName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Song]);
@@ -148,9 +148,9 @@ void TrackInfo::resamplingRatioChanged(FilteringAudioFilePlayer *player)
 
 void TrackInfo::changeListenerCallback(ChangeBroadcaster* changedObject)
 {
-	if (changedObject == filePlayer)
+	if (changedObject == static_cast<ChangeBroadcaster*>(filePlayer->getAudioTransportSource()))
 	{		
-		if (filePlayer->isPlaying())
+		if (filePlayer->getAudioTransportSource()->isPlaying())
 			startTimer(100);
 		else {
 			stopTimer();
@@ -161,7 +161,7 @@ void TrackInfo::changeListenerCallback(ChangeBroadcaster* changedObject)
 
 void TrackInfo::timerCallback()
 {
-	time = filePlayer->getCurrentPosition();
+	time = filePlayer->getAudioTransportSource()->getCurrentPosition();
 	
 	currentTime = timeToTimecodeStringLowRes(time);
 	remainingTime = timeToTimecodeStringLowRes( fileLength - time );

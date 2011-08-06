@@ -180,8 +180,8 @@ void AudioEngine::MainAudioCallback::audioDeviceIOCallback (const float** inputC
 			else // if bypassed we still need to update playhead positions
 			{
 				FilteringAudioFilePlayer *player = manager->getDeck(i)->getMainFilePlayer();
-				if (player->isPlaying() && (player->getNextReadPosition() < player->getTotalLength()))
-					player->setNextReadPosition(player->getNextReadPosition() + numSamples);
+				if (player->getAudioTransportSource()->isPlaying() && (player->getAudioTransportSource()->getNextReadPosition() < player->getAudioTransportSource()->getTotalLength()))
+					player->getAudioTransportSource()->setNextReadPosition(player->getAudioTransportSource()->getNextReadPosition() + numSamples);
 			}
 		}
 	}

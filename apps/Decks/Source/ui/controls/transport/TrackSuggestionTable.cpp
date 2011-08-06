@@ -65,6 +65,7 @@ TrackSuggestionTable::TrackSuggestionTable(ValueTree sourceToBaseSuggestionsOn, 
 	table->getHeader().setColumnVisible (Columns::Rating, false);
 	table->getHeader().setColumnVisible (Columns::Length, false);
 	table->getHeader().setColumnVisible (Columns::Added, false);
+	table->getHeader().setColumnVisible (Columns::Kind, true);
 	table->getHeader().setColumnVisible (Columns::Location, false);
 	
 	table->getHeader().moveColumn(Columns::Score, 0);
@@ -336,7 +337,7 @@ int TrackSuggestionTable::getColumnAutoSizeWidth (int columnId)
 	return widest + 8;
 }
 
-const String TrackSuggestionTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
+const var TrackSuggestionTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
 {
 	if(!currentlySelectedRows.isEmpty())
 	{

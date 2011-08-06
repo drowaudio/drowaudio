@@ -63,14 +63,17 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	eqLabels[low]->setText(T("Low"), false);
 	
 	eqSliders[high]->setRange(Defaults::Mixer::Channel::HighEQ::gainMin, Defaults::Mixer::Channel::HighEQ::gainMax);
+	eqSliders[high]->setSkewFactorFromMidPoint(1.0);
 	eqSliders[high]->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(highGain)));
 	eqKillButtons[high]->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(highKill)));
 	
 	eqSliders[mid]->setRange(Defaults::Mixer::Channel::MidEQ::gainMin, Defaults::Mixer::Channel::MidEQ::gainMax);
+	eqSliders[mid]->setSkewFactorFromMidPoint(1.0);
 	eqSliders[mid]->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(midGain)));
 	eqKillButtons[mid]->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(midKill)));
 
 	eqSliders[low]->setRange(Defaults::Mixer::Channel::LowEQ::gainMin, Defaults::Mixer::Channel::LowEQ::gainMax);
+	eqSliders[low]->setSkewFactorFromMidPoint(1.0);
 	eqSliders[low]->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(lowGain)));
 	eqKillButtons[low]->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(lowKill)));
 	

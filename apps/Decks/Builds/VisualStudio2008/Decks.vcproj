@@ -50,7 +50,6 @@
       <Tool Name="VCLinkerTool"
             OutputFile=".\Debug\Decks.exe"
             SuppressStartupBanner="true"
-            AdditionalLibraryDirectories="..\..\..\..\..\juce_source\juce\bin"
             IgnoreDefaultLibraryNames="libcmt.lib, msvcrt.lib"
             GenerateDebugInformation="true"
             ProgramDatabaseFile=".\Debug\Decks.pdb"
@@ -86,7 +85,7 @@
             TypeLibraryName=".\Release\Decks.tlb"
             HeaderFileName=""/>
       <Tool Name="VCCLCompilerTool"
-            Optimization="2"
+            Optimization="3"
             InlineFunctionExpansion="1"
             StringPooling="true"
             AdditionalIncludeDirectories=""
@@ -107,7 +106,6 @@
       <Tool Name="VCLinkerTool"
             OutputFile=".\Release\Decks.exe"
             SuppressStartupBanner="true"
-            AdditionalLibraryDirectories="..\..\..\..\..\juce_source\juce\bin"
             IgnoreDefaultLibraryNames=""
             GenerateDebugInformation="false"
             ProgramDatabaseFile=".\Release\Decks.pdb"
@@ -175,8 +173,16 @@
               <File RelativePath="..\..\Source\ui\controls\transport\DeckTransport.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackInfo.h"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackInfo.cpp"/>
-              <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"/>
-              <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\ClickableCuePointComponent.h"/>
+              <File RelativePath="..\..\Source\ui\controls\transport\ClickableCuePointComponent.cpp"/>
+              <Filter Name="loop_and_cue">
+                <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\CuePointList.h"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\CuePointList.cpp"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\CuePointListBoxModel.h"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\CuePointListBoxModel.cpp"/>
+              </Filter>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestions.h"/>
               <File RelativePath="..\..\Source\ui\controls\transport\TrackSuggestions.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\transport\MixTypeComponent.h"/>
@@ -187,6 +193,10 @@
             <Filter Name="draggable_display">
               <File RelativePath="..\..\Source\ui\controls\draggable_display\DraggableDisplay.h"/>
               <File RelativePath="..\..\Source\ui\controls\draggable_display\DraggableDisplay.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteDraggableWaveDisplay.h"/>
+              <File RelativePath="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteDraggableWaveDisplay.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteColouredDraggableWaveDisplay.h"/>
+              <File RelativePath="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteColouredDraggableWaveDisplay.cpp"/>
             </Filter>
             <Filter Name="mixer">
               <File RelativePath="..\..\Source\ui\controls\mixer\Mixer.h"/>
@@ -233,9 +243,13 @@
     </Filter>
     <Filter Name="Juce Library Code">
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
-      <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.cpp"/>
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode1.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode2.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode3.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode4.cpp"/>
       <File RelativePath="icon.ico"/>
       <File RelativePath="resources.rc"/>
     </Filter>

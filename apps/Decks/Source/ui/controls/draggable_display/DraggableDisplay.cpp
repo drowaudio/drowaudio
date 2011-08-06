@@ -13,16 +13,16 @@ DraggableDisplay::DraggableDisplay()
 :	noDecks(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")),
 	settings(DeckManager::getInstance())
 {
-	thumbnailCache = new MultipleAudioThumbnailCache(noDecks);
+	//thumbnailCache = new MultipleAudioThumbnailCache(noDecks);
 	
 	// create the zoom & playhead sliders
 	addAndMakeVisible( zoomSlider = new Slider("zoomSlider") );
 	zoomSlider->setSliderStyle(Slider::LinearVertical);
-	zoomSlider->setRange(-20.0, 0.999999, 0.0001);
+	zoomSlider->setRange(0.1, 10, 0.0001);
 //	zoomSlider->setValue(0.0f);
-	zoomSlider->setSkewFactorFromMidPoint(0.0);	
+	zoomSlider->setSkewFactorFromMidPoint(1.0);	
 	zoomSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChildAsValue(UISettings::SectionName, DRAGGABLE_SETTING(zoom)));
-	zoomSlider->addListener(this);
+    zoomSlider->addListener(this);
 
 	addAndMakeVisible( playheadPosSlider = new Slider("playheadPosSlider") );
 	playheadPosSlider->setSliderStyle(Slider::LinearVertical);
@@ -33,9 +33,15 @@ DraggableDisplay::DraggableDisplay()
 	
 	for (int i = 0; i < noDecks; i++)
 	{
-		draggableWaveDisplays.add(new SwitchableDraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(), thumbnailCache));
+//		draggableWaveDisplays.add(new SwitchableDraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(),
+//                                                                     DeckManager::getInstance()->getDeck(i)->getThumbnailCache(),
+//                                                                     DeckManager::getInstance()->getDeck(i)->getThumbnail()));
+		draggableWaveDisplays.add(new CompleteColouredDraggableWaveDisplay(512,
+                                                                   DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(),
+                                                                   DeckManager::getInstance()->getDeck(i)->getThumbnailCache(),
+                                                                   DeckManager::getInstance()->getDeck(i)->getThumbnail()));
 		addAndMakeVisible(draggableWaveDisplays[i]);
-		draggableWaveDisplays[i]->setZoomFactor(1.0 - zoomSlider->getValue());
+		draggableWaveDisplays[i]->setZoomFactor(zoomSlider->getValue());
 	}	
 	
 	Settings::getInstance()->getValueTreePointer()->addListener(this);
@@ -48,7 +54,7 @@ DraggableDisplay::~DraggableDisplay()
 	playheadPosSlider->removeListener(this);
 	
 	draggableWaveDisplays.clear();
-	
+
 	deleteAllChildren();
 	DBG("DraggableDisplay deleted");
 }
@@ -148,7 +154,7 @@ void DraggableDisplay::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHa
 	}
 	
 	if (property == DRAGGABLE_SETTING(zoom)) {
-		const double zoomFactor = 1.0f - double(treeWhosePropertyHasChanged.getProperty(DRAGGABLE_SETTING(zoom)));
+		const double zoomFactor = double(treeWhosePropertyHasChanged.getProperty(DRAGGABLE_SETTING(zoom)));
 		for (int i = 0; i < noDecks; i++)
 			draggableWaveDisplays[i]->setZoomFactor(zoomFactor);
 	}

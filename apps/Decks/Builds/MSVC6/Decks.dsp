@@ -61,8 +61,8 @@ LINK32=link.exe
 # PROP Intermediate_Dir ".\Release"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /GX /O2 /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /YX /FD /c  /Zm1024
-# ADD CPP /nologo /MT /W3 /GR /GX /O2 /I  /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
+# ADD BASE CPP /nologo /W3 /GX /O3 /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /YX /FD /c  /Zm1024
+# ADD CPP /nologo /MT /W3 /GR /GX /O3 /I  /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
 # SUBTRACT CPP /YX
 # ADD BASE MTL /nologo /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /mktyplib203 /win32
 # ADD MTL /nologo /D WIN32 /D _WINDOWS /D NDEBUG /D JUCER_MSVC6_734A9119=1 /mktyplib203 /win32
@@ -206,11 +206,32 @@ SOURCE="..\..\Source\ui\controls\transport\TrackInfo.h"
 SOURCE="..\..\Source\ui\controls\transport\TrackInfo.cpp"
 # End Source File
 # Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\ClickableCuePointComponent.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\ClickableCuePointComponent.cpp"
+# End Source File
+# Begin Group "loop_and_cue"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"
 # End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\CuePointList.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\CuePointList.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\CuePointListBoxModel.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\CuePointListBoxModel.cpp"
+# End Source File
+# End Group
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\TrackSuggestions.h"
 # End Source File
@@ -237,6 +258,18 @@ SOURCE="..\..\Source\ui\controls\draggable_display\DraggableDisplay.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\draggable_display\DraggableDisplay.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteDraggableWaveDisplay.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteDraggableWaveDisplay.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteColouredDraggableWaveDisplay.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteColouredDraggableWaveDisplay.cpp"
 # End Source File
 # End Group
 # Begin Group "mixer"
@@ -320,17 +353,30 @@ SOURCE="..\..\..\..\dRowAudio\dRowAudio.cpp"
 # End Group
 # End Group
 # Begin Group "Juce Library Code"
+# PROP Default_Filter "cpp;c;cc;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 SOURCE="..\..\JuceLibraryCode\AppConfig.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\JuceLibraryCode\JuceHeader.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\JuceLibraryCode\BinaryData.cpp"
 # End Source File
 # Begin Source File
 SOURCE="..\..\JuceLibraryCode\BinaryData.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceHeader.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode1.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode2.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode3.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode4.cpp"
 # End Source File
 # End Group
 # End Target

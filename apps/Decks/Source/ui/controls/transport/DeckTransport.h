@@ -17,6 +17,8 @@
 #include "TrackInfo.h"
 #include "LoopAndCuePoints.h"
 
+class ClickableCuePointComponent;
+
 class DeckTransport :	public Component,
 						public Button::Listener,
 						public Slider::Listener,
@@ -72,8 +74,8 @@ private:
 	
 	TrackInfo *infoBox;
 	OwnedArray<DrawableButton> transportButtons;
-	ScopedPointer<AudioThumbnailCache> *thumbnailCache;
-	PositionableWaveDisplay *waveDisplay;
+	ColouredPositionableWaveDisplay *waveDisplay;
+	ClickableCuePointComponent* clickableCuePointComponent;
 	LoopAndCuePoints *loopAndCuePoints;
 	
 	Slider *speedSlider, *jogSlider;

@@ -9,13 +9,15 @@
 
 #include "DeckTransport.h"
 
+#include "ClickableCuePointComponent.h"
+
 DeckTransport::DeckTransport(int deckNo_)
 :	deckNo(deckNo_),
 	showLoopAndCuePoints(true),
 	settings(DeckManager::getInstance()),
 	filePlayer(settings->getDeck(deckNo)->getMainFilePlayer())
 {
-	filePlayer->addChangeListener(this);
+	filePlayer->getAudioTransportSource()->addChangeListener(this);
 	
 	addAndMakeVisible(infoBox = new TrackInfo(deckNo, filePlayer));
 	
@@ -31,9 +33,13 @@ DeckTransport::DeckTransport(int deckNo_)
 
 	refreshTransportButtons();
 	
-	addAndMakeVisible(waveDisplay = new PositionableWaveDisplay(filePlayer));
+	addAndMakeVisible(waveDisplay = new ColouredPositionableWaveDisplay(filePlayer,
+                                                                        settings->getDeck(deckNo)->getThumbnailCache(),
+                                                                        settings->getDeck(deckNo)->getThumbnail()));
 	
-	addAndMakeVisible(loopAndCuePoints = new LoopAndCuePoints());
+    addAndMakeVisible(clickableCuePointComponent = new ClickableCuePointComponent(filePlayer));
+    
+	addAndMakeVisible(loopAndCuePoints = new LoopAndCuePoints(filePlayer));
 	
 	addAndMakeVisible(speedSlider = new Slider("speedSlider"));
 	speedSlider->setSliderStyle(Slider::LinearVertical);
@@ -91,8 +97,12 @@ void DeckTransport::resized()
 		transportButtons[i]->setBounds(RelativeRectangle(Rectangle<float>(2+(i*(buttonWidth+1)), infoBox->getBottom()+2, buttonWidth, 20)));
 	}
 	
-	waveDisplay->setBounds(0, transportButtons[0]->getBottom()+2, w-35, 40);
-	
+	waveDisplay->setBounds (0, transportButtons[0]->getBottom()+2, w-35, 40);
+    
+    const int cuePointHeight = 10;
+	clickableCuePointComponent->setBounds (waveDisplay->getX(), waveDisplay->getBottom() - cuePointHeight,
+                                           waveDisplay->getWidth(), cuePointHeight);
+    
 	if (showLoopAndCuePoints) {
 		loopAndCuePoints->setBounds(0, waveDisplay->getBottom()+m, w, h - waveDisplay->getBottom() - m);
 	}
@@ -168,8 +178,8 @@ void DeckTransport::changeListenerCallback(ChangeBroadcaster *object)
 {
 	//		filePlayer->setPlayDirection(false);
 	
-	if (object == filePlayer) {
-		if (filePlayer->isPlaying())
+	if (object == static_cast<ChangeBroadcaster*>(filePlayer->getAudioTransportSource())) {
+		if (filePlayer->getAudioTransportSource()->isPlaying())
 			transportButtons[playPause]->setToggleState(true, false);
 		else
 			transportButtons[playPause]->setToggleState(false, false);

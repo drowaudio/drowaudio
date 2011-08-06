@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		07EDB68D178C5C7635F58468 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2809A6C00A25BA650290D8D /* QuickTime.framework */; };
 		095EE384B807EB3B24D19F4C /* AudioEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D05330CE43257C6EEF3FB /* AudioEngine.cpp */; };
+		0CBF4B3588C0BE1F873C7EC7 /* CuePointList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CCBD760D0B6A7BD1AC506B05 /* CuePointList.cpp */; };
 		107FD22A0CF75C115E7C0E98 /* Transport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA03A3D554673EBFB93B0114 /* Transport.cpp */; };
+		118B302043C28399DF9D3E15 /* dRowAudio_CompleteColouredDraggableWaveDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD3665DC32672FCCE8528D3A /* dRowAudio_CompleteColouredDraggableWaveDisplay.cpp */; };
 		1221215FE2731751C6197959 /* DecksAudioFormatManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5509BE7D3E60AF013A7E79ED /* DecksAudioFormatManager.cpp */; };
+		1C146D205B7FA7D4C4396503 /* ClickableCuePointComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 689D6BF0F83CBEF2E35BE80C /* ClickableCuePointComponent.cpp */; };
 		28EAFEE2B4342C7B80A78E91 /* SettingsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B6763DF3FE6EAFDB02F5D /* SettingsComponent.cpp */; };
 		2A385FEA82D61AF6C2D020C3 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF0B422990F5FE0B9F44614 /* CoreAudio.framework */; };
 		325FC2FDC0892B2AFA289123 /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8ACA0B29345EFF5769D9DA8 /* BinaryData.cpp */; };
@@ -36,6 +39,7 @@
 		992E7E2A85BC2B0DA91CE4D1 /* ControlComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 425D6C09710560CAD13B64C5 /* ControlComponent.cpp */; };
 		9F7A7F13113B822AC97333E4 /* ApplicationStartup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67242842297782815FFB94C3 /* ApplicationStartup.cpp */; };
 		A1984571061AF3415BE612DB /* PrepareTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C203CF68F13A57F4C1E9A21E /* PrepareTable.cpp */; };
+		A26B03DF0A0698BF1EC75C14 /* CuePointListBoxModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2089BE034660E6DADEEC230 /* CuePointListBoxModel.cpp */; };
 		AFE592CB0ABF21DB94E746FA /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CBF31A2F0BEA6FBBB510CD /* CoreMIDI.framework */; };
 		B3AE7DFD2D22DAB9D3CB6F56 /* Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 902FBCF7E76529D2D40EDC52 /* Mixer.cpp */; };
 		B4774EAD1D560D11B49A1EC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC53E9DD51E94107FD486251 /* QuartzCore.framework */; };
@@ -43,19 +47,26 @@
 		C03637BDF14CE773A2EB2DAA /* DecksLookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C648E93ABE49244CBC7DBF4 /* DecksLookAndFeel.cpp */; };
 		CE65A8C18113D8E6EA110797 /* Library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E489F85307F2098381C9F0 /* Library.cpp */; };
 		D26BE6FC18104431FFBA8DF2 /* DraggableDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 824C20D102FB8069BE1A808F /* DraggableDisplay.cpp */; };
+		D4CE050E18D86BB2E78F7AB9 /* JuceLibraryCode1.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6CC22D0D8E34D631F09A529E /* JuceLibraryCode1.mm */; };
 		DE761B07B4378012249A219A /* TrackInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF02085B2E92C13E060CD82 /* TrackInfo.cpp */; };
+		E05515AFF49331CA1265BEB4 /* JuceLibraryCode2.mm in Sources */ = {isa = PBXBuildFile; fileRef = B6E9F6089B205964D47ED6DE /* JuceLibraryCode2.mm */; };
 		E1C37F7BF0772A00EEDE57F2 /* DeckManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75E4F1D02D4324E833E2AB38 /* DeckManager.cpp */; };
 		E516D163C99889F122A1BC73 /* MasterChannelStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E1E04CBA55B23BA5A93467 /* MasterChannelStrip.cpp */; };
 		EBB4B5D54B9F55AC57A478F0 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA5B50A1FD653D25CA68190 /* IOKit.framework */; };
 		ECA3D19E104B60E9D702B3C1 /* QuitScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1128F9467AE70A704D9372B1 /* QuitScreen.cpp */; };
+		ECEB2530C06F08D24C4AF2BF /* JuceLibraryCode3.mm in Sources */ = {isa = PBXBuildFile; fileRef = FF1FCE04A80BCC87A8626A2D /* JuceLibraryCode3.mm */; };
 		EDAEB7FBFDBBCD260E732461 /* MixerSettingsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D713F3EB0C0ADC86982CDC19 /* MixerSettingsComponent.cpp */; };
 		EE10433CD3B6DA34B8C97316 /* MixerChannelStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */; };
 		F31FA52310982AC923DEC137 /* TitleBarComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74BC264C88ECA91E28AB0147 /* TitleBarComponent.cpp */; };
 		F5C7F04A04FD2A8E0E162A26 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3921642AF1AE63DF470394 /* DiscRecording.framework */; };
+		F61F484FD338506A0240A9A4 /* dRowAudio_CompleteDraggableWaveDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0780E189AB1ED3315185E391 /* dRowAudio_CompleteDraggableWaveDisplay.cpp */; };
+		F86B25AC2387D2A08F616E35 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2AA657DE0F5DF15F81ACC3 /* AudioToolbox.framework */; };
+		F87235D1AC2ACFEA761F36CA /* JuceLibraryCode4.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4836970FB4F64FBB8C45ED6D /* JuceLibraryCode4.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0735B04B431D98AD78BFA858 /* MixerChannelStrip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixerChannelStrip.cpp; path = ../../Source/ui/controls/mixer/MixerChannelStrip.cpp; sourceTree = SOURCE_ROOT; };
+		0780E189AB1ED3315185E391 /* dRowAudio_CompleteDraggableWaveDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_CompleteDraggableWaveDisplay.cpp; path = ../../Source/ui/controls/draggable_display/dRowAudio_CompleteDraggableWaveDisplay.cpp; sourceTree = SOURCE_ROOT; };
 		07E489F85307F2098381C9F0 /* Library.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Library.cpp; path = ../../Source/ui/controls/library/Library.cpp; sourceTree = SOURCE_ROOT; };
 		0C648E93ABE49244CBC7DBF4 /* DecksLookAndFeel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksLookAndFeel.cpp; path = ../../Source/ui/DecksLookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
 		0C9B2FDA3A1D70C8F696227F /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = SOURCE_ROOT; };
@@ -73,11 +84,13 @@
 		32AA67C67D2072FA2C7A62DD /* AudioEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioEngine.h; path = ../../Source/main/AudioEngine.h; sourceTree = SOURCE_ROOT; };
 		342DAFA1747A6C731022DBFC /* Settings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Settings.cpp; path = ../../Source/main/Settings.cpp; sourceTree = SOURCE_ROOT; };
 		37E1E04CBA55B23BA5A93467 /* MasterChannelStrip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MasterChannelStrip.cpp; path = ../../Source/ui/controls/mixer/MasterChannelStrip.cpp; sourceTree = SOURCE_ROOT; };
+		3D2AA657DE0F5DF15F81ACC3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		40F437461414DDC8F5114067 /* DefaultSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultSettings.h; path = ../../Source/main/DefaultSettings.h; sourceTree = SOURCE_ROOT; };
 		41AAD98A113E9B975FFE4BD5 /* dRowAudio_OverflowingAbstractFifo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_OverflowingAbstractFifo.h; path = ../../Source/main/dRowAudio_OverflowingAbstractFifo.h; sourceTree = SOURCE_ROOT; };
 		425D6C09710560CAD13B64C5 /* ControlComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ControlComponent.cpp; path = ../../Source/ui/controls/ControlComponent.cpp; sourceTree = SOURCE_ROOT; };
 		42C38F1E71FE93C1BCE6EF42 /* DecksColours.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecksColours.cpp; path = ../../Source/ui/DecksColours.cpp; sourceTree = SOURCE_ROOT; };
 		47A5C470278A8899ED6807B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		4836970FB4F64FBB8C45ED6D /* JuceLibraryCode4.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode4.mm; path = ../../JuceLibraryCode/JuceLibraryCode4.mm; sourceTree = SOURCE_ROOT; };
 		4A410750948391619D696866 /* DecksColours.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksColours.h; path = ../../Source/ui/DecksColours.h; sourceTree = SOURCE_ROOT; };
 		4AE6BDB56E02299E5EC730D5 /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Transport.h; path = ../../Source/ui/controls/transport/Transport.h; sourceTree = SOURCE_ROOT; };
 		4B94B3706DADFBFBFE570B35 /* UISettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UISettings.h; path = ../../Source/main/UISettings.h; sourceTree = SOURCE_ROOT; };
@@ -93,6 +106,8 @@
 		5DBB4D4F6E1842D181843161 /* Mixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mixer.h; path = ../../Source/ui/controls/mixer/Mixer.h; sourceTree = SOURCE_ROOT; };
 		64A311A017026C898F97711C /* CommandIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandIDs.h; path = ../../Source/main/CommandIDs.h; sourceTree = SOURCE_ROOT; };
 		67242842297782815FFB94C3 /* ApplicationStartup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationStartup.cpp; path = ../../Source/main/ApplicationStartup.cpp; sourceTree = SOURCE_ROOT; };
+		689D6BF0F83CBEF2E35BE80C /* ClickableCuePointComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ClickableCuePointComponent.cpp; path = ../../Source/ui/controls/transport/ClickableCuePointComponent.cpp; sourceTree = SOURCE_ROOT; };
+		6CC22D0D8E34D631F09A529E /* JuceLibraryCode1.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode1.mm; path = ../../JuceLibraryCode/JuceLibraryCode1.mm; sourceTree = SOURCE_ROOT; };
 		6E9749BC4FAAD9949A00C732 /* DecksLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DecksLookAndFeel.h; path = ../../Source/ui/DecksLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		709F48E0586393177D674A23 /* TitleBarComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TitleBarComponent.h; path = ../../Source/ui/TitleBarComponent.h; sourceTree = SOURCE_ROOT; };
 		70C9CB9C386D8C937451F08D /* CrossFader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CrossFader.cpp; path = ../../Source/ui/controls/mixer/CrossFader.cpp; sourceTree = SOURCE_ROOT; };
@@ -112,22 +127,31 @@
 		91F404BD205EDEC23BBE9FD2 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
 		96C4EEF2F522DCCA74718479 /* TrackSuggestions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackSuggestions.h; path = ../../Source/ui/controls/transport/TrackSuggestions.h; sourceTree = SOURCE_ROOT; };
 		9CF0B422990F5FE0B9F44614 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		9E4A66A495ED59E10DD4523D /* dRowAudio_CompleteColouredDraggableWaveDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_CompleteColouredDraggableWaveDisplay.h; path = ../../Source/ui/controls/draggable_display/dRowAudio_CompleteColouredDraggableWaveDisplay.h; sourceTree = SOURCE_ROOT; };
 		9FB9A2B0558CC15CA0555634 /* dRowAudio_SampleRateConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_SampleRateConverter.h; path = ../../Source/main/dRowAudio_SampleRateConverter.h; sourceTree = SOURCE_ROOT; };
+		9FFACB5FF6303173EC417000 /* dRowAudio_CompleteDraggableWaveDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_CompleteDraggableWaveDisplay.h; path = ../../Source/ui/controls/draggable_display/dRowAudio_CompleteDraggableWaveDisplay.h; sourceTree = SOURCE_ROOT; };
+		A2089BE034660E6DADEEC230 /* CuePointListBoxModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CuePointListBoxModel.cpp; path = ../../Source/ui/controls/transport/CuePointListBoxModel.cpp; sourceTree = SOURCE_ROOT; };
 		A2809A6C00A25BA650290D8D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
+		A2A2A5D74C264D613A2805BA /* CuePointList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CuePointList.h; path = ../../Source/ui/controls/transport/CuePointList.h; sourceTree = SOURCE_ROOT; };
 		A8ACA0B29345EFF5769D9DA8 /* BinaryData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = SOURCE_ROOT; };
 		B315BE919D9B6E7E6D31E1BC /* LoopAndCuePoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopAndCuePoints.h; path = ../../Source/ui/controls/transport/LoopAndCuePoints.h; sourceTree = SOURCE_ROOT; };
 		B68C3E4EDD8FA27FC6C113C5 /* MixerSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerSettings.h; path = ../../Source/main/MixerSettings.h; sourceTree = SOURCE_ROOT; };
+		B6E9F6089B205964D47ED6DE /* JuceLibraryCode2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode2.mm; path = ../../JuceLibraryCode/JuceLibraryCode2.mm; sourceTree = SOURCE_ROOT; };
 		B87450A9B14162D2371EBED6 /* MasterChannelStrip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MasterChannelStrip.h; path = ../../Source/ui/controls/mixer/MasterChannelStrip.h; sourceTree = SOURCE_ROOT; };
 		BC6C917B6681B62CAB653562 /* dRowAudio_SampleRateConverter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_SampleRateConverter.cpp; path = ../../Source/main/dRowAudio_SampleRateConverter.cpp; sourceTree = SOURCE_ROOT; };
+		BD3665DC32672FCCE8528D3A /* dRowAudio_CompleteColouredDraggableWaveDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_CompleteColouredDraggableWaveDisplay.cpp; path = ../../Source/ui/controls/draggable_display/dRowAudio_CompleteColouredDraggableWaveDisplay.cpp; sourceTree = SOURCE_ROOT; };
 		C203CF68F13A57F4C1E9A21E /* PrepareTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PrepareTable.cpp; path = ../../Source/ui/controls/library/PrepareTable.cpp; sourceTree = SOURCE_ROOT; };
 		C313D1FAB5DEFB0EBBC2E62F /* MixerSettingsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MixerSettingsComponent.h; path = ../../Source/ui/settings/MixerSettingsComponent.h; sourceTree = SOURCE_ROOT; };
 		C3CBF31A2F0BEA6FBBB510CD /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		C97BCA57A45504F5CB230048 /* DraggableDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DraggableDisplay.h; path = ../../Source/ui/controls/draggable_display/DraggableDisplay.h; sourceTree = SOURCE_ROOT; };
+		CCBD760D0B6A7BD1AC506B05 /* CuePointList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CuePointList.cpp; path = ../../Source/ui/controls/transport/CuePointList.cpp; sourceTree = SOURCE_ROOT; };
 		CD5A4E23328FF2B91B579FA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		CDBE8337C9484D31731449B4 /* ClickableCuePointComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ClickableCuePointComponent.h; path = ../../Source/ui/controls/transport/ClickableCuePointComponent.h; sourceTree = SOURCE_ROOT; };
 		D713F3EB0C0ADC86982CDC19 /* MixerSettingsComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MixerSettingsComponent.cpp; path = ../../Source/ui/settings/MixerSettingsComponent.cpp; sourceTree = SOURCE_ROOT; };
 		DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackSuggestions.cpp; path = ../../Source/ui/controls/transport/TrackSuggestions.cpp; sourceTree = SOURCE_ROOT; };
 		E1819F0FF6A3DF647851AFB9 /* TrackSuggestionTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackSuggestionTable.h; path = ../../Source/ui/controls/transport/TrackSuggestionTable.h; sourceTree = SOURCE_ROOT; };
 		E35C43256F242051E83FC23A /* SettingsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SettingsComponent.h; path = ../../Source/ui/settings/SettingsComponent.h; sourceTree = SOURCE_ROOT; };
+		E888062759791DFC7DE0BB3C /* CuePointListBoxModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CuePointListBoxModel.h; path = ../../Source/ui/controls/transport/CuePointListBoxModel.h; sourceTree = SOURCE_ROOT; };
 		EA03A3D554673EBFB93B0114 /* Transport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Transport.cpp; path = ../../Source/ui/controls/transport/Transport.cpp; sourceTree = SOURCE_ROOT; };
 		EA3ED4C7BA4566967E202186 /* DeckTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeckTransport.h; path = ../../Source/ui/controls/transport/DeckTransport.h; sourceTree = SOURCE_ROOT; };
 		EB76E0210168B8B95BC9EC13 /* Decks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +163,7 @@
 		FA320CB3B231EF36E177A2A9 /* Decks.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Decks.icns; path = ../../Source/resources/Decks.icns; sourceTree = SOURCE_ROOT; };
 		FABCFCA068AFF382EC0780C5 /* ControlComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ControlComponent.h; path = ../../Source/ui/controls/ControlComponent.h; sourceTree = SOURCE_ROOT; };
 		FC53E9DD51E94107FD486251 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FF1FCE04A80BCC87A8626A2D /* JuceLibraryCode3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode3.mm; path = ../../JuceLibraryCode/JuceLibraryCode3.mm; sourceTree = SOURCE_ROOT; };
 		FFFB51E91E2BBD5023776511 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -158,6 +183,7 @@
 				B4774EAD1D560D11B49A1EC3 /* QuartzCore.framework in Frameworks */,
 				7B5E730C02A7145EE3B6382E /* QTKit.framework in Frameworks */,
 				07EDB68D178C5C7635F58468 /* QuickTime.framework in Frameworks */,
+				F86B25AC2387D2A08F616E35 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,9 +209,13 @@
 			isa = PBXGroup;
 			children = (
 				91F404BD205EDEC23BBE9FD2 /* AppConfig.h */,
-				5870DB6A2318032290CB0331 /* JuceHeader.h */,
 				A8ACA0B29345EFF5769D9DA8 /* BinaryData.cpp */,
 				8E3B1D49C63A28EAEC9CF2A3 /* BinaryData.h */,
+				5870DB6A2318032290CB0331 /* JuceHeader.h */,
+				6CC22D0D8E34D631F09A529E /* JuceLibraryCode1.mm */,
+				B6E9F6089B205964D47ED6DE /* JuceLibraryCode2.mm */,
+				FF1FCE04A80BCC87A8626A2D /* JuceLibraryCode3.mm */,
+				4836970FB4F64FBB8C45ED6D /* JuceLibraryCode4.mm */,
 			);
 			name = "Juce Library Code";
 			sourceTree = "<group>";
@@ -265,6 +295,19 @@
 			name = resources;
 			sourceTree = "<group>";
 		};
+		92DA90F23955532BC480632E /* loop_and_cue */ = {
+			isa = PBXGroup;
+			children = (
+				B315BE919D9B6E7E6D31E1BC /* LoopAndCuePoints.h */,
+				2FD4941BA01E8EFBED8D6B5B /* LoopAndCuePoints.cpp */,
+				A2A2A5D74C264D613A2805BA /* CuePointList.h */,
+				CCBD760D0B6A7BD1AC506B05 /* CuePointList.cpp */,
+				E888062759791DFC7DE0BB3C /* CuePointListBoxModel.h */,
+				A2089BE034660E6DADEEC230 /* CuePointListBoxModel.cpp */,
+			);
+			name = loop_and_cue;
+			sourceTree = "<group>";
+		};
 		9645BE1FF36027BFB7A37F20 /* library */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +376,7 @@
 				FC53E9DD51E94107FD486251 /* QuartzCore.framework */,
 				FFFB51E91E2BBD5023776511 /* QTKit.framework */,
 				A2809A6C00A25BA650290D8D /* QuickTime.framework */,
+				3D2AA657DE0F5DF15F81ACC3 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -346,8 +390,9 @@
 				56AF2CD6832F42B03DD64DFD /* DeckTransport.cpp */,
 				4CC12202EAE06D0E02A6AFBC /* TrackInfo.h */,
 				1CF02085B2E92C13E060CD82 /* TrackInfo.cpp */,
-				B315BE919D9B6E7E6D31E1BC /* LoopAndCuePoints.h */,
-				2FD4941BA01E8EFBED8D6B5B /* LoopAndCuePoints.cpp */,
+				CDBE8337C9484D31731449B4 /* ClickableCuePointComponent.h */,
+				689D6BF0F83CBEF2E35BE80C /* ClickableCuePointComponent.cpp */,
+				92DA90F23955532BC480632E /* loop_and_cue */,
 				96C4EEF2F522DCCA74718479 /* TrackSuggestions.h */,
 				DA0B0A13B80A8FED183AF447 /* TrackSuggestions.cpp */,
 				554920CAA015CC8AE0E0968D /* MixTypeComponent.h */,
@@ -371,6 +416,10 @@
 			children = (
 				C97BCA57A45504F5CB230048 /* DraggableDisplay.h */,
 				824C20D102FB8069BE1A808F /* DraggableDisplay.cpp */,
+				9FFACB5FF6303173EC417000 /* dRowAudio_CompleteDraggableWaveDisplay.h */,
+				0780E189AB1ED3315185E391 /* dRowAudio_CompleteDraggableWaveDisplay.cpp */,
+				9E4A66A495ED59E10DD4523D /* dRowAudio_CompleteColouredDraggableWaveDisplay.h */,
+				BD3665DC32672FCCE8528D3A /* dRowAudio_CompleteColouredDraggableWaveDisplay.cpp */,
 			);
 			name = draggable_display;
 			sourceTree = "<group>";
@@ -412,7 +461,14 @@
 			isa = PBXProject;
 			buildConfigurationList = EDEF46A152A4E4ED0BE677D4 /* Build configuration list for PBXProject "Decks" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = A7C59CEB977298DA713A6166 /* Source */;
 			projectDirPath = "";
 			projectRoot = ../..;
@@ -455,11 +511,16 @@
 				107FD22A0CF75C115E7C0E98 /* Transport.cpp in Sources */,
 				950FB4F0C78DC7E007D889DD /* DeckTransport.cpp in Sources */,
 				DE761B07B4378012249A219A /* TrackInfo.cpp in Sources */,
+				1C146D205B7FA7D4C4396503 /* ClickableCuePointComponent.cpp in Sources */,
 				3A45D6069BBDBDC80AF04683 /* LoopAndCuePoints.cpp in Sources */,
+				0CBF4B3588C0BE1F873C7EC7 /* CuePointList.cpp in Sources */,
+				A26B03DF0A0698BF1EC75C14 /* CuePointListBoxModel.cpp in Sources */,
 				7411A6083EE338A6F5E78FF0 /* TrackSuggestions.cpp in Sources */,
 				83674BC58CDAFB35120BCB26 /* MixTypeComponent.cpp in Sources */,
 				64CF3A745B54B3C91094A7BD /* TrackSuggestionTable.cpp in Sources */,
 				D26BE6FC18104431FFBA8DF2 /* DraggableDisplay.cpp in Sources */,
+				F61F484FD338506A0240A9A4 /* dRowAudio_CompleteDraggableWaveDisplay.cpp in Sources */,
+				118B302043C28399DF9D3E15 /* dRowAudio_CompleteColouredDraggableWaveDisplay.cpp in Sources */,
 				B3AE7DFD2D22DAB9D3CB6F56 /* Mixer.cpp in Sources */,
 				EE10433CD3B6DA34B8C97316 /* MixerChannelStrip.cpp in Sources */,
 				66A178CFE8C3BEBD22836BB8 /* CrossFader.cpp in Sources */,
@@ -471,6 +532,10 @@
 				41A664A86809A86631F074A0 /* dRowAudio.c in Sources */,
 				452B9A09C04FB0903CE700EE /* dRowAudio.cpp in Sources */,
 				325FC2FDC0892B2AFA289123 /* BinaryData.cpp in Sources */,
+				D4CE050E18D86BB2E78F7AB9 /* JuceLibraryCode1.mm in Sources */,
+				E05515AFF49331CA1265BEB4 /* JuceLibraryCode2.mm in Sources */,
+				ECEB2530C06F08D24C4AF2BF /* JuceLibraryCode3.mm in Sources */,
+				F87235D1AC2ACFEA761F36CA /* JuceLibraryCode4.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,9 +548,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
@@ -504,9 +568,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
@@ -523,7 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
@@ -536,15 +599,12 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../../juce_source/juce/bin\"",
-				);
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = (
-					"-ljuce",
 					"-framework",
-					Accelerate,
+					"Accelerate,",
+					"-framework",
+					AudioToolbox,
 				);
 				PREBINDING = NO;
 			};
@@ -568,16 +628,13 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../../juce_source/juce/bin\"",
-				);
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
-					"-ljucedebug",
 					"-framework",
-					Accelerate,
+					"Accelerate,",
+					"-framework",
+					AudioToolbox,
 				);
 				PREBINDING = NO;
 			};

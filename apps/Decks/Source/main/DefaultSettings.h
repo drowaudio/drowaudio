@@ -25,10 +25,10 @@ namespace Defaults
 			static const float gain = 1.0f;
 			
 			namespace HighEQ {
-				static const int cf = 1300;
+				static const int cf = 13000;
 				static const float q = 1.5f;
 				static const float gainMin = 0.05f;
-				static const float gainMax = 2.0f;				
+				static const float gainMax = 4.0f;				
 				static const float gain = 1.0f;
 				static const int killCf = 1300;
 				static const float killQ = 1.5;
@@ -39,7 +39,7 @@ namespace Defaults
 				static const int cf = 1000;
 				static const float q = 1.5f;
 				static const float gainMin = 0.05f;
-				static const float gainMax = 2.0f;				
+				static const float gainMax = 4.0f;				
 				static const float gain = 1.0f;
 				static const int killCf = 1000;
 				static const float killQ = 1.5;
@@ -50,7 +50,7 @@ namespace Defaults
 				static const int cf = 70;
 				static const float q = 1.5f;
 				static const float gainMin = 0.05f;
-				static const float gainMax = 2.0f;				
+				static const float gainMax = 4.0f;				
 				static const float gain = 1.0f;
 				static const int killCf = 70;
 				static const float killQ = 1.5;

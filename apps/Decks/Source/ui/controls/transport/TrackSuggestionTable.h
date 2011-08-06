@@ -60,7 +60,7 @@ public:
 	// Call this to sort the table displaying only the items matched
 	void setFilterText (String filterText);
 	
-	const String getDragSourceDescription (const SparseSet< int > &currentlySelectedRows);
+	const var getDragSourceDescription (const SparseSet< int > &currentlySelectedRows);
 
     //==============================================================================
 	
@@ -99,8 +99,8 @@ private:
 		columnList = demoData->getChildWithName("COLUMNS");
 		setUpColumns(columnList);
 		
-		demoData->addChild(ValueTree("DATA"), -1, 0);
-		dataList = demoData->getChildWithName("DATA");
+		demoData->addChild(ValueTree(Columns::libraryIdentifier), -1, 0);
+		dataList = demoData->getChildWithName(Columns::libraryIdentifier);
 				
 		numRows = dataList.getNumChildren();
 	}	

@@ -140,6 +140,9 @@ void MainAppWindow::setUpLookAndFeel()
 	laf->setColour(ScrollBar::backgroundColourId, Colour::greyLevel(0.5));
 	laf->setColour(ScrollBar::thumbColourId, Colour::greyLevel(0.8));
 	laf->setColour(ScrollBar::trackColourId, Colour::greyLevel(0.3));
+    
+    // list boxes
+    laf->setColour(ListBox::backgroundColourId, Colour::greyLevel(0.3));
 }
 
 //==============================================================================

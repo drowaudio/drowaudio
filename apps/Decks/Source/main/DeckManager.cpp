@@ -15,21 +15,25 @@ Deck::Deck(int deckNo_)
 {
 	Settings* settingsManager = Settings::getInstance();
 
-	filePlayer = new FilteringAudioFilePlayer();
+    filePlayer = new FilteringAudioFilePlayer();
 	filePlayer->setAudioFormatManager(DecksAudioFormatManager::getInstance());
+
+    thumbnailCache = new MultipleAudioThumbnailCache(10);
+    thumbnail = new ColouredAudioThumbnail(512, *DecksAudioFormatManager::getInstance(), *thumbnailCache);
+    
 	//monitorFilePlayer = new FilteringAudioFilePlayer();
 
 	settings.on = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(on));
 	settings.bypass = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(bypass));
 	settings.gain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(gain));
-	filePlayer->setGain(settings.gain.get());
+	filePlayer->getAudioTransportSource()->setGain(settings.gain.get());
 	settings.level = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(level));
 	settings.highGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(highGain));
-	filePlayer->setHighEQGain(settings.highGain.get());
+	filePlayer->getFilteringAudioSource()->setHighEQGain(settings.highGain.get());
 	settings.midGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(midGain));
-	filePlayer->setMidEQGain(settings.midGain.get());
+	filePlayer->getFilteringAudioSource()->setMidEQGain(settings.midGain.get());
 	settings.lowGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(lowGain));
-	filePlayer->setLowEQGain(settings.lowGain.get());
+	filePlayer->getFilteringAudioSource()->setLowEQGain(settings.lowGain.get());
 	settings.highKill = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(highKill));
 	settings.midKill = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(midKill));
 	settings.lowKill = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(lowKill));
@@ -72,24 +76,24 @@ void Deck::setSetting(const Identifier &setting, const var &newValue)
 	else if (setting == CHANNEL_SETTING(gain))
 	{
 		settings.gain.set(newValue);
-		filePlayer->setGain(settings.gain.get());
+		filePlayer->getAudioTransportSource()->setGain(settings.gain.get());
 	}
 	else if (setting == CHANNEL_SETTING(level))
 		settings.level.set(newValue);
 	else if (setting == CHANNEL_SETTING(highGain))
 	{
 		settings.highGain.set(newValue);
-		filePlayer->setHighEQGain(settings.highGain.get());
+		filePlayer->getFilteringAudioSource()->setHighEQGain(settings.highGain.get());
 	}
 	else if (setting == CHANNEL_SETTING(midGain))
 	{
 		settings.midGain.set(newValue);
-		filePlayer->setMidEQGain(settings.midGain.get());
+		filePlayer->getFilteringAudioSource()->setMidEQGain(settings.midGain.get());
 	}
 	else if (setting == CHANNEL_SETTING(lowGain))
 	{
 		settings.lowGain.set(newValue);
-		filePlayer->setLowEQGain(settings.lowGain.get());
+		filePlayer->getFilteringAudioSource()->setLowEQGain(settings.lowGain.get());
 	}
 	else if (setting == CHANNEL_SETTING(highKill))
 		settings.highKill.set(newValue);

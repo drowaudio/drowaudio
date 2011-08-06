@@ -15,6 +15,7 @@
 #include "../../DecksColours.h"
 #include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"
+#include "dRowAudio_CompleteColouredDraggableWaveDisplay.h"
 
 class DraggableDisplay :	public Component,
 							public SliderListener,
@@ -50,9 +51,9 @@ private:
 	Slider *zoomSlider, *playheadPosSlider;
 //	ScopedPointer<AudioThumbnailCache> thumbnailCache; 
 //	OwnedArray <DraggableWaveDisplay> draggableWaveDisplays;
-	ScopedPointer<MultipleAudioThumbnailCache> thumbnailCache; 
-	OwnedArray <SwitchableDraggableWaveDisplay> draggableWaveDisplays;
-	
+	//ScopedPointer<MultipleAudioThumbnailCache> thumbnailCache; 
+	//OwnedArray <SwitchableDraggableWaveDisplay> draggableWaveDisplays;
+    OwnedArray <CompleteColouredDraggableWaveDisplay> draggableWaveDisplays;	
 };
 
 #endif //_DRAGGABLEDISPLAY__H_

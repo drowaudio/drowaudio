@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="dJzUUhKMr" name="Decks" projectType="guiapp" version="1.0.0"
-              juceLinkage="static" buildVST="1" buildRTAS="0" buildAU="1" pluginName="Juce Project"
-              pluginDesc="Juce Project" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
-              pluginCode="Abcd" pluginChannelConfigs="{1, 1}, {2, 2}" pluginIsSynth="0"
-              pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0"
-              pluginTailLength="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="JuceProjectAU"
-              pluginAUViewClass="JuceProjectAU_V1" pluginRTASCategory="" bundleIdentifier="com.dRowAudio.Decks"
+              juceLinkage="amalg_multi" buildVST="1" buildRTAS="0" buildAU="1"
+              pluginName="Juce Project" pluginDesc="Juce Project" pluginManufacturer="yourcompany"
+              pluginManufacturerCode="abcd" pluginCode="Abcd" pluginChannelConfigs="{1, 1}, {2, 2}"
+              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
+              pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginEditorRequiresKeys="0"
+              pluginAUExportPrefix="JuceProjectAU" pluginAUViewClass="JuceProjectAU_V1"
+              pluginRTASCategory="" bundleIdentifier="com.dRowAudio.Decks"
               jucerVersion="3.0.0" smallIcon="H0hwTQxn5" bigIcon="H0hwTQxn5">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../../../juce_source/juce" extraLinkerFlags="-framework Accelerate"
+               juceFolder="../../../juce_source/juce" extraLinkerFlags="-framework Accelerate, -framework AudioToolbox"
                objCExtraSuffix="h0HpWI"/>
     <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                   juceFolder="../../../juce_source/juce" objCExtraSuffix="pfrbIk"/>
@@ -27,8 +28,8 @@
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Decks"
                    osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
-    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="Decks"
-                   osxSDK="default" osxCompatibility="default"/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Decks"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
   </CONFIGURATIONS>
   <MAINGROUP id="LdDaBcHXR" name="Decks">
     <GROUP id="o2BFbRoCU" name="Source">
@@ -104,10 +105,23 @@
             <FILE id="vajm0lLmx" name="TrackInfo.h" compile="0" resource="0" file="Source/ui/controls/transport/TrackInfo.h"/>
             <FILE id="8QQ0IzJwo" name="TrackInfo.cpp" compile="1" resource="0"
                   file="Source/ui/controls/transport/TrackInfo.cpp"/>
-            <FILE id="Okb6kL" name="LoopAndCuePoints.h" compile="0" resource="0"
-                  file="Source/ui/controls/transport/LoopAndCuePoints.h"/>
-            <FILE id="6x2SCPq" name="LoopAndCuePoints.cpp" compile="1" resource="0"
-                  file="Source/ui/controls/transport/LoopAndCuePoints.cpp"/>
+            <FILE id="mb1WAO" name="ClickableCuePointComponent.h" compile="0" resource="0"
+                  file="Source/ui/controls/transport/ClickableCuePointComponent.h"/>
+            <FILE id="VhA1Bb" name="ClickableCuePointComponent.cpp" compile="1"
+                  resource="0" file="Source/ui/controls/transport/ClickableCuePointComponent.cpp"/>
+            <GROUP id="QqyCt7" name="loop_and_cue">
+              <FILE id="Okb6kL" name="LoopAndCuePoints.h" compile="0" resource="0"
+                    file="Source/ui/controls/transport/LoopAndCuePoints.h"/>
+              <FILE id="6x2SCPq" name="LoopAndCuePoints.cpp" compile="1" resource="0"
+                    file="Source/ui/controls/transport/LoopAndCuePoints.cpp"/>
+              <FILE id="WsHwN2" name="CuePointList.h" compile="0" resource="0" file="Source/ui/controls/transport/CuePointList.h"/>
+              <FILE id="ZP62U2" name="CuePointList.cpp" compile="1" resource="0"
+                    file="Source/ui/controls/transport/CuePointList.cpp"/>
+              <FILE id="dB4mMX" name="CuePointListBoxModel.h" compile="0" resource="0"
+                    file="Source/ui/controls/transport/CuePointListBoxModel.h"/>
+              <FILE id="fuibrt" name="CuePointListBoxModel.cpp" compile="1" resource="0"
+                    file="Source/ui/controls/transport/CuePointListBoxModel.cpp"/>
+            </GROUP>
             <FILE id="e50XDo7" name="TrackSuggestions.h" compile="0" resource="0"
                   file="Source/ui/controls/transport/TrackSuggestions.h"/>
             <FILE id="2N5wPSn" name="TrackSuggestions.cpp" compile="1" resource="0"
@@ -126,6 +140,14 @@
                   file="Source/ui/controls/draggable_display/DraggableDisplay.h"/>
             <FILE id="Fkb9NVLgd" name="DraggableDisplay.cpp" compile="1" resource="0"
                   file="Source/ui/controls/draggable_display/DraggableDisplay.cpp"/>
+            <FILE id="iqwQ9L" name="dRowAudio_CompleteDraggableWaveDisplay.h" compile="0"
+                  resource="0" file="Source/ui/controls/draggable_display/dRowAudio_CompleteDraggableWaveDisplay.h"/>
+            <FILE id="rhQGKm" name="dRowAudio_CompleteDraggableWaveDisplay.cpp"
+                  compile="1" resource="0" file="Source/ui/controls/draggable_display/dRowAudio_CompleteDraggableWaveDisplay.cpp"/>
+            <FILE id="kfVAQG" name="dRowAudio_CompleteColouredDraggableWaveDisplay.h"
+                  compile="0" resource="0" file="Source/ui/controls/draggable_display/dRowAudio_CompleteColouredDraggableWaveDisplay.h"/>
+            <FILE id="HyiSQu" name="dRowAudio_CompleteColouredDraggableWaveDisplay.cpp"
+                  compile="1" resource="0" file="Source/ui/controls/draggable_display/dRowAudio_CompleteColouredDraggableWaveDisplay.cpp"/>
           </GROUP>
           <GROUP id="7oNbtMyUO" name="mixer">
             <FILE id="ZfNll0ZYZ" name="Mixer.h" compile="0" resource="0" file="Source/ui/controls/mixer/Mixer.h"/>
@@ -174,12 +196,13 @@
   </MAINGROUP>
   <JUCEOPTIONS JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ASIO="default"
                JUCE_WASAPI="default" JUCE_DIRECTSOUND="default" JUCE_ALSA="default"
-               JUCE_QUICKTIME="default" JUCE_OPENGL="default" JUCE_USE_FLAC="default"
-               JUCE_USE_OGGVORBIS="default" JUCE_USE_CDBURNER="default" JUCE_USE_CDREADER="default"
-               JUCE_USE_CAMERA="default" JUCE_ENABLE_REPAINT_DEBUGGING="default"
+               JUCE_QUICKTIME="disabled" JUCE_OPENGL="disabled" JUCE_USE_FLAC="disabled"
+               JUCE_USE_OGGVORBIS="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_CDREADER="disabled"
+               JUCE_USE_CAMERA="disabled" JUCE_ENABLE_REPAINT_DEBUGGING="default"
                JUCE_USE_XINERAMA="default" JUCE_USE_XSHM="default" JUCE_USE_XRENDER="default"
-               JUCE_USE_XCURSOR="default" JUCE_PLUGINHOST_VST="default" JUCE_PLUGINHOST_AU="default"
-               JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_WEB_BROWSER="default"
-               JUCE_SUPPORT_CARBON="default" JUCE_CHECK_MEMORY_LEAKS="default"
-               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_DIRECT2D="default"/>
+               JUCE_USE_XCURSOR="default" JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_AU="disabled"
+               JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_WEB_BROWSER="disabled"
+               JUCE_SUPPORT_CARBON="disabled" JUCE_CHECK_MEMORY_LEAKS="default"
+               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_DIRECT2D="disabled"
+               JUCE_DIRECTSHOW="default" JUCE_MEDIAFOUNDATION="default"/>
 </JUCERPROJECT>

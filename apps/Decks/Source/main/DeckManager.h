@@ -25,6 +25,9 @@ public:
 	int getDeckNo()										{	return deckNo;				}
 //	FilteringAudioFilePlayer* getFilePlayer()			{	return filePlayer;			}
 	FilteringAudioFilePlayer* getMainFilePlayer()		{	return filePlayer;			}
+    
+    MultipleAudioThumbnailCache* getThumbnailCache()    {   return thumbnailCache;           }
+    ColouredAudioThumbnail* getThumbnail()              {   return thumbnail;           }
 	//FilteringAudioFilePlayer* getMonitorFilePlayer()	{	return monitorFilePlayer;	}
 		
 	void startFromZero()
@@ -35,7 +38,7 @@ public:
 	
 	void stop()
 	{
-		filePlayer->stop();
+		filePlayer->getAudioTransportSource()->stop();
 		//monitorFilePlayer->stop();
 	}
 	
@@ -47,7 +50,7 @@ public:
 	
 	void setNextReadPosition(int position)
 	{
-		filePlayer->setNextReadPosition(position);
+		filePlayer->getAudioTransportSource()->setNextReadPosition(position);
 		//monitorFilePlayer->setNextReadPosition(position);
 	}
 	
@@ -114,6 +117,8 @@ private:
 	ValueTree deckTree;
 	const int deckNo;
 	ScopedPointer<FilteringAudioFilePlayer> filePlayer;
+    ScopedPointer<MultipleAudioThumbnailCache> thumbnailCache;
+    ScopedPointer<ColouredAudioThumbnail> thumbnail;
 	//ScopedPointer<FilteringAudioFilePlayer> monitorFilePlayer;
 		
 //	void callListeners();

@@ -13,11 +13,13 @@
 
 #include <dRowAudio/dRowAudio.h>
 #include "../../DecksLookAndFeel.h"
+#include "CuePointList.h"
 
 class LoopAndCuePoints : public Component
 {
 public:
-	LoopAndCuePoints();
+    
+	LoopAndCuePoints(FilteringAudioFilePlayer* filePlayer);
 	
 	~LoopAndCuePoints();
 	
