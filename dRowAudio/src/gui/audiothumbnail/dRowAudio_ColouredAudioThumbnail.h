@@ -181,6 +181,10 @@ public:
     /** Returns the number of samples that have been set in the thumbnail. */
     int64 getNumSamplesFinished() const throw();
 
+    /** Returns the number of samples per thumbnail sample being used.
+     */
+    int32 getNumSamplesPerThumbnailSample()     {   return samplesPerThumbSample;   }
+    
     /** Returns the highest level in the thumbnail.
         Note that because the thumb only stores low-resolution data, this isn't
         an accurate representation of the highest value, it's only a rough approximation.

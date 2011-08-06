@@ -289,6 +289,7 @@ void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType cause)
 {
 	repaint();
 }
+
 void MusicLibraryTable::timerCallback()
 {
 	if (!finishedLoading) {
@@ -305,18 +306,30 @@ void MusicLibraryTable::timerCallback()
 
 const var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
 {
-	if(!currentlySelectedRows.isEmpty())
+	if(! currentlySelectedRows.isEmpty())
 	{
-		ScopedPointer<XmlElement> tracksToDrag (new XmlElement("ITEMS"));
-
-		for(int i = 0; i < currentlySelectedRows.size(); i++)
-		{
-			tracksToDrag->addChildElement(filteredDataList->getChild(currentlySelectedRows[i]).createXml());
-		}
-		
-		return tracksToDrag->createDocument("", false, false);
+        var itemsArray;
+//        itemsArray.append(&dataList);
+                          
+        for (int i = 0; i < currentlySelectedRows.size(); ++i)
+        {
+            ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (filteredDataList->getChild (currentlySelectedRows[i]));
+            itemsArray.append(childTree.getObject());
+//            itemsArray.append((int)filteredDataList->getChild(currentlySelectedRows[i]).getProperty(Columns::columnNames[Columns::ID]));
+        }
+            
+        return itemsArray;
+            
+//		ScopedPointer<XmlElement> tracksToDrag (new XmlElement("ITEMS"));
+//
+//		for(int i = 0; i < currentlySelectedRows.size(); i++)
+//		{
+//			tracksToDrag->addChildElement(filteredDataList->getChild(currentlySelectedRows[i]).createXml());
+//		}
+//		
+//		return tracksToDrag->createDocument("", false, false);
 	}
-	return String::empty;
+	return var::null; //String::empty;
 }
 
 END_DROWAUDIO_NAMESPACE

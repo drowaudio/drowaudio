@@ -18,6 +18,10 @@
 /**	Details the colums of the table.
  */
 namespace Columns {
+    
+    static const Identifier libraryIdentifier ("DATA");
+    static const Identifier libraryItemIdentifier ("ITEM");
+    
 	enum colums {
 		Dummy,
 		LibID,

@@ -186,6 +186,40 @@ static String findKeyFromChemicalWebsite(const String &releaseNo, const String &
 	return String::empty;
 }
 
+/** Holds a ValueTree as a ReferenceCountedObject.
+    This is somewhat obfuscated but makes it easy to transfer ValueTrees as var objects 
+    such as when using them as DragAndDropTarget::SourceDetails::description members.
+ */
+class ReferenceCountedValueTree : public ReferenceCountedObject
+{
+public:
+    
+    ReferenceCountedValueTree (ValueTree treeToReference)
+    :   tree (treeToReference)
+    {
+    }
+    
+    ~ReferenceCountedValueTree()
+    {
+    }
+    
+    void setValueTree (ValueTree newTree)
+    {
+        tree = newTree;
+    }
+    
+    ValueTree getValueTree()
+    {
+        return tree;
+    }
+    
+    typedef ReferenceCountedObjectPtr<ReferenceCountedValueTree> Ptr;
+    
+private:
+    
+    ValueTree tree;
+};
+
 //==============================================================================
 /**
 	This handy macro is a platform independent way of stopping compiler

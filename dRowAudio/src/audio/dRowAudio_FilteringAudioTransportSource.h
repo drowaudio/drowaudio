@@ -156,7 +156,6 @@ public:
     bool isLooping() const;
 	
     //==============================================================================
-    juce_UseDebuggingNewOperator
 	
 private:
     PositionableAudioSource* source;

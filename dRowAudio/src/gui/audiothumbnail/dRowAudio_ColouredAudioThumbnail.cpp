@@ -982,7 +982,7 @@ ColouredAudioThumbnail::ColouredAudioThumbnail (const int originalSamplesPerThum
 :	formatManagerToUse (formatManagerToUse_),
     cache (cacheToUse),
     window (new CachedWindow()),
-    samplesPerThumbSample (nextPowerOf2(originalSamplesPerThumbnailSample)),
+    samplesPerThumbSample (originalSamplesPerThumbnailSample),
     totalSamples (0),
     numChannels (0),
     sampleRate (0)

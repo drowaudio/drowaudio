@@ -108,8 +108,8 @@ void ColouredPositionableWaveDisplay::timerCallback(const int timerId)
 	}
 	else if (timerId == waveformResizing)
 	{
-        tempImage = Image(Image::RGB, getWidth() * 3, getHeight(), true);
-		waveformImage = Image(Image::RGB, getWidth(), getHeight(), true);
+        tempImage = Image(Image::RGB, jmax(1, getWidth() * 3), getHeight(), true);
+		waveformImage = Image(Image::RGB, jmax(1, getWidth()), getHeight(), true);
         waveformImage.clear(waveformImage.getBounds(), Colours::black);
         lastTimeDrawn = 0.0;
 		refreshWaveform();
@@ -243,9 +243,18 @@ void ColouredPositionableWaveDisplay::filesDropped (const StringArray &files, in
 //==============================================================================
 bool ColouredPositionableWaveDisplay::isInterestedInDragSource (const SourceDetails& dragSourceDetails)
 {
-	if (dragSourceDetails.description.toString().startsWith("<ITEMS>")) {
-		return true;
-	}
+//	if (dragSourceDetails.description.toString().startsWith("<ITEMS>")) {
+//		return true;
+//	}
+
+//    ValueTree* libraryTree = dynamic_cast<ValueTree*> ((ValueTree*)int(dragSourceDetails.description[0]));
+  
+    ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
+
+    if (libraryTree != nullptr && libraryTree->getValueTree().hasType(Columns::libraryItemIdentifier))
+    {
+        return true;
+    }
 	
 	return false;	
 }
@@ -264,16 +273,40 @@ void ColouredPositionableWaveDisplay::itemDragExit (const SourceDetails& dragSou
 
 void ColouredPositionableWaveDisplay::itemDropped (const SourceDetails& dragSourceDetails)
 {
-	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(dragSourceDetails.description.toString()));
-	
-	if (newTracks->getNumChildElements() > 0) {
-		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));
-		
-		if (newFile.existsAsFile()) {
-			filePlayer->setLibraryEntry(ValueTree::fromXml(*newTracks->getChildElement(0)));
-			filePlayer->setFile(newFile.getFullPathName());
-		}
-	}
+    if (dragSourceDetails.description.isArray()) 
+    {
+//        ValueTree* libraryTree = dynamic_cast<ValueTree*> ((ValueTree*)(dragSourceDetails.description[0]));
+//        
+//        if (libraryTree != nullptr && libraryTree->isValid())
+//        {
+//            DBG("dropped tree is valid");
+//            ValueTree itemTree(libraryTree->getChildWithProperty(Columns::columnNames[Columns::ID], dragSourceDetails.description[1]));
+//            File newFile(itemTree.getProperty(Columns::columnNames[Columns::Location]));
+
+        ReferenceCountedValueTree::Ptr childTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
+        if (childTree != nullptr) 
+        {
+            ValueTree itemTree (childTree->getValueTree());
+            File newFile (itemTree.getProperty(Columns::columnNames[Columns::Location]));
+            
+            if (newFile.existsAsFile()) 
+            {
+                filePlayer->setLibraryEntry(itemTree);
+                filePlayer->setFile(newFile.getFullPathName());
+            }
+        }
+    }
+    
+//	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(dragSourceDetails.description.toString()));
+//	
+//	if (newTracks->getNumChildElements() > 0) {
+//		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));
+//		
+//		if (newFile.existsAsFile()) {
+//			filePlayer->setLibraryEntry(ValueTree::fromXml(*newTracks->getChildElement(0)));
+//			filePlayer->setFile(newFile.getFullPathName());
+//		}
+//	}
 	
 	interestedInDrag = false;
 	triggerAsyncUpdate();

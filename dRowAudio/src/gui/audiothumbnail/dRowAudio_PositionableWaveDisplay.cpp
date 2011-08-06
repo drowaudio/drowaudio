@@ -234,6 +234,16 @@ void PositionableWaveDisplay::itemDragExit (const SourceDetails& dragSourceDetai
 
 void PositionableWaveDisplay::itemDropped (const SourceDetails& dragSourceDetails)
 {
+/*    if (dragSourceDetails.description.isArray()) 
+    {
+        ValueTree* libraryTree = dynamic_cast<ValueTree*> ((ValueTree*)int(dragSourceDetails.description[0]));
+    
+        if (libraryTree != nullptr && libraryTree->isValid())
+        {
+            DBG("dropped tree is valid");
+        }
+    }*/
+    
 	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(dragSourceDetails.description.toString()));
 	
 	if (newTracks->getNumChildElements() > 0) {

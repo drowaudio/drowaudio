@@ -37,7 +37,7 @@ void ITunesLibraryParser::run()
     Array<int> existingIds;
     if (!threadShouldExit())
     {
-        if (treeToFill.hasType("DATA"))
+        if (treeToFill.hasType(Columns::libraryIdentifier))
         {
             for (int i = 0; i < treeToFill.getNumChildren(); ++i)
             {
@@ -72,7 +72,7 @@ void ITunesLibraryParser::run()
                 else
                 {
                     alreadyExists = false;
-                    newElement = ValueTree("ITEM");
+                    newElement = ValueTree(Columns::libraryItemIdentifier);
                     newElement.setProperty(Columns::columnNames[Columns::ID], currentItemId, nullptr);
                 }
                 

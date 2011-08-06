@@ -55,7 +55,7 @@ public:
 	bool setFile(const String& path);
 	
 	/** Sets a ValueTree which can hold information about this track.
-		This is not build by default so you will need to explicitly set it when you load a new track;
+		This is not built by default so you will need to explicitly set it when you load a new track;
 	 */
 	void setLibraryEntry(ValueTree newEntry);
 

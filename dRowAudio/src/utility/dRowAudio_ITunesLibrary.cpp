@@ -16,7 +16,7 @@ juce_ImplementSingleton(ITunesLibrary);
 
 ITunesLibrary::ITunesLibrary()
 :	//libraryFile (getDefaultITunesLibraryFile()),
-    libraryTree("DATA")
+    libraryTree(Columns::libraryIdentifier)
 {
 	//setLibraryFile(libraryFile);
 }
@@ -49,7 +49,7 @@ bool ITunesLibrary::loadSavedLibraryIfNewer(File savedLibraryFile)
             
             return true;
         }
-        else if (savedTree.hasType("DATA")) //attempt to update existing
+        else if (savedTree.hasType(Columns::libraryIdentifier)) //attempt to update existing
         {
             libraryTree = savedTree;
         }
@@ -67,7 +67,7 @@ const File& ITunesLibrary::getLibraryFile()
 
 void ITunesLibrary::setLibraryTree(ValueTree newTreeToUse)
 {
-    if (newTreeToUse.hasType("DATA"))
+    if (newTreeToUse.hasType(Columns::libraryIdentifier))
     {
         libraryTree = newTreeToUse;
         listeners.call (&Listener::libraryChanged, this);
@@ -82,7 +82,8 @@ void ITunesLibrary::timerCallback()
 	{
 		listeners.call (&Listener::libraryUpdated, this);
 
-		if (parser->hasFinished()) {
+		if (parser->hasFinished())
+        {
 			stopTimer();
 			parser = 0;
 			listeners.call (&Listener::libraryFinished, this);

@@ -12,7 +12,7 @@ BEGIN_DROWAUDIO_NAMESPACE
 
 #include "dRowAudio_AbstractDraggableWaveDisplay.h"
 
-AbstractDraggableWaveDisplay::AbstractDraggableWaveDisplay(int sourceSamplesPerThumbSample,
+AbstractDraggableWaveDisplay::AbstractDraggableWaveDisplay(int _sourceSamplesPerThumbSample,
                                                            FilteringAudioFilePlayer* sourceToBeUsed,
                                                            MultipleAudioThumbnailCache *cacheToUse)
 :	Thread("DraggableWaveDisplayThread"),
@@ -24,7 +24,7 @@ AbstractDraggableWaveDisplay::AbstractDraggableWaveDisplay(int sourceSamplesPerT
 	playheadPos(0.5f),
 	shouldRefreshWaveforms(false),
 	waveformIsFullyLoaded(false),
-	sourceSamplesPerThumbSample(sourceSamplesPerThumbSample),
+	sourceSamplesPerThumbSample(_sourceSamplesPerThumbSample),
 	thumbnailCache(cacheToUse, (cacheToUse == nullptr) ? true : false),
 	isDraggable(true),
 	mouseShouldTogglePlay(true)

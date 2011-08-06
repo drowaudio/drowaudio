@@ -116,7 +116,7 @@ bool FilteringAudioFilePlayer::setFile(const String& path)
 
 void FilteringAudioFilePlayer::setLibraryEntry(ValueTree newEntry)
 {
-	libraryEntry = newEntry.createCopy();
+	libraryEntry = newEntry;
 }
 
 String FilteringAudioFilePlayer::getFilePath()
