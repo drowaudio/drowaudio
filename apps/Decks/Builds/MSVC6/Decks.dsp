@@ -220,6 +220,18 @@ SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"
 SOURCE="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"
 # End Source File
 # Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\LoopPointList.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\LoopPointList.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\LoopPointListBoxModel.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\transport\LoopPointListBoxModel.cpp"
+# End Source File
+# Begin Source File
 SOURCE="..\..\Source\ui\controls\transport\CuePointList.h"
 # End Source File
 # Begin Source File
@@ -258,6 +270,12 @@ SOURCE="..\..\Source\ui\controls\draggable_display\DraggableDisplay.h"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\draggable_display\DraggableDisplay.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\draggable_display\CuePointDisplayComponent.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\Source\ui\controls\draggable_display\CuePointDisplayComponent.cpp"
 # End Source File
 # Begin Source File
 SOURCE="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteDraggableWaveDisplay.h"

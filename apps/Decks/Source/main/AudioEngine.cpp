@@ -126,7 +126,7 @@ void AudioEngine::MainAudioCallback::audioDeviceIOCallback (const float** inputC
 	monitorBuffer.clear();
 	
 	float yGain = manager->getXFaderSetting(XFADER_SETTING(level));
-	float xGain = 1.0f-yGain;
+	float xGain = 1.0f - yGain;
 
 	int assignX = manager->getXFaderSetting(XFADER_SETTING(assignX));
 	int assignY = manager->getXFaderSetting(XFADER_SETTING(assignY));
@@ -153,27 +153,27 @@ void AudioEngine::MainAudioCallback::audioDeviceIOCallback (const float** inputC
 						monitorBuffer.addFrom(c, 0, outputChannelData[c], numSamples);
 				}
 					
-				if (engine->currentMixer != 0)
+				if (engine->currentMixer != nullptr)
 					engine->currentMixer->updateMeterForChannel(i, outputChannelData, numSamples, totalNumOutputChannels);
 								
 				if (channelLevel != 0.0f)
 				{
 					// apply xFader gain
-					if (assignX == (i+1)) {
-						for (int c=0; c<totalNumOutputChannels; c++)
-							for (int s=0; s<numSamples; s++) {
-								outputChannelData[c][s]*=xGain;
+					if (assignX == (i + 1)) {
+						for (int c = 0; c < totalNumOutputChannels; c++)
+							for (int s = 0; s < numSamples; s++) {
+								outputChannelData[c][s] *= xGain;
 							}
 					}
-					if (assignY == (i+1)) {
-						for (int c=0; c<totalNumOutputChannels; c++)
-							for (int s=0; s<numSamples; s++) {
-								outputChannelData[c][s]*=yGain;
+					if (assignY == (i + 1)) {
+						for (int c = 0; c < totalNumOutputChannels; c++)
+							for (int s = 0; s < numSamples; s++) {
+								outputChannelData[c][s] *= yGain;
 							}
 					}
 					
 					// add the samples to the output buffer
-					for (int c=0; c<totalNumOutputChannels; c++)
+					for (int c = 0; c < totalNumOutputChannels; c++)
 						buffer.addFrom(c, 0, outputChannelData[c], numSamples, channelLevel);
 				}
 			}
@@ -198,13 +198,14 @@ void AudioEngine::MainAudioCallback::audioDeviceIOCallback (const float** inputC
 	buffer.applyGain(0, numSamples, masterGain);
 	
 	// copy local buffer to output buffer
-	for (int c=0; c < totalNumOutputChannels; c++) {
-		for (int s=0; s<numSamples; s++) {
-			outputChannelData[c][s] = buffer.getArrayOfChannels()[c][s];
+    float** bufferChannelArray = buffer.getArrayOfChannels();
+	for (int c = 0; c < totalNumOutputChannels; c++) {
+		for (int s = 0; s < numSamples; s++) {
+			outputChannelData[c][s] = bufferChannelArray[c][s];
 		}
 	}	
 
-	if (engine->currentMixer != 0)
+	if (engine->currentMixer != nullptr)
 		engine->currentMixer->updateMasterMeter(outputChannelData, numSamples, totalNumOutputChannels);
 }
 
@@ -257,11 +258,11 @@ void AudioEngine::MonitorAudioCallback::audioDeviceIOCallback (const float** inp
 	
 	int numDone = 0;
 	while (engine->monitor.monitorCircularBufferL.getNumAvailable() >= numSamples) {
-		engine->monitor.monitorCircularBufferL.readSamples(outputChannelData[0]+numDone, numSamples);
+		engine->monitor.monitorCircularBufferL.readSamples(outputChannelData[0] + numDone, numSamples);
 		numDone += numSamples;
 	}
 	if (totalNumOutputChannels > 1)
-		zeromem(outputChannelData[1], numSamples*sizeof(float));
+		zeromem(outputChannelData[1], numSamples * sizeof (float));
 	
 	// need to do sample rate conversion here
 }

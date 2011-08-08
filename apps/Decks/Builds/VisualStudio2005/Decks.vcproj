@@ -178,6 +178,10 @@
               <Filter Name="loop_and_cue">
                 <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.h"/>
                 <File RelativePath="..\..\Source\ui\controls\transport\LoopAndCuePoints.cpp"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\LoopPointList.h"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\LoopPointList.cpp"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\LoopPointListBoxModel.h"/>
+                <File RelativePath="..\..\Source\ui\controls\transport\LoopPointListBoxModel.cpp"/>
                 <File RelativePath="..\..\Source\ui\controls\transport\CuePointList.h"/>
                 <File RelativePath="..\..\Source\ui\controls\transport\CuePointList.cpp"/>
                 <File RelativePath="..\..\Source\ui\controls\transport\CuePointListBoxModel.h"/>
@@ -193,6 +197,8 @@
             <Filter Name="draggable_display">
               <File RelativePath="..\..\Source\ui\controls\draggable_display\DraggableDisplay.h"/>
               <File RelativePath="..\..\Source\ui\controls\draggable_display\DraggableDisplay.cpp"/>
+              <File RelativePath="..\..\Source\ui\controls\draggable_display\CuePointDisplayComponent.h"/>
+              <File RelativePath="..\..\Source\ui\controls\draggable_display\CuePointDisplayComponent.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteDraggableWaveDisplay.h"/>
               <File RelativePath="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteDraggableWaveDisplay.cpp"/>
               <File RelativePath="..\..\Source\ui\controls\draggable_display\dRowAudio_CompleteColouredDraggableWaveDisplay.h"/>

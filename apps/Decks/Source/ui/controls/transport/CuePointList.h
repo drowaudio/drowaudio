@@ -28,9 +28,7 @@ public:
     void fileChanged (FilteringAudioFilePlayer *player);
     
 private:
-    
-    //static const Identifier cueIdentifier;
-    
+        
     FilteringAudioFilePlayer* filePlayer;
     ValueTree cuePointsTree;
     CuePointListBoxModel model;

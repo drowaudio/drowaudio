@@ -10,6 +10,9 @@
 
 #include "LoopAndCuePoints.h"
 
+#include "LoopPointList.h"
+#include "CuePointList.h"
+
 LoopAndCuePoints::LoopAndCuePoints(FilteringAudioFilePlayer* filePlayer)
 {
 	addAndMakeVisible(showHideButton = new DrawableButton("Loops", DrawableButton::ImageOnButtonBackground));
@@ -23,7 +26,7 @@ LoopAndCuePoints::LoopAndCuePoints(FilteringAudioFilePlayer* filePlayer)
 	addAndMakeVisible(tabbedComponent);
 	tabbedComponent->setTabBarDepth(20);
 	tabbedComponent->setOutline(0);
-	tabbedComponent->addTab("Loop", Colour::greyLevel(0.3), nullptr, true);
+	tabbedComponent->addTab("Loop", Colour::greyLevel(0.3), new LoopPointList(filePlayer), true);
 	tabbedComponent->addTab("Cue", Colour::greyLevel(0.3), new CuePointList(filePlayer), true);
 }
 

@@ -114,6 +114,13 @@
                     file="Source/ui/controls/transport/LoopAndCuePoints.h"/>
               <FILE id="6x2SCPq" name="LoopAndCuePoints.cpp" compile="1" resource="0"
                     file="Source/ui/controls/transport/LoopAndCuePoints.cpp"/>
+              <FILE id="vHxfCa" name="LoopPointList.h" compile="0" resource="0" file="Source/ui/controls/transport/LoopPointList.h"/>
+              <FILE id="ol75nK" name="LoopPointList.cpp" compile="1" resource="0"
+                    file="Source/ui/controls/transport/LoopPointList.cpp"/>
+              <FILE id="G9XJXB" name="LoopPointListBoxModel.h" compile="0" resource="0"
+                    file="Source/ui/controls/transport/LoopPointListBoxModel.h"/>
+              <FILE id="yXAAYU" name="LoopPointListBoxModel.cpp" compile="1" resource="0"
+                    file="Source/ui/controls/transport/LoopPointListBoxModel.cpp"/>
               <FILE id="WsHwN2" name="CuePointList.h" compile="0" resource="0" file="Source/ui/controls/transport/CuePointList.h"/>
               <FILE id="ZP62U2" name="CuePointList.cpp" compile="1" resource="0"
                     file="Source/ui/controls/transport/CuePointList.cpp"/>
@@ -140,6 +147,10 @@
                   file="Source/ui/controls/draggable_display/DraggableDisplay.h"/>
             <FILE id="Fkb9NVLgd" name="DraggableDisplay.cpp" compile="1" resource="0"
                   file="Source/ui/controls/draggable_display/DraggableDisplay.cpp"/>
+            <FILE id="ySkY59" name="CuePointDisplayComponent.h" compile="0" resource="0"
+                  file="Source/ui/controls/draggable_display/CuePointDisplayComponent.h"/>
+            <FILE id="A4OKmx" name="CuePointDisplayComponent.cpp" compile="1" resource="0"
+                  file="Source/ui/controls/draggable_display/CuePointDisplayComponent.cpp"/>
             <FILE id="iqwQ9L" name="dRowAudio_CompleteDraggableWaveDisplay.h" compile="0"
                   resource="0" file="Source/ui/controls/draggable_display/dRowAudio_CompleteDraggableWaveDisplay.h"/>
             <FILE id="rhQGKm" name="dRowAudio_CompleteDraggableWaveDisplay.cpp"

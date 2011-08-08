@@ -17,6 +17,8 @@
 #include "../../../main/DeckManager.h"
 #include "dRowAudio_CompleteColouredDraggableWaveDisplay.h"
 
+class CuePointDisplayComponent;
+
 class DraggableDisplay :	public Component,
 							public SliderListener,
 							public ValueTree::Listener
@@ -54,6 +56,7 @@ private:
 	//ScopedPointer<MultipleAudioThumbnailCache> thumbnailCache; 
 	//OwnedArray <SwitchableDraggableWaveDisplay> draggableWaveDisplays;
     OwnedArray <CompleteColouredDraggableWaveDisplay> draggableWaveDisplays;	
+    OwnedArray <CuePointDisplayComponent> cuePointDisplayComponents;	
 };
 
 #endif //_DRAGGABLEDISPLAY__H_

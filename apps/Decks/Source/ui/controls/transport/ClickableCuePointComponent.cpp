@@ -115,6 +115,9 @@ ClickableCuePointComponent::~ClickableCuePointComponent()
 {
     filePlayer->removeListener(this);
     cuePointTree.removeListener(this);
+    
+    removeAllChildren();
+    cuePoints.clear();
 }
 
 void ClickableCuePointComponent::resized()
@@ -163,8 +166,8 @@ void ClickableCuePointComponent::updateCuePoints()
         for (int i = 0; i < cuePointTree.getNumProperties(); ++i)
         {
             cuePoints.add(new CuePointComponent(filePlayer,
-                                                LoopAndCueHelpers::getTimeFromCueString (cuePointTree, i),
-                                                Colour (LoopAndCueHelpers::getColourFromCueString (cuePointTree, i))));
+                                                LoopAndCueHelpers::getTimeFromCueTree (cuePointTree, i),
+                                                Colour (LoopAndCueHelpers::getColourFromCueTree (cuePointTree, i))));
             addAndMakeVisible(cuePoints[i]);
         }
     }

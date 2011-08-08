@@ -10,8 +10,6 @@
 
 #include "CuePointList.h"
 
-//CuePointList::cueIdentifier("CUE");
-
 CuePointList::CuePointList(FilteringAudioFilePlayer* _filePlayer)
 :   filePlayer(_filePlayer),
     model(&cuePointsList, filePlayer)
@@ -37,7 +35,7 @@ void CuePointList::fileChanged (FilteringAudioFilePlayer *player)
 {
     if (player == filePlayer)
     {
-        cuePointsTree = filePlayer->getLibraryEntry().getChildWithName ("CUE");
+        cuePointsTree = filePlayer->getLibraryEntry().getChildWithName (Columns::libraryCuePointIdentifier);
         if (! cuePointsTree.isValid())
             cuePointsTree = filePlayer->getLibraryEntry();
         

@@ -9,6 +9,8 @@
 
 #include "DraggableDisplay.h"
 
+#include "CuePointDisplayComponent.h"
+
 DraggableDisplay::DraggableDisplay()
 :	noDecks(Settings::getInstance()->getPropertyOfChild("noChannels", "noChannels")),
 	settings(DeckManager::getInstance())
@@ -18,8 +20,7 @@ DraggableDisplay::DraggableDisplay()
 	// create the zoom & playhead sliders
 	addAndMakeVisible( zoomSlider = new Slider("zoomSlider") );
 	zoomSlider->setSliderStyle(Slider::LinearVertical);
-	zoomSlider->setRange(0.1, 10, 0.0001);
-//	zoomSlider->setValue(0.0f);
+	zoomSlider->setRange(0.05, 5, 0.0001);
 	zoomSlider->setSkewFactorFromMidPoint(1.0);	
 	zoomSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChildAsValue(UISettings::SectionName, DRAGGABLE_SETTING(zoom)));
     zoomSlider->addListener(this);
@@ -36,12 +37,19 @@ DraggableDisplay::DraggableDisplay()
 //		draggableWaveDisplays.add(new SwitchableDraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(),
 //                                                                     DeckManager::getInstance()->getDeck(i)->getThumbnailCache(),
 //                                                                     DeckManager::getInstance()->getDeck(i)->getThumbnail()));
-		draggableWaveDisplays.add(new CompleteColouredDraggableWaveDisplay(512,
-                                                                   DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(),
-                                                                   DeckManager::getInstance()->getDeck(i)->getThumbnailCache(),
-                                                                   DeckManager::getInstance()->getDeck(i)->getThumbnail()));
+		draggableWaveDisplays.add(new CompleteColouredDraggableWaveDisplay(DeckManager::getInstance()->getDeck(i)->getThumbnail()->getNumSamplesPerThumbnailSample(),
+                                                                           DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(),
+                                                                           DeckManager::getInstance()->getDeck(i)->getThumbnailCache(),
+                                                                           DeckManager::getInstance()->getDeck(i)->getThumbnail()));
 		addAndMakeVisible(draggableWaveDisplays[i]);
 		draggableWaveDisplays[i]->setZoomFactor(zoomSlider->getValue());
+		draggableWaveDisplays[i]->setPlayheadPosition(playheadPosSlider->getValue());
+        
+        cuePointDisplayComponents.add (new CuePointDisplayComponent (DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(),
+                                                                     DeckManager::getInstance()->getDeck(i)->getThumbnail()->getNumSamplesPerThumbnailSample()));
+        cuePointDisplayComponents[i]->setZoomFactor(zoomSlider->getValue());
+		cuePointDisplayComponents[i]->setPlayheadPosition(playheadPosSlider->getValue());
+        addAndMakeVisible(cuePointDisplayComponents[i]);
 	}	
 	
 	Settings::getInstance()->getValueTreePointer()->addListener(this);
@@ -54,7 +62,8 @@ DraggableDisplay::~DraggableDisplay()
 	playheadPosSlider->removeListener(this);
 	
 	draggableWaveDisplays.clear();
-
+    cuePointDisplayComponents.clear();
+    
 	deleteAllChildren();
 	DBG("DraggableDisplay deleted");
 }
@@ -89,11 +98,17 @@ void DraggableDisplay::resized()
 		{
 			if (Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(on)) == tempTrue) {
 				draggableWaveDisplays[i]->setVisible(true);
+                cuePointDisplayComponents[i]->setVisible (true);
 				draggableWaveDisplays[i]->setBounds(zoomSlider->getRight()+margin, margin+(pos*(waveDisplayHeight+margin)), waveDisplayWidth, waveDisplayHeight);
+                cuePointDisplayComponents[i]->setBounds (draggableWaveDisplays[i]->getX(), draggableWaveDisplays[i]->getY(),
+                                                         draggableWaveDisplays[i]->getWidth(), draggableWaveDisplays[i]->getHeight());
 				pos++;
 			}
 			else
-				draggableWaveDisplays[i]->setVisible(false);
+            {
+				draggableWaveDisplays[i]->setVisible (false);
+                cuePointDisplayComponents[i]->setVisible (false);
+            }
 		}
 	}
 	else {
@@ -153,14 +168,23 @@ void DraggableDisplay::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHa
 		}
 	}
 	
-	if (property == DRAGGABLE_SETTING(zoom)) {
+	if (property == DRAGGABLE_SETTING(zoom))
+    {
 		const double zoomFactor = double(treeWhosePropertyHasChanged.getProperty(DRAGGABLE_SETTING(zoom)));
 		for (int i = 0; i < noDecks; i++)
-			draggableWaveDisplays[i]->setZoomFactor(zoomFactor);
+        {
+			draggableWaveDisplays[i]->setZoomFactor (zoomFactor);
+            cuePointDisplayComponents[i]->setZoomFactor (zoomFactor);
+        }
 	}
-	else if (property == DRAGGABLE_SETTING(playheadPos)) {
+	else if (property == DRAGGABLE_SETTING(playheadPos))
+    {
+        const double newPlayheadPos = double(treeWhosePropertyHasChanged.getProperty(DRAGGABLE_SETTING(playheadPos)));
 		for (int i = 0; i < noDecks; i++)
-			draggableWaveDisplays[i]->setPlayheadPosition(double(treeWhosePropertyHasChanged.getProperty(DRAGGABLE_SETTING(playheadPos))));
+        {
+			draggableWaveDisplays[i]->setPlayheadPosition (newPlayheadPos);
+            cuePointDisplayComponents[i]->setPlayheadPosition (newPlayheadPos);
+        }
 	}
 }
 

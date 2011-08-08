@@ -62,12 +62,15 @@ OBJECTS := \
   $(OBJDIR)/TrackInfo_bd3403d6.o \
   $(OBJDIR)/ClickableCuePointComponent_5e60a74b.o \
   $(OBJDIR)/LoopAndCuePoints_1e85ecd0.o \
+  $(OBJDIR)/LoopPointList_7c6db6c7.o \
+  $(OBJDIR)/LoopPointListBoxModel_70e05.o \
   $(OBJDIR)/CuePointList_9e758088.o \
   $(OBJDIR)/CuePointListBoxModel_adcd86c6.o \
   $(OBJDIR)/TrackSuggestions_83d5f51.o \
   $(OBJDIR)/MixTypeComponent_5b7bf314.o \
   $(OBJDIR)/TrackSuggestionTable_623f988c.o \
   $(OBJDIR)/DraggableDisplay_69d2841b.o \
+  $(OBJDIR)/CuePointDisplayComponent_b39202be.o \
   $(OBJDIR)/dRowAudio_CompleteDraggableWaveDisplay_fd3fb73a.o \
   $(OBJDIR)/dRowAudio_CompleteColouredDraggableWaveDisplay_9d54b8c5.o \
   $(OBJDIR)/Mixer_7f8f6326.o \
@@ -196,6 +199,16 @@ $(OBJDIR)/LoopAndCuePoints_1e85ecd0.o: ../../Source/ui/controls/transport/LoopAn
 	@echo "Compiling LoopAndCuePoints.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
+$(OBJDIR)/LoopPointList_7c6db6c7.o: ../../Source/ui/controls/transport/LoopPointList.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LoopPointList.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/LoopPointListBoxModel_70e05.o: ../../Source/ui/controls/transport/LoopPointListBoxModel.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LoopPointListBoxModel.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
 $(OBJDIR)/CuePointList_9e758088.o: ../../Source/ui/controls/transport/CuePointList.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling CuePointList.cpp"
@@ -224,6 +237,11 @@ $(OBJDIR)/TrackSuggestionTable_623f988c.o: ../../Source/ui/controls/transport/Tr
 $(OBJDIR)/DraggableDisplay_69d2841b.o: ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling DraggableDisplay.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/CuePointDisplayComponent_b39202be.o: ../../Source/ui/controls/draggable_display/CuePointDisplayComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling CuePointDisplayComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/dRowAudio_CompleteDraggableWaveDisplay_fd3fb73a.o: ../../Source/ui/controls/draggable_display/dRowAudio_CompleteDraggableWaveDisplay.cpp

@@ -42,8 +42,7 @@ CompleteDraggableWaveDisplay::CompleteDraggableWaveDisplay(int _sourceSamplesPer
 		thumbnailCache = newCache;
 	}
     
-	samplesPerPixel = sourceSamplesPerThumbSample / zoomRatio;
-	timePerPixel = samplesPerPixel.getCurrent() * oneOverSampleRate;
+	timePerPixel = sourceSamplesPerThumbSample * oneOverSampleRate;
 
     waveformImage.lastTimeDrawn = 0.0;
     waveformImage.needsRepaint = false;
@@ -83,27 +82,27 @@ void CompleteDraggableWaveDisplay::paint(Graphics &g)
 	
 	if (filePlayer->getFileName().isNotEmpty())
 	{		
+        const int startXPosInImage = (filePlayer->getAudioTransportSource()->getNextReadPosition()) / sourceSamplesPerThumbSample;
+        const int playHeadXPos = playheadPos * w;
+        
+        int srcX = startXPosInImage - roundToInt (playHeadXPos * oneOverZoomRatio);
+        int srcW = roundToInt (w * oneOverZoomRatio);
+
+        if (srcX < 0)
+        {
+            srcW += srcX;
+            srcX = 0;
+        }
+
+        int destX = 0;
+        int destW = roundToInt (srcW * zoomRatio);
+        if (destW < w)
+        {
+            destX = w - destW;
+        }
+
 		if (waveformImage.img.isValid())
 		{
-            const int startXPosInImage = (filePlayer->getAudioTransportSource()->getNextReadPosition()) / sourceSamplesPerThumbSample;
-            const int playHeadXPos = playheadPos * w;
-            
-            int srcX = startXPosInImage - roundToInt (playHeadXPos * oneOverZoomRatio);
-            int srcW = roundToInt (w * oneOverZoomRatio);
-
-            if (srcX < 0)
-            {
-                srcW += srcX;
-                srcX = 0;
-            }
-
-            int destX = 0;
-            int destW = roundToInt (srcW * zoomRatio);
-            if (destW < w)
-            {
-                destX = w - destW;
-            }
-            
             const Rectangle<int> srcRect    (srcX, 0, srcW, waveformImage.img.getHeight());
             const Rectangle<int> destRect   (destX, 0, destW, h);
             Image clippedImage (waveformImage.img.getClippedImage (srcRect));
@@ -113,6 +112,19 @@ void CompleteDraggableWaveDisplay::paint(Graphics &g)
                         0, 0, srcRect.getWidth(), srcRect.getHeight(),
                         false);
 		}
+        
+//        // draw cue points
+//        const double time = 60.0;
+//        const double timeAtOrigin = pixelsToTime (startXPosInImage - playHeadXPos) * zoomRatio;
+//        const double timeAtEnd = timeAtOrigin + pixelsToTime (w);
+//        DBG("origin: "<<timeAtOrigin<<" - end: "<<timeAtEnd<<" - "<<time);
+//
+//        if (time > timeAtOrigin && time < timeAtEnd) 
+//        {
+//            const float pixelForTime = timeToPixels (time - timeAtOrigin) * zoomRatio;
+//            g.setColour(Colours::red);
+//            g.drawLine(pixelForTime, 0.0f, pixelForTime, h, 2.0f);
+//        }
 	}
     
     g.drawImageAt(playheadImage, (w * playheadPos) - 1, 0);
@@ -170,6 +182,7 @@ void CompleteDraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player
             oneOverSampleRate = (1.0 / currentSampleRate);
             fileLengthSecs = filePlayer->getAudioTransportSource()->getTotalLength() * oneOverSampleRate;
             oneOverFileLength = 1.0 / fileLengthSecs;
+            timePerPixel = sourceSamplesPerThumbSample * oneOverSampleRate;
             
             // reset counters so waveform gets properly refreshed
             waveformIsFullyLoaded = false;
@@ -223,6 +236,8 @@ void CompleteDraggableWaveDisplay::setZoomFactor (float newZoomFactor)
 	
 	zoomRatio = newZoomFactor;
     oneOverZoomRatio = 1.0 / zoomRatio;
+    
+    triggerAsyncUpdate();
 }
 
 void CompleteDraggableWaveDisplay::setPlayheadPosition(float newPlayheadPosition)

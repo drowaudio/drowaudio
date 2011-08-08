@@ -16,7 +16,7 @@ CompleteColouredDraggableWaveDisplay::CompleteColouredDraggableWaveDisplay (int 
 															FilteringAudioFilePlayer* sourceToBeUsed,
 															MultipleAudioThumbnailCache *cacheToUse,
                                                             ColouredAudioThumbnail *thumbnailToUse)
-:	CompleteDraggableWaveDisplay(sourceSamplesPerThumbnailSample,
+:	CompleteDraggableWaveDisplay(thumbnailToUse == nullptr ? sourceSamplesPerThumbnailSample : thumbnailToUse->getNumSamplesPerThumbnailSample(),
                                  sourceToBeUsed,
                                  cacheToUse),
     thumbnailView (thumbnailToUse, (thumbnailToUse == nullptr) ? true : false),

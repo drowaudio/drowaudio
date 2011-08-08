@@ -31,7 +31,10 @@ public:
     
     void resized()
     {
-        button.setBounds(getLocalBounds());
+        Rectangle<int> buttonRect (getLocalBounds());
+        buttonRect.setWidth(buttonRect.getWidth() - 4);
+        buttonRect.setX(buttonRect.getX() + 2);
+        button.setBounds(buttonRect);
     }
     
     void buttonClicked(Button* changedButton)
@@ -40,7 +43,7 @@ public:
         {
             if (tree.hasType(Columns::libraryItemIdentifier))
             {
-                ValueTree cueTree("CUE");
+                ValueTree cueTree(Columns::libraryCuePointIdentifier);
                 tree.addChild(cueTree, -1, nullptr);
                 tree = cueTree;
             }
@@ -86,7 +89,12 @@ public:
         addAndMakeVisible(&removeButton);
     }
     
-    ~CuePointItem() {}
+    ~CuePointItem()
+    {
+        colourButton.removeListener(this);
+        timeButton.removeListener(this);
+        removeButton.removeListener(this);
+    }
     
     void resized()
     {
@@ -184,8 +192,8 @@ Component* CuePointListBoxModel::refreshComponentForRow (int rowNumber, bool isR
     {
         if (dataList.hasType (Columns::libraryCuePointIdentifier))
         {
-            float time = LoopAndCueHelpers::getTimeFromCueString (dataList, rowNumber);
-            uint32 colour = LoopAndCueHelpers::getColourFromCueString (dataList, rowNumber);
+            float time = LoopAndCueHelpers::getTimeFromCueTree (dataList, rowNumber);
+            uint32 colour = LoopAndCueHelpers::getColourFromCueTree (dataList, rowNumber);
             
             if (existingComponentToUpdate == nullptr)
             {
@@ -212,12 +220,12 @@ Component* CuePointListBoxModel::refreshComponentForRow (int rowNumber, bool isR
     {
         if (existingComponentToUpdate == nullptr) 
         {
-            return existingComponentToUpdate = new NewCuePointItem(this, dataList);
+            return existingComponentToUpdate = new NewCuePointItem (this, dataList);
         }
         else
         {
             delete existingComponentToUpdate;
-            return existingComponentToUpdate = new NewCuePointItem(this, dataList);
+            return existingComponentToUpdate = new NewCuePointItem (this, dataList);
         }
     }
 
@@ -226,7 +234,7 @@ Component* CuePointListBoxModel::refreshComponentForRow (int rowNumber, bool isR
 
 void CuePointListBoxModel::reorderCuePoints()
 {
-    if (dataList.hasType("CUE"))
+    if (dataList.hasType(Columns::libraryCuePointIdentifier))
     {
         const int numProperties = dataList.getNumProperties();
         var values[numProperties];

@@ -82,7 +82,7 @@ public:
 	 */
 	explicit CompleteDraggableWaveDisplay (int sourceSamplesPerThumbnailSample,
 										   FilteringAudioFilePlayer* sourceToBeUsed,
-										   MultipleAudioThumbnailCache *cacheToUse =0);
+										   MultipleAudioThumbnailCache *cacheToUse =nullptr);
 	
 	/** Destructor.
 		Your subclass will need to call signalThreadShouldExit() in its destructor as
@@ -187,7 +187,6 @@ protected:
 	
 	FilteringAudioFilePlayer* filePlayer;
 	double fileLengthSecs, oneOverFileLength, currentSampleRate, oneOverSampleRate, timePerPixel;
-	StateVariable<int> samplesPerPixel;
 	float zoomRatio, oneOverZoomRatio;
 	float playheadPos;
 	bool shouldRefreshWaveforms;
@@ -205,7 +204,7 @@ protected:
 
 	bool isMouseDown, isDraggable, shouldBePlaying, mouseShouldTogglePlay;
 	StateVariable<int> mouseX, movedX;
-
+    
 	friend class SwitchableDraggableWaveDisplay;
 	
 private:

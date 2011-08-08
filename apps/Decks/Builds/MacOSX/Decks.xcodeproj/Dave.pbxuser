@@ -7990,6 +7990,36 @@
 		vrLen = 1802;
 		vrLoc = 2111;
 	};
+	5514A5C013EF740400EBF34B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9B012FA1358B56CC2CE13842 /* CuePointDisplayComponent.h */;
+		name = "CuePointDisplayComponent.h: 46";
+		rLen = 177;
+		rLoc = 1583;
+		rType = 0;
+		vrLen = 1766;
+		vrLoc = 409;
+	};
+	5514A5C113EF740400EBF34B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD4880AF98458A8FED2EED85 /* CuePointDisplayComponent.cpp */;
+		name = "CuePointDisplayComponent.cpp: 101";
+		rLen = 12;
+		rLoc = 2884;
+		rType = 0;
+		vrLen = 1802;
+		vrLoc = 2111;
+	};
+	5514A5C213EF740400EBF34B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD4880AF98458A8FED2EED85 /* CuePointDisplayComponent.cpp */;
+		name = "CuePointDisplayComponent.cpp: 160";
+		rLen = 0;
+		rLoc = 4818;
+		rType = 0;
+		vrLen = 1303;
+		vrLoc = 3657;
+	};
 	551811C412C3FA1000EEAD87 /* juce_ValueTree.cpp */ = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.cpp.cpp;
@@ -8673,7 +8703,6 @@
 		isSCMEnabled = 0;
 		scmConfiguration = {
 			repositoryNamesForRoots = {
-				"" = dRowAudio;
 				../.. = dRowAudio;
 			};
 		};
@@ -11913,6 +11942,9 @@
 			5514A5B613EF738A00EBF34B /* PBXTextBookmark */ = 5514A5B613EF738A00EBF34B /* PBXTextBookmark */;
 			5514A5B713EF738A00EBF34B /* PBXTextBookmark */ = 5514A5B713EF738A00EBF34B /* PBXTextBookmark */;
 			5514A5B813EF738A00EBF34B /* PBXTextBookmark */ = 5514A5B813EF738A00EBF34B /* PBXTextBookmark */;
+			5514A5C013EF740400EBF34B /* PBXTextBookmark */ = 5514A5C013EF740400EBF34B /* PBXTextBookmark */;
+			5514A5C113EF740400EBF34B /* PBXTextBookmark */ = 5514A5C113EF740400EBF34B /* PBXTextBookmark */;
+			5514A5C213EF740400EBF34B /* PBXTextBookmark */ = 5514A5C213EF740400EBF34B /* PBXTextBookmark */;
 			551811DB12C3FB4900EEAD87 = 551811DB12C3FB4900EEAD87 /* PBXTextBookmark */;
 			5518126B12C40D6500EEAD87 = 5518126B12C40D6500EEAD87 /* PBXTextBookmark */;
 			5518126F12C40D6500EEAD87 = 5518126F12C40D6500EEAD87 /* PBXTextBookmark */;
@@ -12190,9 +12222,9 @@
 	};
 	CD4880AF98458A8FED2EED85 /* CuePointDisplayComponent.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {915, 2184}}";
-			sepNavSelRange = "{2884, 12}";
-			sepNavVisRange = "{2111, 1802}";
+			sepNavIntBoundsRect = "{{0, 0}, {915, 2132}}";
+			sepNavSelRange = "{4818, 0}";
+			sepNavVisRange = "{3657, 1303}";
 		};
 	};
 	CDBE8337C9484D31731449B4 /* ClickableCuePointComponent.h */ = {
