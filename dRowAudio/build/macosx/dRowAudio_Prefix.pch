@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'dRowAudio' target in the 'dRowAudio' project.
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif

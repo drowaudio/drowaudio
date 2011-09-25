@@ -1,0 +1,35 @@
+{
+  "id":             "dRowAudio",
+  "name":           "dRowAudio audio and gui classes",
+  "version":        "2.0.5",
+  "description":    "Extensions to the JUCE library including graphical component for audio",
+  "website":        "http://www.drowaudio.co.uk",
+  "license":        "GPL",
+
+  "dependencies":   [ { "id": "juce_audio_basics",      "version": "matching" },
+		      { "id": "juce_audio_devices",     "version": "matching" },
+		      { "id": "juce_audio_formats",     "version": "matching" },
+		      { "id": "juce_audio_processors",	"version": "matching" },
+		      { "id": "juce_audio_utils",     	"version": "matching" },
+		      { "id": "juce_core",     		"version": "matching" },
+		      { "id": "juce_data_structures",   "version": "matching" },
+		      { "id": "juce_events",     	"version": "matching" },
+		      { "id": "juce_graphics",     	"version": "matching" },
+		      { "id": "juce_gui_basics",     	"version": "matching" },
+                      { "id": "juce_gui_extra",   	"version": "matching" } ],
+
+  "include":        "dRowAudio.h",
+
+
+  "compile":        [ { "file": "dRowAudio.cpp",	"target": "! xcode" },
+                      { "file": "dRowAudio.cpp",  	"target": "xcode" } ],
+
+  "browse":         [ "audio/*",
+                      "gui/*",
+                      "maths/*",
+                      "parameters/*",
+                      "utility/*" ],
+
+  "OSXFrameworks":  "Accelerate",
+  "iOSFrameworks":  "Accelerate"
+}
