@@ -14,13 +14,13 @@ BEGIN_DROWAUDIO_NAMESPACE
 #include "dRowAudio_FilmstripSlider.h"
 
 FilmstripSlider::FilmstripSlider (const String &componentName)
-: Slider(componentName),
-numFrames (0),
-isHorizontal (true),
-frameWidth (0),
-frameHeight (0)
+    : Slider(componentName),
+      numFrames (0),
+      isHorizontal (true),
+      frameWidth (0),
+      frameHeight (0)
 {
-    setTextBoxStyle(NoTextBox, false, getWidth(), getHeight());
+    setTextBoxStyle (NoTextBox, false, getWidth(), getHeight());
 }
 
 void FilmstripSlider::setImage (Image image, int numFrames_, bool isHorizontal_)
@@ -55,7 +55,7 @@ FilmstripSlider::~FilmstripSlider()
 {
 }
 
-void FilmstripSlider::paint(Graphics& g)
+void FilmstripSlider::paint (Graphics& g)
 {
 	if (filmStripImage.isValid())
 	{

@@ -43,7 +43,7 @@ public:
     
 	/** @interal
      */
-	void paint(Graphics& g);
+	void paint (Graphics& g);
     
 private:
     
