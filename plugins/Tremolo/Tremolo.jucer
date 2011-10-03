@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="E0xYlt" name="Tremolo" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.dRowAudio.Tremolo" buildVST="0" buildRTAS="0"
+              buildAU="1" pluginName="Tremolo" pluginDesc="A Tremolo Plugin"
+              pluginManufacturer="dRowAudio" pluginManufacturerCode="dRow"
+              pluginCode="Trem" pluginChannelConfigs="{1, 1}, {2, 2}" pluginIsSynth="0"
+              pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="1"
+              pluginTailLength="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="TremoloAU"
+              pluginAUViewClass="TremoloAU_V1" pluginRTASCategory="" jucerVersion="3.0.0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="O2V4WY" juceFolder="../../../../juce_source/juce"
+               vstFolder="~/SDKs/vstsdk2.4"/>
+    <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
+            vstFolder="c:\SDKs\vstsdk2.4"/>
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
+            vstFolder="c:\SDKs\vstsdk2.4"/>
+    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"
+                vstFolder="~/SDKs/vstsdk2.4"/>
+  </EXPORTFORMATS>
+  <CONFIGURATIONS>
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Tremolo"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Tremolo"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+  </CONFIGURATIONS>
+  <MAINGROUP id="hfWYX9" name="Tremolo">
+    <GROUP id="{AAC362DE-FBDE-96D4-211E-697F43821CDB}" name="Source">
+      <FILE id="k0cX4" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="tPh0l7" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="ff5ooM" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="jl3cMv" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="aisabA" name="TremoloBufferView.h" compile="0" resource="0"
+            file="Source/TremoloBufferView.h"/>
+      <FILE id="bjVBgv" name="TremoloBufferView.cpp" compile="1" resource="0"
+            file="Source/TremoloBufferView.cpp"/>
+      <FILE id="bvL0Nw" name="TremoloLookAndFeel.h" compile="0" resource="0"
+            file="Source/TremoloLookAndFeel.h"/>
+      <FILE id="JFHYSL" name="TremoloLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/TremoloLookAndFeel.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1"/>
+    <MODULE id="juce_events" showAllCode="1"/>
+    <MODULE id="juce_graphics" showAllCode="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1"/>
+    <MODULE id="juce_gui_audio" showAllCode="1"/>
+    <MODULE id="juce_audio_basics" showAllCode="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1"/>
+    <MODULE id="dRowAudio" showAllCode="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+</JUCERPROJECT>

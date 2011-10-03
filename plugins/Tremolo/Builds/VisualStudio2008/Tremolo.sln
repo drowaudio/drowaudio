@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{6433512E-674B-D05A-6FB9-60AA4D68739B}") = "Tremolo", "Tremolo.vcproj", "{2090989C-9379-7DF4-415F-5170694DB115}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2090989C-9379-7DF4-415F-5170694DB115}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2090989C-9379-7DF4-415F-5170694DB115}.Debug|Win32.Build.0 = Debug|Win32
+		{2090989C-9379-7DF4-415F-5170694DB115}.Release|Win32.ActiveCfg = Release|Win32
+		{2090989C-9379-7DF4-415F-5170694DB115}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

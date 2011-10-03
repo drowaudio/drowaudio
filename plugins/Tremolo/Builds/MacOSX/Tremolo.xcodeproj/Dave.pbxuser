@@ -1,0 +1,856 @@
+// !$*UTF8*$!
+{
+	0421B622A1B75717FBD37F02 /* juce_Variant.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 3965}}";
+			sepNavSelRange = "{3861, 15}";
+			sepNavVisRange = "{2619, 1635}";
+		};
+	};
+	0525F261C8CA7EBAEC2C31B5 /* AUScopeElement.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 6656}}";
+			sepNavSelRange = "{15035, 25}";
+			sepNavVisRange = "{14439, 1066}";
+		};
+	};
+	0C95A5A70F2133B5F3401B8B /* juce_AudioProcessor.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {869, 4771}}";
+			sepNavSelRange = "{7687, 0}";
+			sepNavVisRange = "{7388, 513}";
+			sepNavWindowFrame = "{{15, 4}, {779, 774}}";
+		};
+	};
+	0DE8CBD58A94ED2861E6FDBA /* dRowAudio_PluginParameter.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 1599}}";
+			sepNavSelRange = "{1877, 30}";
+			sepNavVisRange = "{770, 1945}";
+		};
+	};
+	0F05E55A2290A6BCD97403B9 /* AUMIDIEffectBase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 1092}}";
+			sepNavSelRange = "{2723, 12}";
+			sepNavVisRange = "{2477, 1140}";
+		};
+	};
+	19CCF85CC0EA32E4BB7E95E2 /* juce_module_info */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 641}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2074}";
+		};
+	};
+	216BBEA314290A78F6562E0D /* dRowAudio_MathsUtilities.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 728}}";
+			sepNavSelRange = "{1257, 0}";
+			sepNavVisRange = "{3, 1287}";
+		};
+	};
+	23F19D366564CF8AD97E7F0D /* juce_AudioSampleBuffer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 5655}}";
+			sepNavSelRange = "{5499, 62}";
+			sepNavVisRange = "{4425, 1852}";
+		};
+	};
+	2E4157CF2A2C971DBC24F6A6 /* PluginProcessor.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 4511}}";
+			sepNavSelRange = "{6954, 0}";
+			sepNavVisRange = "{6472, 1822}";
+		};
+	};
+	2FFFAC440E6BE3DBA78E0E55 /* juce_Array.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 13338}}";
+			sepNavSelRange = "{2846, 13}";
+			sepNavVisRange = "{1345, 2088}";
+		};
+	};
+	3C5D211B5F02BD06F4EAE9C3 /* juce_Value.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 3003}}";
+			sepNavSelRange = "{5403, 55}";
+			sepNavVisRange = "{4476, 2094}";
+		};
+	};
+	404500AFFA1FD02E1F48995B /* TremoloLookAndFeel.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 3263}}";
+			sepNavSelRange = "{3721, 0}";
+			sepNavVisRange = "{2656, 1490}";
+		};
+	};
+	42EAFF3DF3BB324A8E9B3D3A /* juce_audio_processors.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 1586}}";
+			sepNavSelRange = "{2284, 0}";
+			sepNavVisRange = "{2296, 1261}";
+		};
+	};
+	4896913F5CBD1A6887DF56FD /* ComponentBase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {985, 2756}}";
+			sepNavSelRange = "{7196, 22}";
+			sepNavVisRange = "{6985, 879}";
+		};
+	};
+	4A6581A4DC4182F8F9073A20 /* juce_MathsFunctions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 6357}}";
+			sepNavSelRange = "{8964, 77}";
+			sepNavVisRange = "{8028, 2046}";
+		};
+	};
+	526FD46BA9EDD7F51BE8B943 /* juce_VST_Wrapper.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 3172}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1971}";
+		};
+	};
+	5534574414310F0900C2E124 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	5534574514310F0900C2E124 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	55345773143117AF00C2E124 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 921D7C8D22A730FF046140CC /* JuceHeader.h */;
+		name = "JuceHeader.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1711;
+		vrLoc = 0;
+	};
+	5534578B1431E1B800C2E124 /* AU Lab */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"\"/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/tremolo_test.trak\"",
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = 5534578C1431E1B800C2E124 /* AU Lab.app */;
+		libgmallocEnabled = 0;
+		name = "AU Lab";
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	5534578C1431E1B800C2E124 /* AU Lab.app */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = wrapper.application;
+		name = "AU Lab.app";
+		path = "/Developer-new/Applications/Audio/AU Lab.app";
+		sourceTree = "<absolute>";
+	};
+	5534578E1431E1C000C2E124 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5534578F1431E1C000C2E124 /* dRowTremoloFilter.h */;
+		name = "dRowTremoloFilter.h: 127";
+		rLen = 133;
+		rLoc = 5028;
+		rType = 0;
+		vrLen = 1251;
+		vrLoc = 4535;
+	};
+	5534578F1431E1C000C2E124 /* dRowTremoloFilter.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = dRowTremoloFilter.h;
+		path = /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/src/dRowTremoloFilter.h;
+		sourceTree = "<absolute>";
+	};
+	553457E7143256AF00C2E124 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 553457E8143256AF00C2E124 /* project.pbxproj */;
+		name = "project.pbxproj: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 6715;
+		vrLoc = 0;
+	};
+	553457E8143256AF00C2E124 /* project.pbxproj */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.pbxproject;
+		name = project.pbxproj;
+		path = /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/Tremolo.xcodeproj/project.pbxproj;
+		sourceTree = "<absolute>";
+	};
+	553457E9143256AF00C2E124 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 553457EA143256AF00C2E124 /* Dave.pbxuser */;
+		name = "Dave.pbxuser: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1233;
+		vrLoc = 0;
+	};
+	553457EA143256AF00C2E124 /* Dave.pbxuser */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		name = Dave.pbxuser;
+		path = /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/Tremolo.xcodeproj/Dave.pbxuser;
+		sourceTree = "<absolute>";
+	};
+	553457EE143256AF00C2E124 /* Dave.mode1v3 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.xml;
+		name = Dave.mode1v3;
+		path = /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/Tremolo.xcodeproj/Dave.mode1v3;
+		sourceTree = "<absolute>";
+	};
+	55919CC514327A0800A9084F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 553457EE143256AF00C2E124 /* Dave.mode1v3 */;
+		name = "Dave.mode1v3: 1433";
+		rLen = 0;
+		rLoc = 41263;
+		rType = 0;
+		vrLen = 1253;
+		vrLoc = 0;
+	};
+	55919CC714327A0800A9084F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2FFFAC440E6BE3DBA78E0E55 /* juce_Array.h */;
+		name = "juce_Array.h: 60";
+		rLen = 13;
+		rLoc = 2846;
+		rType = 0;
+		vrLen = 2088;
+		vrLoc = 1345;
+	};
+	55919D0A1432848900A9084F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 23F19D366564CF8AD97E7F0D /* juce_AudioSampleBuffer.h */;
+		name = "juce_AudioSampleBuffer.h: 122";
+		rLen = 62;
+		rLoc = 5499;
+		rType = 0;
+		vrLen = 1852;
+		vrLoc = 4425;
+	};
+	55F6C5DE14333167002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 19CCF85CC0EA32E4BB7E95E2 /* juce_module_info */;
+		name = "juce_module_info: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2074;
+		vrLoc = 0;
+	};
+	55F6C5DF14333167002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 87852F43B6B4F40251B6E287 /* juce_module_info */;
+		name = "juce_module_info: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1482;
+		vrLoc = 0;
+	};
+	55F6C5F21433389B002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55F6C5F31433389B002159D1 /* AUComponent.h */;
+		name = "AUComponent.h: 666";
+		rLen = 47;
+		rLoc = 29669;
+		rType = 0;
+		vrLen = 1919;
+		vrLoc = 28679;
+	};
+	55F6C5F31433389B002159D1 /* AUComponent.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = AUComponent.h;
+		path = /System/Library/Frameworks/AudioUnit.framework/Versions/A/Headers/AUComponent.h;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1111, 18616}}";
+			sepNavSelRange = "{28606, 42}";
+			sepNavVisRange = "{31508, 951}";
+		};
+	};
+	55F6C5F51433389B002159D1 /* AudioUnitProperties.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = AudioUnitProperties.h;
+		path = /System/Library/Frameworks/AudioUnit.framework/Versions/A/Headers/AudioUnitProperties.h;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 38194}}";
+			sepNavSelRange = "{54404, 40}";
+			sepNavVisRange = "{52722, 1776}";
+		};
+	};
+	55F6C6551433433D002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 526FD46BA9EDD7F51BE8B943 /* juce_VST_Wrapper.mm */;
+		name = "juce_VST_Wrapper.mm: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1971;
+		vrLoc = 0;
+	};
+	55F6C6561433433D002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6CB4D5D03F0314AB9EF1AD0B /* juce_VST_Wrapper.cpp */;
+		name = "juce_VST_Wrapper.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1746;
+		vrLoc = 24955;
+	};
+	55F6C65A143344DB002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FB4F1495869814CF6F1D7498 /* AUBase.cpp */;
+		name = "AUBase.cpp: 1029";
+		rLen = 66;
+		rLoc = 30989;
+		rType = 0;
+		vrLen = 1184;
+		vrLoc = 30541;
+	};
+	55F6C66314334680002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55F6C5F51433389B002159D1 /* AudioUnitProperties.h */;
+		name = "AudioUnitProperties.h: 1127";
+		rLen = 40;
+		rLoc = 54404;
+		rType = 0;
+		vrLen = 1776;
+		vrLoc = 52722;
+	};
+	55F6C66714334680002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 843094C2E3C4759D7B58BC63 /* juce_AU_Resources.r */;
+		name = "juce_AU_Resources.r: 56";
+		rLen = 18;
+		rLoc = 2366;
+		rType = 0;
+		vrLen = 1735;
+		vrLoc = 1121;
+	};
+	55F6C6931433512D002159D1 /* dRowAudio_PluginParameter.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = dRowAudio_PluginParameter.h;
+		path = /Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/parameters/dRowAudio_PluginParameter.h;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 1664}}";
+			sepNavSelRange = "{3435, 0}";
+			sepNavVisRange = "{3, 2591}";
+		};
+	};
+	55F6C69514335137002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5FA7EAA33E9193394EC4DB85 /* juce_AU_Wrapper.mm */;
+		name = "juce_AU_Wrapper.mm: 45";
+		rLen = 19;
+		rLoc = 1689;
+		rType = 0;
+		vrLen = 1405;
+		vrLoc = 985;
+	};
+	55F6C6A914335ABD002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55F6C6AA14335ABD002159D1 /* dRowTremoloEditorComponent.h */;
+		name = "dRowTremoloEditorComponent.h: 22";
+		rLen = 1;
+		rLoc = 1032;
+		rType = 0;
+		vrLen = 1793;
+		vrLoc = 1729;
+	};
+	55F6C6AA14335ABD002159D1 /* dRowTremoloEditorComponent.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = dRowTremoloEditorComponent.h;
+		path = /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Source/dRowTremoloEditorComponent.h;
+		sourceTree = "<absolute>";
+	};
+	55F6C6F91433610C002159D1 /* PluginEditor.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = PluginEditor.cpp;
+		path = /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Source/PluginEditor.cpp;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 2769}}";
+			sepNavSelRange = "{2255, 0}";
+			sepNavVisRange = "{209, 1428}";
+		};
+	};
+	55F6C77614336B1D002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 404500AFFA1FD02E1F48995B /* TremoloLookAndFeel.cpp */;
+		name = "TremoloLookAndFeel.cpp: 107";
+		rLen = 0;
+		rLoc = 3721;
+		rType = 0;
+		vrLen = 1490;
+		vrLoc = 2656;
+	};
+	55F6C77714336B1D002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BC5715D16B31353788C0496E /* TremoloLookAndFeel.h */;
+		name = "TremoloLookAndFeel.h: 15";
+		rLen = 0;
+		rLoc = 308;
+		rType = 0;
+		vrLen = 1262;
+		vrLoc = 51;
+	};
+	55F6C7B9143371C5002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A792E52895401135F6903696 /* dRowAudio_PluginParameter.cpp */;
+		name = "dRowAudio_PluginParameter.cpp: 79";
+		rLen = 45;
+		rLoc = 2304;
+		rType = 0;
+		vrLen = 1467;
+		vrLoc = 1681;
+	};
+	55F6C7C114337891002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55F6C6931433512D002159D1 /* dRowAudio_PluginParameter.h */;
+		name = "dRowAudio_PluginParameter.h: 78";
+		rLen = 0;
+		rLoc = 3435;
+		rType = 0;
+		vrLen = 2591;
+		vrLoc = 3;
+	};
+	55F6C7C214337891002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B6B0532156D158361076E91D /* TremoloBufferView.h */;
+		name = "TremoloBufferView.h: 31";
+		rLen = 26;
+		rLoc = 918;
+		rType = 0;
+		vrLen = 1150;
+		vrLoc = 0;
+	};
+	55F6C7C314337891002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D1E45E8C68B7018D71CC395C /* TremoloBufferView.cpp */;
+		name = "TremoloBufferView.cpp: 52";
+		rLen = 0;
+		rLoc = 1217;
+		rType = 0;
+		vrLen = 1304;
+		vrLoc = 432;
+	};
+	55F6C7CD14337976002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A8816FEB6407DEC25005F7DA /* AppConfig.h */;
+		name = "AppConfig.h: 84";
+		rLen = 0;
+		rLoc = 2937;
+		rType = 0;
+		vrLen = 2047;
+		vrLoc = 2486;
+	};
+	55F6C7CE14337976002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3B9731C6F35F558FE2D7E0F /* PluginProcessor.h */;
+		name = "PluginProcessor.h: 35";
+		rLen = 12;
+		rLoc = 1162;
+		rType = 0;
+		vrLen = 1768;
+		vrLoc = 204;
+	};
+	55F6C7F014337B3D002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2E4157CF2A2C971DBC24F6A6 /* PluginProcessor.cpp */;
+		name = "PluginProcessor.cpp: 242";
+		rLen = 0;
+		rLoc = 6954;
+		rType = 0;
+		vrLen = 1822;
+		vrLoc = 6472;
+	};
+	55F6C80314337BDD002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55F6C6F91433610C002159D1 /* PluginEditor.cpp */;
+		name = "PluginEditor.cpp: 65";
+		rLen = 0;
+		rLoc = 3479;
+		rType = 0;
+		vrLen = 2753;
+		vrLoc = 1895;
+	};
+	55F6C80414337BDD002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8A1F172AD01A90ED1DFB1577 /* PluginEditor.h */;
+		name = "PluginEditor.h: 38";
+		rLen = 149;
+		rLoc = 1112;
+		rType = 0;
+		vrLen = 1330;
+		vrLoc = 373;
+	};
+	55F6C8601433B864002159D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8A1F172AD01A90ED1DFB1577 /* PluginEditor.h */;
+		name = "PluginEditor.h: 56";
+		rLen = 0;
+		rLoc = 1661;
+		rType = 0;
+		vrLen = 1314;
+		vrLoc = 417;
+	};
+	5FA7EAA33E9193394EC4DB85 /* juce_AU_Wrapper.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {733, 17992}}";
+			sepNavSelRange = "{15140, 0}";
+			sepNavVisRange = "{14573, 1014}";
+		};
+	};
+	6CB4D5D03F0314AB9EF1AD0B /* juce_VST_Wrapper.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1223, 18863}}";
+			sepNavSelRange = "{20516, 0}";
+			sepNavVisRange = "{7337, 1291}";
+		};
+	};
+	7BD0443F5883C2388BCFDFE5 /* juce_Component.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 30719}}";
+			sepNavSelRange = "{53256, 56}";
+			sepNavVisRange = "{54021, 1876}";
+		};
+	};
+	7D864E90A7FD9F28FEEDD310 /* juce_AudioProcessorEditor.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 884}}";
+			sepNavSelRange = "{1649, 58}";
+			sepNavVisRange = "{0, 1925}";
+		};
+	};
+	830FBA23A2AABE1FD79191E2 /* juce_Variant.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1188, 7774}}";
+			sepNavSelRange = "{18436, 8}";
+			sepNavVisRange = "{5714, 1971}";
+		};
+	};
+	835B5E6A2BBC9F23E70FCB57 /* juce_String.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {880, 30641}}";
+			sepNavSelRange = "{10699, 0}";
+			sepNavVisRange = "{9575, 1229}";
+		};
+	};
+	843094C2E3C4759D7B58BC63 /* juce_AU_Resources.r */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 923}}";
+			sepNavSelRange = "{2366, 18}";
+			sepNavVisRange = "{1121, 1735}";
+		};
+	};
+	87852F43B6B4F40251B6E287 /* juce_module_info */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 641}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1482}";
+		};
+	};
+	8A1F172AD01A90ED1DFB1577 /* PluginEditor.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 806}}";
+			sepNavSelRange = "{1661, 0}";
+			sepNavVisRange = "{417, 1314}";
+		};
+	};
+	8B4770E3D3C0C69AC0387C23 /* Tremolo */ = {
+		activeExec = 0;
+	};
+	8D00651979F609757DC85A67 /* juce_IncludeSystemHeaders.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 845}}";
+			sepNavSelRange = "{1654, 27}";
+			sepNavVisRange = "{1299, 649}";
+		};
+	};
+	921D7C8D22A730FF046140CC /* JuceHeader.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 641}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1711}";
+		};
+	};
+	9B7EB3E3CE4FCB684A877711 /* juce_audio_utils.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 616}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1184}";
+		};
+	};
+	9F45C9B11F4A2E3DBCFACB87 /* juce_AudioProcessor.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 8476}}";
+			sepNavSelRange = "{27779, 1}";
+			sepNavVisRange = "{24711, 2248}";
+		};
+	};
+	A1CCC0CFE62980E342BE2875 /* juce_SliderPropertyComponent.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 1404}}";
+			sepNavSelRange = "{3686, 40}";
+			sepNavVisRange = "{2373, 1724}";
+		};
+	};
+	A3597B4D163BC6ECA135051E /* PluginEditor.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 1573}}";
+			sepNavSelRange = "{1969, 0}";
+			sepNavVisRange = "{995, 1845}";
+		};
+	};
+	A792E52895401135F6903696 /* dRowAudio_PluginParameter.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 1872}}";
+			sepNavSelRange = "{2304, 45}";
+			sepNavVisRange = "{1681, 1467}";
+		};
+	};
+	A8816FEB6407DEC25005F7DA /* AppConfig.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 1521}}";
+			sepNavSelRange = "{2937, 0}";
+			sepNavVisRange = "{2486, 2047}";
+		};
+	};
+	AC2AEAB80CEC7142D263B4F5 /* juce_LookAndFeel.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 39676}}";
+			sepNavSelRange = "{53077, 84}";
+			sepNavVisRange = "{52086, 2202}";
+		};
+	};
+	AE8E3BEBC8A05370E8689692 /* juce_Slider.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {978, 18603}}";
+			sepNavSelRange = "{3745, 19}";
+			sepNavVisRange = "{3012, 1306}";
+		};
+	};
+	B3B1F5E18BBE043CE8139F33 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 5534578B1431E1B800C2E124 /* AU Lab */;
+		activeTarget = 8B4770E3D3C0C69AC0387C23 /* Tremolo */;
+		codeSenseManager = 5534574514310F0900C2E124 /* Code sense */;
+		executables = (
+			5534578B1431E1B800C2E124 /* AU Lab */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					670,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					782,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 338897100;
+			PBXWorkspaceStateSaveDate = 338897100;
+		};
+		perUserProjectItems = {
+			55345773143117AF00C2E124 /* PBXTextBookmark */ = 55345773143117AF00C2E124 /* PBXTextBookmark */;
+			5534578E1431E1C000C2E124 /* PBXTextBookmark */ = 5534578E1431E1C000C2E124 /* PBXTextBookmark */;
+			553457E7143256AF00C2E124 /* PBXTextBookmark */ = 553457E7143256AF00C2E124 /* PBXTextBookmark */;
+			553457E9143256AF00C2E124 /* PBXTextBookmark */ = 553457E9143256AF00C2E124 /* PBXTextBookmark */;
+			55919CC514327A0800A9084F /* PBXTextBookmark */ = 55919CC514327A0800A9084F /* PBXTextBookmark */;
+			55919CC714327A0800A9084F /* PBXTextBookmark */ = 55919CC714327A0800A9084F /* PBXTextBookmark */;
+			55919D0A1432848900A9084F /* PBXTextBookmark */ = 55919D0A1432848900A9084F /* PBXTextBookmark */;
+			55F6C5DE14333167002159D1 /* PBXTextBookmark */ = 55F6C5DE14333167002159D1 /* PBXTextBookmark */;
+			55F6C5DF14333167002159D1 /* PBXTextBookmark */ = 55F6C5DF14333167002159D1 /* PBXTextBookmark */;
+			55F6C5F21433389B002159D1 /* PBXTextBookmark */ = 55F6C5F21433389B002159D1 /* PBXTextBookmark */;
+			55F6C6551433433D002159D1 /* PBXTextBookmark */ = 55F6C6551433433D002159D1 /* PBXTextBookmark */;
+			55F6C6561433433D002159D1 /* PBXTextBookmark */ = 55F6C6561433433D002159D1 /* PBXTextBookmark */;
+			55F6C65A143344DB002159D1 /* PBXTextBookmark */ = 55F6C65A143344DB002159D1 /* PBXTextBookmark */;
+			55F6C66314334680002159D1 /* PBXTextBookmark */ = 55F6C66314334680002159D1 /* PBXTextBookmark */;
+			55F6C66714334680002159D1 /* PBXTextBookmark */ = 55F6C66714334680002159D1 /* PBXTextBookmark */;
+			55F6C69514335137002159D1 /* PBXTextBookmark */ = 55F6C69514335137002159D1 /* PBXTextBookmark */;
+			55F6C6A914335ABD002159D1 /* PBXTextBookmark */ = 55F6C6A914335ABD002159D1 /* PBXTextBookmark */;
+			55F6C77614336B1D002159D1 /* PBXTextBookmark */ = 55F6C77614336B1D002159D1 /* PBXTextBookmark */;
+			55F6C77714336B1D002159D1 /* PBXTextBookmark */ = 55F6C77714336B1D002159D1 /* PBXTextBookmark */;
+			55F6C7B9143371C5002159D1 /* PBXTextBookmark */ = 55F6C7B9143371C5002159D1 /* PBXTextBookmark */;
+			55F6C7C114337891002159D1 /* PBXTextBookmark */ = 55F6C7C114337891002159D1 /* PBXTextBookmark */;
+			55F6C7C214337891002159D1 /* PBXTextBookmark */ = 55F6C7C214337891002159D1 /* PBXTextBookmark */;
+			55F6C7C314337891002159D1 /* PBXTextBookmark */ = 55F6C7C314337891002159D1 /* PBXTextBookmark */;
+			55F6C7CD14337976002159D1 /* PBXTextBookmark */ = 55F6C7CD14337976002159D1 /* PBXTextBookmark */;
+			55F6C7CE14337976002159D1 /* PBXTextBookmark */ = 55F6C7CE14337976002159D1 /* PBXTextBookmark */;
+			55F6C7F014337B3D002159D1 /* PBXTextBookmark */ = 55F6C7F014337B3D002159D1 /* PBXTextBookmark */;
+			55F6C80314337BDD002159D1 /* PBXTextBookmark */ = 55F6C80314337BDD002159D1 /* PBXTextBookmark */;
+			55F6C80414337BDD002159D1 /* PBXTextBookmark */ = 55F6C80414337BDD002159D1 /* PBXTextBookmark */;
+			55F6C8601433B864002159D1 /* PBXTextBookmark */ = 55F6C8601433B864002159D1 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 5534574414310F0900C2E124 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	B5A38B63803E34E682B0D69F /* AUEffectBase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 3510}}";
+			sepNavSelRange = "{2725, 6}";
+			sepNavVisRange = "{2443, 822}";
+		};
+	};
+	B6B0532156D158361076E91D /* TremoloBufferView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 616}}";
+			sepNavSelRange = "{918, 26}";
+			sepNavVisRange = "{0, 1150}";
+		};
+	};
+	BC5715D16B31353788C0496E /* TremoloLookAndFeel.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 663}}";
+			sepNavSelRange = "{308, 0}";
+			sepNavVisRange = "{51, 1262}";
+		};
+	};
+	C3530E16250A385F721F0AC4 /* juce_IIRFilter.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 3328}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{86, 1703}";
+		};
+	};
+	C3DC09C171357724BF5D358D /* AUBase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {970, 11622}}";
+			sepNavSelRange = "{7036, 19}";
+			sepNavVisRange = "{6447, 1254}";
+		};
+	};
+	CE7F3DB4BC3C939A5AAA808E /* juce_Slider.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 11427}}";
+			sepNavSelRange = "{26015, 63}";
+			sepNavVisRange = "{25061, 1820}";
+			sepNavWindowFrame = "{{15, 4}, {862, 774}}";
+		};
+	};
+	D1E45E8C68B7018D71CC395C /* TremoloBufferView.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 871}}";
+			sepNavSelRange = "{1217, 0}";
+			sepNavVisRange = "{432, 1304}";
+		};
+	};
+	E3B9731C6F35F558FE2D7E0F /* PluginProcessor.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 1469}}";
+			sepNavSelRange = "{1162, 12}";
+			sepNavVisRange = "{204, 1768}";
+		};
+	};
+	E77BBEFA0A385B661B4606A9 /* juce_IIRFilter.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 1950}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{543, 1949}";
+		};
+	};
+	F624E1128D66A3B0FCA97247 /* juce_String.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 17706}}";
+			sepNavSelRange = "{56138, 0}";
+			sepNavVisRange = "{55044, 2253}";
+		};
+	};
+	FB4F1495869814CF6F1D7498 /* AUBase.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 27742}}";
+			sepNavSelRange = "{30989, 66}";
+			sepNavVisRange = "{30541, 1184}";
+		};
+	};
+	FBCEE88504D87D18095D7EE3 /* juce_IIRFilterAudioSource.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {718, 923}}";
+			sepNavSelRange = "{1161, 8}";
+			sepNavVisRange = "{0, 2307}";
+		};
+	};
+	FED8ACE7D0EF0CEB896F9C8D /* juce_Value.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 3055}}";
+			sepNavSelRange = "{3717, 3}";
+			sepNavVisRange = "{3352, 975}";
+		};
+	};
+}

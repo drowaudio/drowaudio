@@ -11,7 +11,8 @@
 
 #include "../utility/dRowAudio_Utility.h"
 
-/** Parameter Units - currently values are the same as the AudioUnit enums for this purpose */
+/** Parameter Units - currently values are the same as the AudioUnit enums
+ */
 enum ParameterUnit
 {
 	UnitGeneric				= 0,	/* untyped value generally between 0.0 and 1.0 */
@@ -35,7 +36,7 @@ enum ParameterUnit
 	UnitPan					= 18,	/* standard left to right mixer pan */
 	UnitMeters				= 19,	/* distance measured in meters */
 	UnitAbsoluteCents		= 20,	/* absolute frequency measurement : if f is freq in hertz then 	*/
-	/* absoluteCents = 1200 * log2(f / 440) + 6900					*/
+                                    /* absoluteCents = 1200 * log2(f / 440) + 6900					*/
 	UnitOctaves				= 21,	/* octaves in relative pitch where a value of 1 is equal to 1200 cents*/
 	UnitBPM					= 22,	/* beats per minute, ie tempo */
     UnitBeats               = 23,	/* time relative to tempo, ie. 1.0 at 120 BPM would equal 1/2 a second */
@@ -47,68 +48,80 @@ enum ParameterUnit
 
 
 /**	This file defines a parameter used in an application.
+ 
 	Both full-scale and normalised values must be present for
 	AU and VST host campatability.
  */
 class PluginParameter
 {
-	public:
-	/** Create a default initialised parameter.
+public:
+	/** Create a default parameter.
 	 
-		This is called from a default constructor so can be used as a placeholder.
+		This just uses some standard default values so it can be used as a placeholder.
 		Call init() once you know the parameter values.
+     
 		@see init()
 	 */
 	PluginParameter();
-		
+
+    /** Creates a copy of another parameter.
+     */
+    PluginParameter (const PluginParameter& other);
+    
 	/** Initialise the parameter.
 		Used to set up the parameter as required.
 	 */
-	void init(const String& name_, ParameterUnit unit_, String description_,
-			  double value_, double min_ =0.0f, double max_ =1.0f, double default_ =0.0f,
-			  double skewFactor_ =1.0f, double smoothCoeff_ =0.1f, double step_ =0.01, String unitSuffix_ =String::empty);
+	void init (const String& name_, ParameterUnit unit_, String description_,
+               double value_, double min_ =0.0f, double max_ =1.0f, double default_ =0.0f,
+               double skewFactor_ =1.0f, double smoothCoeff_ =0.1f, double step_ =0.01, String unitSuffix_ =String::empty);
 
-	double getValue();
-	double getNormalisedValue();
-	bool setValue(double value_);
-	bool setNormalisedValue(double nvalue);
-	double getSmoothedValue();
-	double getSmoothedNormalisedValue();
-	double normaliseValue(double scaledValue);
+    inline Value& getValueObject()                              {   return valueObject;     }
+    
+	inline double getValue()                                    {   return double (valueObject.getValue()); }
+	inline double getNormalisedValue()                          {   return normaliseValue (getValue());     }
+	void setValue (double value_);
+	void setNormalisedValue (double normalisedValue);
+	inline double getSmoothedValue()                            {   return smoothValue;     }
+	inline double getSmoothedNormalisedValue()                  {   return normaliseValue (smoothValue);     }
 	
-	double getMin();
-	double getMax();
-	double getDefault();
+	inline double getMin()                                      {   return min;             }
+	inline double getMax()                                      {   return max;             }
+	inline double getDefault()                                  {   return defaultValue;    }
 	
 	void smooth();
-	void setSmoothCoeff(double newSmoothCoef);
-	double getSmoothCoeff();
+	void setSmoothCoeff (double newSmoothCoef);
+	inline double getSmoothCoeff()                              {   return smoothCoeff;     }
 	
-	void setSkewFactor(const double newSkewFactor);
-	void setSkewFactorFromMidPoint(const double valueToShowAtMidPoint);
-	double getSkewFactor();
+	void setSkewFactor (const double newSkewFactor);
+	void setSkewFactorFromMidPoint (const double valueToShowAtMidPoint);
+	inline double getSkewFactor()                               {   return skewFactor;      }
 	
-	void setStep(double newStep);
-	double getStep();
+	void setStep (double newStep);
+	inline double getStep()                                     {   return step;            }
 	
-	const String getName();
-	ParameterUnit getUnit();
-	const String getUnitSuffix();
-	void setUnitSuffix(String newSuffix);
+	inline const String getName()                               {   return name;            }
+	inline ParameterUnit getUnit()                              {   return unit;            }
+	inline const String getUnitSuffix()                         {   return unitSuffix;      }
+	void setUnitSuffix (String newSuffix);
 	
-	void writeXml(XmlElement& xmlState);
-	void readXml(const XmlElement* xmlState);
+	void writeXml (XmlElement& xmlState);
+	void readXml (const XmlElement* xmlState);
 	
-	/**	This helper method sets up a given slider with the parmeters properties */
-	void setupSlider(Slider &slider);
+	/** Sets up a given slider with the parmeters properties.
+     */
+	void setupSlider (Slider& slider);
 	
 private:
+    
+    Value valueObject;
 	String name, description, unitSuffix;
-	double value, min, max, defaultValue;
+	double min, max, defaultValue;
 	double smoothCoeff, smoothValue;
 	double skewFactor, step;
 	ParameterUnit unit;
 	
+    double normaliseValue (double scaledValue);
+
 	JUCE_LEAK_DETECTOR (PluginParameter);
 };
 

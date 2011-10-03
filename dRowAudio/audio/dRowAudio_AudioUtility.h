@@ -7,10 +7,8 @@
  *
  */
 
-#ifndef _DROWAUDIOAUDIOUTILITY_H_
-#define _DROWAUDIOAUDIOUTILITY_H_
-
-#include "../core/dRowAudio_StandardHeader.h"
+#ifndef __DROWAUDIO_AUDIOUTILITY_H__
+#define __DROWAUDIO_AUDIOUTILITY_H__
 
 #include "../utility/dRowAudio_Constants.h"
 
@@ -55,6 +53,17 @@ forcedinline static double samplesToMs(int64 numSamples, double sampleRate)
  */
 forcedinline static double samplesToSeconds(int64 numSamples, double sampleRate)
 {	return (numSamples / sampleRate);	}
+
+/** Converts a number of semitones to a given pitch ratio.
+ */
+static inline float semitonesToPitchRatio (float numSemitones)  
+{   return pow (10, numSemitones * (log10 (2) / 12.0)); }
+
+/** Converts pitch ratio to a number of semitones.
+ */
+static inline float pitchRatioToSemitones (float pitchRatio)    
+{   return (12.0 / log10 (2)) * log10 (pitchRatio);     }
+
 
 /**
 	Converts a time in seconds to a timecode string.
@@ -192,4 +201,4 @@ static void convertToFloat(AudioFormatReader *reader, void *sourceBuffer, float 
 	}
 }
 
-#endif //_DROWAUDIOAUDIOUTILITY_H_
+#endif //__DROWAUDIO_AUDIOUTILITY_H__

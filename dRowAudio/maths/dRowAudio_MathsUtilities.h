@@ -46,4 +46,11 @@ inline double sincPi(const double x)
     return sin(double_Pi * x)/(double_Pi * x);
 }
 
+/** Converts a number of degrees to radians
+ */
+inline double degreesToRadians (const double degrees)
+{
+    return (degrees / 180.0) * double_Pi;
+}
+
 #endif //__DROWAUDIO_MATHSUTILITIES_H__

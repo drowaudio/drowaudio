@@ -28,6 +28,14 @@ BEGIN_JUCE_NAMESPACE
     #include "audio/dRowAudio_AudioFilePlayer.h"
 #endif
 
+#ifndef _DROWAUDIO_SOUNDTOUCHPROCESSOR__H_
+    #include "audio/dRowAudio_SoundTouchProcessor.h"
+#endif
+
+#ifndef _DROWAUDIO_SOUNDTOUCHAUDIOSOURCE__H_
+    #include "audio/dRowAudio_SoundTouchAudioSource.h"
+#endif
+
 //#include "src/audio/dRowAudio_FilteringAudioSource.h"
 //#include "src/audio/dRowAudio_SmoothingAudioSource.h"
 //#include "src/audio/dRowAudio_ReversibleAudioSource.h"
@@ -36,7 +44,9 @@ BEGIN_JUCE_NAMESPACE
 //
 ////#include "src/audio/dRowAudio_TriBandAudioThumbnail.h"
 //
-//#include "src/audio/dRowAudio_AudioUtility.h"
+#ifndef __DROWAUDIO_AUDIOUTILITY_H__
+    #include "audio/dRowAudio_AudioUtility.h"
+#endif
 //#include "src/audio/dRowAudio_FIFOBuffer.h"
 //#include "src/audio/dRowAudio_CircularBuffer.h"
 //#include "src/audio/dRowAudio_Buffer.h"
@@ -105,7 +115,11 @@ BEGIN_JUCE_NAMESPACE
 #ifndef __DROWAUDIO_PLUGINPARAMETER_H__
     #include "parameters/dRowAudio_PluginParameter.h"
 #endif _DROWAUDIO_PLUGINPARAMETER_H
-//#include "src/utility/dRowAudio_Constants.h"
+
+#ifndef __DROWAUDIO_CONSTANTS_H__
+    #include "utility/dRowAudio_Constants.h"
+#endif
+
 #ifndef __DROWAUDIO_UTILITY_H__
     #include "utility/dRowAudio_Utility.h"
 #endif

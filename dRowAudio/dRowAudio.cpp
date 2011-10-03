@@ -20,10 +20,15 @@
 // and your header search path must make it accessible to the module's files.
 #include "AppConfig.h"
 
+
 #include "dRowAudio.h"
 
 // Audio
 #include "audio/dRowAudio_AudioFilePlayer.cpp"
+
+#include "audio/soundtouch/SoundTouch_Source.cpp"
+#include "audio/dRowAudio_SoundTouchProcessor.cpp"
+#include "audio/dRowAudio_SoundTouchAudioSource.cpp"
 
 //#include "src/audio/dRowAudio_FilteringAudioSource.cpp"
 //#include "src/audio/dRowAudio_SmoothingAudioSource.cpp"

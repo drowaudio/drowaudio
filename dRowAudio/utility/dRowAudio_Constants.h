@@ -7,10 +7,8 @@
  *
  */
 
-#ifndef _DROWAUDIOCONSTANTS_H_
-#define _DROWAUDIOCONSTANTS_H_
-
-#include "../core/dRowAudio_StandardHeader.h"
+#ifndef __DROWAUDIO_CONSTANTS_H__
+#define __DROWAUDIO_CONSTANTS_H__
 
 /**
 	@file 
@@ -35,4 +33,4 @@ static const double oneOverRoot3 = 1.0 / sqrt(3.0);
 #define squareNumber(x)	(x * x)
 #define cubeNumber(x)	(x * x * x)
 
-#endif //_DROWAUDIOCONSTANTS_H_
+#endif //__DROWAUDIO_CONSTANTS_H__
