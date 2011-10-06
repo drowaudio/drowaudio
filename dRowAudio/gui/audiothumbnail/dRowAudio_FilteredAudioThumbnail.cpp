@@ -23,10 +23,11 @@
   ==============================================================================
 */
 
-BEGIN_DROWAUDIO_NAMESPACE
+BEGIN_JUCE_NAMESPACE
 
-#include "dRowAudio_FilteredAudioThumbnail.h"
-#include "dRowAudio_MultipleAudioThumbnailCache.h"
+#ifdef max
+#undef max
+#endif
 
 //==============================================================================
 static void readMaxLevelsFiltering (AudioFormatReader &reader,
@@ -894,4 +895,4 @@ void FilteredAudioThumbnail::drawChannels (Graphics& g, const Rectangle<int>& ar
     }
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

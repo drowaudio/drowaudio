@@ -56,13 +56,13 @@ forcedinline static double samplesToSeconds(int64 numSamples, double sampleRate)
 
 /** Converts a number of semitones to a given pitch ratio.
  */
-static inline float semitonesToPitchRatio (float numSemitones)  
-{   return pow (10, numSemitones * (log10 (2) / 12.0)); }
+static inline double semitonesToPitchRatio (double numSemitones)  
+{   return pow (10.0, numSemitones * (log10 (2.0) / 12.0)); }
 
 /** Converts pitch ratio to a number of semitones.
  */
-static inline float pitchRatioToSemitones (float pitchRatio)    
-{   return (12.0 / log10 (2)) * log10 (pitchRatio);     }
+static inline double pitchRatioToSemitones (double pitchRatio)    
+{   return (12.0 / log10 (2.0)) * log10 (pitchRatio);     }
 
 
 /**
@@ -71,7 +71,7 @@ static inline float pitchRatioToSemitones (float pitchRatio)
 static const String timeToTimecodeString (const double seconds)
 {
     const double absSecs = fabs (seconds);
-    const String sign ((seconds < 0) ? T("-") : T(""));
+    const String sign ((seconds < 0) ? "-" : "");
 	
     const int hours = (int) (absSecs / (60.0 * 60.0));
     const int mins  = ((int) (absSecs / 60.0)) % 60;
@@ -99,7 +99,7 @@ static const String timeToTimecodeString (const double seconds)
 static const String timeToTimecodeStringLowRes (const double seconds)
 {
     const double absSecs = fabs (seconds);
-    const String sign ((seconds < 0) ? T("-") : T(""));
+    const String sign ((seconds < 0) ? "-" : "");
 	
 //    const int hours = (int) (absSecs * oneOver60Squared);
     const int mins  = ((unsigned int) (absSecs * oneOver60)) % 60u;
@@ -156,7 +156,7 @@ static const String ppqToBarsBeatsString (const double ppq,
                                           const int denominator)
 {
     if (numerator == 0 || denominator == 0)
-        return T("1|1|0");
+        return "1|1|0";
 	
     const int ppqPerBar = (numerator * 4 / denominator);
     const double beats  = (fmod (ppq, ppqPerBar) / ppqPerBar) * numerator;
@@ -166,7 +166,7 @@ static const String ppqToBarsBeatsString (const double ppq,
     const int ticks     = ((int) (fmod (beats, 1.0) * 960.0));
 	
     String s;
-    s << bar << T('|') << beat << T('|') << ticks;
+    s << bar << '|' << beat << '|' << ticks;
     return s;
 }
 

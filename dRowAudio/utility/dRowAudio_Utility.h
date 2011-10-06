@@ -45,10 +45,10 @@ inline static File getResourcesFolder()
  */
 inline static String stripFileProtocolForLocal(String pathToStrip)
 {
-	if (pathToStrip.startsWith(T("file://localhost")));
+	if (pathToStrip.startsWith("file://localhost"));
 	{
-		String temp1(pathToStrip.substring(pathToStrip.indexOf(7, T("/"))));//(T("file://localhost")));
-		String temp2(temp1.replace(T("%20"), T(" ")));
+		String temp1(pathToStrip.substring(pathToStrip.indexOf(7, "/")));//(T("file://localhost")));
+		String temp2(temp1.replace("%20", " "));
 
 		return temp2;
 	}

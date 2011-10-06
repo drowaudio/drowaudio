@@ -10,8 +10,6 @@
 #ifndef __DROWAUDIO_STATEVARIABLE_H__
 #define __DROWAUDIO_STATEVARIABLE_H__
 
-#include "../core/dRowAudio_StandardHeader.h"
-
 /**
 	Variable that holds its previous value.
  
@@ -100,7 +98,7 @@ public:
 private:
 	VariableType current, previous;
 	
-	JUCE_LEAK_DETECTOR (StateVariable);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StateVariable);
 };
 
 #endif //__DROWAUDIO_STATEVARIABLE_H__

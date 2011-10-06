@@ -10,7 +10,7 @@
 #ifndef _DROWAUDIO_SOUNDTOUCHAUDIOSOURCE__H_
 #define _DROWAUDIO_SOUNDTOUCHAUDIOSOURCE__H_
 
-//#include "dRowAudio_SoundTouchProcessor.h"
+#include "dRowAudio_SoundTouchProcessor.h"
 
 //==============================================================================
 class SoundTouchAudioSource :   public PositionableAudioSource,

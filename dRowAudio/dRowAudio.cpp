@@ -46,7 +46,7 @@
 //#include "src/audio/filters/dRowAudio_OnePoleFilter.cpp"
 //#include "src/audio/filters/dRowAudio_OnePoleOneZeroFilter.cpp"
 //#include "src/audio/filters/dRowAudio_TwoPoleTwoZeroFilter.cpp"
-//#include "src/audio/filters/dRowAudio_BiquadFilter.cpp"
+#include "audio/filters/dRowAudio_BiquadFilter.cpp"
 //#include "src/audio/filters/dRowAudio_CascadedBiquadFilter.cpp"
 //#include "src/audio/filters/dRowAudio_CombFilter.cpp"
 //#include "src/audio/filters/dRowAudio_AllpassFilter.cpp"
@@ -63,7 +63,9 @@
 //	#include "src/audio/fft/dRowAudio_mac_FFTOperation.cpp"
 //#endif
 
-//// Gui
+// Gui
+#include "gui/dRowAudio_AudioFileDropTarget.cpp"
+
 //#include "src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp"
 //#include "src/gui/lookandfeel/GuitarAmpKnobLookAndFeel.cpp"
 //
@@ -82,12 +84,12 @@
 //#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
 //#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
 //
-//#include "src/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"
+#include "gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
-//#include "src/gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.cpp"
+#include "gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.cpp"
-//#include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.cpp"
-//#include "src/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"
+#include "gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.cpp"
+#include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_TriBandDraggableWaveDisplay.cpp"
@@ -95,6 +97,5 @@
 //
 // Utility
 #include "parameters/dRowAudio_PluginParameter.cpp"
-////#include "src/utility/dRowAudio_StateVariable.cpp"
 //#include "src/utility/dRowAudio_ITunesLibrary.cpp"
 //#include "src/utility/dRowAudio_ITunesLibaryParser.cpp"*/

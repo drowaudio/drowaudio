@@ -57,7 +57,9 @@ BEGIN_JUCE_NAMESPACE
 //#include "src/audio/filters/dRowAudio_OnePoleFilter.h"
 //#include "src/audio/filters/dRowAudio_OnePoleOneZeroFilter.h"
 //#include "src/audio/filters/dRowAudio_TwoPoleTwoZeroFilter.h"
-//#include "src/audio/filters/dRowAudio_BiquadFilter.h"
+#ifndef __DROWAUDIO_BIQUADFILTER_H__
+    #include "audio/filters/dRowAudio_BiquadFilter.h"
+#endif
 //#include "src/audio/filters/dRowAudio_CascadedBiquadFilter.h"
 //#include "src/audio/filters/dRowAudio_CombFilter.h"
 //#include "src/audio/filters/dRowAudio_AllpassFilter.h"
@@ -79,7 +81,10 @@ BEGIN_JUCE_NAMESPACE
     #include "maths/dRowAudio_BezierCurve.h"
 #endif
 
-//// Gui
+// Gui
+#ifndef __DROWAUDIO_AUDIOFILEDROPTARGET_H__
+    #include "gui/dRowAudio_AudioFileDropTarget.h"
+#endif
 //#include "src/gui/dRowAudio_Layouts.h"
 //#include "src/gui/lookandfeel/dRowAudio_LookAndFeel.h"
 //
@@ -99,19 +104,28 @@ BEGIN_JUCE_NAMESPACE
 //#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 //
 //// audiothumbnail
-//#include "src/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h"
+#ifndef __DROWAUDIO_MULTIPLEAUDIOTHUMBNAILCACHE_H__
+    #include "gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h"
+#endif
+#ifndef __DROWAUDIO_FILTEREDAUDIOTHUMBNAIL_H__
+    #include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h"
+#endif
+
+#ifndef __DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__
+    #include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
+#endif
+
 //#include "src/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h"
-//#include "src/gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.h"
+#ifndef __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H__
+    #include "gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.h"
+#endif
 //#include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.h"
-//#include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h"
-//#include "src/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
 //#include "src/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h"
 //#include "src/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.h"
 //#include "src/gui/audiothumbnail/dRowAudio_TriBandDraggableWaveDisplay.h"
 //#include "src/gui/audiothumbnail/dRowAudio_SwitchableDraggableWaveDisplay.h"
-//
-// Utility
 
+// Utility
 #ifndef __DROWAUDIO_PLUGINPARAMETER_H__
     #include "parameters/dRowAudio_PluginParameter.h"
 #endif _DROWAUDIO_PLUGINPARAMETER_H
@@ -123,12 +137,19 @@ BEGIN_JUCE_NAMESPACE
 #ifndef __DROWAUDIO_UTILITY_H__
     #include "utility/dRowAudio_Utility.h"
 #endif
-//#include "src/utility/dRowAudio_StateVariable.h"
+
+#ifndef __DROWAUDIO_STATEVARIABLE_H__
+    #include "utility/dRowAudio_StateVariable.h"
+#endif
+
 //#include "src/utility/dRowAudio_ChangeVariable.h"
 #ifndef __DROWAUDIO_XMLHELPERS_H__
     #include "utility/dRowAudio_XmlHelpers.h"
 #endif
-//#include "src/utility/dRowAudio_Comparators.h"
+
+#ifndef __DROWAUDIO_COMPARATORS_H__
+    #include "utility/dRowAudio_Comparators.h"
+#endif
 //#include "src/utility/dRowAudio_ITunesLibrary.h"
 //#include "src/utility/dRowAudio_ITunesLibaryParser.h"
 //

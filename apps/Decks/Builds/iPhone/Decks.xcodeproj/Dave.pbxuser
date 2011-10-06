@@ -1,0 +1,88 @@
+// !$*UTF8*$!
+{
+	550626BD143BBE6A0070BD21 /* Decks */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Decks;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	550626D4143BBE780070BD21 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	550626D5143BBE780070BD21 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	AFC27DE8E9C1486A98ABD55F /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 550626BD143BBE6A0070BD21 /* Decks */;
+		activeTarget = B428EAAFF8BB2A792CA5A0F8 /* Decks */;
+		codeSenseManager = 550626D5143BBE780070BD21 /* Code sense */;
+		executables = (
+			550626BD143BBE6A0070BD21 /* Decks */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 339459690;
+			PBXWorkspaceStateSaveDate = 339459690;
+		};
+		sourceControlManager = 550626D4143BBE780070BD21 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	B428EAAFF8BB2A792CA5A0F8 /* Decks */ = {
+		activeExec = 0;
+		executables = (
+			550626BD143BBE6A0070BD21 /* Decks */,
+		);
+	};
+}

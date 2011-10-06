@@ -23,10 +23,8 @@
   ==============================================================================
 */
 
-#ifndef __COLOUREDAUDIOTHUMBNAIL_JUCEHEADER__
-#define __COLOUREDAUDIOTHUMBNAIL_JUCEHEADER__
-
-#include "../../core/dRowAudio_StandardHeader.h"
+#ifndef __DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__
+#define __DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__
 
 class MultipleAudioThumbnailCache;
 
@@ -236,4 +234,4 @@ private:
 };
 
 
-#endif   // __COLOUREDAUDIOTHUMBNAIL_JUCEHEADER__
+#endif   //__DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__

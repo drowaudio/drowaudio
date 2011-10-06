@@ -6,13 +6,10 @@
  *
  */
 
-#ifndef _BIQUADFILTER_H_
-#define _BIQUADFILTER_H_
+#ifndef __DROWAUDIO_BIQUADFILTER_H__
+#define __DROWAUDIO_BIQUADFILTER_H__
 
-#include "../../core/dRowAudio_StandardHeader.h"
-
-/**
- A Biquad filter.
+/** A Biquad filter.
  
 	This filter is a subclass of the Juce IIR filter but uses
 	some additional methods to give more filter designs.
@@ -118,4 +115,4 @@ public:
 	double cf, q;
 };
 
-#endif //_BIQUADFILTER_H_
+#endif //__DROWAUDIO_BIQUADFILTER_H__

@@ -6,11 +6,7 @@
  *
  */
 
-#include "../../core/dRowAudio_StandardHeader.h"
-
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_BiquadFilter.h"
+BEGIN_JUCE_NAMESPACE
 
 void BiquadFilter::processSamples (float* const samples,
 								   const int numSamples) throw()
@@ -211,4 +207,4 @@ void BiquadFilter::copyOutputsFrom (const BiquadFilter& other) throw()
 	y2 = other.y2;
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

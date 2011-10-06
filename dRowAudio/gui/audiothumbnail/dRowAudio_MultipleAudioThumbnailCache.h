@@ -23,15 +23,13 @@
   ==============================================================================
 */
 
-#ifndef __MULTIPLEAUDIOTHUMBNAILCACHE_JUCEHEADER__
-#define __MULTIPLEAUDIOTHUMBNAILCACHE_JUCEHEADER__
-
-#include "../../core/dRowAudio_StandardHeader.h"
+#ifndef __DROWAUDIO_MULTIPLEAUDIOTHUMBNAILCACHE_H__
+#define __DROWAUDIO_MULTIPLEAUDIOTHUMBNAILCACHE_H__
 
 #include "dRowAudio_ColouredAudioThumbnail.h"
 #include "dRowAudio_FilteredAudioThumbnail.h"
-struct MultipleThumbnailCacheEntry;
 
+struct MultipleThumbnailCacheEntry;
 
 //==============================================================================
 /**
@@ -92,4 +90,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MultipleAudioThumbnailCache);
 };
 
-#endif   // __MULTIPLEAUDIOTHUMBNAILCACHE_JUCEHEADER__
+#endif   // __DROWAUDIO_MULTIPLEAUDIOTHUMBNAILCACHE_H__

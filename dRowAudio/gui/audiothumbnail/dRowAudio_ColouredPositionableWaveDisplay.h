@@ -8,18 +8,13 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H_3C442B17__
-#define __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H_3C442B17__
+#ifndef __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H__
+#define __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H__
 
-#include "../../core/dRowAudio_StandardHeader.h"
-
-#include "../../audio/dRowAudio_FilteringAudioFilePlayer.h"
-#include "dRowAudio_MultipleAudioThumbnailCache.h"
-#include "dRowAudio_ColouredAudioThumbnail.h"
 #include "../../utility/dRowAudio_StateVariable.h"
+#include "../../audio/dRowAudio_AudioFilePlayer.h"
 
-/**
- A class to display the waveform of an audio file.
+/** A class to display the waveform of an audio file.
 	
 	This will load an audio file and display its waveform. Clicking on the waveform will
 	reposition the transport source. You can change the file loaded by the associated 
@@ -29,9 +24,7 @@ class ColouredPositionableWaveDisplay : public Component,
                                         public MultiTimer,
                                         public ChangeListener,
                                         public AsyncUpdater,
-                                        public FilteringAudioFilePlayer::Listener,
-                                        public DragAndDropTarget,
-                                        public FileDragAndDropTarget
+                                        public AudioFilePlayer::Listener
 {
 public:
 	
@@ -50,13 +43,16 @@ public:
 		AudioThumbnailCache. If you pass in your own the caller is responsible for deleting it,
 		if not the PositionableWaveform will create and delete its own when not needed.	 
 	 */
-	explicit ColouredPositionableWaveDisplay (FilteringAudioFilePlayer *sourceToBeUsed,
-                                              MultipleAudioThumbnailCache *cacheToUse =nullptr,
-                                              ColouredAudioThumbnail *thumbnailToUse =nullptr);
+	explicit ColouredPositionableWaveDisplay (AudioFilePlayer* sourceToBeUsed,
+                                              MultipleAudioThumbnailCache* cacheToUse =nullptr,
+                                              ColouredAudioThumbnail* thumbnailToUse =nullptr);
 	
 	/// Destructor
 	~ColouredPositionableWaveDisplay ();
 	
+	//====================================================================================
+    void setRatio (double newRatio);
+    
 	//====================================================================================
 	void resized ();
 	
@@ -69,12 +65,8 @@ public:
     
     void handleAsyncUpdate();
 	
-	void fileChanged (FilteringAudioFilePlayer *player);
-		
-	//====================================================================================
-	/// Sets the current horizontal zoom
-	void setZoomFactor (float newZoomFactor);
-	
+	void fileChanged (AudioFilePlayer *player);
+			
 	//==============================================================================
 	void mouseDown(const MouseEvent &e);
 	
@@ -83,27 +75,27 @@ public:
 	void mouseDrag(const MouseEvent &e);
 	
 	//==============================================================================
-	bool isInterestedInFileDrag (const StringArray &files);
-	void fileDragEnter (const StringArray &files, int x, int y);
-	void fileDragExit (const StringArray &files);
-	void filesDropped (const StringArray &files, int x, int y);
-	
-	//==============================================================================
-	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
-	
-	void itemDragEnter (const SourceDetails& dragSourceDetails);
-	
-	void itemDragExit (const SourceDetails& dragSourceDetails);
-	
-	void itemDropped (const SourceDetails& dragSourceDetails);
-	
+//	bool isInterestedInFileDrag (const StringArray &files);
+//	void fileDragEnter (const StringArray &files, int x, int y);
+//	void fileDragExit (const StringArray &files);
+//	void filesDropped (const StringArray &files, int x, int y);
+//	
+//	//==============================================================================
+//	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
+//	
+//	void itemDragEnter (const SourceDetails& dragSourceDetails);
+//	
+//	void itemDragExit (const SourceDetails& dragSourceDetails);
+//	
+//	void itemDropped (const SourceDetails& dragSourceDetails);
+//	
 	//==============================================================================	
 	
 private:
 	
 	void refreshWaveform();
 	
-	FilteringAudioFilePlayer* filePlayer;
+	AudioFilePlayer* filePlayer;
 	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
 	
 	// thumbnail classes
@@ -111,18 +103,17 @@ private:
 	OptionalScopedPointer<MultipleAudioThumbnailCache> thumbnailCache;
 	OptionalScopedPointer<ColouredAudioThumbnail> thumbnailView;
 	
-    Image tempImage;
-	Image waveformImage;
+	Image waveformImage, displayImage;
 	
 	StateVariable<int> transportLineXCoord;
 	float zoomFactor, currentXScale;
 	
-	bool isInitialised, isMouseDown, interestedInDrag;
+	bool isInitialised, isMouseDown;//, interestedInDrag;
 	double currentMouseX;
     
-    double lastTimeDrawn;
+    double lastTimeDrawn, ratio;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColouredPositionableWaveDisplay);
 };
 
-#endif  // __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H_3C442B17__
+#endif  // __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H__

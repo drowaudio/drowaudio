@@ -23,10 +23,7 @@
   ==============================================================================
 */
 
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_ColouredAudioThumbnail.h"
-#include "dRowAudio_MultipleAudioThumbnailCache.h"
+BEGIN_JUCE_NAMESPACE
 
 //==============================================================================
 static void readMaxLevelsFiltering (AudioFormatReader &reader,
@@ -355,7 +352,7 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
     }
     
     uint8 maxSize = std::numeric_limits<uint8>::max();
-    colourLeft = Colour::fromRGB(avgLow * maxSize, avgMid * maxSize, avgHigh * maxSize);
+    colourLeft = Colour::fromRGB(avgLow * maxSize, avgMid * maxSize * 0.66, avgHigh * maxSize * 0.33);
     colourRight = colourLeft;
 }
 
@@ -403,7 +400,7 @@ struct ColouredAudioThumbnail::MinMaxColourValue
 
     inline void read (InputStream& input)
     {
-		DBG("read from MinMaxColourValue");
+		//DBG("read from MinMaxColourValue");
         minValue = input.readByte();
         maxValue = input.readByte();
 		input.read ((void*)&colour, sizeof(Colour));
@@ -1233,4 +1230,4 @@ void ColouredAudioThumbnail::drawChannels (Graphics& g, const Rectangle<int>& ar
     }
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

@@ -23,10 +23,7 @@
   ==============================================================================
 */
 
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_MultipleAudioThumbnailCache.h"
-
+BEGIN_JUCE_NAMESPACE
 
 //==============================================================================
 struct MultipleThumbnailCacheEntry
@@ -171,4 +168,4 @@ void MultipleAudioThumbnailCache::clear()
     thumbs.clear();
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

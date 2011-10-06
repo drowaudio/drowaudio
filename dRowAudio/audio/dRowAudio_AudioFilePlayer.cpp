@@ -54,32 +54,56 @@ bool AudioFilePlayer::setInputStream (InputStream* inputStream)
     return setSourceWithReader (reader);
 }
 
+//==============================================================================
+void AudioFilePlayer::addListener (AudioFilePlayer::Listener* const listener)
+{
+    listeners.add (listener);
+}
+
+void AudioFilePlayer::removeListener (AudioFilePlayer::Listener* const listener)
+{
+    listeners.remove (listener);
+}
+
+//==============================================================================
 bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
     // should really delete/reset any exisiting data in case this method is callled more than once
 	// (which it isn't in this example)
 	stop();
 	setSource (nullptr);
-	deleteAndZero (currentAudioFileSource);
     
 	if (reader != nullptr)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		currentAudioFileSource = new AudioFormatReaderSource (reader, true);
         
+        // copy old parameters
+        SoundTouchProcessor::PlaybackSettings settings = {1.0f, 1.0f, 1.0f};
+        if (soundTouchAudioSource != nullptr)
+            settings = soundTouchAudioSource->getPlaybackSettings();
+		soundTouchAudioSource = new SoundTouchAudioSource (currentAudioFileSource,
+                                                           bufferingTimeSliceThread,
+                                                           false,
+                                                           32768);
+        soundTouchAudioSource->setPlaybackSettings (settings);
+
 		// ..and plug it into our transport source
-		setSource (currentAudioFileSource,
+		setSource (soundTouchAudioSource,//currentAudioFileSource,
 				   0,//32768,
                    nullptr, //&bufferingTimeSliceThread,
                    reader->sampleRate); // tells it to buffer this many samples ahead
         
 		// let our listeners know that we have loaded a new file
 		sendChangeMessage();
-		
+        listeners.call (&Listener::fileChanged, this);
+
 		return true;
 	}
 	
-	return false;    
+    listeners.call (&Listener::fileChanged, this);
+
+    return false;    
 }
 
 END_JUCE_NAMESPACE
