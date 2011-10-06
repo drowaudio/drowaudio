@@ -23,9 +23,7 @@
   ==============================================================================
 */
 
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_MusicLibraryTable.h"
+BEGIN_JUCE_NAMESPACE
 
 String parseDateString(String dateString)
 {
@@ -302,7 +300,7 @@ void MusicLibraryTable::timerCallback()
 	table->updateContent();
 }
 
-const var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
+var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
 {
 	if(! currentlySelectedRows.isEmpty())
 	{
@@ -330,4 +328,4 @@ const var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &c
 	return var::null; //String::empty;
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

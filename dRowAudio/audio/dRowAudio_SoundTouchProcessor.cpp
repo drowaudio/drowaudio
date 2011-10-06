@@ -12,10 +12,6 @@ SoundTouchProcessor::SoundTouchProcessor()
     : interleavedInputBufferSize (512),
       interleavedOutputBufferSize (512)
 {
-    settings.rate = 1.0f;
-    settings.tempo = 1.0f;
-    settings.pitch = 1.0f;
-    
     setPlaybackSettings (settings);
     
     interleavedInputBuffer.malloc (interleavedInputBufferSize * 2);
@@ -28,6 +24,7 @@ SoundTouchProcessor::~SoundTouchProcessor()
 
 void SoundTouchProcessor::initialise (int numChannels, double sampleRate)
 {
+    ScopedLock sl (lock);
     soundTouch.setChannels (numChannels);
     soundTouch.setSampleRate (sampleRate);
     soundTouch.clear();
@@ -51,6 +48,7 @@ void SoundTouchProcessor::writeSamples (float** sourceChannelData, int numChanne
     for (int i = 0; i < numChannels; i++)
         sourceChannelData[i] -= startSampleOffset;
     
+    ScopedLock sl (lock);
     soundTouch.putSamples ((SAMPLETYPE*)interleavedInputBuffer, numSamples);
 }
 
@@ -65,17 +63,22 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
     
     int numSamplesDone = 0;
     int numThisTime = 0;
-    do
+    
     {
-        int maxNumSamples = numSamples - numSamplesDone;
-        numThisTime = soundTouch.receiveSamples ((SAMPLETYPE*)&interleavedOutputBuffer[numChannels * numSamplesDone], maxNumSamples);
-        
-        numSamplesDone += numThisTime;
-        
-        if (numSamplesDone == numSamples)
-            break;
+        ScopedLock sl (lock);
+    
+        do
+        {
+            int maxNumSamples = numSamples - numSamplesDone;
+            numThisTime = soundTouch.receiveSamples ((SAMPLETYPE*)&interleavedOutputBuffer[numChannels * numSamplesDone], maxNumSamples);
+            
+            numSamplesDone += numThisTime;
+            
+            if (numSamplesDone == numSamples)
+                break;
+        }
+        while (numThisTime != 0);
     }
-    while (numThisTime != 0);
     
     if (numSamplesDone < numSamples)
         zeromem (&interleavedOutputBuffer[numChannels * numSamplesDone], numChannels * sizeof (numSamples - numSamplesDone));
@@ -93,6 +96,7 @@ void SoundTouchProcessor::setPlaybackSettings (PlaybackSettings newSettings)
 {
     settings = newSettings;
     
+    ScopedLock sl (lock);
     soundTouch.setRate (settings.rate);
     soundTouch.setTempo (settings.tempo);
     soundTouch.setPitch (settings.pitch);    

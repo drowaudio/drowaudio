@@ -15,8 +15,7 @@
 
 using namespace soundtouch;
 
-// Need different input and output buffers for thread safety!
-
+//==============================================================================
 /** Wraps a SoundTouch object to enable pitch and tempo adjustments to an audio buffer;
  
     To use this is very simple, just create one, initialise it with the desired number
@@ -28,6 +27,7 @@ class SoundTouchProcessor
 {
 public:
     
+    //==============================================================================
     enum PlaybackSetting 
     {
         rateSetting,
@@ -38,9 +38,16 @@ public:
     
     struct PlaybackSettings
     {
+        PlaybackSettings()
+          : rate (1.0f),
+            tempo (1.0f),
+            pitch (1.0f)
+        {}
+        
         float rate, tempo, pitch;
     };
     
+    //==============================================================================
     /** Create a default SoundTouchProcessor.
         Make sure that you call initialise before any processing take place.
         This will apply no shifting/stretching by default, use setPlaybackSetting() to
@@ -75,7 +82,7 @@ public:
     
     /** Clears the pipeline of all samples, ready for new processing.
      */
-    void clear()                                                    {   soundTouch.clear();     }
+    void clear()                                                {   soundTouch.clear();             }
     
     /** Flushes the last samples from the processing pipeline to the output.
         Clears also the internal processing buffers.
@@ -85,11 +92,11 @@ public:
         of the sound stream, and thus it's not recommended to call this function
         in the middle of a sound stream.
      */
-    void flush()                                                    {   soundTouch.flush();     }
+    void flush()                                                {   soundTouch.flush();             }
     
     /** Returns the number of samples ready.
      */
-    int getNumReady()                                               {   return soundTouch.numSamples(); }
+    int getNumReady()                                           {   return soundTouch.numSamples(); }
     
     /** Sets all of the settings at once.
      */
@@ -97,22 +104,21 @@ public:
     
     /** Returns all of the settings.
      */
-    PlaybackSettings getPlaybackSettings()                          {   return settings;                                    }
+    PlaybackSettings getPlaybackSettings()                      {   return settings;                            }
     
     /** Returns the ratio of input samples required per ouput sample, 1.0 being the same.
      */
-    double getNumSamplesRequiredRatio()                             {   return settings.rate * settings.tempo;              }
+    double getNumSamplesRequiredRatio()                         {   return settings.rate * settings.tempo;      }
     
     /** Returns the number of samples in the pipeline but currently unprocessed.
      */
-    int getNumUnprocessedSamples()                                  {   return soundTouch.numUnprocessedSamples();          }
-        
-    //==============================================================================
-    
+    int getNumUnprocessedSamples()                              {   return soundTouch.numUnprocessedSamples();  }
+            
 private:
-    
+    //==============================================================================
     SoundTouch soundTouch;
     
+    CriticalSection lock;
     HeapBlock<float> interleavedInputBuffer, interleavedOutputBuffer;
     int interleavedInputBufferSize, interleavedOutputBufferSize;
     PlaybackSettings settings;

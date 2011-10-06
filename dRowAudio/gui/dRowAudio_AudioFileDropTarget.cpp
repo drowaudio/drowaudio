@@ -82,44 +82,48 @@ void AudioFileDropTarget::componentMovedOrResized (Component& component,
 //==============================================================================
 bool AudioFileDropTarget::isInterestedInDragSource (const SourceDetails& dragSourceDetails)
 {
-//    ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
-//    
-//    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (Columns::libraryItemIdentifier))
-//    {
-//        return true;
-//    }
+    ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
+    
+    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (Columns::libraryItemIdentifier))
+    {
+        interestedInDrag = true;
+        setMouseCursor (MouseCursor::CopyingCursor);
+
+        repaint();
+
+        return true;
+    }
     
     return false;	
 }
 
-void AudioFileDropTarget::itemDragEnter (const SourceDetails& dragSourceDetails)
-{
-    interestedInDrag = true;
-    repaint();
-}
-
 void AudioFileDropTarget::itemDragExit (const SourceDetails& dragSourceDetails)
 {
-    interestedInDrag = false;
-    repaint();
+    if (interestedInDrag)
+    {
+        interestedInDrag = false;
+        setMouseCursor (MouseCursor::NormalCursor);	
+        
+        repaint();
+    }
 }
 
 void AudioFileDropTarget::itemDropped (const SourceDetails& dragSourceDetails)
 {
-    if (dragSourceDetails.description.isArray()) 
+    if (interestedInDrag && dragSourceDetails.description.isArray()) 
     {
-//        ReferenceCountedValueTree::Ptr childTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
-//        if (childTree != nullptr) 
-//        {
-//            ValueTree itemTree (childTree->getValueTree());
-//            File newFile (itemTree.getProperty(Columns::columnNames[Columns::Location]));
-//            
-//            if (newFile.existsAsFile()) 
-//            {
-//                filePlayer->setLibraryEntry(itemTree);
-//                filePlayer->setFile(newFile.getFullPathName());
-//            }
-//        }
+        ReferenceCountedValueTree::Ptr childTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
+        if (childTree != nullptr) 
+        {
+            ValueTree itemTree (childTree->getValueTree());
+            File newFile (itemTree.getProperty (Columns::columnNames[Columns::Location]));
+            
+            if (newFile.existsAsFile()) 
+            {
+                //audioFilePlayer->setLibraryEntry (itemTree);
+                audioFilePlayer->setFile (newFile.getFullPathName());
+            }
+        }
     }
     
     interestedInDrag = false;
@@ -129,8 +133,7 @@ void AudioFileDropTarget::itemDropped (const SourceDetails& dragSourceDetails)
 //==============================================================================
 bool AudioFileDropTarget::isInterestedInFileDrag (const StringArray &files)
 {
-    File droppedFile (files[0]);
-    if (matchesAudioWildcard (droppedFile.getFileExtension(), 
+    if (matchesAudioWildcard (File (files[0]).getFileExtension(), 
                               audioFilePlayer->getAudioFormatManager()->getWildcardForAllFormats(), true))
     {
         interestedInDrag = true;

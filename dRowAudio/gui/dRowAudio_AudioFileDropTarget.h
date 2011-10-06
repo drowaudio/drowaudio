@@ -69,8 +69,6 @@ public:
     /** @internal */
     bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
     /** @internal */
-    void itemDragEnter (const SourceDetails& dragSourceDetails);
-    /** @internal */
     void itemDragExit (const SourceDetails& dragSourceDetails);
     /** @internal */
     void itemDropped (const SourceDetails& dragSourceDetails);
@@ -91,6 +89,8 @@ private:
     SafePointer<Component> attachedComponent;
     bool dragTested, interestedInDrag;
     Colour bezelColour;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFileDropTarget);
 };
 
 #endif  // __DROWAUDIO_AUDIOFILEDROPTARGET_H__

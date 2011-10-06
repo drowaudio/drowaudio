@@ -14,6 +14,7 @@
 #include "../../utility/dRowAudio_StateVariable.h"
 #include "../../audio/dRowAudio_AudioFilePlayer.h"
 
+//==============================================================================	
 /** A class to display the waveform of an audio file.
 	
 	This will load an audio file and display its waveform. Clicking on the waveform will
@@ -28,7 +29,8 @@ class ColouredPositionableWaveDisplay : public Component,
 {
 public:
 	
-	/// Used to start and stop the various internal timers
+	//==============================================================================	
+	/** Used to start and stop the various internal timers. */
 	enum
 	{
 		waveformUpdated,
@@ -36,7 +38,8 @@ public:
 		waveformResizing
 	};
 	
-	/**
+    //==============================================================================	
+    /**
 		Creates the display.
 		The file player associated with the display must be passed in.
 		To save on the number of threads in your program you can optionally pass in your own
@@ -47,11 +50,13 @@ public:
                                               MultipleAudioThumbnailCache* cacheToUse =nullptr,
                                               ColouredAudioThumbnail* thumbnailToUse =nullptr);
 	
-	/// Destructor
+	/** Destructor. */
 	~ColouredPositionableWaveDisplay ();
 	
 	//====================================================================================
-    void setRatio (double newRatio);
+    /** Sets the image resolution in lines per pixel.
+     */
+    void setResolution (double newResolution);
     
 	//====================================================================================
 	void resized ();
@@ -74,25 +79,8 @@ public:
 	
 	void mouseDrag(const MouseEvent &e);
 	
-	//==============================================================================
-//	bool isInterestedInFileDrag (const StringArray &files);
-//	void fileDragEnter (const StringArray &files, int x, int y);
-//	void fileDragExit (const StringArray &files);
-//	void filesDropped (const StringArray &files, int x, int y);
-//	
-//	//==============================================================================
-//	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
-//	
-//	void itemDragEnter (const SourceDetails& dragSourceDetails);
-//	
-//	void itemDragExit (const SourceDetails& dragSourceDetails);
-//	
-//	void itemDropped (const SourceDetails& dragSourceDetails);
-//	
-	//==============================================================================	
-	
 private:
-	
+	//==============================================================================	
 	void refreshWaveform();
 	
 	AudioFilePlayer* filePlayer;
@@ -111,7 +99,7 @@ private:
 	bool isInitialised, isMouseDown;//, interestedInDrag;
 	double currentMouseX;
     
-    double lastTimeDrawn, ratio;
+    double lastTimeDrawn, resolution;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColouredPositionableWaveDisplay);
 };

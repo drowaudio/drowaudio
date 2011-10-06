@@ -22,7 +22,7 @@ ColouredPositionableWaveDisplay::ColouredPositionableWaveDisplay (AudioFilePlaye
     isInitialised       (false),
 	isMouseDown         (false),
     lastTimeDrawn       (0.0),
-    ratio               (3.0)
+    resolution               (3.0)
 {
     setOpaque(true);
     waveformImage = Image (Image::RGB, 1, 1, false);
@@ -53,12 +53,12 @@ ColouredPositionableWaveDisplay::~ColouredPositionableWaveDisplay()
 }
 
 //====================================================================================
-void ColouredPositionableWaveDisplay::setRatio (double newRatio)
+void ColouredPositionableWaveDisplay::setResolution (double newResolution)
 {
-    ratio = newRatio;
+    resolution = newResolution;
     
     waveformImage.clear (waveformImage.getBounds(), Colours::black);
-    displayImage = Image (Image::RGB, jmax (1, roundToInt (getWidth() * ratio)), getHeight(), true);
+    displayImage = Image (Image::RGB, jmax (1, roundToInt (getWidth() * resolution)), getHeight(), true);
     lastTimeDrawn = 0.0;
     refreshWaveform();
     triggerAsyncUpdate();    
@@ -92,15 +92,10 @@ void ColouredPositionableWaveDisplay::paint(Graphics &g)
 
 	g.setColour (Colours::white);
 	g.drawVerticalLine (transportLineXCoord.getCurrent(), 0, h);
-	
-//	if (interestedInDrag)
-//    {
-//		g.setColour (Colours::darkorange);
-//		g.drawRect (0, 0, w, h, 2);
-//	}
 }
+
 //====================================================================================
-void ColouredPositionableWaveDisplay::timerCallback(const int timerId)
+void ColouredPositionableWaveDisplay::timerCallback (const int timerId)
 {
 	if (timerId == waveformUpdated)
 	{
@@ -118,26 +113,19 @@ void ColouredPositionableWaveDisplay::timerCallback(const int timerId)
 	}
 	else if (timerId == waveformResizing)
 	{
-        displayImage = Image (Image::RGB, jmax (1, roundToInt (getWidth() * ratio)), getHeight(), true);
+        displayImage = Image (Image::RGB, jmax (1, roundToInt (getWidth() * resolution)), getHeight(), true);
 		waveformImage = Image (Image::RGB, jmax (1, getWidth()), getHeight(), true);
         waveformImage.clear (waveformImage.getBounds(), Colours::black);
         lastTimeDrawn = 0.0;
 		refreshWaveform();
 		stopTimer (waveformResizing);
 	}
-
 }
 
 void ColouredPositionableWaveDisplay::changeListenerCallback (ChangeBroadcaster* source)
 {
     if (source == thumbnailView)
-    {
-        if (thumbnailView->isFullyLoaded()) {
-            DBG("ColouredPositionableWaveDisplay fully loaded");
-        }
-   
         refreshWaveform();	
-    }
 }
 
 void ColouredPositionableWaveDisplay::handleAsyncUpdate()
@@ -206,114 +194,11 @@ void ColouredPositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 	double position = currentXScale * currentMouseX;
 	filePlayer->setPosition (position);
 }
-//==============================================================================
-/*bool ColouredPositionableWaveDisplay::isInterestedInFileDrag (const StringArray &files)
-{
-	File droppedFile(files[0]);
-	if (matchesAudioWildcard(droppedFile.getFileExtension(), formatManager->getWildcardForAllFormats(), true))
-		return true;
-	else
-		return false;
-}
-void ColouredPositionableWaveDisplay::fileDragEnter (const StringArray &files, int x, int y)
-{
-	interestedInDrag = true;
-	setMouseCursor(MouseCursor::CopyingCursor);
-	
-	triggerAsyncUpdate();
-}
-void ColouredPositionableWaveDisplay::fileDragExit (const StringArray &files)
-{
-	interestedInDrag = false;
-	setMouseCursor(MouseCursor::NormalCursor);	
-
-	triggerAsyncUpdate();
-}
-void ColouredPositionableWaveDisplay::filesDropped (const StringArray &files, int x, int y)
-{
-	interestedInDrag = false;
-	filePlayer->setFile(files[0]);
-	setMouseCursor(MouseCursor::NormalCursor);
-
-	triggerAsyncUpdate();
-}
-
-//==============================================================================
-bool ColouredPositionableWaveDisplay::isInterestedInDragSource (const SourceDetails& dragSourceDetails)
-{
-//	if (dragSourceDetails.description.toString().startsWith("<ITEMS>")) {
-//		return true;
-//	}
-
-//    ValueTree* libraryTree = dynamic_cast<ValueTree*> ((ValueTree*)int(dragSourceDetails.description[0]));
-  
-    ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
-
-    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (Columns::libraryItemIdentifier))
-    {
-        return true;
-    }
-	
-	return false;	
-}
-
-void ColouredPositionableWaveDisplay::itemDragEnter (const SourceDetails& dragSourceDetails)
-{
-	interestedInDrag = true;
-	triggerAsyncUpdate();
-}
-
-void ColouredPositionableWaveDisplay::itemDragExit (const SourceDetails& dragSourceDetails)
-{
-	interestedInDrag = false;
-	triggerAsyncUpdate();
-}
-
-void ColouredPositionableWaveDisplay::itemDropped (const SourceDetails& dragSourceDetails)
-{
-    if (dragSourceDetails.description.isArray()) 
-    {
-//        ValueTree* libraryTree = dynamic_cast<ValueTree*> ((ValueTree*)(dragSourceDetails.description[0]));
-//        
-//        if (libraryTree != nullptr && libraryTree->isValid())
-//        {
-//            DBG("dropped tree is valid");
-//            ValueTree itemTree(libraryTree->getChildWithProperty(Columns::columnNames[Columns::ID], dragSourceDetails.description[1]));
-//            File newFile(itemTree.getProperty(Columns::columnNames[Columns::Location]));
-
-        ReferenceCountedValueTree::Ptr childTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
-        if (childTree != nullptr) 
-        {
-            ValueTree itemTree (childTree->getValueTree());
-            File newFile (itemTree.getProperty(Columns::columnNames[Columns::Location]));
-            
-            if (newFile.existsAsFile()) 
-            {
-                filePlayer->setLibraryEntry(itemTree);
-                filePlayer->setFile(newFile.getFullPathName());
-            }
-        }
-    }
-    
-//	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(dragSourceDetails.description.toString()));
-//	
-//	if (newTracks->getNumChildElements() > 0) {
-//		File newFile(newTracks->getChildElement(0)->getStringAttribute("Location"));
-//		
-//		if (newFile.existsAsFile()) {
-//			filePlayer->setLibraryEntry(ValueTree::fromXml(*newTracks->getChildElement(0)));
-//			filePlayer->setFile(newFile.getFullPathName());
-//		}
-//	}
-	
-	interestedInDrag = false;
-	triggerAsyncUpdate();
-}*/
 
 //==============================================================================	
 void ColouredPositionableWaveDisplay::refreshWaveform()
 {
-	if (waveformImage.isValid() && filePlayer->getPath().isNotEmpty())
+	if (waveformImage.isValid() && filePlayer->getTotalLength() > 0)
 	{
         Graphics gTemp (displayImage);
         
@@ -321,8 +206,8 @@ void ColouredPositionableWaveDisplay::refreshWaveform()
         const double startPixelX = (lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
         const double numPixels = ((endTime - lastTimeDrawn) * oneOverFileLength * waveformImage.getWidth());
 
-        Rectangle<int> rectangleToDraw (roundToInt (startPixelX * ratio), 0, 
-                                        roundToInt (numPixels * ratio), displayImage.getHeight());
+        Rectangle<int> rectangleToDraw (roundToInt (startPixelX * resolution), 0, 
+                                        roundToInt (numPixels * resolution), displayImage.getHeight());
         
         gTemp.setColour (Colours::black);
         gTemp.fillRect (rectangleToDraw);
@@ -335,7 +220,7 @@ void ColouredPositionableWaveDisplay::refreshWaveform()
 		Graphics g (waveformImage);
         g.drawImage (displayImage,
                      roundToInt (startPixelX), 0, roundToInt (numPixels), waveformImage.getHeight(),
-                     roundToInt (startPixelX * ratio), 0, roundToInt (numPixels * ratio), displayImage.getHeight());
+                     roundToInt (startPixelX * resolution), 0, roundToInt (numPixels * resolution), displayImage.getHeight());
 		
         repaint (Rectangle<int> (roundToInt (startPixelX), 0, roundToInt (numPixels), waveformImage.getHeight()));
 	}

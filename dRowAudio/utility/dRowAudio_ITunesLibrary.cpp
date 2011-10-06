@@ -8,9 +8,7 @@
   ==============================================================================
 */
 
-#include "dRowAudio_ITunesLibrary.h"
-
-BEGIN_DROWAUDIO_NAMESPACE
+BEGIN_JUCE_NAMESPACE
 
 juce_ImplementSingleton(ITunesLibrary);
 
@@ -31,31 +29,31 @@ void ITunesLibrary::setLibraryFile(File newFile)
 	{
 		//libraryTree.removeAllChildren(0);
 		listeners.call (&Listener::libraryChanged, this);
-		parser = new ITunesLibraryParser(newFile, libraryTree);
+		parser = new ITunesLibraryParser (newFile, libraryTree);
 		startTimer(500);
 	}	
 }
 
 bool ITunesLibrary::loadSavedLibraryIfNewer(File savedLibraryFile)
 {
-    ScopedPointer<XmlElement> elm(XmlDocument::parse(savedLibraryFile));
+    ScopedPointer<XmlElement> elm (XmlDocument::parse (savedLibraryFile));
     if (elm != nullptr)
     {
-        ValueTree savedTree(ValueTree::fromXml(*elm));
+        ValueTree savedTree (ValueTree::fromXml(*elm));
         
         if (savedLibraryFile.getLastModificationTime() > getDefaultITunesLibraryFile().getLastModificationTime()) 
         {
-            setLibraryTree(savedTree);
+            setLibraryTree (savedTree);
             
             return true;
         }
-        else if (savedTree.hasType(Columns::libraryIdentifier)) //attempt to update existing
+        else if (savedTree.hasType (Columns::libraryIdentifier)) //attempt to update existing
         {
             libraryTree = savedTree;
         }
     }
     
-    setLibraryFile(ITunesLibrary::getDefaultITunesLibraryFile());
+    setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     
     return false;
 }
@@ -67,7 +65,7 @@ const File& ITunesLibrary::getLibraryFile()
 
 void ITunesLibrary::setLibraryTree(ValueTree newTreeToUse)
 {
-    if (newTreeToUse.hasType(Columns::libraryIdentifier))
+    if (newTreeToUse.hasType (Columns::libraryIdentifier))
     {
         libraryTree = newTreeToUse;
         listeners.call (&Listener::libraryChanged, this);
@@ -95,7 +93,7 @@ void ITunesLibrary::timerCallback()
 File ITunesLibrary::getDefaultITunesLibraryFile()
 {
 #ifdef JUCE_MAC
-    return File::getSpecialLocation(File::userMusicDirectory).getChildFile("iTunes/iTunes Music Library.xml");
+    return File::getSpecialLocation (File::userMusicDirectory).getChildFile ("iTunes/iTunes Music Library.xml");
 #else
     return File::nonexistent;
 #endif
@@ -114,4 +112,4 @@ void ITunesLibrary::removeListener (ITunesLibrary::Listener* const listener)
 
 //==============================================================================
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

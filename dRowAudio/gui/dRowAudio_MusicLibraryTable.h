@@ -23,14 +23,11 @@
   ==============================================================================
 */
 
-#ifndef _MUSICLIBRARYTABLE_H_
-#define _MUSICLIBRARYTABLE_H_
-
-#include "../core/dRowAudio_StandardHeader.h"
+#ifndef __DROWAUDIO_MUSICLIBRARYTABLE_H__
+#define __DROWAUDIO_MUSICLIBRARYTABLE_H__
 
 #include "../audio/dRowAudio_AudioUtility.h"
 #include "../utility/dRowAudio_ITunesLibrary.h"
-//#include "../utility/dRowAudio_ITunesLibaryParser.h"
 #include "../utility/dRowAudio_Comparators.h"
 
 //==============================================================================
@@ -93,11 +90,12 @@ public:
 
 	void timerCallback();
 	
-	const var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
+	var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
 	
     //==============================================================================
 
 private:
+    //==============================================================================
     Font font;	
 //	ScopedPointer<ITunesLibraryParser> parser;	
 	ITunesLibrary *currentLibrary;
@@ -142,4 +140,4 @@ private:
 	}
 };
 
-#endif //_MUSICLIBRARYTABLE_H_
+#endif // __DROWAUDIO_MUSICLIBRARYTABLE_H__

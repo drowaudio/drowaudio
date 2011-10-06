@@ -24,6 +24,7 @@ public:
                           int numberOfSamplesToBuffer,
                           int numberOfChannels = 2);
     
+    /** Destructor. */
     ~SoundTouchAudioSource();
     
     /** Sets all of the settings at once.
@@ -47,31 +48,30 @@ public:
     int64 getNextReadPosition() const;
     
     /** Implements the PositionableAudioSource method. */
-    int64 getTotalLength() const                { return source->getTotalLength(); }
+    int64 getTotalLength() const                { return source->getTotalLength();  }
     
     /** Implements the PositionableAudioSource method. */
-    bool isLooping() const                      { return source->isLooping(); }
+    bool isLooping() const                      { return source->isLooping();       }
     
-    //==============================================================================
 private:
-    
+    //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> source;
     TimeSliceThread& backgroundThread;
     int numberOfSamplesToBuffer, numberOfChannels;
-    AudioSampleBuffer buffer, sectionBuffer;
+    AudioSampleBuffer buffer;
     CriticalSection bufferStartPosLock;
-    int64 volatile bufferValidStart, bufferValidEnd, nextPlayPos;
+    int64 volatile nextPlayPos;
     double volatile sampleRate;
-    bool wasSourceLooping, isPrepared;
+    bool isPrepared;
     
     SoundTouchProcessor soundTouchProcessor;
-    int numBuffered;
-    int64 nextBufferStarPos;
+    int volatile numBuffered;
     
     bool readNextBufferChunk();
     void readBufferSection (int64 start, int length, int bufferOffset);
     int useTimeSlice();
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundTouchAudioSource);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchAudioSource);
 };
+
 #endif //_DROWAUDIO_SOUNDTOUCHAUDIOSOURCE__H_

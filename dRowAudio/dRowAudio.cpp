@@ -80,7 +80,7 @@
 //#include "src/gui/dRowAudio_CpuMeter.cpp"
 //#include "src/gui/dRowAudio_Clock.cpp"
 //#include "src/gui/dRowAudio_CentreAlignViewport.cpp"
-//#include "src/gui/dRowAudio_MusicLibraryTable.cpp"
+#include "gui/dRowAudio_MusicLibraryTable.cpp"
 //#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
 //#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
 //
@@ -94,8 +94,8 @@
 //#include "src/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_TriBandDraggableWaveDisplay.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_SwitchableDraggableWaveDisplay.cpp"
-//
+
 // Utility
 #include "parameters/dRowAudio_PluginParameter.cpp"
-//#include "src/utility/dRowAudio_ITunesLibrary.cpp"
-//#include "src/utility/dRowAudio_ITunesLibaryParser.cpp"*/
+#include "utility/dRowAudio_ITunesLibrary.cpp"
+#include "utility/dRowAudio_ITunesLibraryParser.cpp"

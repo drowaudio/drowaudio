@@ -70,7 +70,7 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
     // should really delete/reset any exisiting data in case this method is callled more than once
 	// (which it isn't in this example)
-	stop();
+//	stop();
 	setSource (nullptr);
     
 	if (reader != nullptr)
@@ -79,7 +79,7 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 		currentAudioFileSource = new AudioFormatReaderSource (reader, true);
         
         // copy old parameters
-        SoundTouchProcessor::PlaybackSettings settings = {1.0f, 1.0f, 1.0f};
+        SoundTouchProcessor::PlaybackSettings settings;
         if (soundTouchAudioSource != nullptr)
             settings = soundTouchAudioSource->getPlaybackSettings();
 		soundTouchAudioSource = new SoundTouchAudioSource (currentAudioFileSource,
