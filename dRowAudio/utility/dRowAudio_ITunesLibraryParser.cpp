@@ -10,8 +10,9 @@
 
 BEGIN_JUCE_NAMESPACE
 
-ITunesLibraryParser::ITunesLibraryParser (File &iTunesLibraryFileToUse, ValueTree elementToFill)
+ITunesLibraryParser::ITunesLibraryParser (File &iTunesLibraryFileToUse, ValueTree elementToFill, CriticalSection& lockToUse)
     : Thread ("iTunesLibraryParser"),
+      lock (lockToUse),
       iTunesLibraryFile (iTunesLibraryFileToUse),
       treeToFill (elementToFill),
       numAdded (0),
@@ -170,32 +171,3 @@ void ITunesLibraryParser::run()
 }
 
 END_JUCE_NAMESPACE
-
-/*
-static void fillITunesData (File &iTunesLibraryFile, XmlElement* elementToFill)
-{	
-	// cycle through each track
-	forEachXmlChildElement(*iTunesLibraryTracks, e)
-	{
-		if (e->getTagName() == T("dict"))
-		{
-			XmlElement* tempElement = new XmlElement("ITEM");
-			
-			// cycle through items of each track
-			forEachXmlChildElement(*e, e2)
-			{				
-				for(int i = 0; i < Columns::numColumns; i++)
-				{
-					if (e2->getAllSubText() == String(Columns::iTunesNames[i])) {
-						String entry = e2->getNextElement()->getAllSubText();
-						if (i == Columns::Location) {
-							entry = stripFileProtocolForLocal(entry);
-						}
-						tempElement->setAttribute(String(Columns::columnNames[i]), entry);
-					}
-				}
-			}
-			elementToFill->addChildElement(tempElement);
-		}
-	}		
-}*/

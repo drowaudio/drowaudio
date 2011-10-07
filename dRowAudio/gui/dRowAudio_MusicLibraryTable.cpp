@@ -25,129 +25,135 @@
 
 BEGIN_JUCE_NAMESPACE
 
-String parseDateString(String dateString)
-{
-	dateString = dateString.replace("T", " ", true);
-	dateString = dateString.replace("Z", String::empty, true);
-	
-	String year(dateString.substring(0, 4));
-	String month(dateString.substring(5, 7));
-	String day(dateString.substring(8, 10));
-	dateString = dateString.replace(dateString.upToFirstOccurrenceOf(" ", false, true), String::empty);
-
-	String returnString;
-	returnString <<day<<"/"<<month<<"/"<<year<<" -"<<dateString;
-	return returnString;
-}
-
 MusicLibraryTable::MusicLibraryTable()
 :	font (12.0f),
-	currentLibrary(0),
-	numRows(0),
-	filteredNumRows(0),
-	finishedLoading(false)
+	currentLibrary (nullptr),
+    dataList (Columns::libraryIdentifier),
+	filteredNumRows (dataList.getNumChildren()),
+	finishedLoading (false)
 {
-	// Load some data from an embedded XML file..
-	loadData();
-
 	// Create our table component and add it to this component..
-	addAndMakeVisible (table = new TableListBox ("demo table", this));
-	table->setColour(ListBox::backgroundColourId, Colour::greyLevel(0.2));
-	table->setHeaderHeight(18);
-	table->setRowHeight(16);
-	table->getViewport()->setScrollBarThickness(10);
-	
+	addAndMakeVisible (&table);
+    table.setModel (this);
+    table.setMultipleSelectionEnabled (true);
+	table.setColour (ListBox::backgroundColourId, Colour::greyLevel(0.2));
+	table.setHeaderHeight (18);
+	table.setRowHeight (16);
+	table.getViewport()->setScrollBarThickness (10);
+
 	// give it a border
-	table->setColour (ListBox::outlineColourId, Colours::grey);
-	table->setOutlineThickness (1);
+	table.setColour (ListBox::outlineColourId, Colours::grey);
+	table.setOutlineThickness (1);
 
-	// Add some columns to the table header, based on the column list in our database..
-	for (int i = 0; i < columnList.getNumChildren(); i++)
-	{
-		table->getHeader().addColumn (columnList.getChild(i)["name"],
-									  columnList.getChild(i)["columnId"],
-									  columnList.getChild(i)["width"],
-									  50, 800,
-									  TableHeaderComponent::defaultFlags);
-	}
-
+	// Add some columns to the table header
+    for (int i = 1; i < Columns::numColumns; i++)
+    {
+        table.getHeader().addColumn (Columns::columnNames[i].toString(),
+                                     i,
+                                     Columns::columnWidths[i],
+                                     50,
+                                     800,
+                                     TableHeaderComponent::defaultFlags);
+    }
+        
 	// we could now change some initial settings..
-	table->getHeader().setSortColumnId (Columns::Artist, true); // sort forwards by the ID column
+	table.getHeader().setSortColumnId (Columns::Artist, true); // sort forwards by the ID column
 
-	table->getHeader().setColumnVisible (Columns::LibID, false);
-	table->getHeader().setColumnVisible (Columns::ID, false);
-	table->getHeader().setColumnVisible (Columns::Rating, false);
-	table->getHeader().setColumnVisible (Columns::Location, false);
-	table->getHeader().setColumnVisible (Columns::Modified, false);
-	
-	// un-comment this line to have a go of stretch-to-fit mode
-	// table->getHeader()->setStretchToFitActive (true);
-
-	table->setMultipleSelectionEnabled (true);
-	
-	setFilterText(String::empty);
+	table.getHeader().setColumnVisible (Columns::LibID, false);
+	table.getHeader().setColumnVisible (Columns::ID, false);
+	table.getHeader().setColumnVisible (Columns::Rating, false);
+	table.getHeader().setColumnVisible (Columns::Location, false);
+	table.getHeader().setColumnVisible (Columns::Modified, false);
+		
+	setFilterText (String::empty);
 }
 
 MusicLibraryTable::~MusicLibraryTable()
 {
-	if (currentLibrary != 0)
+	if (currentLibrary != nullptr)
 		currentLibrary->removeListener(this);
-
-	deleteAllChildren();
-
-	if (*filteredDataList == dataList)
-		filteredDataList.release();
 }
 
-//==============================================================================
-void MusicLibraryTable::setLibraryToUse(ITunesLibrary *library)
+void MusicLibraryTable::setLibraryToUse (ITunesLibrary* library)
 {
 	currentLibrary = library;
 	
-	DBG("library to use changed");
-	dataList = library->getLibraryTree();
+	DBG("ITunesLibrary to use changed");
+	filteredDataList = dataList = library->getLibraryTree();
 	library->addListener(this);
 }
 
-void MusicLibraryTable::libraryChanged (ITunesLibrary *library)
+void MusicLibraryTable::setFilterText (String filterString)
+{
+	if (filterString == String::empty)
+	{
+		filteredDataList = dataList;
+		filteredNumRows = filteredDataList.getNumChildren();
+	}
+	else
+	{
+		filteredDataList = ValueTree (dataList.getType());
+		
+		for (int e = 0; e < dataList.getNumChildren(); e++)
+		{
+			for (int i = 0; i < dataList.getChild (e).getNumProperties(); i++)
+			{
+				if (dataList.getChild (e)[Columns::columnNames[i]/*dataList.getChild(e).getPropertyName(i)*/].toString().containsIgnoreCase (filterString))
+				{
+					filteredDataList.addChild (dataList.getChild(e).createCopy(), -1, 0);
+					
+					break;
+				}
+				
+			}
+		}
+		
+		filteredNumRows = filteredDataList.getNumChildren();
+	}
+	
+	table.getHeader().reSortTable();
+	table.updateContent();
+}
+
+//==============================================================================
+void MusicLibraryTable::libraryChanged (ITunesLibrary* library)
 {
 	if (library == currentLibrary) 
 	{
 		DBG("library changed");
-		filteredDataList = &dataList;
-		//dataList.removeAllChildren(nullptr);
-		dataList = library->getLibraryTree();
-		filteredNumRows = numRows = dataList.getNumChildren();
+		filteredDataList = dataList = currentLibrary->getLibraryTree();
+		filteredNumRows = filteredDataList.getNumChildren();
 		finishedLoading = false;
 		
-		table->updateContent();
-	}
+		table.updateContent();
+        table.getHeader().reSortTable();
+    }
 }
 
-void MusicLibraryTable::libraryUpdated (ITunesLibrary *library)
+void MusicLibraryTable::libraryUpdated (ITunesLibrary* library)
 {
 	if (library == currentLibrary) 
 	{
-		filteredNumRows = numRows = dataList.getNumChildren();
-		DBG("num finished: "<<filteredNumRows);
+		filteredNumRows = filteredDataList.getNumChildren();
+		DBG("num finished: " << filteredNumRows);//.getNumChildren());
 		
-		table->updateContent();
-        table->getHeader().reSortTable();
+		table.updateContent();
+        table.getHeader().reSortTable();
 	}
 }
 
-void MusicLibraryTable::libraryFinished (ITunesLibrary *library)
+void MusicLibraryTable::libraryFinished (ITunesLibrary* library)
 {
 	if (library == currentLibrary) 
 	{
-		filteredNumRows = numRows = dataList.getNumChildren();
+		filteredNumRows = dataList.getNumChildren();
 		finishedLoading = true;
-		DBG("all finished: "<<filteredNumRows);
+		DBG ("all finished: " << filteredNumRows);
 
-		table->updateContent();
-		table->getHeader().reSortTable();
+		table.updateContent();
+		table.getHeader().reSortTable();
 
-		DBG("finished loading MusicLibraryTable");
+		DBG ("finished loading MusicLibraryTable");
 	}
 }
 
@@ -160,9 +166,9 @@ int MusicLibraryTable::getNumRows()
 void MusicLibraryTable::paintRowBackground (Graphics& g, int rowNumber, int width, int height, bool rowIsSelected)
 {
 	if (rowIsSelected)
-		table->hasKeyboardFocus(true) ? g.fillAll (Colours::darkorange) : g.fillAll (Colour::greyLevel(0.6));
+		table.hasKeyboardFocus (true) ? g.fillAll (Colours::darkorange) : g.fillAll (Colour::greyLevel (0.6));
 	else
-		g.fillAll (Colour::greyLevel(0.2));
+		g.fillAll (Colour::greyLevel (0.2));
 }
 
 void MusicLibraryTable::paintCell (Graphics& g,
@@ -171,34 +177,41 @@ void MusicLibraryTable::paintCell (Graphics& g,
 								   int width, int height,
 								   bool rowIsSelected)
 {
-	rowIsSelected ? g.setColour(Colour::greyLevel(0.2)) : g.setColour(Colour::greyLevel(0.9));
+	rowIsSelected ? g.setColour (Colour::greyLevel (0.2)) : g.setColour (Colour::greyLevel (0.9));
 	g.setFont (font);
 
-	ValueTree rowElement (filteredDataList->getChild(rowNumber));
+    {
+        ScopedLock sl (currentLibrary->getParserLock());
+        ValueTree rowElement (filteredDataList.getChild (rowNumber));
+    
+        if (rowElement.isValid())
+        {
+            String text;
+            
+            if(columnId == Columns::Length)
+                text = secondsToTimeLength (rowElement[Columns::columnNames[columnId]].toString().getIntValue());
+            else if(columnId == Columns::Added
+                    || columnId == Columns::Modified)
+                text = Time (int64 (rowElement[Columns::columnNames[columnId]])).formatted ("%d/%m/%Y - %H:%M");
+            else
+                text = rowElement[Columns::columnNames[columnId]].toString();
+            
+            g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);
+        }
+    }
 
-	if (rowElement.isValid())
-	{
-		String text;
-		if(columnId == Columns::Length)
-			text = secondsToTimeLength(rowElement[(Columns::columnNames[columnId])].toString().getIntValue());
-		else if(columnId == Columns::Added
-                || columnId == Columns::Modified)
-			text = Time(int64(rowElement[Columns::columnNames[columnId]])).formatted("%d/%m/%Y - %H:%M");
-		else
-			text = (rowElement[Columns::columnNames[columnId]].toString());
-
-		g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);
-	}
-
-	g.setColour (Colour::greyLevel(0.9).withAlpha (0.2f));
+	g.setColour (Colour::greyLevel (0.9).withAlpha (0.2f));
 	g.fillRect (width - 1, 0, 1, height);
 	g.fillRect (0, height - 1, width, 1);
 }
 
 void MusicLibraryTable::sortOrderChanged (int newSortColumnId, const bool isForwards)
 {
-	if (newSortColumnId != 0 && finishedLoading == true)
+	if (newSortColumnId != 0 && finishedLoading == true) // can only sort when not still adding (could lock?)
 	{
+        ScopedLock sl (currentLibrary->getParserLock());
+        DBG ("sortOrderChanged");
+        
 		if (newSortColumnId == Columns::Length
 			|| newSortColumnId == Columns::BPM
 			|| newSortColumnId == Columns::LibID
@@ -207,14 +220,15 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, const bool isForw
             || newSortColumnId == Columns::Modified)
 		{
 			ValueTreeComparators::Numerical sorter (Columns::columnNames[newSortColumnId], isForwards);
-			filteredDataList->sort (sorter, 0, false);
+			filteredDataList.sort (sorter, 0, false);
 		}
-		else {
+		else
+        {
 			ValueTreeComparators::Lexicographic sorter (Columns::columnNames[newSortColumnId], isForwards);
-			filteredDataList->sort (sorter, 0, false);
+			filteredDataList.sort (sorter, 0, false);
 		}
 
-		table->updateContent();
+		table.updateContent();
 	}
 }
 
@@ -226,78 +240,30 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
 	// find the widest bit of text in this column..
 	for (int i = getNumRows(); --i >= 0;)
 	{
-		const ValueTree rowElement = filteredDataList->getChild (i);
-
-		if (rowElement.isValid())
-		{
-			const String text (rowElement[Columns::columnNames[columnId]].toString());
-
-			widest = jmax (widest, font.getStringWidth (text));
-		}
+        {
+            ScopedLock sl (currentLibrary->getParserLock());
+            const ValueTree rowElement (filteredDataList.getChild (i));
+        
+            if (rowElement.isValid())
+            {
+                const String text (rowElement[Columns::columnNames[columnId]].toString());
+                widest = jmax (widest, font.getStringWidth (text));
+            }
+        }
 	}
 
 	return widest + 8;
 }
 
-//==========================================================================================
-void MusicLibraryTable::setFilterText (String filterString)
-{
-	if (filterString == String::empty)
-	{
-		filteredDataList = &dataList;
-		filteredNumRows = numRows;
-	}
-	else
-	{
-		if (*filteredDataList == dataList)
-			filteredDataList.release();
-		
-		filteredDataList = new ValueTree(dataList.getType());
-		
-		for (int e = 0; e < dataList.getNumChildren(); e++)
-		{
-			for (int i = 0; i < dataList.getChild(e).getNumProperties(); i++)
-			{
-				if (dataList.getChild(e)[Columns::columnNames[i]/*dataList.getChild(e).getPropertyName(i)*/].toString().containsIgnoreCase(filterString))
-				{
-					filteredDataList->addChild(dataList.getChild(e).createCopy(), -1, 0);
-					
-					break;
-				}
-				
-			}
-		}
-		
-		filteredNumRows = filteredDataList->getNumChildren();
-	}
-	
-	table->getHeader().reSortTable();
-	table->updateContent();
-}
-
 //==============================================================================
 void MusicLibraryTable::resized()
 {
-	table->setBounds(getLocalBounds());
+	table.setBounds (getLocalBounds());
 }
 
 void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType cause)
 {
 	repaint();
-}
-
-void MusicLibraryTable::timerCallback()
-{
-	if (!finishedLoading) {
-		filteredNumRows = numRows = dataList.getNumChildren();
-	}
-	else {
-		filteredNumRows = numRows = dataList.getNumChildren();
-		stopTimer();
-		table->getHeader().reSortTable();
-	}
-	
-	table->updateContent();
 }
 
 var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
@@ -309,9 +275,14 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &current
                           
         for (int i = 0; i < currentlySelectedRows.size(); ++i)
         {
-            ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (filteredDataList->getChild (currentlySelectedRows[i]));
-            itemsArray.append(childTree.getObject());
-//            itemsArray.append((int)filteredDataList->getChild(currentlySelectedRows[i]).getProperty(Columns::columnNames[Columns::ID]));
+            {
+                ScopedLock sl (currentLibrary->getParserLock());
+                ValueTree tree (filteredDataList.getChild (currentlySelectedRows[i]));
+
+                ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
+                itemsArray.append(childTree.getObject());
+            }
+//            itemsArray.append((int)filteredDataList.getChild(currentlySelectedRows[i]).getProperty(Columns::columnNames[Columns::ID]));
         }
             
         return itemsArray;
@@ -320,12 +291,30 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &current
 //
 //		for(int i = 0; i < currentlySelectedRows.size(); i++)
 //		{
-//			tracksToDrag->addChildElement(filteredDataList->getChild(currentlySelectedRows[i]).createXml());
+//			tracksToDrag->addChildElement(filteredDataList.getChild(currentlySelectedRows[i]).createXml());
 //		}
 //		
 //		return tracksToDrag->createDocument("", false, false);
 	}
 	return var::null; //String::empty;
 }
+
+//==============================================================================
+//ValueTree MusicLibraryTable::getRowFromFilteredList (int rowNumber)
+//{
+//    int idToLookFor = filteredDataList[rowNumber];
+//    const int numRows = dataList.getNumChildren();
+//
+//    for (int i = 0, i < numRows; i++)
+//    {
+//        ValueTree elm (dataList[i]);
+//        if (int (elm[Columns::columnNames[Columns::LibID]]) == idToLookFor)
+//        {
+//            return elm;
+//        }
+//    }
+//    
+//    return ValueTree::invalid;
+//}
 
 END_JUCE_NAMESPACE

@@ -219,6 +219,63 @@ private:
 };
 
 //==============================================================================
+/** Writes a ValueTree to a specified file.
+    This is a helper method to conveniently write a ValueTree to a File,
+    optionally storing it as Xml.
+ */
+static bool writeValueTreeToFile (ValueTree& treeToWrite, File& fileToWriteTo, bool asXml = true)
+{
+    if (fileToWriteTo.hasWriteAccess())
+    {
+        if (asXml) 
+        {
+            ScopedPointer<XmlElement> treeAsXml (treeToWrite.createXml());
+            
+            return treeAsXml->writeToFile (fileToWriteTo, String::empty);
+        }
+        else 
+        {
+            TemporaryFile tempFile (fileToWriteTo);
+            ScopedPointer <FileOutputStream> outputStream (tempFile.getFile().createOutputStream());
+            
+            if (outputStream != nullptr)
+            {
+                treeToWrite.writeToStream (*outputStream);
+                outputStream = nullptr;
+                
+                return tempFile.overwriteTargetFileWithTemporary();
+            }
+        }
+    }
+    
+    return false;
+}
+
+/** Reads a ValueTree from a stored file.
+ 
+    This will first attempt to parse the file as Xml, if this fails it will
+    attempt to read it as binary. If this also fails it will return an invalid
+    ValueTree.
+ */
+static ValueTree readValueTreeFromFile (File& fileToReadFrom)
+{
+    ScopedPointer<XmlElement> treeAsXml (XmlDocument::parse (fileToReadFrom));
+    if (treeAsXml != nullptr)
+    {
+        return ValueTree::fromXml (*treeAsXml);
+    }
+
+    ScopedPointer<FileInputStream> fileInputStream (fileToReadFrom.createInputStream());
+    if (fileInputStream != nullptr
+        && fileInputStream->openedOk())
+    {
+        return ValueTree::readFromStream (*fileInputStream);
+    }
+    
+    return ValueTree::invalid;
+}
+
+//==============================================================================
 /**
 	This handy macro is a platform independent way of stopping compiler
 	warnings when paramaters are declared but not used.

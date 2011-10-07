@@ -153,7 +153,8 @@ public:
     /** Creates a parser with a given valid library file and a ValueTree with which
         to put the parsed data.
      */
-	ITunesLibraryParser(File &iTunesLibraryFileToUse, ValueTree elementToFill);
+	ITunesLibraryParser(File &iTunesLibraryFileToUse, ValueTree elementToFill,
+                        CriticalSection& lockToUse);
 	
     /** Destructor.
      */
@@ -161,14 +162,16 @@ public:
 
 	/** Returns true if the parser has finished.
      */
-	bool hasFinished()	{	return finished;	}
+	bool hasFinished()          {	return finished;	}
 
     /** @internal */
 	void run();
 
+    CriticalSection& getLock () {   return lock;    }
+    
 private:
     //==============================================================================
-    CriticalSection lock;
+    CriticalSection& lock;
 	
     File iTunesLibraryFile;
 	ValueTree treeToFill, partialTree;

@@ -36,18 +36,29 @@
 */
 class MusicLibraryTable	: public Component,
                           public TableListBoxModel,
-						  public Timer,
 						  public ITunesLibrary::Listener
 {
 public:
     //==============================================================================
     MusicLibraryTable();
 
+    /** Destructor.
+     */
     ~MusicLibraryTable();
 
-    //==============================================================================
+    /** Sets the ITunesLibrary to use.
+     */
 	void setLibraryToUse (ITunesLibrary *library);
 
+    /** Filters the table to only rows containing the given text.
+     */
+	void setFilterText (String filterText);
+    
+	/**	Returns the table list box component.
+     */
+	TableListBox& getTableListBox()	{	return table;	};
+    
+    //==============================================================================
 	void libraryChanged (ITunesLibrary *library);
 	
 	void libraryUpdated (ITunesLibrary *library);
@@ -55,89 +66,50 @@ public:
 	void libraryFinished (ITunesLibrary *library);
 	
     //==============================================================================
-    // This is overloaded from TableListBoxModel, and must return the total number of rows in our table
+    /** Returns the number of rows currently bein displayed in the table.
+     */
     int getNumRows();
 
-    // This is overloaded from TableListBoxModel, and should fill in the background of the whole row
+    /** @internal */
     void paintRowBackground (Graphics& g, int rowNumber, int width, int height, bool rowIsSelected);
 
-    // This is overloaded from TableListBoxModel, and must paint any cells that aren't using custom
-    // components.
+    /** @internal */
     void paintCell (Graphics& g,
                     int rowNumber,
                     int columnId,
                     int width, int height,
                     bool rowIsSelected);
 
-    // This is overloaded from TableListBoxModel, and tells us that the user has clicked a table header
-    // to change the sort order.
+    /** @internal */
     void sortOrderChanged (int newSortColumnId, const bool isForwards);
 
-    // This is overloaded from TableListBoxModel, and should choose the best width for the specified
-    // column.
+    /** @internal */
     int getColumnAutoSizeWidth (int columnId);
-
-	// Call this to sort the table displaying only the items matched
-	void setFilterText (String filterText);
-		
-	//	Returns the table list box component.
-	TableListBox* getTableListBox()	{	return table;	};
 	
     //==============================================================================
+    /** @internal */
     void resized();
 
+    /** @internal */
 	void focusOfChildComponentChanged (FocusChangeType cause); 
 
-	void timerCallback();
-	
+    /** @internal */
 	var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
 	
-    //==============================================================================
-
 private:
     //==============================================================================
     Font font;	
-//	ScopedPointer<ITunesLibraryParser> parser;	
-	ITunesLibrary *currentLibrary;
+	ITunesLibrary* currentLibrary;
+    TableListBox table;
 
-    ScopedPointer<ValueTree> demoData;   // This is the XML document loaded from the embedded file "demo table data.xml"
-    ValueTree columnList; // A pointer to the sub-node of demoData that contains the list of columns
-    ValueTree dataList;   // A pointer to the sub-node of demoData that contains the list of data rows
-    int numRows;            // The number of rows of data we've got
-
-    TableListBox* table;    // the table component itself
-	
-	ScopedPointer<ValueTree> filteredDataList;   // A pointer to the sub-node of demoData that contains the list of data rows
-    int filteredNumRows;            // The number of rows of data we've got
+    ValueTree dataList;
+	ValueTree filteredDataList;
+//    Array<int> filteredDataList;
+    
+    int filteredNumRows;
 	bool finishedLoading;
 	
-    //==============================================================================
-	void setUpColumns (ValueTree &elementToSetUp)
-	{
-		for (int i = 1; i < Columns::numColumns; i++)
-		{
-			if (i != Columns::Score)
-			{
-				ValueTree tempElement("COLUMN");
-				tempElement.setProperty("columnId", i, 0);
-				tempElement.setProperty("name", Columns::columnNames[i].toString(), 0);
-				tempElement.setProperty("width", Columns::columnWidths[i], 0);
-				
-				elementToSetUp.addChild(tempElement, -1, 0);
-			}
-		}
-	}
-	
-	void loadData()
-	{
-        demoData = new ValueTree("DEMO_TABLE_DATA");
-		
-		demoData->addChild(ValueTree("COLUMNS"), -1, 0);
-		columnList = demoData->getChildWithName("COLUMNS");
-		setUpColumns(columnList);
-				
-		numRows = dataList.getNumChildren();
-	}
+    //ValueTree getRowFromFilteredList (int rowNumber);
 };
 
 #endif // __DROWAUDIO_MUSICLIBRARYTABLE_H__
