@@ -8,24 +8,26 @@
   ==============================================================================
 */
 
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_ColouredDraggableWaveDisplay.h"
+BEGIN_JUCE_NAMESPACE
 
 ColouredDraggableWaveDisplay::ColouredDraggableWaveDisplay (int sourceSamplesPerThumbnailSample,
-															FilteringAudioFilePlayer* sourceToBeUsed,
+															AudioFilePlayer* sourceToBeUsed,
 															MultipleAudioThumbnailCache *cacheToUse,
                                                             ColouredAudioThumbnail *thumbnailToUse)
-:	AbstractDraggableWaveDisplay(sourceSamplesPerThumbnailSample,
-                                 sourceToBeUsed,
-                                 cacheToUse),
-    thumbnailView (thumbnailToUse, (thumbnailToUse == nullptr) ? true : false),
-	tempLargeImage(Image::RGB, 1, 1, true)
+    : AbstractDraggableWaveDisplay (thumbnailToUse == nullptr
+                                    ? sourceSamplesPerThumbnailSample
+                                    : thumbnailToUse->getNumSamplesPerThumbnailSample(),
+                                    sourceToBeUsed,
+                                    cacheToUse),
+      thumbnailView (thumbnailToUse, (thumbnailToUse == nullptr) ? true : false),
+	  tempLargeImage (Image::RGB, 1, 1, true)
 {
     if (thumbnailToUse == nullptr)
     {
-        OptionalScopedPointer<ColouredAudioThumbnail> newThumbnail(new ColouredAudioThumbnail(sourceSamplesPerThumbSample, *filePlayer->getAudioFormatManager(), *thumbnailCache),
-                                                                   true);
+        OptionalScopedPointer<ColouredAudioThumbnail> newThumbnail (new ColouredAudioThumbnail (sourceSamplesPerThumbSample, 
+                                                                                                *filePlayer->getAudioFormatManager(),
+                                                                                                *thumbnailCache),
+                                                                    true);
         thumbnailView = newThumbnail;
     }
 
@@ -41,87 +43,71 @@ ColouredDraggableWaveDisplay::~ColouredDraggableWaveDisplay ()
 
 void ColouredDraggableWaveDisplay::resized()
 {
-	const int w = jmax(2, getWidth());
-	const int h = jmax(2, getHeight());
+	AbstractDraggableWaveDisplay::resized();
+
+	const int w = jmax (2, getWidth());
+	const int h = jmax (2, getHeight());
 
 	{
-		ScopedLock sl(lock);
-		tempLargeImage = Image(Image::RGB, w*4, h, true);
+		ScopedLock sl (lock);
+		tempLargeImage = Image (Image::RGB, w * 4, h, true);
 	}
-	
-	AbstractDraggableWaveDisplay::resized();
 }
 
 //====================================================================================
 void ColouredDraggableWaveDisplay::newFileLoaded()
 {
-	File newFile(filePlayer->getFilePath());
+	File newFile (filePlayer->getPath());
+    
 	if (newFile.existsAsFile())
-		thumbnailView->setSource(new FileInputSource (newFile));
+		thumbnailView->setSource (new FileInputSource (newFile));
 }
 
-void ColouredDraggableWaveDisplay::thumbnailLoading(bool &isFullyLoaded, int64 &numFinished)
+void ColouredDraggableWaveDisplay::thumbnailLoading (bool &isFullyLoaded, int64 &numFinished)
 {
     isFullyLoaded = thumbnailView->isFullyLoaded();
     numFinished = thumbnailView->getNumSamplesFinished();
 }
 
-void ColouredDraggableWaveDisplay::refreshWaveform(int waveNum)
+void ColouredDraggableWaveDisplay::refreshWaveform()
 {
-	WaveformSection* sectionToRefresh = waveImgs[waveNum];
-
-	if(sectionToRefresh->img.isValid() && sectionToRefresh->needToRepaint)
+	if(waveformImage.img.isValid())
 	{		
-		const double sectionStartTime = sectionToRefresh->lastTimeDrawn;
-        const double imageEndTime = sectionToRefresh->startTime + pixelsToTime(sectionToRefresh->img.getWidth());
-		const double sectionEndTime = jlimit(sectionStartTime, imageEndTime, numSamplesFinished * oneOverSampleRate);
-        const int startPixelX = roundToInt(timeToPixels(sectionStartTime - sectionToRefresh->startTime));
-        const int numPixels = roundToInt(timeToPixels(sectionEndTime - sectionStartTime));
-        
-        const int tempStartPixel = (roundToInt(timeToPixels(sectionStartTime - sectionToRefresh->startTime))) * 2;
+		const double sectionStartTime = waveformImage.lastTimeDrawn;
+		const double sectionEndTime = numSamplesFinished * oneOverSampleRate;
+
+        const int startPixelX = roundToInt (timeToPixels (sectionStartTime));
+        const int numPixels = roundToInt (timeToPixels (sectionEndTime - sectionStartTime));
+
         const int tempNumPixels = numPixels * 2;
-        
-        Rectangle<int> tempRectangleToDraw (tempStartPixel, 0, tempNumPixels, tempLargeImage.getHeight());
-        Rectangle<int> destRectangleToDraw (startPixelX, 0, numPixels, sectionToRefresh->img.getHeight());
-
-		Graphics g(tempLargeImage);
-        tempLargeImage.clear(tempRectangleToDraw, Colours::black);
-        
-		thumbnailView->drawColouredChannel(g, tempRectangleToDraw,
-										   sectionStartTime, sectionEndTime,
-										   0, 1.0f);
-
-        if (sectionStartTime < 0.0) 
+        if (tempLargeImage.getWidth() < tempNumPixels) 
         {
-            g.setColour(Colours::darkgrey);
-            g.fillRect(tempStartPixel, 0, roundToInt(timeToPixels(-sectionStartTime * 2.0)), tempLargeImage.getHeight());
+            tempLargeImage = Image (Image::RGB,
+                                    tempNumPixels,
+                                    waveformImage.img.getHeight(),
+                                    false);
         }
         
-        // create temp image to draw onto to avoid locking
-        Image tempImage(sectionToRefresh->img);
-        tempImage.duplicateIfShared();
         
-        Graphics g2(tempImage);
-        g2.drawImage(tempLargeImage,
-                     destRectangleToDraw.getX(), destRectangleToDraw.getY(), destRectangleToDraw.getWidth(), destRectangleToDraw.getHeight(),
-                     tempRectangleToDraw.getX(), tempRectangleToDraw.getY(), tempRectangleToDraw.getWidth(), tempRectangleToDraw.getHeight());
-        
-        // lock whilst copying
-        {
-            const MessageManagerLock mmLock;
-            sectionToRefresh->img = tempImage;
-		}
-//		g2.setColour(Colours::red);
-//		g2.drawText(String(sectionToRefresh->startTime),
-//					0, sectionToRefresh->img.getHeight()*0.75,
-//					60, 20,
-//					Justification(Justification::left), false);
+        Rectangle<int> tempRectangleToDraw (0, 0, tempNumPixels, tempLargeImage.getHeight());
+        Rectangle<int> destRectangleToDraw (startPixelX, 0, numPixels, waveformImage.img.getHeight());
 
-        sectionToRefresh->lastTimeDrawn = sectionEndTime;
-		sectionToRefresh->needToRepaint = sectionEndTime <= imageEndTime;
+		Graphics g (tempLargeImage);
+        tempLargeImage.clear (tempRectangleToDraw, Colours::black);
+
+		thumbnailView->drawColouredChannel (g, tempRectangleToDraw,
+                                            sectionStartTime, sectionEndTime,
+                                            0, 1.0f);
+        
+        Graphics g2 (waveformImage.img);
+        g2.drawImage (tempLargeImage,
+                      destRectangleToDraw.getX(), destRectangleToDraw.getY(), destRectangleToDraw.getWidth(), destRectangleToDraw.getHeight(),
+                      tempRectangleToDraw.getX(), tempRectangleToDraw.getY(), tempRectangleToDraw.getWidth(), tempRectangleToDraw.getHeight());
+
+        waveformImage.lastTimeDrawn = sectionEndTime;
 
 		triggerAsyncUpdate();
 	}	
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE
