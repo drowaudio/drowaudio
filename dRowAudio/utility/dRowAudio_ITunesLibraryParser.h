@@ -15,11 +15,10 @@
 
 namespace LoopAndCueHelpers
 {
-
     /** Returns the time from a give cue point index in a cue point tree.
-        The index starts at 0 and will return 0.0 if the index is out of range.
+     The index starts at 0 and will return 0.0 if the index is out of range.
      */
-    inline double getTimeFromCueString (ValueTree& cueTree, int index)
+    inline double getTimeFromCueTree (ValueTree& cueTree, int index)
     {
         if (index < cueTree.getNumProperties())
         {
@@ -29,11 +28,11 @@ namespace LoopAndCueHelpers
         
         return 0.0;
     }
-
+    
     /** Returns the time from a give cue point index in a cue point tree.
-        The index starts at 0 and will return white if the index is out of range.
+     The index starts at 0 and will return white if the index is out of range.
      */
-    inline uint32 getColourFromCueString (ValueTree& cueTree, int index)
+    inline uint32 getColourFromCueTree (ValueTree& cueTree, int index)
     {
         if (index < cueTree.getNumProperties())
         {
@@ -42,7 +41,27 @@ namespace LoopAndCueHelpers
         }
         
         return 0xffffffff;
-    }    
+    }
+    
+    /** Returns the start time, end time and Colour of a give loop point in a loop tree.
+     The index starts at 0 and will return 0.0's if the index is out of range.
+     */
+    inline void getTimeAndColourFromLoopTree (ValueTree& loopTree, int index, double &startTime, double &endTime, uint32& colour)
+    {
+        if (index < loopTree.getNumProperties())
+        {
+            const String property(loopTree.getProperty(loopTree.getPropertyName(index)).toString());
+            startTime = property.upToFirstOccurrenceOf(",", false, false).getDoubleValue();
+            endTime = property.fromFirstOccurrenceOf(",", false, false).upToLastOccurrenceOf(",", false, false).getDoubleValue();
+            colour = (uint32)property.fromLastOccurrenceOf(",", false, false).getLargeIntValue();
+            return;
+        }
+        
+        startTime = endTime = 0.0;
+        colour = 0xffffffff;
+        
+        return;
+    }
 }
 
 /**	Details the colums of the table.
@@ -52,7 +71,8 @@ namespace Columns {
     static const Identifier libraryIdentifier ("DATA");
     static const Identifier libraryItemIdentifier ("ITEM");
     static const Identifier libraryCuePointIdentifier ("CUE");
-    
+    static const Identifier libraryLoopIdentifier ("LOOP");
+
 	enum colums {
 		Dummy,
 		LibID,

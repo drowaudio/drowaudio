@@ -10,7 +10,8 @@
 #ifndef _DRAGGABLEDISPLAY__H_
 #define _DRAGGABLEDISPLAY__H_
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "../../DecksLookAndFeel.h"
 #include "../../DecksColours.h"
 #include "../../../main/Settings.h"
@@ -18,6 +19,7 @@
 #include "dRowAudio_CompleteColouredDraggableWaveDisplay.h"
 
 class CuePointDisplayComponent;
+class LoopPointDisplayComponent;
 
 class DraggableDisplay :	public Component,
 							public SliderListener,
@@ -56,6 +58,7 @@ private:
 	//ScopedPointer<MultipleAudioThumbnailCache> thumbnailCache; 
 	//OwnedArray <SwitchableDraggableWaveDisplay> draggableWaveDisplays;
     OwnedArray <CompleteColouredDraggableWaveDisplay> draggableWaveDisplays;	
+    OwnedArray <LoopPointDisplayComponent> loopPointDisplayComponents;	
     OwnedArray <CuePointDisplayComponent> cuePointDisplayComponents;	
 };
 

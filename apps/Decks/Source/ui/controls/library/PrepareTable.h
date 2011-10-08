@@ -11,7 +11,8 @@
 #ifndef __PREPARETABLE_H_482F82F9__
 #define __PREPARETABLE_H_482F82F9__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 class PrepareTable :	public Component,
 						public TableListBoxModel,
@@ -44,16 +45,23 @@ public:
     // This is overloaded from TableListBoxModel, and should choose the best width for the specified
     // column.
     int getColumnAutoSizeWidth (int columnId);
-	
+
+	/** Removes a row from the table.
+        This is used when dragging rows from the table to players where only one row may need to be removed.
+     */
+    void removeRow (int rowNumber);
+    
     //==============================================================================
-	const String getDragSourceDescription (const SparseSet< int > &currentlySelectedRows);
+	var getDragSourceDescription (const SparseSet< int > &currentlySelectedRows);
 
     //==============================================================================
-	bool isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent);
+	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
 
-	void itemDragExit (const String &sourceDescription, Component *sourceComponent);
+	void itemDragEnter (const SourceDetails& dragSourceDetails);
+
+    void itemDragExit (const SourceDetails& dragSourceDetails);
 	
-	void itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y);
+	void itemDropped (const SourceDetails& dragSourceDetails);
 	
     //==============================================================================
     void resized();
@@ -72,6 +80,8 @@ private:
 	
     TableListBox* table;    // the table component itself
 	bool itemOver;
+    
+    static const Identifier originalTreeIdentifier;
 };
 
 

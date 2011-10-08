@@ -36,7 +36,9 @@ BEGIN_JUCE_NAMESPACE
     #include "audio/dRowAudio_SoundTouchAudioSource.h"
 #endif
 
-//#include "src/audio/dRowAudio_FilteringAudioSource.h"
+#ifndef __DROWAUDIO_FILTERINGAUDIOSOURCE_H__
+    #include "audio/dRowAudio_FilteringAudioSource.h"
+#endif
 //#include "src/audio/dRowAudio_SmoothingAudioSource.h"
 //#include "src/audio/dRowAudio_ReversibleAudioSource.h"
 //#include "src/audio/dRowAudio_FilteringAudioTransportSource.h"
@@ -47,7 +49,9 @@ BEGIN_JUCE_NAMESPACE
 #ifndef __DROWAUDIO_AUDIOUTILITY_H__
     #include "audio/dRowAudio_AudioUtility.h"
 #endif
-//#include "src/audio/dRowAudio_FIFOBuffer.h"
+#ifndef __DROWAUDIO_FIFOBUFFER_H__
+    #include "audio/dRowAudio_FIFOBuffer.h"
+#endif
 //#include "src/audio/dRowAudio_CircularBuffer.h"
 //#include "src/audio/dRowAudio_Buffer.h"
 ////#include "src/audio/dRowAudio_BufferArray.h"
@@ -96,9 +100,15 @@ BEGIN_JUCE_NAMESPACE
 //#include "src/gui/dRowAudio_Meter.h"
 //#include "src/gui/dRowAudio_StereoMeter.h"
 //#include "src/gui/dRowAudio_FilmstripSlider.h"
-//#include "src/gui/dRowAudio_CpuMeter.h"
-//#include "src/gui/dRowAudio_Clock.h"
-//#include "src/gui/dRowAudio_CentreAlignViewport.h"
+#ifndef __DROWAUDIO_CPUMETER_H__
+    #include "gui/dRowAudio_CpuMeter.h"
+#endif
+#ifndef __DROWAUDIO_CLOCK_H__
+    #include "gui/dRowAudio_Clock.h"
+#endif
+#ifndef __DROWAUDIO_CENTREALIGNVIEWPORT_H__
+    #include "gui/dRowAudio_CentreAlignViewport.h"
+#endif
 #ifndef __DROWAUDIO_MUSICLIBRARYTABLE_H__
     #include "gui/dRowAudio_MusicLibraryTable.h"
 #endif
@@ -158,8 +168,6 @@ BEGIN_JUCE_NAMESPACE
 #ifndef __DROWAUDIO_ITUNESLIBRARYPARSER_H__
     #include "utility/dRowAudio_ITunesLibraryParser.h"
 #endif
-//
-//using namespace DROWAUDIO_NAMESPACE;
 
 END_JUCE_NAMESPACE
 

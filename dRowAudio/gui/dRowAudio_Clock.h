@@ -8,11 +8,10 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_CLOCK_H_80237209__
-#define __DROWAUDIO_CLOCK_H_80237209__
+#ifndef __DROWAUDIO_CLOCK_H__
+#define __DROWAUDIO_CLOCK_H__
 
-#include "../core/dRowAudio_StandardHeader.h"
-
+//==============================================================================
 /**	
 	A handy digital graphical clock.
 	
@@ -24,7 +23,7 @@ class Clock : public Label,
 			  public Timer
 {
 public:
-	
+    //==============================================================================
 	/**	A number of flags to set what sort of clock is displayed
 	 */
 	enum TimeDisplayFormat
@@ -48,27 +47,29 @@ public:
 	~Clock();
 
 	/**	Sets the display format of the clock.
+     
 		To specify what sort of clock to display pass in a number of the
 		TimeDisplayFormat flags. This is semi-inteligent so may choose to
 		ignore certain flags such as the short day name if you have also
 		specified the long day name.
 	 */
-	void setTimeDisplayFormat(const int newFormat);
+	void setTimeDisplayFormat (const int newFormat);
 	
 	/**	Returns the width required to display all of the clock's information.
 	 */
 	int getRequiredWidth();
 	
+    //==============================================================================
 	/** @Internal.
 	 */
 	void timerCallback();
 	
 private:
-	
+    //==============================================================================
 	int displayFormat;
 	String timeAsString;
 	
-	JUCE_LEAK_DETECTOR (Clock);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Clock);
 };
 
-#endif  // __DROWAUDIO_CLOCK_H_80237209__
+#endif  // __DROWAUDIO_CLOCK_H__

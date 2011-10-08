@@ -10,7 +10,7 @@
 #ifndef _DECKS_AUDIOENGINE__H_
 #define _DECKS_AUDIOENGINE__H_
 
-#include <juce/juce.h>
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "DeckManager.h"
 #include "Settings.h"
 #include "MixerSettings.h"
@@ -108,7 +108,7 @@ private:
 			resizeBuffer();
 		}
 		
-		FIFOBuffer monitorCircularBufferL;
+		FifoBuffer monitorCircularBufferL;
 		bool needToMonitor;
 			
 	private:

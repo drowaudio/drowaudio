@@ -23,7 +23,15 @@ Library::Library()
 	
 	addAndMakeVisible(prepareTable = new PrepareTable());
 	addAndMakeVisible(libraryTable = new MusicLibraryTable());
-	
+
+    ITunesLibrary* iTunesLibrary(ITunesLibrary::getInstance());
+	libraryTable->setLibraryToUse(iTunesLibrary);
+    File savedLibrary (File::getSpecialLocation(File::userDesktopDirectory).getChildFile("testLibrary.xml"));
+//    iTunesLibrary->loadSavedLibraryIfNewer (savedLibrary);
+    ValueTree treeToUse (readValueTreeFromFile (savedLibrary));
+	iTunesLibrary->setLibraryTree (treeToUse);
+    iTunesLibrary->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
+    
 	layoutManager.setItemLayout(0, -0.1, -0.9, -0.5);
 	layoutManager.setItemLayout(1, 5, 5, 5);
 	layoutManager.setItemLayout(2, -0.1, -0.9, -0.5);
@@ -31,6 +39,16 @@ Library::Library()
 
 Library::~Library()
 {
+    File output(File::getSpecialLocation(File::userDesktopDirectory).getChildFile("testLibrary.xml"));
+    ValueTree tree(ITunesLibrary::getInstance()->getLibraryTree());
+    
+//    if (tree.isValid()) {
+//        DBG(ScopedPointer<XmlElement>(tree.createXml())->createDocument(""));
+//    }
+    
+    ScopedPointer<XmlElement> xmlTree(tree.createXml());
+    xmlTree->writeToFile(output, "");
+    
 	deleteAllChildren();
 }
 

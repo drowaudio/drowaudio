@@ -11,17 +11,18 @@
 #ifndef __CUEPOINTDISPLAYCOMPONENT_H_F9D889D5__
 #define __CUEPOINTDISPLAYCOMPONENT_H_F9D889D5__
 
-#include <dRowaudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 class CuePointMarker;
 
 class CuePointDisplayComponent :    public Component,
-                                    public FilteringAudioFilePlayer::Listener,
+                                    public AudioFilePlayer::Listener,
                                     public ValueTree::Listener,
                                     public Timer
 {
 public:
-    CuePointDisplayComponent(FilteringAudioFilePlayer* playerToRespondTo, int numSamplesPerThumbnailSample);
+    CuePointDisplayComponent(AudioFilePlayer* playerToRespondTo, int numSamplesPerThumbnailSample);
     
     ~CuePointDisplayComponent();
     
@@ -29,10 +30,10 @@ public:
 
     void paint (Graphics& g);
     
-    void fileChanged (FilteringAudioFilePlayer *player);
+    void fileChanged (AudioFilePlayer *player);
 
     void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property);
-    void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded) {}
+    void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded);
     void valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved) {}
     void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved) {}
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) {}
@@ -48,7 +49,7 @@ public:
     
 private:
     
-    FilteringAudioFilePlayer* filePlayer;
+    AudioFilePlayer* filePlayer;
     ValueTree cuePointTree;
     int scale;
     float zoomRatio, playheadPosition;

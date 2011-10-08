@@ -33,11 +33,11 @@ PrepareTable::PrepareTable()
 		columnList.addChild(tempElement, -1, 0);
 	}
 	
-	demoData->addChild(ValueTree("DATA"), -1, 0);
-	dataList = demoData->getChildWithName("DATA");
+	demoData->addChild(ValueTree(Columns::libraryIdentifier), -1, 0);
+	dataList = demoData->getChildWithName(Columns::libraryIdentifier);
 
 	// set up table
-	addAndMakeVisible (table = new TableListBox (T("prepare table"), this));
+	addAndMakeVisible (table = new TableListBox ("prepare table", this));
 	table->setColour(ListBox::backgroundColourId, Colour::greyLevel(0.2));
 	table->setHeaderHeight(18);
 	table->setRowHeight(16);
@@ -73,7 +73,7 @@ PrepareTable::~PrepareTable()
 //==============================================================================
 int PrepareTable::getNumRows()
 {
-	return numRows;
+	return dataList.getNumChildren();
 }
 
 void PrepareTable::paintRowBackground (Graphics& g, int rowNumber, int width, int height, bool rowIsSelected)
@@ -154,70 +154,88 @@ int PrepareTable::getColumnAutoSizeWidth (int columnId)
 	
 	return widest + 8;
 }
-//==============================================================================
-const String PrepareTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
+
+void PrepareTable::removeRow (int rowNumber)
 {
-	if(!currentlySelectedRows.isEmpty())
+    // first remove removeObject
+//    ReferenceCountedValueTree::Ptr treeToEdit (dynamic_cast<ReferenceCountedValueTree*> (dataList.getChild (int(rowNumber)).getProperty (originalTreeIdentifier).getObject()));
+//    if (treeToEdit != nullptr && treeToEdit->getValueTree().hasType (Columns::libraryItemIdentifier))
+//        treeToEdit->getValueTree().removeProperty ("removeObject", nullptr);
+        
+    // then remove item from list
+    dataList.removeChild(int(rowNumber), nullptr);
+    
+    for(int i = 0; i < dataList.getNumChildren(); i++)
+        dataList.getChild (i).setProperty(Columns::columnNames[Columns::LibID], i + 1, nullptr);
+    
+    table->updateContent();
+}
+
+//==============================================================================
+var PrepareTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
+{
+	if(! currentlySelectedRows.isEmpty())
 	{
-		ScopedPointer<XmlElement> tracksToDrag (new XmlElement("ITEMS"));
-		XmlElement *elem = dataList.getChild(currentlySelectedRows[0]).createXml();
-		tracksToDrag->addChildElement(new XmlElement(*elem));
-		numRows--;
-		
-		int removedNum = elem->getIntAttribute(Columns::columnNames[Columns::LibID].toString());
-		dataList.removeChild(dataList.getChildWithProperty(Columns::columnNames[Columns::LibID], removedNum), 0);
-		
-		for(int i = 0; i < dataList.getNumChildren(); i++)
-		{
-			int currentNum = dataList.getChild(i).getProperty(Columns::columnNames[Columns::LibID]);
-			if (currentNum > removedNum) {
-				dataList.getChild(i).setProperty(Columns::columnNames[Columns::LibID], currentNum-1, 0);
-			}
-		}
-		
-		table->updateContent();
-		
-		return tracksToDrag->createDocument("", false, false);
+        var itemsArray;
+        
+        for (int i = 0; i < currentlySelectedRows.size(); ++i)
+        {
+            itemsArray.append (dataList.getChild (currentlySelectedRows[i]).getProperty (originalTreeIdentifier));
+            removeRow (currentlySelectedRows[i]);
+        }
+        
+        return itemsArray;
 	}
 	
-	return String::empty;
+	return var::null;
 }
 
 //==============================================================================
-bool PrepareTable::isInterestedInDragSource (const String &sourceDescription, Component *sourceComponent)
+bool PrepareTable::isInterestedInDragSource (const SourceDetails& dragSourceDetails)
 {
-	if (sourceDescription.startsWith("<ITEMS>")) {
-		itemOver = true;
-		repaint();
-		return true;
-	}
+    ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
+    
+    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (Columns::libraryItemIdentifier))
+        return true;
 	
-	return false;
+	return false;	
 }
 
-void PrepareTable::itemDragExit (const String &sourceDescription, Component *sourceComponent)
+void PrepareTable::itemDragEnter (const SourceDetails& dragSourceDetails)
 {
-	if (itemOver) {
-		itemOver = false;
-		repaint();
-	}
+	itemOver = true;
+    repaint();
 }
 
-void PrepareTable::itemDropped (const String &sourceDescription, Component *sourceComponent, int x, int y)
+void PrepareTable::itemDragExit (const SourceDetails& dragSourceDetails)
 {
 	itemOver = false;
-	
-	ScopedPointer<XmlElement> newTracks (XmlDocument::parse(sourceDescription));
+    repaint();
+}
 
-	forEachXmlChildElement(*newTracks, e)
-	{
-		e->setAttribute(Columns::columnNames[Columns::LibID].toString(), ++numRows);
-		ScopedPointer<XmlElement> newElem (new XmlElement(*e));
-		dataList.addChild(ValueTree::fromXml(*newElem), -1, 0);
-	}
-
-	table->getHeader().reSortTable();
-	table->updateContent();
+void PrepareTable::itemDropped (const SourceDetails& dragSourceDetails)
+{
+    if (dragSourceDetails.description.isArray()) 
+    {
+        for (int i = 0; i < dragSourceDetails.description.size(); ++i) 
+        {
+            ReferenceCountedValueTree::Ptr childTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[i].getObject()));
+            
+            if (childTree != nullptr) 
+            {
+                ValueTree itemTree (childTree->getValueTree().createCopy());
+                dataList.addChild(itemTree, -1, 0);
+                itemTree.setProperty(originalTreeIdentifier, childTree.getObject(), nullptr);
+                itemTree.setProperty(Columns::columnNames[Columns::LibID], getNumRows(), nullptr);
+            }
+        }
+    }
+    
+    table->getHeader().reSortTable();
+    table->updateContent();
+    
+	itemOver = false;
+    repaint();
 }
 
 //==========================================================================================
@@ -228,7 +246,8 @@ void PrepareTable::resized()
 
 void PrepareTable::paintOverChildren(Graphics &g)
 {
-	if (itemOver) {
+	if (itemOver) 
+    {
 		g.setColour(Colours::darkorange);
 		g.drawRect(0, 0, getWidth(), getHeight(), 2);
 	}
@@ -238,3 +257,5 @@ void PrepareTable::focusOfChildComponentChanged (FocusChangeType cause)
 {
 	repaint();
 }
+
+const Identifier PrepareTable::originalTreeIdentifier ("originalTree");

@@ -10,7 +10,7 @@
 #ifndef _DECKS_MASTERCHANNELSTRIP__H_
 #define _DECKS_MASTERCHANNELSTRIP__H_
 
-#include <juce/juce.h>
+#include "../JuceLibraryCode/JuceHeader.h"
 #include "../../../ui/DecksColours.h"
 #include "../../DecksLookAndFeel.h"
 #include "../../../main/DeckManager.h"

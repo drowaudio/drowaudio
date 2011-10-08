@@ -9,6 +9,7 @@
 
 #include "DraggableDisplay.h"
 
+#include "LoopPointDisplayComponent.h"
 #include "CuePointDisplayComponent.h"
 
 DraggableDisplay::DraggableDisplay()
@@ -44,6 +45,12 @@ DraggableDisplay::DraggableDisplay()
 		addAndMakeVisible(draggableWaveDisplays[i]);
 		draggableWaveDisplays[i]->setZoomFactor(zoomSlider->getValue());
 		draggableWaveDisplays[i]->setPlayheadPosition(playheadPosSlider->getValue());
+
+        loopPointDisplayComponents.add (new LoopPointDisplayComponent (DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(),
+                                                                       DeckManager::getInstance()->getDeck(i)->getThumbnail()->getNumSamplesPerThumbnailSample()));
+        loopPointDisplayComponents[i]->setZoomFactor (zoomSlider->getValue());
+		loopPointDisplayComponents[i]->setPlayheadPosition (playheadPosSlider->getValue());
+        addAndMakeVisible (loopPointDisplayComponents[i]);        
         
         cuePointDisplayComponents.add (new CuePointDisplayComponent (DeckManager::getInstance()->getDeck(i)->getMainFilePlayer(),
                                                                      DeckManager::getInstance()->getDeck(i)->getThumbnail()->getNumSamplesPerThumbnailSample()));
@@ -62,6 +69,7 @@ DraggableDisplay::~DraggableDisplay()
 	playheadPosSlider->removeListener(this);
 	
 	draggableWaveDisplays.clear();
+    loopPointDisplayComponents.clear();
     cuePointDisplayComponents.clear();
     
 	deleteAllChildren();
@@ -98,8 +106,11 @@ void DraggableDisplay::resized()
 		{
 			if (Settings::getInstance()->getPropertyOfChannel(i, CHANNEL_SETTING(on)) == tempTrue) {
 				draggableWaveDisplays[i]->setVisible(true);
+                loopPointDisplayComponents[i]->setVisible (true);
                 cuePointDisplayComponents[i]->setVisible (true);
 				draggableWaveDisplays[i]->setBounds(zoomSlider->getRight()+margin, margin+(pos*(waveDisplayHeight+margin)), waveDisplayWidth, waveDisplayHeight);
+                loopPointDisplayComponents[i]->setBounds (draggableWaveDisplays[i]->getX(), draggableWaveDisplays[i]->getY(),
+                                                          draggableWaveDisplays[i]->getWidth(), draggableWaveDisplays[i]->getHeight());
                 cuePointDisplayComponents[i]->setBounds (draggableWaveDisplays[i]->getX(), draggableWaveDisplays[i]->getY(),
                                                          draggableWaveDisplays[i]->getWidth(), draggableWaveDisplays[i]->getHeight());
 				pos++;
@@ -107,6 +118,7 @@ void DraggableDisplay::resized()
 			else
             {
 				draggableWaveDisplays[i]->setVisible (false);
+                loopPointDisplayComponents[i]->setVisible (false);
                 cuePointDisplayComponents[i]->setVisible (false);
             }
 		}
@@ -174,6 +186,7 @@ void DraggableDisplay::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHa
 		for (int i = 0; i < noDecks; i++)
         {
 			draggableWaveDisplays[i]->setZoomFactor (zoomFactor);
+            loopPointDisplayComponents[i]->setZoomFactor (zoomFactor);
             cuePointDisplayComponents[i]->setZoomFactor (zoomFactor);
         }
 	}
@@ -183,6 +196,7 @@ void DraggableDisplay::valueTreePropertyChanged (ValueTree  &treeWhosePropertyHa
 		for (int i = 0; i < noDecks; i++)
         {
 			draggableWaveDisplays[i]->setPlayheadPosition (newPlayheadPos);
+            loopPointDisplayComponents[i]->setPlayheadPosition (newPlayheadPos);
             cuePointDisplayComponents[i]->setPlayheadPosition (newPlayheadPos);
         }
 	}

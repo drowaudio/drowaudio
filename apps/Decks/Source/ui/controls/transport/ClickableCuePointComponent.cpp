@@ -17,7 +17,7 @@ class CuePointComponent : public Component
 {
 public:
     
-    CuePointComponent (FilteringAudioFilePlayer* playerToControl, double _time, Colour _colour)
+    CuePointComponent (AudioFilePlayer* playerToControl, double _time, Colour _colour)
     :   player (playerToControl),
         time (_time),
         colour (_colour)
@@ -72,7 +72,7 @@ public:
     
     void mouseDown (const MouseEvent& e)
     {
-        player->getAudioTransportSource()->setPosition(time);
+        player->setPosition(time);
     }
     
     bool hitTest (int x, int y)
@@ -95,16 +95,16 @@ public:
     
 private:
     
-    FilteringAudioFilePlayer* player;
+    AudioFilePlayer* player;
     double time;
     Colour colour;
     Image iconImage;
     
     JUCE_LEAK_DETECTOR (CuePointComponent);
 };
-//==============================================================================
 
-ClickableCuePointComponent::ClickableCuePointComponent(FilteringAudioFilePlayer* playerToRespondTo)
+//==============================================================================
+ClickableCuePointComponent::ClickableCuePointComponent (AudioFilePlayer* playerToRespondTo)
 :   filePlayer (playerToRespondTo)
 {
     setInterceptsMouseClicks(false, true);
@@ -127,7 +127,7 @@ void ClickableCuePointComponent::resized()
     
     if (filePlayer != nullptr)
     {
-        const double fileLength = filePlayer->getAudioTransportSource()->getLengthInSeconds();
+        const double fileLength = filePlayer->getLengthInSeconds();
 
         for (int i = 0; i < cuePoints.size(); ++i)
         {
@@ -138,22 +138,34 @@ void ClickableCuePointComponent::resized()
 }
 
 //==============================================================================
-void ClickableCuePointComponent::fileChanged (FilteringAudioFilePlayer* player)
+void ClickableCuePointComponent::fileChanged (AudioFilePlayer* player)
 {
     if (player == filePlayer)
     {
         cuePointTree.removeListener(this);
         cuePointTree = filePlayer->getLibraryEntry().getChildWithName(Columns::libraryCuePointIdentifier);
-        cuePointTree.addListener(this);
-        
+        if (cuePointTree.isValid())
+            cuePointTree.addListener(this);
+        else
+            filePlayer->getLibraryEntry().addListener(this);
+
         updateCuePoints();
     }
 }
 
 void ClickableCuePointComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
-    if (treeWhosePropertyHasChanged == cuePointTree)
+    DBG("ClickableCuePointComponent::valueTreePropertyChanged");
+    if (treeWhosePropertyHasChanged == cuePointTree
+        && cuePointTree.hasType (Columns::libraryCuePointIdentifier))
         updateCuePoints();
+}
+
+void ClickableCuePointComponent::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
+{
+    DBG("ClickableCuePointComponent::valueTreeChildAdded");
+    if (childWhichHasBeenAdded.hasType(Columns::libraryCuePointIdentifier))
+        cuePointTree = childWhichHasBeenAdded;
 }
 
 void ClickableCuePointComponent::updateCuePoints()

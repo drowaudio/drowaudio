@@ -13,7 +13,7 @@
 #include "LoopPointList.h"
 #include "CuePointList.h"
 
-LoopAndCuePoints::LoopAndCuePoints(FilteringAudioFilePlayer* filePlayer)
+LoopAndCuePoints::LoopAndCuePoints(AudioFilePlayer* filePlayer)
 {
 	addAndMakeVisible(showHideButton = new DrawableButton("Loops", DrawableButton::ImageOnButtonBackground));
 	DrawablePath offPath(DecksLookAndFeel::createIcon(DecksLookAndFeel::Play, Colours::lightgrey));

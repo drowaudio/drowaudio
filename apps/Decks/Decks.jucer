@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="dJzUUhKMr" name="Decks" projectType="guiapp" version="1.0.0"
-              juceLinkage="amalg_multi" buildVST="1" buildRTAS="0" buildAU="1"
-              pluginName="Juce Project" pluginDesc="Juce Project" pluginManufacturer="yourcompany"
-              pluginManufacturerCode="abcd" pluginCode="Abcd" pluginChannelConfigs="{1, 1}, {2, 2}"
-              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
-              pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginEditorRequiresKeys="0"
-              pluginAUExportPrefix="JuceProjectAU" pluginAUViewClass="JuceProjectAU_V1"
-              pluginRTASCategory="" bundleIdentifier="com.dRowAudio.Decks"
-              jucerVersion="3.0.0" smallIcon="H0hwTQxn5" bigIcon="H0hwTQxn5">
+<JUCERPROJECT id="pEl3RR" name="Decks" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.yourcompany.Decks" jucerVersion="3.0.0"
+              smallIcon="H0hwTQxn5" bigIcon="H0hwTQxn5">
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../../../juce_source/juce" extraLinkerFlags="-framework Accelerate, -framework AudioToolbox"
-               objCExtraSuffix="h0HpWI"/>
-    <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-                  juceFolder="../../../juce_source/juce" objCExtraSuffix="pfrbIk"/>
-    <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
-           juceFolder="../../../juce_source/juce" libraryType="1"/>
-    <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
-            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce_source/juce"
-            libraryType="1"/>
-    <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
-            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce_source/juce"
-            libraryType="1"/>
-    <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4" juceFolder="../../../juce_source/juce"/>
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="drUTwH" juceFolder="../../../../juce_source/juce"/>
+    <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1" juceFolder="../../../../juce_source/juce/modules"/>
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"/>
+    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Decks"
@@ -31,8 +15,8 @@
     <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Decks"
                    osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="LdDaBcHXR" name="Decks">
-    <GROUP id="o2BFbRoCU" name="Source">
+  <MAINGROUP id="MuZ5bA" name="Decks">
+    <GROUP id="{FB93F0F8-35B7-CF76-55DF-94E86B86FA1C}" name="Source">
       <GROUP id="cPvwJXytK" name="main">
         <FILE id="EVLi2hfhh" name="ApplicationStartup.cpp" compile="1" resource="0"
               file="Source/main/ApplicationStartup.cpp"/>
@@ -105,6 +89,10 @@
             <FILE id="vajm0lLmx" name="TrackInfo.h" compile="0" resource="0" file="Source/ui/controls/transport/TrackInfo.h"/>
             <FILE id="8QQ0IzJwo" name="TrackInfo.cpp" compile="1" resource="0"
                   file="Source/ui/controls/transport/TrackInfo.cpp"/>
+            <FILE id="OBdcMj" name="ClickableLoopPointComponent.h" compile="0"
+                  resource="0" file="Source/ui/controls/transport/ClickableLoopPointComponent.h"/>
+            <FILE id="HdsFNF" name="ClickableLoopPointComponent.cpp" compile="1"
+                  resource="0" file="Source/ui/controls/transport/ClickableLoopPointComponent.cpp"/>
             <FILE id="mb1WAO" name="ClickableCuePointComponent.h" compile="0" resource="0"
                   file="Source/ui/controls/transport/ClickableCuePointComponent.h"/>
             <FILE id="VhA1Bb" name="ClickableCuePointComponent.cpp" compile="1"
@@ -147,6 +135,10 @@
                   file="Source/ui/controls/draggable_display/DraggableDisplay.h"/>
             <FILE id="Fkb9NVLgd" name="DraggableDisplay.cpp" compile="1" resource="0"
                   file="Source/ui/controls/draggable_display/DraggableDisplay.cpp"/>
+            <FILE id="sstiBm" name="LoopPointDisplayComponent.h" compile="0" resource="0"
+                  file="Source/ui/controls/draggable_display/LoopPointDisplayComponent.h"/>
+            <FILE id="OPqW5R" name="LoopPointDisplayComponent.cpp" compile="1"
+                  resource="0" file="Source/ui/controls/draggable_display/LoopPointDisplayComponent.cpp"/>
             <FILE id="ySkY59" name="CuePointDisplayComponent.h" compile="0" resource="0"
                   file="Source/ui/controls/draggable_display/CuePointDisplayComponent.h"/>
             <FILE id="A4OKmx" name="CuePointDisplayComponent.cpp" compile="1" resource="0"
@@ -200,20 +192,21 @@
               file="Source/resources/Decks_icon.png"/>
       </GROUP>
     </GROUP>
-    <GROUP id="gCWqRquL9" name="Libraries">
-      <FILE id="k5CoAWWNu" name="dRowAudio.c" compile="1" resource="0" file="../../dRowAudio/dRowAudio.c"/>
-      <FILE id="F7ImfB9t" name="dRowAudio.cpp" compile="1" resource="0" file="../../dRowAudio/dRowAudio.cpp"/>
-    </GROUP>
   </MAINGROUP>
-  <JUCEOPTIONS JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ASIO="default"
-               JUCE_WASAPI="default" JUCE_DIRECTSOUND="default" JUCE_ALSA="default"
-               JUCE_QUICKTIME="disabled" JUCE_OPENGL="disabled" JUCE_USE_FLAC="disabled"
-               JUCE_USE_OGGVORBIS="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_CDREADER="disabled"
-               JUCE_USE_CAMERA="disabled" JUCE_ENABLE_REPAINT_DEBUGGING="default"
-               JUCE_USE_XINERAMA="default" JUCE_USE_XSHM="default" JUCE_USE_XRENDER="default"
-               JUCE_USE_XCURSOR="default" JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_AU="disabled"
-               JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_WEB_BROWSER="disabled"
-               JUCE_SUPPORT_CARBON="disabled" JUCE_CHECK_MEMORY_LEAKS="default"
-               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_DIRECT2D="disabled"
-               JUCE_DIRECTSHOW="default" JUCE_MEDIAFOUNDATION="default"/>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS/>
 </JUCERPROJECT>

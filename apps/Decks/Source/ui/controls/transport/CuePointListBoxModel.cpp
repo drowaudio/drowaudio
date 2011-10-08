@@ -50,7 +50,7 @@ public:
             
             String propertyName("cue");
             propertyName << (tree.getNumProperties() + 1);
-            String property(ownerListBoxModel->filePlayer->getAudioTransportSource()->getCurrentPosition());
+            String property(ownerListBoxModel->filePlayer->getCurrentPosition());
             property << "," << String(Colours::white.getARGB());
             tree.setProperty (propertyName, property, nullptr);
 
@@ -121,7 +121,7 @@ public:
         }
         else if (button == &timeButton)
         {
-            ownerListBoxModel->filePlayer->getAudioTransportSource()->setPosition(time);
+            ownerListBoxModel->filePlayer->setPosition(time);
         }
         else if (button == &removeButton)
         {
@@ -155,7 +155,7 @@ private:
 };
 
 //==============================================================================
-CuePointListBoxModel::CuePointListBoxModel(ListBox* _owner, FilteringAudioFilePlayer* _filePlayer)
+CuePointListBoxModel::CuePointListBoxModel(ListBox* _owner, AudioFilePlayer* _filePlayer)
 :   owner(_owner),
     filePlayer(_filePlayer)
 {

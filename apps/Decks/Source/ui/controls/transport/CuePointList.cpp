@@ -10,7 +10,7 @@
 
 #include "CuePointList.h"
 
-CuePointList::CuePointList(FilteringAudioFilePlayer* _filePlayer)
+CuePointList::CuePointList(AudioFilePlayer* _filePlayer)
 :   filePlayer(_filePlayer),
     model(&cuePointsList, filePlayer)
 {
@@ -31,7 +31,7 @@ void CuePointList::resized()
     cuePointsList.setBounds(getLocalBounds());
 }
 
-void CuePointList::fileChanged (FilteringAudioFilePlayer *player)
+void CuePointList::fileChanged (AudioFilePlayer *player)
 {
     if (player == filePlayer)
     {

@@ -7,23 +7,19 @@
  *
  */
 
-#include "../core/dRowAudio_StandardHeader.h"
-
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_CentreAlignViewport.h"
+BEGIN_JUCE_NAMESPACE
 
 //==============================================================================
 CentreAlignViewport::CentreAlignViewport (const String& componentName)
-:	Component (componentName),
-	scrollBarThickness (0),
-	singleStepX (16),
-	singleStepY (16),
-	showHScrollbar (true),
-	showVScrollbar (true),
-	verticalScrollBar (true),
-	horizontalScrollBar (false),
-	shouldCentre(true)
+    : Component (componentName),
+      scrollBarThickness (0),
+      singleStepX (16),
+      singleStepY (16),
+      showHScrollbar (true),
+      showVScrollbar (true),
+      verticalScrollBar (true),
+      horizontalScrollBar (false),
+      shouldCentre (true)
 {
     // content holder is used to clip the contents so they don't overlap the scrollbars
     addAndMakeVisible (&contentHolder);
@@ -91,13 +87,13 @@ void CentreAlignViewport::setViewPosition (const int xPixelsOffset, const int yP
 
 		if (contentComp.getComponent()->getBounds().getWidth() < contentHolder.getBounds().getWidth()
 			&& shouldCentre)
-			topX = contentHolder.getWidth()/2.0 - contentComp->getWidth()/2.0;
+			topX = contentHolder.getWidth() / 2.0 - contentComp->getWidth() / 2.0;
 		else
 			topX = jmax (jmin (0, contentHolder.getWidth() - contentComp->getWidth()), jmin (0, -xPixelsOffset));
 
 		if (contentComp.getComponent()->getBounds().getHeight() < contentHolder.getBounds().getHeight()
 			&& shouldCentre)
-			topY = contentHolder.getHeight()/2.0 - contentComp->getHeight()/2.0;
+			topY = contentHolder.getHeight() / 2.0 - contentComp->getHeight() / 2.0;
 		else
 			topY = jmax (jmin (0, contentHolder.getHeight() - contentComp->getHeight()), jmin (0, -yPixelsOffset));
 				  
@@ -390,4 +386,4 @@ bool CentreAlignViewport::keyPressed (const KeyPress& key)
     return false;
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

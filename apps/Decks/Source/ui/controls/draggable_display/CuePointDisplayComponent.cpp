@@ -58,7 +58,7 @@ private:
 //==============================================================================
 
 //==============================================================================
-CuePointDisplayComponent::CuePointDisplayComponent(FilteringAudioFilePlayer* playerToRespondTo, int numSamplesPerThumbnailSample)
+CuePointDisplayComponent::CuePointDisplayComponent(AudioFilePlayer* playerToRespondTo, int numSamplesPerThumbnailSample)
 :   filePlayer (playerToRespondTo),
     scale (numSamplesPerThumbnailSample),
     zoomRatio (1.0f),
@@ -87,7 +87,7 @@ void CuePointDisplayComponent::resized()
 void CuePointDisplayComponent::paint (Graphics& g)
 {
     const int w = getWidth();
-    const double currentTime = filePlayer->getAudioTransportSource()->getCurrentPosition();
+    const double currentTime = filePlayer->getCurrentPosition();
     const double centrePos = playheadPosition * w;
     
     const double timeAtOrigin = currentTime - (centrePos * timePerPixel);
@@ -105,7 +105,7 @@ void CuePointDisplayComponent::paint (Graphics& g)
     }
 }
 
-void CuePointDisplayComponent::fileChanged (FilteringAudioFilePlayer *player)
+void CuePointDisplayComponent::fileChanged (AudioFilePlayer *player)
 {
     if (player == filePlayer)
     {
@@ -114,17 +114,38 @@ void CuePointDisplayComponent::fileChanged (FilteringAudioFilePlayer *player)
         oneOverTimePerPixel = 1.0 / timePerPixel;
 
         cuePointTree.removeListener(this);
-        cuePointTree = filePlayer->getLibraryEntry().getChildWithName(Columns::libraryCuePointIdentifier);
-        cuePointTree.addListener(this);
-
+        cuePointTree = filePlayer->getLibraryEntry().getChildWithName (Columns::libraryCuePointIdentifier);
+        if (cuePointTree.isValid())
+        {
+            cuePointTree.addListener(this);
+            DBG("adding cue point");
+        }
+        else
+        {
+            filePlayer->getLibraryEntry().addListener(this);
+            DBG("adding item tree listener");
+        }
+            
         updateCuePoints();
     }
 }
 
 void CuePointDisplayComponent::valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property)
 {
+    DBG("valueTreePropertyChanged");
     if (treeWhosePropertyHasChanged == cuePointTree)
         updateCuePoints();
+}
+
+void CuePointDisplayComponent::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
+{
+    DBG("valueTreeChildAdded");
+    if (childWhichHasBeenAdded.hasType(Columns::libraryCuePointIdentifier))
+    {
+        cuePointTree.removeListener(this);
+        cuePointTree = childWhichHasBeenAdded;
+        cuePointTree.addListener(this);
+    }
 }
 
 void CuePointDisplayComponent::timerCallback()

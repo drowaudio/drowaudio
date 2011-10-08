@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+Project("{34A4E625-643B-071F-B076-1DB527517021}") = "Decks", "Decks.vcxproj", "{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}.Debug|Win32.Build.0 = Debug|Win32
+		{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}.Release|Win32.ActiveCfg = Release|Win32
+		{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

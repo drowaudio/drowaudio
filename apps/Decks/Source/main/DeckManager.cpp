@@ -15,18 +15,18 @@ Deck::Deck(int deckNo_)
 {
 	Settings* settingsManager = Settings::getInstance();
 
-    filePlayer = new FilteringAudioFilePlayer();
+    filePlayer = new AudioFilePlayer();
 	filePlayer->setAudioFormatManager(DecksAudioFormatManager::getInstance());
 
     thumbnailCache = new MultipleAudioThumbnailCache(10);
     thumbnail = new ColouredAudioThumbnail(512, *DecksAudioFormatManager::getInstance(), *thumbnailCache);
     
-	//monitorFilePlayer = new FilteringAudioFilePlayer();
+	//monitorFilePlayer = new AudioFilePlayer();
 
 	settings.on = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(on));
 	settings.bypass = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(bypass));
 	settings.gain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(gain));
-	filePlayer->getAudioTransportSource()->setGain(settings.gain.get());
+	filePlayer->getAudioTransportSource()->setGain (settings.gain.get());
 	settings.level = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(level));
 	settings.highGain = settingsManager->getPropertyOfChannel(deckNo, CHANNEL_SETTING(highGain));
 	filePlayer->getFilteringAudioSource()->setHighEQGain(settings.highGain.get());

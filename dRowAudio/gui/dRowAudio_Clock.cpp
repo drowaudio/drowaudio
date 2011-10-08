@@ -8,16 +8,11 @@
   ==============================================================================
 */
 
-#include "../core/dRowAudio_StandardHeader.h"
-
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_Clock.h"
+BEGIN_JUCE_NAMESPACE
 
 Clock::Clock()
 {
-	setTimeDisplayFormat(showTime + show24Hr);
-	timerCallback();
+	setTimeDisplayFormat (showTime + show24Hr);
 }
 
 Clock::~Clock()
@@ -27,7 +22,7 @@ Clock::~Clock()
 
 int Clock::getRequiredWidth()
 {
-	return getFont().getStringWidth(timeAsString)+10;
+	return getFont().getStringWidth (timeAsString) + 10;
 }
 
 void Clock::setTimeDisplayFormat(const int newFormat)
@@ -37,9 +32,9 @@ void Clock::setTimeDisplayFormat(const int newFormat)
 	if ((displayFormat & showDayShort) && (displayFormat & showDayLong))
 		displayFormat -= showDayShort;
 	if ((displayFormat & showTime))
-		startTimer(5900);
+		startTimer (5900);
 	if ((displayFormat & showSeconds))
-		startTimer(950);
+		startTimer (950);
 //	if ((displayFormat & showTenthSeconds))
 //		startTimer(99);
 	
@@ -52,23 +47,16 @@ void Clock::timerCallback()
 	timeAsString = String::empty;
 	
 	String formatString;
-	
-	formatString << ((displayFormat & showDayShort) ? "%a " : "")
-	<< ((displayFormat & showDayLong) ? "%A " : "")
-	<< ((displayFormat & showDate) ? "%x " : "")
-	<< ((displayFormat & showTime) ? ((displayFormat & show24Hr) ? "%H:%M" : "%I:%M") : "")
-	<< ((displayFormat & showSeconds) ? ":%S " : "");
-
+	formatString    << ((displayFormat & showDayShort)  ? "%a " : "")
+                    << ((displayFormat & showDayLong)   ? "%A " : "")
+                    << ((displayFormat & showDate)      ? "%x " : "")
+                    << ((displayFormat & showTime)      ? ((displayFormat & show24Hr) ? "%H:%M" : "%I:%M") : "")
+                    << ((displayFormat & showSeconds)   ? ":%S " : "");
 	
 	if (formatString != String::empty)
-		timeAsString << currentTime.formatted(formatString);
-
-//	timeAsString << currentTime.toString(displayFormat & showDate,
-//										 displayFormat & showTime,
-//										 displayFormat & showSeconds,
-//										 displayFormat & show24Hr);
+		timeAsString << currentTime.formatted (formatString);
 	
-	setText(timeAsString, false);
+	setText (timeAsString, false);
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

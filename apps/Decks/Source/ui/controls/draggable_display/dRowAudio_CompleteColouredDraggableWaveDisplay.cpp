@@ -13,7 +13,7 @@
 #include "dRowAudio_CompleteColouredDraggableWaveDisplay.h"
 
 CompleteColouredDraggableWaveDisplay::CompleteColouredDraggableWaveDisplay (int sourceSamplesPerThumbnailSample,
-															FilteringAudioFilePlayer* sourceToBeUsed,
+															AudioFilePlayer* sourceToBeUsed,
 															MultipleAudioThumbnailCache *cacheToUse,
                                                             ColouredAudioThumbnail *thumbnailToUse)
 :	CompleteDraggableWaveDisplay(thumbnailToUse == nullptr ? sourceSamplesPerThumbnailSample : thumbnailToUse->getNumSamplesPerThumbnailSample(),
@@ -55,7 +55,7 @@ void CompleteColouredDraggableWaveDisplay::resized()
 //====================================================================================
 void CompleteColouredDraggableWaveDisplay::newFileLoaded()
 {
-	File newFile(filePlayer->getFilePath());
+	File newFile(filePlayer->getPath());
 	if (newFile.existsAsFile())
 		thumbnailView->setSource(new FileInputSource (newFile));
 }

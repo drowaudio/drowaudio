@@ -13,7 +13,7 @@
 #include "dRowAudio_CompleteDraggableWaveDisplay.h"
 
 CompleteDraggableWaveDisplay::CompleteDraggableWaveDisplay(int _sourceSamplesPerThumbSample,
-                                                           FilteringAudioFilePlayer* sourceToBeUsed,
+                                                           AudioFilePlayer* sourceToBeUsed,
                                                            MultipleAudioThumbnailCache *cacheToUse)
 :	Thread("DraggableWaveDisplayThread"),
 	filePlayer(sourceToBeUsed),
@@ -82,7 +82,7 @@ void CompleteDraggableWaveDisplay::paint(Graphics &g)
 	
 	if (filePlayer->getFileName().isNotEmpty())
 	{		
-        const int startXPosInImage = (filePlayer->getAudioTransportSource()->getNextReadPosition()) / sourceSamplesPerThumbSample;
+        const int startXPosInImage = (filePlayer->getNextReadPosition()) / sourceSamplesPerThumbSample;
         const int playHeadXPos = playheadPos * w;
         
         int srcX = startXPosInImage - roundToInt (playHeadXPos * oneOverZoomRatio);
@@ -135,7 +135,7 @@ void CompleteDraggableWaveDisplay::timerCallback(const int timerId)
 {
 	if (timerId == waveformUpdated) //moved due to file position changing
 	{
-		movedX = timeToPixels(filePlayer->getAudioTransportSource()->getCurrentPosition());
+		movedX = timeToPixels(filePlayer->getCurrentPosition());
 
 		if (! movedX.areEqual())
 		{
@@ -151,9 +151,9 @@ void CompleteDraggableWaveDisplay::timerCallback(const int timerId)
 			
 			if (currentXDrag != 0)
 			{
-				double position = (filePlayer->getAudioTransportSource()->getCurrentPosition() - pixelsToTime(currentXDrag));
+				double position = (filePlayer->getCurrentPosition() - pixelsToTime(currentXDrag));
 
-				filePlayer->getAudioTransportSource()->setPosition(position);
+				filePlayer->setPosition(position);
 
 				triggerAsyncUpdate();
 			}
@@ -171,7 +171,7 @@ void CompleteDraggableWaveDisplay::changeListenerCallback (ChangeBroadcaster* so
         refreshWaveformsOnBackgroundThread();
 }
 
-void CompleteDraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player)
+void CompleteDraggableWaveDisplay::fileChanged (AudioFilePlayer *player)
 {
 	if (player == filePlayer)
 	{
@@ -180,7 +180,7 @@ void CompleteDraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player
         if (currentSampleRate > 0.0)
         {
             oneOverSampleRate = (1.0 / currentSampleRate);
-            fileLengthSecs = filePlayer->getAudioTransportSource()->getTotalLength() * oneOverSampleRate;
+            fileLengthSecs = filePlayer->getTotalLength() * oneOverSampleRate;
             oneOverFileLength = 1.0 / fileLengthSecs;
             timePerPixel = sourceSamplesPerThumbSample * oneOverSampleRate;
             
@@ -189,7 +189,7 @@ void CompleteDraggableWaveDisplay::fileChanged (FilteringAudioFilePlayer *player
             numSamplesFinished = 0;
 
             // refresh wavefrom image
-            const int sizeNeeded = jmax(1, (int)filePlayer->getAudioTransportSource()->getTotalLength() / sourceSamplesPerThumbSample);
+            const int sizeNeeded = jmax(1, (int)filePlayer->getTotalLength() / sourceSamplesPerThumbSample);
 
             waveformImage.img = Image(Image::RGB,
                                       sizeNeeded,//timeToPixels(fileLengthSecs),
@@ -267,10 +267,10 @@ void CompleteDraggableWaveDisplay::mouseDown(const MouseEvent &e)
 	{
 		if (mouseShouldTogglePlay)
 		{
-			if (filePlayer->getAudioTransportSource()->isPlaying())
+			if (filePlayer->isPlaying())
 			{
 				shouldBePlaying = true;
-				filePlayer->getAudioTransportSource()->stop();
+				filePlayer->stop();
 			}
 			else
 				shouldBePlaying = false;
@@ -290,10 +290,10 @@ void CompleteDraggableWaveDisplay::mouseUp (const MouseEvent &e)
 	{
 		if (mouseShouldTogglePlay)
 		{
-			if (shouldBePlaying && ! filePlayer->getAudioTransportSource()->isPlaying())
-				filePlayer->getAudioTransportSource()->start();
-			else if (! shouldBePlaying && filePlayer->getAudioTransportSource()->isPlaying())
-				filePlayer->getAudioTransportSource()->stop();
+			if (shouldBePlaying && ! filePlayer->isPlaying())
+				filePlayer->start();
+			else if (! shouldBePlaying && filePlayer->isPlaying())
+				filePlayer->stop();
 		}
 		
 		setMouseCursor(MouseCursor::NormalCursor);

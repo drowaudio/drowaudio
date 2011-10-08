@@ -9,13 +9,13 @@
 
 #include "TrackInfo.h"
 
-TrackInfo::TrackInfo(int deckNo_, FilteringAudioFilePlayer* filePlayer_)
+TrackInfo::TrackInfo(int deckNo_, AudioFilePlayer* filePlayer_)
 :	deckNo(deckNo_),
 	filePlayer(filePlayer_),
 	time(0.0),
 	fileLength(0.0)
 {
-	filePlayer->getAudioTransportSource()->addChangeListener(this);
+	filePlayer->addChangeListener(this);
 	filePlayer->addListener(this);
 	
 	currentBpm = String::empty;
@@ -28,7 +28,7 @@ TrackInfo::TrackInfo(int deckNo_, FilteringAudioFilePlayer* filePlayer_)
 
 TrackInfo::~TrackInfo()
 {
-	filePlayer->getAudioTransportSource()->removeChangeListener(this);
+	filePlayer->removeChangeListener(this);
 
 	String message("TrackInfo ");
 	message << deckNo << " deleted";
@@ -105,22 +105,32 @@ void TrackInfo::buttonClicked (Button* button)
 	}
 }
 
-void TrackInfo::fileChanged (FilteringAudioFilePlayer *player)
+void TrackInfo::fileChanged (AudioFilePlayer *player)
 {
 	if (player == filePlayer)
 	{
 		AudioFormatReaderSource* readerSource = filePlayer->getAudioFormatReaderSource();
 		double sampleRate = 44100.0;
-		if ( readerSource != 0)
+        
+		if (readerSource != nullptr)
+        {
+            startTimer(100);
 			sampleRate = readerSource->getAudioFormatReader()->sampleRate;
+        }
+        else
+        {
+            stopTimer();
+        }
+
 		
-		fileLength = filePlayer->getAudioTransportSource()->getTotalLength() / sampleRate;
-		fileName = filePlayer->getFileName();
+		fileLength = filePlayer->getTotalLength() / sampleRate;
+		fileName = filePlayer->getPath().fromLastOccurrenceOf("/", false, true);
 		
-		trackName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Song]);
-		artistName = filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::Artist]);
-		bpm = double(filePlayer->getLibraryEntry().getProperty(Columns::columnNames[Columns::BPM]));
-		currentBpm = String(bpm * filePlayer->getResamplingRatio(), 2);
+        ValueTree libraryEntry (filePlayer->getLibraryEntry());
+		trackName = libraryEntry.getProperty(Columns::columnNames[Columns::Song]);
+		artistName = libraryEntry.getProperty(Columns::columnNames[Columns::Artist]);
+		bpm = double(libraryEntry.getProperty(Columns::columnNames[Columns::BPM]));
+		currentBpm = String(bpm * filePlayer->getSoundTouchAudioSource()->getPlaybackSettings().rate, 2);
 		
 		// file was not loaded from the library
 		if (trackName.isEmpty() && artistName.isEmpty())
@@ -133,12 +143,12 @@ void TrackInfo::fileChanged (FilteringAudioFilePlayer *player)
 	}
 }
 
-void TrackInfo::resamplingRatioChanged(FilteringAudioFilePlayer *player)
+void TrackInfo::resamplingRatioChanged(AudioFilePlayer *player)
 {
 	if (player == filePlayer)
 	{
 		if (filePlayer->getLibraryEntry().isValid())
-			currentBpm = String(bpm * filePlayer->getResamplingRatio(), 2);
+			currentBpm = String(bpm * filePlayer->getSoundTouchAudioSource()->getPlaybackSettings().rate, 2);
 		else
 			currentBpm = String::empty;
 		
@@ -148,20 +158,20 @@ void TrackInfo::resamplingRatioChanged(FilteringAudioFilePlayer *player)
 
 void TrackInfo::changeListenerCallback(ChangeBroadcaster* changedObject)
 {
-	if (changedObject == static_cast<ChangeBroadcaster*>(filePlayer->getAudioTransportSource()))
-	{		
-		if (filePlayer->getAudioTransportSource()->isPlaying())
-			startTimer(100);
-		else {
-			stopTimer();
-			timerCallback();
-		}
-	}
+//	if (changedObject == static_cast<ChangeBroadcaster*>(filePlayer->getAudioTransportSource()))
+//	{		
+//		if (filePlayer->isPlaying())
+//			startTimer(100);
+//		else {
+//			stopTimer();
+//			timerCallback();
+//		}
+//	}
 }
 
 void TrackInfo::timerCallback()
 {
-	time = filePlayer->getAudioTransportSource()->getCurrentPosition();
+	time = filePlayer->getCurrentPosition();
 	
 	currentTime = timeToTimecodeStringLowRes(time);
 	remainingTime = timeToTimecodeStringLowRes( fileLength - time );

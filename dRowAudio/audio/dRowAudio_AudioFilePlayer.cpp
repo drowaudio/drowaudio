@@ -9,49 +9,91 @@
 BEGIN_JUCE_NAMESPACE
 
 AudioFilePlayer::AudioFilePlayer()
-    :  bufferingTimeSliceThread ("Shared Buffering Thread")
+    : bufferingTimeSliceThread ("Shared Buffering Thread"),
+      formatManager (new AudioFormatManager(), true)
 {
     bufferingTimeSliceThread.startThread(3);
     
-	formatManager.registerBasicFormats();
+    audioTransportSource = new AudioTransportSource();
+    audioTransportSource->setSource (soundTouchAudioSource);
+    filteringAudioSource = new FilteringAudioSource (audioTransportSource, false);
+    
+    masterSource = filteringAudioSource;
+    
+	formatManager->registerBasicFormats();
 }
 
 AudioFilePlayer::~AudioFilePlayer()
 {
-	setSource (nullptr);
+	audioTransportSource->setSource (nullptr);
 }
 
 void AudioFilePlayer::startFromZero()
 {
-	if(currentAudioFileSource == nullptr)
+	if (audioFormatReaderSource == nullptr)
         return;
 	
-	setPosition (0.0);
-	start();
+	audioTransportSource->setPosition (0.0);
+	audioTransportSource->start();
 }
 
 void AudioFilePlayer::pause()
 {
-	if (isPlaying())
-		stop();
+	if (audioTransportSource->isPlaying())
+		audioTransportSource->stop();
 	else
-		start();
+		audioTransportSource->start();
 }
 
 bool AudioFilePlayer::setFile(const String& path)
 {
     filePath = path;
     
-    return setSourceWithReader (formatManager.createReaderFor (File (path)));
+    return setSourceWithReader (formatManager->createReaderFor (File (path)));
 }
 
 bool AudioFilePlayer::setInputStream (InputStream* inputStream)
 {
     filePath = String::empty;
     
-	AudioFormatReader* reader = formatManager.createReaderFor (inputStream);
+	AudioFormatReader* reader = formatManager->createReaderFor (inputStream);
     
     return setSourceWithReader (reader);
+}
+
+void AudioFilePlayer::setAudioFormatManager(AudioFormatManager* newManager,  bool deleteWhenNotNeeded)
+{
+    OptionalScopedPointer<AudioFormatManager> newFormatManager (newManager, deleteWhenNotNeeded);
+	formatManager = newFormatManager;
+}
+
+//==============================================================================
+void AudioFilePlayer::setResamplingRatio (const double samplesInPerOutputSample)
+{
+    SoundTouchProcessor::PlaybackSettings settings;
+    settings.rate = samplesInPerOutputSample;
+    soundTouchAudioSource->setPlaybackSettings (settings);
+	
+	listeners.call (&Listener::resamplingRatioChanged, this);
+}
+
+//==============================================================================
+void AudioFilePlayer::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
+{
+    if (masterSource != nullptr)
+        masterSource->prepareToPlay (samplesPerBlockExpected, sampleRate);
+}
+
+void AudioFilePlayer::releaseResources()
+{
+    if (masterSource != nullptr)
+        masterSource->releaseResources();
+}
+
+void AudioFilePlayer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
+{
+    if (masterSource != nullptr)
+        masterSource->getNextAudioBlock (bufferToFill);
 }
 
 //==============================================================================
@@ -68,42 +110,30 @@ void AudioFilePlayer::removeListener (AudioFilePlayer::Listener* const listener)
 //==============================================================================
 bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
-    // should really delete/reset any exisiting data in case this method is callled more than once
-	// (which it isn't in this example)
 //	stop();
-	setSource (nullptr);
+	audioTransportSource->setSource (nullptr);
+    soundTouchAudioSource = nullptr;
     
 	if (reader != nullptr)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
-		currentAudioFileSource = new AudioFormatReaderSource (reader, true);
-        
-        // copy old parameters
-        SoundTouchProcessor::PlaybackSettings settings;
-        if (soundTouchAudioSource != nullptr)
-        {
-            settings = soundTouchAudioSource->getPlaybackSettings();
-            soundTouchAudioSource = nullptr;
-        }
-		soundTouchAudioSource = new SoundTouchAudioSource (currentAudioFileSource,
+		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
+        soundTouchAudioSource = new SoundTouchAudioSource (audioFormatReaderSource,
                                                            bufferingTimeSliceThread,
                                                            false,
                                                            32768);
-        soundTouchAudioSource->setPlaybackSettings (settings);
-
-		// ..and plug it into our transport source
-		setSource (soundTouchAudioSource,//currentAudioFileSource,
-				   0,//32768,
-                   nullptr, //&bufferingTimeSliceThread,
-                   reader->sampleRate); // tells it to buffer this many samples ahead
+        audioTransportSource->setSource (soundTouchAudioSource);
         
 		// let our listeners know that we have loaded a new file
-		sendChangeMessage();
+		audioTransportSource->sendChangeMessage();
         listeners.call (&Listener::fileChanged, this);
 
 		return true;
 	}
 	
+    setLibraryEntry (ValueTree::invalid);
+
+    audioTransportSource->sendChangeMessage();
     listeners.call (&Listener::fileChanged, this);
 
     return false;    

@@ -7,11 +7,7 @@
  *
  */
 
-#include "../../core/dRowAudio_StandardHeader.h"
-
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_BasicFileBrowser.h"
+BEGIN_JUCE_NAMESPACE
 
 //==============================================================================
 class DirectoriesOnlyFilter    : public FileFilter
@@ -28,10 +24,10 @@ public:
 BasicFileBrowser::BasicFileBrowser (FileChooserMode mode_,
                                     const File& initialFileOrDirectory,
                                     const FileFilter* fileFilter)
-:	directoriesOnlyFilter (0),
-	mode (mode_),
-	thread ("Juce BasicFileBrowser"),
-	showResizer(true)
+    : directoriesOnlyFilter (0),
+	  mode (mode_),
+	  thread ("Juce BasicFileBrowser"),
+	  showResizer(true)
 {
 	lookAndFeel = new BasicFileBrowserLookAndFeel;
 	setLookAndFeel(lookAndFeel);
@@ -258,4 +254,4 @@ bool BasicFileBrowser::keyPressed (const KeyPress& key)
     return false;
 }
 
-END_DROWAUDIO_NAMESPACE
+BEGIN_JUCE_NAMESPACE

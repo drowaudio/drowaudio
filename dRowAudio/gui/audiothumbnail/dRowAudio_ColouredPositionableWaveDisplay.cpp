@@ -102,7 +102,7 @@ void ColouredPositionableWaveDisplay::timerCallback (const int timerId)
 		const int w = getWidth();
 		const int h = getHeight();
 
-		transportLineXCoord = w * oneOverFileLength * filePlayer->getCurrentPosition();
+		transportLineXCoord = w * oneOverFileLength * filePlayer->getAudioTransportSource()->getCurrentPosition();
 		
 		// if the line has moved repaint the old and new positions of it
 		if (! transportLineXCoord.areEqual())
@@ -142,7 +142,7 @@ void ColouredPositionableWaveDisplay::fileChanged (AudioFilePlayer *player)
         if (currentSampleRate > 0.0)
         {
             oneOverSampleRate = 1.0 / currentSampleRate;
-            fileLength = filePlayer->getTotalLength() * oneOverSampleRate;
+            fileLength = filePlayer->getAudioTransportSource()->getTotalLength() * oneOverSampleRate;
             oneOverFileLength = 1.0 / fileLength;
             
             waveformImage.clear (waveformImage.getBounds(), Colours::black);
@@ -175,7 +175,7 @@ void ColouredPositionableWaveDisplay::mouseDown(const MouseEvent &e)
 	setMouseCursor (MouseCursor::IBeamCursor);
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->setPosition (position);
+	filePlayer->getAudioTransportSource()->setPosition (position);
     
 	triggerAsyncUpdate();		
 }
@@ -192,13 +192,13 @@ void ColouredPositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 	currentMouseX = e.x;
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->setPosition (position);
+	filePlayer->getAudioTransportSource()->setPosition (position);
 }
 
 //==============================================================================	
 void ColouredPositionableWaveDisplay::refreshWaveform()
 {
-	if (waveformImage.isValid() && filePlayer->getTotalLength() > 0)
+	if (waveformImage.isValid() && filePlayer->getAudioTransportSource()->getTotalLength() > 0)
 	{
         Graphics gTemp (displayImage);
         

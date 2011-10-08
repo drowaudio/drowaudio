@@ -8,7 +8,7 @@
     <key>CFBundleIconFile</key>
     <string>Icon.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>com.dRowAudio.Decks</string>
+    <string>com.yourcompany.Decks</string>
     <key>CFBundleName</key>
     <string>Decks</string>
     <key>CFBundlePackageType</key>

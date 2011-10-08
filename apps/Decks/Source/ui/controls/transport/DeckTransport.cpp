@@ -9,6 +9,7 @@
 
 #include "DeckTransport.h"
 
+#include "ClickableLoopPointComponent.h"
 #include "ClickableCuePointComponent.h"
 
 DeckTransport::DeckTransport(int deckNo_)
@@ -17,7 +18,7 @@ DeckTransport::DeckTransport(int deckNo_)
 	settings(DeckManager::getInstance()),
 	filePlayer(settings->getDeck(deckNo)->getMainFilePlayer())
 {
-	filePlayer->getAudioTransportSource()->addChangeListener(this);
+	filePlayer->addChangeListener(this);
 	
 	addAndMakeVisible(infoBox = new TrackInfo(deckNo, filePlayer));
 	
@@ -37,6 +38,7 @@ DeckTransport::DeckTransport(int deckNo_)
                                                                         settings->getDeck(deckNo)->getThumbnailCache(),
                                                                         settings->getDeck(deckNo)->getThumbnail()));
 	
+    addAndMakeVisible(clickableLoopPointComponent = new ClickableLoopPointComponent(filePlayer));
     addAndMakeVisible(clickableCuePointComponent = new ClickableCuePointComponent(filePlayer));
     
 	addAndMakeVisible(loopAndCuePoints = new LoopAndCuePoints(filePlayer));
@@ -100,6 +102,8 @@ void DeckTransport::resized()
 	waveDisplay->setBounds (0, transportButtons[0]->getBottom()+2, w-35, 40);
     
     const int cuePointHeight = 10;
+	clickableLoopPointComponent->setBounds (waveDisplay->getX(), waveDisplay->getY(),
+                                            waveDisplay->getWidth(), cuePointHeight);
 	clickableCuePointComponent->setBounds (waveDisplay->getX(), waveDisplay->getBottom() - cuePointHeight,
                                            waveDisplay->getWidth(), cuePointHeight);
     
@@ -178,8 +182,8 @@ void DeckTransport::changeListenerCallback(ChangeBroadcaster *object)
 {
 	//		filePlayer->setPlayDirection(false);
 	
-	if (object == static_cast<ChangeBroadcaster*>(filePlayer->getAudioTransportSource())) {
-		if (filePlayer->getAudioTransportSource()->isPlaying())
+	if (object == static_cast<ChangeBroadcaster*> (filePlayer)) {
+		if (filePlayer->isPlaying())
 			transportButtons[playPause]->setToggleState(true, false);
 		else
 			transportButtons[playPause]->setToggleState(false, false);

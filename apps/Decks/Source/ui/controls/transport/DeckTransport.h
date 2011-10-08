@@ -10,7 +10,7 @@
 #ifndef _DECKTRANSPORT__H_
 #define _DECKTRANSPORT__H_
 
-#include <juce/juce.h>
+#include "../JuceLibraryCode/JuceHeader.h"
 #include "../../../ui/DecksColours.h"
 #include "../../../main/DeckManager.h"
 #include "../../DecksLookAndFeel.h"
@@ -18,6 +18,7 @@
 #include "LoopAndCuePoints.h"
 
 class ClickableCuePointComponent;
+class ClickableLoopPointComponent;
 
 class DeckTransport :	public Component,
 						public Button::Listener,
@@ -70,11 +71,12 @@ private:
 	const int deckNo;
 	bool showLoopAndCuePoints;
 	DeckManager *settings;
-	FilteringAudioFilePlayer *filePlayer;
+	AudioFilePlayer *filePlayer;
 	
 	TrackInfo *infoBox;
 	OwnedArray<DrawableButton> transportButtons;
 	ColouredPositionableWaveDisplay *waveDisplay;
+	ClickableLoopPointComponent* clickableLoopPointComponent;
 	ClickableCuePointComponent* clickableCuePointComponent;
 	LoopAndCuePoints *loopAndCuePoints;
 	

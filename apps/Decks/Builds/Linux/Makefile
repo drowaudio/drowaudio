@@ -1,5 +1,5 @@
-# Automatically generated makefile, created by the Jucer
-# Don't edit this file! Your changes will be overwritten when you re-save the Jucer project!
+# Automatically generated makefile, created by the Introjucer
+# Don't edit this file! Your changes will be overwritten when you re-save the Introjucer project!
 
 ifndef CONFIG
   CONFIG=Debug
@@ -17,12 +17,12 @@ ifeq ($(CONFIG),Debug)
   LIBDIR := build
   OBJDIR := build/intermediate/Debug
   OUTDIR := build
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2"
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2" -I "../../JuceLibraryCode"
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0
   CXXFLAGS += $(CFLAGS) 
-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../juce_source/juce/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound 
+  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../../juce_source/juce/modules/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound 
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2"
+  RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2" -I "../../JuceLibraryCode"
   TARGET := Decks
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
@@ -32,12 +32,12 @@ ifeq ($(CONFIG),Release)
   LIBDIR := build
   OBJDIR := build/intermediate/Release
   OUTDIR := build
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2"
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2" -I "../../JuceLibraryCode"
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -O3
   CXXFLAGS += $(CFLAGS) 
-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../juce_source/juce/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound 
+  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../../juce_source/juce/modules/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound 
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2"
+  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2" -I "../../JuceLibraryCode"
   TARGET := Decks
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
@@ -60,6 +60,7 @@ OBJECTS := \
   $(OBJDIR)/Transport_fb740666.o \
   $(OBJDIR)/DeckTransport_f4e0103d.o \
   $(OBJDIR)/TrackInfo_bd3403d6.o \
+  $(OBJDIR)/ClickableLoopPointComponent_c4cc3d0.o \
   $(OBJDIR)/ClickableCuePointComponent_5e60a74b.o \
   $(OBJDIR)/LoopAndCuePoints_1e85ecd0.o \
   $(OBJDIR)/LoopPointList_7c6db6c7.o \
@@ -70,6 +71,7 @@ OBJECTS := \
   $(OBJDIR)/MixTypeComponent_5b7bf314.o \
   $(OBJDIR)/TrackSuggestionTable_623f988c.o \
   $(OBJDIR)/DraggableDisplay_69d2841b.o \
+  $(OBJDIR)/LoopPointDisplayComponent_4491dcab.o \
   $(OBJDIR)/CuePointDisplayComponent_b39202be.o \
   $(OBJDIR)/dRowAudio_CompleteDraggableWaveDisplay_fd3fb73a.o \
   $(OBJDIR)/dRowAudio_CompleteColouredDraggableWaveDisplay_9d54b8c5.o \
@@ -81,13 +83,19 @@ OBJECTS := \
   $(OBJDIR)/PrepareTable_3aa12962.o \
   $(OBJDIR)/SettingsComponent_72d2086a.o \
   $(OBJDIR)/MixerSettingsComponent_8a33bf8b.o \
-  $(OBJDIR)/dRowAudio_eb58b466.o \
-  $(OBJDIR)/dRowAudio_77fd40e6.o \
   $(OBJDIR)/BinaryData_ce4232d4.o \
-  $(OBJDIR)/JuceLibraryCode1_682c927f.o \
-  $(OBJDIR)/JuceLibraryCode2_683aaa00.o \
-  $(OBJDIR)/JuceLibraryCode3_6848c181.o \
-  $(OBJDIR)/JuceLibraryCode4_6856d902.o \
+  $(OBJDIR)/dRowAudio_66a49a7e.o \
+  $(OBJDIR)/juce_audio_basics_15b0217e.o \
+  $(OBJDIR)/juce_audio_devices_efd90ebc.o \
+  $(OBJDIR)/juce_audio_formats_1e5a585c.o \
+  $(OBJDIR)/juce_audio_processors_3aa29d36.o \
+  $(OBJDIR)/juce_audio_utils_b936647c.o \
+  $(OBJDIR)/juce_core_b5776660.o \
+  $(OBJDIR)/juce_data_structures_b481521c.o \
+  $(OBJDIR)/juce_events_e22fa2d4.o \
+  $(OBJDIR)/juce_graphics_f8def838.o \
+  $(OBJDIR)/juce_gui_basics_13b83b4.o \
+  $(OBJDIR)/juce_gui_extra_6053123c.o \
 
 .PHONY: clean
 
@@ -189,6 +197,11 @@ $(OBJDIR)/TrackInfo_bd3403d6.o: ../../Source/ui/controls/transport/TrackInfo.cpp
 	@echo "Compiling TrackInfo.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
+$(OBJDIR)/ClickableLoopPointComponent_c4cc3d0.o: ../../Source/ui/controls/transport/ClickableLoopPointComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling ClickableLoopPointComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
 $(OBJDIR)/ClickableCuePointComponent_5e60a74b.o: ../../Source/ui/controls/transport/ClickableCuePointComponent.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling ClickableCuePointComponent.cpp"
@@ -237,6 +250,11 @@ $(OBJDIR)/TrackSuggestionTable_623f988c.o: ../../Source/ui/controls/transport/Tr
 $(OBJDIR)/DraggableDisplay_69d2841b.o: ../../Source/ui/controls/draggable_display/DraggableDisplay.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling DraggableDisplay.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/LoopPointDisplayComponent_4491dcab.o: ../../Source/ui/controls/draggable_display/LoopPointDisplayComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LoopPointDisplayComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/CuePointDisplayComponent_b39202be.o: ../../Source/ui/controls/draggable_display/CuePointDisplayComponent.cpp
@@ -294,39 +312,69 @@ $(OBJDIR)/MixerSettingsComponent_8a33bf8b.o: ../../Source/ui/settings/MixerSetti
 	@echo "Compiling MixerSettingsComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/dRowAudio_eb58b466.o: ../../../../dRowAudio/dRowAudio.c
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling dRowAudio.c"
-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/dRowAudio_77fd40e6.o: ../../../../dRowAudio/dRowAudio.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling dRowAudio.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
 $(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling BinaryData.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/JuceLibraryCode1_682c927f.o: ../../JuceLibraryCode/JuceLibraryCode1.cpp
+$(OBJDIR)/dRowAudio_66a49a7e.o: ../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling JuceLibraryCode1.cpp"
+	@echo "Compiling dRowAudio.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/JuceLibraryCode2_683aaa00.o: ../../JuceLibraryCode/JuceLibraryCode2.cpp
+$(OBJDIR)/juce_audio_basics_15b0217e.o: ../../../../../../juce_source/juce/modules/juce_audio_basics/juce_audio_basics.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling JuceLibraryCode2.cpp"
+	@echo "Compiling juce_audio_basics.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/JuceLibraryCode3_6848c181.o: ../../JuceLibraryCode/JuceLibraryCode3.cpp
+$(OBJDIR)/juce_audio_devices_efd90ebc.o: ../../../../../../juce_source/juce/modules/juce_audio_devices/juce_audio_devices.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling JuceLibraryCode3.cpp"
+	@echo "Compiling juce_audio_devices.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/JuceLibraryCode4_6856d902.o: ../../JuceLibraryCode/JuceLibraryCode4.cpp
+$(OBJDIR)/juce_audio_formats_1e5a585c.o: ../../../../../../juce_source/juce/modules/juce_audio_formats/juce_audio_formats.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling JuceLibraryCode4.cpp"
+	@echo "Compiling juce_audio_formats.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_audio_processors_3aa29d36.o: ../../../../../../juce_source/juce/modules/juce_audio_processors/juce_audio_processors.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_audio_processors.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_audio_utils_b936647c.o: ../../../../../../juce_source/juce/modules/juce_audio_utils/juce_audio_utils.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_audio_utils.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_core_b5776660.o: ../../../../../../juce_source/juce/modules/juce_core/juce_core.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_core.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_data_structures_b481521c.o: ../../../../../../juce_source/juce/modules/juce_data_structures/juce_data_structures.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_data_structures.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_events_e22fa2d4.o: ../../../../../../juce_source/juce/modules/juce_events/juce_events.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_events.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_graphics_f8def838.o: ../../../../../../juce_source/juce/modules/juce_graphics/juce_graphics.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_graphics.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_gui_basics_13b83b4.o: ../../../../../../juce_source/juce/modules/juce_gui_basics/juce_gui_basics.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_gui_basics.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_gui_extra_6053123c.o: ../../../../../../juce_source/juce/modules/juce_gui_extra/juce_gui_extra.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_gui_extra.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)

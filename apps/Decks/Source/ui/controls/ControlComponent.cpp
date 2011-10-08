@@ -28,17 +28,17 @@ ControlComponent::ControlComponent ()
 	
 //	tabbedComponent->addTab(T("Library"), Colours::darkgrey, new TableDemoComponent(), true);
 
-	mixerViewport = new CentreAlignViewport(T("mixerViewport"));
+	mixerViewport = new CentreAlignViewport ("mixerViewport");
 	mixerViewport->setScrollBarThickness(10);
 //	mixerViewport->getViewedComponent()->setSize(815, 425);
 	mixer = new Mixer();
 	mixerViewport->setViewedComponent(mixer);
 	AudioEngine::getInstance()->setCurrentMixer(mixer);
-	tabbedComponent->addTab(T("Mixer"), Colour::greyLevel(0.4), mixerViewport, true);
-	tabbedComponent->addTab(T("Library"), Colour::greyLevel(0.4), new Library(), true);
+	tabbedComponent->addTab("Mixer", Colour::greyLevel(0.4), mixerViewport, true);
+	tabbedComponent->addTab("Library", Colour::greyLevel(0.4), new Library(), true);
 	ColumnFileBrowser *columnFileBrowser = new ColumnFileBrowser(new WildcardFileFilter(DecksAudioFormatManager::getInstance()->getWildcardForAllFormats(), "*", "Audio Filter"));
 //	columnFileBrowser->setScrollBarThickness(10);
-	tabbedComponent->addTab(T("Files"), Colour::greyLevel(0.4), columnFileBrowser, true);
+	tabbedComponent->addTab("Files", Colour::greyLevel(0.4), columnFileBrowser, true);
 
 		
 //	fileBrowser = new ColumnFileBrowser(new WildcardFileFilter(deckManager->getDeck(0)->getMainFilePlayer()->getAudioFormatManager()->getWildcardForAllFormats(), T("*"), T("Audio Filter")));

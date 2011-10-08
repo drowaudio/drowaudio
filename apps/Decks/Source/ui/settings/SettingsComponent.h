@@ -10,7 +10,7 @@
 #ifndef _DECKS_SETTINGSCOMPONENT__H_
 #define _DECKS_SETTINGSCOMPONENT__H_
 
-#include <juce/juce.h>
+#include "../JuceLibraryCode/JuceHeader.h"
 #include "../../main/DeckManager.h"
 #include "../../main/AudioEngine.h"
 

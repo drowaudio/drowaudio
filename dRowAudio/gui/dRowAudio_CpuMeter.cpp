@@ -7,39 +7,37 @@
  *
  */
 
-#include "../core/dRowAudio_StandardHeader.h"
+BEGIN_JUCE_NAMESPACE
 
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_CpuMeter.h"
-
-CpuMeter::CpuMeter(AudioDeviceManager* deviceManagerToUse, int updateInterval)
-	:	Label(T("CpuMeter"), T("00.00%")),
-		deviceManager(deviceManagerToUse),
-		updateInterval_(updateInterval),
-		currentCpuUsage(0.0)
+CpuMeter::CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs)
+	: Label ("CpuMeter", "00.00%"),
+	  deviceManager (deviceManagerToUse),
+	  updateInterval (updateIntervalMs),
+	  currentCpuUsage(0.0)
 {
-	if(deviceManagerToUse)
-		startTimer(updateInterval_);
+	if (deviceManagerToUse != nullptr)
+		startTimer (updateInterval);
 }
 
 CpuMeter::~CpuMeter()
 {
 }
 
-
 void CpuMeter::resized()
 {
-	setFont( ((getHeight() < getWidth()*0.24) ? getHeight() : getWidth()*0.24) );
+    const int w = getWidth();
+    const int h = getHeight();
+
+	setFont (((h < (w * 0.24)) ? h : w * 0.24));
 }
 
 void CpuMeter::timerCallback()
 {
 	currentCpuUsage = (deviceManager->getCpuUsage() * 100.0);
-	String usageString(currentCpuUsage, 2);
-	usageString << T("%");
-	setText(usageString, false);
-//	setText(String(currentCpuUsage, 2) <<T("%"), false);
+	String displayString (currentCpuUsage, 2);
+	displayString << "%";
+    
+	setText (displayString, false);
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

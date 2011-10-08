@@ -10,7 +10,7 @@
 #ifndef _TRANSPORT__H_
 #define _TRANSPORT__H_
 
-#include <juce/juce.h>
+#include "../JuceLibraryCode/JuceHeader.h"
 #include "../../../ui/DecksColours.h"
 #include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"

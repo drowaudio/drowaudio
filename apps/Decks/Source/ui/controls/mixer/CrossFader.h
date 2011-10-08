@@ -10,7 +10,7 @@
 #ifndef _DECKS_CROSSFADER__H_
 #define _DECKS_CROSSFADER__H_
 
-#include <juce/juce.h>
+#include "../JuceLibraryCode/JuceHeader.h"
 #include "../../DecksLookAndFeel.h"
 #include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"

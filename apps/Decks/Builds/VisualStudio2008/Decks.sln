@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C++ Express 2008
-Project("{AC561BA9-52CA-A929-9757-C467FC5545F6}") = "Decks", "Decks.vcproj", "{45A5DA3C-2166-31BD-583C-BFF18CF2F895}"
+Project("{34A4E625-643B-071F-B076-1DB527517021}") = "Decks", "Decks.vcproj", "{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,10 +8,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{45A5DA3C-2166-31BD-583C-BFF18CF2F895}.Debug|Win32.ActiveCfg = Debug|Win32
-		{45A5DA3C-2166-31BD-583C-BFF18CF2F895}.Debug|Win32.Build.0 = Debug|Win32
-		{45A5DA3C-2166-31BD-583C-BFF18CF2F895}.Release|Win32.ActiveCfg = Release|Win32
-		{45A5DA3C-2166-31BD-583C-BFF18CF2F895}.Release|Win32.Build.0 = Release|Win32
+		{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}.Debug|Win32.Build.0 = Debug|Win32
+		{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}.Release|Win32.ActiveCfg = Release|Win32
+		{F0BD1080-DA5E-C2E2-7138-589F4419C7C7}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

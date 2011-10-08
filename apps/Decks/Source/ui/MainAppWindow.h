@@ -27,7 +27,6 @@
 #ifndef _MainAppWindow_H__
 #define _MainAppWindow_H__
 
-#include <juce/juce.h>
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../main/CommandIDs.h"
 #include "DecksLookAndFeel.h"

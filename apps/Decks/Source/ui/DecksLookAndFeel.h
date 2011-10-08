@@ -10,7 +10,7 @@
 #ifndef _DECKSLOOKANDFEEL__H_
 #define _DECKSLOOKANDFEEL__H_
 
-#include <juce/juce.h>
+#include "../JuceLibraryCode/JuceHeader.h"
 
 class DecksLookAndFeel :	public LookAndFeel,
 							public DeletedAtShutdown

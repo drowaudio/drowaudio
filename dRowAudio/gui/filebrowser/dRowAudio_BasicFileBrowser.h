@@ -7,10 +7,8 @@
  *
  */
 
-#ifndef _DROWAUDIO_BASICFILEBROWSER__H_
-#define _DROWAUDIO_BASICFILEBROWSER__H_
-
-#include "../../core/dRowAudio_StandardHeader.h"
+#ifndef __DROWAUDIO_BASICFILEBROWSER_H__
+#define __DROWAUDIO_BASICFILEBROWSER_H__
 
 class BasicFileBrowserLookAndFeel : public LookAndFeel,
 									public DeletedAtShutdown
@@ -414,10 +412,12 @@ public:
 	void selectRow(int rowNumber)	{	fileListComponent->selectRow(rowNumber);	}
 	void deselectAllRows()			{	fileListComponent->deselectAllRows();		}
 	
-	void setResizeEnable(bool enableResize)	{	
+	void setResizeEnable(bool enableResize)
+    {	
 		showResizer = enableResize;
 		resizer->setVisible(enableResize);	
 	}
+    
 	bool getResizeEnable()					{	return showResizer;			}
 	
 	int getLongestWidth();
@@ -452,11 +452,8 @@ private:
 	ResizableCornerComponent* resizer;
 	ComponentBoundsConstrainer resizeLimits;
 	BasicFileBrowserLookAndFeel *lookAndFeel;
-
-    BasicFileBrowser (const BasicFileBrowser&);
-    const BasicFileBrowser& operator= (const BasicFileBrowser&);
 	
-	JUCE_LEAK_DETECTOR (BasicFileBrowser);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicFileBrowser);
 };
 
-#endif //_DROWAUDIO_BASICFILEBROWSER__H_
+#endif //__DROWAUDIO_BASICFILEBROWSER_H__

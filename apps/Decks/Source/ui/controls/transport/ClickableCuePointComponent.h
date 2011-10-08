@@ -11,27 +11,28 @@
 #ifndef __CLICKABLECUEPOINTCOMPONENT_H_737B0322__
 #define __CLICKABLECUEPOINTCOMPONENT_H_737B0322__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 class CuePointComponent;
 
 class ClickableCuePointComponent :  public Component,
-                                    public FilteringAudioFilePlayer::Listener,
+                                    public AudioFilePlayer::Listener,
                                     public ValueTree::Listener
 {
 public:
     
-    ClickableCuePointComponent(FilteringAudioFilePlayer* playerToRespondTo);
+    ClickableCuePointComponent(AudioFilePlayer* playerToRespondTo);
     
     ~ClickableCuePointComponent();
     
     void resized();
         
     //==============================================================================
-    void fileChanged (FilteringAudioFilePlayer* player);
+    void fileChanged (AudioFilePlayer* player);
 
     void valueTreePropertyChanged (ValueTree& treeWhosePropertyHasChanged, const Identifier& property);
-    void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded) {}
+    void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded);
     void valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved) {}
     void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved) {}
     void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) {}
@@ -40,7 +41,7 @@ public:
 
 private:
     
-    FilteringAudioFilePlayer *filePlayer;
+    AudioFilePlayer *filePlayer;
     ValueTree cuePointTree;
     OwnedArray<CuePointComponent> cuePoints;
 

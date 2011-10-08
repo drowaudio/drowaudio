@@ -7,46 +7,51 @@
  *
  */
 
-#ifndef _DROWAUDIO_CPUMETER_H_
-#define _DROWAUDIO_CPUMETER_H_
+#ifndef __DROWAUDIO_CPUMETER_H__
+#define __DROWAUDIO_CPUMETER_H__
 
-#include "../core/dRowAudio_StandardHeader.h"
-
+//==============================================================================
 /**
-	Handy class that will display the cpu usage of a given AudioDeviceManager as a percentage.
+	Handy class that will display the cpu usage of a given AudioDeviceManager
+    as a percentage.
  */
 class CpuMeter : public Label,
 				 public Timer
 {
 public:
-	
-	/**	Constructor.
-		You need to provide the device manager to monitor and optionally the refresh rate of the display.
+    //==============================================================================
+	/**	Creates a CpuMeter.
+		You need to provide the device manager to monitor and optionally the refresh
+        rate of the display.
 	 */
-	CpuMeter(AudioDeviceManager* deviceManagerToUse, int updateInterval =50);
+	CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs = 50);
 	
-	///	Descructor.
+	/**	Descructor.
+     */
 	~CpuMeter();
 	
-	/// @internal
+	/** Returns the current cpu usage as a percentage.
+     */
+	double getCurrentCpuUsage()                         {	return currentCpuUsage;                         }
+	
+	/** Changes the colour of the text.
+     */
+	void setTextColour (const Colour &newTextColour)    {	setColour (Label::textColourId, newTextColour);	}
+
+	//==============================================================================
+    /** @internal */
 	void resized();
 
-	/// @internal
+	/** @internal */
 	void timerCallback();
-
-	/// Returns the current cpu usage as a percentage.
-	double getCurrentCpuUsage()	{	return currentCpuUsage;	}
-	
-	/// Changes the colour of the text.
-	void setTextColour(const Colour &newTextColour)	{	setColour(Label::textColourId, newTextColour);	}
 	
 private:
-	
+    //==============================================================================
 	AudioDeviceManager* deviceManager;
-	int updateInterval_;
+	int updateInterval;
 	double currentCpuUsage;
 	
-	JUCE_LEAK_DETECTOR (CpuMeter);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CpuMeter);
 };
 
-#endif	//_DROWAUDIO_CPUMETER_H_
+#endif	//__DROWAUDIO_CPUMETER_H__
