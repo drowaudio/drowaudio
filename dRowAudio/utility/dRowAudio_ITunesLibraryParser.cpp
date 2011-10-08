@@ -34,6 +34,8 @@ void ITunesLibraryParser::run()
         || iTunesDatabase->getStringAttribute ("version") != "1.0")
     {
         jassertfalse; // not a vlid iTunesLibrary file!
+        finished = true;
+        return;
     }
 	
     // find start of tracks library

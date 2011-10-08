@@ -33,7 +33,9 @@ public:
     
     /** Returns all of the settings.
      */
-    SoundTouchProcessor::PlaybackSettings getPlaybackSettings()  {   return soundTouchProcessor.getPlaybackSettings();    }
+    SoundTouchProcessor::PlaybackSettings getPlaybackSettings() {   return soundTouchProcessor.getPlaybackSettings();    }
+    
+    inline const CriticalSection& getBufferLock()               {   return bufferStartPosLock;  }
     
     //==============================================================================
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate);

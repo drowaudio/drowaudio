@@ -81,7 +81,10 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
         // copy old parameters
         SoundTouchProcessor::PlaybackSettings settings;
         if (soundTouchAudioSource != nullptr)
+        {
             settings = soundTouchAudioSource->getPlaybackSettings();
+            soundTouchAudioSource = nullptr;
+        }
 		soundTouchAudioSource = new SoundTouchAudioSource (currentAudioFileSource,
                                                            bufferingTimeSliceThread,
                                                            false,
