@@ -50,7 +50,7 @@ BEGIN_JUCE_NAMESPACE
     #include "audio/dRowAudio_AudioUtility.h"
 #endif
 #ifndef __DROWAUDIO_FIFOBUFFER_H__
-    #include "audio/dRowAudio_FIFOBuffer.h"
+    #include "audio/dRowAudio_FifoBuffer.h"
 #endif
 //#include "src/audio/dRowAudio_CircularBuffer.h"
 //#include "src/audio/dRowAudio_Buffer.h"
