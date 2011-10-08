@@ -11,13 +11,14 @@
 #ifndef __CUEPOINTLISTBOXMODEL_H_5CE7BADD__
 #define __CUEPOINTLISTBOXMODEL_H_5CE7BADD__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 class CuePointListBoxModel :    public ListBoxModel
 {
 public:
     
-    CuePointListBoxModel(ListBox* owner, FilteringAudioFilePlayer* filePlayer);
+    CuePointListBoxModel(ListBox* owner, AudioFilePlayer* filePlayer);
     
     ~CuePointListBoxModel();
         
@@ -42,7 +43,7 @@ private:
     
     ValueTree dataList;
     ListBox* owner;
-    FilteringAudioFilePlayer* filePlayer;
+    AudioFilePlayer* filePlayer;
 };
 
 #endif  // __CUEPOINTLISTBOXMODEL_H_5CE7BADD__

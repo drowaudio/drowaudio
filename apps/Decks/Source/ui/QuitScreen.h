@@ -11,7 +11,6 @@
 #ifndef __QUITSCREEN_H_4109308A__
 #define __QUITSCREEN_H_4109308A__
 
-#include <dRowAudio/dRowAudio.h>
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "DecksLookAndFeel.h"
 

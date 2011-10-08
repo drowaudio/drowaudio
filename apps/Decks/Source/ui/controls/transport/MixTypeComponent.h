@@ -11,7 +11,8 @@
 #ifndef __MIXTYPECOMPONENT_H_540FFBAB__
 #define __MIXTYPECOMPONENT_H_540FFBAB__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "../../../main/Settings.h"
 
 class MixTypeComponent : public Component

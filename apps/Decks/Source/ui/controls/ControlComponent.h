@@ -10,7 +10,8 @@
 #ifndef _DECKS_CONTROLCOMPONENT__H_
 #define _DECKS_CONTROLCOMPONENT__H_
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "ControlComponent.h"
 //#include "TableDemo.h"
 //#include "mixer/MixerComponent.h"

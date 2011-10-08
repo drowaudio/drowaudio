@@ -11,25 +11,26 @@
 #ifndef __CUEPOINTLIST_H_8C79EF1F__
 #define __CUEPOINTLIST_H_8C79EF1F__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "CuePointListBoxModel.h"
 
 class CuePointList :    public Component,
-                        public FilteringAudioFilePlayer::Listener
+                        public AudioFilePlayer::Listener
 {
 public:
     
-    CuePointList(FilteringAudioFilePlayer* filePlayer);
+    CuePointList(AudioFilePlayer* filePlayer);
     
     ~CuePointList();
     
     void resized();
     
-    void fileChanged (FilteringAudioFilePlayer *player);
+    void fileChanged (AudioFilePlayer *player);
     
 private:
         
-    FilteringAudioFilePlayer* filePlayer;
+    AudioFilePlayer* filePlayer;
     ValueTree cuePointsTree;
     CuePointListBoxModel model;
     ListBox cuePointsList;

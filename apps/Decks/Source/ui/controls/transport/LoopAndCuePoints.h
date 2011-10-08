@@ -11,14 +11,15 @@
 #ifndef __LOOPANDCUEPOINTS_H_1F853467__
 #define __LOOPANDCUEPOINTS_H_1F853467__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "../../DecksLookAndFeel.h"
 
 class LoopAndCuePoints : public Component
 {
 public:
     
-	LoopAndCuePoints(FilteringAudioFilePlayer* filePlayer);
+	LoopAndCuePoints(AudioFilePlayer* filePlayer);
 	
 	~LoopAndCuePoints();
 	

@@ -11,7 +11,8 @@
 #ifndef __TRACKSUGGESTIONTABLE_H_1F8623__
 #define __TRACKSUGGESTIONTABLE_H_1F8623__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "TrackSuggestions.h"
 
 class TrackSuggestionTable : public Component,
@@ -60,7 +61,7 @@ public:
 	// Call this to sort the table displaying only the items matched
 	void setFilterText (String filterText);
 	
-	const var getDragSourceDescription (const SparseSet< int > &currentlySelectedRows);
+	var getDragSourceDescription (const SparseSet< int > &currentlySelectedRows);
 
     //==============================================================================
 	

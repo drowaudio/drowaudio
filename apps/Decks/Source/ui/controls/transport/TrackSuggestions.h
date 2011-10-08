@@ -11,7 +11,8 @@
 #ifndef __TRACKSUGGESTIONS_H_89C95328__
 #define __TRACKSUGGESTIONS_H_89C95328__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "MixTypeComponent.h"
 
 class TrackSuggestionTable;

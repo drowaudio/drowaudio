@@ -11,7 +11,8 @@
 #ifndef __DECKSAUDIOFORMATMANAGER_H_70B8BF54__
 #define __DECKSAUDIOFORMATMANAGER_H_70B8BF54__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 class DecksAudioFormatManager : public AudioFormatManager,
 								public DeletedAtShutdown

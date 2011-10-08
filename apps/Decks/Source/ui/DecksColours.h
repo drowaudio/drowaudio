@@ -11,7 +11,8 @@
 #ifndef __DECKSCOLOURS_H_93DD6ACC__
 #define __DECKSCOLOURS_H_93DD6ACC__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 class DecksColours	:	public DeletedAtShutdown
 {

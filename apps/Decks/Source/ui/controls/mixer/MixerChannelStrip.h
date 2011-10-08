@@ -10,7 +10,8 @@
 #ifndef _DECKS_MIXERCHANNELSTRIP__H_
 #define _DECKS_MIXERCHANNELSTRIP__H_
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "../../DecksLookAndFeel.h"
 #include "../../../main/Settings.h"
 #include "../../../main/DeckManager.h"

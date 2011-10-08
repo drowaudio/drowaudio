@@ -10,7 +10,8 @@
 #ifndef _TRACKINFO_H_
 #define _TRACKINFO_H_
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "../../DecksColours.h"
 #include "../../DecksLookAndFeel.h"
 #include "TrackSuggestions.h"
@@ -19,12 +20,12 @@ class TrackInfo : public Component,
 				  public Button::Listener,
 				  public ChangeListener,
 				  public Timer,
-				  public FilteringAudioFilePlayer::Listener/*,
+				  public AudioFilePlayer::Listener/*,
 				  public Thread*/
 {
 public:
 	
-	TrackInfo(int deckNo_, FilteringAudioFilePlayer* filePlayer_);
+	TrackInfo(int deckNo_, AudioFilePlayer* filePlayer_);
 	~TrackInfo();
 	
 	//=================================================
@@ -35,9 +36,9 @@ public:
 	//=================================================
 	void buttonClicked (Button* button);
 	
-	void fileChanged (FilteringAudioFilePlayer *player);
+	void fileChanged (AudioFilePlayer *player);
 
-	void resamplingRatioChanged(FilteringAudioFilePlayer *player);
+	void resamplingRatioChanged(AudioFilePlayer *player);
 
 	void changeListenerCallback(ChangeBroadcaster* changedObject);
 	
@@ -50,7 +51,7 @@ public:
 private:
 	
 	const int deckNo;
-	FilteringAudioFilePlayer *filePlayer;
+	AudioFilePlayer *filePlayer;
 	
 	double time, fileLength, bpm;
 	String currentTime, remainingTime, currentBpm, fileName, trackName, artistName;

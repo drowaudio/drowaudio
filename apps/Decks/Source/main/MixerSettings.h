@@ -11,7 +11,7 @@
 #ifndef __DECKS_MIXERSETTINGS_H_F14E7836__
 #define __DECKS_MIXERSETTINGS_H_F14E7836__
 
-#include <juce/juce.h>
+#include "../JuceLibraryCode/JuceHeader.h"
 
 // use these macros to shorten getting the various settings
 #define CHANNEL_SETTING(setting) MixerSettings::ChannelSettings::Names[MixerSettings::ChannelSettings::setting]

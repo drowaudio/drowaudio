@@ -11,7 +11,8 @@
 #ifndef __MIXERSETTINGSCOMPONENT_H_E5B212E2__
 #define __MIXERSETTINGSCOMPONENT_H_E5B212E2__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 class MixerSettingsComponent  :	public Component
 {

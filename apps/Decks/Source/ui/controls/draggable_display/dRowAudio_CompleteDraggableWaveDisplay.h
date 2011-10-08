@@ -11,7 +11,8 @@
 #ifndef __DROWAUDIO_COMPLETEDRAGGABLEWAVEDISPLAY_H_A4879A19__
 #define __DROWAUDIO_COMPLETEDRAGGABLEWAVEDISPLAY_H_A4879A19__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 
 class PlayheadComponent : public Component
 {
@@ -60,7 +61,7 @@ class CompleteDraggableWaveDisplay :	public Component,
 										public MultiTimer,
                                         public ChangeListener,
 										public AsyncUpdater,
-										public FilteringAudioFilePlayer::Listener,
+										public AudioFilePlayer::Listener,
 										public DragAndDropTarget,
 										public FileDragAndDropTarget
 {
@@ -81,7 +82,7 @@ public:
 	 the current sample rate. This can later be changed with setSampleRate.
 	 */
 	explicit CompleteDraggableWaveDisplay (int sourceSamplesPerThumbnailSample,
-										   FilteringAudioFilePlayer* sourceToBeUsed,
+										   AudioFilePlayer* sourceToBeUsed,
 										   MultipleAudioThumbnailCache *cacheToUse =nullptr);
 	
 	/** Destructor.
@@ -104,7 +105,7 @@ public:
      */
     void changeListenerCallback (ChangeBroadcaster* source);
     
-	void fileChanged (FilteringAudioFilePlayer *player);
+	void fileChanged (AudioFilePlayer *player);
 	
 	/**	Re-freshes the waveform section times and re-draws the images for them.
 	 */
@@ -185,7 +186,7 @@ protected:
 	
 	CriticalSection lock;
 	
-	FilteringAudioFilePlayer* filePlayer;
+	AudioFilePlayer* filePlayer;
 	double fileLengthSecs, oneOverFileLength, currentSampleRate, oneOverSampleRate, timePerPixel;
 	float zoomRatio, oneOverZoomRatio;
 	float playheadPos;

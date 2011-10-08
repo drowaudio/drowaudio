@@ -11,7 +11,6 @@
 #ifndef __TITLEBARCOMPONENT_H_63C7CAC7__
 #define __TITLEBARCOMPONENT_H_63C7CAC7__
 
-#include <dRowAudio/dRowAudio.h>
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "DecksLookAndFeel.h"
 

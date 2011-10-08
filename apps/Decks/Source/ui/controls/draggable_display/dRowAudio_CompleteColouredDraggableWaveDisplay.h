@@ -11,7 +11,8 @@
 #ifndef __DROWAUDIO_COMPLETECOLOUREDDRAGGABLEWAVEDISPLAY_H_2C4DA4A2__
 #define __DROWAUDIO_COMPLETECOLOUREDDRAGGABLEWAVEDISPLAY_H_2C4DA4A2__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "dRowAudio_CompleteDraggableWaveDisplay.h"
 
 /**
@@ -33,7 +34,7 @@ public:
 	 the current sample rate. This can later be changed with setSampleRate.
 	 */
 	explicit CompleteColouredDraggableWaveDisplay (int sourceSamplesPerThumbnailSample,
-                                           FilteringAudioFilePlayer* sourceToBeUsed,
+                                           AudioFilePlayer* sourceToBeUsed,
                                            MultipleAudioThumbnailCache *cacheToUse =nullptr,
                                            ColouredAudioThumbnail *thumbnailToUse =nullptr);
 	

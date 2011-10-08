@@ -11,7 +11,8 @@
 #ifndef __DECKS_SETTINGS_H_101B9845__
 #define __DECKS_SETTINGS_H_101B9845__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "MixerSettings.h"
 #include "UISettings.h"
 

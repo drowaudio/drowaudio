@@ -11,7 +11,8 @@
 #ifndef __LIBRARY_H_84EB1D3D__
 #define __LIBRARY_H_84EB1D3D__
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "PrepareTable.h"
 
 class Library : public Component,

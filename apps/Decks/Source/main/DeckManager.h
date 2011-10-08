@@ -10,7 +10,8 @@
 #ifndef _DeckManager__H_
 #define _DeckManager__H_
 
-#include <dRowAudio/dRowAudio.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "Settings.h"
 #include "DecksAudioFormatManager.h"
 
@@ -23,12 +24,12 @@ public:
 	~Deck();
 	
 	int getDeckNo()										{	return deckNo;				}
-//	FilteringAudioFilePlayer* getFilePlayer()			{	return filePlayer;			}
-	FilteringAudioFilePlayer* getMainFilePlayer()		{	return filePlayer;			}
+//	AudioFilePlayer* getFilePlayer()			{	return filePlayer;			}
+	AudioFilePlayer* getMainFilePlayer()		{	return filePlayer;			}
     
     MultipleAudioThumbnailCache* getThumbnailCache()    {   return thumbnailCache;           }
     ColouredAudioThumbnail* getThumbnail()              {   return thumbnail;           }
-	//FilteringAudioFilePlayer* getMonitorFilePlayer()	{	return monitorFilePlayer;	}
+	//AudioFilePlayer* getMonitorFilePlayer()	{	return monitorFilePlayer;	}
 		
 	void startFromZero()
 	{
@@ -116,10 +117,10 @@ private:
 	CriticalSection lock;
 	ValueTree deckTree;
 	const int deckNo;
-	ScopedPointer<FilteringAudioFilePlayer> filePlayer;
+	ScopedPointer<AudioFilePlayer> filePlayer;
     ScopedPointer<MultipleAudioThumbnailCache> thumbnailCache;
     ScopedPointer<ColouredAudioThumbnail> thumbnail;
-	//ScopedPointer<FilteringAudioFilePlayer> monitorFilePlayer;
+	//ScopedPointer<AudioFilePlayer> monitorFilePlayer;
 		
 //	void callListeners();
 //	SortedSet <Listener*> listeners;
