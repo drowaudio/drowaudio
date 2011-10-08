@@ -86,11 +86,11 @@
 #include "gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
 #include "gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.cpp"
-//#include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.cpp"
+#include "gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.cpp"
 #include "gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.cpp"
 #include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp"
-//#include "src/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.cpp"
+#include "gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_TriBandDraggableWaveDisplay.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_SwitchableDraggableWaveDisplay.cpp"
 

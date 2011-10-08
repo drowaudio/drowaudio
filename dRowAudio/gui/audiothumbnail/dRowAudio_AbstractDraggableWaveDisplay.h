@@ -8,46 +8,10 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_ABSTRACTDRAGGABLEWAVEDISPLAY_H_A4879A19__
-#define __DROWAUDIO_ABSTRACTDRAGGABLEWAVEDISPLAY_H_A4879A19__
+#ifndef __DROWAUDIO_ABSTRACTDRAGGABLEWAVEDISPLAY_H__
+#define __DROWAUDIO_ABSTRACTDRAGGABLEWAVEDISPLAY_H__
 
-#include "../../core/dRowAudio_StandardHeader.h"
-
-#include "../../audio/dRowAudio_FilteringAudioFilePlayer.h"
-#include "dRowAudio_MultipleAudioThumbnailCache.h"
-#include "../../utility/dRowAudio_StateVariable.h"
-
-class PlayheadComponent : public Component
-{
-public:
-    PlayheadComponent()
-    {
-    }
-    
-    void resized()
-    {
-        const int w = 3;
-        const int h = getHeight();
-        setSize(w, getHeight());
-        playheadImage = Image(Image::RGB, w, h, true);
-        Graphics g(playheadImage);
-        g.setColour (Colours::black);
-        g.drawVerticalLine(1, 0, h);
-        g.drawVerticalLine(3, 0, h);
-        
-        g.setColour(Colours::white);
-        g.drawVerticalLine(1, 0, h);	        
-    }
-    
-    void paint(Graphics& g)
-    {
-        g.drawImageAt(playheadImage, 0, playheadImage.getWidth());
-    }
-    
-private:
-    Image playheadImage;
-};
-
+//==============================================================================
 /**
 	A base class to display the waveform of an audio file.
  
@@ -64,36 +28,26 @@ class AbstractDraggableWaveDisplay :	public Component,
 										public MultiTimer,
                                         public ChangeListener,
 										public AsyncUpdater,
-										public FilteringAudioFilePlayer::Listener,
-										public DragAndDropTarget,
-										public FileDragAndDropTarget
+										public AudioFilePlayer::Listener
 {
 public:
-	
-	enum WavefomImages {
-		previousImage = 0,
-		currentImage,
-		nextImage,
-		numWaveformImages
-	};
-	
+    //==============================================================================
 	/// Used to start and stop the various internal timers
 	enum
 	{
 		waveformUpdated,
-		waveformLoading,
-		waveformMoved,
-		waveformZoomChanged
+		waveformMoved
 	};
 	
+    //==============================================================================
 	/**
 	 Creates the display.
 	 The file player associated with the display must be passed in along with
 	 the current sample rate. This can later be changed with setSampleRate.
 	 */
 	explicit AbstractDraggableWaveDisplay (int sourceSamplesPerThumbnailSample,
-										   FilteringAudioFilePlayer* sourceToBeUsed,
-										   MultipleAudioThumbnailCache *cacheToUse =0);
+										   AudioFilePlayer* sourceToBeUsed,
+										   MultipleAudioThumbnailCache *cacheToUse =nullptr);
 	
 	/** Destructor.
 		Your subclass will need to call signalThreadShouldExit() in its destructor as
@@ -101,82 +55,67 @@ public:
 	 */
 	~AbstractDraggableWaveDisplay();
 	
-	//====================================================================================
-	void resized();
-	
-	void paint (Graphics &g);
-	
-	//====================================================================================
-	void timerCallback (const int timerId);
-		
-    /** Called when your waveform source has updated.
-        If you are using an AudioThumbnail equivalent make sure you register this class
-        as a listener to it.
-     */
-    void changeListenerCallback (ChangeBroadcaster* source);
-    
-	void fileChanged (FilteringAudioFilePlayer *player);
-	
-	/**	Re-freshes the waveform section times and re-draws the images for them.
-	 */
-	void markAsDirty();
-	
-    void run();
-    
-	/**	Used to handle repaints.
-	 */
-	void handleAsyncUpdate();
-	
-	//====================================================================================
+    //====================================================================================
 	/** Sets the current horizontal zoom.
-		This must be greater than 0 and the larger the number the more zoomed in the wave will be.
-		A value of 1 means that the wave is being filled from its cache rather than having to
-		re-read the source file.
+     This must be greater than 0 and the larger the number the more zoomed in the wave will be.
+     A value of 1 means that the wave is being filled from its cache rather than having to
+     re-read the source file.
 	 */
-	void setZoomFactor (float newZoomFactor);
+	inline void setZoomFactor (float newZoomFactor);
 	
 	/**
 	 Sets the offset of the white line that marks the current position.
 	 This is as a fraction of the width of the display.
 	 */
-	void setPlayheadPosition (float newPlayheadPosition);
+	inline void setPlayheadPosition (float newPlayheadPosition);
 	
 	/// Turns dragging to reposition the transport on or off
-	void setDraggable (bool isWaveformDraggable);
+	inline void setDraggable (bool isWaveformDraggable);
 	
 	/// Returns true if dragging the waveform will reposition the audio source 
-	bool getDraggable();
+	inline bool getDraggable()              {   return draggable;   }
+	    
+	//====================================================================================
+	/** @internal */
+	void resized();
 	
-	//==============================================================================
-	void mouseDown (const MouseEvent &e);
+	/** @internal */
+	void paint (Graphics &g);
 	
+	/** @internal */
+    void mouseDown (const MouseEvent &e);
+	
+	/** @internal */
 	void mouseUp (const MouseEvent &e);
-	
-	//==============================================================================
-	bool isInterestedInFileDrag (const StringArray &files);
-	void fileDragEnter (const StringArray &files, int x, int y);
-	void fileDragExit (const StringArray &files);
-	void filesDropped (const StringArray &files, int x, int y);
-	
-	//==============================================================================
-	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
-	void itemDragExit (const SourceDetails& dragSourceDetails);
-	void itemDropped (const SourceDetails& dragSourceDetails);
-
-	//==============================================================================	
-	
+    
+	//====================================================================================
+    /** @internal. */
+	void timerCallback (const int timerId);
+		    
+    /** @internal. */
+	void fileChanged (AudioFilePlayer *player);
+		
+    /** @internal. */
+    void run();
+    
+    /** @internal. */
+	void handleAsyncUpdate();
+    
+    /** Called when your waveform source has updated.
+     If you are using an AudioThumbnail equivalent make sure you register this class
+     as a listener to it.
+     */
+    void changeListenerCallback (ChangeBroadcaster* source);
+    
+		
 protected:
-	
+	//==============================================================================	
 	struct WaveformSection {
-		double startTime;
         double lastTimeDrawn;
-		bool needToRepaint;
+		bool needsRepaint;
         Image img;
 	};
 	
-	double pixelsToTime(double numPixels);
-	double timeToPixels(double timeInSecs);
-
 	/**	This is called when a new file is loaded and should be used to pass
 		the information on to any thumbnails you may be holding.
 	 */
@@ -186,26 +125,32 @@ protected:
 		This must update the numSamplesFinished and the waveformIsFullyLoaded
 		members or the timers will run forever.
 	 */
-	virtual void thumbnailLoading(bool &isFullyLoaded, int64 &numFinished) =0;
+	virtual void thumbnailLoading (bool &isFullyLoaded, int64 &numFinished) =0;
 	
 	/**	This is called when a waveform image needs to refresh its contents.
 		eg. the section of the waveform it is displaying.
 	 */
-	virtual void refreshWaveform(int waveformNumber) =0;
+	virtual void refreshWaveform() =0;
 
-	void createNewImagesForAllWaveforms();
-	void createNewImageForWaveform(int waveformNumber);
-	void cycleImages(bool cycleForwards);
-	void refreshWaveformsOnBackgroundThread();
-	
-	CriticalSection lock;
-	
-	FilteringAudioFilePlayer* filePlayer;
-	double fileLengthSecs, oneOverFileLength, currentSampleRate, oneOverSampleRate, timePerPixel;
-	StateVariable<int> samplesPerPixel;
-	StateVariable<float> zoomFactor;
+    /** Tells the waveform to refresh on the background thread.
+     */
+	inline void refreshWaveformsOnBackgroundThread();
+
+    /** Converts a number of pixels to a time at the current resolution. 
+     */
+    inline double pixelsToTime (double numPixels);
+
+    /** Converts a time to a number of pixels at the current resolution. 
+     */
+	inline double timeToPixels (double timeInSecs);
+
+    //==============================================================================	
+    AudioFilePlayer* filePlayer;
+	double fileLengthSecs, oneOverFileLength;
+    double currentSampleRate, oneOverSampleRate;
+    double timePerPixel;
+	float zoomRatio, oneOverZoomRatio;
 	float playheadPos;
-	bool shouldRefreshWaveforms;
 	
 	bool waveformIsFullyLoaded;
 	
@@ -214,18 +159,19 @@ protected:
 	AudioFormatManager *formatManager;
 	OptionalScopedPointer<MultipleAudioThumbnailCache> thumbnailCache;
 	int64 numSamplesFinished;
-    bool cycleDirection;
 
+    CriticalSection lock;
     Image playheadImage;
-	OwnedArray<WaveformSection> waveImgs;
+	WaveformSection waveformImage;
 
 	bool isMouseDown, isDraggable, shouldBePlaying, mouseShouldTogglePlay;
 	StateVariable<int> mouseX, movedX;
-
+    
 	friend class SwitchableDraggableWaveDisplay;
 	
 private:
+    
 	JUCE_LEAK_DETECTOR (AbstractDraggableWaveDisplay);
 };
 
-#endif  // __DROWAUDIO_ABSTRACTDRAGGABLEWAVEDISPLAY_H_A4879A19__
+#endif  // __DROWAUDIO_ABSTRACTDRAGGABLEWAVEDISPLAY_H__

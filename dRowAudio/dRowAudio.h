@@ -131,9 +131,13 @@ BEGIN_JUCE_NAMESPACE
 #ifndef __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H__
     #include "gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.h"
 #endif
-//#include "src/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.h"
+#ifndef __DROWAUDIO_ABSTRACTDRAGGABLEWAVEDISPLAY_H__
+    #include "gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.h"
+#endif
 //#include "src/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h"
-//#include "src/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.h"
+#ifndef __DROWAUDIO_COLOUREDDRAGGABLEWAVEDISPLAY_H__
+    #include "gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.h"
+#endif
 //#include "src/gui/audiothumbnail/dRowAudio_TriBandDraggableWaveDisplay.h"
 //#include "src/gui/audiothumbnail/dRowAudio_SwitchableDraggableWaveDisplay.h"
 

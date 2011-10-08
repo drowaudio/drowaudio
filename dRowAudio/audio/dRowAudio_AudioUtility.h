@@ -51,7 +51,7 @@ forcedinline static double samplesToMs(int64 numSamples, double sampleRate)
 /**
  Converts a number of samples to a time in seconds for a given sample rate.
  */
-forcedinline static double samplesToSeconds(int64 numSamples, double sampleRate)
+forcedinline static double samplesToSeconds (int64 numSamples, double sampleRate)
 {	return (numSamples / sampleRate);	}
 
 /** Converts a number of semitones to a given pitch ratio.
