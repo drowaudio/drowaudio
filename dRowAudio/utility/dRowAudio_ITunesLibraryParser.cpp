@@ -30,10 +30,15 @@ void ITunesLibraryParser::run()
 {
     // parse the iTunes xml first
     iTunesDatabase = XmlDocument::parse (iTunesLibraryFile);
+    if (! iTunesDatabase->hasTagName ("plist")
+        || iTunesDatabase->getStringAttribute ("version") != "1.0")
+    {
+        jassertfalse; // not a vlid iTunesLibrary file!
+    }
 	
-	// find start of tracks library
-	iTunesLibraryTracks = iTunesDatabase->getFirstChildElement()->getChildByName ("dict");
-	currentElement = iTunesLibraryTracks->getFirstChildElement();
+    // find start of tracks library
+    iTunesLibraryTracks = iTunesDatabase->getFirstChildElement()->getChildByName ("dict");
+    currentElement = iTunesLibraryTracks->getFirstChildElement();
     
     // find any existing elements
     Array<int> existingIds;
@@ -64,6 +69,8 @@ void ITunesLibraryParser::run()
             if (currentElement->getTagName() == "key")
             {
                 currentItemId = currentElement->getAllSubText().getIntValue();
+                
+                ScopedLock sl (lock);
                 
                 if (existingIds.contains (currentItemId))
                 {

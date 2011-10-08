@@ -32,7 +32,19 @@
 
 //==============================================================================
 /**
-    This class shows how to implement a TableListBoxModel to show in a TableListBox.
+    Table to display and interact with a music library.
+    The easiest way to use this is to load a default or saved iTunes library like so:
+    
+    @code
+        MusicLibraryTable table;
+        table.setLibraryToUse (ITunesLibrary::getInstance());
+
+        File parsedLibraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("saved_library_file.xml"));
+        ValueTree libraryTree (readValueTreeFromFile (parsedLibraryFile));
+ 
+        ITunesLibrary::getInstance()->setLibraryTree (libraryTree);
+        ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
+    @endcode
 */
 class MusicLibraryTable	: public Component,
                           public TableListBoxModel,
@@ -40,6 +52,12 @@ class MusicLibraryTable	: public Component,
 {
 public:
     //==============================================================================
+    /** Create the MusicLibraryTable.
+     
+        This will initially be blank, set an ITunesLibrary to use first with
+        setLibraryToUse(). The table will then be continually updated as the library
+        is parsed.
+     */
     MusicLibraryTable();
 
     /** Destructor.
@@ -101,14 +119,16 @@ private:
     Font font;	
 	ITunesLibrary* currentLibrary;
     TableListBox table;
-
+    String currentFilterText;
+    
     ValueTree dataList;
 	ValueTree filteredDataList;
-//    Array<int> filteredDataList;
-    
+//    Array<ValueTree> filteredArray;
+        
     int filteredNumRows;
 	bool finishedLoading;
 	
+    void updateFilteredSortOrder();
     //ValueTree getRowFromFilteredList (int rowNumber);
 };
 
