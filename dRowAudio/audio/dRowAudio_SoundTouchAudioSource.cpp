@@ -62,7 +62,7 @@ void SoundTouchAudioSource::prepareToPlay (int samplesPerBlockExpected, double s
         
         backgroundThread.addTimeSliceClient (this);
         
-        while (numBuffered < numberOfSamplesToBuffer)
+        while (soundTouchProcessor.getNumReady() < numberOfSamplesToBuffer)
         {
             backgroundThread.moveToFrontOfQueue (this);
             Thread::sleep (5);
@@ -95,8 +95,8 @@ void SoundTouchAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
                                      info.numSamples, info.startSample);
 
     const ScopedLock sl (bufferStartPosLock);
-    numBuffered -= info.numSamples;
-    nextPlayPos += info.numSamples;
+    numBuffered -= info.numSamples * soundTouchProcessor.getNumSamplesRequiredRatio();
+    nextPlayPos += info.numSamples * soundTouchProcessor.getNumSamplesRequiredRatio();
     
     if (source->isLooping() && nextPlayPos > 0)
         nextPlayPos %= source->getTotalLength();

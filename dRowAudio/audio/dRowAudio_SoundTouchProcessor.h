@@ -108,7 +108,7 @@ public:
     
     /** Returns the ratio of input samples required per ouput sample, 1.0 being the same.
      */
-    double getNumSamplesRequiredRatio()                         {   return settings.rate * settings.tempo;      }
+    double getNumSamplesRequiredRatio()                         {   return (double) soundTouch.getEffectiveRate() * soundTouch.getEffectiveTempo();      }
     
     /** Returns the number of samples in the pipeline but currently unprocessed.
      */

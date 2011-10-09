@@ -250,6 +250,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -288,22 +290,25 @@
 								<string>04A7AEA7274F6CB6187148AC</string>
 								<string>D1F674DBA143C78553B0C3F3</string>
 								<string>5EF03C29C4916C0830B8A8DF</string>
-								<string>6D68A8EAB3B540A330327DAF</string>
+								<string>9250EBFE4B99BC63297BBBB9</string>
+								<string>49DAB8DE81F66EB2DF299C7C</string>
+								<string>80B7B980A034A34DF18C1632</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>15</integer>
-									<integer>11</integer>
-									<integer>3</integer>
+									<integer>36</integer>
+									<integer>29</integer>
+									<integer>25</integer>
+									<integer>12</integer>
 									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {274, 660}}</string>
+							<string>{{0, 183}, {274, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -333,14 +338,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AudioEngine.cpp</string>
+								<string>dRowAudio_CompleteDraggableWaveDisplay.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -348,11 +351,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AudioEngine.cpp</string>
+										<string>dRowAudio_CompleteDraggableWaveDisplay.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5563C6D91440E329003AAEDD</string>
+										<string>5563C7C51441E376003AAEDD</string>
 										<key>history</key>
 										<array>
 											<string>5563C5761440A910003AAEDD</string>
@@ -413,9 +416,6 @@
 											<string>5563C5B21440A910003AAEDD</string>
 											<string>5563C5B31440A910003AAEDD</string>
 											<string>5563C5B41440A910003AAEDD</string>
-											<string>5563C5B51440A910003AAEDD</string>
-											<string>5563C5B61440A910003AAEDD</string>
-											<string>5563C5B71440A910003AAEDD</string>
 											<string>5563C5B91440A910003AAEDD</string>
 											<string>5563C5BA1440A910003AAEDD</string>
 											<string>5563C5BB1440A910003AAEDD</string>
@@ -437,8 +437,11 @@
 											<string>5563C6361440C0F7003AAEDD</string>
 											<string>5563C6371440C0F7003AAEDD</string>
 											<string>5563C6381440C0F7003AAEDD</string>
-											<string>5563C6D71440E329003AAEDD</string>
-											<string>5563C6D81440E329003AAEDD</string>
+											<string>5563C769144107EB003AAEDD</string>
+											<string>5563C76A144107EB003AAEDD</string>
+											<string>5563C76B144107EB003AAEDD</string>
+											<string>5563C76C144107EB003AAEDD</string>
+											<string>5563C76D144107EB003AAEDD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -619,7 +622,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>339796777.535106</real>
+	<real>339862390.50356901</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>

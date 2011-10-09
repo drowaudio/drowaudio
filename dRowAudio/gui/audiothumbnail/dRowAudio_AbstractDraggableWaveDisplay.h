@@ -73,7 +73,7 @@ public:
 	inline void setDraggable (bool isWaveformDraggable);
 	
 	/// Returns true if dragging the waveform will reposition the audio source 
-	inline bool getDraggable()              {   return draggable;   }
+	inline bool getDraggable()              {   return isDraggable;   }
 	    
 	//====================================================================================
 	/** @internal */
