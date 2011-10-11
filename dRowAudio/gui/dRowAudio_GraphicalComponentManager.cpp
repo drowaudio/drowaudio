@@ -7,14 +7,11 @@
 
   ==============================================================================
 */
-#include "../core/dRowAudio_StandardHeader.h"
 
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_GraphicalComponentManager.h"
+BEGIN_JUCE_NAMESPACE
 
 GraphicalComponentManager::GraphicalComponentManager()
-: TimeSliceThread ("graphical component manager")
+    : TimeSliceThread ("Graphical Component Manager Thread")
 {
 	startThread(1);
 }
@@ -23,14 +20,14 @@ GraphicalComponentManager::~GraphicalComponentManager()
 {
 }
 
-void GraphicalComponentManager::addGraphicalComponent(GraphicalComponent *component)
+void GraphicalComponentManager::addGraphicalComponent (GraphicalComponent* component)
 {
-	addTimeSliceClient(component);
+	addTimeSliceClient (component);
 }
 
-void GraphicalComponentManager::removeGraphicalComponent(GraphicalComponent *component)
+void GraphicalComponentManager::removeGraphicalComponent (GraphicalComponent* component)
 {
-	removeTimeSliceClient(component);
+	removeTimeSliceClient (component);
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

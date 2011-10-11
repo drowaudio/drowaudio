@@ -61,12 +61,14 @@ bool AudioFileDropTarget::hitTest (int x, int y)
 void AudioFileDropTarget::mouseEnter (const MouseEvent& e)
 {
     dragTested = true;
+
     repaint();
 }
 
 void AudioFileDropTarget::mouseExit (const MouseEvent& e)
 {
     dragTested = false;
+    
     repaint();
 }
 
@@ -120,7 +122,7 @@ void AudioFileDropTarget::itemDropped (const SourceDetails& dragSourceDetails)
             
             if (newFile.existsAsFile()) 
             {
-                //audioFilePlayer->setLibraryEntry (itemTree);
+                audioFilePlayer->setLibraryEntry (itemTree);
                 audioFilePlayer->setFile (newFile.getFullPathName());
             }
         }

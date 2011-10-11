@@ -35,6 +35,16 @@ public:
      */
     SoundTouchProcessor::PlaybackSettings getPlaybackSettings() {   return soundTouchProcessor.getPlaybackSettings();    }
     
+    /** Sets whether the source should play forwards or backwards.
+     */
+	void setPlayDirection (bool shouldPlayForwards)	{	isForwards = shouldPlayForwards;	}
+    
+    /** Returns true if the source is playing forwards.
+     */
+	inline bool getPlayDirection ()						{	return isForwards;	}
+	
+    /** Returns the lock used when setting the buffer read positions.
+     */
     inline const CriticalSection& getBufferLock()               {   return bufferStartPosLock;  }
     
     //==============================================================================
@@ -55,6 +65,9 @@ public:
     /** Implements the PositionableAudioSource method. */
     bool isLooping() const                      { return source->isLooping();       }
     
+    /** Implements the PositionableAudioSource method. */
+    void setLooping (bool shouldLoop)           { source->setLooping (shouldLoop);  }
+    
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> source;
@@ -64,7 +77,7 @@ private:
     CriticalSection bufferStartPosLock;
     int64 volatile nextPlayPos;
     double volatile sampleRate;
-    bool isPrepared;
+    bool isPrepared, isForwards;
     
     SoundTouchProcessor soundTouchProcessor;
     int volatile numBuffered;

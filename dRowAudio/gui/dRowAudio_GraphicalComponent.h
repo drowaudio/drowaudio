@@ -8,11 +8,10 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_GRAPHICALCOMPONENT_H_91791CE3__
-#define __DROWAUDIO_GRAPHICALCOMPONENT_H_91791CE3__
+#ifndef __DROWAUDIO_GRAPHICALCOMPONENT_H__
+#define __DROWAUDIO_GRAPHICALCOMPONENT_H__
 
-#include "../core/dRowAudio_StandardHeader.h"
-
+//==============================================================
 /**	This class is an abstract base blass for some kind of graphical component
 	that requires some intenisve processing.
 	Inherit your class from this then register it with a GraphicalComponentManager
@@ -26,12 +25,14 @@ class GraphicalComponent :	public Component,
 							public Timer
 {
 protected:
+	//==============================================================
 	/**	Creates a GraphicalComponent.
 		Don't instantiate directly, use as a base class.
 	 */
 	GraphicalComponent();
 	
 public:
+	//==============================================================
 	/**	Destructor.
 	 */
 	~GraphicalComponent();
@@ -39,18 +40,18 @@ public:
 	/**	Overload to do your processing.
 		Once registered with a GraphicalComponentManager this will repeatedly get called.
 		To save CPU cycles this will only get called if paused is false and some new data
-		has been set with copyValues(). The idea is that you push some new data to your
-		class with copyValues() then do whatever processing you require here.
+		has been set with copySamples(). The idea is that you push some new data to your
+		class with copySamples() then do whatever processing you require here.
 	 */
-	virtual void process() =0;
+	virtual void process() = 0;
 	
 	/**	Pauses the processing of the GraphicalComponent.
 	 */
-	void pause(bool shouldPause)	{	paused = shouldPause;	}
+	void pause (bool shouldPause)	{	paused = shouldPause;	}
 	
 	/**	Returns true if the processing is currently suspended.
 	 */
-	bool isPaused()					{	return paused;	};
+	bool isPaused()					{	return paused;          }
 	
 	//==============================================================	
 	/** Copies data to the component to use.
@@ -59,24 +60,22 @@ public:
 		By default this just copys the values passed to it into the samples heap block,
 		extending the memory if needed. You can overide this for more specialised behaviour.
 	 */
-	virtual void copyValues(float *values, int noValues);
+	virtual void copySamples (float *values, int numSamples);
 
 	/** Copies data from a number of channels to the component to use.
-		This is a lot slower than copyValues(float *values, int noValues) but if the
+		This is a lot slower than copySamples(float *values, int numSamples) but if the
 		number of channels is 2 it will use the maximum sample from the pair of channels.
 	 */
-	virtual void copyValues(float **values, int noValues, int noChannels);
+	virtual void copySamples (float **values, int numSamples, int numChannels);
 	
 	/** @internal */
 	int useTimeSlice();
 	
 	/** @internal */
-	void timerCallback();
-	
-	//==============================================================
+	void timerCallback() {}
 
 protected:
-	
+	//==============================================================	
 	CriticalSection lock;
 	bool paused;
 	bool needToProcess;
@@ -84,7 +83,7 @@ protected:
 	int numSamples;
 	HeapBlock<float> samples;
 	
-	JUCE_LEAK_DETECTOR (GraphicalComponent);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GraphicalComponent);
 };
 
-#endif  // __DROWAUDIO_GRAPHICALCOMPONENT_H_91791CE3__
+#endif  // __DROWAUDIO_GRAPHICALCOMPONENT_H__

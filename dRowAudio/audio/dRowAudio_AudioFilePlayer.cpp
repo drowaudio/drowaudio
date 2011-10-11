@@ -16,6 +16,7 @@ AudioFilePlayer::AudioFilePlayer()
     
     audioTransportSource = new AudioTransportSource();
     audioTransportSource->setSource (soundTouchAudioSource);
+    loopingAudioSource = new LoopingAudioSource (audioTransportSource, false);
     filteringAudioSource = new FilteringAudioSource (audioTransportSource, false);
     
     masterSource = filteringAudioSource;
@@ -77,6 +78,17 @@ void AudioFilePlayer::setResamplingRatio (const double samplesInPerOutputSample)
 	listeners.call (&Listener::resamplingRatioChanged, this);
 }
 
+void AudioFilePlayer::setLoopTimes (double startTime, double endTime)
+{
+    loopingAudioSource->setLoopTimes (startTime, endTime);
+}
+
+void AudioFilePlayer::setLoopBetweenTimes (bool shouldLoop)
+{
+    loopingAudioSource->setLoopBetweenTimes (shouldLoop);
+	listeners.call (&Listener::loopBetweenTimesChanged, this);
+}
+
 //==============================================================================
 void AudioFilePlayer::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
@@ -111,6 +123,7 @@ void AudioFilePlayer::removeListener (AudioFilePlayer::Listener* const listener)
 bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
 //	stop();
+    masterSource = nullptr;
 	audioTransportSource->setSource (nullptr);
     soundTouchAudioSource = nullptr;
     
@@ -122,7 +135,9 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
                                                            bufferingTimeSliceThread,
                                                            false,
                                                            32768);
-        audioTransportSource->setSource (soundTouchAudioSource);
+        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
+        audioTransportSource->setSource (loopingAudioSource);
+        masterSource = filteringAudioSource;
         
 		// let our listeners know that we have loaded a new file
 		audioTransportSource->sendChangeMessage();

@@ -40,7 +40,12 @@ BEGIN_JUCE_NAMESPACE
     #include "audio/dRowAudio_FilteringAudioSource.h"
 #endif
 //#include "src/audio/dRowAudio_SmoothingAudioSource.h"
-//#include "src/audio/dRowAudio_ReversibleAudioSource.h"
+#ifndef __DROWAUDIO_REVERSIBLEAUDIOSOURCE_H__
+    #include "audio/dRowAudio_ReversibleAudioSource.h"
+#endif
+#ifndef __DROWAUDIO_LOOPINGAUDIOSOURCE_H__
+    #include "audio/dRowAudio_LoopingAudioSource.h"
+#endif
 //#include "src/audio/dRowAudio_FilteringAudioTransportSource.h"
 //#include "src/audio/dRowAudio_FilteringAudioFilePlayer.h"
 //
@@ -92,11 +97,17 @@ BEGIN_JUCE_NAMESPACE
 //#include "src/gui/dRowAudio_Layouts.h"
 //#include "src/gui/lookandfeel/dRowAudio_LookAndFeel.h"
 //
-//#include "src/gui/dRowAudio_GraphicalComponent.h"
-//#include "src/gui/dRowAudio_GraphicalComponentManager.h"
+#ifndef __DROWAUDIO_GRAPHICALCOMPONENT_H__
+    #include "gui/dRowAudio_GraphicalComponent.h"
+#endif
+#ifndef __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H__
+    #include "gui/dRowAudio_GraphicalComponentManager.h"
+#endif
 //#include "src/gui/dRowAudio_SimpleAudioScope.h"
 //#include "src/gui/dRowAudio_AudioOscilloscope.h"
-//#include "src/gui/dRowAudio_SegmentedMeter.h"
+#ifndef __DROWAUDIO_SEGMENTEDMETER_H__
+    #include "gui/dRowAudio_SegmentedMeter.h"
+#endif
 //#include "src/gui/dRowAudio_Meter.h"
 //#include "src/gui/dRowAudio_StereoMeter.h"
 //#include "src/gui/dRowAudio_FilmstripSlider.h"

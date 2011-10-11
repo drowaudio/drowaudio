@@ -32,7 +32,8 @@
 
 #include "audio/dRowAudio_FilteringAudioSource.cpp"
 //#include "src/audio/dRowAudio_SmoothingAudioSource.cpp"
-//#include "src/audio/dRowAudio_ReversibleAudioSource.cpp"
+#include "audio/dRowAudio_ReversibleAudioSource.cpp"
+#include "audio/dRowAudio_LoopingAudioSource.cpp"
 //#include "src/audio/dRowAudio_FilteringAudioTransportSource.cpp"
 //#include "src/audio/dRowAudio_FilteringAudioFilePlayer.cpp"
 //
@@ -68,11 +69,11 @@
 //#include "src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp"
 //#include "src/gui/lookandfeel/GuitarAmpKnobLookAndFeel.cpp"
 //
-//#include "src/gui/dRowAudio_GraphicalComponent.cpp"
-//#include "src/gui/dRowAudio_GraphicalComponentManager.cpp"
+#include "gui/dRowAudio_GraphicalComponent.cpp"
+#include "gui/dRowAudio_GraphicalComponentManager.cpp"
 //#include "src/gui/dRowAudio_SimpleAudioScope.cpp"
 //#include "src/gui/dRowAudio_AudioOscilloscope.cpp"
-//#include "src/gui/dRowAudio_SegmentedMeter.cpp"
+#include "gui/dRowAudio_SegmentedMeter.cpp"
 //#include "src/gui/dRowAudio_Meter.cpp"
 //#include "src/gui/dRowAudio_StereoMeter.cpp"
 //#include "src/gui/dRowAudio_FilmstripSlider.cpp"
@@ -95,6 +96,6 @@
 //#include "src/gui/audiothumbnail/dRowAudio_SwitchableDraggableWaveDisplay.cpp"
 
 // Utility
-#include "parameters/dRowAudio_PluginParameter.cpp"
 #include "utility/dRowAudio_ITunesLibrary.cpp"
 #include "utility/dRowAudio_ITunesLibraryParser.cpp"
+#include "parameters/dRowAudio_PluginParameter.cpp"

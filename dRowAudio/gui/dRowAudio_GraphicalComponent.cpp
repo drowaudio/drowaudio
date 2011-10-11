@@ -7,20 +7,17 @@
 
   ==============================================================================
 */
-#include "../core/dRowAudio_StandardHeader.h"
 
-BEGIN_DROWAUDIO_NAMESPACE
-
-#include "dRowAudio_GraphicalComponent.h"
+BEGIN_JUCE_NAMESPACE
 
 GraphicalComponent::GraphicalComponent()
-:	paused(false),
-	needToProcess(true),
-	numSamples(0)
+    : paused (false),
+	  needToProcess (true),
+	  numSamples (0)
 {
-	samples.malloc(numSamples);
+	samples.malloc (numSamples);
 
-	startTimer(30);
+	startTimer (30);
 }
 
 GraphicalComponent::~GraphicalComponent()
@@ -29,71 +26,78 @@ GraphicalComponent::~GraphicalComponent()
 
 int GraphicalComponent::useTimeSlice()
 {
-	if (paused) {
+	if (paused)
+    {
 		return false;
 	}
 	else
 	{
 		if (needToProcess)
+        {
 			process();
+        }
+        
 		needToProcess = false;
 		return true;
 	}
 }
 
-void GraphicalComponent::timerCallback()
-{
-//	repaint();
-}
-
-void GraphicalComponent::copyValues(float *values, int noValues)
+void GraphicalComponent::copySamples (float *values, int numSamples)
 {
 		// allocate new memory only if needed
-		if (noValues != numSamples) {
-			numSamples = noValues;
-			samples.malloc(numSamples);
+		if (numSamples != numSamples)
+        {
+			numSamples = numSamples;
+			samples.malloc (numSamples);
 		}
 		
 		// lock whilst copying
 		ScopedLock sl (lock);
-		memcpy(samples, values, noValues*sizeof(float));
+		memcpy (samples, values, numSamples * sizeof (float));
 		
 		needToProcess = true;
 }
 
-void GraphicalComponent::copyValues(float **values, int noValues, int noChannels)
+void GraphicalComponent::copySamples (float **values, int numSamples, int numChannels)
 {
 	// allocate new memory only if needed
-	if (noValues != numSamples) {
-		numSamples = noValues;
-		samples.malloc(numSamples);
+	if (numSamples != numSamples) 
+    {
+		numSamples = numSamples;
+		samples.malloc (numSamples);
 	}
 	
 	// lock whilst copying
 	ScopedLock sl (lock);
 
-	if (noChannels == 1) {
-		memcpy(samples, values[0], noValues*sizeof(float));
+	if (numChannels == 1)
+    {
+		memcpy (samples, values[0], numSamples * sizeof (float));
 	}
 	// this is quicker than the generic method below
-	else if (noChannels == 2) {
-		for (int i = 0; i < noValues; i++) {
-			samples[i] = (fabsf(values[0][i]) > fabsf(values[1][i])) ? values[0][i] : values[1][i];
+	else if (numChannels == 2) 
+    {
+		for (int i = 0; i < numSamples; i++)
+        {
+			samples[i] = (fabsf (values[0][i]) > fabsf (values[1][i])) ? values[0][i] : values[1][i];
 		}
 	}
-	else {
-		zeromem(samples, noValues*sizeof(float));
-		for (int c = 0; c < noChannels; c++) {
-			for (int i = 0; i < noValues; i++) {
-				if (fabsf(values[c][i]) > samples[i]) {
+	else
+    {
+		samples.clear (numSamples);
+		for (int c = 0; c < numChannels; c++) 
+        {
+			for (int i = 0; i < numSamples; i++) 
+            {
+				if (fabsf (values[c][i]) > samples[i])
+                {
 					samples[i] = values[c][i];
 				}
 			}			
 		}
 	}
-
 	
 	needToProcess = true;
 }
 
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

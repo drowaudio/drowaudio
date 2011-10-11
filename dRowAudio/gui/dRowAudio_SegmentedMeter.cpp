@@ -7,42 +7,42 @@
  *
  */
 
-#include "../core/dRowAudio_StandardHeader.h"
-
-BEGIN_DROWAUDIO_NAMESPACE
+BEGIN_JUCE_NAMESPACE
 
 #include "dRowAudio_SegmentedMeter.h"
 
 SegmentedMeter::SegmentedMeter()
-:	noRedSeg(2),
-	noYellowSeg(4),
-	noGreenSeg(9),
-	totalSegs(noRedSeg + noYellowSeg + noGreenSeg),
-	decibelsPerSeg(3.0f),
-	noSegs(0),
-	sampleCount(0),
-	samplesToCount(2048),
-	sampleMax(0.0f),
-	level(0.0f),
-	needsRepaint(true)
+    : numRedSeg     (2),
+      numYellowSeg  (4),
+	  numGreenSeg   (9),
+	  totalNumSegs  (numRedSeg + numYellowSeg + numGreenSeg),
+	  decibelsPerSeg(3.0f),
+	  numSegs       (0),
+	  sampleCount   (0),
+	  samplesToCount(2048),
+	  sampleMax     (0.0f),
+	  level         (0.0f),
+	  needsRepaint  (true)
 {
 	setOpaque (true);
 }
 
-SegmentedMeter::~SegmentedMeter(){}
+SegmentedMeter::~SegmentedMeter()
+{
+}
 
 void SegmentedMeter::calculateSegments()
 {
 	float numDecibels = toDecibels (level.getCurrent());
-	// map decibels to noSegs
-	noSegs = jmax(0, roundToInt((numDecibels / decibelsPerSeg) + (totalSegs - noRedSeg)));
+	// map decibels to numSegs
+	numSegs = jmax (0, roundToInt ((numDecibels / decibelsPerSeg) + (totalNumSegs - numRedSeg)));
 	
 	// impliment slow decay
 	//	level.set((0.5f * level.getCurrent()) + (0.1f * level.getPrevious()));
 	level *= 0.8;
 	
-	// only actually need to repaint if the noSegs has changed
-	if (! noSegs.areEqual() || needsRepaint)
+	// only actually need to repaint if the numSegs has changed
+	if (! numSegs.areEqual() || needsRepaint)
 		repaint();
 }
 
@@ -67,42 +67,42 @@ void SegmentedMeter::resized()
     Graphics gOn (onImage);
     Graphics gOff (offImage);
     
-    const int numSegments = (noRedSeg + noYellowSeg + noGreenSeg);
+    const int numSegments = (numRedSeg + numYellowSeg + numGreenSeg);
 	const float segmentHeight = (h - m) / (float)numSegments;
     const int segWidth = w - (2 * m);
 	
 	for (int i = 1; i <= numSegments; ++i)
 	{
-		if (i <= noGreenSeg)
+		if (i <= numGreenSeg)
 		{
-			gOn.setColour(Colours::green.brighter(0.8));
-            gOff.setColour(Colours::green.darker());
+			gOn.setColour (Colours::green.brighter (0.8));
+            gOff.setColour (Colours::green.darker());
 		}
-		else if (i <= (noYellowSeg+noGreenSeg))
+		else if (i <= (numYellowSeg + numGreenSeg))
 		{
-			gOn.setColour(Colours::orange.brighter());
-            gOff.setColour(Colours::orange.darker());
+			gOn.setColour (Colours::orange.brighter());
+            gOff.setColour (Colours::orange.darker());
 		}
 		else
 		{
-			gOn.setColour(Colours::red.brighter());
-            gOff.setColour(Colours::red.darker());
+			gOn.setColour (Colours::red.brighter());
+            gOff.setColour (Colours::red.darker());
 		}
 
-		gOn.fillRect((float)m, h-m-(i*(segmentHeight)), (float)segWidth, segmentHeight);
-		gOn.setColour(Colours::black);
-		gOn.drawLine((float)m, h-m-(i*segmentHeight), w-m, h-m-(i*segmentHeight), m);
+		gOn.fillRect ((float)m, h - m - (i * segmentHeight), (float)segWidth, segmentHeight);
+		gOn.setColour (Colours::black);
+		gOn.drawLine ((float)m, h - m - (i * segmentHeight), w - m, h - m - (i * segmentHeight), m);
 		
-        gOff.fillRect((float)m, h-m-(i*(segmentHeight)), (float)segWidth, segmentHeight);
-		gOff.setColour(Colours::black);
-		gOff.drawLine((float)m, h-m-(i*segmentHeight), w-m, h-m-(i*segmentHeight), m);
+        gOff.fillRect ((float)m, h - m - (i * segmentHeight), (float)segWidth, segmentHeight);
+		gOff.setColour (Colours::black);
+		gOff.drawLine ((float)m, h - m - (i * segmentHeight), w - m, h - m - (i * segmentHeight), m);
 	}
 	
-	gOn.setColour(Colours::black);
-	gOn.drawRect(0, 0, w, h, m);    
+	gOn.setColour (Colours::black);
+	gOn.drawRect (0, 0, w, h, m);    
 
-    gOff.setColour(Colours::black);
-	gOff.drawRect(0, 0, w, h, m);    
+    gOff.setColour (Colours::black);
+	gOff.drawRect (0, 0, w, h, m);    
 
     needsRepaint = true;
 }
@@ -114,7 +114,7 @@ void SegmentedMeter::paint (Graphics &g)
 
     if (onImage.isValid()) 
     {
-        const int onHeight = roundToInt ((noSegs.getCurrent() / (float)totalSegs) * onImage.getHeight());
+        const int onHeight = roundToInt ((numSegs.getCurrent() / (float)totalNumSegs) * onImage.getHeight());
         const int offHeight = h - onHeight;
         
         g.drawImage(onImage,
@@ -129,32 +129,6 @@ void SegmentedMeter::paint (Graphics &g)
     }
     
     needsRepaint = false;
-
-//	for (int i=1; i <= noSeg; i++)
-//	{
-//		if (i <= noGreenSeg)
-//		{
-//			i <= noReq ? g.setColour(Colours::green.brighter(0.8))
-//						: g.setColour(Colours::green.darker());
-//		}
-//		else if (i <= (noYellowSeg+noGreenSeg))
-//		{
-//			i <= noReq ? g.setColour(Colours::orange.brighter())
-//						: g.setColour(Colours::orange.darker());
-//		}
-//		else
-//		{
-//			i <= noReq ? g.setColour(Colours::red.brighter())
-//						: g.setColour(Colours::red.darker());
-//		}
-//		g.fillRect((float)m, h-m-(i*(segHeight)), (float)segWidth, segHeight);
-//
-//		g.setColour(Colours::black);
-//		g.drawLine((float)m, h-m-(i*segHeight), w-m, h-m-(i*segHeight), m);
-//	}
-//	
-//	g.setColour(Colours::black);
-//	g.drawRect(0, 0, w, h, m);
 }
 
 void SegmentedMeter::process()
@@ -180,84 +154,5 @@ void SegmentedMeter::process()
 		}
 	}
 }
-//void SegmentedMeter::timerCallback()
-//{
-//	noSegs =  pow(currentLevel, 0.25) * (totalSegs-noRedSeg);
-//	currentLevel *= 0.9f;
-//	
-//	repaint();
-//}
 
-//void SegmentedMeter::processBlock (float* channelData, int numSamples)
-//{
-//	if (channelData != 0)
-//	{
-//		for (int i = 0; i < numSamples; ++i)
-//		{
-//			float sample = fabsf(channelData[i]);
-//			
-//			if (sample > sampleMax)
-//				sampleMax = sample;
-//			
-//			if (++sampleCount == samplesToCount) {
-//				if (sampleMax > currentLevel)
-//					currentLevel = sampleMax;
-//
-//				sampleMax = 0.0f;
-//				sampleCount = 0;
-//			}
-//		}
-//	}
-//}
-//
-///**	Processes a number of samples displaying them on the meter.
-// */
-//void SegmentedMeter::processBlock (float** channelData,
-//								   int numSamples, int numChannels)
-//{
-//	if (channelData != 0)
-//	{
-//		if (numChannels == 1)
-//		{
-//			for (int i = 0; i < numSamples; ++i)
-//			{
-//				float sample = fabsf(channelData[0][i]);
-//				
-//				if (sample > sampleMax)
-//					sampleMax = sample;
-//				
-//				if (++sampleCount == samplesToCount) {
-//					if (sampleMax > currentLevel)
-//						currentLevel = sampleMax;
-//					sampleMax = 0.0f;
-//					sampleCount = 0;
-//				}
-//			}
-//		}
-//		else
-//		{
-//			for (int i = 0; i < numSamples; ++i)
-//			{
-//				float sample = 0.0f;
-//				for (int c=0; c<numChannels; c++) {
-//					if (sample < fabsf(channelData[c][i])) {
-//						sample = fabsf(channelData[c][i]);
-//					}
-//				}
-//				
-//				if (sample > sampleMax)
-//					sampleMax = sample;
-//				
-//				if (++sampleCount == samplesToCount) {
-//					if (sampleMax > currentLevel)
-//						currentLevel = sampleMax;
-//					sampleMax = 0.0f;
-//					sampleCount = 0;
-//				}
-//			}
-//		}
-//
-//	}
-//}
-
-END_DROWAUDIO_NAMESPACE
+END_JUCE_NAMESPACE

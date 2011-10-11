@@ -132,13 +132,13 @@ public:
 		 		 
 			You can find out the new file path using FilteringAudioFilePlayer::getFilePath().
 		 */
-        virtual void fileChanged (FilteringAudioFilePlayer *player) = 0;
+        virtual void fileChanged (FilteringAudioFilePlayer* player) = 0;
 		
 		/** Called when the player's resampling ratio is changed.
 		 
 			You can find out the new ratio using FilteringAudioFilePlayer::getResamplingRatio().
 		 */
-		virtual void resamplingRatioChanged(FilteringAudioFilePlayer *player) {};
+		virtual void resamplingRatioChanged(FilteringAudioFilePlayer* player) {};
         
         //==============================================================================
         /** Called when the the player is stopped or started.

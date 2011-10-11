@@ -52,11 +52,11 @@ AbstractDraggableWaveDisplay::~AbstractDraggableWaveDisplay()
 {
 	filePlayer->removeListener (this);
 
-	stopThread (1000);
+	stopThread (2000);
 }
 
 //====================================================================================
-void AbstractDraggableWaveDisplay::setZoomFactor (float newZoomFactor)
+void AbstractDraggableWaveDisplay::setHorizontalZoom (float newZoomFactor)
 {
 	jassert (newZoomFactor > 0.0f);
 	

@@ -57,11 +57,10 @@ public:
 	
     //====================================================================================
 	/** Sets the current horizontal zoom.
-     This must be greater than 0 and the larger the number the more zoomed in the wave will be.
-     A value of 1 means that the wave is being filled from its cache rather than having to
-     re-read the source file.
+        This must be greater than 0 and the larger the number the more zoomed in the wave will be.
+        A value of 1 is the waveform at its rendered resolution so any larger and blocking may occur.
 	 */
-	inline void setZoomFactor (float newZoomFactor);
+	void setHorizontalZoom (float newZoomFactor);
 	
 	/**
 	 Sets the offset of the white line that marks the current position.

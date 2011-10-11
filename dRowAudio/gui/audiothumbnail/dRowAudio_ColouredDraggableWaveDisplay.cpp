@@ -99,6 +99,7 @@ void ColouredDraggableWaveDisplay::refreshWaveform()
                                             sectionStartTime, sectionEndTime,
                                             0, 1.0f);
         
+        const ScopedLock sl (lock);
         Graphics g2 (waveformImage.img);
         g2.drawImage (tempLargeImage,
                       destRectangleToDraw.getX(), destRectangleToDraw.getY(), destRectangleToDraw.getWidth(), destRectangleToDraw.getHeight(),

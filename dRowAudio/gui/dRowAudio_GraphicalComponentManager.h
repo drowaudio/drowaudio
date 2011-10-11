@@ -8,13 +8,12 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H_C569FF3E__
-#define __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H_C569FF3E__
+#ifndef __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H__
+#define __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H__
 
-#include "../core/dRowAudio_StandardHeader.h"
+class GraphicalComponent;
 
-#include "dRowAudio_GraphicalComponent.h";
-
+//==============================================================================
 /**	This class manages a number of GraphicalComponents giving them each a
 	portion of time to do some processing they require on a background thread.
 	Using one of these can save the Message thread from being blocked for too
@@ -26,6 +25,7 @@
 class GraphicalComponentManager : public TimeSliceThread
 {
 public:
+    //==============================================================================
 	/**	Creates a GraphicalComponentManager.
 		Only one of these is needed for a number of different GraphicalComponents.
 		Register them with addGraphicalComponent() to begin processing.
@@ -39,17 +39,17 @@ public:
 	/**	Registers a GraphicalComponent to begin its processing.
 		Remember to remove it before deleting the object.
 	 */
-	void addGraphicalComponent(GraphicalComponent *component);
+	void addGraphicalComponent (GraphicalComponent* component);
 	
 	/**	Unregisters a GraphicalComponent to stop its processing.
 	 */
-	void removeGraphicalComponent(GraphicalComponent *component);
+	void removeGraphicalComponent (GraphicalComponent* component);
 
 private:
-	
+    //==============================================================================
 	friend class GraphicalComponent;
 	
-	JUCE_LEAK_DETECTOR (GraphicalComponentManager);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GraphicalComponentManager);
 };
 
-#endif  // __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H_C569FF3E__
+#endif  // __DROWAUDIO_GRAPHICALCOMPONENTMANAGER_H__

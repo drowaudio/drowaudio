@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.yourcompany.dRowAudioDemo" jucerVersion="3.0.0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"/>
+    <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1" juceFolder="../../../../juce_source/juce/modules"/>
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"/>
+    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"/>
+  </EXPORTFORMATS>
+  <CONFIGURATIONS>
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="dRowAudio Demo"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+  </CONFIGURATIONS>
+  <MAINGROUP id="BrdxWp" name="dRowAudio Demo">
+    <GROUP id="{AFE8D6EB-4CF8-11B9-1E00-7B7F3155DBD4}" name="Source">
+      <FILE id="PbGDvP" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="DNlZmy" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
+      <FILE id="IoU8Vs" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
+      <FILE id="EANkaD" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="dZhcB7" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="sgzm3Y" name="TrackInfoComponent.h" compile="0" resource="0"
+            file="Source/TrackInfoComponent.h"/>
+      <FILE id="aabiVv" name="TrackInfoComponent.cpp" compile="1" resource="0"
+            file="Source/TrackInfoComponent.cpp"/>
+      <FILE id="LYoN5O" name="TransportComponent.h" compile="0" resource="0"
+            file="Source/TransportComponent.h"/>
+      <FILE id="bkBBKy" name="TransportComponent.cpp" compile="1" resource="0"
+            file="Source/TransportComponent.cpp"/>
+      <FILE id="CVkCcu" name="AudioPlaybackDemo.h" compile="0" resource="0"
+            file="Source/AudioPlaybackDemo.h"/>
+      <FILE id="cwD8tv" name="AudioPlaybackDemo.cpp" compile="1" resource="0"
+            file="Source/AudioPlaybackDemo.cpp"/>
+      <FILE id="lhg8dC" name="LoopComponent.h" compile="0" resource="0" file="Source/LoopComponent.h"/>
+      <FILE id="wK7U4o" name="LoopComponent.cpp" compile="1" resource="0"
+            file="Source/LoopComponent.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>

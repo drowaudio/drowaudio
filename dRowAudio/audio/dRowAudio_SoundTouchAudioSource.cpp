@@ -20,6 +20,7 @@ SoundTouchAudioSource::SoundTouchAudioSource(PositionableAudioSource* source_,
       buffer (numberOfChannels_, 0),
       nextPlayPos (0),
       isPrepared (false),
+      isForwards (true),
       numBuffered (0)
 {
     jassert (source_ != nullptr);
@@ -58,7 +59,7 @@ void SoundTouchAudioSource::prepareToPlay (int samplesPerBlockExpected, double s
         sampleRate = sampleRate_;
         buffer.setSize (numberOfChannels, 2048);
         
-        source->prepareToPlay (samplesPerBlockExpected, sampleRate_);
+        source->prepareToPlay (bufferSizeNeeded, sampleRate_);
         
         backgroundThread.addTimeSliceClient (this);
         
@@ -97,6 +98,7 @@ void SoundTouchAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
     const ScopedLock sl (bufferStartPosLock);
     numBuffered -= info.numSamples * soundTouchProcessor.getNumSamplesRequiredRatio();
     nextPlayPos += info.numSamples * soundTouchProcessor.getNumSamplesRequiredRatio();
+
     
     if (source->isLooping() && nextPlayPos > 0)
         nextPlayPos %= source->getTotalLength();
@@ -141,6 +143,25 @@ bool SoundTouchAudioSource::readNextBufferChunk()
         info.numSamples = jlimit (0, maxChunkSize, buffer.getNumSamples());
         
         source->getNextAudioBlock (info);
+        
+        if (! isForwards)
+        {
+            if (info.buffer->getNumChannels() == 1)
+            {
+                reverseArray (info.buffer->getSampleData(0), info.numSamples);
+            }
+            if (info.buffer->getNumChannels() == 2) 
+            {
+                reverseTwoArrays (info.buffer->getSampleData(0), info.buffer->getSampleData(1), info.numSamples);
+            }
+            else
+            {
+                for (int c = 0; c < info.buffer->getNumChannels(); c++)
+                    reverseArray (info.buffer->getSampleData(c), info.numSamples);
+            }
+            
+            nextPlayPos -= 2 * info.numSamples;
+        }
         
         soundTouchProcessor.writeSamples (buffer.getArrayOfChannels(), buffer.getNumChannels(), info.numSamples);
         numBuffered += info.numSamples;

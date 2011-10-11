@@ -355,7 +355,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5563C7C51441E376003AAEDD</string>
+										<string>5563C8101441F09A003AAEDD</string>
 										<key>history</key>
 										<array>
 											<string>5563C5761440A910003AAEDD</string>
@@ -622,7 +622,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>339862390.50356901</real>
+	<real>339865754.12238097</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -640,8 +640,8 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>5563C5511440A545003AAEDD</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/Dave/Documents/Developement/git/drowaudio/apps/Decks/Builds/MacOSX/Decks.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
