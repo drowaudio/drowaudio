@@ -27,9 +27,11 @@ BEGIN_JUCE_NAMESPACE
 
 //==============================================================================
 LoopingAudioSource::LoopingAudioSource (PositionableAudioSource* const inputSource,
-											  const bool deleteInputWhenDeleted)
+										const bool deleteInputWhenDeleted)
     : input (inputSource, deleteInputWhenDeleted),
 	  isLoopingBetweenTimes (false),
+      loopStartSample (0),
+      loopEndSample (0),
       tempBuffer (2, 512)
 {
     jassert (inputSource != 0);
@@ -48,11 +50,18 @@ void LoopingAudioSource::setLoopTimes (double startTime, double endTime)
 {
     jassert (endTime > startTime); // end time has to be after start!
     
-    loopStartTime = startTime;
-    loopEndTime = endTime;
+    {
+        const ScopedLock sl (loopPosLock);
+        
+        loopStartTime = startTime;
+        loopEndTime = endTime;
+        
+        loopStartSample = startTime * currentSampleRate;
+        loopEndSample = endTime * currentSampleRate;
+    }
 
-    loopStartSample = startTime * currentSampleRate;
-    loopEndSample = endTime * currentSampleRate;
+    // need to update read position based on new limits
+    setNextReadPosition (getNextReadPosition());
 }
 
 void LoopingAudioSource::setLoopBetweenTimes (bool shouldLoop)
@@ -90,6 +99,8 @@ void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
     {
         if (isLoopingBetweenTimes)
         {
+            const ScopedLock sl (loopPosLock);
+
             const int64 newStart = getNextReadPosition();
             const int64 newEnd = loopStartSample + ((newStart + info.numSamples) % loopEndSample);
             
@@ -129,13 +140,15 @@ void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
 //==============================================================================
 void LoopingAudioSource::setNextReadPosition (int64 newPosition)
 {
+    const ScopedLock sl (loopPosLock);
+    
     if (isLoopingBetweenTimes 
         && getNextReadPosition() > loopStartSample)
     {
         if (newPosition > loopEndSample)
-            newPosition = loopStartSample + (newPosition % (loopEndSample - loopStartSample));
+            newPosition = loopStartSample + ((newPosition - loopEndSample) % (loopEndSample - loopStartSample));
         else if (newPosition < loopStartSample)
-            newPosition = loopEndSample - ((loopStartSample - newPosition) % loopEndSample);
+            newPosition = loopEndSample - ((loopStartSample - newPosition) % (loopEndSample - loopStartSample));
     }
     
     input->setNextReadPosition (newPosition);

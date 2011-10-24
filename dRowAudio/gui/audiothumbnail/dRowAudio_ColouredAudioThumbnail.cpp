@@ -842,7 +842,7 @@ public:
                     if (cacheData->isNonZero())
 					{
 						// set colour of line //drow
-						g.setColour(cacheData->colour);
+						g.setColour (cacheData->colour);
                         g.drawVerticalLine (x, jmax (midY - cacheData->maxValue * vscale - 0.3f, topY),
 											jmin (midY - cacheData->minValue * vscale + 0.3f, bottomY));
 					}

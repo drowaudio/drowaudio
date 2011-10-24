@@ -97,6 +97,16 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
     
     addAndMakeVisible (&loopComponent);
     
+    addAndMakeVisible (&filterGroup);
+    addAndMakeVisible (&rateGroup);
+    filterGroup.setText ("Filter");
+    rateGroup.setText ("Tempo and Pitch");
+    
+    filterGroup.setColour (GroupComponent::outlineColourId, Colours::white);
+    filterGroup.setColour (GroupComponent::textColourId, Colours::white);
+    rateGroup.setColour (GroupComponent::outlineColourId, Colours::white);
+    rateGroup.setColour (GroupComponent::textColourId, Colours::white);
+    
     for (int i = 0; i < numControls; i++)
     {
         playerControls.add (new Slider());
@@ -107,10 +117,11 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
         playerControls[i]->addListener (this);
         playerControls[i]->setValue (1.0);
         playerControls[i]->setSliderStyle (Slider::RotaryVerticalDrag);
-        playerControls[i]->setTextBoxStyle (Slider::TextBoxBelow, false, 50, 20);
+        playerControls[i]->setTextBoxStyle (Slider::TextBoxBelow, false, 50, 16);
         
         Justification centreJustification (Justification::centred);
         playerControlLabels[i]->setJustificationType (centreJustification);
+        playerControlLabels[i]->setColour (Label::textColourId, Colours::white);
     }
     
     playerControls[lowEQ]->setRange (0.00000001, 2, 0.001);
@@ -127,6 +138,13 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
     playerControlLabels[rate]->setText ("Rate", false);
     playerControlLabels[tempo]->setText ("Tempo", false);
     playerControlLabels[pitch]->setText ("Pitch", false);
+
+    playerControlLabels[lowEQ]->setFont (12);
+    playerControlLabels[midEQ]->setFont (12);
+    playerControlLabels[highEQ]->setFont (12);
+    playerControlLabels[rate]->setFont (12);
+    playerControlLabels[tempo]->setFont (12);
+    playerControlLabels[pitch]->setFont (12);
 }
 
 AudioPlaybackDemo::~AudioPlaybackDemo()
@@ -144,7 +162,7 @@ void AudioPlaybackDemo::resized()
 {
     const int w = getWidth();
     const int h = getHeight();
-    const int m = 5;
+    int m = 5;
     const int bevelSize = 2;
     
     resolutionSlider.setBounds (0, 0, 50, 50);
@@ -155,12 +173,27 @@ void AudioPlaybackDemo::resized()
     zoomSlider.setBounds (0, positionalDisplay->getBottom() + m, 50, 50);
     draggableDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionalDisplay->getBottom() + m + bevelSize,
                                  w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
-    
-    const int offset = (w - numControls * 80) * 0.5;
-    for (int i = 0; i < numControls; i++)
+
+    const int centre = w * 0.5;
+    int offset = (centre - (80 * 3)) * 0.5;
+    for (int i = 0; i < rate; i++)
     {
-        playerControls[i]->setBounds (offset + i * 80 + 2, draggableDisplay->getBottom() + 20, 76, 76);
+        playerControls[i]->setBounds (offset + i * 80 + 2, draggableDisplay->getBottom() + 20 + 3 * m, 76, 76);
+    }        
+
+    offset += centre * 0.5;
+//    const int offset = (w - numControls * 80) * 0.5;
+    for (int i = rate; i < numControls; i++)
+    {
+        playerControls[i]->setBounds (offset + i * 80 + 2, draggableDisplay->getBottom() + 20 + 3 * m, 76, 76);
     }
+    
+    m *= 2;
+    filterGroup.setBounds (playerControls[0]->getX() - m, playerControlLabels[0]->getY() - m,
+                           playerControls[2]->getRight() - playerControls[0]->getX() + (2 * m), playerControls[0]->getBottom() - playerControlLabels[0]->getY() + (2 * m));
+    
+    rateGroup.setBounds (playerControls[3]->getX() - m, playerControlLabels[3]->getY() - m,
+                         playerControls[5]->getRight() - playerControls[3]->getX() + (2 * m), playerControls[3]->getBottom() - playerControlLabels[3]->getY() + (2 * m));   
 }
 
 void AudioPlaybackDemo::paint (Graphics& g)

@@ -59,6 +59,34 @@ private:
     const int direction;
 };	
 	
+class LexicographicWithBackup
+{
+public:
+    LexicographicWithBackup (const Identifier attributeToSort_, const Identifier backupAttribute_, bool forwards)
+        : attributeToSort (attributeToSort_),
+          backupAttribute (backupAttribute_),
+          direction (forwards ? 1 : -1)
+    {
+    }
+    
+    int compareElements (const ValueTree &first, const ValueTree &second) const
+    {
+        int result = 0;
+        
+        result = first[attributeToSort].toString().compareLexicographically (second[attributeToSort].toString());
+        
+        if (result == 0)
+            result = first[backupAttribute].toString().compareLexicographically (second[backupAttribute].toString());
+        
+        return direction * result;
+    }
+    
+private:
+    const Identifier attributeToSort;
+    const Identifier backupAttribute;
+    const int direction;
+};
+    
 } //ValueTreeComparators
 
 namespace XmlComparators {

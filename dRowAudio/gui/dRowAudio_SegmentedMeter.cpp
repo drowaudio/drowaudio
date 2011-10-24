@@ -9,8 +9,6 @@
 
 BEGIN_JUCE_NAMESPACE
 
-#include "dRowAudio_SegmentedMeter.h"
-
 SegmentedMeter::SegmentedMeter()
     : numRedSeg     (2),
       numYellowSeg  (4),
@@ -68,8 +66,8 @@ void SegmentedMeter::resized()
     Graphics gOff (offImage);
     
     const int numSegments = (numRedSeg + numYellowSeg + numGreenSeg);
-	const float segmentHeight = (h - m) / (float)numSegments;
-    const int segWidth = w - (2 * m);
+	const float segmentHeight = (h - m) / (float) numSegments;
+    const float segWidth = w - (2 * m);
 	
 	for (int i = 1; i <= numSegments; ++i)
 	{
@@ -89,13 +87,13 @@ void SegmentedMeter::resized()
             gOff.setColour (Colours::red.darker());
 		}
 
-		gOn.fillRect ((float)m, h - m - (i * segmentHeight), (float)segWidth, segmentHeight);
+		gOn.fillRect ((float) m, h - m - (i * segmentHeight), segWidth, segmentHeight);
 		gOn.setColour (Colours::black);
-		gOn.drawLine ((float)m, h - m - (i * segmentHeight), w - m, h - m - (i * segmentHeight), m);
+		gOn.drawLine ((float) m, h - m - (i * segmentHeight), w - m, h - m - (i * segmentHeight), m);
 		
-        gOff.fillRect ((float)m, h - m - (i * segmentHeight), (float)segWidth, segmentHeight);
+        gOff.fillRect ((float) m, h - m - (i * segmentHeight), segWidth, segmentHeight);
 		gOff.setColour (Colours::black);
-		gOff.drawLine ((float)m, h - m - (i * segmentHeight), w - m, h - m - (i * segmentHeight), m);
+		gOff.drawLine ((float) m, h - m - (i * segmentHeight), w - m, h - m - (i * segmentHeight), m);
 	}
 	
 	gOn.setColour (Colours::black);
@@ -114,18 +112,27 @@ void SegmentedMeter::paint (Graphics &g)
 
     if (onImage.isValid()) 
     {
-        const int onHeight = roundToInt ((numSegs.getCurrent() / (float)totalNumSegs) * onImage.getHeight());
+        const int onHeight = roundToInt ((numSegs.getCurrent() / (float) totalNumSegs) * onImage.getHeight());
         const int offHeight = h - onHeight;
         
-        g.drawImage(onImage,
-                    0, offHeight, w, onHeight, 
-                    0, offHeight, w, onHeight,
-                    false);
-
-        g.drawImage(offImage,
-                    0, 0, w, offHeight, 
-                    0, 0, w, offHeight,
-                    false);
+//        g.drawImage (onImage,
+//                     0, offHeight, w, onHeight, 
+//                     0, offHeight, w, onHeight,
+//                     false);
+//
+//        g.drawImage (offImage,
+//                     0, 0, w, offHeight, 
+//                     0, 0, w, offHeight,
+//                     false);
+        g.drawImage (onImage,
+                     0, 0, w, h,
+                     0, 0, w, h,
+                     false);
+        
+        g.drawImage (offImage,
+                     0, 0, w, offHeight, 
+                     0, 0, w, offHeight,
+                     false);
     }
     
     needsRepaint = false;

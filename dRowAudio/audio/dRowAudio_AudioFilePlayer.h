@@ -209,21 +209,21 @@ public:
      */
     void setNextReadPosition (int64 newPosition)
     {
-        soundTouchAudioSource->setNextReadPosition (newPosition);
+        audioTransportSource->setNextReadPosition (newPosition);
     }
     
     /** Returns the position from which the next block will be returned.
      */
-    int64 getNextReadPosition() const   {   return soundTouchAudioSource->getNextReadPosition();    }
+    int64 getNextReadPosition() const   {   return audioTransportSource->getNextReadPosition();    }
     
     /** Returns the total length of the stream (in samples). */
-    int64 getTotalLength() const        {   return soundTouchAudioSource->getTotalLength(); }
+    int64 getTotalLength() const        {   return audioTransportSource->getTotalLength(); }
     
     /** Returns true if this source is actually playing in a loop. */
-    bool isLooping() const              {   return soundTouchAudioSource->isLooping();      }
+    bool isLooping() const              {   return audioTransportSource->isLooping();      }
     
     /** Tells the source whether you'd like it to play in a loop. */
-    void setLooping (bool shouldLoop)   {   soundTouchAudioSource->setLooping (shouldLoop); }
+    void setLooping (bool shouldLoop)   {   audioTransportSource->setLooping (shouldLoop); }
     
 private:	
     //==============================================================================

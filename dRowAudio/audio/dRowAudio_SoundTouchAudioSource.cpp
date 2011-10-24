@@ -19,6 +19,7 @@ SoundTouchAudioSource::SoundTouchAudioSource(PositionableAudioSource* source_,
       numberOfChannels (numberOfChannels_),
       buffer (numberOfChannels_, 0),
       nextPlayPos (0),
+      nextReadPos (0),
       isPrepared (false),
       isForwards (true),
       numBuffered (0)
@@ -39,7 +40,9 @@ void SoundTouchAudioSource::setPlaybackSettings (SoundTouchProcessor::PlaybackSe
     soundTouchProcessor.clear();
 
     const ScopedLock sl (bufferStartPosLock);
+    nextReadPos = getNextReadPosition();
     numBuffered = 0;
+    updateNextEffectivePlayPos();
 }
 
 //==============================================================================
@@ -85,23 +88,18 @@ void SoundTouchAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
 {
 //    if (source->getNextReadPosition() != nextPlayPos)
 //        source->setNextReadPosition (nextPlayPos);
-    
-    //    if (soundTouchProcessor.getNumReady() < info.numSamples) 
-    //    {
-    //        DBG("need more samples: " << soundTouchProcessor.getNumReady());
-    //        backgroundThread.moveToFrontOfQueue (this);
-    //    }
-    
+        
     soundTouchProcessor.readSamples (info.buffer->getArrayOfChannels(), info.buffer->getNumChannels(),
                                      info.numSamples, info.startSample);
 
-    const ScopedLock sl (bufferStartPosLock);
+//    const ScopedLock sl (bufferStartPosLock);
     numBuffered -= info.numSamples * soundTouchProcessor.getNumSamplesRequiredRatio();
-    nextPlayPos += info.numSamples * soundTouchProcessor.getNumSamplesRequiredRatio();
+    updateNextEffectivePlayPos();
+//    nextPlayPos += info.numSamples * soundTouchProcessor.getNumSamplesRequiredRatio();
 
     
-    if (source->isLooping() && nextPlayPos > 0)
-        nextPlayPos %= source->getTotalLength();
+//    if (source->isLooping() && nextPlayPos > 0)
+//        nextPlayPos %= source->getTotalLength();
 }
 
 //==============================================================================
@@ -109,8 +107,9 @@ void SoundTouchAudioSource::setNextReadPosition (int64 newPosition)
 {
     const ScopedLock sl (bufferStartPosLock);
     
-    nextPlayPos = newPosition;
+    nextReadPos = nextPlayPos = newPosition;
     numBuffered = 0;
+    updateNextEffectivePlayPos();
     soundTouchProcessor.clear();
     buffer.clear();
     backgroundThread.moveToFrontOfQueue (this);
@@ -119,9 +118,11 @@ void SoundTouchAudioSource::setNextReadPosition (int64 newPosition)
 int64 SoundTouchAudioSource::getNextReadPosition() const
 {
     jassert (source->getTotalLength() > 0);
-    return (source->isLooping() && nextPlayPos > 0)
-            ? nextPlayPos % source->getTotalLength()
-            : nextPlayPos;
+//    return (source->isLooping() && nextPlayPos > 0)
+//            ? nextPlayPos % source->getTotalLength()
+//            : nextPlayPos;
+
+    return effectiveNextPlayPos;
 }
 
 //==============================================================================
@@ -132,7 +133,8 @@ bool SoundTouchAudioSource::readNextBufferChunk()
         const ScopedLock sl (bufferStartPosLock);
 
         const int maxChunkSize = 2048;
-        const int nextSourceReadPos = nextPlayPos + numBuffered;
+//        const int nextSourceReadPos = nextPlayPos + numBuffered;
+        const int nextSourceReadPos = nextReadPos;
         
         if (source->getNextReadPosition() != nextSourceReadPos)
             source->setNextReadPosition (nextSourceReadPos);
@@ -144,27 +146,32 @@ bool SoundTouchAudioSource::readNextBufferChunk()
         
         source->getNextAudioBlock (info);
         
-        if (! isForwards)
-        {
-            if (info.buffer->getNumChannels() == 1)
-            {
-                reverseArray (info.buffer->getSampleData(0), info.numSamples);
-            }
-            if (info.buffer->getNumChannels() == 2) 
-            {
-                reverseTwoArrays (info.buffer->getSampleData(0), info.buffer->getSampleData(1), info.numSamples);
-            }
-            else
-            {
-                for (int c = 0; c < info.buffer->getNumChannels(); c++)
-                    reverseArray (info.buffer->getSampleData(c), info.numSamples);
-            }
-            
-            nextPlayPos -= 2 * info.numSamples;
-        }
+//        if (! isForwards)
+//        {
+//            if (info.buffer->getNumChannels() == 1)
+//            {
+//                reverseArray (info.buffer->getSampleData(0), info.numSamples);
+//            }
+//            if (info.buffer->getNumChannels() == 2) 
+//            {
+//                reverseTwoArrays (info.buffer->getSampleData(0), info.buffer->getSampleData(1), info.numSamples);
+//            }
+//            else
+//            {
+//                for (int c = 0; c < info.buffer->getNumChannels(); c++)
+//                    reverseArray (info.buffer->getSampleData(c), info.numSamples);
+//            }
+//            
+//            nextReadPos -= 2 * info.numSamples;
+//        }
+//        else
+//        {
+            nextReadPos += info.numSamples;
+//        }
         
         soundTouchProcessor.writeSamples (buffer.getArrayOfChannels(), buffer.getNumChannels(), info.numSamples);
         numBuffered += info.numSamples;
+        updateNextEffectivePlayPos();
         
         return true;
     }
@@ -175,6 +182,14 @@ bool SoundTouchAudioSource::readNextBufferChunk()
 int SoundTouchAudioSource::useTimeSlice()
 {
     return readNextBufferChunk() ? 1 : 100;
+}
+
+inline void SoundTouchAudioSource::updateNextEffectivePlayPos()
+{
+    effectiveNextPlayPos = nextReadPos - numBuffered;
+    
+    if (source->isLooping() && effectiveNextPlayPos > 0)
+        effectiveNextPlayPos % source->getTotalLength();
 }
 
 END_JUCE_NAMESPACE

@@ -34,7 +34,6 @@ public:
 	enum
 	{
 		waveformUpdated,
-		waveformLoading,
 		waveformResizing
 	};
 	
@@ -96,11 +95,11 @@ private:
 	StateVariable<int> transportLineXCoord;
 	float zoomFactor, currentXScale;
 	
-	bool isInitialised, isMouseDown;//, interestedInDrag;
+	bool isInitialised;
 	double currentMouseX;
     
     double lastTimeDrawn, resolution;
-	
+    
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColouredPositionableWaveDisplay);
 };
 

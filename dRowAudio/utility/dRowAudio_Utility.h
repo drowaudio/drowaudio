@@ -19,8 +19,7 @@
  */
 //==============================================================================
 
-/**
-	Checks to see if two values are equal within a given precision.
+/** Checks to see if two values are equal within a given precision.
  */
 inline static bool almostEqual(double firstValue, double secondValue, double precision =0.00001)
 {
@@ -30,44 +29,39 @@ inline static bool almostEqual(double firstValue, double secondValue, double pre
 		return false;
 }
 
-/**
-	Returns the Resources folder in the package contents on a Mac and if an equivalent exists on Windows.
+/** Returns the Resources folder in the package contents on a Mac and if an equivalent exists on Windows.
 	This will return File::nonexistent if the file does not exist so check for this first.
  */
 inline static File getResourcesFolder()
 {
-	return File::getSpecialLocation(File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile("Resources");
+	return File::getSpecialLocation (File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile ("Resources");
 }
 
-/**
-	If the String passed in is a local path, this will return a string with the file://localhost part
-	of the file path stripped as well as the %20 spaces
+/** If the String passed in is a local path, this will return a string with the file://localhost part
+	of the file path stripped and any escaped characters (e.g. %20) converted to ascii
  */
-inline static String stripFileProtocolForLocal(String pathToStrip)
+inline static String stripFileProtocolForLocal (String pathToStrip)
 {
 	if (pathToStrip.startsWith("file://localhost"));
 	{
-		String temp1(pathToStrip.substring(pathToStrip.indexOf(7, "/")));//(T("file://localhost")));
-		String temp2(temp1.replace("%20", " "));
-
-		return temp2;
+		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
+		return temp.replace ("%20", " ").replace ("%5B", "[").replace ("%5D", "]").replace ("%23", "#");
 	}
 	
 	return String::empty;
 }
 
-/**
-    Converts an iTunes formatted date string (e.g. 2010-12-27T17:44:32Z)
+/** Converts an iTunes formatted date string (e.g. 2010-12-27T17:44:32Z)
     into a Time object.
  */
 inline static Time parseITunesDateString(String dateString)
 {
-    int year = dateString.substring (0, 4).getIntValue();
-    int month = dateString.substring (5, 7).getIntValue();
-    int day = dateString.substring (8, 10).getIntValue();
-    int hours = dateString.substring (11, 13).getIntValue();
-    int minutes = dateString.substring (14, 16).getIntValue();
-    int seconds = dateString.substring (17, 19).getIntValue();
+    int year =      dateString.substring (0, 4).getIntValue();
+    int month =     dateString.substring (5, 7).getIntValue();
+    int day =       dateString.substring (8, 10).getIntValue();
+    int hours =     dateString.substring (11, 13).getIntValue();
+    int minutes =   dateString.substring (14, 16).getIntValue();
+    int seconds =   dateString.substring (17, 19).getIntValue();
     int milliseconds = 0;
     bool useLocalTime = true;                     
     
@@ -89,10 +83,10 @@ void reverseArray(Type *array, int length)
     int a=0;
     Type swap;
 	
-    for(a; a < --length; a++) //increment a and decrement b until they meet eachother
+    for(a; a < --length; a++)       //increment a and decrement b until they meet eachother
     {
-        swap = array[a];       //put what's in a into swap space
-        array[a] = array[length];    //put what's in b into a
+        swap = array[a];            //put what's in a into swap space
+        array[a] = array[length];   //put what's in b into a
         array[length] = swap;       //put what's in the swap (a) into b
     }
 }
@@ -102,18 +96,18 @@ void reverseArray(Type *array, int length)
 	The arrays must be the same length.
  */
 template <class Type>
-void reverseTwoArrays(Type *array1, Type *array2, int length)
+void reverseTwoArrays (Type *array1, Type *array2, int length)
 {
     Type swap;
-    for(int a = 0; a < --length; a++) //increment a and decrement b until they meet eachother
+    for (int a = 0; a < --length; a++)  //increment a and decrement b until they meet eachother
     {
-        swap = array1[a];       //put what's in a into swap space
-        array1[a] = array1[length];    //put what's in b into a
-        array1[length] = swap;       //put what's in the swap (a) into b
+        swap = array1[a];               //put what's in a into swap space
+        array1[a] = array1[length];     //put what's in b into a
+        array1[length] = swap;          //put what's in the swap (a) into b
 
-        swap = array2[a];       //put what's in a into swap space
-        array2[a] = array2[length];    //put what's in b into a
-        array2[length] = swap;       //put what's in the swap (a) into b
+        swap = array2[a];               //put what's in a into swap space
+        array2[a] = array2[length];     //put what's in b into a
+        array2[length] = swap;          //put what's in the swap (a) into b
     }
 }
 
@@ -143,7 +137,7 @@ static XmlElement* dRowReadEntireXmlStream (URL *url, const bool usePostCommand)
 	@param	trackName	The track name to look for.
 	@param	retryLimit	An optional number of retries as sometimes the URL won't load first time.
  */
-static String findKeyFromChemicalWebsite(const String &releaseNo, const String &trackName, int retryLimit =10)
+static String findKeyFromChemicalWebsite (const String &releaseNo, const String &trackName, int retryLimit =10)
 {
 	URL chemicalURL("http://www.chemical-records.co.uk/sc/servlet/Info?Track="+releaseNo);
 	int attemptCount = 0;

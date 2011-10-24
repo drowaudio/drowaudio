@@ -55,6 +55,7 @@ private:
     
     LoopComponent loopComponent;
     
+    GroupComponent filterGroup, rateGroup;
     Slider resolutionSlider, zoomSlider;
     OwnedArray<Slider> playerControls;
     OwnedArray<Label> playerControlLabels;

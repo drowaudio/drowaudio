@@ -43,7 +43,7 @@ void ITunesLibraryParser::run()
     currentElement = iTunesLibraryTracks->getFirstChildElement();
     
     // find any existing elements
-    Array<int> existingIds;
+    SortedSet<int> existingIds;
     if (! threadShouldExit())
     {
         if (treeToFill.hasType(Columns::libraryIdentifier))

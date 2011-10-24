@@ -248,7 +248,11 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, const bool isForw
 		}
 		else
         {
-			ValueTreeComparators::Lexicographic sorter (Columns::columnNames[newSortColumnId], isForwards);
+//			ValueTreeComparators::Lexicographic sorter (Columns::columnNames[newSortColumnId], isForwards);
+			ValueTreeComparators::LexicographicWithBackup sorter (Columns::columnNames[newSortColumnId],
+                                                                  Columns::columnNames[Columns::LibID],
+                                                                  isForwards);
+            
 			filteredDataList.sort (sorter, 0, false);
 //            dataList.sort (sorter, 0, false);
 		}
@@ -308,7 +312,7 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &current
 //                const ValueTree& tree (filteredArray[currentlySelectedRows[i]]);
 
                 ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
-                itemsArray.append(childTree.getObject());
+                itemsArray.append (childTree.getObject());
             }
 //            itemsArray.append((int)filteredDataList.getChild(currentlySelectedRows[i]).getProperty(Columns::columnNames[Columns::ID]));
         }

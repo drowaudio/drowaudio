@@ -90,7 +90,6 @@ bool AudioFileDropTarget::isInterestedInDragSource (const SourceDetails& dragSou
     {
         interestedInDrag = true;
         setMouseCursor (MouseCursor::CopyingCursor);
-
         repaint();
 
         return true;

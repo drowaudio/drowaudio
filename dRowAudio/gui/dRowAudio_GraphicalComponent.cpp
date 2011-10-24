@@ -42,12 +42,12 @@ int GraphicalComponent::useTimeSlice()
 	}
 }
 
-void GraphicalComponent::copySamples (float *values, int numSamples)
+void GraphicalComponent::copySamples (float *values, int numSamples_)
 {
 		// allocate new memory only if needed
-		if (numSamples != numSamples)
+		if (numSamples != numSamples_)
         {
-			numSamples = numSamples;
+			numSamples = numSamples_;
 			samples.malloc (numSamples);
 		}
 		
@@ -58,12 +58,12 @@ void GraphicalComponent::copySamples (float *values, int numSamples)
 		needToProcess = true;
 }
 
-void GraphicalComponent::copySamples (float **values, int numSamples, int numChannels)
+void GraphicalComponent::copySamples (float **values, int numSamples_, int numChannels)
 {
 	// allocate new memory only if needed
-	if (numSamples != numSamples) 
+	if (numSamples != numSamples_) 
     {
-		numSamples = numSamples;
+		numSamples = numSamples_;
 		samples.malloc (numSamples);
 	}
 	

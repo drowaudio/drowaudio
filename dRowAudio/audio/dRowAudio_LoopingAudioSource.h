@@ -92,6 +92,7 @@ public:
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> input;
+    CriticalSection loopPosLock;
 
 	bool volatile isLoopingBetweenTimes;
     double loopStartTime, loopEndTime;

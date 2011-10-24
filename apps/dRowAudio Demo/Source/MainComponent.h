@@ -18,7 +18,8 @@
 //==============================================================================
 class MainComponent :   public Component,
                         public TextEditor::Listener,
-                        public DragAndDropContainer
+                        public DragAndDropContainer,
+                        public AudioIODeviceCallback
 {
 public:    
     //==============================================================================
@@ -30,6 +31,14 @@ public:
     
     void textEditorTextChanged (TextEditor& editor);
     
+    void audioDeviceIOCallback (const float** inputChannelData,
+                                int numInputChannels,
+                                float** outputChannelData,
+                                int numOutputChannels,
+                                int numSamples);
+    void audioDeviceAboutToStart (AudioIODevice* device);
+    void audioDeviceStopped();
+    
 private:
     //==============================================================================
     AudioDeviceManager audioDeviceManager;
@@ -39,6 +48,10 @@ private:
     TrackInfoComponent trackInfoComponent;
     AudioFileDropTarget dropTarget;
     TransportComponent transport;
+    
+    TimeSliceThread meterThread;
+    SegmentedMeter meterL, meterR;
+    
     CpuMeter cpuMeter;
     TabbedComponent tabbedComponent;
     TextEditor searchBox;

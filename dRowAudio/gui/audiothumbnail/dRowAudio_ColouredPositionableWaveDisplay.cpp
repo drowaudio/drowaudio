@@ -20,9 +20,8 @@ ColouredPositionableWaveDisplay::ColouredPositionableWaveDisplay (AudioFilePlaye
     thumbnailView       (thumbnailToUse, (thumbnailToUse == nullptr) ? true : false),
 	zoomFactor          (1.0f),
     isInitialised       (false),
-	isMouseDown         (false),
     lastTimeDrawn       (0.0),
-    resolution               (3.0)
+    resolution          (3.0)
 {
     setOpaque(true);
     waveformImage = Image (Image::RGB, 1, 1, false);
@@ -102,7 +101,7 @@ void ColouredPositionableWaveDisplay::timerCallback (const int timerId)
 		const int w = getWidth();
 		const int h = getHeight();
 
-		transportLineXCoord = w * oneOverFileLength * filePlayer->getAudioTransportSource()->getCurrentPosition();
+		transportLineXCoord = w * oneOverFileLength * filePlayer->getCurrentPosition();
 		
 		// if the line has moved repaint the old and new positions of it
 		if (! transportLineXCoord.areEqual())
@@ -142,7 +141,7 @@ void ColouredPositionableWaveDisplay::fileChanged (AudioFilePlayer *player)
         if (currentSampleRate > 0.0)
         {
             oneOverSampleRate = 1.0 / currentSampleRate;
-            fileLength = filePlayer->getAudioTransportSource()->getTotalLength() * oneOverSampleRate;
+            fileLength = filePlayer->getTotalLength() * oneOverSampleRate;
             oneOverFileLength = 1.0 / fileLength;
             
             waveformImage.clear (waveformImage.getBounds(), Colours::black);
@@ -150,11 +149,13 @@ void ColouredPositionableWaveDisplay::fileChanged (AudioFilePlayer *player)
             triggerAsyncUpdate();
 
             File newFile (filePlayer->getPath());
-            if (newFile.existsAsFile()) {
+            if (newFile.existsAsFile()) 
+            {
                 FileInputSource* fileInputSource = new FileInputSource (newFile);
                 thumbnailView->setSource (fileInputSource);
             }
-            else {
+            else 
+            {
                 thumbnailView->setSource (nullptr);
             }
             
@@ -166,24 +167,19 @@ void ColouredPositionableWaveDisplay::fileChanged (AudioFilePlayer *player)
 //==============================================================================
 void ColouredPositionableWaveDisplay::mouseDown(const MouseEvent &e)
 {
-	// update scale
 	currentXScale = fileLength / getWidth();
-	
 	currentMouseX = e.x;
-	isMouseDown = true;
 	
 	setMouseCursor (MouseCursor::IBeamCursor);
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->getAudioTransportSource()->setPosition (position);
+	filePlayer->setPosition (position);
     
 	triggerAsyncUpdate();		
 }
 
 void ColouredPositionableWaveDisplay::mouseUp(const MouseEvent &e)
 {
-	isMouseDown = false;
-	
 	setMouseCursor (MouseCursor::NormalCursor);
 }
 
@@ -192,20 +188,21 @@ void ColouredPositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 	currentMouseX = e.x;
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->getAudioTransportSource()->setPosition (position);
+	filePlayer->setPosition (position);
 }
 
 //==============================================================================	
 void ColouredPositionableWaveDisplay::refreshWaveform()
 {
-	if (waveformImage.isValid() && filePlayer->getAudioTransportSource()->getTotalLength() > 0)
+	if (waveformImage.isValid() && ! thumbnailView->isFullyLoaded())
 	{
         Graphics gTemp (displayImage);
         
         const double endTime = thumbnailView->getNumSamplesFinished() * oneOverSampleRate;
+        lastTimeDrawn -= (endTime - lastTimeDrawn) * 0.5; // overlap by 0.5
         const double startPixelX = (lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
         const double numPixels = ((endTime - lastTimeDrawn) * oneOverFileLength * waveformImage.getWidth());
-
+        
         Rectangle<int> rectangleToDraw (roundToInt (startPixelX * resolution), 0, 
                                         roundToInt (numPixels * resolution), displayImage.getHeight());
         
@@ -221,9 +218,26 @@ void ColouredPositionableWaveDisplay::refreshWaveform()
         g.drawImage (displayImage,
                      roundToInt (startPixelX), 0, roundToInt (numPixels), waveformImage.getHeight(),
                      roundToInt (startPixelX * resolution), 0, roundToInt (numPixels * resolution), displayImage.getHeight());
-		
+
         repaint (Rectangle<int> (roundToInt (startPixelX), 0, roundToInt (numPixels), waveformImage.getHeight()));
 	}
+    else if (thumbnailView->isFullyLoaded())
+    {
+        // hack to redraw the whole wave once it has loaded until
+        // I can find out where the gaps are comping from
+        Graphics gTemp (displayImage);
+        thumbnailView->drawColouredChannel (gTemp, displayImage.getBounds(),
+                                            0.0, filePlayer->getLengthInSeconds(),
+                                            0, 1.0f);
+
+		Graphics g (waveformImage);
+        g.drawImage (displayImage,
+                     0, 0, waveformImage.getWidth(), waveformImage.getHeight(),
+                     0, 0, displayImage.getWidth(), displayImage.getHeight());
+
+        lastTimeDrawn = filePlayer->getLengthInSeconds();
+        repaint (waveformImage.getBounds());
+    }
 	else
     {
         Graphics g (waveformImage);

@@ -75,7 +75,7 @@ private:
     int numberOfSamplesToBuffer, numberOfChannels;
     AudioSampleBuffer buffer;
     CriticalSection bufferStartPosLock;
-    int64 volatile nextPlayPos;
+    int64 volatile nextPlayPos, nextReadPos, effectiveNextPlayPos;
     double volatile sampleRate;
     bool isPrepared, isForwards;
     
@@ -85,6 +85,7 @@ private:
     bool readNextBufferChunk();
     void readBufferSection (int64 start, int length, int bufferOffset);
     int useTimeSlice();
+    void updateNextEffectivePlayPos();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchAudioSource);
 };
