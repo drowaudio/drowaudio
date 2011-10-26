@@ -126,6 +126,9 @@ BEGIN_JUCE_NAMESPACE
 #ifndef __DROWAUDIO_BASICFILEBROWSER_H__
     #include "gui/filebrowser/dRowAudio_BasicFileBrowser.h"
 #endif
+#ifndef __DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H__
+    #include "gui/filebrowser/dRowAudio_ColumnFileBrowserLookAndFeel.h"
+#endif
 #ifndef __DROWAUDIO_COLUMNFILEBROWSER_H__
     #include "gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 #endif

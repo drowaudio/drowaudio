@@ -73,6 +73,7 @@ MainComponent::MainComponent()
     audioDeviceManager.initialise (0, 2, nullptr, true);
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);
+    DBG("size: "<<(int)sizeof(ColumnFileBrowserLookAndFeel));
 }
 
 MainComponent::~MainComponent()

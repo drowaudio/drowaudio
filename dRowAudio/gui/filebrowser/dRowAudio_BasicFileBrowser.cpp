@@ -19,9 +19,6 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
       thread ("Juce BasicFileBrowser"),
       showResizer(true)
 {
-	lookAndFeel = new BasicFileBrowserLookAndFeel;
-	setLookAndFeel (lookAndFeel);
-		
     // You need to specify one or other of the open/save flags..
     jassert ((flags & (saveMode | openMode)) != 0);
     jassert ((flags & (saveMode | openMode)) != (saveMode | openMode));
