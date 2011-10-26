@@ -7,32 +7,34 @@
  *
  */
 
-#ifndef _DROWAUDIO_COLUMNFILEBROWSER__H_
-#define _DROWAUDIO_COLUMNFILEBROWSER__H_
-
-#include "../../core/dRowAudio_StandardHeader.h"
+#ifndef __DROWAUDIO_COLUMNFILEBROWSER_H__
+#define __DROWAUDIO_COLUMNFILEBROWSER_H__
 
 #include "dRowAudio_BasicFileBrowser.h"
 
 //==================================================================================
 class BrowserColumn :	public BasicFileBrowser,
-						public DragAndDropContainer
+						public DragAndDropContainer,
+                        public ChangeBroadcaster
 {
 public:
-	BrowserColumn(WildcardFileFilter *filesToDisplay_, int _columnNumber)
-	:	BasicFileBrowser(BasicFileBrowser::loadFileMode,
-						 File::getSpecialLocation(File::userMusicDirectory),
-						 filesToDisplay_),
-		columnNumber(_columnNumber),
-		active(false),
-		fileDragEnabled(false)
+    //==================================================================================
+	BrowserColumn (WildcardFileFilter* filesToDisplay_, int columnNumber_)
+        : BasicFileBrowser (BasicFileBrowser::openMode
+                            + BasicFileBrowser::canSelectFiles
+                            + BasicFileBrowser::canSelectDirectories
+                            + BasicFileBrowser::canSelectMultipleItems,
+                            File::getSpecialLocation (File::userMusicDirectory),
+                            filesToDisplay_),
+		  columnNumber (columnNumber_),
+		  active (false),
+		  fileDragEnabled (false)
 	{
 		addMouseListener(this, true);
 	}
 	
 	~BrowserColumn()
 	{
-		deleteAllChildren();
 	}
 			
 	void mouseDrag (const MouseEvent& e)
@@ -40,12 +42,17 @@ public:
 		if (fileDragEnabled)
 		{
 			StringArray files;
-			files.add(currentFile);
-			File file(currentFile);
-			if (file.existsAsFile()) {
-				fileDragEnabled = false;
-				performExternalDragDropOfFiles(files, false);
-			}		
+
+            for (int i = 0; i < getNumSelectedFiles(); i++) 
+            {
+                File file (getSelectedFile (i));
+
+                if (file.existsAsFile()) 
+                    files.add (file.getFullPathName());
+            }
+
+            fileDragEnabled = false;
+            performExternalDragDropOfFiles (files, false);
 		}
 	}
 	
@@ -56,32 +63,26 @@ public:
 	
 	void selectionChanged()
 	{
-		if (getHighlightedFile().exists()) {
-			sendChangeMessage();
-		}
+        BasicFileBrowser::selectionChanged();
+        
+        sendChangeMessage();
 	}
 		
-	void fileClicked (const File &file, const MouseEvent &e)
+	void fileClicked (const File& file, const MouseEvent& e)
 	{
-		currentFile = file.getFullPathName();
 		fileDragEnabled = true;
 	}
 	
-	void fileDoubleClicked (const File& f){}
-		
-	void resized()
-	{		
-		BasicFileBrowser::resized();
-	}
-	
+	void fileDoubleClicked (const File& f) {}
+			
 private:
+    //==================================================================================
 	int columnNumber;
 	bool active, fileDragEnabled;
-	String currentFile;
 	
 	friend class ColumnFileBrowserContents;
 	
-	JUCE_LEAK_DETECTOR (BrowserColumn);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BrowserColumn);
 };
 
 
@@ -92,74 +93,28 @@ class ColumnFileBrowserContents	:	public Component,
 									public ComponentListener
 {
 public:
-	ColumnFileBrowserContents(WildcardFileFilter *filesToDisplay_, Viewport* parentViewport);
+    //==================================================================================
+	ColumnFileBrowserContents (WildcardFileFilter* filesToDisplay_, Viewport* parentViewport);
 	
 	~ColumnFileBrowserContents();
 	
 	void resized();
 			
 	void selectionChanged () {}
-	void fileClicked (const File &file, const MouseEvent &e)	{}
-	void fileDoubleClicked (const File &file)	{}
+	void fileClicked (const File& file, const MouseEvent& e) {}
+	void fileDoubleClicked (const File& file) {}
+	void browserRootChanged (const File& newRoot) {}
+    
+	void selectedFileChanged (const File& file);
+	bool addColumn (const File& rootDirectory);
+	void removeColumn (int numColumns = 1);
 	
-	void selectedFileChanged(const File &file);
-	bool addColumn(const File &rootDirectory);
-	void removeColumn(int noColumns=1);
-	
-	void changeListenerCallback(ChangeBroadcaster* changedComponent)
-	{
-		BrowserColumn* changedColumn = (BrowserColumn*)changedComponent;
-		
-		columns[activeColumn]->getLookAndFeel().setColour(DirectoryContentsDisplayComponent::highlightColourId,
-														  Colour::greyLevel(0.9f));
-		columns[activeColumn]->repaint();
-		
-		activeColumn = changedColumn->columnNumber;
-
-		File tempFile(changedColumn->getHighlightedFile());
-		selectedFileChanged(tempFile);
-		columns[activeColumn]->getLookAndFeel().setColour(DirectoryContentsDisplayComponent::highlightColourId, Colours::darkorange);
-		columns[activeColumn]->repaint();
-	}
-		
-	void componentMovedOrResized (Component &component, bool wasMoved, bool wasResized)
-	{
-		if (wasResized)
-			resized();
-	}
-	
-	bool keyPressed (const KeyPress& key)
-	{
-		if (key.isKeyCode (KeyPress::leftKey))
-		{
-			if (activeColumn != 0)
-			{
-				columns[activeColumn]->deselectAllRows();
-				int newActiveColumn = jmax(0,activeColumn-1);
-				columns[newActiveColumn]->selectionChanged();
-				columns[newActiveColumn]->grabKeyboardFocus();
-			}
-			return true;
-		}
-		else if (key.isKeyCode (KeyPress::rightKey))
-		{
-			if(columns[activeColumn]->getHighlightedFile().isDirectory())
-			{
-				int newActiveColumn = activeColumn+1;
-				addColumn(columns[newActiveColumn]->getHighlightedFile());
-				if (columns[newActiveColumn]->getNumRows() )
-				{
-					columns[newActiveColumn]->grabKeyboardFocus();
-					columns[newActiveColumn]->selectRow(0);
-				}
-			}
-			return true;
-		}
-		return false;
-	}
+	void changeListenerCallback (ChangeBroadcaster* changedComponent);
+	void componentMovedOrResized (Component &component, bool wasMoved, bool wasResized);
+	bool keyPressed (const KeyPress& key);
 			
 private:
-		
+    //==================================================================================
 	WildcardFileFilter* filesToDisplay;
 	Viewport* viewport;
 	OwnedArray <BrowserColumn> columns;
@@ -167,26 +122,26 @@ private:
 	
 	int startingWidth, activeColumn;
 	
-//	BrowserColumnLookAndFeel* lookAndFeel;
-	
-	JUCE_LEAK_DETECTOR (ColumnFileBrowserContents);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowserContents);
 };
 
 //==================================================================================
 class ColumnFileBrowser :	public Viewport
 {
 public:
-	ColumnFileBrowser (WildcardFileFilter *filesToDisplay_)
-	:	Viewport("ColumnFileBrowser"),
-		wildcard(filesToDisplay_)
+    //==================================================================================
+	ColumnFileBrowser (WildcardFileFilter* filesToDisplay_)
+        : Viewport("ColumnFileBrowser"),
+		  wildcard(filesToDisplay_)
 	{
-		addMouseListener(this, true);
-		setWantsKeyboardFocus(false);
+		addMouseListener (this, true);
+		setWantsKeyboardFocus (false);
 		
-		setScrollBarsShown(false, true);
-		setScrollBarThickness(10);
-		fileBrowser = new ColumnFileBrowserContents(filesToDisplay_, this);
-		setViewedComponent(fileBrowser);
+		setScrollBarsShown (false, true);
+		setScrollBarThickness (10);
+        
+		fileBrowser = new ColumnFileBrowserContents (filesToDisplay_, this);
+		setViewedComponent (fileBrowser);
 	}
 	
 	~ColumnFileBrowser()
@@ -196,32 +151,31 @@ public:
 	void resized()
 	{
 		Viewport::resized();
-		fileBrowser->setSize(fileBrowser->getWidth(), getMaximumVisibleHeight());
+		fileBrowser->setSize (fileBrowser->getWidth(), getMaximumVisibleHeight());
 	}
 		
-	void visibleAreaChanged(const Rectangle<int>& newVisibleArea)
+	void visibleAreaChanged (const Rectangle<int>& newVisibleArea)
 	{
 		resized();
 	}
 	
-	void mouseWheelMove (const MouseEvent &e, float wheelIncrementX, float wheelIncrementY)
+	void mouseWheelMove (const MouseEvent& e, float wheelIncrementX, float wheelIncrementY)
 	{
 		if (! (e.mods.isAltDown() || e.mods.isCtrlDown()))
 		{
 			if (getHorizontalScrollBar()->isVisible())
-				Viewport::useMouseWheelMoveIfNeeded(e, wheelIncrementX, 0);
+				Viewport::useMouseWheelMoveIfNeeded (e, wheelIncrementX, 0);
 			else
-				Viewport::useMouseWheelMoveIfNeeded(e, wheelIncrementX, wheelIncrementY);
+				Viewport::useMouseWheelMoveIfNeeded (e, wheelIncrementX, wheelIncrementY);
 		}
 	}
 	
 private:
-	
+    //==================================================================================
 	ScopedPointer<WildcardFileFilter> wildcard;
-	ColumnFileBrowserContents *fileBrowser;
+	ColumnFileBrowserContents* fileBrowser;
 	
-	JUCE_LEAK_DETECTOR (ColumnFileBrowser);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowser);
 };
-//==================================================================================
 
-#endif //_DROWAUDIO_COLUMNFILEBROWSER__H_
+#endif //__DROWAUDIO_COLUMNFILEBROWSER_H__

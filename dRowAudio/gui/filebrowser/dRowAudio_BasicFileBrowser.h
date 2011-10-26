@@ -14,7 +14,7 @@ class BasicFileBrowserLookAndFeel : public LookAndFeel,
 									public DeletedAtShutdown
 {
 public:
-//	juce_DeclareSingleton (BasicFileBrowserLookAndFeel, false)
+	//juce_DeclareSingleton (BasicFileBrowserLookAndFeel, false)
 	
 	BasicFileBrowserLookAndFeel()
 	{
@@ -312,7 +312,6 @@ public:
 		g.drawLine ((2 * xGap) - lineThickness * 0.5, yGap, (2 * xGap) - lineThickness * 0.5, h - yGap, lineThickness);
 	}
 };
-//juce_ImplementSingleton (BasicFileBrowserLookAndFeel)
 
 //==================================================================================
 class  BasicFileBrowser		:	public Component,
@@ -432,10 +431,6 @@ public:
     void removeListener (FileBrowserListener* listener);
         
 	//==============================================================================
-//	int getNumRows()				{	return fileListComponent->getNumRows();		}
-//	void selectRow(int rowNumber)	{	fileListComponent->selectRow(rowNumber);	}
-//	void deselectAllRows()			{	fileListComponent->deselectAllRows();		}
-
 	/** Enables the column resizer.
      */
 	void setResizeEnable(bool enableResize)

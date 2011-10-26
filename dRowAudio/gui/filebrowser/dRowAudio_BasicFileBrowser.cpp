@@ -10,17 +10,6 @@
 BEGIN_JUCE_NAMESPACE
 
 //==============================================================================
-class DirectoriesOnlyFilter    : public FileFilter
-{
-public:
-    DirectoriesOnlyFilter() : FileFilter (String::empty) {}
-	
-    bool isFileSuitable (const File&) const         { return false; }
-    bool isDirectorySuitable (const File&) const    { return true; }
-};
-
-
-//==============================================================================
 BasicFileBrowser::BasicFileBrowser (int flags_,
                                     const File& initialFileOrDirectory,
                                     const FileFilter* fileFilter_)
@@ -76,8 +65,6 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
 	resizer = new ResizableCornerComponent (this, &resizeLimits);
 	addAndMakeVisible (resizer);
 	resizer->setMouseCursor (MouseCursor::LeftRightResizeCursor);
-	
-//	resizer->addMouseListener(this, true);
 
     setRoot (currentRoot);
 		
@@ -246,7 +233,7 @@ void BasicFileBrowser::resized()
 	const int height = getHeight();
 	const int width = getWidth();
 		
-    FileListComponent* list = dynamic_cast<FileListComponent*> (fileListComponent.get()));
+    FileListComponent* list = dynamic_cast<FileListComponent*> (fileListComponent.get());
 
     if (list != nullptr)
     {
@@ -283,7 +270,7 @@ void BasicFileBrowser::selectionChanged()
 {
     StringArray newFilenames;
     bool resetChosenFiles = true;
-    
+
     for (int i = 0; i < fileListComponent->getNumSelectedFiles(); ++i)
     {
         const File f (fileListComponent->getSelectedFile (i));

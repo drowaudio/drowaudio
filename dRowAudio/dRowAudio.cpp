@@ -82,7 +82,7 @@
 #include "gui/dRowAudio_CentreAlignViewport.cpp"
 #include "gui/dRowAudio_MusicLibraryTable.cpp"
 #include "gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
-//#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
+#include "gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
 //
 #include "gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"
 //#include "src/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"

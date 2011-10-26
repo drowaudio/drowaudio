@@ -250,8 +250,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -298,8 +296,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>36</integer>
-									<integer>29</integer>
+									<integer>27</integer>
 									<integer>25</integer>
 									<integer>12</integer>
 									<integer>2</integer>
@@ -308,7 +305,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 183}, {274, 660}}</string>
+							<string>{{0, 78}, {274, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -338,12 +335,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dRowAudio_CompleteDraggableWaveDisplay.h</string>
+								<string>ControlComponent.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -351,14 +350,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dRowAudio_CompleteDraggableWaveDisplay.h</string>
+										<string>ControlComponent.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5563C8101441F09A003AAEDD</string>
+										<string>550A9C801458272B00C7BAE8</string>
 										<key>history</key>
 										<array>
-											<string>5563C5761440A910003AAEDD</string>
 											<string>5563C5771440A910003AAEDD</string>
 											<string>5563C5781440A910003AAEDD</string>
 											<string>5563C5791440A910003AAEDD</string>
@@ -378,13 +376,11 @@
 											<string>5563C58B1440A910003AAEDD</string>
 											<string>5563C58C1440A910003AAEDD</string>
 											<string>5563C58D1440A910003AAEDD</string>
-											<string>5563C58E1440A910003AAEDD</string>
 											<string>5563C58F1440A910003AAEDD</string>
 											<string>5563C5901440A910003AAEDD</string>
 											<string>5563C5911440A910003AAEDD</string>
 											<string>5563C5921440A910003AAEDD</string>
 											<string>5563C5931440A910003AAEDD</string>
-											<string>5563C5941440A910003AAEDD</string>
 											<string>5563C5951440A910003AAEDD</string>
 											<string>5563C5961440A910003AAEDD</string>
 											<string>5563C5971440A910003AAEDD</string>
@@ -441,7 +437,9 @@
 											<string>5563C76A144107EB003AAEDD</string>
 											<string>5563C76B144107EB003AAEDD</string>
 											<string>5563C76C144107EB003AAEDD</string>
-											<string>5563C76D144107EB003AAEDD</string>
+											<string>550A9C7E1458272B00C7BAE8</string>
+											<string>550A9C7F1458272B00C7BAE8</string>
+											<string>5563C5941440A910003AAEDD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -499,9 +497,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>5563C5CB1440A910003AAEDD</string>
+				<string>550A9C811458272B00C7BAE8</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>5563C5CC1440A910003AAEDD</string>
+				<string>550A9C821458272B00C7BAE8</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -622,7 +620,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>339865754.12238097</real>
+	<real>341321515.02832103</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -639,9 +637,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>5563C5511440A545003AAEDD</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/Dave/Documents/Developement/git/drowaudio/apps/Decks/Builds/MacOSX/Decks.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -666,7 +662,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DeckManager.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -683,8 +679,6 @@
 							<string>377pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -724,7 +718,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5563C5511440A545003AAEDD</string>
-				<string>5563C5521440A545003AAEDD</string>
+				<string>550A9C831458272B00C7BAE8</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
