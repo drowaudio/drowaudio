@@ -14,7 +14,6 @@ TrackInfoComponent::TrackInfoComponent (AudioFilePlayer& audioFilePlayer_)
     : audioFilePlayer (audioFilePlayer_)
 {
     audioFilePlayer.addListener (this);
-    addAndMakeVisible (&clock);
 }
 
 TrackInfoComponent::~TrackInfoComponent()
@@ -23,10 +22,8 @@ TrackInfoComponent::~TrackInfoComponent()
 
 void TrackInfoComponent::resized()
 {
-    const int w = getWidth();
-    const int h = getHeight();
-    
-    clock.setBounds (w - clock.getRequiredWidth(), 0, clock.getRequiredWidth(), 20);
+//    const int w = getWidth();
+//    const int h = getHeight();
 }
 
 void TrackInfoComponent::paint (Graphics& g)
@@ -52,7 +49,13 @@ void TrackInfoComponent::paint (Graphics& g)
     }
     else
     {
-        g.drawFittedText ("No Track Info Available",
+        String displayText;
+        if (audioFilePlayer.getTotalLength() > 0)
+            displayText = "No Track Info Available";
+        else
+            displayText = "Drop Tracks Here to Begin...";
+        
+        g.drawFittedText (displayText,
                           0, 0, w, h,
                           Justification (Justification::centred),
                           2);

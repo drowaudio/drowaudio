@@ -40,11 +40,11 @@ TransportComponent::~TransportComponent()
 void TransportComponent::resized()
 {
     const int w = getWidth();
-    const int h = getHeight();
+//    const int h = getHeight();
     
     for (int i = 0; i < numButtons; i++)
     {
-        buttons[i]->setBounds (w - 80, 20 * i + 1, 80, 18);
+        buttons[i]->setBounds (0, 20 * i + 1, w, 18);
     }
 }
 

@@ -65,10 +65,10 @@ void PluginParameter::init(const String& name_, ParameterUnit unit_, String desc
 	{
 		case UnitPercent:       setUnitSuffix("%");                         break;
 		case UnitSeconds:       setUnitSuffix("s");                         break;
-		case UnitPhase:         setUnitSuffix(CharPointer_UTF8 ("°"));      break;
+		case UnitPhase:         setUnitSuffix(CharPointer_UTF8 ("\xc2\xb0"));      break;
 		case UnitHertz:         setUnitSuffix("Hz");                        break;
 		case UnitDecibels:      setUnitSuffix("dB");                        break;
-		case UnitDegrees:       setUnitSuffix(CharPointer_UTF8 ("°"));      break;
+		case UnitDegrees:       setUnitSuffix(CharPointer_UTF8 ("\xc2\xb0"));      break;
 		case UnitMeters:        setUnitSuffix("m");                         break;
 		case UnitBPM:           setUnitSuffix("BPM");                       break;
 		case UnitMilliseconds:  setUnitSuffix("ms");                        break;

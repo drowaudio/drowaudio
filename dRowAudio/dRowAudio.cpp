@@ -81,7 +81,7 @@
 #include "gui/dRowAudio_Clock.cpp"
 #include "gui/dRowAudio_CentreAlignViewport.cpp"
 #include "gui/dRowAudio_MusicLibraryTable.cpp"
-//#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
+#include "gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
 //#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
 //
 #include "gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"

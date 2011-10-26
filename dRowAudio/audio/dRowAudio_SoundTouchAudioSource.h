@@ -37,7 +37,7 @@ public:
     
     /** Sets whether the source should play forwards or backwards.
      */
-	void setPlayDirection (bool shouldPlayForwards)	{	isForwards = shouldPlayForwards;	}
+	void setPlayDirection (bool shouldPlayForwards);
     
     /** Returns true if the source is playing forwards.
      */

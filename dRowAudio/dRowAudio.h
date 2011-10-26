@@ -123,7 +123,9 @@ BEGIN_JUCE_NAMESPACE
 #ifndef __DROWAUDIO_MUSICLIBRARYTABLE_H__
     #include "gui/dRowAudio_MusicLibraryTable.h"
 #endif
-//#include "src/gui/filebrowser/dRowAudio_BasicFileBrowser.h"
+#ifndef __DROWAUDIO_BASICFILEBROWSER_H__
+    #include "gui/filebrowser/dRowAudio_BasicFileBrowser.h"
+#endif
 //#include "src/gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 //
 //// audiothumbnail

@@ -56,7 +56,6 @@ void LoopComponent::fileChanged (AudioFilePlayer* player)
         const double endTime = (jmax (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
         
         audioFilePlayer.setLoopTimes (startTime, endTime);
-        DBG ("start: " << startTime << " - end: " << endTime);
     }
 }
 
@@ -69,7 +68,6 @@ void LoopComponent::componentMovedOrResized (Component& component, bool wasMoved
         const double endTime = (jmax (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
 
         audioFilePlayer.setLoopTimes (startTime, endTime);
-        DBG ("start: " << startTime << " - end: " << endTime);
     }
     
     AudioPlaybackDemo* demo = dynamic_cast<AudioPlaybackDemo*> (getParentComponent());

@@ -52,6 +52,7 @@ private:
     TimeSliceThread meterThread;
     SegmentedMeter meterL, meterR;
     
+    Clock clock;
     CpuMeter cpuMeter;
     TabbedComponent tabbedComponent;
     TextEditor searchBox;

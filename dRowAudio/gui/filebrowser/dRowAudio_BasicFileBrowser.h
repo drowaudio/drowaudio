@@ -160,12 +160,12 @@ public:
 	
 	//============================================================
 	void drawScrollbarButton (Graphics& g,
-												ScrollBar& scrollbar,
-												int width, int height,
-												int buttonDirection,
-												bool /*isScrollbarVertical*/,
-												bool /*isMouseOverButton*/,
-												bool isButtonDown)
+                              ScrollBar& scrollbar,
+                              int width, int height,
+                              int buttonDirection,
+                              bool /*isScrollbarVertical*/,
+                              bool /*isMouseOverButton*/,
+                              bool isButtonDown)
 	{
 		Path p;
 		
@@ -198,14 +198,14 @@ public:
 	}
 	
 	void drawScrollbar (Graphics& g,
-										  ScrollBar& scrollbar,
-										  int x, int y,
-										  int width, int height,
-										  bool isScrollbarVertical,
-										  int thumbStartPosition,
-										  int thumbSize,
-										  bool /*isMouseOver*/,
-										  bool /*isMouseDown*/)
+                        ScrollBar& scrollbar,
+                        int x, int y,
+                        int width, int height,
+                        bool isScrollbarVertical,
+                        int thumbStartPosition,
+                        int thumbSize,
+                        bool /*isMouseOver*/,
+                        bool /*isMouseDown*/)
 	{
 		g.fillAll (scrollbar.findColour (ScrollBar::backgroundColourId));
 		
@@ -295,7 +295,6 @@ public:
 	}
 	
 	//============================================================
-	
     void drawCornerResizer (Graphics& g,
                             int w, int h,
                             bool isMouseOver,
@@ -305,35 +304,40 @@ public:
 		const float xGap = w / 3.0f;
 		const float yGap = h * 0.25;
 		
-		g.setColour(findColour(ScrollBar::backgroundColourId));
+		g.setColour (findColour (ScrollBar::backgroundColourId));
 		g.fillAll();
 		
-		g.setColour(findColour(ScrollBar::thumbColourId));
-		g.drawLine(xGap + lineThickness*0.5, yGap, xGap + lineThickness*0.5, h - yGap, lineThickness);
-		g.drawLine((2 * xGap) - lineThickness*0.5, yGap, (2 * xGap) - lineThickness*0.5, h - yGap, lineThickness);
+		g.setColour (findColour (ScrollBar::thumbColourId));
+		g.drawLine (xGap + lineThickness * 0.5, yGap, xGap + lineThickness * 0.5, h - yGap, lineThickness);
+		g.drawLine ((2 * xGap) - lineThickness * 0.5, yGap, (2 * xGap) - lineThickness * 0.5, h - yGap, lineThickness);
 	}
 };
 //juce_ImplementSingleton (BasicFileBrowserLookAndFeel)
 
 //==================================================================================
 class  BasicFileBrowser		:	public Component,
-								public ChangeBroadcaster,
-								private FileBrowserListener
+								private FileBrowserListener,
+                                private FileFilter
 {
 public:
     //==============================================================================
-    /** Various modes that the browser can be used in.
-	 
-	 One of these is passed into the constructor.
-	 */
-    enum FileChooserMode
+    /** Various options for the browser.
+     
+        A combination of these is passed into the FileBrowserComponent constructor.
+     */
+    enum FileChooserFlags
     {
-        loadFileMode,           /**< the component should allow the user to choose an existing
-								 file with the intention of opening it. */
-        saveFileMode,           /**< the component should allow the user to specify the name of
-								 a file that will be used to save something. */
-        chooseDirectoryMode     /**< the component should allow the user to select an existing
-								 directory. */
+        openMode                = 1,    /**< specifies that the component should allow the user to
+                                         choose an existing file with the intention of opening it. */
+        saveMode                = 2,    /**< specifies that the component should allow the user to specify
+                                         the name of a file that will be used to save something. */
+        canSelectFiles          = 4,    /**< specifies that the user can select files (can be used in
+                                         conjunction with canSelectDirectories). */
+        canSelectDirectories    = 8,    /**< specifies that the user can select directories (can be used in
+                                         conjuction with canSelectFiles). */
+        canSelectMultipleItems  = 16,   /**< specifies that the user can select multiple items. */
+        useTreeView             = 32,   /**< specifies that a tree-view should be shown instead of a file list. */
+        filenameBoxIsReadOnly   = 64    /**< specifies that the user can't type directly into the filename box. */
     };
 	
     //==============================================================================
@@ -350,108 +354,147 @@ public:
 	 make sure that it is not deleted before the browser object
 	 is deleted.
 	 */
-    BasicFileBrowser (FileChooserMode browserMode,
-					  const File& initialFileOrDirectory,
+    BasicFileBrowser (int flags,
+                      const File& initialFileOrDirectory,
                       const FileFilter* fileFilter);
 	
     /** Destructor. */
     ~BasicFileBrowser();
 	
     //==============================================================================
-    /**
-	 */
-    const File getCurrentFile() const throw();
-	
-	const File getHighlightedFile() const throw();
-
-    /** Returns true if the current file is usable.
-	 
-	 This can be used to decide whether the user can press "ok" for the
-	 current file. What it does depends on the mode, so for example in an "open"
-	 mode, the current file is only valid if one has been selected and if the file
-	 exists. In a "save" mode, a non-existent file would also be valid.
-	 */
+    /** Returns the number of files that the user has got selected.
+     If multiple select isn't active, this will only be 0 or 1. To get the complete
+     list of files they've chosen, pass an index to getCurrentFile().
+     */
+    int getNumSelectedFiles() const noexcept;
+    
+    /** Returns one of the files that the user has chosen.
+     If the box has multi-select enabled, the index lets you specify which of the files
+     to get - see getNumSelectedFiles() to find out how many files were chosen.
+     @see getHighlightedFile
+     */
+    File getSelectedFile (int index) const noexcept;
+    
+    /** Deselects any files that are currently selected.
+     */
+    void deselectAllFiles();
+    
+    /** Returns true if the currently selected file(s) are usable.
+     
+     This can be used to decide whether the user can press "ok" for the
+     current file. What it does depends on the mode, so for example in an "open"
+     mode, this only returns true if a file has been selected and if it exists.
+     In a "save" mode, a non-existent file would also be valid.
+     */
     bool currentFileIsValid() const;
-	
+    
+    /** This returns the last item in the view that the user has highlighted.
+     This may be different from getCurrentFile(), which returns the value
+     that is shown in the filename box, and if there are multiple selections,
+     this will only return one of them.
+     @see getSelectedFile
+     */
+    File getHighlightedFile() const noexcept;
+    
     //==============================================================================
     /** Returns the directory whose contents are currently being shown in the listbox. */
-    const File getRoot() const;
-	
+    const File& getRoot() const;
+    
     /** Changes the directory that's being shown in the listbox. */
     void setRoot (const File& newRootDirectory);
-	
+    
     /** Refreshes the directory that's currently being listed. */
     void refresh();
-	
-    /** Returns the browser's current mode. */
-    FileChooserMode getMode() const throw()                     { return mode; }
-	
+    
+    /** Changes the filter that's being used to sift the files. */
+    void setFileFilter (const FileFilter* newFileFilter);
+    
     /** Returns a verb to describe what should happen when the file is accepted.
-	 
-	 E.g. if browsing in "load file" mode, this will be "Open", if in "save file"
-	 mode, it'll be "Save", etc.
-	 */
-    virtual const String getActionVerb() const;
-	
+     
+     E.g. if browsing in "load file" mode, this will be "Open", if in "save file"
+     mode, it'll be "Save", etc.
+     */
+    virtual String getActionVerb() const;
+    
+    /** Returns true if the saveMode flag was set when this component was created.
+     */
+    bool isSaveMode() const noexcept;
+    
     //==============================================================================
     /** Adds a listener to be told when the user selects and clicks on files.
-	 
-	 @see removeListener
-	 */
-    void addListener (FileBrowserListener* const listener) throw();
-	
+     @see removeListener
+     */
+    void addListener (FileBrowserListener* listener);
+    
     /** Removes a listener.
-	 
-	 @see addListener
-	 */
-    void removeListener (FileBrowserListener* const listener) throw();
-
-	void mouseDoubleClick (const MouseEvent &e);
+     @see addListener
+     */
+    void removeListener (FileBrowserListener* listener);
+        
 	//==============================================================================
-	int getNumRows()				{	return fileListComponent->getNumRows();		}
-	void selectRow(int rowNumber)	{	fileListComponent->selectRow(rowNumber);	}
-	void deselectAllRows()			{	fileListComponent->deselectAllRows();		}
-	
+//	int getNumRows()				{	return fileListComponent->getNumRows();		}
+//	void selectRow(int rowNumber)	{	fileListComponent->selectRow(rowNumber);	}
+//	void deselectAllRows()			{	fileListComponent->deselectAllRows();		}
+
+	/** Enables the column resizer.
+     */
 	void setResizeEnable(bool enableResize)
     {	
 		showResizer = enableResize;
-		resizer->setVisible(enableResize);	
 	}
     
-	bool getResizeEnable()					{	return showResizer;			}
+    /** Returns true if the resizer is enabled.
+     */
+	bool getResizeEnabled()					{	return showResizer;			}
 	
+    /** Returns the width for the longest item in the list.
+     */
 	int getLongestWidth();
+    
     //==============================================================================
     /** @internal */
     void resized();
     /** @internal */
     bool keyPressed (const KeyPress& key);
     /** @internal */
+    void mouseDoubleClick (const MouseEvent &e);
+    /** @internal */
     void selectionChanged();
     /** @internal */
     void fileClicked (const File& f, const MouseEvent& e);
     /** @internal */
     void fileDoubleClicked (const File& f);
-				
+    /** @internal */
+    void browserRootChanged (const File&);
+    /** @internal */
+    bool isFileSuitable (const File&) const;
+    /** @internal */
+    bool isDirectorySuitable (const File&) const;
+
+    /** @internal */
+    DirectoryContentsDisplayComponent* getDisplayComponent() const noexcept;
+    
 private:
     //==============================================================================
-    DirectoryContentsList* fileList;
-    FileFilter* directoriesOnlyFilter;
-	
-    FileChooserMode mode;
+    ScopedPointer <DirectoryContentsList> fileList;
+    const FileFilter* fileFilter;
+    
+    int flags;
     File currentRoot;
+    Array<File> chosenFiles;
     ListenerList <FileBrowserListener> listeners;
-	
-    FileListComponent* fileListComponent;
-	
+    
+    ScopedPointer<DirectoryContentsDisplayComponent> fileListComponent;
+    
     TimeSliceThread thread;
-	
+    
     void sendListenerChangeMessage();
+    bool isFileOrDirSuitable (const File& f) const;
 	
 	bool showResizer;
-	ResizableCornerComponent* resizer;
+	ScopedPointer<ResizableCornerComponent> resizer;
 	ComponentBoundsConstrainer resizeLimits;
-	BasicFileBrowserLookAndFeel *lookAndFeel;
+	ScopedPointer<BasicFileBrowserLookAndFeel> lookAndFeel;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicFileBrowser);
 };

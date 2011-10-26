@@ -29,7 +29,7 @@ BEGIN_JUCE_NAMESPACE
 LoopingAudioSource::LoopingAudioSource (PositionableAudioSource* const inputSource,
 										const bool deleteInputWhenDeleted)
     : input (inputSource, deleteInputWhenDeleted),
-	  isLoopingBetweenTimes (false),
+      isLoopingBetweenTimes (false),
       loopStartSample (0),
       loopEndSample (0),
       tempBuffer (2, 512)
@@ -143,12 +143,15 @@ void LoopingAudioSource::setNextReadPosition (int64 newPosition)
     const ScopedLock sl (loopPosLock);
     
     if (isLoopingBetweenTimes 
-        && getNextReadPosition() > loopStartSample)
+        && getNextReadPosition() > loopStartSample
+        && getNextReadPosition() < loopEndSample)
     {
+        const int64 numLoopSamples = loopEndSample - loopStartSample;
+        
         if (newPosition > loopEndSample)
-            newPosition = loopStartSample + ((newPosition - loopEndSample) % (loopEndSample - loopStartSample));
+            newPosition = loopStartSample + ((newPosition - loopEndSample) % numLoopSamples);
         else if (newPosition < loopStartSample)
-            newPosition = loopEndSample - ((loopStartSample - newPosition) % (loopEndSample - loopStartSample));
+            newPosition = loopEndSample - ((loopStartSample - newPosition) % numLoopSamples);
     }
     
     input->setNextReadPosition (newPosition);
