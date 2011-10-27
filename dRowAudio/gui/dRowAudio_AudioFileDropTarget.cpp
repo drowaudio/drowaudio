@@ -86,7 +86,7 @@ bool AudioFileDropTarget::isInterestedInDragSource (const SourceDetails& dragSou
 {
     ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
     
-    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (Columns::libraryItemIdentifier))
+    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (MusicColumns::libraryItemIdentifier))
     {
         interestedInDrag = true;
         setMouseCursor (MouseCursor::CopyingCursor);
@@ -117,7 +117,7 @@ void AudioFileDropTarget::itemDropped (const SourceDetails& dragSourceDetails)
         if (childTree != nullptr) 
         {
             ValueTree itemTree (childTree->getValueTree());
-            File newFile (itemTree.getProperty (Columns::columnNames[Columns::Location]));
+            File newFile (itemTree.getProperty (MusicColumns::columnNames[MusicColumns::Location]));
             
             if (newFile.existsAsFile()) 
             {

@@ -16,7 +16,7 @@ Deck::Deck(int deckNo_)
 	Settings* settingsManager = Settings::getInstance();
 
     filePlayer = new AudioFilePlayer();
-	filePlayer->setAudioFormatManager(DecksAudioFormatManager::getInstance());
+	filePlayer->setAudioFormatManager(DecksAudioFormatManager::getInstance(), false);
 
     thumbnailCache = new MultipleAudioThumbnailCache(10);
     thumbnail = new ColouredAudioThumbnail(512, *DecksAudioFormatManager::getInstance(), *thumbnailCache);

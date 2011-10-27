@@ -121,7 +121,9 @@ public:
         }
         else if (button == &timeButton)
         {
-            ownerListBoxModel->filePlayer->setActiveLoopPoint (startTime, endTime, loopIndex, timeButton.getToggleState());
+//            ownerListBoxModel->filePlayer->setActiveLoopPoint (startTime, endTime, loopIndex, timeButton.getToggleState());
+            ownerListBoxModel->filePlayer->setLoopTimes (startTime, endTime);
+            ownerListBoxModel->filePlayer->setLoopBetweenTimes (timeButton.getToggleState());
         }
         else if (button == &removeButton)
         {

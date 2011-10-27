@@ -80,7 +80,7 @@ void CompleteDraggableWaveDisplay::paint(Graphics &g)
 	
 	g.fillAll(Colours::darkgrey);
 	
-	if (filePlayer->getFileName().isNotEmpty())
+	if (filePlayer->getPath().isNotEmpty())
 	{		
         const int startXPosInImage = (filePlayer->getNextReadPosition()) / sourceSamplesPerThumbSample;
         const int playHeadXPos = playheadPos * w;

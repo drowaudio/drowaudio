@@ -78,11 +78,15 @@ void CrossFader::paint(Graphics &g)
 	
 	// draw selection backgrounds
 	float anglePerDeck = 3.0f / (manager->getMaxNoDecks());
-	float Xcx = getCentreX(xAssignSlider);
-	float Xcy = getCentreY(xAssignSlider);
-	float Ycx = getCentreX(yAssignSlider);
-	float Ycy = getCentreY(yAssignSlider);
-
+//	float Xcx = getCentreX(xAssignSlider);
+//	float Xcy = getCentreY(xAssignSlider);
+//	float Ycx = getCentreX(yAssignSlider);
+//	float Ycy = getCentreY(yAssignSlider);
+	float Xcx = xAssignSlider->getBounds().getCentreX();
+	float Xcy = xAssignSlider->getBounds().getCentreY();
+	float Ycx = yAssignSlider->getBounds().getCentreX();
+	float Ycy = yAssignSlider->getBounds().getCentreY();
+    
 	g.setColour(DecksColours::getInstance()->getColour(DecksColours::meterLineColour));
 
 	Path pX, pY;

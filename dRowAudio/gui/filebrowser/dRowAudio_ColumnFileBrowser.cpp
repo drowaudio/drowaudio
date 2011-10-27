@@ -25,6 +25,7 @@ public:
                             filesToDisplay_),
           fileDragEnabled (false)
 	{
+        addMouseListener (this, true);
 	}
 	
 	~BrowserColumn()
@@ -94,7 +95,7 @@ public:
 	void fileClicked (const File& file, const MouseEvent& e) {}
 	void fileDoubleClicked (const File& file) {}
 	void browserRootChanged (const File& newRoot) {}
-	void selectedFileChanged (const File& file, bool retainFocus = false);
+	void selectedFileChanged (const File& file);
 	bool addColumn (const File& rootDirectory);
 	void removeColumn (int numColumns = 1);
 	void changeListenerCallback (ChangeBroadcaster* changedComponent);
@@ -154,7 +155,7 @@ void ColumnFileBrowserContents::resized()
 	setSize (width, height);
 }
 
-void ColumnFileBrowserContents::selectedFileChanged (const File& file, bool retainFocus)
+void ColumnFileBrowserContents::selectedFileChanged (const File& file)
 {
     // if last column clicked add new column
 	if (columns[activeColumn] == columns.getLast())

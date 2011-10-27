@@ -46,11 +46,11 @@ void ITunesLibraryParser::run()
     SortedSet<int> existingIds;
     if (! threadShouldExit())
     {
-        if (treeToFill.hasType(Columns::libraryIdentifier))
+        if (treeToFill.hasType(MusicColumns::libraryIdentifier))
         {
             for (int i = 0; i < treeToFill.getNumChildren(); ++i)
             {
-                int idOfChild = int (treeToFill.getChild (i).getProperty (Columns::columnNames[Columns::ID]));
+                int idOfChild = int (treeToFill.getChild (i).getProperty (MusicColumns::columnNames[MusicColumns::ID]));
                 existingIds.add (idOfChild);
             }
             
@@ -78,13 +78,13 @@ void ITunesLibraryParser::run()
                 {
                     alreadyExists = true;
                     existingIds.removeValue (currentItemId);
-                    newElement = treeToFill.getChildWithProperty (Columns::columnNames[Columns::ID], currentItemId);
+                    newElement = treeToFill.getChildWithProperty (MusicColumns::columnNames[MusicColumns::ID], currentItemId);
                 }
                 else
                 {
                     alreadyExists = false;
-                    newElement = ValueTree (Columns::libraryItemIdentifier);
-                    newElement.setProperty (Columns::columnNames[Columns::ID], currentItemId, nullptr);
+                    newElement = ValueTree (MusicColumns::libraryItemIdentifier);
+                    newElement.setProperty (MusicColumns::columnNames[MusicColumns::ID], currentItemId, nullptr);
                 }
                 
                 if (alreadyExists)
@@ -93,10 +93,10 @@ void ITunesLibraryParser::run()
                     
                     forEachXmlChildElement(*trackDetails, e)
                     {
-                        if (e->getAllSubText() == Columns::iTunesNames[Columns::Modified])
+                        if (e->getAllSubText() == MusicColumns::iTunesNames[MusicColumns::Modified])
                         {
                             int64 newModifiedTime = parseITunesDateString (e->getNextElement()->getAllSubText()).toMilliseconds();
-                            int64 currentModifiedTime = newElement.getProperty (Columns::columnNames[Columns::Modified]);
+                            int64 currentModifiedTime = newElement.getProperty (MusicColumns::columnNames[MusicColumns::Modified]);
                                                         
                             if (newModifiedTime > currentModifiedTime)
                                 needToModify = true;
@@ -133,36 +133,36 @@ void ITunesLibraryParser::run()
 					if (e2->getNextElement()->getAllSubText().contains ("audio file"))
 					{
                         isAudioFile = true;
-						newElement.setProperty (Columns::columnNames[Columns::LibID], numAdded, nullptr);
+						newElement.setProperty (MusicColumns::columnNames[MusicColumns::LibID], numAdded, nullptr);
 						numAdded++;
 					}
 				}
 				
-				for(int i = 2; i < Columns::numColumns; i++)
+				for(int i = 2; i < MusicColumns::numColumns; i++)
 				{					
-					if (elementKey == Columns::iTunesNames[i])
+					if (elementKey == MusicColumns::iTunesNames[i])
 					{
 						String entry = e2->getNextElement()->getAllSubText();
 						
-						if (i == Columns::Length
-							|| i == Columns::BPM
-							|| i == Columns::LibID)
+						if (i == MusicColumns::Length
+							|| i == MusicColumns::BPM
+							|| i == MusicColumns::LibID)
 						{
-							newElement.setProperty (Columns::columnNames[i], entry.getIntValue(), nullptr);
+							newElement.setProperty (MusicColumns::columnNames[i], entry.getIntValue(), nullptr);
 						}
-                        else if (i == Columns::Added
-                                 || i == Columns::Modified)
+                        else if (i == MusicColumns::Added
+                                 || i == MusicColumns::Modified)
                         {            
                             int64 timeInMilliseconds (parseITunesDateString (entry).toMilliseconds());
                                                         
-                            newElement.setProperty (Columns::columnNames[i], timeInMilliseconds, nullptr);
+                            newElement.setProperty (MusicColumns::columnNames[i], timeInMilliseconds, nullptr);
                         }
 						else
 						{
-							if (i == Columns::Location)
+							if (i == MusicColumns::Location)
 								entry = stripFileProtocolForLocal (entry);
 
-							newElement.setProperty (Columns::columnNames[i], entry, nullptr);
+							newElement.setProperty (MusicColumns::columnNames[i], entry, nullptr);
 						}
 					}
 				}

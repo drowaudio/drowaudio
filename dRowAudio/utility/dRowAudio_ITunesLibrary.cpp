@@ -14,7 +14,7 @@ juce_ImplementSingleton(ITunesLibrary);
 
 ITunesLibrary::ITunesLibrary()
 :	//libraryFile (getDefaultITunesLibraryFile()),
-    libraryTree(Columns::libraryIdentifier)
+    libraryTree (MusicColumns::libraryIdentifier)
 {
 	//setLibraryFile(libraryFile);
 }
@@ -48,7 +48,7 @@ void ITunesLibrary::setLibraryTree (ValueTree& newTreeToUse)
 {
     if (! newTreeToUse.isValid()) 
     {
-        newTreeToUse = ValueTree (Columns::libraryIdentifier);
+        newTreeToUse = ValueTree (MusicColumns::libraryIdentifier);
     }
 
     libraryTree = newTreeToUse;

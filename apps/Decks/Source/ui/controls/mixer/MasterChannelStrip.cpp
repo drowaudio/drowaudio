@@ -11,7 +11,7 @@
 
 MasterChannelStrip::MasterChannelStrip()
 {
-	addAndMakeVisible( gainSlider = new Slider(T("gainSlider")) );
+	addAndMakeVisible(gainSlider = new Slider("gainSlider"));
 	gainSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	gainSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	gainSlider->setRange(Defaults::Mixer::Master::gainMin, Defaults::Mixer::Master::gainMax);
@@ -20,35 +20,35 @@ MasterChannelStrip::MasterChannelStrip()
 	addAndMakeVisible(meterL = new SegmentedMeter());
 	addAndMakeVisible(meterR = new SegmentedMeter());
 	
-	addAndMakeVisible(cueButton = new TextButton(T("cue")));
+	addAndMakeVisible(cueButton = new TextButton("cue"));
 	cueButton->setClickingTogglesState(true);
 	cueButton->setColour(TextButton::buttonOnColourId, Colours::orangered);
 	cueButton->setToggleState(Defaults::Mixer::Master::cue, false);
 	cueButton->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfMasterAsValue(MASTER_SETTING(cue)));
 	
-	addAndMakeVisible( faderCurveSlider = new Slider(T("faderCurveSlider")) );
+	addAndMakeVisible( faderCurveSlider = new Slider("faderCurveSlider") );
 	faderCurveSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	faderCurveSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	faderCurveSlider->setRange(Defaults::Mixer::Master::faderCurveMin, Defaults::Mixer::Master::faderCurveMax);
 	faderCurveSlider->setValue(Defaults::Mixer::Master::faderCurve);
 	faderCurveSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfMasterAsValue(MASTER_SETTING(faderCurve)));
 	
-	addAndMakeVisible( faderCurveLabel = new Label(T("faderCurveLabel"), T("Ch Curve")) );
+	addAndMakeVisible( faderCurveLabel = new Label("faderCurveLabel", "Ch Curve") );
 	faderCurveLabel->setJustificationType(Justification::centred);
 	faderCurveLabel->setFont(12);
 	
-	addAndMakeVisible( xFaderCurveSlider = new Slider(T("xFaderCurveSlider")) );
+	addAndMakeVisible( xFaderCurveSlider = new Slider("xFaderCurveSlider"));
 	xFaderCurveSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	xFaderCurveSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	xFaderCurveSlider->setRange(Defaults::Mixer::Master::xFaderCurveMin, Defaults::Mixer::Master::xFaderCurveMax);
 	xFaderCurveSlider->setValue(Defaults::Mixer::Master::xFaderCurve);
 	xFaderCurveSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfMasterAsValue(MASTER_SETTING(xFaderCurve)));
 	
-	addAndMakeVisible( xFaderCurveLabel = new Label(T("xFaderCurveLabel"), T("X Curve")) );
+	addAndMakeVisible( xFaderCurveLabel = new Label("xFaderCurveLabel", "X Curve") );
 	xFaderCurveLabel->setJustificationType(Justification::centred);
 	xFaderCurveLabel->setFont(12);
 	
-	addAndMakeVisible( monitorGainSlider = new Slider(T("monitorGainSlider")) );
+	addAndMakeVisible( monitorGainSlider = new Slider("monitorGainSlider") );
 	monitorGainSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	monitorGainSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	monitorGainSlider->setRange(Defaults::Mixer::Master::monitorGainMin, Defaults::Mixer::Master::monitorGainMax);
@@ -98,7 +98,7 @@ void MasterChannelStrip::paint(Graphics &g)
 	g.fillAll();
 	
 	// draw meter numbers
-	const int noSegments = meterL->getTotalNoSegments();
+	const int noSegments = meterL->getTotalNumSegments();
 	const float segHeight = (meterL->getHeight()) / (float)noSegments;
 	const float offset = segHeight/2.0f;//meterL->getHeight()/ (float)(noSegments+1);
 	const int startY = meterL->getY()+offset;
@@ -106,8 +106,8 @@ void MasterChannelStrip::paint(Graphics &g)
 	const int left = meterL->getRight() + 5;
 	const int right = meterR->getX() - 5;
 	const int centreX = left + (0.5f*(right - left));
-	const int dbInc = meterL->getNoDbPerSegment();
-	int db = dbInc*meterL->getNoOverSegments();
+	const int dbInc = meterL->getNumDbPerSegment();
+	int db = dbInc*meterL->getNumOverSegments();
 	
 	g.setColour(DecksColours::getInstance()->getColour(DecksColours::meterLineColour));
 	g.setFont(10);

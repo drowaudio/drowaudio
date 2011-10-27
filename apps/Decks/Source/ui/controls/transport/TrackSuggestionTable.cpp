@@ -337,7 +337,7 @@ int TrackSuggestionTable::getColumnAutoSizeWidth (int columnId)
 	return widest + 8;
 }
 
-const var TrackSuggestionTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
+var TrackSuggestionTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
 {
 	if(!currentlySelectedRows.isEmpty())
 	{

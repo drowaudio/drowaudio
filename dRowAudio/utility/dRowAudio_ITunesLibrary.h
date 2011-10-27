@@ -13,13 +13,23 @@
 
 #include "dRowAudio_ITunesLibraryParser.h"
 
+//==============================================================================
+/** An ITunesLibrary manages the parsing of an iTunes library into a ValueTree.
+    You can register yourselves as a listener to recieve callbacks when its 
+    content has changed. You can also load a previously generated library tree 
+    for data to me merged into if it is newer.
+ */
 class ITunesLibrary : public Timer,
 					  public DeletedAtShutdown
 {
 public:
-	
+    //==============================================================================
 	juce_DeclareSingleton (ITunesLibrary, false);
 	
+    /** Creates an ITunesLibrary.
+        This class can also be used as a singleton which may be more appropriate.
+        To start the parsing use the setLibraryFile method.
+     */
 	ITunesLibrary();
 	
     /** Destructor. */
@@ -102,7 +112,7 @@ public:
 	void timerCallback();
     
 private:
-	
+    //==============================================================================
     CriticalSection parserLock;
 	ListenerList <Listener> listeners;
 

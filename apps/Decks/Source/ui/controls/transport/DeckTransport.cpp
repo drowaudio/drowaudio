@@ -18,7 +18,7 @@ DeckTransport::DeckTransport(int deckNo_)
 	settings(DeckManager::getInstance()),
 	filePlayer(settings->getDeck(deckNo)->getMainFilePlayer())
 {
-	filePlayer->addChangeListener(this);
+	filePlayer->getAudioTransportSource()->addChangeListener(this);
 	
 	addAndMakeVisible(infoBox = new TrackInfo(deckNo, filePlayer));
 	
@@ -38,6 +38,8 @@ DeckTransport::DeckTransport(int deckNo_)
                                                                         settings->getDeck(deckNo)->getThumbnailCache(),
                                                                         settings->getDeck(deckNo)->getThumbnail()));
 	
+    addAndMakeVisible(audioFileDropTarget = new AudioFileDropTarget (filePlayer, waveDisplay));
+    
     addAndMakeVisible(clickableLoopPointComponent = new ClickableLoopPointComponent(filePlayer));
     addAndMakeVisible(clickableCuePointComponent = new ClickableCuePointComponent(filePlayer));
     
@@ -182,7 +184,7 @@ void DeckTransport::changeListenerCallback(ChangeBroadcaster *object)
 {
 	//		filePlayer->setPlayDirection(false);
 	
-	if (object == static_cast<ChangeBroadcaster*> (filePlayer)) {
+	if (object == static_cast<ChangeBroadcaster*> (filePlayer->getAudioTransportSource())) {
 		if (filePlayer->isPlaying())
 			transportButtons[playPause]->setToggleState(true, false);
 		else

@@ -76,6 +76,7 @@ private:
 	TrackInfo *infoBox;
 	OwnedArray<DrawableButton> transportButtons;
 	ColouredPositionableWaveDisplay *waveDisplay;
+    ScopedPointer<AudioFileDropTarget> audioFileDropTarget;
 	ClickableLoopPointComponent* clickableLoopPointComponent;
 	ClickableCuePointComponent* clickableCuePointComponent;
 	LoopAndCuePoints *loopAndCuePoints;

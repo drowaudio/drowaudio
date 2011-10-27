@@ -15,7 +15,7 @@ TrackInfo::TrackInfo(int deckNo_, AudioFilePlayer* filePlayer_)
 	time(0.0),
 	fileLength(0.0)
 {
-	filePlayer->addChangeListener(this);
+	filePlayer->getAudioTransportSource()->addChangeListener(this);
 	filePlayer->addListener(this);
 	
 	currentBpm = String::empty;
@@ -28,7 +28,7 @@ TrackInfo::TrackInfo(int deckNo_, AudioFilePlayer* filePlayer_)
 
 TrackInfo::~TrackInfo()
 {
-	filePlayer->removeChangeListener(this);
+	filePlayer->getAudioTransportSource()->removeChangeListener(this);
 
 	String message("TrackInfo ");
 	message << deckNo << " deleted";

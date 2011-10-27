@@ -166,7 +166,7 @@ class AppClass : public JUCEApplication
 			AudioEngine::deleteInstance();
 			DeckManager::deleteInstance();
 			Settings::deleteInstance();
-			DecksAudioFormatManager::deleteInstance();
+			//DecksAudioFormatManager::deleteInstance();
 			
 			deleteAndZero (commandManager);
 		}

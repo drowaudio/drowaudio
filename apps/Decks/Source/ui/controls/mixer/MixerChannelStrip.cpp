@@ -21,7 +21,7 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 		
 	DrawablePath powerOffIcon(DecksLookAndFeel::createIcon(DecksLookAndFeel::Power, findColour(TextButton::textColourOffId)));
 	DrawablePath powerOnIcon(DecksLookAndFeel::createIcon(DecksLookAndFeel::Power, findColour(TextButton::textColourOnId)));
-	addAndMakeVisible(onButon = new DrawableButton(T("onButon"), DrawableButton::ImageOnButtonBackground));
+	addAndMakeVisible(onButon = new DrawableButton("onButon", DrawableButton::ImageOnButtonBackground));
 	onButon->setImages(&powerOffIcon, 0, 0, 0, &powerOnIcon);
 	onButon->setBackgroundColours(Colours::darkgrey, Colours::lightgrey);
 	onButon->setClickingTogglesState(true);
@@ -29,13 +29,13 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 
 	DrawablePath bypassOffIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Bypass, findColour(TextButton::textColourOffId)));
 	DrawablePath bypassOnIcon (DecksLookAndFeel::createIcon(DecksLookAndFeel::Bypass, findColour(TextButton::textColourOnId)));
-	addAndMakeVisible(bypassButton = new DrawableButton(T("bypass"), DrawableButton::ImageOnButtonBackground));
+	addAndMakeVisible(bypassButton = new DrawableButton("bypass", DrawableButton::ImageOnButtonBackground));
 	bypassButton->setImages(&bypassOffIcon, 0, 0, 0, &bypassOnIcon);
 	bypassButton->setClickingTogglesState(true);
 	bypassButton->setBackgroundColours(Colours::darkgrey, Colours::lightgrey);
 	bypassButton->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(bypass)));
 
-	addAndMakeVisible(gainSlider = new Slider(T("gainSlider")));
+	addAndMakeVisible(gainSlider = new Slider("gainSlider"));
 	gainSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	gainSlider->setRange(Defaults::Mixer::Channel::gainMin, Defaults::Mixer::Channel::gainMax);
 	gainSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(gain)));
@@ -44,23 +44,23 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	
 	for (int i = 0; i < noBands; i++)
 	{
-		eqSliders.add(new Slider(T("")));
+		eqSliders.add(new Slider(""));
 		addAndMakeVisible(eqSliders[i]);
 		eqSliders[i]->setSliderStyle(Slider::RotaryVerticalDrag);
 		eqSliders[i]->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 		
-		eqKillButtons.add(new TextButton(T("K")));
+		eqKillButtons.add(new TextButton("K"));
 		addAndMakeVisible(eqKillButtons[i]);
 		eqKillButtons[i]->setClickingTogglesState(true);
 		
-		eqLabels.add(new Label(T(""), T("")));
+		eqLabels.add(new Label("", ""));
 		addAndMakeVisible(eqLabels[i]);
 		eqLabels[i]->setFont(Font(12));
 		eqLabels[i]->setJustificationType(Justification(Justification::horizontallyCentred));
 	}
-	eqLabels[high]->setText(T("High"), false);
-	eqLabels[mid]->setText(T("Mid"), false);
-	eqLabels[low]->setText(T("Low"), false);
+	eqLabels[high]->setText("High", false);
+	eqLabels[mid]->setText("Mid", false);
+	eqLabels[low]->setText("Low", false);
 	
 	eqSliders[high]->setRange(Defaults::Mixer::Channel::HighEQ::gainMin, Defaults::Mixer::Channel::HighEQ::gainMax);
 	eqSliders[high]->setSkewFactorFromMidPoint(1.0);
@@ -78,31 +78,31 @@ MixerChannelStrip::MixerChannelStrip(int deckNo_, Mixer *mixer_)
 	eqKillButtons[low]->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(lowKill)));
 	
 	
-	addAndMakeVisible(levelSlider = new Slider(T("levelSlider")));
+	addAndMakeVisible(levelSlider = new Slider("levelSlider"));
 	levelSlider->setSliderStyle(Slider::LinearVertical);
 	levelSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
 	levelSlider->setRange(Defaults::Mixer::Channel::faderMin, Defaults::Mixer::Channel::faderMax);
 	levelSlider->setSkewFactor(Settings::getInstance()->getPropertyOfMaster(MASTER_SETTING(faderCurve)));
 	levelSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(level)));
 
-	addAndMakeVisible(cueButton = new TextButton(T("cue")));
+	addAndMakeVisible(cueButton = new TextButton("cue"));
 //	cueButton->addListener(this);
 	cueButton->setClickingTogglesState(true);
 	cueButton->setColour(TextButton::buttonOnColourId, Colours::orangered);
 	cueButton->getToggleStateValue().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(cue)));
 	
 
-	addAndMakeVisible( fxASlider = new Slider(T("fxASlider")) );
+	addAndMakeVisible( fxASlider = new Slider("fxASlider") );
 	fxASlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	fxASlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
-	(new Label(T("fxALabel"), T("fxA")))->attachToComponent(fxASlider, true);
+	(new Label("fxALabel", "fxA"))->attachToComponent(fxASlider, true);
 	fxASlider->setRange(Defaults::Mixer::Channel::fxSendMin, Defaults::Mixer::Channel::fxSendMax);
 	fxASlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(fxASend)));
 
-	addAndMakeVisible( fxBSlider = new Slider(T("fxBSlider")) );
+	addAndMakeVisible( fxBSlider = new Slider("fxBSlider") );
 	fxBSlider->setSliderStyle(Slider::RotaryVerticalDrag);
 	fxBSlider->setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
-	(new Label(T("fxBSlider"), T("fxB")))->attachToComponent(fxBSlider, true);
+	(new Label("fxBSlider", "fxB"))->attachToComponent(fxBSlider, true);
 	fxBSlider->setRange(Defaults::Mixer::Channel::fxSendMin, Defaults::Mixer::Channel::fxSendMax);
 	fxBSlider->getValueObject().referTo(Settings::getInstance()->getPropertyOfChannelAsValue(deckNo, CHANNEL_SETTING(fxBSend)));
 }

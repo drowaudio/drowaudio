@@ -58,22 +58,16 @@ MainComponent::MainComponent()
                             Colours::grey, musicLibraryTable, true);
 
     tabbedComponent.addTab ("Column File Browser",
-                            Colours::grey, new ColumnFileBrowser (new WildcardFileFilter (audioFilePlayer.getAudioFormatManager()->getWildcardForAllFormats(),
+                            Colours::grey, 
+                            new ColumnFileBrowser (new WildcardFileFilter (audioFilePlayer.getAudioFormatManager()->getWildcardForAllFormats(),
                                                                                           "*", 
-                                                                                          "Audio Files")), true);
-
-    tabbedComponent.addTab ("Basic File Browser",
-                            Colours::grey, new BasicFileBrowser (BasicFileBrowser::openMode 
-                                                                 + BasicFileBrowser::canSelectFiles
-                                                                 + BasicFileBrowser::canSelectMultipleItems,
-                                                                 File::getSpecialLocation(File::userMusicDirectory),
-                                                                 nullptr), true);
+                                                                                          "Audio Files")), 
+                            true);
     
     audioSourcePlayer.setSource (&audioFilePlayer);
     audioDeviceManager.initialise (0, 2, nullptr, true);
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);
-    DBG("size: "<<(int)sizeof(ColumnFileBrowserLookAndFeel));
 }
 
 MainComponent::~MainComponent()

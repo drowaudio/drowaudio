@@ -82,7 +82,7 @@ void Mixer::updateMeterForChannel(int deckNo, float **data, int numSamples, int 
 {
 	SegmentedMeter *meter = channelStrips[deckNo]->getMeter();
 	if (meter != 0)
-		meter->copyValues(data, numSamples, numChannels);
+		meter->copySamples(data, numSamples, numChannels);
 }
 
 void Mixer::updateMasterMeter(float **data, int numSamples, int numChannels)
@@ -91,8 +91,8 @@ void Mixer::updateMasterMeter(float **data, int numSamples, int numChannels)
 	SegmentedMeter *meterR = masterStrip->getMeterR();
 	
 	if (meterL != 0)
-		meterL->copyValues(data[0], numSamples);
+		meterL->copySamples(data[0], numSamples);
 	
 	if (numChannels > 1)
-		meterR->copyValues(data[1], numSamples);
+		meterR->copySamples(data[1], numSamples);
 }

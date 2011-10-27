@@ -39,13 +39,13 @@ void TrackInfoComponent::paint (Graphics& g)
     if (trackInfo.isValid())
     {
         String infoText;
-        infoText << trackInfo[Columns::columnNames[Columns::Artist]].toString() << "\n";
-        infoText << trackInfo[Columns::columnNames[Columns::Song]].toString();
+        infoText << trackInfo[MusicColumns::columnNames[MusicColumns::Artist]].toString() << "\n";
+        infoText << trackInfo[MusicColumns::columnNames[MusicColumns::Song]].toString();
         
         g.drawFittedText (infoText,
-                          0, 0, w, h,
+                          5, 5, w - 10, h - 10,
                           Justification (Justification::topLeft),
-                          2);        
+                          (h - 10) / 20);
     }
     else
     {

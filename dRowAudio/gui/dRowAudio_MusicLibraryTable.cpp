@@ -28,7 +28,7 @@ BEGIN_JUCE_NAMESPACE
 MusicLibraryTable::MusicLibraryTable()
 :	font (12.0f),
 	currentLibrary (nullptr),
-    dataList (Columns::libraryIdentifier),
+    dataList (MusicColumns::libraryIdentifier),
 	filteredNumRows (dataList.getNumChildren()),
 	finishedLoading (true)
 {
@@ -45,25 +45,25 @@ MusicLibraryTable::MusicLibraryTable()
 	table.setColour (ListBox::outlineColourId, Colours::grey);
 	table.setOutlineThickness (1);
 
-	// Add some columns to the table header
-    for (int i = 1; i < Columns::numColumns; i++)
+	// Add some MusicColumns to the table header
+    for (int i = 1; i < MusicColumns::numColumns; i++)
     {
-        table.getHeader().addColumn (Columns::columnNames[i].toString(),
+        table.getHeader().addColumn (MusicColumns::columnNames[i].toString(),
                                      i,
-                                     Columns::columnWidths[i],
+                                     MusicColumns::columnWidths[i],
                                      50,
                                      800,
                                      TableHeaderComponent::defaultFlags);
     }
         
 	// we could now change some initial settings..
-	table.getHeader().setSortColumnId (Columns::Artist, true); // sort forwards by the ID column
+	table.getHeader().setSortColumnId (MusicColumns::Artist, true); // sort forwards by the ID column
 
-	table.getHeader().setColumnVisible (Columns::LibID, false);
-	table.getHeader().setColumnVisible (Columns::ID, false);
-	table.getHeader().setColumnVisible (Columns::Rating, false);
-	table.getHeader().setColumnVisible (Columns::Location, false);
-	table.getHeader().setColumnVisible (Columns::Modified, false);
+	table.getHeader().setColumnVisible (MusicColumns::LibID, false);
+	table.getHeader().setColumnVisible (MusicColumns::ID, false);
+	table.getHeader().setColumnVisible (MusicColumns::Rating, false);
+	table.getHeader().setColumnVisible (MusicColumns::Location, false);
+	table.getHeader().setColumnVisible (MusicColumns::Modified, false);
 		
 	setFilterText (String::empty);
 }
@@ -110,7 +110,7 @@ void MusicLibraryTable::setFilterText (String filterString)
 		{
 			for (int i = 0; i < dataList.getChild (e).getNumProperties(); i++)
 			{
-				if (dataList.getChild (e)[Columns::columnNames[i]].toString().containsIgnoreCase (filterString))
+				if (dataList.getChild (e)[MusicColumns::columnNames[i]].toString().containsIgnoreCase (filterString))
 				{
 //                    filteredArray.add (dataList.getChild (e));
 					filteredDataList.addChild (dataList.getChild(e).createCopy(), -1, 0);
@@ -211,13 +211,13 @@ void MusicLibraryTable::paintCell (Graphics& g,
         {
             String text;
             
-            if(columnId == Columns::Length)
-                text = secondsToTimeLength (rowElement[Columns::columnNames[columnId]].toString().getIntValue());
-            else if(columnId == Columns::Added
-                    || columnId == Columns::Modified)
-                text = Time (int64 (rowElement[Columns::columnNames[columnId]])).formatted ("%d/%m/%Y - %H:%M");
+            if(columnId == MusicColumns::Length)
+                text = secondsToTimeLength (rowElement[MusicColumns::columnNames[columnId]].toString().getIntValue());
+            else if(columnId == MusicColumns::Added
+                    || columnId == MusicColumns::Modified)
+                text = Time (int64 (rowElement[MusicColumns::columnNames[columnId]])).formatted ("%d/%m/%Y - %H:%M");
             else
-                text = rowElement[Columns::columnNames[columnId]].toString();
+                text = rowElement[MusicColumns::columnNames[columnId]].toString();
             
             g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);
         }
@@ -235,22 +235,22 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, const bool isForw
         ScopedLock sl (currentLibrary->getParserLock());
         DBG ("sortOrderChanged");
         
-		if (newSortColumnId == Columns::Length
-			|| newSortColumnId == Columns::BPM
-			|| newSortColumnId == Columns::LibID
-			|| newSortColumnId == Columns::ID
-            || newSortColumnId == Columns::Added
-            || newSortColumnId == Columns::Modified)
+		if (newSortColumnId == MusicColumns::Length
+			|| newSortColumnId == MusicColumns::BPM
+			|| newSortColumnId == MusicColumns::LibID
+			|| newSortColumnId == MusicColumns::ID
+            || newSortColumnId == MusicColumns::Added
+            || newSortColumnId == MusicColumns::Modified)
 		{
-			ValueTreeComparators::Numerical sorter (Columns::columnNames[newSortColumnId], isForwards);
+			ValueTreeComparators::Numerical sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
 			filteredDataList.sort (sorter, 0, false);
 //            dataList.sort (sorter, 0, false);
 		}
 		else
         {
-//			ValueTreeComparators::Lexicographic sorter (Columns::columnNames[newSortColumnId], isForwards);
-			ValueTreeComparators::LexicographicWithBackup sorter (Columns::columnNames[newSortColumnId],
-                                                                  Columns::columnNames[Columns::LibID],
+//			ValueTreeComparators::Lexicographic sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
+			ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
+                                                                  MusicColumns::columnNames[MusicColumns::LibID],
                                                                   isForwards);
             
 			filteredDataList.sort (sorter, 0, false);
@@ -277,7 +277,7 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
 
             if (rowElement.isValid())
             {
-                const String text (rowElement[Columns::columnNames[columnId]].toString());
+                const String text (rowElement[MusicColumns::columnNames[columnId]].toString());
                 widest = jmax (widest, font.getStringWidth (text));
             }
         }
@@ -314,7 +314,7 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &current
                 ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
                 itemsArray.append (childTree.getObject());
             }
-//            itemsArray.append((int)filteredDataList.getChild(currentlySelectedRows[i]).getProperty(Columns::columnNames[Columns::ID]));
+//            itemsArray.append((int)filteredDataList.getChild(currentlySelectedRows[i]).getProperty(MusicColumns::columnNames[MusicColumns::ID]));
         }
             
         return itemsArray;
@@ -354,7 +354,7 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &current
 //    for (int i = 0, i < numRows; i++)
 //    {
 //        ValueTree elm (dataList[i]);
-//        if (int (elm[Columns::columnNames[Columns::LibID]]) == idToLookFor)
+//        if (int (elm[MusicColumns::columnNames[MusicColumns::LibID]]) == idToLookFor)
 //        {
 //            return elm;
 //        }
