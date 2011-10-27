@@ -102,7 +102,10 @@ void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
             const ScopedLock sl (loopPosLock);
 
             const int64 newStart = getNextReadPosition();
-            const int64 newEnd = loopStartSample + ((newStart + info.numSamples) % loopEndSample);
+            int64 newEnd = loopStartSample + ((newStart + info.numSamples) % loopEndSample);
+            
+            if (newStart > loopEndSample)
+                newEnd = newStart + info.numSamples;
             
             if (newEnd > newStart)
             {
@@ -154,6 +157,11 @@ void LoopingAudioSource::setNextReadPosition (int64 newPosition)
             newPosition = loopEndSample - ((loopStartSample - newPosition) % numLoopSamples);
     }
     
+    input->setNextReadPosition (newPosition);
+}
+
+void LoopingAudioSource::setNextReadPositionIgnoringLoop (int64 newPosition)
+{
     input->setNextReadPosition (newPosition);
 }
 

@@ -63,6 +63,9 @@ public:
     /** Changes the current playback position in the source stream. */
     void setPosition (double newPosition)       { audioTransportSource->setPosition (newPosition);  }
     
+    /** Changes the current playback position in the source stream ignoring the loop bounds. */
+    void setPositionIgnoringLoop (double newPosition);
+
     /** Returns the position that the next data block will be read from in seconds. */
     double getCurrentPosition() const           { return audioTransportSource->getCurrentPosition();}
     
@@ -210,6 +213,13 @@ public:
     void setNextReadPosition (int64 newPosition)
     {
         audioTransportSource->setNextReadPosition (newPosition);
+    }
+    
+    /** Sets the next read position ignoring the loop bounds.
+     */
+    void setNextReadPositionIgnoringLoop (int64 newPosition)
+    {
+        loopingAudioSource->setNextReadPositionIgnoringLoop (newPosition);
     }
     
     /** Returns the position from which the next block will be returned.

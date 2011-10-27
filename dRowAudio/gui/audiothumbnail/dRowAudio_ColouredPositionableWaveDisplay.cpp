@@ -173,7 +173,7 @@ void ColouredPositionableWaveDisplay::mouseDown(const MouseEvent &e)
 	setMouseCursor (MouseCursor::IBeamCursor);
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->setPosition (position);
+	filePlayer->setPositionIgnoringLoop (position);
     
 	triggerAsyncUpdate();		
 }
@@ -188,7 +188,7 @@ void ColouredPositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 	currentMouseX = e.x;
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->setPosition (position);
+	filePlayer->setPositionIgnoringLoop (position);
 }
 
 //==============================================================================	

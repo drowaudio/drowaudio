@@ -79,7 +79,10 @@ public:
     //==============================================================================
     /** Implements the PositionableAudioSource method. */
     void setNextReadPosition (int64 newPosition);
-    
+
+    /** Sets the next read position ignoring the loop bounds. */
+    void setNextReadPositionIgnoringLoop (int64 newPosition);
+
     /** Implements the PositionableAudioSource method. */
     int64 getNextReadPosition() const;
     

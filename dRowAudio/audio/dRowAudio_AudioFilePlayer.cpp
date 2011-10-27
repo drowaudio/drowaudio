@@ -89,6 +89,19 @@ void AudioFilePlayer::setLoopBetweenTimes (bool shouldLoop)
 	listeners.call (&Listener::loopBetweenTimesChanged, this);
 }
 
+void AudioFilePlayer::setPositionIgnoringLoop (double newPosition)
+{
+    if (audioFormatReaderSource != nullptr)
+    {
+        const double sampleRate = audioFormatReaderSource->getAudioFormatReader()->sampleRate;
+        
+        if (sampleRate > 0.0)
+        {
+            loopingAudioSource->setNextReadPositionIgnoringLoop ((int64) (newPosition * sampleRate));
+        }
+    }
+}
+
 //==============================================================================
 void AudioFilePlayer::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {

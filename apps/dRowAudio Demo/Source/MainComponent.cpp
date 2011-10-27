@@ -43,6 +43,7 @@ MainComponent::MainComponent()
     
     addAndMakeVisible (&searchBox);
     searchBox.addListener (this);
+    searchBox.setTextToShowWhenEmpty ("search...", Colours::grey);
     
     tabbedComponent.addTab("Audio Playback",
                            Colours::grey, new AudioPlaybackDemo (audioFilePlayer), true);
@@ -113,6 +114,7 @@ void MainComponent::textEditorTextChanged (TextEditor& editor)
         {
             tabbedComponent.setCurrentTabIndex (1, true);
         }
+        
         searchBox.grabKeyboardFocus();
     }
 }
