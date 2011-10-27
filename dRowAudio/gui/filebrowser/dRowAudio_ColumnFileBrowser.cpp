@@ -16,15 +16,13 @@ class BrowserColumn : public BasicFileBrowser,
 {
 public:
     //==================================================================================
-	BrowserColumn (WildcardFileFilter* filesToDisplay_, int columnNumber_)
+	BrowserColumn (WildcardFileFilter* filesToDisplay_)
         : BasicFileBrowser (BasicFileBrowser::openMode
                             + BasicFileBrowser::canSelectFiles
                             + BasicFileBrowser::canSelectDirectories
                             + BasicFileBrowser::canSelectMultipleItems,
                             File::getSpecialLocation (File::userMusicDirectory),
                             filesToDisplay_),
-          columnNumber (columnNumber_),
-          active (false),
           fileDragEnabled (false)
 	{
 	}
@@ -60,8 +58,8 @@ public:
 	void selectionChanged()
 	{
         BasicFileBrowser::selectionChanged();
-        
-        sendChangeMessage();
+
+        sendSynchronousChangeMessage();
 	}
     
 	void fileClicked (const File& file, const MouseEvent& e)
@@ -73,10 +71,7 @@ public:
     
 private:
     //==================================================================================
-	int columnNumber;
-	bool active, fileDragEnabled;
-	
-	friend class ColumnFileBrowserContents;
+	bool fileDragEnabled;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BrowserColumn);
 };
@@ -99,7 +94,7 @@ public:
 	void fileClicked (const File& file, const MouseEvent& e) {}
 	void fileDoubleClicked (const File& file) {}
 	void browserRootChanged (const File& newRoot) {}
-	void selectedFileChanged (const File& file);
+	void selectedFileChanged (const File& file, bool retainFocus = false);
 	bool addColumn (const File& rootDirectory);
 	void removeColumn (int numColumns = 1);
 	void changeListenerCallback (ChangeBroadcaster* changedComponent);
@@ -130,10 +125,9 @@ ColumnFileBrowserContents::ColumnFileBrowserContents (WildcardFileFilter* filesT
                                   Colours::darkorange);
     inactiveLookAndFeel = new ColumnFileBrowserLookAndFeel();
     
-	columns.add (new BrowserColumn (filesToDisplay_, 0));
+	columns.add (new BrowserColumn (filesToDisplay_));
 	addAndMakeVisible (columns[0]);
 	columns[0]->setSize (300, 50);
-	columns[0]->columnNumber = columns.size() - 1;
 	columns[0]->addListener (this);
 	columns[0]->addChangeListener (this);
 	columns[0]->addComponentListener (this);
@@ -160,7 +154,7 @@ void ColumnFileBrowserContents::resized()
 	setSize (width, height);
 }
 
-void ColumnFileBrowserContents::selectedFileChanged (const File& file)
+void ColumnFileBrowserContents::selectedFileChanged (const File& file, bool retainFocus)
 {
     // if last column clicked add new column
 	if (columns[activeColumn] == columns.getLast())
@@ -178,6 +172,8 @@ void ColumnFileBrowserContents::selectedFileChanged (const File& file)
 				
 				if (file.isDirectory())
 					columns.getLast()->setRoot (file);
+                
+                break;
 			}
 		}
 		
@@ -202,7 +198,7 @@ bool ColumnFileBrowserContents::addColumn (const File& rootDirectory)
 	{
         const int startingWidth = columns.getLast()->getWidth();
         
-		columns.add (new BrowserColumn (filesToDisplay, columns.size()));
+		columns.add (new BrowserColumn (filesToDisplay));
 		addAndMakeVisible (columns.getLast());
         columns.getLast()->setLookAndFeel (inactiveLookAndFeel);
 		columns.getLast()->setRoot (rootDirectory);
@@ -235,13 +231,14 @@ void ColumnFileBrowserContents::changeListenerCallback (ChangeBroadcaster* chang
 {
     BrowserColumn* changedColumn = static_cast<BrowserColumn*> (changedComponent);
     
-    columns[activeColumn]->setLookAndFeel (inactiveLookAndFeel);
-    
-    activeColumn = changedColumn->columnNumber;
-    
-    selectedFileChanged (changedColumn->getHighlightedFile());
-
-    columns[activeColumn]->setLookAndFeel (activeLookAndFeel);
+    if (changedColumn->getHighlightedFile().getFileName().isNotEmpty()) 
+    {
+        columns[activeColumn]->setLookAndFeel (inactiveLookAndFeel);
+        activeColumn = columns.indexOf (changedColumn);
+        columns[activeColumn]->setLookAndFeel (activeLookAndFeel);
+        
+        selectedFileChanged (changedColumn->getHighlightedFile());
+    }
 }
 
 void ColumnFileBrowserContents::componentMovedOrResized (Component &component, bool wasMoved, bool wasResized)
