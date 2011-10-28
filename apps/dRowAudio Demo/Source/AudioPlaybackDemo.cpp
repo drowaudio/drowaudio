@@ -85,14 +85,14 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
     resolutionSlider.addListener (this);
     resolutionSlider.setRange (0, 20);
     resolutionSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
-    resolutionSlider.setValue (3);
+    resolutionSlider.setValue (10);
     resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
     
     addAndMakeVisible (&zoomSlider);
     zoomSlider.addListener (this);
     zoomSlider.setRange (0.0001, 2);
     zoomSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
-    zoomSlider.setValue (1);
+    zoomSlider.setValue (0.2);
     zoomSlider.setSliderStyle (Slider::RotaryVerticalDrag);
     
     addAndMakeVisible (&loopComponent);
@@ -240,19 +240,19 @@ void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
         {
             SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getSoundTouchAudioSource()->getPlaybackSettings());
             settings.rate = playerControls[rate]->getValue();
-            audioFilePlayer.getSoundTouchAudioSource()->setPlaybackSettings (settings);
+            audioFilePlayer.setPlaybackSettings (settings);
         }
         else if (slider == playerControls[tempo])
         {
             SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getSoundTouchAudioSource()->getPlaybackSettings());
             settings.tempo = playerControls[tempo]->getValue();
-            audioFilePlayer.getSoundTouchAudioSource()->setPlaybackSettings (settings);
+            audioFilePlayer.setPlaybackSettings (settings);
         }
         else if (slider == playerControls[pitch])
         {
             SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getSoundTouchAudioSource()->getPlaybackSettings());
             settings.pitch = playerControls[pitch]->getValue();
-            audioFilePlayer.getSoundTouchAudioSource()->setPlaybackSettings (settings);
+            audioFilePlayer.setPlaybackSettings (settings);
         }
     }
 }

@@ -18,6 +18,7 @@ TransportComponent::TransportComponent (AudioFilePlayer& audioFilePlayer_)
         buttons.add (new TextButton());
         addAndMakeVisible (buttons[i]);
         buttons[i]->setColour (TextButton::buttonColourId, Colours::lightgrey);
+        buttons[i]->setColour (TextButton::buttonOnColourId, Colours::grey);
         buttons[i]->addListener (this);
     }
     

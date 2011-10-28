@@ -37,14 +37,8 @@ SoundTouchAudioSource::~SoundTouchAudioSource()
 void SoundTouchAudioSource::setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings)
 {
     soundTouchProcessor.setPlaybackSettings (newSettings);
-    soundTouchProcessor.clear();
 
-    const ScopedLock sl (bufferStartPosLock);
-    nextReadPos = getNextReadPosition();
-    numBuffered = 0;
-    updateNextEffectivePlayPos();
-
-    backgroundThread.moveToFrontOfQueue (this);
+    setNextReadPosition (getNextReadPosition());
 }
 
 void SoundTouchAudioSource::setPlayDirection (bool shouldPlayForwards)
@@ -109,7 +103,7 @@ void SoundTouchAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
     soundTouchProcessor.readSamples (info.buffer->getArrayOfChannels(), info.buffer->getNumChannels(),
                                      info.numSamples, info.startSample);
 
-    numBuffered -= info.numSamples * soundTouchProcessor.getNumSamplesRequiredRatio();
+    numBuffered -= info.numSamples * soundTouchProcessor.getEffectivePlaybackRatio();
     updateNextEffectivePlayPos();
 }
 
@@ -121,6 +115,7 @@ void SoundTouchAudioSource::setNextReadPosition (int64 newPosition)
     nextReadPos = nextPlayPos = newPosition;
     numBuffered = 0;
     updateNextEffectivePlayPos();
+    
     soundTouchProcessor.clear();
     buffer.clear();
     backgroundThread.moveToFrontOfQueue (this);

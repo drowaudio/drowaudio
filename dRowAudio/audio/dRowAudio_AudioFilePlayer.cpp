@@ -29,6 +29,20 @@ AudioFilePlayer::~AudioFilePlayer()
 	audioTransportSource->setSource (nullptr);
 }
 
+void AudioFilePlayer::start()
+{
+    audioTransportSource->start();
+
+    listeners.call (&Listener::playerStoppedOrStarted, this);
+}
+
+void AudioFilePlayer::stop()
+{
+    audioTransportSource->stop();
+    
+    listeners.call (&Listener::playerStoppedOrStarted, this);
+}
+
 void AudioFilePlayer::startFromZero()
 {
 	if (audioFormatReaderSource == nullptr)
@@ -36,6 +50,8 @@ void AudioFilePlayer::startFromZero()
 	
 	audioTransportSource->setPosition (0.0);
 	audioTransportSource->start();
+    
+    listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
 void AudioFilePlayer::pause()
@@ -44,9 +60,18 @@ void AudioFilePlayer::pause()
 		audioTransportSource->stop();
 	else
 		audioTransportSource->start();
+    
+    listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
-bool AudioFilePlayer::setFile(const String& path)
+void AudioFilePlayer::setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings)
+{
+    soundTouchAudioSource->setPlaybackSettings (newSettings);
+    
+    listeners.call (&Listener::playbackSettingsChanged, this);
+}
+
+bool AudioFilePlayer::setFile (const String& path)
 {
     filePath = path;
     
@@ -69,15 +94,6 @@ void AudioFilePlayer::setAudioFormatManager(AudioFormatManager* newManager,  boo
 }
 
 //==============================================================================
-void AudioFilePlayer::setResamplingRatio (const double samplesInPerOutputSample)
-{
-    SoundTouchProcessor::PlaybackSettings settings;
-    settings.rate = samplesInPerOutputSample;
-    soundTouchAudioSource->setPlaybackSettings (settings);
-	
-	listeners.call (&Listener::resamplingRatioChanged, this);
-}
-
 void AudioFilePlayer::setLoopTimes (double startTime, double endTime)
 {
     loopingAudioSource->setLoopTimes (startTime, endTime);

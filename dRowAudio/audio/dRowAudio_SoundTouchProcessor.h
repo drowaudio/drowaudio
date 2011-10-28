@@ -98,6 +98,10 @@ public:
      */
     int getNumReady()                                           {   return soundTouch.numSamples(); }
     
+    /** Returns the number of samples in the pipeline but currently unprocessed.
+     */
+    int getNumUnprocessedSamples()                              {   return soundTouch.numUnprocessedSamples();  }
+    
     /** Sets all of the settings at once.
      */
     void setPlaybackSettings (PlaybackSettings newSettings);
@@ -106,13 +110,9 @@ public:
      */
     PlaybackSettings getPlaybackSettings()                      {   return settings;                            }
     
-    /** Returns the ratio of input samples required per ouput sample, 1.0 being the same.
+    /** Returns the effective playback ratio i.e. the number of output samples produced per input sample.
      */
-    double getNumSamplesRequiredRatio()                         {   return (double) soundTouch.getEffectiveRate() * soundTouch.getEffectiveTempo();      }
-    
-    /** Returns the number of samples in the pipeline but currently unprocessed.
-     */
-    int getNumUnprocessedSamples()                              {   return soundTouch.numUnprocessedSamples();  }
+    double getEffectivePlaybackRatio()                          {   return (double) soundTouch.getEffectiveRate() * soundTouch.getEffectiveTempo(); }
             
 private:
     //==============================================================================

@@ -47,6 +47,10 @@ public:
      */
     inline const CriticalSection& getBufferLock()               {   return bufferStartPosLock;  }
     
+    /** Returns the SoundTouchProcessor being used.
+     */
+    inline SoundTouchProcessor& getSoundTouchProcessor()        {   return soundTouchProcessor; }
+    
     //==============================================================================
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
     void releaseResources();

@@ -78,23 +78,28 @@ public:
     
     //==============================================================================
     /** Starts playing (if a source has been selected). */
-    void start()                        {   audioTransportSource->start();          }
+    void start();
     
     /** Stops playing. */
-    void stop()                         {   audioTransportSource->stop();           }
-    
-    /** Returns true if it's currently playing. */
-    bool isPlaying() const noexcept     { return audioTransportSource->isPlaying(); }
+    void stop();
     
     /** Play the audio file from the start. */
 	void startFromZero();
 	
 	/** Pauses or plays the audio file. */
 	void pause();
-	    
+
+    /** Returns true if it's currently playing. */
+    bool isPlaying() const noexcept     { return audioTransportSource->isPlaying(); }
+
     //==============================================================================
-    /** Sets the resampling ratio to use also notifying any listeners. */
-    void setResamplingRatio (const double samplesInPerOutputSample);
+    /** Sets SoundTouchProcessor settings.
+     */
+    void setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings);
+    
+    /** Returns the current SoundTouchProcessor settings.
+     */
+    SoundTouchProcessor::PlaybackSettings getPlaybackSettings() {   return soundTouchAudioSource->getPlaybackSettings();    }    
     
     /** Sets whether the source should play forwards or backwards.
      */
@@ -164,31 +169,18 @@ public:
 		 */
         virtual void fileChanged (AudioFilePlayer* player) = 0;
 		
-		/** Called when the player's resampling ratio is changed.
-		 
-            You can find out the new ratio using AudioFilePlayer::getSoundTouchAudioSource().
-		 */
-		virtual void resamplingRatioChanged (AudioFilePlayer* player) {};
-
-        /** Called when the player's tempo ratio is changed.
-		 
-            You can find out the new ratio using AudioFilePlayer::getSoundTouchAudioSource().
-		 */
-		virtual void tempoRatioChanged (AudioFilePlayer* player) {};
-
-        /** Called when the player's pitch ratio is changed.
-		 
-            You can find out the new ratio using AudioFilePlayer::getSoundTouchAudioSource().
-		 */
-		virtual void pitchRatioChanged (AudioFilePlayer* player) {};
-
-        //==============================================================================
         /** Called when the the player is stopped or started.
-         You can find out if it is currently stopped with FilteringAudioFilePlayer::isPlaying().
+         You can find out if it is currently stopped with isPlaying().
 		 */
-        //        virtual void playerStoppedOrStarted (FilteringAudioFilePlayer *player);
+        virtual void playerStoppedOrStarted (AudioFilePlayer* player) {}
         
-        virtual void loopBetweenTimesChanged (AudioFilePlayer* player) {};
+        /** Called when one of the SoundTouch settings has changed i.e. rate, tempo or pitch.
+         */
+        virtual void playbackSettingsChanged (AudioFilePlayer* player) {}
+
+        /** Called when the loop points are enabled or disabled.
+         */
+        virtual void loopBetweenTimesChanged (AudioFilePlayer* player) {}
     };
 	
     /** Adds a listener to be called when this slider's value changes. */

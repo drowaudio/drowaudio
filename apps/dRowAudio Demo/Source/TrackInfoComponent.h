@@ -15,7 +15,8 @@
 
 //==============================================================================
 class TrackInfoComponent :  public Component,
-                            public AudioFilePlayer::Listener
+                            public AudioFilePlayer::Listener,
+                            public Timer
 {
 public:    
     //==============================================================================
@@ -29,9 +30,14 @@ public:
     
     void fileChanged (AudioFilePlayer* player);
     
+    void playbackSettingsChanged (AudioFilePlayer* player);
+
+    void timerCallback();
+    
 private:
     //==============================================================================
     AudioFilePlayer& audioFilePlayer;
+    Label bpmLabel, remainLabel;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TrackInfoComponent);
 };
