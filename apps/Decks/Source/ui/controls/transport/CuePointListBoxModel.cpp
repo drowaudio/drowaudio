@@ -41,9 +41,9 @@ public:
     {
         if (changedButton == &button)
         {
-            if (tree.hasType(Columns::libraryItemIdentifier))
+            if (tree.hasType(MusicColumns::libraryItemIdentifier))
             {
-                ValueTree cueTree(Columns::libraryCuePointIdentifier);
+                ValueTree cueTree(MusicColumns::libraryCuePointIdentifier);
                 tree.addChild(cueTree, -1, nullptr);
                 tree = cueTree;
             }
@@ -172,7 +172,7 @@ void CuePointListBoxModel::setValueTree(ValueTree newTree)
 
 int CuePointListBoxModel::getNumRows()
 {
-    if (dataList.hasType (Columns::libraryCuePointIdentifier))
+    if (dataList.hasType (MusicColumns::libraryCuePointIdentifier))
         return dataList.getNumProperties() + 1;
     
     return 1;
@@ -190,7 +190,7 @@ Component* CuePointListBoxModel::refreshComponentForRow (int rowNumber, bool isR
 {
     if (rowNumber < getNumRows() - 1)
     {
-        if (dataList.hasType (Columns::libraryCuePointIdentifier))
+        if (dataList.hasType (MusicColumns::libraryCuePointIdentifier))
         {
             float time = LoopAndCueHelpers::getTimeFromCueTree (dataList, rowNumber);
             uint32 colour = LoopAndCueHelpers::getColourFromCueTree (dataList, rowNumber);
@@ -234,7 +234,7 @@ Component* CuePointListBoxModel::refreshComponentForRow (int rowNumber, bool isR
 
 void CuePointListBoxModel::reorderCuePoints()
 {
-    if (dataList.hasType(Columns::libraryCuePointIdentifier))
+    if (dataList.hasType(MusicColumns::libraryCuePointIdentifier))
     {
         const int numProperties = dataList.getNumProperties();
         var values[numProperties];

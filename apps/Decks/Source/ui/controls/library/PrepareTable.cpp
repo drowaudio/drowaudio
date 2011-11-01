@@ -20,21 +20,21 @@ PrepareTable::PrepareTable()
 	demoData->addChild(ValueTree("COLUMNS"), -1, 0);
 	columnList = demoData->getChildWithName("COLUMNS");
 
-	for (int i = 1; i < Columns::numColumns; i++)
+	for (int i = 1; i < MusicColumns::numColumns; i++)
 	{
 		ValueTree tempElement("COLUMN");
 		tempElement.setProperty("columnId", i, 0);
-		if (i == Columns::LibID)
+		if (i == MusicColumns::LibID)
 			tempElement.setProperty("name", "#", 0);
 		else
-			tempElement.setProperty("name", Columns::columnNames[i].toString(), 0);
-		tempElement.setProperty("width", Columns::columnWidths[i], 0);
+			tempElement.setProperty("name", MusicColumns::columnNames[i].toString(), 0);
+		tempElement.setProperty("width", MusicColumns::columnWidths[i], 0);
 		
 		columnList.addChild(tempElement, -1, 0);
 	}
 	
-	demoData->addChild(ValueTree(Columns::libraryIdentifier), -1, 0);
-	dataList = demoData->getChildWithName(Columns::libraryIdentifier);
+	demoData->addChild(ValueTree(MusicColumns::libraryIdentifier), -1, 0);
+	dataList = demoData->getChildWithName(MusicColumns::libraryIdentifier);
 
 	// set up table
 	addAndMakeVisible (table = new TableListBox ("prepare table", this));
@@ -58,11 +58,11 @@ PrepareTable::PrepareTable()
 	}
 	
 	// we could now change some initial settings..
-	table->getHeader().setSortColumnId (Columns::LibID, true); // sort forwards by the ID column
+	table->getHeader().setSortColumnId (MusicColumns::LibID, true); // sort forwards by the ID column
 	
-	table->getHeader().setColumnVisible (Columns::ID, false);
-	table->getHeader().setColumnVisible (Columns::Rating, false);
-	table->getHeader().setColumnVisible (Columns::Location, false);	
+	table->getHeader().setColumnVisible (MusicColumns::ID, false);
+	table->getHeader().setColumnVisible (MusicColumns::Rating, false);
+	table->getHeader().setColumnVisible (MusicColumns::Location, false);	
 }
 
 PrepareTable::~PrepareTable()
@@ -98,12 +98,12 @@ void PrepareTable::paintCell (Graphics& g,
 	if (rowElement.isValid())
 	{
 		String text;
-		if(columnId == Columns::Length)
-			text = secondsToTimeLength(rowElement[(Columns::columnNames[columnId])].toString().getIntValue());
-//		else if(columnId == Columns::Added)
-//			text = parseDateString(rowElement[Columns::columnNames[columnId]].toString());
+		if(columnId == MusicColumns::Length)
+			text = secondsToTimeLength(rowElement[(MusicColumns::columnNames[columnId])].toString().getIntValue());
+//		else if(columnId == MusicColumns::Added)
+//			text = parseDateString(rowElement[MusicColumns::columnNames[columnId]].toString());
 		else
-			text = (rowElement[Columns::columnNames[columnId]].toString());
+			text = (rowElement[MusicColumns::columnNames[columnId]].toString());
 		
 		g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);
 	}
@@ -117,16 +117,16 @@ void PrepareTable::sortOrderChanged (int newSortColumnId, const bool isForwards)
 {
 	if (newSortColumnId != 0)
 	{
-		if (newSortColumnId == Columns::Length
-			|| newSortColumnId == Columns::BPM
-			|| newSortColumnId == Columns::LibID
-			|| newSortColumnId == Columns::ID)
+		if (newSortColumnId == MusicColumns::Length
+			|| newSortColumnId == MusicColumns::BPM
+			|| newSortColumnId == MusicColumns::LibID
+			|| newSortColumnId == MusicColumns::ID)
 		{
-			ValueTreeComparators::Numerical sorter (Columns::columnNames[newSortColumnId], isForwards);
+			ValueTreeComparators::Numerical sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
 			dataList.sort (sorter, 0, false);
 		}
 		else {
-			ValueTreeComparators::Lexicographic sorter (Columns::columnNames[newSortColumnId], isForwards);
+			ValueTreeComparators::Lexicographic sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
 			dataList.sort (sorter, 0, false);
 		}
 		
@@ -146,7 +146,7 @@ int PrepareTable::getColumnAutoSizeWidth (int columnId)
 		
 		if (rowElement.isValid())
 		{
-			const String text (rowElement[Columns::columnNames[columnId]].toString());
+			const String text (rowElement[MusicColumns::columnNames[columnId]].toString());
 			
 			widest = jmax (widest, font.getStringWidth (text));
 		}
@@ -159,14 +159,14 @@ void PrepareTable::removeRow (int rowNumber)
 {
     // first remove removeObject
 //    ReferenceCountedValueTree::Ptr treeToEdit (dynamic_cast<ReferenceCountedValueTree*> (dataList.getChild (int(rowNumber)).getProperty (originalTreeIdentifier).getObject()));
-//    if (treeToEdit != nullptr && treeToEdit->getValueTree().hasType (Columns::libraryItemIdentifier))
+//    if (treeToEdit != nullptr && treeToEdit->getValueTree().hasType (MusicColumns::libraryItemIdentifier))
 //        treeToEdit->getValueTree().removeProperty ("removeObject", nullptr);
         
     // then remove item from list
     dataList.removeChild(int(rowNumber), nullptr);
     
     for(int i = 0; i < dataList.getNumChildren(); i++)
-        dataList.getChild (i).setProperty(Columns::columnNames[Columns::LibID], i + 1, nullptr);
+        dataList.getChild (i).setProperty(MusicColumns::columnNames[MusicColumns::LibID], i + 1, nullptr);
     
     table->updateContent();
 }
@@ -195,7 +195,7 @@ bool PrepareTable::isInterestedInDragSource (const SourceDetails& dragSourceDeta
 {
     ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
     
-    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (Columns::libraryItemIdentifier))
+    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (MusicColumns::libraryItemIdentifier))
         return true;
 	
 	return false;	
@@ -226,7 +226,7 @@ void PrepareTable::itemDropped (const SourceDetails& dragSourceDetails)
                 ValueTree itemTree (childTree->getValueTree().createCopy());
                 dataList.addChild(itemTree, -1, 0);
                 itemTree.setProperty(originalTreeIdentifier, childTree.getObject(), nullptr);
-                itemTree.setProperty(Columns::columnNames[Columns::LibID], getNumRows(), nullptr);
+                itemTree.setProperty(MusicColumns::columnNames[MusicColumns::LibID], getNumRows(), nullptr);
             }
         }
     }

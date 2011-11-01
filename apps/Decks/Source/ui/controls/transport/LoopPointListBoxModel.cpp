@@ -41,9 +41,9 @@ public:
     {
         if (changedButton == &button)
         {
-            if (tree.hasType(Columns::libraryItemIdentifier))
+            if (tree.hasType(MusicColumns::libraryItemIdentifier))
             {
-                ValueTree cueTree(Columns::libraryLoopIdentifier);
+                ValueTree cueTree(MusicColumns::libraryLoopIdentifier);
                 tree.addChild(cueTree, -1, nullptr);
                 tree = cueTree;
             }
@@ -178,7 +178,7 @@ void LoopPointListBoxModel::setValueTree(ValueTree newTree)
 
 int LoopPointListBoxModel::getNumRows()
 {
-    if (dataList.hasType (Columns::libraryLoopIdentifier))
+    if (dataList.hasType (MusicColumns::libraryLoopIdentifier))
         return dataList.getNumProperties() + 1;
     
     return 1;
@@ -196,7 +196,7 @@ Component* LoopPointListBoxModel::refreshComponentForRow (int rowNumber, bool is
 {
     if (rowNumber < getNumRows() - 1)
     {
-        if (dataList.hasType (Columns::libraryLoopIdentifier))
+        if (dataList.hasType (MusicColumns::libraryLoopIdentifier))
         {
             double startTime, endTime;
             uint32 colour;
@@ -241,7 +241,7 @@ Component* LoopPointListBoxModel::refreshComponentForRow (int rowNumber, bool is
 
 void LoopPointListBoxModel::reorderLoopPoints()
 {
-    if (dataList.hasType(Columns::libraryLoopIdentifier))
+    if (dataList.hasType(MusicColumns::libraryLoopIdentifier))
     {
         const int numProperties = dataList.getNumProperties();
         var values[numProperties];

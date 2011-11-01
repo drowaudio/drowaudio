@@ -46,14 +46,13 @@ void ITunesLibraryParser::run()
     SortedSet<int> existingIds;
     if (! threadShouldExit())
     {
-        if (treeToFill.hasType(MusicColumns::libraryIdentifier))
+        if (treeToFill.hasType (MusicColumns::libraryIdentifier))
         {
             for (int i = 0; i < treeToFill.getNumChildren(); ++i)
             {
                 int idOfChild = int (treeToFill.getChild (i).getProperty (MusicColumns::columnNames[MusicColumns::ID]));
                 existingIds.add (idOfChild);
             }
-            
         }
     }
 

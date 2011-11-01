@@ -143,7 +143,7 @@ void ClickableCuePointComponent::fileChanged (AudioFilePlayer* player)
     if (player == filePlayer)
     {
         cuePointTree.removeListener(this);
-        cuePointTree = filePlayer->getLibraryEntry().getChildWithName(Columns::libraryCuePointIdentifier);
+        cuePointTree = filePlayer->getLibraryEntry().getChildWithName(MusicColumns::libraryCuePointIdentifier);
         if (cuePointTree.isValid())
             cuePointTree.addListener(this);
         else
@@ -157,14 +157,14 @@ void ClickableCuePointComponent::valueTreePropertyChanged (ValueTree& treeWhoseP
 {
     DBG("ClickableCuePointComponent::valueTreePropertyChanged");
     if (treeWhosePropertyHasChanged == cuePointTree
-        && cuePointTree.hasType (Columns::libraryCuePointIdentifier))
+        && cuePointTree.hasType (MusicColumns::libraryCuePointIdentifier))
         updateCuePoints();
 }
 
 void ClickableCuePointComponent::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
 {
     DBG("ClickableCuePointComponent::valueTreeChildAdded");
-    if (childWhichHasBeenAdded.hasType(Columns::libraryCuePointIdentifier))
+    if (childWhichHasBeenAdded.hasType(MusicColumns::libraryCuePointIdentifier))
         cuePointTree = childWhichHasBeenAdded;
 }
 

@@ -108,7 +108,7 @@ void LoopPointDisplayComponent::fileChanged (AudioFilePlayer *player)
         oneOverTimePerPixel = 1.0 / timePerPixel;
 
         loopPointTree.removeListener(this);
-        loopPointTree = filePlayer->getLibraryEntry().getChildWithName(Columns::libraryLoopIdentifier);
+        loopPointTree = filePlayer->getLibraryEntry().getChildWithName(MusicColumns::libraryLoopIdentifier);
         loopPointTree.addListener(this);
 
         updateLoopPoints();

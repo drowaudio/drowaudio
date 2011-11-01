@@ -127,9 +127,9 @@ void TrackInfo::fileChanged (AudioFilePlayer *player)
 		fileName = filePlayer->getPath().fromLastOccurrenceOf("/", false, true);
 		
         ValueTree libraryEntry (filePlayer->getLibraryEntry());
-		trackName = libraryEntry.getProperty(Columns::columnNames[Columns::Song]);
-		artistName = libraryEntry.getProperty(Columns::columnNames[Columns::Artist]);
-		bpm = double(libraryEntry.getProperty(Columns::columnNames[Columns::BPM]));
+		trackName = libraryEntry.getProperty(MusicColumns::columnNames[MusicColumns::Song]);
+		artistName = libraryEntry.getProperty(MusicColumns::columnNames[MusicColumns::Artist]);
+		bpm = double(libraryEntry.getProperty(MusicColumns::columnNames[MusicColumns::BPM]));
 		currentBpm = String(bpm * filePlayer->getSoundTouchAudioSource()->getPlaybackSettings().rate, 2);
 		
 		// file was not loaded from the library

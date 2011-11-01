@@ -81,12 +81,12 @@ private:
     //==============================================================================
 	void setUpColumns (ValueTree &elementToSetUp)
 	{
-		for (int i = 1; i < Columns::numColumns; i++)
+		for (int i = 1; i < MusicColumns::numColumns; i++)
 		{
 			ValueTree tempElement("COLUMN");
 			tempElement.setProperty("columnId", i, 0);
-			tempElement.setProperty("name", Columns::columnNames[i].toString(), 0);
-			tempElement.setProperty("width", Columns::columnWidths[i], 0);
+			tempElement.setProperty("name", MusicColumns::columnNames[i].toString(), 0);
+			tempElement.setProperty("width", MusicColumns::columnWidths[i], 0);
 			
 			elementToSetUp.addChild(tempElement, -1, 0);
 		}
@@ -100,8 +100,8 @@ private:
 		columnList = demoData->getChildWithName("COLUMNS");
 		setUpColumns(columnList);
 		
-		demoData->addChild(ValueTree(Columns::libraryIdentifier), -1, 0);
-		dataList = demoData->getChildWithName(Columns::libraryIdentifier);
+		demoData->addChild(ValueTree(MusicColumns::libraryIdentifier), -1, 0);
+		dataList = demoData->getChildWithName(MusicColumns::libraryIdentifier);
 				
 		numRows = dataList.getNumChildren();
 	}	

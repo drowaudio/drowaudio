@@ -134,6 +134,9 @@ BEGIN_JUCE_NAMESPACE
 #endif
 
 // audiothumbnail
+#ifndef __DROWAUDIO_AUDIOTHUMBNAILIMAGE_H__
+    #include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.h"
+#endif
 #ifndef __DROWAUDIO_MULTIPLEAUDIOTHUMBNAILCACHE_H__
     #include "gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h"
 #endif

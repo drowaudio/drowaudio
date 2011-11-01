@@ -71,7 +71,8 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
       audioThumbnail (128,
                       *audioFilePlayer.getAudioFormatManager(),
                       thumbnailCache),
-      loopComponent (audioFilePlayer)
+      loopComponent (audioFilePlayer),
+      backgroundThread ("Waveform Thread")
 {
     addAndMakeVisible (positionalDisplay = new ColouredPositionableWaveDisplay (&audioFilePlayer,
                                                                                 &thumbnailCache, 
@@ -145,10 +146,16 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
     playerControlLabels[rate]->setFont (12);
     playerControlLabels[tempo]->setFont (12);
     playerControlLabels[pitch]->setFont (12);
+    
+    audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread);
+    addAndMakeVisible (&thumbnailImage);
+    audioThumbnailImage->addListener (this);
+    thumbnailImage.setImage (audioThumbnailImage->getImage(), RectanglePlacement::stretchToFit);
 }
 
 AudioPlaybackDemo::~AudioPlaybackDemo()
 {
+    audioThumbnailImage->removeListener (this);
     resolutionSlider.removeListener (this);
     zoomSlider.removeListener (this);
 
@@ -194,6 +201,8 @@ void AudioPlaybackDemo::resized()
     
     rateGroup.setBounds (playerControls[3]->getX() - m, playerControlLabels[3]->getY() - m,
                          playerControls[5]->getRight() - playerControls[3]->getX() + (2 * m), playerControls[3]->getBottom() - playerControlLabels[3]->getY() + (2 * m));   
+    
+    thumbnailImage.setBounds (5, filterGroup.getBottom() + 5, w - (2 * 5), 100);
 }
 
 void AudioPlaybackDemo::paint (Graphics& g)
@@ -209,7 +218,6 @@ void AudioPlaybackDemo::paint (Graphics& g)
 
 void AudioPlaybackDemo::fileChanged (AudioFilePlayer* player)
 {
-    
 }
 
 void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
@@ -255,4 +263,25 @@ void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
             audioFilePlayer.setPlaybackSettings (settings);
         }
     }
+}
+
+//==============================================================================
+void AudioPlaybackDemo::imageChanged (AudioThumbnailImage* audioThumbnailImage)
+{
+    //const ScopedLock sl (audioThumbnailImage->getLock());
+    thumbnailImage.setImage (audioThumbnailImage->getImageAtTime (50, 60), RectanglePlacement::stretchToFit);
+}
+
+void AudioPlaybackDemo::imageUpdated (AudioThumbnailImage* audioThumbnailImage)
+{
+    //const ScopedLock sl (audioThumbnailImage->getLock());
+    const MessageManagerLock mm;
+    thumbnailImage.repaint();
+}
+
+void AudioPlaybackDemo::imageFinished (AudioThumbnailImage* audioThumbnailImage)
+{
+    //const ScopedLock sl (audioThumbnailImage->getLock());
+    const MessageManagerLock mm;
+    thumbnailImage.repaint();
 }

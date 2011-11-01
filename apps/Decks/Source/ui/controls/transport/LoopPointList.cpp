@@ -35,7 +35,7 @@ void LoopPointList::fileChanged (AudioFilePlayer *player)
 {
     if (player == filePlayer)
     {
-        loopPointsTree = filePlayer->getLibraryEntry().getChildWithName (Columns::libraryLoopIdentifier);
+        loopPointsTree = filePlayer->getLibraryEntry().getChildWithName (MusicColumns::libraryLoopIdentifier);
         if (! loopPointsTree.isValid())
             loopPointsTree = filePlayer->getLibraryEntry();
         

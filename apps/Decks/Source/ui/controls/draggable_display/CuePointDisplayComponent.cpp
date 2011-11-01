@@ -114,7 +114,7 @@ void CuePointDisplayComponent::fileChanged (AudioFilePlayer *player)
         oneOverTimePerPixel = 1.0 / timePerPixel;
 
         cuePointTree.removeListener(this);
-        cuePointTree = filePlayer->getLibraryEntry().getChildWithName (Columns::libraryCuePointIdentifier);
+        cuePointTree = filePlayer->getLibraryEntry().getChildWithName (MusicColumns::libraryCuePointIdentifier);
         if (cuePointTree.isValid())
         {
             cuePointTree.addListener(this);
@@ -140,7 +140,7 @@ void CuePointDisplayComponent::valueTreePropertyChanged (ValueTree& treeWhosePro
 void CuePointDisplayComponent::valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
 {
     DBG("valueTreeChildAdded");
-    if (childWhichHasBeenAdded.hasType(Columns::libraryCuePointIdentifier))
+    if (childWhichHasBeenAdded.hasType(MusicColumns::libraryCuePointIdentifier))
     {
         cuePointTree.removeListener(this);
         cuePointTree = childWhichHasBeenAdded;

@@ -35,7 +35,7 @@ void CuePointList::fileChanged (AudioFilePlayer *player)
 {
     if (player == filePlayer)
     {
-        cuePointsTree = filePlayer->getLibraryEntry().getChildWithName (Columns::libraryCuePointIdentifier);
+        cuePointsTree = filePlayer->getLibraryEntry().getChildWithName (MusicColumns::libraryCuePointIdentifier);
         if (! cuePointsTree.isValid())
             cuePointsTree = filePlayer->getLibraryEntry();
         

@@ -55,21 +55,21 @@ TrackSuggestionTable::TrackSuggestionTable(ValueTree sourceToBaseSuggestionsOn, 
 									  TableHeaderComponent::defaultFlags);
 	}	
 	
-	table->getHeader().setColumnWidth(Columns::Artist, 100);
-	table->getHeader().setColumnWidth(Columns::Song, 150);
+	table->getHeader().setColumnWidth(MusicColumns::Artist, 100);
+	table->getHeader().setColumnWidth(MusicColumns::Song, 150);
 	
-	table->getHeader().setColumnVisible (Columns::LibID, false);
-	table->getHeader().setColumnVisible (Columns::Album, false);
-	table->getHeader().setColumnVisible (Columns::ID, false);
-	table->getHeader().setColumnVisible (Columns::Label, false);
-	table->getHeader().setColumnVisible (Columns::Rating, false);
-	table->getHeader().setColumnVisible (Columns::Length, false);
-	table->getHeader().setColumnVisible (Columns::Added, false);
-	table->getHeader().setColumnVisible (Columns::Kind, true);
-	table->getHeader().setColumnVisible (Columns::Location, false);
+	table->getHeader().setColumnVisible (MusicColumns::LibID, false);
+	table->getHeader().setColumnVisible (MusicColumns::Album, false);
+	table->getHeader().setColumnVisible (MusicColumns::ID, false);
+	table->getHeader().setColumnVisible (MusicColumns::Label, false);
+	table->getHeader().setColumnVisible (MusicColumns::Rating, false);
+	table->getHeader().setColumnVisible (MusicColumns::Length, false);
+	table->getHeader().setColumnVisible (MusicColumns::Added, false);
+	table->getHeader().setColumnVisible (MusicColumns::Kind, true);
+	table->getHeader().setColumnVisible (MusicColumns::Location, false);
 	
-	table->getHeader().moveColumn(Columns::Score, 0);
-	table->getHeader().setSortColumnId(Columns::Score, false);
+	table->getHeader().moveColumn(MusicColumns::Score, 0);
+	table->getHeader().setSortColumnId(MusicColumns::Score, false);
 	
 //	setSourceTrack(currentSource, currentLibrary, mixTypeBox->getSelectedId()-1);
 }
@@ -113,15 +113,15 @@ void TrackSuggestionTable::setSourceTrack(ValueTree newSource, ValueTree library
 	
 	dataList.removeAllChildren(0);
 	
-	const double sourceBpm = double(newSource.getProperty(Columns::columnNames[Columns::BPM], 0));
+	const double sourceBpm = double(newSource.getProperty(MusicColumns::columnNames[MusicColumns::BPM], 0));
 	const double minBpm = sourceBpm * 0.95;
 	const double maxBpm = sourceBpm * 1.05;
 	
-	const String sourceGenre(newSource.getProperty(Columns::columnNames[Columns::Genre]).toString());
+	const String sourceGenre(newSource.getProperty(MusicColumns::columnNames[MusicColumns::Genre]).toString());
 	StringArray sourceSubGenre;
-	sourceSubGenre.addTokens(newSource.getProperty(Columns::columnNames[Columns::SubGenre]).toString(), true);
+	sourceSubGenre.addTokens(newSource.getProperty(MusicColumns::columnNames[MusicColumns::SubGenre]).toString(), true);
 	
-	const String sourceKey(newSource.getProperty(Columns::columnNames[Columns::Key]).toString().trim());
+	const String sourceKey(newSource.getProperty(MusicColumns::columnNames[MusicColumns::Key]).toString().trim());
 	const String sourceKeyLetter (sourceKey.getLastCharacters(1));
 	int sourceKeyNumber = sourceKey.trimCharactersAtEnd(sourceKeyLetter).getIntValue();
 	
@@ -136,7 +136,7 @@ void TrackSuggestionTable::setSourceTrack(ValueTree newSource, ValueTree library
 		totalScore = 0.0f;
 		
 		// score bpm
-		double bpm = currentChild.getProperty(Columns::columnNames[Columns::BPM]);
+		double bpm = currentChild.getProperty(MusicColumns::columnNames[MusicColumns::BPM]);
 		if (bpm >= minBpm && bpm <= maxBpm)
 		{
 			float bpmScore = 100.0f - (fabsf(sourceBpm - bpm) / (maxBpm - minBpm));
@@ -145,13 +145,13 @@ void TrackSuggestionTable::setSourceTrack(ValueTree newSource, ValueTree library
 			addTrack = true;
 
 			// don't add our source track
-			if (newSource.getProperty(Columns::columnNames[Columns::ID]) == currentChild.getProperty(Columns::columnNames[Columns::ID])) {
+			if (newSource.getProperty(MusicColumns::columnNames[MusicColumns::ID]) == currentChild.getProperty(MusicColumns::columnNames[MusicColumns::ID])) {
 				addTrack = false;
 			}
 		}
 		
 		// score genre
-		String genre = currentChild.getProperty(Columns::columnNames[Columns::Genre]);
+		String genre = currentChild.getProperty(MusicColumns::columnNames[MusicColumns::Genre]);
 		if (genre == sourceGenre)
 		{
 			totalScore += 20.0f;
@@ -159,7 +159,7 @@ void TrackSuggestionTable::setSourceTrack(ValueTree newSource, ValueTree library
 
 		// score sub genres
 		StringArray subGenre;
-		subGenre.addTokens(currentChild.getProperty(Columns::columnNames[Columns::SubGenre]), false);
+		subGenre.addTokens(currentChild.getProperty(MusicColumns::columnNames[MusicColumns::SubGenre]), false);
 		int numMatches = 0;
 		int numPossibleMatches = jmax(sourceSubGenre.size(), subGenre.size());
 		if (numPossibleMatches > 0)
@@ -176,7 +176,7 @@ void TrackSuggestionTable::setSourceTrack(ValueTree newSource, ValueTree library
 		}
 		
 		// score key
-		String key (currentChild.getProperty(Columns::columnNames[Columns::Key]).toString());
+		String key (currentChild.getProperty(MusicColumns::columnNames[MusicColumns::Key]).toString());
 		if (key.isNotEmpty())
 		{
 			String keyLetter (key.getLastCharacters(1));
@@ -241,7 +241,7 @@ void TrackSuggestionTable::setSourceTrack(ValueTree newSource, ValueTree library
 		if (addTrack)
 		{
 			ValueTree newTree(currentChild.createCopy());
-			newTree.setProperty(Columns::columnNames[Columns::Score], totalScore, 0);
+			newTree.setProperty(MusicColumns::columnNames[MusicColumns::Score], totalScore, 0);
 			dataList.addChild(newTree, -1, 0);
 		}
 	}
@@ -280,12 +280,12 @@ void TrackSuggestionTable::paintCell (Graphics& g,
 	if (rowElement.isValid())
 	{
 		String text;
-		if(columnId == Columns::Length)
-			text = secondsToTimeLength(rowElement[(Columns::columnNames[columnId])].toString().getIntValue());
-		else if (columnId == Columns::Score)
-			text = (String(double(rowElement[Columns::columnNames[columnId]]),2));
+		if(columnId == MusicColumns::Length)
+			text = secondsToTimeLength(rowElement[(MusicColumns::columnNames[columnId])].toString().getIntValue());
+		else if (columnId == MusicColumns::Score)
+			text = (String(double(rowElement[MusicColumns::columnNames[columnId]]),2));
 		else
-			text = (rowElement[Columns::columnNames[columnId]].toString());
+			text = (rowElement[MusicColumns::columnNames[columnId]].toString());
 		
 		g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);
 	}
@@ -299,17 +299,17 @@ void TrackSuggestionTable::sortOrderChanged (int newSortColumnId, const bool isF
 {
 	if (newSortColumnId != 0)
 	{
-		if (newSortColumnId == Columns::Length
-			|| newSortColumnId == Columns::BPM
-			|| newSortColumnId == Columns::LibID
-			|| newSortColumnId == Columns::ID
-			|| newSortColumnId == Columns::Score)
+		if (newSortColumnId == MusicColumns::Length
+			|| newSortColumnId == MusicColumns::BPM
+			|| newSortColumnId == MusicColumns::LibID
+			|| newSortColumnId == MusicColumns::ID
+			|| newSortColumnId == MusicColumns::Score)
 		{
-			ValueTreeComparators::Numerical sorter (Columns::columnNames[newSortColumnId], isForwards);
+			ValueTreeComparators::Numerical sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
 			dataList.sort (sorter, 0, false);
 		}
 		else {
-			ValueTreeComparators::Lexicographic sorter (Columns::columnNames[newSortColumnId], isForwards);
+			ValueTreeComparators::Lexicographic sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
 			dataList.sort (sorter, 0, false);
 		}
 		
@@ -328,7 +328,7 @@ int TrackSuggestionTable::getColumnAutoSizeWidth (int columnId)
 		
 		if (rowElement.isValid())
 		{
-			const String text (rowElement[Columns::columnNames[columnId]].toString());
+			const String text (rowElement[MusicColumns::columnNames[columnId]].toString());
 			
 			widest = jmax (widest, font.getStringWidth (text));
 		}

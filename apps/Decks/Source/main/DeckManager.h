@@ -57,7 +57,9 @@ public:
 	
 	void setResamplingRatio(const double samplesInPerOutputSample)
 	{
-		filePlayer->setResamplingRatio(samplesInPerOutputSample);
+        SoundTouchProcessor::PlaybackSettings settings (filePlayer->getPlaybackSettings());
+        settings.rate = samplesInPerOutputSample;
+		filePlayer->setPlaybackSettings (settings);
 		//monitorFilePlayer->setResamplingRatio(samplesInPerOutputSample);
 	}
 		

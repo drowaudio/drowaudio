@@ -17,7 +17,8 @@
 //==============================================================================
 class AudioPlaybackDemo :   public Component,
                             public AudioFilePlayer::Listener,
-                            public Slider::Listener
+                            public Slider::Listener,
+                            public AudioThumbnailImage::Listener
 {
 public:    
     //==============================================================================
@@ -43,7 +44,14 @@ public:
         pitch,
         numControls
     };
+
+    //==============================================================================
+    void imageChanged (AudioThumbnailImage* audioThumbnailImage);
     
+    void imageUpdated (AudioThumbnailImage* audioThumbnailImage);
+    
+    void imageFinished (AudioThumbnailImage* audioThumbnailImage);
+
 private:
     //==============================================================================
     AudioFilePlayer& audioFilePlayer;
@@ -59,6 +67,10 @@ private:
     Slider resolutionSlider, zoomSlider;
     OwnedArray<Slider> playerControls;
     OwnedArray<Label> playerControlLabels;
+    
+    TimeSliceThread backgroundThread;
+    ScopedPointer<AudioThumbnailImage> audioThumbnailImage;
+    ImageComponent thumbnailImage;
     
     friend class LoopComponent;
     
