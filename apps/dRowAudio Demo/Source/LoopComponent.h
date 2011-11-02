@@ -36,27 +36,27 @@ public:
     
     void mouseEnter (const MouseEvent& e)
     {
-        setMouseCursor (MouseCursor (MouseCursor::PointingHandCursor));
+        setMouseCursor (MouseCursor::PointingHandCursor);
         isMouseOver = true;
         repaint();
     }
 
     void mouseExit (const MouseEvent& e)
     {
-        setMouseCursor (MouseCursor (MouseCursor::NormalCursor));
+        setMouseCursor (MouseCursor::NormalCursor);
         isMouseOver = false;
         repaint();
     }
     
     void mouseDown (const MouseEvent& e)
     {
-        setMouseCursor (MouseCursor (MouseCursor::DraggingHandCursor));
+        setMouseCursor (MouseCursor::DraggingHandCursor);
         dragger.startDraggingComponent (this, e);
     } 
 
     void mouseUp (const MouseEvent& e)
     {
-        setMouseCursor (MouseCursor (MouseCursor::PointingHandCursor));
+        setMouseCursor (MouseCursor::PointingHandCursor);
     }
 
     void mouseDrag (const MouseEvent& e)

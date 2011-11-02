@@ -85,7 +85,7 @@
             TypeLibraryName=".\Release\dRowAudio Demo.tlb"
             HeaderFileName=""/>
       <Tool Name="VCCLCompilerTool"
-            Optimization="3"
+            Optimization="2"
             InlineFunctionExpansion="1"
             StringPooling="true"
             AdditionalIncludeDirectories="..\..\JuceLibraryCode"

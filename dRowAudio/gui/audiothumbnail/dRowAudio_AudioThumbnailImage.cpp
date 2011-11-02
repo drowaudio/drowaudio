@@ -23,7 +23,8 @@ AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer* sourceToBeUsed,
       audioThumbnail        (thumbnailToUse, (thumbnailToUse == nullptr) ? true : false),
       sourceSamplesPerThumbnailSample (sourceSamplesPerThumbnailSample_),
       lastTimeDrawn         (0.0),
-      resolution            (3.0)
+      resolution            (3.0),
+      renderComplete        (true)
 {
     jassert (filePlayer != nullptr);
     
@@ -60,7 +61,8 @@ AudioThumbnailImage::~AudioThumbnailImage()
             backgroundThread.removeTimeSliceClient (this);
         }
     }
-	//stopTimer ();
+	
+    stopTimer ();
 }
 
 //====================================================================================
@@ -82,16 +84,24 @@ void AudioThumbnailImage::setResolution (double newResolution)
 }
 
 //====================================================================================
-//void AudioThumbnailImage::timerCallback ()
-//{
-//    refreshWaveform();
-//}
+void AudioThumbnailImage::timerCallback ()
+{
+    if (! renderComplete)
+    {
+        listeners.call (&Listener::imageUpdated, this);
+    }
+    else
+    {
+        listeners.call (&Listener::imageFinished, this);
+        stopTimer();
+    }
+}
 
 int AudioThumbnailImage::useTimeSlice()
 {
     refreshWaveform();
     
-    return 100;
+    return 50;
 }
 
 void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
@@ -117,18 +127,21 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
             {
                 FileInputSource* fileInputSource = new FileInputSource (newFile);
                 audioThumbnail->setSource (fileInputSource);
+                renderComplete = false;
             }
             else 
             {
                 audioThumbnail->setSource (nullptr);
+                renderComplete = true;
             }
             
             listeners.call (&Listener::imageChanged, this);
 
             backgroundThread.addTimeSliceClient (this);
             if (! backgroundThread.isThreadRunning())
-                backgroundThread.startThread (1);
-            //startTimer (100);
+                backgroundThread.startThread (4);
+            
+            startTimer (100);
         }
 	}
 }
@@ -147,14 +160,9 @@ void AudioThumbnailImage::removeListener (AudioThumbnailImage::Listener* const l
 //==============================================================================	
 void AudioThumbnailImage::refreshWaveform()
 {
-    bool renderComplete = false;
-    
 	if (audioThumbnail->getNumSamplesFinished() > 0)
 	{
-        if (audioThumbnail->isFullyLoaded())
-            renderComplete = true;
-
-            const double endTime = audioThumbnail->getNumSamplesFinished() * oneOverSampleRate;
+        const double endTime = audioThumbnail->getNumSamplesFinished() * oneOverSampleRate;
         if (lastTimeDrawn < 0.0)
             lastTimeDrawn -= (endTime - lastTimeDrawn) * 0.5; // overlap by 0.5
         const double startPixelX = roundToInt (lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
@@ -181,16 +189,13 @@ void AudioThumbnailImage::refreshWaveform()
         g.drawImage (tempSectionImage,
                      startPixelX, 0, numPixels, waveformImage.getHeight(),
                      0, 0, numPixels * resolution, tempSectionImage.getHeight());
-        
-        listeners.call (&Listener::imageUpdated, this);
 	}
 
     if (renderComplete)
-    {
         backgroundThread.removeTimeSliceClient (this);
 
-        listeners.call (&Listener::imageFinished, this);
-    }
+    if (audioThumbnail->isFullyLoaded())
+        renderComplete = true;
 }
 
 //==============================================================================

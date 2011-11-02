@@ -141,14 +141,17 @@ BEGIN_JUCE_NAMESPACE
     #include "gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h"
 #endif
 #ifndef __DROWAUDIO_FILTEREDAUDIOTHUMBNAIL_H__
-    #include "src/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h"
+    #include "gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h"
 #endif
 
 #ifndef __DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__
     #include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
 #endif
 
-//#include "src/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h"
+#ifndef __DROWAUDIO_POSITIONALWAVEDISPLAY_H__
+    #include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h"
+#endif
+
 #ifndef __DROWAUDIO_COLOUREDPOSITIONABLEWAVEDISPLAY_H__
     #include "gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.h"
 #endif

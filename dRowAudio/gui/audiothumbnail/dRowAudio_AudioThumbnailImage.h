@@ -20,7 +20,7 @@
 	reposition the transport source. You can change the file loaded by the associated 
 	AudioFilePlayer by dragging a new file onto the display.
  */
-class AudioThumbnailImage : //public Timer,
+class AudioThumbnailImage : public Timer,
                             public TimeSliceClient,
                             public AudioFilePlayer::Listener
 {
@@ -45,7 +45,7 @@ public:
 	//====================================================================================
     /** Returns the whole waveform image.
      */
-    Image getImage ()               {   return waveformImage;   }
+    Image getImage ()                       {   return waveformImage;   }
     
     /** Returns a section of the image at a given time for a given duration.
      */
@@ -55,15 +55,29 @@ public:
      */
     void setResolution (double newResolution);
     
+    /** Returns the AudioFilePlayer currently being used.
+     */
+    AudioFilePlayer* getAudioFilePlayer()   {   return filePlayer;  }
+    
+    /** Returns true if the Image has finished rendering;
+     */
+    bool hasFinishedLoading()               {   return renderComplete;  }
+    
 	//====================================================================================
-	void resized ();
+	/** @internal */
+    void resized ();
 	
+	/** @internal */
 	void paint (Graphics &g);
 
 	//====================================================================================
-	//void timerCallback ();
+	/** @internal */
+	void timerCallback ();
+    
+	/** @internal */
     int useTimeSlice();
     
+	/** @internal */
 	void fileChanged (AudioFilePlayer *player);
     
     //==============================================================================
@@ -119,6 +133,7 @@ private:
 	Image waveformImage, tempSectionImage;
 	
     double lastTimeDrawn, resolution;
+    bool renderComplete;
     
     ListenerList <Listener> listeners;
 

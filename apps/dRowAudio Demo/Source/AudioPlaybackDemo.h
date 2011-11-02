@@ -17,8 +17,7 @@
 //==============================================================================
 class AudioPlaybackDemo :   public Component,
                             public AudioFilePlayer::Listener,
-                            public Slider::Listener,
-                            public AudioThumbnailImage::Listener
+                            public Slider::Listener
 {
 public:    
     //==============================================================================
@@ -46,11 +45,11 @@ public:
     };
 
     //==============================================================================
-    void imageChanged (AudioThumbnailImage* audioThumbnailImage);
-    
-    void imageUpdated (AudioThumbnailImage* audioThumbnailImage);
-    
-    void imageFinished (AudioThumbnailImage* audioThumbnailImage);
+//    void imageChanged (AudioThumbnailImage* audioThumbnailImage);
+//    
+//    void imageUpdated (AudioThumbnailImage* audioThumbnailImage);
+//    
+//    void imageFinished (AudioThumbnailImage* audioThumbnailImage);
 
 private:
     //==============================================================================
@@ -58,8 +57,8 @@ private:
     
     MultipleAudioThumbnailCache thumbnailCache;
     ColouredAudioThumbnail audioThumbnail;
-    ScopedPointer<ColouredPositionableWaveDisplay> positionalDisplay;
-    ScopedPointer<ColouredDraggableWaveDisplay> draggableDisplay;
+//    ScopedPointer<ColouredPositionableWaveDisplay> positionalDisplay;
+//    ScopedPointer<ColouredDraggableWaveDisplay> draggableDisplay;
     
     LoopComponent loopComponent;
     
@@ -70,7 +69,8 @@ private:
     
     TimeSliceThread backgroundThread;
     ScopedPointer<AudioThumbnailImage> audioThumbnailImage;
-    ImageComponent thumbnailImage;
+    ScopedPointer<PositionableWaveDisplay> positionableWaveDisplay;
+    //ImageComponent thumbnailImage;
     
     friend class LoopComponent;
     

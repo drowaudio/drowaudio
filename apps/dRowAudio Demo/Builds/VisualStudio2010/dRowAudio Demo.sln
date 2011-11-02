@@ -1,4 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{45D1D6F1-D776-2729-D2E3-3F46EE9C65EC}") = "dRowAudio Demo", "dRowAudio Demo.vcxproj", "{10146CB2-A72B-3FDC-7BE0-DA51AF6AE401}"
 EndProject
 Global

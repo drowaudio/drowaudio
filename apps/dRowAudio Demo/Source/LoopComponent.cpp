@@ -73,7 +73,7 @@ void LoopComponent::componentMovedOrResized (Component& component, bool wasMoved
     AudioPlaybackDemo* demo = dynamic_cast<AudioPlaybackDemo*> (getParentComponent());
     if (demo != nullptr)
     {
-        demo->repaint (demo->positionalDisplay->getBounds());
+        demo->repaint (demo->positionableWaveDisplay->getBounds());
     }
 }
 

@@ -74,13 +74,17 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
       loopComponent (audioFilePlayer),
       backgroundThread ("Waveform Thread")
 {
-    addAndMakeVisible (positionalDisplay = new ColouredPositionableWaveDisplay (&audioFilePlayer,
-                                                                                &thumbnailCache, 
-                                                                                &audioThumbnail));
-    addAndMakeVisible (draggableDisplay = new ColouredDraggableWaveDisplay (128,
-                                                                            &audioFilePlayer,
-                                                                            &thumbnailCache, 
-                                                                            &audioThumbnail));
+//    addAndMakeVisible (positionalDisplay = new ColouredPositionableWaveDisplay (&audioFilePlayer,
+//                                                                                &thumbnailCache, 
+//                                                                                &audioThumbnail));
+//    addAndMakeVisible (draggableDisplay = new ColouredDraggableWaveDisplay (128,
+//                                                                            &audioFilePlayer,
+//                                                                            &thumbnailCache, 
+//                                                                            &audioThumbnail));
+    audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread);
+    
+    positionableWaveDisplay = new PositionableWaveDisplay (*audioThumbnailImage);
+    addAndMakeVisible (positionableWaveDisplay);
     
     addAndMakeVisible (&resolutionSlider);
     resolutionSlider.addListener (this);
@@ -146,16 +150,10 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
     playerControlLabels[rate]->setFont (12);
     playerControlLabels[tempo]->setFont (12);
     playerControlLabels[pitch]->setFont (12);
-    
-    audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread);
-    addAndMakeVisible (&thumbnailImage);
-    audioThumbnailImage->addListener (this);
-    thumbnailImage.setImage (audioThumbnailImage->getImage(), RectanglePlacement::stretchToFit);
 }
 
 AudioPlaybackDemo::~AudioPlaybackDemo()
 {
-    audioThumbnailImage->removeListener (this);
     resolutionSlider.removeListener (this);
     zoomSlider.removeListener (this);
 
@@ -173,26 +171,25 @@ void AudioPlaybackDemo::resized()
     const int bevelSize = 2;
     
     resolutionSlider.setBounds (0, 0, 50, 50);
-    positionalDisplay->setBounds (resolutionSlider.getRight() + bevelSize, bevelSize,
-                                  w - (resolutionSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
-    loopComponent.setBounds (positionalDisplay->getBounds());
+    positionableWaveDisplay->setBounds (resolutionSlider.getRight() + bevelSize, bevelSize,
+                                        w - (resolutionSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
     
-    zoomSlider.setBounds (0, positionalDisplay->getBottom() + m, 50, 50);
-    draggableDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionalDisplay->getBottom() + m + bevelSize,
-                                 w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
+    zoomSlider.setBounds (0, resolutionSlider.getBottom() + m, 50, 50);
+//    draggableDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionalDisplay->getBottom() + m + bevelSize,
+//                                 w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
 
     const int centre = w * 0.5;
     int offset = (centre - (80 * 3)) * 0.5;
     for (int i = 0; i < rate; i++)
     {
-        playerControls[i]->setBounds (offset + i * 80 + 2, draggableDisplay->getBottom() + 20 + 3 * m, 76, 76);
+        playerControls[i]->setBounds (offset + i * 80 + 2, zoomSlider.getBottom() + 20 + 3 * m, 76, 76);
     }        
 
     offset += centre * 0.5;
 //    const int offset = (w - numControls * 80) * 0.5;
     for (int i = rate; i < numControls; i++)
     {
-        playerControls[i]->setBounds (offset + i * 80 + 2, draggableDisplay->getBottom() + 20 + 3 * m, 76, 76);
+        playerControls[i]->setBounds (offset + i * 80 + 2, zoomSlider.getBottom() + 20 + 3 * m, 76, 76);
     }
     
     m *= 2;
@@ -202,18 +199,19 @@ void AudioPlaybackDemo::resized()
     rateGroup.setBounds (playerControls[3]->getX() - m, playerControlLabels[3]->getY() - m,
                          playerControls[5]->getRight() - playerControls[3]->getX() + (2 * m), playerControls[3]->getBottom() - playerControlLabels[3]->getY() + (2 * m));   
     
-    thumbnailImage.setBounds (5, filterGroup.getBottom() + 5, w - (2 * 5), 100);
+//    positionableWaveDisplay->setBounds (5, filterGroup.getBottom() + 5, w - (2 * 5), 100);
+    loopComponent.setBounds (positionableWaveDisplay->getBounds());
 }
 
 void AudioPlaybackDemo::paint (Graphics& g)
 {
-    Rectangle<float> bevel1 (positionalDisplay->getBounds().getX(), positionalDisplay->getBounds().getY(),
-                             positionalDisplay->getBounds().getWidth(), positionalDisplay->getBounds().getHeight());
+    Rectangle<float> bevel1 (positionableWaveDisplay->getBounds().getX(), positionableWaveDisplay->getBounds().getY(),
+                             positionableWaveDisplay->getBounds().getWidth(), positionableWaveDisplay->getBounds().getHeight());
     drawBevel (g, bevel1, 2.0f, Colours::darkgrey);
     
-    Rectangle<float> bevel2 (draggableDisplay->getBounds().getX(), draggableDisplay->getBounds().getY(),
-                             draggableDisplay->getBounds().getWidth(), draggableDisplay->getBounds().getHeight());
-    drawBevel (g, bevel2, 2.0f, Colours::darkgrey);
+//    Rectangle<float> bevel2 (draggableDisplay->getBounds().getX(), draggableDisplay->getBounds().getY(),
+//                             draggableDisplay->getBounds().getWidth(), draggableDisplay->getBounds().getHeight());
+//    drawBevel (g, bevel2, 2.0f, Colours::darkgrey);
 }
 
 void AudioPlaybackDemo::fileChanged (AudioFilePlayer* player)
@@ -224,11 +222,11 @@ void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
 {
     if (slider == &resolutionSlider)
     {
-        positionalDisplay->setResolution (resolutionSlider.getValue());
+//        positionalDisplay->setResolution (resolutionSlider.getValue());
     }
     else if (slider == &zoomSlider)
     {
-        draggableDisplay->setHorizontalZoom (zoomSlider.getValue());
+//        draggableDisplay->setHorizontalZoom (zoomSlider.getValue());
     }
     else if (slider == playerControls[lowEQ])
     {
@@ -266,22 +264,22 @@ void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
 }
 
 //==============================================================================
-void AudioPlaybackDemo::imageChanged (AudioThumbnailImage* audioThumbnailImage)
-{
-    //const ScopedLock sl (audioThumbnailImage->getLock());
-    thumbnailImage.setImage (audioThumbnailImage->getImageAtTime (50, 60), RectanglePlacement::stretchToFit);
-}
-
-void AudioPlaybackDemo::imageUpdated (AudioThumbnailImage* audioThumbnailImage)
-{
-    //const ScopedLock sl (audioThumbnailImage->getLock());
-    const MessageManagerLock mm;
-    thumbnailImage.repaint();
-}
-
-void AudioPlaybackDemo::imageFinished (AudioThumbnailImage* audioThumbnailImage)
-{
-    //const ScopedLock sl (audioThumbnailImage->getLock());
-    const MessageManagerLock mm;
-    thumbnailImage.repaint();
-}
+//void AudioPlaybackDemo::imageChanged (AudioThumbnailImage* audioThumbnailImage)
+//{
+//    //const ScopedLock sl (audioThumbnailImage->getLock());
+//    thumbnailImage.setImage (audioThumbnailImage->getImage()/*AtTime (50, 60)*/, RectanglePlacement::stretchToFit);
+//}
+//
+//void AudioPlaybackDemo::imageUpdated (AudioThumbnailImage* audioThumbnailImage)
+//{
+//    //const ScopedLock sl (audioThumbnailImage->getLock());
+//    //const MessageManagerLock mm;
+//    thumbnailImage.repaint();
+//}
+//
+//void AudioPlaybackDemo::imageFinished (AudioThumbnailImage* audioThumbnailImage)
+//{
+//    //const ScopedLock sl (audioThumbnailImage->getLock());
+//    //const MessageManagerLock mm;
+//    thumbnailImage.repaint();
+//}

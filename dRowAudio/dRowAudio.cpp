@@ -87,7 +87,7 @@
 
 #include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp"
 #include "gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"
-//#include "src/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
+#include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
 #include "gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.cpp"
 #include "gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.cpp"
 #include "gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.cpp"
