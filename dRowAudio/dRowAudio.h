@@ -168,7 +168,7 @@ BEGIN_JUCE_NAMESPACE
 // Utility
 #ifndef __DROWAUDIO_PLUGINPARAMETER_H__
     #include "parameters/dRowAudio_PluginParameter.h"
-#endif _DROWAUDIO_PLUGINPARAMETER_H
+#endif
 
 #ifndef __DROWAUDIO_CONSTANTS_H__
     #include "utility/dRowAudio_Constants.h"
@@ -192,12 +192,16 @@ BEGIN_JUCE_NAMESPACE
 #endif
 #ifndef __DROWAUDIO_MUSICLIBRARYHELPERS_H__
     #include "utility/dRowAudio_MusicLibraryHelpers.h"
-#endif __DROWAUDIO_MUSICLIBRARYHELPERS_H__
+#endif
 #ifndef __DROWAUDIO_ITUNESLIBRARY_H__
     #include "utility/dRowAudio_ITunesLibrary.h"
 #endif
 #ifndef __DROWAUDIO_ITUNESLIBRARYPARSER_H__
     #include "utility/dRowAudio_ITunesLibraryParser.h"
+#endif
+
+#ifndef __DROWAUDIO_AVASSESTAUDIOFORMAT_H__
+    #include "audio/dRowAudio_AVAssetAudioFormat.h"
 #endif
 
 END_JUCE_NAMESPACE

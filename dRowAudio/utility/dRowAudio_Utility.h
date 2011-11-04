@@ -23,7 +23,7 @@
  */
 inline static bool almostEqual(double firstValue, double secondValue, double precision =0.00001)
 {
-	if ( fabs(firstValue - secondValue) < precision )
+	if (fabs (firstValue - secondValue) < precision)
 		return true;
 	else
 		return false;
@@ -42,7 +42,7 @@ inline static File getResourcesFolder()
  */
 inline static String stripFileProtocolForLocal (String pathToStrip)
 {
-	if (pathToStrip.startsWith("file://localhost"));
+	if (pathToStrip.startsWith ("file://localhost"))
 	{
 		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
 		return temp.replace ("%20", " ").replace ("%5B", "[").replace ("%5D", "]").replace ("%23", "#");
@@ -80,10 +80,9 @@ inline static Time parseITunesDateString(String dateString)
 template <class Type>
 void reverseArray(Type *array, int length)
 {
-    int a=0;
     Type swap;
 	
-    for(a; a < --length; a++)       //increment a and decrement b until they meet eachother
+    for(int a = 0; a < --length; a++)       //increment a and decrement b until they meet eachother
     {
         swap = array[a];            //put what's in a into swap space
         array[a] = array[length];   //put what's in b into a
@@ -276,7 +275,7 @@ static ValueTree readValueTreeFromFile (File& fileToReadFrom)
  */
 #ifndef UNUSED_NOWARN
 
-	#if defined(JUCE_MAC)
+	#if defined(JUCE_MAC) || defined(JUCE_IOS)
 		// enable supression of unused variable is GCC
 		#define UNUSED_NOWARN __attribute__((unused))
 

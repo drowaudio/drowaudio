@@ -55,6 +55,12 @@ public:
      */
 	bool setInputStream (InputStream* inputStream);
     
+#if JUCE_IOS
+    /** On iOS this sets the file from an AVAssestURL.
+     */
+    bool setAVAssetURL (String avAssetNSURLAsString);
+#endif
+    
 	/** Returns the absolute path of the current audio file.
      */
 	String getPath()                                        {	return filePath;                }

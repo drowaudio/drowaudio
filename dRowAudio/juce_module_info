@@ -22,7 +22,7 @@
 
 
   "compile":        [ { "file": "dRowAudio.cpp",	"target": "! xcode" },
-                      { "file": "dRowAudio.cpp",  	"target": "xcode" } ],
+                      { "file": "dRowAudio.mm",  	"target": "xcode" } ],
 
   "browse":         [ "audio/*",
                       "gui/*",
@@ -30,6 +30,6 @@
                       "parameters/*",
                       "utility/*" ],
 
-  "OSXFrameworks":  "Accelerate",
-  "iOSFrameworks":  "Accelerate"
+  "OSXFrameworks":  "Accelerate AVFoundation",
+  "iOSFrameworks":  "Accelerate AVFoundation"
 }

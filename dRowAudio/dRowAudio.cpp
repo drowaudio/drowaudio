@@ -20,8 +20,13 @@
 // and your header search path must make it accessible to the module's files.
 #include "AppConfig.h"
 
-
 #include "dRowAudio.h"
+
+#if JUCE_MAC || JUCE_IOS
+ #import <Foundation/Foundation.h>
+ #import <AudioToolbox/AudioToolbox.h>
+ #import <AVFoundation/AVFoundation.h>
+#endif
 
 // Audio
 #include "audio/dRowAudio_AudioFilePlayer.cpp"
@@ -101,3 +106,7 @@
 #include "utility/dRowAudio_ITunesLibrary.cpp"
 #include "utility/dRowAudio_ITunesLibraryParser.cpp"
 #include "parameters/dRowAudio_PluginParameter.cpp"
+
+#if JUCE_MAC || JUCE_IOS
+    #include "audio/dRowAudio_AVAssetAudioFormat.mm"
+#endif

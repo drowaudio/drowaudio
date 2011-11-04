@@ -87,6 +87,16 @@ bool AudioFilePlayer::setInputStream (InputStream* inputStream)
     return setSourceWithReader (reader);
 }
 
+#if JUCE_IOS
+bool AudioFilePlayer::setAVAssetURL (String avAssetNSURLAsString)
+{
+    filePath = avAssetNSURLAsString;
+	AudioFormatReader* reader = AVAssetAudioFormat().createReaderFor (avAssetNSURLAsString);
+    
+    return setSourceWithReader (reader);
+}
+#endif
+
 void AudioFilePlayer::setAudioFormatManager(AudioFormatManager* newManager,  bool deleteWhenNotNeeded)
 {
     OptionalScopedPointer<AudioFormatManager> newFormatManager (newManager, deleteWhenNotNeeded);
