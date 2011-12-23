@@ -1,5 +1,5 @@
 /*
- *  dRowAuidio_SoundTouchAudioSource.h
+ *  SoundTouchAudioSource.h
  *  dRowAudio
  *
  *  Created by David Rowland on 10/01/2009.
@@ -7,21 +7,19 @@
  *
  */
 
-#ifndef _DROWAUDIO_SOUNDTOUCHAUDIOSOURCE__H_
-#define _DROWAUDIO_SOUNDTOUCHAUDIOSOURCE__H_
+#ifndef _SOUNDTOUCHAUDIOSOURCE__H_
+#define _SOUNDTOUCHAUDIOSOURCE__H_
 
 #include "dRowAudio_SoundTouchProcessor.h"
 
 //==============================================================================
-class SoundTouchAudioSource :   public PositionableAudioSource,
-                                private TimeSliceClient
+class SoundTouchAudioSource :   public PositionableAudioSource
 {
 public:
     //==============================================================================
     SoundTouchAudioSource(PositionableAudioSource* source,
-                          TimeSliceThread& backgroundThread,
-                          bool deleteSourceWhenDeleted,
-                          int numberOfSamplesToBuffer,
+                          bool deleteSourceWhenDeleted = false,
+                          int numberOfSamplesToBuffer = 32768,
                           int numberOfChannels = 2);
     
     /** Destructor. */
@@ -35,14 +33,6 @@ public:
      */
     SoundTouchProcessor::PlaybackSettings getPlaybackSettings() {   return soundTouchProcessor.getPlaybackSettings();    }
     
-    /** Sets whether the source should play forwards or backwards.
-     */
-	void setPlayDirection (bool shouldPlayForwards);
-    
-    /** Returns true if the source is playing forwards.
-     */
-	inline bool getPlayDirection ()						{	return isForwards;	}
-	
     /** Returns the lock used when setting the buffer read positions.
      */
     inline const CriticalSection& getBufferLock()               {   return bufferStartPosLock;  }
@@ -75,23 +65,20 @@ public:
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> source;
-    TimeSliceThread& backgroundThread;
     int numberOfSamplesToBuffer, numberOfChannels;
     AudioSampleBuffer buffer;
     CriticalSection bufferStartPosLock;
     int64 volatile nextPlayPos, nextReadPos, effectiveNextPlayPos;
     double volatile sampleRate;
-    bool isPrepared, isForwards;
+    bool isPrepared;
     
     SoundTouchProcessor soundTouchProcessor;
     int volatile numBuffered;
     
     bool readNextBufferChunk();
-    void readBufferSection (int64 start, int length, int bufferOffset);
-    int useTimeSlice();
     void updateNextEffectivePlayPos();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchAudioSource);
 };
 
-#endif //_DROWAUDIO_SOUNDTOUCHAUDIOSOURCE__H_
+#endif //_SOUNDTOUCHAUDIOSOURCE__H_

@@ -124,11 +124,11 @@ public:
     
     /** Sets whether the source should play forwards or backwards.
      */
-	void setPlayDirection (bool shouldPlayForwards)	{	soundTouchAudioSource->setPlayDirection (shouldPlayForwards);	}
+	//void setPlayDirection (bool shouldPlayForwards)	{	soundTouchAudioSource->setPlayDirection (shouldPlayForwards);	}
     
     /** Returns true if the source is playing forwards.
      */
-	bool getPlayDirection ()						{	return soundTouchAudioSource->getPlayDirection();	}
+	//bool getPlayDirection ()						{	return soundTouchAudioSource->getPlayDirection();	}
     
     //==============================================================================
     /** Sets the start and end times of the loop.

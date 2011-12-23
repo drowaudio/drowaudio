@@ -16,7 +16,7 @@ AudioFilePlayer::AudioFilePlayer()
     bufferingTimeSliceThread.startThread(3);
     
     audioTransportSource = new AudioTransportSource();
-    audioTransportSource->setSource (soundTouchAudioSource);
+    audioTransportSource->setSource (nullptr);
     loopingAudioSource = new LoopingAudioSource (audioTransportSource, false);
     filteringAudioSource = new FilteringAudioSource (audioTransportSource, false);
     
@@ -193,12 +193,11 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
-        soundTouchAudioSource = new SoundTouchAudioSource (audioFormatReaderSource,
-                                                           bufferingTimeSliceThread,
-                                                           false,
-                                                           32768);
-        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
-        audioTransportSource->setSource (loopingAudioSource);
+        soundTouchAudioSource = new SoundTouchAudioSource (audioFormatReaderSource);
+//        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
+        audioTransportSource->setSource (soundTouchAudioSource,
+                                         32768,
+                                         &bufferingTimeSliceThread);
         masterSource = filteringAudioSource;
         
 		// let our listeners know that we have loaded a new file

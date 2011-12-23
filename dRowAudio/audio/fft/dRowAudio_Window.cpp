@@ -32,7 +32,10 @@ void Window::applyWindow (float *samples, const int numSamples)
 	windowBuffer.applyBuffer (samples, numSamples);
 
 	if (numSamples > windowBuffer.getSize())
+    {
+        jassertfalse; // set your window size properly!
 		zeromem (samples + windowBuffer.getSize(), (numSamples - windowBuffer.getSize()) * sizeof (float));
+    }
 }
 
 void Window::setUpWindowBuffer()

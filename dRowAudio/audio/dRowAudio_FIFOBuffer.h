@@ -34,6 +34,12 @@ public:
 		return abstractFifo.getNumReady();
 	}
 	
+    /** Returns the number of items free in the buffer. */
+    inline int getNumFree()
+    {
+        return abstractFifo.getFreeSpace();
+    }
+    
     /** Sets the size of the buffer.
         This does not keep any of the old data.
      */

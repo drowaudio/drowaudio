@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 ///
-/// Win32 version of the x86 CPU detect routine.
+/// Win32 version of the x64 CPU detect routine.
 ///
 /// This file is to be compiled in Windows platform with Microsoft Visual C++ 
 /// Compiler. Please see 'cpu_detect_x86_gcc.cpp' for the gcc compiler version 
@@ -12,10 +12,10 @@
 ///
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Last changed  : $Date: 2009-02-13 11:22:48 -0500 (Fri, 13 Feb 2009) $
-// File revision : $Revision: 4 $
+// Last changed  : $Date: 2009-05-03 23:20:00 -0400 (Sun, 03 May 2009) $
+// File revision : $Revision: 1 $
 //
-// $Id: cpu_detect_x86_win.cpp 62 2009-02-13 16:22:48Z oparviai $
+// $Id: cpu_detect_x64_win.cpp 1 2009-05-03 23:20:00Z pegasus $
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -42,8 +42,8 @@
 
 #include "cpu_detect.h"
 
-#ifndef WIN32
-#error wrong platform - this source code file is exclusively for Win32 platform
+#ifndef WIN64
+#error wrong platform - this source code file is exclusively for Win64 platform
 #endif
 
 //////////////////////////////////////////////////////////////////////////////
@@ -71,59 +71,15 @@ uint detectCPUextensions(void)
 
     if (_dwDisabledISA == 0xffffffff) return 0;
 
-    _asm 
-    {
-        ; check if 'cpuid' instructions is available by toggling eflags bit 21
-        ;
-        xor     esi, esi            ; clear esi = result register
+	// MSVC doesn't support inline assembly and wants you to use intrinsics instead
+	// Since I don't know how to do that and just need something working for Mixxx...
 
-        pushfd                      ; save eflags to stack
-        mov     eax,dword ptr [esp] ; load eax from stack (with eflags)
-        mov     ecx, eax            ; save the original eflags values to ecx
-        xor     eax, 0x00200000     ; toggle bit 21
-        mov     dword ptr [esp],eax ; store toggled eflags to stack
-        popfd                       ; load eflags from stack
+	// All 64-bit processors support MMX, SSE, and SSE2
+	res = SUPPORT_MMX + SUPPORT_SSE + SUPPORT_SSE2;
 
-        pushfd                      ; save updated eflags to stack
-        mov     eax,dword ptr [esp] ; load eax from stack
-        popfd                       ; pop stack to restore stack pointer
-
-        xor     edx, edx            ; clear edx for defaulting no mmx
-        cmp     eax, ecx            ; compare to original eflags values
-        jz      end                 ; jumps to 'end' if cpuid not present
-
-        ; cpuid instruction available, test for presence of mmx instructions 
-        mov     eax, 1
-        cpuid
-        test    edx, 0x00800000
-        jz      end                 ; branch if MMX not available
-
-        or      esi, SUPPORT_MMX    ; otherwise add MMX support bit
-
-        test    edx, 0x02000000
-        jz      test3DNow           ; branch if SSE not available
-
-        or      esi, SUPPORT_SSE    ; otherwise add SSE support bit
-
-    test3DNow:
-        ; test for precense of AMD extensions
-        mov     eax, 0x80000000
-        cpuid
-        cmp     eax, 0x80000000
-        jbe     end                ; branch if no AMD extensions detected
-
-        ; test for precense of 3DNow! extension
-        mov     eax, 0x80000001
-        cpuid
-        test    edx, 0x80000000
-        jz      end                 ; branch if 3DNow! not detected
-
-        or      esi, SUPPORT_3DNOW  ; otherwise add 3DNow support bit
-
-    end:
-
-        mov     res, esi
-    }
-
-    return res & ~_dwDisabledISA;
+#ifdef AMD64
+	res += SUPPORT_3DNOW;
+#endif
+	
+	return res & ~_dwDisabledISA;
 }

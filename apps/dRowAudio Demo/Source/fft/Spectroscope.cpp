@@ -20,7 +20,7 @@ Spectroscope::Spectroscope (int fftSizeLog2)
 	fftEngine.setWindowType (Window::Hann);
 	numBins = fftEngine.getFFTProperties().fftSizeHalved;
 	DBG ("Num bins: " << numBins);
-		
+    circularBuffer.reset();
 	setOpaque (true);
 //	fftEngine.getMagnitudesBuffer()->addListener(this);
 //	responsePoints.malloc(fftEngine.getFFTProperties().fftSizeHalved);
@@ -127,6 +127,10 @@ void Spectroscope::renderScopeImage()
 		
 		needsRepaint = false;
 	}
+    else {
+        DBG("Didn't need repaint");
+    }
+
     
     repaint();
 }
@@ -135,28 +139,20 @@ void Spectroscope::timerCallback()
 {
 	const int magnitudeBufferSize = fftEngine.getMagnitudesBuffer()->getSize();
 	float* magnitudeBuffer = fftEngine.getMagnitudesBuffer()->getData();
-	
+
+    renderScopeImage();
+
 	// fall levels here
 	for (int i = 0; i < magnitudeBufferSize; i++)
-    {
-		magnitudeBuffer[i] *= 0.707f;// + squareNumber(currentLevel) * 0.4;
-		
-//		oldLevel = prevMagnitudeBuffer[i];
-//		if (currentLevel < oldLevel) {
-//			currentLevel = (currentLevel * 0.1) + (oldLevel * 0.7);
-//		}
-//		magnitudeBuffer[i] = (currentLevel * 0.1) + (prevMagnitudeBuffer[i] * 0.9);
-//		prevMagnitudeBuffer[i] = currentLevel;
-//		magnitudeBuffer[i] = 0;
-	}
-//	fftEngine.getMagnitudesBuffer()->reset();
+		magnitudeBuffer[i] *= 0.707f;
 	
-	renderScopeImage();
 }
 
 void Spectroscope::process()
 {
-	while (circularBuffer.getNumAvailable() > fftEngine.getFFTSize())
+    jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
+    
+    while (circularBuffer.getNumAvailable() > fftEngine.getFFTSize())
 	{
 		circularBuffer.readSamples (tempBlock.getData(), fftEngine.getFFTSize());
 		fftEngine.performFFT (tempBlock);
