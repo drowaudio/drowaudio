@@ -10,3 +10,4 @@ build/
 xcuserdata
 .svn/
 Band Practice Assistant/
+RemoteDirectoryListBox.cpp
