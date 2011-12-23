@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{5873F394-4732-B47B-803F-28D351B61764}") = "FDNReverb", "FDNReverb.vcproj", "{43E111CB-DBFA-20CF-00C7-2ACC175C13FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43E111CB-DBFA-20CF-00C7-2ACC175C13FC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{43E111CB-DBFA-20CF-00C7-2ACC175C13FC}.Debug|Win32.Build.0 = Debug|Win32
+		{43E111CB-DBFA-20CF-00C7-2ACC175C13FC}.Release|Win32.ActiveCfg = Release|Win32
+		{43E111CB-DBFA-20CF-00C7-2ACC175C13FC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

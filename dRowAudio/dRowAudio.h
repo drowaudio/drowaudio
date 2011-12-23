@@ -21,11 +21,19 @@
 #include "../../../juce_source/juce/modules/juce_gui_basics/juce_gui_basics.h"
 #include "../../../juce_source/juce/modules/juce_gui_extra/juce_gui_extra.h"
 
+#if JUCE_MAC || JUCE_IOS
+    #include <Accelerate/Accelerate.h>
+#endif
+
 BEGIN_JUCE_NAMESPACE
 
 // Audio
 #ifndef _DROWAUDIO_AUDIOFILEPLAYER__H_
-    #include "audio/dRowAudio_AudioFilePlayer.h"
+    //#include "audio/dRowAudio_AudioFilePlayer.h"
+#endif
+
+#ifndef _DROWAUDIO_AUDIOFILEPLAYEREXT__H_
+    #include "audio/dRowAudio_AudioFilePlayerExt.h"
 #endif
 
 #ifndef _DROWAUDIO_SOUNDTOUCHPROCESSOR__H_
@@ -58,7 +66,10 @@ BEGIN_JUCE_NAMESPACE
     #include "audio/dRowAudio_FifoBuffer.h"
 #endif
 //#include "src/audio/dRowAudio_CircularBuffer.h"
-//#include "src/audio/dRowAudio_Buffer.h"
+
+#ifndef __DROWAUDIO_BUFFER_H__
+    #include "audio/dRowAudio_Buffer.h"
+#endif
 ////#include "src/audio/dRowAudio_BufferArray.h"
 //
 //#include "src/audio/dRowAudio_EnvelopeFollower.h"
@@ -78,9 +89,25 @@ BEGIN_JUCE_NAMESPACE
 //#include "src/audio/filters/dRowAudio_InterpolatingLBCF.h"
 //#include "src/audio/filters/dRowAudio_TappedDelayLine.h"
 //
-//#include "src/audio/fft/dRowAudio_FFTOperation.h"
-//#include "src/audio/fft/dRowAudio_FFTEngine.h"
-//#include "src/audio/fft/dRowAudio_Window.h"
+#ifndef __DROWAUDIO_WINDOW_H__
+    #include "audio/fft/dRowAudio_Window.h"
+#endif
+#ifndef __DROWAUDIO_FFTENGINE_H__
+    #include "audio/fft/dRowAudio_FFTEngine.h"
+#endif
+#ifndef __DROWAUDIO_FFTOPERATION_H__
+    #include "audio/fft/dRowAudio_FFTOperation.h"
+#endif
+
+// network
+#ifndef __DROWAUDIO_CURLMANAGER_H__
+    #include "network/curl/dRowAudio_CURLManager.h"
+#endif 
+
+#ifndef __DROWAUDIO_CURLEASYSESSION_H__
+    #include "network/curl/dRowAudio_CURLEasySession.h"
+#endif 
+
 
 // maths
 #ifndef __DROWAUDIO_MATHSUTILITIES_H__
@@ -88,6 +115,11 @@ BEGIN_JUCE_NAMESPACE
 #endif 
 #ifndef __DROWAUDIO_BEZIERCURVE_H__
     #include "maths/dRowAudio_BezierCurve.h"
+#endif
+
+// streams
+#ifndef __DROWAUDIO_MEMORYINPUTSOURCE_H__
+    #include "streams/dRowAudio_MemoryInputSource.h"
 #endif
 
 // Gui
@@ -104,7 +136,9 @@ BEGIN_JUCE_NAMESPACE
     #include "gui/dRowAudio_GraphicalComponentManager.h"
 #endif
 //#include "src/gui/dRowAudio_SimpleAudioScope.h"
-//#include "src/gui/dRowAudio_AudioOscilloscope.h"
+#ifndef __DROWAUDIO_AUDIOOSCILLOSCOPE_H__
+    #include "gui/dRowAudio_AudioOscilloscope.h"
+#endif
 #ifndef __DROWAUDIO_SEGMENTEDMETER_H__
     #include "gui/dRowAudio_SegmentedMeter.h"
 #endif

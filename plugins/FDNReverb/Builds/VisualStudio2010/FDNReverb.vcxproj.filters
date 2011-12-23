@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FDNReverb">
+      <UniqueIdentifier>{06FF7C7B-800F-3A19-AA88-BC573F0B808A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FDNReverb\Source">
+      <UniqueIdentifier>{067AC5CB-BE29-8884-CD61-A9FC7C8218B3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FDNReverb\Source\FDNReverb">
+      <UniqueIdentifier>{5009922C-029A-C31C-96A2-726641281CF0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Library Code">
+      <UniqueIdentifier>{8B4D1BAA-6DB4-CAEC-A0FA-271F354D5C61}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\PluginProcessor.cpp">
+      <Filter>FDNReverb\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PluginEditor.cpp">
+      <Filter>FDNReverb\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FDNReverb\FDNReverb.cpp">
+      <Filter>FDNReverb\Source\FDNReverb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FDNReverb\MultitapDelayLine.cpp">
+      <Filter>FDNReverb\Source\FDNReverb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FDNReverb\FeedbackMatrixBuffer.cpp">
+      <Filter>FDNReverb\Source\FDNReverb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\dRowAudio.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_basics\juce_audio_basics.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_devices\juce_audio_devices.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_formats\juce_audio_formats.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_processors\juce_audio_processors.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_utils\juce_audio_utils.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\juce_core.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_data_structures\juce_data_structures.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_events\juce_events.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_graphics\juce_graphics.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\juce_gui_basics.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_extra\juce_gui_extra.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode1.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode2.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode3.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinResources.rsr">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinUtilities.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_plugin_client\RTAS\juce_RTAS_Wrapper.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\PluginProcessor.h">
+      <Filter>FDNReverb\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PluginEditor.h">
+      <Filter>FDNReverb\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FDNReverb\FDNReverb.h">
+      <Filter>FDNReverb\Source\FDNReverb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FDNReverb\MultitapDelayLine.h">
+      <Filter>FDNReverb\Source\FDNReverb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FDNReverb\FeedbackMatrixBuffer.h">
+      <Filter>FDNReverb\Source\FDNReverb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

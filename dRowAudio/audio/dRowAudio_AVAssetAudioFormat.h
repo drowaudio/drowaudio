@@ -26,7 +26,7 @@
 #ifndef __DROWAUDIO_AVASSETAUDIOFORMAT_H__
 #define __DROWAUDIO_AVASSETAUDIOFORMAT_H__
 
-#if JUCE_MAC || JUCE_IOS
+#if JUCE_IOS
 
 //==============================================================================
 /**

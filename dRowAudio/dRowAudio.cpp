@@ -20,16 +20,22 @@
 // and your header search path must make it accessible to the module's files.
 #include "AppConfig.h"
 
-#include "dRowAudio.h"
+#include "../../../juce_source/juce/modules/juce_core/native/juce_BasicNativeHeaders.h"
 
 #if JUCE_MAC || JUCE_IOS
- #import <Foundation/Foundation.h>
- #import <AudioToolbox/AudioToolbox.h>
- #import <AVFoundation/AVFoundation.h>
+    #import <Foundation/Foundation.h>
+    #import <AudioToolbox/AudioToolbox.h>
 #endif
 
+#if JUCE_IOS
+    #import <AVFoundation/AVFoundation.h>
+#endif
+
+#include "dRowAudio.h"
+
 // Audio
-#include "audio/dRowAudio_AudioFilePlayer.cpp"
+//#include "audio/dRowAudio_AudioFilePlayer.cpp"
+#include "audio/dRowAudio_AudioFilePlayerExt.cpp"
 
 #include "audio/soundtouch/SoundTouch_Source.cpp"
 #include "audio/dRowAudio_SoundTouchProcessor.cpp"
@@ -43,7 +49,7 @@
 //#include "src/audio/dRowAudio_FilteringAudioFilePlayer.cpp"
 //
 //#include "src/audio/dRowAudio_CircularBuffer.cpp"
-//#include "src/audio/dRowAudio_Buffer.cpp"
+#include "audio/dRowAudio_Buffer.cpp"
 //#include "src/audio/dRowAudio_BufferArray.cpp"
 //
 //#include "src/audio/dRowAudio_EnvelopeFollower.cpp"
@@ -61,15 +67,19 @@
 //#include "src/audio/filters/dRowAudio_DelayRegister.cpp"
 //#include "src/audio/filters/dRowAudio_TappedDelayLine.cpp"
 //
-//#include "src/audio/fft/dRowAudio_FFTEngine.cpp"
-//#include "src/audio/fft/dRowAudio_Window.cpp"
-//
-//#ifdef JUCE_MAC
-//	#include "src/audio/fft/dRowAudio_mac_FFTOperation.cpp"
-//#endif
+#include "audio/fft/dRowAudio_Window.cpp"
+#include "audio/fft/dRowAudio_FFTEngine.cpp"
+#include "audio/fft/dRowAudio_mac_FFTOperation.cpp"
 
 // Gui
 #include "gui/dRowAudio_AudioFileDropTarget.cpp"
+
+// network
+#include "network/curl/dRowAudio_CURLManager.cpp"
+#include "network/curl/dRowAudio_CURLEasySession.cpp"
+
+// streams
+#include "streams/dRowAudio_MemoryInputSource.cpp"
 
 //#include "src/gui/lookandfeel/dRowAudio_PluginLookAndFeel.cpp"
 //#include "src/gui/lookandfeel/GuitarAmpKnobLookAndFeel.cpp"
@@ -77,7 +87,7 @@
 #include "gui/dRowAudio_GraphicalComponent.cpp"
 #include "gui/dRowAudio_GraphicalComponentManager.cpp"
 //#include "src/gui/dRowAudio_SimpleAudioScope.cpp"
-//#include "src/gui/dRowAudio_AudioOscilloscope.cpp"
+#include "gui/dRowAudio_AudioOscilloscope.cpp"
 #include "gui/dRowAudio_SegmentedMeter.cpp"
 //#include "src/gui/dRowAudio_Meter.cpp"
 //#include "src/gui/dRowAudio_StereoMeter.cpp"
@@ -107,6 +117,6 @@
 #include "utility/dRowAudio_ITunesLibraryParser.cpp"
 #include "parameters/dRowAudio_PluginParameter.cpp"
 
-#if JUCE_MAC || JUCE_IOS
+#if JUCE_IOS
     #include "audio/dRowAudio_AVAssetAudioFormat.mm"
 #endif

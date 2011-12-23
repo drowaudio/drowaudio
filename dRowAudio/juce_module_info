@@ -30,6 +30,6 @@
                       "parameters/*",
                       "utility/*" ],
 
-  "OSXFrameworks":  "Accelerate AVFoundation",
-  "iOSFrameworks":  "Accelerate AVFoundation"
+  "OSXFrameworks":  "Accelerate libcurl",
+  "iOSFrameworks":  "Accelerate AVFoundation libcurl"
 }

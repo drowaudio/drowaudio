@@ -15,6 +15,14 @@
 		411CFE3488DB9834D05832F8 /* juce_core.mm in Sources */ = {isa = PBXBuildFile; fileRef = 45F9EA1530DA6D8BBB452430 /* juce_core.mm */; };
 		444D326046F03770E9AEB643 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175937C6192FB31D09EBC71C /* Cocoa.framework */; };
 		53BF8FC087AD23FCFDFAC5F2 /* TransportComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C9C3247900045186C676D /* TransportComponent.cpp */; };
+		55161EB114A3702600445ECE /* Spectroscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55161EAF14A3702600445ECE /* Spectroscope.cpp */; };
+		55A6EAD114A1361500677C51 /* ConnectionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EAC914A1361500677C51 /* ConnectionComponent.cpp */; };
+		55A6EAD214A1361500677C51 /* LocalDirectoryListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EACB14A1361500677C51 /* LocalDirectoryListBox.cpp */; };
+		55A6EAD314A1361500677C51 /* NetworkDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EACD14A1361500677C51 /* NetworkDemo.cpp */; };
+		55A6EAD414A1361500677C51 /* RemoteDirectoryListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EACF14A1361500677C51 /* RemoteDirectoryListBox.cpp */; };
+		55A6EB0014A1389500677C51 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A6EAFF14A1389500677C51 /* libcurl.dylib */; };
+		55A6EB9714A2373100677C51 /* FFTDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EB9614A2373100677C51 /* FFTDemo.cpp */; };
+		55A6EC5314A2B61E00677C51 /* dRowAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EC5214A2B61E00677C51 /* dRowAudio.mm */; };
 		56395F7B8428F72AFBA86DF2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84484BC5CE686760F331B64A /* AudioToolbox.framework */; };
 		590919F2EECA27287BF1A28C /* AudioPlaybackDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24337B3A547FF98BBFE5AB05 /* AudioPlaybackDemo.cpp */; };
 		7778EF6CD7053965412F5AD3 /* juce_audio_formats.mm in Sources */ = {isa = PBXBuildFile; fileRef = 666E9F98DAF3EF4795CB8340 /* juce_audio_formats.mm */; };
@@ -31,7 +39,6 @@
 		CE3A8AD3B27EED71F2A28DBD /* juce_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE359DBEED65B9B84B9F903B /* juce_graphics.mm */; };
 		D1BE18C4B9A3301A0A7DB80D /* juce_audio_processors.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6CD748A5CE80B16B4E4E2D89 /* juce_audio_processors.mm */; };
 		D9422A8612B91E1A0029ED36 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C972B7B6DE382DBB2B43B73 /* Main.cpp */; };
-		E292E19CF2E9145AB26F5E4C /* dRowAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DA75EC5B98A438C27EB995A /* dRowAudio.cpp */; };
 		E551D20036C4EC738508C1E5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC02000EE516D4A623C6552 /* CoreAudio.framework */; };
 		F22F65DAB117D799E0C5DBB9 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EF217055B41C216557236A6 /* IOKit.framework */; };
 		F3457666D359A903CB0DDD2C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E60D92746C277E4137E3CB8 /* QuartzCore.framework */; };
@@ -48,8 +55,30 @@
 		2599121D87CAAE0F7A1670CD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		44D542C670A563F9D5E68294 /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
 		45F9EA1530DA6D8BBB452430 /* juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_core.mm; path = ../../../../../../juce_source/juce/modules/juce_core/juce_core.mm; sourceTree = SOURCE_ROOT; };
-		4DA75EC5B98A438C27EB995A /* dRowAudio.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio.cpp; path = ../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.cpp; sourceTree = SOURCE_ROOT; };
 		4FEA7CC34128B23C8DA2884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		55161EAF14A3702600445ECE /* Spectroscope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Spectroscope.cpp; path = ../../Source/fft/Spectroscope.cpp; sourceTree = SOURCE_ROOT; };
+		55161EB014A3702600445ECE /* Spectroscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spectroscope.h; path = ../../Source/fft/Spectroscope.h; sourceTree = SOURCE_ROOT; };
+		55A6EAC914A1361500677C51 /* ConnectionComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConnectionComponent.cpp; sourceTree = "<group>"; };
+		55A6EACA14A1361500677C51 /* ConnectionComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionComponent.h; sourceTree = "<group>"; };
+		55A6EACB14A1361500677C51 /* LocalDirectoryListBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalDirectoryListBox.cpp; sourceTree = "<group>"; };
+		55A6EACC14A1361500677C51 /* LocalDirectoryListBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDirectoryListBox.h; sourceTree = "<group>"; };
+		55A6EACD14A1361500677C51 /* NetworkDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkDemo.cpp; sourceTree = "<group>"; };
+		55A6EACE14A1361500677C51 /* NetworkDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDemo.h; sourceTree = "<group>"; };
+		55A6EACF14A1361500677C51 /* RemoteDirectoryListBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemoteDirectoryListBox.cpp; sourceTree = "<group>"; };
+		55A6EAD014A1361500677C51 /* RemoteDirectoryListBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDirectoryListBox.h; sourceTree = "<group>"; };
+		55A6EAFF14A1389500677C51 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = /usr/local/lib/libcurl.dylib; sourceTree = "<absolute>"; };
+		55A6EB9514A2373100677C51 /* FFTDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFTDemo.h; path = ../../Source/fft/FFTDemo.h; sourceTree = SOURCE_ROOT; };
+		55A6EB9614A2373100677C51 /* FFTDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FFTDemo.cpp; path = ../../Source/fft/FFTDemo.cpp; sourceTree = SOURCE_ROOT; };
+		55A6EBB714A23A1000677C51 /* dRowAudio_FFTEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dRowAudio_FFTEngine.cpp; sourceTree = "<group>"; };
+		55A6EBB814A23A1000677C51 /* dRowAudio_FFTEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dRowAudio_FFTEngine.h; sourceTree = "<group>"; };
+		55A6EBB914A23A1000677C51 /* dRowAudio_FFTOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dRowAudio_FFTOperation.h; sourceTree = "<group>"; };
+		55A6EBBA14A23A1000677C51 /* dRowAudio_mac_FFTOperation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dRowAudio_mac_FFTOperation.cpp; sourceTree = "<group>"; };
+		55A6EBBB14A23A1000677C51 /* dRowAudio_Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dRowAudio_Window.cpp; sourceTree = "<group>"; };
+		55A6EBBC14A23A1000677C51 /* dRowAudio_Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dRowAudio_Window.h; sourceTree = "<group>"; };
+		55A6EBBD14A240F700677C51 /* dRowAudio_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_Buffer.cpp; path = ../../../../dRowAudio/audio/dRowAudio_Buffer.cpp; sourceTree = SOURCE_ROOT; };
+		55A6EBBE14A240F700677C51 /* dRowAudio_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Buffer.h; path = ../../../../dRowAudio/audio/dRowAudio_Buffer.h; sourceTree = SOURCE_ROOT; };
+		55A6EC5214A2B61E00677C51 /* dRowAudio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = dRowAudio.mm; path = ../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.mm; sourceTree = SOURCE_ROOT; };
+		55A6EC7A14A2B68700677C51 /* dRowAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio.cpp; path = ../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.cpp; sourceTree = SOURCE_ROOT; };
 		5CC6B422A997852FC790179D /* LoopComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopComponent.cpp; path = ../../Source/LoopComponent.cpp; sourceTree = SOURCE_ROOT; };
 		5EF217055B41C216557236A6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		664427D251BC566E135E9921 /* TransportComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportComponent.h; path = ../../Source/TransportComponent.h; sourceTree = SOURCE_ROOT; };
@@ -95,6 +124,7 @@
 				F22F65DAB117D799E0C5DBB9 /* IOKit.framework in Frameworks */,
 				F3457666D359A903CB0DDD2C /* QuartzCore.framework in Frameworks */,
 				95E91DFC555B337FFB554B52 /* WebKit.framework in Frameworks */,
+				55A6EB0014A1389500677C51 /* libcurl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +147,7 @@
 				6D4C28D04DC63C09A383111A /* Resources */,
 				7148579EBD6A599D8FCEA594 /* Frameworks */,
 				024501DD1CA47B53D7642726 /* Products */,
+				55A6EAFF14A1389500677C51 /* libcurl.dylib */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -137,6 +168,8 @@
 				24337B3A547FF98BBFE5AB05 /* AudioPlaybackDemo.cpp */,
 				7B6265F35946A5CC8AB3CE08 /* LoopComponent.h */,
 				5CC6B422A997852FC790179D /* LoopComponent.cpp */,
+				55A6EAC814A1361500677C51 /* network */,
+				55A6EB9314A236FC00677C51 /* fft */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -148,6 +181,50 @@
 			);
 			name = "dRowAudio Demo";
 			sourceTree = "<group>";
+		};
+		55A6EAC814A1361500677C51 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				55A6EACE14A1361500677C51 /* NetworkDemo.h */,
+				55A6EACD14A1361500677C51 /* NetworkDemo.cpp */,
+				55A6EACA14A1361500677C51 /* ConnectionComponent.h */,
+				55A6EAC914A1361500677C51 /* ConnectionComponent.cpp */,
+				55A6EACC14A1361500677C51 /* LocalDirectoryListBox.h */,
+				55A6EACB14A1361500677C51 /* LocalDirectoryListBox.cpp */,
+				55A6EAD014A1361500677C51 /* RemoteDirectoryListBox.h */,
+				55A6EACF14A1361500677C51 /* RemoteDirectoryListBox.cpp */,
+			);
+			name = network;
+			path = ../../Source/network;
+			sourceTree = SOURCE_ROOT;
+		};
+		55A6EB9314A236FC00677C51 /* fft */ = {
+			isa = PBXGroup;
+			children = (
+				55A6EB9514A2373100677C51 /* FFTDemo.h */,
+				55A6EB9614A2373100677C51 /* FFTDemo.cpp */,
+				55161EB014A3702600445ECE /* Spectroscope.h */,
+				55161EAF14A3702600445ECE /* Spectroscope.cpp */,
+				55A6EBB614A23A1000677C51 /* fft */,
+			);
+			name = fft;
+			sourceTree = "<group>";
+		};
+		55A6EBB614A23A1000677C51 /* fft */ = {
+			isa = PBXGroup;
+			children = (
+				55A6EBBE14A240F700677C51 /* dRowAudio_Buffer.h */,
+				55A6EBBD14A240F700677C51 /* dRowAudio_Buffer.cpp */,
+				55A6EBBC14A23A1000677C51 /* dRowAudio_Window.h */,
+				55A6EBBB14A23A1000677C51 /* dRowAudio_Window.cpp */,
+				55A6EBB814A23A1000677C51 /* dRowAudio_FFTEngine.h */,
+				55A6EBB714A23A1000677C51 /* dRowAudio_FFTEngine.cpp */,
+				55A6EBB914A23A1000677C51 /* dRowAudio_FFTOperation.h */,
+				55A6EBBA14A23A1000677C51 /* dRowAudio_mac_FFTOperation.cpp */,
+			);
+			name = fft;
+			path = ../../../../dRowAudio/audio/fft;
+			sourceTree = SOURCE_ROOT;
 		};
 		6D4C28D04DC63C09A383111A /* Resources */ = {
 			isa = PBXGroup;
@@ -178,7 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				0EA9B4EC95C93907AB1CFECD /* AppConfig.h */,
-				4DA75EC5B98A438C27EB995A /* dRowAudio.cpp */,
+				55A6EC7A14A2B68700677C51 /* dRowAudio.cpp */,
+				55A6EC5214A2B61E00677C51 /* dRowAudio.mm */,
 				78DDDE286EE92081E0513495 /* juce_audio_basics.mm */,
 				67AD6B1BB456AF9E4E53EF43 /* juce_audio_devices.mm */,
 				666E9F98DAF3EF4795CB8340 /* juce_audio_formats.mm */,
@@ -262,7 +340,6 @@
 				53BF8FC087AD23FCFDFAC5F2 /* TransportComponent.cpp in Sources */,
 				590919F2EECA27287BF1A28C /* AudioPlaybackDemo.cpp in Sources */,
 				84D5444C3400ACD793DBBDDC /* LoopComponent.cpp in Sources */,
-				E292E19CF2E9145AB26F5E4C /* dRowAudio.cpp in Sources */,
 				9CDDEF3F6F02406D4C06473D /* juce_audio_basics.mm in Sources */,
 				AB4F65E61D02CC0C492306A1 /* juce_audio_devices.mm in Sources */,
 				7778EF6CD7053965412F5AD3 /* juce_audio_formats.mm in Sources */,
@@ -274,6 +351,13 @@
 				CE3A8AD3B27EED71F2A28DBD /* juce_graphics.mm in Sources */,
 				F729229340032903C8FB6C9F /* juce_gui_basics.mm in Sources */,
 				3C0A5379AE219D4B2CC471E6 /* juce_gui_extra.mm in Sources */,
+				55A6EAD114A1361500677C51 /* ConnectionComponent.cpp in Sources */,
+				55A6EAD214A1361500677C51 /* LocalDirectoryListBox.cpp in Sources */,
+				55A6EAD314A1361500677C51 /* NetworkDemo.cpp in Sources */,
+				55A6EAD414A1361500677C51 /* RemoteDirectoryListBox.cpp in Sources */,
+				55A6EB9714A2373100677C51 /* FFTDemo.cpp in Sources */,
+				55A6EC5314A2B61E00677C51 /* dRowAudio.mm in Sources */,
+				55161EB114A3702600445ECE /* Spectroscope.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

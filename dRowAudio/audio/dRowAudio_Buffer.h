@@ -7,14 +7,11 @@
  *
  */
 
-#ifndef _DROWAUDIO_BUFFER__H_
-#define _DROWAUDIO_BUFFER__H_
-
-#include "../core/dRowAudio_StandardHeader.h"
+#ifndef __DROWAUDIO_BUFFER_H__
+#define __DROWAUDIO_BUFFER_H__
 
 //==============================================================================
-/**
-	A buffer to hold an array of floats.
+/** A buffer to hold an array of floats.
 	This is a simple container for an array of floats that can be used to store 
 	common values such as a waveshape or look-up table.
 	Create one of these on the stack for most efficient and safe use.
@@ -26,11 +23,12 @@
 class Buffer
 {
 public:
+    //==============================================================================
 	/** Creates a buffer with a given size. */
-	Buffer(int size);
+	Buffer (int size);
 	
 	/** Creates a copy of another buffer. */
-	Buffer(const Buffer& otherBuffer);
+	Buffer (const Buffer& otherBuffer);
 	
 	/**	Destructor. */
 	~Buffer();
@@ -41,39 +39,39 @@ public:
 		Therefore it is best to either reset the whole buffer or refill it from your own
 		algorithm before using it.
 	 */
-	inline void setSize(int newSize);
+	inline void setSize (int newSize);
 	
 	/**	Changes the size of the buffer.
 		This does the same as setSize() but slightly quicker with the expense of possibly
 		having rubbish in the buffer. Be sure to either refill or reset the buffer before using it.
 	 */
-	inline void setSizeQuick(int newSize)	{	buffer.malloc(newSize);
-												bufferSize = newSize;		}
+	inline void setSizeQuick (int newSize)          {	buffer.malloc (newSize);
+                                                        bufferSize = newSize;		}
 	
 	/** Returns a value from the buffer.
 		This method performs no bounds checking so if the index is out of the internal array
 		bounds will contain garbage.
 	 */
-	inline float operator[](const int index)	{	return buffer[index];		}
+	inline float operator[](const int index)        {	return buffer[index];   }
 	
 	/** Returns a reference to a value from the buffer.
 		This method returns a reference to an element from the buffer so can therefore be changed.
 		This method also performs no bounds checking so if the index is out of the internal array
 		bounds will contain garbage.
 	 */
-	inline float& getReference(const int index)	{	return buffer[index];		}
+	inline float& getReference (const int index)    {	return buffer[index];   }
 	
 	/** Zeros the buffer's contents.
 	 */
-	inline void reset()			{	zeromem(buffer, bufferSize*sizeof(float));	}
+	inline void reset()                             {	zeromem (buffer, bufferSize * sizeof (float)); }
 		
 	/** Returns a pointer to the beggining of the data.
 		Don't hang on to this pointer as it may change if the buffer is internally re-allocated.
 	 */
-	inline float* getData()		{	return (float*)buffer;	}
+	inline float* getData()                         {	return (float*) buffer;	}
 	
 	/** Returns the current size of the buffer. */
-	inline int getSize()		{	return bufferSize;	}
+	inline int getSize()                            {	return bufferSize;	}
 	
 	/**	Copies the contents of a section of memory into the internal buffer.
 	 
@@ -84,18 +82,18 @@ public:
 		extra elements will be left alone. If the internal array is smaller only enough data
 		will be copied to fit so you may lose the end of the data passed in.
 	 */
-	void copyFrom (float* data, int size, bool resizeToFit=true)
+	void copyFrom (float* data, int size, bool resizeToFit = true)
 	{
 		if (resizeToFit)
-			setSizeQuick(size);
+			setSizeQuick (size);
 		
-		quickCopy(data, size);
+		quickCopy (data, size);
 	}
 
 	/**	Applys the current buffer to a number of samples.
 		This is done via a straight multiplication and will zero any out of range source samples.
 	 */
-	void applyBuffer(float *samples, int numSamples);
+	void applyBuffer (float* samples, int numSamples);
 	
 	/**	This performs a very quick copy of some data given to it.
 		No resizing is done so if the size of the data passed is less than or equal to the size of the internal array
@@ -106,7 +104,7 @@ public:
 		if (size > bufferSize)
 			size = bufferSize;
 		
-		memcpy(buffer, data, size*sizeof(float));
+		memcpy (buffer, data, size * sizeof (float));
 	}
 	
 	/** Updates the buffer's listeners.
@@ -139,14 +137,14 @@ public:
     //==============================================================================
 	
 private:
-
+    //==============================================================================
 	HeapBlock <float> buffer;
 	int bufferSize;
 	
-	void callListeners();
-	SortedSet <Listener*> listeners;
+    ListenerList <Listener> listeners;
 	
+    //==============================================================================
 	JUCE_LEAK_DETECTOR (Buffer);
 };
 
-#endif //_DROWAUDIO_BUFFER__H_
+#endif //__DROWAUDIO_BUFFER_H__

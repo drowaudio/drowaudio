@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="oLdhGr" name="FDNReverb" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.yourcompany.FDNReverb" buildVST="0" buildRTAS="0"
+              buildAU="1" pluginName="FDNReverb" pluginDesc="FDNReverb" pluginManufacturer="yourcompany"
+              pluginManufacturerCode="Manu" pluginCode="Plug" pluginChannelConfigs="{1, 1}, {2, 2}"
+              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
+              pluginSilenceInIsSilenceOut="0" pluginTailLength="10" pluginEditorRequiresKeys="1"
+              pluginAUExportPrefix="FDNReverbAU" pluginAUViewClass="FDNReverbAU_V1"
+              pluginRTASCategory="" jucerVersion="3.0.0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="s9cIEx" juceFolder="../../../../juce_source/juce/modules"
+               vstFolder="~/Documents/Developement/SDKs"/>
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
+            vstFolder="c:\SDKs\vstsdk2.4"/>
+  </EXPORTFORMATS>
+  <CONFIGURATIONS>
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="FDNReverb"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="FDNReverb"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+  </CONFIGURATIONS>
+  <MAINGROUP id="cZWLEK" name="FDNReverb">
+    <GROUP id="{9B8D5417-5DCC-0AA7-2134-5942A0D23D26}" name="Source">
+      <FILE id="T3oPvr" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="GGYYED" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="tcU9tE" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="cAhs5H" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <GROUP id="{4B7DBFBE-E996-86AB-FAF7-51FF70A68048}" name="FDNReverb">
+        <FILE id="VN269t" name="FDNReverb.h" compile="0" resource="0" file="Source/FDNReverb/FDNReverb.h"/>
+        <FILE id="HZ5whz" name="FDNReverb.cpp" compile="1" resource="0" file="Source/FDNReverb/FDNReverb.cpp"/>
+        <FILE id="sVIfrC" name="MultitapDelayLine.h" compile="0" resource="0"
+              file="Source/FDNReverb/MultitapDelayLine.h"/>
+        <FILE id="mysZoY" name="MultitapDelayLine.cpp" compile="1" resource="0"
+              file="Source/FDNReverb/MultitapDelayLine.cpp"/>
+        <FILE id="JQGTND" name="FeedbackMatrixBuffer.h" compile="0" resource="0"
+              file="Source/FDNReverb/FeedbackMatrixBuffer.h"/>
+        <FILE id="orppap" name="FeedbackMatrixBuffer.cpp" compile="1" resource="0"
+              file="Source/FDNReverb/FeedbackMatrixBuffer.cpp"/>
+      </GROUP>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_basics" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="dRowAudio" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="0" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+</JUCERPROJECT>

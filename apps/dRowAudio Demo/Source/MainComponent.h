@@ -15,6 +15,8 @@
 #include "TrackInfoComponent.h"
 #include "TransportComponent.h"
 
+class FFTDemo;
+
 //==============================================================================
 class MainComponent :   public Component,
                         public TextEditor::Listener,
@@ -56,6 +58,8 @@ private:
     CpuMeter cpuMeter;
     TabbedComponent tabbedComponent;
     TextEditor searchBox;
+    
+    FFTDemo* fftDemo;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent);
 };

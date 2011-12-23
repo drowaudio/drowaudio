@@ -34,7 +34,8 @@ inline double sinc(const double x)
 {
     if (x==0)
         return 1;
-    return sin(x)/x;
+    
+    return sin (x) / x;
 }
 
 /**	Sinc function normalised with PI for audio applications.
@@ -43,7 +44,8 @@ inline double sincPi(const double x)
 {
     if (x==0)
         return 1;
-    return sin(double_Pi * x)/(double_Pi * x);
+    
+    return sin (double_Pi * x) / (double_Pi * x);
 }
 
 /** Converts a number of degrees to radians
@@ -56,42 +58,42 @@ inline double degreesToRadians (const double degrees)
 /**	Returns true if the argument is a power of 2.
     This will return false if 0 is passed.
  */
-inline bool isPowerOfTwo(long number)
+inline bool isPowerOfTwo (int number)
 {
-	return (number) && !(number & (number - 1));
+	return (number) && ! (number & (number - 1));
 }
 
 /**	Returns the next power of 2 of the given number.
  */
-inline long nextPowerOf2(long number)
+inline int nextPowerOf2 (int number)
 {
-	if (isPowerOfTwo(number))
+	if (isPowerOfTwo (number))
 		return number;
 	else
-		return pow(2, ceil(log(number) / log(2)));
+		return pow (2, ceil (log ((double) number) / log(2.0)));
 }
 
 /**	Returns the previous power of 2.
     This may return 0 if a number < 1 is passed.
  */
-inline long prevPowerOf2(long number)
+inline int prevPowerOf2(int number)
 {
-	if (isPowerOfTwo(number))
+	if (isPowerOfTwo (number))
 		return number;
 	else
-		return pow(2, ceil(log(number) / log(2))) * 0.5;
+		return pow (2, ceil (log ((double) number) / log (2.0))) * 0.5;
 }
 
 /**	Returns the power which 2 has to be raised to to get the given number.
     If the given number is not an exact power of 2 the next nearest power will be given.
     E.g. 1024 will return 10 as will 1023.
  */
-inline long findPowerForBase2(long number)
+inline int findPowerForBase2(int number)
 {
-	if (isPowerOfTwo(number))
-		return log(number) / log(2);
+	if (isPowerOfTwo (number))
+		return log ((double) number) / log(2.0);
 	else
-		return log(nextPowerOf2(number)) / log(2);
+		return log ((double) nextPowerOf2 ( number)) / log(2.0);
 }
 
 #endif //__DROWAUDIO_MATHSUTILITIES_H__

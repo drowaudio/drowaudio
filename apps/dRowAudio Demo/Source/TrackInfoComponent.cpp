@@ -38,7 +38,7 @@ TrackInfoComponent::~TrackInfoComponent()
 void TrackInfoComponent::resized()
 {
     const int w = getWidth();
-    const int h = getHeight();
+    //const int h = getHeight();
     const int m = 5;
     
     bpmLabel.setBounds (w - 50, m, 50, 20);

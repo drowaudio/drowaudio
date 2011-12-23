@@ -50,6 +50,11 @@ public:
 		return abstractFifo.getTotalSize();
 	}
 	
+    inline void reset()
+    {
+        abstractFifo.reset();
+    }
+    
     /** Writes a number of samples into the buffer.
      */
 	void writeSamples (const float* samples, int numSamples)
@@ -58,10 +63,10 @@ public:
 		abstractFifo.prepareToWrite (numSamples, start1, size1, start2, size2);
 
 		if (size1 > 0)
-			memcpy(buffer.getData()+start1, samples, size1 * sizeof (float));
+			memcpy (buffer.getData()+start1, samples, size1 * sizeof (float));
 		
 		if (size2 > 0)
-			memcpy(buffer.getData()+start2, samples+size1, size2 * sizeof (float));
+			memcpy (buffer.getData()+start2, samples+size1, size2 * sizeof (float));
 
 		abstractFifo.finishedWrite (size1 + size2);
 	}
@@ -74,10 +79,10 @@ public:
 		abstractFifo.prepareToRead (numSamples, start1, size1, start2, size2);
 		
 		if (size1 > 0)
-			memcpy(bufferToFill, buffer.getData() + start1, size1 * sizeof (float));
+			memcpy (bufferToFill, buffer.getData() + start1, size1 * sizeof (float));
 
 		if (size2 > 0)
-			memcpy(bufferToFill + size1, buffer.getData() + start2, size2 * sizeof (float));
+			memcpy (bufferToFill + size1, buffer.getData() + start2, size2 * sizeof (float));
 		
 		abstractFifo.finishedRead (size1 + size2);
 	}
@@ -86,6 +91,9 @@ private:
     //==============================================================================
 	AbstractFifo abstractFifo;
 	HeapBlock<float> buffer;
+
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FifoBuffer);
 };
 
 #endif  // __DROWAUDIO_FIFOBUFFER_H__

@@ -59,9 +59,9 @@
 	};
 	2E4157CF2A2C971DBC24F6A6 /* PluginProcessor.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {960, 4511}}";
+			sepNavIntBoundsRect = "{{0, 0}, {960, 4537}}";
 			sepNavSelRange = "{6954, 0}";
-			sepNavVisRange = "{6472, 1822}";
+			sepNavVisRange = "{2106, 1470}";
 		};
 	};
 	2FFFAC440E6BE3DBA78E0E55 /* juce_Array.h */ = {
@@ -237,6 +237,36 @@
 		path = /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/Tremolo.xcodeproj/Dave.mode1v3;
 		sourceTree = "<absolute>";
 	};
+	554E9A3614645C63004BE996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8A1F172AD01A90ED1DFB1577 /* PluginEditor.h */;
+		name = "PluginEditor.h: 56";
+		rLen = 0;
+		rLoc = 1661;
+		rType = 0;
+		vrLen = 1360;
+		vrLoc = 371;
+	};
+	554E9A3714645C63004BE996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E3B9731C6F35F558FE2D7E0F /* PluginProcessor.h */;
+		name = "PluginProcessor.h: 55";
+		rLen = 1;
+		rLoc = 1906;
+		rType = 0;
+		vrLen = 1645;
+		vrLoc = 2213;
+	};
+	554E9A3814645C63004BE996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2E4157CF2A2C971DBC24F6A6 /* PluginProcessor.cpp */;
+		name = "PluginProcessor.cpp: 242";
+		rLen = 0;
+		rLoc = 6954;
+		rType = 0;
+		vrLen = 1470;
+		vrLoc = 2106;
+	};
 	55919CC514327A0800A9084F /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 553457EE143256AF00C2E124 /* Dave.mode1v3 */;
@@ -303,11 +333,6 @@
 		name = AUComponent.h;
 		path = /System/Library/Frameworks/AudioUnit.framework/Versions/A/Headers/AUComponent.h;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1111, 18616}}";
-			sepNavSelRange = "{28606, 42}";
-			sepNavVisRange = "{31508, 951}";
-		};
 	};
 	55F6C5F51433389B002159D1 /* AudioUnitProperties.h */ = {
 		isa = PBXFileReference;
@@ -315,11 +340,6 @@
 		name = AudioUnitProperties.h;
 		path = /System/Library/Frameworks/AudioUnit.framework/Versions/A/Headers/AudioUnitProperties.h;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {960, 38194}}";
-			sepNavSelRange = "{54404, 40}";
-			sepNavVisRange = "{52722, 1776}";
-		};
 	};
 	55F6C6551433433D002159D1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -377,11 +397,6 @@
 		name = dRowAudio_PluginParameter.h;
 		path = /Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/parameters/dRowAudio_PluginParameter.h;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {960, 1664}}";
-			sepNavSelRange = "{3435, 0}";
-			sepNavVisRange = "{3, 2591}";
-		};
 	};
 	55F6C69514335137002159D1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -416,11 +431,6 @@
 		name = PluginEditor.cpp;
 		path = /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Source/PluginEditor.cpp;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {970, 2769}}";
-			sepNavSelRange = "{2255, 0}";
-			sepNavVisRange = "{209, 1428}";
-		};
 	};
 	55F6C77614336B1D002159D1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -492,16 +502,6 @@
 		vrLen = 2047;
 		vrLoc = 2486;
 	};
-	55F6C7CE14337976002159D1 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E3B9731C6F35F558FE2D7E0F /* PluginProcessor.h */;
-		name = "PluginProcessor.h: 35";
-		rLen = 12;
-		rLoc = 1162;
-		rType = 0;
-		vrLen = 1768;
-		vrLoc = 204;
-	};
 	55F6C7F014337B3D002159D1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 2E4157CF2A2C971DBC24F6A6 /* PluginProcessor.cpp */;
@@ -521,26 +521,6 @@
 		rType = 0;
 		vrLen = 2753;
 		vrLoc = 1895;
-	};
-	55F6C80414337BDD002159D1 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8A1F172AD01A90ED1DFB1577 /* PluginEditor.h */;
-		name = "PluginEditor.h: 38";
-		rLen = 149;
-		rLoc = 1112;
-		rType = 0;
-		vrLen = 1330;
-		vrLoc = 373;
-	};
-	55F6C8601433B864002159D1 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8A1F172AD01A90ED1DFB1577 /* PluginEditor.h */;
-		name = "PluginEditor.h: 56";
-		rLen = 0;
-		rLoc = 1661;
-		rType = 0;
-		vrLen = 1314;
-		vrLoc = 417;
 	};
 	5FA7EAA33E9193394EC4DB85 /* juce_AU_Wrapper.mm */ = {
 		uiCtxt = {
@@ -602,7 +582,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {960, 806}}";
 			sepNavSelRange = "{1661, 0}";
-			sepNavVisRange = "{417, 1314}";
+			sepNavVisRange = "{371, 1360}";
 		};
 	};
 	8B4770E3D3C0C69AC0387C23 /* Tremolo */ = {
@@ -723,14 +703,17 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 338897100;
-			PBXWorkspaceStateSaveDate = 338897100;
+			PBXPerProjectTemplateStateSaveDate = 342121215;
+			PBXWorkspaceStateSaveDate = 342121215;
 		};
 		perUserProjectItems = {
 			55345773143117AF00C2E124 /* PBXTextBookmark */ = 55345773143117AF00C2E124 /* PBXTextBookmark */;
 			5534578E1431E1C000C2E124 /* PBXTextBookmark */ = 5534578E1431E1C000C2E124 /* PBXTextBookmark */;
 			553457E7143256AF00C2E124 /* PBXTextBookmark */ = 553457E7143256AF00C2E124 /* PBXTextBookmark */;
 			553457E9143256AF00C2E124 /* PBXTextBookmark */ = 553457E9143256AF00C2E124 /* PBXTextBookmark */;
+			554E9A3614645C63004BE996 /* PBXTextBookmark */ = 554E9A3614645C63004BE996 /* PBXTextBookmark */;
+			554E9A3714645C63004BE996 /* PBXTextBookmark */ = 554E9A3714645C63004BE996 /* PBXTextBookmark */;
+			554E9A3814645C63004BE996 /* PBXTextBookmark */ = 554E9A3814645C63004BE996 /* PBXTextBookmark */;
 			55919CC514327A0800A9084F /* PBXTextBookmark */ = 55919CC514327A0800A9084F /* PBXTextBookmark */;
 			55919CC714327A0800A9084F /* PBXTextBookmark */ = 55919CC714327A0800A9084F /* PBXTextBookmark */;
 			55919D0A1432848900A9084F /* PBXTextBookmark */ = 55919D0A1432848900A9084F /* PBXTextBookmark */;
@@ -751,11 +734,8 @@
 			55F6C7C214337891002159D1 /* PBXTextBookmark */ = 55F6C7C214337891002159D1 /* PBXTextBookmark */;
 			55F6C7C314337891002159D1 /* PBXTextBookmark */ = 55F6C7C314337891002159D1 /* PBXTextBookmark */;
 			55F6C7CD14337976002159D1 /* PBXTextBookmark */ = 55F6C7CD14337976002159D1 /* PBXTextBookmark */;
-			55F6C7CE14337976002159D1 /* PBXTextBookmark */ = 55F6C7CE14337976002159D1 /* PBXTextBookmark */;
 			55F6C7F014337B3D002159D1 /* PBXTextBookmark */ = 55F6C7F014337B3D002159D1 /* PBXTextBookmark */;
 			55F6C80314337BDD002159D1 /* PBXTextBookmark */ = 55F6C80314337BDD002159D1 /* PBXTextBookmark */;
-			55F6C80414337BDD002159D1 /* PBXTextBookmark */ = 55F6C80414337BDD002159D1 /* PBXTextBookmark */;
-			55F6C8601433B864002159D1 /* PBXTextBookmark */ = 55F6C8601433B864002159D1 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 5534574414310F0900C2E124 /* Source Control */;
 		userBuildSettings = {
@@ -814,8 +794,8 @@
 	E3B9731C6F35F558FE2D7E0F /* PluginProcessor.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {960, 1469}}";
-			sepNavSelRange = "{1162, 12}";
-			sepNavVisRange = "{204, 1768}";
+			sepNavSelRange = "{1906, 1}";
+			sepNavVisRange = "{2213, 1645}";
 		};
 	};
 	E77BBEFA0A385B661B4606A9 /* juce_IIRFilter.h */ = {

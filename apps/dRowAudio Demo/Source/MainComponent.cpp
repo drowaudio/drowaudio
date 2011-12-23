@@ -10,6 +10,8 @@
 
 #include "MainComponent.h"
 #include "AudioPlaybackDemo.h"
+#include "network/NetworkDemo.h"
+#include "fft/FFTDemo.h"
 
 MainComponent::MainComponent()
     : trackInfoComponent (audioFilePlayer),
@@ -64,11 +66,23 @@ MainComponent::MainComponent()
                                                                                           "*", 
                                                                                           "Audio Files")), 
                             true);
+
+    fftDemo = new FFTDemo();
+    tabbedComponent.addTab ("FFT Demo",
+                            Colours::grey, 
+                            fftDemo, 
+                            true);
+    
+    tabbedComponent.addTab ("CURL Demo",
+                            Colours::grey, 
+                            new NetworkDemo(), 
+                            true);
     
     audioSourcePlayer.setSource (&audioFilePlayer);
     audioDeviceManager.initialise (0, 2, nullptr, true);
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);
+//    audioDeviceManager.addAudioCallback (fftDemo);
 }
 
 MainComponent::~MainComponent()
@@ -79,6 +93,7 @@ MainComponent::~MainComponent()
     
     audioSourcePlayer.setSource (nullptr);
     audioDeviceManager.removeAudioCallback (this);
+//    audioDeviceManager.removeAudioCallback (fftDemo);
     
     File libraryFile (File::getSpecialLocation (File::currentApplicationFile).getChildFile ("dRowAudio Demo Library.xml"));
     ValueTree libraryTree (ITunesLibrary::getInstance()->getLibraryTree());
@@ -131,6 +146,12 @@ void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
                                              numOutputChannels,
                                              numSamples);
     
+    fftDemo->audioDeviceIOCallback (inputChannelData,
+                                    numInputChannels,
+                                    outputChannelData,
+                                    numOutputChannels,
+                                    numSamples);
+    
     meterL.copySamples (outputChannelData[0], numSamples);
     
     if (numOutputChannels > 1)
@@ -140,9 +161,11 @@ void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
 void MainComponent::audioDeviceAboutToStart (AudioIODevice* device)
 {
     audioSourcePlayer.audioDeviceAboutToStart (device);
+    fftDemo->audioDeviceAboutToStart (device);
 }
 
 void MainComponent::audioDeviceStopped()
 {
     audioSourcePlayer.audioDeviceStopped();
+    fftDemo->audioDeviceStopped();
 }

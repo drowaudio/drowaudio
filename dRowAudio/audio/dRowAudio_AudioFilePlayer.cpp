@@ -10,16 +10,14 @@ BEGIN_JUCE_NAMESPACE
 
 AudioFilePlayer::AudioFilePlayer()
     : bufferingTimeSliceThread ("Shared Buffering Thread"),
-      formatManager (new AudioFormatManager(), true)
+      formatManager (new AudioFormatManager(), true),
+      currentMemoryBlock (nullptr)
 {
     bufferingTimeSliceThread.startThread(3);
     
     audioTransportSource = new AudioTransportSource();
-    audioTransportSource->setSource (soundTouchAudioSource);
-    loopingAudioSource = new LoopingAudioSource (audioTransportSource, false);
-    filteringAudioSource = new FilteringAudioSource (audioTransportSource, false);
-    
-    masterSource = filteringAudioSource;
+    audioTransportSource->addChangeListener (this);
+    masterSource = audioTransportSource;
     
 	formatManager->registerBasicFormats();
 }
@@ -27,6 +25,7 @@ AudioFilePlayer::AudioFilePlayer()
 AudioFilePlayer::~AudioFilePlayer()
 {
 	audioTransportSource->setSource (nullptr);
+    audioTransportSource->removeChangeListener (this);
 }
 
 void AudioFilePlayer::start()
@@ -64,27 +63,27 @@ void AudioFilePlayer::pause()
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
-void AudioFilePlayer::setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings)
-{
-    soundTouchAudioSource->setPlaybackSettings (newSettings);
-    
-    listeners.call (&Listener::playbackSettingsChanged, this);
-}
-
 bool AudioFilePlayer::setFile (const String& path)
 {
+    currentMemoryBlock = nullptr;
+    memoryInputStream = nullptr;
+    
     filePath = path;
     
     return setSourceWithReader (formatManager->createReaderFor (File (path)));
 }
 
-bool AudioFilePlayer::setInputStream (InputStream* inputStream)
+bool AudioFilePlayer::setMemoryBlock (MemoryBlock* inputBlock)
 {
     filePath = String::empty;
-    
-	AudioFormatReader* reader = formatManager->createReaderFor (inputStream);
-    
-    return setSourceWithReader (reader);
+    currentMemoryBlock = inputBlock;
+
+    if (currentMemoryBlock != nullptr)
+        memoryInputStream = new MemoryInputStream (*currentMemoryBlock, false);
+    else 
+        memoryInputStream = nullptr;
+
+    return setSourceWithReader (formatManager->createReaderFor (memoryInputStream));
 }
 
 #if JUCE_IOS
@@ -97,35 +96,23 @@ bool AudioFilePlayer::setAVAssetURL (String avAssetNSURLAsString)
 }
 #endif
 
+MemoryInputStream* AudioFilePlayer::getInputStream()
+{   
+    if (currentMemoryBlock != nullptr)
+        return new MemoryInputStream (*currentMemoryBlock, false);
+
+    return nullptr;
+}
+
+bool AudioFilePlayer::sourceIsMemoryBlock()
+{
+    return currentMemoryBlock != nullptr;
+}
+
 void AudioFilePlayer::setAudioFormatManager(AudioFormatManager* newManager,  bool deleteWhenNotNeeded)
 {
     OptionalScopedPointer<AudioFormatManager> newFormatManager (newManager, deleteWhenNotNeeded);
 	formatManager = newFormatManager;
-}
-
-//==============================================================================
-void AudioFilePlayer::setLoopTimes (double startTime, double endTime)
-{
-    loopingAudioSource->setLoopTimes (startTime, endTime);
-}
-
-void AudioFilePlayer::setLoopBetweenTimes (bool shouldLoop)
-{
-    loopingAudioSource->setLoopBetweenTimes (shouldLoop);
-	listeners.call (&Listener::loopBetweenTimesChanged, this);
-}
-
-void AudioFilePlayer::setPositionIgnoringLoop (double newPosition)
-{
-    if (audioFormatReaderSource != nullptr)
-    {
-        const double sampleRate = audioFormatReaderSource->getAudioFormatReader()->sampleRate;
-        
-        if (sampleRate > 0.0)
-        {
-            loopingAudioSource->setNextReadPositionIgnoringLoop ((int64) (newPosition * sampleRate));
-        }
-    }
 }
 
 //==============================================================================
@@ -147,6 +134,20 @@ void AudioFilePlayer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToF
         masterSource->getNextAudioBlock (bufferToFill);
 }
 
+void AudioFilePlayer::setLooping (bool shouldLoop)
+{   
+    if (audioFormatReaderSource != nullptr)
+        audioFormatReaderSource->setLooping (shouldLoop); 
+}
+
+void AudioFilePlayer::changeListenerCallback (ChangeBroadcaster* source)
+{
+    if (source == audioTransportSource)
+    {
+        listeners.call (&Listener::playerStoppedOrStarted, this);
+    }
+}
+
 //==============================================================================
 void AudioFilePlayer::addListener (AudioFilePlayer::Listener* const listener)
 {
@@ -162,21 +163,19 @@ void AudioFilePlayer::removeListener (AudioFilePlayer::Listener* const listener)
 bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
 //	stop();
-    masterSource = nullptr;
+    bool shouldBeLooping = isLooping();
 	audioTransportSource->setSource (nullptr);
-    soundTouchAudioSource = nullptr;
     
 	if (reader != nullptr)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
-        soundTouchAudioSource = new SoundTouchAudioSource (audioFormatReaderSource,
-                                                           bufferingTimeSliceThread,
-                                                           false,
-                                                           32768);
-        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
-        audioTransportSource->setSource (loopingAudioSource);
-        masterSource = filteringAudioSource;
+        audioTransportSource->setSource (audioFormatReaderSource,
+                                         32768,
+                                         &bufferingTimeSliceThread);
+        
+        if (shouldBeLooping)
+            audioFormatReaderSource->setLooping (true);
         
 		// let our listeners know that we have loaded a new file
 		audioTransportSource->sendChangeMessage();

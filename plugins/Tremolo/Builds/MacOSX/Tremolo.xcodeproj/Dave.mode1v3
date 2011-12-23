@@ -292,7 +292,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>4</integer>
 									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -336,7 +336,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PluginEditor.h</string>
+								<string>PluginProcessor.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -344,11 +344,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>PluginEditor.h</string>
+										<string>PluginProcessor.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55F6C8601433B864002159D1</string>
+										<string>554E9A3814645C63004BE996</string>
 										<key>history</key>
 										<array>
 											<string>55345773143117AF00C2E124</string>
@@ -375,10 +375,10 @@
 											<string>55F6C7C214337891002159D1</string>
 											<string>55F6C7C314337891002159D1</string>
 											<string>55F6C7CD14337976002159D1</string>
-											<string>55F6C7CE14337976002159D1</string>
-											<string>55F6C7F014337B3D002159D1</string>
 											<string>55F6C80314337BDD002159D1</string>
-											<string>55F6C80414337BDD002159D1</string>
+											<string>554E9A3614645C63004BE996</string>
+											<string>554E9A3714645C63004BE996</string>
+											<string>55F6C7F014337B3D002159D1</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -436,9 +436,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>55F6C5CC143328CE002159D1</string>
+				<string>554E9A3914645C63004BE996</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>55F6C5CD143328CE002159D1</string>
+				<string>554E9A3A14645C63004BE996</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -559,7 +559,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>338933860.59625101</real>
+	<real>342121571.80261499</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -576,12 +576,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>55F6C61814333A05002159D1</string>
-		<string>55F6C61914333A05002159D1</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>553457571431129000C2E124</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/Tremolo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -606,7 +601,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PluginEditor.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -623,8 +618,6 @@
 							<string>313pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -664,7 +657,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>553457571431129000C2E124</string>
-				<string>55F6C5CE143328CE002159D1</string>
+				<string>554E9A3B14645C63004BE996</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

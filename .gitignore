@@ -4,7 +4,9 @@ build/
 *.pbxuser
 *.perspective
 *.perspectivev3
+*.pbxbtree
 *.mode1v3
 *.mode2v3
 xcuserdata
 .svn/
+Band Practice Assistant/

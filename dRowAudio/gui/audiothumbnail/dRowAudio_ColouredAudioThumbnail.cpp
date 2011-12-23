@@ -43,7 +43,8 @@ static void readMaxLevelsFiltering (AudioFormatReader &reader,
     }
 	
     const int bufferSize = (int) jmin (numSamples, (int64) 4096);
-    HeapBlock<int> tempSpace (bufferSize * 2 + 64);
+    const int heapBlockSize = bufferSize * 2 + 64;
+    HeapBlock<int> tempSpace (heapBlockSize);
 	
     int* tempBuffer[3];
     tempBuffer[0] = tempSpace.getData();
@@ -164,8 +165,9 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
     }
 	
     const int bufferSize = (int) jmin (numSamples, (int64) 4096);
-    //HeapBlock<int> tempSpace (bufferSize * 2 + 64);
-	int tempSpace[bufferSize * 2 + 64];
+    HeapBlock<int> tempSpace (bufferSize * 2 + 64);
+//    const int heapBlockSize = bufferSize * 2 + 64;
+//	int tempSpace[heapBlockSize];
     
     int* tempBuffer[3];
     tempBuffer[0] = &tempSpace[0];//tempSpace.getData();
@@ -177,7 +179,9 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
 //							 filteredBlock.getData()+bufferSize,
 //							 filteredBlock.getData()+(bufferSize*2),
 //							 filteredBlock.getData()+(bufferSize*3)};
-	int filteredBlock[bufferSize * 4];
+    const int filteredBlockSize = bufferSize * 4;
+    HeapBlock<int> filteredBlock (filteredBlockSize);
+    //int filteredBlock[filteredBlockSize];
 	int* filteredArray[4] = {&filteredBlock[0],
 							 &filteredBlock[bufferSize],
 							 &filteredBlock[bufferSize * 2],

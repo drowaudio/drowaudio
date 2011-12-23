@@ -11,11 +11,6 @@
 #ifndef _DROWAUDIO_AUDIOFILEPLAYER__H_
 #define _DROWAUDIO_AUDIOFILEPLAYER__H_
 
-#include "dRowAudio_SoundTouchAudioSource.h"
-#include "dRowAudio_ReversibleAudioSource.h"
-#include "dRowAudio_LoopingAudioSource.h"
-class FilteringAudioSource;
-
 //==============================================================================
 /**
  This class can be used to load and play an audio file from disk.
@@ -27,7 +22,8 @@ class FilteringAudioSource;
  @see AudioFormatReader
  @see AudioFormatReaderSource
  */
-class AudioFilePlayer	:	public PositionableAudioSource
+class AudioFilePlayer	:	public PositionableAudioSource,
+                            public ChangeListener
 {
 public:
     //==============================================================================
@@ -51,9 +47,15 @@ public:
      */
 	bool setFile (const String& path);
     
+    /** Sets the source of the player using a memory block.
+        The player will use this so should not be deleted until a new file is
+        set or a nullptr is passed in here to clear the loaded file.
+     */
+    bool setMemoryBlock (MemoryBlock* inputBlock);
+
     /** Open and get ready to play a given audio file from a stream.
      */
-	bool setInputStream (InputStream* inputStream);
+//	bool setInputStream (InputStream* inputStream);
     
 #if JUCE_IOS
     /** On iOS this sets the file from an AVAssestURL.
@@ -61,17 +63,23 @@ public:
     bool setAVAssetURL (String avAssetNSURLAsString);
 #endif
     
-	/** Returns the absolute path of the current audio file.
+	/** Returns the absolute path of the current audio file if it was set with a file.
      */
 	String getPath()                                        {	return filePath;                }
+    
+    /** Returns the current stream if a the source was set with one.
+        It is the caller's responsibility to delete this stream.
+     */
+    MemoryInputStream* getInputStream();
+    
+    /** returns true of the source was set from a MemoryBlock.
+     */
+    bool sourceIsMemoryBlock();
     
     //==============================================================================
     /** Changes the current playback position in the source stream. */
     void setPosition (double newPosition)       { audioTransportSource->setPosition (newPosition);  }
     
-    /** Changes the current playback position in the source stream ignoring the loop bounds. */
-    void setPositionIgnoringLoop (double newPosition);
-
     /** Returns the position that the next data block will be read from in seconds. */
     double getCurrentPosition() const           { return audioTransportSource->getCurrentPosition();}
     
@@ -97,37 +105,6 @@ public:
 
     /** Returns true if it's currently playing. */
     bool isPlaying() const noexcept     { return audioTransportSource->isPlaying(); }
-
-    //==============================================================================
-    /** Sets SoundTouchProcessor settings.
-     */
-    void setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings);
-    
-    /** Returns the current SoundTouchProcessor settings.
-     */
-    SoundTouchProcessor::PlaybackSettings getPlaybackSettings() {   return soundTouchAudioSource->getPlaybackSettings();    }    
-    
-    /** Sets whether the source should play forwards or backwards.
-     */
-	void setPlayDirection (bool shouldPlayForwards)	{	soundTouchAudioSource->setPlayDirection (shouldPlayForwards);	}
-    
-    /** Returns true if the source is playing forwards.
-     */
-	bool getPlayDirection ()						{	return soundTouchAudioSource->getPlayDirection();	}
-    
-    //==============================================================================
-    /** Sets the start and end times of the loop.
-        This doesn't actually activate the loop, use setLoopBetweenTimes() to toggle this.
-     */
-	void setLoopTimes (double startTime, double endTime);
-	
-    /** Enables the loop point set.
-     */
-    void setLoopBetweenTimes (bool shouldLoop);
-    
-    /** Returns true if the loop is activated.
-     */
-    bool getLoopBetweenTimes()                      {   return loopingAudioSource->getLoopBetweenTimes();       }
     
     //==============================================================================
 	/// Returns the AudioFormatReaderSource currently being used
@@ -144,14 +121,6 @@ public:
     /** Returns the AudioTransportSource being used.
      */
     inline AudioTransportSource* getAudioTransportSource()         {   return audioTransportSource;    }
-
-    /** Returns the SoundTouchAudioSource being used.
-     */
-    inline SoundTouchAudioSource* getSoundTouchAudioSource()       {   return soundTouchAudioSource;   }
-
-	/** Returns the FilteringAudioSource being used.
-     */
-    inline FilteringAudioSource* getFilteringAudioSource()         {   return filteringAudioSource;    }
 
     //==============================================================================
     /** A class for receiving callbacks from a FilteringAudioFilePlayer.
@@ -179,14 +148,6 @@ public:
          You can find out if it is currently stopped with isPlaying().
 		 */
         virtual void playerStoppedOrStarted (AudioFilePlayer* player) {}
-        
-        /** Called when one of the SoundTouch settings has changed i.e. rate, tempo or pitch.
-         */
-        virtual void playbackSettingsChanged (AudioFilePlayer* player) {}
-
-        /** Called when the loop points are enabled or disabled.
-         */
-        virtual void loopBetweenTimesChanged (AudioFilePlayer* player) {}
     };
 	
     /** Adds a listener to be called when this slider's value changes. */
@@ -213,13 +174,6 @@ public:
         audioTransportSource->setNextReadPosition (newPosition);
     }
     
-    /** Sets the next read position ignoring the loop bounds.
-     */
-    void setNextReadPositionIgnoringLoop (int64 newPosition)
-    {
-        loopingAudioSource->setNextReadPositionIgnoringLoop (newPosition);
-    }
-    
     /** Returns the position from which the next block will be returned.
      */
     int64 getNextReadPosition() const   {   return audioTransportSource->getNextReadPosition();    }
@@ -231,9 +185,13 @@ public:
     bool isLooping() const              {   return audioTransportSource->isLooping();      }
     
     /** Tells the source whether you'd like it to play in a loop. */
-    void setLooping (bool shouldLoop)   {   audioTransportSource->setLooping (shouldLoop); }
+    void setLooping (bool shouldLoop);
     
-private:	
+    void setPositionIgnoringLoop (double newPosition)      {   setPosition (newPosition);  }
+    
+    void changeListenerCallback (ChangeBroadcaster* source);
+    
+protected:	
     //==============================================================================
 	TimeSliceThread bufferingTimeSliceThread;
 
@@ -242,11 +200,11 @@ private:
     AudioSource* masterSource;
     ScopedPointer<AudioFormatReaderSource> audioFormatReaderSource;
 	ScopedPointer<AudioTransportSource> audioTransportSource;
-    ScopedPointer<LoopingAudioSource> loopingAudioSource;
-    ScopedPointer<SoundTouchAudioSource> soundTouchAudioSource;
-    ScopedPointer<FilteringAudioSource> filteringAudioSource;
 
 	String filePath;
+    MemoryBlock* currentMemoryBlock;
+    MemoryInputStream* memoryInputStream;
+    
     ValueTree libraryEntry;
     
     ListenerList <Listener> listeners;

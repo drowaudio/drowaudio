@@ -166,7 +166,7 @@ AudioPlaybackDemo::~AudioPlaybackDemo()
 void AudioPlaybackDemo::resized()
 {
     const int w = getWidth();
-    const int h = getHeight();
+    //const int h = getHeight();
     int m = 5;
     const int bevelSize = 2;
     

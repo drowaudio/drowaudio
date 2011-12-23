@@ -29,6 +29,7 @@ void PositionableWaveDisplay::resized()
 {
     cursorImage = Image (Image::RGB, 3, getHeight(), true);
     Graphics g (cursorImage);
+    g.fillAll (Colours::black);
     g.setColour (Colours::white);
 	g.drawVerticalLine (1, 0, cursorImage.getHeight());
     
@@ -90,7 +91,7 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
         cachedImage = Image::null;
 
 		currentSampleRate = audioFilePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
-		fileLength = audioFilePlayer->getTotalLength() / currentSampleRate;
+		fileLength = audioFilePlayer->getLengthInSeconds();
 		oneOverFileLength = 1.0 / fileLength;
 		
 		startTimer (waveformUpdated, 40);		

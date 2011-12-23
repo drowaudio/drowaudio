@@ -23,7 +23,7 @@
   ==============================================================================
 */
 
-#if JUCE_MAC || JUCE_IOS
+#if JUCE_IOS
 
 BEGIN_JUCE_NAMESPACE
 
@@ -48,6 +48,16 @@ namespace
 
         return extensionsArray;
     }
+    
+    String nsStringToJuce (NSString* s)
+    {
+        return CharPointer_UTF8 ([s UTF8String]);
+    }
+    
+    NSString* juceStringToNS (const String& s)
+    {
+        return [NSString stringWithUTF8String: s.toUTF8()];
+    }
 }
 
 //==============================================================================
@@ -56,167 +66,188 @@ class AVAssetAudioReader : public AudioFormatReader
 public:
     AVAssetAudioReader (NSURL* assetURL)
         : AudioFormatReader (nullptr, TRANS (AVAssetAudioFormatName)),
-          ok (false), lastReadPosition (0)
+          ok (false),
+          lastReadPosition (0),
+          fifoBuffer (2 * 8196 * 2)
     {
-        AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL:assetURL options:nil];
- 
+        @autoreleasepool {
+            
         usesFloatingPointData = true;
 
-        OSStatus status = AudioFileOpenWithCallbacks (this,
-                                                      &readCallback,
-                                                      0,        // write needs to be null to avoid permisisions errors
-                                                      &getSizeCallback,
-                                                      0,        // setSize needs to be null to avoid permisisions errors
-                                                      0,        // AudioFileTypeID inFileTypeHint
-                                                      &audioFileID);
-        if (status == noErr)
+        AVURLAsset* songAsset = [AVURLAsset URLAssetWithURL:assetURL options:nil];
+        AVAssetTrack* avAssetTrack = [songAsset.tracks objectAtIndex:0];
+        [avAssetTrack retain];
+        
+        NSError* status = nil;
+        assetReader = [AVAssetReader assetReaderWithAsset:songAsset
+                                                    error:&status];
+        [assetReader retain];
+
+        if (! status)
         {
-            status = ExtAudioFileWrapAudioFileID (audioFileID, false, &audioFileRef);
+            // fill in format information
+            CMAudioFormatDescriptionRef formatDescription = (CMAudioFormatDescriptionRef)[avAssetTrack.formatDescriptions objectAtIndex:0];
+            const AudioStreamBasicDescription* audioDesc = CMAudioFormatDescriptionGetStreamBasicDescription (formatDescription);
+            
+            numChannels = audioDesc->mChannelsPerFrame;
+            bitsPerSample = audioDesc->mBitsPerChannel;
+            sampleRate = audioDesc->mSampleRate;
+            lengthInSamples = avAssetTrack.timeRange.duration.value;
 
-            if (status == noErr)
+            NSDictionary* outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey, 
+//                                            [NSNumber numberWithFloat:44100.0], AVSampleRateKey,
+//                                            [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
+//                                            [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
+                                            [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
+                                            [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,
+                                            [NSNumber numberWithInt:32], AVLinearPCMBitDepthKey,
+//                                            [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
+                                            nil];
+            
+            assetReaderOutput = [[AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack:avAssetTrack
+                                                                            outputSettings:outputSettings]
+                                 retain];
+
+            if ([assetReader canAddOutput:assetReaderOutput])
             {
-                AudioStreamBasicDescription sourceAudioFormat;
-                UInt32 audioStreamBasicDescriptionSize = sizeof (AudioStreamBasicDescription);
-                ExtAudioFileGetProperty (audioFileRef,
-                                         kExtAudioFileProperty_FileDataFormat,
-                                         &audioStreamBasicDescriptionSize,
-                                         &sourceAudioFormat);
 
-                numChannels   = sourceAudioFormat.mChannelsPerFrame;
-                sampleRate    = sourceAudioFormat.mSampleRate;
-                bitsPerSample = sourceAudioFormat.mBitsPerChannel;
+                [assetReader addOutput:assetReaderOutput];
 
-                UInt32 sizeOfLengthProperty = sizeof (int64);
-                ExtAudioFileGetProperty (audioFileRef,
-                                         kExtAudioFileProperty_FileLengthFrames,
-                                         &sizeOfLengthProperty,
-                                         &lengthInSamples);
+                startCMTime = CMTimeMake (lastReadPosition, sampleRate);
+                playbackCMTimeRange = CMTimeRangeMake (startCMTime, kCMTimePositiveInfinity);
+                assetReader.timeRange = playbackCMTimeRange;                
+                NSLog(@"%@", CMTimeRangeCopyDescription(kCFAllocatorDefault, assetReader.timeRange));
+                DBG("duration: "<<CMTimeGetSeconds(avAssetTrack.timeRange.duration));
 
-                destinationAudioFormat.mSampleRate       = sampleRate;
-                destinationAudioFormat.mFormatID         = kAudioFormatLinearPCM;
-                destinationAudioFormat.mFormatFlags      = kLinearPCMFormatFlagIsFloat | kLinearPCMFormatFlagIsNonInterleaved;
-                destinationAudioFormat.mBitsPerChannel   = sizeof (float) * 8;
-                destinationAudioFormat.mChannelsPerFrame = numChannels;
-                destinationAudioFormat.mBytesPerFrame    = sizeof (float);
-                destinationAudioFormat.mFramesPerPacket  = 1;
-                destinationAudioFormat.mBytesPerPacket   = destinationAudioFormat.mFramesPerPacket * destinationAudioFormat.mBytesPerFrame;
-
-                status = ExtAudioFileSetProperty (audioFileRef,
-                                                  kExtAudioFileProperty_ClientDataFormat,
-                                                  sizeof (AudioStreamBasicDescription),
-                                                  &destinationAudioFormat);
-                if (status == noErr)
+                if (! [assetReader startReading])
                 {
-                    bufferList.malloc (1, sizeof (AudioBufferList) + numChannels * sizeof (AudioBuffer));
-                    bufferList->mNumberBuffers = numChannels;
-                    ok = true;
+                    DBG("error starting reading");
                 }
+
+                ok = true;
             }
-        }
+        }}
     }
 
     ~AVAssetAudioReader()
     {
-        ExtAudioFileDispose (audioFileRef);
-        AudioFileClose (audioFileID);
+        DBG("~AVAssetAudioReader()");
+        [assetReader release];
+        [assetReaderOutput release];
     }
 
     //==============================================================================
     bool readSamples (int** destSamples, int numDestChannels, int startOffsetInDestBuffer,
                       int64 startSampleInFile, int numSamples)
     {
-        jassert (destSamples != nullptr);
-        const int64 samplesAvailable = lengthInSamples - startSampleInFile;
-
-        if (samplesAvailable < numSamples)
-        {
-            for (int i = numDestChannels; --i >= 0;)
-                if (destSamples[i] != nullptr)
-                    zeromem (destSamples[i] + startOffsetInDestBuffer, sizeof (int) * numSamples);
-
-            numSamples = (int) samplesAvailable;
-        }
-
-        if (numSamples <= 0)
-            return true;
-
+        @autoreleasepool {
+            jassert (destSamples != nullptr);
+        jassert (numDestChannels == numChannels);
+        
+        // check if position has changed
         if (lastReadPosition != startSampleInFile)
         {
-            OSStatus status = ExtAudioFileSeek (audioFileRef, startSampleInFile);
-            if (status != noErr)
-                return false;
+            DBG("need to change position");
+            [assetReader cancelReading];
 
             lastReadPosition = startSampleInFile;
-        }
-
-        while (numSamples > 0)
-        {
-            const int numThisTime = jmin (8192, numSamples);
-            const int numBytes = numThisTime * sizeof (float);
-
-            audioDataBlock.ensureSize (numBytes * numChannels, false);
-            float* data = static_cast<float*> (audioDataBlock.getData());
-
-            for (int j = numChannels; --j >= 0;)
+//            startCMTime = CMTimeMake (lastReadPosition, sampleRate);
+            startCMTime.value = lastReadPosition;
+//            playbackCMTimeRange = CMTimeRangeMake (startCMTime, kCMTimePositiveInfinity);
+            //assetReader.timeRange = playbackCMTimeRange;
+//            fifoBuffer.clear();
+            if (! [assetReader startReading])
             {
-                bufferList->mBuffers[j].mNumberChannels = 1;
-                bufferList->mBuffers[j].mDataByteSize = numBytes;
-                bufferList->mBuffers[j].mData = data;
-                data += numThisTime;
+                DBG("error starting reading");
             }
+        }
+        
+//        for (int i = numDestChannels; --i >= 0;)
+//            if (destSamples[i] != nullptr)
+//                zeromem (destSamples[i] + startOffsetInDestBuffer, sizeof (int) * numSamples);
 
-            UInt32 numFramesToRead = numThisTime;
-            OSStatus status = ExtAudioFileRead (audioFileRef, &numFramesToRead, bufferList);
-            if (status != noErr)
-                return false;
+        if (fifoBuffer.getNumAvailable() < numSamples)
+        {
+            CMSampleBufferRef sampleRef = [assetReaderOutput copyNextSampleBuffer];
 
-            for (int i = numDestChannels; --i >= 0;)
+            if (sampleRef != NULL)
             {
-                if (destSamples[i] != nullptr)
+                CMBlockBufferRef bufferRef = CMSampleBufferGetDataBuffer (sampleRef);
+                size_t lengthAtOffset;
+                size_t totalLength;
+                char* dataPointer;
+                CMBlockBufferGetDataPointer (bufferRef, 
+                                             0, 
+                                             &lengthAtOffset, 
+                                             &totalLength, 
+                                             &dataPointer);
+                
+                if (bufferRef != NULL)
                 {
-                    if (i < numChannels)
-                        memcpy (destSamples[i] + startOffsetInDestBuffer, bufferList->mBuffers[i].mData, numBytes);
-                    else
-                        zeromem (destSamples[i] + startOffsetInDestBuffer, numBytes);
+                    int samplesExpected = CMSampleBufferGetNumSamples (sampleRef);
+                          
+                    int numSamplesNeeded = fifoBuffer.getNumAvailable() + (samplesExpected * numChannels);
+                    if (numSamplesNeeded > fifoBuffer.getSize())
+                    {
+                        DBG("enlarging fifo");
+                        fifoBuffer.setSize (numSamplesNeeded);
+                    }
+                    
+                    fifoBuffer.writeSamples ((float*) dataPointer, samplesExpected * numChannels);
+                }
+                else
+                {
+                    DBG("CMBlockBufferRef is NULL");
                 }
             }
-
-            startOffsetInDestBuffer += numThisTime;
-            numSamples -= numThisTime;
-            lastReadPosition += numThisTime;
+            else
+            {
+                DBG("CMSampleBufferRef is NULL");
+            }
+            
+            CFRelease (sampleRef);
         }
 
+        // deinterleave
+        float tempBuffer [numChannels * numSamples];
+        fifoBuffer.readSamples (tempBuffer, numChannels * numSamples);
+        
+        float deSamps[numChannels * numSamples];
+        float* deinterleavedSamples[numChannels];
+        for (int i = 0; i < numChannels; i++)
+            deinterleavedSamples[i] = &deSamps[i * numSamples];
+
+        AudioDataConverters::deinterleaveSamples (tempBuffer, deinterleavedSamples,
+                                                  numSamples, numChannels);
+            
+        for (int i = 0; i < numChannels; i++)
+            memcpy (destSamples[i] + startOffsetInDestBuffer, deinterleavedSamples[i], sizeof (float) * numSamples);
+            
+//        for (int c = 0; c < numChannels; c++)
+//        {
+//            for (int s = 0; s < numSamples * numChannels; s++)
+//            {
+//                destSamples[c][startOffsetInDestBuffer + s] = tempBuffer[s * numChannels];
+//            }
+//        }
+        
+        lastReadPosition += numSamples;
+        }
         return true;
     }
 
     bool ok;
 
 private:
-    AudioFileID audioFileID;
-    ExtAudioFileRef audioFileRef;
-    AudioStreamBasicDescription destinationAudioFormat;
-    MemoryBlock audioDataBlock;
-    HeapBlock<AudioBufferList> bufferList;
+    AVAssetReader* assetReader;
+    AVAssetReaderTrackOutput* assetReaderOutput;
+    CMTime startCMTime;
+    CMTimeRange playbackCMTimeRange;
     int64 lastReadPosition;
-
-    static SInt64 getSizeCallback (void* inClientData)
-    {
-        return static_cast<AVAssetAudioReader*> (inClientData)->input->getTotalLength();
-    }
-
-    static OSStatus readCallback (void* inClientData,
-                                  SInt64 inPosition,
-                                  UInt32 requestCount,
-                                  void* buffer,
-                                  UInt32* actualCount)
-    {
-        AVAssetAudioReader* const reader = static_cast<AVAssetAudioReader*> (inClientData);
-
-        reader->input->setPosition (inPosition);
-        *actualCount = reader->input->read (buffer, requestCount);
-
-        return noErr;
-    }
+//    MemoryBlock audioDataBlock;
+//    int numFramesInBlock;
+    FifoBuffer fifoBuffer;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AVAssetAudioReader);
 };

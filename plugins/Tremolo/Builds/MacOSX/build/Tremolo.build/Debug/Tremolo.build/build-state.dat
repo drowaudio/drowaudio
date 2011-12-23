@@ -630,6 +630,578 @@ i<mmintrin.h>
 i<mm_malloc.h>
 i<emmintrin.h>
 
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUBase.cpp
+c000000004CC46C4D00000000000104EE
+t1287941197
+s66798
+i"AUBase.h"
+i"AUDispatch.h"
+i"AUInputElement.h"
+i"AUOutputElement.h"
+i<algorithm>
+i"CAAudioChannelLayout.h"
+i"CAHostTimeBase.h"
+i"CAVectorUnit.h"
+i"CAXException.h"
+i"AUBaseHelper.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUBase.h
+c000000004CC46C4D0000000000008203
+t1287941197
+s33283
+i<TargetConditionals.h>
+i<pthread.h>
+i<windows.h>
+i<vector>
+i"ComponentBase.h"
+i"AUScopeElement.h"
+i"AUInputElement.h"
+i"AUOutputElement.h"
+i"AUBuffer.h"
+i"CAMath.h"
+i"CAThreadSafeList.h"
+i"CAVectorUnit.h"
+i"CATrace.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUDispatch.cpp
+c000000004CC46C4D00000000000037D2
+t1287941197
+s14290
+i"AUBase.h"
+i"CAXException.h"
+i"AUDebugDispatcher.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUDispatch.h
+c000000004CC46C4D0000000000000D7E
+t1287941197
+s3454
+i<TargetConditionals.h>
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUInputElement.cpp
+c000000004CC46C4D00000000000014D3
+t1287941197
+s5331
+i"AUBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUInputElement.h
+c000000004CC46C4D00000000000011E5
+t1287941197
+s4581
+i"AUScopeElement.h"
+i"AUBuffer.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUOutputElement.cpp
+c000000004CC46C4D0000000000000B01
+t1287941197
+s2817
+i"AUOutputElement.h"
+i"AUBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUOutputElement.h
+c000000004CC46C4D0000000000000B84
+t1287941197
+s2948
+i"AUScopeElement.h"
+i"AUBuffer.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUScopeElement.cpp
+c000000004CC46C4D00000000000042C4
+t1287941197
+s17092
+i"AUScopeElement.h"
+i"AUBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUScopeElement.h
+c000000004CC46C4D00000000000049D5
+t1287941197
+s18901
+i<map>
+i<vector>
+i<AudioUnit/AudioUnit.h>
+i<AudioUnit.h>
+i"ComponentBase.h"
+i"AUBuffer.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/ComponentBase.cpp
+c000000004CC46C4D0000000000001985
+t1287941197
+s6533
+i"ComponentBase.h"
+i"CAXException.h"
+i<dlfcn.h>
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/ComponentBase.h
+c000000004CC46C4D0000000000001FED
+t1287941197
+s8173
+i<new>
+i"CADebugMacros.h"
+i<CoreAudio/CoreAudioTypes.h>
+i<AudioUnit/AudioUnit.h>
+i<CoreServices/../Frameworks/CarbonCore.framework/Headers/Components.h>
+i<pthread.h>
+i"CoreAudioTypes.h"
+i"Components.h"
+i"AudioUnit.h"
+i"CAGuard.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewBase.cpp
+c000000004CC46C4D000000000000331E
+t1287941197
+s13086
+i"AUCarbonViewBase.h"
+i"AUCarbonViewControl.h"
+i<algorithm>
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewBase.h
+c000000004CC46C4D0000000000001AD4
+t1287941197
+s6868
+i<vector>
+i"AUCarbonViewControl.h"
+i"ComponentBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewControl.cpp
+c000000004CC46C4D000000000000570E
+t1287941197
+s22286
+i"AUCarbonViewControl.h"
+i"AUCarbonViewBase.h"
+i"AUViewLocalizedStringKeys.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewControl.h
+c000000004CC46C4D0000000000001F3B
+t1287941197
+s7995
+i<Carbon/Carbon.h>
+i<AudioUnit/AudioUnitCarbonView.h>
+i<AudioToolbox/AudioUnitUtilities.h>
+i"CarbonEventHandler.h"
+i"CAAUParameter.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewDispatch.cpp
+c000000004CC46C4D00000000000012C8
+t1287941197
+s4808
+i"AUCarbonViewBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/CarbonEventHandler.cpp
+c000000004CC46C4D0000000000000F2D
+t1287941197
+s3885
+i"CarbonEventHandler.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/CarbonEventHandler.h
+c000000004CC46C4D0000000000000C0D
+t1287941197
+s3085
+i<Carbon/Carbon.h>
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUViewBase/AUViewLocalizedStringKeys.h
+c000000004CC46C4D00000000000010A9
+t1287941197
+s4265
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUEffectBase.cpp
+c000000004CC46C4D00000000000041B8
+t1287941197
+s16824
+i"AUEffectBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUEffectBase.h
+c000000004CC46C4D0000000000002520
+t1287941197
+s9504
+i"AUBase.h"
+i"AUSilentTimeout.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIBase.cpp
+c000000004CC46C4D00000000000038DC
+t1287941197
+s14556
+i"AUMIDIBase.h"
+i<CoreMIDI/CoreMIDI.h>
+i"CAXException.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIBase.h
+c000000004CC46C4D0000000000001CE1
+t1287941197
+s7393
+i"AUBase.h"
+i"CAAUMIDIMapManager.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIEffectBase.cpp
+c000000004CC46C4D0000000000001641
+t1287941197
+s5697
+i"AUMIDIEffectBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIEffectBase.h
+c000000004CC46C4D0000000000000F19
+t1287941197
+s3865
+i"AUMIDIBase.h"
+i"AUEffectBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUOutputBase.cpp
+c000000004CC46C4D0000000000000F4B
+t1287941197
+s3915
+i"AUOutputBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUOutputBase.h
+c000000004CC46C4D0000000000000CF0
+t1287941197
+s3312
+i"AUBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.cpp
+c000000004CC46C4D0000000000002D65
+t1287941197
+s11621
+i"MusicDeviceBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.h
+c000000004CC46C4D0000000000001533
+t1287941197
+s5427
+i"AUMIDIBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUBaseHelper.h
+c000000004CC46C4D0000000000000D1B
+t1287941197
+s3355
+i<CoreFoundation/CoreFoundation.h>
+i<AudioUnit/AUComponent.h>
+i<CoreFoundation.h>
+i<AUComponent.h>
+i"AUBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUBuffer.cpp
+c000000004CC46C4D0000000000001C88
+t1287941197
+s7304
+i"AUBuffer.h"
+i<stdlib.h>
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUBuffer.h
+c000000004CC46C4D00000000000021E4
+t1287941197
+s8676
+i<TargetConditionals.h>
+i<AudioUnit/AudioUnit.h>
+i<AudioUnit.h>
+i<string.h>
+i"CAStreamBasicDescription.h"
+i"CAAutoDisposer.h"
+i"CADebugMacros.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUDebugDispatcher.cpp
+c000000004CC46C4D0000000000003FB0
+t1287941197
+s16304
+i"AUDebugDispatcher.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUDebugDispatcher.h
+c000000004CC46C4D0000000000001407
+t1287941197
+s5127
+i"CAHostTimeBase.h"
+i"CAMutex.h"
+i"AUBase.h"
+
+N/Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUSilentTimeout.h
+c000000004CC46C4D0000000000000C53
+t1287941197
+s3155
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAUMIDIMap.h
+c000000004CC46C4D00000000000056AC
+t1287941197
+s22188
+i<AudioUnit/AudioUnitProperties.h>
+i<algorithm>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAUMIDIMapManager.h
+c000000004CC46C4D0000000000000F75
+t1287941197
+s3957
+i<AUBase.h>
+i<CAAUMIDIMap.h>
+i<vector>
+i<AudioToolbox/AudioUnitUtilities.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAUParameter.cpp
+c000000004CC46C4D00000000000031DF
+t1287941197
+s12767
+i"CAAUParameter.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAUParameter.h
+c000000004CC46C4D0000000000001BD1
+t1287941197
+s7121
+i<AudioToolbox/AudioUnitUtilities.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAtomic.h
+c000000004CC46C4D00000000000027B0
+t1287941197
+s10160
+i<windows.h>
+i<intrin.h>
+i<CoreFoundation/CFBase.h>
+i<libkern/OSAtomic.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAtomicStack.h
+c000000004CC46C4D0000000000001A7C
+t1287941197
+s6780
+i<libkern/OSAtomic.h>
+i<CAAtomic.h>
+i<CoreServices/CoreServices.h>
+i<libkern/OSAtomic.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAudioChannelLayout.cpp
+c000000004CC46C4D000000000000188C
+t1287941197
+s6284
+i"CAAudioChannelLayout.h"
+i"CAAutoDisposer.h"
+i<stdlib.h>
+i<string.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAudioChannelLayout.h
+c000000004CC46C4D0000000000001E94
+t1287941197
+s7828
+i<CoreAudio/CoreAudioTypes.h>
+i<CoreFoundation/CoreFoundation.h>
+i<CoreAudioTypes.h>
+i<CoreFoundation.h>
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i"CADebugMacros.h"
+i"CAAutoDisposer.h"
+i"CAReferenceCounted.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAAutoDisposer.h
+c000000004CC46C4D0000000000002F87
+t1287941197
+s12167
+i<stdlib.h>
+i<new>
+i<string.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CADebugMacros.h
+c000000004CC46C4D0000000000004FAE
+t1287941197
+s20398
+i<CoreAudio/CoreAudioTypes.h>
+i"CoreAudioTypes.h"
+i"CADebugPrintf.h"
+i<pthread.h>
+i"CAHostTimeBase.h"
+i"CAHostTimeBase.h"
+i"CADebugger.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CADebugPrintf.h
+c000000004CC46C4D000000000000111C
+t1287941197
+s4380
+i<CoreAudio/CoreAudioTypes.h>
+i"CoreAudioTypes.h"
+i<sys/syslog.h>
+i<stdio.h>
+i<stdio.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CADebugger.h
+c000000004CC46C4D0000000000000A9C
+t1287941197
+s2716
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAException.h
+c000000004CC46C4D0000000000000DDC
+t1287941197
+s3548
+i<CoreAudio/CoreAudioTypes.h>
+i"CoreAudioTypes.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAGuard.h
+c000000004CC46C4D00000000000012A2
+t1287941197
+s4770
+i"CAMutex.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAHostTimeBase.h
+c000000004CC46C4D0000000000001C6C
+t1287941197
+s7276
+i<CoreAudio/CoreAudioTypes.h>
+i<CoreAudioTypes.h>
+i<mach/mach_time.h>
+i<windows.h>
+i"CADebugMacros.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CALogMacros.h
+c000000004CC46C4D00000000000019A2
+t1287941197
+s6562
+i"CADebugMacros.h"
+i"CADebugPrintf.h"
+i<stdio.h>
+i<string.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAMath.h
+c000000004CC46C4D0000000000000C6B
+t1287941197
+s3179
+i<CoreAudio/CoreAudioTypes.h>
+i<CoreAudioTypes.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAMutex.cpp
+c000000004CC46C4D00000000000030DE
+t1287941197
+s12510
+i"CAMutex.h"
+i<errno.h>
+i"CADebugMacros.h"
+i"CAException.h"
+i"CAHostTimeBase.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAMutex.h
+c000000004CC46C4D000000000000128C
+t1287941197
+s4748
+i<CoreAudio/CoreAudioTypes.h>
+i<CoreAudioTypes.h>
+i<pthread.h>
+i<windows.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAReferenceCounted.h
+c000000004CC46C4D0000000000000C97
+t1287941197
+s3223
+i"CAAtomic.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.cpp
+c000000004CC46C4D0000000000004E32
+t1287941197
+s20018
+i"CAStreamBasicDescription.h"
+i"CAMath.h"
+i<CoreFoundation/CFByteOrder.h>
+i<CFByteOrder.h>
+i"CALogMacros.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.h
+c000000004CC46C4D0000000000002E6C
+t1287941197
+s11884
+i<CoreAudio/CoreAudioTypes.h>
+i<CoreFoundation/CoreFoundation.h>
+i"CoreAudioTypes.h"
+i"CoreFoundation.h"
+i"CADebugMacros.h"
+i<string.h>
+i<stdio.h>
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAThreadSafeList.h
+c000000004CC46C4D0000000000001D08
+t1287941197
+s7432
+i"CAAtomicStack.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAVectorUnit.cpp
+c000000004CC46C4D000000000000163D
+t1287941197
+s5693
+i"CAVectorUnit.h"
+i<sys/sysctl.h>
+i"ippdefs.h"
+i"ippcore.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAVectorUnit.h
+c000000004CC46C4D0000000000000EC3
+t1287941197
+s3779
+i<TargetConditionals.h>
+i"CAVectorUnitTypes.h"
+i<stdlib.h>
+i<stdio.h>
+i<CoreFoundation/CFBase.h>
+i"CFBase.h"
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAVectorUnitTypes.h
+c000000004CC46C4D0000000000000A3C
+t1287941197
+s2620
+
+N/Developer_old/Extras/CoreAudio/PublicUtility/CAXException.h
+c000000004CC46C4D0000000000002965
+t1287941197
+s10597
+i<CoreFoundation/CoreFoundation.h>
+i<ConditionalMacros.h>
+i<CoreFoundation.h>
+i"CADebugMacros.h"
+i<ctype.h>
+i<string.h>
+
+N/Developer_old/usr/include/gcc/darwin/4.2/stdint.h
+c000000004CC3D2C2000000000000190C
+t1287901890
+s6412
+
+N/Developer_old/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/emmintrin.h
+c000000004CC3CD10000000000000EA8F
+t1287900432
+s60047
+i<xmmintrin.h>
+
+N/Developer_old/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/float.h
+c000000004CC3CD100000000000001538
+t1287900432
+s5432
+
+N/Developer_old/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/limits.h
+c000000004CC3CD100000000000000C7E
+t1287900432
+s3198
+i"syslimits.h"
+
+N/Developer_old/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/mm_malloc.h
+c000000004CC3CD10000000000000093D
+t1287900432
+s2365
+i<stdlib.h>
+i<errno.h>
+
+N/Developer_old/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/mmintrin.h
+c000000004CC3CD100000000000009260
+t1287900432
+s37472
+
+N/Developer_old/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stddef.h
+c000000004CC3CD100000000000003197
+t1287900432
+s12695
+i<machine/ansi.h>
+i<sys/_types.h>
+
+N/Developer_old/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/syslimits.h
+c000000004CC3CB720000000000000155
+t1287900018
+s341
+
+N/Developer_old/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/xmmintrin.h
+c000000004CC3CD10000000000000BECA
+t1287900432
+s48842
+i<mmintrin.h>
+i<mm_malloc.h>
+i<emmintrin.h>
+
 N/System/Library/Frameworks/Accelerate.framework/Accelerate
 c000000004C23D694000000000000A500
 t1277417108
@@ -825,6 +1397,16 @@ c000000004E289034000000000017B260
 t1311281204
 s1552992
 
+N/System/Library/Frameworks/OpenGL.framework/Headers/gl.h
+c000000004BD2501F0000000000025B59
+t1272074271
+s154457
+
+N/System/Library/Frameworks/OpenGL.framework/Headers/glext.h
+c000000004BD2501F0000000000042ACF
+t1272074271
+s273103
+
 N/System/Library/Frameworks/QTKit.framework/Headers/QTKit.h
 c000000004CC35B7E000000000000044A
 t1287871358
@@ -871,24 +1453,341 @@ t1287926123
 s2391
 
 N/System/Library/Frameworks/WebKit.framework/WebKit
-c000000004DC9EAB800000000005C2FC0
-t1305078456
-s6041536
+c000000004E72883B0000000000642550
+t1316128827
+s6563152
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_AVAssetAudioFormat.h
+c000000004EB32BD30000000000000B72
+t1320365011
+s2930
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_AVAssetAudioFormat.mm
+c000000004EB32C700000000000002C45
+t1320365168
+s11333
 
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_AudioFilePlayer.cpp
-c000000004E7F9DFC0000000000000751
-t1316986364
-s1873
+c000000004EB32CBE000000000000161A
+t1320365246
+s5658
 
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_AudioFilePlayer.h
-c000000004E7F9E080000000000000727
-t1316986376
-s1831
+c000000004EB2DB7C0000000000002679
+t1320344444
+s9849
+i"dRowAudio_SoundTouchAudioSource.h"
+i"dRowAudio_ReversibleAudioSource.h"
+i"dRowAudio_LoopingAudioSource.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_AudioUtility.h
+c000000004E90C7C3000000000000178C
+t1318111171
+s6028
+i"../utility/dRowAudio_Constants.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_FifoBuffer.h
+c000000004E9087F300000000000009DE
+t1318094835
+s2526
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_FilteringAudioSource.cpp
+c000000004E909B6C0000000000000F0D
+t1318099820
+s3853
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_FilteringAudioSource.h
+c000000004E908D9200000000000009D9
+t1318096274
+s2521
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_LoopingAudioSource.cpp
+c000000004EAAF09E00000000000017A6
+t1319825566
+s6054
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_LoopingAudioSource.h
+c000000004EAAF04F0000000000001178
+t1319825487
+s4472
+i"../utility/dRowAudio_Utility.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_ReversibleAudioSource.cpp
+c000000004E9300AB0000000000000A6D
+t1318256811
+s2669
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_ReversibleAudioSource.h
+c000000004E9303A500000000000010E6
+t1318257573
+s4326
+i"../utility/dRowAudio_Utility.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_SoundTouchAudioSource.cpp
+c000000004EAAE91B0000000000001711
+t1319823643
+s5905
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_SoundTouchAudioSource.h
+c000000004EAAA6220000000000000E60
+t1319806498
+s3680
+i"dRowAudio_SoundTouchProcessor.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_SoundTouchProcessor.cpp
+c000000004E8E1BBF0000000000000D48
+t1317936063
+s3400
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/dRowAudio_SoundTouchProcessor.h
+c000000004EAAD590000000000000139C
+t1319818640
+s5020
+i"soundtouch/SoundTouch.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/filters/dRowAudio_BiquadFilter.cpp
+c000000004E8B80530000000000001420
+t1317765203
+s5152
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/filters/dRowAudio_BiquadFilter.h
+c000000004E8B801C0000000000000B63
+t1317765148
+s2915
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/AAFilter.cpp
+c000000004E75E1AC0000000000001465
+t1316348332
+s5221
+i<memory.h>
+i<assert.h>
+i<math.h>
+i<stdlib.h>
+i"AAFilter.h"
+i"FIRFilter.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/AAFilter.h
+c000000004E75E1AD0000000000000C0D
+t1316348333
+s3085
+i"STTypes.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/BPMDetect.cpp
+c000000004E75E1AC00000000000030B1
+t1316348332
+s12465
+i<math.h>
+i<assert.h>
+i<string.h>
+i<stdio.h>
+i"FIFOSampleBuffer.h"
+i"PeakFinder.h"
+i"BPMDetect.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/BPMDetect.h
+c000000004E75E1AC0000000000001A61
+t1316348332
+s6753
+i"STTypes.h"
+i"FIFOSampleBuffer.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/FIFOSampleBuffer.cpp
+c000000004E75E1AC0000000000002159
+t1316348332
+s8537
+i<stdlib.h>
+i<memory.h>
+i<string.h>
+i<assert.h>
+i"FIFOSampleBuffer.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/FIFOSampleBuffer.h
+c000000004E75E1AC0000000000001C4E
+t1316348332
+s7246
+i"FIFOSamplePipe.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/FIFOSamplePipe.h
+c000000004E75E1AC0000000000002028
+t1316348332
+s8232
+i<assert.h>
+i<stdlib.h>
+i"STTypes.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/FIRFilter.cpp
+c000000004E8E27F10000000000001F58
+t1317939185
+s8024
+i<memory.h>
+i<assert.h>
+i<math.h>
+i<stdlib.h>
+i"FIRFilter.h"
+i"cpu_detect.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/FIRFilter.h
+c000000004E75E1AD0000000000001290
+t1316348333
+s4752
+i<stddef.h>
+i"STTypes.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/PeakFinder.cpp
+c000000004E75E1AC0000000000001C42
+t1316348332
+s7234
+i<math.h>
+i<assert.h>
+i"PeakFinder.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/PeakFinder.h
+c000000004E75E1AC0000000000001005
+t1316348332
+s4101
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/RateTransposer.cpp
+c000000004E78F49300000000000046F1
+t1316549779
+s18161
+i<memory.h>
+i<assert.h>
+i<stdlib.h>
+i<stdio.h>
+i"RateTransposer.h"
+i"AAFilter.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/RateTransposer.h
+c000000004E78F4930000000000001642
+t1316549779
+s5698
+i<stddef.h>
+i"AAFilter.h"
+i"FIFOSamplePipe.h"
+i"FIFOSampleBuffer.h"
+i"STTypes.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/STTypes.h
+c000000004E78F4C90000000000001948
+t1316549833
+s6472
+i"soundtouch_config.h"
+i<assert.h>
+i<stdexcept>
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/SoundTouch.cpp
+c000000004E864CB70000000000003AA5
+t1317424311
+s15013
+i<assert.h>
+i<stdlib.h>
+i<memory.h>
+i<math.h>
+i<stdio.h>
+i"SoundTouch.h"
+i"TDStretch.h"
+i"RateTransposer.h"
+i"cpu_detect.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/SoundTouch.h
+c000000004E78F4930000000000002EEE
+t1316549779
+s12014
+i"FIFOSamplePipe.h"
+i"STTypes.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/SoundTouch_Source.cpp
+c000000004E922AED00000000000010A2
+t1318202093
+s4258
+i"AAFilter.cpp"
+i"BPMDetect.cpp"
+i"FIFOSampleBuffer.cpp"
+i"FIRFilter.cpp"
+i"mmx_optimized.cpp"
+i"PeakFinder.cpp"
+i"RateTransposer.cpp"
+i"SoundTouch.cpp"
+i"sse_optimized.cpp"
+i"TDStretch.cpp"
+i"cpu_detect_x86_win.cpp"
+i"cpu_detect_x86_gcc.cpp"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/TDStretch.cpp
+c000000004E78F4930000000000007D8C
+t1316549779
+s32140
+i<string.h>
+i<limits.h>
+i<assert.h>
+i<math.h>
+i<float.h>
+i"STTypes.h"
+i"cpu_detect.h"
+i"TDStretch.h"
+i<stdio.h>
+i<stdio.h>
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/TDStretch.h
+c000000004E78F4930000000000002B0D
+t1316549779
+s11021
+i<stddef.h>
+i"STTypes.h"
+i"RateTransposer.h"
+i"FIFOSamplePipe.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/cpu_detect.h
+c000000004E75E1AC0000000000000952
+t1316348332
+s2386
+i"STTypes.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/cpu_detect_x86_gcc.cpp
+c000000004E75E1AC00000000000013C5
+t1316348332
+s5061
+i"cpu_detect.h"
+i"STTypes.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/cpu_detect_x86_win.cpp
+c000000004E75F0300000000000001371
+t1316352048
+s4977
+i"cpu_detect.h"
+i"STTypes.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/mmx_optimized.cpp
+c000000004E75E1AC0000000000002C12
+t1316348332
+s11282
+i"STTypes.h"
+i"TDStretch.h"
+i<mmintrin.h>
+i<limits.h>
+i<math.h>
+i"FIRFilter.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/soundtouch_config.h
+c000000004E75E2450000000000000A8F
+t1316348485
+s2703
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/audio/soundtouch/sse_optimized.cpp
+c000000004E75E1AC0000000000003AA3
+t1316348332
+s15011
+i"cpu_detect.h"
+i"STTypes.h"
+i"TDStretch.h"
+i<xmmintrin.h>
+i<math.h>
+i"FIRFilter.h"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/dRowAudio.h
-c000000004E7FA8CA000000000000144C
-t1316989130
-s5196
+c000000004EB32B190000000000001C46
+t1320364825
+s7238
 i"../../../juce_source/juce/modules/juce_audio_basics/juce_audio_basics.h"
 i"../../../juce_source/juce/modules/juce_audio_devices/juce_audio_devices.h"
 i"../../../juce_source/juce/modules/juce_audio_formats/juce_audio_formats.h"
@@ -901,11 +1800,246 @@ i"../../../juce_source/juce/modules/juce_graphics/juce_graphics.h"
 i"../../../juce_source/juce/modules/juce_gui_basics/juce_gui_basics.h"
 i"../../../juce_source/juce/modules/juce_gui_extra/juce_gui_extra.h"
 i"audio/dRowAudio_AudioFilePlayer.h"
+i"audio/dRowAudio_SoundTouchProcessor.h"
+i"audio/dRowAudio_SoundTouchAudioSource.h"
+i"audio/dRowAudio_FilteringAudioSource.h"
+i"audio/dRowAudio_ReversibleAudioSource.h"
+i"audio/dRowAudio_LoopingAudioSource.h"
+i"audio/dRowAudio_AudioUtility.h"
+i"audio/dRowAudio_FifoBuffer.h"
+i"audio/filters/dRowAudio_BiquadFilter.h"
 i"maths/dRowAudio_MathsUtilities.h"
 i"maths/dRowAudio_BezierCurve.h"
+i"gui/dRowAudio_AudioFileDropTarget.h"
+i"gui/dRowAudio_GraphicalComponent.h"
+i"gui/dRowAudio_GraphicalComponentManager.h"
+i"gui/dRowAudio_SegmentedMeter.h"
+i"gui/dRowAudio_CpuMeter.h"
+i"gui/dRowAudio_Clock.h"
+i"gui/dRowAudio_CentreAlignViewport.h"
+i"gui/dRowAudio_MusicLibraryTable.h"
+i"gui/filebrowser/dRowAudio_BasicFileBrowser.h"
+i"gui/filebrowser/dRowAudio_ColumnFileBrowserLookAndFeel.h"
+i"gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
+i"gui/audiothumbnail/dRowAudio_AudioThumbnailImage.h"
+i"gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h"
+i"gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h"
+i"gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
+i"gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h"
+i"gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.h"
+i"gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.h"
+i"gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.h"
 i"parameters/dRowAudio_PluginParameter.h"
+i"utility/dRowAudio_Constants.h"
 i"utility/dRowAudio_Utility.h"
+i"utility/dRowAudio_StateVariable.h"
 i"utility/dRowAudio_XmlHelpers.h"
+i"utility/dRowAudio_Comparators.h"
+i"utility/dRowAudio_MusicLibraryHelpers.h"
+i"utility/dRowAudio_ITunesLibrary.h"
+i"utility/dRowAudio_ITunesLibraryParser.h"
+i"audio/dRowAudio_AVAssetAudioFormat.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.cpp
+c000000004E92CD320000000000002277
+t1318243634
+s8823
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.h
+c000000004E92CD120000000000001791
+t1318243602
+s6033
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp
+c000000004EB127000000000000001C67
+t1320232704
+s7271
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_AudioThumbnailImage.h
+c000000004EB135AF00000000000014F0
+t1320236463
+s5360
+i"../../audio/dRowAudio_AudioFilePlayer.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp
+c000000004EA5EEC0000000000000A261
+t1319497408
+s41569
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h
+c000000004E8B7DFB0000000000002709
+t1317764603
+s9993
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.cpp
+c000000004E91DFCA000000000000117B
+t1318182858
+s4475
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.h
+c000000004E90CC3C0000000000000AE8
+t1318112316
+s2792
+i"dRowAudio_AbstractDraggableWaveDisplay.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.cpp
+c000000004EA9D69E00000000000021E9
+t1319753374
+s8681
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.h
+c000000004E95AC780000000000000EA6
+t1318431864
+s3750
+i"../../utility/dRowAudio_StateVariable.h"
+i"../../audio/dRowAudio_AudioFilePlayer.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.cpp
+c000000004E8B82E90000000000007085
+t1317765865
+s28805
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.h
+c000000004E8B7F520000000000002570
+t1317764946
+s9584
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp
+c000000004E8B80B7000000000000132E
+t1317765303
+s4910
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.h
+c000000004E8B7F150000000000000DEC
+t1317764885
+s3564
+i"dRowAudio_ColouredAudioThumbnail.h"
+i"dRowAudio_FilteredAudioThumbnail.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp
+c000000004EB145C00000000000000F6B
+t1320240576
+s3947
+i"dRowAudio_PositionableWaveDisplay.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h
+c000000004EB1456F0000000000000C62
+t1320240495
+s3170
+i"../../utility/dRowAudio_StateVariable.h"
+i"../../audio/dRowAudio_AudioUtility.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_AudioFileDropTarget.cpp
+c000000004EA98CC600000000000012F8
+t1319734470
+s4856
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_AudioFileDropTarget.h
+c000000004E8DCC720000000000000CA4
+t1317915762
+s3236
+i"../audio/dRowAudio_AudioFilePlayer.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_CentreAlignViewport.cpp
+c000000004E9085E2000000000000342A
+t1318094306
+s13354
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_CentreAlignViewport.h
+c000000004E90858D0000000000002791
+t1318094221
+s10129
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_Clock.cpp
+c000000004E9083C90000000000000631
+t1318093769
+s1585
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_Clock.h
+c000000004E9082F600000000000007EB
+t1318093558
+s2027
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_CpuMeter.cpp
+c000000004EA7363B0000000000000349
+t1319581243
+s841
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_CpuMeter.h
+c000000004E9080A00000000000000617
+t1318092960
+s1559
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_GraphicalComponent.cpp
+c000000004E976DBA0000000000000817
+t1318546874
+s2071
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_GraphicalComponent.h
+c000000004E91C8E20000000000000C16
+t1318176994
+s3094
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_GraphicalComponentManager.cpp
+c000000004E91C03A0000000000000321
+t1318174778
+s801
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_GraphicalComponentManager.h
+c000000004E91BF930000000000000793
+t1318174611
+s1939
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_MusicLibraryTable.cpp
+c000000004EA98CD100000000000030E4
+t1319734481
+s12516
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_MusicLibraryTable.h
+c000000004E9057AB00000000000012BE
+t1318082475
+s4798
+i"../audio/dRowAudio_AudioUtility.h"
+i"../utility/dRowAudio_ITunesLibrary.h"
+i"../utility/dRowAudio_Comparators.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_SegmentedMeter.cpp
+c000000004EA5D3430000000000000FD8
+t1319490371
+s4056
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/dRowAudio_SegmentedMeter.h
+c000000004E91CBBE0000000000000EA8
+t1318177726
+s3752
+i"dRowAudio_GraphicalComponent.h"
+i"../utility/dRowAudio_StateVariable.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp
+c000000004EA88B400000000000002280
+t1319668544
+s8832
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/filebrowser/dRowAudio_BasicFileBrowser.h
+c000000004EA8963F0000000000001E9D
+t1319671359
+s7837
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp
+c000000004EA991A90000000000002674
+t1319735721
+s9844
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/filebrowser/dRowAudio_ColumnFileBrowser.h
+c000000004EA8927F0000000000000633
+t1319670399
+s1587
+i"dRowAudio_BasicFileBrowser.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/gui/filebrowser/dRowAudio_ColumnFileBrowserLookAndFeel.h
+c000000004EA8926300000000000026B3
+t1319670371
+s9907
 
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/maths/dRowAudio_BezierCurve.h
 c000000004E7FA8BD00000000000017B8
@@ -913,14 +2047,14 @@ t1316989117
 s6072
 
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/maths/dRowAudio_MathsUtilities.h
-c000000004E8250A70000000000000531
-t1317163175
-s1329
+c000000004E8B81F90000000000000908
+t1317765625
+s2312
 
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/parameters/dRowAudio_PluginParameter.cpp
-c000000004E8338480000000000000F55
-t1317222472
-s3925
+c000000004EA72E480000000000000F61
+t1319579208
+s3937
 
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/parameters/dRowAudio_PluginParameter.h
 c000000004E833A5500000000000015EA
@@ -928,10 +2062,53 @@ t1317222997
 s5610
 i"../utility/dRowAudio_Utility.h"
 
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_Comparators.h
+c000000004E975B8E00000000000010FD
+t1318542222
+s4349
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_Constants.h
+c000000004E89C19900000000000003E6
+t1317650841
+s998
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_ITunesLibrary.cpp
+c000000004EA98CDB0000000000000838
+t1319734491
+s2104
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_ITunesLibrary.h
+c000000004EA98C4A0000000000001216
+t1319734346
+s4630
+i"dRowAudio_ITunesLibraryParser.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_ITunesLibraryParser.cpp
+c000000004EAF50D40000000000001813
+t1320112340
+s6163
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_ITunesLibraryParser.h
+c000000004EA98DE7000000000000075E
+t1319734759
+s1886
+i"dRowAudio_Utility.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_MusicLibraryHelpers.h
+c000000004EA98D920000000000000F1A
+t1319734674
+s3866
+i"dRowAudio_Utility.h"
+
+N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_StateVariable.h
+c000000004E8AFF5B00000000000007DB
+t1317732187
+s2011
+
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_Utility.h
-c000000004E7FA8DB0000000000001DA9
-t1316989147
-s7593
+c000000004EB2D6E20000000000002517
+t1320343266
+s9495
 i"dRowAudio_XmlHelpers.h"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/dRowAudio/utility/dRowAudio_XmlHelpers.h
@@ -940,29 +2117,60 @@ t1316989051
 s2251
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.cpp
-c000000004E7FA73A0000000000001088
-t1316988730
-s4232
+c000000004EB32B1700000000000011C6
+t1320364823
+s4550
 i"AppConfig.h"
 i"dRowAudio.h"
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioToolbox.h>
+i<AVFoundation/AVFoundation.h>
 i"audio/dRowAudio_AudioFilePlayer.cpp"
+i"audio/soundtouch/SoundTouch_Source.cpp"
+i"audio/dRowAudio_SoundTouchProcessor.cpp"
+i"audio/dRowAudio_SoundTouchAudioSource.cpp"
+i"audio/dRowAudio_FilteringAudioSource.cpp"
+i"audio/dRowAudio_ReversibleAudioSource.cpp"
+i"audio/dRowAudio_LoopingAudioSource.cpp"
+i"audio/filters/dRowAudio_BiquadFilter.cpp"
+i"gui/dRowAudio_AudioFileDropTarget.cpp"
+i"gui/dRowAudio_GraphicalComponent.cpp"
+i"gui/dRowAudio_GraphicalComponentManager.cpp"
+i"gui/dRowAudio_SegmentedMeter.cpp"
+i"gui/dRowAudio_CpuMeter.cpp"
+i"gui/dRowAudio_Clock.cpp"
+i"gui/dRowAudio_CentreAlignViewport.cpp"
+i"gui/dRowAudio_MusicLibraryTable.cpp"
+i"gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
+i"gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
+i"gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp"
+i"gui/audiothumbnail/dRowAudio_MultipleAudioThumbnailCache.cpp"
+i"gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
+i"gui/audiothumbnail/dRowAudio_ColouredPositionableWaveDisplay.cpp"
+i"gui/audiothumbnail/dRowAudio_AbstractDraggableWaveDisplay.cpp"
+i"gui/audiothumbnail/dRowAudio_FilteredAudioThumbnail.cpp"
+i"gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"
+i"gui/audiothumbnail/dRowAudio_ColouredDraggableWaveDisplay.cpp"
+i"utility/dRowAudio_ITunesLibrary.cpp"
+i"utility/dRowAudio_ITunesLibraryParser.cpp"
 i"parameters/dRowAudio_PluginParameter.cpp"
+i"audio/dRowAudio_AVAssetAudioFormat.mm"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_audio_basics/juce_audio_basics.mm
-c000000004E8080B000000000000004A1
-t1317044400
+c000000004E89E43C00000000000004A1
+t1317659708
 s1185
 i"juce_audio_basics.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_audio_devices/juce_audio_devices.mm
-c000000004E8080B000000000000004A2
-t1317044400
+c000000004E89E43C00000000000004A2
+t1317659708
 s1186
 i"juce_audio_devices.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_audio_formats/juce_audio_formats.mm
-c000000004E8080B000000000000004A2
-t1317044400
+c000000004E89E43C00000000000004A2
+t1317659708
 s1186
 i"juce_audio_formats.cpp"
 
@@ -976,9 +2184,9 @@ i"AUResources.r"
 i"AUResources.r"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm
-c000000004E830272000000000000BDD4
-t1317208690
-s48596
+c000000004EA5B012000000000000BD99
+t1319481362
+s48537
 i"AppConfig.h"
 i"../utility/juce_CheckSettingMacros.h"
 i"../utility/juce_IncludeSystemHeaders.h"
@@ -1048,9 +2256,9 @@ i"../utility/juce_IncludeModuleHeaders.h"
 i"../utility/juce_CarbonVisibility.h"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp
-c000000004E7AFCBC0000000000008A06
-t1316682940
-s35334
+c000000004E8493C40000000000008A28
+t1317311428
+s35368
 i"AppConfig.h"
 i"../utility/juce_CheckSettingMacros.h"
 i<intrin.h>
@@ -1067,9 +2275,9 @@ i<FicProcessTokens.h>
 i"../utility/juce_IncludeModuleHeaders.h"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp
-c000000004E7AFCBC000000000000BCA7
-t1316682940
-s48295
+c000000004E8493C4000000000000BCB2
+t1317311428
+s48306
 i"AppConfig.h"
 i"../utility/juce_CheckSettingMacros.h"
 i<windows.h>
@@ -1098,50 +2306,50 @@ i"../utility/juce_CarbonVisibility.h"
 i"../utility/juce_PluginHostType.h"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_audio_processors/juce_audio_processors.mm
-c000000004E8080B000000000000004A5
-t1317044400
+c000000004E89E43C00000000000004A5
+t1317659708
 s1189
 i"juce_audio_processors.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_audio_utils/juce_audio_utils.mm
-c000000004E8080B000000000000004A0
-t1317044400
+c000000004E89E43C00000000000004A0
+t1317659708
 s1184
 i"juce_audio_utils.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_core/juce_core.mm
-c000000004E8080B00000000000000499
-t1317044400
+c000000004E89E43C0000000000000499
+t1317659708
 s1177
 i"juce_core.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_data_structures/juce_data_structures.mm
-c000000004E8080B000000000000004A4
-t1317044400
+c000000004E89E43C00000000000004A4
+t1317659708
 s1188
 i"juce_data_structures.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_events/juce_events.mm
-c000000004E8080B0000000000000049B
-t1317044400
+c000000004E89E43C000000000000049B
+t1317659708
 s1179
 i"juce_events.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_graphics/juce_graphics.mm
-c000000004E8080B0000000000000049D
-t1317044400
+c000000004E89E43C000000000000049D
+t1317659708
 s1181
 i"juce_graphics.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_gui_basics/juce_gui_basics.mm
-c000000004E8080B0000000000000049F
-t1317044400
+c000000004E89E43C000000000000049F
+t1317659708
 s1183
 i"juce_gui_basics.cpp"
 
 N/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../../../../../juce_source/juce/modules/juce_gui_extra/juce_gui_extra.mm
-c000000004E8080B0000000000000049E
-t1317044400
+c000000004E89E43C000000000000049E
+t1317659708
 s1182
 i"juce_gui_extra.cpp"
 
@@ -1596,9 +2804,9 @@ t1316682940
 s3838
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/effects/juce_IIRFilter.cpp
-c000000004E7AFCBC0000000000001FC4
-t1316682940
-s8132
+c000000004E80F6200000000000001FD6
+t1317074464
+s8150
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/effects/juce_IIRFilter.h
 c000000004E7AFCBC0000000000001644
@@ -1606,9 +2814,9 @@ t1316682940
 s5700
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/effects/juce_Reverb.h
-c000000004E7AFCBC0000000000002B65
-t1316682940
-s11109
+c000000004E80F6C40000000000002B73
+t1317074628
+s11123
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/juce_audio_basics.cpp
 c000000004E7AFCBC0000000000000A85
@@ -1660,20 +2868,20 @@ i"sources/juce_ToneGeneratorAudioSource.h"
 i"synthesisers/juce_Synthesiser.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/midi/juce_MidiBuffer.cpp
-c000000004E7AFCBC000000000000200C
-t1316682940
-s8204
+c000000004E80F4F4000000000000211F
+t1317074164
+s8479
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/midi/juce_MidiBuffer.h
-c000000004E7AFCBC000000000000270B
-t1316682940
-s9995
+c000000004E80F4E00000000000002655
+t1317074144
+s9813
 i"juce_MidiMessage.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/midi/juce_MidiFile.cpp
-c000000004E7AFCBC00000000000034AA
-t1316682940
-s13482
+c000000004E81990400000000000031F1
+t1317116164
+s12785
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/midi/juce_MidiFile.h
 c000000004E7AFCBC0000000000001BCE
@@ -1703,14 +2911,14 @@ t1316682940
 s34912
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/midi/juce_MidiMessageSequence.cpp
-c000000004E7AFCBC0000000000002A71
-t1316682940
-s10865
+c000000004E80F3600000000000002967
+t1317073760
+s10599
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/midi/juce_MidiMessageSequence.h
-c000000004E7AFCBC0000000000002E0E
-t1316682940
-s11790
+c000000004E80F33C0000000000002CD9
+t1317073724
+s11481
 i"juce_MidiMessage.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/sources/juce_AudioSource.h
@@ -1771,9 +2979,9 @@ s3132
 i"juce_AudioSource.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/sources/juce_ResamplingAudioSource.cpp
-c000000004E7AFCBC0000000000002026
-t1316682940
-s8230
+c000000004EA99573000000000000203D
+t1319736691
+s8253
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_basics/sources/juce_ResamplingAudioSource.h
 c000000004E7AFCBC0000000000000FFE
@@ -1866,9 +3074,9 @@ s7916
 i"juce_AudioIODevice.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_devices/juce_audio_devices.cpp
-c000000004E7AFCBC0000000000001E99
-t1316682940
-s7833
+c000000004E81E26C0000000000001E76
+t1317134956
+s7798
 i"AppConfig.h"
 i"../juce_core/native/juce_BasicNativeHeaders.h"
 i"juce_audio_devices.h"
@@ -1972,8 +3180,8 @@ t1316682940
 s4602
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_devices/native/juce_android_Audio.cpp
-c000000004E7AFCBC000000000000413E
-t1316682940
+c000000004EA99573000000000000413E
+t1319736691
 s16702
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_devices/native/juce_android_Midi.cpp
@@ -2027,9 +3235,9 @@ t1316682940
 s17598
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_devices/native/juce_win32_ASIO.cpp
-c000000004E7AFCBC000000000000EBC0
-t1316682940
-s60352
+c000000004EB42027000000000000DB07
+t1320427559
+s56071
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_devices/native/juce_win32_AudioCDBurner.cpp
 c000000004E7AFCBC0000000000003453
@@ -2478,9 +3686,9 @@ i"format.h"
 i"stream_decoder.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_formats/codecs/juce_AiffAudioFormat.cpp
-c000000004E7AFCBC000000000000792E
-t1316682940
-s31022
+c000000004EA5B0120000000000007975
+t1319481362
+s31093
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_formats/codecs/juce_AiffAudioFormat.h
 c000000004E7AFCBC0000000000000AF1
@@ -2589,9 +3797,9 @@ s2946
 i"../format/juce_AudioFormat.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_formats/codecs/juce_WavAudioFormat.cpp
-c000000004E7AFCBC000000000000BFEF
-t1316682940
-s49135
+c000000004EA5B012000000000000BF2B
+t1319481362
+s48939
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_formats/codecs/juce_WavAudioFormat.h
 c000000004E7AFCBC0000000000001705
@@ -3267,9 +4475,9 @@ i"juce_AudioFormatReader.h"
 i"juce_AudioFormatWriter.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_formats/format/juce_AudioFormatManager.cpp
-c000000004E7AFCBC00000000000016D0
-t1316682940
-s5840
+c000000004E8432D4000000000000164E
+t1317286612
+s5710
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_formats/format/juce_AudioFormatManager.h
 c000000004E7AFCBC000000000000157E
@@ -3320,9 +4528,9 @@ s3961
 i"juce_AudioFormatReader.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_formats/juce_audio_formats.cpp
-c000000004E7AFCBC0000000000001049
-t1316682940
-s4169
+c000000004E81E26C0000000000001026
+t1317134956
+s4134
 i"AppConfig.h"
 i"../juce_core/native/juce_BasicNativeHeaders.h"
 i"juce_audio_formats.h"
@@ -3389,8 +4597,8 @@ i<ForcedInclude.h>
 i<MacAlwaysInclude.h>
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_plugin_client/juce_audio_plugin_client.h
-c000000004E8080E400000000000005EB
-t1317044452
+c000000004E89E43C00000000000005EB
+t1317659708
 s1515
 i"../juce_gui_basics/juce_gui_basics.h"
 i"../juce_audio_basics/juce_audio_basics.h"
@@ -3413,8 +4621,8 @@ t1316682940
 s2639
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_plugin_client/utility/juce_IncludeModuleHeaders.h
-c000000004E8080E4000000000000051E
-t1317044452
+c000000004E89E43C000000000000051E
+t1317659708
 s1310
 i"../juce_audio_plugin_client.h"
 
@@ -3434,13 +4642,13 @@ i<Carbon/Carbon.h>
 i<Cocoa/Cocoa.h>
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_plugin_client/utility/juce_PluginHostType.h
-c000000004E7AFCBC0000000000001DE0
-t1316682940
-s7648
+c000000004EA5B0120000000000001EBF
+t1319481362
+s7871
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/format/juce_AudioPluginFormat.cpp
-c000000004E8080E4000000000000055F
-t1317044452
+c000000004E89E43C000000000000055F
+t1317659708
 s1375
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/format/juce_AudioPluginFormat.h
@@ -3510,9 +4718,9 @@ s2707
 i"../format/juce_AudioPluginFormat.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/juce_audio_processors.cpp
-c000000004E7AFCBC0000000000000CE6
-t1316682940
-s3302
+c000000004E81E26C0000000000000CC3
+t1317134956
+s3267
 i"AppConfig.h"
 i"../juce_core/native/juce_BasicNativeHeaders.h"
 i"juce_audio_processors.h"
@@ -3532,8 +4740,8 @@ i"scanning/juce_PluginDirectoryScanner.cpp"
 i"scanning/juce_PluginListComponent.cpp"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/juce_audio_processors.h
-c000000004E830F8C00000000000011DC
-t1317212044
+c000000004E7AFCBC00000000000011DC
+t1316682940
 s4572
 i"../juce_gui_basics/juce_gui_basics.h"
 i"../juce_audio_basics/juce_audio_basics.h"
@@ -3570,14 +4778,14 @@ i"../processors/juce_AudioProcessor.h"
 i"juce_PluginDescription.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/processors/juce_AudioProcessor.cpp
-c000000004E8302CB0000000000002B10
-t1317208779
-s11024
+c000000004E7AFCBC0000000000002797
+t1316682940
+s10135
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/processors/juce_AudioProcessor.h
-c000000004E83045500000000000070FB
-t1317209173
-s28923
+c000000004E7AFCBC00000000000069F1
+t1316682940
+s27121
 i"juce_AudioProcessorEditor.h"
 i"juce_AudioProcessorListener.h"
 i"juce_AudioPlayHead.h"
@@ -3611,9 +4819,9 @@ t1316682940
 s5337
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/processors/juce_GenericAudioProcessorEditor.cpp
-c000000004E7AFCBC000000000000138F
-t1316682940
-s5007
+c000000004EA5B0120000000000001389
+t1319481362
+s5001
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/processors/juce_GenericAudioProcessorEditor.h
 c000000004E7AFCBC0000000000000924
@@ -3656,9 +4864,9 @@ i"juce_KnownPluginList.h"
 i"../format/juce_AudioPluginFormatManager.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/scanning/juce_PluginListComponent.cpp
-c000000004E7AFCBC0000000000002865
-t1316682940
-s10341
+c000000004EA5B0120000000000002866
+t1319481362
+s10342
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_processors/scanning/juce_PluginListComponent.h
 c000000004E7AFCBC0000000000000EC7
@@ -3688,20 +4896,20 @@ t1316682940
 s9891
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_utils/gui/juce_AudioThumbnailCache.cpp
-c000000004E7AFCBC0000000000000D6D
-t1316682940
-s3437
+c000000004EA5B0120000000000001321
+t1319481362
+s4897
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_utils/gui/juce_AudioThumbnailCache.h
-c000000004E7AFCBC0000000000000CD6
-t1316682940
-s3286
+c000000004EA5B0120000000000000F75
+t1319481362
+s3957
 i"juce_AudioThumbnail.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.cpp
-c000000004E7AFCBC0000000000006D69
-t1316682940
-s28009
+c000000004EB420270000000000006D2D
+t1320427559
+s27949
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.h
 c000000004E7AFCBC0000000000004151
@@ -3709,9 +4917,9 @@ t1316682940
 s16721
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_audio_utils/juce_audio_utils.cpp
-c000000004E7AFCBC00000000000008E8
-t1316682940
-s2280
+c000000004E81E26C00000000000008C5
+t1317134956
+s2245
 i"AppConfig.h"
 i"../juce_core/native/juce_BasicNativeHeaders.h"
 i"juce_audio_utils.h"
@@ -3797,9 +5005,9 @@ i"juce_LinkedListPointer.h"
 i"../memory/juce_ScopedPointer.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/containers/juce_LinkedListPointer.h
-c000000004E7AFCBC0000000000002F9C
-t1316682940
-s12188
+c000000004E8469FC0000000000002FC5
+t1317300732
+s12229
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/containers/juce_NamedValueSet.cpp
 c000000004E7AFCBC0000000000001D6B
@@ -3877,9 +5085,9 @@ i"../streams/juce_InputStream.h"
 i"../containers/juce_Array.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/files/juce_DirectoryIterator.cpp
-c000000004E7AFCBC00000000000013B4
-t1316682940
-s5044
+c000000004E81A12800000000000013BE
+t1317118248
+s5054
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/files/juce_DirectoryIterator.h
 c000000004E7AFCBC0000000000001683
@@ -3889,15 +5097,15 @@ i"juce_File.h"
 i"../memory/juce_ScopedPointer.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/files/juce_File.cpp
-c000000004E7AFCBC000000000000882E
-t1316682940
-s34862
+c000000004E819E2C0000000000008813
+t1317117484
+s34835
 i<pwd.h>
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/files/juce_File.h
-c000000004E7AFCBC0000000000009E10
-t1316682940
-s40464
+c000000004E819E1C0000000000009D6C
+t1317117468
+s40300
 i"../containers/juce_Array.h"
 i"../time/juce_Time.h"
 i"../text/juce_StringArray.h"
@@ -3971,9 +5179,9 @@ i"../misc/juce_Result.h"
 i"../containers/juce_Variant.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/juce_core.cpp
-c000000004E7AFCBC00000000000018BB
-t1316682940
-s6331
+c000000004E81E26C0000000000001898
+t1317134956
+s6296
 i"AppConfig.h"
 i"native/juce_BasicNativeHeaders.h"
 i"juce_core.h"
@@ -4187,14 +5395,14 @@ s3442
 i"../text/juce_String.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/maths/juce_BigInteger.cpp
-c000000004E7AFCBC0000000000006833
-t1316682940
-s26675
+c000000004E88915C000000000000694E
+t1317572956
+s26958
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/maths/juce_BigInteger.h
-c000000004E7AFCBC000000000000336F
-t1316682940
-s13167
+c000000004E80F7C40000000000003265
+t1317074884
+s12901
 i"../text/juce_String.h"
 i"../memory/juce_HeapBlock.h"
 
@@ -4204,22 +5412,22 @@ t1316682940
 s40776
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/maths/juce_Expression.h
-c000000004E7AFCBC0000000000002C42
-t1316682940
-s11330
+c000000004E80F8500000000000002C3D
+t1317075024
+s11325
 i"../memory/juce_ReferenceCountedObject.h"
 i"../containers/juce_Array.h"
 i"../memory/juce_ScopedPointer.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/maths/juce_MathsFunctions.h
-c000000004E7AFCBC0000000000004ADD
-t1316682940
-s19165
+c000000004EB127C10000000000004F89
+t1320232897
+s20361
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/maths/juce_Random.cpp
-c000000004E7AFCBC0000000000000EDC
-t1316682940
-s3804
+c000000004E88C56C00000000000012C3
+t1317586284
+s4803
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/maths/juce_Random.h
 c000000004E7AFCBC0000000000001322
@@ -4424,8 +5632,8 @@ t1316682940
 s13934
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_android_Misc.cpp
-c000000004E8080E4000000000000058B
-t1317044452
+c000000004E89E43C000000000000058B
+t1317659708
 s1419
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_android_Network.cpp
@@ -4434,9 +5642,9 @@ t1316682940
 s7482
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_android_SystemStats.cpp
-c000000004E7AFCBC0000000000001E37
-t1316682940
-s7735
+c000000004EA5B0120000000000001D11
+t1319481362
+s7441
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_android_Threads.cpp
 c000000004E7AFCBC00000000000009C5
@@ -4504,14 +5712,14 @@ t1316682940
 s5697
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_posix_SharedCode.h
-c000000004E7AFCBC0000000000006C2A
-t1316682940
-s27690
+c000000004EA5B0120000000000006C35
+t1319481362
+s27701
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_win32_ComSmartPtr.h
-c000000004E7AFCBC00000000000012CE
-t1316682940
-s4814
+c000000004EB420270000000000001325
+t1320427559
+s4901
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_win32_Files.cpp
 c000000004E7F3BB4000000000000742A
@@ -4529,9 +5737,9 @@ t1317029876
 s5381
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_win32_SystemStats.cpp
-c000000004E80382C0000000000002BCC
-t1317025836
-s11212
+c000000004EB420270000000000002BC8
+t1320427559
+s11208
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/native/juce_win32_Threads.cpp
 c000000004E7AFCBC0000000000003F4F
@@ -4560,11 +5768,12 @@ t1316957116
 s3841
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/network/juce_Socket.cpp
-c000000004E7AFCBC000000000000468C
-t1316682940
-s18060
+c000000004EB4202700000000000046C0
+t1320427559
+s18112
 i<winsock2.h>
 i<ws2tcpip.h>
+i<wspiapi.h>
 i<sys/types.h>
 i<sys/socket.h>
 i<sys/errno.h>
@@ -4625,14 +5834,14 @@ s2879
 i"juce_InputStream.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/streams/juce_InputStream.cpp
-c000000004E7AFCBC00000000000016B3
-t1316682940
-s5811
+c000000004EA5B01200000000000016B7
+t1319481362
+s5815
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/streams/juce_InputStream.h
-c000000004E7AFCBC0000000000002C34
-t1316682940
-s11316
+c000000004EA5B0120000000000002C38
+t1319481362
+s11320
 i"../text/juce_String.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/streams/juce_MemoryInputStream.cpp
@@ -4690,8 +5899,8 @@ t1316682940
 s11378
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/system/juce_StandardHeader.h
-c000000004E809BE00000000000001C88
-t1317051360
+c000000004EB420270000000000001C88
+t1320427559
 s7304
 i"juce_TargetPlatform.h"
 i"juce_PlatformDefs.h"
@@ -4755,9 +5964,9 @@ t1316682940
 s14667
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/text/juce_CharPointer_UTF8.h
-c000000004E7AFCBC0000000000004C55
-t1316682940
-s19541
+c000000004EB127C10000000000004C43
+t1320232897
+s19523
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/text/juce_CharacterFunctions.cpp
 c000000004E7AFCBC00000000000011BE
@@ -4767,9 +5976,9 @@ i<cwctype>
 i<cctype>
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/text/juce_CharacterFunctions.h
-c000000004E7AFCBC00000000000042F6
-t1316682940
-s17142
+c000000004E81E3C0000000000000426F
+t1317135296
+s17007
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/text/juce_Identifier.cpp
 c000000004E7AFCBC0000000000000A10
@@ -4799,15 +6008,15 @@ t1316682940
 s2955
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/text/juce_String.cpp
-c000000004E7AFCBC0000000000013EB8
-t1316682940
-s81592
+c000000004EB127C10000000000014134
+t1320232897
+s82228
 i<locale>
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/text/juce_String.h
-c000000004E7AFCBC000000000000F5A5
-t1316682940
-s62885
+c000000004EB127C1000000000000F24A
+t1320232897
+s62026
 i"juce_CharacterFunctions.h"
 i"../memory/juce_Atomic.h"
 i"juce_CharPointer_UTF8.h"
@@ -4816,9 +6025,9 @@ i"juce_CharPointer_UTF32.h"
 i"juce_CharPointer_ASCII.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/text/juce_StringArray.cpp
-c000000004E7AFCBC00000000000033E8
-t1316682940
-s13288
+c000000004E846F80000000000000341D
+t1317302144
+s13341
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/text/juce_StringArray.h
 c000000004E7AFCBC0000000000003AC8
@@ -4928,9 +6137,9 @@ t1316682940
 s12509
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/threads/juce_Thread.h
-c000000004E7AFCBC0000000000002CE7
-t1316682940
-s11495
+c000000004E80F9380000000000002CBE
+t1317075256
+s11454
 i"juce_WaitableEvent.h"
 i"juce_CriticalSection.h"
 
@@ -4990,28 +6199,28 @@ s7328
 i"../text/juce_String.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/time/juce_Time.cpp
-c000000004E7AFCBC0000000000004147
-t1316682940
-s16711
+c000000004EA5B01200000000000041B6
+t1319481362
+s16822
 i<sys/time.h>
 i<ctime>
 i<sys/timeb.h>
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/time/juce_Time.h
-c000000004E7AFCBC0000000000003FC2
-t1316682940
-s16322
+c000000004EA5B012000000000000405A
+t1319481362
+s16474
 i"juce_RelativeTime.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/unit_tests/juce_UnitTest.cpp
-c000000004E7AFCBC00000000000015BA
-t1316682940
-s5562
+c000000004E88C5CC000000000000168F
+t1317586380
+s5775
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/unit_tests/juce_UnitTest.h
-c000000004E7AFCBC00000000000024AB
-t1316682940
-s9387
+c000000004E88C5CC0000000000002644
+t1317586380
+s9796
 i"../text/juce_StringArray.h"
 i"../containers/juce_OwnedArray.h"
 
@@ -5030,9 +6239,9 @@ i"../files/juce_File.h"
 i"../memory/juce_ScopedPointer.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/xml/juce_XmlElement.cpp
-c000000004E7AFCBC00000000000064F9
-t1316682940
-s25849
+c000000004EB127C100000000000064C3
+t1320232897
+s25795
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_core/xml/juce_XmlElement.h
 c000000004E7AFCBC0000000000007833
@@ -5301,14 +6510,14 @@ t1316682940
 s9089
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_data_structures/values/juce_ValueTree.cpp
-c000000004E7AFCBC0000000000007114
-t1316682940
-s28948
+c000000004EA5B012000000000000711A
+t1319481362
+s28954
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_data_structures/values/juce_ValueTree.h
-c000000004E7AFCBC00000000000064EA
-t1316682940
-s25834
+c000000004EA5B0120000000000006553
+t1319481362
+s25939
 i"juce_Value.h"
 i"../undomanager/juce_UndoManager.h"
 
@@ -5330,15 +6539,14 @@ t1316682940
 s2042
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_events/broadcasters/juce_AsyncUpdater.cpp
-c000000004E7AFCBC0000000000000C2F
-t1316682940
-s3119
+c000000004E8466D80000000000000BB5
+t1317299928
+s2997
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_events/broadcasters/juce_AsyncUpdater.h
-c000000004E7AFCBC0000000000001187
-t1316682940
-s4487
-i"../messages/juce_CallbackMessage.h"
+c000000004E84661C0000000000001188
+t1317299740
+s4488
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_events/broadcasters/juce_ChangeBroadcaster.cpp
 c000000004E7AFCBC0000000000000E7A
@@ -5359,9 +6567,9 @@ t1316682940
 s2675
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_events/broadcasters/juce_ListenerList.h
-c000000004E7AFCBC0000000000003817
-t1316682940
-s14359
+c000000004E8467EC000000000000383B
+t1317300204
+s14395
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_events/interprocess/juce_InterprocessConnection.cpp
 c000000004E7B4ADC00000000000029A8
@@ -5386,9 +6594,9 @@ s3549
 i"juce_InterprocessConnection.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_events/juce_events.cpp
-c000000004E7B3E700000000000000F88
-t1316699760
-s3976
+c000000004E81E26C0000000000000F65
+t1317134956
+s3941
 i"AppConfig.h"
 i"../juce_core/native/juce_BasicNativeHeaders.h"
 i"juce_events.h"
@@ -5522,9 +6730,9 @@ t1316977300
 s13131
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_events/native/juce_mac_MessageManager.mm
-c000000004E7AFCBC000000000000388B
-t1316682940
-s14475
+c000000004EA5B01200000000000038ED
+t1319481362
+s14573
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_events/native/juce_osx_MessageQueue.h
 c000000004E7AFCBC0000000000000CA1
@@ -5563,9 +6771,9 @@ t1316682940
 s5312
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/colour/juce_Colour.cpp
-c000000004E7AFCBC0000000000003C2D
-t1316682940
-s15405
+c000000004E84689800000000000035B6
+t1317300376
+s13750
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/colour/juce_Colour.h
 c000000004E7AFCBC00000000000035F0
@@ -5574,14 +6782,14 @@ s13808
 i"../colour/juce_PixelFormats.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/colour/juce_ColourGradient.cpp
-c000000004E7AFCBC0000000000001C2F
-t1316682940
-s7215
+c000000004EB420270000000000001D2D
+t1320427559
+s7469
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/colour/juce_ColourGradient.h
-c000000004E7AFCBC0000000000001B1E
-t1316682940
-s6942
+c000000004EA5B0120000000000001D4B
+t1319481362
+s7499
 i"juce_Colour.h"
 i"../geometry/juce_Point.h"
 
@@ -5597,31 +6805,31 @@ s5727
 i"juce_Colour.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/colour/juce_FillType.cpp
-c000000004E7AFCBC000000000000106F
-t1316682940
-s4207
+c000000004EA5B0120000000000001136
+t1319481362
+s4406
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/colour/juce_FillType.h
-c000000004E7AFCBC00000000000016C7
-t1316682940
-s5831
+c000000004EA5B0120000000000001786
+t1319481362
+s6022
 i"../colour/juce_ColourGradient.h"
 i"../images/juce_Image.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/colour/juce_PixelFormats.h
-c000000004E7AFCBC0000000000004A43
-t1316682940
-s19011
+c000000004EB127C100000000000048E9
+t1320232897
+s18665
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/contexts/juce_GraphicsContext.cpp
-c000000004E7AFCBC000000000000608F
-t1316682940
-s24719
+c000000004EA5B012000000000000632F
+t1319481362
+s25391
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/contexts/juce_GraphicsContext.h
-c000000004E7AFCBC0000000000007938
-t1316682940
-s31032
+c000000004EA5B0120000000000007A2E
+t1319481362
+s31278
 i"../fonts/juce_Font.h"
 i"../geometry/juce_Rectangle.h"
 i"../geometry/juce_PathStrokeType.h"
@@ -5631,9 +6839,9 @@ i"../colour/juce_ColourGradient.h"
 i"../placement/juce_RectanglePlacement.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/contexts/juce_LowLevelGraphicsContext.h
-c000000004E7AFCBC0000000000001276
-t1316682940
-s4726
+c000000004EA5B012000000000000125A
+t1319481362
+s4698
 i"../images/juce_Image.h"
 i"../geometry/juce_Path.h"
 i"../geometry/juce_RectangleList.h"
@@ -5641,26 +6849,27 @@ i"../colour/juce_ColourGradient.h"
 i"../colour/juce_FillType.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/contexts/juce_LowLevelGraphicsPostScriptRenderer.cpp
-c000000004E7AFCBC00000000000043C7
-t1316682940
-s17351
+c000000004EA5B01200000000000043A1
+t1319481362
+s17313
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/contexts/juce_LowLevelGraphicsPostScriptRenderer.h
-c000000004E7AFCBC0000000000001305
-t1316682940
-s4869
+c000000004EA5B01200000000000012E9
+t1319481362
+s4841
 i"juce_LowLevelGraphicsContext.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/contexts/juce_LowLevelGraphicsSoftwareRenderer.cpp
-c000000004E7AFCBC0000000000016EA8
-t1316682940
-s93864
+c000000004EB420270000000000015111
+t1320427559
+s86289
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/contexts/juce_LowLevelGraphicsSoftwareRenderer.h
-c000000004E7AFCBC00000000000011E7
-t1316682940
-s4583
+c000000004EA995730000000000000F11
+t1319736691
+s3857
 i"juce_LowLevelGraphicsContext.h"
+i"../native/juce_RenderingHelpers.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/effects/juce_DropShadowEffect.cpp
 c000000004E7AFCBC0000000000000E86
@@ -5702,9 +6911,9 @@ s6250
 i"juce_Typeface.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/fonts/juce_Font.cpp
-c000000004E7C66200000000000003A1E
-t1316775456
-s14878
+c000000004E82F9A00000000000003AA4
+t1317206432
+s15012
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/fonts/juce_Font.h
 c000000004E7AFCBC0000000000003D7D
@@ -5747,14 +6956,14 @@ t1316682940
 s5478
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_AffineTransform.cpp
-c000000004E7AFCBC00000000000023F7
-t1316682940
-s9207
+c000000004EA5B012000000000000247C
+t1319481362
+s9340
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_AffineTransform.h
-c000000004E7AFCBC0000000000002BE1
-t1316682940
-s11233
+c000000004EA5B0120000000000002D03
+t1319481362
+s11523
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_BorderSize.h
 c000000004E7AFCBC0000000000001880
@@ -5763,28 +6972,28 @@ s6272
 i"juce_Rectangle.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_EdgeTable.cpp
-c000000004E7AFCBC0000000000005052
-t1316682940
-s20562
+c000000004EB127C10000000000005018
+t1320232897
+s20504
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_EdgeTable.h
-c000000004E7AFCBC00000000000022D4
-t1316682940
-s8916
+c000000004EA5B01200000000000022EF
+t1319481362
+s8943
 i"../geometry/juce_AffineTransform.h"
 i"../geometry/juce_Rectangle.h"
 i"../geometry/juce_RectangleList.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_Line.h
-c000000004E7AFCBC0000000000004615
-t1316682940
-s17941
+c000000004EB42027000000000000444D
+t1320427559
+s17485
 i"juce_Point.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_Path.cpp
-c000000004E7AFCBC000000000000C0CB
-t1316682940
-s49355
+c000000004EB42027000000000000C0CA
+t1320427559
+s49354
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_Path.h
 c000000004E7AFCBC0000000000008553
@@ -5818,15 +7027,15 @@ s11000
 i"juce_Path.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_Point.h
-c000000004E7AFCBC00000000000024D1
-t1316682940
-s9425
+c000000004EB42027000000000000250E
+t1320427559
+s9486
 i"juce_AffineTransform.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_Rectangle.h
-c000000004E7AFCBC00000000000077AC
-t1316682940
-s30636
+c000000004EB42027000000000000770C
+t1320427559
+s30476
 i"juce_Point.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/geometry/juce_RectangleList.cpp
@@ -6241,14 +7450,14 @@ t1316682940
 s5896
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/image_formats/juce_GIFLoader.cpp
-c000000004E7AFCBC0000000000002EE9
-t1316682940
-s12009
+c000000004EB127C10000000000002EA9
+t1320232897
+s11945
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/image_formats/juce_JPEGLoader.cpp
-c000000004E7AFCBC0000000000003463
-t1316682940
-s13411
+c000000004E82ED08000000000000355F
+t1317203208
+s13663
 i"jpglib/jpeglib.h"
 i"jpglib/jcapimin.c"
 i"jpglib/jcapistd.c"
@@ -6396,9 +7605,9 @@ s5688
 i"png.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/image_formats/pnglib/pngrtran.c
-c000000004E7AFCBC0000000000024E2A
-t1316682940
-s151082
+c000000004EA5E34E0000000000024EE7
+t1319494478
+s151271
 i"png.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/image_formats/pnglib/pngrutil.c
@@ -6444,14 +7653,14 @@ s87548
 i"png.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/images/juce_Image.cpp
-c000000004E7B384800000000000049E4
-t1316698184
-s18916
+c000000004EB127C1000000000000514B
+t1320232897
+s20811
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/images/juce_Image.h
-c000000004E7AFCBC0000000000004BE6
-t1316682940
-s19430
+c000000004EB127C10000000000005568
+t1320232897
+s21864
 i"../colour/juce_Colour.h"
 i"../contexts/juce_GraphicsContext.h"
 
@@ -6489,9 +7698,9 @@ s7720
 i"juce_Image.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/juce_graphics.cpp
-c000000004E7AFCBC000000000000119D
-t1316682940
-s4509
+c000000004E81E280000000000000117A
+t1317134976
+s4474
 i"AppConfig.h"
 i"../juce_core/native/juce_BasicNativeHeaders.h"
 i"juce_graphics.h"
@@ -6540,9 +7749,9 @@ i"native/juce_android_GraphicsContext.cpp"
 i"native/juce_android_Fonts.cpp"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/juce_graphics.h
-c000000004E7B496800000000000016B5
-t1316702568
-s5813
+c000000004EA9957300000000000014E9
+t1319736691
+s5353
 i"../juce_core/juce_core.h"
 i"../juce_events/juce_events.h"
 i"colour/juce_Colour.h"
@@ -6579,15 +7788,20 @@ i"effects/juce_DropShadowEffect.h"
 i"effects/juce_GlowEffect.h"
 i"effects/juce_ImageEffectFilter.h"
 
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_RenderingHelpers.h
+c000000004EA995730000000000002E84
+t1319736691
+s11908
+
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_android_Fonts.cpp
 c000000004E7AFCBC000000000000204D
 t1316682940
 s8269
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_android_GraphicsContext.cpp
-c000000004E7AFCBC0000000000008F48
-t1316682940
-s36680
+c000000004EB127C10000000000008EBD
+t1320232897
+s36541
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_linux_Fonts.cpp
 c000000004E7F8F7000000000000046C9
@@ -6595,14 +7809,14 @@ t1316982640
 s18121
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_mac_CoreGraphicsContext.h
-c000000004E7AFCBC000000000000131F
-t1316682940
-s4895
+c000000004EA5B012000000000000136B
+t1319481362
+s4971
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_mac_CoreGraphicsContext.mm
-c000000004E7AFCBC0000000000007B49
-t1316682940
-s31561
+c000000004EB420270000000000007BB2
+t1320427559
+s31666
 i"juce_mac_CoreGraphicsHelpers.h"
 i"juce_mac_CoreGraphicsContext.h"
 
@@ -6612,14 +7826,14 @@ t1316682940
 s2234
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_mac_Fonts.mm
-c000000004E7AFCBC0000000000007370
-t1316682940
-s29552
+c000000004EA5B0120000000000007295
+t1319481362
+s29333
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_win32_Direct2DGraphicsContext.cpp
-c000000004E7AFCBC0000000000007FAE
-t1316682940
-s32686
+c000000004EA5B0120000000000007F92
+t1319481362
+s32658
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_graphics/native/juce_win32_Fonts.cpp
 c000000004E8047E4000000000000381D
@@ -6713,9 +7927,9 @@ s4424
 i"juce_Button.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/buttons/juce_ImageButton.cpp
-c000000004E7AFCBC00000000000018ED
-t1316682940
-s6381
+c000000004EA5B0120000000000001934
+t1319481362
+s6452
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/buttons/juce_ImageButton.h
 c000000004E7AFCBC000000000000202F
@@ -6819,14 +8033,14 @@ i"../keyboard/juce_KeyListener.h"
 i"../commands/juce_ApplicationCommandManager.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/components/juce_Component.cpp
-c000000004E7AFCBC0000000000016341
-t1316682940
-s90945
+c000000004EB420270000000000016450
+t1320427559
+s91216
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/components/juce_Component.h
-c000000004E7AFCBC000000000001AE05
-t1316682940
-s110085
+c000000004E85E8F4000000000001AEE6
+t1317398772
+s110310
 i"../mouse/juce_MouseCursor.h"
 i"../mouse/juce_MouseListener.h"
 i"../mouse/juce_MouseEvent.h"
@@ -6868,9 +8082,9 @@ t1316682940
 s15239
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_Drawable.cpp
-c000000004E7AFCBC0000000000001E34
-t1316682940
-s7732
+c000000004EB420270000000000001E1A
+t1320427559
+s7706
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_Drawable.h
 c000000004E7AFCBC00000000000028C9
@@ -6882,9 +8096,9 @@ i"../positioning/juce_RelativeCoordinatePositioner.h"
 i"../layout/juce_ComponentBuilder.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableComposite.cpp
-c000000004E7AFCBC0000000000003494
-t1316682940
-s13460
+c000000004EB420270000000000003488
+t1320427559
+s13448
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableComposite.h
 c000000004E7AFCBC0000000000001AF8
@@ -6896,9 +8110,9 @@ i"../positioning/juce_RelativeParallelogram.h"
 i"../positioning/juce_RelativeRectangle.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableImage.cpp
-c000000004E7AFCBC00000000000026E2
-t1316682940
-s9954
+c000000004EB4202700000000000026C4
+t1320427559
+s9924
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableImage.h
 c000000004E7AFCBC00000000000015F1
@@ -6920,9 +8134,9 @@ i"juce_DrawableShape.h"
 i"../positioning/juce_RelativePointPath.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableRectangle.cpp
-c000000004E7AFCBC0000000000001958
-t1316682940
-s6488
+c000000004EB42027000000000000193A
+t1320427559
+s6458
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableRectangle.h
 c000000004E7AFCBC0000000000001001
@@ -6932,9 +8146,9 @@ i"juce_DrawableShape.h"
 i"../positioning/juce_RelativeParallelogram.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableShape.cpp
-c000000004E7AFCBC0000000000004267
-t1316682940
-s16999
+c000000004EB4202700000000000041E5
+t1320427559
+s16869
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableShape.h
 c000000004E7AFCBC0000000000001CEC
@@ -6944,9 +8158,9 @@ i"juce_Drawable.h"
 i"../positioning/juce_RelativeCoordinatePositioner.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableText.cpp
-c000000004E7AFCBC0000000000002A68
-t1316682940
-s10856
+c000000004EB420270000000000002A40
+t1320427559
+s10816
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/drawables/juce_DrawableText.h
 c000000004E7AFCBC00000000000018CA
@@ -6966,33 +8180,33 @@ t1316682940
 s2784
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_DirectoryContentsDisplayComponent.h
-c000000004E7AFCBC0000000000001103
-t1316682940
-s4355
+c000000004E874CF400000000000011E4
+t1317489908
+s4580
 i"../components/juce_Component.h"
 i"juce_DirectoryContentsList.h"
 i"juce_FileBrowserListener.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_DirectoryContentsList.cpp
-c000000004E7AFCBC0000000000001DD3
-t1316682940
-s7635
+c000000004E874CF40000000000001EF5
+t1317489908
+s7925
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_DirectoryContentsList.h
-c000000004E7AFCBC0000000000001F39
-t1316682940
-s7993
+c000000004E874CF40000000000001FA5
+t1317489908
+s8101
 i"juce_FileFilter.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_FileBrowserComponent.cpp
-c000000004E7AFCBC000000000000406A
-t1316682940
-s16490
+c000000004E874CF4000000000000419F
+t1317489908
+s16799
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_FileBrowserComponent.h
-c000000004E7AFCBC0000000000002A93
-t1316682940
-s10899
+c000000004E874CF40000000000002BAD
+t1317489908
+s11181
 i"juce_DirectoryContentsDisplayComponent.h"
 i"juce_FilePreviewComponent.h"
 i"../widgets/juce_TextEditor.h"
@@ -7041,14 +8255,14 @@ t1316682940
 s2843
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_FileListComponent.cpp
-c000000004E7AFCBC0000000000001CDE
-t1316682940
-s7390
+c000000004E874CF40000000000001DEA
+t1317489908
+s7658
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_FileListComponent.h
-c000000004E7AFCBC0000000000000F8B
-t1316682940
-s3979
+c000000004E8725FC0000000000001060
+t1317479932
+s4192
 i"juce_DirectoryContentsDisplayComponent.h"
 i"juce_FileBrowserListener.h"
 i"../widgets/juce_ListBox.h"
@@ -7075,14 +8289,14 @@ i"../buttons/juce_TextButton.h"
 i"../mouse/juce_FileDragAndDropTarget.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_FileTreeComponent.cpp
-c000000004E7AFCBC0000000000001F03
-t1316682940
-s7939
+c000000004EA9957300000000000020DA
+t1319736691
+s8410
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/filebrowser/juce_FileTreeComponent.h
-c000000004E7AFCBC0000000000000E83
-t1316682940
-s3715
+c000000004EA995730000000000000F9A
+t1319736691
+s3994
 i"juce_DirectoryContentsDisplayComponent.h"
 i"../widgets/juce_TreeView.h"
 
@@ -7122,12 +8336,13 @@ s3407
 i"juce_FileFilter.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/juce_gui_basics.cpp
-c000000004E7AFCBC0000000000002A93
-t1316682940
-s10899
+c000000004EB420270000000000002B54
+t1320427559
+s11092
 i"AppConfig.h"
 i"../juce_core/native/juce_BasicNativeHeaders.h"
 i"juce_gui_basics.h"
+i"../juce_opengl/juce_opengl.h"
 i<WebKit/WebKit.h>
 i<Carbon/Carbon.h>
 i<windowsx.h>
@@ -7135,6 +8350,7 @@ i<vfw.h>
 i<commdlg.h>
 i<Exdisp.h>
 i<exdispid.h>
+i<Imm.h>
 i<X11/Xlib.h>
 i<X11/Xatom.h>
 i<X11/Xresource.h>
@@ -7260,6 +8476,7 @@ i"../juce_core/native/juce_osx_ObjCHelpers.h"
 i"../juce_core/native/juce_mac_ObjCSuffix.h"
 i"../juce_graphics/native/juce_mac_CoreGraphicsHelpers.h"
 i"../juce_graphics/native/juce_mac_CoreGraphicsContext.h"
+i"native/juce_MultiTouchMapper.h"
 i"native/juce_ios_UIViewComponentPeer.mm"
 i"native/juce_ios_Windowing.mm"
 i"native/juce_mac_NSViewComponentPeer.mm"
@@ -7269,6 +8486,7 @@ i"native/juce_mac_MouseCursor.mm"
 i"native/juce_mac_FileChooser.mm"
 i"../juce_core/native/juce_win32_ComSmartPtr.h"
 i"../juce_events/native/juce_win32_HiddenMessageWindow.h"
+i"native/juce_MultiTouchMapper.h"
 i"native/juce_win32_Windowing.cpp"
 i"native/juce_win32_DragAndDrop.cpp"
 i"native/juce_win32_FileChooser.cpp"
@@ -7418,8 +8636,8 @@ s3367
 i"../components/juce_Component.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_KeyListener.cpp
-c000000004E8080B00000000000000554
-t1317044400
+c000000004E89E43C0000000000000554
+t1317659708
 s1364
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_KeyListener.h
@@ -7429,20 +8647,20 @@ s3418
 i"juce_KeyPress.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_KeyPress.cpp
-c000000004E7AFCBC0000000000002BBB
-t1316682940
-s11195
+c000000004EA5B0120000000000002B6A
+t1319481362
+s11114
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_KeyPress.h
-c000000004E7AFCBC0000000000002F92
-t1316682940
-s12178
+c000000004EA5B0120000000000002F8C
+t1319481362
+s12172
 i"juce_ModifierKeys.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_KeyboardFocusTraverser.cpp
-c000000004E7AFCBC000000000000134B
-t1316682940
-s4939
+c000000004E84D37800000000000012C7
+t1317327736
+s4807
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_KeyboardFocusTraverser.h
 c000000004E7AFCBC0000000000000DEC
@@ -7450,14 +8668,14 @@ t1316682940
 s3564
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_ModifierKeys.cpp
-c000000004E7AFCBC00000000000007AD
-t1316682940
-s1965
+c000000004EA5B012000000000000079D
+t1319481362
+s1949
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_ModifierKeys.h
-c000000004E7AFCBC00000000000026AA
-t1316682940
-s9898
+c000000004EA5B01200000000000026E5
+t1319481362
+s9957
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/keyboard/juce_SystemClipboard.h
 c000000004E7AFCBC000000000000070C
@@ -7476,9 +8694,9 @@ t1316682940
 s3084
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/layout/juce_ComponentAnimator.cpp
-c000000004E7AFCBC0000000000002C6E
-t1316682940
-s11374
+c000000004EB420270000000000002C85
+t1320427559
+s11397
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/layout/juce_ComponentAnimator.h
 c000000004E7AFCBC0000000000002158
@@ -7543,14 +8761,14 @@ i"juce_TabbedComponent.h"
 i"../windows/juce_DocumentWindow.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/layout/juce_ResizableBorderComponent.cpp
-c000000004E7AFCBC0000000000001CF4
-t1316682940
-s7412
+c000000004EB420270000000000001CE0
+t1320427559
+s7392
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/layout/juce_ResizableBorderComponent.h
-c000000004E7AFCBC00000000000020A0
-t1316682940
-s8352
+c000000004EB42027000000000000208C
+t1320427559
+s8332
 i"juce_ComponentBoundsConstrainer.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/layout/juce_ResizableCornerComponent.cpp
@@ -7642,33 +8860,33 @@ s9104
 i"juce_TabbedButtonBar.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/layout/juce_Viewport.cpp
-c000000004E7AFCBC0000000000003BD1
-t1316682940
-s15313
+c000000004EB420270000000000003BFC
+t1320427559
+s15356
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/layout/juce_Viewport.h
-c000000004E7AFCBC0000000000002ED5
-t1316682940
-s11989
+c000000004EB127C10000000000002F7E
+t1320232897
+s12158
 i"juce_ScrollBar.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/lookandfeel/juce_LookAndFeel.cpp
-c000000004E7B17A0000000000001E941
-t1316689824
-s125249
+c000000004EA99573000000000001EA3A
+t1319736691
+s125498
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/lookandfeel/juce_LookAndFeel.h
-c000000004E7AFCBC0000000000008367
-t1316682940
-s33639
+c000000004EA9957300000000000084FE
+t1319736691
+s34046
 i"../widgets/juce_Slider.h"
 i"../layout/juce_TabbedComponent.h"
 i"../windows/juce_AlertWindow.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/menus/juce_MenuBarComponent.cpp
-c000000004E7AFCBC00000000000027CB
-t1316682940
-s10187
+c000000004EB4202700000000000027C1
+t1320427559
+s10177
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/menus/juce_MenuBarComponent.h
 c000000004E7AFCBC00000000000011D6
@@ -7688,9 +8906,9 @@ s7462
 i"juce_PopupMenu.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/menus/juce_PopupMenu.cpp
-c000000004E7F2908000000000000E618
-t1316956424
-s58904
+c000000004EB42027000000000000E6AD
+t1320427559
+s59053
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/menus/juce_PopupMenu.h
 c000000004E7F0A04000000000000546E
@@ -7698,9 +8916,9 @@ t1316948484
 s21614
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/misc/juce_BubbleComponent.cpp
-c000000004E7AFCBC0000000000001934
-t1316682940
-s6452
+c000000004EB42027000000000000192A
+t1320427559
+s6442
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/misc/juce_BubbleComponent.h
 c000000004E7AFCBC0000000000001832
@@ -7708,9 +8926,9 @@ t1316682940
 s6194
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/misc/juce_DropShadower.cpp
-c000000004E7AFCBC0000000000002C14
-t1316682940
-s11284
+c000000004EB127C10000000000002BEC
+t1320232897
+s11244
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/misc/juce_DropShadower.h
 c000000004E7AFCBC0000000000000EF2
@@ -7771,20 +8989,20 @@ t1316682940
 s7445
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/mouse/juce_MouseEvent.cpp
-c000000004E7AFCBC000000000000154A
-t1316682940
-s5450
+c000000004EB420270000000000001538
+t1320427559
+s5432
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/mouse/juce_MouseEvent.h
-c000000004E7AFCBC0000000000003426
-t1316682940
-s13350
+c000000004E84CD8C000000000000340B
+t1317326220
+s13323
 i"../keyboard/juce_ModifierKeys.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/mouse/juce_MouseInputSource.cpp
-c000000004E7AFCBC000000000000540A
-t1316682940
-s21514
+c000000004EB420270000000000005491
+t1320427559
+s21649
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/mouse/juce_MouseInputSource.h
 c000000004E7AFCBC0000000000002034
@@ -7804,14 +9022,19 @@ t1316682940
 s7421
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/mouse/juce_SelectedItemSet.h
-c000000004E7AFCBC0000000000002AB6
-t1316682940
-s10934
+c000000004E84D3440000000000002A76
+t1317327684
+s10870
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/mouse/juce_TooltipClient.h
 c000000004E7AFCBC0000000000000C61
 t1316682940
 s3169
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_MultiTouchMapper.h
+c000000004EA5B0120000000000000969
+t1319481362
+s2409
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_android_FileChooser.cpp
 c000000004E7F89D40000000000000776
@@ -7819,14 +9042,14 @@ t1316981204
 s1910
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_android_Windowing.cpp
-c000000004E7B38300000000000007576
-t1316698160
-s30070
+c000000004EB4202700000000000074A4
+t1320427559
+s29860
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_ios_UIViewComponentPeer.mm
-c000000004E7AFCBC00000000000082DB
-t1316682940
-s33499
+c000000004EA99573000000000000805B
+t1319736691
+s32859
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_ios_Windowing.mm
 c000000004E7AFCBC000000000000240A
@@ -7844,9 +9067,9 @@ t1316982744
 s3016
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_linux_Windowing.cpp
-c000000004E7B3824000000000001B8CB
-t1316698148
-s112843
+c000000004EB42027000000000001BB41
+t1320427559
+s113473
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_mac_FileChooser.mm
 c000000004E7F89BC0000000000001ACF
@@ -7854,9 +9077,9 @@ t1316981180
 s6863
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_mac_MainMenu.mm
-c000000004E7AFCBC00000000000053DA
-t1316682940
-s21466
+c000000004EA5B0120000000000005692
+t1319481362
+s22162
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_mac_MouseCursor.mm
 c000000004E7AFCBC000000000000178D
@@ -7864,14 +9087,14 @@ t1316682940
 s6029
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_mac_NSViewComponentPeer.mm
-c000000004E7B3840000000000000F1CC
-t1316698176
-s61900
+c000000004EB4226E000000000000FE84
+t1320428142
+s65156
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_mac_Windowing.mm
-c000000004E7CA9200000000000003298
-t1316792608
-s12952
+c000000004EB127C10000000000003284
+t1320232897
+s12932
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_win32_DragAndDrop.cpp
 c000000004E7AFCBC00000000000026C4
@@ -7884,9 +9107,9 @@ t1316981200
 s9956
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/native/juce_win32_Windowing.cpp
-c000000004E7F383C0000000000019A30
-t1316960316
-s105008
+c000000004EB42027000000000001B0A3
+t1320427559
+s110755
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/positioning/juce_MarkerList.cpp
 c000000004E7AFCBC0000000000001F97
@@ -7910,9 +9133,9 @@ t1316682940
 s6194
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/positioning/juce_RelativeCoordinatePositioner.cpp
-c000000004E7AFCBC00000000000026DB
-t1316682940
-s9947
+c000000004E85C0A4000000000000261A
+t1317388452
+s9754
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/positioning/juce_RelativeCoordinatePositioner.h
 c000000004E7AFCBC0000000000000EC7
@@ -7923,9 +9146,9 @@ i"juce_MarkerList.h"
 i"../components/juce_Component.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/positioning/juce_RelativeParallelogram.cpp
-c000000004E7AFCBC0000000000001605
-t1316682940
-s5637
+c000000004EB4202700000000000015BF
+t1320427559
+s5567
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/positioning/juce_RelativeParallelogram.h
 c000000004E7AFCBC0000000000000C8D
@@ -7934,9 +9157,9 @@ s3213
 i"juce_RelativePoint.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/positioning/juce_RelativePoint.cpp
-c000000004E7AFCBC0000000000000B87
-t1316682940
-s2951
+c000000004EB420270000000000000B73
+t1320427559
+s2931
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/positioning/juce_RelativePoint.h
 c000000004E7AFCBC0000000000000ED6
@@ -8051,14 +9274,14 @@ i"juce_PropertyComponent.h"
 i"../widgets/juce_Label.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_ComboBox.cpp
-c000000004E7AFCBC0000000000004279
-t1316682940
-s17017
+c000000004E832244000000000000432F
+t1317216836
+s17199
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_ComboBox.h
-c000000004E7AFCBC0000000000003E12
-t1316682940
-s15890
+c000000004E8475440000000000003EF2
+t1317303620
+s16114
 i"juce_Label.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_ImageComponent.cpp
@@ -8074,20 +9297,20 @@ i"../components/juce_Component.h"
 i"../mouse/juce_TooltipClient.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_Label.cpp
-c000000004E7AFCBC0000000000003211
-t1316682940
-s12817
+c000000004E84D3C800000000000031BA
+t1317327816
+s12730
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_Label.h
-c000000004E7AFCBC0000000000003849
-t1316682940
+c000000004E8321140000000000003849
+t1317216532
 s14409
 i"juce_TextEditor.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_ListBox.cpp
-c000000004E7AFCBC000000000000748A
-t1316682940
-s29834
+c000000004EB127C10000000000007476
+t1320232897
+s29814
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_ListBox.h
 c000000004E7AFCBC00000000000058D9
@@ -8108,14 +9331,14 @@ i"../components/juce_Component.h"
 i"../mouse/juce_TooltipClient.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_Slider.cpp
-c000000004E7AFCBC000000000000B148
-t1316682940
-s45384
+c000000004EB42027000000000000B16C
+t1320427559
+s45420
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_Slider.h
-c000000004E7AFCBC000000000000A23F
-t1316682940
-s41535
+c000000004EA99573000000000000A343
+t1319736691
+s41795
 i"juce_Label.h"
 i"../buttons/juce_Button.h"
 
@@ -8143,9 +9366,9 @@ i"juce_TableHeaderComponent.h"
 i"juce_ListBox.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_TextEditor.cpp
-c000000004E7B0C780000000000013257
-t1316686968
-s78423
+c000000004EB420270000000000013279
+t1320427559
+s78457
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_TextEditor.h
 c000000004E7AFCBC0000000000006DB7
@@ -8202,22 +9425,22 @@ i"juce_Toolbar.h"
 i"../layout/juce_Viewport.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_TreeView.cpp
-c000000004E7AFCBC000000000000C627
-t1316682940
-s50727
+c000000004E874CF4000000000000C728
+t1317489908
+s50984
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/widgets/juce_TreeView.h
-c000000004E7AFCBC0000000000008C9D
-t1316682940
-s35997
+c000000004E87422C0000000000008C5F
+t1317487148
+s35935
 i"../layout/juce_Viewport.h"
 i"../mouse/juce_FileDragAndDropTarget.h"
 i"../mouse/juce_DragAndDropTarget.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/windows/juce_AlertWindow.cpp
-c000000004E7AFCBC0000000000005C4E
-t1316682940
-s23630
+c000000004E83228C0000000000005C1B
+t1317216908
+s23579
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/windows/juce_AlertWindow.h
 c000000004E7AFCBC00000000000061DD
@@ -8310,9 +9533,9 @@ s5810
 i"../windows/juce_AlertWindow.h"
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/windows/juce_TooltipWindow.cpp
-c000000004E7AFCBC00000000000016C4
-t1316682940
-s5828
+c000000004EB4202700000000000016BA
+t1320427559
+s5818
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_basics/windows/juce_TooltipWindow.h
 c000000004E7AFCBC000000000000137F
@@ -8398,9 +9621,9 @@ t1316793224
 s3184
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/juce_gui_extra.cpp
-c000000004E7AFCBC00000000000014B4
-t1316682940
-s5300
+c000000004E89ECAA0000000000001437
+t1317661866
+s5175
 i"AppConfig.h"
 i"../juce_core/native/juce_BasicNativeHeaders.h"
 i"juce_gui_extra.h"
@@ -8438,7 +9661,6 @@ i"native/juce_mac_NSViewComponent.mm"
 i"native/juce_mac_AppleRemote.mm"
 i"native/juce_ios_UIViewComponent.mm"
 i"native/juce_mac_WebBrowserComponent.mm"
-i"native/juce_ios_WebBrowserComponent.mm"
 i"../juce_core/native/juce_win32_ComSmartPtr.h"
 i"../juce_events/native/juce_win32_HiddenMessageWindow.h"
 i"native/juce_win32_ActiveXComponent.cpp"
@@ -8498,9 +9720,9 @@ t1316682940
 s6111
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/misc/juce_ColourSelector.cpp
-c000000004E7AFCBC0000000000004438
-t1316682940
-s17464
+c000000004EA5B0120000000000004432
+t1319481362
+s17458
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/misc/juce_ColourSelector.h
 c000000004E7AFCBC0000000000001B82
@@ -8568,9 +9790,9 @@ t1316682940
 s2962
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/native/juce_ios_UIViewComponent.mm
-c000000004E7AFCBC0000000000000F7C
-t1316682940
-s3964
+c000000004EA5B0120000000000000F76
+t1319481362
+s3958
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/native/juce_ios_WebBrowserComponent.mm
 c000000004E7AFCBC00000000000008C5
@@ -8598,14 +9820,14 @@ t1316792928
 s9602
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/native/juce_mac_NSViewComponent.mm
-c000000004E7CC188000000000000125A
-t1316798856
-s4698
+c000000004EA5B0120000000000001254
+t1319481362
+s4692
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/native/juce_mac_WebBrowserComponent.mm
-c000000004E7AFCBC0000000000002072
-t1316682940
-s8306
+c000000004E89ECAA0000000000002B71
+t1317661866
+s11121
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/native/juce_win32_ActiveXComponent.cpp
 c000000004E7F2C300000000000003FB9
@@ -8613,14 +9835,84 @@ t1316957232
 s16313
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/native/juce_win32_SystemTrayIcon.cpp
-c000000004E7F39380000000000001BA1
-t1316960568
-s7073
+c000000004E874CF40000000000001EF8
+t1317489908
+s7928
 
 N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_gui_extra/native/juce_win32_WebBrowserComponent.cpp
-c000000004E7AFCBC000000000000280A
-t1316682940
-s10250
+c000000004E89ECAA0000000000002803
+t1317661866
+s10243
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/juce_opengl.h
+c000000004EA5B0120000000000000D51
+t1319481362
+s3409
+i"../juce_gui_extra/juce_gui_extra.h"
+i<gl/GL.h>
+i<GL/gl.h>
+i<OpenGLES/ES1/gl.h>
+i<OpenGLES/ES1/glext.h>
+i<OpenGL/gl.h>
+i"OpenGL/glext.h"
+i<GLES/gl.h>
+i"opengl/juce_OpenGLRenderingTarget.h"
+i"opengl/juce_OpenGLComponent.h"
+i"opengl/juce_OpenGLContext.h"
+i"opengl/juce_OpenGLFrameBuffer.h"
+i"opengl/juce_OpenGLGraphicsContext.h"
+i"opengl/juce_OpenGLHelpers.h"
+i"opengl/juce_OpenGLImage.h"
+i"opengl/juce_OpenGLPixelFormat.h"
+i"opengl/juce_OpenGLRenderingTarget.h"
+i"opengl/juce_OpenGLTexture.h"
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLComponent.h
+c000000004EA995730000000000002AE7
+t1319736691
+s10983
+i"juce_OpenGLContext.h"
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLContext.h
+c000000004EA99573000000000000110C
+t1319736691
+s4364
+i"juce_OpenGLPixelFormat.h"
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLFrameBuffer.h
+c000000004EA99573000000000000185F
+t1319736691
+s6239
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLGraphicsContext.h
+c000000004EB127C10000000000000D29
+t1320232897
+s3369
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLHelpers.h
+c000000004EB127C1000000000000131B
+t1320232897
+s4891
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLImage.h
+c000000004EB127C10000000000000822
+t1320232897
+s2082
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLPixelFormat.h
+c000000004EA995730000000000000DBC
+t1319736691
+s3516
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLRenderingTarget.h
+c000000004EA5B01200000000000008A7
+t1319481362
+s2215
+
+N/Users/Dave/Documents/Developement/juce_source/juce/modules/juce_opengl/opengl/juce_OpenGLTexture.h
+c000000004EB127C10000000000001293
+t1320232897
+s4755
 
 N/usr/include/TargetConditionals.h
 c000000004A11A9B300000000000031E9
@@ -9029,6 +10321,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@73"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUBase.cpp338761687#338761689#0(0"0(0#0#65"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUBase.cpp8621278432#1880"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUBase.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUBase.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUBase.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUBuffer.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUBuffer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761687.728703
 e338761688.128933
@@ -9041,6 +10336,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@76"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUBuffer.cpp338761687#338761688#0(0"0(0#0#68"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUBuffer.cpp8630812320#1885"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUBuffer.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUBuffer.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUBuffer.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUBuffer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewBase.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761688.129045
@@ -9055,6 +10353,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@93"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewBase.cpp338761688#338761689#0(0"0(0#0#85"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewBase.cpp8624988256#1910"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewBase.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewBase.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewBase.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewControl.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewControl.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761689.266495
 e338761690.806609
@@ -9067,6 +10368,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@96"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewControl.cpp338761689#338761690#0(0"0(0#0#88"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewControl.cpp8607150112#1916"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewControl.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewControl.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewControl.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewControl.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewDispatch.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewDispatch.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761689.915024
@@ -9081,6 +10385,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@97"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewDispatch.cpp338761689#338761691#0(0"0(0#0#89"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewDispatch.cpp8624925888#1918"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewDispatch.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewDispatch.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUCarbonViewDispatch.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/AUCarbonViewDispatch.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUDebugDispatcher.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUDebugDispatcher.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761690.806852
 e338761690.838273
@@ -9093,6 +10400,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@85"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUDebugDispatcher.cpp338761690#338761690#0(0"0(0#0#77"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUDebugDispatcher.cpp8628909760#1903"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUDebugDispatcher.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUDebugDispatcher.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUDebugDispatcher.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/Utility/AUDebugDispatcher.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUDispatch.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUDispatch.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761690.838400
@@ -9107,6 +10417,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@77"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUDispatch.cpp338761690#338761691#0(0"0(0#0#69"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUDispatch.cpp8624998464#1888"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUDispatch.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUDispatch.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUDispatch.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUDispatch.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUEffectBase.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUEffectBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761691.373204
 e338761692.219733
@@ -9119,6 +10432,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@83"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUEffectBase.cpp338761691#338761692#0(0"0(0#0#75"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUEffectBase.cpp8617040928#1896"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUEffectBase.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUEffectBase.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUEffectBase.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUEffectBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUInputElement.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUInputElement.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761691.538728
@@ -9133,6 +10449,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@81"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUInputElement.cpp338761691#338761692#0(0"0(0#0#73"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUInputElement.cpp8628121824#1896"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUInputElement.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUInputElement.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUInputElement.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUInputElement.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUMIDIBase.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761692.188721
 e338761692.888769
@@ -9145,6 +10464,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@81"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIBase.cpp338761692#338761692#0(0"0(0#0#73"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIBase.cpp8618090912#1892"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIBase.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUMIDIBase.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUMIDIBase.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUMIDIEffectBase.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIEffectBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761692.219939
@@ -9159,6 +10481,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@87"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIEffectBase.cpp338761692#338761692#0(0"0(0#0#79"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIEffectBase.cpp8602154816#1904"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIEffectBase.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUMIDIEffectBase.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUMIDIEffectBase.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUMIDIEffectBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUOutputBase.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUOutputBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761692.888991
 e338761693.522269
@@ -9171,6 +10496,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@83"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUOutputBase.cpp338761692#338761693#0(0"0(0#0#75"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUOutputBase.cpp8619396352#1896"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUOutputBase.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUOutputBase.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUOutputBase.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/AUOutputBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUOutputElement.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUOutputElement.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761692.898154
@@ -9185,6 +10513,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@82"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUOutputElement.cpp338761692#338761693#0(0"0(0#0#74"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUOutputElement.cpp8616984800#1898"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUOutputElement.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUOutputElement.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUOutputElement.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUOutputElement.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUScopeElement.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUScopeElement.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761693.522385
 e338761694.577342
@@ -9197,6 +10528,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@81"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUScopeElement.cpp338761693#338761694#0(0"0(0#0#73"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUScopeElement.cpp8610283072#1896"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUScopeElement.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUScopeElement.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/AUScopeElement.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/AUScopeElement.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAAUParameter.o /Developer/Extras/CoreAudio/PublicUtility/CAAUParameter.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761693.820675
@@ -9211,6 +10545,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@67"Compile /Developer/Extras/CoreAudio/PublicUtility/CAAUParameter.cpp338761693#338761694#0(0"0(0#0#59"/Developer/Extras/CoreAudio/PublicUtility/CAAUParameter.cpp8618368992#1881"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/PublicUtility/CAAUParameter.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAAUParameter.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAAUParameter.o /Developer_old/Extras/CoreAudio/PublicUtility/CAAUParameter.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAAudioChannelLayout.o /Developer/Extras/CoreAudio/PublicUtility/CAAudioChannelLayout.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761693.574570
 e338761693.820564
@@ -9223,6 +10560,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@74"Compile /Developer/Extras/CoreAudio/PublicUtility/CAAudioChannelLayout.cpp338761693#338761693#0(0"0(0#0#66"/Developer/Extras/CoreAudio/PublicUtility/CAAudioChannelLayout.cpp8629076928#1895"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/PublicUtility/CAAudioChannelLayout.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAAudioChannelLayout.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAAudioChannelLayout.o /Developer_old/Extras/CoreAudio/PublicUtility/CAAudioChannelLayout.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAMutex.o /Developer/Extras/CoreAudio/PublicUtility/CAMutex.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761694.112690
@@ -9237,6 +10577,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@61"Compile /Developer/Extras/CoreAudio/PublicUtility/CAMutex.cpp338761694#338761694#0(0"0(0#0#53"/Developer/Extras/CoreAudio/PublicUtility/CAMutex.cpp8625580672#1869"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/PublicUtility/CAMutex.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAMutex.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAMutex.o /Developer_old/Extras/CoreAudio/PublicUtility/CAMutex.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAStreamBasicDescription.o /Developer/Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761694.577551
 e338761694.880311
@@ -9249,6 +10592,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@78"Compile /Developer/Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.cpp338761694#338761694#0(0"0(0#0#70"/Developer/Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.cpp8610355808#1903"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAStreamBasicDescription.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAStreamBasicDescription.o /Developer_old/Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAVectorUnit.o /Developer/Extras/CoreAudio/PublicUtility/CAVectorUnit.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761694.880646
@@ -9263,6 +10609,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@66"Compile /Developer/Extras/CoreAudio/PublicUtility/CAVectorUnit.cpp338761694#338761694#0(0"0(0#0#58"/Developer/Extras/CoreAudio/PublicUtility/CAVectorUnit.cpp8625207232#1879"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/PublicUtility/CAVectorUnit.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAVectorUnit.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CAVectorUnit.o /Developer_old/Extras/CoreAudio/PublicUtility/CAVectorUnit.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CarbonEventHandler.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/CarbonEventHandler.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761694.249608
 e338761695.645816
@@ -9275,6 +10624,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@95"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/CarbonEventHandler.cpp338761694#338761695#0(0"0(0#0#87"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/CarbonEventHandler.cpp8620683904#1914"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/CarbonEventHandler.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CarbonEventHandler.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/CarbonEventHandler.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUCarbonViewBase/CarbonEventHandler.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/ComponentBase.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/ComponentBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761694.970937
@@ -9289,6 +10641,9 @@ xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@80"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/ComponentBase.cpp338761694#338761695#0(0"0(0#0#72"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/ComponentBase.cpp8620884928#1894"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/ComponentBase.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/ComponentBase.o0#
 
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/ComponentBase.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/AUBase/ComponentBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/MusicDeviceBase.o /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338761695.375518
 e338761696.075228
@@ -9301,6 +10656,9 @@ xi386
 xc++
 xcom.apple.compilers.gcc.4_2
 lSLF07#2@86"Compile /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.cpp338761695#338761696#0(0"0(0#0#78"/Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.cpp8629718720#1902"    cd /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wunused-variable -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=O2V4WY -DJUCER_XCODE_MAC_F6D2F4CF=1 -fvisibility-inlines-hidden -gdwarf-2 -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-generated-files.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-own-target-headers.hmap -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-all-target-headers.hmap -iquote /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Tremolo-project-headers.hmap -Wreorder -F/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Debug/include -I../../JuceLibraryCode -I/Developer/Extras/CoreAudio/PublicUtility -I/Developer/Extras/CoreAudio/AudioUnits/AUPublic/Utility -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources/i386 -I/Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/DerivedSources -w -c /Developer/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.cpp -o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/MusicDeviceBase.o0#
+
+CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/MusicDeviceBase.o /Developer_old/Extras/CoreAudio/AudioUnits/AUPublic/OtherBases/MusicDeviceBase.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
 
 CCompileC build/Tremolo.build/Debug/Tremolo.build/Objects-normal/i386/PluginEditor.o /Users/Dave/Documents/Developement/git/drowaudio/plugins/Tremolo/Builds/MacOSX/../../Source/PluginEditor.cpp normal i386 c++ com.apple.compilers.gcc.4_2
 s338918357.191956
