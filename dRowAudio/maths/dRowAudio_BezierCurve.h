@@ -1,16 +1,28 @@
 /*
- *  dRowAudio_BezierCurve.h
- *  dRowAudio
- *
- *  Created by David Rowland on 22/01/2010.
- *  Copyright 2010 dRowAudio. All rights reserved.
- *
- *	The following code is adapted from:
- *	Golan Levin and Colaborators available from:
- *	http://www.flong.com/texts/code/shapers_bez/
- *	initialy adapted from BEZMATH.PS (1993)
- *	by Don Lancaster, SYNERGETICS Inc. 
- *	http://www.tinaja.com/text/bezmath.html
+  ==============================================================================
+  
+  This file is part of the dRowAudio JUCE module
+  Copyright 2004-12 by dRowAudio.
+  
+  ------------------------------------------------------------------------------
+ 
+  dRowAudio can be redistributed and/or modified under the terms of the GNU General
+  Public License (Version 2), as published by the Free Software Foundation.
+  A copy of the license is included in the module distribution, or can be found
+  online at www.gnu.org/licenses.
+  
+  dRowAudio is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+  A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+  
+  ==============================================================================
+
+  The following code is adapted from:
+  Golan Levin and Colaborators available from:
+  http://www.flong.com/texts/code/shapers_bez/
+  initialy adapted from BEZMATH.PS (1993)
+  by Don Lancaster, SYNERGETICS Inc. 
+  http://www.tinaja.com/text/bezmath.html
  */
 
 #ifndef __DROWAUDIO_BEZIERCURVE_H__

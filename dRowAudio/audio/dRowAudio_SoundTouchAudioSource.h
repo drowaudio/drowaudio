@@ -1,11 +1,22 @@
 /*
- *  SoundTouchAudioSource.h
- *  dRowAudio
- *
- *  Created by David Rowland on 10/01/2009.
- *  Copyright 2009 dRowAudio. All rights reserved.
- *
- */
+  ==============================================================================
+  
+  This file is part of the dRowAudio JUCE module
+  Copyright 2004-12 by dRowAudio.
+  
+  ------------------------------------------------------------------------------
+ 
+  dRowAudio can be redistributed and/or modified under the terms of the GNU General
+  Public License (Version 2), as published by the Free Software Foundation.
+  A copy of the license is included in the module distribution, or can be found
+  online at www.gnu.org/licenses.
+  
+  dRowAudio is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+  A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+  
+  ==============================================================================
+*/
 
 #ifndef _SOUNDTOUCHAUDIOSOURCE__H_
 #define _SOUNDTOUCHAUDIOSOURCE__H_
@@ -19,7 +30,7 @@ public:
     //==============================================================================
     SoundTouchAudioSource (PositionableAudioSource* source,
                            bool deleteSourceWhenDeleted = false,
-                           int numberOfSamplesToBuffer = 32768,
+                           int numberOfSamplesToBuffer = 2048,
                            int numberOfChannels = 2);
     
     /** Destructor. */
@@ -42,8 +53,13 @@ public:
     inline SoundTouchProcessor& getSoundTouchProcessor()        {   return soundTouchProcessor; }
     
     //==============================================================================
+    /** @internal. */
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
+    
+    /** @internal. */
     void releaseResources();
+    
+    /** @internal. */
     void getNextAudioBlock (const AudioSourceChannelInfo& info);
     
     //==============================================================================
@@ -73,10 +89,8 @@ private:
     bool isPrepared;
     
     SoundTouchProcessor soundTouchProcessor;
-    int volatile numBuffered;
     
-    int readNextBufferChunk();
-    void updateNextEffectivePlayPos();
+    void readNextBufferChunk();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchAudioSource);
 };

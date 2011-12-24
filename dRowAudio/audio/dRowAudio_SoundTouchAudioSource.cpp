@@ -1,10 +1,22 @@
 /*
- *  SoundTouchAudioSource.cpp
- *
- *  Created by David Rowland on 10/01/2009.
- *  Copyright 2009 dRowAudio. All rights reserved.
- *
- */
+  ==============================================================================
+  
+  This file is part of the dRowAudio JUCE module
+  Copyright 2004-12 by dRowAudio.
+  
+  ------------------------------------------------------------------------------
+ 
+  dRowAudio can be redistributed and/or modified under the terms of the GNU General
+  Public License (Version 2), as published by the Free Software Foundation.
+  A copy of the license is included in the module distribution, or can be found
+  online at www.gnu.org/licenses.
+  
+  dRowAudio is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+  A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+  
+  ==============================================================================
+*/
 
 BEGIN_JUCE_NAMESPACE
 
@@ -17,8 +29,7 @@ SoundTouchAudioSource::SoundTouchAudioSource(PositionableAudioSource* source_,
       numberOfChannels (numberOfChannels_),
       buffer (numberOfChannels_, 0),
       nextReadPos (0),
-      isPrepared (false),
-      numBuffered (0)
+      isPrepared (false)
 {
     jassert (source_ != nullptr);
 
@@ -33,8 +44,6 @@ SoundTouchAudioSource::~SoundTouchAudioSource()
 void SoundTouchAudioSource::setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings)
 {
     soundTouchProcessor.setPlaybackSettings (newSettings);
-
-    //setNextReadPosition (getNextReadPosition());
 }
 
 //==============================================================================
@@ -42,17 +51,15 @@ void SoundTouchAudioSource::prepareToPlay (int samplesPerBlockExpected, double s
 {
     soundTouchProcessor.initialise (numberOfChannels, sampleRate);
     
-    const int bufferSizeNeeded = 2048;
-    
     if (sampleRate_ != sampleRate
-        || bufferSizeNeeded != buffer.getNumSamples()
+        || numberOfSamplesToBuffer != buffer.getNumSamples()
         || ! isPrepared)
     {
         isPrepared = true;
         sampleRate = sampleRate_;
-        buffer.setSize (numberOfChannels, 2048);
+        buffer.setSize (numberOfChannels, numberOfSamplesToBuffer);
         
-        source->prepareToPlay (bufferSizeNeeded, sampleRate_);
+        source->prepareToPlay (numberOfSamplesToBuffer, sampleRate_);
     }
 }
 
@@ -72,71 +79,43 @@ void SoundTouchAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
 
     soundTouchProcessor.readSamples (info.buffer->getArrayOfChannels(), info.buffer->getNumChannels(),
                                      info.numSamples, info.startSample);
-    effectiveNextPlayPos += info.numSamples * soundTouchProcessor.getEffectivePlaybackRatio();
-//    numBuffered -= info.numSamples * soundTouchProcessor.getEffectivePlaybackRatio();
 
-    //updateNextEffectivePlayPos();
+    effectiveNextPlayPos += info.numSamples * soundTouchProcessor.getEffectivePlaybackRatio();
 }
 
 //==============================================================================
 void SoundTouchAudioSource::setNextReadPosition (int64 newPosition)
 {
     const ScopedLock sl (bufferStartPosLock);
-    //DBG("new: "<<(int)newPosition<<" - old: "<<(int)nextReadPos<<" - dif: "<<int(newPosition - nextReadPos));
+
     nextReadPos = effectiveNextPlayPos = newPosition;
-    //numBuffered = 0;
 
     soundTouchProcessor.clear();
-    buffer.clear();
-    //updateNextEffectivePlayPos();
 }
 
 int64 SoundTouchAudioSource::getNextReadPosition() const
 {
-    return effectiveNextPlayPos;
-//    return source->isLooping() ? nextReadPos % source->getTotalLength()
-//                               : nextReadPos;
+    return source->isLooping() ? effectiveNextPlayPos % source->getTotalLength()
+                               : effectiveNextPlayPos;
 }
 
 //==============================================================================
-int SoundTouchAudioSource::readNextBufferChunk()
-{
-    if (soundTouchProcessor.getNumReady() < numberOfSamplesToBuffer)
-    {
-        const ScopedLock sl (bufferStartPosLock);
-
-        const int maxChunkSize = 2048;
-        
-        if (source->getNextReadPosition() != nextReadPos)
-            source->setNextReadPosition (nextReadPos);
-
-        
-        AudioSourceChannelInfo info;
-        info.buffer = &buffer;
-        info.startSample = 0;
-        info.numSamples = jlimit (0, maxChunkSize, buffer.getNumSamples());
-        
-        source->getNextAudioBlock (info);
-        nextReadPos += info.numSamples;
-
-        soundTouchProcessor.writeSamples (buffer.getArrayOfChannels(), buffer.getNumChannels(), info.numSamples);
-
-        //numBuffered = soundTouchProcessor.getNumReady();
-
-        return info.numSamples;
-    }
-    
-    return 0;
-}
-
-inline void SoundTouchAudioSource::updateNextEffectivePlayPos()
+void SoundTouchAudioSource::readNextBufferChunk()
 {
     const ScopedLock sl (bufferStartPosLock);
 
-    effectiveNextPlayPos = nextReadPos - soundTouchProcessor.getNumUnprocessedSamples() - (soundTouchProcessor.getNumReady() * soundTouchProcessor.getEffectivePlaybackRatio());//nextReadPos - numBuffered;
+    if (source->getNextReadPosition() != nextReadPos)
+        source->setNextReadPosition (nextReadPos);
     
-    if (source->isLooping() && effectiveNextPlayPos > 0)
-        effectiveNextPlayPos %= source->getTotalLength();
+    AudioSourceChannelInfo info;
+    info.buffer = &buffer;
+    info.startSample = 0;
+    info.numSamples = buffer.getNumSamples();
+    
+    source->getNextAudioBlock (info);
+    nextReadPos += info.numSamples;
+
+    soundTouchProcessor.writeSamples (buffer.getArrayOfChannels(), buffer.getNumChannels(), info.numSamples);
 }
 
 END_JUCE_NAMESPACE

@@ -18,32 +18,26 @@
   ==============================================================================
 */
 
-#ifndef __SPECTROSCOPE_H_F2E587AC__
-#define __SPECTROSCOPE_H_F2E587AC__
+#ifndef __PITCHTRACKER_H__
+#define __PITCHTRACKER_H__
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 //==============================================================================
-class Spectroscope : public GraphicalComponent
+class PitchTracker : public GraphicalComponent
 {
 public:
     //==============================================================================
-	Spectroscope (int fftSizeLog2);
+	PitchTracker (int fftSizeLog2);
 	
-	~Spectroscope();
+	~PitchTracker();
 	
 	void resized();
 	
 	void paint(Graphics &g);
 	
-	//============================================
-//	void processSamples(float* samples, int numSamples);
-//	
-//	void bufferChanged(Buffer* buffer);
-		
 	//============================================	
 	/* GraphicalComponent implimentations		*/
-	 
 	void copySamples (const float* samples, int numSamples);
 
 	void timerCallback();
@@ -73,15 +67,17 @@ private:
 	bool needsRepaint;
 	HeapBlock<float> tempBlock;			
 	FifoBuffer circularBuffer;
-	
 	bool logFrequency;
-    Image scopeImage;
-    
+    Image scopeImage, tempImage;
+
+    CriticalSection lock;
+
     void renderScopeImage();
+    void renderScopeLine();
     
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectroscope);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PitchTracker);
 };
 
 
-#endif  // __SPECTROSCOPE_H_F2E587AC__
+#endif  // __PITCHTRACKER_H__

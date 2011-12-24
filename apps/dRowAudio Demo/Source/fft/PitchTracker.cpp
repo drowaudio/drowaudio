@@ -18,9 +18,9 @@
   ==============================================================================
 */
 
-#include "Sonogram.h"
+#include "PitchTracker.h"
 
-Sonogram::Sonogram (int fftSizeLog2)
+PitchTracker::PitchTracker (int fftSizeLog2)
 :	fftEngine       (fftSizeLog2),
 	needsRepaint    (true),
 	tempBlock       (fftEngine.getFFTSize()),
@@ -40,30 +40,30 @@ Sonogram::Sonogram (int fftSizeLog2)
     scopeImage.clear (scopeImage.getBounds(), Colours::black);
 }
 
-Sonogram::~Sonogram()
+PitchTracker::~PitchTracker()
 {
 }
 
-void Sonogram::resized()
+void PitchTracker::resized()
 {
     const ScopedLock sl (lock);
     scopeImage = scopeImage.rescaled (jmax (1, getWidth()), jmax (1, getHeight()));
 }
 
-void Sonogram::paint(Graphics &g)
+void PitchTracker::paint(Graphics &g)
 {
     const ScopedLock sl (lock);
     g.drawImageAt (scopeImage, 0, 0, false);
 }
 
 //============================================	
-void Sonogram::copySamples (const float* samples, int numSamples)
+void PitchTracker::copySamples (const float* samples, int numSamples)
 {
 	circularBuffer.writeSamples (samples, numSamples);
 	needToProcess = true;
 }
 
-void Sonogram::renderScopeImage()
+void PitchTracker::renderScopeImage()
 {
     if (needsRepaint)
 	{
@@ -120,13 +120,13 @@ void Sonogram::renderScopeImage()
 	}
 }
 
-void Sonogram::timerCallback()
+void PitchTracker::timerCallback()
 {
     if (needsRepaint)
         repaint();
 }
 
-void Sonogram::process()
+void PitchTracker::process()
 {
     jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
     
@@ -142,7 +142,7 @@ void Sonogram::process()
 	}
 }
 
-void Sonogram::renderScopeLine()
+void PitchTracker::renderScopeLine()
 {
     const ScopedLock sl (lock);
 
@@ -158,27 +158,34 @@ void Sonogram::renderScopeLine()
     const int x = scopeImage.getWidth() - 1;
         
     const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
-    const float yScale = (float)h / (numBins + 1);
+    const float yScale = (float)h / log10 (numBins + 1);
     const float* data = fftEngine.getMagnitudesBuffer().getData();
     
     float amp = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[0]) / 100.0f)));
-    float y2, y1 = 0;
     
+    float max = amp;
+    int maxBin = 0;
+    for (int i = 0; i < numBins; ++i)
     {
-        for (int i = 0; i < numBins; ++i)
+        amp = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
+        
+        if (amp > max)
         {
-            amp = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
-            y2 = (i + 1) * yScale;
-            
-//            g.setColour (Colour::fromHSV (amp * 0.7, 1.0f, 1.0f, 1.0f));
-            g.setColour (Colour::greyLevel (amp));
-            g.drawVerticalLine (x, h - y2, h - y1);
-//            g.drawLine (0, h - (h * y1),
-//                        1, h - (h * y2));
-
-            y1 = y2;
-        }	
+            max = amp;
+            maxBin = i;
+        }
     }
+    
+    float y1 = log10 (maxBin) * yScale;
+    //y2 = (maxBin + 1) * yScale;
+    
+    g.setColour (Colours::black);
+    g.drawVerticalLine (x, 0.0f, h);
+    
+    g.setColour (Colour::greyLevel (1.0f));
+    g.drawVerticalLine (x, h - y1 + 1, h - y1);
+    
+    
     
 //    Graphics g2 (scopeImage);
 //    g2.drawImageAt (tempImage, scopeImage.getWidth() - 1, 0);
