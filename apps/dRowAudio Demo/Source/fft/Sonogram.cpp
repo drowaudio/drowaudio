@@ -1,16 +1,16 @@
 /*
   ==============================================================================
 
-    Spectroscope.cpp
+    Sonogram.cpp
     Created: 19 Oct 2010 11:03:01pm
     Author:  David Rowland
 
   ==============================================================================
 */
 
-#include "Spectroscope.h"
+#include "Sonogram.h"
 
-Spectroscope::Spectroscope (int fftSizeLog2)
+Sonogram::Sonogram (int fftSizeLog2)
 :	fftEngine       (fftSizeLog2),
 	needsRepaint    (true),
 	tempBlock       (fftEngine.getFFTSize()),
@@ -30,28 +30,30 @@ Spectroscope::Spectroscope (int fftSizeLog2)
     scopeImage.clear (scopeImage.getBounds(), Colours::black);
 }
 
-Spectroscope::~Spectroscope()
+Sonogram::~Sonogram()
 {
 }
 
-void Spectroscope::resized()
+void Sonogram::resized()
 {
+    const ScopedLock sl (lock);
     scopeImage = scopeImage.rescaled (jmax (1, getWidth()), jmax (1, getHeight()));
 }
 
-void Spectroscope::paint(Graphics &g)
+void Sonogram::paint(Graphics &g)
 {
+    const ScopedLock sl (lock);
     g.drawImageAt (scopeImage, 0, 0, false);
 }
 
 //============================================	
-void Spectroscope::copySamples (const float* samples, int numSamples)
+void Sonogram::copySamples (const float* samples, int numSamples)
 {
 	circularBuffer.writeSamples (samples, numSamples);
 	needToProcess = true;
 }
 
-void Spectroscope::renderScopeImage()
+void Sonogram::renderScopeImage()
 {
     if (needsRepaint)
 	{
@@ -60,10 +62,10 @@ void Spectroscope::renderScopeImage()
 		const int w = getWidth();
 		const int h = getHeight();
         
-		g.setColour (Colours::black);
+		g.setColour (Colours::white);
 		g.fillAll();
         
-		g.setColour (Colours::white);
+		g.setColour (Colours::black);
 		
         const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
         const float xScale = (float)w / (numBins + 1);
@@ -108,19 +110,18 @@ void Spectroscope::renderScopeImage()
 	}
 }
 
-void Spectroscope::timerCallback()
+void Sonogram::timerCallback()
 {
 	const int magnitudeBufferSize = fftEngine.getMagnitudesBuffer().getSize();
 	float* magnitudeBuffer = fftEngine.getMagnitudesBuffer().getData();
 
-    renderScopeImage();
-
-	// fall levels here
-	for (int i = 0; i < magnitudeBufferSize; i++)
-		magnitudeBuffer[i] *= 0.707f;
+    if (needsRepaint)
+        repaint();
+    
+    //renderScopeImage();
 }
 
-void Spectroscope::process()
+void Sonogram::process()
 {
     jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
     
@@ -128,10 +129,51 @@ void Spectroscope::process()
 	{
 		circularBuffer.readSamples (tempBlock.getData(), fftEngine.getFFTSize());
 		fftEngine.performFFT (tempBlock);
-		fftEngine.updateMagnitudesIfBigger();
-		
+		fftEngine.findMagnitudes();
+
+        renderScopeLine();
+        
 		needsRepaint = true;
 	}
 }
 
+void Sonogram::renderScopeLine()
+{
+    const ScopedLock sl (lock);
 
+    scopeImage.moveImageSection (0, 0, 1, 0, scopeImage.getWidth(), scopeImage.getHeight());
+
+    //    const int w = scopeImage.getWidth();
+    const int h = scopeImage.getHeight();
+
+//    tempImage = Image (Image::RGB, 1, h, false);
+//    tempImage.clear (tempImage.getBounds(), Colours::white);
+    
+    Graphics g (scopeImage);
+    const int x = scopeImage.getWidth() - 1;
+        
+    const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
+    const float yScale = (float)h / (numBins + 1);
+    const float* data = fftEngine.getMagnitudesBuffer().getData();
+    
+    float amp = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[0]) / 100.0f)));
+    float y2, y1 = 0;
+    
+    {
+        for (int i = 0; i < numBins; ++i)
+        {
+            amp = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
+            y2 = (i + 1) * yScale;
+            
+            g.setColour (Colour::greyLevel (amp));
+            g.drawVerticalLine (x, h - y2, h - y1);
+//            g.drawLine (0, h - (h * y1),
+//                        1, h - (h * y2));
+
+            y1 = y2;
+        }	
+    }
+    
+//    Graphics g2 (scopeImage);
+//    g2.drawImageAt (tempImage, scopeImage.getWidth() - 1, 0);
+}

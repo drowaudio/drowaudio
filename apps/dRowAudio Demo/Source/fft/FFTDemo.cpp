@@ -11,18 +11,22 @@
 
 FFTDemo::FFTDemo()
     : renderThread ("FFT Render Thread"),
-      spectroscope (10)
+      spectroscope (10),
+      sonogram (10)
 {
     addAndMakeVisible (&audioOscilloscope);
     addAndMakeVisible (&spectroscope);
+    addAndMakeVisible (&sonogram);
     
     renderThread.addTimeSliceClient (&spectroscope);
+    renderThread.addTimeSliceClient (&sonogram);
     renderThread.startThread (3);
 }
 
 FFTDemo::~FFTDemo()
 {
     renderThread.removeTimeSliceClient (&spectroscope);
+    renderThread.removeTimeSliceClient (&sonogram);
     renderThread.stopThread (500);
 }
 
@@ -36,32 +40,20 @@ void FFTDemo::resized()
     const int h = getHeight();
     const int w = getWidth();
     const int m = 5;
-    const int ch = (h - (3 * m)) * 0.5;
+    const int ch = (h - (4 * m)) / 3;
     
     audioOscilloscope.setBounds (m, m, w - (2 * m), ch);
     spectroscope.setBounds (m, ch + (2 * m), w - (2 * m), ch);
+    sonogram.setBounds (m, (2 * ch) + (3 * m), w - (2 * m), ch);
 }
 
 //==============================================================================
-void FFTDemo::audioDeviceIOCallback (const float** inputChannelData,
-                                     int numInputChannels,
-                                     float** outputChannelData,
-                                     int numOutputChannels,
-                                     int numSamples)
+void FFTDemo::processBlock (const float* inputChannelData, int numSamples)
 {
-    if (outputChannelData[0] != nullptr)
+    if (inputChannelData != nullptr)
     {
-        audioOscilloscope.processBlock (outputChannelData[0], numSamples);
-        spectroscope.copySamples (outputChannelData[0], numSamples);
+        audioOscilloscope.processBlock (inputChannelData, numSamples);
+        spectroscope.copySamples (inputChannelData, numSamples);
+        sonogram.copySamples (inputChannelData, numSamples);
     }
-}
-
-void FFTDemo::audioDeviceAboutToStart (AudioIODevice* device)
-{
-    DBG ("FFTDemo::audioDeviceAboutToStart");
-}
-
-void FFTDemo::audioDeviceStopped()
-{
-    DBG ("FFTDemo::audioDeviceStopped");
 }

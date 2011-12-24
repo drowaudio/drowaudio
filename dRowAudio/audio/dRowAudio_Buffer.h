@@ -52,14 +52,14 @@ public:
 		This method performs no bounds checking so if the index is out of the internal array
 		bounds will contain garbage.
 	 */
-	inline float operator[](const int index)        {	return buffer[index];   }
+	inline float operator[](const int index)        {	return buffer[index];       }
 	
 	/** Returns a reference to a value from the buffer.
 		This method returns a reference to an element from the buffer so can therefore be changed.
 		This method also performs no bounds checking so if the index is out of the internal array
 		bounds will contain garbage.
 	 */
-	inline float& getReference (const int index)    {	return buffer[index];   }
+	inline float& getReference (const int index)    {	return buffer[index];       }
 	
 	/** Zeros the buffer's contents.
 	 */
@@ -68,10 +68,10 @@ public:
 	/** Returns a pointer to the beggining of the data.
 		Don't hang on to this pointer as it may change if the buffer is internally re-allocated.
 	 */
-	inline float* getData()                         {	return (float*) buffer;	}
+	inline float* getData()                         {	return buffer.getData();	}
 	
 	/** Returns the current size of the buffer. */
-	inline int getSize()                            {	return bufferSize;	}
+	inline int getSize()                            {	return bufferSize;          }
 	
 	/**	Copies the contents of a section of memory into the internal buffer.
 	 
@@ -138,10 +138,10 @@ public:
 	
 private:
     //==============================================================================
-	HeapBlock <float> buffer;
+	HeapBlock<float> buffer;
 	int bufferSize;
 	
-    ListenerList <Listener> listeners;
+    ListenerList<Listener> listeners;
 	
     //==============================================================================
 	JUCE_LEAK_DETECTOR (Buffer);

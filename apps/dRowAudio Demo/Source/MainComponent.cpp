@@ -146,11 +146,7 @@ void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
                                              numOutputChannels,
                                              numSamples);
     
-    fftDemo->audioDeviceIOCallback (inputChannelData,
-                                    numInputChannels,
-                                    outputChannelData,
-                                    numOutputChannels,
-                                    numSamples);
+    fftDemo->processBlock (outputChannelData[0], numSamples);
     
     meterL.copySamples (outputChannelData[0], numSamples);
     
@@ -161,11 +157,9 @@ void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
 void MainComponent::audioDeviceAboutToStart (AudioIODevice* device)
 {
     audioSourcePlayer.audioDeviceAboutToStart (device);
-    fftDemo->audioDeviceAboutToStart (device);
 }
 
 void MainComponent::audioDeviceStopped()
 {
     audioSourcePlayer.audioDeviceStopped();
-    fftDemo->audioDeviceStopped();
 }

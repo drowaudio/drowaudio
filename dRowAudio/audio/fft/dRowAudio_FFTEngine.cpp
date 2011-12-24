@@ -47,10 +47,8 @@ void FFTEngine::performFFT (float* samples)
 void FFTEngine::findMagnitudes (Buffer* bufferToFill)
 {
 	// local copies for speed
-	float* magBuf;
-	if (bufferToFill == nullptr)
-		magBuf = magnitutes.getData();
-	else
+	float* magBuf = magnitutes.getData();
+	if (bufferToFill != nullptr)
 		magBuf = bufferToFill->getData();
 
 	const DSPSplitComplex &fftSplit = fftOperation.getFFTBuffer();

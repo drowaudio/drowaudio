@@ -12,10 +12,10 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "Spectroscope.h"
+#include "Sonogram.h"
 
 //==============================================================================
-class FFTDemo : public Component,
-                public AudioIODeviceCallback
+class FFTDemo : public Component
 {
 public:
  	//==============================================================================
@@ -28,20 +28,14 @@ public:
     void resized();
     
 	//==============================================================================
-    void audioDeviceIOCallback (const float** inputChannelData,
-                                int numInputChannels,
-                                float** outputChannelData,
-                                int numOutputChannels,
-                                int numSamples);
-    void audioDeviceAboutToStart (AudioIODevice* device);
-    void audioDeviceStopped();
+    void processBlock (const float* inputChannelData, int numSamples);
     
 private:
 	//==============================================================================
     TimeSliceThread renderThread;
     AudioOscilloscope audioOscilloscope;
     Spectroscope spectroscope;
-    
+    Sonogram sonogram;
 	//==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTDemo);
 };

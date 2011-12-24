@@ -1,39 +1,33 @@
 /*
   ==============================================================================
 
-    SpectroScope.h
+    Sonogram.h
     Created: 19 Oct 2010 11:03:01pm
     Author:  David Rowland
 
   ==============================================================================
 */
 
-#ifndef __SPECTROSCOPE_H_F2E587AC__
-#define __SPECTROSCOPE_H_F2E587AC__
+#ifndef __SONOGRAM_H_F2E587AC__
+#define __SONOGRAM_H_F2E587AC__
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 //==============================================================================
-class Spectroscope : public GraphicalComponent
+class Sonogram : public GraphicalComponent
 {
 public:
     //==============================================================================
-	Spectroscope (int fftSizeLog2);
+	Sonogram (int fftSizeLog2);
 	
-	~Spectroscope();
+	~Sonogram();
 	
 	void resized();
 	
 	void paint(Graphics &g);
 	
-	//============================================
-//	void processSamples(float* samples, int numSamples);
-//	
-//	void bufferChanged(Buffer* buffer);
-		
 	//============================================	
 	/* GraphicalComponent implimentations		*/
-	 
 	void copySamples (const float* samples, int numSamples);
 
 	void timerCallback();
@@ -63,15 +57,17 @@ private:
 	bool needsRepaint;
 	HeapBlock<float> tempBlock;			
 	FifoBuffer circularBuffer;
-	
 	bool logFrequency;
-    Image scopeImage;
-    
+    Image scopeImage, tempImage;
+
+    CriticalSection lock;
+
     void renderScopeImage();
+    void renderScopeLine();
     
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectroscope);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram);
 };
 
 
-#endif  // __SPECTROSCOPE_H_F2E587AC__
+#endif  // __SONOGRAM_H_F2E587AC__

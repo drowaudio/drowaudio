@@ -20,7 +20,7 @@ public:
 	FFTProperties (int fftSizeLog2_)
         : fftSizeLog2 (fftSizeLog2_),
 		  fftSize (1L << fftSizeLog2),
-		  fftSizeMinus1 (fftSize-1),
+		  fftSizeMinus1 (fftSize - 1),
 		  fftSizeHalved (fftSize >> 1),
 		  oneOverFFTSizeMinus1 (1.0 / fftSizeMinus1),
 		  oneOverFFTSize (1.0 / fftSize)

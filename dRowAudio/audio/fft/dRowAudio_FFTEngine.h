@@ -45,8 +45,8 @@ public:
 	void setWindowType (Window::WindowType type);
 	
 	int getFFTSize()                        {	return getFFTProperties().fftSize;      }
-	Buffer* getMagnitudesBuffer()           {	return &magnitutes;                     }
-	Window* getWindow()                     {	return &windowProperties;               }
+	Buffer& getMagnitudesBuffer()           {	return magnitutes;                     }
+	Window& getWindow()                     {	return windowProperties;               }
 			
 	const FFTProperties& getFFTProperties()	{	return fftOperation.getFFTProperties();	}
 

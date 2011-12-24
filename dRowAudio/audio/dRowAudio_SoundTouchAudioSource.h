@@ -17,10 +17,10 @@ class SoundTouchAudioSource :   public PositionableAudioSource
 {
 public:
     //==============================================================================
-    SoundTouchAudioSource(PositionableAudioSource* source,
-                          bool deleteSourceWhenDeleted = false,
-                          int numberOfSamplesToBuffer = 32768,
-                          int numberOfChannels = 2);
+    SoundTouchAudioSource (PositionableAudioSource* source,
+                           bool deleteSourceWhenDeleted = false,
+                           int numberOfSamplesToBuffer = 32768,
+                           int numberOfChannels = 2);
     
     /** Destructor. */
     ~SoundTouchAudioSource();
@@ -68,14 +68,14 @@ private:
     int numberOfSamplesToBuffer, numberOfChannels;
     AudioSampleBuffer buffer;
     CriticalSection bufferStartPosLock;
-    int64 volatile nextPlayPos, nextReadPos, effectiveNextPlayPos;
+    int64 volatile nextReadPos, effectiveNextPlayPos;
     double volatile sampleRate;
     bool isPrepared;
     
     SoundTouchProcessor soundTouchProcessor;
     int volatile numBuffered;
     
-    bool readNextBufferChunk();
+    int readNextBufferChunk();
     void updateNextEffectivePlayPos();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchAudioSource);

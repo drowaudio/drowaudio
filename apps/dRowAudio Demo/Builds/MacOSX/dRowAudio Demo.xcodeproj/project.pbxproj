@@ -16,6 +16,7 @@
 		444D326046F03770E9AEB643 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175937C6192FB31D09EBC71C /* Cocoa.framework */; };
 		53BF8FC087AD23FCFDFAC5F2 /* TransportComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C9C3247900045186C676D /* TransportComponent.cpp */; };
 		55161EB114A3702600445ECE /* Spectroscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55161EAF14A3702600445ECE /* Spectroscope.cpp */; };
+		551622DC14A5045200445ECE /* Sonogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551622DA14A5045200445ECE /* Sonogram.cpp */; };
 		55A6EAD114A1361500677C51 /* ConnectionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EAC914A1361500677C51 /* ConnectionComponent.cpp */; };
 		55A6EAD214A1361500677C51 /* LocalDirectoryListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EACB14A1361500677C51 /* LocalDirectoryListBox.cpp */; };
 		55A6EAD314A1361500677C51 /* NetworkDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EACD14A1361500677C51 /* NetworkDemo.cpp */; };
@@ -58,6 +59,14 @@
 		4FEA7CC34128B23C8DA2884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		55161EAF14A3702600445ECE /* Spectroscope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Spectroscope.cpp; path = ../../Source/fft/Spectroscope.cpp; sourceTree = SOURCE_ROOT; };
 		55161EB014A3702600445ECE /* Spectroscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spectroscope.h; path = ../../Source/fft/Spectroscope.h; sourceTree = SOURCE_ROOT; };
+		551621A814A4DAF900445ECE /* dRowAudio_SoundTouchAudioSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_SoundTouchAudioSource.cpp; path = ../../../../dRowAudio/audio/dRowAudio_SoundTouchAudioSource.cpp; sourceTree = SOURCE_ROOT; };
+		551621A914A4DAF900445ECE /* dRowAudio_SoundTouchAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_SoundTouchAudioSource.h; path = ../../../../dRowAudio/audio/dRowAudio_SoundTouchAudioSource.h; sourceTree = SOURCE_ROOT; };
+		551621AA14A4DAF900445ECE /* dRowAudio_SoundTouchProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_SoundTouchProcessor.cpp; path = ../../../../dRowAudio/audio/dRowAudio_SoundTouchProcessor.cpp; sourceTree = SOURCE_ROOT; };
+		551621AB14A4DAF900445ECE /* dRowAudio_SoundTouchProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_SoundTouchProcessor.h; path = ../../../../dRowAudio/audio/dRowAudio_SoundTouchProcessor.h; sourceTree = SOURCE_ROOT; };
+		551621BB14A4DC4B00445ECE /* dRowAudio_AudioFilePlayerExt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_AudioFilePlayerExt.cpp; path = ../../../../dRowAudio/audio/dRowAudio_AudioFilePlayerExt.cpp; sourceTree = SOURCE_ROOT; };
+		551621BC14A4DC4B00445ECE /* dRowAudio_AudioFilePlayerExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_AudioFilePlayerExt.h; path = ../../../../dRowAudio/audio/dRowAudio_AudioFilePlayerExt.h; sourceTree = SOURCE_ROOT; };
+		551622DA14A5045200445ECE /* Sonogram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sonogram.cpp; path = ../../Source/fft/Sonogram.cpp; sourceTree = SOURCE_ROOT; };
+		551622DB14A5045200445ECE /* Sonogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sonogram.h; path = ../../Source/fft/Sonogram.h; sourceTree = SOURCE_ROOT; };
 		55A6EAC914A1361500677C51 /* ConnectionComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConnectionComponent.cpp; sourceTree = "<group>"; };
 		55A6EACA14A1361500677C51 /* ConnectionComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionComponent.h; sourceTree = "<group>"; };
 		55A6EACB14A1361500677C51 /* LocalDirectoryListBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalDirectoryListBox.cpp; sourceTree = "<group>"; };
@@ -155,6 +164,7 @@
 		3B46AD8AEA77BF5B6A1EB608 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				551621A414A4DAEC00445ECE /* soundtouch */,
 				6C972B7B6DE382DBB2B43B73 /* Main.cpp */,
 				939FC30566B1030FB01BD689 /* MainWindow.h */,
 				0CA9296C157F338168B6437C /* MainWindow.cpp */,
@@ -182,6 +192,19 @@
 			name = "dRowAudio Demo";
 			sourceTree = "<group>";
 		};
+		551621A414A4DAEC00445ECE /* soundtouch */ = {
+			isa = PBXGroup;
+			children = (
+				551621BC14A4DC4B00445ECE /* dRowAudio_AudioFilePlayerExt.h */,
+				551621BB14A4DC4B00445ECE /* dRowAudio_AudioFilePlayerExt.cpp */,
+				551621A914A4DAF900445ECE /* dRowAudio_SoundTouchAudioSource.h */,
+				551621A814A4DAF900445ECE /* dRowAudio_SoundTouchAudioSource.cpp */,
+				551621AB14A4DAF900445ECE /* dRowAudio_SoundTouchProcessor.h */,
+				551621AA14A4DAF900445ECE /* dRowAudio_SoundTouchProcessor.cpp */,
+			);
+			name = soundtouch;
+			sourceTree = "<group>";
+		};
 		55A6EAC814A1361500677C51 /* network */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +228,8 @@
 				55A6EB9614A2373100677C51 /* FFTDemo.cpp */,
 				55161EB014A3702600445ECE /* Spectroscope.h */,
 				55161EAF14A3702600445ECE /* Spectroscope.cpp */,
+				551622DB14A5045200445ECE /* Sonogram.h */,
+				551622DA14A5045200445ECE /* Sonogram.cpp */,
 				55A6EBB614A23A1000677C51 /* fft */,
 			);
 			name = fft;
@@ -358,6 +383,7 @@
 				55A6EB9714A2373100677C51 /* FFTDemo.cpp in Sources */,
 				55A6EC5314A2B61E00677C51 /* dRowAudio.mm in Sources */,
 				55161EB114A3702600445ECE /* Spectroscope.cpp in Sources */,
+				551622DC14A5045200445ECE /* Sonogram.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
