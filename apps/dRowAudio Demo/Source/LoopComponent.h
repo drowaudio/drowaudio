@@ -78,7 +78,7 @@ class LoopComponent :   public Component,
 {
 public:    
     //==============================================================================
-    LoopComponent (AudioFilePlayer& audioFilePlayer);
+    LoopComponent (AudioFilePlayerExt& audioFilePlayer);
     
     ~LoopComponent();
     
@@ -90,11 +90,11 @@ public:
 
     void fileChanged (AudioFilePlayer* player);
     
-    void loopBetweenTimesChanged (AudioFilePlayer* player);
+    void audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode);
         
 private:
     //==============================================================================
-    AudioFilePlayer& audioFilePlayer;
+    AudioFilePlayerExt& audioFilePlayer;
     
     LoopMarker marker1, marker2;
     

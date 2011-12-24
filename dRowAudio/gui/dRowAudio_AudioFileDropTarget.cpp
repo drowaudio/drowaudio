@@ -10,7 +10,7 @@
 
 BEGIN_JUCE_NAMESPACE
 
-AudioFileDropTarget::AudioFileDropTarget (AudioFilePlayer* audioFilePlayerToControl,
+AudioFileDropTarget::AudioFileDropTarget (AudioFilePlayerExt* audioFilePlayerToControl,
                                           Component* componentToAttachTo)
     :  audioFilePlayer (audioFilePlayerToControl),
        attachedComponent (componentToAttachTo),

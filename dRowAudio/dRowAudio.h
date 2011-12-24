@@ -29,7 +29,7 @@ BEGIN_JUCE_NAMESPACE
 
 // Audio
 #ifndef _DROWAUDIO_AUDIOFILEPLAYER__H_
-    //#include "audio/dRowAudio_AudioFilePlayer.h"
+    #include "audio/dRowAudio_AudioFilePlayer.h"
 #endif
 
 #ifndef _DROWAUDIO_AUDIOFILEPLAYEREXT__H_

@@ -10,7 +10,7 @@
 
 #include "TransportComponent.h"
 
-TransportComponent::TransportComponent (AudioFilePlayer& audioFilePlayer_)
+TransportComponent::TransportComponent (AudioFilePlayerExt& audioFilePlayer_)
     : audioFilePlayer (audioFilePlayer_)
 {
     for (int i = 0; i < numButtons; i++)

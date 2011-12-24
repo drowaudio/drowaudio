@@ -21,7 +21,7 @@ class AudioPlaybackDemo :   public Component,
 {
 public:    
     //==============================================================================
-    AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer);
+    AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer);
     
     ~AudioPlaybackDemo();
     
@@ -53,7 +53,7 @@ public:
 
 private:
     //==============================================================================
-    AudioFilePlayer& audioFilePlayer;
+    AudioFilePlayerExt& audioFilePlayer;
     
     MultipleAudioThumbnailCache thumbnailCache;
     ColouredAudioThumbnail audioThumbnail;

@@ -31,7 +31,7 @@ public:
      
         @see AudioFilePlayer
      */
-    AudioFileDropTarget (AudioFilePlayer* audioFilePlayerToControl,
+    AudioFileDropTarget (AudioFilePlayerExt* audioFilePlayerToControl,
                          Component* componentToAttachTo = nullptr);
     
     /** Destructor.
@@ -85,7 +85,7 @@ public:
 
 private:
     
-    AudioFilePlayer* audioFilePlayer;
+    AudioFilePlayerExt* audioFilePlayer;
     SafePointer<Component> attachedComponent;
     bool dragTested, interestedInDrag;
     Colour bezelColour;

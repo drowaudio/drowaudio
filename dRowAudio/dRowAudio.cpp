@@ -34,7 +34,7 @@
 #include "dRowAudio.h"
 
 // Audio
-//#include "audio/dRowAudio_AudioFilePlayer.cpp"
+#include "audio/dRowAudio_AudioFilePlayer.cpp"
 #include "audio/dRowAudio_AudioFilePlayerExt.cpp"
 
 #include "audio/soundtouch/SoundTouch_Source.cpp"

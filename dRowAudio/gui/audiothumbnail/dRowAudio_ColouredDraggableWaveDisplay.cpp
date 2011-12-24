@@ -57,7 +57,7 @@ void ColouredDraggableWaveDisplay::resized()
 //====================================================================================
 void ColouredDraggableWaveDisplay::newFileLoaded()
 {
-	File newFile (filePlayer->getPath());
+	File newFile (filePlayer->getFile());
     
 	if (newFile.existsAsFile())
 		thumbnailView->setSource (new FileInputSource (newFile));

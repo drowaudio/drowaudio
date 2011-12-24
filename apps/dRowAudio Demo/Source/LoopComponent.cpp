@@ -11,7 +11,7 @@
 #include "LoopComponent.h"
 #include "AudioPlaybackDemo.h"
 
-LoopComponent::LoopComponent (AudioFilePlayer& audioFilePlayer_)
+LoopComponent::LoopComponent (AudioFilePlayerExt& audioFilePlayer_)
     : audioFilePlayer (audioFilePlayer_)
 {
     setInterceptsMouseClicks (false, true);
@@ -77,7 +77,7 @@ void LoopComponent::componentMovedOrResized (Component& component, bool wasMoved
     }
 }
 
-void LoopComponent::loopBetweenTimesChanged (AudioFilePlayer* player)
+void LoopComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode)
 {
     repaint();
 }

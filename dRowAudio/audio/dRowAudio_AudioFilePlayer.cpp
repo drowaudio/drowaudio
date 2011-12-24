@@ -63,19 +63,19 @@ void AudioFilePlayer::pause()
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
-bool AudioFilePlayer::setFile (const String& path)
+bool AudioFilePlayer::setFile (const File& newFile)
 {
     currentMemoryBlock = nullptr;
     memoryInputStream = nullptr;
     
-    filePath = path;
+    file = newFile;
     
-    return setSourceWithReader (formatManager->createReaderFor (File (path)));
+    return setSourceWithReader (formatManager->createReaderFor (file));
 }
 
 bool AudioFilePlayer::setMemoryBlock (MemoryBlock* inputBlock)
 {
-    filePath = String::empty;
+    file = File::nonexistent;
     currentMemoryBlock = inputBlock;
 
     if (currentMemoryBlock != nullptr)
@@ -85,16 +85,6 @@ bool AudioFilePlayer::setMemoryBlock (MemoryBlock* inputBlock)
 
     return setSourceWithReader (formatManager->createReaderFor (memoryInputStream));
 }
-
-#if JUCE_IOS
-bool AudioFilePlayer::setAVAssetURL (String avAssetNSURLAsString)
-{
-    filePath = avAssetNSURLAsString;
-	AudioFormatReader* reader = AVAssetAudioFormat().createReaderFor (avAssetNSURLAsString);
-    
-    return setSourceWithReader (reader);
-}
-#endif
 
 MemoryInputStream* AudioFilePlayer::getInputStream()
 {   
@@ -109,7 +99,7 @@ bool AudioFilePlayer::sourceIsMemoryBlock()
     return currentMemoryBlock != nullptr;
 }
 
-void AudioFilePlayer::setAudioFormatManager(AudioFormatManager* newManager,  bool deleteWhenNotNeeded)
+void AudioFilePlayer::setAudioFormatManager (AudioFormatManager* newManager,  bool deleteWhenNotNeeded)
 {
     OptionalScopedPointer<AudioFormatManager> newFormatManager (newManager, deleteWhenNotNeeded);
 	formatManager = newFormatManager;
@@ -143,9 +133,7 @@ void AudioFilePlayer::setLooping (bool shouldLoop)
 void AudioFilePlayer::changeListenerCallback (ChangeBroadcaster* source)
 {
     if (source == audioTransportSource)
-    {
         listeners.call (&Listener::playerStoppedOrStarted, this);
-    }
 }
 
 //==============================================================================
@@ -184,8 +172,6 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 		return true;
 	}
 	
-    setLibraryEntry (ValueTree::invalid);
-
     audioTransportSource->sendChangeMessage();
     listeners.call (&Listener::fileChanged, this);
 

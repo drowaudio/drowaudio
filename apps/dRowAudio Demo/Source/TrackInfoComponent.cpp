@@ -10,7 +10,7 @@
 
 #include "TrackInfoComponent.h"
 
-TrackInfoComponent::TrackInfoComponent (AudioFilePlayer& audioFilePlayer_)
+TrackInfoComponent::TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer_)
     : audioFilePlayer (audioFilePlayer_)
 {
     audioFilePlayer.addListener (this);
@@ -103,18 +103,21 @@ void TrackInfoComponent::fileChanged (AudioFilePlayer* player)
 {
     if (player == &audioFilePlayer)
     {
-        playbackSettingsChanged (player);
+        audioFilePlayerSettingChanged (player, AudioFilePlayerExt::SoundTouchSetting);
         
         repaint();
     }
 }
 
-void TrackInfoComponent::playbackSettingsChanged (AudioFilePlayer* player)
+void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode)
 {
-    ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
-    double bpm = trackInfo[MusicColumns::columnNames[MusicColumns::BPM]].toString().getDoubleValue();
-    bpm *= audioFilePlayer.getSoundTouchAudioSource()->getSoundTouchProcessor().getEffectivePlaybackRatio();
-    bpmLabel.setText (String (bpm, 2), false);
+    if (settingCode == AudioFilePlayerExt::SoundTouchSetting)
+    {
+        ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
+        double bpm = trackInfo[MusicColumns::columnNames[MusicColumns::BPM]].toString().getDoubleValue();
+        bpm *= audioFilePlayer.getSoundTouchAudioSource()->getSoundTouchProcessor().getEffectivePlaybackRatio();
+        bpmLabel.setText (String (bpm, 2), false);
+    }
 }
 
 void TrackInfoComponent::timerCallback()

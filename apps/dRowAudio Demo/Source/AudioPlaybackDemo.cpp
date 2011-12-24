@@ -65,7 +65,7 @@ static void drawBevel (Graphics& g, Rectangle<float> innerBevelBounds, float bev
     g.restoreState();
 }
 
-AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayer& audioFilePlayer_)
+AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_)
     : audioFilePlayer (audioFilePlayer_),
       thumbnailCache (10),
       audioThumbnail (128,

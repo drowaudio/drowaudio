@@ -126,7 +126,7 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
                 waveformImage.clear (waveformImage.getBounds(), Colours::black);
                 lastTimeDrawn = 0.0;
                 
-                File newFile (filePlayer->getPath());
+                File newFile (filePlayer->getFile());
                 if (newFile.existsAsFile()) 
                 {
                     FileInputSource* fileInputSource = new FileInputSource (newFile);

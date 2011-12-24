@@ -148,7 +148,7 @@ void ColouredPositionableWaveDisplay::fileChanged (AudioFilePlayer *player)
             lastTimeDrawn = 0.0;
             triggerAsyncUpdate();
 
-            File newFile (filePlayer->getPath());
+            File newFile (filePlayer->getFile());
             if (newFile.existsAsFile()) 
             {
                 FileInputSource* fileInputSource = new FileInputSource (newFile);
@@ -173,7 +173,7 @@ void ColouredPositionableWaveDisplay::mouseDown(const MouseEvent &e)
 	setMouseCursor (MouseCursor::IBeamCursor);
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->setPositionIgnoringLoop (position);
+	filePlayer->setPosition (position);
     
 	triggerAsyncUpdate();		
 }
@@ -188,7 +188,7 @@ void ColouredPositionableWaveDisplay::mouseDrag(const MouseEvent &e)
 	currentMouseX = e.x;
 	
 	double position = currentXScale * currentMouseX;
-	filePlayer->setPositionIgnoringLoop (position);
+	filePlayer->setPosition (position);
 }
 
 //==============================================================================	

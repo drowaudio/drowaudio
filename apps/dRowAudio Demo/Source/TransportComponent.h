@@ -19,7 +19,7 @@ class TransportComponent :  public Component,
 {
 public:    
     //==============================================================================
-    TransportComponent (AudioFilePlayer& audioFilePlayer);
+    TransportComponent (AudioFilePlayerExt& audioFilePlayer);
     
     ~TransportComponent();
     
@@ -38,7 +38,7 @@ public:
     
 private:
     //==============================================================================
-    AudioFilePlayer& audioFilePlayer;
+    AudioFilePlayerExt& audioFilePlayer;
     OwnedArray<TextButton> buttons;    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TransportComponent);

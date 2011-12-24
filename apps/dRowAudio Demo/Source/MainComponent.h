@@ -45,7 +45,7 @@ private:
     //==============================================================================
     AudioDeviceManager audioDeviceManager;
     AudioSourcePlayer audioSourcePlayer;
-    AudioFilePlayer audioFilePlayer;
+    AudioFilePlayerExt audioFilePlayer;
 
     TrackInfoComponent trackInfoComponent;
     AudioFileDropTarget dropTarget;
