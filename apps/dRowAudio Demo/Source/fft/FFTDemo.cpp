@@ -11,8 +11,8 @@
 
 FFTDemo::FFTDemo()
     : renderThread ("FFT Render Thread"),
-      spectroscope (10),
-      sonogram (10)
+      spectroscope (11),
+      sonogram (11)
 {
     addAndMakeVisible (&audioOscilloscope);
     addAndMakeVisible (&spectroscope);

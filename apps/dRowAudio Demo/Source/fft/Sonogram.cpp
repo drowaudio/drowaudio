@@ -165,6 +165,7 @@ void Sonogram::renderScopeLine()
             amp = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
             y2 = (i + 1) * yScale;
             
+//            g.setColour (Colour::fromHSV (amp * 0.7, 1.0f, 1.0f, 1.0f));
             g.setColour (Colour::greyLevel (amp));
             g.drawVerticalLine (x, h - y2, h - y1);
 //            g.drawLine (0, h - (h * y1),
