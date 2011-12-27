@@ -150,7 +150,7 @@ namespace BezierCurve
 		The Bezier curve calculated will try to go through both the given points within reason.
 		All points have to be within a unit square ie. 0 < x < 1
 	 */
-	static float cubicBezierNearlyThroughTwoPoints(float x, float a, float b, float c, float d)
+	static float cubicBezierNearlyThroughTwoPoints (float x, float a, float b, float c, float d)
 	{
 		
 		float y = 0;

@@ -52,6 +52,14 @@ public:
 	/** Destructor. */
 	~AudioThumbnailImage ();
 	
+    /** Sets the colour to use for the background.
+     */
+    void setBackgroundColour (Colour newBackgroundColour);
+    
+    /** Sets the colour to use for the waveform.
+     */
+    void setWaveformColour (Colour newWaveformColour);
+    
 	//====================================================================================
     /** Returns the whole waveform image.
      */
@@ -72,6 +80,10 @@ public:
     /** Returns true if the Image has finished rendering;
      */
     bool hasFinishedLoading()               {   return renderComplete;  }
+    
+    /** Returns the number of sourceSamplesPerThumbnailSample if set in the constructor.
+     */
+    int getNumSourceSamplesPerThumbnailSamples()    {   return sourceSamplesPerThumbnailSample; }
     
 	//====================================================================================
 	/** @internal */
@@ -135,18 +147,22 @@ private:
 	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
 	
 	// thumbnail classes
+    CriticalSection lock;
     TimeSliceThread& backgroundThread;
 	OptionalScopedPointer<AudioThumbnailCache> audioThumbnailCache;
 	OptionalScopedPointer<AudioThumbnail> audioThumbnail;
     int sourceSamplesPerThumbnailSample;
 	
 	Image waveformImage, tempSectionImage;
-	
+    Colour backgroundColour;
+    Colour waveformColour;
+    
     double lastTimeDrawn, resolution;
     bool renderComplete;
     
     ListenerList <Listener> listeners;
 
+	//==============================================================================	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioThumbnailImage);
 };
 

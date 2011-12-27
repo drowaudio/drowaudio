@@ -41,7 +41,7 @@ public:
 	enum
 	{
 		waveformUpdated,
-		waveformResizing
+		waveformLoading
 	};
 	
 	/** Creates the display.
@@ -55,12 +55,27 @@ public:
 	/** Destructor.
      */
 	~PositionableWaveDisplay ();
-	
+
+	/** Sets whether or not the transport cursor should be displayed;
+     */
+    void setCursorDisplayed (bool shoudldDisplayCursor);
+    
+    /** Sets the colour to use for the background.
+     */
+    void setBackgroundColour (Colour newBackgroundColour);
+    
+    /** Sets the colour to use for the waveform.
+     */
+    void setWaveformColour (Colour newWaveformColour);
+        
 	//====================================================================================
+	/** @internal */
     void imageChanged (AudioThumbnailImage* audioThumbnailImage);
 
+	/** @internal */
     void imageUpdated (AudioThumbnailImage* audioThumbnailImage);
     
+	/** @internal */
     void imageFinished (AudioThumbnailImage* audioThumbnailImage);
     
 	//====================================================================================
@@ -78,9 +93,28 @@ public:
 //	void fileChanged (FilteringAudioFilePlayer *player);
 		
 	//====================================================================================
-	/// Sets the current horizontal zoom
-	void setZoomFactor (float newZoomFactor);
-	
+	/** Sets the current horizontal zoom.
+        1.0 displays the whole waveform, 0.5 will show half etc. 
+     */
+	void setZoomRatio (double newZoomRatio);
+
+    /** Sets an offset used to start the waveform at a faction of the display.
+        A value of 0.5 will show the waveform starting at the halfway point etc.
+     */
+	void setStartOffsetRatio (double newStartOffsetRatio);
+    
+    /** Sets a new vertical zoom ratio.
+     */
+    void setVerticalZoomRatio (double newVerticalZoomRatio);
+    
+//    /** Sets the deisred length of the display.
+//     */
+//    void setDisplayLength (double lengthInSeconds);
+//    
+//    /** Sets the time at which the thumbnail should start.
+//     */
+//    void setStartOffset (double startOffsetInSeconds);
+    
 	//==============================================================================
 	void mouseDown(const MouseEvent &e);
 	
@@ -89,22 +123,26 @@ public:
 	void mouseDrag(const MouseEvent &e);
 		
 private:
-	
 	//==============================================================================
 	void refreshWaveform();
 	
 	double fileLength, oneOverFileLength, currentSampleRate;
+    double zoomRatio, startOffsetRatio, verticalZoomRatio;
 	
-    AudioThumbnailImage& audioThumbnailImage;	
+    AudioThumbnailImage& audioThumbnailImage;
+    Colour backgroundColour;
+    Colour waveformColour;
     AudioFilePlayer* audioFilePlayer;
 	Image cachedImage, cursorImage;
 	
 	StateVariable<int> transportLineXCoord;
 	float currentXScale;
-	
+	bool showTransportCursor;
+    
 	bool interestedInDrag;
 	double currentMouseX;
 	
+	//==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PositionableWaveDisplay);
 };
 

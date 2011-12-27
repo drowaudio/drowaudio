@@ -32,6 +32,8 @@ AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer* sourceToBeUsed,
       audioThumbnailCache   (cacheToUse, (cacheToUse == nullptr) ? true : false),
       audioThumbnail        (thumbnailToUse, (thumbnailToUse == nullptr) ? true : false),
       sourceSamplesPerThumbnailSample (sourceSamplesPerThumbnailSample_),
+      backgroundColour      (Colours::black),
+      waveformColour        (Colours::green),
       lastTimeDrawn         (0.0),
       resolution            (3.0),
       renderComplete        (true)
@@ -76,6 +78,18 @@ AudioThumbnailImage::~AudioThumbnailImage()
     stopTimer ();
 }
 
+void AudioThumbnailImage::setBackgroundColour (Colour newBackgroundColour)
+{
+    backgroundColour = newBackgroundColour;
+    setResolution (resolution);
+}
+
+void AudioThumbnailImage::setWaveformColour (Colour newWaveformColour)
+{
+    waveformColour = newWaveformColour;
+    setResolution (resolution);
+}
+
 //====================================================================================
 Image AudioThumbnailImage::getImageAtTime (double startTime, double duration)
 {
@@ -89,7 +103,7 @@ void AudioThumbnailImage::setResolution (double newResolution)
 {
     resolution = newResolution;
     
-    waveformImage.clear (waveformImage.getBounds(), Colours::black);
+    waveformImage.clear (waveformImage.getBounds(), backgroundColour);
     lastTimeDrawn = 0.0;
     refreshWaveform();
 }
@@ -97,6 +111,8 @@ void AudioThumbnailImage::setResolution (double newResolution)
 //====================================================================================
 void AudioThumbnailImage::timerCallback ()
 {
+    const ScopedLock sl (lock);
+
     if (! renderComplete)
     {
         listeners.call (&Listener::imageUpdated, this);
@@ -120,6 +136,8 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
 {
 	if (player == filePlayer)
 	{
+        const ScopedLock sl (lock);
+
         if (filePlayer->getAudioFormatReaderSource() != nullptr)
         {
             currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
@@ -133,7 +151,7 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
                 const int imageWidth = filePlayer->getTotalLength() / sourceSamplesPerThumbnailSample;
                 waveformImage = Image (Image::RGB, jmax(1, imageWidth), 100, true);
 
-                waveformImage.clear (waveformImage.getBounds(), Colours::black);
+                waveformImage.clear (waveformImage.getBounds(), backgroundColour);
                 lastTimeDrawn = 0.0;
                 
                 File newFile (filePlayer->getFile());
@@ -194,6 +212,8 @@ void AudioThumbnailImage::removeListener (AudioThumbnailImage::Listener* const l
 //==============================================================================	
 void AudioThumbnailImage::refreshWaveform()
 {
+    const ScopedLock sl (lock);
+    
 	if (audioThumbnail->getNumSamplesFinished() > 0)
 	{
         const double endTime = audioThumbnail->getNumSamplesFinished() * oneOverSampleRate;
@@ -221,8 +241,8 @@ void AudioThumbnailImage::refreshWaveform()
                                             numTempPixels, waveformImage.getHeight());
             
             Graphics gTemp (tempSectionImage);
-            tempSectionImage.clear(tempSectionImage.getBounds(), Colours::black);
-            gTemp.setColour (Colours::green);
+            tempSectionImage.clear(tempSectionImage.getBounds(), backgroundColour);
+            gTemp.setColour (waveformColour);
             audioThumbnail->drawChannel (gTemp, rectangleToDraw,
                                          lastTimeDrawn, endTime,
                                          0, 1.0f);

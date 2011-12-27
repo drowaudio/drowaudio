@@ -17,6 +17,9 @@
 		53BF8FC087AD23FCFDFAC5F2 /* TransportComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C9C3247900045186C676D /* TransportComponent.cpp */; };
 		55161EB114A3702600445ECE /* Spectroscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55161EAF14A3702600445ECE /* Spectroscope.cpp */; };
 		551622DC14A5045200445ECE /* Sonogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 551622DA14A5045200445ECE /* Sonogram.cpp */; };
+		5573CA6214A75952004A8E5F /* PitchTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5573CA6014A75952004A8E5F /* PitchTracker.cpp */; };
+		5573CA7B14A9FBF9004A8E5F /* DistortionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5573CA7A14A9FBF9004A8E5F /* DistortionComponent.cpp */; };
+		5573CAB714AA0F0A004A8E5F /* BufferTransformAudioSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5573CAB514AA0F0A004A8E5F /* BufferTransformAudioSource.cpp */; };
 		55A6EAD114A1361500677C51 /* ConnectionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EAC914A1361500677C51 /* ConnectionComponent.cpp */; };
 		55A6EAD214A1361500677C51 /* LocalDirectoryListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EACB14A1361500677C51 /* LocalDirectoryListBox.cpp */; };
 		55A6EAD314A1361500677C51 /* NetworkDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EACD14A1361500677C51 /* NetworkDemo.cpp */; };
@@ -67,6 +70,17 @@
 		551621BC14A4DC4B00445ECE /* dRowAudio_AudioFilePlayerExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_AudioFilePlayerExt.h; path = ../../../../dRowAudio/audio/dRowAudio_AudioFilePlayerExt.h; sourceTree = SOURCE_ROOT; };
 		551622DA14A5045200445ECE /* Sonogram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sonogram.cpp; path = ../../Source/fft/Sonogram.cpp; sourceTree = SOURCE_ROOT; };
 		551622DB14A5045200445ECE /* Sonogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sonogram.h; path = ../../Source/fft/Sonogram.h; sourceTree = SOURCE_ROOT; };
+		5573CA6014A75952004A8E5F /* PitchTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PitchTracker.cpp; path = ../../Source/fft/PitchTracker.cpp; sourceTree = SOURCE_ROOT; };
+		5573CA6114A75952004A8E5F /* PitchTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PitchTracker.h; path = ../../Source/fft/PitchTracker.h; sourceTree = SOURCE_ROOT; };
+		5573CA7914A9FBF9004A8E5F /* DistortionComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DistortionComponent.h; path = ../../Source/playback/DistortionComponent.h; sourceTree = SOURCE_ROOT; };
+		5573CA7A14A9FBF9004A8E5F /* DistortionComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DistortionComponent.cpp; path = ../../Source/playback/DistortionComponent.cpp; sourceTree = SOURCE_ROOT; };
+		5573CA8C14AA069D004A8E5F /* CurvePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurvePoint.h; path = ../../Source/playback/CurvePoint.h; sourceTree = SOURCE_ROOT; };
+		5573CAB514AA0F0A004A8E5F /* BufferTransformAudioSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BufferTransformAudioSource.cpp; path = ../../Source/playback/BufferTransformAudioSource.cpp; sourceTree = SOURCE_ROOT; };
+		5573CAB614AA0F0A004A8E5F /* BufferTransformAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferTransformAudioSource.h; path = ../../Source/playback/BufferTransformAudioSource.h; sourceTree = SOURCE_ROOT; };
+		5573CBCD14AA4BEE004A8E5F /* dRowAudio_DraggableWaveDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_DraggableWaveDisplay.cpp; path = ../../../../dRowAudio/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp; sourceTree = SOURCE_ROOT; };
+		5573CBCE14AA4BEE004A8E5F /* dRowAudio_DraggableWaveDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_DraggableWaveDisplay.h; path = ../../../../dRowAudio/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h; sourceTree = SOURCE_ROOT; };
+		5573CBCF14AA4CDE004A8E5F /* dRowAudio_PositionableWaveDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_PositionableWaveDisplay.cpp; path = ../../../../dRowAudio/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp; sourceTree = SOURCE_ROOT; };
+		5573CBD014AA4CDE004A8E5F /* dRowAudio_PositionableWaveDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_PositionableWaveDisplay.h; path = ../../../../dRowAudio/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h; sourceTree = SOURCE_ROOT; };
 		55A6EAC914A1361500677C51 /* ConnectionComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConnectionComponent.cpp; sourceTree = "<group>"; };
 		55A6EACA14A1361500677C51 /* ConnectionComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionComponent.h; sourceTree = "<group>"; };
 		55A6EACB14A1361500677C51 /* LocalDirectoryListBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalDirectoryListBox.cpp; sourceTree = "<group>"; };
@@ -174,10 +188,7 @@
 				FCC8FBB3A07CEC6CD58A5255 /* TrackInfoComponent.cpp */,
 				664427D251BC566E135E9921 /* TransportComponent.h */,
 				7B0C9C3247900045186C676D /* TransportComponent.cpp */,
-				AEDF7D50DD606805909BF421 /* AudioPlaybackDemo.h */,
-				24337B3A547FF98BBFE5AB05 /* AudioPlaybackDemo.cpp */,
-				7B6265F35946A5CC8AB3CE08 /* LoopComponent.h */,
-				5CC6B422A997852FC790179D /* LoopComponent.cpp */,
+				5573CA7814A9FBB8004A8E5F /* playback */,
 				55A6EAC814A1361500677C51 /* network */,
 				55A6EB9314A236FC00677C51 /* fft */,
 			);
@@ -201,8 +212,28 @@
 				551621A814A4DAF900445ECE /* dRowAudio_SoundTouchAudioSource.cpp */,
 				551621AB14A4DAF900445ECE /* dRowAudio_SoundTouchProcessor.h */,
 				551621AA14A4DAF900445ECE /* dRowAudio_SoundTouchProcessor.cpp */,
+				5573CBD014AA4CDE004A8E5F /* dRowAudio_PositionableWaveDisplay.h */,
+				5573CBCF14AA4CDE004A8E5F /* dRowAudio_PositionableWaveDisplay.cpp */,
+				5573CBCE14AA4BEE004A8E5F /* dRowAudio_DraggableWaveDisplay.h */,
+				5573CBCD14AA4BEE004A8E5F /* dRowAudio_DraggableWaveDisplay.cpp */,
 			);
 			name = soundtouch;
+			sourceTree = "<group>";
+		};
+		5573CA7814A9FBB8004A8E5F /* playback */ = {
+			isa = PBXGroup;
+			children = (
+				AEDF7D50DD606805909BF421 /* AudioPlaybackDemo.h */,
+				24337B3A547FF98BBFE5AB05 /* AudioPlaybackDemo.cpp */,
+				7B6265F35946A5CC8AB3CE08 /* LoopComponent.h */,
+				5CC6B422A997852FC790179D /* LoopComponent.cpp */,
+				5573CAB614AA0F0A004A8E5F /* BufferTransformAudioSource.h */,
+				5573CAB514AA0F0A004A8E5F /* BufferTransformAudioSource.cpp */,
+				5573CA8C14AA069D004A8E5F /* CurvePoint.h */,
+				5573CA7914A9FBF9004A8E5F /* DistortionComponent.h */,
+				5573CA7A14A9FBF9004A8E5F /* DistortionComponent.cpp */,
+			);
+			name = playback;
 			sourceTree = "<group>";
 		};
 		55A6EAC814A1361500677C51 /* network */ = {
@@ -230,6 +261,8 @@
 				55161EAF14A3702600445ECE /* Spectroscope.cpp */,
 				551622DB14A5045200445ECE /* Sonogram.h */,
 				551622DA14A5045200445ECE /* Sonogram.cpp */,
+				5573CA6014A75952004A8E5F /* PitchTracker.cpp */,
+				5573CA6114A75952004A8E5F /* PitchTracker.h */,
 				55A6EBB614A23A1000677C51 /* fft */,
 			);
 			name = fft;
@@ -384,6 +417,9 @@
 				55A6EC5314A2B61E00677C51 /* dRowAudio.mm in Sources */,
 				55161EB114A3702600445ECE /* Spectroscope.cpp in Sources */,
 				551622DC14A5045200445ECE /* Sonogram.cpp in Sources */,
+				5573CA6214A75952004A8E5F /* PitchTracker.cpp in Sources */,
+				5573CA7B14A9FBF9004A8E5F /* DistortionComponent.cpp in Sources */,
+				5573CAB714AA0F0A004A8E5F /* BufferTransformAudioSource.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

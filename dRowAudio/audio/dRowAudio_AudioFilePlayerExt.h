@@ -112,6 +112,7 @@ public:
     
 private:	
     //==============================================================================
+    ScopedPointer<BufferingAudioSource> bufferingAudioSource;
     ScopedPointer<LoopingAudioSource> loopingAudioSource;
     ScopedPointer<SoundTouchAudioSource> soundTouchAudioSource;
     ScopedPointer<FilteringAudioSource> filteringAudioSource;

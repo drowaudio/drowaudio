@@ -23,6 +23,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "LoopComponent.h"
+#include "DistortionComponent.h"
 
 //==============================================================================
 class AudioPlaybackDemo :   public Component,
@@ -31,7 +32,7 @@ class AudioPlaybackDemo :   public Component,
 {
 public:    
     //==============================================================================
-    AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer);
+    AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer, Buffer& distortionBuffer);
     
     ~AudioPlaybackDemo();
     
@@ -65,8 +66,8 @@ private:
     //==============================================================================
     AudioFilePlayerExt& audioFilePlayer;
     
-    MultipleAudioThumbnailCache thumbnailCache;
-    ColouredAudioThumbnail audioThumbnail;
+//    MultipleAudioThumbnailCache thumbnailCache;
+//    ColouredAudioThumbnail audioThumbnail;
 //    ScopedPointer<ColouredPositionableWaveDisplay> positionalDisplay;
 //    ScopedPointer<ColouredDraggableWaveDisplay> draggableDisplay;
     
@@ -80,7 +81,9 @@ private:
     TimeSliceThread backgroundThread;
     ScopedPointer<AudioThumbnailImage> audioThumbnailImage;
     ScopedPointer<PositionableWaveDisplay> positionableWaveDisplay;
-    //ImageComponent thumbnailImage;
+    ScopedPointer<DraggableWaveDisplay> draggableWaveDisplay;
+    
+    DistortionComponent distortionComponent;
     
     friend class LoopComponent;
     

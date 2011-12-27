@@ -24,6 +24,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "TrackInfoComponent.h"
 #include "TransportComponent.h"
+#include "playback/BufferTransformAudioSource.h"
 
 class FFTDemo;
 
@@ -56,7 +57,8 @@ private:
     AudioDeviceManager audioDeviceManager;
     AudioSourcePlayer audioSourcePlayer;
     AudioFilePlayerExt audioFilePlayer;
-
+    BufferTransformAudioSource bufferTransformAudioSource;
+    
     TrackInfoComponent trackInfoComponent;
     AudioFileDropTarget dropTarget;
     TransportComponent transport;

@@ -103,7 +103,12 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
-        soundTouchAudioSource = new SoundTouchAudioSource (audioFormatReaderSource);
+        bufferingAudioSource = new BufferingAudioSource (audioFormatReaderSource,
+                                                         bufferingTimeSliceThread,
+                                                         false,
+                                                         65536);
+        soundTouchAudioSource = new SoundTouchAudioSource (bufferingAudioSource);
+//        soundTouchAudioSource = new SoundTouchAudioSource (audioFormatReaderSource);
 //        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
         audioTransportSource->setSource (soundTouchAudioSource,
                                          0, nullptr,

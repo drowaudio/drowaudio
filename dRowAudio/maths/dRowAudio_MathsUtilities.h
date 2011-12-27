@@ -27,7 +27,7 @@
 	up to the caller to mae sure it is less than the buffer size or you will be
 	overwritting random memory.
  */
-inline float linearInterpolate (float* buffer, int bufferSize, float bufferPosition)
+inline float linearInterpolate (const float* buffer, int bufferSize, float bufferPosition)
 {
 	int iPos1 = (int)bufferPosition;
 	int iPos2 = iPos1 + 1;

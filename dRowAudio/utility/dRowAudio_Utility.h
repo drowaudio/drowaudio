@@ -147,45 +147,36 @@ static XmlElement* dRowReadEntireXmlStream (URL *url, const bool usePostCommand)
 	@param	trackName	The track name to look for.
 	@param	retryLimit	An optional number of retries as sometimes the URL won't load first time.
  */
-static String findKeyFromChemicalWebsite (const String &releaseNo, const String &trackName, int retryLimit =10)
+static String findKeyFromChemicalWebsite (const String& releaseNo, const String& trackName)
 {
-	URL chemicalURL("http://www.chemical-records.co.uk/sc/servlet/Info?Track="+releaseNo);
-	int attemptCount = 0;
-	DBG(chemicalURL.toString(true));
-	do
-	{
-		ScopedPointer<XmlElement> pageAsXML(chemicalURL.readEntireXmlStream());
-//		ScopedPointer<XmlElement> pageAsXML(dRowReadEntireXmlStream(&chemicalURL, false));
-
-		DBG(releaseNo<<" - "<<trackName<<" attempt: "<<attemptCount);
-
-		if (pageAsXML != 0)
-		{
-			XmlElement *tracksXml (XmlHelpers::findXmlElementWithAttributeWithValue(pageAsXML, "class", "tracks"));
-			
-			if (tracksXml)
-			{
-				attemptCount = retryLimit;
-				XmlElement *tracksElem (XmlHelpers::findXmlElementWithSubText(tracksXml, trackName));
-				
-				if (tracksElem)
-				{
-					XmlElement *keyElem = 0;
-					if (tracksElem->getNextElement() != 0)
-						keyElem = (tracksElem->getNextElement()->getFirstChildElement());
-					
-					if (keyElem != 0) {
-						return keyElem->getAllSubText();
-					}
-					else {
-						return String::empty;
-					}
-				}
-			}
-		}
-	} while (++attemptCount < retryLimit);
-	
-	return String::empty;
+    URL chemicalURL ("http://www.chemical-records.co.uk/sc/servlet/Info");
+    chemicalURL = chemicalURL.withParameter ("Track", releaseNo);
+    
+    String pageAsString (chemicalURL.readEntireTextStream());
+    String trackInfo (pageAsString.fromFirstOccurrenceOf ("<table class=\"tracks\" cellspacing=\"0\" cellpadding=\"4\">", true, false));
+    trackInfo = trackInfo.upToFirstOccurrenceOf("</table>", true, false);
+    
+    ScopedPointer<XmlElement> tracksXml (XmlDocument::parse (trackInfo));
+    
+    if (tracksXml != nullptr)
+    {
+        XmlElement* tracksElem (XmlHelpers::findXmlElementContainingSubText (tracksXml, trackName));
+        
+        if (tracksElem != nullptr)
+        {
+            XmlElement* nextElem = tracksElem->getNextElement();
+            
+            if (nextElem != nullptr)
+            {
+                XmlElement* keyElem = nextElem->getFirstChildElement();
+                
+                if (keyElem != nullptr) 
+                    return keyElem->getAllSubText();
+            }
+        }
+    }
+    
+    return String::empty;
 }
 
 /** Holds a ValueTree as a ReferenceCountedObject.

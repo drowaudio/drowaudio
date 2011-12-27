@@ -75,14 +75,15 @@ static void drawBevel (Graphics& g, Rectangle<float> innerBevelBounds, float bev
     g.restoreState();
 }
 
-AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_)
+AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_, Buffer& distortionBuffer)
     : audioFilePlayer (audioFilePlayer_),
-      thumbnailCache (10),
-      audioThumbnail (128,
-                      *audioFilePlayer.getAudioFormatManager(),
-                      thumbnailCache),
+//      thumbnailCache (10),
+//      audioThumbnail (128,
+//                      *audioFilePlayer.getAudioFormatManager(),
+//                      thumbnailCache),
       loopComponent (audioFilePlayer),
-      backgroundThread ("Waveform Thread")
+      backgroundThread ("Waveform Thread"),
+      distortionComponent (distortionBuffer)
 {
 //    addAndMakeVisible (positionalDisplay = new ColouredPositionableWaveDisplay (&audioFilePlayer,
 //                                                                                &thumbnailCache, 
@@ -95,6 +96,9 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_)
     
     positionableWaveDisplay = new PositionableWaveDisplay (*audioThumbnailImage);
     addAndMakeVisible (positionableWaveDisplay);
+    
+    draggableWaveDisplay = new DraggableWaveDisplay (*audioThumbnailImage);
+    addAndMakeVisible (draggableWaveDisplay);
     
     addAndMakeVisible (&resolutionSlider);
     resolutionSlider.addListener (this);
@@ -160,6 +164,8 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_)
     playerControlLabels[rate]->setFont (12);
     playerControlLabels[tempo]->setFont (12);
     playerControlLabels[pitch]->setFont (12);
+    
+    addAndMakeVisible (&distortionComponent);
 }
 
 AudioPlaybackDemo::~AudioPlaybackDemo()
@@ -176,7 +182,7 @@ AudioPlaybackDemo::~AudioPlaybackDemo()
 void AudioPlaybackDemo::resized()
 {
     const int w = getWidth();
-    //const int h = getHeight();
+    const int h = getHeight();
     int m = 5;
     const int bevelSize = 2;
     
@@ -185,8 +191,8 @@ void AudioPlaybackDemo::resized()
                                         w - (resolutionSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
     
     zoomSlider.setBounds (0, resolutionSlider.getBottom() + m, 50, 50);
-//    draggableDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionalDisplay->getBottom() + m + bevelSize,
-//                                 w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
+    draggableWaveDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionableWaveDisplay->getBottom() + m + bevelSize,
+                                 w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
 
     const int centre = w * 0.5;
     int offset = (centre - (80 * 3)) * 0.5;
@@ -211,6 +217,8 @@ void AudioPlaybackDemo::resized()
     
 //    positionableWaveDisplay->setBounds (5, filterGroup.getBottom() + 5, w - (2 * 5), 100);
     loopComponent.setBounds (positionableWaveDisplay->getBounds());
+    
+    distortionComponent.setBounds (m, filterGroup.getBottom() + m, w * 0.5, (h - m) - (filterGroup.getBottom() + m));
 }
 
 void AudioPlaybackDemo::paint (Graphics& g)
@@ -219,9 +227,9 @@ void AudioPlaybackDemo::paint (Graphics& g)
                              positionableWaveDisplay->getBounds().getWidth(), positionableWaveDisplay->getBounds().getHeight());
     drawBevel (g, bevel1, 2.0f, Colours::darkgrey);
     
-//    Rectangle<float> bevel2 (draggableDisplay->getBounds().getX(), draggableDisplay->getBounds().getY(),
-//                             draggableDisplay->getBounds().getWidth(), draggableDisplay->getBounds().getHeight());
-//    drawBevel (g, bevel2, 2.0f, Colours::darkgrey);
+    Rectangle<float> bevel2 (draggableWaveDisplay->getBounds().getX(), draggableWaveDisplay->getBounds().getY(),
+                             draggableWaveDisplay->getBounds().getWidth(), draggableWaveDisplay->getBounds().getHeight());
+    drawBevel (g, bevel2, 2.0f, Colours::darkgrey);
 }
 
 void AudioPlaybackDemo::fileChanged (AudioFilePlayer* player)

@@ -24,7 +24,8 @@
 #include "fft/FFTDemo.h"
 
 MainComponent::MainComponent()
-    : trackInfoComponent (audioFilePlayer),
+    : bufferTransformAudioSource (&audioFilePlayer),
+      trackInfoComponent (audioFilePlayer),
       dropTarget (&audioFilePlayer, &trackInfoComponent),
       transport (audioFilePlayer),
       meterThread ("Meter Thread"),
@@ -58,7 +59,9 @@ MainComponent::MainComponent()
     searchBox.setTextToShowWhenEmpty ("search...", Colours::grey);
     
     tabbedComponent.addTab("Audio Playback",
-                           Colours::grey, new AudioPlaybackDemo (audioFilePlayer), true);
+                           Colours::grey, 
+                           new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource.getBuffer()), 
+                           true);
     
 //    File libraryFile (File::getSpecialLocation (File::currentApplicationFile)
 //                                             .getChildFile ("dRowAudio Demo Library.xml"));
@@ -88,7 +91,7 @@ MainComponent::MainComponent()
                             new NetworkDemo(), 
                             true);
     
-    audioSourcePlayer.setSource (&audioFilePlayer);
+    audioSourcePlayer.setSource (&bufferTransformAudioSource);
     audioDeviceManager.initialise (0, 2, nullptr, true);
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);

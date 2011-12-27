@@ -42,7 +42,7 @@ public:
 	/**	Create a StateVariable with an initial value.
 		To begin with the previous value will be the same as the initial.
 	 */
-	StateVariable(VariableType initialValue)
+	StateVariable (VariableType initialValue)
 	{
 		previous = current = initialValue;
 	}
