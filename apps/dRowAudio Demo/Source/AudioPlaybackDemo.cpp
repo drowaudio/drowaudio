@@ -104,14 +104,16 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_, Buff
     resolutionSlider.addListener (this);
     resolutionSlider.setRange (0, 20);
     resolutionSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
-    resolutionSlider.setValue (10);
+    resolutionSlider.setValue (3.0);
+    resolutionSlider.setSkewFactorFromMidPoint (3.0);
     resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
     
     addAndMakeVisible (&zoomSlider);
     zoomSlider.addListener (this);
-    zoomSlider.setRange (0.0001, 2);
+    zoomSlider.setRange (0.01, 2);
     zoomSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
-    zoomSlider.setValue (0.2);
+    zoomSlider.setSkewFactorFromMidPoint (1.0);
+    zoomSlider.setValue (1.0);
     zoomSlider.setSliderStyle (Slider::RotaryVerticalDrag);
     
     addAndMakeVisible (&loopComponent);
@@ -240,11 +242,11 @@ void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
 {
     if (slider == &resolutionSlider)
     {
-//        positionalDisplay->setResolution (resolutionSlider.getValue());
+        audioThumbnailImage->setResolution (resolutionSlider.getValue());
     }
     else if (slider == &zoomSlider)
     {
-//        draggableDisplay->setHorizontalZoom (zoomSlider.getValue());
+        draggableWaveDisplay->setHorizontalZoom (zoomSlider.getValue());
     }
     else if (slider == playerControls[lowEQ])
     {
@@ -280,24 +282,3 @@ void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
         }
     }
 }
-
-//==============================================================================
-//void AudioPlaybackDemo::imageChanged (AudioThumbnailImage* audioThumbnailImage)
-//{
-//    //const ScopedLock sl (audioThumbnailImage->getLock());
-//    thumbnailImage.setImage (audioThumbnailImage->getImage()/*AtTime (50, 60)*/, RectanglePlacement::stretchToFit);
-//}
-//
-//void AudioPlaybackDemo::imageUpdated (AudioThumbnailImage* audioThumbnailImage)
-//{
-//    //const ScopedLock sl (audioThumbnailImage->getLock());
-//    //const MessageManagerLock mm;
-//    thumbnailImage.repaint();
-//}
-//
-//void AudioPlaybackDemo::imageFinished (AudioThumbnailImage* audioThumbnailImage)
-//{
-//    //const ScopedLock sl (audioThumbnailImage->getLock());
-//    //const MessageManagerLock mm;
-//    thumbnailImage.repaint();
-//}

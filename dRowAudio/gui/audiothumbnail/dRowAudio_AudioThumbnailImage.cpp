@@ -91,7 +91,7 @@ void AudioThumbnailImage::setWaveformColour (Colour newWaveformColour)
 }
 
 //====================================================================================
-Image AudioThumbnailImage::getImageAtTime (double startTime, double duration)
+const Image AudioThumbnailImage::getImageAtTime (double startTime, double duration)
 {
     const int startPixel = roundToInt (startTime * oneOverFileLength * waveformImage.getWidth());
     const int numPixels = roundToInt (duration * oneOverFileLength * waveformImage.getWidth());
@@ -103,15 +103,13 @@ void AudioThumbnailImage::setResolution (double newResolution)
 {
     resolution = newResolution;
     
-    waveformImage.clear (waveformImage.getBounds(), backgroundColour);
-    lastTimeDrawn = 0.0;
-    refreshWaveform();
+    triggerWaveformRefresh();
 }
 
 //====================================================================================
 void AudioThumbnailImage::timerCallback ()
 {
-    const ScopedLock sl (lock);
+    const ScopedReadLock sl (lock);
 
     if (! renderComplete)
     {
@@ -136,10 +134,10 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
 {
 	if (player == filePlayer)
 	{
-        const ScopedLock sl (lock);
-
         if (filePlayer->getAudioFormatReaderSource() != nullptr)
         {
+            const ScopedWriteLock sl (lock);
+
             currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
 
             if (currentSampleRate > 0.0)
@@ -152,7 +150,6 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
                 waveformImage = Image (Image::RGB, jmax(1, imageWidth), 100, true);
 
                 waveformImage.clear (waveformImage.getBounds(), backgroundColour);
-                lastTimeDrawn = 0.0;
                 
                 File newFile (filePlayer->getFile());
                 if (newFile.existsAsFile()) 
@@ -172,30 +169,16 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
                     audioThumbnail->setSource (nullptr);
                     renderComplete = true;
                 }
-                
-                listeners.call (&Listener::imageChanged, this);
-
-                backgroundThread.addTimeSliceClient (this);
-                if (! backgroundThread.isThreadRunning())
-                    backgroundThread.startThread (4);
-                
-                startTimer (100);
             }
         }
         else 
         {
             audioThumbnail->setSource (nullptr);
             renderComplete = true;
-            
-            listeners.call (&Listener::imageChanged, this);
-            
-            backgroundThread.addTimeSliceClient (this);
-            if (! backgroundThread.isThreadRunning())
-                backgroundThread.startThread (4);
-            
-            startTimer (100);
         }
-	}
+
+        triggerWaveformRefresh();
+    }
 }
 
 //==============================================================================
@@ -210,9 +193,25 @@ void AudioThumbnailImage::removeListener (AudioThumbnailImage::Listener* const l
 }
 
 //==============================================================================	
+void AudioThumbnailImage::triggerWaveformRefresh()
+{
+    const ScopedWriteLock sl (lock);
+
+    lastTimeDrawn = 0.0;
+    waveformImage.clear (waveformImage.getBounds(), backgroundColour);
+    
+    listeners.call (&Listener::imageChanged, this);
+    
+    backgroundThread.addTimeSliceClient (this);
+    if (! backgroundThread.isThreadRunning())
+        backgroundThread.startThread (4);
+    
+    startTimer (100);
+}
+
 void AudioThumbnailImage::refreshWaveform()
 {
-    const ScopedLock sl (lock);
+    const ScopedWriteLock sl (lock);
     
 	if (audioThumbnail->getNumSamplesFinished() > 0)
 	{

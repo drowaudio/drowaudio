@@ -188,7 +188,11 @@ void DraggableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThumbn
 {
 	if (changedAudioThumbnailImage == &audioThumbnailImage)
 	{
-		currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
+        currentSampleRate = 0.0;
+        
+        if (filePlayer->getAudioFormatReaderSource() != nullptr
+            && filePlayer->getAudioFormatReaderSource()->getAudioFormatReader() != nullptr)
+            currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
         
         if (currentSampleRate > 0.0)
         {
@@ -213,7 +217,7 @@ double DraggableWaveDisplay::pixelsToTime (double numPixels)
 
 double DraggableWaveDisplay::timeToPixels (double timeInSecs)
 {
-	return timeInSecs / timePerPixel;
+	return timeInSecs / (timePerPixel * oneOverZoomRatio);
 }
 
 END_JUCE_NAMESPACE

@@ -98,6 +98,7 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
     masterSource = nullptr;
 	audioTransportSource->setSource (nullptr);
     soundTouchAudioSource = nullptr;
+    bufferingAudioSource = nullptr;
     
 	if (reader != nullptr)
 	{										

@@ -54,8 +54,9 @@ public:
 	
 	/** Destructor.
      */
-	~PositionableWaveDisplay ();
+	~PositionableWaveDisplay();
 
+    //====================================================================================
 	/** Sets whether or not the transport cursor should be displayed;
      */
     void setCursorDisplayed (bool shoudldDisplayCursor);
@@ -67,6 +68,21 @@ public:
     /** Sets the colour to use for the waveform.
      */
     void setWaveformColour (Colour newWaveformColour);
+        
+	/** Sets the current horizontal zoom.
+        1.0 displays the whole waveform, 0.5 will show half etc. 
+     */
+	void setZoomRatio (double newZoomRatio);
+    
+    /** Sets an offset used to start the waveform at a faction of the display.
+        A value of 0.5 will show the waveform starting at the halfway point etc.
+     */
+	void setStartOffsetRatio (double newStartOffsetRatio);
+    
+    /** Sets a new vertical zoom ratio.
+        Values greater than 1.0 will expand the waveform vertically, less will contract it.
+     */
+    void setVerticalZoomRatio (double newVerticalZoomRatio);
         
 	//====================================================================================
 	/** @internal */
@@ -85,42 +101,18 @@ public:
 	/** @internal */
 	void paint (Graphics &g);
 
+	/** @internal */
+	void mouseDown (const MouseEvent &e);
+	
+	/** @internal */
+	void mouseUp (const MouseEvent &e);
+	
+	/** @internal */
+	void mouseDrag (const MouseEvent &e);
+    
 	//====================================================================================
 	/** @internal */
 	void timerCallback (const int timerId);
-
-	/** @internal */
-//	void fileChanged (FilteringAudioFilePlayer *player);
-		
-	//====================================================================================
-	/** Sets the current horizontal zoom.
-        1.0 displays the whole waveform, 0.5 will show half etc. 
-     */
-	void setZoomRatio (double newZoomRatio);
-
-    /** Sets an offset used to start the waveform at a faction of the display.
-        A value of 0.5 will show the waveform starting at the halfway point etc.
-     */
-	void setStartOffsetRatio (double newStartOffsetRatio);
-    
-    /** Sets a new vertical zoom ratio.
-     */
-    void setVerticalZoomRatio (double newVerticalZoomRatio);
-    
-//    /** Sets the deisred length of the display.
-//     */
-//    void setDisplayLength (double lengthInSeconds);
-//    
-//    /** Sets the time at which the thumbnail should start.
-//     */
-//    void setStartOffset (double startOffsetInSeconds);
-    
-	//==============================================================================
-	void mouseDown(const MouseEvent &e);
-	
-	void mouseUp(const MouseEvent &e);
-	
-	void mouseDrag(const MouseEvent &e);
 		
 private:
 	//==============================================================================

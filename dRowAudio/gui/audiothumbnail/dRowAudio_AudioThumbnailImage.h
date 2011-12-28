@@ -63,11 +63,11 @@ public:
 	//====================================================================================
     /** Returns the whole waveform image.
      */
-    Image getImage ()                       {   return waveformImage;   }
+    const Image getImage ()                       {   return waveformImage;   }
     
     /** Returns a section of the image at a given time for a given duration.
      */
-    Image getImageAtTime (double startTime, double duration);
+    const Image getImageAtTime (double startTime, double duration);
     
     /** Sets the image resolution in lines per pixel.
      */
@@ -140,14 +140,15 @@ public:
     void removeListener (Listener* listener);
 	    
 private:
-	//==============================================================================	
+	//==============================================================================
+    void triggerWaveformRefresh();
 	void refreshWaveform();
 	
 	AudioFilePlayer* filePlayer;
 	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
 	
 	// thumbnail classes
-    CriticalSection lock;
+    ReadWriteLock lock;
     TimeSliceThread& backgroundThread;
 	OptionalScopedPointer<AudioThumbnailCache> audioThumbnailCache;
 	OptionalScopedPointer<AudioThumbnail> audioThumbnail;
