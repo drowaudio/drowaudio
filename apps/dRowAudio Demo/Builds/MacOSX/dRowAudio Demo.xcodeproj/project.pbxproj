@@ -27,6 +27,8 @@
 		55A6EB0014A1389500677C51 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A6EAFF14A1389500677C51 /* libcurl.dylib */; };
 		55A6EB9714A2373100677C51 /* FFTDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EB9614A2373100677C51 /* FFTDemo.cpp */; };
 		55A6EC5314A2B61E00677C51 /* dRowAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55A6EC5214A2B61E00677C51 /* dRowAudio.mm */; };
+		55F04C0F14ABF05100244EF6 /* DistortionDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F04C0E14ABF05100244EF6 /* DistortionDemo.cpp */; };
+		55F04C2F14ABF35000244EF6 /* DemoLookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55F04C2E14ABF35000244EF6 /* DemoLookAndFeel.cpp */; };
 		56395F7B8428F72AFBA86DF2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84484BC5CE686760F331B64A /* AudioToolbox.framework */; };
 		590919F2EECA27287BF1A28C /* AudioPlaybackDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24337B3A547FF98BBFE5AB05 /* AudioPlaybackDemo.cpp */; };
 		7778EF6CD7053965412F5AD3 /* juce_audio_formats.mm in Sources */ = {isa = PBXBuildFile; fileRef = 666E9F98DAF3EF4795CB8340 /* juce_audio_formats.mm */; };
@@ -102,6 +104,10 @@
 		55A6EBBE14A240F700677C51 /* dRowAudio_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_Buffer.h; path = ../../../../dRowAudio/audio/dRowAudio_Buffer.h; sourceTree = SOURCE_ROOT; };
 		55A6EC5214A2B61E00677C51 /* dRowAudio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = dRowAudio.mm; path = ../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.mm; sourceTree = SOURCE_ROOT; };
 		55A6EC7A14A2B68700677C51 /* dRowAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio.cpp; path = ../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.cpp; sourceTree = SOURCE_ROOT; };
+		55F04C0D14ABF05100244EF6 /* DistortionDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DistortionDemo.h; path = ../../Source/playback/DistortionDemo.h; sourceTree = SOURCE_ROOT; };
+		55F04C0E14ABF05100244EF6 /* DistortionDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DistortionDemo.cpp; path = ../../Source/playback/DistortionDemo.cpp; sourceTree = SOURCE_ROOT; };
+		55F04C2D14ABF35000244EF6 /* DemoLookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoLookAndFeel.h; path = ../../Source/DemoLookAndFeel.h; sourceTree = SOURCE_ROOT; };
+		55F04C2E14ABF35000244EF6 /* DemoLookAndFeel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoLookAndFeel.cpp; path = ../../Source/DemoLookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
 		5CC6B422A997852FC790179D /* LoopComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopComponent.cpp; path = ../../Source/LoopComponent.cpp; sourceTree = SOURCE_ROOT; };
 		5EF217055B41C216557236A6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		664427D251BC566E135E9921 /* TransportComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportComponent.h; path = ../../Source/TransportComponent.h; sourceTree = SOURCE_ROOT; };
@@ -180,6 +186,8 @@
 			children = (
 				551621A414A4DAEC00445ECE /* soundtouch */,
 				6C972B7B6DE382DBB2B43B73 /* Main.cpp */,
+				55F04C2D14ABF35000244EF6 /* DemoLookAndFeel.h */,
+				55F04C2E14ABF35000244EF6 /* DemoLookAndFeel.cpp */,
 				939FC30566B1030FB01BD689 /* MainWindow.h */,
 				0CA9296C157F338168B6437C /* MainWindow.cpp */,
 				DCC0C8364E07FA5B3F4BC691 /* MainComponent.h */,
@@ -229,6 +237,8 @@
 				5CC6B422A997852FC790179D /* LoopComponent.cpp */,
 				5573CAB614AA0F0A004A8E5F /* BufferTransformAudioSource.h */,
 				5573CAB514AA0F0A004A8E5F /* BufferTransformAudioSource.cpp */,
+				55F04C0D14ABF05100244EF6 /* DistortionDemo.h */,
+				55F04C0E14ABF05100244EF6 /* DistortionDemo.cpp */,
 				5573CA8C14AA069D004A8E5F /* CurvePoint.h */,
 				5573CA7914A9FBF9004A8E5F /* DistortionComponent.h */,
 				5573CA7A14A9FBF9004A8E5F /* DistortionComponent.cpp */,
@@ -420,6 +430,8 @@
 				5573CA6214A75952004A8E5F /* PitchTracker.cpp in Sources */,
 				5573CA7B14A9FBF9004A8E5F /* DistortionComponent.cpp in Sources */,
 				5573CAB714AA0F0A004A8E5F /* BufferTransformAudioSource.cpp in Sources */,
+				55F04C0F14ABF05100244EF6 /* DistortionDemo.cpp in Sources */,
+				55F04C2F14ABF35000244EF6 /* DemoLookAndFeel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

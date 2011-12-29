@@ -49,18 +49,7 @@ void DistortionComponent::resized()
 
     if (! isInitialised && w > 0 && h > 0)
     {
-        const int bufferSize = buffer.getSize();
-        const float* bufferData = buffer.getData();
-        
-        float x1 = w * 0.25;
-        float y1 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.75);
-        
-        float x2 = w * 0.75;
-        float y2 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.25);
-        
-        curvePoints[0]->setBounds (x1 - 5, y1 - 5, 10, 10);
-        curvePoints[1]->setBounds (x2 - 5, y2 - 5, 10, 10);
-        
+        resetPoints();
         isInitialised = true;
     }
     
@@ -147,4 +136,35 @@ void DistortionComponent::refillBuffer (float x1, float y1, float x2, float y2)
 	}
     
     buffer.updateListeners();
+}
+
+void DistortionComponent::resetBuffer()
+{
+    float* bufferData = buffer.getData();
+    const int bufferSize = buffer.getSize();
+    const float bufferScale = 1.0f / bufferSize;
+    
+	for (int i = 0; i < bufferSize; ++i)
+        bufferData[i] = bufferScale * i;
+    
+    resetPoints();
+    buffer.updateListeners();
+}
+
+void DistortionComponent::resetPoints()
+{
+    const int w = getWidth();
+    const int h = getHeight();
+
+    const int bufferSize = buffer.getSize();
+    const float* bufferData = buffer.getData();
+    
+    float x1 = w * 0.25;
+    float y1 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.75);
+    
+    float x2 = w * 0.75;
+    float y2 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.25);
+    
+    curvePoints[0]->setBounds (x1 - 5, y1 - 5, 10, 10);
+    curvePoints[1]->setBounds (x2 - 5, y2 - 5, 10, 10);    
 }

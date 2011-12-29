@@ -18,60 +18,30 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_DISTORTIONCOMPONENT_H__
-#define __DROWAUDIO_DISTORTIONCOMPONENT_H__
-
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "CurvePoint.h"
+#include "DistortionComponent.h"
 
 //==============================================================================
-class DistortionComponent : public Component,
-                            public Buffer::Listener,
-                            public ComponentListener
+class DistortionDemo :  public Component,
+                        public Button::Listener
 {
 public:
     //==============================================================================
-    DistortionComponent (Buffer& bufferToControl);
-
-    ~DistortionComponent();
+    DistortionDemo (Buffer& bufferToControl);
+    
+    ~DistortionDemo();
     
     void resized();
     
     void paint (Graphics& g);
     
-    void bufferChanged (Buffer* buffer);
-    
-    void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized);
-        
-    void resetBuffer();
+    void buttonClicked (Button* button);
     
 private:
     //==============================================================================
-	enum CurvePoints
-    {
-		pointX1,
-		pointY1,
-		pointX2,
-		pointY2,
-		numPoints,
-	};    
+    DistortionComponent distortionComponent;
+    TextButton resetButton;
     
     //==============================================================================
-    Buffer& buffer;
-    Path path;
-    
-    OwnedArray<CurvePoint> curvePoints;
-    OwnedArray<Value> values;
-    
-    void refreshPath();
-    void refillBuffer (float x1, float y1, float x2, float y2);
-    void resetPoints();
-
-    Image background;
-    bool isInitialised;
-    
-    //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionComponent);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionDemo);
 };
-
-#endif // __DROWAUDIO_DISTORTIONCOMPONENT_H__

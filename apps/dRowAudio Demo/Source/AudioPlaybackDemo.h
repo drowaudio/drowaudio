@@ -23,7 +23,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "LoopComponent.h"
-#include "DistortionComponent.h"
+#include "DistortionDemo.h"
 
 //==============================================================================
 class AudioPlaybackDemo :   public Component,
@@ -83,7 +83,7 @@ private:
     ScopedPointer<PositionableWaveDisplay> positionableWaveDisplay;
     ScopedPointer<DraggableWaveDisplay> draggableWaveDisplay;
     
-    DistortionComponent distortionComponent;
+    DistortionDemo distortionDemo;
     
     friend class LoopComponent;
     

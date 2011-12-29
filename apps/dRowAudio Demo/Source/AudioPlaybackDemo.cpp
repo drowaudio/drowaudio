@@ -83,7 +83,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_, Buff
 //                      thumbnailCache),
       loopComponent (audioFilePlayer),
       backgroundThread ("Waveform Thread"),
-      distortionComponent (distortionBuffer)
+      distortionDemo (distortionBuffer)
 {
 //    addAndMakeVisible (positionalDisplay = new ColouredPositionableWaveDisplay (&audioFilePlayer,
 //                                                                                &thumbnailCache, 
@@ -167,7 +167,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_, Buff
     playerControlLabels[tempo]->setFont (12);
     playerControlLabels[pitch]->setFont (12);
     
-    addAndMakeVisible (&distortionComponent);
+    addAndMakeVisible (&distortionDemo);
 }
 
 AudioPlaybackDemo::~AudioPlaybackDemo()
@@ -220,7 +220,8 @@ void AudioPlaybackDemo::resized()
 //    positionableWaveDisplay->setBounds (5, filterGroup.getBottom() + 5, w - (2 * 5), 100);
     loopComponent.setBounds (positionableWaveDisplay->getBounds());
     
-    distortionComponent.setBounds (m, filterGroup.getBottom() + m, w * 0.5, (h - m) - (filterGroup.getBottom() + m));
+    m *= 0.5;
+    distortionDemo.setBounds (0, filterGroup.getBottom() + (2 * m), w, h - filterGroup.getBottom() - (2 * m));
 }
 
 void AudioPlaybackDemo::paint (Graphics& g)
@@ -232,6 +233,9 @@ void AudioPlaybackDemo::paint (Graphics& g)
     Rectangle<float> bevel2 (draggableWaveDisplay->getBounds().getX(), draggableWaveDisplay->getBounds().getY(),
                              draggableWaveDisplay->getBounds().getWidth(), draggableWaveDisplay->getBounds().getHeight());
     drawBevel (g, bevel2, 2.0f, Colours::darkgrey);
+    
+    g.setColour (Colours::grey.brighter());
+    g.drawHorizontalLine (filterGroup.getBottom() + 5, 5, getWidth() - 5);
 }
 
 void AudioPlaybackDemo::fileChanged (AudioFilePlayer* player)
