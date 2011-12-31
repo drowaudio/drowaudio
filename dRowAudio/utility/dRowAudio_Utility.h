@@ -89,15 +89,15 @@ inline static Time parseITunesDateString(String dateString)
 /**	Reverses an array.
  */
 template <class Type>
-void reverseArray(Type *array, int length)
+void reverseArray (Type* array, int length)
 {
     Type swap;
 	
-    for(int a = 0; a < --length; a++)       //increment a and decrement b until they meet eachother
+    for (int a = 0; a < --length; a++)  //increment a and decrement b until they meet eachother
     {
-        swap = array[a];            //put what's in a into swap space
-        array[a] = array[length];   //put what's in b into a
-        array[length] = swap;       //put what's in the swap (a) into b
+        swap = array[a];                //put what's in a into swap space
+        array[a] = array[length];       //put what's in b into a
+        array[length] = swap;           //put what's in the swap (a) into b
     }
 }
 

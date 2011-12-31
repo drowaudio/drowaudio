@@ -38,6 +38,11 @@ public:
     //==============================================================================
     void initialise (const String& commandLine)
     {
+        SplashScreen* splash = new SplashScreen();
+        splash->show ("dRowAudio Demo",
+                      ImageCache::getFromFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("splash_screen.png")),
+                      0, true);
+
         // Do your application's initialisation code here..
         mainWindow = new MainAppWindow();
     }

@@ -27,6 +27,10 @@ MainAppWindow::MainAppWindow()
                       Colours::darkgrey,
                       DocumentWindow::allButtons)
 {
+    LookAndFeel& laf = getLookAndFeel();
+    laf.setColour (TextButton::buttonColourId, Colours::lightgrey);
+    laf.setColour (TextButton::buttonOnColourId, Colours::grey);
+
     setContentOwned (new MainComponent, false);
     centreWithSize (800, 600);
     setVisible (true);

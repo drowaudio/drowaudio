@@ -91,7 +91,7 @@ void MusicLibraryTable::setFilterText (String filterString)
 	{
 		filteredDataList = dataList;
 		filteredNumRows = filteredDataList.getNumChildren();
-        DBG("dataList.getNumChildren(): "<<dataList.getNumChildren());
+
 //        for (int e = 0; e < dataList.getNumChildren(); e++)
 //        {
 //            filteredArray.add (dataList.getChild (e));
@@ -131,12 +131,9 @@ void MusicLibraryTable::libraryChanged (ITunesLibrary* library)
 {
 	if (library == currentLibrary) 
 	{
-		DBG("library changed");
 		filteredDataList = dataList = currentLibrary->getLibraryTree();
 		filteredNumRows = filteredDataList.getNumChildren();
 
-//        dataList = currentLibrary->getLibraryTree();
-//        setFilterText (currentFilterText);
 		finishedLoading = false;
 		
 		table.updateContent();
@@ -149,9 +146,6 @@ void MusicLibraryTable::libraryUpdated (ITunesLibrary* library)
 	if (library == currentLibrary) 
 	{
 		filteredNumRows = filteredDataList.getNumChildren();
-		DBG("num finished: " << filteredNumRows);//.getNumChildren());
-//        setFilterText (currentFilterText);
-//        DBG ("num finished: " << getNumRows());
 
 		table.updateContent();
         table.getHeader().reSortTable();
@@ -162,15 +156,11 @@ void MusicLibraryTable::libraryFinished (ITunesLibrary* library)
 {
 	if (library == currentLibrary) 
 	{
-		filteredNumRows = dataList.getNumChildren();
+		filteredNumRows = filteredDataList.getNumChildren();
 		finishedLoading = true;
-		DBG ("all finished: " << filteredNumRows);
-//        setFilterText (currentFilterText);
 
 		table.updateContent();
 		table.getHeader().reSortTable();
-
-		DBG ("finished loading MusicLibraryTable");
 	}
 }
 
