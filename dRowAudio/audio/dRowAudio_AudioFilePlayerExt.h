@@ -77,11 +77,11 @@ public:
     
     /** Sets whether the source should play forwards or backwards.
      */
-	//void setPlayDirection (bool shouldPlayForwards)	{	soundTouchAudioSource->setPlayDirection (shouldPlayForwards);	}
+	void setPlayDirection (bool shouldPlayForwards);
     
     /** Returns true if the source is playing forwards.
      */
-	//bool getPlayDirection ()						{	return soundTouchAudioSource->getPlayDirection();	}
+	bool getPlayDirection()                                     {   return reversibleAudioSource;       }
     
     //==============================================================================
     /** Sets the start and end times of the loop.
@@ -99,7 +99,7 @@ public:
     
     /** Sets the next play position in seconds disregarding the loop boundries.
      */
-    void setPositionIgnoringLoop (double newPosition);
+    void setPosition (double newPosition, bool ignoreAnyLoopBounds = false);
 
     //==============================================================================
     /** Returns the SoundTouchAudioSource being used.
@@ -115,6 +115,7 @@ private:
     ScopedPointer<BufferingAudioSource> bufferingAudioSource;
     ScopedPointer<LoopingAudioSource> loopingAudioSource;
     ScopedPointer<SoundTouchAudioSource> soundTouchAudioSource;
+    ScopedPointer<ReversibleAudioSource> reversibleAudioSource;
     ScopedPointer<FilteringAudioSource> filteringAudioSource;
 
     ValueTree libraryEntry;

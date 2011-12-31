@@ -24,7 +24,8 @@ BEGIN_JUCE_NAMESPACE
 ReversibleAudioSource::ReversibleAudioSource (PositionableAudioSource* const inputSource,
 											  const bool deleteInputWhenDeleted)
     : input (inputSource, deleteInputWhenDeleted),
-	  isForwards(true)
+	  isForwards(true),
+      playbackRatio (1.0)
 {
     jassert (inputSource != 0);
 }
@@ -46,30 +47,33 @@ void ReversibleAudioSource::releaseResources()
 
 void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
 {
-	input->getNextAudioBlock(info);
-	
-	if (! isForwards) 
+	if (isForwards) 
+    {
+        input->getNextAudioBlock (info);
+    }
+    else
 	{
+        int64 nextReadPosition = input->getNextReadPosition() - (2 * info.numSamples);// * playbackRatio);
+        
+		if (nextReadPosition < 0 && input->isLooping())
+			nextReadPosition += input->getTotalLength();
+		
+		input->setNextReadPosition (nextReadPosition);
+        input->getNextAudioBlock (info);
+
 		if (info.buffer->getNumChannels() == 1)
 		{
-			reverseArray (info.buffer->getSampleData(0), info.numSamples);
+			reverseArray (info.buffer->getSampleData (0), info.numSamples);
 		}
-		if (info.buffer->getNumChannels() == 2) 
+		else if (info.buffer->getNumChannels() == 2) 
 		{
-			reverseTwoArrays (info.buffer->getSampleData(0), info.buffer->getSampleData(1), info.numSamples);
+			reverseTwoArrays (info.buffer->getSampleData (0), info.buffer->getSampleData (1), info.numSamples);
 		}
 		else
 		{
 			for (int c = 0; c < info.buffer->getNumChannels(); c++)
 				reverseArray (info.buffer->getSampleData(c), info.numSamples);
 		}
-		
-		int64 nextReadPosition = input->getNextReadPosition() - (2 * info.numSamples);
-
-		if (nextReadPosition < 0 && input->isLooping())
-			nextReadPosition += input->getTotalLength();
-		
-		input->setNextReadPosition (nextReadPosition);
 	}
 }
 

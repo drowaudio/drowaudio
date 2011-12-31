@@ -106,7 +106,7 @@ void reverseArray(Type *array, int length)
 	The arrays must be the same length.
  */
 template <class Type>
-void reverseTwoArrays (Type *array1, Type *array2, int length)
+void reverseTwoArrays (Type* array1, Type* array2, int length)
 {
     Type swap;
     for (int a = 0; a < --length; a++)  //increment a and decrement b until they meet eachother

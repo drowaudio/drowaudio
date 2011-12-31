@@ -108,6 +108,8 @@
 		55F04C0E14ABF05100244EF6 /* DistortionDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DistortionDemo.cpp; path = ../../Source/playback/DistortionDemo.cpp; sourceTree = SOURCE_ROOT; };
 		55F04C2D14ABF35000244EF6 /* DemoLookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoLookAndFeel.h; path = ../../Source/DemoLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		55F04C2E14ABF35000244EF6 /* DemoLookAndFeel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoLookAndFeel.cpp; path = ../../Source/DemoLookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
+		55F04FF914AE784F00244EF6 /* dRowAudio_ReversibleAudioSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dRowAudio_ReversibleAudioSource.cpp; path = ../../../../dRowAudio/audio/dRowAudio_ReversibleAudioSource.cpp; sourceTree = SOURCE_ROOT; };
+		55F04FFA14AE784F00244EF6 /* dRowAudio_ReversibleAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dRowAudio_ReversibleAudioSource.h; path = ../../../../dRowAudio/audio/dRowAudio_ReversibleAudioSource.h; sourceTree = SOURCE_ROOT; };
 		5CC6B422A997852FC790179D /* LoopComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopComponent.cpp; path = ../../Source/LoopComponent.cpp; sourceTree = SOURCE_ROOT; };
 		5EF217055B41C216557236A6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		664427D251BC566E135E9921 /* TransportComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportComponent.h; path = ../../Source/TransportComponent.h; sourceTree = SOURCE_ROOT; };
@@ -220,6 +222,8 @@
 				551621A814A4DAF900445ECE /* dRowAudio_SoundTouchAudioSource.cpp */,
 				551621AB14A4DAF900445ECE /* dRowAudio_SoundTouchProcessor.h */,
 				551621AA14A4DAF900445ECE /* dRowAudio_SoundTouchProcessor.cpp */,
+				55F04FFA14AE784F00244EF6 /* dRowAudio_ReversibleAudioSource.h */,
+				55F04FF914AE784F00244EF6 /* dRowAudio_ReversibleAudioSource.cpp */,
 				5573CBD014AA4CDE004A8E5F /* dRowAudio_PositionableWaveDisplay.h */,
 				5573CBCF14AA4CDE004A8E5F /* dRowAudio_PositionableWaveDisplay.cpp */,
 				5573CBCE14AA4BEE004A8E5F /* dRowAudio_DraggableWaveDisplay.h */,
@@ -486,6 +490,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_AUTO_VECTORIZATION = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;

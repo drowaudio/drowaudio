@@ -90,7 +90,7 @@ public:
     //==============================================================================
     /** Changes the current playback position in the source stream.
      */
-    void setPosition (double newPosition)       { audioTransportSource->setPosition (newPosition);  }
+    virtual void setPosition (double newPosition, bool ignoreAnyLoopBounds = false);
     
     /** Returns the position that the next data block will be read from in seconds.
      */

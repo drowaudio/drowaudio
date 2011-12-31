@@ -205,7 +205,7 @@ void PositionableWaveDisplay::mouseDown (const MouseEvent &e)
 
         const int startPixel = w * startOffsetRatio;
         double position = currentXScale * (currentMouseX - startPixel);
-        audioFilePlayer->setPosition (position);
+        audioFilePlayer->setPosition (position, true);
 
         repaint();
     }
@@ -228,7 +228,7 @@ void PositionableWaveDisplay::mouseDrag (const MouseEvent &e)
         const int w = getWidth();
         const int startPixel = w * startOffsetRatio;
         double position = currentXScale * (currentMouseX - startPixel);
-        audioFilePlayer->setPosition (position);
+        audioFilePlayer->setPosition (position, false);
     }
 //	double position = currentXScale * currentMouseX;
 //	audioFilePlayer->setPositionIgnoringLoop (position);

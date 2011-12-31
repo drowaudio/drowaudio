@@ -22,7 +22,7 @@ BEGIN_JUCE_NAMESPACE
 
 //==============================================================================
 LoopingAudioSource::LoopingAudioSource (PositionableAudioSource* const inputSource,
-										const bool deleteInputWhenDeleted)
+                                        const bool deleteInputWhenDeleted)
     : input (inputSource, deleteInputWhenDeleted),
       isLoopingBetweenTimes (false),
       loopStartSample (0),
@@ -59,6 +59,12 @@ void LoopingAudioSource::setLoopTimes (double startTime, double endTime)
     setNextReadPosition (getNextReadPosition());
 }
 
+void LoopingAudioSource::getLoopTimes (double& startTime, double& endTime)
+{
+    startTime = loopStartTime;
+    endTime =loopEndTime;
+}
+
 void LoopingAudioSource::setLoopBetweenTimes (bool shouldLoop)
 {
     isLoopingBetweenTimes = shouldLoop;
@@ -74,7 +80,7 @@ void LoopingAudioSource::prepareToPlay (int samplesPerBlockExpected,
                                         double sampleRate)
 {
     currentSampleRate = sampleRate;
-	input->prepareToPlay (samplesPerBlockExpected, sampleRate);
+    input->prepareToPlay (samplesPerBlockExpected, sampleRate);
     
     if (tempBuffer.getNumSamples() < samplesPerBlockExpected)
     {
@@ -85,7 +91,7 @@ void LoopingAudioSource::prepareToPlay (int samplesPerBlockExpected,
 
 void LoopingAudioSource::releaseResources()
 {
-	input->releaseResources();
+    input->releaseResources();
 }
 
 void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)

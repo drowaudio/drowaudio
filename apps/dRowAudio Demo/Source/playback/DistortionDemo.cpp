@@ -49,7 +49,7 @@ void DistortionDemo::resized()
 void DistortionDemo::paint (Graphics& g)
 {
     const int w = getWidth();
-    const int h = getHeight();
+    //const int h = getHeight();
     const int m = 5;
 
 //    g.fillAll (Colours::darkgrey);
@@ -62,7 +62,7 @@ void DistortionDemo::paint (Graphics& g)
     
     g.setFont (14);
     String text;
-    text << "This graph demonstrates the Buffer and BufferTransforAudioSource classes." << newLine << newLine
+    text << "This graph demonstrates the Buffer and BufferTransferAudioSource classes." << newLine << newLine
     << "Drag the points around to change the buffer belonging to the audio chain's BufferTransforAudioSource." << newLine
     << "The Buffer's contents are used as a transform in the source which will distort the audio passing through it." << newLine << newLine
     << "Aditionally Buffers can have listeners. Resetting the buffer to unity using the button below will update the graph.";

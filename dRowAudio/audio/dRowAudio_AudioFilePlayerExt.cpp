@@ -24,7 +24,8 @@ AudioFilePlayerExt::AudioFilePlayerExt()
     : AudioFilePlayer()
 {
     loopingAudioSource = new LoopingAudioSource (audioTransportSource, false);
-    filteringAudioSource = new FilteringAudioSource (audioTransportSource, false);
+    reversibleAudioSource = new ReversibleAudioSource (audioTransportSource, false);
+    filteringAudioSource = new FilteringAudioSource (reversibleAudioSource, false);
     
     masterSource = filteringAudioSource;
 }
@@ -37,34 +38,17 @@ AudioFilePlayerExt::~AudioFilePlayerExt()
 void AudioFilePlayerExt::setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings)
 {
     soundTouchAudioSource->setPlaybackSettings (newSettings);
+    reversibleAudioSource->setPlaybackRatio (newSettings.rate * newSettings.tempo);
     
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, SoundTouchSetting);
 }
 
-//bool AudioFilePlayer::setFile (const String& path)
-//{
-//    currentMemoryBlock = nullptr;
-//    filePath = path;
-//    
-//    return setSourceWithReader (formatManager->createReaderFor (File (path)));
-//}
-//
-//bool AudioFilePlayer::setInputStream (InputStream* inputStream)
-//{
-//    filePath = String::empty;
-//    
-//	AudioFormatReader* reader = formatManager->createReaderFor (inputStream);
-//    
-//    return setSourceWithReader (reader);
-//}
-//
-//bool AudioFilePlayer::setMemoryBlock (MemoryBlock* inputBlock)
-//{
-//    filePath = String::empty;
-//    currentMemoryBlock = inputBlock;
-//    
-//    return setSourceWithReader (formatManager->createReaderFor (getInputStream()));
-//}
+void AudioFilePlayerExt::setPlayDirection (bool shouldPlayForwards)
+{
+    reversibleAudioSource->setPlayDirection (shouldPlayForwards);
+
+    listeners.call (&Listener::audioFilePlayerSettingChanged, this, PlayDirectionSetting);
+}
 
 //==============================================================================
 void AudioFilePlayerExt::setLoopTimes (double startTime, double endTime)
@@ -78,16 +62,18 @@ void AudioFilePlayerExt::setLoopBetweenTimes (bool shouldLoop)
 	listeners.call (&Listener::audioFilePlayerSettingChanged, this, LoopBeetweenTimesSetting);
 }
 
-void AudioFilePlayerExt::setPositionIgnoringLoop (double newPosition)
+void AudioFilePlayerExt::setPosition (double newPosition, bool ignoreAnyLoopBounds)
 {
-    if (audioFormatReaderSource != nullptr)
+    if (ignoreAnyLoopBounds && audioFormatReaderSource != nullptr)
     {
         const double sampleRate = audioFormatReaderSource->getAudioFormatReader()->sampleRate;
         
         if (sampleRate > 0.0)
-        {
             loopingAudioSource->setNextReadPositionIgnoringLoop ((int64) (newPosition * sampleRate));
-        }
+    }
+    else
+    {
+        AudioFilePlayer::setPosition (newPosition);
     }
 }
 
@@ -97,7 +83,9 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
 //	stop();
     masterSource = nullptr;
 	audioTransportSource->setSource (nullptr);
+    //reversibleAudioSource = nullptr;
     soundTouchAudioSource = nullptr;
+    //loopingAudioSource = nullptr;
     bufferingAudioSource = nullptr;
     
 	if (reader != nullptr)
@@ -109,13 +97,10 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
                                                          false,
                                                          65536);
         soundTouchAudioSource = new SoundTouchAudioSource (bufferingAudioSource);
-//        soundTouchAudioSource = new SoundTouchAudioSource (audioFormatReaderSource);
-//        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
-        audioTransportSource->setSource (soundTouchAudioSource,
+        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
+        audioTransportSource->setSource (loopingAudioSource,
                                          0, nullptr,
-                                         reader->sampleRate);//,
-//                                         32768,
-//                                         &bufferingTimeSliceThread);
+                                         reader->sampleRate);
         masterSource = filteringAudioSource;
         
         listeners.call (&Listener::fileChanged, this);
