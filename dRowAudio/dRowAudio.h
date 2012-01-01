@@ -138,7 +138,9 @@ BEGIN_JUCE_NAMESPACE
 #ifndef __DROWAUDIO_AUDIOFILEDROPTARGET_H__
     #include "gui/dRowAudio_AudioFileDropTarget.h"
 #endif
-//#include "src/gui/dRowAudio_Layouts.h"
+#ifndef __DROWAUDIO_GUIHELPERS_H__
+    #include "gui/dRowAudio_GuiHelpers.h"
+#endif
 //#include "src/gui/lookandfeel/dRowAudio_LookAndFeel.h"
 //
 #ifndef __DROWAUDIO_GRAPHICALCOMPONENT_H__

@@ -22,7 +22,7 @@
 #define __MAINWINDOW_H_E549002A__
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
+#include "DemoLookAndFeel.h"
 
 //==============================================================================
 class MainAppWindow   : public DocumentWindow
@@ -43,6 +43,9 @@ public:
     */
 
 private:
+    //==============================================================================
+    DemoLookAndFeel lookAndFeel;
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainAppWindow)
 };

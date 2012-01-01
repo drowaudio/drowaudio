@@ -54,7 +54,7 @@ void TransportComponent::resized()
     
     for (int i = 0; i < numButtons; i++)
     {
-        buttons[i]->setBounds (0, 20 * i + 1, w, 18);
+        buttons[i]->setBounds (0, 20 * i + 1, w, 20);
     }
 }
 

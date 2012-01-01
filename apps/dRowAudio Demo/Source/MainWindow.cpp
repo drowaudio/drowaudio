@@ -27,6 +27,7 @@ MainAppWindow::MainAppWindow()
                       Colours::darkgrey,
                       DocumentWindow::allButtons)
 {
+    LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     LookAndFeel& laf = getLookAndFeel();
     laf.setColour (TextButton::buttonColourId, Colours::lightgrey);
     laf.setColour (TextButton::buttonOnColourId, Colours::grey);
