@@ -79,5 +79,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram);
 };
 
-
 #endif  // __SONOGRAM_H_F2E587AC__

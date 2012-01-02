@@ -83,5 +83,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectroscope);
 };
 
-
 #endif  // __SPECTROSCOPE_H_F2E587AC__

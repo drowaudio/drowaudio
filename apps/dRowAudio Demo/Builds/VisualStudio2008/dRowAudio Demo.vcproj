@@ -32,8 +32,8 @@
             Optimization="0"
             BufferSecurityCheck=""
             DebugInformationFormat="4"
-            AdditionalIncludeDirectories="..\..\JuceLibraryCode"
-            PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2008_78A5006=1"
+            AdditionalIncludeDirectories="..\..\JuceLibraryCode;Source/curl/include"
+            PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -54,7 +54,8 @@
             GenerateDebugInformation="true"
             ProgramDatabaseFile=".\Debug\dRowAudio Demo.pdb"
             SubSystem="2"
-            TargetMachine="1"/>
+            TargetMachine="1"
+            AdditionalOptions="Wldap32.lib ws2_32.lib libcurldebug.lib"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
       <Tool Name="VCXDCMakeTool"/>
@@ -85,11 +86,11 @@
             TypeLibraryName=".\Release\dRowAudio Demo.tlb"
             HeaderFileName=""/>
       <Tool Name="VCCLCompilerTool"
-            Optimization="2"
+            Optimization="1"
             InlineFunctionExpansion="1"
             StringPooling="true"
-            AdditionalIncludeDirectories="..\..\JuceLibraryCode"
-            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;JUCER_VS2008_78A5006=1"
+            AdditionalIncludeDirectories="..\..\JuceLibraryCode;Source/curl/include"
+            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -113,7 +114,8 @@
             GenerateManifest="false"
             OptimizeReferences="2"
             EnableCOMDATFolding="2"
-            TargetMachine="1"/>
+            TargetMachine="1"
+            AdditionalOptions="Wldap32.lib ws2_32.lib libcurldebug.lib"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
       <Tool Name="VCXDCMakeTool"/>
@@ -130,6 +132,8 @@
     <Filter Name="dRowAudio Demo">
       <Filter Name="Source">
         <File RelativePath="..\..\Source\Main.cpp"/>
+        <File RelativePath="..\..\Source\DemoLookAndFeel.h"/>
+        <File RelativePath="..\..\Source\DemoLookAndFeel.cpp"/>
         <File RelativePath="..\..\Source\MainWindow.h"/>
         <File RelativePath="..\..\Source\MainWindow.cpp"/>
         <File RelativePath="..\..\Source\MainComponent.h"/>
@@ -138,14 +142,55 @@
         <File RelativePath="..\..\Source\TrackInfoComponent.cpp"/>
         <File RelativePath="..\..\Source\TransportComponent.h"/>
         <File RelativePath="..\..\Source\TransportComponent.cpp"/>
-        <File RelativePath="..\..\Source\AudioPlaybackDemo.h"/>
-        <File RelativePath="..\..\Source\AudioPlaybackDemo.cpp"/>
-        <File RelativePath="..\..\Source\LoopComponent.h"/>
-        <File RelativePath="..\..\Source\LoopComponent.cpp"/>
+        <Filter Name="playback">
+          <File RelativePath="..\..\Source\playback\AudioPlaybackDemo.h"/>
+          <File RelativePath="..\..\Source\playback\AudioPlaybackDemo.cpp"/>
+          <File RelativePath="..\..\Source\playback\LoopComponent.h"/>
+          <File RelativePath="..\..\Source\playback\LoopComponent.cpp"/>
+          <File RelativePath="..\..\Source\playback\BufferTransformAudioSource.h"/>
+          <File RelativePath="..\..\Source\playback\BufferTransformAudioSource.cpp"/>
+          <File RelativePath="..\..\Source\playback\DistortionDemo.h"/>
+          <File RelativePath="..\..\Source\playback\DistortionDemo.cpp"/>
+          <File RelativePath="..\..\Source\playback\DistortionComponent.h"/>
+          <File RelativePath="..\..\Source\playback\DistortionComponent.cpp"/>
+          <File RelativePath="..\..\Source\playback\CurvePoint.h"/>
+        </Filter>
+        <Filter Name="network">
+          <File RelativePath="..\..\Source\network\NetworkDemo.h"/>
+          <File RelativePath="..\..\Source\network\NetworkDemo.cpp"/>
+          <File RelativePath="..\..\Source\network\ConnectionComponent.h"/>
+          <File RelativePath="..\..\Source\network\ConnectionComponent.cpp"/>
+          <File RelativePath="..\..\Source\network\LocalDirectoryListBox.h"/>
+          <File RelativePath="..\..\Source\network\LocalDirectoryListBox.cpp"/>
+          <File RelativePath="..\..\Source\network\RemoteDirectoryListBox.h"/>
+          <File RelativePath="..\..\Source\network\RemoteDirectoryListBox.cpp"/>
+        </Filter>
+        <Filter Name="fft">
+          <File RelativePath="..\..\Source\fft\FFTDemo.h"/>
+          <File RelativePath="..\..\Source\fft\FFTDemo.cpp"/>
+          <File RelativePath="..\..\Source\fft\Spectroscope.h"/>
+          <File RelativePath="..\..\Source\fft\Spectroscope.cpp"/>
+          <File RelativePath="..\..\Source\fft\Sonogram.h"/>
+          <File RelativePath="..\..\Source\fft\Sonogram.cpp"/>
+        </Filter>
+        <Filter Name="resources">
+          <File RelativePath="..\..\Source\resources\splash_screen.png">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+        </Filter>
       </Filter>
     </Filter>
     <Filter Name="Juce Library Code">
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\BinaryData.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
       <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\dRowAudio.cpp"/>
       <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_basics\juce_audio_basics.cpp"/>
       <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_devices\juce_audio_devices.cpp"/>

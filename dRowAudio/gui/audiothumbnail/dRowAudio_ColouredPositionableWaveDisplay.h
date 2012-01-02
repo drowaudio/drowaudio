@@ -73,7 +73,7 @@ public:
 	void paint (Graphics &g);
 
 	//====================================================================================
-	void timerCallback (const int timerId);
+	void timerCallback (int timerId);
 
     void changeListenerCallback (ChangeBroadcaster* source);
     

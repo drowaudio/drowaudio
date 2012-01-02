@@ -234,7 +234,7 @@ size_t CURLEasySession::directoryListingCallback (void* sourcePointer, size_t bl
 	return -1;	
 }
 
-int CURLEasySession::internalProgressCallback (CURLEasySession* session, double dltotal, double dlnow, double ultotal, double ulnow)
+int CURLEasySession::internalProgressCallback (CURLEasySession* session, double dltotal, double dlnow, double /*ultotal*/, double ulnow)
 {
 	session->progress = session->isUpload ? (ulnow / session->inputStream->getTotalLength()) : (dlnow / dltotal);
 	
@@ -247,11 +247,11 @@ int CURLEasySession::internalProgressCallback (CURLEasySession* session, double 
 CURLcode CURLEasySession::performTransfer (bool transferIsUpload)
 {
 	curl_easy_setopt (handle, CURLOPT_URL, remotePath.toUTF8().getAddress());
-    curl_easy_setopt (handle, CURLOPT_UPLOAD, (long) isUpload);
+    curl_easy_setopt (handle, CURLOPT_UPLOAD, (long) transferIsUpload);
     curl_easy_setopt (handle, CURLOPT_PROGRESSDATA, this);
 	curl_easy_setopt (handle, CURLOPT_PROGRESSFUNCTION, internalProgressCallback);
     
-    if (isUpload == true)
+    if (transferIsUpload == true)
 	{
 		// sets the pointer to be passed to the read callback
 		curl_easy_setopt (handle, CURLOPT_READDATA, this);

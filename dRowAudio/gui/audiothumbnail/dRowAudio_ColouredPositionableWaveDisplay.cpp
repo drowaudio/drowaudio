@@ -188,7 +188,7 @@ void ColouredPositionableWaveDisplay::mouseDown(const MouseEvent &e)
 	triggerAsyncUpdate();		
 }
 
-void ColouredPositionableWaveDisplay::mouseUp(const MouseEvent &e)
+void ColouredPositionableWaveDisplay::mouseUp(const MouseEvent& /*e*/)
 {
 	setMouseCursor (MouseCursor::NormalCursor);
 }
@@ -213,7 +213,7 @@ void ColouredPositionableWaveDisplay::refreshWaveform()
         const double startPixelX = (lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
         const double numPixels = ((endTime - lastTimeDrawn) * oneOverFileLength * waveformImage.getWidth());
         
-        Rectangle<int> rectangleToDraw (roundToInt (startPixelX * resolution), 0, 
+        juce::Rectangle<int> rectangleToDraw (roundToInt (startPixelX * resolution), 0, 
                                         roundToInt (numPixels * resolution), displayImage.getHeight());
         
         gTemp.setColour (Colours::black);
@@ -229,7 +229,7 @@ void ColouredPositionableWaveDisplay::refreshWaveform()
                      roundToInt (startPixelX), 0, roundToInt (numPixels), waveformImage.getHeight(),
                      roundToInt (startPixelX * resolution), 0, roundToInt (numPixels * resolution), displayImage.getHeight());
 
-        repaint (Rectangle<int> (roundToInt (startPixelX), 0, roundToInt (numPixels), waveformImage.getHeight()));
+        repaint (juce::Rectangle<int> (roundToInt (startPixelX), 0, roundToInt (numPixels), waveformImage.getHeight()));
 	}
     else if (thumbnailView->isFullyLoaded())
     {

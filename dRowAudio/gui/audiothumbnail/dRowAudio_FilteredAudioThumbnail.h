@@ -145,7 +145,7 @@ public:
         with the verticalZoomFactor parameter.
     */
     void drawChannel (Graphics& g,
-                      const Rectangle<int>& area,
+                      const juce::Rectangle<int>& area,
                       double startTimeSeconds,
                       double endTimeSeconds,
                       int channelNum,
@@ -159,7 +159,7 @@ public:
         @see drawChannel
     */
     void drawChannels (Graphics& g,
-                       const Rectangle<int>& area,
+                       const juce::Rectangle<int>& area,
                        double startTimeSeconds,
                        double endTimeSeconds,
                        float verticalZoomFactor);

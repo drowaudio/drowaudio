@@ -86,7 +86,7 @@ void DistortionComponent::bufferChanged (Buffer* changedBuffer)
     }
 }
 
-void DistortionComponent::componentMovedOrResized (Component& component, bool wasMoved, bool wasResized)
+void DistortionComponent::componentMovedOrResized (Component& component, bool /*wasMoved*/, bool /*wasResized*/)
 {
     if (&component == curvePoints[0] || &component == curvePoints[1])
     {

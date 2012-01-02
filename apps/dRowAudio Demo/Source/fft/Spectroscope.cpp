@@ -143,5 +143,3 @@ void Spectroscope::process()
 		needsRepaint = true;
 	}
 }
-
-

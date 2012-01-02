@@ -76,7 +76,7 @@ void AudioFilePlayer::pause()
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
-void AudioFilePlayer::setPosition (double newPosition, bool ignoreAnyLoopPoints)
+void AudioFilePlayer::setPosition (double newPosition, bool /*ignoreAnyLoopPoints*/)
 {
     audioTransportSource->setPosition (newPosition);
 }

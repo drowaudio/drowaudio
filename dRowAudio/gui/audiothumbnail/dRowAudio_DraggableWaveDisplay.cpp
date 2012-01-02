@@ -135,7 +135,7 @@ void DraggableWaveDisplay::mouseDown (const MouseEvent &e)
 	}
 }
 
-void DraggableWaveDisplay::mouseUp (const MouseEvent &e)
+void DraggableWaveDisplay::mouseUp (const MouseEvent& /*e*/)
 {
 	isMouseDown = false;
 	

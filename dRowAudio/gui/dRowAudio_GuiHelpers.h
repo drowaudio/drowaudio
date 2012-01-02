@@ -39,10 +39,10 @@ namespace GuiHelpers
         return baseColour;
     }
     
-    static void drawBevel (Graphics& g, Rectangle<float> innerBevelBounds, float bevelThickness, const Colour& baseColour)
+    static void drawBevel (Graphics& g, juce::Rectangle<float> innerBevelBounds, float bevelThickness, const Colour& baseColour)
     {
-        Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
-        Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5, bevelThickness * 0.5));
+       juce::Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
+       juce::Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5, bevelThickness * 0.5));
         
         Path pL, pR, pT, pB, pTL, pTR, pBL, pBR;
         pL.startNewSubPath (centreBevelBounds.getTopLeft());

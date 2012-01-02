@@ -43,7 +43,7 @@ public:
 	{
 	}
     
-	void mouseDrag (const MouseEvent& e)
+	void mouseDrag (const MouseEvent& /*e*/)
 	{
 		if (fileDragEnabled)
 		{
@@ -62,7 +62,7 @@ public:
 		}
 	}
 	
-	void mouseUp (const MouseEvent& e)
+	void mouseUp (const MouseEvent& /*e*/)
 	{
 		fileDragEnabled = false;
 	}
@@ -74,12 +74,12 @@ public:
         sendSynchronousChangeMessage();
 	}
     
-	void fileClicked (const File& file, const MouseEvent& e)
+	void fileClicked (const File& /*file*/, const MouseEvent& /*e*/)
 	{
 		fileDragEnabled = true;
 	}
 	
-	void fileDoubleClicked (const File& f) {}
+	void fileDoubleClicked (const File& /*f*/) {}
     
 private:
     //==================================================================================
@@ -103,9 +103,9 @@ public:
 	
 	void resized();
 	void selectionChanged () {}
-	void fileClicked (const File& file, const MouseEvent& e) {}
-	void fileDoubleClicked (const File& file) {}
-	void browserRootChanged (const File& newRoot) {}
+	void fileClicked (const File& /*file*/, const MouseEvent& /*e*/) {}
+	void fileDoubleClicked (const File& /*file*/) {}
+	void browserRootChanged (const File& /*newRoot*/) {}
 	void selectedFileChanged (const File& file);
 	bool addColumn (const File& rootDirectory);
 	void removeColumn (int numColumns = 1);
@@ -253,7 +253,7 @@ void ColumnFileBrowserContents::changeListenerCallback (ChangeBroadcaster* chang
     }
 }
 
-void ColumnFileBrowserContents::componentMovedOrResized (Component &component, bool wasMoved, bool wasResized)
+void ColumnFileBrowserContents::componentMovedOrResized (Component& /*component*/, bool /*wasMoved*/, bool wasResized)
 {
     if (wasResized)
         resized();
@@ -323,7 +323,7 @@ void ColumnFileBrowser::resized()
     fileBrowser->setSize (fileBrowser->getWidth(), getMaximumVisibleHeight());
 }
 
-void ColumnFileBrowser::visibleAreaChanged (const Rectangle<int>& newVisibleArea)
+void ColumnFileBrowser::visibleAreaChanged (const juce::Rectangle<int>& /*newVisibleArea*/)
 {
     resized();
 }

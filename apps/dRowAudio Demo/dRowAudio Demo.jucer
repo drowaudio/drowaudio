@@ -3,42 +3,95 @@
 <JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.yourcompany.dRowAudioDemo" jucerVersion="3.0.0">
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"/>
-    <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1" juceFolder="../../../../juce_source/juce/modules"/>
-    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"/>
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"
+               extraLinkerFlags="-lcurl"/>
+    <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
+            extraDefs="CURL_STATICLIB" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}"/>
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
+            extraDefs="CURL_STATICLIB" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}"/>
     <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"/>
     <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" juceFolder="../../../../juce_source/juce"
                   UIStatusBarHidden="1"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
-    <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="dRowAudio Demo"
-                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                   headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                   headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
   </CONFIGURATIONS>
   <MAINGROUP id="BrdxWp" name="dRowAudio Demo">
     <GROUP id="{AFE8D6EB-4CF8-11B9-1E00-7B7F3155DBD4}" name="Source">
-      <FILE id="PbGDvP" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="DNlZmy" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
-      <FILE id="IoU8Vs" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
-      <FILE id="EANkaD" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="dZhcB7" name="MainComponent.cpp" compile="1" resource="0"
+      <FILE id="TWwywT" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="eGm8s3" name="DemoLookAndFeel.h" compile="0" resource="0"
+            file="Source/DemoLookAndFeel.h"/>
+      <FILE id="dOsZ5c" name="DemoLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/DemoLookAndFeel.cpp"/>
+      <FILE id="KDkXiB" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
+      <FILE id="R22AoS" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
+      <FILE id="zrWibh" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="vlrjLG" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
-      <FILE id="sgzm3Y" name="TrackInfoComponent.h" compile="0" resource="0"
+      <FILE id="yOmXGw" name="TrackInfoComponent.h" compile="0" resource="0"
             file="Source/TrackInfoComponent.h"/>
-      <FILE id="aabiVv" name="TrackInfoComponent.cpp" compile="1" resource="0"
+      <FILE id="E32aFG" name="TrackInfoComponent.cpp" compile="1" resource="0"
             file="Source/TrackInfoComponent.cpp"/>
-      <FILE id="LYoN5O" name="TransportComponent.h" compile="0" resource="0"
+      <FILE id="PfbZ5Z" name="TransportComponent.h" compile="0" resource="0"
             file="Source/TransportComponent.h"/>
-      <FILE id="bkBBKy" name="TransportComponent.cpp" compile="1" resource="0"
+      <FILE id="zu4RI7" name="TransportComponent.cpp" compile="1" resource="0"
             file="Source/TransportComponent.cpp"/>
-      <FILE id="CVkCcu" name="AudioPlaybackDemo.h" compile="0" resource="0"
-            file="Source/AudioPlaybackDemo.h"/>
-      <FILE id="cwD8tv" name="AudioPlaybackDemo.cpp" compile="1" resource="0"
-            file="Source/AudioPlaybackDemo.cpp"/>
-      <FILE id="lhg8dC" name="LoopComponent.h" compile="0" resource="0" file="Source/LoopComponent.h"/>
-      <FILE id="wK7U4o" name="LoopComponent.cpp" compile="1" resource="0"
-            file="Source/LoopComponent.cpp"/>
+      <GROUP id="{5D295506-0E8D-16BD-29DE-50507A147413}" name="playback">
+        <FILE id="QPcnOj" name="AudioPlaybackDemo.h" compile="0" resource="0"
+              file="Source/playback/AudioPlaybackDemo.h"/>
+        <FILE id="oyrE4v" name="AudioPlaybackDemo.cpp" compile="1" resource="0"
+              file="Source/playback/AudioPlaybackDemo.cpp"/>
+        <FILE id="JtL4EB" name="LoopComponent.h" compile="0" resource="0" file="Source/playback/LoopComponent.h"/>
+        <FILE id="ThDzfm" name="LoopComponent.cpp" compile="1" resource="0"
+              file="Source/playback/LoopComponent.cpp"/>
+        <FILE id="jUU9Fr" name="BufferTransformAudioSource.h" compile="0" resource="0"
+              file="Source/playback/BufferTransformAudioSource.h"/>
+        <FILE id="bP0Ui8" name="BufferTransformAudioSource.cpp" compile="1"
+              resource="0" file="Source/playback/BufferTransformAudioSource.cpp"/>
+        <FILE id="hI97tx" name="DistortionDemo.h" compile="0" resource="0"
+              file="Source/playback/DistortionDemo.h"/>
+        <FILE id="DlfH2t" name="DistortionDemo.cpp" compile="1" resource="0"
+              file="Source/playback/DistortionDemo.cpp"/>
+        <FILE id="kE1OIt" name="DistortionComponent.h" compile="0" resource="0"
+              file="Source/playback/DistortionComponent.h"/>
+        <FILE id="JJKeWL" name="DistortionComponent.cpp" compile="1" resource="0"
+              file="Source/playback/DistortionComponent.cpp"/>
+        <FILE id="WwlQbQ" name="CurvePoint.h" compile="0" resource="0" file="Source/playback/CurvePoint.h"/>
+      </GROUP>
+      <GROUP id="{69A1ACF5-AF98-59D3-BF52-A08933F42269}" name="network">
+        <FILE id="mxJRrs" name="NetworkDemo.h" compile="0" resource="0" file="Source/network/NetworkDemo.h"/>
+        <FILE id="k8vJKh" name="NetworkDemo.cpp" compile="1" resource="0" file="Source/network/NetworkDemo.cpp"/>
+        <FILE id="uFMCiE" name="ConnectionComponent.h" compile="0" resource="0"
+              file="Source/network/ConnectionComponent.h"/>
+        <FILE id="dhIpN3" name="ConnectionComponent.cpp" compile="1" resource="0"
+              file="Source/network/ConnectionComponent.cpp"/>
+        <FILE id="kQ0U4o" name="LocalDirectoryListBox.h" compile="0" resource="0"
+              file="Source/network/LocalDirectoryListBox.h"/>
+        <FILE id="A2mT5N" name="LocalDirectoryListBox.cpp" compile="1" resource="0"
+              file="Source/network/LocalDirectoryListBox.cpp"/>
+        <FILE id="rITj5Z" name="RemoteDirectoryListBox.h" compile="0" resource="0"
+              file="Source/network/RemoteDirectoryListBox.h"/>
+        <FILE id="mCcwTv" name="RemoteDirectoryListBox.cpp" compile="1" resource="0"
+              file="Source/network/RemoteDirectoryListBox.cpp"/>
+      </GROUP>
+      <GROUP id="{50DE6A5F-C9E3-CD4F-BF06-B5BCABCFD369}" name="fft">
+        <FILE id="AckS5U" name="FFTDemo.h" compile="0" resource="0" file="Source/fft/FFTDemo.h"/>
+        <FILE id="i3ULgs" name="FFTDemo.cpp" compile="1" resource="0" file="Source/fft/FFTDemo.cpp"/>
+        <FILE id="HhI11Z" name="Spectroscope.h" compile="0" resource="0" file="Source/fft/Spectroscope.h"/>
+        <FILE id="uCWrbY" name="Spectroscope.cpp" compile="1" resource="0"
+              file="Source/fft/Spectroscope.cpp"/>
+        <FILE id="OD3euu" name="Sonogram.h" compile="0" resource="0" file="Source/fft/Sonogram.h"/>
+        <FILE id="NktXJE" name="Sonogram.cpp" compile="1" resource="0" file="Source/fft/Sonogram.cpp"/>
+      </GROUP>
+      <GROUP id="{1E2BBBF0-70BF-AD30-B2B2-70A04B86A489}" name="resources">
+        <FILE id="EBeRpY" name="splash_screen.png" compile="0" resource="1"
+              file="Source/resources/splash_screen.png"/>
+      </GROUP>
     </GROUP>
   </MAINGROUP>
   <MODULES>
@@ -53,8 +106,8 @@
     <MODULE id="juce_audio_devices" showAllCode="0" useLocalCopy="0"/>
     <MODULE id="juce_audio_formats" showAllCode="0" useLocalCopy="0"/>
     <MODULE id="juce_audio_processors" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="dRowAudio" showAllCode="0" useLocalCopy="0"/>
     <MODULE id="juce_audio_utils" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="dRowAudio" showAllCode="0" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS/>
 </JUCERPROJECT>

@@ -19,7 +19,7 @@
 */
 
 #include "MainComponent.h"
-#include "AudioPlaybackDemo.h"
+#include "playback/AudioPlaybackDemo.h"
 #include "network/NetworkDemo.h"
 #include "fft/FFTDemo.h"
 
@@ -160,7 +160,6 @@ void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
                                              numSamples);
     
     fftDemo->processBlock (outputChannelData[0], numSamples);
-    
     meterL.copySamples (outputChannelData[0], numSamples);
     
     if (numOutputChannels > 1)

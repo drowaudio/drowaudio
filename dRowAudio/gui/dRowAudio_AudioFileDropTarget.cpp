@@ -60,7 +60,7 @@ void AudioFileDropTarget::paint (Graphics& g)
     }
 }
 
-bool AudioFileDropTarget::hitTest (int x, int y)
+bool AudioFileDropTarget::hitTest (int /*x*/, int /*y*/)
 {
     if (! dragTested || interestedInDrag)
         return true;
@@ -68,14 +68,14 @@ bool AudioFileDropTarget::hitTest (int x, int y)
     return false;
 }
 
-void AudioFileDropTarget::mouseEnter (const MouseEvent& e)
+void AudioFileDropTarget::mouseEnter (const MouseEvent& /*e*/)
 {
     dragTested = true;
 
     repaint();
 }
 
-void AudioFileDropTarget::mouseExit (const MouseEvent& e)
+void AudioFileDropTarget::mouseExit (const MouseEvent& /*e*/)
 {
     dragTested = false;
     
@@ -83,9 +83,9 @@ void AudioFileDropTarget::mouseExit (const MouseEvent& e)
 }
 
 //==============================================================================
-void AudioFileDropTarget::componentMovedOrResized (Component& component,
-                                                   bool wasMoved,
-                                                   bool wasResized)
+void AudioFileDropTarget::componentMovedOrResized (Component& /*component*/,
+                                                   bool /*wasMoved*/,
+                                                   bool /*wasResized*/)
 {
     if (attachedComponent != nullptr)
         setBounds (attachedComponent->getBounds());
@@ -108,7 +108,7 @@ bool AudioFileDropTarget::isInterestedInDragSource (const SourceDetails& dragSou
     return false;	
 }
 
-void AudioFileDropTarget::itemDragExit (const SourceDetails& dragSourceDetails)
+void AudioFileDropTarget::itemDragExit (const SourceDetails& /*dragSourceDetails*/)
 {
     if (interestedInDrag)
     {
@@ -158,7 +158,7 @@ bool AudioFileDropTarget::isInterestedInFileDrag (const StringArray &files)
     return false;
 }
 
-void AudioFileDropTarget::fileDragExit (const StringArray &files)
+void AudioFileDropTarget::fileDragExit (const StringArray& /*files*/)
 {
     if (interestedInDrag)
     {
@@ -169,7 +169,7 @@ void AudioFileDropTarget::fileDragExit (const StringArray &files)
     }
 }
 
-void AudioFileDropTarget::filesDropped (const StringArray &files, int x, int y)
+void AudioFileDropTarget::filesDropped (const StringArray &files, int /*x*/, int /*y*/)
 {
     if (interestedInDrag)
     {

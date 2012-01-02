@@ -109,7 +109,7 @@ void AudioThumbnailImage::setResolution (double newResolution)
 //====================================================================================
 void AudioThumbnailImage::timerCallback ()
 {
-    const ScopedReadLock sl (lock);
+    //const ScopedLock sl (lock);
 
     if (! renderComplete)
     {
@@ -136,7 +136,7 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
 	{
         if (filePlayer->getAudioFormatReaderSource() != nullptr)
         {
-            const ScopedWriteLock sl (lock);
+            const ScopedLock sl (lock);
 
             currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
 
@@ -195,7 +195,7 @@ void AudioThumbnailImage::removeListener (AudioThumbnailImage::Listener* const l
 //==============================================================================	
 void AudioThumbnailImage::triggerWaveformRefresh()
 {
-    const ScopedWriteLock sl (lock);
+    const ScopedLock sl (lock);
 
     lastTimeDrawn = 0.0;
     waveformImage.clear (waveformImage.getBounds(), backgroundColour);
@@ -211,7 +211,7 @@ void AudioThumbnailImage::triggerWaveformRefresh()
 
 void AudioThumbnailImage::refreshWaveform()
 {
-    const ScopedWriteLock sl (lock);
+    const ScopedLock sl (lock);
     
 	if (audioThumbnail->getNumSamplesFinished() > 0)
 	{
@@ -236,8 +236,8 @@ void AudioThumbnailImage::refreshWaveform()
                                           false);
             }
             
-            Rectangle<int> rectangleToDraw (0, 0, 
-                                            numTempPixels, waveformImage.getHeight());
+             Rectangle<int> rectangleToDraw (0, 0, 
+                                                  numTempPixels, waveformImage.getHeight());
             
             Graphics gTemp (tempSectionImage);
             tempSectionImage.clear(tempSectionImage.getBounds(), backgroundColour);

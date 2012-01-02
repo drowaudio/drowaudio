@@ -68,7 +68,7 @@ void RemoteDirectoryListBoxModel::setContents(StringArray newContents)
 	itemList = newContents;
 }
 
-void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked(int row, const MouseEvent &e)
+void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked(int row, const MouseEvent& /*e*/)
 {
 	DBG(itemList[row]);
 	
@@ -154,7 +154,7 @@ void RemoteDirectoryListBox::itemDragEnter (const SourceDetails& dragSourceDetai
     repaint();    
 }
 
-void RemoteDirectoryListBox::itemDragExit (const SourceDetails& dragSourceDetails)
+void RemoteDirectoryListBox::itemDragExit (const SourceDetails& /*dragSourceDetails*/)
 {
     isInterestedInDrag = false;
     repaint();

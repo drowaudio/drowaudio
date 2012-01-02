@@ -53,8 +53,8 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;Source/curl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -76,6 +76,7 @@
       <ProgramDatabaseFile>.\Debug\dRowAudio Demo.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>Wldap32.lib ws2_32.lib libcurldebug.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -92,8 +93,8 @@
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;Source/curl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -117,6 +118,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalOptions>Wldap32.lib ws2_32.lib libcurldebug.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -125,12 +127,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp"/>
+    <ClCompile Include="..\..\Source\DemoLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\MainWindow.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\TrackInfoComponent.cpp"/>
     <ClCompile Include="..\..\Source\TransportComponent.cpp"/>
-    <ClCompile Include="..\..\Source\AudioPlaybackDemo.cpp"/>
-    <ClCompile Include="..\..\Source\LoopComponent.cpp"/>
+    <ClCompile Include="..\..\Source\playback\AudioPlaybackDemo.cpp"/>
+    <ClCompile Include="..\..\Source\playback\LoopComponent.cpp"/>
+    <ClCompile Include="..\..\Source\playback\BufferTransformAudioSource.cpp"/>
+    <ClCompile Include="..\..\Source\playback\DistortionDemo.cpp"/>
+    <ClCompile Include="..\..\Source\playback\DistortionComponent.cpp"/>
+    <ClCompile Include="..\..\Source\network\NetworkDemo.cpp"/>
+    <ClCompile Include="..\..\Source\network\ConnectionComponent.cpp"/>
+    <ClCompile Include="..\..\Source\network\LocalDirectoryListBox.cpp"/>
+    <ClCompile Include="..\..\Source\network\RemoteDirectoryListBox.cpp"/>
+    <ClCompile Include="..\..\Source\fft\FFTDemo.cpp"/>
+    <ClCompile Include="..\..\Source\fft\Spectroscope.cpp"/>
+    <ClCompile Include="..\..\Source\fft\Sonogram.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\dRowAudio.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_basics\juce_audio_basics.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_devices\juce_audio_devices.cpp"/>
@@ -145,13 +159,26 @@
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_extra\juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\DemoLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\MainWindow.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\TrackInfoComponent.h"/>
     <ClInclude Include="..\..\Source\TransportComponent.h"/>
-    <ClInclude Include="..\..\Source\AudioPlaybackDemo.h"/>
-    <ClInclude Include="..\..\Source\LoopComponent.h"/>
+    <ClInclude Include="..\..\Source\playback\AudioPlaybackDemo.h"/>
+    <ClInclude Include="..\..\Source\playback\LoopComponent.h"/>
+    <ClInclude Include="..\..\Source\playback\BufferTransformAudioSource.h"/>
+    <ClInclude Include="..\..\Source\playback\DistortionDemo.h"/>
+    <ClInclude Include="..\..\Source\playback\DistortionComponent.h"/>
+    <ClInclude Include="..\..\Source\playback\CurvePoint.h"/>
+    <ClInclude Include="..\..\Source\network\NetworkDemo.h"/>
+    <ClInclude Include="..\..\Source\network\ConnectionComponent.h"/>
+    <ClInclude Include="..\..\Source\network\LocalDirectoryListBox.h"/>
+    <ClInclude Include="..\..\Source\network\RemoteDirectoryListBox.h"/>
+    <ClInclude Include="..\..\Source\fft\FFTDemo.h"/>
+    <ClInclude Include="..\..\Source\fft\Spectroscope.h"/>
+    <ClInclude Include="..\..\Source\fft\Sonogram.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>

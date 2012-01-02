@@ -100,15 +100,15 @@ public:
         /** Called when the library file has changed, before it starts updating itself.
 			Use this callback to initialise any data storage you may be holding.
 		 */
-        virtual void libraryChanged (ITunesLibrary *library) {};
+        virtual void libraryChanged (ITunesLibrary* /*library*/) {};
 
         /** Called when the library has been updated.
 		 */
-        virtual void libraryUpdated (ITunesLibrary *library) = 0;
+        virtual void libraryUpdated (ITunesLibrary* library) = 0;
 
         /** Called when the library has finished updating.
 		 */
-        virtual void libraryFinished (ITunesLibrary *library) {}
+        virtual void libraryFinished (ITunesLibrary* /*library*/) {}
     };
 	
     /** Adds a listener to be called when this slider's value changes. */

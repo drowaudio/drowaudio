@@ -64,13 +64,13 @@ public:
 		dragComponent (this, e, &constrainer);
 	}
 	
-	void mouseEnter (const MouseEvent& e)
+	void mouseEnter (const MouseEvent& /*e*/)
 	{
 		mouseIsOver = true;
 		repaint();
 	}
 	
-	void mouseExit (const MouseEvent& e)
+	void mouseExit (const MouseEvent& /*e*/)
 	{
 		mouseIsOver = false;
 		repaint();

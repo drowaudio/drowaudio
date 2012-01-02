@@ -31,6 +31,7 @@ MainAppWindow::MainAppWindow()
     LookAndFeel& laf = getLookAndFeel();
     laf.setColour (TextButton::buttonColourId, Colours::lightgrey);
     laf.setColour (TextButton::buttonOnColourId, Colours::grey);
+    laf.setColour (Slider::rotarySliderFillColourId, Colours::white);
 
     setContentOwned (new MainComponent, false);
     centreWithSize (800, 600);

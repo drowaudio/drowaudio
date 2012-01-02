@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-#if JUCE_MAC
+#if JUCE_MAC && ! DROWAUDIO_USE_FFTREAL
 
 BEGIN_JUCE_NAMESPACE
 
@@ -26,7 +26,7 @@ FFTOperation::FFTOperation (int fftSizeLog2)
     : fftProperties (fftSizeLog2)
 {
 	fftConfig = create_fftsetup (fftProperties.fftSizeLog2, 0);
-	
+	DBG("using vdsp");
 	fftBuffer.malloc (fftProperties.fftSize);
 	fftBufferSplit.realp = fftBuffer.getData();
 	fftBufferSplit.imagp = fftBufferSplit.realp + getFFTProperties().fftSizeHalved;	
@@ -58,8 +58,8 @@ void FFTOperation::performFFT (float* samples)
 	fft_zrip (fftConfig, &fftBufferSplit, 1, fftProperties.fftSizeLog2, FFT_FORWARD);
 }
 
-#endif //JUCE_MAC
-
 //============================================================================
 
 END_JUCE_NAMESPACE
+
+#endif //JUCE_MAC

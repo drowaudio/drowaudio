@@ -22,8 +22,7 @@ BEGIN_JUCE_NAMESPACE
 
 //========================================================================
 FilteringAudioSource::FilteringAudioSource(AudioSource* inputSource,
-                                           bool deleteInputWhenDeleted,
-                                           int numChannels)
+                                           bool deleteInputWhenDeleted)
     : input         (inputSource, deleteInputWhenDeleted),
 	  sampleRate    (44100.0),
 	  lowEQGain     (1.0),

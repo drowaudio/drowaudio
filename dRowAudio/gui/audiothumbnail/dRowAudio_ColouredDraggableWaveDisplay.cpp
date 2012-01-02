@@ -99,8 +99,8 @@ void ColouredDraggableWaveDisplay::refreshWaveform()
         }
         
         
-        Rectangle<int> tempRectangleToDraw (0, 0, tempNumPixels, tempLargeImage.getHeight());
-        Rectangle<int> destRectangleToDraw (startPixelX, 0, numPixels, waveformImage.img.getHeight());
+        juce::Rectangle<int> tempRectangleToDraw (0, 0, tempNumPixels, tempLargeImage.getHeight());
+        juce::Rectangle<int> destRectangleToDraw (startPixelX, 0, numPixels, waveformImage.img.getHeight());
 
 		Graphics g (tempLargeImage);
         tempLargeImage.clear (tempRectangleToDraw, Colours::black);

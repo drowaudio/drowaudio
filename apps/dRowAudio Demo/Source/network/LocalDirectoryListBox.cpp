@@ -70,10 +70,10 @@ void LocalDirectoryListBoxModel::paintListBoxItem (int rowNumber,
 	const int m = height * 0.15;
 
 	if (currentWorkingDirectory.getChildFile(itemList[rowNumber]).isDirectory()) {
-		LookAndFeel::getDefaultLookAndFeel().getDefaultFolderImage()->drawWithin(g, Rectangle<float>(m, m, h-2*m, h-2*m), RectanglePlacement(0), 1.0f);
+		LookAndFeel::getDefaultLookAndFeel().getDefaultFolderImage()->drawWithin(g, juce::Rectangle<float>(m, m, h-2*m, h-2*m), RectanglePlacement(0), 1.0f);
 	}
 	else {
-		LookAndFeel::getDefaultLookAndFeel().getDefaultDocumentFileImage()->drawWithin(g, Rectangle<float>(m, m, h-2*m, h-2*m), RectanglePlacement(RectanglePlacement::centred), 1.0f);
+		LookAndFeel::getDefaultLookAndFeel().getDefaultDocumentFileImage()->drawWithin(g, juce::Rectangle<float>(m, m, h-2*m, h-2*m), RectanglePlacement(RectanglePlacement::centred), 1.0f);
 	}
 	
 	g.setColour(Colours::black);
@@ -93,7 +93,7 @@ void LocalDirectoryListBoxModel::refresh()
 	sendChangeMessage();
 }
 
-void LocalDirectoryListBoxModel::listBoxItemDoubleClicked(int row, const MouseEvent &e)
+void LocalDirectoryListBoxModel::listBoxItemDoubleClicked(int row, const MouseEvent& /*e*/)
 {
 	if (itemList[row] == "..")
 	{
@@ -170,7 +170,7 @@ void LocalDirectoryListBox::itemDragEnter (const SourceDetails& dragSourceDetail
     repaint();    
 }
 
-void LocalDirectoryListBox::itemDragExit (const SourceDetails& dragSourceDetails)
+void LocalDirectoryListBox::itemDragExit (const SourceDetails& /*dragSourceDetails*/)
 {
     isInterestedInDrag = false;
     repaint();

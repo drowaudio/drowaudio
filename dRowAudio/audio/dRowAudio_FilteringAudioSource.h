@@ -35,8 +35,7 @@ public:
 	 After creating one of these, use the setSource() method to select an input source.
 	 */
     FilteringAudioSource (AudioSource* inputSource,
-                          bool deleteInputWhenDeleted,
-                          int numChannels = 2);
+                          bool deleteInputWhenDeleted);
 	
     /** Destructor. */
     ~FilteringAudioSource();
@@ -89,6 +88,7 @@ private:
 	float lowEQGain, midEQGain, highEQGain;
 	bool filterSource;
 
+    //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilteringAudioSource);
 };
 

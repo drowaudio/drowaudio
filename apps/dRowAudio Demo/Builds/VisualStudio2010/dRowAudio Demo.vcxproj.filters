@@ -8,12 +8,27 @@
     <Filter Include="dRowAudio Demo\Source">
       <UniqueIdentifier>{9D9A4943-1E2A-33C5-E367-1AB9B713D922}</UniqueIdentifier>
     </Filter>
+    <Filter Include="dRowAudio Demo\Source\playback">
+      <UniqueIdentifier>{052BC8AB-209E-D4DB-727B-2E7CC8EDBDF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dRowAudio Demo\Source\network">
+      <UniqueIdentifier>{0BEEB432-C551-D7A4-8B2C-7588EC705CDC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dRowAudio Demo\Source\fft">
+      <UniqueIdentifier>{050B0F26-2F97-BF21-4727-E588A13D6E98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dRowAudio Demo\Source\resources">
+      <UniqueIdentifier>{9356FF3E-920E-63E4-E831-33F73F8493A9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Library Code">
       <UniqueIdentifier>{8B4D1BAA-6DB4-CAEC-A0FA-271F354D5C61}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp">
+      <Filter>dRowAudio Demo\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DemoLookAndFeel.cpp">
       <Filter>dRowAudio Demo\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MainWindow.cpp">
@@ -28,11 +43,47 @@
     <ClCompile Include="..\..\Source\TransportComponent.cpp">
       <Filter>dRowAudio Demo\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\AudioPlaybackDemo.cpp">
-      <Filter>dRowAudio Demo\Source</Filter>
+    <ClCompile Include="..\..\Source\playback\AudioPlaybackDemo.cpp">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\LoopComponent.cpp">
-      <Filter>dRowAudio Demo\Source</Filter>
+    <ClCompile Include="..\..\Source\playback\LoopComponent.cpp">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\playback\BufferTransformAudioSource.cpp">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\playback\DistortionDemo.cpp">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\playback\DistortionComponent.cpp">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\network\NetworkDemo.cpp">
+      <Filter>dRowAudio Demo\Source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\network\ConnectionComponent.cpp">
+      <Filter>dRowAudio Demo\Source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\network\LocalDirectoryListBox.cpp">
+      <Filter>dRowAudio Demo\Source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\network\RemoteDirectoryListBox.cpp">
+      <Filter>dRowAudio Demo\Source\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\fft\FFTDemo.cpp">
+      <Filter>dRowAudio Demo\Source\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\fft\Spectroscope.cpp">
+      <Filter>dRowAudio Demo\Source\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\fft\Sonogram.cpp">
+      <Filter>dRowAudio Demo\Source\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\resources\splash_screen.png">
+      <Filter>dRowAudio Demo\Source\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>Juce Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\dRowAudio.cpp">
       <Filter>Juce Library Code</Filter>
@@ -72,6 +123,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\DemoLookAndFeel.h">
+      <Filter>dRowAudio Demo\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\MainWindow.h">
       <Filter>dRowAudio Demo\Source</Filter>
     </ClInclude>
@@ -84,13 +138,49 @@
     <ClInclude Include="..\..\Source\TransportComponent.h">
       <Filter>dRowAudio Demo\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\AudioPlaybackDemo.h">
-      <Filter>dRowAudio Demo\Source</Filter>
+    <ClInclude Include="..\..\Source\playback\AudioPlaybackDemo.h">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\LoopComponent.h">
-      <Filter>dRowAudio Demo\Source</Filter>
+    <ClInclude Include="..\..\Source\playback\LoopComponent.h">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\playback\BufferTransformAudioSource.h">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\playback\DistortionDemo.h">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\playback\DistortionComponent.h">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\playback\CurvePoint.h">
+      <Filter>dRowAudio Demo\Source\playback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\network\NetworkDemo.h">
+      <Filter>dRowAudio Demo\Source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\network\ConnectionComponent.h">
+      <Filter>dRowAudio Demo\Source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\network\LocalDirectoryListBox.h">
+      <Filter>dRowAudio Demo\Source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\network\RemoteDirectoryListBox.h">
+      <Filter>dRowAudio Demo\Source\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\fft\FFTDemo.h">
+      <Filter>dRowAudio Demo\Source\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\fft\Spectroscope.h">
+      <Filter>dRowAudio Demo\Source\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\fft\Sonogram.h">
+      <Filter>dRowAudio Demo\Source\fft</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">

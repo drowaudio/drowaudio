@@ -18,6 +18,8 @@
   ==============================================================================
 */
 
+#if JUCE_MAC || DROWAUDIO_USE_FFTREAL
+
 BEGIN_JUCE_NAMESPACE
 
 //============================================================================
@@ -113,3 +115,5 @@ void FFTEngine::setWindowType (Window::WindowType type)
 }
 
 END_JUCE_NAMESPACE
+
+#endif // JUCE_MAC || DROWAUDIO_USE_FFTREAL

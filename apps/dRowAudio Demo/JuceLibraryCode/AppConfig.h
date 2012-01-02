@@ -28,6 +28,11 @@
 #define JUCE_MODULE_AVAILABLE_juce_gui_extra             1
 
 //==============================================================================
+// dRowAudio flags:
+
+//#define  DROWAUDIO_USE_FFTREAL
+
+//==============================================================================
 // juce_audio_devices flags:
 
 //#define  JUCE_ASIO
@@ -43,6 +48,7 @@
 
 //#define  JUCE_USE_FLAC
 //#define  JUCE_USE_OGGVORBIS
+//#define  JUCE_USE_MP3AUDIOFORMAT
 
 //==============================================================================
 // juce_audio_processors flags:
@@ -62,6 +68,7 @@
 // juce_graphics flags:
 
 //#define  JUCE_USE_COREIMAGE_LOADER
+//#define  JUCE_USE_DIRECTWRITE
 
 //==============================================================================
 // juce_gui_basics flags:

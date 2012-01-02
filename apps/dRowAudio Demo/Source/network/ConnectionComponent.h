@@ -49,7 +49,7 @@ public:
         virtual ~Listener()                                     {}
 		
         /** Called when the button is clicked. */
-        virtual void connectionChanged (ConnectionComponent* connectionComponent)	{}
+        virtual void connectionChanged (ConnectionComponent* /*connectionComponent*/)	{}
     };
 	
     void addListener (Listener* newListener);

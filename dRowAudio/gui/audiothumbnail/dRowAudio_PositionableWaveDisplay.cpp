@@ -183,13 +183,19 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
 
 void PositionableWaveDisplay::imageUpdated (AudioThumbnailImage* changedAudioThumbnailImage)
 {
-    cachedImage = audioThumbnailImage.getImage();
-    repaint();
+    if (changedAudioThumbnailImage == &audioThumbnailImage)
+    {
+        cachedImage = audioThumbnailImage.getImage();
+        repaint();
+    }
 }
 
 void PositionableWaveDisplay::imageFinished (AudioThumbnailImage* changedAudioThumbnailImage)
 {
-    resized();
+    if (changedAudioThumbnailImage == &audioThumbnailImage)
+    {
+        resized();
+    }
 }
 
 //==============================================================================
@@ -211,7 +217,7 @@ void PositionableWaveDisplay::mouseDown (const MouseEvent &e)
     }
 }
 
-void PositionableWaveDisplay::mouseUp (const MouseEvent &e)
+void PositionableWaveDisplay::mouseUp (const MouseEvent& /*e*/)
 {
     if (showTransportCursor)
     {
@@ -219,7 +225,7 @@ void PositionableWaveDisplay::mouseUp (const MouseEvent &e)
     }
 }
 
-void PositionableWaveDisplay::mouseDrag (const MouseEvent &e)
+void PositionableWaveDisplay::mouseDrag (const MouseEvent& e)
 {
     if (showTransportCursor)
     {

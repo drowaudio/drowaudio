@@ -36,7 +36,7 @@ InputStream* MemoryInputSource::createInputStream()
     return memoryInputStream;
 }
 
-InputStream* MemoryInputSource::createInputStreamFor (const String& relatedItemPath)
+InputStream* MemoryInputSource::createInputStreamFor (const String& /*relatedItemPath*/)
 {
     return nullptr;
 }

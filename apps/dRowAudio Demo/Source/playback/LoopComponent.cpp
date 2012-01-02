@@ -59,17 +59,20 @@ void LoopComponent::paint (Graphics& g)
 
 void LoopComponent::fileChanged (AudioFilePlayer* player)
 {
-    if (audioFilePlayer.getLengthInSeconds() > 0)
+    if (player == &audioFilePlayer)
     {
-        const double w = getWidth();
-        const double startTime = (jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
-        const double endTime = (jmax (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
-        
-        audioFilePlayer.setLoopTimes (startTime, endTime);
+        if (audioFilePlayer.getLengthInSeconds() > 0)
+        {
+            const double w = getWidth();
+            const double startTime = (jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
+            const double endTime = (jmax (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
+            
+            audioFilePlayer.setLoopTimes (startTime, endTime);
+        }
     }
 }
 
-void LoopComponent::componentMovedOrResized (Component& component, bool wasMoved, bool wasResized)
+void LoopComponent::componentMovedOrResized (Component& /*component*/, bool /*wasMoved*/, bool /*wasResized*/)
 {
     if (audioFilePlayer.getLengthInSeconds() > 0)
     {
@@ -87,7 +90,8 @@ void LoopComponent::componentMovedOrResized (Component& component, bool wasMoved
     }
 }
 
-void LoopComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode)
+void LoopComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player, int /*settingCode*/)
 {
-    repaint();
+    if (player == &audioFilePlayer)
+        repaint();
 }

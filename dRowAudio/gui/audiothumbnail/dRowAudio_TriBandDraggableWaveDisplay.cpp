@@ -95,7 +95,7 @@ void TriBandDraggableWaveDisplay::refreshWaveform(int waveNum)
 			int wavHeight = sectionToRefresh->img.getHeight() / 3;
 			for (int i = 0; i < waveforms.size(); i++)
 			{
-				waveforms[i]->drawChannel(g, Rectangle<int> (0, i * wavHeight, sectionToRefresh->img.getWidth(), wavHeight),
+				waveforms[i]->drawChannel(g, juce::Rectangle<int> (0, i * wavHeight, sectionToRefresh->img.getWidth(), wavHeight),
 										  startTime, endTime,
 										  0, 1.0f);
 			}

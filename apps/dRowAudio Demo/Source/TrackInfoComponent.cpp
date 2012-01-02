@@ -121,7 +121,8 @@ void TrackInfoComponent::fileChanged (AudioFilePlayer* player)
 
 void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode)
 {
-    if (settingCode == AudioFilePlayerExt::SoundTouchSetting)
+    if (player == &audioFilePlayer
+        && settingCode == AudioFilePlayerExt::SoundTouchSetting)
     {
         ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
         double bpm = trackInfo[MusicColumns::columnNames[MusicColumns::BPM]].toString().getDoubleValue();

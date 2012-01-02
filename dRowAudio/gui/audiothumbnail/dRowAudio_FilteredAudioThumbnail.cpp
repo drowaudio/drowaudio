@@ -491,7 +491,7 @@ public:
         cacheNeedsRefilling = true;
     }
 
-    void drawChannel (Graphics& g, const Rectangle<int>& area,
+    void drawChannel (Graphics& g, const juce::Rectangle<int>& area,
                       const double startTime, const double endTime,
                       const int channelNum, const float verticalZoomFactor,
                       const double sampleRate, const int numChannels, const int samplesPerThumbSample,
@@ -502,7 +502,7 @@ public:
 
         if (isPositiveAndBelow (channelNum, numChannelsCached))
         {
-            const Rectangle<int> clip (g.getClipBounds().getIntersection (area.withWidth (jmin (numSamplesCached, area.getWidth()))));
+            const juce::Rectangle<int> clip (g.getClipBounds().getIntersection (area.withWidth (jmin (numSamplesCached, area.getWidth()))));
 
             if (! clip.isEmpty())
             {
@@ -868,7 +868,7 @@ float FilteredAudioThumbnail::getApproximatePeak() const
     return jlimit (0, 127, peak) / 127.0f;
 }
 
-void FilteredAudioThumbnail::drawChannel (Graphics& g, const Rectangle<int>& area, double startTime,
+void FilteredAudioThumbnail::drawChannel (Graphics& g, const juce::Rectangle<int>& area, double startTime,
                                   double endTime, int channelNum, float verticalZoomFactor)
 {
     const ScopedLock sl (lock);
@@ -877,7 +877,7 @@ void FilteredAudioThumbnail::drawChannel (Graphics& g, const Rectangle<int>& are
                          sampleRate, numChannels, samplesPerThumbSample, source, channels);
 }
 
-void FilteredAudioThumbnail::drawChannels (Graphics& g, const Rectangle<int>& area, double startTimeSeconds,
+void FilteredAudioThumbnail::drawChannels (Graphics& g, const juce::Rectangle<int>& area, double startTimeSeconds,
                                    double endTimeSeconds, float verticalZoomFactor)
 {
     for (int i = 0; i < numChannels; ++i)
@@ -885,7 +885,7 @@ void FilteredAudioThumbnail::drawChannels (Graphics& g, const Rectangle<int>& ar
         const int y1 = roundToInt ((i * area.getHeight()) / numChannels);
         const int y2 = roundToInt (((i + 1) * area.getHeight()) / numChannels);
 
-        drawChannel (g, Rectangle<int> (area.getX(), area.getY() + y1, area.getWidth(), y2 - y1),
+        drawChannel (g, juce::Rectangle<int> (area.getX(), area.getY() + y1, area.getWidth(), y2 - y1),
                      startTimeSeconds, endTimeSeconds, i, verticalZoomFactor);
     }
 }

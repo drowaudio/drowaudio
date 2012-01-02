@@ -81,7 +81,7 @@ public:
     
     /** Returns true if the source is playing forwards.
      */
-	bool getPlayDirection()                                     {   return reversibleAudioSource;       }
+	bool getPlayDirection()                                     {   return reversibleAudioSource->getPlayDirection();       }
     
     //==============================================================================
     /** Sets the start and end times of the loop.

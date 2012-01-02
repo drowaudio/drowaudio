@@ -27,7 +27,6 @@
 
 //==============================================================================
 class AudioPlaybackDemo :   public Component,
-                            public AudioFilePlayer::Listener,
                             public Slider::Listener
 {
 public:    
@@ -39,9 +38,7 @@ public:
     void resized();
     
     void paint (Graphics& g);
-    
-    void fileChanged (AudioFilePlayer* player);
-    
+        
     void sliderValueChanged (Slider* slider);
     
     enum PlayerControls 

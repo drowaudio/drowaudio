@@ -36,11 +36,11 @@ public:
     }
 
     //==============================================================================
-    void initialise (const String& commandLine)
+    void initialise (const String& /*commandLine*/)
     {
         SplashScreen* splash = new SplashScreen();
         splash->show ("dRowAudio Demo",
-                      ImageCache::getFromFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("splash_screen.png")),
+                      ImageCache::getFromMemory (BinaryData::splash_screen_png, BinaryData::splash_screen_pngSize),
                       0, true);
 
         // Do your application's initialisation code here..
@@ -75,7 +75,7 @@ public:
         return true;
     }
 
-    void anotherInstanceStarted (const String& commandLine)
+    void anotherInstanceStarted (const String& /*commandLine*/)
     {
         
     }

@@ -146,13 +146,13 @@ public:
         /** Called when the the player is stopped or started.
             You can find out if it is currently stopped with isPlaying().
 		 */
-        virtual void playerStoppedOrStarted (AudioFilePlayer* player) {}
+        virtual void playerStoppedOrStarted (AudioFilePlayer* /*player*/) {}
 
         /** To avoid having to create a new listener interface for each subclass of AudioFilePlayer
             you can call this and send a SettingCode to your listeners to identify what sort of change occured
             e.g. playback rate, filter gain etc.
          */
-        virtual void audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode) {}
+        virtual void audioFilePlayerSettingChanged (AudioFilePlayer* /*player*/, int /*settingCode*/) {}
     };
 	
     /** Adds a listener to be called when this slider's value changes. */

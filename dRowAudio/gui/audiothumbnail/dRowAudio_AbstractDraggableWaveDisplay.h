@@ -99,7 +99,7 @@ public:
     
 	//====================================================================================
     /** @internal. */
-	void timerCallback (const int timerId);
+	void timerCallback (int timerId);
 		    
     /** @internal. */
 	void fileChanged (AudioFilePlayer *player);

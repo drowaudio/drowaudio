@@ -21,7 +21,7 @@
 #ifndef __LOOPCOMPONENT_H_AEA5B15F__
 #define __LOOPCOMPONENT_H_AEA5B15F__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
 //==============================================================================
 class LoopMarker :  public Component
@@ -44,14 +44,14 @@ public:
         g.fillAll (isMouseOver ? Colours::red.withAlpha (0.9f) : Colours::red.withAlpha (0.7f));
     }
     
-    void mouseEnter (const MouseEvent& e)
+    void mouseEnter (const MouseEvent& /*e*/)
     {
         setMouseCursor (MouseCursor::PointingHandCursor);
         isMouseOver = true;
         repaint();
     }
 
-    void mouseExit (const MouseEvent& e)
+    void mouseExit (const MouseEvent& /*e*/)
     {
         setMouseCursor (MouseCursor::NormalCursor);
         isMouseOver = false;
@@ -64,7 +64,7 @@ public:
         dragger.startDraggingComponent (this, e);
     } 
 
-    void mouseUp (const MouseEvent& e)
+    void mouseUp (const MouseEvent& /*e*/)
     {
         setMouseCursor (MouseCursor::PointingHandCursor);
     }

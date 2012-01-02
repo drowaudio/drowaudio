@@ -21,9 +21,18 @@
 #ifndef __DROWAUDIO_FFTOPERATION__
 #define __DROWAUDIO_FFTOPERATION__
 
-#if JUCE_MAC
+#if JUCE_MAC && ! DROWAUDIO_USE_FFTREAL
     typedef FFTSetup FFTConfig;
     typedef DSPSplitComplex SplitComplex;
+#elif DROWAUDIO_USE_FFTREAL
+    END_JUCE_NAMESPACE
+    #include "fftreal/FFTReal.h"
+    BEGIN_JUCE_NAMESPACE
+    typedef ScopedPointer< ffft::FFTReal<float> > FFTConfig;
+    struct SplitComplex {
+        float* realp;
+        float* imagp;
+    };
 #endif
 
 //==============================================================================
@@ -95,28 +104,11 @@ private:
 	FFTProperties fftProperties;
 	HeapBlock<float> fftBuffer;
 	
-#if JUCE_MAC
 	FFTConfig fftConfig;
 	SplitComplex fftBufferSplit;
-#endif //JUCE_MAC
 	
 	//==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTOperation);
 };
 
-/*
-FFTSetup fftvDSP;
-DSPSplitComplex fftBufferSplit;
-
-// set-up the FFT pre-op. Pass FFTProperties, returns FFTSetup
-fftvDSP = create_fftsetup (fftProperties.fftSizeLog2, 0);
-
-
-// perform fft operation. Pass the audio samples split complex & properties
-ctoz ((COMPLEX *) samples, 2, &fftBufferSplit, 1, fftProperties.fftSizeHalved);
-fft_zrip (fftvDSP, &fftBufferSplit, 1, fftProperties.fftSizeLog2, FFT_FORWARD);
-
-// need to call in desructor
-destroy_fftsetup(fftvDSP);
-*/
 #endif //__DROWAUDIO_FFTOPERATION__

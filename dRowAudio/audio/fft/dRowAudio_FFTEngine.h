@@ -21,6 +21,8 @@
 #ifndef __DROWAUDIO_FFTENGINE__
 #define __DROWAUDIO_FFTENGINE__
 
+#if JUCE_MAC || DROWAUDIO_USE_FFTREAL
+
 #include "dRowAudio_Window.h"
 #include "dRowAudio_FFTOperation.h"
 #include "../../utility/dRowAudio_Constants.h"
@@ -70,5 +72,7 @@ private:
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTEngine);
 };
+
+#endif //JUCE_MAC || DROWAUDIO_USE_FFTREAL
 
 #endif //__DROWAUDIO_FFTENGINE__

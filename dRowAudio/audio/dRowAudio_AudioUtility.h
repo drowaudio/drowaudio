@@ -162,7 +162,7 @@ static const String secondsToTimeLength(double numSeconds)
  Formats a CurretPositionInfo to a bars/beats string.
  */
 static const String ppqToBarsBeatsString (const double ppq,
-                                          const double lastBarPPQ,
+                                          const double /*lastBarPPQ*/,
                                           const int numerator,
                                           const int denominator)
 {

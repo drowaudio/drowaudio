@@ -47,10 +47,10 @@ public:
 	
 	void layoutFileBrowserComponent (FileBrowserComponent& browserComp,
 									 DirectoryContentsDisplayComponent* fileListComponent,
-									 FilePreviewComponent* previewComp,
-									 ComboBox* currentPathBox,
-									 TextEditor* filenameBox,
-									 Button* goUpButton)
+									 FilePreviewComponent* /*previewComp*/,
+									 ComboBox* /*currentPathBox*/,
+									 TextEditor* /*filenameBox*/,
+									 Button* /*goUpButton*/)
 	{
 		int w = browserComp.getWidth();
 		int x = 2;
@@ -68,8 +68,8 @@ public:
 							 const String& fileTimeDescription,
 							 bool isDirectory,
 							 bool isItemSelected,
-							 int itemIndex,
-							 DirectoryContentsDisplayComponent& component)
+							 int /*itemIndex*/,
+							 DirectoryContentsDisplayComponent& /*component*/)
 	{
 		if (isItemSelected)
 			g.fillAll (findColour (DirectoryContentsDisplayComponent::highlightColourId));
@@ -114,7 +114,7 @@ public:
 			: getDefaultDocumentFileImage();
 			
 			if (d != 0)
-				d->drawWithin (g, Rectangle<float> (2.0f, 2.0f, x - 4.0f, height - 4.0f),
+				d->drawWithin (g, juce::Rectangle<float> (2.0f, 2.0f, x - 4.0f, height - 4.0f),
 							   RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize, 1.0f);
 		}
 		
@@ -310,8 +310,8 @@ public:
 	//============================================================
     void drawCornerResizer (Graphics& g,
                             int w, int h,
-                            bool isMouseOver,
-                            bool isMouseDragging)
+                            bool /*isMouseOver*/,
+                            bool /*isMouseDragging*/)
 	{
 		const float lineThickness = 1.0f;//jmin (w, h) * 0.075f;
 		const float xGap = w / 3.0f;

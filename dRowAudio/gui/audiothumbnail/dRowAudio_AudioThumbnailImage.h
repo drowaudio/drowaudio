@@ -119,18 +119,18 @@ public:
         //==============================================================================
         /** Called when the source file changes and the image starts rendering.
 		 */
-        virtual void imageChanged (AudioThumbnailImage* audioThumbnailImage) {}
+        virtual void imageChanged (AudioThumbnailImage* /*audioThumbnailImage*/) {}
 		
         /** Called when the the image is updated.
             This will be continuously called while thewaveform is being generated.
 		 */
-        virtual void imageUpdated (AudioThumbnailImage* audioThumbnailImage) {}
+        virtual void imageUpdated (AudioThumbnailImage* /*audioThumbnailImage*/) {}
         
         /** Called when the the image has finished rendering.
             If you are using a scaled version of the Image it might be worth caching 
             your own copy to avoid having to rescale it each time.
          */
-        virtual void imageFinished (AudioThumbnailImage* audioThumbnailImage) {}
+        virtual void imageFinished (AudioThumbnailImage* /*audioThumbnailImage*/) {}
     };
 	
     /** Adds a listener to be notified of changes to the AudioThumbnailImage. */
@@ -148,7 +148,7 @@ private:
 	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
 	
 	// thumbnail classes
-    ReadWriteLock lock;
+    CriticalSection lock;
     TimeSliceThread& backgroundThread;
 	OptionalScopedPointer<AudioThumbnailCache> audioThumbnailCache;
 	OptionalScopedPointer<AudioThumbnail> audioThumbnail;

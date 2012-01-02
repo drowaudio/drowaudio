@@ -242,7 +242,7 @@ public:
 private:
     //==============================================================================
     Component::SafePointer<Component> contentComp;
-    Rectangle<int> lastVisibleArea;
+    juce::Rectangle<int> lastVisibleArea;
     int scrollBarThickness;
     int singleStepX, singleStepY;
     bool showHScrollbar, showVScrollbar;

@@ -49,7 +49,7 @@ public:
 	void resized();
 		
     /** @internal */
-	void visibleAreaChanged (const Rectangle<int>& newVisibleArea);
+	void visibleAreaChanged (const juce::Rectangle<int>& newVisibleArea);
 	
     /** @internal */
 	void mouseWheelMove (const MouseEvent& e, float wheelIncrementX, float wheelIncrementY);

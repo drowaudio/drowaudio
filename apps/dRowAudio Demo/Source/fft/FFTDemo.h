@@ -24,7 +24,6 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "Spectroscope.h"
 #include "Sonogram.h"
-#include "PitchTracker.h"
 
 //==============================================================================
 class FFTDemo : public Component
@@ -48,7 +47,6 @@ private:
     AudioOscilloscope audioOscilloscope;
     Spectroscope spectroscope;
     Sonogram sonogram;
-    PitchTracker pitchTracker;
     
 	//==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTDemo);

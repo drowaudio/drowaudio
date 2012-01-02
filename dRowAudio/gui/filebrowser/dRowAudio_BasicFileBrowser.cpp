@@ -332,6 +332,8 @@ bool BasicFileBrowser::keyPressed (const KeyPress& key)
     }
 #endif
 	
+    key.getModifiers().isCommandDown();
+    
     return false;
 }
 

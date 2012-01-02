@@ -1,6 +1,8 @@
 dRowAudio Notes.rtf
 dRowAudio Notes (Autosaved).rtf
 build/
+Debug/
+Release/
 *.pbxuser
 *.perspective
 *.perspectivev3

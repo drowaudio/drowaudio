@@ -130,8 +130,8 @@ void AbstractDraggableWaveDisplay::paint (Graphics &g)
 
 		if (waveformImage.img.isValid())
 		{
-            const Rectangle<int> srcRect    (srcX, 0, srcW, waveformImage.img.getHeight());
-            const Rectangle<int> destRect   (destX, 0, destW, h);
+            const juce::Rectangle<int> srcRect    (srcX, 0, srcW, waveformImage.img.getHeight());
+            const juce::Rectangle<int> destRect   (destX, 0, destW, h);
             Image clippedImage (waveformImage.img.getClippedImage (srcRect));
 
             g.drawImage (clippedImage,
@@ -168,7 +168,7 @@ void AbstractDraggableWaveDisplay::mouseDown (const MouseEvent &e)
 	}
 }
 
-void AbstractDraggableWaveDisplay::mouseUp (const MouseEvent &e)
+void AbstractDraggableWaveDisplay::mouseUp (const MouseEvent& /*e*/)
 {
 	isMouseDown = false;
 	
@@ -270,7 +270,7 @@ void AbstractDraggableWaveDisplay::handleAsyncUpdate()
 	repaint();
 }
 
-void AbstractDraggableWaveDisplay::changeListenerCallback (ChangeBroadcaster* source)
+void AbstractDraggableWaveDisplay::changeListenerCallback (ChangeBroadcaster* /*source*/)
 {
     thumbnailLoading (waveformIsFullyLoaded, numSamplesFinished);
     

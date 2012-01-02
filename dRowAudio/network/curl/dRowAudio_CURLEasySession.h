@@ -123,15 +123,15 @@ public:
         //==============================================================================
         /** Called when a transfer is about to start.
 		 */
-        virtual void transferAboutToStart (CURLEasySession* session) {};
+        virtual void transferAboutToStart (CURLEasySession* /*session*/) {};
 		
         /** Called when a transfer is about to start.
 		 */
-        virtual void transferProgressUpdate (CURLEasySession* session) {};
+        virtual void transferProgressUpdate (CURLEasySession* /*session*/) {};
 
         /** Called when a transfer is about to start.
 		 */
-        virtual void transferEnded (CURLEasySession* session) {};
+        virtual void transferEnded (CURLEasySession* /*session*/) {};
     };
 	
     /** Adds a listener to be called when this slider's value changes. */

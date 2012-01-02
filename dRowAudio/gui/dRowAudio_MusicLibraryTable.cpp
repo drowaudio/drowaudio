@@ -170,7 +170,7 @@ int MusicLibraryTable::getNumRows()
 	return filteredNumRows;
 }
 
-void MusicLibraryTable::paintRowBackground (Graphics& g, int rowNumber, int width, int height, bool rowIsSelected)
+void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/, int /*width*/, int /*height*/, bool rowIsSelected)
 {
 	if (rowIsSelected)
 		table.hasKeyboardFocus (true) ? g.fillAll (Colours::darkorange) : g.fillAll (Colour::greyLevel (0.6));
@@ -277,7 +277,7 @@ void MusicLibraryTable::resized()
 	table.setBounds (getLocalBounds());
 }
 
-void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType cause)
+void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType /*cause*/)
 {
 	repaint();
 }
