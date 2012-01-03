@@ -18,22 +18,34 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_SONOGRAM_H__
-#define __DROWAUDIO_SONOGRAM_H__
-
-#include "../../JuceLibraryCode/JuceHeader.h"
+#ifndef __DROWAUDIO_SPECTROSCOPE_H__
+#define __DROWAUDIO_SPECTROSCOPE_H__
 
 //==============================================================================
-class Sonogram : public GraphicalComponent
+/** Creates a standard Spectroscope.
+    This will display the amplitude of each frequency bin from an FFT in a
+    continuous line which will decay with time.
+    This is very simple to use, it is a GraphicalComponent so just register one
+    with a TimeSliceThread, make sure its running and then continually call the
+    copySamples() method. The FFT itself will be performed on a background thread.
+ */
+class Spectroscope : public GraphicalComponent
 {
 public:
     //==============================================================================
-	Sonogram (int fftSizeLog2);
+    /** Creates a spectroscope with a given FFT size.
+        Note that the fft size given here is log2 of the FFT size so for example,
+        a 1024 size fft use 10.
+     */
+	Spectroscope (int fftSizeLog2);
 	
-	~Sonogram();
+    /** Destructor. */
+	~Spectroscope();
 	
+    /** @internal */
 	void resized();
 	
+    /** @internal */
 	void paint (Graphics &g);
 	
     //==============================================================================
@@ -43,17 +55,8 @@ public:
 	
     /** Returns true if the scope is being displayed in log mode.
      */
-	inline bool getLogFrequencyDisplay() const     {	return logFrequency;	}
-    
-    /** Sets the width for one block of fft data. This must be greater than 0.
-        Higher values will effectively cause the scope to move faster.
-     */
-    void setBlockWidth (int newBlockWidth);
+	inline bool getLogFrequencyDisplay() const      {   return logFrequency;	}
 
-    /** Returns the current block width.
-     */
-    int getBlockWidth() const;
-    
     //==============================================================================
 	/** Copy a set of samples, ready to be processed.
         Your audio callback should continually call this method to pass it its
@@ -68,9 +71,8 @@ public:
     /** @internal */
 	void process();
 	
-    //==============================================================================
     /** @internal */
-	inline void flagForRepaint();
+	void flagForRepaint();
 
 private:
     //==============================================================================
@@ -79,16 +81,14 @@ private:
 	bool needsRepaint;
 	HeapBlock<float> tempBlock;			
 	FifoBuffer circularBuffer;
+	
 	bool logFrequency;
-    float scopeLineW;
-    Image scopeImage, tempImage;
-
-    CriticalSection lock;
-
-    void renderScopeLine();
+    Image scopeImage;
+    
+    void renderScopeImage();
     
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectroscope);
 };
 
-#endif  // __DROWAUDIO_SONOGRAM_H__
+#endif  // __DROWAUDIO_SPECTROSCOPE_H__

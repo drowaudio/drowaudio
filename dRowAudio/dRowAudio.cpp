@@ -67,17 +67,11 @@
 
 // Gui
 #include "gui/dRowAudio_AudioFileDropTarget.cpp"
-
-// network
-#include "network/curl/dRowAudio_CURLManager.cpp"
-#include "network/curl/dRowAudio_CURLEasySession.cpp"
-
-// streams
-#include "streams/dRowAudio_MemoryInputSource.cpp"
-
 #include "gui/dRowAudio_GraphicalComponent.cpp"
 #include "gui/dRowAudio_AudioOscilloscope.cpp"
 #include "gui/dRowAudio_SegmentedMeter.cpp"
+#include "gui/dRowAudio_Sonogram.cpp"
+#include "gui/dRowAudio_Spectroscope.cpp"
 #include "gui/dRowAudio_CpuMeter.cpp"
 #include "gui/dRowAudio_Clock.cpp"
 #include "gui/dRowAudio_CentreAlignViewport.cpp"
@@ -87,6 +81,13 @@
 #include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp"
 #include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
 #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp"
+
+// network
+#include "network/curl/dRowAudio_CURLManager.cpp"
+#include "network/curl/dRowAudio_CURLEasySession.cpp"
+
+// streams
+#include "streams/dRowAudio_MemoryInputSource.cpp"
 
 // Utility
 #include "utility/dRowAudio_ITunesLibrary.cpp"

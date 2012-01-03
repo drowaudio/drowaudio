@@ -194,10 +194,13 @@ void AudioThumbnailImage::removeListener (AudioThumbnailImage::Listener* const l
 //==============================================================================	
 void AudioThumbnailImage::triggerWaveformRefresh()
 {
-    const ScopedLock sl (lock);
+    {
+        const ScopedLock sl (lock);
 
-    lastTimeDrawn = 0.0;
-    waveformImage.clear (waveformImage.getBounds(), backgroundColour);
+        lastTimeDrawn = 0.0;
+        waveformImage.clear (waveformImage.getBounds(), backgroundColour);
+        renderComplete = false;
+    }
     
     listeners.call (&Listener::imageChanged, this);
     

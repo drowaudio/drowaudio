@@ -23,7 +23,6 @@
 		53BF8FC087AD23FCFDFAC5F2 /* TransportComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C9C3247900045186C676D /* TransportComponent.cpp */; };
 		56395F7B8428F72AFBA86DF2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84484BC5CE686760F331B64A /* AudioToolbox.framework */; };
 		693488B174D2F88F8C74BE32 /* LocalDirectoryListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 317FBC4D0CFA7C0F4389ADAF /* LocalDirectoryListBox.cpp */; };
-		6C7B155A469696A1C341E4A3 /* Spectroscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF2C94E97F81CC3880D854E5 /* Spectroscope.cpp */; };
 		6DE08F89978F7C8CAEE7A0CD /* AudioPlaybackDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB16639492761B437756AEF4 /* AudioPlaybackDemo.cpp */; };
 		7778EF6CD7053965412F5AD3 /* juce_audio_formats.mm in Sources */ = {isa = PBXBuildFile; fileRef = 666E9F98DAF3EF4795CB8340 /* juce_audio_formats.mm */; };
 		8AF5C805306E1BF115FA6D94 /* NetworkDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 717120D135A2E5C7DAD8506D /* NetworkDemo.cpp */; };
@@ -46,7 +45,6 @@
 		E551D20036C4EC738508C1E5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC02000EE516D4A623C6552 /* CoreAudio.framework */; };
 		F22F65DAB117D799E0C5DBB9 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EF217055B41C216557236A6 /* IOKit.framework */; };
 		F3457666D359A903CB0DDD2C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E60D92746C277E4137E3CB8 /* QuartzCore.framework */; };
-		F586E55A6ED3AAB45EFBD6C7 /* Sonogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88AE8136ECDDB718C5AAA49F /* Sonogram.cpp */; };
 		F729229340032903C8FB6C9F /* juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED470C4734966E2B452C4F3D /* juce_gui_basics.mm */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +60,6 @@
 		1F2D2347255F270D517C1E2D /* LoopComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopComponent.h; path = ../../Source/playback/LoopComponent.h; sourceTree = SOURCE_ROOT; };
 		23C07E30E04D4EAC20992F0D /* NetworkDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NetworkDemo.h; path = ../../Source/network/NetworkDemo.h; sourceTree = SOURCE_ROOT; };
 		2599121D87CAAE0F7A1670CD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		297C6C17BDE948AB5D5F2797 /* Sonogram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sonogram.h; path = ../../Source/fft/Sonogram.h; sourceTree = SOURCE_ROOT; };
 		317FBC4D0CFA7C0F4389ADAF /* LocalDirectoryListBox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LocalDirectoryListBox.cpp; path = ../../Source/network/LocalDirectoryListBox.cpp; sourceTree = SOURCE_ROOT; };
 		351E2A804402ADF99AD0BFCF /* FFTDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FFTDemo.h; path = ../../Source/fft/FFTDemo.h; sourceTree = SOURCE_ROOT; };
 		44D542C670A563F9D5E68294 /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
@@ -72,7 +69,6 @@
 		4FEA7CC34128B23C8DA2884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		50F5A97DF7B4490C18D46CD1 /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash_screen.png; path = ../../Source/resources/splash_screen.png; sourceTree = SOURCE_ROOT; };
 		59CF87ED9C9B945CD47A337D /* RemoteDirectoryListBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RemoteDirectoryListBox.h; path = ../../Source/network/RemoteDirectoryListBox.h; sourceTree = SOURCE_ROOT; };
-		5BC2648EFB6242F05FF6A0F6 /* Spectroscope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Spectroscope.h; path = ../../Source/fft/Spectroscope.h; sourceTree = SOURCE_ROOT; };
 		5EF217055B41C216557236A6 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		664427D251BC566E135E9921 /* TransportComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportComponent.h; path = ../../Source/TransportComponent.h; sourceTree = SOURCE_ROOT; };
 		666E9F98DAF3EF4795CB8340 /* juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_audio_formats.mm; path = ../../../../../../juce_source/juce/modules/juce_audio_formats/juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
@@ -92,7 +88,6 @@
 		81126BADA3A859EF58212FCF /* TrackInfoComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrackInfoComponent.h; path = ../../Source/TrackInfoComponent.h; sourceTree = SOURCE_ROOT; };
 		841A701AB2370D1E152AF702 /* ConnectionComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectionComponent.h; path = ../../Source/network/ConnectionComponent.h; sourceTree = SOURCE_ROOT; };
 		84484BC5CE686760F331B64A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		88AE8136ECDDB718C5AAA49F /* Sonogram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sonogram.cpp; path = ../../Source/fft/Sonogram.cpp; sourceTree = SOURCE_ROOT; };
 		898FC8256B1BDD01C788DA6A /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 		8B60B8DD60A2FA00DD98584D /* LocalDirectoryListBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LocalDirectoryListBox.h; path = ../../Source/network/LocalDirectoryListBox.h; sourceTree = SOURCE_ROOT; };
 		8E60D92746C277E4137E3CB8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -115,7 +110,6 @@
 		F575DDAD912B5ABC601CFD5A /* BufferTransformAudioSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BufferTransformAudioSource.h; path = ../../Source/playback/BufferTransformAudioSource.h; sourceTree = SOURCE_ROOT; };
 		FCC8FBB3A07CEC6CD58A5255 /* TrackInfoComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TrackInfoComponent.cpp; path = ../../Source/TrackInfoComponent.cpp; sourceTree = SOURCE_ROOT; };
 		FD25279451D091E05E5BD87C /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
-		FF2C94E97F81CC3880D854E5 /* Spectroscope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Spectroscope.cpp; path = ../../Source/fft/Spectroscope.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,10 +213,6 @@
 			children = (
 				351E2A804402ADF99AD0BFCF /* FFTDemo.h */,
 				0AF7C63E0CF5A335DB0EEA28 /* FFTDemo.cpp */,
-				5BC2648EFB6242F05FF6A0F6 /* Spectroscope.h */,
-				FF2C94E97F81CC3880D854E5 /* Spectroscope.cpp */,
-				297C6C17BDE948AB5D5F2797 /* Sonogram.h */,
-				88AE8136ECDDB718C5AAA49F /* Sonogram.cpp */,
 			);
 			name = fft;
 			sourceTree = "<group>";
@@ -367,8 +357,6 @@
 				693488B174D2F88F8C74BE32 /* LocalDirectoryListBox.cpp in Sources */,
 				32A834BF0958E96BE88A99EE /* RemoteDirectoryListBox.cpp in Sources */,
 				C22C6A3E65AD0F3269CD08D1 /* FFTDemo.cpp in Sources */,
-				6C7B155A469696A1C341E4A3 /* Spectroscope.cpp in Sources */,
-				F586E55A6ED3AAB45EFBD6C7 /* Sonogram.cpp in Sources */,
 				1F854155B76C3796E74A0892 /* BinaryData.cpp in Sources */,
 				41A12F8909DF498AF8FFEAEC /* dRowAudio.mm in Sources */,
 				9CDDEF3F6F02406D4C06473D /* juce_audio_basics.mm in Sources */,

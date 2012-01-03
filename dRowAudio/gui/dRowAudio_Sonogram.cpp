@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-#include "Sonogram.h"
+BEGIN_JUCE_NAMESPACE
 
 Sonogram::Sonogram (int fftSizeLog2)
 :	fftEngine       (fftSizeLog2),
@@ -133,7 +133,7 @@ void Sonogram::renderScopeLine()
         for (int i = 0; i < numBins; ++i)
         {
             amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[i]) / 100.0f)));
-            y2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40) * h;
+            y2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40.0f) * h;
 
             g.setColour (Colour::greyLevel (amp));
             g.fillRect ((float)x, h - y2, scopeLineW, y1 - y2);
@@ -155,3 +155,5 @@ void Sonogram::renderScopeLine()
         }	
     }
 }
+
+END_JUCE_NAMESPACE

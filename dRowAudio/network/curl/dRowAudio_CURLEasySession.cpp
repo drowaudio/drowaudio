@@ -92,7 +92,7 @@ String CURLEasySession::getCurrentWorkingDirectory()
 	
 	CURLcode res = curl_easy_getinfo (handle, CURLINFO_EFFECTIVE_URL, url);
 	
-	if (res == CURLE_OK)
+	if (res == CURLE_OK && CharPointer_ASCII::isValidString (url, 1000))
 		return String (url);
 	else
 		return String::empty;
@@ -125,7 +125,6 @@ StringArray CURLEasySession::getDirectoryListing()
 	}
 	else 
     {
-		DBG("*** error during directory listing");
 		return StringArray (curl_easy_strerror (result));
 	}				
 }
@@ -179,11 +178,7 @@ void CURLEasySession::removeListener (CURLEasySession::Listener* const listener)
 //==============================================================================
 int CURLEasySession::useTimeSlice()
 {
-	DBG("time slice started");
-	
     performTransfer (isUpload);
-
-	DBG("time slice ended");
 
 	return -1;
 }
@@ -195,7 +190,6 @@ size_t CURLEasySession::writeCallback (void* sourcePointer, size_t blockSize, si
 	{
 		if (session->outputStream->failedToOpen())
 		{
-			DBG("Error opening file for writing");
 			return -1; /* failure, can't open file to write */ 
 		}
 		
@@ -210,9 +204,8 @@ size_t CURLEasySession::readCallback (void* destinationPointer, size_t blockSize
 {
 	if (session != nullptr)
 	{
-		if (&(session->inputStream) == nullptr)
+		if (session->inputStream.get() == nullptr)
 		{
-			DBG("Error opening file for reading");
 			return -1; /* failure, can't open file to read */ 
 		}
 		
@@ -277,11 +270,6 @@ CURLcode CURLEasySession::performTransfer (bool transferIsUpload)
 	
 	// delete the streams to flush the buffers
 	outputStream = nullptr;
-	
-	if (result != CURLE_OK)
-    {
-        DBG("*** error during transfer"<<String (curl_easy_strerror (result)));
-    }
     
     return result;
 }

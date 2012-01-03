@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-#include "Spectroscope.h"
+BEGIN_JUCE_NAMESPACE
 
 Spectroscope::Spectroscope (int fftSizeLog2)
 :	fftEngine       (fftSizeLog2),
@@ -125,7 +125,7 @@ void Spectroscope::renderScopeImage()
 			for (int i = 0; i < numBins; ++i)
 			{
 				y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
-				x2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40) * w;
+				x2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40.0f) * w;
                 
 				g.drawLine (x1, h - h * y1,
 						    x2, h - h * y2);
@@ -154,3 +154,5 @@ void Spectroscope::renderScopeImage()
         repaint();
 	}
 }
+
+END_JUCE_NAMESPACE

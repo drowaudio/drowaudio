@@ -129,6 +129,14 @@ BEGIN_JUCE_NAMESPACE
     #include "gui/dRowAudio_SegmentedMeter.h"
 #endif
 
+#ifndef __DROWAUDIO_SONOGRAM_H__
+    #include "gui/dRowAudio_Sonogram.h"
+#endif
+
+#ifndef __DROWAUDIO_SPECTROSCOPE_H__
+    #include "gui/dRowAudio_Spectroscope.h"
+#endif
+
 #ifndef __DROWAUDIO_CPUMETER_H__
     #include "gui/dRowAudio_CpuMeter.h"
 #endif

@@ -22,8 +22,6 @@
 #define __DROWAUDIODEMO_FFTDEMO_H__
 
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "Spectroscope.h"
-#include "Sonogram.h"
 
 //==============================================================================
 class FFTDemo : public Component,
