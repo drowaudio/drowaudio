@@ -53,12 +53,6 @@ public:
     /** Returns true if the source is playing forwards.
      */
 	bool getPlayDirection ()						{	return isForwards;                          }
-	
-    /** Sets a playback ratio.
-        If the source has a non 1 to 1 playback ratio (e.g. a sped-up tempo) you can set the
-        ratio for the number of examples expected here.
-     */
-    void setPlaybackRatio (double newPlaybackRatio) {   playbackRatio = newPlaybackRatio;           }
     
     //==============================================================================
     /** Implementation of the AudioSource method. */
@@ -91,7 +85,6 @@ private:
     OptionalScopedPointer<PositionableAudioSource> input;
 
 	bool volatile isForwards;
-    double playbackRatio;
 	
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReversibleAudioSource);

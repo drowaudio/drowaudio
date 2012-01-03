@@ -113,7 +113,7 @@ void TrackInfoComponent::fileChanged (AudioFilePlayer* player)
 {
     if (player == &audioFilePlayer)
     {
-        audioFilePlayerSettingChanged (player, AudioFilePlayerExt::SoundTouchSetting);
+        //audioFilePlayerSettingChanged (player, AudioFilePlayerExt::SoundTouchSetting);
         
         repaint();
     }

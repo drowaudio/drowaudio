@@ -38,7 +38,6 @@ AudioFilePlayerExt::~AudioFilePlayerExt()
 void AudioFilePlayerExt::setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings)
 {
     soundTouchAudioSource->setPlaybackSettings (newSettings);
-    reversibleAudioSource->setPlaybackRatio (newSettings.rate * newSettings.tempo);
     
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, SoundTouchSetting);
 }
@@ -80,7 +79,10 @@ void AudioFilePlayerExt::setPosition (double newPosition, bool ignoreAnyLoopBoun
 //==============================================================================
 bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
 {
-//	stop();
+    SoundTouchProcessor::PlaybackSettings oldSettings;
+    if (soundTouchAudioSource != nullptr)
+        oldSettings = soundTouchAudioSource->getPlaybackSettings();
+    
     masterSource = nullptr;
 	audioTransportSource->setSource (nullptr);
     //reversibleAudioSource = nullptr;
@@ -104,6 +106,7 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
         masterSource = filteringAudioSource;
         
         listeners.call (&Listener::fileChanged, this);
+        setPlaybackSettings (oldSettings);
 
 		return true;
 	}

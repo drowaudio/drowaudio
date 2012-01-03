@@ -18,8 +18,8 @@
   ==============================================================================
 */
 
-#ifndef __SONOGRAM_H_F2E587AC__
-#define __SONOGRAM_H_F2E587AC__
+#ifndef __DROWAUDIO_SONOGRAM_H__
+#define __DROWAUDIO_SONOGRAM_H__
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
@@ -34,31 +34,43 @@ public:
 	
 	void resized();
 	
-	void paint(Graphics &g);
+	void paint (Graphics &g);
 	
-	//============================================	
-	/* GraphicalComponent implimentations		*/
+    //==============================================================================
+    /** Sets the scope to display in log or normal mode.
+     */
+	void setLogFrequencyDisplay (bool shouldDisplayLog);
+	
+    /** Returns true if the scope is being displayed in log mode.
+     */
+	inline bool getLogFrequencyDisplay() const     {	return logFrequency;	}
+    
+    /** Sets the width for one block of fft data. This must be greater than 0.
+        Higher values will effectively cause the scope to move faster.
+     */
+    void setBlockWidth (int newBlockWidth);
+
+    /** Returns the current block width.
+     */
+    int getBlockWidth() const;
+    
+    //==============================================================================
+	/** Copy a set of samples, ready to be processed.
+        Your audio callback should continually call this method to pass it its
+        audio data. When the scope has enough samples to perform an fft it will do
+        so on a background thread and redraw itself.
+     */
 	void copySamples (const float* samples, int numSamples);
 
+    /** @internal */
 	void timerCallback();
 	
+    /** @internal */
 	void process();
 	
-	//============================================	
-
-	void flagForRepaint()
-	{	
-		needsRepaint = true;
-		repaint();
-	}
-
-	//============================================	
-	void setLogFrequencyDisplay(bool shouldDisplayLog)
-	{
-		logFrequency = shouldDisplayLog;
-	}
-	
-	bool getLogFrequencyDisplay()	{	return logFrequency;	}
+    //==============================================================================
+    /** @internal */
+	inline void flagForRepaint();
 
 private:
     //==============================================================================
@@ -68,15 +80,15 @@ private:
 	HeapBlock<float> tempBlock;			
 	FifoBuffer circularBuffer;
 	bool logFrequency;
+    float scopeLineW;
     Image scopeImage, tempImage;
 
     CriticalSection lock;
 
-    void renderScopeImage();
     void renderScopeLine();
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram);
 };
 
-#endif  // __SONOGRAM_H_F2E587AC__
+#endif  // __DROWAUDIO_SONOGRAM_H__

@@ -49,7 +49,7 @@ void Spectroscope::resized()
     scopeImage = scopeImage.rescaled (jmax (1, getWidth()), jmax (1, getHeight()));
 }
 
-void Spectroscope::paint(Graphics &g)
+void Spectroscope::paint(Graphics& g)
 {
     g.drawImageAt (scopeImage, 0, 0, false);
 }
@@ -78,20 +78,19 @@ void Spectroscope::renderScopeImage()
         const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
         const float xScale = (float)w / (numBins + 1);
         const float* data = fftEngine.getMagnitudesBuffer().getData();
-        
 
         float y2, y1 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[0]) / 100.0f)));
         float x2, x1 = 0;
         
         if (logFrequency)
 		{
-			for (int i = 1; i < numBins; ++i)
+			for (int i = 0; i < numBins; ++i)
 			{
 				y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
-				x2 = log10 (i + 1) * xScale;
-                
-				g.drawLine (x1, h-h*y1,
-						    x2, h-h*y2);
+				x2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40) * w;
+
+				g.drawLine (x1, h - h * y1,
+						    x2, h - h * y2);
 				
 				y1 = y2;
 				x1 = x2;

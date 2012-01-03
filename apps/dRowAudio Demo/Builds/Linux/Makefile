@@ -62,6 +62,7 @@ OBJECTS := \
   $(OBJDIR)/Spectroscope_e1f38c82.o \
   $(OBJDIR)/Sonogram_e64d99f8.o \
   $(OBJDIR)/BinaryData_ce4232d4.o \
+  $(OBJDIR)/dRowAudio_72fca5e6.o \
   $(OBJDIR)/dRowAudio_66a49a7e.o \
   $(OBJDIR)/juce_audio_basics_15b0217e.o \
   $(OBJDIR)/juce_audio_devices_efd90ebc.o \
@@ -183,6 +184,11 @@ $(OBJDIR)/Sonogram_e64d99f8.o: ../../Source/fft/Sonogram.cpp
 $(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling BinaryData.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/dRowAudio_72fca5e6.o: ../../../../../../juce_source/juce/modules/dRowAudio_old/dRowAudio.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling dRowAudio.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/dRowAudio_66a49a7e.o: ../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.cpp

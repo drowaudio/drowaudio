@@ -26,7 +26,9 @@
 #include "Sonogram.h"
 
 //==============================================================================
-class FFTDemo : public Component
+class FFTDemo : public Component,
+                public Button::Listener,
+                public Slider::Listener
 {
 public:
  	//==============================================================================
@@ -38,6 +40,10 @@ public:
     
     void resized();
     
+    void buttonClicked (Button* button);
+    
+    void sliderValueChanged (Slider* slider);
+    
 	//==============================================================================
     void processBlock (const float* inputChannelData, int numSamples);
     
@@ -47,6 +53,10 @@ private:
     AudioOscilloscope audioOscilloscope;
     Spectroscope spectroscope;
     Sonogram sonogram;
+
+	//==============================================================================
+    ToggleButton logSpectroscopeButton, logSonogramButton;
+    Slider sonogramSpeedSlider;
     
 	//==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTDemo);

@@ -29,6 +29,7 @@ class LoopMarker :  public Component
 public:    
     //==============================================================================
     LoopMarker()
+        : isMouseOver (false)
     {
     }
 
@@ -108,6 +109,7 @@ private:
     
     LoopMarker marker1, marker2;
     
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopComponent);
 };
 

@@ -32,6 +32,24 @@ FFTDemo::FFTDemo()
     renderThread.addTimeSliceClient (&spectroscope);
     renderThread.addTimeSliceClient (&sonogram);
     renderThread.startThread (3);
+    
+    addAndMakeVisible (&logSpectroscopeButton);
+    addAndMakeVisible (&logSonogramButton);
+    
+    logSpectroscopeButton.setButtonText ("Log Frequency Scale");
+    logSonogramButton.setButtonText ("Log Frequency Scale");
+
+    logSpectroscopeButton.setClickingTogglesState (true);
+    logSonogramButton.setClickingTogglesState (true);
+    
+    logSpectroscopeButton.addListener (this);
+    logSonogramButton.addListener (this);
+    
+    addAndMakeVisible (&sonogramSpeedSlider);
+    sonogramSpeedSlider.setRange (1.0, 10.0, 1.0);
+    sonogramSpeedSlider.setValue (sonogram.getBlockWidth());
+    sonogramSpeedSlider.setTextBoxStyle (Slider::NoTextBox, true, 0, 0);
+    sonogramSpeedSlider.addListener (this);
 }
 
 FFTDemo::~FFTDemo()
@@ -39,6 +57,10 @@ FFTDemo::~FFTDemo()
     renderThread.removeTimeSliceClient (&spectroscope);
     renderThread.removeTimeSliceClient (&sonogram);
     renderThread.stopThread (500);
+
+    logSpectroscopeButton.removeListener (this);
+    logSonogramButton.removeListener (this);
+    sonogramSpeedSlider.removeListener (this);
 }
 
 void FFTDemo::paint (Graphics& /*g*/)
@@ -55,6 +77,32 @@ void FFTDemo::resized()
     audioOscilloscope.setBounds (m, m, w - (2 * m), ch);
     spectroscope.setBounds (m, ch + (2 * m), w - (2 * m), ch);
     sonogram.setBounds (m, (2 * ch) + (3 * m), w - (2 * m), (2 * ch) + m);
+    
+    logSpectroscopeButton.setBounds (spectroscope.getX(), spectroscope.getY(), 150, 18);
+    logSonogramButton.setBounds     (sonogram.getX(), sonogram.getY(), 150, 18);
+    
+    sonogramSpeedSlider.setBounds   (logSonogramButton.getRight() + m, logSonogramButton.getY(),
+                                     100, 18);
+}
+
+void FFTDemo::buttonClicked (Button* button)
+{
+    if (button == &logSpectroscopeButton)
+    {
+        spectroscope.setLogFrequencyDisplay (logSpectroscopeButton.getToggleState());
+    }
+    else if (button == &logSonogramButton)
+    {
+        sonogram.setLogFrequencyDisplay (logSonogramButton.getToggleState());
+    }
+}
+
+void FFTDemo::sliderValueChanged (Slider* slider)
+{
+    if (slider == &sonogramSpeedSlider)
+    {
+        sonogram.setBlockWidth ((int) sonogramSpeedSlider.getValue());
+    }
 }
 
 //==============================================================================

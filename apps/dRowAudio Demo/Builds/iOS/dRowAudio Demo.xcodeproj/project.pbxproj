@@ -33,6 +33,7 @@
 		6C7B155A469696A1C341E4A3 = { isa = PBXBuildFile; fileRef = FF2C94E97F81CC3880D854E5; };
 		F586E55A6ED3AAB45EFBD6C7 = { isa = PBXBuildFile; fileRef = 88AE8136ECDDB718C5AAA49F; };
 		1F854155B76C3796E74A0892 = { isa = PBXBuildFile; fileRef = EF7F7E704A5381109DCFC529; };
+		F93323F050EDC59CB7A27686 = { isa = PBXBuildFile; fileRef = 9E5D40CA6BC85C48875CBD59; };
 		41A12F8909DF498AF8FFEAEC = { isa = PBXBuildFile; fileRef = 9120661B2AD38CB9A632EF3F; };
 		9CDDEF3F6F02406D4C06473D = { isa = PBXBuildFile; fileRef = 78DDDE286EE92081E0513495; };
 		AB4F65E61D02CC0C492306A1 = { isa = PBXBuildFile; fileRef = 67AD6B1BB456AF9E4E53EF43; };
@@ -91,6 +92,7 @@
 		9120661B2AD38CB9A632EF3F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = dRowAudio.mm; path = "../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.mm"; sourceTree = "SOURCE_ROOT"; };
 		939FC30566B1030FB01BD689 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainWindow.h; path = ../../Source/MainWindow.h; sourceTree = "SOURCE_ROOT"; };
 		9471E5C8CAA91082542A6498 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DemoLookAndFeel.cpp; path = ../../Source/DemoLookAndFeel.cpp; sourceTree = "SOURCE_ROOT"; };
+		9E5D40CA6BC85C48875CBD59 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = dRowAudio.mm; path = "../../../../../../juce_source/juce/modules/dRowAudio_old/dRowAudio.mm"; sourceTree = "SOURCE_ROOT"; };
 		B3FB67791A011EAEEDE91A69 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_data_structures.mm"; path = "../../../../../../juce_source/juce/modules/juce_data_structures/juce_data_structures.mm"; sourceTree = "SOURCE_ROOT"; };
 		B5239989EB94DD03C927E5C3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_gui_extra.mm"; path = "../../../../../../juce_source/juce/modules/juce_gui_extra/juce_gui_extra.mm"; sourceTree = "SOURCE_ROOT"; };
 		BC3A69C48C09019C4F154C91 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DistortionComponent.cpp; path = ../../Source/playback/DistortionComponent.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -160,6 +162,7 @@
 				0EA9B4EC95C93907AB1CFECD,
 				EF7F7E704A5381109DCFC529,
 				6EF73900F99222A64653F30F,
+				9E5D40CA6BC85C48875CBD59,
 				9120661B2AD38CB9A632EF3F,
 				78DDDE286EE92081E0513495,
 				67AD6B1BB456AF9E4E53EF43,
@@ -282,6 +285,7 @@
 				6C7B155A469696A1C341E4A3,
 				F586E55A6ED3AAB45EFBD6C7,
 				1F854155B76C3796E74A0892,
+				F93323F050EDC59CB7A27686,
 				41A12F8909DF498AF8FFEAEC,
 				9CDDEF3F6F02406D4C06473D,
 				AB4F65E61D02CC0C492306A1,

@@ -24,8 +24,7 @@ BEGIN_JUCE_NAMESPACE
 ReversibleAudioSource::ReversibleAudioSource (PositionableAudioSource* const inputSource,
 											  const bool deleteInputWhenDeleted)
     : input (inputSource, deleteInputWhenDeleted),
-	  isForwards(true),
-      playbackRatio (1.0)
+	  isForwards(true)
 {
     jassert (inputSource != 0);
 }
@@ -53,7 +52,7 @@ void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
     }
     else
 	{
-        int64 nextReadPosition = input->getNextReadPosition() - (2 * info.numSamples);// * playbackRatio);
+        int64 nextReadPosition = input->getNextReadPosition() - (2 * info.numSamples);
         
 		if (nextReadPosition < 0 && input->isLooping())
 			nextReadPosition += input->getTotalLength();
