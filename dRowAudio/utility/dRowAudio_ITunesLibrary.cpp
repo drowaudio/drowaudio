@@ -23,10 +23,8 @@ BEGIN_JUCE_NAMESPACE
 juce_ImplementSingleton(ITunesLibrary);
 
 ITunesLibrary::ITunesLibrary()
-:	//libraryFile (getDefaultITunesLibraryFile()),
-    libraryTree (MusicColumns::libraryIdentifier)
+    : libraryTree (MusicColumns::libraryIdentifier)
 {
-	//setLibraryFile(libraryFile);
 }
 
 ITunesLibrary::~ITunesLibrary()
@@ -46,11 +44,7 @@ void ITunesLibrary::setLibraryFile (File newFile)
 //==============================================================================
 File ITunesLibrary::getDefaultITunesLibraryFile()
 {
-#ifdef JUCE_MAC
     return File::getSpecialLocation (File::userMusicDirectory).getChildFile ("iTunes/iTunes Music Library.xml");
-#else
-    return File::nonexistent;
-#endif
 }
 
 //==============================================================================
@@ -66,7 +60,7 @@ void ITunesLibrary::setLibraryTree (ValueTree& newTreeToUse)
 
 void ITunesLibrary::timerCallback()
 {
-	if(parser != nullptr)
+	if (parser != nullptr)
 	{
 		listeners.call (&Listener::libraryUpdated, this);
 

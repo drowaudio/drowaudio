@@ -24,8 +24,7 @@
 #include "../utility/dRowAudio_Utility.h"
 
 //==============================================================================
-/**
-    A type of PositionalAudioSource that will read from a PositionableAudioSource
+/** A type of PositionalAudioSource that will read from a PositionableAudioSource
     and can loop between to set times.
 
     @see PositionableAudioSource, AudioTransportSource, BufferingAudioSource
@@ -104,6 +103,7 @@ private:
     AudioSourceChannelInfo tempInfo;
     AudioSampleBuffer tempBuffer;
         
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopingAudioSource);
 };
 

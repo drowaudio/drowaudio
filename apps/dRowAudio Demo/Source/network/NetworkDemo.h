@@ -55,7 +55,6 @@ private:
 	ConnectionComponent connectionComponent;
 	LocalDirectoryListBox localBrowser;
 	RemoteDirectoryListBox remoteBrowser;
-	TextButton pwdButton;
     
     MemoryBlock block;
     ScopedPointer<MemoryInputStream> inputStream;

@@ -54,14 +54,14 @@ void SoundTouchProcessor::writeSamples (float** sourceChannelData, int numChanne
     for (int i = 0; i < numChannels; i++)
         sourceChannelData[i] += startSampleOffset;
     
-    AudioDataConverters::interleaveSamples ((const float**)sourceChannelData, interleavedInputBuffer,                                        
+    AudioDataConverters::interleaveSamples ((const float**) sourceChannelData, interleavedInputBuffer,                                        
                                             numSamples, numChannels);
     
     for (int i = 0; i < numChannels; i++)
         sourceChannelData[i] -= startSampleOffset;
     
     ScopedLock sl (lock);
-    soundTouch.putSamples ((SAMPLETYPE*)interleavedInputBuffer, numSamples);
+    soundTouch.putSamples ((SAMPLETYPE*) interleavedInputBuffer, numSamples);
 }
 
 void SoundTouchProcessor::readSamples (float** destinationChannelData, int numChannels, int numSamples, int startSampleOffset)
@@ -82,7 +82,7 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
         do
         {
             int maxNumSamples = numSamples - numSamplesDone;
-            numThisTime = soundTouch.receiveSamples ((SAMPLETYPE*)&interleavedOutputBuffer[numChannels * numSamplesDone], maxNumSamples);
+            numThisTime = soundTouch.receiveSamples ((SAMPLETYPE*) &interleavedOutputBuffer[numChannels * numSamplesDone], maxNumSamples);
             
             numSamplesDone += numThisTime;
             

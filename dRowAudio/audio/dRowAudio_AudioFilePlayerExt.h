@@ -18,8 +18,8 @@
   ==============================================================================
 */
 
-#ifndef _DROWAUDIO_AUDIOFILEPLAYEREXT__H_
-#define _DROWAUDIO_AUDIOFILEPLAYEREXT__H_
+#ifndef __DROWAUDIO_AUDIOFILEPLAYEREXT_H__
+#define __DROWAUDIO_AUDIOFILEPLAYEREXT_H__
 
 #include "dRowAudio_SoundTouchAudioSource.h"
 #include "dRowAudio_ReversibleAudioSource.h"
@@ -127,4 +127,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);
 };
 
-#endif //_DROWAUDIO_AUDIOFILEPLAYEREXT__H_
+#endif // __DROWAUDIO_AUDIOFILEPLAYEREXT_H__

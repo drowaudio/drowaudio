@@ -18,8 +18,8 @@
   ==============================================================================
 */
 
-#ifndef _DROWAUDIO_AUDIOFILEPLAYER__H_
-#define _DROWAUDIO_AUDIOFILEPLAYER__H_
+#ifndef __DROWAUDIO_AUDIOFILEPLAYER_H__
+#define __DROWAUDIO_AUDIOFILEPLAYER_H__
 
 //==============================================================================
 /** This class can be used to load and play an audio file from disk.
@@ -222,4 +222,4 @@ protected:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayer);
 };
 
-#endif //_DROWAUDIO_AUDIOFILEPLAYER__H_
+#endif // __DROWAUDIO_AUDIOFILEPLAYER_H__

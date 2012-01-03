@@ -88,7 +88,7 @@ void CURLEasySession::setUserNameAndPassword (String username, String password)
 //==============================================================================
 String CURLEasySession::getCurrentWorkingDirectory()
 {
-	char url[500];
+	char url[1000];
 	
 	CURLcode res = curl_easy_getinfo (handle, CURLINFO_EFFECTIVE_URL, url);
 	

@@ -22,10 +22,9 @@
 #define __DROWAUDIO_MEMORYINPUTSOURCE_H__
 
 //==============================================================================
-/**
- A type of InputSource that represents a memory input stream.
+/** A type of InputSource that represents a MemoryInputStream.
  
- @see InputSource
+    @see InputSource
  */
 class MemoryInputSource :   public InputSource
 {
@@ -43,6 +42,7 @@ private:
     MemoryInputStream* memoryInputStream;
     bool useFileTimeInHashGeneration;
     
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MemoryInputSource);
 };
 

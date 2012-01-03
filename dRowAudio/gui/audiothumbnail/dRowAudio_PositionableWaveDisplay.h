@@ -25,30 +25,19 @@
 #include "../../audio/dRowAudio_AudioUtility.h"
 
 //====================================================================================
-/** A class to display the waveform of an audio file.
+/** A class to display the entire waveform of an audio file.
 	
 	This will load an audio file and display its waveform. Clicking on the waveform will
-	reposition the transport source. You can change the file loaded by the associated 
-	AudioFilePlayer by dragging a new file onto the display.
+	reposition the transport source.
  */
 class PositionableWaveDisplay : public Component,
-								public MultiTimer,
+								public Timer,
                                 public AudioThumbnailImage::Listener
 {
 public:
 	//====================================================================================
-	/** Used to start and stop the various internal timers. */
-	enum
-	{
-		waveformUpdated,
-		waveformLoading
-	};
-	
 	/** Creates the display.
-		The file player associated with the display must be passed in.
-		To save on the number of threads in your program you can optionally pass in your own
-		AudioThumbnailCache. If you pass in your own the caller is responsible for deleting it,
-		if not the PositionableWaveform will create and delete its own when not needed.	 
+		The AudioThumbnailImage associated with the display must be passed in.
 	 */
 	explicit PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed);
 	
@@ -112,7 +101,7 @@ public:
     
 	//====================================================================================
 	/** @internal */
-	void timerCallback (int timerId);
+	void timerCallback();
 		
 private:
 	//==============================================================================

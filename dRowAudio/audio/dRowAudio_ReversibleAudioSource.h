@@ -24,7 +24,8 @@
 #include "../utility/dRowAudio_Utility.h"
 
 //==============================================================================
-/** A type of AudioSource that can reverse the stream of samples that flows through it..
+/** A type of AudioSource that can reverse the stream of samples that
+    flows through it.
 
     @see PositionableAudioSource, AudioTransportSource, BufferingAudioSource
 */
@@ -48,11 +49,11 @@ public:
     //==============================================================================
     /** Sets whether the source should play forwards or backwards.
      */
-	void setPlayDirection (bool shouldPlayForwards)	{	isForwards = shouldPlayForwards;            }
+	void setPlayDirection (bool shouldPlayForwards)	{	isForwards = shouldPlayForwards;    }
     
     /** Returns true if the source is playing forwards.
      */
-	bool getPlayDirection ()						{	return isForwards;                          }
+	bool getPlayDirection ()						{	return isForwards;                  }
     
     //==============================================================================
     /** Implementation of the AudioSource method. */
@@ -63,27 +64,10 @@ public:
 
     /** Implementation of the AudioSource method. */
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
-
-    //==============================================================================
-    /** Implementation of the PositionableAudioSource method. */
-//    void setNextReadPosition (int64 newPosition)    {   input->setNextReadPosition (newPosition);   }
-//    
-//    /** Implementation of the PositionableAudioSource method. */
-//    int64 getNextReadPosition() const               {   return input->getNextReadPosition();        }
-//    
-//    /** Implementation of the PositionableAudioSource method. */
-//    int64 getTotalLength() const                    {   return input->getTotalLength();             }
-//    
-//    /** Implementation of the PositionableAudioSource method. */
-//    bool isLooping() const                          {   return input->isLooping();                  }
-//    
-//    /** Implementation of the PositionableAudioSource method. */
-//    void setLooping (bool shouldLoop)               {   input->setLooping   (shouldLoop);           }
     
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> input;
-
 	bool volatile isForwards;
 	
     //==============================================================================

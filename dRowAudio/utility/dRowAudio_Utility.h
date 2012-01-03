@@ -24,15 +24,15 @@
 #include "dRowAudio_XmlHelpers.h"
 
 //==============================================================================
-/**
-	@file
+/** @file
+ 
 	This file contains some useful utility functions and macros.
  */
 //==============================================================================
 
 /** Checks to see if two values are equal within a given precision.
  */
-inline static bool almostEqual(double firstValue, double secondValue, double precision =0.00001)
+inline static bool almostEqual (double firstValue, double secondValue, double precision = 0.00001)
 {
 	if (fabs (firstValue - secondValue) < precision)
 		return true;
@@ -65,7 +65,7 @@ inline static String stripFileProtocolForLocal (String pathToStrip)
 /** Converts an iTunes formatted date string (e.g. 2010-12-27T17:44:32Z)
     into a Time object.
  */
-inline static Time parseITunesDateString(String dateString)
+inline static Time parseITunesDateString (String dateString)
 {
     int year =      dateString.substring (0, 4).getIntValue();
     int month =     dateString.substring (5, 7).getIntValue();
@@ -119,23 +119,6 @@ void reverseTwoArrays (Type* array1, Type* array2, int length)
         array2[a] = array2[length];     //put what's in b into a
         array2[length] = swap;          //put what's in the swap (a) into b
     }
-}
-
-static const String dRowReadEntireTextStream (URL *url, const bool usePostCommand)
-{
-    const ScopedPointer <InputStream> in (url->createInputStream (usePostCommand,
-																  0, 0, String::empty,
-																  2000));
-	
-    if (in != 0)
-        return in->readEntireStreamAsString();
-	
-    return String::empty;
-}
-
-static XmlElement* dRowReadEntireXmlStream (URL *url, const bool usePostCommand)
-{
-    return XmlDocument::parse (dRowReadEntireTextStream (url, usePostCommand));
 }
 
 /**	Finds the key for a given track from the chemical-records website.
@@ -271,8 +254,7 @@ static ValueTree readValueTreeFromFile (File& fileToReadFrom)
 }
 
 //==============================================================================
-/**
-	This handy macro is a platform independent way of stopping compiler
+/** This handy macro is a platform independent way of stopping compiler
 	warnings when paramaters are declared but not used.
  */
 #ifndef UNUSED_NOWARN
@@ -297,8 +279,7 @@ static ValueTree readValueTreeFromFile (File& fileToReadFrom)
 #endif // #ifndef UNUSED_NOWARN
 
 //==============================================================================
-/**
-	This is a platform independent way of aligning variables.
+/** This is a platform independent way of aligning variables.
  */
 #ifndef ALIGN_DATA
 
@@ -314,7 +295,5 @@ static ValueTree readValueTreeFromFile (File& fileToReadFrom)
 	#endif
 
 #endif // ALIGN_DATA
-//==============================================================================
-
 
 #endif //__DROWAUDIO_UTILITY_H__

@@ -33,14 +33,15 @@
 	It is very customisable letting you set the number of each segments, how many decibels
 	each segment represents and the colours of the segments.
  
-	To use one, register it with a GraphicalComponentManager and then in your audio callback
+	To use one, register it with a TimeSliceThread and then in your audio callback
 	push some values to it with copyValues(...).
  
 	Eg. in your Component
 	@code
-		graphicalManager = new GraphicalComponentManager();
+		graphicalManager = new TimeSliceThread();
+        graphicalManager->startThread (2);
 		addAndMakeVisible (meter = new SegmentedMeter());
-		graphicalManager->addGraphicalComponent (meter);
+		graphicalManager->addTimeSliceClient (meter);
 	@endcode
  
 	and in your audioCallback
@@ -56,8 +57,8 @@ class SegmentedMeter :	public GraphicalComponent
 public:
     //==============================================================================
 	/**	Creates a SegmentedMeter.
-		Initially this will do nothing as you need to register it with a GraphicalComponentManager
-		then push some values to it with copyValues().
+		Initially this will do nothing as you need to register it with a
+        TimeSliceThread then push some values to it with copyValues().
 	 */
 	SegmentedMeter();
 	
@@ -107,9 +108,8 @@ public:
 		repaint();
 	}
     
-    //================================================================
-    /**	Draws the meter.
-	 */
+	//==============================================================================
+    /**	Draws the meter. */
 	void paint (Graphics &g);
 	
 	/**	@internal
@@ -143,6 +143,7 @@ private:
 	
     Image onImage, offImage;
     
+	//==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SegmentedMeter);
 };
 

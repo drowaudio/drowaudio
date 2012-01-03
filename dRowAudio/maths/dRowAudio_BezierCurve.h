@@ -38,17 +38,20 @@ namespace BezierCurve
 	//==============================================================================
 	/*	Cubic bezier
 	 */
-	inline float slopeFromT (float t, float A, float B, float C){
-		float dtdx = 1.0/(3.0*A*t*t + 2.0*B*t + C); 
+	inline float slopeFromT (float t, float A, float B, float C)
+    {
+		float dtdx = 1.0 / (3.0*A*t*t + 2.0*B*t + C); 
 		return dtdx;
 	}
 	
-	inline float xFromT (float t, float A, float B, float C, float D){
+	inline float xFromT (float t, float A, float B, float C, float D)
+    {
 		float x = A*(t*t*t) + B*(t*t) + C*t + D;
 		return x;
 	}
 	
-	inline float yFromT (float t, float E, float F, float G, float H){
+	inline float yFromT (float t, float E, float F, float G, float H)
+    {
 		float y = E*(t*t*t) + F*(t*t) + G*t + H;
 		return y;
 	}
@@ -78,7 +81,7 @@ namespace BezierCurve
 	//==============================================================================
 	//	Bezier calculations
 	//==============================================================================
-	/*	Quadratic Bezier.
+	/**	Quadratic Bezier.
 		This will calculate the quadratic Bezier of a given input x based on a co-ordinate pair (a, b).
 		All points have to be within a unit square ie. 0 < x < 1
 	 */
@@ -103,9 +106,9 @@ namespace BezierCurve
 	}
 
 	//==============================================================================
-	/*	Cubic Bezier.
+	/**	Cubic Bezier.
 		This will calculate the cubic Bezier of a given input x based on two co-ordinate pairs (a, b) & (c, d).
-		All points have to be within a unit square ie. 0 < x < 1
+		All points have to be within a unit square ie. 0 < x < 1.
 	 */
 	static float cubicBezier (float x, float a, float b, float c, float d)
 	{
@@ -133,11 +136,12 @@ namespace BezierCurve
 		// Assume for the first guess that t = x.
 		float currentt = x;
 		int nRefinementIterations = 5;
-		for (int i=0; i < nRefinementIterations; i++){
+		for (int i=0; i < nRefinementIterations; i++)
+        {
 			float currentx = xFromT (currentt, A,B,C,D); 
 			float currentslope = slopeFromT (currentt, A,B,C);
-			currentt -= (currentx - x)*(currentslope);
-			currentt = jlimit(0.0f, 1.0f, currentt);
+			currentt -= (currentx - x) * (currentslope);
+			currentt = jlimit (0.0f, 1.0f, currentt);
 		} 
 		
 		float y = yFromT (currentt,  E,F,G,H);
@@ -145,7 +149,7 @@ namespace BezierCurve
 	}
 	
 	//==============================================================================
-	/*	Cubic Bezier Nearly Through Two Points.
+	/**	Cubic Bezier Nearly Through Two Points.
 		This will calculate the cubic Bezier of a given input x based on two co-ordinate pairs (a, b) & (c, d).
 		The Bezier curve calculated will try to go through both the given points within reason.
 		All points have to be within a unit square ie. 0 < x < 1
@@ -159,8 +163,8 @@ namespace BezierCurve
 		float max_param_a = 1.0 - epsilon;
 		float min_param_b = 0.0 + epsilon;
 		float max_param_b = 1.0 - epsilon;
-		a = jmax(min_param_a, jmin(max_param_a, a));
-		b = jmax(min_param_b, jmin(max_param_b, b));
+		a = jmax (min_param_a, jmin (max_param_a, a));
+		b = jmax (min_param_b, jmin (max_param_b, b));
 		
 		float x0 = 0;  
 		float y0 = 0;
@@ -170,7 +174,7 @@ namespace BezierCurve
 		float y5 = d;
 		float x3 = 1;  
 		float y3 = 1;
-		float x1,y1,x2,y2; // to be solved.
+		float x1 , y1, x2, y2; // to be solved.
 		
 		// arbitrary but reasonable 
 		// t-values for interior control points
@@ -196,12 +200,12 @@ namespace BezierCurve
 		x1 = (ccx - x2*B2t1) / B1t1;
 		y1 = (ccy - y2*B2t1) / B1t1;
 		
-		x1 = jmax(0+epsilon, jmin(1-epsilon, x1));
-		x2 = jmax(0+epsilon, jmin(1-epsilon, x2));
+		x1 = jmax (0+epsilon, jmin (1-epsilon, x1));
+		x2 = jmax (0+epsilon, jmin (1-epsilon, x2));
 		
 		// Note that this function also requires cubicBezier()!
-		y = cubicBezier (x, x1,y1, x2,y2);
-		y = jmax(0.0f, jmin(1.0f, y));
+		y = cubicBezier (x, x1, y1, x2,y2);
+		y = jmax (0.0f, jmin (1.0f, y));
 		return y;
 	}
 		

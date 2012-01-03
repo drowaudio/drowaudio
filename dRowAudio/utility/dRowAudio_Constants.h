@@ -21,8 +21,8 @@
 #ifndef __DROWAUDIO_CONSTANTS_H__
 #define __DROWAUDIO_CONSTANTS_H__
 
-/**
-	@file 
+//==============================================================================
+/** @file 
  
 	This file contains some useful constants for calculations such as reciprocals
 	to avoid using expensive divides in programs.
@@ -35,11 +35,10 @@ static const double oneOverPi = 1.0 / double_Pi;
 static const double twoTimesPi = 2.0 * double_Pi;
 static const double fourTimesPi = 4.0 * double_Pi;
 static const double sixTimesPi = 6.0 * double_Pi;
-static const double root2 = sqrt(2.0);
-static const double oneOverRoot2 = 1.0 / sqrt(2.0);
-static const double root3 = sqrt(3.0);
-static const double oneOverRoot3 = 1.0 / sqrt(3.0);
-
+static const double root2 = sqrt (2.0);
+static const double oneOverRoot2 = 1.0 / sqrt (2.0);
+static const double root3 = sqrt (3.0);
+static const double oneOverRoot3 = 1.0 / sqrt (3.0);
 
 #define squareNumber(x)	(x * x)
 #define cubeNumber(x)	(x * x * x)

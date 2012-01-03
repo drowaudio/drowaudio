@@ -11,4 +11,16 @@ Release/
 *.mode2v3
 xcuserdata
 .svn/
+dRowAudio_old/
+juce_audio_basics/
+juce_audio_devices/
+juce_audio_formats/
+juce_audio_processors/
+juce_audio_utils/
+juce_core/
+juce_data_structures/
+juce_events/
+juce_graphics/
+juce_gui_basics/
+juce_gui_extra/
 Band Practice Assistant/

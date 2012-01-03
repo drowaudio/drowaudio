@@ -25,8 +25,11 @@
 
 //==============================================================================
 /**	Creates a CURLEasySession.
-	One of these is used to handle a specific transfer. Create one on the stack
-	and when it goes out of scope it will clean up after itself.
+ 
+	One of these is used to handle a specific transfer optionally on a
+    background thread. Either create one on the stack for quick tranfers and
+    when it goes out of scope it will clean up after itself or create an object
+    to re-use and use the various methods to control the transfer.
  
 	@todo directory list is returned if this is found before a file transfer
 	@todo rename remote file if it already exists
@@ -35,14 +38,21 @@ class CURLEasySession : public TimeSliceClient
 {
 public:
 	//==============================================================================
+    /** Creates an uninitialised CURLEasySession.
+        You will need to set up the transfer using setLocalFile() and setRemotePath()
+        and then call beginTransfer() to actucally perform the transfer.
+     */
 	CURLEasySession();
 
+    /** Creates a session and performs the transfer.
+     */
 	CURLEasySession (String localPath,
                      String remotePath,
                      bool upload,
                      String username = String::empty,
                      String password = String::empty);
     
+    /** Destructor. */
 	~CURLEasySession();
 
     //==============================================================================
@@ -146,12 +156,6 @@ public:
 	
 private:
     //==============================================================================
-	static size_t writeCallback (void* sourcePointer, size_t blockSize, size_t numBlocks, CURLEasySession* session);
-	static size_t readCallback (void* destinationPointer, size_t blockSize, size_t numBlocks, CURLEasySession* session);
-	static size_t directoryListingCallback (void* sourcePointer, size_t blockSize, size_t numBlocks, CURLEasySession* session);
-	static int internalProgressCallback (CURLEasySession* session, double dltotal, double dlnow, double ultotal, double ulnow);
-	
-    //==============================================================================
 	CURL* handle;
 	String remotePath, userNameAndPassword;
 	bool isUpload, shouldStopTransfer;
@@ -168,6 +172,11 @@ private:
     //==============================================================================
     CURLcode performTransfer (bool transferIsUpload);
     
+    static size_t writeCallback (void* sourcePointer, size_t blockSize, size_t numBlocks, CURLEasySession* session);
+	static size_t readCallback (void* destinationPointer, size_t blockSize, size_t numBlocks, CURLEasySession* session);
+	static size_t directoryListingCallback (void* sourcePointer, size_t blockSize, size_t numBlocks, CURLEasySession* session);
+	static int internalProgressCallback (CURLEasySession* session, double dltotal, double dlnow, double ultotal, double ulnow);
+	    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CURLEasySession);
 };

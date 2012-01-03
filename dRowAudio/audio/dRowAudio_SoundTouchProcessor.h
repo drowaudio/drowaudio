@@ -18,8 +18,8 @@
   ==============================================================================
 */
 
-#ifndef _DROWAUDIO_SOUNDTOUCHPROCESSOR__H_
-#define _DROWAUDIO_SOUNDTOUCHPROCESSOR__H_
+#ifndef __DROWAUDIO_SOUNDTOUCHPROCESSOR_H__
+#define __DROWAUDIO_SOUNDTOUCHPROCESSOR_H__
 
 #include "soundtouch/SoundTouch.h"
 
@@ -36,16 +36,9 @@ using namespace soundtouch;
 class SoundTouchProcessor
 {
 public:
-    
     //==============================================================================
-    enum PlaybackSetting 
-    {
-        rateSetting,
-        tempoSetting,
-        pitchSetting,
-        pitchSemitonesSetting
-    };
-    
+    /** A struct use to hold all the different playback settings.
+     */
     struct PlaybackSettings
     {
         PlaybackSettings()
@@ -133,7 +126,8 @@ private:
     int interleavedInputBufferSize, interleavedOutputBufferSize;
     PlaybackSettings settings;
     
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchProcessor);
 };
 
-#endif //_DROWAUDIO_SOUNDTOUCHPROCESSOR__H_
+#endif // __DROWAUDIO_SOUNDTOUCHPROCESSOR_H__

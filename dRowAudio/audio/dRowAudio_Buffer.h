@@ -23,6 +23,7 @@
 
 //==============================================================================
 /** A buffer to hold an array of floats.
+ 
 	This is a simple container for an array of floats that can be used to store 
 	common values such as a waveshape or look-up table.
 	Create one of these on the stack for most efficient and safe use.

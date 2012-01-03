@@ -42,7 +42,7 @@ PositionableWaveDisplay::PositionableWaveDisplay (AudioThumbnailImage& sourceToB
 PositionableWaveDisplay::~PositionableWaveDisplay()
 {
     audioThumbnailImage.removeListener (this);
-	stopTimer (waveformUpdated);
+	stopTimer();
 }
 
 void PositionableWaveDisplay::setZoomRatio (double newZoomRatio)
@@ -74,9 +74,9 @@ void PositionableWaveDisplay::setCursorDisplayed (bool shoudldDisplayCursor)
     showTransportCursor = shoudldDisplayCursor;
     
     if (showTransportCursor)
-		startTimer (waveformUpdated, 40);		
+		startTimer (40);		
     else
-        stopTimer (waveformUpdated);
+        stopTimer();
 }
 
 void PositionableWaveDisplay::setBackgroundColour (Colour newBackgroundColour)
@@ -132,22 +132,19 @@ void PositionableWaveDisplay::paint(Graphics &g)
 }
 
 //====================================================================================
-void PositionableWaveDisplay::timerCallback (const int timerId)
+void PositionableWaveDisplay::timerCallback()
 {
-	if (timerId == waveformUpdated)
-	{
-		const int w = getWidth();
-		const int h = getHeight();
+    const int w = getWidth();
+    const int h = getHeight();
 
-        const int startPixel = w * startOffsetRatio;
-		transportLineXCoord = startPixel + ((w * oneOverFileLength * audioFilePlayer->getCurrentPosition()) / zoomRatio);
-        
-		// if the line has moved repaint the old and new positions of it
-		if (! transportLineXCoord.areEqual())
-		{
-			repaint (transportLineXCoord.getPrevious() - 2, 0, 5, h);
-			repaint (transportLineXCoord.getCurrent() - 2, 0, 5, h);
-		}
+    const int startPixel = w * startOffsetRatio;
+    transportLineXCoord = startPixel + ((w * oneOverFileLength * audioFilePlayer->getCurrentPosition()) / zoomRatio);
+    
+    // if the line has moved repaint the old and new positions of it
+    if (! transportLineXCoord.areEqual())
+    {
+        repaint (transportLineXCoord.getPrevious() - 2, 0, 5, h);
+        repaint (transportLineXCoord.getCurrent() - 2, 0, 5, h);
 	}
 }
 
@@ -170,7 +167,7 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
             oneOverFileLength = 1.0 / fileLength;
             
             if (showTransportCursor)
-                startTimer (waveformUpdated, 40);		
+                startTimer (40);		
         }
         else 
         {

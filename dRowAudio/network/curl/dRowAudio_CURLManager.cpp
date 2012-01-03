@@ -23,7 +23,7 @@ BEGIN_JUCE_NAMESPACE
 juce_ImplementSingleton (CURLManager);
 
 CURLManager::CURLManager()
-    : TimeSliceThread("cURL Thread")
+    : TimeSliceThread ("cURL Thread")
 {
 	CURLcode result = curl_global_init (CURL_GLOBAL_ALL);
     

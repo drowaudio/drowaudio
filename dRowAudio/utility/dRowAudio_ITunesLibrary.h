@@ -28,6 +28,7 @@
     You can register yourselves as a listener to recieve callbacks when its 
     content has changed. You can also load a previously generated library tree 
     for data to me merged into if it is newer.
+    For an example of its use see the MusicLibraryTable class.
  */
 class ITunesLibrary : public Timer,
 					  public DeletedAtShutdown
@@ -129,8 +130,9 @@ private:
     File libraryFile;
 	ScopedPointer<ITunesLibraryParser> parser;
 	ValueTree libraryTree;
+    
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibrary);
 };
-
-
 
 #endif  // __DROWAUDIO_ITUNESLIBRARY_H__

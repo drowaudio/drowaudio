@@ -21,8 +21,8 @@
 BEGIN_JUCE_NAMESPACE
 
 //========================================================================
-FilteringAudioSource::FilteringAudioSource(AudioSource* inputSource,
-                                           bool deleteInputWhenDeleted)
+FilteringAudioSource::FilteringAudioSource (AudioSource* inputSource,
+                                            bool deleteInputWhenDeleted)
     : input         (inputSource, deleteInputWhenDeleted),
 	  sampleRate    (44100.0),
 	  lowEQGain     (1.0),
@@ -30,7 +30,7 @@ FilteringAudioSource::FilteringAudioSource(AudioSource* inputSource,
 	  highEQGain    (1.0),
 	  filterSource  (true)
 {
-	// instantiate the filters
+	// configure the filters
 	lowEQFilterL.makeLowShelf   (sampleRate, 70, 1.5, lowEQGain);
 	lowEQFilterR.makeLowShelf   (sampleRate, 70, 1.5, lowEQGain);
 	midEQFilterL.makeBandPass   (sampleRate, 1000, 1.5, midEQGain);
@@ -45,7 +45,7 @@ FilteringAudioSource::~FilteringAudioSource()
 }
 
 //==============================================================================
-void FilteringAudioSource::setLowEQGain(float newLowEQGain)
+void FilteringAudioSource::setLowEQGain (float newLowEQGain)
 {
 	lowEQGain = newLowEQGain;
 
@@ -53,7 +53,7 @@ void FilteringAudioSource::setLowEQGain(float newLowEQGain)
 	lowEQFilterR.makeLowShelf (sampleRate, 500, 1, lowEQGain);
 }
 
-void FilteringAudioSource::setMidEQGain(float newMidEQGain)
+void FilteringAudioSource::setMidEQGain (float newMidEQGain)
 {
 	midEQGain = newMidEQGain;
 	
@@ -66,7 +66,7 @@ void FilteringAudioSource::setHighEQGain (float newHighEQGain)
 	highEQGain = newHighEQGain;
 	
 	highEQFilterL.makeHighShelf (sampleRate, 3500, 1, highEQGain);
-	highEQFilterR.makeHighShelf(sampleRate, 3500, 1, highEQGain);	
+	highEQFilterR.makeHighShelf (sampleRate, 3500, 1, highEQGain);	
 }
 
 void FilteringAudioSource::setFilterSource (bool shouldFilter)
@@ -104,7 +104,7 @@ void FilteringAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info
 {
     const SpinLock::ScopedLockType sl (callbackLock);
 		
-    if (input != 0)
+    if (input != nullptr)
     {
         input->getNextAudioBlock (info);
 
@@ -112,8 +112,8 @@ void FilteringAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info
 		{
 			// filter samples
 			const int bufferNumSamples = info.numSamples;
-			float *sampleDataL = info.buffer->getSampleData (0, info.startSample);
-			float *sampleDataR = info.buffer->getSampleData (1, info.startSample);
+			float* sampleDataL = info.buffer->getSampleData (0, info.startSample);
+			float* sampleDataR = info.buffer->getSampleData (1, info.startSample);
 			
 			lowEQFilterL.processSamples    (sampleDataL, bufferNumSamples);
 			lowEQFilterR.processSamples    (sampleDataR, bufferNumSamples);

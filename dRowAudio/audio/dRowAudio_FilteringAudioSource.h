@@ -21,9 +21,8 @@
 #ifndef __DROWAUDIO_FILTERINGAUDIOSOURCE_H__
 #define __DROWAUDIO_FILTERINGAUDIOSOURCE_H__
 
+//==============================================================================
 /**	An AudioSource that contains three settable filters to EQ the audio stream.
-	This also creates an internal resampler source that is adjustable.
-	
  */
 class FilteringAudioSource : public AudioSource
 {
@@ -73,7 +72,8 @@ public:
 		
 private:
     //==============================================================================
-    enum FilterType {
+    enum FilterType
+    {
         low = 0,
         mid,
         high

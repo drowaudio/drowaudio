@@ -21,8 +21,8 @@
 #ifndef __DROWAUDIO_STATEVARIABLE_H__
 #define __DROWAUDIO_STATEVARIABLE_H__
 
-/**
-	Variable that holds its previous value.
+//==============================================================================
+/** Variable that holds its previous value.
  
 	This can be used instead of keeping track of a current and previous state
 	of a primitive variable. Just calling set() will automatically update the
@@ -32,6 +32,7 @@ template <class VariableType>
 class StateVariable
 {
 public:
+    //==============================================================================
 	/**	Create a StateVariable with an initial value of 0.
 	 */
 	StateVariable()
@@ -47,53 +48,71 @@ public:
 		previous = current = initialValue;
 	}
 	
-	/*	Destructor.
-	 */
+	/** Destructor. */
 	~StateVariable() {}
 	
-	VariableType getCurrent()	{	return current;		}
-	VariableType getPrevious()	{	return previous;	}
+    /** Returns the current value.
+     */
+	inline VariableType getCurrent()	{	return current;		}
+
+    /** Returns the previous value.
+     */
+    inline VariableType getPrevious()	{	return previous;	}
 	
-	void set(VariableType newValue)
+    /** Sets a new value, copying the current to the previous.
+     */
+	inline void set (VariableType newValue)
 	{
 		previous = current;
 		current = newValue;
 	}
 	
-	void setOnlyCurrent(VariableType newValue)
+    /** Sets the current value, leaving the previous unchanged.
+     */
+	inline void setOnlyCurrent (VariableType newValue)
 	{
 		current = newValue;
 	}
 	
-	void setBoth(VariableType newValue)
+    /** Sets the previous value, leaving the current unchanged.
+     */
+	inline void setPrevious(VariableType newValue)
+	{
+		previous = newValue;
+	}
+
+    /** Sets the current and the previous value to be the same.
+     */
+	inline void setBoth (VariableType newValue)
 	{
 		current = previous = newValue;
 	}
 	
-	void setPrevious(VariableType newValue)
-	{
-		previous = newValue;
-	}
-	
 	/**	Returns true if the current and previous states are equal.
 	 */
-	bool areEqual()
+	inline bool areEqual()
 	{
 		return (previous == current);
 	}
 	
-	bool areAlmostEqual(double precision =0.00001)
+    /** Returns true if the two are almost equal to a given precision.
+     */
+	inline bool areAlmostEqual (double precision = 0.00001)
 	{
-		return almostEqual(current, previous, precision);
+		return almostEqual (current, previous, precision);
 	}
 
-	void operator= (VariableType newValue)
+    /** The same as calling set().
+     */
+	inline void operator= (VariableType newValue)
 	{
 		previous = current;
 		current = newValue;
 	}
 
-	void operator*= (VariableType newValue)
+    /** Multiplies the current value by newValue and updates the previous.
+     */
+	inline void operator*= (VariableType newValue)
 	{
 		previous = current;
 		current *= newValue;
@@ -101,14 +120,16 @@ public:
 		
 	/**	This returns the difference between the current and the previous state.
 	 */
-	VariableType getDifference()
+	inline VariableType getDifference()
 	{
 		return current - previous;
 	}
 	
 private:
+    //==============================================================================
 	VariableType current, previous;
 	
+    //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StateVariable);
 };
 

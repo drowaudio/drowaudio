@@ -61,7 +61,7 @@ public:
 
     /** Sets the ITunesLibrary to use.
      */
-	void setLibraryToUse (ITunesLibrary *library);
+	void setLibraryToUse (ITunesLibrary* library);
 
     /** Filters the table to only rows containing the given text.
      */
@@ -72,11 +72,14 @@ public:
 	TableListBox& getTableListBox()	{	return table;	};
     
     //==============================================================================
-	void libraryChanged (ITunesLibrary *library);
+    /** @internal */
+	void libraryChanged (ITunesLibrary* library);
 	
-	void libraryUpdated (ITunesLibrary *library);
+    /** @internal */
+	void libraryUpdated (ITunesLibrary* library);
 	
-	void libraryFinished (ITunesLibrary *library);
+    /** @internal */
+	void libraryFinished (ITunesLibrary* library);
 	
     //==============================================================================
     /** Returns the number of rows currently bein displayed in the table.
@@ -84,7 +87,8 @@ public:
     int getNumRows();
 
     /** @internal */
-    void paintRowBackground (Graphics& g, int rowNumber, int width, int height, bool rowIsSelected);
+    void paintRowBackground (Graphics& g, int rowNumber,
+                             int width, int height, bool rowIsSelected);
 
     /** @internal */
     void paintCell (Graphics& g,
@@ -118,13 +122,14 @@ private:
     
     ValueTree dataList;
 	ValueTree filteredDataList;
-//    Array<ValueTree> filteredArray;
         
     int filteredNumRows;
 	bool finishedLoading;
 	
     void updateFilteredSortOrder();
-    //ValueTree getRowFromFilteredList (int rowNumber);
+
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MusicLibraryTable);
 };
 
 #endif // __DROWAUDIO_MUSICLIBRARYTABLE_H__

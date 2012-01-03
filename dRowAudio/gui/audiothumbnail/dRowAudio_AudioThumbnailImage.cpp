@@ -57,7 +57,6 @@ AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer* sourceToBeUsed,
         newThumbnail->clear();
         audioThumbnail = newThumbnail;
     }
-	//audioThumbnail->addChangeListener (this);
     
 	// register with the file player to recieve update messages
 	filePlayer->addListener (this);
@@ -260,7 +259,5 @@ void AudioThumbnailImage::refreshWaveform()
     if (audioThumbnail->isFullyLoaded())
         renderComplete = true;
 }
-
-//==============================================================================
 
 END_JUCE_NAMESPACE

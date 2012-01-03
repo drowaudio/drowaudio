@@ -23,6 +23,9 @@
 
 namespace GuiHelpers
 {
+    /** Creates a base colour for a component based on the current keyboard
+        and mouse interactivity.
+     */
     static Colour createBaseColour (const Colour& colour,
                                     const bool hasKeyboardFocus,
                                     const bool isMouseOver,
@@ -39,7 +42,11 @@ namespace GuiHelpers
         return baseColour;
     }
     
-    static void drawBevel (Graphics& g, juce::Rectangle<float> innerBevelBounds, float bevelThickness, const Colour& baseColour)
+    /** Draws a square bevel around a given rectange.
+        This is useful for insetting components and givin them a border.
+     */
+    static void drawBevel (Graphics& g, juce::Rectangle<float> innerBevelBounds,
+                           float bevelThickness, const Colour& baseColour)
     {
        juce::Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
        juce::Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5, bevelThickness * 0.5));

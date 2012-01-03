@@ -20,10 +20,10 @@
 
 BEGIN_JUCE_NAMESPACE
 
-SoundTouchAudioSource::SoundTouchAudioSource(PositionableAudioSource* source_,
-                                             bool deleteSourceWhenDeleted,
-                                             int numberOfSamplesToBuffer_,
-                                             int numberOfChannels_)
+SoundTouchAudioSource::SoundTouchAudioSource (PositionableAudioSource* source_,
+                                              bool deleteSourceWhenDeleted,
+                                              int numberOfSamplesToBuffer_,
+                                              int numberOfChannels_)
     : source (source_, deleteSourceWhenDeleted),
       numberOfSamplesToBuffer (jmax (1024, numberOfSamplesToBuffer_)),
       numberOfChannels (numberOfChannels_),

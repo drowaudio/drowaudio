@@ -21,12 +21,18 @@
 #ifndef __DROWAUDIO_XMLHELPERS_H__
 #define __DROWAUDIO_XMLHELPERS_H__
 
-namespace XmlHelpers {
-
-    static XmlElement* findXmlElementWithAttributeWithValue (XmlElement* element, const String& attributeName, const String& attributeValue)
+namespace XmlHelpers
+{
+    //==============================================================================
+    /** Searches an XmlElement for an element with a given attribute name with
+        the given attribute value.
+     */
+    static XmlElement* findXmlElementWithAttributeWithValue (XmlElement* element,
+                                                             const String& attributeName,
+                                                             const String& attributeValue)
     {
-        if (element == 0)
-            return 0;
+        if (element == nullptr)
+            return nullptr;
         
         if (element->hasAttribute(attributeName)) {
             if(element->compareAttribute(attributeName, attributeValue, true))
@@ -35,7 +41,7 @@ namespace XmlHelpers {
         
         XmlElement* child = element->getFirstChildElement();
         
-        while (child != 0)
+        while (child != nullptr)
         {
             if (child->hasAttribute(attributeName)) {
                 if(element->compareAttribute(attributeName, attributeValue, true))
@@ -44,26 +50,29 @@ namespace XmlHelpers {
             
             XmlElement* const found = findXmlElementWithAttributeWithValue (child, attributeName, attributeValue);
             
-            if (found != 0)
+            if (found != nullptr)
                 return found;
             
             child = child->getNextElement();
         }
         
-        return 0;
+        return nullptr;
     }
 
+    //==============================================================================
+    /** Searches an XmlElement for an element with a given attribute name.
+     */
     static XmlElement* findXmlElementWithAttribute (XmlElement* element, const String& attributeName)
     {
-        if (element == 0)
-            return 0;
+        if (element == nullptr)
+            return nullptr;
         
         if (element->hasAttribute(attributeName))
             return element;
         
         XmlElement* child = element->getFirstChildElement();
         
-        while (child != 0)
+        while (child != nullptr)
         {
             if (child->hasAttribute(attributeName)) {
                 return element;
@@ -71,26 +80,29 @@ namespace XmlHelpers {
             
             XmlElement* const found = findXmlElementWithAttribute (child, attributeName);
             
-            if (found != 0)
+            if (found != nullptr)
                 return found;
             
             child = child->getNextElement();
         }
         
-        return 0;
+        return nullptr;
     }
 
+    //==============================================================================
+    /** Searches for an element with subtext that is an exact match.
+     */
     static XmlElement* findXmlElementWithSubText (XmlElement* element, const String& subtext)
     {
-        if (element == 0)
-            return 0;
+        if (element == nullptr)
+            return nullptr;
         
         if (element->getAllSubText() == subtext)
             return element;
         
         XmlElement* child = element->getFirstChildElement();
         
-        while (child != 0)
+        while (child != nullptr)
         {
             if (child->getAllSubText() == subtext) {
                 return child;
@@ -98,15 +110,18 @@ namespace XmlHelpers {
             
             XmlElement* const found = findXmlElementWithSubText (child, subtext);
             
-            if (found != 0)
+            if (found != nullptr)
                 return found;
             
             child = child->getNextElement();
         }
         
-        return 0;
+        return nullptr;
     }
     
+    //==============================================================================
+    /** Searches for an element with subtext contains the given text.
+     */
     static XmlElement* findXmlElementContainingSubText (XmlElement* element, const String& subtext)
     {
         if (element == nullptr || element->getFirstChildElement() == nullptr)
@@ -133,10 +148,8 @@ namespace XmlHelpers {
             child = child->getNextElement();
         }
         
-        return 0;
+        return nullptr;
     }
 }
-
-
 
 #endif  // __DROWAUDIO_XMLHELPERS_H__

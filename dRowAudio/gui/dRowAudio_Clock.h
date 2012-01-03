@@ -22,8 +22,7 @@
 #define __DROWAUDIO_CLOCK_H__
 
 //==============================================================================
-/**	
-	A handy digital graphical clock.
+/**	A handy digital graphical clock.
 	
 	Just add one of these to your component and it will display the time,
 	continually updating itself. Set the look and feel of it as you would
@@ -46,6 +45,7 @@ public:
 		showDayLong = 32,
 	};
 	
+    //==============================================================================
 	/**	Constructor.
 		Just add and make visible one of these to your component and it
 		will display the current time and continually update itself.
@@ -70,8 +70,7 @@ public:
 	int getRequiredWidth();
 	
     //==============================================================================
-	/** @Internal.
-	 */
+	/** @internal */
 	void timerCallback();
 	
 private:
@@ -79,6 +78,7 @@ private:
 	int displayFormat;
 	String timeAsString;
 	
+    //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Clock);
 };
 

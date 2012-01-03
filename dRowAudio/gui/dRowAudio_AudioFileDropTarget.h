@@ -23,6 +23,7 @@
 
 #include "../audio/dRowAudio_AudioFilePlayer.h"
 
+//==============================================================================
 /** A Component that acts as a drag and drop target for audio files and
     MusicLibraryTable drag sources. This will draw a coloured bezel if it can
     read the drag source provided.
@@ -33,6 +34,7 @@ class AudioFileDropTarget : public Component,
                             public FileDragAndDropTarget
 {
 public:
+    //==============================================================================
     /** Creates an AudioFileDropTarget, which controls an AudioFilePlayer.
         
         If you supply a component to attach itself to, the AudioFileDropTarget
@@ -91,15 +93,14 @@ public:
     /** @internal */
     void filesDropped (const StringArray& files, int x, int y);
 
-    //==============================================================================
-
 private:
-    
+    //==============================================================================
     AudioFilePlayerExt* audioFilePlayer;
     SafePointer<Component> attachedComponent;
     bool dragTested, interestedInDrag;
     Colour bezelColour;
     
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFileDropTarget);
 };
 

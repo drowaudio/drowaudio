@@ -26,9 +26,15 @@
 //==============================================================================	
 /** A class to display the waveform of an audio file.
 	
-	This will load an audio file and display its waveform. Clicking on the waveform will
-	reposition the transport source. You can change the file loaded by the associated 
-	AudioFilePlayer by dragging a new file onto the display.
+	This will load an audio file and display its waveform. All waveform rendering
+    happens on a background thread. This will listen to changes in the
+    AudioFilePlayer passed in and update the thumbnail accordingly.
+    
+    You can either get the whole image using getImage() or you can get a scaled
+    section using getImageAtTime().
+ 
+    You can also register as a listener to recive update when the sourc changes
+    or new data has been generated.
  */
 class AudioThumbnailImage : public Timer,
                             public TimeSliceClient,
@@ -36,8 +42,7 @@ class AudioThumbnailImage : public Timer,
 {
 public:
     //==============================================================================	
-    /**
-		Creates the display.
+    /** Creates the AudioThumbnailImage.
 		The file player associated with the display must be passed in.
 		To save on the number of threads in your program you can optionally pass in your own
 		AudioThumbnailCache. If you pass in your own the caller is responsible for deleting it,
@@ -63,23 +68,24 @@ public:
 	//====================================================================================
     /** Returns the whole waveform image.
      */
-    const Image getImage ()                       {   return waveformImage;   }
+    const Image getImage()                          {   return waveformImage;   }
     
     /** Returns a section of the image at a given time for a given duration.
      */
     const Image getImageAtTime (double startTime, double duration);
     
     /** Sets the image resolution in lines per pixel.
+        This will cause the waveform to be re-generated from the source.
      */
     void setResolution (double newResolution);
     
     /** Returns the AudioFilePlayer currently being used.
      */
-    AudioFilePlayer* getAudioFilePlayer()   {   return filePlayer;  }
+    AudioFilePlayer* getAudioFilePlayer()           {   return filePlayer;  }
     
     /** Returns true if the Image has finished rendering;
      */
-    bool hasFinishedLoading()               {   return renderComplete;  }
+    bool hasFinishedLoading()                       {   return renderComplete;  }
     
     /** Returns the number of sourceSamplesPerThumbnailSample if set in the constructor.
      */

@@ -24,7 +24,7 @@ CpuMeter::CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs
 	: Label ("CpuMeter", "00.00%"),
 	  deviceManager (deviceManagerToUse),
 	  updateInterval (updateIntervalMs),
-	  currentCpuUsage(0.0)
+	  currentCpuUsage (0.0)
 {
 	if (deviceManagerToUse != nullptr)
 		startTimer (updateInterval);

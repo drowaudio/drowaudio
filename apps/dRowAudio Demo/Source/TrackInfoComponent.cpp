@@ -113,8 +113,6 @@ void TrackInfoComponent::fileChanged (AudioFilePlayer* player)
 {
     if (player == &audioFilePlayer)
     {
-        //audioFilePlayerSettingChanged (player, AudioFilePlayerExt::SoundTouchSetting);
-        
         repaint();
     }
 }
@@ -133,7 +131,8 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
 
 void TrackInfoComponent::timerCallback()
 {
-    String remain ("-");
-    remain << timeToTimecodeStringLowRes (audioFilePlayer.getLengthInSeconds() - audioFilePlayer.getCurrentPosition());
+    double timeRemaining = audioFilePlayer.getLengthInSeconds() - audioFilePlayer.getCurrentPosition();
+    String remain (timeRemaining < 0.0 ? String::empty : "-");
+    remain << timeToTimecodeStringLowRes (timeRemaining);
     remainLabel.setText (remain, false);
 }

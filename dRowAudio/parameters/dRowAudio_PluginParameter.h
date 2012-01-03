@@ -23,6 +23,7 @@
 
 #include "../utility/dRowAudio_Utility.h"
 
+//==============================================================================
 /** Parameter Units - currently values are the same as the AudioUnit enums
  */
 enum ParameterUnit
@@ -59,6 +60,7 @@ enum ParameterUnit
 };
 
 
+//==============================================================================
 /**	This file defines a parameter used in an application.
  
 	Both full-scale and normalised values must be present for
@@ -67,6 +69,7 @@ enum ParameterUnit
 class PluginParameter
 {
 public:
+    //==============================================================================
 	/** Create a default parameter.
 	 
 		This just uses some standard default values so it can be used as a placeholder.
@@ -124,7 +127,7 @@ public:
 	void setupSlider (Slider& slider);
 	
 private:
-    
+    //==============================================================================
     Value valueObject;
 	String name, description, unitSuffix;
 	double min, max, defaultValue;
@@ -134,6 +137,7 @@ private:
 	
     double normaliseValue (double scaledValue);
 
+    //==============================================================================
 	JUCE_LEAK_DETECTOR (PluginParameter);
 };
 

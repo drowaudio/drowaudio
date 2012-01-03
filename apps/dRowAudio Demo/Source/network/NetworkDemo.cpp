@@ -36,16 +36,11 @@ NetworkDemo::NetworkDemo()
 	
 	localBrowser.setComponentID("local");
 	remoteBrowser.setComponentID("remote");
-	
-	addAndMakeVisible(&pwdButton);
-    pwdButton.setButtonText ("PWD");
-	pwdButton.addListener(this);
 }
 
 NetworkDemo::~NetworkDemo()
 {
 	connectionComponent.removeListener(this);
-	pwdButton.removeListener(this);
 }
 
 void NetworkDemo::resized()
@@ -54,9 +49,8 @@ void NetworkDemo::resized()
 	const int h = getHeight();
 
 	connectionComponent.setBounds(0, 0, w, 100);
-	pwdButton.setBounds(0, connectionComponent.getBottom()+5, 100, 20);
-	localBrowser.setBounds(0, pwdButton.getBottom()+5, w/2-2, h-pwdButton.getBottom()-5);
-	remoteBrowser.setBounds(localBrowser.getRight()+2, pwdButton.getBottom()+5, w/2-2, h-pwdButton.getBottom()-5);
+	localBrowser.setBounds(0, connectionComponent.getBottom()+5, w/2-2, h-connectionComponent.getBottom()-5);
+	remoteBrowser.setBounds(localBrowser.getRight()+2, connectionComponent.getBottom()+5, w/2-2, h-connectionComponent.getBottom()-5);
 //	localBrowser.setBounds("0, 0, parent.width/2-2, parent.height");
 //	remoteBrowser.setBounds("(remote.right)+2, 0, (parent.width/2)-2, parent.height");
 }
@@ -72,8 +66,4 @@ void NetworkDemo::connectionChanged (ConnectionComponent* changedConnectionCompo
 
 void NetworkDemo::buttonClicked(Button *button)
 {
-	if (button == &pwdButton)
-    {
-		DBG(remoteBrowser.getLastUrl());
-	}
 }

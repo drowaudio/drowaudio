@@ -55,7 +55,10 @@ ConnectionComponent::ConnectionComponent()
 	
 	addAndMakeVisible(&protocolBox);
     protocolBox.addItemList (CURLManager::getInstance()->getSupportedProtocols(), 1);
-	
+    for (int i = 0; i < protocolBox.getNumItems(); ++i)
+        if (protocolBox.getItemText (i) == "ftp")
+            protocolBox.setSelectedItemIndex (i);
+    
 	addAndMakeVisible(&connectButton);
 	connectButton.setButtonText("Connect");
 	connectButton.addListener(this);

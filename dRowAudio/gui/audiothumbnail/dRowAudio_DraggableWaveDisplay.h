@@ -25,28 +25,17 @@
 #include "../../audio/dRowAudio_AudioUtility.h"
 
 //==============================================================================
-/** A base class to display the waveform of an audio file.
- 
-	This is the base class to use for draggable or scrolling waveforms to use.
-	This will deal with all the mouse tracking, transport repositioning and image
-	caching. Your base class will need to actually fill the images to be drawn
-	however. take a look at the pure virtual functions for an idea of how to use
-	it or the eamples in DraggableWaveDisplay.
- */
+/** A class to display the waveform of an audio file which can be dragged to
+    reposition the source.
+    This class takes an AudioThumbnailImage as its source an then will get
+    updated as the thumbnail is generated. You can set the zoom levels of the
+    waveform and drag the image to reposition the source.
+*/
 class DraggableWaveDisplay :    public Component,
                                 public MultiTimer,
                                 public AudioThumbnailImage::Listener
 {
 public:
-    //==============================================================================
-	/** Used to start and stop the various internal timers.
-     */
-	enum
-	{
-		waveformUpdated,
-		waveformMoved
-	};
-	
     //==============================================================================
 	/** Creates the display.
         The file player associated with the display must be passed in along with
@@ -83,12 +72,6 @@ public:
     //====================================================================================
 	/** @internal */
     void imageChanged (AudioThumbnailImage* audioThumbnailImage);
-    
-	/** @internal */
-//    void imageUpdated (AudioThumbnailImage* audioThumbnailImage);
-    
-	/** @internal */
-//    void imageFinished (AudioThumbnailImage* audioThumbnailImage);    
 
 	//====================================================================================
 	/** @internal */
@@ -117,6 +100,14 @@ private:
      */
 	inline double timeToPixels (double timeInSecs);
 
+    /** Used to start and stop the various internal timers.
+     */
+	enum
+	{
+		waveformUpdated,
+		waveformMoved
+	};
+    
     //==============================================================================	
     AudioThumbnailImage& audioThumbnailImage;
     AudioFilePlayer* filePlayer;
@@ -137,7 +128,7 @@ private:
 	friend class SwitchableDraggableWaveDisplay;
     
     //==============================================================================	
-	JUCE_LEAK_DETECTOR (DraggableWaveDisplay);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DraggableWaveDisplay);
 };
 
 #endif  // __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__

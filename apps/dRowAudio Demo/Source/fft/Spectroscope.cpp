@@ -54,67 +54,16 @@ void Spectroscope::paint(Graphics& g)
     g.drawImageAt (scopeImage, 0, 0, false);
 }
 
-//============================================	
+void Spectroscope::setLogFrequencyDisplay (bool shouldDisplayLog)
+{
+    logFrequency = shouldDisplayLog;
+}
+
+//==============================================================================
 void Spectroscope::copySamples (const float* samples, int numSamples)
 {
 	circularBuffer.writeSamples (samples, numSamples);
 	needToProcess = true;
-}
-
-void Spectroscope::renderScopeImage()
-{
-    if (needsRepaint)
-	{
-        Graphics g (scopeImage);
-
-		const int w = getWidth();
-		const int h = getHeight();
-        
-		g.setColour (Colours::black);
-		g.fillAll();
-        
-		g.setColour (Colours::white);
-		
-        const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
-        const float xScale = (float)w / (numBins + 1);
-        const float* data = fftEngine.getMagnitudesBuffer().getData();
-
-        float y2, y1 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[0]) / 100.0f)));
-        float x2, x1 = 0;
-        
-        if (logFrequency)
-		{
-			for (int i = 0; i < numBins; ++i)
-			{
-				y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
-				x2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40) * w;
-
-				g.drawLine (x1, h - h * y1,
-						    x2, h - h * y2);
-				
-				y1 = y2;
-				x1 = x2;
-			}	
-		}
-		else
-		{
-			for (int i = 0; i < numBins; ++i)
-			{
-				y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
-				x2 = (i + 1) * xScale;
-				
-				g.drawLine (x1, h - h * y1,
-						    x2, h - h * y2);
-				
-				y1 = y2;
-				x1 = x2;
-			}	
-		}
-		
-		needsRepaint = false;
-
-        repaint();
-	}
 }
 
 void Spectroscope::timerCallback()
@@ -140,5 +89,68 @@ void Spectroscope::process()
 		fftEngine.updateMagnitudesIfBigger();
 		
 		needsRepaint = true;
+	}
+}
+
+void Spectroscope::flagForRepaint()
+{	
+    needsRepaint = true;
+    repaint();
+}
+
+//==============================================================================
+void Spectroscope::renderScopeImage()
+{
+    if (needsRepaint)
+	{
+        Graphics g (scopeImage);
+        
+		const int w = getWidth();
+		const int h = getHeight();
+        
+		g.setColour (Colours::black);
+		g.fillAll();
+        
+		g.setColour (Colours::white);
+		
+        const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
+        const float xScale = (float)w / (numBins + 1);
+        const float* data = fftEngine.getMagnitudesBuffer().getData();
+        
+        float y2, y1 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[0]) / 100.0f)));
+        float x2, x1 = 0;
+        
+        if (logFrequency)
+		{
+			for (int i = 0; i < numBins; ++i)
+			{
+				y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
+				x2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40) * w;
+                
+				g.drawLine (x1, h - h * y1,
+						    x2, h - h * y2);
+				
+				y1 = y2;
+				x1 = x2;
+			}	
+		}
+		else
+		{
+			for (int i = 0; i < numBins; ++i)
+			{
+				y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
+				x2 = (i + 1) * xScale;
+				
+				g.drawLine (x1, h - h * y1,
+						    x2, h - h * y2);
+				
+				y1 = y2;
+				x1 = x2;
+			}	
+		}
+		
+		needsRepaint = false;
+        
+        repaint();
 	}
 }

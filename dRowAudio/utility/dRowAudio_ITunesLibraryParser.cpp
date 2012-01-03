@@ -20,7 +20,8 @@
 
 BEGIN_JUCE_NAMESPACE
 
-ITunesLibraryParser::ITunesLibraryParser (File &iTunesLibraryFileToUse, ValueTree elementToFill, CriticalSection& lockToUse)
+ITunesLibraryParser::ITunesLibraryParser (File& iTunesLibraryFileToUse, ValueTree elementToFill,
+                                          CriticalSection& lockToUse)
     : Thread ("iTunesLibraryParser"),
       lock (lockToUse),
       iTunesLibraryFile (iTunesLibraryFileToUse),
@@ -28,7 +29,7 @@ ITunesLibraryParser::ITunesLibraryParser (File &iTunesLibraryFileToUse, ValueTre
       numAdded (0),
       finished (false)
 {
-	startThread(1);
+	startThread (1);
 }
 
 ITunesLibraryParser::~ITunesLibraryParser()

@@ -29,7 +29,7 @@ LoopingAudioSource::LoopingAudioSource (PositionableAudioSource* const inputSour
       loopEndSample (0),
       tempBuffer (2, 512)
 {
-    jassert (inputSource != 0);
+    jassert (inputSource != nullptr);
     
     tempInfo.numSamples = tempBuffer.getNumSamples();
     tempInfo.startSample = 0;

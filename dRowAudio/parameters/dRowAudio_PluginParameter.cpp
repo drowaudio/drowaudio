@@ -51,9 +51,9 @@ PluginParameter::PluginParameter (const PluginParameter& other)
     setValue (double (other.valueObject.getValue()));
 }
 
-void PluginParameter::init(const String& name_, ParameterUnit unit_, String description_,
-                           double value_, double min_, double max_, double default_,
-                           double skewFactor_, double smoothCoeff_, double step_, String unitSuffix_)
+void PluginParameter::init (const String& name_, ParameterUnit unit_, String description_,
+                            double value_, double min_, double max_, double default_,
+                            double skewFactor_, double smoothCoeff_, double step_, String unitSuffix_)
 {
 	name = name_;
 	unit = unit_;
@@ -88,17 +88,17 @@ void PluginParameter::init(const String& name_, ParameterUnit unit_, String desc
 	}	
 }
 
-void PluginParameter::setValue(double value)
+void PluginParameter::setValue (double value)
 {
 	valueObject = jlimit (min, max, value);
 }
 
-void PluginParameter::setNormalisedValue(double normalisedValue)
+void PluginParameter::setNormalisedValue (double normalisedValue)
 {
 	setValue ((max - min) * jlimit (0.0, 1.0, normalisedValue) + min);
 }
 
-void PluginParameter::setUnitSuffix(String newSuffix)
+void PluginParameter::setUnitSuffix (String newSuffix)
 {
 	unitSuffix = newSuffix;
 }
@@ -140,12 +140,12 @@ void PluginParameter::writeXml (XmlElement& xmlState)
 	xmlState.setAttribute (name,	getValue());
 }
 
-void PluginParameter::readXml(const XmlElement* xmlState)
+void PluginParameter::readXml (const XmlElement* xmlState)
 {
 	setValue (xmlState->getDoubleAttribute (name, getValue()));
 }
 
-void PluginParameter::setupSlider(Slider &slider)
+void PluginParameter::setupSlider (Slider &slider)
 {
     slider.setRange             (min, max, step);
     slider.setSkewFactor        (skewFactor);
@@ -153,7 +153,7 @@ void PluginParameter::setupSlider(Slider &slider)
     slider.setTextValueSuffix   (unitSuffix);
 }
 
-double PluginParameter::normaliseValue(double scaledValue)
+double PluginParameter::normaliseValue (double scaledValue)
 {
 	return ((scaledValue - min) / (max - min));
 }

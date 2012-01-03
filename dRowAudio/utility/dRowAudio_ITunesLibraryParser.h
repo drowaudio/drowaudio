@@ -29,6 +29,9 @@
     If the tree passed in already contains a generated library this will merge
     any new data from the file into it preserving any sub-trees or attributes
     that may have been added.
+ 
+    You shouldn't need to use this directly, use the higher-level iTunesLibrary
+    instead.
  */
 class ITunesLibraryParser : public Thread
 {
@@ -37,7 +40,7 @@ public:
     /** Creates a parser with a given valid library file and a ValueTree with which
         to put the parsed data.
      */
-	ITunesLibraryParser (File &iTunesLibraryFileToUse, ValueTree elementToFill,
+	ITunesLibraryParser (File& iTunesLibraryFileToUse, ValueTree elementToFill,
                          CriticalSection& lockToUse);
 	
     /** Destructor.
@@ -51,6 +54,8 @@ public:
     /** @internal */
 	void run();
 
+    /** Returns the lock being used.
+     */
     CriticalSection& getLock () {   return lock;    }
     
 private:
@@ -65,6 +70,7 @@ private:
     int numAdded;
 	bool finished;
 
+    //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibraryParser);
 };
 

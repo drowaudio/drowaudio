@@ -18,8 +18,8 @@
   ==============================================================================
 */
 
-#ifndef __SPECTROSCOPE_H_F2E587AC__
-#define __SPECTROSCOPE_H_F2E587AC__
+#ifndef __DROWAUDIO_SPECTROSCOPE_H__
+#define __DROWAUDIO_SPECTROSCOPE_H__
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
@@ -36,35 +36,31 @@ public:
 	
 	void paint(Graphics &g);
 	
-	//============================================
-//	void processSamples(float* samples, int numSamples);
-//	
-//	void bufferChanged(Buffer* buffer);
-		
 	//============================================	
-	/* GraphicalComponent implimentations		*/
-	 
+    /** Sets the scope to display in log or normal mode.
+     */
+	void setLogFrequencyDisplay (bool shouldDisplayLog);
+	
+    /** Returns true if the scope is being displayed in log mode.
+     */
+	inline bool getLogFrequencyDisplay() const      {   return logFrequency;	}
+
+	//============================================	
+	/** Copy a set of samples, ready to be processed.
+        Your audio callback should continually call this method to pass it its
+        audio data. When the scope has enough samples to perform an fft it will do
+        so on a background thread and redraw itself.
+     */
 	void copySamples (const float* samples, int numSamples);
 
+    /** @internal */
 	void timerCallback();
 	
+    /** @internal */
 	void process();
 	
-	//============================================	
-
-	void flagForRepaint()
-	{	
-		needsRepaint = true;
-		repaint();
-	}
-
-	//============================================	
-	void setLogFrequencyDisplay(bool shouldDisplayLog)
-	{
-		logFrequency = shouldDisplayLog;
-	}
-	
-	bool getLogFrequencyDisplay()	{	return logFrequency;	}
+    /** @internal */
+	void flagForRepaint();
 
 private:
     //==============================================================================
@@ -83,4 +79,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectroscope);
 };
 
-#endif  // __SPECTROSCOPE_H_F2E587AC__
+#endif  // __DROWAUDIO_SPECTROSCOPE_H__

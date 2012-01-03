@@ -31,7 +31,7 @@ MusicLibraryTable::MusicLibraryTable()
 	addAndMakeVisible (&table);
     table.setModel (this);
     table.setMultipleSelectionEnabled (true);
-	table.setColour (ListBox::backgroundColourId, Colour::greyLevel(0.2));
+	table.setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2));
 	table.setHeaderHeight (18);
 	table.setRowHeight (16);
 	table.getViewport()->setScrollBarThickness (10);
@@ -170,7 +170,8 @@ int MusicLibraryTable::getNumRows()
 	return filteredNumRows;
 }
 
-void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/, int /*width*/, int /*height*/, bool rowIsSelected)
+void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/,
+                                            int /*width*/, int /*height*/, bool rowIsSelected)
 {
 	if (rowIsSelected)
 		table.hasKeyboardFocus (true) ? g.fillAll (Colours::darkorange) : g.fillAll (Colour::greyLevel (0.6));
@@ -190,7 +191,6 @@ void MusicLibraryTable::paintCell (Graphics& g,
     {
         ScopedLock sl (currentLibrary->getParserLock());
         const ValueTree& rowElement (filteredDataList.getChild (rowNumber));
-//        const ValueTree& rowElement (filteredArray[rowNumber]);
     
         if (rowElement.isValid())
         {
@@ -215,10 +215,9 @@ void MusicLibraryTable::paintCell (Graphics& g,
 
 void MusicLibraryTable::sortOrderChanged (int newSortColumnId, const bool isForwards)
 {
-	if (newSortColumnId != 0) // can only sort when not still adding (could lock?)
+	if (newSortColumnId != 0)
 	{
         ScopedLock sl (currentLibrary->getParserLock());
-        DBG ("sortOrderChanged");
         
 		if (newSortColumnId == MusicColumns::Length
 			|| newSortColumnId == MusicColumns::BPM
@@ -258,7 +257,6 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
         {
             ScopedLock sl (currentLibrary->getParserLock());
             const ValueTree& rowElement (filteredDataList.getChild (i));
-//            const ValueTree& rowElement (filteredArray[i]);
 
             if (rowElement.isValid())
             {
@@ -299,53 +297,14 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &current
                 ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
                 itemsArray.append (childTree.getObject());
             }
-//            itemsArray.append((int)filteredDataList.getChild(currentlySelectedRows[i]).getProperty(MusicColumns::columnNames[MusicColumns::ID]));
         }
             
         return itemsArray;
             
-//		ScopedPointer<XmlElement> tracksToDrag (new XmlElement("ITEMS"));
-//
-//		for(int i = 0; i < currentlySelectedRows.size(); i++)
-//		{
-//			tracksToDrag->addChildElement(filteredDataList.getChild(currentlySelectedRows[i]).createXml());
-//		}
-//		
-//		return tracksToDrag->createDocument("", false, false);
 	}
-	return var::null; //String::empty;
+    
+	return var::null;
 }
 
-//==============================================================================
-//void MusicLibraryTable::updateFilteredSortOrder()
-//{
-//    for (int i = 0; i < dataList.getNumChildren(); i++)
-//    {
-//        for (int f = 0; f < filteredArray.size(); f++)
-//        {
-//            if (filteredArray.getReference (f) == dataList.getChild (i))
-//            {
-//                filteredArray.move (filteredArray.indexOf (filteredArray[f]), filteredArray.size() - 1);
-//            }
-//        }
-//    }
-//}
-
-//ValueTree MusicLibraryTable::getRowFromFilteredList (int rowNumber)
-//{
-//    int idToLookFor = filteredDataList[rowNumber];
-//    const int numRows = dataList.getNumChildren();
-//
-//    for (int i = 0, i < numRows; i++)
-//    {
-//        ValueTree elm (dataList[i]);
-//        if (int (elm[MusicColumns::columnNames[MusicColumns::LibID]]) == idToLookFor)
-//        {
-//            return elm;
-//        }
-//    }
-//    
-//    return ValueTree::invalid;
-//}
 
 END_JUCE_NAMESPACE

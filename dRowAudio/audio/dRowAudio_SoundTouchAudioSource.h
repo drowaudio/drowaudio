@@ -18,16 +18,26 @@
   ==============================================================================
 */
 
-#ifndef _SOUNDTOUCHAUDIOSOURCE__H_
-#define _SOUNDTOUCHAUDIOSOURCE__H_
+#ifndef __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__
+#define __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__
 
 #include "dRowAudio_SoundTouchProcessor.h"
 
 //==============================================================================
+/** An audio source that can independently change the rate, tempo and pitch of
+    an audio source. This uses the SoundTouch library to perform the processing.
+ */
 class SoundTouchAudioSource :   public PositionableAudioSource
 {
 public:
     //==============================================================================
+    /** Creates a SoundTouchAudio source.
+        The numberOfSamplesToBuffer parameter is how many samples the source will
+        buffer internally. Due to the way SoundTouch processes samples any changes
+        of playback settings will only come into effect some time after this number
+        of samples has been process. For fine control try reducing this but beware
+        the extra function calls will use more CPU.
+     */
     SoundTouchAudioSource (PositionableAudioSource* source,
                            bool deleteSourceWhenDeleted = false,
                            int numberOfSamplesToBuffer = 2048,
@@ -92,7 +102,8 @@ private:
     
     void readNextBufferChunk();
     
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchAudioSource);
 };
 
-#endif //_SOUNDTOUCHAUDIOSOURCE__H_
+#endif // __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__

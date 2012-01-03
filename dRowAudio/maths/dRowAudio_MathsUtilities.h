@@ -21,6 +21,7 @@
 #ifndef __DROWAUDIO_MATHSUTILITIES_H__
 #define __DROWAUDIO_MATHSUTILITIES_H__
 
+//==============================================================================
 /**	Linear Interpolater.
 	Performs a linear interpolation for a fractional buffer position.
 	Note: For speed no bounds checking is performed on the buffer position so it is

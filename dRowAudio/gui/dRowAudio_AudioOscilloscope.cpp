@@ -45,6 +45,24 @@ AudioOscilloscope::~AudioOscilloscope()
 {
 }
 
+//==============================================================================
+void AudioOscilloscope::processBlock (const float* inputChannelData,
+                                      int numSamples)
+{
+    if (inputChannelData != 0)
+    {
+        for (int i = 0; i < numSamples; ++i)
+            addSample (inputChannelData [i]);
+    }
+}
+
+void AudioOscilloscope::clear()
+{
+    zeromem (circularBufferMax, sizeof (float) * bufferSize);
+    zeromem (circularBufferMin, sizeof (float) * bufferSize);
+}
+
+//==============================================================================
 void AudioOscilloscope::resized()
 {
     Image oldImage (waveformImage);
@@ -128,22 +146,6 @@ void AudioOscilloscope::addSample (const float sample)
         currentMin = 1.0e6f;
         currentMax = -currentMin;
     }
-}
-
-void AudioOscilloscope::processBlock (const float* inputChannelData,
-                                      int numSamples)
-{
-    if (inputChannelData != 0)
-    {
-        for (int i = 0; i < numSamples; ++i)
-            addSample (inputChannelData [i]);
-    }
-}
-
-void AudioOscilloscope::clear()
-{
-    zeromem (circularBufferMax, sizeof (float) * bufferSize);
-    zeromem (circularBufferMin, sizeof (float) * bufferSize);
 }
 
 END_JUCE_NAMESPACE
