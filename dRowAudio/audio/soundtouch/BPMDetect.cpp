@@ -370,7 +370,7 @@ float BPMDetect::getBpm()
     peakPos = peakFinder.detectPeak(xcorr, windowStart, windowLen);
 
     assert(decimateBy != 0);
-    if (peakPos < 1e-9) return 0.0; // detection failed.
+    if (peakPos < 1e-9) return 0.0f; // detection failed.
 
     // calculate BPM
     return (float) (coeff / peakPos);

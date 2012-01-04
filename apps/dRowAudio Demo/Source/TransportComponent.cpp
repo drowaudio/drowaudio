@@ -62,7 +62,6 @@ void TransportComponent::buttonClicked (Button* button)
 {
     if (button == buttons[play]) 
     {
-        DBG ("play");
         audioFilePlayer.start();
     }
     else if (button == buttons[stop]) 

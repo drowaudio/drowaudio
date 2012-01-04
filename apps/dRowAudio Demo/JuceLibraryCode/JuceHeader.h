@@ -15,7 +15,6 @@
 
 #include "AppConfig.h"
 #include "modules/dRowAudio/dRowAudio.h"
-#include "modules/dRowAudio/dRowAudio.h"
 #include "modules/juce_audio_basics/juce_audio_basics.h"
 #include "modules/juce_audio_devices/juce_audio_devices.h"
 #include "modules/juce_audio_formats/juce_audio_formats.h"
@@ -38,8 +37,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "dRowAudio Demo";
-    const char* const  versionString  = "1.0.0";
-    const int          versionNumber  = 0x10000;
+    const char* const  versionString  = "0.5.1";
+    const int          versionNumber  = 0x501;
 }
 
 #endif   // __APPHEADERFILE_MG07TN__

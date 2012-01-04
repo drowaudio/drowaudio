@@ -21,12 +21,11 @@
 #include "AudioPlaybackDemo.h"
 
 
-AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_, Buffer& distortionBuffer)
+AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
+                                      Buffer& distortionBuffer,
+                                      FilteringAudioSource& filteringAudioSource_)
     : audioFilePlayer (audioFilePlayer_),
-//      thumbnailCache (10),
-//      audioThumbnail (128,
-//                      *audioFilePlayer.getAudioFormatManager(),
-//                      thumbnailCache),
+      filteringAudioSource (filteringAudioSource_),
       loopComponent (audioFilePlayer),
       backgroundThread ("Waveform Thread"),
       distortionDemo (distortionBuffer)
@@ -91,14 +90,17 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_, Buff
         playerControlLabels[i]->setColour (Label::textColourId, Colours::white);
     }
     
-    playerControls[lowEQ]->setRange (0.00000001, 2, 0.001);
-    playerControls[midEQ]->setRange (0.00000001, 2, 0.001);
-    playerControls[highEQ]->setRange (0.00000001, 2, 0.001);
+    playerControls[lowEQ]->setRange (0.001, 2, 0.001);
+    playerControls[midEQ]->setRange (0.001, 2, 0.001);
+    playerControls[highEQ]->setRange (0.001, 2, 0.001);
 
     playerControls[rate]->setRange (0.5, 1.5, 0.001);
     playerControls[tempo]->setRange (0.5, 1.5, 0.001);
     playerControls[pitch]->setRange (0.5, 1.5, 0.001);
     
+    for (int i = 0; i < numControls; i++)
+        playerControls[i]->setSkewFactorFromMidPoint (1.0);
+
     playerControlLabels[lowEQ]->setText ("Low EQ", false);
     playerControlLabels[midEQ]->setText ("Mid EQ", false);
     playerControlLabels[highEQ]->setText ("High EQ", false);
@@ -142,14 +144,14 @@ void AudioPlaybackDemo::resized()
     draggableWaveDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionableWaveDisplay->getBottom() + m + bevelSize,
                                  w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
 
-    const int centre = w * 0.5;
-    int offset = (centre - (80 * 3)) * 0.5;
+    const int centre = w * 0.5f;
+    int offset = (centre - (80 * 3)) * 0.5f;
     for (int i = 0; i < rate; i++)
     {
         playerControls[i]->setBounds (offset + i * 80 + 2, zoomSlider.getBottom() + 20 + 3 * m, 76, 76);
     }        
 
-    offset += centre * 0.5;
+    offset += centre * 0.5f;
 //    const int offset = (w - numControls * 80) * 0.5;
     for (int i = rate; i < numControls; i++)
     {
@@ -166,7 +168,7 @@ void AudioPlaybackDemo::resized()
 //    positionableWaveDisplay->setBounds (5, filterGroup.getBottom() + 5, w - (2 * 5), 100);
     loopComponent.setBounds (positionableWaveDisplay->getBounds());
     
-    m *= 0.5;
+    m *= 0.5f;
     distortionDemo.setBounds (0, filterGroup.getBottom() + (2 * m), w, h - filterGroup.getBottom() - (2 * m));
 }
 
@@ -187,38 +189,38 @@ void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
     }
     else if (slider == &zoomSlider)
     {
-        draggableWaveDisplay->setHorizontalZoom (zoomSlider.getValue());
+        draggableWaveDisplay->setHorizontalZoom ((float) zoomSlider.getValue());
     }
     else if (slider == playerControls[lowEQ])
     {
-        audioFilePlayer.getFilteringAudioSource()->setLowEQGain (playerControls[lowEQ]->getValue());
+        filteringAudioSource.setGain (FilteringAudioSource::Low, (float) playerControls[lowEQ]->getValue());
     }
     else if (slider == playerControls[midEQ])
     {
-        audioFilePlayer.getFilteringAudioSource()->setMidEQGain (playerControls[midEQ]->getValue());
+        filteringAudioSource.setGain (FilteringAudioSource::Mid, (float) playerControls[midEQ]->getValue());
     }
     else if (slider == playerControls[highEQ])
     {
-        audioFilePlayer.getFilteringAudioSource()->setHighEQGain (playerControls[highEQ]->getValue());
+        filteringAudioSource.setGain (FilteringAudioSource::High, (float) playerControls[highEQ]->getValue());
     }
     if (audioFilePlayer.getSoundTouchAudioSource() != nullptr)
     {
         if (slider == playerControls[rate])
         {
-            SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getSoundTouchAudioSource()->getPlaybackSettings());
-            settings.rate = playerControls[rate]->getValue();
+            SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getPlaybackSettings());
+            settings.rate = (float) playerControls[rate]->getValue();
             audioFilePlayer.setPlaybackSettings (settings);
         }
         else if (slider == playerControls[tempo])
         {
-            SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getSoundTouchAudioSource()->getPlaybackSettings());
-            settings.tempo = playerControls[tempo]->getValue();
+            SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getPlaybackSettings());
+            settings.tempo = (float) playerControls[tempo]->getValue();
             audioFilePlayer.setPlaybackSettings (settings);
         }
         else if (slider == playerControls[pitch])
         {
-            SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getSoundTouchAudioSource()->getPlaybackSettings());
-            settings.pitch = playerControls[pitch]->getValue();
+            SoundTouchProcessor::PlaybackSettings settings (audioFilePlayer.getPlaybackSettings());
+            settings.pitch = (float) playerControls[pitch]->getValue();
             audioFilePlayer.setPlaybackSettings (settings);
         }
     }

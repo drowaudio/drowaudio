@@ -145,7 +145,7 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
                 fileLength = filePlayer->getLengthInSeconds();
                 oneOverFileLength = 1.0 / fileLength;
                 
-                const int imageWidth = filePlayer->getTotalLength() / sourceSamplesPerThumbnailSample;
+                const int imageWidth = roundToInt (filePlayer->getTotalLength() / sourceSamplesPerThumbnailSample);
                 waveformImage = Image (Image::RGB, jmax(1, imageWidth), 100, true);
 
                 waveformImage.clear (waveformImage.getBounds(), backgroundColour);
@@ -225,9 +225,9 @@ void AudioThumbnailImage::refreshWaveform()
             timeToDraw = endTime - lastTimeDrawn;
         }
         
-        const double startPixelX = roundToInt (lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
-        const double numPixels = roundToInt (timeToDraw * oneOverFileLength * waveformImage.getWidth());
-        const double numTempPixels = numPixels * resolution;
+        const int startPixelX = roundToInt (lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
+        const int numPixels = roundToInt (timeToDraw * oneOverFileLength * waveformImage.getWidth());
+        const int numTempPixels = roundToInt (numPixels * resolution);
         
         if (numTempPixels > 0)
         {
@@ -238,8 +238,7 @@ void AudioThumbnailImage::refreshWaveform()
                                           false);
             }
             
-             Rectangle<int> rectangleToDraw (0, 0, 
-                                                  numTempPixels, waveformImage.getHeight());
+             Rectangle<int> rectangleToDraw (0, 0, numTempPixels, waveformImage.getHeight());
             
             Graphics gTemp (tempSectionImage);
             tempSectionImage.clear(tempSectionImage.getBounds(), backgroundColour);

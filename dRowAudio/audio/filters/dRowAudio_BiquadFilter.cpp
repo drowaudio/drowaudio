@@ -88,7 +88,7 @@ void BiquadFilter::makeLowPass(const double sampleRate,
 								 const double frequency) throw()
 {
 	double oneOverCurrentSampleRate = 1/sampleRate; 
-	float w0 = 2.0f * float_Pi * frequency * oneOverCurrentSampleRate;
+	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
 	float cos_w0 = cos(w0);
 	float sin_w0 = sin(w0);
 	float alpha = sin_w0 / (2.0f * 0.5f);
@@ -104,7 +104,7 @@ void BiquadFilter::makeHighPass(const double sampleRate,
 								  const double frequency) throw()
 {
 	double oneOverCurrentSampleRate = 1/sampleRate; 
-	float w0 = 2.0f * float_Pi * frequency * oneOverCurrentSampleRate;
+	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
 	float cos_w0 = cos(w0);
 	float sin_w0 = sin(w0);
 	float alpha = sin_w0 / (2.0f * 0.5f);
@@ -120,14 +120,14 @@ void BiquadFilter::makeBandPass(const double sampleRate,
 								  const double frequency,
 								  const double Q) throw()
 {
-	const double qFactor = jlimit(0.00001, 1000.0, Q);
+	const double qFactor = jlimit (0.00001, 1000.0, Q);
 	const double oneOverCurrentSampleRate = 1/sampleRate;
 		
 	
-	float w0 = 2.0f * float_Pi * frequency * oneOverCurrentSampleRate;
-	float cos_w0 = cos(w0);
-	float sin_w0 = sin(w0);
-	float alpha = sin_w0/(2*qFactor);
+	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+	float cos_w0 = cos (w0);
+	float sin_w0 = sin (w0);
+	float alpha = sin_w0 / (2.0f * (float) qFactor);
 //	float alpha = sin_w0 * sinh( (log(2.0)/2.0) * bandwidth * w0/sin_w0 );
 	
 	setCoefficients(alpha, 
@@ -146,10 +146,10 @@ void BiquadFilter::makeBandStop(const double sampleRate,
 	const double oneOverCurrentSampleRate = 1/sampleRate;
 	
 	
-	float w0 = 2.0f * float_Pi * frequency * oneOverCurrentSampleRate;
+	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
 	float cos_w0 = cos(w0);
 	float sin_w0 = sin(w0);
-	float alpha = sin_w0/(2*qFactor);
+	float alpha = (float) (sin_w0 / (2 * qFactor));
 	
 	setCoefficients(1.0f, 
 					-2*cos_w0, 
@@ -190,10 +190,10 @@ void BiquadFilter::makeAllpass(const double sampleRate,
 	const double oneOverCurrentSampleRate = 1/sampleRate;
 	
 	
-	float w0 = 2.0f * float_Pi * frequency * oneOverCurrentSampleRate;
+	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
 	float cos_w0 = cos(w0);
 	float sin_w0 = sin(w0);
-	float alpha = sin_w0/(2*qFactor);
+	float alpha = (float) (sin_w0 / (2 * qFactor));
 	
 	setCoefficients(1.0f - alpha, 
 					-2*cos_w0, 

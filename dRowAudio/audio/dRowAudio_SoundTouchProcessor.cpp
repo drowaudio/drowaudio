@@ -38,7 +38,7 @@ void SoundTouchProcessor::initialise (int numChannels, double sampleRate)
 {
     ScopedLock sl (lock);
     soundTouch.setChannels (numChannels);
-    soundTouch.setSampleRate (sampleRate);
+    soundTouch.setSampleRate ((uint32) sampleRate);
     soundTouch.clear();
 }
 

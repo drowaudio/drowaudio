@@ -29,6 +29,22 @@ class FilteringAudioSource : public AudioSource
 
 public:
 	//==============================================================================
+    enum FilterType
+    {
+        Low = 0,
+        Mid,
+        High,
+        numFilters
+    };
+    
+    enum FilterSetting
+    {
+        CF = 0,
+        Q,
+        numFilterSettings
+    };
+    
+	//==============================================================================
     /** Creates an FilteringAudioTransportSource.
 	 
 	 After creating one of these, use the setSource() method to select an input source.
@@ -40,18 +56,10 @@ public:
     ~FilteringAudioSource();
     
     //==============================================================================
-	/** Changes the gain of the lowShelfFilter to apply to the output.
-	 */
-	void setLowEQGain (float newLowEQGain);
-	
-	/** Changes the gain of the bandPassFilter to apply to the output.
-	 */
-	void setMidEQGain (float newMidEQGain);
-	
-	/** Changes the gain of the highShelfFilter to apply to the output.
-	 */
-	void setHighEQGain (float newHighEQGain);
-	
+    /** Changes one of the filter gains.
+     */
+    void setGain (FilterType setting, float newGain);
+
 	/** Toggles the filtering of the transport source.
 	 */
 	void setFilterSource (bool shouldFilter);
@@ -72,21 +80,16 @@ public:
 		
 private:
     //==============================================================================
-    enum FilterType
-    {
-        low = 0,
-        mid,
-        high
-    };
-
     OptionalScopedPointer<AudioSource> input;
-	IIRFilter lowEQFilterL, midEQFilterL, highEQFilterL;
-	IIRFilter lowEQFilterR, midEQFilterR, highEQFilterR;
+    float gains[numFilters];
+	IIRFilter filter[2][numFilters];
 	
-    SpinLock callbackLock;
+    CriticalSection callbackLock;
     double sampleRate;
-	float lowEQGain, midEQGain, highEQGain;
 	bool filterSource;
+
+    //==============================================================================
+    void resetFilters();
 
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilteringAudioSource);

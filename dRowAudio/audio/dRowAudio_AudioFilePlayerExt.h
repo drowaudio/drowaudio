@@ -24,7 +24,7 @@
 #include "dRowAudio_SoundTouchAudioSource.h"
 #include "dRowAudio_ReversibleAudioSource.h"
 #include "dRowAudio_LoopingAudioSource.h"
-class FilteringAudioSource;
+#include "dRowAudio_FilteringAudioSource.h";
 
 //==============================================================================
 /**
@@ -43,9 +43,10 @@ public:
     //==============================================================================
     enum PlayerSettingCode
     {
-        SoundTouchSetting = 0x0001,
-        LoopBeetweenTimesSetting = 0x0002,
-        PlayDirectionSetting = 0x0003
+        SoundTouchSetting           = 0x0001,
+        LoopBeetweenTimesSetting    = 0x0002,
+        PlayDirectionSetting        = 0x0003,
+        FilterGainSetting           = 0x0004
     };
     
     //==============================================================================
@@ -82,6 +83,10 @@ public:
     /** Returns true if the source is playing forwards.
      */
 	bool getPlayDirection()                                     {   return reversibleAudioSource->getPlayDirection();       }
+
+    /** Sets the gain of one of the FilteringAudioSource filters.
+     */
+//    void setFilterGain (FilteringAudioSource::FilterType type, float newGain);
     
     //==============================================================================
     /** Sets the start and end times of the loop.
@@ -100,7 +105,7 @@ public:
     /** Sets the next play position in seconds disregarding the loop boundries.
      */
     void setPosition (double newPosition, bool ignoreAnyLoopBounds = false);
-
+    
     //==============================================================================
     /** Returns the SoundTouchAudioSource being used.
      */
@@ -108,7 +113,7 @@ public:
 
 	/** Returns the FilteringAudioSource being used.
      */
-    inline FilteringAudioSource* getFilteringAudioSource()         {   return filteringAudioSource;    }
+//    inline FilteringAudioSource* getFilteringAudioSource()         {   return filteringAudioSource;    }
     
 private:	
     //==============================================================================
@@ -116,7 +121,7 @@ private:
     ScopedPointer<LoopingAudioSource> loopingAudioSource;
     ScopedPointer<SoundTouchAudioSource> soundTouchAudioSource;
     ScopedPointer<ReversibleAudioSource> reversibleAudioSource;
-    ScopedPointer<FilteringAudioSource> filteringAudioSource;
+//    ScopedPointer<FilteringAudioSource> filteringAudioSource;
 
     ValueTree libraryEntry;
 

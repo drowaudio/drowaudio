@@ -65,17 +65,17 @@ void FFTEngine::findMagnitudes (Buffer* bufferToFill)
 		magBuf = bufferToFill->getData();
 
 	const SplitComplex &fftSplit = fftOperation.getFFTBuffer();
-	const double oneOverFFTSize = getFFTProperties().oneOverFFTSize;
+	const float oneOverFFTSize = (float) getFFTProperties().oneOverFFTSize;
 	const int fftSizeHalved = getFFTProperties().fftSizeHalved;
 	const int oneOverWindowFactor = windowProperties.getOneOverWindowFactor();
 	
 	// find magnitudes
-	magBuf[0] = magnitude (fftSplit.realp[0], 0.0, oneOverFFTSize, oneOverWindowFactor); // imag for DC is always zero 
+	magBuf[0] = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor); // imag for DC is always zero 
 	for (int i = 1; i < fftSizeHalved; i++)
 	{		
 		magBuf[i] = magnitude (fftSplit.realp[i], fftSplit.imagp[i], oneOverFFTSize, oneOverWindowFactor);
 	}
-	magBuf[fftSizeHalved] = magnitude (fftSplit.realp[0], 0.0, oneOverFFTSize, oneOverWindowFactor); // imag for Nyquist is always zero 
+	magBuf[fftSizeHalved] = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor); // imag for Nyquist is always zero 
 	
 	magnitutes.updateListeners();
 }
@@ -85,12 +85,12 @@ void FFTEngine::updateMagnitudesIfBigger()
 	// local copies for speed
 	const SplitComplex &fftSplit = fftOperation.getFFTBuffer();
 	float* magBuf = magnitutes.getData();
-	const double oneOverFFTSize = getFFTProperties().oneOverFFTSize;
+	const float oneOverFFTSize = (float) getFFTProperties().oneOverFFTSize;
 	const int fftSizeHalved = getFFTProperties().fftSizeHalved;
 	const int oneOverWindowFactor = windowProperties.getOneOverWindowFactor();
 	
 	// find magnitudes
-	float newMag = magnitude (fftSplit.realp[0], 0.0, oneOverFFTSize, oneOverWindowFactor); // imag for DC is always zero 
+	float newMag = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor); // imag for DC is always zero 
 	if (newMag > magBuf[0])
 		magBuf[0] = newMag;
     
@@ -102,7 +102,7 @@ void FFTEngine::updateMagnitudesIfBigger()
 			magBuf[i] = newMag;
 	}
 
-	newMag = magnitude (fftSplit.realp[0], 0.0, oneOverFFTSize, oneOverWindowFactor); // imag for Nyquist is always zero 
+	newMag = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor); // imag for Nyquist is always zero 
 	if (newMag > magBuf[fftSizeHalved])
 		magBuf[fftSizeHalved] = newMag;
 	

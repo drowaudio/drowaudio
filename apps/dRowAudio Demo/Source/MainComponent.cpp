@@ -24,13 +24,14 @@
 #include "fft/FFTDemo.h"
 
 MainComponent::MainComponent()
-    : bufferTransformAudioSource (&audioFilePlayer),
-      trackInfoComponent (audioFilePlayer),
-      dropTarget (&audioFilePlayer, &trackInfoComponent),
-      transport (audioFilePlayer),
-      meterThread ("Meter Thread"),
-      cpuMeter (&audioDeviceManager),
-      tabbedComponent (TabbedButtonBar::TabsAtTop)
+    : bufferTransformAudioSource    (&audioFilePlayer),
+      filteringAudioSource          (&bufferTransformAudioSource, false),
+      trackInfoComponent            (audioFilePlayer),
+      dropTarget                    (&audioFilePlayer, &trackInfoComponent),
+      transport                     (audioFilePlayer),
+      meterThread                   ("Meter Thread"),
+      cpuMeter                      (&audioDeviceManager),
+      tabbedComponent               (TabbedButtonBar::TabsAtTop)
 {
     addAndMakeVisible (&trackInfoComponent);
     addAndMakeVisible (&dropTarget);
@@ -60,7 +61,7 @@ MainComponent::MainComponent()
     
     tabbedComponent.addTab("Audio Playback",
                            Colours::grey, 
-                           new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource.getBuffer()), 
+                           new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource.getBuffer(), filteringAudioSource), 
                            true);
     
 //    File libraryFile (File::getSpecialLocation (File::currentApplicationFile)
@@ -90,8 +91,8 @@ MainComponent::MainComponent()
                             Colours::grey, 
                             new NetworkDemo(), 
                             true);
-    
-    audioSourcePlayer.setSource (&bufferTransformAudioSource);
+        
+    audioSourcePlayer.setSource (&filteringAudioSource);
     audioDeviceManager.initialise (0, 2, nullptr, true);
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);

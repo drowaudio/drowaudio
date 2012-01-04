@@ -118,13 +118,13 @@ void PositionableWaveDisplay::paint(Graphics &g)
     g.setColour (backgroundColour);	
     g.fillAll();
         
-    const int startPixel = w * startOffsetRatio;
-    const double newHeight = verticalZoomRatio * h;
-    const int startPixelY = (h * 0.5) - (newHeight * 0.5);
+    const int startPixelX = roundToInt (w * startOffsetRatio);
+    const int newHeight = roundToInt (verticalZoomRatio * h);
+    const int startPixelY = (h * 0.5f) - (newHeight * 0.5f);
 
 	g.drawImage (cachedImage,
-                 startPixel, startPixelY, w, newHeight,
-                 0, 0, cachedImage.getWidth() * zoomRatio, cachedImage.getHeight(), 
+                 startPixelX, startPixelY, w, newHeight,
+                 0, 0, roundToInt (cachedImage.getWidth() * zoomRatio), cachedImage.getHeight(), 
                  false);
 
     if (showTransportCursor)
@@ -137,8 +137,8 @@ void PositionableWaveDisplay::timerCallback()
     const int w = getWidth();
     const int h = getHeight();
 
-    const int startPixel = w * startOffsetRatio;
-    transportLineXCoord = startPixel + ((w * oneOverFileLength * audioFilePlayer->getCurrentPosition()) / zoomRatio);
+    const int startPixel = roundToInt (w * startOffsetRatio);
+    transportLineXCoord = startPixel + roundToInt ((w * oneOverFileLength * audioFilePlayer->getCurrentPosition()) / zoomRatio);
     
     // if the line has moved repaint the old and new positions of it
     if (! transportLineXCoord.areEqual())
@@ -204,9 +204,9 @@ void PositionableWaveDisplay::mouseDown (const MouseEvent &e)
         currentMouseX = e.x;
 
         const int w = getWidth();
-        currentXScale = (fileLength / w) * zoomRatio;
+        currentXScale = (float) ((fileLength / w) * zoomRatio);
 
-        const int startPixel = w * startOffsetRatio;
+        const int startPixel = roundToInt (w * startOffsetRatio);
         double position = currentXScale * (currentMouseX - startPixel);
         audioFilePlayer->setPosition (position, true);
 
@@ -229,7 +229,7 @@ void PositionableWaveDisplay::mouseDrag (const MouseEvent& e)
         currentMouseX = e.x;
         
         const int w = getWidth();
-        const int startPixel = w * startOffsetRatio;
+        const int startPixel = roundToInt (w * startOffsetRatio);
         double position = currentXScale * (currentMouseX - startPixel);
         audioFilePlayer->setPosition (position, false);
     }

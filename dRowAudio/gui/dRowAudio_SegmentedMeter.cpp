@@ -42,13 +42,13 @@ SegmentedMeter::~SegmentedMeter()
 
 void SegmentedMeter::calculateSegments()
 {
-	float numDecibels = toDecibels (level.getCurrent());
+	float numDecibels = (float) toDecibels (level.getCurrent());
 	// map decibels to numSegs
 	numSegs = jmax (0, roundToInt ((numDecibels / decibelsPerSeg) + (totalNumSegs - numRedSeg)));
 	
 	// impliment slow decay
 	//	level.set((0.5f * level.getCurrent()) + (0.1f * level.getPrevious()));
-	level *= 0.8;
+	level *= 0.8f;
 	
 	// only actually need to repaint if the numSegs has changed
 	if (! numSegs.areEqual() || needsRepaint)
@@ -84,7 +84,7 @@ void SegmentedMeter::resized()
 	{
 		if (i <= numGreenSeg)
 		{
-			gOn.setColour (Colours::green.brighter (0.8));
+			gOn.setColour (Colours::green.brighter (0.8f));
             gOff.setColour (Colours::green.darker());
 		}
 		else if (i <= (numYellowSeg + numGreenSeg))

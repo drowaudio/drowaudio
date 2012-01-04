@@ -51,7 +51,7 @@ void DraggableWaveDisplay::setHorizontalZoom (float newZoomFactor)
 	jassert (newZoomFactor > 0.0f);
 	
 	zoomRatio = newZoomFactor;
-    oneOverZoomRatio = 1.0 / zoomRatio;
+    oneOverZoomRatio = 1.0f / zoomRatio;
     
     repaint();
 }
@@ -97,9 +97,9 @@ void DraggableWaveDisplay::paint (Graphics &g)
 
     int padLeft = 0, padRight = 0;
     if (startTime < 0.0)
-        padLeft = timeToPixels (fabsf (startTime));
+        padLeft = roundToInt (timeToPixels (abs (startTime)));
     if ((startTime + timeToDisplay) > duration)
-        padRight = timeToPixels (fabsf (duration - (startTime + timeToDisplay)));
+        padRight = roundToInt (timeToPixels (abs (duration - (startTime + timeToDisplay))));
     
     g.drawImage (clippedImage,
                  padLeft, 0, w - padLeft - padRight, h,
@@ -160,7 +160,7 @@ void DraggableWaveDisplay::timerCallback (const int timerId)
 {
 	if (timerId == waveformUpdated) //moved due to file position changing
 	{
-		movedX = timeToPixels (filePlayer->getAudioTransportSource()->getCurrentPosition());
+		movedX = roundToInt (timeToPixels (filePlayer->getAudioTransportSource()->getCurrentPosition()));
 
 		if (! movedX.areEqual())
 			repaint();

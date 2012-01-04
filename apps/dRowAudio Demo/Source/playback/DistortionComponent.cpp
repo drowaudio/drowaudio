@@ -57,7 +57,7 @@ void DistortionComponent::resized()
     Graphics g (background);
     g.fillAll (Colours::black);
     
-    g.setColour (Colour::greyLevel (0.25));
+    g.setColour (Colour::greyLevel (0.25f));
     const float xScale = w / 10.0f;
     const float yScale = h / 10.0f;
     for (int i = 1; i < 10; ++i)
@@ -90,11 +90,11 @@ void DistortionComponent::componentMovedOrResized (Component& component, bool /*
 {
     if (&component == curvePoints[0] || &component == curvePoints[1])
     {
-        float x1 = (curvePoints[0]->getX() + (0.5 * curvePoints[0]->getWidth())) / (float)getWidth();
-        float y1 = ((getHeight() - curvePoints[0]->getY()) - (0.5 * curvePoints[0]->getHeight())) / (float)getHeight();
+        float x1 = (curvePoints[0]->getX() + (0.5f * curvePoints[0]->getWidth())) / (float) getWidth();
+        float y1 = ((getHeight() - curvePoints[0]->getY()) - (0.5f * curvePoints[0]->getHeight())) / (float) getHeight();
 
-        float x2 = (curvePoints[1]->getX() + (0.5 * curvePoints[1]->getWidth())) / (float)getWidth();
-        float y2 = ((getHeight() - curvePoints[1]->getY()) - (0.5 * curvePoints[1]->getHeight())) / (float)getHeight();
+        float x2 = (curvePoints[1]->getX() + (0.5f * curvePoints[1]->getWidth())) / (float) getWidth();
+        float y2 = ((getHeight() - curvePoints[1]->getY()) - (0.5f * curvePoints[1]->getHeight())) / (float) getHeight();
         
         refillBuffer (x1, y1, x2, y2);
     }
@@ -159,11 +159,11 @@ void DistortionComponent::resetPoints()
     const int bufferSize = buffer.getSize();
     const float* bufferData = buffer.getData();
     
-    float x1 = w * 0.25;
-    float y1 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.75);
+    float x1 = w * 0.25f;
+    float y1 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.75f);
     
-    float x2 = w * 0.75;
-    float y2 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.25);
+    float x2 = w * 0.75f;
+    float y2 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.25f);
     
     curvePoints[0]->setBounds (x1 - 5, y1 - 5, 10, 10);
     curvePoints[1]->setBounds (x2 - 5, y2 - 5, 10, 10);    

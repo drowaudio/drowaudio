@@ -25,7 +25,7 @@ AudioFilePlayer::AudioFilePlayer()
       formatManager (new AudioFormatManager(), true),
       currentMemoryBlock (nullptr)
 {
-    bufferingTimeSliceThread.startThread(3);
+    bufferingTimeSliceThread.startThread (3);
     
     audioTransportSource = new AudioTransportSource();
     audioTransportSource->addChangeListener (this);
@@ -169,7 +169,6 @@ void AudioFilePlayer::removeListener (AudioFilePlayer::Listener* const listener)
 //==============================================================================
 bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
-//	stop();
     bool shouldBeLooping = isLooping();
 	audioTransportSource->setSource (nullptr);
     

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="1.0.0"
-              bundleIdentifier="com.yourcompany.dRowAudioDemo" jucerVersion="3.0.0">
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.1"
+              bundleIdentifier="com.yourcompany.dRowAudioDemo" jucerVersion="3.0.0"
+              smallIcon="vTRqOY" bigIcon="vTRqOY">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"
                extraLinkerFlags="-lcurl"/>
@@ -19,7 +20,7 @@
                    headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                    osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                   headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
+                   headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"/>
   </CONFIGURATIONS>
   <MAINGROUP id="BrdxWp" name="dRowAudio Demo">
     <GROUP id="{AFE8D6EB-4CF8-11B9-1E00-7B7F3155DBD4}" name="Source">
@@ -57,11 +58,11 @@
               file="Source/playback/DistortionDemo.h"/>
         <FILE id="DlfH2t" name="DistortionDemo.cpp" compile="1" resource="0"
               file="Source/playback/DistortionDemo.cpp"/>
+        <FILE id="WwlQbQ" name="CurvePoint.h" compile="0" resource="0" file="Source/playback/CurvePoint.h"/>
         <FILE id="kE1OIt" name="DistortionComponent.h" compile="0" resource="0"
               file="Source/playback/DistortionComponent.h"/>
         <FILE id="JJKeWL" name="DistortionComponent.cpp" compile="1" resource="0"
               file="Source/playback/DistortionComponent.cpp"/>
-        <FILE id="WwlQbQ" name="CurvePoint.h" compile="0" resource="0" file="Source/playback/CurvePoint.h"/>
       </GROUP>
       <GROUP id="{69A1ACF5-AF98-59D3-BF52-A08933F42269}" name="network">
         <FILE id="mxJRrs" name="NetworkDemo.h" compile="0" resource="0" file="Source/network/NetworkDemo.h"/>
@@ -82,13 +83,9 @@
       <GROUP id="{50DE6A5F-C9E3-CD4F-BF06-B5BCABCFD369}" name="fft">
         <FILE id="AckS5U" name="FFTDemo.h" compile="0" resource="0" file="Source/fft/FFTDemo.h"/>
         <FILE id="i3ULgs" name="FFTDemo.cpp" compile="1" resource="0" file="Source/fft/FFTDemo.cpp"/>
-        <FILE id="HhI11Z" name="Spectroscope.h" compile="0" resource="0" file="Source/fft/Spectroscope.h"/>
-        <FILE id="uCWrbY" name="Spectroscope.cpp" compile="1" resource="0"
-              file="Source/fft/Spectroscope.cpp"/>
-        <FILE id="OD3euu" name="Sonogram.h" compile="0" resource="0" file="Source/fft/Sonogram.h"/>
-        <FILE id="NktXJE" name="Sonogram.cpp" compile="1" resource="0" file="Source/fft/Sonogram.cpp"/>
       </GROUP>
       <GROUP id="{1E2BBBF0-70BF-AD30-B2B2-70A04B86A489}" name="resources">
+        <FILE id="vTRqOY" name="icon.png" compile="0" resource="0" file="Source/resources/icon.png"/>
         <FILE id="EBeRpY" name="splash_screen.png" compile="0" resource="1"
               file="Source/resources/splash_screen.png"/>
       </GROUP>

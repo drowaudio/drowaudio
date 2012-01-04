@@ -31,7 +31,7 @@ MusicLibraryTable::MusicLibraryTable()
 	addAndMakeVisible (&table);
     table.setModel (this);
     table.setMultipleSelectionEnabled (true);
-	table.setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2));
+	table.setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
 	table.setHeaderHeight (18);
 	table.setRowHeight (16);
 	table.getViewport()->setScrollBarThickness (10);
@@ -174,9 +174,9 @@ void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/,
                                             int /*width*/, int /*height*/, bool rowIsSelected)
 {
 	if (rowIsSelected)
-		table.hasKeyboardFocus (true) ? g.fillAll (Colours::darkorange) : g.fillAll (Colour::greyLevel (0.6));
+		table.hasKeyboardFocus (true) ? g.fillAll (Colours::darkorange) : g.fillAll (Colour::greyLevel (0.6f));
 	else
-		g.fillAll (Colour::greyLevel (0.2));
+		g.fillAll (Colour::greyLevel (0.2f));
 }
 
 void MusicLibraryTable::paintCell (Graphics& g,
@@ -185,7 +185,7 @@ void MusicLibraryTable::paintCell (Graphics& g,
 								   int width, int height,
 								   bool rowIsSelected)
 {
-	rowIsSelected ? g.setColour (Colour::greyLevel (0.2)) : g.setColour (Colour::greyLevel (0.9));
+	rowIsSelected ? g.setColour (Colour::greyLevel (0.2f)) : g.setColour (Colour::greyLevel (0.9f));
 	g.setFont (font);
 
     {
@@ -208,7 +208,7 @@ void MusicLibraryTable::paintCell (Graphics& g,
         }
     }
 
-	g.setColour (Colour::greyLevel (0.9).withAlpha (0.2f));
+	g.setColour (Colour::greyLevel (0.9f).withAlpha (0.2f));
 	g.fillRect (width - 1, 0, 1, height);
 	g.fillRect (0, height - 1, width, 1);
 }

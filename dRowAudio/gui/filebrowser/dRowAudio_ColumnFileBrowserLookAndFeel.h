@@ -31,14 +31,14 @@ public:
     //==================================================================================
 	ColumnFileBrowserLookAndFeel()
 	{
-		setColour(ListBox::backgroundColourId, Colour::greyLevel(0.2));
-		setColour(DirectoryContentsDisplayComponent::highlightColourId, Colour::greyLevel(0.9));
-		setColour(DirectoryContentsDisplayComponent::textColourId, Colour::greyLevel(0.9));		
+		setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
+		setColour (DirectoryContentsDisplayComponent::highlightColourId, Colour::greyLevel (0.9f));
+		setColour (DirectoryContentsDisplayComponent::textColourId, Colour::greyLevel (0.9f));		
 		
 		// scrollbars
-		setColour(ScrollBar::backgroundColourId, Colour::greyLevel(0.5));
-		setColour(ScrollBar::thumbColourId, Colour::greyLevel(0.8));
-		setColour(ScrollBar::trackColourId, Colour::greyLevel(0.3));		
+		setColour (ScrollBar::backgroundColourId, Colour::greyLevel (0.5f));
+		setColour (ScrollBar::thumbColourId, Colour::greyLevel (0.8f));
+		setColour (ScrollBar::trackColourId, Colour::greyLevel (0.3f));		
 	}
 	
 	~ColumnFileBrowserLookAndFeel()
@@ -315,14 +315,14 @@ public:
 	{
 		const float lineThickness = 1.0f;//jmin (w, h) * 0.075f;
 		const float xGap = w / 3.0f;
-		const float yGap = h * 0.25;
+		const float yGap = h * 0.25f;
 		
 		g.setColour (findColour (ScrollBar::backgroundColourId));
 		g.fillAll();
 		
 		g.setColour (findColour (ScrollBar::thumbColourId));
-		g.drawLine (xGap + lineThickness * 0.5, yGap, xGap + lineThickness * 0.5, h - yGap, lineThickness);
-		g.drawLine ((2 * xGap) - lineThickness * 0.5, yGap, (2 * xGap) - lineThickness * 0.5, h - yGap, lineThickness);
+		g.drawLine (xGap + lineThickness * 0.5f, yGap, xGap + lineThickness * 0.5f, h - yGap, lineThickness);
+		g.drawLine ((2 * xGap) - lineThickness * 0.5f, yGap, (2 * xGap) - lineThickness * 0.5f, h - yGap, lineThickness);
 	}
 };
 

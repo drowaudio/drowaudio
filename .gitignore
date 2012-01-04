@@ -10,6 +10,7 @@ Release/
 *.mode1v3
 *.mode2v3
 xcuserdata
+*.psd
 .svn/
 dRowAudio_old/
 juce_audio_basics/

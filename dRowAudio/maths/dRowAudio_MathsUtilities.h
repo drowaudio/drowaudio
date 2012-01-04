@@ -82,18 +82,18 @@ inline int nextPowerOf2 (int number)
 	if (isPowerOfTwo (number))
 		return number;
 	else
-		return pow (2, ceil (log ((double) number) / log(2.0)));
+		return (int) pow (2.0, ceil (log ((double) number) / log (2.0)));
 }
 
 /**	Returns the previous power of 2.
     This may return 0 if a number < 1 is passed.
  */
-inline int prevPowerOf2(int number)
+inline int prevPowerOf2 (int number)
 {
 	if (isPowerOfTwo (number))
 		return number;
 	else
-		return pow (2, ceil (log ((double) number) / log (2.0))) * 0.5;
+		return (int) (pow (2.0, ceil (log ((double) number) / log (2.0))) * 0.5);
 }
 
 /**	Returns the power which 2 has to be raised to to get the given number.
@@ -103,9 +103,9 @@ inline int prevPowerOf2(int number)
 inline int findPowerForBase2(int number)
 {
 	if (isPowerOfTwo (number))
-		return log ((double) number) / log(2.0);
+		return (int) (log ((double) number) / log(2.0));
 	else
-		return log ((double) nextPowerOf2 ( number)) / log(2.0);
+		return (int) (log ((double) nextPowerOf2 (number)) / log(2.0));
 }
 
 #endif //__DROWAUDIO_MATHSUTILITIES_H__

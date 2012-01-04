@@ -23,7 +23,7 @@ BEGIN_JUCE_NAMESPACE
 CURLEasySession::CURLEasySession()
 :	handle      (nullptr),
 	remotePath  (String::empty),
-	progress    (1.0)
+	progress    (1.0f)
 {
 	handle = CURLManager::getInstance()->createEasyCurlHandle();
 
@@ -112,7 +112,7 @@ StringArray CURLEasySession::getDirectoryListing()
 	curl_easy_setopt (handle, CURLOPT_WRITEFUNCTION, directoryListingCallback);
     
 	// perform  the tranfer
-	progress = 0.0;
+	progress = 0.0f;
 	CURLcode result = curl_easy_perform (handle);
 	reset();	
 	
@@ -229,7 +229,7 @@ size_t CURLEasySession::directoryListingCallback (void* sourcePointer, size_t bl
 
 int CURLEasySession::internalProgressCallback (CURLEasySession* session, double dltotal, double dlnow, double /*ultotal*/, double ulnow)
 {
-	session->progress = session->isUpload ? (ulnow / session->inputStream->getTotalLength()) : (dlnow / dltotal);
+	session->progress = (float) (session->isUpload ? (ulnow / session->inputStream->getTotalLength()) : (dlnow / dltotal));
 	
     session->listeners.call (&CURLEasySession::Listener::transferProgressUpdate, session);
     
@@ -265,7 +265,7 @@ CURLcode CURLEasySession::performTransfer (bool transferIsUpload)
 	}
     
 	//perform the transfer
-	progress = 0.0;
+	progress = 0.0f;
 	CURLcode result = curl_easy_perform (handle);
 	
 	// delete the streams to flush the buffers

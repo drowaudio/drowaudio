@@ -42,8 +42,8 @@ void DistortionDemo::resized()
     const int h = getHeight();
     const int m = 5;
     
-    distortionComponent.setBounds (m, m, (w * 0.5) - (2 * m), h - (2 * m));
-    resetButton.setBounds ((w * 0.75) - 40, h - 20 - m, 80, 20);
+    distortionComponent.setBounds (m, m, (w * 0.5f) - (2 * m), h - (2 * m));
+    resetButton.setBounds ((w * 0.75f) - 40, h - 20 - m, 80, 20);
 }
 
 void DistortionDemo::paint (Graphics& g)
@@ -58,7 +58,7 @@ void DistortionDemo::paint (Graphics& g)
     
     g.setColour (Colours::white);
     g.setFont (20, Font::underlined);
-    g.drawSingleLineText ("Distortion Demo", w * 0.75, 20, Justification::horizontallyCentred);
+    g.drawSingleLineText ("Distortion Demo", w * 0.75f, 20, Justification::horizontallyCentred);
     
     g.setFont (14);
     String text;
@@ -70,8 +70,8 @@ void DistortionDemo::paint (Graphics& g)
 //                         (w * 0.5) + m, 20 + 28,
 //                         (w * 0.5) - (2 * m));
     g.drawFittedText (text,
-                      (w * 0.5) + m, 28,
-                      (w * 0.5) - (2 * m), resetButton.getY() - (28) - m,
+                      (w * 0.5f) + m, 28,
+                      (w * 0.5f) - (2 * m), resetButton.getY() - (28) - m,
                       Justification::left,
                       100, 1.0f);
 }

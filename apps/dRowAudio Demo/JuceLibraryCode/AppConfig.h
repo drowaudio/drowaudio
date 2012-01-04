@@ -15,7 +15,6 @@
 
 //==============================================================================
 #define JUCE_MODULE_AVAILABLE_dRowAudio                  1
-#define JUCE_MODULE_AVAILABLE_dRowAudio                  1
 #define JUCE_MODULE_AVAILABLE_juce_audio_basics          1
 #define JUCE_MODULE_AVAILABLE_juce_audio_devices         1
 #define JUCE_MODULE_AVAILABLE_juce_audio_formats         1
@@ -27,11 +26,6 @@
 #define JUCE_MODULE_AVAILABLE_juce_graphics              1
 #define JUCE_MODULE_AVAILABLE_juce_gui_basics            1
 #define JUCE_MODULE_AVAILABLE_juce_gui_extra             1
-
-//==============================================================================
-// dRowAudio flags:
-
-//#define  DROWAUDIO_USE_FFTREAL
 
 //==============================================================================
 // dRowAudio flags:

@@ -30,6 +30,7 @@
     @see AudioTransportSource
     @see AudioFormatReader
     @see AudioFormatReaderSource
+    @see AudioFilePlayerExt
  */
 class AudioFilePlayer : public PositionableAudioSource,
                         public ChangeListener

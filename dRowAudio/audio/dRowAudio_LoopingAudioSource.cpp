@@ -118,11 +118,11 @@ void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
                 const int64 numStartSamps = newEnd - loopStartSample;
                 
                 tempInfo.startSample = 0;
-                tempInfo.numSamples = numEndSamps;
+                tempInfo.numSamples = (int) numEndSamps;
                 input->getNextAudioBlock (tempInfo);
                 
-                tempInfo.startSample = numEndSamps;
-                tempInfo.numSamples = numStartSamps;
+                tempInfo.startSample = (int) numEndSamps;
+                tempInfo.numSamples = (int) numStartSamps;
                 input->setNextReadPosition (loopStartSample);
                 input->getNextAudioBlock (tempInfo);
 

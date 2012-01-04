@@ -32,12 +32,12 @@ ifeq ($(CONFIG),Release)
   LIBDIR := build
   OBJDIR := build/intermediate/Release
   OUTDIR := build
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "CURL_LIB=libcurldebug.lib" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2" -I "../../JuceLibraryCode" -I "Source/curl/include"
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "CURL_LIB=libcurlrelease.lib" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2" -I "../../JuceLibraryCode" -I "Source/curl/include"
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os
   CXXFLAGS += $(CFLAGS) 
   LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/X11R6/lib/" -L"../../../../../../juce_source/juce/modules/bin" -lfreetype -lpthread -lrt -lX11 -lGL -lGLU -lXinerama -lasound -lXext 
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "CURL_LIB=libcurldebug.lib" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2" -I "../../JuceLibraryCode" -I "Source/curl/include"
+  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "CURL_LIB=libcurlrelease.lib" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I "/usr/include" -I "/usr/include/freetype2" -I "../../JuceLibraryCode" -I "Source/curl/include"
   TARGET := dRowAudio\ Demo
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
@@ -59,10 +59,7 @@ OBJECTS := \
   $(OBJDIR)/LocalDirectoryListBox_9a5523eb.o \
   $(OBJDIR)/RemoteDirectoryListBox_1e458a90.o \
   $(OBJDIR)/FFTDemo_183d0bd.o \
-  $(OBJDIR)/Spectroscope_e1f38c82.o \
-  $(OBJDIR)/Sonogram_e64d99f8.o \
   $(OBJDIR)/BinaryData_ce4232d4.o \
-  $(OBJDIR)/dRowAudio_72fca5e6.o \
   $(OBJDIR)/dRowAudio_66a49a7e.o \
   $(OBJDIR)/juce_audio_basics_15b0217e.o \
   $(OBJDIR)/juce_audio_devices_efd90ebc.o \
@@ -171,24 +168,9 @@ $(OBJDIR)/FFTDemo_183d0bd.o: ../../Source/fft/FFTDemo.cpp
 	@echo "Compiling FFTDemo.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/Spectroscope_e1f38c82.o: ../../Source/fft/Spectroscope.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling Spectroscope.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/Sonogram_e64d99f8.o: ../../Source/fft/Sonogram.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling Sonogram.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
 $(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling BinaryData.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/dRowAudio_72fca5e6.o: ../../../../../../juce_source/juce/modules/dRowAudio_old/dRowAudio.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling dRowAudio.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/dRowAudio_66a49a7e.o: ../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.cpp

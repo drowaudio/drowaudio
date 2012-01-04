@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="dRowAudio Demo">
@@ -72,11 +73,11 @@
     <ClCompile Include="..\..\Source\fft\FFTDemo.cpp">
       <Filter>dRowAudio Demo\Source\fft</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\fft\Spectroscope.cpp">
-      <Filter>dRowAudio Demo\Source\fft</Filter>
+    <ClCompile Include="..\..\Source\resources\icon.png">
+      <Filter>dRowAudio Demo\Source\resources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\fft\Sonogram.cpp">
-      <Filter>dRowAudio Demo\Source\fft</Filter>
+    <ClCompile Include="..\..\Source\resources\splash_screen.png">
+      <Filter>dRowAudio Demo\Source\resources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
       <Filter>Juce Library Code</Filter>
@@ -146,10 +147,10 @@
     <ClInclude Include="..\..\Source\playback\DistortionDemo.h">
       <Filter>dRowAudio Demo\Source\playback</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\playback\DistortionComponent.h">
+    <ClInclude Include="..\..\Source\playback\CurvePoint.h">
       <Filter>dRowAudio Demo\Source\playback</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\playback\CurvePoint.h">
+    <ClInclude Include="..\..\Source\playback\DistortionComponent.h">
       <Filter>dRowAudio Demo\Source\playback</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\network\NetworkDemo.h">
@@ -167,12 +168,6 @@
     <ClInclude Include="..\..\Source\fft\FFTDemo.h">
       <Filter>dRowAudio Demo\Source\fft</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\fft\Spectroscope.h">
-      <Filter>dRowAudio Demo\Source\fft</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\fft\Sonogram.h">
-      <Filter>dRowAudio Demo\Source\fft</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
@@ -182,5 +177,15 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".\icon.ico">
+      <Filter>Juce Library Code</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include=".\resources.rc">
+      <Filter>Juce Library Code</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -58,7 +58,8 @@ private:
     AudioSourcePlayer audioSourcePlayer;
     AudioFilePlayerExt audioFilePlayer;
     BufferTransformAudioSource bufferTransformAudioSource;
-    
+    FilteringAudioSource filteringAudioSource;
+        
     TrackInfoComponent trackInfoComponent;
     AudioFileDropTarget dropTarget;
     TransportComponent transport;

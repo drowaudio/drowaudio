@@ -106,7 +106,7 @@ SoundTouch::SoundTouch()
 
     virtualPitch = 
     virtualRate = 
-    virtualTempo = 1.0;
+    virtualTempo = 1.0f;
 
     calcEffectiveRateAndTempo();
 

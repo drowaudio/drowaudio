@@ -90,7 +90,7 @@
             InlineFunctionExpansion="1"
             StringPooling="true"
             AdditionalIncludeDirectories="..\..\JuceLibraryCode;Source/curl/include"
-            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2008_78A5006=1"
+            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CURL_LIB=libcurlrelease.lib;CURL_STATICLIB;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -115,7 +115,7 @@
             OptimizeReferences="2"
             EnableCOMDATFolding="2"
             TargetMachine="1"
-            AdditionalOptions="Wldap32.lib ws2_32.lib libcurldebug.lib"/>
+            AdditionalOptions="Wldap32.lib ws2_32.lib libcurlrelease.lib"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
       <Tool Name="VCXDCMakeTool"/>
@@ -151,9 +151,9 @@
           <File RelativePath="..\..\Source\playback\BufferTransformAudioSource.cpp"/>
           <File RelativePath="..\..\Source\playback\DistortionDemo.h"/>
           <File RelativePath="..\..\Source\playback\DistortionDemo.cpp"/>
+          <File RelativePath="..\..\Source\playback\CurvePoint.h"/>
           <File RelativePath="..\..\Source\playback\DistortionComponent.h"/>
           <File RelativePath="..\..\Source\playback\DistortionComponent.cpp"/>
-          <File RelativePath="..\..\Source\playback\CurvePoint.h"/>
         </Filter>
         <Filter Name="network">
           <File RelativePath="..\..\Source\network\NetworkDemo.h"/>
@@ -168,12 +168,9 @@
         <Filter Name="fft">
           <File RelativePath="..\..\Source\fft\FFTDemo.h"/>
           <File RelativePath="..\..\Source\fft\FFTDemo.cpp"/>
-          <File RelativePath="..\..\Source\fft\Spectroscope.h"/>
-          <File RelativePath="..\..\Source\fft\Spectroscope.cpp"/>
-          <File RelativePath="..\..\Source\fft\Sonogram.h"/>
-          <File RelativePath="..\..\Source\fft\Sonogram.cpp"/>
         </Filter>
         <Filter Name="resources">
+          <File RelativePath="..\..\Source\resources\icon.png"/>
           <File RelativePath="..\..\Source\resources\splash_screen.png">
             <FileConfiguration Name="Debug|Win32"
                                ExcludedFromBuild="true">
@@ -191,7 +188,6 @@
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.cpp"/>
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
-      <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio_old\dRowAudio.cpp"/>
       <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\dRowAudio.cpp"/>
       <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_basics\juce_audio_basics.cpp"/>
       <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_devices\juce_audio_devices.cpp"/>
@@ -205,6 +201,8 @@
       <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\juce_gui_basics.cpp"/>
       <File RelativePath="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_extra\juce_gui_extra.cpp"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
+      <File RelativePath="icon.ico"/>
+      <File RelativePath="resources.rc"/>
     </Filter>
   </Files>
   <Globals/>

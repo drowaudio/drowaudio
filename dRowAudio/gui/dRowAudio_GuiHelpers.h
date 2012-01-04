@@ -49,7 +49,7 @@ namespace GuiHelpers
                            float bevelThickness, const Colour& baseColour)
     {
        juce::Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
-       juce::Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5, bevelThickness * 0.5));
+       juce::Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5f, bevelThickness * 0.5f));
         
         Path pL, pR, pT, pB, pTL, pTR, pBL, pBR;
         pL.startNewSubPath (centreBevelBounds.getTopLeft());

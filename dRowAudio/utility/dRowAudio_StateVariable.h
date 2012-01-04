@@ -37,7 +37,7 @@ public:
 	 */
 	StateVariable()
 	{
-		previous = current = 0.0;
+		previous = current = 0;
 	}
 	
 	/**	Create a StateVariable with an initial value.

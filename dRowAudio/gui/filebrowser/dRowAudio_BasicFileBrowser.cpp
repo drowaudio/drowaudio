@@ -247,14 +247,14 @@ void BasicFileBrowser::resized()
     {
         list->setBounds (0, 0, width, height);
         ScrollBar *bar = list->getVerticalScrollBar();
-        const int size = bar->getWidth() * 1.5;
+        const int size = bar->getWidth() * 1.5f;
 
         if (showResizer)
         {
             bar->setTransform (AffineTransform::scale (1, (height - (float) size) / height));
             
             resizeLimits.setSizeLimits (150, height, 1600, height);
-            resizer->setBounds (width - size * (2.0 / 3.0), height - size, size * (2.0 / 3.0), size);
+            resizer->setBounds (width - size * (2.0f / 3.0f), height - size, size * (2.0f / 3.0f), size);
         }
         else 
         {
