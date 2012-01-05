@@ -63,13 +63,13 @@ void BufferTransformAudioSource::getNextAudioBlock (const AudioSourceChannelInfo
         {
             sample = channelData[c][s];
             
-            if (sample < 0.0f)
+            if (sample < 0.0f && sample > -1.0f)
             {
                 sample *= -1.0f;
                 sample = linearInterpolate (buffer.getData(), bufferSize, sample * bufferSize);
                 sample *= -1.0f;
             }
-            else
+            else if (sample > 0.0f && sample < 1.0f)
             {
                 sample = linearInterpolate (buffer.getData(), bufferSize, sample * bufferSize);
             }

@@ -86,7 +86,7 @@ public:
 
     /** Sets the gain of one of the FilteringAudioSource filters.
      */
-//    void setFilterGain (FilteringAudioSource::FilterType type, float newGain);
+    void setFilterGain (FilteringAudioSource::FilterType type, float newGain);
     
     //==============================================================================
     /** Sets the start and end times of the loop.
@@ -113,7 +113,7 @@ public:
 
 	/** Returns the FilteringAudioSource being used.
      */
-//    inline FilteringAudioSource* getFilteringAudioSource()         {   return filteringAudioSource;    }
+    inline FilteringAudioSource* getFilteringAudioSource()         {   return filteringAudioSource;    }
     
 private:	
     //==============================================================================
@@ -121,7 +121,7 @@ private:
     ScopedPointer<LoopingAudioSource> loopingAudioSource;
     ScopedPointer<SoundTouchAudioSource> soundTouchAudioSource;
     ScopedPointer<ReversibleAudioSource> reversibleAudioSource;
-//    ScopedPointer<FilteringAudioSource> filteringAudioSource;
+    ScopedPointer<FilteringAudioSource> filteringAudioSource;
 
     ValueTree libraryEntry;
 

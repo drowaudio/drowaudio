@@ -25,7 +25,6 @@
 
 MainComponent::MainComponent()
     : bufferTransformAudioSource    (&audioFilePlayer),
-      filteringAudioSource          (&bufferTransformAudioSource, false),
       trackInfoComponent            (audioFilePlayer),
       dropTarget                    (&audioFilePlayer, &trackInfoComponent),
       transport                     (audioFilePlayer),
@@ -61,7 +60,7 @@ MainComponent::MainComponent()
     
     tabbedComponent.addTab("Audio Playback",
                            Colours::grey, 
-                           new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource.getBuffer(), filteringAudioSource), 
+                           new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource.getBuffer()), 
                            true);
     
 //    File libraryFile (File::getSpecialLocation (File::currentApplicationFile)
@@ -92,7 +91,7 @@ MainComponent::MainComponent()
                             new NetworkDemo(), 
                             true);
         
-    audioSourcePlayer.setSource (&filteringAudioSource);
+    audioSourcePlayer.setSource (&bufferTransformAudioSource);
     audioDeviceManager.initialise (0, 2, nullptr, true);
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);

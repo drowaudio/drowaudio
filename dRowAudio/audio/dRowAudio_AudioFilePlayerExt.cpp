@@ -25,9 +25,9 @@ AudioFilePlayerExt::AudioFilePlayerExt()
 {
     loopingAudioSource = new LoopingAudioSource (audioTransportSource, false);
     reversibleAudioSource = new ReversibleAudioSource (audioTransportSource, false);
-    //filteringAudioSource = new FilteringAudioSource (reversibleAudioSource, false);
+    filteringAudioSource = new FilteringAudioSource (reversibleAudioSource, false);
     
-    masterSource = reversibleAudioSource;
+    masterSource = filteringAudioSource;
 }
 
 AudioFilePlayerExt::~AudioFilePlayerExt()
@@ -49,12 +49,12 @@ void AudioFilePlayerExt::setPlayDirection (bool shouldPlayForwards)
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, PlayDirectionSetting);
 }
 
-//void AudioFilePlayerExt::setFilterGain (FilteringAudioSource::FilterType type, float newGain)
-//{
-//    filteringAudioSource->setGain (type, newGain);
-//
-//    listeners.call (&Listener::audioFilePlayerSettingChanged, this, FilterGainSetting);
-//}
+void AudioFilePlayerExt::setFilterGain (FilteringAudioSource::FilterType type, float newGain)
+{
+    filteringAudioSource->setGain (type, newGain);
+
+    listeners.call (&Listener::audioFilePlayerSettingChanged, this, FilterGainSetting);
+}
 
 //==============================================================================
 void AudioFilePlayerExt::setLoopTimes (double startTime, double endTime)

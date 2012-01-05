@@ -62,10 +62,10 @@ void DistortionDemo::paint (Graphics& g)
     
     g.setFont (14);
     String text;
-    text << "This graph demonstrates the Buffer and BufferTransferAudioSource classes." << newLine << newLine
-    << "Drag the points around to change the buffer belonging to the audio chain's BufferTransforAudioSource." << newLine
+    text << "This graph demonstrates the Buffer and BufferTransformAudioSource classes." << newLine << newLine
+    << "Drag the points around to change the buffer belonging to the audio chain's BufferTransformAudioSource." << newLine
     << "The Buffer's contents are used as a transform in the source which will distort the audio passing through it." << newLine << newLine
-    << "Aditionally Buffers can have listeners. Resetting the buffer to unity using the button below will update the graph.";
+    << "Aditionally, Buffers can have listeners. Resetting the buffer to unity using the button below will update the graph.";
 //    g.drawMultiLineText (text,
 //                         (w * 0.5) + m, 20 + 28,
 //                         (w * 0.5) - (2 * m));

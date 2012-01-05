@@ -25,12 +25,12 @@
 /**	Linear Interpolater.
 	Performs a linear interpolation for a fractional buffer position.
 	Note: For speed no bounds checking is performed on the buffer position so it is
-	up to the caller to mae sure it is less than the buffer size or you will be
-	overwritting random memory.
+	up to the caller to make sure it is less than the buffer size or you will be
+	reading random memory and probably get an audio blow-up.
  */
-inline float linearInterpolate (const float* buffer, int bufferSize, float bufferPosition)
+inline float linearInterpolate (const float* buffer, int bufferSize, float bufferPosition) noexcept
 {
-	int iPos1 = (int)bufferPosition;
+	int iPos1 = (int) bufferPosition;
 	int iPos2 = iPos1 + 1;
 	if (iPos2 == bufferSize)
 		iPos2 = 0;
@@ -42,9 +42,9 @@ inline float linearInterpolate (const float* buffer, int bufferSize, float buffe
 
 /**	Sinc function.
  */
-inline double sinc(const double x)
+inline double sinc (const double x) noexcept
 {
-    if (x==0)
+    if (x == 0)
         return 1;
     
     return sin (x) / x;
@@ -52,9 +52,9 @@ inline double sinc(const double x)
 
 /**	Sinc function normalised with PI for audio applications.
  */
-inline double sincPi(const double x)
+inline double sincPi (const double x) noexcept
 {
-    if (x==0)
+    if (x == 0)
         return 1;
     
     return sin (double_Pi * x) / (double_Pi * x);
@@ -62,7 +62,7 @@ inline double sincPi(const double x)
 
 /** Converts a number of degrees to radians
  */
-inline double degreesToRadians (const double degrees)
+inline double degreesToRadians (const double degrees) noexcept
 {
     return (degrees / 180.0) * double_Pi;
 }
@@ -70,14 +70,14 @@ inline double degreesToRadians (const double degrees)
 /**	Returns true if the argument is a power of 2.
     This will return false if 0 is passed.
  */
-inline bool isPowerOfTwo (int number)
+inline bool isPowerOfTwo (int number) noexcept
 {
 	return (number) && ! (number & (number - 1));
 }
 
 /**	Returns the next power of 2 of the given number.
  */
-inline int nextPowerOf2 (int number)
+inline int nextPowerOf2 (int number) noexcept
 {
 	if (isPowerOfTwo (number))
 		return number;
@@ -88,7 +88,7 @@ inline int nextPowerOf2 (int number)
 /**	Returns the previous power of 2.
     This may return 0 if a number < 1 is passed.
  */
-inline int prevPowerOf2 (int number)
+inline int prevPowerOf2 (int number) noexcept
 {
 	if (isPowerOfTwo (number))
 		return number;
@@ -100,7 +100,7 @@ inline int prevPowerOf2 (int number)
     If the given number is not an exact power of 2 the next nearest power will be given.
     E.g. 1024 will return 10 as will 1023.
  */
-inline int findPowerForBase2(int number)
+inline int findPowerForBase2 (int number) noexcept
 {
 	if (isPowerOfTwo (number))
 		return (int) (log ((double) number) / log(2.0));

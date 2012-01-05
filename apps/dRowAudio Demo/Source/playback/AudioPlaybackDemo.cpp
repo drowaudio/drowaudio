@@ -22,10 +22,8 @@
 
 
 AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
-                                      Buffer& distortionBuffer,
-                                      FilteringAudioSource& filteringAudioSource_)
+                                      Buffer& distortionBuffer)
     : audioFilePlayer (audioFilePlayer_),
-      filteringAudioSource (filteringAudioSource_),
       loopComponent (audioFilePlayer),
       backgroundThread ("Waveform Thread"),
       distortionDemo (distortionBuffer)
@@ -90,9 +88,9 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
         playerControlLabels[i]->setColour (Label::textColourId, Colours::white);
     }
     
-    playerControls[lowEQ]->setRange (0.001, 2, 0.001);
-    playerControls[midEQ]->setRange (0.001, 2, 0.001);
-    playerControls[highEQ]->setRange (0.001, 2, 0.001);
+    playerControls[lowEQ]->setRange (0.05, 2, 0.001);
+    playerControls[midEQ]->setRange (0.05, 2, 0.001);
+    playerControls[highEQ]->setRange (0.05, 2, 0.001);
 
     playerControls[rate]->setRange (0.5, 1.5, 0.001);
     playerControls[tempo]->setRange (0.5, 1.5, 0.001);
@@ -193,15 +191,15 @@ void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
     }
     else if (slider == playerControls[lowEQ])
     {
-        filteringAudioSource.setGain (FilteringAudioSource::Low, (float) playerControls[lowEQ]->getValue());
+        audioFilePlayer.setFilterGain (FilteringAudioSource::Low, (float) playerControls[lowEQ]->getValue());
     }
     else if (slider == playerControls[midEQ])
     {
-        filteringAudioSource.setGain (FilteringAudioSource::Mid, (float) playerControls[midEQ]->getValue());
+        audioFilePlayer.setFilterGain (FilteringAudioSource::Mid, (float) playerControls[midEQ]->getValue());
     }
     else if (slider == playerControls[highEQ])
     {
-        filteringAudioSource.setGain (FilteringAudioSource::High, (float) playerControls[highEQ]->getValue());
+        audioFilePlayer.setFilterGain (FilteringAudioSource::High, (float) playerControls[highEQ]->getValue());
     }
     if (audioFilePlayer.getSoundTouchAudioSource() != nullptr)
     {

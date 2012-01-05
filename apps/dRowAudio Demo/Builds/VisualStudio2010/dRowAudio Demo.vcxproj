@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -13,7 +14,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{10146CB2-A72B-3FDC-7BE0-DA51AF6AE401}</ProjectGuid>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
@@ -25,12 +26,13 @@
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
   <ImportGroup Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"
+            Label="LocalAppDataPlatform"/>
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="UserMacros"/>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
@@ -39,7 +41,6 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">dRowAudio Demo</TargetName>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">X:\Documents\Developement\git\drowaudio\dRowAudio\network\curl\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -47,7 +48,7 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <HeaderFileName />
+      <HeaderFileName/>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -56,7 +57,7 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeader />
+      <PrecompiledHeader/>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
@@ -88,7 +89,7 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <HeaderFileName />
+      <HeaderFileName/>
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
@@ -96,7 +97,7 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CURL_LIB=libcurlrelease.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeader />
+      <PrecompiledHeader/>
       <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
       <ObjectFileName>.\Release\</ObjectFileName>
       <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
@@ -125,63 +126,63 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Main.cpp" />
-    <ClCompile Include="..\..\Source\DemoLookAndFeel.cpp" />
-    <ClCompile Include="..\..\Source\MainWindow.cpp" />
-    <ClCompile Include="..\..\Source\MainComponent.cpp" />
-    <ClCompile Include="..\..\Source\TrackInfoComponent.cpp" />
-    <ClCompile Include="..\..\Source\TransportComponent.cpp" />
-    <ClCompile Include="..\..\Source\playback\AudioPlaybackDemo.cpp" />
-    <ClCompile Include="..\..\Source\playback\LoopComponent.cpp" />
-    <ClCompile Include="..\..\Source\playback\BufferTransformAudioSource.cpp" />
-    <ClCompile Include="..\..\Source\playback\DistortionDemo.cpp" />
-    <ClCompile Include="..\..\Source\playback\DistortionComponent.cpp" />
-    <ClCompile Include="..\..\Source\network\NetworkDemo.cpp" />
-    <ClCompile Include="..\..\Source\network\ConnectionComponent.cpp" />
-    <ClCompile Include="..\..\Source\network\LocalDirectoryListBox.cpp" />
-    <ClCompile Include="..\..\Source\network\RemoteDirectoryListBox.cpp" />
-    <ClCompile Include="..\..\Source\fft\FFTDemo.cpp" />
-    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\dRowAudio.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_basics\juce_audio_basics.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_devices\juce_audio_devices.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_formats\juce_audio_formats.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_processors\juce_audio_processors.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_utils\juce_audio_utils.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\juce_core.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_data_structures\juce_data_structures.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_events\juce_events.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_graphics\juce_graphics.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\juce_gui_basics.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_extra\juce_gui_extra.cpp" />
+    <ClCompile Include="..\..\Source\Main.cpp"/>
+    <ClCompile Include="..\..\Source\DemoLookAndFeel.cpp"/>
+    <ClCompile Include="..\..\Source\MainWindow.cpp"/>
+    <ClCompile Include="..\..\Source\MainComponent.cpp"/>
+    <ClCompile Include="..\..\Source\TrackInfoComponent.cpp"/>
+    <ClCompile Include="..\..\Source\TransportComponent.cpp"/>
+    <ClCompile Include="..\..\Source\playback\AudioPlaybackDemo.cpp"/>
+    <ClCompile Include="..\..\Source\playback\LoopComponent.cpp"/>
+    <ClCompile Include="..\..\Source\playback\BufferTransformAudioSource.cpp"/>
+    <ClCompile Include="..\..\Source\playback\DistortionDemo.cpp"/>
+    <ClCompile Include="..\..\Source\playback\DistortionComponent.cpp"/>
+    <ClCompile Include="..\..\Source\network\NetworkDemo.cpp"/>
+    <ClCompile Include="..\..\Source\network\ConnectionComponent.cpp"/>
+    <ClCompile Include="..\..\Source\network\LocalDirectoryListBox.cpp"/>
+    <ClCompile Include="..\..\Source\network\RemoteDirectoryListBox.cpp"/>
+    <ClCompile Include="..\..\Source\fft\FFTDemo.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\dRowAudio.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_basics\juce_audio_basics.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_devices\juce_audio_devices.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_formats\juce_audio_formats.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_processors\juce_audio_processors.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_utils\juce_audio_utils.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\juce_core.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_data_structures\juce_data_structures.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_events\juce_events.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_graphics\juce_graphics.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\juce_gui_basics.cpp"/>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_extra\juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\DemoLookAndFeel.h" />
-    <ClInclude Include="..\..\Source\MainWindow.h" />
-    <ClInclude Include="..\..\Source\MainComponent.h" />
-    <ClInclude Include="..\..\Source\TrackInfoComponent.h" />
-    <ClInclude Include="..\..\Source\TransportComponent.h" />
-    <ClInclude Include="..\..\Source\playback\AudioPlaybackDemo.h" />
-    <ClInclude Include="..\..\Source\playback\LoopComponent.h" />
-    <ClInclude Include="..\..\Source\playback\BufferTransformAudioSource.h" />
-    <ClInclude Include="..\..\Source\playback\DistortionDemo.h" />
-    <ClInclude Include="..\..\Source\playback\CurvePoint.h" />
-    <ClInclude Include="..\..\Source\playback\DistortionComponent.h" />
-    <ClInclude Include="..\..\Source\network\NetworkDemo.h" />
-    <ClInclude Include="..\..\Source\network\ConnectionComponent.h" />
-    <ClInclude Include="..\..\Source\network\LocalDirectoryListBox.h" />
-    <ClInclude Include="..\..\Source\network\RemoteDirectoryListBox.h" />
-    <ClInclude Include="..\..\Source\fft\FFTDemo.h" />
-    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h" />
-    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h" />
-    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h" />
+    <ClInclude Include="..\..\Source\DemoLookAndFeel.h"/>
+    <ClInclude Include="..\..\Source\MainWindow.h"/>
+    <ClInclude Include="..\..\Source\MainComponent.h"/>
+    <ClInclude Include="..\..\Source\TrackInfoComponent.h"/>
+    <ClInclude Include="..\..\Source\TransportComponent.h"/>
+    <ClInclude Include="..\..\Source\playback\AudioPlaybackDemo.h"/>
+    <ClInclude Include="..\..\Source\playback\LoopComponent.h"/>
+    <ClInclude Include="..\..\Source\playback\BufferTransformAudioSource.h"/>
+    <ClInclude Include="..\..\Source\playback\DistortionDemo.h"/>
+    <ClInclude Include="..\..\Source\playback\CurvePoint.h"/>
+    <ClInclude Include="..\..\Source\playback\DistortionComponent.h"/>
+    <ClInclude Include="..\..\Source\network\NetworkDemo.h"/>
+    <ClInclude Include="..\..\Source\network\ConnectionComponent.h"/>
+    <ClInclude Include="..\..\Source\network\LocalDirectoryListBox.h"/>
+    <ClInclude Include="..\..\Source\network\RemoteDirectoryListBox.h"/>
+    <ClInclude Include="..\..\Source\fft\FFTDemo.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include=".\icon.ico" />
+    <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include=".\resources.rc" />
+    <ResourceCompile Include=".\resources.rc"/>
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
 </Project>

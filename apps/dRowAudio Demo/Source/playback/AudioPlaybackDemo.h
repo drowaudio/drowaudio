@@ -32,8 +32,7 @@ class AudioPlaybackDemo :   public Component,
 public:    
     //==============================================================================
     AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer,
-                       Buffer& distortionBuffer,
-                       FilteringAudioSource& filteringAudioSource);
+                       Buffer& distortionBuffer);
     
     ~AudioPlaybackDemo();
     
@@ -64,7 +63,6 @@ public:
 private:
     //==============================================================================
     AudioFilePlayerExt& audioFilePlayer;
-    FilteringAudioSource& filteringAudioSource;
     
 //    MultipleAudioThumbnailCache thumbnailCache;
 //    ColouredAudioThumbnail audioThumbnail;

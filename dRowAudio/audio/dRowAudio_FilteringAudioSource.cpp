@@ -22,10 +22,11 @@ BEGIN_JUCE_NAMESPACE
 
 namespace
 {
+    // modelled on a Pioneer DJM-800 mixer
     const float defaultSettings[FilteringAudioSource::numFilters][FilteringAudioSource::numFilterSettings] = {
-        {500,   1.5f},
-        {1000,  1.5f},
-        {1300,  1.5f}
+        {70,   0.25f},
+        {1000,  0.25f},
+        {13000,  0.25f}
     };
 }
 
@@ -61,13 +62,13 @@ void FilteringAudioSource::setGain (FilterType setting, float newGain)
             break;
         case Mid:
             gains[Mid] = newGain;
-            filter[0][Mid].makeLowShelf     (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
-            filter[1][Mid].makeLowShelf     (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
+            filter[0][Mid].makeBandPass     (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
+            filter[1][Mid].makeBandPass     (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
             break;
         case High:
             gains[High] = newGain;
-            filter[0][High].makeLowShelf    (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
-            filter[1][High].makeLowShelf    (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
+            filter[0][High].makeHighShelf   (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
+            filter[1][High].makeHighShelf   (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
             break;
         default:
             break;

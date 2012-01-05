@@ -73,12 +73,14 @@ void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked(int row, const MouseE
 	DBG(itemList[row]);
 	
 	//*** Need to navigate session here
-	if (itemList[row] == "..") {
+	if (itemList[row] == "..")
+    {
 		DBG("move up");
 		curlSession->setRemotePath(curlSession->getRemotePath().upToLastOccurrenceOf("/", false, false));
 		setContents(curlSession->getDirectoryListing());
 	}
-	else if (! itemList[row].contains(".")) {
+	else if (! itemList[row].contains(".")) 
+    {
 		DBG("directory");
 		String newCWD(curlSession->getRemotePath().upToLastOccurrenceOf("/", true, false));
 		newCWD<<itemList[row]<<"/";
@@ -175,4 +177,7 @@ void RemoteDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails
 		}
 		session.beginTransfer(true);
 	}
+
+    isInterestedInDrag = false;
+    repaint();
 }
