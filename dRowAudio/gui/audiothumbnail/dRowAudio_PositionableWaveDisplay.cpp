@@ -120,7 +120,7 @@ void PositionableWaveDisplay::paint(Graphics &g)
         
     const int startPixelX = roundToInt (w * startOffsetRatio);
     const int newHeight = roundToInt (verticalZoomRatio * h);
-    const int startPixelY = (h * 0.5f) - (newHeight * 0.5f);
+    const int startPixelY = roundToInt ((h * 0.5f) - (newHeight * 0.5f));
 
 	g.drawImage (cachedImage,
                  startPixelX, startPixelY, w, newHeight,

@@ -150,7 +150,7 @@ public:
 		else
 		{
 			g.drawFittedText (filename,
-							  x, 0, width - x - (height * 0.7f), height,
+							  x, 0, (int) (width - x - (height * 0.7f)), height,
 							  Justification::centredLeft, 1);
 			
 		}
@@ -158,7 +158,7 @@ public:
 		// draw directory triangles
 		if (isDirectory)
 		{			
-			int diameter = height * 0.5f;
+			int diameter = roundToInt (height * 0.5f);
 			Path p;
 			p.addTriangle (width - (height * 0.2f), height * 0.5f,
 						   (width - diameter), height * 0.3f,

@@ -67,7 +67,7 @@ void FFTEngine::findMagnitudes (Buffer* bufferToFill)
 	const SplitComplex &fftSplit = fftOperation.getFFTBuffer();
 	const float oneOverFFTSize = (float) getFFTProperties().oneOverFFTSize;
 	const int fftSizeHalved = getFFTProperties().fftSizeHalved;
-	const int oneOverWindowFactor = windowProperties.getOneOverWindowFactor();
+	const float oneOverWindowFactor = windowProperties.getOneOverWindowFactor();
 	
 	// find magnitudes
 	magBuf[0] = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor); // imag for DC is always zero 
@@ -87,7 +87,7 @@ void FFTEngine::updateMagnitudesIfBigger()
 	float* magBuf = magnitutes.getData();
 	const float oneOverFFTSize = (float) getFFTProperties().oneOverFFTSize;
 	const int fftSizeHalved = getFFTProperties().fftSizeHalved;
-	const int oneOverWindowFactor = windowProperties.getOneOverWindowFactor();
+	const float oneOverWindowFactor = windowProperties.getOneOverWindowFactor();
 	
 	// find magnitudes
 	float newMag = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor); // imag for DC is always zero 

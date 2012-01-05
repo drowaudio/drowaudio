@@ -51,8 +51,8 @@ void LoopingAudioSource::setLoopTimes (double startTime, double endTime)
         loopStartTime = startTime;
         loopEndTime = endTime;
         
-        loopStartSample = startTime * currentSampleRate;
-        loopEndSample = endTime * currentSampleRate;
+        loopStartSample = (int64) (startTime * currentSampleRate);
+        loopEndSample = (int64) (endTime * currentSampleRate);
     }
 
     // need to update read position based on new limits

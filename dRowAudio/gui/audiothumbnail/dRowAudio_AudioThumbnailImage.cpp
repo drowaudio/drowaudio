@@ -146,7 +146,7 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
                 oneOverFileLength = 1.0 / fileLength;
                 
                 const int imageWidth = roundToInt (filePlayer->getTotalLength() / sourceSamplesPerThumbnailSample);
-                waveformImage = Image (Image::RGB, jmax(1, imageWidth), 100, true);
+                waveformImage = Image (Image::RGB, jmax (1, imageWidth), 100, true);
 
                 waveformImage.clear (waveformImage.getBounds(), backgroundColour);
                 
@@ -221,7 +221,7 @@ void AudioThumbnailImage::refreshWaveform()
         double timeToDraw = endTime - lastTimeDrawn;
         if (lastTimeDrawn > timeToDraw)
         {
-            lastTimeDrawn -= timeToDraw * 0.5; // overlap by 0.5
+            lastTimeDrawn -= timeToDraw * 0.1; // overlap by 0.1
             timeToDraw = endTime - lastTimeDrawn;
         }
         

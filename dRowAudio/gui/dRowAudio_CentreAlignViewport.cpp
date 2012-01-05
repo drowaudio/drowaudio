@@ -98,13 +98,13 @@ void CentreAlignViewport::setViewPosition (const int xPixelsOffset, const int yP
 
 		if (contentComp.getComponent()->getBounds().getWidth() < contentHolder.getBounds().getWidth()
 			&& shouldCentre)
-			topX = contentHolder.getWidth() / 2.0f - contentComp->getWidth() / 2.0f;
+			topX = roundToInt (contentHolder.getWidth() / 2.0f - contentComp->getWidth() / 2.0f);
 		else
 			topX = jmax (jmin (0, contentHolder.getWidth() - contentComp->getWidth()), jmin (0, -xPixelsOffset));
 
 		if (contentComp.getComponent()->getBounds().getHeight() < contentHolder.getBounds().getHeight()
 			&& shouldCentre)
-			topY = contentHolder.getHeight() / 2.0f - contentComp->getHeight() / 2.0f;
+			topY = roundToInt (contentHolder.getHeight() / 2.0f - contentComp->getHeight() / 2.0f);
 		else
 			topY = jmax (jmin (0, contentHolder.getHeight() - contentComp->getHeight()), jmin (0, -yPixelsOffset));
 				  

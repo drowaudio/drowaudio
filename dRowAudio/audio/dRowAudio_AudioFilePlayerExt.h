@@ -24,7 +24,7 @@
 #include "dRowAudio_SoundTouchAudioSource.h"
 #include "dRowAudio_ReversibleAudioSource.h"
 #include "dRowAudio_LoopingAudioSource.h"
-#include "dRowAudio_FilteringAudioSource.h";
+#include "dRowAudio_FilteringAudioSource.h"
 
 //==============================================================================
 /**

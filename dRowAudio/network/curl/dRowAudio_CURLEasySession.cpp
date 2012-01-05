@@ -190,14 +190,15 @@ size_t CURLEasySession::writeCallback (void* sourcePointer, size_t blockSize, si
 	{
 		if (session->outputStream->failedToOpen())
 		{
-			return -1; /* failure, can't open file to write */ 
+            /* failure, can't open file to write */ 
+			return ! (blockSize * numBlocks); // return a value not equal to (blockSize * numBlocks)
 		}
 		
 		session->outputStream->write (sourcePointer, blockSize * numBlocks);
 		return blockSize * numBlocks;
 	}
 	
-	return -1;
+	return ! (blockSize * numBlocks); // return a value not equal to (blockSize * numBlocks)
 }
 
 size_t CURLEasySession::readCallback (void* destinationPointer, size_t blockSize, size_t numBlocks, CURLEasySession* session)
@@ -206,13 +207,13 @@ size_t CURLEasySession::readCallback (void* destinationPointer, size_t blockSize
 	{
 		if (session->inputStream.get() == nullptr)
 		{
-			return -1; /* failure, can't open file to read */ 
+			return CURL_READFUNC_ABORT; /* failure, can't open file to read */ 
 		}
 		
 		return session->inputStream->read (destinationPointer, blockSize * numBlocks);
 	}
 	
-	return -1;
+	return CURL_READFUNC_ABORT;
 }
 
 size_t CURLEasySession::directoryListingCallback (void* sourcePointer, size_t blockSize, size_t numBlocks, CURLEasySession* session)
@@ -224,7 +225,7 @@ size_t CURLEasySession::directoryListingCallback (void* sourcePointer, size_t bl
 		return blockSize * numBlocks;
 	}
 	
-	return -1;	
+	return ! (blockSize * numBlocks); // return a positive value not equal to (blockSize * numBlocks)
 }
 
 int CURLEasySession::internalProgressCallback (CURLEasySession* session, double dltotal, double dlnow, double /*ultotal*/, double ulnow)

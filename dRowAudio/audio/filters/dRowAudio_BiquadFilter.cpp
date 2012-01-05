@@ -21,32 +21,32 @@
 BEGIN_JUCE_NAMESPACE
 
 void BiquadFilter::processSamples (float* const samples,
-								   const int numSamples) throw()
+                                   const int numSamples) noexcept
 {
     const ScopedLock sl (processLock);
-	
+    
     if (active)
     {
         for (int i = 0; i < numSamples; ++i)
         {
             const float in = samples[i];
-			
+            
             float out = coefficients[0] * in
-			+ coefficients[1] * x1
-			+ coefficients[2] * x2
-			- coefficients[4] * y1
-			- coefficients[5] * y2;
-			
+            + coefficients[1] * x1
+            + coefficients[2] * x2
+            - coefficients[4] * y1
+            - coefficients[5] * y2;
+            
 #if JUCE_INTEL
             if (! (out < -1.0e-8 || out > 1.0e-8))
                 out = 0;
 #endif
-			
+            
             x2 = x1;
             x1 = in;
             y2 = y1;
             y1 = out;
-			
+            
             samples[i] = out;
         }
     }
@@ -63,11 +63,11 @@ void BiquadFilter::processSamples (int* const samples,
         {
             const int in = samples[i];
 			
-            int out = coefficients[0] * in
-			+ coefficients[1] * x1
-			+ coefficients[2] * x2
-			- coefficients[4] * y1
-			- coefficients[5] * y2;
+            int out = (int) (coefficients[0] * in)
+			+ (int) (coefficients[1] * x1)
+			+ (int) (coefficients[2] * x2)
+			- (int) (coefficients[4] * y1)
+			- (int) (coefficients[5] * y2);
 			
 #if JUCE_INTEL
             if (! (out < -1.0e-8 || out > 1.0e-8))

@@ -80,7 +80,7 @@ void SoundTouchAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
     soundTouchProcessor.readSamples (info.buffer->getArrayOfChannels(), info.buffer->getNumChannels(),
                                      info.numSamples, info.startSample);
 
-    effectiveNextPlayPos += info.numSamples * soundTouchProcessor.getEffectivePlaybackRatio();
+    effectiveNextPlayPos += (int64) (info.numSamples * soundTouchProcessor.getEffectivePlaybackRatio());
 }
 
 //==============================================================================

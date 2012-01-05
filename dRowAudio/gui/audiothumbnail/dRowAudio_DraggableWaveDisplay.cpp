@@ -87,7 +87,7 @@ void DraggableWaveDisplay::paint (Graphics &g)
 	
 	g.fillAll (Colours::darkgrey);
 	    
-    const int playHeadXPos = playheadPos * w;
+    const int playHeadXPos = roundToInt (playheadPos * w);
     const double timeToPlayHead = pixelsToTime (playHeadXPos);
     const double startTime = filePlayer->getAudioTransportSource()->getCurrentPosition() - timeToPlayHead;
     const double duration = filePlayer->getAudioTransportSource()->getLengthInSeconds();

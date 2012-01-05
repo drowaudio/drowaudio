@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="dRowAudio Demo">
@@ -72,12 +71,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\fft\FFTDemo.cpp">
       <Filter>dRowAudio Demo\Source\fft</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\resources\icon.png">
-      <Filter>dRowAudio Demo\Source\resources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\resources\splash_screen.png">
-      <Filter>dRowAudio Demo\Source\resources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
       <Filter>Juce Library Code</Filter>
