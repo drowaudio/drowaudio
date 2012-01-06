@@ -21,6 +21,8 @@
 #ifndef __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__
 #define __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__
 
+#if DROWAUDIO_USE_SOUNDTOUCH || DOXYGEN
+
 #include "dRowAudio_SoundTouchProcessor.h"
 
 //==============================================================================
@@ -106,4 +108,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchAudioSource);
 };
 
+#endif
 #endif // __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__

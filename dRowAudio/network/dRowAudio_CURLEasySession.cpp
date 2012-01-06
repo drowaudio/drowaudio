@@ -18,6 +18,8 @@
   ==============================================================================
 */
 
+#if DROWAUDIO_USE_CURL
+
 BEGIN_JUCE_NAMESPACE
 
 CURLEasySession::CURLEasySession()
@@ -128,6 +130,25 @@ StringArray CURLEasySession::getDirectoryListing()
 		return StringArray (curl_easy_strerror (result));
 	}				
 }
+
+// not yet ready
+//String CURLEasySession::getContentType()
+//{
+//    char *ct;
+//
+//    CURLcode result = curl_easy_getinfo (handle, CURLINFO_CONTENT_TYPE, &ct);
+//    
+//    if (CURLE_OK == result)// && ct != nullptr)
+//    {
+//        DBG("CURLE_OK: " + remotePath);
+//        return ct;
+//    }
+//    else
+//    {
+//        DBG("CURLE_NOT_OK");
+//        return String::empty;
+//    }
+//}
 
 //==============================================================================
 void CURLEasySession::enableFullDebugging (bool shouldEnableFullDebugging)
@@ -276,3 +297,5 @@ CURLcode CURLEasySession::performTransfer (bool transferIsUpload)
 }
 
 END_JUCE_NAMESPACE
+
+#endif

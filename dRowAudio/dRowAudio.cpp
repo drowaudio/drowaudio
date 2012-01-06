@@ -83,8 +83,8 @@
 #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp"
 
 // network
-#include "network/curl/dRowAudio_CURLManager.cpp"
-#include "network/curl/dRowAudio_CURLEasySession.cpp"
+#include "network/dRowAudio_CURLManager.cpp"
+#include "network/dRowAudio_CURLEasySession.cpp"
 
 // streams
 #include "streams/dRowAudio_MemoryInputSource.cpp"

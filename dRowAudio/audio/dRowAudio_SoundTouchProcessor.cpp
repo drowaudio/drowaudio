@@ -18,6 +18,8 @@
   ==============================================================================
 */
 
+#if DROWAUDIO_USE_SOUNDTOUCH
+
 BEGIN_JUCE_NAMESPACE
 
 SoundTouchProcessor::SoundTouchProcessor()
@@ -115,3 +117,5 @@ void SoundTouchProcessor::setPlaybackSettings (PlaybackSettings newSettings)
 }
 
 END_JUCE_NAMESPACE
+
+#endif

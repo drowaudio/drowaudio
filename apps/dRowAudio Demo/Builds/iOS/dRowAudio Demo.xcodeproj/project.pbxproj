@@ -10,6 +10,7 @@
 		56395F7B8428F72AFBA86DF2 = { isa = PBXBuildFile; fileRef = 84484BC5CE686760F331B64A; };
 		2377D90E86C276B722B6C023 = { isa = PBXBuildFile; fileRef = 344DDD8DC1DE011D2E1705AA; };
 		35898E7631EBC1A113EBC00C = { isa = PBXBuildFile; fileRef = CBEE0A03D1F63AA45D5E7944; };
+		A02D8C38847BC82CE012B8B2 = { isa = PBXBuildFile; fileRef = 8EADA83178E3CB59706B855C; };
 		F7941F2F8E1D1EED52C6972D = { isa = PBXBuildFile; fileRef = 805670F7F7FB8CEE7A591E17; };
 		FA1D1E7216BEC502E7A710F4 = { isa = PBXBuildFile; fileRef = 4B42BC708FB27EBFDDC5D6AC; };
 		F3457666D359A903CB0DDD2C = { isa = PBXBuildFile; fileRef = 8E60D92746C277E4137E3CB8; };
@@ -85,6 +86,7 @@
 		8B3BE2EBA0DCB3989249B7BD = { isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Source/resources/icon.png; sourceTree = "SOURCE_ROOT"; };
 		8B60B8DD60A2FA00DD98584D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LocalDirectoryListBox.h; path = ../../Source/network/LocalDirectoryListBox.h; sourceTree = "SOURCE_ROOT"; };
 		8E60D92746C277E4137E3CB8 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8EADA83178E3CB59706B855C = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		8F22F62032787C801A0CB22F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopComponent.cpp; path = ../../Source/playback/LoopComponent.cpp; sourceTree = "SOURCE_ROOT"; };
 		9120661B2AD38CB9A632EF3F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = dRowAudio.mm; path = "../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.mm"; sourceTree = "SOURCE_ROOT"; };
 		939FC30566B1030FB01BD689 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainWindow.h; path = ../../Source/MainWindow.h; sourceTree = "SOURCE_ROOT"; };
@@ -175,6 +177,7 @@
 				84484BC5CE686760F331B64A,
 				344DDD8DC1DE011D2E1705AA,
 				CBEE0A03D1F63AA45D5E7944,
+				8EADA83178E3CB59706B855C,
 				805670F7F7FB8CEE7A591E17,
 				4B42BC708FB27EBFDDC5D6AC,
 				8E60D92746C277E4137E3CB8,
@@ -293,6 +296,7 @@
 				56395F7B8428F72AFBA86DF2,
 				2377D90E86C276B722B6C023,
 				35898E7631EBC1A113EBC00C,
+				A02D8C38847BC82CE012B8B2,
 				F7941F2F8E1D1EED52C6972D,
 				FA1D1E7216BEC502E7A710F4,
 				F3457666D359A903CB0DDD2C,

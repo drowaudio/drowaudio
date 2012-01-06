@@ -53,8 +53,11 @@ void LoopComponent::resized()
 
 void LoopComponent::paint (Graphics& g)
 {
+    const int startX = jmin (marker1.getRight(), marker2.getRight());
+    const int endX = jmax (marker1.getX(), marker2.getX());
+
     g.setColour (audioFilePlayer.getLoopBetweenTimes() ? Colours::red.withAlpha (0.4f) : Colours::red.withAlpha (0.2f));
-    g.fillRect (marker1.getRight(), 0, marker2.getX() - marker1.getRight(), getHeight());
+    g.fillRect (startX, 0, endX - startX, getHeight());
 }
 
 void LoopComponent::fileChanged (AudioFilePlayer* player)
@@ -65,7 +68,7 @@ void LoopComponent::fileChanged (AudioFilePlayer* player)
         {
             const double w = getWidth();
             const double startTime = (jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
-            const double endTime = (jmax (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
+            const double endTime = (jmax (marker1.getRight(), marker2.getRight()) / w) * audioFilePlayer.getLengthInSeconds();
             
             audioFilePlayer.setLoopTimes (startTime, endTime);
         }
@@ -74,11 +77,11 @@ void LoopComponent::fileChanged (AudioFilePlayer* player)
 
 void LoopComponent::componentMovedOrResized (Component& /*component*/, bool /*wasMoved*/, bool /*wasResized*/)
 {
-    if (audioFilePlayer.getLengthInSeconds() > 0)
+    if (audioFilePlayer.getLengthInSeconds() > 0.0)
     {
         const double w = getWidth();
         const double startTime = (jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
-        const double endTime = (jmax (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
+        const double endTime = (jmax (marker1.getRight(), marker2.getRight()) / w) * audioFilePlayer.getLengthInSeconds();
 
         audioFilePlayer.setLoopTimes (startTime, endTime);
     }

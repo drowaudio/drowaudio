@@ -126,12 +126,10 @@ void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
                 input->setNextReadPosition (loopStartSample);
                 input->getNextAudioBlock (tempInfo);
 
-                tempInfo.numSamples = info.numSamples;
-                
                 for (int i = 0; i < info.buffer->getNumChannels(); ++i)
                     info.buffer->copyFrom (i, info.startSample, 
                                            tempBuffer,
-                                           i, 0, tempInfo.numSamples);
+                                           i, 0, info.numSamples);
             }
         }
         else

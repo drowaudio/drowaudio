@@ -21,6 +21,8 @@
 #ifndef __DROWAUDIO_SOUNDTOUCHPROCESSOR_H__
 #define __DROWAUDIO_SOUNDTOUCHPROCESSOR_H__
 
+#if DROWAUDIO_USE_SOUNDTOUCH || DOXYGEN
+
 #include "soundtouch/SoundTouch.h"
 
 using namespace soundtouch;
@@ -130,4 +132,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchProcessor);
 };
 
+#endif
 #endif // __DROWAUDIO_SOUNDTOUCHPROCESSOR_H__

@@ -106,7 +106,7 @@ void ConnectionComponent::resized()
 //	passwordEditor.setBounds("passwordEditor.right + 5, passwordEditor.top, parent.width - passwordEditor.right - 10, passwordEditor.height");
 }
 
-void ConnectionComponent::buttonClicked(Button *button)
+void ConnectionComponent::buttonClicked (Button* button)
 {
 	if (button == &connectButton)
 	{
@@ -114,9 +114,10 @@ void ConnectionComponent::buttonClicked(Button *button)
 		{
 			String path(protocolBox.getItemText(protocolBox.getSelectedItemIndex())+"://"+hostnameEditor.getText());
 			DBG(path);
-			curlSession->setRemotePath(path);
+			curlSession->setRemotePath (path);
 			curlSession->setUserNameAndPassword(usernameEditor.getText(), passwordEditor.getText());
-			listeners.call(&Listener::connectionChanged, this);
+            DBG("Type: "<<curlSession->getContentType());
+			listeners.call (&Listener::connectionChanged, this);
 		}
 	}
 }

@@ -18,6 +18,8 @@
   ==============================================================================
 */
 
+#if DROWAUDIO_USE_SOUNDTOUCH
+
 BEGIN_JUCE_NAMESPACE
 
 SoundTouchAudioSource::SoundTouchAudioSource (PositionableAudioSource* source_,
@@ -119,3 +121,5 @@ void SoundTouchAudioSource::readNextBufferChunk()
 }
 
 END_JUCE_NAMESPACE
+
+#endif

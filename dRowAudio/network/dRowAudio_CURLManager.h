@@ -21,7 +21,9 @@
 #ifndef __DROWAUDIO_CURLMANAGER_H__
 #define __DROWAUDIO_CURLMANAGER_H__
 
-#include "include/curl/curl.h"
+#if DROWAUDIO_USE_CURL || DOXYGEN
+
+#include "curl/include/curl/curl.h"
 
 //==============================================================================
 class CURLManager : public TimeSliceThread,
@@ -64,4 +66,5 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CURLManager);
 };
 
+#endif
 #endif  // __DROWAUDIO_CURLMANAGER_H__

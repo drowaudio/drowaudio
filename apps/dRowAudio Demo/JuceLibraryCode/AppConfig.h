@@ -31,6 +31,8 @@
 // dRowAudio flags:
 
 //#define  DROWAUDIO_USE_FFTREAL
+#define    DROWAUDIO_USE_SOUNDTOUCH 0
+//#define  DROWAUDIO_USE_CURL
 
 //==============================================================================
 // juce_audio_devices flags:

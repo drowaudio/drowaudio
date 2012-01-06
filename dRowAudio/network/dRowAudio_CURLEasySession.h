@@ -21,6 +21,8 @@
 #ifndef __DROWAUDIO_CURLEASYSESSION_H__
 #define __DROWAUDIO_CURLEASYSESSION_H__
 
+#if DROWAUDIO_USE_CURL || DOXYGEN
+
 #include "dRowAudio_CURLManager.h"
 
 //==============================================================================
@@ -95,6 +97,10 @@ public:
 	 */
 	StringArray getDirectoryListing();
 	
+    /** Returns the content type of the current remote path.
+     */
+    //String getContentType(); // not yet ready
+    
     //==============================================================================
 	/**	Turns on full debugging information.
 		This is probably best turned off in release builds to avoid littering the console.
@@ -181,4 +187,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CURLEasySession);
 };
 
+#endif
 #endif  // __DROWAUDIO_CURLEASYSESSION_H__

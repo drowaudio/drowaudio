@@ -49,6 +49,22 @@
     #endif
 #endif
 
+/** Config: DROWAUDIO_USE_SOUNDTOUCH
+    Enables the SoundTouch library and the associated SoundTouch classes for
+    independant pitch and tempo scaling. By default this is enabled.
+ */
+#ifndef DROWAUDIO_USE_SOUNDTOUCH
+    #define DROWAUDIO_USE_SOUNDTOUCH 1
+#endif
+
+/** Config: DROWAUDIO_USE_CURL
+    Enables the cURL library and the associated network classes. By default
+    this is enabled.
+ */
+#ifndef DROWAUDIO_USE_CURL
+    #define DROWAUDIO_USE_CURL 1
+#endif
+
 //=============================================================================
 BEGIN_JUCE_NAMESPACE
 
@@ -189,11 +205,11 @@ BEGIN_JUCE_NAMESPACE
 
 // network
 #ifndef __DROWAUDIO_CURLMANAGER_H__
-    #include "network/curl/dRowAudio_CURLManager.h"
+    #include "network/dRowAudio_CURLManager.h"
 #endif 
 
 #ifndef __DROWAUDIO_CURLEASYSESSION_H__
-    #include "network/curl/dRowAudio_CURLEasySession.h"
+    #include "network/dRowAudio_CURLEasySession.h"
 #endif 
 
 // streams

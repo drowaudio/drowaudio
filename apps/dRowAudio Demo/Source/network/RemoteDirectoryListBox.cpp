@@ -95,7 +95,9 @@ void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked(int row, const MouseE
 var RemoteDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int> &currentlySelectedRows)
 {
 	if (currentlySelectedRows.size() > 0) {
-		return curlSession->getRemotePath().upToLastOccurrenceOf("/", true, false)+itemList[currentlySelectedRows[0]];
+        String path (curlSession->getRemotePath().upToLastOccurrenceOf ("/", true, false) + itemList[currentlySelectedRows[0]]);
+        DBG("Type: " + curlSession->getContentType());
+		return path;
 	}
 	
 	return String::empty;
@@ -105,7 +107,6 @@ var RemoteDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int> 
 RemoteDirectoryListBox::RemoteDirectoryListBox()
     : isInterestedInDrag (false)
 {
-//	session.setLocalFile (File ("/Users/Dave/Documents/Developement/Juce Projects/cURL/Builds/MacOSX/build/Debug/agro_download_test2.xml"));
 //	session.setRemotePath("ftp://www.aggravatedmusic.co.uk/rss/agro_news_feed.xml");
 	session.setLocalFile (File::getSpecialLocation (File::userDesktopDirectory));
 	
