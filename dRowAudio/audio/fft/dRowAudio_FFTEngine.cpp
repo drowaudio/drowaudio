@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-#if JUCE_MAC || DROWAUDIO_USE_FFTREAL
+#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
 BEGIN_JUCE_NAMESPACE
 

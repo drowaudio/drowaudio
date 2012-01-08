@@ -63,6 +63,7 @@
 #include "audio/fft/dRowAudio_Window.cpp"
 #include "audio/fft/dRowAudio_FFTEngine.cpp"
 #include "audio/fft/dRowAudio_mac_FFTOperation.cpp"
+#include "audio/fft/dRowAudio_ios_FFTOperation.cpp"
 #include "audio/fft/dRowAudio_FFTReal_FFTOperation.cpp"
 
 // Gui

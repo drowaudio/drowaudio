@@ -23,6 +23,8 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
+#if DROWAUDIO_USE_CURL
+
 class LocalDirectoryListBoxModel :  public ListBoxModel,
 									public ChangeBroadcaster
 {
@@ -112,4 +114,5 @@ private:
 //	bool isMouseDragging;
 };*/
 
+#endif
 #endif  // __LOCALDIRECTORYLISTBOX_H_AEB1756D__

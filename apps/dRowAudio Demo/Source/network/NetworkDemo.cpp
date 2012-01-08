@@ -20,6 +20,8 @@
 
 #include "NetworkDemo.h"
 
+#if DROWAUDIO_USE_CURL
+
 NetworkDemo::NetworkDemo()
 //:	localBrowser(FileBrowserComponent::openMode
 //				 + FileBrowserComponent::canSelectFiles
@@ -67,3 +69,5 @@ void NetworkDemo::connectionChanged (ConnectionComponent* changedConnectionCompo
 void NetworkDemo::buttonClicked(Button *button)
 {
 }
+
+#endif

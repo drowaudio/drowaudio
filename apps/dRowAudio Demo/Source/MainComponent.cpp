@@ -86,10 +86,12 @@ MainComponent::MainComponent()
                             fftDemo, 
                             true);
     
+#if DROWAUDIO_USE_CURL
     tabbedComponent.addTab ("CURL Demo",
                             Colours::grey, 
                             new NetworkDemo(), 
                             true);
+#endif
         
     audioSourcePlayer.setSource (&bufferTransformAudioSource);
     audioDeviceManager.initialise (0, 2, nullptr, true);

@@ -18,6 +18,8 @@
   ==============================================================================
 */
 
+#if DROWAUDIO_USE_SOUNDTOUCH
+
 BEGIN_JUCE_NAMESPACE
 
 AudioFilePlayerExt::AudioFilePlayerExt()
@@ -122,3 +124,5 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
 }
 
 END_JUCE_NAMESPACE
+
+#endif

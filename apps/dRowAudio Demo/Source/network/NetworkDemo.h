@@ -26,6 +26,8 @@
 #include "LocalDirectoryListBox.h"
 #include "RemoteDirectoryListBox.h"
 
+#if DROWAUDIO_USE_CURL
+
 /**	@todo
 	Refresh directory on right click
 	Better look of file list
@@ -61,4 +63,5 @@ private:
     ScopedPointer<CURLEasySession> curlSession;
 };
 
+#endif
 #endif  // __NetworkDemo_H_577067C6__

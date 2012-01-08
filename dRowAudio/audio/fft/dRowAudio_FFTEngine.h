@@ -21,7 +21,7 @@
 #ifndef __DROWAUDIO_FFTENGINE__
 #define __DROWAUDIO_FFTENGINE__
 
-#if JUCE_MAC || DROWAUDIO_USE_FFTREAL
+#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
 #include "dRowAudio_Window.h"
 #include "dRowAudio_FFTOperation.h"

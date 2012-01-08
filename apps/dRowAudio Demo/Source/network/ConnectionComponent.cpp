@@ -20,6 +20,8 @@
 
 #include "ConnectionComponent.h"
 
+#if DROWAUDIO_USE_CURL
+
 ConnectionComponent::ConnectionComponent()
 :	curlSession (nullptr)
 {
@@ -132,3 +134,5 @@ void ConnectionComponent::removeListener (ConnectionComponent::Listener* const l
 {
     listeners.remove (listener);
 }
+
+#endif

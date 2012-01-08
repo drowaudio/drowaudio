@@ -23,6 +23,8 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
+#if DROWAUDIO_USE_CURL
+
 class RemoteDirectoryListBoxModel : public ListBoxModel,
 									public ChangeBroadcaster
 {
@@ -90,4 +92,5 @@ private:
     bool isInterestedInDrag;
 };
 
+#endif
 #endif  // __REMOTEDIRECTORYLISTBOX_H_780D9778__

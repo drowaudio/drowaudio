@@ -21,6 +21,8 @@
 #ifndef __DROWAUDIO_SPECTROSCOPE_H__
 #define __DROWAUDIO_SPECTROSCOPE_H__
 
+#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
+
 //==============================================================================
 /** Creates a standard Spectroscope.
     This will display the amplitude of each frequency bin from an FFT in a
@@ -91,4 +93,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectroscope);
 };
 
+#endif
 #endif  // __DROWAUDIO_SPECTROSCOPE_H__

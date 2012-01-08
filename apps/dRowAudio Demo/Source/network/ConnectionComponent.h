@@ -23,6 +23,8 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
+#if DROWAUDIO_USE_CURL
+
 class ConnectionComponent : public Component,
 							public Button::Listener
 {
@@ -69,4 +71,5 @@ private:
 	TextButton connectButton;
 };
 
+#endif
 #endif  // __CONNECTIONCOMPONENT_H_48116F81__

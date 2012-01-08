@@ -21,9 +21,7 @@
 #ifndef __DROWAUDIO_AUDIOFILEPLAYEREXT_H__
 #define __DROWAUDIO_AUDIOFILEPLAYEREXT_H__
 
-#if ! DROWAUDIO_USE_SOUNDTOUCH
-    #error "You must enable the SoundTouch config setting to use this class!"
-#endif
+#if DROWAUDIO_USE_SOUNDTOUCH
 
 #include "dRowAudio_SoundTouchAudioSource.h"
 #include "dRowAudio_ReversibleAudioSource.h"
@@ -136,4 +134,5 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);
 };
 
+#endif
 #endif // __DROWAUDIO_AUDIOFILEPLAYEREXT_H__

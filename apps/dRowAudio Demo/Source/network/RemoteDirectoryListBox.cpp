@@ -21,6 +21,8 @@
 #include "RemoteDirectoryListBox.h"
 #include "LocalDirectoryListBox.h"
 
+#if DROWAUDIO_USE_CURL
+
 RemoteDirectoryListBoxModel::RemoteDirectoryListBoxModel()
 :	curlSession(nullptr)
 {
@@ -182,3 +184,5 @@ void RemoteDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails
     isInterestedInDrag = false;
     repaint();
 }
+
+#endif

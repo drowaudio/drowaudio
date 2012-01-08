@@ -21,7 +21,7 @@
 #ifndef __DROWAUDIO_FFTOPERATION__
 #define __DROWAUDIO_FFTOPERATION__
 
-#if JUCE_MAC && ! DROWAUDIO_USE_FFTREAL
+#if (JUCE_MAC || JUCE_IOS) && ! DROWAUDIO_USE_FFTREAL
     typedef FFTSetup FFTConfig;
     typedef DSPSplitComplex SplitComplex;
 #elif DROWAUDIO_USE_FFTREAL

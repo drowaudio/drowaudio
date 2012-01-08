@@ -21,6 +21,8 @@
 #ifndef __DROWAUDIO_SONOGRAM_H__
 #define __DROWAUDIO_SONOGRAM_H__
 
+#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
+
 //==============================================================================
 /** Creates a standard right-left scrolling greyscale Sonogram.
     This is very simple to use, it is a GraphicalComponent so just register one
@@ -101,4 +103,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram);
 };
 
+#endif
 #endif  // __DROWAUDIO_SONOGRAM_H__

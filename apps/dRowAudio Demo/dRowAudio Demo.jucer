@@ -106,5 +106,5 @@
     <MODULE id="juce_audio_utils" showAllCode="0" useLocalCopy="0"/>
     <MODULE id="dRowAudio" showAllCode="0" useLocalCopy="0"/>
   </MODULES>
-  <JUCEOPTIONS DROWAUDIO_USE_SOUNDTOUCH="disabled"/>
+  <JUCEOPTIONS/>
 </JUCERPROJECT>

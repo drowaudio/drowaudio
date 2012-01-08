@@ -21,6 +21,8 @@
 #include "LocalDirectoryListBox.h"
 #include "RemoteDirectoryListBox.h"
 
+#if DROWAUDIO_USE_CURL
+
 static StringArray getFilesForDirectory(String fullPath)
 {
 	StringArray files;
@@ -196,69 +198,4 @@ void LocalDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails)
     repaint();
 }
 
-/*LocalDirectoryListBox::LocalDirectoryListBox(int flags_,
-											 const File& initialFileOrDirectory,
-//											 const FileFilter* fileFilter_,
-											 FilePreviewComponent* previewComp_)
-:	FileBrowserComponent(flags_,
-						 initialFileOrDirectory,
-						 //fileFilter_,
-						 previewComp_)
-{
-}
-
-LocalDirectoryListBox::~LocalDirectoryListBox()
-{
-}
-
-void LocalDirectoryListBox::fileClicked(const File &f, const MouseEvent &e)
-{
-	FileBrowserComponent::fileClicked(f, e);
-	
-	startDragging(f.getFullPathName(),
-				  this);
-//	if (e.getDistanceFromDragStart()) {
-//		DBG("file dragged");
-//	}
-}
-
-bool LocalDirectoryListBox::isInterestedInDragSource (const SourceDetails& dragSourceDetails)
-{
-	return true;
-}
-
-void LocalDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails)
-{
-	RemoteDirectoryListBox *remote = dynamic_cast<RemoteDirectoryListBox*> (dragSourceDetails.sourceComponent.get());
-	
-	if (remote != nullptr)
-	{
-		DBG(dragSourceDetails.description.toString());
-		String remoteFileName(dragSourceDetails.description.toString().fromLastOccurrenceOf("/", true, false));
-		DBG(remoteFileName);
-		remote->getCURLSession().setRemotePath(dragSourceDetails.description.toString());
-//		remote->getCURLSession()->setLocalPath(getSelectedFile(0).getParentDirectory().getFullPathName()+remoteFileName);
-		remote->getCURLSession().setLocalPath(getRoot().getFullPathName()+remoteFileName);
-		remote->getCURLSession().beginTransfer(false);
-	}
-}*/
-
-//void LocalDirectoryListBox::mouseUp(const MouseEvent& e)
-//{
-//	FileBrowserComponent::mouseUp(e);
-//	isMouseDragging = false;
-//}
-//
-//void LocalDirectoryListBox::mouseExit(const MouseEvent& e)
-//{
-//	FileBrowserComponent::mouseExit(e);
-//	isMouseDragging = false;
-//}
-//
-//void LocalDirectoryListBox::mouseDrag(const MouseEvent& e)
-//{
-//	FileBrowserComponent::mouseDrag(e);
-//	
-//	isMouseDragging = true;
-//	startDragging(getSelectedFile(<#int index#>), <#Component *sourceComponent#>, <#const Image dragImage#>, <#bool allowDraggingToOtherJuceWindows#>, <#const Point *imageOffsetFromMouse#>)
-//}
+#endif
