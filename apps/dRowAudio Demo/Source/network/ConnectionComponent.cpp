@@ -118,7 +118,7 @@ void ConnectionComponent::buttonClicked (Button* button)
 			DBG(path);
 			curlSession->setRemotePath (path);
 			curlSession->setUserNameAndPassword(usernameEditor.getText(), passwordEditor.getText());
-            DBG("Type: "<<curlSession->getContentType());
+
 			listeners.call (&Listener::connectionChanged, this);
 		}
 	}

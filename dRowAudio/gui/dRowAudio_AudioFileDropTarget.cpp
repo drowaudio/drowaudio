@@ -18,6 +18,8 @@
   ==============================================================================
 */
 
+#if DROWAUDIO_USE_SOUNDTOUCH
+
 BEGIN_JUCE_NAMESPACE
 
 AudioFileDropTarget::AudioFileDropTarget (AudioFilePlayerExt* audioFilePlayerToControl,
@@ -94,15 +96,23 @@ void AudioFileDropTarget::componentMovedOrResized (Component& /*component*/,
 //==============================================================================
 bool AudioFileDropTarget::isInterestedInDragSource (const SourceDetails& dragSourceDetails)
 {
-    ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
+    var description = dragSourceDetails.description;
     
-    if (libraryTree != nullptr && libraryTree->getValueTree().hasType (MusicColumns::libraryItemIdentifier))
-    {
-        interestedInDrag = true;
-        setMouseCursor (MouseCursor::CopyingCursor);
-        repaint();
+    if (description.isArray())
+        description = dragSourceDetails.description[0];
 
-        return true;
+    if (description.isObject())
+    {
+        ReferenceCountedValueTree::Ptr libraryTree (dynamic_cast<ReferenceCountedValueTree*> (description.getObject()));
+        
+        if (libraryTree != nullptr && libraryTree->getValueTree().hasType (MusicColumns::libraryItemIdentifier))
+        {
+            interestedInDrag = true;
+            setMouseCursor (MouseCursor::CopyingCursor);
+            repaint();
+            
+            return true;
+        }
     }
     
     return false;	
@@ -184,3 +194,5 @@ void AudioFileDropTarget::filesDropped (const StringArray &files, int /*x*/, int
 //==============================================================================
 
 END_JUCE_NAMESPACE
+
+#endif

@@ -26,7 +26,7 @@ FFTOperation::FFTOperation (int fftSizeLog2)
     : fftProperties (fftSizeLog2)
 {
 	fftConfig = create_fftsetup (fftProperties.fftSizeLog2, 0);
-	DBG("using vdsp");
+
 	fftBuffer.malloc (fftProperties.fftSize);
 	fftBufferSplit.realp = fftBuffer.getData();
 	fftBufferSplit.imagp = fftBufferSplit.realp + getFFTProperties().fftSizeHalved;	

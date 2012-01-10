@@ -98,7 +98,7 @@ var RemoteDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int> 
 {
 	if (currentlySelectedRows.size() > 0) {
         String path (curlSession->getRemotePath().upToLastOccurrenceOf ("/", true, false) + itemList[currentlySelectedRows[0]]);
-        DBG("Type: " + curlSession->getContentType());
+
 		return path;
 	}
 	

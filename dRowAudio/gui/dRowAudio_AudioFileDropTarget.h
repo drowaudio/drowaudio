@@ -21,6 +21,8 @@
 #ifndef __DROWAUDIO_AUDIOFILEDROPTARGET_H__
 #define __DROWAUDIO_AUDIOFILEDROPTARGET_H__
 
+#if DROWAUDIO_USE_SOUNDTOUCH
+
 #include "../audio/dRowAudio_AudioFilePlayer.h"
 
 //==============================================================================
@@ -104,4 +106,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFileDropTarget);
 };
 
+#endif
 #endif  // __DROWAUDIO_AUDIOFILEDROPTARGET_H__
