@@ -82,7 +82,7 @@ private:
 	int numBins;
 	bool needsRepaint;
 	HeapBlock<float> tempBlock;			
-	FifoBuffer circularBuffer;
+	FifoBuffer<float> circularBuffer;
 	
 	bool logFrequency;
     Image scopeImage;

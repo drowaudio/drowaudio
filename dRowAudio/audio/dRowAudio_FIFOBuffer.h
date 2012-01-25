@@ -23,8 +23,10 @@
 
 //==============================================================================
 /** This is a simple implementation of a lock free Fifo buffer that uses
-    floating point samples.
+    a template parameter for the sample type. This should be a primitive type
+    that is capable of being copied using only memcpy.
  */
+template <class ElementType>
 class FifoBuffer
 {
 public:
@@ -73,32 +75,32 @@ public:
     
     /** Writes a number of samples into the buffer.
      */
-	void writeSamples (const float* samples, int numSamples)
+	void writeSamples (const ElementType* samples, int numSamples)
 	{
 		int start1, size1, start2, size2;
 		abstractFifo.prepareToWrite (numSamples, start1, size1, start2, size2);
 
 		if (size1 > 0)
-			memcpy (buffer.getData()+start1, samples, size1 * sizeof (float));
+			memcpy (buffer.getData()+start1, samples, size1 * sizeof (ElementType));
 		
 		if (size2 > 0)
-			memcpy (buffer.getData()+start2, samples+size1, size2 * sizeof (float));
+			memcpy (buffer.getData()+start2, samples+size1, size2 * sizeof (ElementType));
 
 		abstractFifo.finishedWrite (size1 + size2);
 	}
 	
     /** Reads a number of samples from the buffer into the array provided.
      */
-	void readSamples (float* bufferToFill, int numSamples)
+	void readSamples (ElementType* bufferToFill, int numSamples)
 	{
 		int start1, size1, start2, size2;
 		abstractFifo.prepareToRead (numSamples, start1, size1, start2, size2);
 		
 		if (size1 > 0)
-			memcpy (bufferToFill, buffer.getData() + start1, size1 * sizeof (float));
+			memcpy (bufferToFill, buffer.getData() + start1, size1 * sizeof (ElementType));
 
 		if (size2 > 0)
-			memcpy (bufferToFill + size1, buffer.getData() + start2, size2 * sizeof (float));
+			memcpy (bufferToFill + size1, buffer.getData() + start2, size2 * sizeof (ElementType));
 		
 		abstractFifo.finishedRead (size1 + size2);
 	}
@@ -106,7 +108,7 @@ public:
 private:
     //==============================================================================
 	AbstractFifo abstractFifo;
-	HeapBlock<float> buffer;
+	HeapBlock<ElementType> buffer;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FifoBuffer);

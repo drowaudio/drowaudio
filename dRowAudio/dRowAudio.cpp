@@ -58,7 +58,11 @@
 #include "audio/dRowAudio_LoopingAudioSource.cpp"
 
 #include "audio/dRowAudio_Buffer.cpp"
+#include "audio/dRowAudio_EnvelopeFollower.cpp"
+#include "audio/dRowAudio_SampleRateConverter.cpp"
+
 #include "audio/filters/dRowAudio_BiquadFilter.cpp"
+#include "audio/filters/dRowAudio_OnePoleFilter.cpp"
 
 #include "audio/fft/dRowAudio_Window.cpp"
 #include "audio/fft/dRowAudio_FFTEngine.cpp"

@@ -25,7 +25,7 @@ BEGIN_JUCE_NAMESPACE
 FFTOperation::FFTOperation (int fftSizeLog2)
     : fftProperties (fftSizeLog2)
 {
-	fftConfig = create_fftsetup (fftProperties.fftSizeLog2, 0);
+	fftConfig = vDSP_create_fftsetup (fftProperties.fftSizeLog2, 0);
 
 	fftBuffer.malloc (fftProperties.fftSize);
 	fftBufferSplit.realp = fftBuffer.getData();
@@ -34,28 +34,28 @@ FFTOperation::FFTOperation (int fftSizeLog2)
 
 FFTOperation::~FFTOperation()
 {
-	destroy_fftsetup (fftConfig);
+	vDSP_destroy_fftsetup (fftConfig);
 }
 
 void FFTOperation::setFFTSizeLog2 (int newFFTSizeLog2)
 {
 	if (newFFTSizeLog2 != fftProperties.fftSizeLog2)
     {
-		destroy_fftsetup (fftConfig);
+		vDSP_destroy_fftsetup (fftConfig);
 		
 		fftProperties.setFFTSizeLog2 (newFFTSizeLog2);
 		fftBuffer.malloc (fftProperties.fftSize);
 		fftBufferSplit.realp = fftBuffer.getData();
 		fftBufferSplit.imagp = fftBufferSplit.realp + getFFTProperties().fftSizeHalved;	
 		
-		fftConfig = create_fftsetup (fftProperties.fftSizeLog2, 0);
+		fftConfig = vDSP_create_fftsetup (fftProperties.fftSizeLog2, 0);
 	}
 }
 
 void FFTOperation::performFFT (float* samples)
 {
-	ctoz ((COMPLEX *) samples, 2, &fftBufferSplit, 1, fftProperties.fftSizeHalved);
-	fft_zrip (fftConfig, &fftBufferSplit, 1, fftProperties.fftSizeLog2, FFT_FORWARD);
+	vDSP_ctoz ((COMPLEX *) samples, 2, &fftBufferSplit, 1, fftProperties.fftSizeHalved);
+	vDSP_fft_zrip (fftConfig, &fftBufferSplit, 1, fftProperties.fftSizeLog2, FFT_FORWARD);
 }
 
 //============================================================================

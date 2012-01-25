@@ -209,7 +209,7 @@ static bool writeValueTreeToFile (ValueTree& treeToWrite, File& fileToWriteTo, b
         {
             ScopedPointer<XmlElement> treeAsXml (treeToWrite.createXml());
             
-            return treeAsXml->writeToFile (fileToWriteTo, String::empty);
+            return treeAsXml->writeToFile (fileToWriteTo, String::empty, "UTF-8", 200);
         }
         else 
         {

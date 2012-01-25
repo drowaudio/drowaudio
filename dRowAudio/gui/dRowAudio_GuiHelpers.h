@@ -139,7 +139,7 @@ namespace GuiHelpers
             case Stop:
             {
                 Path squarePath;
-                squarePath.addRectangle(100.0f, 100.0f, 100.0f, 100.0f);
+                squarePath.addRectangle (100.0f, 100.0f, 100.0f, 100.0f);
                 
                 DrawablePath squareImage;
                 squareImage.setFill (colour);
@@ -151,23 +151,23 @@ namespace GuiHelpers
             case Play:
             {
                 Path trianglePath;
-                trianglePath.addTriangle(0.0f, 0.0f, 0.0f, 100.0f, 100.0f, 50.0f);
+                trianglePath.addTriangle (0.0f, 0.0f, 0.0f, 100.0f, 100.0f, 50.0f);
                 
                 DrawablePath triangleImage;
-                triangleImage.setFill(colour);
-                triangleImage.setPath(trianglePath);
+                triangleImage.setFill (colour);
+                triangleImage.setPath (trianglePath);
                 
                 return triangleImage;
             }
             case Pause:
             {
                 Path pausePath;
-                pausePath.addRectangle(0.0f, 0.0f, 20.0f, 100.0f);
-                pausePath.addRectangle(60.0f, 0.0f, 20.0f, 100.0f);
+                pausePath.addRectangle (0.0f, 0.0f, 20.0f, 100.0f);
+                pausePath.addRectangle (60.0f, 0.0f, 20.0f, 100.0f);
                 
                 DrawablePath pauseImage;
-                pauseImage.setFill(colour);
-                pauseImage.setPath(pausePath);
+                pauseImage.setFill (colour);
+                pauseImage.setPath (pausePath);
                 
                 return pauseImage;
             }
@@ -175,12 +175,12 @@ namespace GuiHelpers
             case Cue:
             {
                 Path p;
-                p.addRectangle(0, 0, 30, 50);
+                p.addRectangle (0, 0, 30, 50);
                 p.addArrow (Line<float> (0.0f, 50.0f, 100.0f, 50.0f), 30.0f, 100.0f, 40.0f);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(colour);
-                drawablePath.setPath(p);
+                drawablePath.setFill (colour);
+                drawablePath.setPath (p);
                 
                 return drawablePath;
             }
@@ -188,24 +188,24 @@ namespace GuiHelpers
             case Next:
             {
                 Path p;
-                p.addTriangle(0.0f, 0.0f, 0.0f, 100.0f, 90.0f, 50.0f);
-                p.addRectangle(90, 0, 10, 100);
+                p.addTriangle (0.0f, 0.0f, 0.0f, 100.0f, 90.0f, 50.0f);
+                p.addRectangle (90, 0, 10, 100);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(colour);
-                drawablePath.setPath(p);
+                drawablePath.setFill (colour);
+                drawablePath.setPath (p);
                 
                 return drawablePath;
             }
             case Previous:
             {
                 Path p;
-                p.addTriangle(100.0f, 100.0f, 100.0f, 0.0f, 10.0f, 50.0f);
-                p.addRectangle(0, 0, 10, 100);
+                p.addTriangle (100.0f, 100.0f, 100.0f, 0.0f, 10.0f, 50.0f);
+                p.addRectangle (0, 0, 10, 100);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(colour);
-                drawablePath.setPath(p);
+                drawablePath.setFill (colour);
+                drawablePath.setPath (p);
                 
                 return drawablePath;
             }
@@ -213,12 +213,12 @@ namespace GuiHelpers
             case ShuffleForward:
             {
                 Path p;
-                p.addTriangle(0.0f, 0.0f, 0.0f, 100.0f, 50.0f, 50.0f);
-                p.addTriangle(50.0f, 0.0f, 50.0f, 100.0f, 100.0f, 50.0f);
+                p.addTriangle (0.0f, 0.0f, 0.0f, 100.0f, 50.0f, 50.0f);
+                p.addTriangle (50.0f, 0.0f, 50.0f, 100.0f, 100.0f, 50.0f);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(colour);
-                drawablePath.setPath(p);
+                drawablePath.setFill (colour);
+                drawablePath.setPath (p);
                 
                 return drawablePath;
             }			
@@ -226,12 +226,16 @@ namespace GuiHelpers
             case ShuffleBack:
             {
                 Path p;
-                p.addTriangle(50.0f, 0.0f, 50.0f, 100.0f, 0.0f, 50.0f);
-                p.addTriangle(100.0f, 0.0f, 100.0f, 100.0f, 50.0f, 50.0f);
+//                p.addTriangle (50.0f, 0.0f, 50.0f, 100.0f, 0.0f, 50.0f);
+//                p.addTriangle (100.0f, 0.0f, 100.0f, 100.0f, 50.0f, 50.0f);
+//                p.addTriangle (25.0f, 0.0f, 25.0f, 50.0f, 0.0f, 25.0f);
+//                p.addTriangle (100.0f, 0.0f, 100.0f, 50.0f, 50.0f, 25.0f);
+                p.addTriangle (0.0f, 50.0f, 75.0f, 0.0f, 75.0f, 100.0f);
+                p.addTriangle (75.0f, 50.0f, 150.0f, 0.0f, 150.0f, 100.0f);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(colour);
-                drawablePath.setPath(p);
+                drawablePath.setFill (colour);
+                drawablePath.setPath (p);
                 
                 return drawablePath;
             }
@@ -239,12 +243,12 @@ namespace GuiHelpers
             case Eject:
             {
                 Path p;
-                p.addTriangle(0, 65, 100, 65, 50, 0);
-                p.addRectangle(0, 80, 100, 20);
+                p.addTriangle (0, 65, 100, 65, 50, 0);
+                p.addRectangle (0, 80, 100, 20);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(colour);
-                drawablePath.setPath(p);
+                drawablePath.setFill (colour);
+                drawablePath.setPath (p);
                 
                 return drawablePath;			
             }
@@ -253,15 +257,15 @@ namespace GuiHelpers
             {
                 Path p;
                 p.startNewSubPath (0.0f, 0.0f);
-                p.lineTo(100.0f, 100.0f);
+                p.lineTo (100.0f, 100.0f);
                 p.startNewSubPath (100.0f, 0.0f);
-                p.lineTo(0.0f, 100.0f);
+                p.lineTo (0.0f, 100.0f);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(Colours::white.withAlpha(0.0f));
-                drawablePath.setStrokeFill(colour);
-                drawablePath.setStrokeThickness(15);
-                drawablePath.setPath(p);
+                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                drawablePath.setStrokeFill (colour);
+                drawablePath.setStrokeThickness (15);
+                drawablePath.setPath (p);
                 
                 return drawablePath;			
             }
@@ -270,15 +274,15 @@ namespace GuiHelpers
             {
                 Path p;
                 p.startNewSubPath (50.0f, 0.0f);
-                p.lineTo(50.0f, 100.0f);
+                p.lineTo (50.0f, 100.0f);
                 p.startNewSubPath (0.0f, 50.0f);
-                p.lineTo(100.0f, 50.0f);
+                p.lineTo (100.0f, 50.0f);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(Colours::white.withAlpha(0.0f));
-                drawablePath.setStrokeFill(colour);
-                drawablePath.setStrokeThickness(15);
-                drawablePath.setPath(p);
+                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                drawablePath.setStrokeFill (colour);
+                drawablePath.setStrokeThickness (15);
+                drawablePath.setPath (p);
                 
                 return drawablePath;			
             }
@@ -286,15 +290,15 @@ namespace GuiHelpers
             case Search:
             {
                 Path p;
-                p.addEllipse(20, 0, 80, 80);
+                p.addEllipse (20, 0, 80, 80);
                 p.startNewSubPath (0.0f, 100.0f);
-                p.lineTo(35.0f, 65.0f);
+                p.lineTo (35.0f, 65.0f);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(Colours::white.withAlpha(0.0f));
-                drawablePath.setStrokeFill(colour);
-                drawablePath.setStrokeThickness(15);
-                drawablePath.setPath(p);
+                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                drawablePath.setStrokeFill (colour);
+                drawablePath.setStrokeThickness (15);
+                drawablePath.setPath (p);
                 
                 return drawablePath;			
             }
@@ -302,15 +306,15 @@ namespace GuiHelpers
             case Power:
             {
                 Path p;
-                p.addArc(0, 20, 100, 100, 0.18*float_Pi, 2*float_Pi-(0.18*float_Pi), true);
+                p.addArc (0, 20, 100, 100, 0.18 * float_Pi, 2 * float_Pi - (0.18 * float_Pi), true);
                 p.startNewSubPath (50.0f, 0.0f);
-                p.lineTo(50.0f, 70.0f);
+                p.lineTo (50.0f, 70.0f);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(Colours::white.withAlpha(0.0f));
-                drawablePath.setStrokeFill(colour);
-                drawablePath.setStrokeThickness(10);
-                drawablePath.setPath(p);
+                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                drawablePath.setStrokeFill (colour);
+                drawablePath.setStrokeThickness (10);
+                drawablePath.setPath (p);
                 
                 return drawablePath;
             }
@@ -319,16 +323,16 @@ namespace GuiHelpers
             {
                 Path p;
                 p.startNewSubPath (50.0f, 0.0f);
-                p.lineTo(50.0f, 30.0f);
-                p.lineTo(80.0f, 70.0f);
+                p.lineTo (50.0f, 30.0f);
+                p.lineTo (80.0f, 70.0f);
                 p.startNewSubPath (50.0f, 70.0f);
-                p.lineTo(50.0f, 100.0f);
+                p.lineTo (50.0f, 100.0f);
                 
                 DrawablePath drawablePath;
-                drawablePath.setFill(Colours::white.withAlpha(0.0f));
-                drawablePath.setStrokeFill(colour);
-                drawablePath.setStrokeThickness(10);
-                drawablePath.setPath(p);
+                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                drawablePath.setStrokeFill (colour);
+                drawablePath.setStrokeThickness (10);
+                drawablePath.setPath (p);
                 
                 return drawablePath;			
             }
@@ -348,14 +352,14 @@ namespace GuiHelpers
             case Infinity:
             {
                 Path infPath;
-                infPath.addEllipse(0.0f, 0.0f, 50.0f, 50.0f);
-                infPath.startNewSubPath(50.0f, 0.0f);
-                infPath.addEllipse(50.0f, 0.0f, 50.0f, 50.0f);
+                infPath.addEllipse (0.0f, 0.0f, 50.0f, 50.0f);
+                infPath.startNewSubPath (50.0f, 0.0f);
+                infPath.addEllipse (50.0f, 0.0f, 50.0f, 50.0f);
                 
                 DrawablePath infImg;
-                infImg.setFill (Colours::white.withAlpha(0.0f));
-                infImg.setStrokeFill(colour);
-                infImg.setStrokeThickness(10.0f);
+                infImg.setFill (Colours::white.withAlpha (0.0f));
+                infImg.setStrokeFill (colour);
+                infImg.setStrokeThickness (10.0f);
                 infImg.setPath (infPath);
                 
                 return infImg;			
@@ -364,11 +368,11 @@ namespace GuiHelpers
             case DownTriangle:
             {
                 Path trianglePath;
-                trianglePath.addTriangle(0.0f, 0.0f, 100.0f, 0.0f, 50.0f, 100.0f);
+                trianglePath.addTriangle (0.0f, 0.0f, 100.0f, 0.0f, 50.0f, 100.0f);
                 
                 DrawablePath triangleImage;
-                triangleImage.setFill(colour);
-                triangleImage.setPath(trianglePath);
+                triangleImage.setFill (colour);
+                triangleImage.setPath (trianglePath);
                 
                 return triangleImage;
             }
@@ -376,11 +380,11 @@ namespace GuiHelpers
             case Info:
             {
                 Path circlePath;
-                circlePath.addEllipse(0.0f, 0.0f, 100.0f, 100.0f);
+                circlePath.addEllipse (0.0f, 0.0f, 100.0f, 100.0f);
                 
                 DrawablePath circleImage;
-                circleImage.setFill(colour);
-                circleImage.setPath(circlePath);
+                circleImage.setFill (colour);
+                circleImage.setPath (circlePath);
                 
                 return circleImage;
             }
@@ -388,14 +392,14 @@ namespace GuiHelpers
             case Loop:
             {
                 Path loopPath;
-                loopPath.addRoundedRectangle(0.0f, 0.0f, 150.0f, 50.0f, 25.0f);
-                loopPath.addTriangle(100.0f, -10.0f, 100.0f, 10.0f, 110.0f, 0.0f);
-                loopPath.addTriangle(40.0f, 50.0f, 50.0f, 60.0f, 50.0f, 40.0f);
+                loopPath.addRoundedRectangle (0.0f, 0.0f, 150.0f, 50.0f, 25.0f);
+                loopPath.addTriangle (100.0f, -10.0f, 100.0f, 10.0f, 110.0f, 0.0f);
+                loopPath.addTriangle (40.0f, 50.0f, 50.0f, 60.0f, 50.0f, 40.0f);
                 
                 DrawablePath loopImage;
                 loopImage.setFill (Colours::white.withAlpha(0.0f));
-                loopImage.setStrokeFill(colour);
-                loopImage.setStrokeThickness(15.0f);
+                loopImage.setStrokeFill (colour);
+                loopImage.setStrokeThickness (15.0f);
                 loopImage.setPath (loopPath);
                 
                 return loopImage;

@@ -109,8 +109,20 @@ BEGIN_JUCE_NAMESPACE
     #include "audio/dRowAudio_Buffer.h"
 #endif
 
+#ifndef __DROWAUDIO_ENVELOPEFOLLOWER_H__
+    #include "audio/dRowAudio_EnvelopeFollower.h"
+#endif
+
+#ifndef __DROWAUDIO_SAMPLERATECONVERTER_H__
+    #include "audio/dRowAudio_SampleRateConverter.h"
+#endif
+
 #ifndef __DROWAUDIO_BIQUADFILTER_H__
     #include "audio/filters/dRowAudio_BiquadFilter.h"
+#endif
+
+#ifndef __DROWAUDIO_ONEPOLEFILTER_H__
+    #include "audio/filters/dRowAudio_OnePoleFilter.h"
 #endif
 
 #ifndef __DROWAUDIO_WINDOW_H__

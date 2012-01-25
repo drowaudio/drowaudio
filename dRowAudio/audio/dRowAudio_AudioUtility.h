@@ -84,6 +84,19 @@ static inline double pitchRatioToSemitones (double pitchRatio)
     return (12.0 / log10 (2.0)) * log10 (pitchRatio);
 }
 
+/** Converts a frequency to MIDI note number.
+ */
+static inline double frequencyToMidi (double frequency)
+{
+    return 69.0 + (12.0 * log2 (frequency / 440.0));
+}
+
+/** Converts a MIDI note number to a frequency.
+ */
+static inline double midiToFrequency (double midiNoteNumber)
+{
+    return 440.0 * pow (2.0, (midiNoteNumber - 69.0) / 12.0);
+}
 
 /** Converts a time in seconds to a timecode string.
  */
