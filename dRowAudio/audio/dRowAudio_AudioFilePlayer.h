@@ -53,6 +53,11 @@ public:
      */
 	bool setFile (const File& newFile);
     
+    /** Sets the source of the player using a MemoryInputStream.
+        The stream will be deleted by the player when it is no longer needed.
+     */
+    bool setMemoryInputStream (MemoryInputStream* memoryInputStream);
+    
     /** Sets the source of the player using a memory block.
         The player will use this so should not be deleted until a new file is
         set or a nullptr is passed in here to clear the loaded file.

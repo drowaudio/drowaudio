@@ -77,6 +77,10 @@
 
 BEGIN_JUCE_NAMESPACE
 
+#if JUCE_MSVC
+    #pragma warning (disable: 4127 4702)
+#endif
+
 #include "AAFilter.cpp"
 #include "BPMDetect.cpp"
 #include "FIFOSampleBuffer.cpp"

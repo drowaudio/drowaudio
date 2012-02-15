@@ -21,7 +21,7 @@
 BEGIN_JUCE_NAMESPACE
 
 OnePoleFilter::OnePoleFilter() noexcept
-    : y1 (0.0), b0 (1.0), a1 (0.0)
+    : y1 (0.0f), b0 (1.0f), a1 (0.0f)
 {
 }
 
@@ -46,29 +46,29 @@ void OnePoleFilter::processSamples (float* const samples,
 void OnePoleFilter::makeLowPass (const double sampleRate,
                                  const double frequency) noexcept
 {
-    float w0 = 2.0 * double_Pi * (frequency / sampleRate);
-    float cos_w0 = cos (w0);
+    const double w0 = 2.0 * double_Pi * (frequency / sampleRate);
+    const double cos_w0 = cos (w0);
 
-    float alpha = (2.0 - cos_w0) - sqrt ((2.0 - cos_w0) * (2.0 - cos_w0) - 1.0);
+    const double alpha = (2.0f - cos_w0) - sqrt ((2.0 - cos_w0) * (2.0 - cos_w0) - 1.0);
 
     const ScopedLock sl (lock);
     
-    b0 = 1.0 - alpha;
-    a1 = alpha;
+    b0 = 1.0f - (float) alpha;
+    a1 = (float) alpha;
 }
 
 void OnePoleFilter::makeHighPass (const double sampleRate,
                                   const double frequency) noexcept
 {
-    float w0 = 2.0 * double_Pi * (frequency / sampleRate);
-    float cos_w0 = cos (w0);
+    const double w0 = 2.0 * double_Pi * (frequency / sampleRate);
+    const double cos_w0 = cos (w0);
     
-    float alpha = (2.0 + cos_w0) - sqrt ((2.0 + cos_w0) * (2.0 + cos_w0) - 1.0);
+    const double alpha = (2.0 + cos_w0) - sqrt ((2.0 + cos_w0) * (2.0 + cos_w0) - 1.0);
 
     const ScopedLock sl (lock);
 
-    b0 = alpha - 1.0;
-    a1 = -alpha;
+    b0 = (float) alpha - 1.0f;
+    a1 = (float) -alpha;
 }
 
 END_JUCE_NAMESPACE

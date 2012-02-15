@@ -51,7 +51,7 @@ public:
 		Therefore it is best to either reset the whole buffer or refill it from your own
 		algorithm before using it.
 	 */
-	inline void setSize (int newSize);
+	void setSize (int newSize);
 	
 	/**	Changes the size of the buffer.
 		This does the same as setSize() but slightly quicker with the expense of possibly

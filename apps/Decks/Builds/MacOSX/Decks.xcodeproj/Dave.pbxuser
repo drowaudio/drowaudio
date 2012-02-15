@@ -38,7 +38,7 @@
 	0F0CEC6F15C8EBD9808EC803 /* DecksColours.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 650}}";
-			sepNavSelRange = "{338, 0}";
+			sepNavSelRange = "{497, 167}";
 			sepNavVisRange = "{0, 895}";
 		};
 	};
@@ -82,8 +82,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 347925362;
-			PBXWorkspaceStateSaveDate = 347925362;
+			PBXPerProjectTemplateStateSaveDate = 349537482;
+			PBXWorkspaceStateSaveDate = 349537482;
 		};
 		perUserProjectItems = {
 			550A9C7E1458272B00C7BAE8 /* PBXTextBookmark */ = 550A9C7E1458272B00C7BAE8 /* PBXTextBookmark */;
@@ -110,12 +110,13 @@
 			5553105514BCF08500F0A660 /* PBXTextBookmark */ = 5553105514BCF08500F0A660 /* PBXTextBookmark */;
 			5553105614BCF08500F0A660 /* PBXTextBookmark */ = 5553105614BCF08500F0A660 /* PBXTextBookmark */;
 			5553108414BCF80600F0A660 /* PBXTextBookmark */ = 5553108414BCF80600F0A660 /* PBXTextBookmark */;
-			5553108514BCF80600F0A660 /* PBXTextBookmark */ = 5553108514BCF80600F0A660 /* PBXTextBookmark */;
-			5563C57B1440A910003AAEDD /* PBXTextBookmark */ = 5563C57B1440A910003AAEDD /* PBXTextBookmark */;
+			55532B7714D58D9A00F0A660 /* XCBuildMessageTextBookmark */ = 55532B7714D58D9A00F0A660 /* XCBuildMessageTextBookmark */;
+			55532B7A14D58D9D00F0A660 /* PBXTextBookmark */ = 55532B7A14D58D9D00F0A660 /* PBXTextBookmark */;
+			55532B7B14D58D9D00F0A660 /* PBXTextBookmark */ = 55532B7B14D58D9D00F0A660 /* PBXTextBookmark */;
+			55532B7C14D58D9D00F0A660 /* PBXTextBookmark */ = 55532B7C14D58D9D00F0A660 /* PBXTextBookmark */;
 			5563C5801440A910003AAEDD /* PBXTextBookmark */ = 5563C5801440A910003AAEDD /* PBXTextBookmark */;
 			5563C5831440A910003AAEDD /* PBXTextBookmark */ = 5563C5831440A910003AAEDD /* PBXTextBookmark */;
 			5563C5851440A910003AAEDD /* PBXTextBookmark */ = 5563C5851440A910003AAEDD /* PBXTextBookmark */;
-			5563C5871440A910003AAEDD /* PBXTextBookmark */ = 5563C5871440A910003AAEDD /* PBXTextBookmark */;
 			5563C5881440A910003AAEDD /* PBXTextBookmark */ = 5563C5881440A910003AAEDD /* PBXTextBookmark */;
 			5563C58B1440A910003AAEDD /* PBXTextBookmark */ = 5563C58B1440A910003AAEDD /* PBXTextBookmark */;
 			5563C58C1440A910003AAEDD /* PBXTextBookmark */ = 5563C58C1440A910003AAEDD /* PBXTextBookmark */;
@@ -144,7 +145,6 @@
 			5563C5AA1440A910003AAEDD /* PBXTextBookmark */ = 5563C5AA1440A910003AAEDD /* PBXTextBookmark */;
 			5563C5AB1440A910003AAEDD /* PBXTextBookmark */ = 5563C5AB1440A910003AAEDD /* PBXTextBookmark */;
 			5563C5AC1440A910003AAEDD /* PBXTextBookmark */ = 5563C5AC1440A910003AAEDD /* PBXTextBookmark */;
-			5563C5AE1440A910003AAEDD /* PBXTextBookmark */ = 5563C5AE1440A910003AAEDD /* PBXTextBookmark */;
 			5563C5AF1440A910003AAEDD /* PBXTextBookmark */ = 5563C5AF1440A910003AAEDD /* PBXTextBookmark */;
 			5563C5B01440A910003AAEDD /* PBXTextBookmark */ = 5563C5B01440A910003AAEDD /* PBXTextBookmark */;
 			5563C5B11440A910003AAEDD /* PBXTextBookmark */ = 5563C5B11440A910003AAEDD /* PBXTextBookmark */;
@@ -752,15 +752,44 @@
 		vrLen = 1998;
 		vrLoc = 11923;
 	};
-	5553108514BCF80600F0A660 /* PBXTextBookmark */ = {
+	55532B7714D58D9A00F0A660 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Unused variable 'm'";
+		fRef = 6A73C784742D0AFDBD914DBD /* TrackSuggestionTable.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 83;
+		rType = 1;
+	};
+	55532B7A14D58D9D00F0A660 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = F3093898BB1FED0FB0E1279A /* MixerSettings.h */;
 		name = "MixerSettings.h: 86";
 		rLen = 385;
 		rLoc = 2110;
 		rType = 0;
-		vrLen = 876;
+		vrLen = 870;
 		vrLoc = 1830;
+	};
+	55532B7B14D58D9D00F0A660 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0F0CEC6F15C8EBD9808EC803 /* DecksColours.h */;
+		name = "DecksColours.h: 23";
+		rLen = 167;
+		rLoc = 497;
+		rType = 0;
+		vrLen = 895;
+		vrLoc = 0;
+	};
+	55532B7C14D58D9D00F0A660 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6A73C784742D0AFDBD914DBD /* TrackSuggestionTable.cpp */;
+		name = "TrackSuggestionTable.cpp: 77";
+		rLen = 0;
+		rLoc = 2732;
+		rType = 0;
+		vrLen = 1566;
+		vrLoc = 2077;
 	};
 	5563C5241440A496003AAEDD /* Decks */ = {
 		isa = PBXExecutable;
@@ -808,16 +837,6 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	5563C57B1440A910003AAEDD /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = F3093898BB1FED0FB0E1279A /* MixerSettings.h */;
-		name = "MixerSettings.h: 15";
-		rLen = 0;
-		rLoc = 396;
-		rType = 0;
-		vrLen = 1578;
-		vrLoc = 0;
-	};
 	5563C5801440A910003AAEDD /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = A39E859BB6F1579ADCAE665B /* dRowAudio_SampleRateConverter.h */;
@@ -846,16 +865,6 @@
 		rLoc = 188;
 		rType = 0;
 		vrLen = 1123;
-		vrLoc = 0;
-	};
-	5563C5871440A910003AAEDD /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 0F0CEC6F15C8EBD9808EC803 /* DecksColours.h */;
-		name = "DecksColours.h: 14";
-		rLen = 0;
-		rLoc = 338;
-		rType = 0;
-		vrLen = 895;
 		vrLoc = 0;
 	};
 	5563C5881440A910003AAEDD /* PBXTextBookmark */ = {
@@ -1136,16 +1145,6 @@
 		rLoc = 0;
 		rType = 0;
 		vrLen = 2064;
-		vrLoc = 0;
-	};
-	5563C5AE1440A910003AAEDD /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 6A73C784742D0AFDBD914DBD /* TrackSuggestionTable.cpp */;
-		name = "TrackSuggestionTable.cpp: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1511;
 		vrLoc = 0;
 	};
 	5563C5AF1440A910003AAEDD /* PBXTextBookmark */ = {
@@ -1532,9 +1531,9 @@
 	};
 	6A73C784742D0AFDBD914DBD /* TrackSuggestionTable.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {963, 4602}}";
-			sepNavSelRange = "{10311, 0}";
-			sepNavVisRange = "{9943, 788}";
+			sepNavIntBoundsRect = "{{0, 0}, {963, 4628}}";
+			sepNavSelRange = "{2823, 19}";
+			sepNavVisRange = "{2417, 738}";
 		};
 	};
 	6F5A319D09695655A9902018 /* MixTypeComponent.cpp */ = {
@@ -1952,9 +1951,9 @@
 	};
 	F3093898BB1FED0FB0E1279A /* MixerSettings.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 2548}}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 2574}}";
 			sepNavSelRange = "{2110, 385}";
-			sepNavVisRange = "{1830, 876}";
+			sepNavVisRange = "{1830, 870}";
 		};
 	};
 	F855D7A5564186F86E8FCB35 /* TitleBarComponent.h */ = {

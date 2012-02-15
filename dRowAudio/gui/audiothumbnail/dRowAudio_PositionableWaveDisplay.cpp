@@ -100,7 +100,7 @@ void PositionableWaveDisplay::resized()
     Graphics g (cursorImage);
     g.fillAll (Colours::black);
     g.setColour (Colours::white);
-	g.drawVerticalLine (1, 0, cursorImage.getHeight());
+	g.drawVerticalLine (1, 0.0f, (float) cursorImage.getHeight());
     
     if (audioThumbnailImage.hasFinishedLoading()) 
     {

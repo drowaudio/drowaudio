@@ -213,7 +213,7 @@ void MusicLibraryTable::paintCell (Graphics& g,
 	g.fillRect (0, height - 1, width, 1);
 }
 
-void MusicLibraryTable::sortOrderChanged (int newSortColumnId, const bool isForwards)
+void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
 {
 	if (newSortColumnId != 0)
 	{

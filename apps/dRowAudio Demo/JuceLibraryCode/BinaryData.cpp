@@ -5,26 +5,8 @@
 
 */
 
-#include "BinaryData.h"
-
-
-const char* BinaryData::getNamedResource (const char* resourceNameUTF8, int& numBytes) throw()
+namespace BinaryData
 {
-    int hash = 0;
-    if (resourceNameUTF8 != 0)
-        while (*resourceNameUTF8 != 0)
-            hash = 31 * hash + *resourceNameUTF8++;
-
-    switch (hash)
-    {
-        case 0xd6c400ae:  numBytes = BinaryData::splash_screen_pngSize; return BinaryData::splash_screen_png;
-        default: break;
-    }
-
-    numBytes = 0;
-    return 0;
-}
-
 
 //================== splash_screen.png ==================
 static const unsigned char temp_d81f7a21[] =
@@ -630,4 +612,25 @@ static const unsigned char temp_d81f7a21[] =
 223,254,109,28,199,29,90,0,254,0,128,63,34,217,145,115,0,94,31,66,135,225,36,62,4,38,195,107,27,2,147,143,47,64,24,2,147,23,18,152,188,13,96,13,192,135,0,126,9,192,111,66,8,80,147,205,182,237,4,120,148,203,101,216,182,13,203,178,96,24,6,12,35,237,248,
 241,59,191,243,59,248,255,15,0,252,53,56,16,99,181,1,200,0,0,0,0,73,69,78,68,174,66,96,130,0,0 };
 
-const char* BinaryData::splash_screen_png = (const char*) temp_d81f7a21;
+const char* splash_screen_png = (const char*) temp_d81f7a21;
+
+
+const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw()
+{
+    int hash = 0;
+    if (resourceNameUTF8 != 0)
+        while (*resourceNameUTF8 != 0)
+            hash = 31 * hash + *resourceNameUTF8++;
+
+    switch (hash)
+    {
+        case 0xd6c400ae:
+        case 0xd9c01892:  numBytes = 42622; return splash_screen_png;
+        default: break;
+    }
+
+    numBytes = 0;
+    return 0;
+}
+
+}

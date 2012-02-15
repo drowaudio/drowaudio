@@ -78,7 +78,7 @@ void SegmentedMeter::resized()
     
     const int numSegments = (numRedSeg + numYellowSeg + numGreenSeg);
 	const float segmentHeight = (h - m) / (float) numSegments;
-    const float segWidth = w - (2 * m);
+    const float segWidth = w - (2.0f * m);
 	
 	for (int i = 1; i <= numSegments; ++i)
 	{
@@ -100,11 +100,11 @@ void SegmentedMeter::resized()
 
 		gOn.fillRect ((float) m, h - m - (i * segmentHeight), segWidth, segmentHeight);
 		gOn.setColour (Colours::black);
-		gOn.drawLine ((float) m, h - m - (i * segmentHeight), w - m, h - m - (i * segmentHeight), m);
+		gOn.drawLine ((float) m, h - m - (i * segmentHeight), (float) w - m, h - m - (i * segmentHeight), (float) m);
 		
         gOff.fillRect ((float) m, h - m - (i * segmentHeight), segWidth, segmentHeight);
 		gOff.setColour (Colours::black);
-		gOff.drawLine ((float) m, h - m - (i * segmentHeight), w - m, h - m - (i * segmentHeight), m);
+		gOff.drawLine ((float) m, h - m - (i * segmentHeight), (float) w - m, h - m - (i * segmentHeight), (float) m);
 	}
 	
 	gOn.setColour (Colours::black);

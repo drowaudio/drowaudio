@@ -98,7 +98,7 @@ public:
                     bool rowIsSelected);
 
     /** @internal */
-    void sortOrderChanged (int newSortColumnId, const bool isForwards);
+    void sortOrderChanged (int newSortColumnId, bool isForwards);
 
     /** @internal */
     int getColumnAutoSizeWidth (int columnId);

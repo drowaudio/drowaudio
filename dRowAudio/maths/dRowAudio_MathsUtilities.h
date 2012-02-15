@@ -21,6 +21,10 @@
 #ifndef __DROWAUDIO_MATHSUTILITIES_H__
 #define __DROWAUDIO_MATHSUTILITIES_H__
 
+#if JUCE_MSVC
+    #pragma warning (disable: 4505)
+#endif
+
 //==============================================================================
 /**	Linear Interpolater.
 	Performs a linear interpolation for a fractional buffer position.

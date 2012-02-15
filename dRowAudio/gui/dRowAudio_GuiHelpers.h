@@ -21,6 +21,10 @@
 #ifndef __DROWAUDIO_GUIHELPERS_H__
 #define __DROWAUDIO_GUIHELPERS_H__
 
+#if JUCE_MSVC
+    #pragma warning (disable: 4505)
+#endif
+
 namespace GuiHelpers
 {
     /** Creates a base colour for a component based on the current keyboard
@@ -306,14 +310,14 @@ namespace GuiHelpers
             case Power:
             {
                 Path p;
-                p.addArc (0, 20, 100, 100, 0.18 * float_Pi, 2 * float_Pi - (0.18 * float_Pi), true);
+                p.addArc (0.0f, 20.0f, 100.0f, 100.0f, 0.18f * float_Pi, 2.0f * float_Pi - (0.18f * float_Pi), true);
                 p.startNewSubPath (50.0f, 0.0f);
                 p.lineTo (50.0f, 70.0f);
                 
                 DrawablePath drawablePath;
                 drawablePath.setFill (Colours::white.withAlpha (0.0f));
                 drawablePath.setStrokeFill (colour);
-                drawablePath.setStrokeThickness (10);
+                drawablePath.setStrokeThickness (10.0f);
                 drawablePath.setPath (p);
                 
                 return drawablePath;
@@ -411,7 +415,7 @@ namespace GuiHelpers
                 p.addPolygon (Point<float> (50.0f, 50.0f),
                               8,
                               50.0f,
-                              -double_Pi * 0.125);
+                              -float_Pi * 0.125f);
                 
                 //            GlyphArrangement text;
                 //            text.addLineOfText (Font (100), "SLOW", 0, 0);
@@ -434,9 +438,9 @@ namespace GuiHelpers
                 Path p;
                 p.addRoundedRectangle (0.0f, 33.0f, 33.0f, 33.0f, 2.0f);
                 p.addTriangle (7.5f, 50.0f, 55.0f, 6.5f, 55.0f, 93.5f);
-                p.addArc (60.0f, 30.0f, 12.0f, 40.0f, double_Pi * 0.15, double_Pi * 0.85, true);
-                p.addArc (70.0f, 20.0f, 16.0f, 60.0f, double_Pi * 0.15, double_Pi * 0.85, true);
-                p.addArc (80.0f, 10.0f, 20.0f, 80.0f, double_Pi * 0.15, double_Pi * 0.85, true);
+                p.addArc (60.0f, 30.0f, 12.0f, 40.0f, float_Pi * 0.15f, float_Pi * 0.85f, true);
+                p.addArc (70.0f, 20.0f, 16.0f, 60.0f, float_Pi * 0.15f, float_Pi * 0.85f, true);
+                p.addArc (80.0f, 10.0f, 20.0f, 80.0f, float_Pi * 0.15f, float_Pi * 0.85f, true);
                 
                 DrawablePath dp;
                 dp.setFill (colour);

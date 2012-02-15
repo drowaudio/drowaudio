@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 		1B89A43F6470F4DFC13E5594 = { isa = PBXBuildFile; fileRef = D16937FF8B9B1370239FDBC2; };
@@ -195,6 +195,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				ONLY_ACTIVE_ARCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -209,6 +211,8 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -305,7 +309,7 @@
 				E36C893531BA10B419C53376,
 				B882EA2AF2F1CA9233CD00B6,
 				010B0E382DD4C468114F9000 ); buildRules = ( ); dependencies = ( ); name = "dRowAudio Demo"; productName = "dRowAudio Demo"; productReference = 0AC2382300FDE0397BBFBDE0; productInstallPath = "$(HOME)/Applications"; productType = "com.apple.product-type.application"; };
-		F14E15AF4679B599170D51DF = { isa = PBXProject; buildConfigurationList = A808B7F601C37CBA2A6D8AC3; compatibilityVersion = "Xcode 3.1"; hasScannedForEncodings = 0; mainGroup = 31E5764FFF7646D97345C0EF; projectDirPath = ""; projectRoot = ""; targets = ( D9156CAAC7641D12C3DB1E30 ); };
+		F14E15AF4679B599170D51DF = { isa = PBXProject; buildConfigurationList = A808B7F601C37CBA2A6D8AC3; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = 31E5764FFF7646D97345C0EF; projectDirPath = ""; projectRoot = ""; targets = ( D9156CAAC7641D12C3DB1E30 ); };
 	};
 	rootObject = F14E15AF4679B599170D51DF;
 }

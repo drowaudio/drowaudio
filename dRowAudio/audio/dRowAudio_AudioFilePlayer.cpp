@@ -92,17 +92,25 @@ bool AudioFilePlayer::setFile (const File& newFile)
     return setSourceWithReader (formatManager->createReaderFor (file));
 }
 
+bool AudioFilePlayer::setMemoryInputStream (MemoryInputStream* newMemoryInputStream)
+{
+    file = File::nonexistent;
+    memoryInputStream = newMemoryInputStream;
+    
+    return setSourceWithReader (formatManager->createReaderFor (memoryInputStream));
+}
+
 bool AudioFilePlayer::setMemoryBlock (MemoryBlock* inputBlock)
 {
     file = File::nonexistent;
     currentMemoryBlock = inputBlock;
-
+    
     if (currentMemoryBlock != nullptr)
         memoryInputStream = new MemoryInputStream (*currentMemoryBlock, false);
     else 
         memoryInputStream = nullptr;
-
-    return setSourceWithReader (formatManager->createReaderFor (memoryInputStream));
+    
+    return setMemoryInputStream (memoryInputStream);
 }
 
 MemoryInputStream* AudioFilePlayer::getInputStream()

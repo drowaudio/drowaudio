@@ -75,9 +75,9 @@ void BiquadFilter::processSamples (int* const samples,
 #endif
 			
             x2 = x1;
-            x1 = in;
+            x1 = (float) in;
             y2 = y1;
-            y1 = out;
+            y1 = (float) out;
 			
             samples[i] = out;
         }

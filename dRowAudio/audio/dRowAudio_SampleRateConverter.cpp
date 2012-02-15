@@ -61,7 +61,7 @@ void SampleRateConverter::process (float** inputChannelData, const int numInputC
         for (int channel = 0; channel < channelsToProcess; ++channel)
             *outputChannelData[channel]++ = linearInterpolate (inputChannelData[channel], numInputSamples, nextSample);
         
-        nextSample += localRatio;
+        nextSample += (float) localRatio;
     }
     
     if (localRatio < 0.9999)

@@ -77,7 +77,7 @@ void DraggableWaveDisplay::resized()
     Graphics g (playheadImage);
     g.fillAll (Colours::black);
     g.setColour (Colours::white);
-    g.drawVerticalLine (1, 0, playheadImage.getHeight());
+    g.drawVerticalLine (1, 0.0f, (float) playheadImage.getHeight());
 }
 
 void DraggableWaveDisplay::paint (Graphics &g)

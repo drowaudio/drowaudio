@@ -161,8 +161,8 @@ public:
 			int diameter = roundToInt (height * 0.5f);
 			Path p;
 			p.addTriangle (width - (height * 0.2f), height * 0.5f,
-						   (width - diameter), height * 0.3f,
-						   (width - diameter), height * 0.7f);
+						   (float) (width - diameter), height * 0.3f,
+						   (float) (width - diameter), height * 0.7f);
 			g.setColour (findColour (ScrollBar::thumbColourId));
 			g.fillPath (p);
 			
@@ -228,35 +228,35 @@ public:
 		
 		if (isScrollbarVertical)
 		{
-			slotPath.addRoundedRectangle (x,
-										  y,
-										  width,
-										  height,
+			slotPath.addRoundedRectangle ((float) x,
+										  (float) y,
+										  (float) width,
+										  (float) height,
 										  width * 0.5f);
 			
 			if (thumbSize > 0)
-				thumbPath.addRoundedRectangle (x,
-											   thumbStartPosition,
-											   width,
-											   thumbSize,
-											   (width) * 0.5f);
+				thumbPath.addRoundedRectangle ((float) x,
+											   (float) thumbStartPosition,
+											   (float) width,
+											   (float) thumbSize,
+											   width * 0.5f);
 			gx1 = (float) x;
 			gx2 = x + width * 0.7f;
 		}
 		else
 		{
-			slotPath.addRoundedRectangle (x,
-										  y,
-										  width,
-										  height,
-										  (height) * 0.5f);
+			slotPath.addRoundedRectangle ((float) x,
+										  (float) y,
+										  (float) width,
+										  (float) height,
+										  height * 0.5f);
 			
 			if (thumbSize > 0)
-				thumbPath.addRoundedRectangle (thumbStartPosition,
-											   y,
-											   thumbSize,
-											   height,
-											   (height) * 0.5f);
+				thumbPath.addRoundedRectangle ((float) thumbStartPosition,
+											   (float) y,
+											   (float) thumbSize,
+											   (float) height,
+											   height * 0.5f);
 			gy1 = (float) y;
 			gy2 = y + height * 0.7f;
 		}

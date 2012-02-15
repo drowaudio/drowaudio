@@ -21,6 +21,10 @@
 #ifndef __DROWAUDIO_UTILITY_H__
 #define __DROWAUDIO_UTILITY_H__
 
+#if JUCE_MSVC
+    #pragma warning (disable: 4505)
+#endif
+
 #include "dRowAudio_XmlHelpers.h"
 
 //==============================================================================
@@ -209,7 +213,10 @@ static bool writeValueTreeToFile (ValueTree& treeToWrite, File& fileToWriteTo, b
         {
             ScopedPointer<XmlElement> treeAsXml (treeToWrite.createXml());
             
-            return treeAsXml->writeToFile (fileToWriteTo, String::empty, "UTF-8", 200);
+            if (treeAsXml != nullptr)
+                return treeAsXml->writeToFile (fileToWriteTo, String::empty, "UTF-8", 200);
+            
+            return false;
         }
         else 
         {

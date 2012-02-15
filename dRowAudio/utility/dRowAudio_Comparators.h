@@ -48,6 +48,8 @@ namespace ValueTreeComparators
     private:
         const Identifier attributeToSort;
         const int direction;
+        
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Lexicographic);
     };
 
     //==============================================================================
@@ -74,6 +76,8 @@ namespace ValueTreeComparators
     private:
         const Identifier attributeToSort;
         const int direction;
+        
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Numerical);
     };	
         
     //==============================================================================
@@ -107,6 +111,8 @@ namespace ValueTreeComparators
         const Identifier attributeToSort;
         const Identifier backupAttribute;
         const int direction;
+        
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LexicographicWithBackup);
     };
     
 } //ValueTreeComparators
@@ -140,6 +146,8 @@ namespace XmlComparators
     private:
         const String attributeToSort;
         const int direction;
+        
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LexicographicSorter);
     };
 
     //==============================================================================
@@ -171,6 +179,8 @@ namespace XmlComparators
     private:
         const String attributeToSort;
         const int direction;
+        
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NumberDataSorter);
     };
 } //XmlComparators
 
