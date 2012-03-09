@@ -211,6 +211,10 @@ BEGIN_JUCE_NAMESPACE
     #include "maths/dRowAudio_MathsUtilities.h"
 #endif
 
+#ifndef __DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__
+    #include "maths/dRowAudio_CumulativeMovingAverage.h"
+#endif 
+
 #ifndef __DROWAUDIO_BEZIERCURVE_H__
     #include "maths/dRowAudio_BezierCurve.h"
 #endif

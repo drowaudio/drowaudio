@@ -44,6 +44,30 @@ inline float linearInterpolate (const float* buffer, int bufferSize, float buffe
 	return fOutput;
 }
 
+/** Checks to see if two values are equal within a given precision.
+ */
+inline static bool almostEqual (double firstValue, double secondValue, double precision = 0.00001)
+{
+	if (fabs (firstValue - secondValue) < precision)
+		return true;
+	else
+		return false;
+}
+
+/** Checks to see if a number is Nan eg. sqrt (-1).
+ */
+template <typename Type>
+inline static bool isnan (Type value)
+{
+#if JUCE_MAC
+    return std::isnan (value);
+#else
+    volatile Type num = value;
+    
+    return num != num;
+#endif
+}
+
 /**	Sinc function.
  */
 inline double sinc (const double x) noexcept
@@ -111,5 +135,26 @@ inline int findPowerForBase2 (int number) noexcept
 	else
 		return (int) (log ((double) nextPowerOf2 (number)) / log(2.0));
 }
+
+//==============================================================================
+#if JUCE_UNIT_TESTS
+
+class MathsUnitTests  : public UnitTest
+{
+public:
+    MathsUnitTests() : UnitTest ("Maths Utilities") {}
+    
+    void runTest()
+    {
+        beginTest ("Maths Utilities");
+
+        expectEquals ((int) isnan (1), 0);
+        expectEquals ((int) isnan (sqrt (-1.0)), 1);
+    }
+};
+
+static MathsUnitTests mathsUnitTests;
+
+#endif
 
 #endif //__DROWAUDIO_MATHSUTILITIES_H__

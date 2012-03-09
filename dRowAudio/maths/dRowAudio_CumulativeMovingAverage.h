@@ -18,30 +18,30 @@
   ==============================================================================
  */
 
-#ifndef __DROWAUDIO_CUMALATIVEMOVINGAVERAGE_H__
-#define __DROWAUDIO_CUMALATIVEMOVINGAVERAGE_H__
+#ifndef __DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__
+#define __DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__
 
 //==============================================================================
 /**
-    Simple cumalative average class which you can add values to and will return
+    Simple cumulative average class which you can add values to and will return
     the mean of them. This can be used when you don't know the total number of
     values that need to be averaged.
  */
-class CumalativeMovingAverage
+class CumulativeMovingAverage
 {
 public:
     //==============================================================================
-    /** Creates a blank CumalativeMovingAverage.
+    /** Creates a blank CumulativeMovingAverage.
      */
-    CumalativeMovingAverage() noexcept
+    CumulativeMovingAverage() noexcept
         : currentAverage (0.0),
           numValues (0)
     {
     }
     
-    /** Creates a copy of another CumalativeMovingAverage.
+    /** Creates a copy of another CumulativeMovingAverage.
      */
-    CumalativeMovingAverage (CumalativeMovingAverage& other) noexcept
+    CumulativeMovingAverage (const CumulativeMovingAverage& other) noexcept
     {
         currentAverage = other.currentAverage;
         numValues = other.numValues;
@@ -49,11 +49,11 @@ public:
     
     /** Destructor.
      */
-    ~CumalativeMovingAverage()
+    ~CumulativeMovingAverage()
     {
     }
     
-    /** Resets the CumalativeMovingAverage.
+    /** Resets the CumulativeMovingAverage.
      */
     void reset() noexcept
     {
@@ -65,7 +65,10 @@ public:
      */
     inline double add (double newValue) noexcept
     {
-        return currentAverage = (newValue + (numValues * currentAverage)) /  ++numValues;
+        currentAverage = (newValue + (numValues * currentAverage)) / (numValues + 1);
+        ++numValues;
+        
+        return currentAverage;
     }
     
     /** Returns the current average.
@@ -74,15 +77,43 @@ public:
     
     /** Returns the number of values that have contributed to the current average.
      */
-    inline double getNumValues()                    {   return numValues;       }
+    inline int getNumValues()                       {   return numValues;       }
     
 private:
     //==============================================================================
     double currentAverage;
     int numValues;
     
-    JUCE_LEAK_DETECTOR (CumalativeMovingAverage);
+    JUCE_LEAK_DETECTOR (CumulativeMovingAverage);
 };
 
 
-#endif //__DROWAUDIO_CUMALATIVEMOVINGAVERAGE_H__
+//==============================================================================
+#if JUCE_UNIT_TESTS
+
+class CumulativeMovingAverageTests  : public UnitTest
+{
+public:
+    CumulativeMovingAverageTests() : UnitTest ("CumulativeMovingAverage") {}
+    
+    void runTest()
+    {
+        beginTest ("CumulativeMovingAverage");
+        
+        CumulativeMovingAverage average;
+        
+        expectEquals (average.add (1.0), 1.0);
+        expectEquals (average.add (2.0), 1.5);
+        expectEquals (average.add (3.0), 2.0);
+        expectEquals (average.add (4.0), 2.5);
+        expectEquals (average.add (5.0), 3.0);
+        
+        expectEquals (average.getNumValues(), 5);
+    }
+};
+
+static CumulativeMovingAverageTests cumulativeMovingAverageUnitTests;
+
+#endif
+
+#endif //__DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__

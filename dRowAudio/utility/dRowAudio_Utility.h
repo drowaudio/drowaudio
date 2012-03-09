@@ -34,16 +34,6 @@
  */
 //==============================================================================
 
-/** Checks to see if two values are equal within a given precision.
- */
-inline static bool almostEqual (double firstValue, double secondValue, double precision = 0.00001)
-{
-	if (fabs (firstValue - secondValue) < precision)
-		return true;
-	else
-		return false;
-}
-
 /** Returns the Resources folder in the package contents on a Mac and if an equivalent exists on Windows.
 	This will return File::nonexistent if the file does not exist so check for this first.
  */
