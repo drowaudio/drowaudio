@@ -142,14 +142,14 @@ void AudioPlaybackDemo::resized()
     draggableWaveDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionableWaveDisplay->getBottom() + m + bevelSize,
                                  w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
 
-    const int centre = w * 0.5f;
-    int offset = (centre - (80 * 3)) * 0.5f;
+    const int centre = w / 2;
+    int offset = (centre - (80 * 3)) / 2;
     for (int i = 0; i < rate; i++)
     {
         playerControls[i]->setBounds (offset + i * 80 + 2, zoomSlider.getBottom() + 20 + 3 * m, 76, 76);
     }        
 
-    offset += centre * 0.5f;
+    offset += centre / 2;
 //    const int offset = (w - numControls * 80) * 0.5;
     for (int i = rate; i < numControls; i++)
     {
@@ -166,7 +166,7 @@ void AudioPlaybackDemo::resized()
 //    positionableWaveDisplay->setBounds (5, filterGroup.getBottom() + 5, w - (2 * 5), 100);
     loopComponent.setBounds (positionableWaveDisplay->getBounds());
     
-    m *= 0.5f;
+    m /= 2;
     distortionDemo.setBounds (0, filterGroup.getBottom() + (2 * m), w, h - filterGroup.getBottom() - (2 * m));
 }
 

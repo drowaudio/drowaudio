@@ -427,10 +427,7 @@
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lcurl";
-				WARNING_CFLAGS = (
-					"-Wconversion",
-					"-Wreorder",
-				);
+				SRCROOT = ../..;
 			};
 			name = Debug;
 		};
@@ -478,6 +475,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = "-lcurl";
+				SRCROOT = ../..;
 			};
 			name = Release;
 		};

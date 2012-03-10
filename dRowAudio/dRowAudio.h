@@ -33,6 +33,10 @@
 #include "../juce_gui_basics/juce_gui_basics.h"
 #include "../juce_gui_extra/juce_gui_extra.h"
 
+#if JUCE_MODULE_AVAILABLE_juce_cryptography
+ #include "../juce_cryptography/juce_cryptography.h"
+#endif
+
 #if JUCE_MAC || JUCE_IOS
     #include <Accelerate/Accelerate.h>
 #endif
@@ -240,6 +244,10 @@ BEGIN_JUCE_NAMESPACE
 
 #ifndef __DROWAUDIO_CONSTANTS_H__
     #include "utility/dRowAudio_Constants.h"
+#endif
+
+#ifndef __DROWAUDIO_ENCRYPTEDSTRING_H__
+    #include "utility/dRowAudio_EncryptedString.h"
 #endif
 
 #ifndef __DROWAUDIO_UTILITY_H__

@@ -23,6 +23,7 @@ BEGIN_JUCE_NAMESPACE
 GraphicalComponent::GraphicalComponent()
     : paused (false),
 	  needToProcess (true),
+      sleepTime (5),
 	  numSamples (0)
 {
 	samples.malloc (numSamples);
@@ -38,17 +39,19 @@ int GraphicalComponent::useTimeSlice()
 {
 	if (paused)
     {
-		return false;
+		return sleepTime;
 	}
 	else
 	{
 		if (needToProcess)
         {
 			process();
+            needToProcess = false;
+            
+            return sleepTime;
         }
         
-		needToProcess = false;
-		return true;
+		return sleepTime;
 	}
 }
 

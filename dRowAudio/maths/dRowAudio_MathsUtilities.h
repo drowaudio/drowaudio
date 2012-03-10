@@ -137,24 +137,24 @@ inline int findPowerForBase2 (int number) noexcept
 }
 
 //==============================================================================
-#if JUCE_UNIT_TESTS
-
-class MathsUnitTests  : public UnitTest
-{
-public:
-    MathsUnitTests() : UnitTest ("Maths Utilities") {}
-    
-    void runTest()
-    {
-        beginTest ("Maths Utilities");
-
-        expectEquals ((int) isnan (1), 0);
-        expectEquals ((int) isnan (sqrt (-1.0)), 1);
-    }
-};
-
-static MathsUnitTests mathsUnitTests;
-
-#endif
+//#if JUCE_UNIT_TESTS
+//
+//class MathsUnitTests  : public UnitTest
+//{
+//public:
+//    MathsUnitTests() : UnitTest ("Maths Utilities") {}
+//    
+//    void runTest()
+//    {
+//        beginTest ("Maths Utilities");
+//
+//        expectEquals ((int) isnan (1), 0);
+//        expectEquals ((int) isnan (sqrt (-1.0)), 1);
+//    }
+//};
+//
+//static MathsUnitTests mathsUnitTests;
+//
+//#endif
 
 #endif //__DROWAUDIO_MATHSUTILITIES_H__

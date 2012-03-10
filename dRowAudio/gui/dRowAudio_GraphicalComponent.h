@@ -90,7 +90,7 @@ protected:
 	bool paused;
 	bool needToProcess;
 	
-	int numSamples;
+	int sleepTime, numSamples;
 	HeapBlock<float> samples;
 	
     //==============================================================================

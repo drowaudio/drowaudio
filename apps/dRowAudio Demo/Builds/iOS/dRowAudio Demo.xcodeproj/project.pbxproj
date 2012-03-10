@@ -191,6 +191,7 @@
 				7148579EBD6A599D8FCEA594,
 				024501DD1CA47B53D7642726 ); name = Source; sourceTree = "<group>"; };
 		B0CE196F6B92331C16DCBE76 = { isa = XCBuildConfiguration; buildSettings = {
+				SRCROOT = "../..";
 				HEADER_SEARCH_PATHS = "../../JuceLibraryCode Source/curl/include $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
@@ -207,6 +208,7 @@
 				"CURL_LIB=libcurldebug.lib",
 				"JUCER_XCODE_IPHONE_5BC26AE3=1"); }; name = Debug; };
 		F78DFA4D6AD72663CF5A213A = { isa = XCBuildConfiguration; buildSettings = {
+				SRCROOT = "../..";
 				HEADER_SEARCH_PATHS = "../../JuceLibraryCode Source/curl/include $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Info.plist;

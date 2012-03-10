@@ -62,8 +62,8 @@ void DistortionComponent::resized()
     const float yScale = h / 10.0f;
     for (int i = 1; i < 10; ++i)
     {
-        g.drawHorizontalLine (i * yScale, 0, w);
-        g.drawVerticalLine (i * xScale, 0, h);
+        g.drawHorizontalLine ((int) (i * yScale), 0, w);
+        g.drawVerticalLine ((int) (i * xScale), 0, h);
     }
     g.drawLine (0, h, w, 0);
     
@@ -165,6 +165,6 @@ void DistortionComponent::resetPoints()
     float x2 = w * 0.75f;
     float y2 = h * linearInterpolate (bufferData, bufferSize, bufferSize * 0.25f);
     
-    curvePoints[0]->setBounds (x1 - 5, y1 - 5, 10, 10);
-    curvePoints[1]->setBounds (x2 - 5, y2 - 5, 10, 10);    
+    curvePoints[0]->setBounds ((int) (x1 - 5), (int) (y1 - 5), 10, 10);
+    curvePoints[1]->setBounds ((int) (x2 - 5), (int) (y2 - 5), 10, 10);    
 }

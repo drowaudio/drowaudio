@@ -87,6 +87,9 @@
 #include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
 #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp"
 
+// maths
+#include "maths/dRowAudio_MathsUnitTests.cpp"
+
 // network
 #include "network/dRowAudio_CURLManager.cpp"
 #include "network/dRowAudio_CURLEasySession.cpp"
@@ -95,6 +98,7 @@
 #include "streams/dRowAudio_MemoryInputSource.cpp"
 
 // Utility
+#include "utility/dRowAudio_EncryptedString.cpp"
 #include "utility/dRowAudio_ITunesLibrary.cpp"
 #include "utility/dRowAudio_ITunesLibraryParser.cpp"
 #include "parameters/dRowAudio_PluginParameter.cpp"

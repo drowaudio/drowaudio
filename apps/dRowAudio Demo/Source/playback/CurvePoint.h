@@ -37,8 +37,8 @@ public:
 	//==============================================================================
 	void resized ()
 	{
-		int halfWidth = getWidth() * 0.5f;
-		int halfHeight = getHeight() * 0.5f;
+		int halfWidth = getWidth() / 2;
+		int halfHeight = getHeight() / 2;
 		constrainer.setMinimumOnscreenAmounts (halfHeight, halfWidth, halfHeight, halfWidth);
 	}
 	

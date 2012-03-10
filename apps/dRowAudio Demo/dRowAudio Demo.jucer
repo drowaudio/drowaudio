@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.2"
-              bundleIdentifier="com.yourcompany.dRowAudioDemo" jucerVersion="3.0.0"
-              smallIcon="vTRqOY" bigIcon="vTRqOY">
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.3"
+              bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.0.0">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"
-               extraLinkerFlags="-lcurl">
+               extraLinkerFlags="-lcurl" bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
@@ -15,38 +14,33 @@
                        headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"/>
       </CONFIGURATIONS>
     </XCODE_MAC>
-    <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
-            extraDefs="CURL_STATICLIB" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"
-                       winWarningLevel="4"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"
-                       winWarningLevel="4"/>
-      </CONFIGURATIONS>
-    </VS2008>
     <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
-            extraDefs="CURL_STATICLIB" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}">
+            extraDefs="CURL_STATICLIB" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}"
+            bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"
-                       winWarningLevel="4" winArchitecture="32-bit"/>
+                       headerPath="../../Source/curl/include" defines="CURL_LIB=libcurldebug.lib"
+                       winWarningLevel="4" winArchitecture="32-bit" generateManifest="1"
+                       libraryPath="../../Source/curl/lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"
-                       winWarningLevel="4" winArchitecture="32-bit"/>
+                       headerPath="../../Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"
+                       winWarningLevel="4" winArchitecture="32-bit" generateManifest="1"
+                       libraryPath="../../Source/curl/lib"/>
       </CONFIGURATIONS>
     </VS2010>
-    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules">
+    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"
+                bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
+                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"
+                       libraryPath="/usr/X11R6/lib/"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"/>
+                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"
+                       libraryPath="/usr/X11R6/lib/"/>
       </CONFIGURATIONS>
     </LINUX_MAKE>
     <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" juceFolder="../../../../juce_source/juce"
-                  UIStatusBarHidden="1">
+                  UIStatusBarHidden="1" bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
