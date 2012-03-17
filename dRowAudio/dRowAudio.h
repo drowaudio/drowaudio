@@ -81,6 +81,10 @@ BEGIN_JUCE_NAMESPACE
     #include "audio/dRowAudio_AudioFilePlayerExt.h"
 #endif
 
+#ifndef __DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H__
+    #include "audio/dRowAudio_AudioSampleBufferAudioFormat.h"
+#endif
+
 #ifndef __DROWAUDIO_SOUNDTOUCHPROCESSOR_H__
     #include "audio/dRowAudio_SoundTouchProcessor.h"
 #endif

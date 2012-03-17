@@ -229,4 +229,132 @@ static void convertToFloat (AudioFormatReader* reader, void* sourceBuffer, float
 	}
 }
 
+//==============================================================================
+/** Returns the number bytes needed to store an AudioSampleBuffer with its
+    channel header and sample data.
+ 
+    This can be used to find out how many bytes to pass to isAudioSampleBuffer().
+ */
+static size_t getNumBytesForAudioSampleBuffer (const AudioSampleBuffer& buffer)
+{
+    const size_t channelListSize = (buffer.getNumChannels() + 1) * sizeof (float*);
+    const size_t sampleDataSize = buffer.getNumSamples() * buffer.getNumChannels() * sizeof (float);
+    
+    return channelListSize + sampleDataSize;
+}
+
+/** Parses a block of memory to see if it represents an AudioSampleBuffer.
+    
+    This uses the memory layout of an AudioSampleBuffer to make an eductated
+    guess at whether the memory represents an AudioSampleBuffer. For speed
+    this will only check for buffers up to maxNumChannels channels.
+ 
+    @param sourceData       The start of the likely AudioSampleBuffer to be
+                            tested e.g. AudioSampleBuffer::getArrayOfChannels()
+    @param sourceDataSize   The number of bytes of the sourceData
+    @param maxNumChannels   An optional maximum number of channels to search
+    @returns                true if the sourceData likey represents an AudioSampleBuffer
+ 
+    @see AudioSampleBufferAudioFormat, getNumBytesForAudioSampleBuffer, AudioSampleBuffer
+ */
+static bool isAudioSampleBuffer (void* sourceData, size_t sourceDataSize, int maxNumChannels = 128)
+{
+    const float** channelList = reinterpret_cast<const float**> (sourceData);
+ 
+    // get channel list pointers
+    Array<const float*> channelPointers;
+    for (int i = 0; i < maxNumChannels; i++)
+    {
+        const float* channelPointer = channelList[i];
+
+        if (channelPointer == nullptr) // found end of channel list
+            break;
+
+        channelPointers.add (channelPointer);
+    }
+    
+    if (channelPointers.size() == 0)
+        return false;
+    
+    const size_t channelListSize = (channelPointers.size() + 1) * sizeof (float*);
+    const int expectedNumSamples = (sourceDataSize - channelListSize) / (channelPointers.size() * sizeof (float));
+    const size_t bytesPerChannel = expectedNumSamples * sizeof (float);
+
+    const float* startOfChannels = reinterpret_cast<float*> (addBytesToPointer (sourceData, channelListSize));
+
+    // compare to sample data pointers
+    for (int i = 0; i < channelPointers.size(); i++)
+    {
+        const float* channelPointer = addBytesToPointer (startOfChannels, (i * bytesPerChannel));
+        if (channelPointer != channelPointers[i])
+            return false;
+    }    
+    
+    return true;
+}
+
+/** Parses an InputStream to see if it represents an AudioSampleBuffer.
+    
+    This uses the memory layout of an AudioSampleBuffer to make an eductated
+    guess at whether the stream represents an AudioSampleBuffer. For speed
+    this will only check for buffers up to maxNumChannels channels.
+ 
+    @param inputStream      The stream to check for AudioSampleBuffer contents
+    @param maxNumChannels   An optional maximum number of channels to search
+    @returns                true if the stream likey represents an AudioSampleBuffer
+ 
+    @see AudioSampleBufferAudioFormat, getNumBytesForAudioSampleBuffer, AudioSampleBuffer
+ */
+static bool isAudioSampleBuffer (InputStream& inputStream,
+                                 unsigned int &numChannels, int64 &numSamples,
+                                 int maxNumChannels = 128)
+{
+    // get start samples
+    Array<float> channelStartSamples;
+    for (int i = 0; i < maxNumChannels; i++)
+    {
+        float* channelPointer;
+        inputStream.read (&channelPointer, sizeof (float*));
+        
+        if (channelPointer == nullptr) // found end of channel list
+            break;
+        
+        channelStartSamples.add (*channelPointer);
+    }
+    
+    if (channelStartSamples.size() == 0)
+        return false;
+    
+    const size_t channelListSize = (channelStartSamples.size() + 1) * sizeof (float*);
+    const int expectedNumSamples = (inputStream.getTotalLength() - channelListSize) / (channelStartSamples.size() * sizeof (float));
+    const size_t bytesPerChannel = expectedNumSamples * sizeof (float);
+    
+    // compare sample values
+    for (int i = 0; i < channelStartSamples.size(); i++)
+    {
+        float sample;
+        inputStream.setPosition (channelListSize + (i * bytesPerChannel));
+        inputStream.read (&sample, sizeof (float));
+        
+        if (sample != channelStartSamples[i])
+            return false;
+    }    
+
+    // slower but possibly more reliable method
+//    for (int i = 0; i < channelStartSamples.size(); i++)
+//    {
+//        float sample;
+//        inputStream.read (&sample, sizeof (float));
+//        inputStream.skipNextBytes (bytesPerChannel);
+//        
+//        if (sample != channelStartSamples[i])
+//            return false;
+//    }    
+    
+    numChannels = channelStartSamples.size();
+    numSamples = expectedNumSamples;
+    
+    return true;
+}
+
 #endif //__DROWAUDIO_AUDIOUTILITY_H__

@@ -48,6 +48,7 @@
 // Audio
 #include "audio/dRowAudio_AudioFilePlayer.cpp"
 #include "audio/dRowAudio_AudioFilePlayerExt.cpp"
+#include "audio/dRowAudio_AudioSampleBufferAudioFormat.cpp"
 
 #include "audio/soundtouch/SoundTouch_Source.cpp"
 #include "audio/dRowAudio_SoundTouchProcessor.cpp"
@@ -56,6 +57,8 @@
 #include "audio/dRowAudio_FilteringAudioSource.cpp"
 #include "audio/dRowAudio_ReversibleAudioSource.cpp"
 #include "audio/dRowAudio_LoopingAudioSource.cpp"
+
+#include "audio/dRowAudio_AudioUtilityUnitTests.cpp"
 
 #include "audio/dRowAudio_Buffer.cpp"
 #include "audio/dRowAudio_EnvelopeFollower.cpp"

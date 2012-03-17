@@ -32,6 +32,7 @@ AudioFilePlayer::AudioFilePlayer()
     masterSource = audioTransportSource;
     
 	formatManager->registerBasicFormats();
+    formatManager->registerFormat (new AudioSampleBufferAudioFormat(), false);
 }
 
 AudioFilePlayer::~AudioFilePlayer()
@@ -123,7 +124,7 @@ MemoryInputStream* AudioFilePlayer::getInputStream()
 
 bool AudioFilePlayer::sourceIsMemoryBlock()
 {
-    return currentMemoryBlock != nullptr;
+    return file == File::nonexistent;
 }
 
 void AudioFilePlayer::setAudioFormatManager (AudioFormatManager* newManager,  bool deleteWhenNotNeeded)

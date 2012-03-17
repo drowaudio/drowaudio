@@ -19,7 +19,7 @@ juce_audio_formats/
 juce_audio_processors/
 juce_audio_utils/
 juce_core/
-juce_cprytography/
+juce_cryptography/
 juce_data_structures/
 juce_events/
 juce_graphics/
