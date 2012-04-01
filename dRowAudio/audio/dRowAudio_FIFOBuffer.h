@@ -105,6 +105,14 @@ public:
 		abstractFifo.finishedRead (size1 + size2);
 	}
 	
+    
+    /** Removes a number of samples from the buffer.
+     */
+    void removeSamples (int numSamples)
+    {
+        abstractFifo.finishedRead (numSamples);
+    }
+
 private:
     //==============================================================================
 	AbstractFifo abstractFifo;
