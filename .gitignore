@@ -12,6 +12,7 @@ Release/
 xcuserdata
 *.psd
 .svn/
+html/
 dRowAudio_old/
 juce_audio_basics/
 juce_audio_devices/

@@ -25,7 +25,9 @@
 
 //==============================================================================
 /**
-	Envelope follower class that gives an overall amplitude response of a set of
+    EnvelopeFollower.
+    
+    Envelope follower class that gives an overall amplitude response of a set of
     samples.
  */
 class EnvelopeFollower
