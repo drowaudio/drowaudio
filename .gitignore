@@ -1,6 +1,7 @@
 dRowAudio Notes.rtf
 dRowAudio Notes (Autosaved).rtf
 build/
+DerivedData/
 Debug/
 Release/
 *.pbxuser
@@ -13,6 +14,7 @@ xcuserdata
 *.psd
 .svn/
 html/
+docs/
 dRowAudio_old/
 juce_audio_basics/
 juce_audio_devices/

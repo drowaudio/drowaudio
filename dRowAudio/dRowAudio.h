@@ -145,6 +145,10 @@ BEGIN_JUCE_NAMESPACE
     #include "audio/fft/dRowAudio_FFTOperation.h"
 #endif
 
+#ifndef __DROWAUDIO_LTAS_H__
+ #include "audio/fft/dRowAudio_LTAS.h"
+#endif
+
 // Gui
 #ifndef __DROWAUDIO_AUDIOFILEDROPTARGET_H__
     #include "gui/dRowAudio_AudioFileDropTarget.h"

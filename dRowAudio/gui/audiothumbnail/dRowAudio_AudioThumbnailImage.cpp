@@ -23,7 +23,7 @@ BEGIN_JUCE_NAMESPACE
 AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer* sourceToBeUsed,
                                           TimeSliceThread& backgroundThread_,
                                           AudioThumbnailCache* cacheToUse,
-                                          AudioThumbnail* thumbnailToUse,
+                                          AudioThumbnailBase* thumbnailToUse,
                                           int sourceSamplesPerThumbnailSample_)
     : filePlayer            (sourceToBeUsed),
 	  currentSampleRate     (44100.0),
@@ -50,7 +50,7 @@ AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer* sourceToBeUsed,
 	}
     if (thumbnailToUse == nullptr)
     {
-        OptionalScopedPointer<AudioThumbnail> newThumbnail (new AudioThumbnail (sourceSamplesPerThumbnailSample,
+        OptionalScopedPointer<AudioThumbnailBase> newThumbnail (new AudioThumbnail (sourceSamplesPerThumbnailSample,
                                                                                 *filePlayer->getAudioFormatManager(),
                                                                                 *audioThumbnailCache),
                                                             true);

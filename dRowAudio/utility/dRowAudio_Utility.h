@@ -232,7 +232,7 @@ static bool writeValueTreeToFile (ValueTree& treeToWrite, File& fileToWriteTo, b
     attempt to read it as binary. If this also fails it will return an invalid
     ValueTree.
  */
-static ValueTree readValueTreeFromFile (File& fileToReadFrom)
+static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 {
     ScopedPointer<XmlElement> treeAsXml (XmlDocument::parse (fileToReadFrom));
     if (treeAsXml != nullptr)

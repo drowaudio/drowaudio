@@ -22,6 +22,7 @@
 #define __AUDIOPLAYBACKDEMO_H_4F99037A__
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "ColouredAudioThumbnail.h"
 #include "LoopComponent.h"
 #include "DistortionDemo.h"
 
@@ -77,6 +78,8 @@ private:
     OwnedArray<Label> playerControlLabels;
     
     TimeSliceThread backgroundThread;
+    AudioThumbnailCache audioThumbnailCache;
+    ColouredAudioThumbnail colouredAudioThumbnail;
     ScopedPointer<AudioThumbnailImage> audioThumbnailImage;
     ScopedPointer<PositionableWaveDisplay> positionableWaveDisplay;
     ScopedPointer<DraggableWaveDisplay> draggableWaveDisplay;

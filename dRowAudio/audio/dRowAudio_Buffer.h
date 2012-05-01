@@ -83,7 +83,7 @@ public:
 	inline float* getData()                         {	return buffer.getData();	}
 	
 	/** Returns the current size of the buffer. */
-	inline int getSize()                            {	return bufferSize;          }
+	inline int getSize() const                      {	return bufferSize;          }
 	
 	/**	Copies the contents of a section of memory into the internal buffer.
 	 

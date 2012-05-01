@@ -51,7 +51,7 @@ public:
 	explicit AudioThumbnailImage (AudioFilePlayer* sourceToBeUsed,
                                   TimeSliceThread& backgroundThread,
                                   AudioThumbnailCache* cacheToUse = nullptr,
-                                  AudioThumbnail* thumbnailToUse = nullptr,
+                                  AudioThumbnailBase* thumbnailToUse = nullptr,
                                   int sourceSamplesPerThumbnailSample = 512);
 	
 	/** Destructor. */
@@ -157,7 +157,7 @@ private:
     CriticalSection lock;
     TimeSliceThread& backgroundThread;
 	OptionalScopedPointer<AudioThumbnailCache> audioThumbnailCache;
-	OptionalScopedPointer<AudioThumbnail> audioThumbnail;
+	OptionalScopedPointer<AudioThumbnailBase> audioThumbnail;
     int sourceSamplesPerThumbnailSample;
 	
 	Image waveformImage, tempSectionImage;

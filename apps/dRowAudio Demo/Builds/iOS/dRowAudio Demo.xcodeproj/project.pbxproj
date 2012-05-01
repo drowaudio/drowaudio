@@ -23,6 +23,7 @@
 		38907996C0CEE0B324379A34 = { isa = PBXBuildFile; fileRef = FCC8FBB3A07CEC6CD58A5255; };
 		53BF8FC087AD23FCFDFAC5F2 = { isa = PBXBuildFile; fileRef = 7B0C9C3247900045186C676D; };
 		6DE08F89978F7C8CAEE7A0CD = { isa = PBXBuildFile; fileRef = DB16639492761B437756AEF4; };
+		263DC8543738BD7BE8DDEE20 = { isa = PBXBuildFile; fileRef = 448EB9C709B968E8007DC5E4; };
 		3CBE68615DCC1775A271978E = { isa = PBXBuildFile; fileRef = 8F22F62032787C801A0CB22F; };
 		13CC09D44883A6EC43B7A571 = { isa = PBXBuildFile; fileRef = 0998F444829F031C439E48CC; };
 		94B15F6C184DA6A60D6A397C = { isa = PBXBuildFile; fileRef = 461A32FF1283A0E245484162; };
@@ -54,9 +55,11 @@
 		1C93496BDB6E32182D2DBA7A = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F2D2347255F270D517C1E2D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopComponent.h; path = ../../Source/playback/LoopComponent.h; sourceTree = "SOURCE_ROOT"; };
 		23C07E30E04D4EAC20992F0D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NetworkDemo.h; path = ../../Source/network/NetworkDemo.h; sourceTree = "SOURCE_ROOT"; };
+		28FF53B02FCA6397DA8F38B1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ColouredAudioThumbnail.h; path = ../../Source/playback/ColouredAudioThumbnail.h; sourceTree = "SOURCE_ROOT"; };
 		317FBC4D0CFA7C0F4389ADAF = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LocalDirectoryListBox.cpp; path = ../../Source/network/LocalDirectoryListBox.cpp; sourceTree = "SOURCE_ROOT"; };
 		344DDD8DC1DE011D2E1705AA = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		351E2A804402ADF99AD0BFCF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FFTDemo.h; path = ../../Source/fft/FFTDemo.h; sourceTree = "SOURCE_ROOT"; };
+		448EB9C709B968E8007DC5E4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ColouredAudioThumbnail.cpp; path = ../../Source/playback/ColouredAudioThumbnail.cpp; sourceTree = "SOURCE_ROOT"; };
 		45F9EA1530DA6D8BBB452430 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_core.mm"; path = "../../../../../../juce_source/juce/modules/juce_core/juce_core.mm"; sourceTree = "SOURCE_ROOT"; };
 		461A32FF1283A0E245484162 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DistortionDemo.cpp; path = ../../Source/playback/DistortionDemo.cpp; sourceTree = "SOURCE_ROOT"; };
 		4B42BC708FB27EBFDDC5D6AC = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,12 +94,12 @@
 		9120661B2AD38CB9A632EF3F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = dRowAudio.mm; path = "../../../../../../juce_source/juce/modules/dRowAudio/dRowAudio.mm"; sourceTree = "SOURCE_ROOT"; };
 		939FC30566B1030FB01BD689 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainWindow.h; path = ../../Source/MainWindow.h; sourceTree = "SOURCE_ROOT"; };
 		9471E5C8CAA91082542A6498 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DemoLookAndFeel.cpp; path = ../../Source/DemoLookAndFeel.cpp; sourceTree = "SOURCE_ROOT"; };
-		B3FB67791A011EAEEDE91A69 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_data_structures.mm"; path = "../../../../../../juce_source/juce/modules/juce_data_structures/juce_data_structures.mm"; sourceTree = "SOURCE_ROOT"; };
 		B5239989EB94DD03C927E5C3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_gui_extra.mm"; path = "../../../../../../juce_source/juce/modules/juce_gui_extra/juce_gui_extra.mm"; sourceTree = "SOURCE_ROOT"; };
 		BC3A69C48C09019C4F154C91 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DistortionComponent.cpp; path = ../../Source/playback/DistortionComponent.cpp; sourceTree = "SOURCE_ROOT"; };
 		CBEE0A03D1F63AA45D5E7944 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D16937FF8B9B1370239FDBC2 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		0AC2382300FDE0397BBFBDE0 = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dRowAudio Demo.app"; sourceTree = "BUILT_PRODUCTS_DIR"; };
+		B3FB67791A011EAEEDE91A69 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_data_structures.mm"; path = "../../../../../../juce_source/juce/modules/juce_data_structures/juce_data_structures.mm"; sourceTree = "SOURCE_ROOT"; };
 		DB16639492761B437756AEF4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioPlaybackDemo.cpp; path = ../../Source/playback/AudioPlaybackDemo.cpp; sourceTree = "SOURCE_ROOT"; };
 		DCC0C8364E07FA5B3F4BC691 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = "SOURCE_ROOT"; };
 		E1512A99AACAAF938A44420A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RemoteDirectoryListBox.cpp; path = ../../Source/network/RemoteDirectoryListBox.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -110,6 +113,8 @@
 		DF88D231A20E4AAE0F53CAAE = { isa = PBXGroup; children = (
 				101EE98BA5853A70CCFD3DD6,
 				DB16639492761B437756AEF4,
+				28FF53B02FCA6397DA8F38B1,
+				448EB9C709B968E8007DC5E4,
 				1F2D2347255F270D517C1E2D,
 				8F22F62032787C801A0CB22F,
 				F575DDAD912B5ABC601CFD5A,
@@ -275,6 +280,7 @@
 				38907996C0CEE0B324379A34,
 				53BF8FC087AD23FCFDFAC5F2,
 				6DE08F89978F7C8CAEE7A0CD,
+				263DC8543738BD7BE8DDEE20,
 				3CBE68615DCC1775A271978E,
 				13CC09D44883A6EC43B7A571,
 				94B15F6C184DA6A60D6A397C,

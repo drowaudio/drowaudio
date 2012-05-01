@@ -26,6 +26,108 @@
 #endif
 
 //==============================================================================
+/** Finds the autocorrelation of a set of given samples.
+ 
+    This will cross-correlate inputSamples with itself and put the result in
+    output samples. Note that this uses a shrinking integration window, assuming
+    values outside of numSamples are 0. This leads to an exponetially decreasing
+    autocorrelation function.
+ */
+inline void autocorrelate (const float* inputSamples, int numSamples, float* outputSamples) noexcept
+{
+    for (int i = 0; i < numSamples; i++)
+    {
+        float sum = 0.0f;
+        
+        for (int j = 0; j < numSamples - i; j++)
+            sum += inputSamples[j] * inputSamples[j + i];
+        
+        outputSamples[i] = sum;
+    }
+}
+
+/** Performs a first order differential on the set of given samples.
+ 
+    This is the same as finding the difference between each sample and the previous.
+    Note that outputSamples can point to the same location as inputSamples.
+ */
+inline void differentiate (const float* inputSamples, int numSamples, float* outputSamples) noexcept
+{
+    float lastSample = 0.0f;
+    
+    for (int i = 0; i < numSamples; ++i)
+    {
+        float currentSample = inputSamples[i];
+        outputSamples[i] = currentSample - lastSample;
+        lastSample = currentSample;
+    }
+}
+
+/** Finds the mean of a set of samples.
+ */
+inline float findMean (float* samples, int numSamples) noexcept
+{
+    float total = 0.0f;
+    
+    for (int i = 0; i < numSamples; ++i)
+        total += samples[i];
+
+    return total / numSamples;
+}
+
+/** Returns the median of a set of samples assuming they are sorted.
+ */
+inline float findMedian (float* samples, int numSamples) noexcept
+{
+    if ((numSamples % 2) == 0)  // is even
+    {
+        return samples[numSamples / 2];
+    }
+    else
+    {
+        const int lowerIndex = int (numSamples / 2);
+        const float lowerSample = samples[lowerIndex];
+        const float upperSample = samples[lowerIndex + 1];
+        
+        return (lowerSample + upperSample) / 2.0f;
+    }
+}
+
+/** Finds the variance of a set of samples.
+ */
+inline float findVariance (float* samples, int numSamples) noexcept
+{
+    const float mean = findMean (samples, numSamples);
+
+    float total = 0.0f;
+    for (int i = 0; i < numSamples; ++i)
+        total += squareNumber (samples[i] - mean);
+
+    return total / numSamples;
+}
+
+/** Finds the corrected variance for a set of samples suitable for a sample standard deviation.
+    Note the N - 1 in the formular to correct for small data sets.
+ */
+inline float findVarience (float* samples, int numSamples) noexcept
+{
+    const float mean = findMean (samples, numSamples);
+    
+    float total = 0.0f;
+    for (int i = 0; i < numSamples; ++i)
+        total += squareNumber (samples[i] - mean);
+    
+    return total / (numSamples - 1);
+}
+
+/** Finds the sample standard deviation for a set of samples.
+ */
+inline float findStandardDeviation (float* samples, int numSamples) noexcept
+{
+    return sqrtf (findVariance (samples, numSamples));
+}
+
+//==============================================================================
 /**	Linear Interpolater.
 	Performs a linear interpolation for a fractional buffer position.
 	Note: For speed no bounds checking is performed on the buffer position so it is
@@ -54,7 +156,28 @@ inline static bool almostEqual (double firstValue, double secondValue, double pr
 		return false;
 }
 
-/** Checks to see if a number is Nan eg. sqrt (-1).
+/** Normalises a value to a range of 0-1 with a given minimum & maximum.
+    This is just a quick function to make more readable code and desn't do any error checking.
+    If your value is outside the range you will get a normalised value < 0 or > 1.
+ */
+template <typename Type>
+inline Type normalise (const Type valueToNormalise, const Type minimum, const Type maximum) noexcept
+{
+    return (valueToNormalise - minimum) / (maximum - minimum);
+}
+
+/** Scales a value to have a log range between a given minimum & maximum.
+    This is just a quick function to make more readable code and desn't do any error checking.
+    This is useful when scaling values for meters etc. A good starting point is a normalised
+    input value, minimum of 1 and maximum of 40.
+ */
+template <typename Type>
+inline Type logBase10Scale (const Type valueToScale, const Type minimum, const Type maximum) noexcept
+{
+    return log10 (minimum + ((maximum - minimum) * valueToScale)) / log10 (maximum);
+}
+
+/** Checks to see if a number is NaN eg. sqrt (-1).
  */
 template <typename Type>
 inline static bool isnan (Type value)
@@ -135,26 +258,5 @@ inline int findPowerForBase2 (int number) noexcept
 	else
 		return (int) (log ((double) nextPowerOf2 (number)) / log(2.0));
 }
-
-//==============================================================================
-//#if JUCE_UNIT_TESTS
-//
-//class MathsUnitTests  : public UnitTest
-//{
-//public:
-//    MathsUnitTests() : UnitTest ("Maths Utilities") {}
-//    
-//    void runTest()
-//    {
-//        beginTest ("Maths Utilities");
-//
-//        expectEquals ((int) isnan (1), 0);
-//        expectEquals ((int) isnan (sqrt (-1.0)), 1);
-//    }
-//};
-//
-//static MathsUnitTests mathsUnitTests;
-//
-//#endif
 
 #endif //__DROWAUDIO_MATHSUTILITIES_H__

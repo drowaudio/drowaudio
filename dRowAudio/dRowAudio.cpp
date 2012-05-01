@@ -72,6 +72,7 @@
 #include "audio/fft/dRowAudio_mac_FFTOperation.cpp"
 #include "audio/fft/dRowAudio_ios_FFTOperation.cpp"
 #include "audio/fft/dRowAudio_FFTReal_FFTOperation.cpp"
+#include "audio/fft/dRowAudio_LTAS.cpp"
 
 // Gui
 #include "gui/dRowAudio_AudioFileDropTarget.cpp"

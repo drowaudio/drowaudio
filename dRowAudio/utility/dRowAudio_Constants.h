@@ -40,8 +40,20 @@ static const double oneOverRoot2 = 1.0 / sqrt (2.0);
 static const double root3 = sqrt (3.0);
 static const double oneOverRoot3 = 1.0 / sqrt (3.0);
 
-#define squareNumber(x)	(x * x)
-#define cubeNumber(x)	(x * x * x)
+template <typename Type>
+inline Type squareNumber (Type input)
+{
+    return input * input;
+}
+
+template <typename Type>
+inline Type cubeNumber (Type input)
+{
+    return input * input * input;
+}
+
+//#define squareNumber(x)	(x * x)
+//#define cubeNumber(x)	(x * x * x)
 
 #if JUCE_WINDOWS
 template <class Type>

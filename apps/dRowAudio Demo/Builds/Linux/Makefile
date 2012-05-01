@@ -50,6 +50,7 @@ OBJECTS := \
   $(OBJDIR)/TrackInfoComponent_5f5fdbed.o \
   $(OBJDIR)/TransportComponent_2551bb5d.o \
   $(OBJDIR)/AudioPlaybackDemo_f7ebabe9.o \
+  $(OBJDIR)/ColouredAudioThumbnail_83143e96.o \
   $(OBJDIR)/LoopComponent_29b26e8e.o \
   $(OBJDIR)/BufferTransformAudioSource_866e3b7a.o \
   $(OBJDIR)/DistortionDemo_6a738135.o \
@@ -121,6 +122,11 @@ $(OBJDIR)/TransportComponent_2551bb5d.o: ../../Source/TransportComponent.cpp
 $(OBJDIR)/AudioPlaybackDemo_f7ebabe9.o: ../../Source/playback/AudioPlaybackDemo.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling AudioPlaybackDemo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/ColouredAudioThumbnail_83143e96.o: ../../Source/playback/ColouredAudioThumbnail.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling ColouredAudioThumbnail.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/LoopComponent_29b26e8e.o: ../../Source/playback/LoopComponent.cpp

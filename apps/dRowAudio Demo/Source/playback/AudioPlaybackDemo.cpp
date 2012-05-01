@@ -26,6 +26,8 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     : audioFilePlayer (audioFilePlayer_),
       loopComponent (audioFilePlayer),
       backgroundThread ("Waveform Thread"),
+      audioThumbnailCache (10),
+      colouredAudioThumbnail (512, *audioFilePlayer.getAudioFormatManager(), audioThumbnailCache),
       distortionDemo (distortionBuffer)
 {
 //    addAndMakeVisible (positionalDisplay = new ColouredPositionableWaveDisplay (&audioFilePlayer,
@@ -35,7 +37,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
 //                                                                            &audioFilePlayer,
 //                                                                            &thumbnailCache, 
 //                                                                            &audioThumbnail));
-    audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread);
+    audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread, &audioThumbnailCache, &colouredAudioThumbnail);
     
     positionableWaveDisplay = new PositionableWaveDisplay (*audioThumbnailImage);
     addAndMakeVisible (positionableWaveDisplay);

@@ -76,6 +76,10 @@
               file="Source/playback/AudioPlaybackDemo.h"/>
         <FILE id="oyrE4v" name="AudioPlaybackDemo.cpp" compile="1" resource="0"
               file="Source/playback/AudioPlaybackDemo.cpp"/>
+        <FILE id="b2yGl1" name="ColouredAudioThumbnail.h" compile="0" resource="0"
+              file="Source/playback/ColouredAudioThumbnail.h"/>
+        <FILE id="dMzQrA" name="ColouredAudioThumbnail.cpp" compile="1" resource="0"
+              file="Source/playback/ColouredAudioThumbnail.cpp"/>
         <FILE id="JtL4EB" name="LoopComponent.h" compile="0" resource="0" file="Source/playback/LoopComponent.h"/>
         <FILE id="ThDzfm" name="LoopComponent.cpp" compile="1" resource="0"
               file="Source/playback/LoopComponent.cpp"/>
