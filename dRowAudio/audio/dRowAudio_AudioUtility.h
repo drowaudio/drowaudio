@@ -326,8 +326,8 @@ static bool isAudioSampleBuffer (InputStream& inputStream,
         return false;
     
     const size_t channelListSize = (channelStartSamples.size() + 1) * sizeof (float*);
-    const int expectedNumSamples = (inputStream.getTotalLength() - channelListSize) / (channelStartSamples.size() * sizeof (float));
-    const size_t bytesPerChannel = expectedNumSamples * sizeof (float);
+    const int64 expectedNumSamples = (inputStream.getTotalLength() - channelListSize) / (channelStartSamples.size() * sizeof (float));
+    const int64 bytesPerChannel = expectedNumSamples * sizeof (float);
     
     // compare sample values
     for (int i = 0; i < channelStartSamples.size(); i++)

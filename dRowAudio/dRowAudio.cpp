@@ -88,6 +88,7 @@
 #include "gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
 #include "gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
 #include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp"
+#include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"
 #include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
 #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp"
 

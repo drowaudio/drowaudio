@@ -615,6 +615,7 @@ static const unsigned char temp_d81f7a21[] =
 const char* splash_screen_png = (const char*) temp_d81f7a21;
 
 
+const char* getNamedResource (const char*, int&) throw();
 const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw()
 {
     int hash = 0;

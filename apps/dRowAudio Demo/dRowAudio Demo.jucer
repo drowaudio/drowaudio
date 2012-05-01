@@ -8,10 +8,10 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
+                       headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"/>
+                       headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurlrelease.lib"/>
       </CONFIGURATIONS>
     </XCODE_MAC>
     <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
@@ -19,13 +19,13 @@
             bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       headerPath="../../Source/curl/include" defines="CURL_LIB=libcurldebug.lib"
+                       headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurldebug.lib"
                        winWarningLevel="4" winArchitecture="32-bit" generateManifest="1"
-                       libraryPath="../../Source/curl/lib"/>
+                       libraryPath="../../Source/network/curl/lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       headerPath="../../Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"
+                       headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurlrelease.lib"
                        winWarningLevel="4" winArchitecture="32-bit" generateManifest="1"
-                       libraryPath="../../Source/curl/lib"/>
+                       libraryPath="../../Source/network/curl/lib"/>
       </CONFIGURATIONS>
     </VS2010>
     <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"
@@ -76,10 +76,6 @@
               file="Source/playback/AudioPlaybackDemo.h"/>
         <FILE id="oyrE4v" name="AudioPlaybackDemo.cpp" compile="1" resource="0"
               file="Source/playback/AudioPlaybackDemo.cpp"/>
-        <FILE id="b2yGl1" name="ColouredAudioThumbnail.h" compile="0" resource="0"
-              file="Source/playback/ColouredAudioThumbnail.h"/>
-        <FILE id="dMzQrA" name="ColouredAudioThumbnail.cpp" compile="1" resource="0"
-              file="Source/playback/ColouredAudioThumbnail.cpp"/>
         <FILE id="JtL4EB" name="LoopComponent.h" compile="0" resource="0" file="Source/playback/LoopComponent.h"/>
         <FILE id="ThDzfm" name="LoopComponent.cpp" compile="1" resource="0"
               file="Source/playback/LoopComponent.cpp"/>
@@ -125,19 +121,19 @@
     </GROUP>
   </MAINGROUP>
   <MODULES>
-    <MODULE id="juce_core" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_events" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_graphics" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_data_structures" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_gui_basics" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_gui_extra" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_audio_basics" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_audio_devices" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_audio_formats" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_audio_processors" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="juce_audio_utils" showAllCode="0" useLocalCopy="0"/>
-    <MODULE id="dRowAudio" showAllCode="0" useLocalCopy="0"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS/>
 </JUCERPROJECT>

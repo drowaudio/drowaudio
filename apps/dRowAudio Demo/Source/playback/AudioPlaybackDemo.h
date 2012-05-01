@@ -22,7 +22,6 @@
 #define __AUDIOPLAYBACKDEMO_H_4F99037A__
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "ColouredAudioThumbnail.h"
 #include "LoopComponent.h"
 #include "DistortionDemo.h"
 

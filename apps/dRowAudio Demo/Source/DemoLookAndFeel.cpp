@@ -43,7 +43,7 @@ void DemoLookAndFeel::drawButtonBackground (Graphics& g,
                        baseColour.darker (0.5f), 0.0f, (float)height,
                        false);
     
-    juce::Rectangle<float> bounds (g.getClipBounds().toFloat().reduced (0.0f, 1.0f));
+    Rectangle<float> bounds (g.getClipBounds().toFloat().reduced (0.0f, 1.0f));
     g.setGradientFill (cg);
     g.fillRoundedRectangle (bounds, 4.0f);
     

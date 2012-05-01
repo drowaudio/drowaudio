@@ -18,17 +18,18 @@
   ==============================================================================
 */
 
-//BEGIN_JUCE_NAMESPACE
+BEGIN_JUCE_NAMESPACE
 
-#include "ColouredAudioThumbnail.h"
+#undef min
+#undef max
 
 //==============================================================================
 static void readMaxLevelsFiltering (AudioFormatReader &reader,
-							 BiquadFilter &filterLow, BiquadFilter& /*filterMid*/, BiquadFilter& /*filterHigh*/,
-							 int64 startSampleInFile,
-							 int64 numSamples,
-							 float& lowestLeft, float& highestLeft,
-							 float& lowestRight, float& highestRight)
+                                    BiquadFilter &filterLow, BiquadFilter& /*filterMid*/, BiquadFilter& /*filterHigh*/,
+                                    int64 startSampleInFile,
+                                    int64 numSamples,
+                                    float& lowestLeft, float& highestLeft,
+                                    float& lowestRight, float& highestRight)
 {
     if (numSamples <= 0)
     {
@@ -1242,7 +1243,7 @@ void ColouredAudioThumbnail::drawColouredChannel (Graphics& g, const juce::Recta
 }
 
 void ColouredAudioThumbnail::drawChannels (Graphics& g, const juce::Rectangle<int>& area, double startTimeSeconds,
-                                   double endTimeSeconds, float verticalZoomFactor)
+                                           double endTimeSeconds, float verticalZoomFactor)
 {
     for (int i = 0; i < numChannels; ++i)
     {
@@ -1254,4 +1255,4 @@ void ColouredAudioThumbnail::drawChannels (Graphics& g, const juce::Rectangle<in
     }
 }
 
-//END_JUCE_NAMESPACE
+END_JUCE_NAMESPACE
