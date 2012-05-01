@@ -20,7 +20,7 @@
 
 #if DROWAUDIO_USE_FFTREAL
 
-BEGIN_JUCE_NAMESPACE
+
 
 FFTOperation::FFTOperation (int fftSizeLog2)
     : fftProperties (fftSizeLog2)
@@ -56,6 +56,6 @@ void FFTOperation::performFFT (float* samples)
     fftConfig->do_fft (fftBuffer.getData(), samples);
 }
 
-END_JUCE_NAMESPACE
+
 
 #endif //DROWAUDIO_USE_FFTREAL

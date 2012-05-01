@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 PositionableWaveDisplay::PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed)
     : currentSampleRate     (44100.0),
@@ -237,4 +237,3 @@ void PositionableWaveDisplay::mouseDrag (const MouseEvent& e)
 //	audioFilePlayer->setPositionIgnoringLoop (position);
 }
 
-END_JUCE_NAMESPACE

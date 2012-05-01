@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 #undef min
 #undef max
@@ -1255,4 +1255,4 @@ void ColouredAudioThumbnail::drawChannels (Graphics& g, const juce::Rectangle<in
     }
 }
 
-END_JUCE_NAMESPACE
+

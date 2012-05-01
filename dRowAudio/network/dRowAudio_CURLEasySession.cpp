@@ -20,7 +20,7 @@
 
 #if DROWAUDIO_USE_CURL
 
-BEGIN_JUCE_NAMESPACE
+
 
 CURLEasySession::CURLEasySession()
 :	handle      (nullptr),
@@ -296,6 +296,6 @@ CURLcode CURLEasySession::performTransfer (bool transferIsUpload)
     return result;
 }
 
-END_JUCE_NAMESPACE
+
 
 #endif

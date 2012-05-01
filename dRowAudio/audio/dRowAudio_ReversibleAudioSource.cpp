@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 ReversibleAudioSource::ReversibleAudioSource (PositionableAudioSource* const inputSource,
@@ -76,4 +76,3 @@ void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
 	}
 }
 
-END_JUCE_NAMESPACE

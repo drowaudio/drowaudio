@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 namespace
@@ -148,4 +148,3 @@ AudioFormatWriter* AudioSampleBufferAudioFormat::createWriterFor (OutputStream* 
     return nullptr;
 }
 
-END_JUCE_NAMESPACE

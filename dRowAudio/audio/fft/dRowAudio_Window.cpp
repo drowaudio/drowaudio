@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 Window::Window (int windowSize_)
     : windowSize (windowSize_),
@@ -357,4 +357,3 @@ void Window::applyFlatTopWindow (float* samples, const int numSamples)
 	windowFactor *= (float) oneOverSize;				
 }
 
-END_JUCE_NAMESPACE

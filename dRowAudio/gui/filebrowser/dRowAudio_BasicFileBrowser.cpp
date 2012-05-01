@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 BasicFileBrowser::BasicFileBrowser (int flags_,
@@ -338,4 +338,3 @@ bool BasicFileBrowser::keyPressed (const KeyPress& key)
     return false;
 }
 
-END_JUCE_NAMESPACE

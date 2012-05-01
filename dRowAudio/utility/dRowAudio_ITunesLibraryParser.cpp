@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 ITunesLibraryParser::ITunesLibraryParser (File& iTunesLibraryFileToUse, ValueTree elementToFill,
                                           CriticalSection& lockToUse)
@@ -189,4 +189,3 @@ void ITunesLibraryParser::run()
 	}
 }
 
-END_JUCE_NAMESPACE

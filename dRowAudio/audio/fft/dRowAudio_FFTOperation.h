@@ -25,9 +25,9 @@
     typedef FFTSetup FFTConfig;
     typedef DSPSplitComplex SplitComplex;
 #elif DROWAUDIO_USE_FFTREAL
-    END_JUCE_NAMESPACE
+    
     #include "fftreal/FFTReal.h"
-    BEGIN_JUCE_NAMESPACE
+    
     typedef ScopedPointer< ffft::FFTReal<float> > FFTConfig;
     struct SplitComplex {
         float* realp;

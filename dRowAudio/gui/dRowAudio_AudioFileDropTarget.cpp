@@ -20,7 +20,7 @@
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
-BEGIN_JUCE_NAMESPACE
+
 
 AudioFileDropTarget::AudioFileDropTarget (AudioFilePlayerExt* audioFilePlayerToControl,
                                           Component* componentToAttachTo)
@@ -193,6 +193,6 @@ void AudioFileDropTarget::filesDropped (const StringArray &files, int /*x*/, int
 
 //==============================================================================
 
-END_JUCE_NAMESPACE
+
 
 #endif

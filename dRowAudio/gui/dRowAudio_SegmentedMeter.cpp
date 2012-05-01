@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 SegmentedMeter::SegmentedMeter()
     : numRedSeg     (2),
@@ -173,4 +173,3 @@ void SegmentedMeter::process()
 	}
 }
 
-END_JUCE_NAMESPACE

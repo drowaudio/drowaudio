@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 SampleRateConverter::SampleRateConverter (const int numChannels_)
@@ -159,4 +159,3 @@ void SampleRateConverter::applyFilter (float* samples, int num, FilterState& fs)
     }
 }
 
-END_JUCE_NAMESPACE

@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 namespace
 {
@@ -141,4 +141,3 @@ void FilteringAudioSource::resetFilters()
 	filter[1][High].makeHighShelf (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);	
 }
 
-END_JUCE_NAMESPACE

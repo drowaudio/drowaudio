@@ -20,7 +20,7 @@
 
 #if JUCE_MODULE_AVAILABLE_juce_cryptography
 
-BEGIN_JUCE_NAMESPACE
+
 
 EncryptedString::EncryptedString()
 {
@@ -119,6 +119,6 @@ static EncryptedStringTests encryptedStringTests;
 
 //==============================================================================
 
-END_JUCE_NAMESPACE
+
 
 #endif //JUCE_MODULE_AVAILABLE_juce_cryptography

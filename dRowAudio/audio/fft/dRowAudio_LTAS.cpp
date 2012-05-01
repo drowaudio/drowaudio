@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 LTAS::LTAS (int fftSizeLog2)
     : fftEngine     (fftSizeLog2),
@@ -65,4 +65,3 @@ void LTAS::updateLTAS (float* input, int numSamples)
     }
 }
 
-END_JUCE_NAMESPACE

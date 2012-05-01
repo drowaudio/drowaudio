@@ -20,7 +20,7 @@
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
-BEGIN_JUCE_NAMESPACE
+
 
 SoundTouchAudioSource::SoundTouchAudioSource (PositionableAudioSource* source_,
                                               bool deleteSourceWhenDeleted,
@@ -120,6 +120,6 @@ void SoundTouchAudioSource::readNextBufferChunk()
     soundTouchProcessor.writeSamples (buffer.getArrayOfChannels(), buffer.getNumChannels(), info.numSamples);
 }
 
-END_JUCE_NAMESPACE
+
 
 #endif

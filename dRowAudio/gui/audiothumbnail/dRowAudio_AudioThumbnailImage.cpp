@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer* sourceToBeUsed,
                                           TimeSliceThread& backgroundThread_,
@@ -262,4 +262,4 @@ void AudioThumbnailImage::refreshWaveform()
         renderComplete = true;
 }
 
-END_JUCE_NAMESPACE
+

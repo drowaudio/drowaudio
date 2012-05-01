@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 MemoryInputSource::MemoryInputSource (MemoryInputStream* stream, bool useFileTimeInHashGeneration_)
@@ -48,4 +48,3 @@ int64 MemoryInputSource::hashCode() const
     return h;
 }
 
-END_JUCE_NAMESPACE

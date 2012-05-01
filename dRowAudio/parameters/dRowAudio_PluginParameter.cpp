@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 PluginParameter::PluginParameter()
 {
@@ -158,4 +158,3 @@ double PluginParameter::normaliseValue (double scaledValue)
 	return ((scaledValue - min) / (max - min));
 }
 
-END_JUCE_NAMESPACE

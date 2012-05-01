@@ -75,8 +75,6 @@
 //==============================================================================
 // include soundtouch library
 
-BEGIN_JUCE_NAMESPACE
-
 #if JUCE_MSVC
     #pragma warning (disable: 4127 4702)
 #endif
@@ -105,7 +103,5 @@ BEGIN_JUCE_NAMESPACE
         #include "cpu_detect_x86_gcc.cpp"
     #endif
 #endif
-
-END_JUCE_NAMESPACE
 
 //==============================================================================

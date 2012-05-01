@@ -38,8 +38,15 @@
 #endif
 
 #if JUCE_MAC || JUCE_IOS
+    #define Point CarbonDummyPointName
+    #define Component CarbonDummyCompName
     #include <Accelerate/Accelerate.h>
+    #undef Point
+    #undef Component
 #endif
+
+#undef min
+#undef max
 
 //=============================================================================
 /** Config: DROWAUDIO_USE_FFTREAL
@@ -70,7 +77,10 @@
 #endif
 
 //=============================================================================
-BEGIN_JUCE_NAMESPACE
+using namespace juce;
+#define MemoryBlock juce::MemoryBlock //*** bit of a nasty hack, better methods?
+
+namespace drow {
 
 // Audio
 #ifndef __DROWAUDIO_AUDIOFILEPLAYER_H__
@@ -287,6 +297,6 @@ BEGIN_JUCE_NAMESPACE
     #include "utility/dRowAudio_ITunesLibraryParser.h"
 #endif
 
-END_JUCE_NAMESPACE
+}
 
 #endif //_DROWAUDIOHEADER_H_

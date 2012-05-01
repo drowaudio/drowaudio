@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 Sonogram::Sonogram (int fftSizeLog2)
 :	fftEngine       (fftSizeLog2),
@@ -156,4 +156,3 @@ void Sonogram::renderScopeLine()
     }
 }
 
-END_JUCE_NAMESPACE

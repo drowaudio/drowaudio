@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 EnvelopeFollower::EnvelopeFollower()
@@ -53,4 +53,3 @@ void EnvelopeFollower::setCoefficients (float attack, float release) noexcept
     envRelease = release;
 }
 
-END_JUCE_NAMESPACE

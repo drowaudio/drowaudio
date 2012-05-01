@@ -20,7 +20,7 @@
 
 #if JUCE_UNIT_TESTS
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 class AudioSampleBufferUnitTests  : public UnitTest
@@ -58,6 +58,6 @@ public:
 static AudioSampleBufferUnitTests audioSampleBufferUnitTests;
 
 //==============================================================================
-END_JUCE_NAMESPACE
+
 
 #endif //JUCE_UNIT_TEST

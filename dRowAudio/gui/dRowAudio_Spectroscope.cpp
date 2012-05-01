@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 Spectroscope::Spectroscope (int fftSizeLog2)
 :	fftEngine       (fftSizeLog2),
@@ -155,4 +155,3 @@ void Spectroscope::renderScopeImage()
 	}
 }
 
-END_JUCE_NAMESPACE

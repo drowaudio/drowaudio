@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 MusicLibraryTable::MusicLibraryTable()
 :	font (12.0f),
@@ -307,4 +307,4 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &current
 }
 
 
-END_JUCE_NAMESPACE
+

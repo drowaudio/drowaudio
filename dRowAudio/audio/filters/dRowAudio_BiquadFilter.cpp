@@ -18,8 +18,6 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
-
 void BiquadFilter::processSamples (float* const samples,
                                    const int numSamples) noexcept
 {
@@ -218,5 +216,3 @@ void BiquadFilter::copyOutputsFrom (const BiquadFilter& other) throw()
 	y1 = other.y1;
 	y2 = other.y2;
 }
-
-END_JUCE_NAMESPACE

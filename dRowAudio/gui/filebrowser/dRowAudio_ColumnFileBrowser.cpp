@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==================================================================================
 class BrowserColumn : public BasicFileBrowser,
@@ -339,4 +339,3 @@ void ColumnFileBrowser::mouseWheelMove (const MouseEvent& e, float wheelIncremen
     }
 }
 
-END_JUCE_NAMESPACE

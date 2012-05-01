@@ -45,6 +45,8 @@
 
 #include "dRowAudio.h"
 
+namespace drow {
+
 // Audio
 #include "audio/dRowAudio_AudioFilePlayer.cpp"
 #include "audio/dRowAudio_AudioFilePlayerExt.cpp"
@@ -107,3 +109,5 @@
 #include "utility/dRowAudio_ITunesLibrary.cpp"
 #include "utility/dRowAudio_ITunesLibraryParser.cpp"
 #include "parameters/dRowAudio_PluginParameter.cpp"
+
+}

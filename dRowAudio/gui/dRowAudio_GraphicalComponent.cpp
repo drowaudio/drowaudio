@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 GraphicalComponent::GraphicalComponent()
     : paused (false),
@@ -113,4 +113,3 @@ void GraphicalComponent::copySamples (float **values, int numSamples_, int numCh
 	needToProcess = true;
 }
 
-END_JUCE_NAMESPACE

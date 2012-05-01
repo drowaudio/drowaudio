@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 AudioFilePlayer::AudioFilePlayer()
     : bufferingTimeSliceThread ("Shared Buffering Thread"),
@@ -205,4 +205,3 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
     return false;    
 }
 
-END_JUCE_NAMESPACE

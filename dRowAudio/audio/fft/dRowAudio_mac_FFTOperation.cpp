@@ -20,7 +20,7 @@
 
 #if JUCE_MAC && ! DROWAUDIO_USE_FFTREAL
 
-BEGIN_JUCE_NAMESPACE
+
 
 FFTOperation::FFTOperation (int fftSizeLog2)
     : fftProperties (fftSizeLog2)
@@ -60,6 +60,6 @@ void FFTOperation::performFFT (float* samples)
 
 //============================================================================
 
-END_JUCE_NAMESPACE
+
 
 #endif //JUCE_MAC

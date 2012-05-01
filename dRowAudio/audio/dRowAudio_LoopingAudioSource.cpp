@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 LoopingAudioSource::LoopingAudioSource (PositionableAudioSource* const inputSource,
@@ -179,4 +179,3 @@ bool LoopingAudioSource::isLooping() const
     return input->isLooping();
 }
 
-END_JUCE_NAMESPACE

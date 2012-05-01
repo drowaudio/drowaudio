@@ -25,7 +25,7 @@
 
 #include "soundtouch/SoundTouch.h"
 
-using namespace soundtouch;
+//using namespace soundtouch;
 
 //==============================================================================
 /** Wraps a SoundTouch object to enable pitch and tempo adjustments to an audio buffer;
@@ -121,7 +121,7 @@ public:
             
 private:
     //==============================================================================
-    SoundTouch soundTouch;
+    soundtouch::SoundTouch soundTouch;
     
     CriticalSection lock;
     HeapBlock<float> interleavedInputBuffer, interleavedOutputBuffer;

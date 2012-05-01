@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 OnePoleFilter::OnePoleFilter() noexcept
     : y1 (0.0f), b0 (1.0f), a1 (0.0f)
@@ -71,4 +71,3 @@ void OnePoleFilter::makeHighPass (const double sampleRate,
     a1 = (float) -alpha;
 }
 
-END_JUCE_NAMESPACE

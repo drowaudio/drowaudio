@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 //==============================================================================
 CentreAlignViewport::CentreAlignViewport (const String& componentName)
@@ -397,4 +397,3 @@ bool CentreAlignViewport::keyPressed (const KeyPress& key)
     return false;
 }
 
-END_JUCE_NAMESPACE

@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 AudioOscilloscope::AudioOscilloscope()
     : verticalZoomFactor (1.0f),
@@ -148,4 +148,3 @@ void AudioOscilloscope::addSample (const float sample)
     }
 }
 
-END_JUCE_NAMESPACE

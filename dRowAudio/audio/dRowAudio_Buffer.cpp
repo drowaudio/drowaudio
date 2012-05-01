@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 Buffer::Buffer (int size)
     : bufferSize (size)
@@ -73,4 +73,3 @@ void Buffer::removeListener (Buffer::Listener* const listener)
     listeners.remove (listener);
 }
 
-END_JUCE_NAMESPACE

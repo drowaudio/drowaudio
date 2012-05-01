@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 CpuMeter::CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs)
 	: Label ("CpuMeter", "00.00%"),
@@ -51,4 +51,3 @@ void CpuMeter::timerCallback()
 	setText (displayString, false);
 }
 
-END_JUCE_NAMESPACE

@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 DraggableWaveDisplay::DraggableWaveDisplay (AudioThumbnailImage& sourceToBeUsed)
     : audioThumbnailImage           (sourceToBeUsed),
@@ -220,4 +220,4 @@ double DraggableWaveDisplay::timeToPixels (double timeInSecs)
 	return timeInSecs / (timePerPixel * oneOverZoomRatio);
 }
 
-END_JUCE_NAMESPACE
+

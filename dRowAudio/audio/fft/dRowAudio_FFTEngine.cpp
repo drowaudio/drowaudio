@@ -20,7 +20,7 @@
 
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
-BEGIN_JUCE_NAMESPACE
+
 
 //============================================================================
 namespace 
@@ -114,6 +114,6 @@ void FFTEngine::setWindowType (Window::WindowType type)
 	windowProperties.setWindowType (type);
 }
 
-END_JUCE_NAMESPACE
+
 
 #endif // JUCE_MAC || DROWAUDIO_USE_FFTREAL

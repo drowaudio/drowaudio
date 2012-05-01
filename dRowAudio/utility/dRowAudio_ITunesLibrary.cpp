@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 juce_ImplementSingleton(ITunesLibrary);
 
@@ -86,4 +86,3 @@ void ITunesLibrary::removeListener (ITunesLibrary::Listener* const listener)
 
 //==============================================================================
 
-END_JUCE_NAMESPACE

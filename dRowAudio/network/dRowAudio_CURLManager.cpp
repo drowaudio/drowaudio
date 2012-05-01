@@ -20,7 +20,7 @@
 
 #if DROWAUDIO_USE_CURL
 
-BEGIN_JUCE_NAMESPACE
+
 
 juce_ImplementSingleton (CURLManager);
 
@@ -51,6 +51,6 @@ void CURLManager::cleanUpEasyCurlHandle (CURL* handle)
 	handle = nullptr;
 }
 
-END_JUCE_NAMESPACE
+
 
 #endif

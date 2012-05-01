@@ -20,7 +20,7 @@
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
-BEGIN_JUCE_NAMESPACE
+using namespace soundtouch;
 
 SoundTouchProcessor::SoundTouchProcessor()
     : interleavedInputBufferSize (512),
@@ -116,6 +116,6 @@ void SoundTouchProcessor::setPlaybackSettings (PlaybackSettings newSettings)
     soundTouch.setPitch (settings.pitch);    
 }
 
-END_JUCE_NAMESPACE
+
 
 #endif

@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-BEGIN_JUCE_NAMESPACE
+
 
 Clock::Clock()
 {
@@ -69,4 +69,3 @@ void Clock::timerCallback()
 	setText (timeAsString, false);
 }
 
-END_JUCE_NAMESPACE
