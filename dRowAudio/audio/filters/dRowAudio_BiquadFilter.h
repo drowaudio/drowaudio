@@ -44,12 +44,14 @@ public:
 	/**	Makes the filter a Low-pass filter.
 	 */
 	void makeLowPass (const double sampleRate,
-                      const double frequency) noexcept;
+                      const double frequency,
+                      const double Q) noexcept;
 	
 	/**	Makes the filter a High-pass filter.
 	 */
 	void makeHighPass (const double sampleRate,
-                       const double frequency) noexcept;
+                       const double frequency,
+                       const double Q) noexcept;
 	
 	/**	Makes the filter a Band-pass filter.
 	 */
@@ -92,6 +94,7 @@ private:
 	JUCE_LEAK_DETECTOR (BiquadFilter);
 };
 
+
 //==============================================================================
 /**	Primitive class to store the set-up info of a BiquadFilter
  */
@@ -106,7 +109,7 @@ public:
 		NoFilter
 	};
 	
-	BiquadFilterSetup (FilterType filterType, double filterCf, double filterQ = -1)
+	BiquadFilterSetup (FilterType filterType, double filterCf, double filterQ = 0.5)
 	{
 		type = filterType;
 		cf = filterCf;
@@ -116,11 +119,11 @@ public:
 	void setUpFilter (BiquadFilter& filter, double sampleRate)
 	{
 		if (type == Lowpass)
-			filter.makeLowPass (sampleRate, cf);
+			filter.makeLowPass (sampleRate, cf, q);
 		else if (type == Bandpass)
 			filter.makeBandPass (sampleRate, cf, q);
 		else if (type == Highpass)
-			filter.makeHighPass (sampleRate, cf);
+			filter.makeHighPass (sampleRate, cf, q);
 		else if (type == NoFilter)
 			filter.makeInactive();
 		

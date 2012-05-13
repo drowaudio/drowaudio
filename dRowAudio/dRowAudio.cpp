@@ -83,6 +83,7 @@ namespace drow {
 #include "gui/dRowAudio_SegmentedMeter.cpp"
 #include "gui/dRowAudio_Sonogram.cpp"
 #include "gui/dRowAudio_Spectroscope.cpp"
+#include "gui/dRowAudio_TriggeredScope.cpp"
 #include "gui/dRowAudio_CpuMeter.cpp"
 #include "gui/dRowAudio_Clock.cpp"
 #include "gui/dRowAudio_CentreAlignViewport.cpp"

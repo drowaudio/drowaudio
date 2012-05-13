@@ -24,14 +24,12 @@
 #include "../juce_audio_basics/juce_audio_basics.h"
 #include "../juce_audio_devices/juce_audio_devices.h"
 #include "../juce_audio_formats/juce_audio_formats.h"
-#include "../juce_audio_processors/juce_audio_processors.h"
 #include "../juce_audio_utils/juce_audio_utils.h"
 #include "../juce_core/juce_core.h"
 #include "../juce_data_structures/juce_data_structures.h"
 #include "../juce_events/juce_events.h"
 #include "../juce_graphics/juce_graphics.h"
 #include "../juce_gui_basics/juce_gui_basics.h"
-#include "../juce_gui_extra/juce_gui_extra.h"
 
 #if JUCE_MODULE_AVAILABLE_juce_cryptography
  #include "../juce_cryptography/juce_cryptography.h"
@@ -47,6 +45,11 @@
 
 #undef min
 #undef max
+
+#ifdef __clang__
+ #pragma clang diagnostic push
+ #pragma clang diagnostic ignored "-Wunused-function"
+#endif
 
 //=============================================================================
 /** Config: DROWAUDIO_USE_FFTREAL
@@ -77,10 +80,9 @@
 #endif
 
 //=============================================================================
+namespace drow {
 using namespace juce;
 #define MemoryBlock juce::MemoryBlock //*** bit of a nasty hack, better methods?
-
-namespace drow {
 
 // Audio
 #ifndef __DROWAUDIO_AUDIOFILEPLAYER_H__
@@ -185,6 +187,10 @@ namespace drow {
 
 #ifndef __DROWAUDIO_SPECTROSCOPE_H__
     #include "gui/dRowAudio_Spectroscope.h"
+#endif
+
+#ifndef __DROWAUDIO_TRIGGEREDSCOPE_H__
+    #include "gui/dRowAudio_TriggeredScope.h"
 #endif
 
 #ifndef __DROWAUDIO_CPUMETER_H__
@@ -298,5 +304,9 @@ namespace drow {
 #endif
 
 }
+
+#ifdef __clang__
+ #pragma clang diagnostic pop
+#endif
 
 #endif //_DROWAUDIOHEADER_H_

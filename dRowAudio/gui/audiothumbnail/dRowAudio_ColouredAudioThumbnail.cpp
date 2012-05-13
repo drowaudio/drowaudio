@@ -24,122 +24,122 @@
 #undef max
 
 //==============================================================================
-static void readMaxLevelsFiltering (AudioFormatReader &reader,
-                                    BiquadFilter &filterLow, BiquadFilter& /*filterMid*/, BiquadFilter& /*filterHigh*/,
-                                    int64 startSampleInFile,
-                                    int64 numSamples,
-                                    float& lowestLeft, float& highestLeft,
-                                    float& lowestRight, float& highestRight)
-{
-    if (numSamples <= 0)
-    {
-        lowestLeft = 0;
-        lowestRight = 0;
-        highestLeft = 0;
-        highestRight = 0;
-        return;
-    }
-	
-    const int bufferSize = (int) jmin (numSamples, (int64) 4096);
-    const int heapBlockSize = bufferSize * 2 + 64;
-    HeapBlock<int> tempSpace (heapBlockSize);
-	
-    int* tempBuffer[3];
-    tempBuffer[0] = tempSpace.getData();
-    tempBuffer[1] = tempSpace.getData() + bufferSize;
-    tempBuffer[2] = 0;
-	
-    if (reader.usesFloatingPointData)
-    {
-        float lmin = 1.0e6f;
-        float lmax = -lmin;
-        float rmin = lmin;
-        float rmax = lmax;
-		
-        while (numSamples > 0)
-        {
-            const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
-            reader.read (tempBuffer, 2, startSampleInFile, numToDo, false);
-			
-			// filterLow here
-			filterLow.processSamples(reinterpret_cast<float*> (tempBuffer[0]), numToDo);
-			
-            numSamples -= numToDo;
-            startSampleInFile += numToDo;
-			
-            float bufMin, bufMax;
-            findMinAndMax (reinterpret_cast<float*> (tempBuffer[0]), numToDo, bufMin, bufMax);
-            lmin = jmin (lmin, bufMin);
-            lmax = jmax (lmax, bufMax);
-			
-            if (reader.numChannels > 1)
-            {
-                findMinAndMax (reinterpret_cast<float*> (tempBuffer[1]), numToDo, bufMin, bufMax);
-                rmin = jmin (rmin, bufMin);
-                rmax = jmax (rmax, bufMax);
-            }
-        }
-		
-        if (reader.numChannels <= 1)
-        {
-            rmax = lmax;
-            rmin = lmin;
-        }
-		
-        lowestLeft = lmin;
-        highestLeft = lmax;
-        lowestRight = rmin;
-        highestRight = rmax;
-    }
-    else
-    {
-        int lmax = std::numeric_limits<int>::min();
-        int lmin = std::numeric_limits<int>::max();
-        int rmax = std::numeric_limits<int>::min();
-        int rmin = std::numeric_limits<int>::max();
-		
-        while (numSamples > 0)
-        {
-            const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
-            if (! reader.read (tempBuffer, 2, startSampleInFile, numToDo, false))
-                break;
-			
-			// filterLow here
-			filterLow.processSamples((tempBuffer[0]), numToDo);
-
-            numSamples -= numToDo;
-            startSampleInFile += numToDo;
-			
-            for (int j = reader.numChannels; --j >= 0;)
-            {
-                int bufMin, bufMax;
-                findMinAndMax (tempBuffer[j], numToDo, bufMin, bufMax);
-				
-                if (j == 0)
-                {
-                    lmax = jmax (lmax, bufMax);
-                    lmin = jmin (lmin, bufMin);
-                }
-                else
-                {
-                    rmax = jmax (rmax, bufMax);
-                    rmin = jmin (rmin, bufMin);
-                }
-            }
-        }
-		
-        if (reader.numChannels <= 1)
-        {
-            rmax = lmax;
-            rmin = lmin;
-        }
-		
-        lowestLeft = lmin / (float) std::numeric_limits<int>::max();
-        highestLeft = lmax / (float) std::numeric_limits<int>::max();
-        lowestRight = rmin / (float) std::numeric_limits<int>::max();
-        highestRight = rmax / (float) std::numeric_limits<int>::max();
-    }
-}
+//static void readMaxLevelsFiltering (AudioFormatReader &reader,
+//                                    BiquadFilter &filterLow, BiquadFilter& /*filterMid*/, BiquadFilter& /*filterHigh*/,
+//                                    int64 startSampleInFile,
+//                                    int64 numSamples,
+//                                    float& lowestLeft, float& highestLeft,
+//                                    float& lowestRight, float& highestRight)
+//{
+//    if (numSamples <= 0)
+//    {
+//        lowestLeft = 0;
+//        lowestRight = 0;
+//        highestLeft = 0;
+//        highestRight = 0;
+//        return;
+//    }
+//	
+//    const int bufferSize = (int) jmin (numSamples, (int64) 4096);
+//    const int heapBlockSize = bufferSize * 2 + 64;
+//    HeapBlock<int> tempSpace (heapBlockSize);
+//	
+//    int* tempBuffer[3];
+//    tempBuffer[0] = tempSpace.getData();
+//    tempBuffer[1] = tempSpace.getData() + bufferSize;
+//    tempBuffer[2] = 0;
+//	
+//    if (reader.usesFloatingPointData)
+//    {
+//        float lmin = 1.0e6f;
+//        float lmax = -lmin;
+//        float rmin = lmin;
+//        float rmax = lmax;
+//		
+//        while (numSamples > 0)
+//        {
+//            const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
+//            reader.read (tempBuffer, 2, startSampleInFile, numToDo, false);
+//			
+//			// filterLow here
+//			filterLow.processSamples(reinterpret_cast<float*> (tempBuffer[0]), numToDo);
+//			
+//            numSamples -= numToDo;
+//            startSampleInFile += numToDo;
+//			
+//            float bufMin, bufMax;
+//            findMinAndMax (reinterpret_cast<float*> (tempBuffer[0]), numToDo, bufMin, bufMax);
+//            lmin = jmin (lmin, bufMin);
+//            lmax = jmax (lmax, bufMax);
+//			
+//            if (reader.numChannels > 1)
+//            {
+//                findMinAndMax (reinterpret_cast<float*> (tempBuffer[1]), numToDo, bufMin, bufMax);
+//                rmin = jmin (rmin, bufMin);
+//                rmax = jmax (rmax, bufMax);
+//            }
+//        }
+//		
+//        if (reader.numChannels <= 1)
+//        {
+//            rmax = lmax;
+//            rmin = lmin;
+//        }
+//		
+//        lowestLeft = lmin;
+//        highestLeft = lmax;
+//        lowestRight = rmin;
+//        highestRight = rmax;
+//    }
+//    else
+//    {
+//        int lmax = std::numeric_limits<int>::min();
+//        int lmin = std::numeric_limits<int>::max();
+//        int rmax = std::numeric_limits<int>::min();
+//        int rmin = std::numeric_limits<int>::max();
+//		
+//        while (numSamples > 0)
+//        {
+//            const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
+//            if (! reader.read (tempBuffer, 2, startSampleInFile, numToDo, false))
+//                break;
+//			
+//			// filterLow here
+//			filterLow.processSamples((tempBuffer[0]), numToDo);
+//
+//            numSamples -= numToDo;
+//            startSampleInFile += numToDo;
+//			
+//            for (int j = reader.numChannels; --j >= 0;)
+//            {
+//                int bufMin, bufMax;
+//                findMinAndMax (tempBuffer[j], numToDo, bufMin, bufMax);
+//				
+//                if (j == 0)
+//                {
+//                    lmax = jmax (lmax, bufMax);
+//                    lmin = jmin (lmin, bufMin);
+//                }
+//                else
+//                {
+//                    rmax = jmax (rmax, bufMax);
+//                    rmin = jmin (rmin, bufMin);
+//                }
+//            }
+//        }
+//		
+//        if (reader.numChannels <= 1)
+//        {
+//            rmax = lmax;
+//            rmin = lmin;
+//        }
+//		
+//        lowestLeft = lmin / (float) std::numeric_limits<int>::max();
+//        highestLeft = lmax / (float) std::numeric_limits<int>::max();
+//        lowestRight = rmin / (float) std::numeric_limits<int>::max();
+//        highestRight = rmax / (float) std::numeric_limits<int>::max();
+//    }
+//}
 
 static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
 											  BiquadFilter &filterLow, BiquadFilter &filterLowMid, BiquadFilter &filterHighMid, BiquadFilter &filterHigh,
@@ -462,7 +462,7 @@ public:
 			owner.filterLow.makeBandPass(reader->sampleRate, 130.0, 2);
 			owner.filterLowMid.makeBandPass(reader->sampleRate, 650.0, 2.0);
 			owner.filterHighMid.makeBandPass(reader->sampleRate, 1300.0, 2.0);
-			owner.filterHigh.makeHighPass(reader->sampleRate, 2700.0);
+			owner.filterHigh.makeHighPass(reader->sampleRate, 2700.0, 0.5);
 //			owner.filterLow.makeBandPass(reader->sampleRate, 130.0, 1);
 //			owner.filterLowMid.makeBandPass(reader->sampleRate, 1000.0, 1.0);
 //			owner.filterHighMid.makeBandPass(reader->sampleRate, 1300.0, 1.0);

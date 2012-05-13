@@ -70,7 +70,7 @@ public:
 		By default this just copys the values passed to it into the samples heap block,
 		extending the memory if needed. You can overide this for more specialised behaviour.
 	 */
-	virtual void copySamples (float* values, int numSamples);
+	virtual void copySamples (const float* values, int numSamples);
 
 	/** Copies data from a number of channels to the component to use.
 		This is a lot slower than copySamples(float *values, int numSamples) but if the

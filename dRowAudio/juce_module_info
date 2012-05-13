@@ -1,7 +1,7 @@
 {
   "id":             "dRowAudio",
   "name":           "dRowAudio audio and gui classes",
-  "version":        "2.0.5",
+  "version":        "2.0.21",
   "description":    "Extensions to the JUCE library including graphical component for audio",
   "website":        "http://www.drowaudio.co.uk",
   "license":        "GPL",
@@ -9,14 +9,12 @@
   "dependencies":   [ { "id": "juce_audio_basics",      "version": "matching" },
 		      { "id": "juce_audio_devices",     "version": "matching" },
 		      { "id": "juce_audio_formats",     "version": "matching" },
-		      { "id": "juce_audio_processors",	"version": "matching" },
 		      { "id": "juce_audio_utils",     	"version": "matching" },
 		      { "id": "juce_core",     		"version": "matching" },
 		      { "id": "juce_data_structures",   "version": "matching" },
 		      { "id": "juce_events",     	"version": "matching" },
 		      { "id": "juce_graphics",     	"version": "matching" },
-		      { "id": "juce_gui_basics",     	"version": "matching" },
-                      { "id": "juce_gui_extra",   	"version": "matching" } ],
+		      { "id": "juce_gui_basics",     	"version": "matching" } ],
 
   "include":        "dRowAudio.h",
 
@@ -25,7 +23,11 @@
                       { "file": "dRowAudio.mm",  	"target": "xcode" } ],
 
   "browse":         [ "audio/*",
+                      "audio/fft/*",
+                      "audio/filters/*",
                       "gui/*",
+                      "gui/audiothumbnail/*",
+                      "gui/filebrowser/*",
                       "maths/*",
                       "parameters/*",
                       "utility/*" ],
