@@ -51,6 +51,8 @@ TriggeredScope::TriggeredScope (TimeSliceThread* backgroundThreadToUse_)
 
 TriggeredScope::~TriggeredScope()
 {
+    const ScopedLock sl (imageLock);
+
     stopTimer();
     
     backgroundThreadToUse->removeTimeSliceClient (this);
@@ -149,7 +151,7 @@ void TriggeredScope::processPendingSamples()
         {
             minBuffer[bufferWritePos] = currentMin;
             maxBuffer[bufferWritePos] = currentMax;
-            
+
             currentMax = -1.0f;
             currentMin = 1.0f;
             
@@ -218,7 +220,7 @@ void TriggeredScope::renderImage()
         
         const float top = (1.0f - (0.5f + (0.5f * verticalZoomFactor * maxBuffer[bufferReadPos]))) * h;
         const float bottom = (1.0f - (0.5f + (0.5f * verticalZoomFactor * minBuffer[bufferReadPos]))) * h;
-        
+
         g.drawVerticalLine (currentX, top, bottom);
         ++currentX;
     }
