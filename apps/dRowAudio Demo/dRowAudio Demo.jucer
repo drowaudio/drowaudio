@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.3"
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.4"
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.0.0">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"
-               extraLinkerFlags="-lcurl" bigIcon="vTRqOY" smallIcon="vTRqOY">
+               extraLinkerFlags="-lcurl" bigIcon="vTRqOY" smallIcon="vTRqOY"
+               extraCompilerFlags="-Wall -Wconversion -Wshorten-64-to-32">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
                        headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurlrelease.lib"/>
       </CONFIGURATIONS>
     </XCODE_MAC>
@@ -19,13 +20,13 @@
             bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurldebug.lib"
+                       headerPath="../../../../dRowAudio/network/curl/include" defines="CURL_LIB=libcurldebug.lib"
                        winWarningLevel="4" winArchitecture="32-bit" generateManifest="1"
-                       libraryPath="../../Source/network/curl/lib"/>
+                       libraryPath="../../../../dRowAudio/network/curl/lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurlrelease.lib"
+                       headerPath="../../../../dRowAudio/network/curl/include" defines="CURL_LIB=libcurlrelease.lib"
                        winWarningLevel="4" winArchitecture="32-bit" generateManifest="1"
-                       libraryPath="../../Source/network/curl/lib"/>
+                       libraryPath="../../../../dRowAudio/network/curl/lib"/>
       </CONFIGURATIONS>
     </VS2010>
     <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"
@@ -53,6 +54,7 @@
   </EXPORTFORMATS>
   <MAINGROUP id="BrdxWp" name="dRowAudio Demo">
     <GROUP id="{AFE8D6EB-4CF8-11B9-1E00-7B7F3155DBD4}" name="Source">
+      <FILE id="t4AsoP" name="DemoHeader.h" compile="0" resource="0" file="Source/DemoHeader.h"/>
       <FILE id="TWwywT" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="eGm8s3" name="DemoLookAndFeel.h" compile="0" resource="0"
             file="Source/DemoLookAndFeel.h"/>

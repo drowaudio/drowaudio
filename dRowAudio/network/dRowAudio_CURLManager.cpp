@@ -27,10 +27,9 @@ juce_ImplementSingleton (CURLManager);
 CURLManager::CURLManager()
     : TimeSliceThread ("cURL Thread")
 {
-	CURLcode result = curl_global_init (CURL_GLOBAL_ALL);
+	UNUSED_NOWARN CURLcode result = curl_global_init (CURL_GLOBAL_ALL);
     
-	if (result != CURLE_OK)
-		DBG("Error loading cURL - " << curl_easy_strerror (result));
+	jassert (result == CURLE_OK);
 }
 
 CURLManager::~CURLManager()

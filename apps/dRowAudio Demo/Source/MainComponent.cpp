@@ -27,7 +27,7 @@ MainComponent::MainComponent()
     : bufferTransformAudioSource    (&audioFilePlayer),
       trackInfoComponent            (audioFilePlayer),
       dropTarget                    (&audioFilePlayer, &trackInfoComponent),
-      transport                     (audioFilePlayer),
+      transport                     (audioDeviceManager, audioFilePlayer),
       meterThread                   ("Meter Thread"),
       cpuMeter                      (&audioDeviceManager),
       tabbedComponent               (TabbedButtonBar::TabsAtTop)
@@ -161,7 +161,9 @@ void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
                                              numOutputChannels,
                                              numSamples);
     
-    fftDemo->processBlock (outputChannelData[0], numSamples);
+    if (fftDemo->isShowing())
+        fftDemo->processBlock (outputChannelData[0], numSamples);
+    
     meterL.copySamples (outputChannelData[0], numSamples);
     
     if (numOutputChannels > 1)

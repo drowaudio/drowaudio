@@ -21,7 +21,7 @@
 #ifndef __MAINWINDOW_H_E549002A__
 #define __MAINWINDOW_H_E549002A__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "DemoHeader.h"
 #include "DemoLookAndFeel.h"
 
 //==============================================================================

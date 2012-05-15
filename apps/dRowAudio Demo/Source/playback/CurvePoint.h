@@ -13,7 +13,7 @@
 #ifndef _CURVEPOINT_H_
 #define _CURVEPOINT_H_
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 
 class CurvePoint  : public Component,
 					public ComponentDragger

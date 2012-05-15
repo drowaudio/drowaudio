@@ -21,7 +21,7 @@
 #ifndef __TRANSPORTCOMPONENT_H_E0AC5162__
 #define __TRANSPORTCOMPONENT_H_E0AC5162__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "DemoHeader.h"
 
 //==============================================================================
 class TransportComponent :  public Component,
@@ -29,7 +29,7 @@ class TransportComponent :  public Component,
 {
 public:    
     //==============================================================================
-    TransportComponent (AudioFilePlayerExt& audioFilePlayer);
+    TransportComponent (AudioDeviceManager& audioDeviceManager, AudioFilePlayerExt& audioFilePlayer);
     
     ~TransportComponent();
     
@@ -48,8 +48,11 @@ public:
     
 private:
     //==============================================================================
+    AudioDeviceManager& audioDeviceManager;
     AudioFilePlayerExt& audioFilePlayer;
     OwnedArray<TextButton> buttons;    
+    
+    void showAudioSettings();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TransportComponent);
 };

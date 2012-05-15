@@ -21,7 +21,7 @@
 #ifndef __NetworkDemo_H_577067C6__
 #define __NetworkDemo_H_577067C6__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 #include "ConnectionComponent.h"
 #include "LocalDirectoryListBox.h"
 #include "RemoteDirectoryListBox.h"

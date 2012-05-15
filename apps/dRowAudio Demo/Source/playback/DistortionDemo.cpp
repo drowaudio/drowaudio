@@ -54,7 +54,7 @@ void DistortionDemo::paint (Graphics& g)
 
 //    g.fillAll (Colours::darkgrey);
     
-    GuiHelpers::drawBevel (g, distortionComponent.getBounds().toFloat(), m, Colours::darkgrey);
+    GuiHelpers::drawBevel (g, distortionComponent.getBounds().toFloat(), (float) m, Colours::darkgrey);
     
     g.setColour (Colours::white);
     g.setFont (20, Font::underlined);

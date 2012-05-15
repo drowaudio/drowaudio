@@ -7,7 +7,7 @@
  *
  */
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "DemoHeader.h"
 
 class DemoLookAndFeel : public LookAndFeel
 {

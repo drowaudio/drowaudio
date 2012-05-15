@@ -21,7 +21,7 @@
 #ifndef __DROWAUDIO_DISTORTIONCOMPONENT_H__
 #define __DROWAUDIO_DISTORTIONCOMPONENT_H__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 #include "CurvePoint.h"
 
 //==============================================================================

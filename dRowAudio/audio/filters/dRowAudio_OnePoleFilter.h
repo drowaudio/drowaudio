@@ -22,7 +22,7 @@
 #define __DROWAUDIO_ONEPOLEFILTER_H__
 
 //==============================================================================
-/**	
+/**
     One-Pole Filter.
  
 	This is a simple filter that uses only one pole. As such it is very

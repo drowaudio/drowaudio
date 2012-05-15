@@ -59,7 +59,7 @@ void LTAS::updateLTAS (float* input, int numSamples)
         }
         
         for (int i = 0; i < numBins; ++i)
-            ltasBuffer.getReference (i) = ltasAvg.getReference (i).getAverage();
+            ltasBuffer.getReference (i) = (float) ltasAvg.getReference (i).getAverage();
         
         ltasBuffer.updateListeners();
     }

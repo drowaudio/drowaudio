@@ -21,7 +21,7 @@
 #ifndef __REMOTEDIRECTORYLISTBOX_H_780D9778__
 #define __REMOTEDIRECTORYLISTBOX_H_780D9778__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 
 #if DROWAUDIO_USE_CURL
 

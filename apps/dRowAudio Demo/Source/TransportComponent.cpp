@@ -20,8 +20,9 @@
 
 #include "TransportComponent.h"
 
-TransportComponent::TransportComponent (AudioFilePlayerExt& audioFilePlayer_)
-    : audioFilePlayer (audioFilePlayer_)
+TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_, AudioFilePlayerExt& audioFilePlayer_)
+    : audioDeviceManager (audioDeviceManager_),
+      audioFilePlayer (audioFilePlayer_)
 {
     for (int i = 0; i < numButtons; i++)
     {
@@ -33,7 +34,10 @@ TransportComponent::TransportComponent (AudioFilePlayerExt& audioFilePlayer_)
     buttons[play]->setButtonText ("Play");
     buttons[stop]->setButtonText ("Stop");
     buttons[loop]->setButtonText ("Loop");
-    buttons[reverse]->setButtonText ("Reverse");
+    
+    // we'll just use this as a settings button for now while
+    // the reverse feature is being developed
+    buttons[reverse]->setButtonText ("Settings");
     
     buttons[loop]->setClickingTogglesState (true);
     buttons[reverse]->setClickingTogglesState (true);
@@ -74,6 +78,28 @@ void TransportComponent::buttonClicked (Button* button)
     }
     else if (button == buttons[reverse]) 
     {
-        audioFilePlayer.setPlayDirection (! button->getToggleState());
+        showAudioSettings();
+        //audioFilePlayer.setPlayDirection (! button->getToggleState());
     }
+}
+
+//==============================================================================
+void TransportComponent::showAudioSettings()
+{
+    AudioDeviceSelectorComponent settingsComp (audioDeviceManager,
+                                               0, 2,
+                                               1, 2,
+                                               false, false,
+                                               true, false);
+    settingsComp.setSize (500, 400);
+    LookAndFeel settingsLaf;
+    settingsLaf.setColour (Label::textColourId, Colours::white);
+    settingsLaf.setColour (TextButton::buttonColourId, Colours::white);
+    settingsLaf.setColour (TextButton::textColourOffId, Colours::black);
+    settingsComp.setLookAndFeel (&settingsLaf);
+    
+    DialogWindow::showModalDialog ("Audio Settings",
+                              &settingsComp, nullptr,
+                              Colours::darkgrey,
+                              true, true, true);
 }

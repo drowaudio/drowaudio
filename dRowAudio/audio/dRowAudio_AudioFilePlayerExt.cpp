@@ -26,8 +26,8 @@ AudioFilePlayerExt::AudioFilePlayerExt()
     : AudioFilePlayer()
 {
     loopingAudioSource = new LoopingAudioSource (audioTransportSource, false);
-    reversibleAudioSource = new ReversibleAudioSource (audioTransportSource, false);
-    filteringAudioSource = new FilteringAudioSource (reversibleAudioSource, false);
+    //reversibleAudioSource = new ReversibleAudioSource (audioTransportSource, false);
+    filteringAudioSource = new FilteringAudioSource (audioTransportSource, false);
     
     masterSource = filteringAudioSource;
 }

@@ -66,7 +66,7 @@ void NetworkDemo::connectionChanged (ConnectionComponent* changedConnectionCompo
 	}
 }
 
-void NetworkDemo::buttonClicked(Button *button)
+void NetworkDemo::buttonClicked(Button* /*button*/)
 {
 }
 

@@ -21,7 +21,7 @@
 #ifndef __DROWAUDIODEMO_FFTDEMO_H__
 #define __DROWAUDIODEMO_FFTDEMO_H__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 
 //==============================================================================
 class FFTDemo : public Component,

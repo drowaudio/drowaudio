@@ -32,14 +32,13 @@
  // If your code uses a lot of JUCE classes, then this will obviously save you
  // a lot of typing, but can be disabled by setting DONT_SET_USING_JUCE_NAMESPACE.
  using namespace juce;
- using namespace drow;
 #endif
 
 namespace ProjectInfo
 {
     const char* const  projectName    = "dRowAudio Demo";
-    const char* const  versionString  = "0.5.3";
-    const int          versionNumber  = 0x503;
+    const char* const  versionString  = "0.5.4";
+    const int          versionNumber  = 0x504;
 }
 
 #endif   // __APPHEADERFILE_MG07TN__

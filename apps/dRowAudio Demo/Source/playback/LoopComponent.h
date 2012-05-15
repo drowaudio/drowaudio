@@ -21,7 +21,7 @@
 #ifndef __LOOPCOMPONENT_H_AEA5B15F__
 #define __LOOPCOMPONENT_H_AEA5B15F__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 
 //==============================================================================
 class LoopMarker :  public Component

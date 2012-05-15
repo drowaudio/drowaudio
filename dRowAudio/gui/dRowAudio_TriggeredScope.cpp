@@ -170,8 +170,8 @@ void TriggeredScope::renderImage()
     g.fillAll (Colours::black);
     g.setColour (Colours::white);
     
-    int w = image.getWidth();
-    const float h = image.getHeight();
+    const int w = image.getWidth();
+    const int h = image.getHeight();
     
     int bufferReadPos = bufferWritePos - w;
     if (bufferReadPos < 0 )

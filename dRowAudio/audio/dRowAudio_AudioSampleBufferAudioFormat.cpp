@@ -72,7 +72,7 @@ public:
             const int numThisTime = jmin (8192, numSamples);
             const int numBytes = numThisTime * sizeof (float);
             
-            for (int c = numChannels; --c >= 0;)
+            for (unsigned int c = numChannels; --c >= 0;)
             {
                 const int64 pos = sampleToReadPosition (c, startSampleInFile);
                 input->setPosition (pos);
@@ -137,12 +137,12 @@ AudioFormatReader* AudioSampleBufferAudioFormat::createReaderFor (InputStream* s
     return nullptr;
 }
 
-AudioFormatWriter* AudioSampleBufferAudioFormat::createWriterFor (OutputStream* streamToWriteTo,
-                                                                  double sampleRateToUse,
-                                                                  unsigned int numberOfChannels,
-                                                                  int bitsPerSample,
-                                                                  const StringPairArray& metadataValues,
-                                                                  int qualityOptionIndex)
+AudioFormatWriter* AudioSampleBufferAudioFormat::createWriterFor (OutputStream* /*streamToWriteTo*/,
+                                                                  double /*sampleRateToUse*/,
+                                                                  unsigned int /*numberOfChannels*/,
+                                                                  int /*bitsPerSample*/,
+                                                                  const StringPairArray& /*metadataValues*/,
+                                                                  int /*qualityOptionIndex*/)
 {
     jassertfalse; // not yet implemented!
     return nullptr;

@@ -21,7 +21,7 @@
 #ifndef __DROWAUDIO_BUFFERTRANSFORMAUDIOSOURCE_H__
 #define __DROWAUDIO_BUFFERTRANSFORMAUDIOSOURCE_H__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 
 //==============================================================================
 class BufferTransformAudioSource :  public AudioSource

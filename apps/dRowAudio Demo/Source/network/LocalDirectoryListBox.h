@@ -21,7 +21,7 @@
 #ifndef __LOCALDIRECTORYLISTBOX_H_AEB1756D__
 #define __LOCALDIRECTORYLISTBOX_H_AEB1756D__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 
 #if DROWAUDIO_USE_CURL
 

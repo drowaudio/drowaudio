@@ -451,7 +451,7 @@ CASE_SENSE_NAMES       = NO
 # will show members with their full class and namespace scopes in the 
 # documentation. If set to YES the scope will be hidden.
 
-HIDE_SCOPE_NAMES       = NO
+HIDE_SCOPE_NAMES       = YES
 
 # If the SHOW_INCLUDE_FILES tag is set to YES (the default) then Doxygen 
 # will put a list of the files that are included by a file in the documentation 
@@ -671,7 +671,8 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories 
 # with spaces.
 
-INPUT                  = ../dRowAudio
+INPUT                  = ../dRowAudio \
+                         doc.h
 
 # This tag can be used to specify the character encoding of the source files 
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is 
@@ -735,7 +736,10 @@ RECURSIVE              = YES
 
 EXCLUDE                = ../dRowAudio/network/curl \
                          ../dRowAudio/audio/fft/fftreal \
-                         ../dRowAudio/audio/soundtouch
+                         ../dRowAudio/audio/soundtouch \
+                         ../dRowAudio/dRowAudio.h \
+                         ../dRowAudio/dRowAudio.cpp \
+                         ../dRowAudio/dRowAudio.mm
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or 
 # directories that are symbolic links (a Unix file system feature) are excluded 
@@ -1588,7 +1592,8 @@ SKIP_FUNCTION_MACROS   = YES
 # NOT include the path). If a tag file is not located in the directory in which 
 # doxygen is run, you must also specify the path to the tagfile here.
 
-TAGFILES               = ../../../../../Downloads/jucetags.tag=http://www.rawmaterialsoftware.com/juce/api/
+TAGFILES               = ../../../../../Downloads/juce.tag=http://www.rawmaterialsoftware.com/juce/api/ \
+                         juce.tag=http://www.rawmaterialsoftware.com/juce/api/
 
 # When a file name is specified after GENERATE_TAGFILE, doxygen will create 
 # a tag file that is based on the input files it reads.

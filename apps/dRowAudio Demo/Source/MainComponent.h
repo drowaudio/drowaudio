@@ -21,7 +21,7 @@
 #ifndef __MAINCOMPONENT_H_7EAA32A__
 #define __MAINCOMPONENT_H_7EAA32A__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "DemoHeader.h"
 #include "TrackInfoComponent.h"
 #include "TransportComponent.h"
 #include "playback/BufferTransformAudioSource.h"

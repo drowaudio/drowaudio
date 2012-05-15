@@ -29,8 +29,20 @@
     <Filter Include="Juce Modules\dRowAudio\audio">
       <UniqueIdentifier>{394225AF-149C-4A75-393B-3349719FFD32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Juce Modules\dRowAudio\audio\fft">
+      <UniqueIdentifier>{DF60BE62-63FF-5109-C13F-E2284C1CB375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\audio\filters">
+      <UniqueIdentifier>{28C03BFE-C12D-33A6-6DC8-F54B3E334DE1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Modules\dRowAudio\gui">
       <UniqueIdentifier>{98C3A831-BCC5-32C5-8054-DB3F20B0BB82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\gui\audiothumbnail">
+      <UniqueIdentifier>{840F6F18-B2F9-D476-7903-37B0236BB6E3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\gui\filebrowser">
+      <UniqueIdentifier>{57BCC3D7-F317-AC45-6914-9EE739A8CCEC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Juce Modules\dRowAudio\maths">
       <UniqueIdentifier>{B0C941F2-A3D7-2D50-751C-8AC1183EF3B5}</UniqueIdentifier>
@@ -397,6 +409,30 @@
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_FFTEngine.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_FFTReal_FFTOperation.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_ios_FFTOperation.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_Window.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_BiquadFilter.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\filters</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioFileDropTarget.cpp">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
     </ClCompile>
@@ -426,6 +462,27 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_Spectroscope.cpp">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_TriggeredScope.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
       <Filter>Juce Modules\dRowAudio\maths</Filter>
@@ -1572,6 +1629,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\DemoHeader.h">
+      <Filter>dRowAudio Demo\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\DemoLookAndFeel.h">
       <Filter>dRowAudio Demo\Source</Filter>
     </ClInclude>
@@ -1659,6 +1719,24 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h">
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_FFTEngine.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_FFTOperation.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_LTAS.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_Window.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h">
+      <Filter>Juce Modules\dRowAudio\audio\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h">
+      <Filter>Juce Modules\dRowAudio\audio\filters</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
     </ClInclude>
@@ -1691,6 +1769,30 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_Spectroscope.h">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_TriggeredScope.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\maths\dRowAudio_BezierCurve.h">
       <Filter>Juce Modules\dRowAudio\maths</Filter>

@@ -71,11 +71,13 @@ void LocalDirectoryListBoxModel::paintListBoxItem (int rowNumber,
 	const int h = height;
 	const int m = (int) (height * 0.15f);
 
+	juce::Rectangle<float> imageRect ((float) m, (float) m, (float) (h - (2 * m)),  (float) (h - (2 * m)));
+
 	if (currentWorkingDirectory.getChildFile(itemList[rowNumber]).isDirectory()) {
-		LookAndFeel::getDefaultLookAndFeel().getDefaultFolderImage()->drawWithin(g, juce::Rectangle<float>(m, m, h-2*m, h-2*m), RectanglePlacement(0), 1.0f);
+		LookAndFeel::getDefaultLookAndFeel().getDefaultFolderImage()->drawWithin(g, imageRect, RectanglePlacement(0), 1.0f);
 	}
 	else {
-		LookAndFeel::getDefaultLookAndFeel().getDefaultDocumentFileImage()->drawWithin(g, juce::Rectangle<float>(m, m, h-2*m, h-2*m), RectanglePlacement(RectanglePlacement::centred), 1.0f);
+		LookAndFeel::getDefaultLookAndFeel().getDefaultDocumentFileImage()->drawWithin(g, imageRect, RectanglePlacement(RectanglePlacement::centred), 1.0f);
 	}
 	
 	g.setColour(Colours::black);

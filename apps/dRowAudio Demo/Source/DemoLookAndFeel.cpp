@@ -9,6 +9,8 @@
 
 #include "DemoLookAndFeel.h"
 
+#define Rectangle juce::Rectangle
+
 DemoLookAndFeel::DemoLookAndFeel()
 {
 }

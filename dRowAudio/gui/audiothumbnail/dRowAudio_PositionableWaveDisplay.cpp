@@ -173,7 +173,7 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
         {
             currentSampleRate = 44100;
             fileLength = 0.0;
-            oneOverFileLength = 1.0 / fileLength;
+            oneOverFileLength = 1.0;
         }
 	}
 }

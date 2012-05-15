@@ -21,7 +21,7 @@
 #ifndef __TRACKINFOCOMPONENT_H_75E955F2__
 #define __TRACKINFOCOMPONENT_H_75E955F2__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "DemoHeader.h"
 
 //==============================================================================
 class TrackInfoComponent :  public Component,

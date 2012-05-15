@@ -21,7 +21,7 @@
 #ifndef __AUDIOPLAYBACKDEMO_H_4F99037A__
 #define __AUDIOPLAYBACKDEMO_H_4F99037A__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 #include "LoopComponent.h"
 #include "DistortionDemo.h"
 
@@ -73,6 +73,8 @@ private:
     
     GroupComponent filterGroup, rateGroup;
     Slider resolutionSlider, zoomSlider;
+    Label zoomLabel;
+
     OwnedArray<Slider> playerControls;
     OwnedArray<Label> playerControlLabels;
     

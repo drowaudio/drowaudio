@@ -21,7 +21,7 @@
 #ifndef __CONNECTIONCOMPONENT_H_48116F81__
 #define __CONNECTIONCOMPONENT_H_48116F81__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../DemoHeader.h"
 
 #if DROWAUDIO_USE_CURL
 

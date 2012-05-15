@@ -45,13 +45,13 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     draggableWaveDisplay = new DraggableWaveDisplay (*audioThumbnailImage);
     addAndMakeVisible (draggableWaveDisplay);
     
-    addAndMakeVisible (&resolutionSlider);
-    resolutionSlider.addListener (this);
-    resolutionSlider.setRange (0, 20);
-    resolutionSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
-    resolutionSlider.setValue (3.0);
-    resolutionSlider.setSkewFactorFromMidPoint (3.0);
-    resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
+//    addAndMakeVisible (&resolutionSlider);
+//    resolutionSlider.addListener (this);
+//    resolutionSlider.setRange (0, 20);
+//    resolutionSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
+//    resolutionSlider.setValue (3.0);
+//    resolutionSlider.setSkewFactorFromMidPoint (3.0);
+//    resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
     
     addAndMakeVisible (&zoomSlider);
     zoomSlider.addListener (this);
@@ -60,6 +60,13 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     zoomSlider.setSkewFactorFromMidPoint (1.0);
     zoomSlider.setValue (1.0);
     zoomSlider.setSliderStyle (Slider::RotaryVerticalDrag);
+    
+    addAndMakeVisible (&zoomLabel);
+    zoomLabel.setText ("Zoom", false);
+    zoomLabel.setFont (12.0f);
+    zoomLabel.setJustificationType (Justification::centred);
+    zoomLabel.attachToComponent (&zoomSlider, false);
+    zoomLabel.setColour (Label::textColourId, Colours::white);
     
     addAndMakeVisible (&loopComponent);
     
@@ -79,6 +86,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
         playerControlLabels.add (new Label ());
         addAndMakeVisible (playerControls[i]);
         addAndMakeVisible (playerControlLabels[i]);
+        playerControlLabels[i]->setFont (12.0f);
         playerControlLabels[i]->attachToComponent (playerControls[i], false);
         playerControls[i]->addListener (this);
         playerControls[i]->setValue (1.0);
@@ -107,13 +115,6 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     playerControlLabels[rate]->setText ("Rate", false);
     playerControlLabels[tempo]->setText ("Tempo", false);
     playerControlLabels[pitch]->setText ("Pitch", false);
-
-    playerControlLabels[lowEQ]->setFont (12);
-    playerControlLabels[midEQ]->setFont (12);
-    playerControlLabels[highEQ]->setFont (12);
-    playerControlLabels[rate]->setFont (12);
-    playerControlLabels[tempo]->setFont (12);
-    playerControlLabels[pitch]->setFont (12);
     
     addAndMakeVisible (&distortionDemo);
 }

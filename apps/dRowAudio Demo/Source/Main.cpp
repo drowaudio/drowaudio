@@ -18,7 +18,7 @@
   ==============================================================================
 */
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "DemoHeader.h"
 #include "MainWindow.h"
 
 

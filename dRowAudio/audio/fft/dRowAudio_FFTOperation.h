@@ -26,7 +26,7 @@
     typedef DSPSplitComplex SplitComplex;
 #elif DROWAUDIO_USE_FFTREAL
     
-    #include "fftreal/FFTReal.h"
+    //#include "fftreal/FFTReal.h"
     
     typedef ScopedPointer< ffft::FFTReal<float> > FFTConfig;
     struct SplitComplex {

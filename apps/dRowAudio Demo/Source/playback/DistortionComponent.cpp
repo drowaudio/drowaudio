@@ -62,8 +62,8 @@ void DistortionComponent::resized()
     const float yScale = h / 10.0f;
     for (int i = 1; i < 10; ++i)
     {
-        g.drawHorizontalLine ((int) (i * yScale), 0, w);
-        g.drawVerticalLine ((int) (i * xScale), 0, h);
+        g.drawHorizontalLine ((int) (i * yScale), 0.0f, (float) w);
+        g.drawVerticalLine ((int) (i * xScale), 0.0f, (float) h);
     }
     g.drawLine (0, h, w, 0);
     
@@ -107,8 +107,8 @@ void DistortionComponent::refreshPath()
     const int w = getWidth();
     const int h = getHeight();
     
-    const float xScale = w / (float)bufferSize;
-    const float yScale = h;
+    const float xScale = (float) w / (float) bufferSize;
+    const float yScale = (float) h;
     
     path.clear();
     path.startNewSubPath (0.0f, h);

@@ -39,12 +39,12 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">dRowAudio Demo</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath);../../Source/network/curl/lib</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath);../../../../dRowAudio/network/curl/lib</LibraryPath>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">dRowAudio Demo</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath);../../Source/network/curl/lib</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath);../../../../dRowAudio/network/curl/lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -57,7 +57,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;../../Source/network/curl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;../../../../dRowAudio/network/curl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -97,7 +97,7 @@
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;../../Source/network/curl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;../../../../dRowAudio/network/curl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CURL_LIB=libcurlrelease.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -182,6 +182,30 @@
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_FFTEngine.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_FFTReal_FFTOperation.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_ios_FFTOperation.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_Window.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_BiquadFilter.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioFileDropTarget.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -210,6 +234,27 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_Spectroscope.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_TriggeredScope.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
@@ -1226,6 +1271,7 @@
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_extra\juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\DemoHeader.h"/>
     <ClInclude Include="..\..\Source\DemoLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\MainWindow.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
@@ -1255,6 +1301,12 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_SampleRateConverter.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_FFTEngine.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_FFTOperation.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_LTAS.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\fft\dRowAudio_Window.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioOscilloscope.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CentreAlignViewport.h"/>
@@ -1266,6 +1318,14 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_SegmentedMeter.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_Sonogram.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_Spectroscope.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_TriggeredScope.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\maths\dRowAudio_BezierCurve.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\maths\dRowAudio_CumulativeMovingAverage.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\maths\dRowAudio_MathsUtilities.h"/>

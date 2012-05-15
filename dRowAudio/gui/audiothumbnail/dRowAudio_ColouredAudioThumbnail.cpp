@@ -23,6 +23,8 @@
 #undef min
 #undef max
 
+using ::std::numeric_limits;
+
 //==============================================================================
 //static void readMaxLevelsFiltering (AudioFormatReader &reader,
 //                                    BiquadFilter &filterLow, BiquadFilter& /*filterMid*/, BiquadFilter& /*filterHigh*/,
@@ -206,10 +208,10 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
 			memcpy(filteredArray[3], tempBuffer[0], sizeof(int)*numToDo);
 			
 			// filter buffers
-			filterLow.processSamples(reinterpret_cast<float*> (filteredArray[0]), numToDo);
-			filterLowMid.processSamples(reinterpret_cast<float*> (filteredArray[1]), numToDo);
-			filterHighMid.processSamples(reinterpret_cast<float*> (filteredArray[2]), numToDo);
-			filterHigh.processSamples(reinterpret_cast<float*> (filteredArray[3]), numToDo);
+			filterLow.processSamples (reinterpret_cast<float*> (filteredArray[0]), numToDo);
+			filterLowMid.processSamples (reinterpret_cast<float*> (filteredArray[1]), numToDo);
+			filterHighMid.processSamples (reinterpret_cast<float*> (filteredArray[2]), numToDo);
+			filterHigh.processSamples (reinterpret_cast<float*> (filteredArray[3]), numToDo);
 			
 			// calculate colour
 			for (int i = 0; i < numToDo; i++)
@@ -218,9 +220,9 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
 //				avgMid += fabsf((reinterpret_cast<float*>(filteredArray[1]))[i]);
 //				avgHigh += fabsf((reinterpret_cast<float*>(filteredArray[2]))[i]);
 			
-				float low = fabsf((reinterpret_cast<float*>(filteredArray[0]))[i]);
-				float mid = (fabsf((reinterpret_cast<float*>(filteredArray[1]))[i]) + fabsf((reinterpret_cast<float*>(filteredArray[2]))[i]));
-				float high = fabsf((reinterpret_cast<float*>(filteredArray[3]))[i]);
+				float low = fabsf((reinterpret_cast<float*> (filteredArray[0]))[i]);
+				float mid = (fabsf((reinterpret_cast<float*> (filteredArray[1]))[i]) + fabsf((reinterpret_cast<float*>(filteredArray[2]))[i]));
+				float high = fabsf((reinterpret_cast<float*> (filteredArray[3]))[i]);
 				
 				if (low > avgLow) {
 					avgLow = low;
@@ -279,10 +281,10 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
                 break;
 			
             // copy samples to buffers ready to be filtered
-			memcpy(filteredArray[0], tempBuffer[0], sizeof(int)*numToDo);
-			memcpy(filteredArray[1], tempBuffer[0], sizeof(int)*numToDo);
-			memcpy(filteredArray[2], tempBuffer[0], sizeof(int)*numToDo);
-			memcpy(filteredArray[3], tempBuffer[0], sizeof(int)*numToDo);
+			memcpy (filteredArray[0], tempBuffer[0], sizeof (int) * numToDo);
+			memcpy (filteredArray[1], tempBuffer[0], sizeof (int) * numToDo);
+			memcpy (filteredArray[2], tempBuffer[0], sizeof (int) * numToDo);
+			memcpy (filteredArray[3], tempBuffer[0], sizeof (int) * numToDo);
 			
 			// filter buffers
 			filterLow.processSamples((filteredArray[0]), numToDo);
@@ -302,13 +304,13 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
 				int high = abs(filteredArray[3][i]);
 				
 				if (low > avgLow) {
-					avgLow = low;
+					avgLow = (float) low;
 				}
 				if (mid > avgMid) {
-					avgMid = mid;
+					avgMid = (float) mid;
 				}
 				if (high > avgHigh) {
-					avgHigh = high;
+					avgHigh = (float) high;
 				}
 				
 			}
@@ -348,13 +350,13 @@ static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
 //        avgLow = (avgLow / numToAverage) / (float) std::numeric_limits<int>::max();
 //        avgMid = (avgMid / numToAverage) / (float) std::numeric_limits<int>::max();
 //        avgHigh = (avgHigh / numToAverage) / (float) std::numeric_limits<int>::max();
-        avgLow = avgLow / (float) std::numeric_limits<int>::max();
-        avgMid = avgMid / (float) std::numeric_limits<int>::max();
-        avgHigh = avgHigh / (float) std::numeric_limits<int>::max();
+        avgLow = avgLow / (float) ::std::numeric_limits<int>::max();
+        avgMid = avgMid / (float) ::std::numeric_limits<int>::max();
+        avgHigh = avgHigh / (float) ::std::numeric_limits<int>::max();
     }
     
-    uint8 maxSize = std::numeric_limits<uint8>::max();
-    colourLeft = Colour::fromRGB(avgLow * maxSize, avgMid * maxSize * 0.66, avgHigh * maxSize * 0.33);
+    uint8 maxSize = ::std::numeric_limits<uint8>::max();
+    colourLeft = Colour::fromRGB((uint8) (avgLow * maxSize), (uint8) (avgMid * maxSize * 0.66f), (uint8) (avgHigh * maxSize * 0.33f));
     colourRight = colourLeft;
 }
 
@@ -399,8 +401,8 @@ struct ColouredAudioThumbnail::MinMaxColourValue
 
     inline int getPeak() const throw()
     {
-        return jmax (std::abs ((int) minValue),
-                     std::abs ((int) maxValue));
+        return jmax (::std::abs ((int) minValue),
+                     ::std::abs ((int) maxValue));
     }
 
     inline void read (InputStream& input)
