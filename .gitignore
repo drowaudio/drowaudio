@@ -28,4 +28,5 @@ juce_events/
 juce_graphics/
 juce_gui_basics/
 juce_gui_extra/
+juce_opengl/
 Band Practice Assistant/

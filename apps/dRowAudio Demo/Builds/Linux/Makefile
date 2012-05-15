@@ -72,6 +72,7 @@ OBJECTS := \
   $(OBJDIR)/juce_graphics_f8def838.o \
   $(OBJDIR)/juce_gui_basics_13b83b4.o \
   $(OBJDIR)/juce_gui_extra_6053123c.o \
+  $(OBJDIR)/juce_opengl_a277cb00.o \
 
 .PHONY: clean
 
@@ -231,6 +232,11 @@ $(OBJDIR)/juce_gui_basics_13b83b4.o: ../../../../../../juce_source/juce/modules/
 $(OBJDIR)/juce_gui_extra_6053123c.o: ../../../../../../juce_source/juce/modules/juce_gui_extra/juce_gui_extra.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling juce_gui_extra.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_opengl_a277cb00.o: ../../../../../../juce_source/juce/modules/juce_opengl/juce_opengl.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_opengl.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)

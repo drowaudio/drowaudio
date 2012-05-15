@@ -27,7 +27,7 @@ juce_ImplementSingleton (CURLManager);
 CURLManager::CURLManager()
     : TimeSliceThread ("cURL Thread")
 {
-	UNUSED_NOWARN CURLcode result = curl_global_init (CURL_GLOBAL_ALL);
+	CURLcode result = curl_global_init (CURL_GLOBAL_ALL);
     
 	jassert (result == CURLE_OK);
 }

@@ -80,7 +80,11 @@ private:
     
     TimeSliceThread backgroundThread;
     AudioThumbnailCache audioThumbnailCache;
-    ColouredAudioThumbnail colouredAudioThumbnail;
+#if JUCE_MAC
+    ColouredAudioThumbnail audioThumbnail;
+#else
+    AudioThumbnail audioThumbnail;
+#endif
     ScopedPointer<AudioThumbnailImage> audioThumbnailImage;
     ScopedPointer<PositionableWaveDisplay> positionableWaveDisplay;
     ScopedPointer<DraggableWaveDisplay> draggableWaveDisplay;

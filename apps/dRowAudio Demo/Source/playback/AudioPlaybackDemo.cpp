@@ -27,7 +27,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
       loopComponent (audioFilePlayer),
       backgroundThread ("Waveform Thread"),
       audioThumbnailCache (10),
-      colouredAudioThumbnail (512, *audioFilePlayer.getAudioFormatManager(), audioThumbnailCache),
+      audioThumbnail (512, *audioFilePlayer.getAudioFormatManager(), audioThumbnailCache),
       distortionDemo (distortionBuffer)
 {
 //    addAndMakeVisible (positionalDisplay = new ColouredPositionableWaveDisplay (&audioFilePlayer,
@@ -37,7 +37,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
 //                                                                            &audioFilePlayer,
 //                                                                            &thumbnailCache, 
 //                                                                            &audioThumbnail));
-    audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread, &audioThumbnailCache, &colouredAudioThumbnail);
+    audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread, &audioThumbnailCache, &audioThumbnail);
     
     positionableWaveDisplay = new PositionableWaveDisplay (*audioThumbnailImage);
     addAndMakeVisible (positionableWaveDisplay);
@@ -179,7 +179,7 @@ void AudioPlaybackDemo::paint (Graphics& g)
     GuiHelpers::drawBevel (g, draggableWaveDisplay->getBounds().toFloat(), 2.0f, Colours::darkgrey);
     
     g.setColour (Colours::grey.brighter());
-    g.drawHorizontalLine (filterGroup.getBottom() + 5, 5, getWidth() - 5);
+    g.drawHorizontalLine (filterGroup.getBottom() + 5, 5.0f, getWidth() - 5.0f);
 }
 
 void AudioPlaybackDemo::sliderValueChanged (Slider* slider)

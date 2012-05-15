@@ -72,14 +72,14 @@ public:
             const int numThisTime = jmin (8192, numSamples);
             const int numBytes = numThisTime * sizeof (float);
             
-            for (unsigned int c = numChannels; --c >= 0;)
+            for (int c = (int) numChannels; --c >= 0;)
             {
                 const int64 pos = sampleToReadPosition (c, startSampleInFile);
                 input->setPosition (pos);
                 
                 if (destSamples[c] != nullptr)
                 {
-                    if (c < numChannels)
+                    if (c < (int) numChannels)
                         input->read (destSamples[c] + startOffsetInDestBuffer, numBytes);
                     else
                         zeromem (destSamples[c] + startOffsetInDestBuffer, numBytes);

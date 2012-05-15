@@ -49,7 +49,11 @@ inline static String stripFileProtocolForLocal (String pathToStrip)
 {
 	if (pathToStrip.startsWith ("file://localhost"))
 	{
+#if JUCE_WINDOWS
+		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/") + 1));
+#else
 		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
+#endif   
 		return temp.replace ("%20", " ").replace ("%5B", "[").replace ("%5D", "]").replace ("%23", "#");
 	}
 	
