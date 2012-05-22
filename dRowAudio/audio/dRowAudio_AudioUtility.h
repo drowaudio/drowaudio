@@ -78,14 +78,16 @@ forcedinline static double samplesToSeconds (int64 numSamples, double sampleRate
  */
 static inline double semitonesToPitchRatio (double numSemitones)  
 {
-    return pow (10.0, numSemitones * (log10 (2.0) / 12.0));
+    //return pow (10.0, numSemitones * (log10 (2.0) / 12.0));
+    return pow (2.0, numSemitones / 12.0);
 }
 
 /** Converts pitch ratio to a number of semitones.
  */
 static inline double pitchRatioToSemitones (double pitchRatio)    
 {
-    return (12.0 / log10 (2.0)) * log10 (pitchRatio);
+    //return (12.0 / log10 (2.0)) * log10 (pitchRatio);
+    return 12.0 * log2 (pitchRatio);
 }
 
 /** Converts a frequency to MIDI note number.

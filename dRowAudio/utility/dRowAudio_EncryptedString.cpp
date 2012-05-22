@@ -77,7 +77,7 @@ String EncryptedString::decrypt (const String& encryptedString, const String& pr
 }
 
 //==============================================================================
-#if JUCE_UNIT_TESTS
+#if DROWAUDIO_UNIT_TESTS
 
 class EncryptedStringTests  : public UnitTest
 {
@@ -115,7 +115,7 @@ public:
 
 static EncryptedStringTests encryptedStringTests;
 
-#endif
+#endif // DROWAUDIO_UNIT_TESTS
 
 //==============================================================================
 

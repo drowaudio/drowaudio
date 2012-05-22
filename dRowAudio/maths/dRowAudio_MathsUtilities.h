@@ -259,4 +259,14 @@ inline int findPowerForBase2 (int number) noexcept
 		return (int) (log ((double) nextPowerOf2 (number)) / log(2.0));
 }
 
+#if JUCE_MSVC || DOXYGEN
+/** Log2 function for the MSVC compiler.
+ */
+template <typename Type>
+inline Type log2 (Type number)
+{
+    return log (number) / log (2.0);
+}
+#endif
+
 #endif //__DROWAUDIO_MATHSUTILITIES_H__

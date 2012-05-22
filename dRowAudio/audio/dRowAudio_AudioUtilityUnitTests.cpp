@@ -18,9 +18,31 @@
   ==============================================================================
 */
 
-#if JUCE_UNIT_TESTS
+#if DROWAUDIO_UNIT_TESTS
 
 
+//==============================================================================
+class AudioUtilityUnitTests  : public UnitTest
+{
+public:
+    AudioUtilityUnitTests() : UnitTest ("AudioUtilityUnitTests") {}
+    
+    void runTest()
+    {
+        beginTest ("AudioUtilityUnitTests");
+        
+        
+        expectEquals (semitonesToPitchRatio (12.0), 2.0);
+        expectEquals (semitonesToPitchRatio (-12.0), 0.5);
+        expectEquals (semitonesToPitchRatio (-24.0), 0.25);
+
+        expectEquals (pitchRatioToSemitones (2.0), 12.0);
+        expectEquals (pitchRatioToSemitones (0.5), -12.0);
+        expectEquals (pitchRatioToSemitones (0.25), -24.0);
+    }
+};
+
+static AudioUtilityUnitTests audioUtilityUnitTests;
 
 //==============================================================================
 class AudioSampleBufferUnitTests  : public UnitTest
@@ -60,4 +82,4 @@ static AudioSampleBufferUnitTests audioSampleBufferUnitTests;
 //==============================================================================
 
 
-#endif //JUCE_UNIT_TEST
+#endif // DROWAUDIO_UNIT_TESTS

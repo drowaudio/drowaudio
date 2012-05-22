@@ -2168,6 +2168,7 @@
 				"_DEBUG=1",
 				"DEBUG=1",
 				"JUCE_ObjCExtraSuffix=U6uyAt",
+				"DROWAUDIO_UNIT_TESTS",
 				"CURL_LIB=libcurldebug.lib",
 				"JUCER_XCODE_MAC_F6D2F4CF=1"); }; name = Debug; };
 		F78DFA4D6AD72663CF5A213A = { isa = XCBuildConfiguration; buildSettings = {
@@ -2189,6 +2190,7 @@
 				"_NDEBUG=1",
 				"NDEBUG=1",
 				"JUCE_ObjCExtraSuffix=U6uyAt",
+				"DROWAUDIO_UNIT_TESTS",
 				"CURL_LIB=libcurlrelease.lib",
 				"JUCER_XCODE_MAC_F6D2F4CF=1"); }; name = Release; };
 		915D883D7A39F6B886C3B5E0 = { isa = XCBuildConfiguration; buildSettings = {

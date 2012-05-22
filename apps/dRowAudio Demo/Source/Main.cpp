@@ -38,6 +38,11 @@ public:
     //==============================================================================
     void initialise (const String& /*commandLine*/)
     {
+#if JUCE_DEBUG && DROWAUDIO_UNIT_TESTS
+        UnitTestRunner testRunner;
+        testRunner.runAllTests();
+#endif
+        
         SplashScreen* splash = new SplashScreen();
         splash->show ("dRowAudio Demo",
                       ImageCache::getFromMemory (BinaryData::splash_screen_png, BinaryData::splash_screen_pngSize),

@@ -58,13 +58,13 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;../../../../dRowAudio/network/curl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DROWAUDIO_UNIT_TESTS;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
-      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
-      <ObjectFileName>.\Debug\</ObjectFileName>
-      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(IntDir)\</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -77,14 +77,14 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\Debug\dRowAudio Demo.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\dRowAudio Demo.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalOptions>Wldap32.lib ws2_32.lib libcurldebug.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Debug\dRowAudio Demo.bsc</OutputFile>
+      <OutputFile>$(IntDir)\dRowAudio Demo.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -98,13 +98,13 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;../../../../dRowAudio/network/curl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CURL_LIB=libcurlrelease.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DROWAUDIO_UNIT_TESTS;CURL_LIB=libcurlrelease.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
-      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
-      <ObjectFileName>.\Release\</ObjectFileName>
-      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(IntDir)\</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -117,7 +117,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\Release\dRowAudio Demo.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\dRowAudio Demo.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
@@ -126,7 +126,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Release\dRowAudio Demo.bsc</OutputFile>
+      <OutputFile>$(IntDir)\dRowAudio Demo.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -1777,6 +1777,21 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\resources\icon.png"/>
+    <None Include="..\..\Source\resources\splash_screen.png"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_basics\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_devices\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_formats\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_processors\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_audio_utils\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_data_structures\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_events\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_graphics\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_extra\juce_module_info"/>
+    <None Include="..\..\..\..\..\..\juce_source\juce\modules\juce_opengl\juce_module_info"/>
     <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>
