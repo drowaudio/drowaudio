@@ -109,7 +109,7 @@ inline float findVariance (float* samples, int numSamples) noexcept
 /** Finds the corrected variance for a set of samples suitable for a sample standard deviation.
     Note the N - 1 in the formular to correct for small data sets.
  */
-inline float findVarience (float* samples, int numSamples) noexcept
+inline float findCorrectedVariance (float* samples, int numSamples) noexcept
 {
     const float mean = findMean (samples, numSamples);
     
@@ -124,7 +124,7 @@ inline float findVarience (float* samples, int numSamples) noexcept
  */
 inline float findStandardDeviation (float* samples, int numSamples) noexcept
 {
-    return sqrtf (findVariance (samples, numSamples));
+    return sqrtf (findCorrectedVariance (samples, numSamples));
 }
 
 //==============================================================================
@@ -262,10 +262,16 @@ inline int findPowerForBase2 (int number) noexcept
 #if JUCE_MSVC || DOXYGEN
 /** Log2 function for the MSVC compiler.
  */
-template <typename Type>
-inline Type log2 (Type number)
+inline double log2 (double number)
 {
     return log (number) / log (2.0);
+}
+
+/** Log2f function for the MSVC compiler.
+ */
+inline float log2f (float number)
+{
+    return log (number) / log (2.0f);
 }
 #endif
 

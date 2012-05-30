@@ -271,6 +271,10 @@ using namespace juce;
     #include "gui/dRowAudio_AudioOscilloscope.h"
 #endif
 
+#ifndef __DROWAUDIO_AUDIOTRANSPORTCUROSR_H__
+    #include "gui/dRowAudio_AudioTransportCursor.h"
+#endif
+
 #ifndef __DROWAUDIO_SEGMENTEDMETER_H__
     #include "gui/dRowAudio_SegmentedMeter.h"
 #endif

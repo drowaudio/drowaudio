@@ -52,7 +52,7 @@ public:
 	void visibleAreaChanged (const juce::Rectangle<int>& newVisibleArea);
 	
     /** @internal */
-	void mouseWheelMove (const MouseEvent& e, float wheelIncrementX, float wheelIncrementY);
+	void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel);
 	
 private:
     //==================================================================================

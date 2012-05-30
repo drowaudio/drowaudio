@@ -73,7 +73,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\Debug\dRowAudio Demo.exe</OutputFile>
+      <OutputFile>$(OutDir)\dRowAudio Demo.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -113,7 +113,7 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\Release\dRowAudio Demo.exe</OutputFile>
+      <OutputFile>$(OutDir)\dRowAudio Demo.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -210,6 +210,9 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioOscilloscope.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioTransportCursor.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CentreAlignViewport.cpp">
@@ -1334,6 +1337,7 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioOscilloscope.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioTransportCursor.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CentreAlignViewport.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_Clock.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CpuMeter.h"/>
@@ -1538,7 +1542,6 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\misc\juce_WindowsRegistry.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_android_JNIHelpers.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_BasicNativeHeaders.h"/>
-    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_mac_ObjCSuffix.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_osx_ObjCHelpers.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_posix_SharedCode.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_win32_ComSmartPtr.h"/>
@@ -1623,6 +1626,7 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\mouse\juce_MouseInputSource.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\mouse\juce_MouseListener.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\mouse\juce_SelectedItemSet.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\mouse\juce_TextDragAndDropTarget.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\mouse\juce_TooltipClient.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\keyboard\juce_CaretComponent.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\keyboard\juce_KeyboardFocusTraverser.h"/>

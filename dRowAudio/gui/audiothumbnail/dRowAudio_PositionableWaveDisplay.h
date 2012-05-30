@@ -23,6 +23,7 @@
 
 #include "../../utility/dRowAudio_StateVariable.h"
 #include "../../audio/dRowAudio_AudioUtility.h"
+#include "../dRowAudio_AudioTransportCursor.h"
 
 //====================================================================================
 /** A class to display the entire waveform of an audio file.
@@ -31,7 +32,6 @@
 	reposition the transport source.
  */
 class PositionableWaveDisplay : public Component,
-								public Timer,
                                 public AudioThumbnailImage::Listener
 {
 public:
@@ -89,40 +89,27 @@ public:
 	
 	/** @internal */
 	void paint (Graphics &g);
-
-	/** @internal */
-	void mouseDown (const MouseEvent &e);
-	
-	/** @internal */
-	void mouseUp (const MouseEvent &e);
-	
-	/** @internal */
-	void mouseDrag (const MouseEvent &e);
-    
-	//====================================================================================
-	/** @internal */
-	void timerCallback();
 		
 private:
 	//==============================================================================
-	void refreshWaveform();
-	
+    AudioThumbnailImage& audioThumbnailImage;
+
+    AudioFilePlayer& audioFilePlayer;
 	double fileLength, oneOverFileLength, currentSampleRate;
     double zoomRatio, startOffsetRatio, verticalZoomRatio;
 	
-    AudioThumbnailImage& audioThumbnailImage;
-    Colour backgroundColour;
-    Colour waveformColour;
-    AudioFilePlayer* audioFilePlayer;
+    Colour backgroundColour, waveformColour;
 	Image cachedImage, cursorImage;
 	
-	StateVariable<int> transportLineXCoord;
 	float currentXScale;
-	bool showTransportCursor;
     
-	bool interestedInDrag;
-	double currentMouseX;
-	
+    StateVariable<double> drawTimes;
+    
+    AudioTransportCursor audioTransportCursor;
+
+	//==============================================================================
+    void refreshWaveform();
+
 	//==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PositionableWaveDisplay);
 };

@@ -442,6 +442,9 @@
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioOscilloscope.cpp">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioTransportCursor.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CentreAlignViewport.cpp">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
     </ClCompile>
@@ -1737,6 +1740,9 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioOscilloscope.h">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_AudioTransportCursor.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CentreAlignViewport.h">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
     </ClInclude>
@@ -2349,9 +2355,6 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_BasicNativeHeaders.h">
       <Filter>Juce Modules\juce_core\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_mac_ObjCSuffix.h">
-      <Filter>Juce Modules\juce_core\native</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_core\native\juce_osx_ObjCHelpers.h">
       <Filter>Juce Modules\juce_core\native</Filter>
     </ClInclude>
@@ -2602,6 +2605,9 @@
       <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\mouse\juce_SelectedItemSet.h">
+      <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\mouse\juce_TextDragAndDropTarget.h">
       <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\juce_gui_basics\mouse\juce_TooltipClient.h">

@@ -328,14 +328,14 @@ void ColumnFileBrowser::visibleAreaChanged (const juce::Rectangle<int>& /*newVis
     resized();
 }
 
-void ColumnFileBrowser::mouseWheelMove (const MouseEvent& e, float wheelIncrementX, float wheelIncrementY)
+void ColumnFileBrowser::mouseWheelMove (const MouseEvent& e, const MouseWheelDetails& wheel)
 {
     if (! (e.mods.isAltDown() || e.mods.isCtrlDown()))
     {
         if (getHorizontalScrollBar()->isVisible())
-            Viewport::useMouseWheelMoveIfNeeded (e, wheelIncrementX, 0);
+            Viewport::useMouseWheelMoveIfNeeded (e, wheel);
         else
-            Viewport::useMouseWheelMoveIfNeeded (e, wheelIncrementX, wheelIncrementY);
+            Viewport::useMouseWheelMoveIfNeeded (e, wheel);
     }
 }
 

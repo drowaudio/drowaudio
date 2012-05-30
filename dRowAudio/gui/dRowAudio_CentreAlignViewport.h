@@ -231,7 +231,7 @@ public:
     /** @internal */
     void scrollBarMoved (ScrollBar* scrollBarThatHasMoved, double newRangeStart);
     /** @internal */
-    void mouseWheelMove (const MouseEvent& e, float wheelIncrementX, float wheelIncrementY);
+    void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel);
     /** @internal */
     bool keyPressed (const KeyPress& key);
     /** @internal */

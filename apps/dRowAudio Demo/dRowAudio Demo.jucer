@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.5"
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.6"
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.0.0"
               defines="DROWAUDIO_UNIT_TESTS">
   <EXPORTFORMATS>
@@ -46,10 +46,12 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
+                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"
+                       iosCompatibility="default"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"/>
+                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"
+                       iosCompatibility="default"/>
       </CONFIGURATIONS>
     </XCODE_IPHONE>
   </EXPORTFORMATS>

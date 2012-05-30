@@ -80,6 +80,7 @@ namespace drow {
 #include "gui/dRowAudio_AudioFileDropTarget.cpp"
 #include "gui/dRowAudio_GraphicalComponent.cpp"
 #include "gui/dRowAudio_AudioOscilloscope.cpp"
+#include "gui/dRowAudio_AudioTransportCursor.cpp"
 #include "gui/dRowAudio_SegmentedMeter.cpp"
 #include "gui/dRowAudio_Sonogram.cpp"
 #include "gui/dRowAudio_Spectroscope.cpp"
