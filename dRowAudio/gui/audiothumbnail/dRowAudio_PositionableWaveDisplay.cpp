@@ -61,7 +61,7 @@ void PositionableWaveDisplay::setZoomRatio (double newZoomRatio)
     zoomRatio = newZoomRatio;
     audioTransportCursor.setZoomRatio (newZoomRatio);
     
-    repaint();
+    resized();
 }
 
 void PositionableWaveDisplay::setStartOffsetRatio (double newStartOffsetRatio)
@@ -102,11 +102,10 @@ void PositionableWaveDisplay::resized()
 {
     const ScopedLock sl (imageLock);
     
-    cachedImage = Image (Image::RGB, getWidth(), getHeight(), false);
+    cachedImage = Image (Image::RGB, getWidth() / zoomRatio, getHeight(), false);
     cachedImage.clear (cachedImage.getBounds(), backgroundColour);
 
-    drawTimes.setBoth (0.0);
-    threadToUse.addTimeSliceClient (this);
+    refreshCachedImage();
     
     audioTransportCursor.setBounds (getLocalBounds());
 }
@@ -119,14 +118,15 @@ void PositionableWaveDisplay::paint(Graphics &g)
     g.setColour (backgroundColour);	
     g.fillAll();
         
+    const int newWidth = roundToInt (w / zoomRatio);
     const int startPixelX = roundToInt (w * startOffsetRatio);
     const int newHeight = roundToInt (verticalZoomRatio * h);
     const int startPixelY = roundToInt ((h * 0.5f) - (newHeight * 0.5f));
 
     const ScopedLock sl (imageLock);
     g.drawImage (cachedImage,
-                 startPixelX, startPixelY, w, newHeight,
-                 0, 0, roundToInt (cachedImage.getWidth() * zoomRatio), cachedImage.getHeight(), 
+                 startPixelX, startPixelY, newWidth, newHeight,
+                 0, 0, cachedImage.getWidth(), cachedImage.getHeight(), 
                  false);
 }
 
@@ -152,9 +152,8 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
             currentSampleRate = reader->sampleRate;
             fileLength = audioFilePlayer.getLengthInSeconds();
             oneOverFileLength = 1.0 / fileLength;
-            
-            drawTimes.setBoth (0.0);
-            threadToUse.addTimeSliceClient (this);
+
+            refreshCachedImage();
         }
         else 
         {
@@ -188,4 +187,11 @@ int PositionableWaveDisplay::useTimeSlice()
 void PositionableWaveDisplay::handleAsyncUpdate()
 {
     repaint();
+}
+
+//====================================================================================
+void PositionableWaveDisplay::refreshCachedImage()
+{
+    drawTimes.setBoth (0.0);
+    threadToUse.addTimeSliceClient (this);
 }
