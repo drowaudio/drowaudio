@@ -81,7 +81,11 @@ public:
     
     /** Returns the AudioFilePlayer currently being used.
      */
-    AudioFilePlayer* getAudioFilePlayer()           {   return filePlayer;  }
+    AudioFilePlayer* getAudioFilePlayer()           {   return filePlayer;      }
+    
+    /** Retuns the ammount of time that has been rendered.
+     */
+    double getTimeRendered()                        {   return lastTimeDrawn;   }
     
     /** Returns true if the Image has finished rendering;
      */

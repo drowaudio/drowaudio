@@ -32,14 +32,17 @@
 	reposition the transport source.
  */
 class PositionableWaveDisplay : public Component,
-                                public AudioThumbnailImage::Listener
+                                public AudioThumbnailImage::Listener,
+                                public TimeSliceClient,
+                                public AsyncUpdater
 {
 public:
 	//====================================================================================
 	/** Creates the display.
 		The AudioThumbnailImage associated with the display must be passed in.
 	 */
-	explicit PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed);
+	explicit PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed,
+                                      TimeSliceThread& threadToUse_);
 	
 	/** Destructor.
      */
@@ -77,22 +80,24 @@ public:
 	/** @internal */
     void imageChanged (AudioThumbnailImage* audioThumbnailImage);
 
-	/** @internal */
-    void imageUpdated (AudioThumbnailImage* audioThumbnailImage);
-    
-	/** @internal */
-    void imageFinished (AudioThumbnailImage* audioThumbnailImage);
-    
 	//====================================================================================
 	/** @internal */
     void resized ();
 	
 	/** @internal */
 	void paint (Graphics &g);
-		
+    
+	/** @internal */
+    int useTimeSlice();
+
+    /** @internal */
+    void handleAsyncUpdate();
+    
 private:
 	//==============================================================================
     AudioThumbnailImage& audioThumbnailImage;
+    TimeSliceThread& threadToUse;
+    CriticalSection imageLock;
 
     AudioFilePlayer& audioFilePlayer;
 	double fileLength, oneOverFileLength, currentSampleRate;
@@ -101,14 +106,9 @@ private:
     Colour backgroundColour, waveformColour;
 	Image cachedImage, cursorImage;
 	
-	float currentXScale;
-    
     StateVariable<double> drawTimes;
     
     AudioTransportCursor audioTransportCursor;
-
-	//==============================================================================
-    void refreshWaveform();
 
 	//==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PositionableWaveDisplay);

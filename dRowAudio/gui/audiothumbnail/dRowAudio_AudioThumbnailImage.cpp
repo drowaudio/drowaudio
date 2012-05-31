@@ -74,7 +74,7 @@ AudioThumbnailImage::~AudioThumbnailImage()
         }
     }
 	
-    stopTimer ();
+    stopTimer();
 }
 
 void AudioThumbnailImage::setBackgroundColour (Colour newBackgroundColour)

@@ -110,6 +110,14 @@ public:
 		current = newValue;
 	}
 
+    /** Incriments the current value by newValue and updates the previous.
+     */
+	inline void operator+= (VariableType newValue)
+	{
+		previous = current;
+		current += newValue;
+	}
+
     /** Multiplies the current value by newValue and updates the previous.
      */
 	inline void operator*= (VariableType newValue)

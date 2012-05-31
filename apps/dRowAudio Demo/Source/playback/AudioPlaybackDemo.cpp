@@ -39,7 +39,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
 //                                                                            &audioThumbnail));
     audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread, &audioThumbnailCache, &audioThumbnail);
     
-    positionableWaveDisplay = new PositionableWaveDisplay (*audioThumbnailImage);
+    positionableWaveDisplay = new PositionableWaveDisplay (*audioThumbnailImage, backgroundThread);
     addAndMakeVisible (positionableWaveDisplay);
     
     draggableWaveDisplay = new DraggableWaveDisplay (*audioThumbnailImage);
