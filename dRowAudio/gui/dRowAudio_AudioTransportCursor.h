@@ -93,6 +93,7 @@ private:
 
 	double fileLength, oneOverFileLength, currentSampleRate;
     double zoomRatio, startOffsetRatio;
+    bool shouldStopTimer;
 	
 	Image cursorImage;
 	

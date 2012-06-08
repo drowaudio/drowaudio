@@ -42,6 +42,28 @@ inline void autocorrelate (const float* inputSamples, int numSamples, float* out
         for (int j = 0; j < numSamples - i; j++)
             sum += inputSamples[j] * inputSamples[j + i];
         
+        outputSamples[i] = sum * (1.0f / numSamples);
+        //outputSamples[i] = sum;
+    }
+}
+
+/** Finds the autocorrelation of a set of given samples using a
+    square-difference function.
+ 
+    This will cross-correlate inputSamples with itself and put the result in
+    output samples. Note that this uses a shrinking integration window, assuming
+    values outside of numSamples are 0. This leads to an exponetially decreasing
+    autocorrelation function.
+ */
+inline void sdfAutocorrelate (const float* inputSamples, int numSamples, float* outputSamples) noexcept
+{
+    for (int i = 0; i < numSamples; i++)
+    {
+        float sum = 0.0f;
+        
+        for (int j = 0; j < numSamples - i; j++)
+            sum += squareNumber (inputSamples[j] - inputSamples[j + i]);
+            
         outputSamples[i] = sum;
     }
 }
@@ -188,6 +210,18 @@ inline static bool isnan (Type value)
     volatile Type num = value;
     
     return num != num;
+#endif
+}
+
+/** Checks to see if a number is Inf eg. 100.0 / 0.0.
+ */
+template <typename Type>
+inline static bool isinf (Type value)
+{
+#if ! JUCE_WINDOWS
+    return std::isinf (value);
+#else
+    return ! _finite (value);
 #endif
 }
 

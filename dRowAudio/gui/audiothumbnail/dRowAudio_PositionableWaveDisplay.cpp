@@ -102,7 +102,7 @@ void PositionableWaveDisplay::resized()
 {
     const ScopedLock sl (imageLock);
     
-    cachedImage = Image (Image::RGB, getWidth() / zoomRatio, getHeight(), false);
+    cachedImage = Image (Image::RGB, jmax (1, int (getWidth() / zoomRatio)), jmax (1, getHeight()), false);
     cachedImage.clear (cachedImage.getBounds(), backgroundColour);
 
     refreshCachedImage();

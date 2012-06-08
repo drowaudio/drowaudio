@@ -45,13 +45,13 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     draggableWaveDisplay = new DraggableWaveDisplay (*audioThumbnailImage);
     addAndMakeVisible (draggableWaveDisplay);
     
-//    addAndMakeVisible (&resolutionSlider);
-//    resolutionSlider.addListener (this);
-//    resolutionSlider.setRange (0, 20);
-//    resolutionSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
-//    resolutionSlider.setValue (3.0);
-//    resolutionSlider.setSkewFactorFromMidPoint (3.0);
-//    resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
+    addAndMakeVisible (&resolutionSlider);
+    resolutionSlider.addListener (this);
+    resolutionSlider.setRange (0, 20);
+    resolutionSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
+    resolutionSlider.setValue (3.0);
+    resolutionSlider.setSkewFactorFromMidPoint (3.0);
+    resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
     
     addAndMakeVisible (&zoomSlider);
     zoomSlider.addListener (this);

@@ -25,6 +25,7 @@ AudioTransportCursor::AudioTransportCursor (AudioFilePlayer& sourceToBeUsed)
       currentSampleRate     (44100.0),
       zoomRatio             (1.0),
       startOffsetRatio      (0.0),
+      shouldStopTimer       (false),
       showTransportCursor   (true)
 {
     audioFilePlayer.addListener (this);
@@ -94,6 +95,12 @@ void AudioTransportCursor::timerCallback()
         repaint (transportLineXCoord.getPrevious() - 2, 0, 5, h);
         repaint (transportLineXCoord.getCurrent() - 2, 0, 5, h);
 	}
+    
+    if (shouldStopTimer)
+    {
+        shouldStopTimer = false;
+        stopTimer();
+    }
 }
 
 //====================================================================================
@@ -179,8 +186,13 @@ void AudioTransportCursor::mouseDrag (const MouseEvent& e)
 void AudioTransportCursor::startTimerIfNeeded()
 {
     if (audioFilePlayer.isPlaying() && showTransportCursor)
+    {
+        shouldStopTimer = false;
         startTimer (40);
+    }
     else
-        stopTimer();
+    {
+        shouldStopTimer = true;
+    }
 }
 

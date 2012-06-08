@@ -158,7 +158,7 @@ private:
 	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
 	
 	// thumbnail classes
-    CriticalSection lock;
+    ReadWriteLock imageLock;
     TimeSliceThread& backgroundThread;
 	OptionalScopedPointer<AudioThumbnailCache> audioThumbnailCache;
 	OptionalScopedPointer<AudioThumbnailBase> audioThumbnail;

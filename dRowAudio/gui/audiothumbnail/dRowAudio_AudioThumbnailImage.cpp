@@ -108,7 +108,7 @@ void AudioThumbnailImage::setResolution (double newResolution)
 //====================================================================================
 void AudioThumbnailImage::timerCallback ()
 {
-    //const ScopedLock sl (lock);
+    const ScopedReadLock sl (imageLock);
 
     if (! renderComplete)
     {
@@ -135,8 +135,6 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
 	{
         if (filePlayer->getAudioFormatReaderSource() != nullptr)
         {
-            const ScopedLock sl (lock);
-
             currentSampleRate = filePlayer->getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
 
             if (currentSampleRate > 0.0)
@@ -145,6 +143,8 @@ void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
                 fileLength = filePlayer->getLengthInSeconds();
                 oneOverFileLength = 1.0 / fileLength;
                 
+                const ScopedWriteLock sl (imageLock);
+
                 const int imageWidth = roundToInt (filePlayer->getTotalLength() / sourceSamplesPerThumbnailSample);
                 waveformImage = Image (Image::RGB, jmax (1, imageWidth), 100, true);
 
@@ -195,7 +195,7 @@ void AudioThumbnailImage::removeListener (AudioThumbnailImage::Listener* const l
 void AudioThumbnailImage::triggerWaveformRefresh()
 {
     {
-        const ScopedLock sl (lock);
+        const ScopedWriteLock sl (imageLock);
 
         lastTimeDrawn = 0.0;
         waveformImage.clear (waveformImage.getBounds(), backgroundColour);
@@ -213,8 +213,6 @@ void AudioThumbnailImage::triggerWaveformRefresh()
 
 void AudioThumbnailImage::refreshWaveform()
 {
-    const ScopedLock sl (lock);
-    
 	if (audioThumbnail->getNumSamplesFinished() > 0)
 	{
         const double endTime = audioThumbnail->getNumSamplesFinished() * oneOverSampleRate;
@@ -225,9 +223,12 @@ void AudioThumbnailImage::refreshWaveform()
             timeToDraw = endTime - lastTimeDrawn;
         }
         
+//        const ScopedReadLock sl (imageLock);
+        imageLock.enterRead();
         const int startPixelX = roundToInt (lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
         const int numPixels = roundToInt (timeToDraw * oneOverFileLength * waveformImage.getWidth());
         const int numTempPixels = roundToInt (numPixels * resolution);
+        imageLock.exitRead();
         
         if (numTempPixels > 0)
         {
@@ -247,6 +248,8 @@ void AudioThumbnailImage::refreshWaveform()
                                          lastTimeDrawn, endTime,
                                          0, 1.0f);
             lastTimeDrawn = endTime;
+            
+            const ScopedWriteLock sl (imageLock);
             
             Graphics g (waveformImage);
             g.drawImage (tempSectionImage,

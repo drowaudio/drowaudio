@@ -176,6 +176,9 @@
 //=============================================================================
 namespace drow {
 using namespace juce;
+using juce::int64;
+using juce::uint32;
+using juce::int32;
 #define MemoryBlock juce::MemoryBlock //*** bit of a nasty hack, better methods?
 
 // Audio
