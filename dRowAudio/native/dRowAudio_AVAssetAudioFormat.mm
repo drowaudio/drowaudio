@@ -140,7 +140,8 @@ public:
             }
 
             // get next block if we need to
-            if (fifoBuffer.getNumAvailable() < numBufferSamplesNeeded)
+            if (fifoBuffer.getNumAvailable() < numBufferSamplesNeeded
+                && assetReader.status == AVAssetReaderStatusReading)
             {
                 CMSampleBufferRef sampleRef = [assetReaderOutput copyNextSampleBuffer];
 
@@ -165,9 +166,9 @@ public:
                         
                         fifoBuffer.writeSamples ((float*) dataPointer, samplesExpected * numChannels);
                     }
+
+                    CFRelease (sampleRef);
                 }
-                
-                CFRelease (sampleRef);
             }
 
             // deinterleave
@@ -221,6 +222,7 @@ private:
      */
     bool updateReadPosition (int64 startSample)
     {
+        [assetReader cancelReading];
         [assetReader release];
         [assetReaderOutput release];
         
