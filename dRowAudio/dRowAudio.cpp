@@ -41,6 +41,7 @@
 
 #if JUCE_IOS
     #import <AVFoundation/AVFoundation.h>
+    #import <MediaPlayer/MediaPlayer.h>
 #endif
 
 #include "dRowAudio.h"
@@ -99,6 +100,13 @@ namespace drow {
 // maths
 #include "maths/dRowAudio_MathsUnitTests.cpp"
 
+// native
+#if JUCE_IOS
+ #include "native/dRowAudio_AudioPicker.mm"
+ #include "native/dRowAudio_AVAssetAudioFormat.mm"
+ #include "native/dRowAudio_IOSAudioConverter.mm"
+#endif
+    
 // network
 #include "network/dRowAudio_CURLManager.cpp"
 #include "network/dRowAudio_CURLEasySession.cpp"

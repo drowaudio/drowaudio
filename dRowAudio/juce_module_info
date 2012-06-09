@@ -29,9 +29,10 @@
                       "gui/audiothumbnail/*",
                       "gui/filebrowser/*",
                       "maths/*",
+                      "native/*",
                       "parameters/*",
                       "utility/*" ],
 
   "OSXFrameworks":  "Accelerate",
-  "iOSFrameworks":  "Accelerate AVFoundation"
+  "iOSFrameworks":  "Accelerate AVFoundation MediaPlayer"
 }

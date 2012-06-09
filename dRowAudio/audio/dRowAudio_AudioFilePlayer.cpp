@@ -32,7 +32,7 @@ AudioFilePlayer::AudioFilePlayer()
     masterSource = audioTransportSource;
     
 	formatManager->registerBasicFormats();
-    formatManager->registerFormat (new AudioSampleBufferAudioFormat(), false);
+    //formatManager->registerFormat (new AudioSampleBufferAudioFormat(), false);
 }
 
 AudioFilePlayer::~AudioFilePlayer()

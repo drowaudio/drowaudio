@@ -179,7 +179,8 @@ using namespace juce;
 using juce::int64;
 using juce::uint32;
 using juce::int32;
-#define MemoryBlock juce::MemoryBlock //*** bit of a nasty hack, better methods?
+using juce::MemoryBlock;
+//#define MemoryBlock juce::MemoryBlock //*** bit of a nasty hack, better methods?
 
 // Audio
 #ifndef __DROWAUDIO_AUDIOFILEPLAYER_H__
@@ -350,6 +351,19 @@ using juce::int32;
 
 #ifndef __DROWAUDIO_BEZIERCURVE_H__
     #include "maths/dRowAudio_BezierCurve.h"
+#endif
+
+// native
+#ifndef __DROWAUDIO_AUDIOPICKER__
+    #include "native/dRowAudio_AudioPicker.h"
+#endif
+
+#ifndef __DROWAUDIO_AVASSETAUDIOFORMAT_H__
+    #include "native/dRowAudio_AVAssetAudioFormat.h"
+#endif
+
+#ifndef __DROWAUDIO_IOSAUDIOCONVERTER__
+    #include "native/dRowAudio_IOSAudioConverter.h"
 #endif
 
 // network
