@@ -34,5 +34,5 @@
                       "utility/*" ],
 
   "OSXFrameworks":  "Accelerate",
-  "iOSFrameworks":  "Accelerate AVFoundation MediaPlayer"
+  "iOSFrameworks":  "Accelerate AVFoundation MediaPlayer CoreMedia"
 }
