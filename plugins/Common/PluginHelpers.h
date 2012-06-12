@@ -11,8 +11,7 @@
 #ifndef __PLUGIN_HELPERS_H__
 #define __PLUGIN_HELPERS_H__
 
-/* Our list of parameters and the names that will be displayed for them.
- */
+//==============================================================================
 namespace PresetHelpers
 {
     static void savePreset (AudioProcessor& processor, MemoryBlock& destData) noexcept

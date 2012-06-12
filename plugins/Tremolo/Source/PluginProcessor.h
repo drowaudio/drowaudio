@@ -12,6 +12,7 @@
 #define __PLUGINPROCESSOR_H_CC1BF768__
 
 #include "Common.h"
+#include "../../Common/ParameterUpdater.h"
 
 
 //==============================================================================
@@ -19,6 +20,7 @@
 */
 class TremoloAudioProcessor :   public AudioProcessor,
                                 public Value::Listener,
+                                public ParameterUpdater::Listener,
                                 public ChangeBroadcaster
 {
 public:
@@ -88,7 +90,6 @@ public:
 private:
     //==============================================================================
     OwnedArray<PluginParameter> parameters;
-    Array<Parameters::Parameters, CriticalSection> paramtersToUpdate;
     Value dummyValue;
 
     Buffer tremoloBufferL, tremoloBufferR, dummyBuffer;
@@ -97,9 +98,10 @@ private:
     float tremoloBufferPosition;
     float tremoloBufferIncriment;
 
+    ParameterUpdater parameterUpdater;
+    
     //==============================================================================
-    void dispatchParameters();
-    void updateParameter (Parameters::Parameters parameter);
+    void parameterUpdated (int index);
 
     void fillBuffer (float* bufferToFill, float phaseAngleRadians);
 

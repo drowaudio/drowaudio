@@ -16,7 +16,8 @@
 TremoloAudioProcessor::TremoloAudioProcessor()
     : tremoloBufferL    (2048),
       tremoloBufferR    (2048),
-      dummyBuffer       (1)
+      dummyBuffer       (1),
+      parameterUpdater  (*this)
 {
     // set up the parameters
     for (int i = 0; i < Parameters::numParameters; ++i)
@@ -31,10 +32,10 @@ TremoloAudioProcessor::TremoloAudioProcessor()
                      Parameters::mins[i],
                      Parameters::maxs[i],
                      Parameters::defaults[i]);
-        paramtersToUpdate.addIfNotAlreadyThere (static_cast<Parameters::Parameters> (i));
+        parameterUpdater.addParameter (i);
     }
     
-    dispatchParameters();
+    parameterUpdater.dispatchParameters();
 }
 
 TremoloAudioProcessor::~TremoloAudioProcessor()
@@ -152,7 +153,7 @@ void TremoloAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
     // initialisation that you need..
     currentSampleRate = sampleRate;
     tremoloBufferPosition = 0;
-    updateParameter (Parameters::rate);
+    parameterUpdated (Parameters::rate);
 }
 
 void TremoloAudioProcessor::releaseResources()
@@ -164,7 +165,7 @@ void TremoloAudioProcessor::releaseResources()
 void TremoloAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     // update any pending parameters
-    dispatchParameters();
+    parameterUpdater.dispatchParameters();
     
     const int tremoloBufferSize = tremoloBufferL.getSize();
     const float* tremoloData[2] = {tremoloBufferL.getData(), tremoloBufferR.getData()};
@@ -245,7 +246,7 @@ void TremoloAudioProcessor::valueChanged (Value& changedValue)
         if (changedValue.refersToSameSourceAs (getParameterValueObject (i)))
         {
             // we don't need to add if its already pending
-            paramtersToUpdate.addIfNotAlreadyThere (static_cast<Parameters::Parameters> (i));
+            parameterUpdater.addParameter (i);
         }
     }
 }
@@ -261,13 +262,7 @@ Buffer& TremoloAudioProcessor::getTremoloBuffer (int index)
 }
 
 //==============================================================================
-void TremoloAudioProcessor::dispatchParameters()
-{
-    while (paramtersToUpdate.size() > 0)
-        updateParameter (paramtersToUpdate.remove (paramtersToUpdate.size() - 1));
-}
-
-void TremoloAudioProcessor::updateParameter (Parameters::Parameters parameter)
+void TremoloAudioProcessor::parameterUpdated (int parameter)
 {
     if (parameter == Parameters::rate)
     {
