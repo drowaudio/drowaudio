@@ -11,9 +11,9 @@
 #ifndef __PLUGINEDITOR_H_F74EDC4B__
 #define __PLUGINEDITOR_H_F74EDC4B__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "Common.h"
 #include "PluginProcessor.h"
-#include "TremoloLookAndFeel.h"
+#include "../../Common/PluginLookAndFeel.h"
 #include "TremoloBufferView.h"
 
 
@@ -21,40 +21,45 @@
 /**
 */
 class TremoloAudioProcessorEditor : public AudioProcessorEditor,
-                                    public Value::Listener,
-                                    public Slider::Listener
+                                    //public Value::Listener,
+                                    public Slider::Listener,
+                                    public ChangeListener
 {
 public:
     TremoloAudioProcessorEditor (TremoloAudioProcessor* ownerFilter);
     ~TremoloAudioProcessorEditor();
 
     //==============================================================================
+    // This is just a standard Juce paint method...
     void paint (Graphics& g);
     
     void resized();
     
-    void valueChanged (Value& value);
+    //void valueChanged (Value& value);
+    void changeListenerCallback (ChangeBroadcaster* source);
     
     void sliderValueChanged (Slider* slider);
     
     void sliderDragStarted (Slider* slider);
     
     void sliderDragEnded (Slider* slider);
-    
-private:
-    
-    //==============================================================================
-    ScopedPointer<PluginLookAndFeel> customLookAndFeel;
 
+private:
+    //==============================================================================
+    TremoloAudioProcessor* ownerFilter;
+    PluginLookAndFeel customLookAndFeel;
+    
     OwnedArray<Slider> sliders;
     OwnedArray<Label> labels;
-			
+    
 	ScopedPointer<TremoloBufferView> bufferViewL;
 	ScopedPointer<TremoloBufferView> bufferViewR;
 	
 	ScopedPointer<Label> bufferViewLLabel;
     ScopedPointer<Label> bufferViewRLabel;
-
+    
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TremoloAudioProcessorEditor);
 };
 
 

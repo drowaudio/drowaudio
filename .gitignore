@@ -30,3 +30,5 @@ juce_gui_basics/
 juce_gui_extra/
 juce_opengl/
 Band Practice Assistant/
+Tremolo_old
+*.trak

@@ -10,8 +10,8 @@
 
 */
 
-#ifndef __APPHEADERFILE_E0XYLT__
-#define __APPHEADERFILE_E0XYLT__
+#ifndef __APPHEADERFILE_ANXC2L__
+#define __APPHEADERFILE_ANXC2L__
 
 #include "AppConfig.h"
 #include "modules/dRowAudio/dRowAudio.h"
@@ -41,4 +41,4 @@ namespace ProjectInfo
     const int          versionNumber  = 0x10000;
 }
 
-#endif   // __APPHEADERFILE_E0XYLT__
+#endif   // __APPHEADERFILE_ANXC2L__

@@ -13,7 +13,7 @@
 #ifndef _DROWBUFFERVIEW_H_
 #define _DROWBUFFERVIEW_H_
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "Common.h"
 
 class TremoloBufferView  :  public Component
 {

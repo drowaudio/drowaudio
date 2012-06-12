@@ -1560,7 +1560,8 @@ INCLUDE_FILE_PATTERNS  =
 PREDEFINED             = DROWAUDIO_USE_FFTREAL=1 \
                          DROWAUDIO_USE_SOUNDTOUCH=1 \
                          DROWAUDIO_USE_SOUNDTOUCH=1 \
-                         DROWAUDIO_USE_CURL=1
+                         DROWAUDIO_USE_CURL=1 \
+                         DOXYGEN=1
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then 
 # this tag can be used to specify a list of macro names that should be expanded. 
@@ -1592,8 +1593,7 @@ SKIP_FUNCTION_MACROS   = YES
 # NOT include the path). If a tag file is not located in the directory in which 
 # doxygen is run, you must also specify the path to the tagfile here.
 
-TAGFILES               = ../../../../../Downloads/juce.tag=http://www.rawmaterialsoftware.com/juce/api/ \
-                         juce.tag=http://www.rawmaterialsoftware.com/juce/api/
+TAGFILES               = juce.tag=http://www.rawmaterialsoftware.com/juce/api/
 
 # When a file name is specified after GENERATE_TAGFILE, doxygen will create 
 # a tag file that is based on the input files it reads.
