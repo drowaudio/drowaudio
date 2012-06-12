@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{B29A0A97-A513-36AC-61A4-BBBC78DCE9D8}") = "Tremolo", "Tremolo.vcxproj", "{9CA19921-F459-F4DF-E8B7-46CE846E3FFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CA19921-F459-F4DF-E8B7-46CE846E3FFE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9CA19921-F459-F4DF-E8B7-46CE846E3FFE}.Debug|Win32.Build.0 = Debug|Win32
+		{9CA19921-F459-F4DF-E8B7-46CE846E3FFE}.Release|Win32.ActiveCfg = Release|Win32
+		{9CA19921-F459-F4DF-E8B7-46CE846E3FFE}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

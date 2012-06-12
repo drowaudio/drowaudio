@@ -95,12 +95,12 @@ const String TremoloAudioProcessor::getOutputChannelName (int channelIndex) cons
     return String (channelIndex + 1);
 }
 
-bool TremoloAudioProcessor::isInputChannelStereoPair (int index) const
+bool TremoloAudioProcessor::isInputChannelStereoPair (int /*index*/) const
 {
     return true;
 }
 
-bool TremoloAudioProcessor::isOutputChannelStereoPair (int index) const
+bool TremoloAudioProcessor::isOutputChannelStereoPair (int /*index*/) const
 {
     return true;
 }
@@ -133,21 +133,21 @@ int TremoloAudioProcessor::getCurrentProgram()
     return 0;
 }
 
-void TremoloAudioProcessor::setCurrentProgram (int index)
+void TremoloAudioProcessor::setCurrentProgram (int /*index*/)
 {
 }
 
-const String TremoloAudioProcessor::getProgramName (int index)
+const String TremoloAudioProcessor::getProgramName (int /*index*/)
 {
     return String::empty;
 }
 
-void TremoloAudioProcessor::changeProgramName (int index, const String& newName)
+void TremoloAudioProcessor::changeProgramName (int /*index*/, const String& /*newName*/)
 {
 }
 
 //==============================================================================
-void TremoloAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void TremoloAudioProcessor::prepareToPlay (double sampleRate, int /*samplesPerBlock*/)
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
@@ -162,7 +162,7 @@ void TremoloAudioProcessor::releaseResources()
     // spare memory, etc.
 }
 
-void TremoloAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void TremoloAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& /*midiMessages*/)
 {
     // update any pending parameters
     parameterUpdater.dispatchParameters();
@@ -175,7 +175,7 @@ void TremoloAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
     const int numChannels = buffer.getNumChannels();
 	
 	// initialise the pointer to samples
-	float* channelData[numChannels];
+	float* channelData[2];
     for (int c = numChannels; --c >= 0;)
 		channelData[c] = buffer.getSampleData (c);
 	

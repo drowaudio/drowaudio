@@ -393,7 +393,6 @@
 		54EB5DCBB8D1887A109C9F7F /* juce_mac_Files.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_mac_Files.mm; path = ../../../../../../juce_source/juce/modules/juce_core/native/juce_mac_Files.mm; sourceTree = SOURCE_ROOT; };
 		55410C57B786DBEAB0C986CD /* juce_ProgressBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ProgressBar.h; path = ../../../../../../juce_source/juce/modules/juce_gui_basics/widgets/juce_ProgressBar.h; sourceTree = SOURCE_ROOT; };
 		5543530EE564B9D6BC5534C8 /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CAStreamBasicDescription.cpp; path = Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.cpp; sourceTree = DEVELOPER_DIR; };
-		55968F8B1586B97F005E68CE /* PluginHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginHelpers.h; path = ../../../Common/PluginHelpers.h; sourceTree = "<group>"; };
 		55E563F233AD8A62A0C18C66 /* juce_OggVorbisAudioFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OggVorbisAudioFormat.h; path = ../../../../../../juce_source/juce/modules/juce_audio_formats/codecs/juce_OggVorbisAudioFormat.h; sourceTree = SOURCE_ROOT; };
 		55E771C9F50A77BBFC8D8EBA /* juce_win32_AudioCDBurner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_AudioCDBurner.cpp; path = ../../../../../../juce_source/juce/modules/juce_audio_devices/native/juce_win32_AudioCDBurner.cpp; sourceTree = SOURCE_ROOT; };
 		5651E9B12BA3564CDFB21AC2 /* juce_GenericAudioProcessorEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_GenericAudioProcessorEditor.cpp; path = ../../../../../../juce_source/juce/modules/juce_audio_processors/processors/juce_GenericAudioProcessorEditor.cpp; sourceTree = SOURCE_ROOT; };
@@ -935,6 +934,7 @@
 		E83EE6B609139C169D2EAFB0 /* juce_PathIterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_PathIterator.h; path = ../../../../../../juce_source/juce/modules/juce_graphics/geometry/juce_PathIterator.h; sourceTree = SOURCE_ROOT; };
 		E8A4538A4C4A2474043FD0D6 /* dRowAudio_ITunesLibraryParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dRowAudio_ITunesLibraryParser.h; path = ../../../../../../juce_source/juce/modules/dRowAudio/utility/dRowAudio_ITunesLibraryParser.h; sourceTree = SOURCE_ROOT; };
 		E8C82C4C28EDE483979C2E9E /* juce_module_info */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_module_info; path = ../../../../../../juce_source/juce/modules/juce_data_structures/juce_module_info; sourceTree = SOURCE_ROOT; };
+		E8D828BC38E3FA0980B26257 /* PluginHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginHelpers.h; path = ../../../Common/PluginHelpers.h; sourceTree = SOURCE_ROOT; };
 		E8F01A4CA295952FFF01D463 /* juce_WebBrowserComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_WebBrowserComponent.h; path = ../../../../../../juce_source/juce/modules/juce_gui_extra/misc/juce_WebBrowserComponent.h; sourceTree = SOURCE_ROOT; };
 		E977E5D6BB8002FC66A10137 /* juce_LowLevelGraphicsPostScriptRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_LowLevelGraphicsPostScriptRenderer.h; path = ../../../../../../juce_source/juce/modules/juce_graphics/contexts/juce_LowLevelGraphicsPostScriptRenderer.h; sourceTree = SOURCE_ROOT; };
 		E9D7CCFC26AFE5C170FF96E5 /* juce_AudioUnitPluginFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_AudioUnitPluginFormat.h; path = ../../../../../../juce_source/juce/modules/juce_audio_processors/format_types/juce_AudioUnitPluginFormat.h; sourceTree = SOURCE_ROOT; };
@@ -1970,7 +1970,7 @@
 			isa = PBXGroup;
 			children = (
 				4EC7D7E074EB0327D0660672 /* Common.h */,
-				55968F8B1586B97F005E68CE /* PluginHelpers.h */,
+				E8D828BC38E3FA0980B26257 /* PluginHelpers.h */,
 				7405F024205C23639C010C01 /* audio */,
 				06F4EB7F3042B5A8941666A8 /* ui */,
 			);
@@ -3160,11 +3160,13 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = Tremolo;
 				WARNING_CFLAGS = "-Wreorder";
@@ -3180,11 +3182,13 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = Tremolo;
 				WARNING_CFLAGS = "-Wreorder";

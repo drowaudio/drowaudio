@@ -21,7 +21,7 @@ public:
     public:
         virtual ~Listener() {}
         
-        virtual void parameterUpdated (int index) {}
+        virtual void parameterUpdated (int /*index*/) {}
     };
 
     //==============================================================================

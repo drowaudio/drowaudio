@@ -20,10 +20,20 @@
                        cppLibType="libc++"/>
       </CONFIGURATIONS>
     </XCODE_MAC>
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
+            vstFolder="../../../../SDKs/vstsdk2.4">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="Tremolo"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="Tremolo"/>
+      </CONFIGURATIONS>
+    </VS2010>
   </EXPORTFORMATS>
   <MAINGROUP id="b3gDRs" name="Tremolo">
     <GROUP id="{3B84100E-B363-7177-4F2F-7861F7BADE48}" name="Source">
       <FILE id="SDkQoV" name="Common.h" compile="0" resource="0" file="Source/Common.h"/>
+      <FILE id="U9mviR" name="PluginHelpers.h" compile="0" resource="0" file="../Common/PluginHelpers.h"/>
       <GROUP id="{5B639403-1BE5-E365-F96C-A3983309024A}" name="audio">
         <FILE id="wMUkwD" name="PluginProcessor.h" compile="0" resource="0"
               file="Source/PluginProcessor.h"/>

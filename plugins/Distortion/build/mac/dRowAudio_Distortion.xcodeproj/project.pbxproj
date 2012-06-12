@@ -162,7 +162,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 555934E70F47A1850044FC32 /* JuceDemoPluginVST */;
+			remoteGlobalIDString = 555934E70F47A1850044FC32;
 			remoteInfo = JuceDemoPluginVST;
 		};
 /* End PBXContainerItemProxy section */
@@ -694,7 +694,11 @@
 			isa = PBXProject;
 			buildConfigurationList = 3E4BA247089833B7007656EC /* Build configuration list for PBXProject "dRowAudio_Distortion" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 089C166AFE841209C02AAC07 /* JuceDemoPlugin */;
 			projectDirPath = "";
 			projectReferences = (
@@ -953,7 +957,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				INFOPLIST_PREPROCESS = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -964,7 +968,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "PROJECT_NAME=\\\"$(PROJECT_NAME)\\\"";
 				INFOPLIST_PREPROCESS = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

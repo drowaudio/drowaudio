@@ -9,41 +9,99 @@
 
 #include "PluginLookAndFeel.h"
 
-//dRowAudioLookAndFeel::dRowAudioLookAndFeel() : LookAndFeel()
-//{
-//}
-//
-//dRowAudioLookAndFeel::~dRowAudioLookAndFeel()
-//{
-//}
-
-// creates the colours for components
-static const Colour createBaseColour (const Colour& buttonColour,
-                                      const bool hasKeyboardFocus,
-                                      const bool isMouseOverButton,
-                                      const bool isButtonDown) throw()
+//============================================================================
+PluginLookAndFeel::PluginLookAndFeel()
+: LookAndFeel()
 {
-    const float sat = hasKeyboardFocus ? 1.3f : 0.9f;
-    const Colour baseColour (buttonColour.withMultipliedSaturation (sat));
+    setColour (Slider::thumbColourId, Colours::grey);
+    setColour (Slider::textBoxTextColourId, Colour (0xff78f4ff));
+    setColour (Slider::textBoxBackgroundColourId, Colours::black);
+    setColour (Slider::textBoxOutlineColourId, Colour (0xff0D2474));
+    
+    setColour (Slider::rotarySliderFillColourId, Colours::grey);
+    
+    setColour (Label::textColourId, (Colours::black).withBrightness (0.9f));
+    
+    setColour (TextEditor::textColourId, findColour (Slider::textBoxTextColourId));
+    setColour (TextEditor::highlightedTextColourId, findColour (Slider::textBoxTextColourId));
+    setColour (TextEditor::highlightColourId, Colours::lightgrey.withAlpha (0.5f));
+    setColour (TextEditor::focusedOutlineColourId, Colours::white);
+    setColour (CaretComponent::caretColourId, Colours::white);
+    
+    static const uint32 standardColours[] =
+    {
+        backgroundColourId,     0xFF455769
+    };
+    
+    for (int i = 0; i < numElementsInArray (standardColours); i += 2)
+        setColour (standardColours [i], Colour ((uint32) standardColours [i + 1]));
+}
+
+//=====================================================================================
+void PluginLookAndFeel::drawPluginBackgroundBase (Graphics& g, Component& editor)
+{
+    g.setColour (LookAndFeel::getDefaultLookAndFeel().findColour (backgroundColourId).withBrightness(0.4f));
+    g.fillRoundedRectangle (0, 0, editor.getWidth(), editor.getHeight(), 10);
+}
+
+void PluginLookAndFeel::drawPluginBackgroundHighlights (Graphics& g, Component& editor)
+{
+    ColourGradient topHighlight (Colours::white.withAlpha (0.3f),
+                                 0, 0,
+                                 Colours::white.withAlpha (0.0f),
+                                 0, 0 + 15,
+                                 false);
+    
+    
+    g.setGradientFill (topHighlight);
+    g.fillRoundedRectangle (0, 0, editor.getWidth(), 30, 10);	
+    
+    ColourGradient outlineGradient (Colours::white,
+                                    0, 0,
+                                    LookAndFeel::getDefaultLookAndFeel().findColour (backgroundColourId).withBrightness (0.5f),
+                                    0, 20,
+                                    false);
+    g.setGradientFill (outlineGradient);
+    g.drawRoundedRectangle (0, 0, editor.getWidth(), editor.getHeight(), 10, 1.0f);
+}
+
+void PluginLookAndFeel::drawInsetLine (Graphics& g,
+                                       const float startX,
+                                       const float startY,
+                                       const float endX,
+                                       const float endY,
+                                       const float lineThickness)
+{
+	Colour currentColour (Colours::grey);
+	const float firstThickness = lineThickness * 0.5f;
+	const float secondThickness = lineThickness * 0.25f;
 	
-    if (isButtonDown)
-        return baseColour.contrasting (0.2f);
-    else if (isMouseOverButton)
-        return baseColour.contrasting (0.1f);
-	
-    return baseColour;
+	if (startX < endX)
+	{
+		g.setColour (currentColour.withBrightness (0.2f));
+		g.drawLine (startX, startY, endX, endY, firstThickness);
+		g.setColour (currentColour.withBrightness (1.0f).withAlpha (0.6f));
+		g.drawLine (startX, startY + secondThickness, endX, endY + secondThickness, secondThickness);
+	}
+	else if (startY < endY)
+	{
+		g.setColour (currentColour.withBrightness (0.2f));
+		g.drawLine (startX, startY, endX, endY, firstThickness);
+		g.setColour (currentColour.withBrightness (1.0f).withAlpha (0.6f));
+		g.drawLine (startX + secondThickness, startY, endX + secondThickness, endY, secondThickness);
+	}
 }
 
 //============================================================================
 // Create graphical elements
 //============================================================================
 void PluginLookAndFeel::drawRotarySlider (Graphics& g,
-                                    int x, int y,
-                                    int width, int height,
-                                    float sliderPos,
-                                    const float rotaryStartAngle,
-                                    const float rotaryEndAngle,
-                                    Slider& slider)
+                                          int x, int y,
+                                          int width, int height,
+                                          float sliderPos,
+                                          const float rotaryStartAngle,
+                                          const float rotaryEndAngle,
+                                          Slider& slider)
 {
     const float radius = jmin (width / 2, height / 2) ;//- 2.0f;
     const float centreX = x + width * 0.5f;
@@ -106,10 +164,10 @@ void PluginLookAndFeel::drawRotarySlider (Graphics& g,
 }
 
 void PluginLookAndFeel::drawFaderKnob(Graphics& g,
-								  const float x,
-								  const float y,
-								  const float width,
-								  const float height)
+                                      const float x,
+                                      const float y,
+                                      const float width,
+                                      const float height)
 {
     // main knob face
 	g.fillRect (x, y, width, height);
@@ -214,33 +272,5 @@ void PluginLookAndFeel::drawLabel (Graphics& g, Label& label)
         //		GradientBrush bottomBrush(bottomHighlight);
 		g.setGradientFill(bottomHighlight);
 		g.drawLine(0, label.getHeight(), label.getWidth(), label.getHeight());
-	}
-}
-
-//=====================================================================================
-void PluginLookAndFeel::drawInsetLine (Graphics& g,
-									 const float startX,
-									 const float startY,
-									 const float endX,
-									 const float endY,
-									 const float lineThickness)
-{
-	Colour currentColour(Colours::grey);//(g.getCurrentColour());
-	const float firstThickness = lineThickness * 0.5f;
-	const float secondThickness = lineThickness * 0.25f;
-	
-	if (startX < endX)
-	{
-		g.setColour(currentColour.withBrightness(0.2f));
-		g.drawLine(startX, startY, endX, endY, firstThickness);
-		g.setColour(currentColour.withBrightness(1.0f).withAlpha(0.6f));
-		g.drawLine(startX, startY+secondThickness, endX, endY+secondThickness, secondThickness);
-	}
-	else if (startY < endY)
-	{
-		g.setColour(currentColour.withBrightness(0.2f));
-		g.drawLine(startX, startY, endX, endY, firstThickness);
-		g.setColour(currentColour.withBrightness(1.0f).withAlpha(0.6f));
-		g.drawLine(startX+secondThickness, startY, endX+secondThickness, endY, secondThickness);
 	}
 }

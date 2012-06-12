@@ -17,44 +17,26 @@ class PluginLookAndFeel :   public LookAndFeel
 {
 public:
     //==============================================================================
+    enum ColourIds
+    {
+        backgroundColourId = 0xd00001
+    };
+    
+    //==============================================================================
+    PluginLookAndFeel();
+    
+    //==============================================================================
+    static void drawPluginBackgroundBase (Graphics& g, Component& editor);
+    
+    static void drawPluginBackgroundHighlights (Graphics& g, Component& editor);
+
     static void drawInsetLine (Graphics& g,
 							   const float startX,
 							   const float startY,
 							   const float endX,
 							   const float endY,
 							   const float lineThickness);
-    
-    static void drawPluginBackgroundBase (Graphics& g, Component& editor)
-    {
-        Colour backgroundColour (0xFF455769);
-        
-        backgroundColour = backgroundColour.withBrightness(0.4f);
-        g.setColour (backgroundColour);
-        g.fillRoundedRectangle (0, 0, editor.getWidth(), editor.getHeight(), 10);
-    }
-    
-    static void drawPluginBackgroundHighlights (Graphics& g, Component& editor)
-    {
-        const Colour backgroundColour (0xFF455769);
 
-        ColourGradient topHighlight (Colours::white.withAlpha(0.3f),
-                                     0, 0,
-                                     Colours::white.withAlpha(0.0f),
-                                     0, 0 + 15,
-                                     false);
-        
-        
-        g.setGradientFill (topHighlight);
-        g.fillRoundedRectangle (0, 0, editor.getWidth(), 30, 10);	
-        
-        ColourGradient outlineGradient (Colours::white,
-                                        0, 0,
-                                        backgroundColour.withBrightness(0.5f),
-                                        0, 20,
-                                        false);
-        g.setGradientFill (outlineGradient);
-        g.drawRoundedRectangle (0, 0, editor.getWidth(), editor.getHeight(), 10, 1.0f);
-    }
     //==============================================================================
 	virtual void drawRotarySlider (Graphics& g,
                                    int x, int y,

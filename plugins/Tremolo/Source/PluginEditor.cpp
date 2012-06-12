@@ -19,7 +19,6 @@ TremoloAudioProcessorEditor::TremoloAudioProcessorEditor (TremoloAudioProcessor*
       ownerFilter (ownerFilter_)
 {
     Desktop::getInstance().setDefaultLookAndFeel (&customLookAndFeel);
-    customLookAndFeel.setColour (Label::textColourId, (Colours::black).withBrightness (0.9f));
     
 	// create the sliders and their labels
 	for (int i = 0; i < Parameters::numParameters; i++)
@@ -38,19 +37,19 @@ TremoloAudioProcessorEditor::TremoloAudioProcessorEditor (TremoloAudioProcessor*
 		
 		sliders[i]->getValueObject().referTo (ownerFilter->getParameterValueObject (i));
         sliders[i]->setTextBoxStyle (Slider::TextBoxRight, false, 60, 18);
-		sliders[i]->setColour (Slider::thumbColourId, Colours::grey);
-		sliders[i]->setColour (Slider::textBoxTextColourId, Colour (0xff78f4ff));
-		sliders[i]->setColour (Slider::textBoxBackgroundColourId, Colours::black);
-		sliders[i]->setColour (Slider::textBoxOutlineColourId, Colour (0xff0D2474));
+//		sliders[i]->setColour (Slider::thumbColourId, Colours::grey);
+//		sliders[i]->setColour (Slider::textBoxTextColourId, Colour (0xff78f4ff));
+//		sliders[i]->setColour (Slider::textBoxBackgroundColourId, Colours::black);
+//		sliders[i]->setColour (Slider::textBoxOutlineColourId, Colour (0xff0D2474));
 	}
     
 	sliders[Parameters::rate]->setSliderStyle (Slider::RotaryVerticalDrag);
-	sliders[Parameters::rate]->setColour (Slider::rotarySliderFillColourId, Colours::grey);
+//	sliders[Parameters::rate]->setColour (Slider::rotarySliderFillColourId, Colours::grey);
 	sliders[Parameters::rate]->setTextBoxStyle (Slider::TextBoxBelow, false, 60, 18);
 	labels[Parameters::rate]->attachToComponent (sliders[Parameters::rate], false);
 	labels[Parameters::rate]->setJustificationType (Justification::centred);
 	sliders[Parameters::depth]->setSliderStyle (Slider::RotaryVerticalDrag);
-	sliders[Parameters::depth]->setColour (Slider::rotarySliderFillColourId, Colours::grey);
+//	sliders[Parameters::depth]->setColour (Slider::rotarySliderFillColourId, Colours::grey);
 	sliders[Parameters::depth]->setTextBoxStyle (Slider::TextBoxBelow, false, 60, 18);
 	labels[Parameters::depth]->attachToComponent (sliders[Parameters::depth], false);
 	labels[Parameters::depth]->setJustificationType (Justification::centred);
@@ -120,10 +119,14 @@ void TremoloAudioProcessorEditor::paint (Graphics& g)
     g.drawBevel (bevel.getX(), bevel.getY(), bevel.getWidth(), bevel.getHeight(), 2,
                  Colour (0xFF455769).darker (0.5f), Colour (0xFF455769).brighter (0.3f),
                  false, true);
-    bevel  = bufferViewR->getBounds().expanded (2, 2);
-    g.drawBevel (bevel.getX(), bevel.getY(), bevel.getWidth(), bevel.getHeight(), 2,
-                 Colour (0xFF455769).darker (0.5f), Colour (0xFF455769).brighter (0.3f),
-                 false, true);
+    
+    if (getAudioProcessor()->getNumInputChannels() > 1)
+    {
+        bevel  = bufferViewR->getBounds().expanded (2, 2);
+        g.drawBevel (bevel.getX(), bevel.getY(), bevel.getWidth(), bevel.getHeight(), 2,
+                     Colour (0xFF455769).darker (0.5f), Colour (0xFF455769).brighter (0.3f),
+                     false, true);
+    }
     
     PluginLookAndFeel::drawPluginBackgroundHighlights (g, *this);
 }
@@ -158,13 +161,13 @@ void TremoloAudioProcessorEditor::resized()
 //    bufferViewR->refreshBuffer();
 //}
 
-void TremoloAudioProcessorEditor::changeListenerCallback (ChangeBroadcaster* source)
+void TremoloAudioProcessorEditor::changeListenerCallback (ChangeBroadcaster* /*source*/)
 {
     bufferViewL->refreshBuffer();
     bufferViewR->refreshBuffer();
 }
 
-void TremoloAudioProcessorEditor::sliderValueChanged (Slider* slider)
+void TremoloAudioProcessorEditor::sliderValueChanged (Slider* /*slider*/)
 {
 }
 
