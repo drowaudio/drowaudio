@@ -10,7 +10,7 @@
               aaxIdentifier="com.yourcompany.Tremolo" jucerVersion="3.0.0">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" juceFolder="../../../../juce_source/juce/modules"
-               vstFolder="../../../../SDKs/vstsdk2.4">
+               vstFolder="../../../../SDKs/vstsdk2.4" extraCompilerFlags="-Wall -Wconversion -Wshorten-64-to-32 ">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Tremolo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"

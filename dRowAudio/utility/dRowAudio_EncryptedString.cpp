@@ -39,7 +39,7 @@ String EncryptedString::encrypt (const String& stringToEncrypt, const String& pu
 
     BigInteger stringAsData;
     stringAsData.loadFromMemoryBlock (stringMemoryBlock);
-    
+
     rsaKey.applyToValue (stringAsData);
     
     if (resultAsHex)

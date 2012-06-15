@@ -22,11 +22,20 @@
 #define __DROWAUDIO_FIFOBUFFER_H__
 
 //==============================================================================
-/** This is a simple implementation of a lock free Fifo buffer that uses
+/**
+    This is a simple implementation of a lock free Fifo buffer that uses
     a template parameter for the sample type. This should be a primitive type
     that is capable of being copied using only memcpy.
+ 
+    Whilst read and write operations are atomic and son't strictly need locking
+    there may be occasions where you are changing the size on another thread to
+    read/write operation. To make the class completely thread safe you can
+    optionally pass in a lock type. Of course if you are taking care of your own
+    thread safety a DummyCriticalSection will be used which should be optimised
+    out by the compiler.
  */
-template <class ElementType>
+template <typename ElementType,
+          typename TypeOfCriticalSectionToUse = DummyCriticalSection>
 class FifoBuffer
 {
 public:
@@ -43,33 +52,65 @@ public:
      */
 	inline int getNumAvailable()
 	{
+        const ScopedLockType sl (lock);
 		return abstractFifo.getNumReady();
 	}
 	
     /** Returns the number of items free in the buffer. */
     inline int getNumFree()
     {
+        const ScopedLockType sl (lock);
         return abstractFifo.getFreeSpace();
     }
     
     /** Sets the size of the buffer.
-        This does not keep any of the old data.
+        This does not keep any of the old data and will reset the buffer
+        making the number available 0. 
      */
 	inline void setSize (int newSize)
 	{
+        const ScopedLockType sl (lock);
 		abstractFifo.setTotalSize (newSize);
 		buffer.malloc (abstractFifo.getTotalSize());
+	}
+
+    /** Sets the size of the buffer keeping as much of the
+        existing data as possible.
+     
+        This is a potentially time consuming operation and is only thread
+        safe if a valid lock is used as the second template parameter.
+     */
+	inline void setSizeKeepingExisting (int newSize)
+	{
+        const ScopedLockType sl (lock);
+
+        const int numUsed = abstractFifo.getNumReady();
+        
+		abstractFifo.setTotalSize (newSize);
+		buffer.realloc (newSize);
+        
+//        if (buffer == nullptr) // might need to do something like this if realloc isn't guaranteed
+//        {
+//            HeapBlock<ElementType> tempBlock;
+//            memcpy (tempBlock, buffer, numUsed * sizeof (ElementType));
+//            buffer.malloc (newSize);
+//            buffer.swapWith (tempBlock);
+//        }
+        
+        abstractFifo.finishedWrite (numUsed);
 	}
 
     /** Returns the size of the buffer.
      */
 	inline int getSize()
 	{
+        const ScopedLockType sl (lock);
 		return abstractFifo.getTotalSize();
 	}
 	
     inline void reset()
     {
+        const ScopedLockType sl (lock);
         abstractFifo.reset();
     }
     
@@ -77,6 +118,8 @@ public:
      */
 	void writeSamples (const ElementType* samples, int numSamples)
 	{
+        const ScopedLockType sl (lock);
+
 		int start1, size1, start2, size2;
 		abstractFifo.prepareToWrite (numSamples, start1, size1, start2, size2);
 
@@ -93,6 +136,8 @@ public:
      */
 	void readSamples (ElementType* bufferToFill, int numSamples)
 	{
+        const ScopedLockType sl (lock);
+
 		int start1, size1, start2, size2;
 		abstractFifo.prepareToRead (numSamples, start1, size1, start2, size2);
 		
@@ -110,14 +155,26 @@ public:
      */
     void removeSamples (int numSamples)
     {
+        const ScopedLockType sl (lock);
         abstractFifo.finishedRead (numSamples);
     }
+
+    //==============================================================================
+    /** Returns the CriticalSection that locks this fifo.
+        To lock, you can call getLock().enter() and getLock().exit(), or preferably use
+        an object of ScopedLockType as an RAII lock for it.
+     */
+    inline const TypeOfCriticalSectionToUse& getLock() const noexcept      { return lock; }
+    
+    /** Returns the type of scoped lock to use for locking this fifo */
+    typedef typename TypeOfCriticalSectionToUse::ScopedLockType ScopedLockType;
 
 private:
     //==============================================================================
 	AbstractFifo abstractFifo;
 	HeapBlock<ElementType> buffer;
-
+    TypeOfCriticalSectionToUse lock;
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FifoBuffer);
 };
