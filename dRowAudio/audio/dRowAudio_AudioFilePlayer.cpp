@@ -116,7 +116,9 @@ bool AudioFilePlayer::setMemoryBlock (MemoryBlock* inputBlock)
 
 MemoryInputStream* AudioFilePlayer::getInputStream()
 {   
-    if (currentMemoryBlock != nullptr)
+    if (memoryInputStream != nullptr)
+        return new MemoryInputStream (memoryInputStream->getData(), memoryInputStream->getDataSize(), false);
+    else if (currentMemoryBlock != nullptr)
         return new MemoryInputStream (*currentMemoryBlock, false);
 
     return nullptr;
@@ -180,7 +182,7 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
     bool shouldBeLooping = isLooping();
 	audioTransportSource->setSource (nullptr);
-    
+
 	if (reader != nullptr)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..

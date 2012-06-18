@@ -117,5 +117,15 @@ void SoundTouchProcessor::setPlaybackSettings (PlaybackSettings newSettings)
 }
 
 
+void SoundTouchProcessor::setSoundTouchSetting (int settingId, int settingValue)
+{
+    soundTouch.setSetting (settingId, settingValue);
+}
+
+int SoundTouchProcessor::getSoundTouchSetting (int settingId)
+{
+    return soundTouch.getSetting (settingId);
+}
+
 
 #endif

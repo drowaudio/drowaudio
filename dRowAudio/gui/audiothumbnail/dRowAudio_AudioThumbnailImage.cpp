@@ -222,8 +222,8 @@ void AudioThumbnailImage::refreshWaveform()
             lastTimeDrawn -= timeToDraw * 0.1; // overlap by 0.1
             timeToDraw = endTime - lastTimeDrawn;
         }
-        
-//        const ScopedReadLock sl (imageLock);
+
+        //        const ScopedReadLock sl (imageLock);
         imageLock.enterRead();
         const int startPixelX = roundToInt (lastTimeDrawn * oneOverFileLength * waveformImage.getWidth());
         const int numPixels = roundToInt (timeToDraw * oneOverFileLength * waveformImage.getWidth());
