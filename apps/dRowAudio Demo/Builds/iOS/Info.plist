@@ -18,11 +18,13 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>0.5.6</string>
+    <string>0.5.7</string>
     <key>CFBundleVersion</key>
-    <string>0.5.6</string>
+    <string>0.5.7</string>
     <key>NSHumanReadableCopyright</key>
     <string></string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
     <key>UIStatusBarHidden</key>
     <true/>
   </dict>

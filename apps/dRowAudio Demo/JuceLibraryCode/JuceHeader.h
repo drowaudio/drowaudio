@@ -38,8 +38,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "dRowAudio Demo";
-    const char* const  versionString  = "0.5.6";
-    const int          versionNumber  = 0x506;
+    const char* const  versionString  = "0.5.7";
+    const int          versionNumber  = 0x507;
 }
 
 #endif   // __APPHEADERFILE_MG07TN__

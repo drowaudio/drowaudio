@@ -285,10 +285,18 @@ bool ColumnFileBrowserContents::keyPressed (const KeyPress& key)
             
             FileListComponent* list = dynamic_cast<FileListComponent*> (columns[newActiveColumn]->getDisplayComponent());
 
-            if (list->getNumRows() > 0)
+            if (list != nullptr)
             {
-                columns[newActiveColumn]->grabKeyboardFocus();
-                list->selectRow (0);
+                ListBoxModel* model = list->getModel();
+                
+                if (model != nullptr)
+                {
+                    if (model->getNumRows() > 0)
+                    {
+                        columns[newActiveColumn]->grabKeyboardFocus();
+                        list->selectRow (0);
+                    }
+                }
             }
         }
         

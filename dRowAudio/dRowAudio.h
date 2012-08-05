@@ -304,7 +304,7 @@ using juce::MemoryBlock;
 #endif
 
 #ifndef __DROWAUDIO_CENTREALIGNVIEWPORT_H__
-    #include "gui/dRowAudio_CentreAlignViewport.h"
+    //#include "gui/dRowAudio_CentreAlignViewport.h"
 #endif
 
 #ifndef __DROWAUDIO_MUSICLIBRARYTABLE_H__

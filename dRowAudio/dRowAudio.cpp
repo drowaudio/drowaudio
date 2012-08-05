@@ -88,7 +88,7 @@ namespace drow {
 #include "gui/dRowAudio_TriggeredScope.cpp"
 #include "gui/dRowAudio_CpuMeter.cpp"
 #include "gui/dRowAudio_Clock.cpp"
-#include "gui/dRowAudio_CentreAlignViewport.cpp"
+//#include "gui/dRowAudio_CentreAlignViewport.cpp"
 #include "gui/dRowAudio_MusicLibraryTable.cpp"
 #include "gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
 #include "gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"

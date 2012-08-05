@@ -57,10 +57,10 @@ void DistortionDemo::paint (Graphics& g)
     GuiHelpers::drawBevel (g, distortionComponent.getBounds().toFloat(), (float) m, Colours::darkgrey);
     
     g.setColour (Colours::white);
-    g.setFont (20, Font::underlined);
+    g.setFont (Font (20, Font::underlined));
     g.drawSingleLineText ("Distortion Demo", (int) (w * 0.75f), 20, Justification::horizontallyCentred);
     
-    g.setFont (14);
+    g.setFont (Font (14, Font::plain));
     String text;
     text << "This graph demonstrates the Buffer and BufferTransformAudioSource classes." << newLine << newLine
     << "Drag the points around to change the buffer belonging to the audio chain's BufferTransformAudioSource." << newLine

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.6"
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.7"
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.0.0"
               defines="DROWAUDIO_UNIT_TESTS">
   <EXPORTFORMATS>
