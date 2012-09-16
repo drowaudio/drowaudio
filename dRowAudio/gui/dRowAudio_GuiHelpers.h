@@ -105,7 +105,80 @@ namespace GuiHelpers
         g.restoreState();
     }  
     
-    /** List of icons to be used with the createIcon method.
+    //==============================================================================
+    /**
+        Helper function to serialise a system font to a file.
+        This is useful if you want to include a custom font in an application so that is
+        guarenteed to be avialiable cross-platform.
+     
+        Once you have the generated file you can include it as BinarayData (as generated
+        by theIntorjucer) and then reload it in a look and feel.
+     
+        In your LookAndFeel subclass overide getTypeFaceForFont and create a Typeface::Ptr
+        to hold the font e.g.
+     
+        @code
+        //==============================================================================
+        class FontLookAndFeel : public LookAndFeel
+        {
+        public:
+            const Typeface::Ptr getTypefaceForFont (const Font& font);
+     
+        private:
+            Typeface::Ptr customTypeface;
+        }
+        @endcode
+     
+        Then in your constructor reload the font and the return your custom typeface
+        in getTypefaceForFont if the requested font names match.
+     
+        @code
+        //==============================================================================
+        FontLookAndFeel::FontLookAndFeel()
+        {
+            ScopedPointer<MemoryInputStream> fontStream (new MemoryInputStream (BinaryData::Custom_Font,
+                                                                                BinaryData::Custom_FontSize,
+                                                                                false));
+            
+            if (fontStream != nullptr)
+                customTypeface = new CustomTypeface (*fontStream);
+        }
+
+        //==============================================================================
+        const Typeface::Ptr FontLookAndFeel::getTypefaceForFont (const Font& font)
+        {
+            if (customTypeface != nullptr && font.getTypefaceName() == customTypeface->getName())
+            {
+                return customTypeface;
+            }
+            
+            return LookAndFeel::getTypefaceForFont (font);
+        }
+        @endcode
+     
+        @param font             The font to serialise.
+        @param destinationFile  The file to serialise the font to.
+        @param maxNumChars      The maximum number of characters to serialise.
+        @return                 True if the font was written successfully, false otherwise
+     
+        @see Font, CustomTypeface
+     */
+    static bool serializeFont (const Font& font, File& destinationFile, int maxNumChars = 127)
+    {
+        destinationFile.deleteFile();
+        ScopedPointer<FileOutputStream> outFileStream (destinationFile.createOutputStream());
+        
+        CustomTypeface customTypeface;
+        customTypeface.setCharacteristics (font.getTypefaceName(), font.getAscent(),
+                                           font.isBold(), font.isItalic(), ' ');
+        customTypeface.addGlyphsFromOtherTypeface (*font.getTypeface(), 0, maxNumChars);
+
+        return customTypeface.writeToStream (*outFileStream);
+    }
+
+    //==============================================================================
+    /**
+        List of icons to be used with the createIcon method.
      */
     enum IconType 
     {

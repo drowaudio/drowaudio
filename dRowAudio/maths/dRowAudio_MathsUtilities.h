@@ -149,6 +149,13 @@ inline float findStandardDeviation (float* samples, int numSamples) noexcept
     return sqrtf (findCorrectedVariance (samples, numSamples));
 }
 
+/** Finds the RMS for a set of samples.
+ */
+inline float findRMS (float* samples, int numSamples) noexcept
+{
+    return sqrtf (squareNumber (findMean (samples, numSamples)));
+}
+
 //==============================================================================
 /**	Linear Interpolater.
 	Performs a linear interpolation for a fractional buffer position.
