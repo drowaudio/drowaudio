@@ -393,6 +393,10 @@ using juce::MemoryBlock;
     #include "utility/dRowAudio_EncryptedString.h"
 #endif
 
+#ifndef __DROWAUDIO_UNITYBUILDER_H__
+    #include "utility/dRowAudio_UnityBuilder.h"
+#endif
+
 #ifndef __DROWAUDIO_UTILITY_H__
     #include "utility/dRowAudio_Utility.h"
 #endif
