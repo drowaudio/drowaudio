@@ -68,6 +68,7 @@ public:
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> input;
+    int64 previousReadPosition;
 	bool volatile isForwards;
 	
     //==============================================================================

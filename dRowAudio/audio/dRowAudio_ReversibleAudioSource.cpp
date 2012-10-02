@@ -24,6 +24,7 @@
 ReversibleAudioSource::ReversibleAudioSource (PositionableAudioSource* const inputSource,
 											  const bool deleteInputWhenDeleted)
     : input (inputSource, deleteInputWhenDeleted),
+      previousReadPosition (0),
 	  isForwards(true)
 {
     jassert (inputSource != 0);
@@ -48,11 +49,13 @@ void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
 {
 	if (isForwards) 
     {
+        previousReadPosition = input->getNextReadPosition();
         input->getNextAudioBlock (info);
     }
     else
 	{
-        int64 nextReadPosition = input->getNextReadPosition() - (2 * info.numSamples);
+        //int64 nextReadPosition = input->getNextReadPosition() - (2 * info.numSamples);
+        int64 nextReadPosition = previousReadPosition - info.numSamples;
         
 		if (nextReadPosition < 0 && input->isLooping())
 			nextReadPosition += input->getTotalLength();
@@ -62,17 +65,21 @@ void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
 
 		if (info.buffer->getNumChannels() == 1)
 		{
-			reverseArray (info.buffer->getSampleData (0), info.numSamples);
+			reverseArray (info.buffer->getSampleData (0) + info.startSample, info.numSamples);
 		}
 		else if (info.buffer->getNumChannels() == 2) 
 		{
-			reverseTwoArrays (info.buffer->getSampleData (0), info.buffer->getSampleData (1), info.numSamples);
+			reverseTwoArrays (info.buffer->getSampleData (0) + info.startSample,
+                              info.buffer->getSampleData (1) + info.startSample,
+                              info.numSamples);
 		}
 		else
 		{
 			for (int c = 0; c < info.buffer->getNumChannels(); c++)
-				reverseArray (info.buffer->getSampleData(c), info.numSamples);
+				reverseArray (info.buffer->getSampleData(c) + info.startSample, info.numSamples);
 		}
+        
+        previousReadPosition = nextReadPosition;
 	}
 }
 
