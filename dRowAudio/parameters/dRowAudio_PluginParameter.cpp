@@ -149,7 +149,7 @@ void PluginParameter::setupSlider (Slider &slider)
 {
     slider.setRange             (min, max, step);
     slider.setSkewFactor        (skewFactor);
-    slider.setValue             (getValue(), false);
+    slider.setValue             (getValue(), dontSendNotification);
     slider.setTextValueSuffix   (unitSuffix);
 }
 

@@ -32,7 +32,7 @@
 // and your header search path must make it accessible to the module's files.
 #include "AppConfig.h"
 
-#include "../juce_core/native/juce_BasicNativeHeaders.h"
+//#include "../juce_core/native/juce_BasicNativeHeaders.h"
 
 #if JUCE_MAC || JUCE_IOS
     #import <Foundation/Foundation.h>
