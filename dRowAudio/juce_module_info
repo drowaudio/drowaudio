@@ -30,7 +30,9 @@
                       "gui/filebrowser/*",
                       "maths/*",
                       "native/*",
+                      "network/*",
                       "parameters/*",
+                      "streams/*",
                       "utility/*" ],
 
   "OSXFrameworks":  "Accelerate",

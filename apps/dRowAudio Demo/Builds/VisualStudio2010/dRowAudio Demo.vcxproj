@@ -263,7 +263,16 @@
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\network\dRowAudio_CURLEasySession.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\network\dRowAudio_CURLManager.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\parameters\dRowAudio_PluginParameter.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\streams\dRowAudio_MemoryInputSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\utility\dRowAudio_EncryptedString.cpp">
@@ -1370,7 +1379,10 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\native\dRowAudio_AudioPicker.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\native\dRowAudio_AVAssetAudioFormat.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\native\dRowAudio_IOSAudioConverter.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\network\dRowAudio_CURLEasySession.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\network\dRowAudio_CURLManager.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\parameters\dRowAudio_PluginParameter.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\streams\dRowAudio_MemoryInputSource.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\utility\dRowAudio_Comparators.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\utility\dRowAudio_Constants.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\utility\dRowAudio_EncryptedString.h"/>

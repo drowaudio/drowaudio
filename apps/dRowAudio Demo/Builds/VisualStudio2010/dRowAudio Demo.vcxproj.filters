@@ -50,8 +50,14 @@
     <Filter Include="Juce Modules\dRowAudio\native">
       <UniqueIdentifier>{EF961A81-DD12-D7DC-8013-B683FAF5AE28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Juce Modules\dRowAudio\network">
+      <UniqueIdentifier>{D9C6D58D-9693-32C3-23DD-8500A64A5575}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Modules\dRowAudio\parameters">
       <UniqueIdentifier>{DEAA0BC6-11D5-FB95-7088-49FE155DF636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\streams">
+      <UniqueIdentifier>{9F5808D9-0421-F73F-7B65-7E3BEF627F2F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Juce Modules\dRowAudio\utility">
       <UniqueIdentifier>{4C3349D9-280D-1AF7-6924-94F0202E669D}</UniqueIdentifier>
@@ -505,8 +511,17 @@
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\native\dRowAudio_IOSAudioConverter.mm">
       <Filter>Juce Modules\dRowAudio\native</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\network\dRowAudio_CURLEasySession.cpp">
+      <Filter>Juce Modules\dRowAudio\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\network\dRowAudio_CURLManager.cpp">
+      <Filter>Juce Modules\dRowAudio\network</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\parameters\dRowAudio_PluginParameter.cpp">
       <Filter>Juce Modules\dRowAudio\parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\streams\dRowAudio_MemoryInputSource.cpp">
+      <Filter>Juce Modules\dRowAudio\streams</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\utility\dRowAudio_EncryptedString.cpp">
       <Filter>Juce Modules\dRowAudio\utility</Filter>
@@ -1833,8 +1848,17 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\native\dRowAudio_IOSAudioConverter.h">
       <Filter>Juce Modules\dRowAudio\native</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\network\dRowAudio_CURLEasySession.h">
+      <Filter>Juce Modules\dRowAudio\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\network\dRowAudio_CURLManager.h">
+      <Filter>Juce Modules\dRowAudio\network</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\parameters\dRowAudio_PluginParameter.h">
       <Filter>Juce Modules\dRowAudio\parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\streams\dRowAudio_MemoryInputSource.h">
+      <Filter>Juce Modules\dRowAudio\streams</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\utility\dRowAudio_Comparators.h">
       <Filter>Juce Modules\dRowAudio\utility</Filter>

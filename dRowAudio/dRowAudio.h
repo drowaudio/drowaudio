@@ -412,12 +412,15 @@ using juce::MemoryBlock;
 #ifndef __DROWAUDIO_COMPARATORS_H__
     #include "utility/dRowAudio_Comparators.h"
 #endif
+
 #ifndef __DROWAUDIO_MUSICLIBRARYHELPERS_H__
     #include "utility/dRowAudio_MusicLibraryHelpers.h"
 #endif
+
 #ifndef __DROWAUDIO_ITUNESLIBRARY_H__
     #include "utility/dRowAudio_ITunesLibrary.h"
 #endif
+
 #ifndef __DROWAUDIO_ITUNESLIBRARYPARSER_H__
     #include "utility/dRowAudio_ITunesLibraryParser.h"
 #endif

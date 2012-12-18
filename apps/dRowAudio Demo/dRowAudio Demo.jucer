@@ -10,10 +10,10 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurldebug.lib"/>
+                       headerPath="" defines=""/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
-                       headerPath="../../Source/network/curl/include" defines="CURL_LIB=libcurlrelease.lib"/>
+                       headerPath="" defines=""/>
       </CONFIGURATIONS>
     </XCODE_MAC>
     <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
@@ -31,14 +31,12 @@
       </CONFIGURATIONS>
     </VS2010>
     <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"
-                bigIcon="vTRqOY" smallIcon="vTRqOY">
+                bigIcon="vTRqOY" smallIcon="vTRqOY" extraLinkerFlags="-lcurl">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"
-                       libraryPath="/usr/X11R6/lib/"/>
+                       headerPath="" defines="" libraryPath="/usr/X11R6/lib/"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"
-                       libraryPath="/usr/X11R6/lib/"/>
+                       headerPath="" defines="" libraryPath="/usr/X11R6/lib/"/>
       </CONFIGURATIONS>
     </LINUX_MAKE>
     <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" juceFolder="../../../../juce_source/juce"
@@ -46,12 +44,10 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurldebug.lib"
-                       iosCompatibility="default"/>
+                       headerPath="" defines="" iosCompatibility="default"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="Source/curl/include" defines="CURL_LIB=libcurlrelease.lib"
-                       iosCompatibility="default"/>
+                       headerPath="" defines="" iosCompatibility="default"/>
       </CONFIGURATIONS>
     </XCODE_IPHONE>
   </EXPORTFORMATS>
@@ -138,8 +134,8 @@
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS/>
 </JUCERPROJECT>

@@ -29,6 +29,7 @@ CURLManager::CURLManager()
 {
 	CURLcode result = curl_global_init (CURL_GLOBAL_ALL);
     
+    (void) result;
 	jassert (result == CURLE_OK);
 }
 
