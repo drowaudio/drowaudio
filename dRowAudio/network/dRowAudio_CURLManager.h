@@ -23,7 +23,11 @@
 
 #if DROWAUDIO_USE_CURL || DOXYGEN
 
-#include "curl/include/curl/curl.h"
+#if JUCE_WINDOWS
+ #include "curl/include/curl/curl.h"
+#else
+ #include <curl/curl.h>
+#endif
 
 //==============================================================================
 class CURLManager : public TimeSliceThread,
