@@ -78,8 +78,8 @@ void TransportComponent::buttonClicked (Button* button)
     }
     else if (button == buttons[reverse]) 
     {
-        showAudioSettings();
-        //audioFilePlayer.setPlayDirection (! button->getToggleState());
+        //showAudioSettings();
+        audioFilePlayer.setPlayDirection (! button->getToggleState());
     }
 }
 

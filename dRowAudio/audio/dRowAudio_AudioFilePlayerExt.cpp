@@ -26,8 +26,8 @@ AudioFilePlayerExt::AudioFilePlayerExt()
     : AudioFilePlayer()
 {
     loopingAudioSource = new LoopingAudioSource (audioTransportSource, false);
-    //reversibleAudioSource = new ReversibleAudioSource (audioTransportSource, false);
-    filteringAudioSource = new FilteringAudioSource (audioTransportSource, false);
+    reversibleAudioSource = new ReversibleAudioSource (audioTransportSource, false);
+    filteringAudioSource = new FilteringAudioSource (reversibleAudioSource, false);
     
     masterSource = filteringAudioSource;
 }
@@ -101,11 +101,11 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
-        bufferingAudioSource = new BufferingAudioSource (audioFormatReaderSource,
-                                                         bufferingTimeSliceThread,
-                                                         false,
-                                                         32768);
-        soundTouchAudioSource = new SoundTouchAudioSource (bufferingAudioSource);
+//        bufferingAudioSource = new BufferingAudioSource (audioFormatReaderSource,
+//                                                         bufferingTimeSliceThread,
+//                                                         false,
+//                                                         32768);
+        soundTouchAudioSource = new SoundTouchAudioSource (audioFormatReaderSource);
         loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
         audioTransportSource->setSource (loopingAudioSource,
                                          0, nullptr,

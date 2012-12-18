@@ -4,7 +4,7 @@
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.0.0"
               defines="DROWAUDIO_UNIT_TESTS">
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../juce"
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"
                extraLinkerFlags="-lcurl" bigIcon="vTRqOY" smallIcon="vTRqOY"
                extraCompilerFlags="-Wall">
       <CONFIGURATIONS>

@@ -160,28 +160,38 @@ static String findKeyFromChemicalWebsite (const String& releaseNo, const String&
     return String::empty;
 }
 
-/** Holds a ValueTree as a ReferenceCountedObject.
-    This is somewhat obfuscated but makes it easy to transfer ValueTrees as var objects 
+//==============================================================================
+/**
+    Holds a ValueTree as a ReferenceCountedObject.
+    
+    This is somewhat obfuscated but makes it easy to transfer ValueTrees as var objects
     such as when using them as DragAndDropTarget::SourceDetails::description members.
  */
 class ReferenceCountedValueTree : public ReferenceCountedObject
 {
 public:
-    
-    ReferenceCountedValueTree (ValueTree treeToReference)
-    :   tree (treeToReference)
+    //==============================================================================
+    /** Cretates a ReferenceCountedValueTree for a given ValueTree.
+     */
+    ReferenceCountedValueTree (const ValueTree& treeToReference)
+        : tree (treeToReference)
     {
     }
     
+    /** Destructor. */
     ~ReferenceCountedValueTree()
     {
     }
     
+    /** Sets the ValueTree being held.
+     */
     void setValueTree (ValueTree newTree)
     {
         tree = newTree;
     }
     
+    /** Returns the ValueTree being held.
+     */
     ValueTree getValueTree()
     {
         return tree;
@@ -189,9 +199,64 @@ public:
     
     typedef ReferenceCountedObjectPtr<ReferenceCountedValueTree> Ptr;
     
+    /** Provides a simple way of getting the tree from a var object which
+        is a ReferencedCountedValueTree.
+     */
+    static ValueTree getTreeFromObject (const var& treeObject)
+    {
+        ReferenceCountedValueTree* refTree
+        = dynamic_cast<ReferenceCountedValueTree*> (treeObject.getObject());
+        
+        return refTree == nullptr ? ValueTree::invalid : refTree->getValueTree();
+    }
+
 private:
-    
+    //==============================================================================
     ValueTree tree;
+};
+
+//==============================================================================
+/**
+    Holds an Identifier as a ReferenceCountedObject.
+
+    This is useful so that Identifiers can be passed around as var objects
+    without having to convert them to Strings and back which defeats the point of them.
+ */
+class ReferenceCountedIdentifier : public ReferenceCountedObject
+{
+public:
+    //==============================================================================
+    /** Cretates a ReferenceCountedIdentifier for a given Identifier.
+     */
+    ReferenceCountedIdentifier (const Identifier& identifierToReference)
+        : identifier (identifierToReference)
+    {
+    }
+    
+    /** Destructor. */
+    ~ReferenceCountedIdentifier()
+    {
+    }
+    
+    /** Sets the Identifier to be held.
+     */
+    void setIdentifier (const Identifier& newIdentifier)
+    {
+        identifier = newIdentifier;
+    }
+
+    /** Returns the Identifier being held.
+     */
+    Identifier getIdentifier()
+    {
+        return identifier;
+    }
+    
+    typedef ReferenceCountedObjectPtr<ReferenceCountedIdentifier> Ptr;
+    
+private:
+    //==============================================================================
+    Identifier identifier;
 };
 
 //==============================================================================
