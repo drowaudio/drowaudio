@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.7"
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.5.8"
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.0.0"
               defines="DROWAUDIO_UNIT_TESTS">
   <EXPORTFORMATS>
@@ -134,7 +134,6 @@
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS/>
