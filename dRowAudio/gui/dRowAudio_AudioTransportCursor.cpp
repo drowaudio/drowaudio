@@ -153,6 +153,7 @@ void AudioTransportCursor::mouseDown (const MouseEvent &e)
         double position = currentXScale * (currentMouseX - startPixel);
         audioFilePlayer.setPosition (position, true);
 
+        shouldStopTimer = false;
         startTimer (40);
         
         repaint();
@@ -185,7 +186,7 @@ void AudioTransportCursor::mouseDrag (const MouseEvent& e)
 //==============================================================================
 void AudioTransportCursor::startTimerIfNeeded()
 {
-    if (audioFilePlayer.isPlaying() && showTransportCursor)
+    if (showTransportCursor)
     {
         shouldStopTimer = false;
         startTimer (40);

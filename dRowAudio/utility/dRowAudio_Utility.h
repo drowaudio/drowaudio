@@ -320,6 +320,15 @@ static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 }
 
 //==============================================================================
+/** Useful macro to print a variable name and value to the console.
+ */
+#define DBG_VAR(dbgvar)     {DBG (JUCE_STRINGIFY(dbgvar) << ": " << dbgvar) }
+
+/** Useful macro to print a rectangle to the console.
+ */
+#define DBG_RECT(dbgrect)   {DBG ("x: " << dbgrect.getX() << " y: " << dbgrect.getY() << " w: " << dbgrect.getWidth() << " h: " << dbgrect.getHeight()) }
+
+//==============================================================================
 /** This handy macro is a platform independent way of stopping compiler
 	warnings when paramaters are declared but not used.
  */

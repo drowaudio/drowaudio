@@ -180,7 +180,7 @@ using juce::int64;
 using juce::uint32;
 using juce::int32;
 using juce::MemoryBlock;
-//#define MemoryBlock juce::MemoryBlock //*** bit of a nasty hack, better methods?
+//using juce::Rectangle;
 
 // Audio
 #ifndef __DROWAUDIO_AUDIOFILEPLAYER_H__

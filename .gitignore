@@ -30,5 +30,6 @@ juce_gui_basics/
 juce_gui_extra/
 juce_opengl/
 Band Practice Assistant/
+dRowAudio Demo_dev/
 Tremolo_old
 *.trak
