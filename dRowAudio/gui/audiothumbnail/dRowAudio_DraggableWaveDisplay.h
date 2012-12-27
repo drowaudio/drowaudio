@@ -21,9 +21,6 @@
 #ifndef __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__
 #define __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__
 
-#include "../../utility/dRowAudio_StateVariable.h"
-#include "../../audio/dRowAudio_AudioUtility.h"
-
 //==============================================================================
 /** A class to display the waveform of an audio file which can be dragged to
     reposition the source.
@@ -105,12 +102,13 @@ private:
 	enum
 	{
 		waveformUpdated,
-		waveformMoved
+		waveformMoved,
+        waveformLoading
 	};
     
     //==============================================================================	
     AudioThumbnailImage& audioThumbnailImage;
-    AudioFilePlayer* filePlayer;
+    AudioFilePlayer& filePlayer;
 	double fileLengthSecs, oneOverFileLength;
     double currentSampleRate, oneOverSampleRate;
     double timePerPixel;
@@ -130,5 +128,6 @@ private:
     //==============================================================================	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DraggableWaveDisplay);
 };
+
 
 #endif  // __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__

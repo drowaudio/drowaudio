@@ -30,14 +30,14 @@
 
 //==============================================================================
 /**
- This class can be used to load and play an audio file from disk.
+    This class can be used to load and play an audio file from disk.
+
+    This combines the functionality of an AudioTransportSource,
+    AudioFormatReader and AudioFormatReaderSource.
  
- This combines the functionality of an AudioTransportSource, 
- AudioFormatReader and AudioFormatReaderSource.
- 
- @see AudioTransportSource
- @see AudioFormatReader
- @see AudioFormatReaderSource
+    @see AudioTransportSource
+    @see AudioFormatReader
+    @see AudioFormatReaderSource
  */
 class AudioFilePlayerExt :  public AudioFilePlayer
 {
@@ -76,7 +76,7 @@ public:
     
     /** Returns the current SoundTouchProcessor settings.
      */
-    SoundTouchProcessor::PlaybackSettings getPlaybackSettings() {   return soundTouchAudioSource->getPlaybackSettings();    }    
+    SoundTouchProcessor::PlaybackSettings getPlaybackSettings();
     
     /** Sets whether the source should play forwards or backwards.
      */
@@ -84,7 +84,7 @@ public:
     
     /** Returns true if the source is playing forwards.
      */
-	bool getPlayDirection()                                     {   return reversibleAudioSource->getPlayDirection();       }
+	bool getPlayDirection();
 
     /** Sets the gain of one of the FilteringAudioSource filters.
      */
@@ -102,7 +102,7 @@ public:
     
     /** Returns true if the loop is activated.
      */
-    bool getLoopBetweenTimes()                      {   return loopingAudioSource->getLoopBetweenTimes();       }
+    bool getLoopBetweenTimes();
     
     /** Sets the next play position in seconds disregarding the loop boundries.
      */
@@ -133,6 +133,7 @@ private:
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);
 };
+
 
 #endif
 #endif // __DROWAUDIO_AUDIOFILEPLAYEREXT_H__

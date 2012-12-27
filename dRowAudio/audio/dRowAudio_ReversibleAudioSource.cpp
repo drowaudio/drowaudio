@@ -18,8 +18,6 @@
   ==============================================================================
 */
 
-
-
 //==============================================================================
 ReversibleAudioSource::ReversibleAudioSource (PositionableAudioSource* const inputSource,
 											  const bool deleteInputWhenDeleted)
@@ -49,12 +47,11 @@ void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
 {
 	if (isForwards) 
     {
-        previousReadPosition = input->getNextReadPosition();
         input->getNextAudioBlock (info);
+        previousReadPosition = input->getNextReadPosition();
     }
     else
 	{
-        //int64 nextReadPosition = input->getNextReadPosition() - (2 * info.numSamples);
         int64 nextReadPosition = previousReadPosition - info.numSamples;
         
 		if (nextReadPosition < 0 && input->isLooping())

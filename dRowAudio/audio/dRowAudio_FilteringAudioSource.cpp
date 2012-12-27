@@ -37,6 +37,8 @@ FilteringAudioSource::FilteringAudioSource (AudioSource* inputSource,
 	  sampleRate    (44100.0),
 	  filterSource  (true)
 {
+    jassert (input != nullptr);
+    
     gains[Low] = 1.0f;
     gains[Mid] = 1.0f;
     gains[High] = 1.0f;
@@ -75,12 +77,15 @@ void FilteringAudioSource::setGain (FilterType setting, float newGain)
     }
 }
 
+void FilteringAudioSource::setFilterSource (bool shouldFilter)
+{
+    filterSource = shouldFilter;
+}
+
 //==============================================================================
 void FilteringAudioSource::prepareToPlay (int samplesPerBlockExpected,
                                           double sampleRate_)
 {
-    const ScopedLock sl (callbackLock);
-
     sampleRate = sampleRate_;
 
     resetFilters();
@@ -91,43 +96,31 @@ void FilteringAudioSource::prepareToPlay (int samplesPerBlockExpected,
 
 void FilteringAudioSource::releaseResources()
 {
-    const ScopedLock sl (callbackLock);
-	
     if (input != nullptr)
         input->releaseResources();
 }
 
 void FilteringAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
 {
-    const ScopedLock sl (callbackLock);
-		
-    if (input != nullptr)
+    input->getNextAudioBlock (info);
+
+    if (filterSource && info.buffer->getNumChannels() > 0)
     {
-        input->getNextAudioBlock (info);
+        const int bufferNumSamples = info.numSamples;
+        float* sampleDataL = info.buffer->getSampleData (0, info.startSample);
+        
+        filter[0][Low].processSamples   (sampleDataL, bufferNumSamples);
+        filter[0][Mid].processSamples   (sampleDataL, bufferNumSamples);
+        filter[0][High].processSamples  (sampleDataL, bufferNumSamples);
 
-		if (filterSource && info.buffer->getNumChannels() > 0)
-		{
-			// filter samples
-			const int bufferNumSamples = info.numSamples;
-			float* sampleDataL = info.buffer->getSampleData (0, info.startSample);
-            
-            filter[0][Low].processSamples   (sampleDataL, bufferNumSamples);
-			filter[0][Mid].processSamples   (sampleDataL, bufferNumSamples);
-			filter[0][High].processSamples  (sampleDataL, bufferNumSamples);
+        if (info.buffer->getNumChannels() > 1)
+        {
+            float* sampleDataR = info.buffer->getSampleData (1, info.startSample);
 
-            if (info.buffer->getNumChannels() > 1)
-            {
-                float* sampleDataR = info.buffer->getSampleData (1, info.startSample);
-
-                filter[1][Low].processSamples   (sampleDataR, bufferNumSamples);
-                filter[1][Mid].processSamples   (sampleDataR, bufferNumSamples);
-                filter[1][High].processSamples  (sampleDataR, bufferNumSamples);
-            }
-		}
-    }
-    else
-    {
-        info.clearActiveBufferRegion();
+            filter[1][Low].processSamples   (sampleDataR, bufferNumSamples);
+            filter[1][Mid].processSamples   (sampleDataR, bufferNumSamples);
+            filter[1][High].processSamples  (sampleDataR, bufferNumSamples);
+        }
     }
 }
 

@@ -46,8 +46,6 @@ public:
     
 	//==============================================================================
     /** Creates an FilteringAudioTransportSource.
-	 
-	 After creating one of these, use the setSource() method to select an input source.
 	 */
     FilteringAudioSource (AudioSource* inputSource,
                           bool deleteInputWhenDeleted);
@@ -84,7 +82,6 @@ private:
     float gains[numFilters];
 	IIRFilter filter[2][numFilters];
 	
-    CriticalSection callbackLock;
     double sampleRate;
 	bool filterSource;
 

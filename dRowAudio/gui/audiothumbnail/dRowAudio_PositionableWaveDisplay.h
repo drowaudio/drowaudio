@@ -21,12 +21,9 @@
 #ifndef __DROWAUDIO_POSITIONALWAVEDISPLAY_H__
 #define __DROWAUDIO_POSITIONALWAVEDISPLAY_H__
 
-#include "../../utility/dRowAudio_StateVariable.h"
-#include "../../audio/dRowAudio_AudioUtility.h"
-#include "../dRowAudio_AudioTransportCursor.h"
-
 //====================================================================================
-/** A class to display the entire waveform of an audio file.
+/**
+    A class to display the entire waveform of an audio file.
 	
 	This will load an audio file and display its waveform. Clicking on the waveform will
 	reposition the transport source.
@@ -42,7 +39,7 @@ public:
 		The AudioThumbnailImage associated with the display must be passed in.
 	 */
 	explicit PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed,
-                                      TimeSliceThread& threadToUse_);
+                                      TimeSliceThread& threadToUse);
 	
 	/** Destructor.
      */
@@ -55,11 +52,11 @@ public:
     
     /** Sets the colour to use for the background.
      */
-    void setBackgroundColour (Colour newBackgroundColour);
+    void setBackgroundColour (const Colour& newBackgroundColour);
     
     /** Sets the colour to use for the waveform.
      */
-    void setWaveformColour (Colour newWaveformColour);
+    void setWaveformColour (const Colour& newWaveformColour);
         
 	/** Sets the current horizontal zoom.
         1.0 displays the whole waveform, 0.5 will show half etc. 
@@ -116,5 +113,6 @@ private:
 	//==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PositionableWaveDisplay);
 };
+
 
 #endif //__DROWAUDIO_POSITIONALWAVEDISPLAY_H__

@@ -44,7 +44,7 @@
  
     @see AudioThumbnailCache
 */
-class ColouredAudioThumbnail    : public AudioThumbnailBase
+class ColouredAudioThumbnail :  public AudioThumbnailBase
 {
 public:
     //==============================================================================
@@ -219,14 +219,13 @@ private:
     int32 numChannels;
     double sampleRate;
     CriticalSection lock;
-
-	//drow
-	BiquadFilter filterLow, filterLowMid, filterHighMid, filterHigh;
 	
+    //==============================================================================
     bool setDataSource (LevelDataSource* newSource);
     void setLevels (const MinMaxColourValue* const* values, int thumbIndex, int numChans, int numValues);
     void createChannels (int length);
 
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColouredAudioThumbnail);
 };
 

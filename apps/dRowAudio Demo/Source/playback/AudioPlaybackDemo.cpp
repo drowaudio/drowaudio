@@ -37,7 +37,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
 //                                                                            &audioFilePlayer,
 //                                                                            &thumbnailCache, 
 //                                                                            &audioThumbnail));
-    audioThumbnailImage = new AudioThumbnailImage (&audioFilePlayer, backgroundThread, &audioThumbnailCache, &audioThumbnail);
+    audioThumbnailImage = new AudioThumbnailImage (audioFilePlayer, backgroundThread, audioThumbnail, 512);
     
     positionableWaveDisplay = new PositionableWaveDisplay (*audioThumbnailImage, backgroundThread);
     addAndMakeVisible (positionableWaveDisplay);
@@ -117,6 +117,8 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     playerControlLabels[pitch]->setText ("Pitch", false);
     
     addAndMakeVisible (&distortionDemo);
+    
+    backgroundThread.startThread (1);
 }
 
 AudioPlaybackDemo::~AudioPlaybackDemo()

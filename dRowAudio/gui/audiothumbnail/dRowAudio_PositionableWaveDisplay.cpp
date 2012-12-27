@@ -18,13 +18,11 @@
   ==============================================================================
 */
 
-
-
 PositionableWaveDisplay::PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed,
                                                   TimeSliceThread& threadToUse_)
     : audioThumbnailImage   (sourceToBeUsed),
       threadToUse           (threadToUse_),
-      audioFilePlayer       (*audioThumbnailImage.getAudioFilePlayer()),
+      audioFilePlayer       (audioThumbnailImage.getAudioFilePlayer()),
       currentSampleRate     (44100.0),
       zoomRatio             (1.0),
       startOffsetRatio      (0.0),
@@ -52,13 +50,9 @@ PositionableWaveDisplay::~PositionableWaveDisplay()
 
 void PositionableWaveDisplay::setZoomRatio (double newZoomRatio)
 {
-    if (newZoomRatio < 0.0 || newZoomRatio > 10000.0)
-    {
-        jassertfalse; // zoom ratio has to be > 0 && < 10000
-        newZoomRatio = 1.0;
-    }
+    jassert (newZoomRatio >= 0.000001 && newZoomRatio < 10000.0);
 
-    zoomRatio = newZoomRatio;
+    zoomRatio = jlimit (0.000001, 10000.0, newZoomRatio);
     audioTransportCursor.setZoomRatio (newZoomRatio);
     
     resized();
@@ -68,7 +62,6 @@ void PositionableWaveDisplay::setStartOffsetRatio (double newStartOffsetRatio)
 {
     startOffsetRatio = newStartOffsetRatio;
     audioTransportCursor.setStartOffsetRatio (startOffsetRatio);
-
     repaint();
 }
 
@@ -83,14 +76,14 @@ void PositionableWaveDisplay::setCursorDisplayed (bool shoudldDisplayCursor)
     audioTransportCursor.setCursorDisplayed (shoudldDisplayCursor);
 }
 
-void PositionableWaveDisplay::setBackgroundColour (Colour newBackgroundColour)
+void PositionableWaveDisplay::setBackgroundColour (const Colour& newBackgroundColour)
 {
     backgroundColour = newBackgroundColour;
     audioThumbnailImage.setBackgroundColour (backgroundColour);
     repaint();
 }
 
-void PositionableWaveDisplay::setWaveformColour (Colour newWaveformColour)
+void PositionableWaveDisplay::setWaveformColour (const Colour& newWaveformColour)
 {
     waveformColour = newWaveformColour;
     audioThumbnailImage.setWaveformColour (waveformColour);
@@ -138,6 +131,7 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
         {
             const ScopedLock sl (imageLock);
             cachedImage.clear (cachedImage.getBounds(), backgroundColour);
+            triggerAsyncUpdate();
         }
         
         AudioFormatReaderSource* readerSource = audioFilePlayer.getAudioFormatReaderSource();
@@ -151,7 +145,9 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
         {
             currentSampleRate = reader->sampleRate;
             fileLength = audioFilePlayer.getLengthInSeconds();
-            oneOverFileLength = 1.0 / fileLength;
+            
+            if (fileLength > 0.0)
+                oneOverFileLength = 1.0 / fileLength;
 
             refreshCachedImage();
         }
@@ -169,7 +165,7 @@ int PositionableWaveDisplay::useTimeSlice()
     const ScopedLock sl (imageLock);
 
     drawTimes = audioThumbnailImage.getTimeRendered();
-    
+
     if (! drawTimes.areEqual())
     {
         cachedImage = audioThumbnailImage.getImage()

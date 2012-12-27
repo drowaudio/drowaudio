@@ -40,7 +40,7 @@ TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
     buttons[reverse]->setButtonText ("Settings");
     
     buttons[loop]->setClickingTogglesState (true);
-    buttons[reverse]->setClickingTogglesState (true);
+    //buttons[reverse]->setClickingTogglesState (true);
 }
 
 TransportComponent::~TransportComponent()
@@ -78,8 +78,8 @@ void TransportComponent::buttonClicked (Button* button)
     }
     else if (button == buttons[reverse]) 
     {
-        //showAudioSettings();
-        audioFilePlayer.setPlayDirection (! button->getToggleState());
+        showAudioSettings();
+        //audioFilePlayer.setPlayDirection (! button->getToggleState());
     }
 }
 

@@ -21,14 +21,13 @@
 #if DROWAUDIO_USE_SOUNDTOUCH
 
 
-
 AudioFilePlayerExt::AudioFilePlayerExt()
     : AudioFilePlayer()
 {
     loopingAudioSource = new LoopingAudioSource (audioTransportSource, false);
     reversibleAudioSource = new ReversibleAudioSource (audioTransportSource, false);
     filteringAudioSource = new FilteringAudioSource (reversibleAudioSource, false);
-    
+
     masterSource = filteringAudioSource;
 }
 
@@ -44,11 +43,27 @@ void AudioFilePlayerExt::setPlaybackSettings (SoundTouchProcessor::PlaybackSetti
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, SoundTouchSetting);
 }
 
+SoundTouchProcessor::PlaybackSettings AudioFilePlayerExt::getPlaybackSettings()
+{
+    if (soundTouchAudioSource != nullptr)
+        return soundTouchAudioSource->getPlaybackSettings();
+    else
+        return SoundTouchProcessor::PlaybackSettings();
+}
+
 void AudioFilePlayerExt::setPlayDirection (bool shouldPlayForwards)
 {
     reversibleAudioSource->setPlayDirection (shouldPlayForwards);
 
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, PlayDirectionSetting);
+}
+
+bool AudioFilePlayerExt::getPlayDirection()
+{
+    if (reversibleAudioSource != nullptr)
+        return reversibleAudioSource->getPlayDirection();
+    else
+        return true;
 }
 
 void AudioFilePlayerExt::setFilterGain (FilteringAudioSource::FilterType type, float newGain)
@@ -66,13 +81,24 @@ void AudioFilePlayerExt::setLoopTimes (double startTime, double endTime)
 
 void AudioFilePlayerExt::setLoopBetweenTimes (bool shouldLoop)
 {
-    loopingAudioSource->setLoopBetweenTimes (shouldLoop);
-	listeners.call (&Listener::audioFilePlayerSettingChanged, this, LoopBeetweenTimesSetting);
+    if (loopingAudioSource != nullptr)
+    {
+        loopingAudioSource->setLoopBetweenTimes (shouldLoop);
+        listeners.call (&Listener::audioFilePlayerSettingChanged, this, LoopBeetweenTimesSetting);
+    }
+}
+
+bool AudioFilePlayerExt::getLoopBetweenTimes()
+{
+    if (loopingAudioSource != nullptr)
+        return loopingAudioSource->getLoopBetweenTimes();
+    else
+        return false;
 }
 
 void AudioFilePlayerExt::setPosition (double newPosition, bool ignoreAnyLoopBounds)
 {
-    if (ignoreAnyLoopBounds && audioFormatReaderSource != nullptr)
+    if (ignoreAnyLoopBounds && loopingAudioSource != nullptr)
     {
         const double sampleRate = audioFormatReaderSource->getAudioFormatReader()->sampleRate;
         
@@ -122,7 +148,6 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
 
     return false;    
 }
-
 
 
 #endif

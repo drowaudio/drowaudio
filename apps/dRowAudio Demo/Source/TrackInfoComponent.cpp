@@ -124,7 +124,10 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
     {
         ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
         double bpm = trackInfo[MusicColumns::columnNames[MusicColumns::BPM]].toString().getDoubleValue();
-        bpm *= audioFilePlayer.getSoundTouchAudioSource()->getSoundTouchProcessor().getEffectivePlaybackRatio();
+        
+        if (audioFilePlayer.getSoundTouchAudioSource() != nullptr)
+            bpm *= audioFilePlayer.getSoundTouchAudioSource()->getSoundTouchProcessor().getEffectivePlaybackRatio();
+        
         bpmLabel.setText (String (bpm, 2), false);
     }
 }

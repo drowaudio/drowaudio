@@ -21,8 +21,6 @@
 #ifndef __DROWAUDIO_AUDIOTHUMBNAILIMAGE_H__
 #define __DROWAUDIO_AUDIOTHUMBNAILIMAGE_H__
 
-#include "../../audio/dRowAudio_AudioFilePlayer.h"
-
 //==============================================================================	
 /** A class to display the waveform of an audio file.
 	
@@ -43,28 +41,33 @@ class AudioThumbnailImage : public Timer,
 public:
     //==============================================================================	
     /** Creates the AudioThumbnailImage.
+
 		The file player associated with the display must be passed in.
 		To save on the number of threads in your program you can optionally pass in your own
 		AudioThumbnailCache. If you pass in your own the caller is responsible for deleting it,
 		if not the PositionableWaveform will create and delete its own when not needed.	 
 	 */
-	explicit AudioThumbnailImage (AudioFilePlayer* sourceToBeUsed,
+	explicit AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
                                   TimeSliceThread& backgroundThread,
-                                  AudioThumbnailCache* cacheToUse = nullptr,
-                                  AudioThumbnailBase* thumbnailToUse = nullptr,
-                                  int sourceSamplesPerThumbnailSample = 512);
+                                  AudioThumbnailBase& thumbnailToUse,
+                                  int sourceSamplesPerThumbnailSample);
 	
 	/** Destructor. */
-	~AudioThumbnailImage ();
+	~AudioThumbnailImage();
 	
     /** Sets the colour to use for the background.
      */
-    void setBackgroundColour (Colour newBackgroundColour);
+    void setBackgroundColour (const Colour& newBackgroundColour);
     
     /** Sets the colour to use for the waveform.
      */
-    void setWaveformColour (Colour newWaveformColour);
+    void setWaveformColour (const Colour& newWaveformColour);
     
+    /** Sets the image resolution in lines per pixel.
+        This will cause the waveform to be re-generated from the source.
+     */
+    void setResolution (double newResolution);
+
 	//====================================================================================
     /** Returns the whole waveform image.
      */
@@ -74,14 +77,9 @@ public:
      */
     const Image getImageAtTime (double startTime, double duration);
     
-    /** Sets the image resolution in lines per pixel.
-        This will cause the waveform to be re-generated from the source.
-     */
-    void setResolution (double newResolution);
-    
     /** Returns the AudioFilePlayer currently being used.
      */
-    AudioFilePlayer* getAudioFilePlayer()           {   return filePlayer;      }
+    AudioFilePlayer& getAudioFilePlayer()           {   return filePlayer;      }
     
     /** Retuns the ammount of time that has been rendered.
      */
@@ -90,11 +88,11 @@ public:
     /** Returns true if the Image has finished rendering;
      */
     bool hasFinishedLoading()                       {   return renderComplete;  }
-    
+
     /** Returns the number of sourceSamplesPerThumbnailSample if set in the constructor.
      */
     int getNumSourceSamplesPerThumbnailSamples()    {   return sourceSamplesPerThumbnailSample; }
-    
+
 	//====================================================================================
 	/** @internal */
     void resized ();
@@ -132,7 +130,7 @@ public:
         virtual void imageChanged (AudioThumbnailImage* /*audioThumbnailImage*/) {}
 		
         /** Called when the the image is updated.
-            This will be continuously called while thewaveform is being generated.
+            This will be continuously called while the waveform is being generated.
 		 */
         virtual void imageUpdated (AudioThumbnailImage* /*audioThumbnailImage*/) {}
         
@@ -151,30 +149,29 @@ public:
 	    
 private:
 	//==============================================================================
-    void triggerWaveformRefresh();
-	void refreshWaveform();
-	
-	AudioFilePlayer* filePlayer;
-	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
-	
-	// thumbnail classes
-    ReadWriteLock imageLock;
+    AudioFilePlayer& filePlayer;
     TimeSliceThread& backgroundThread;
-	OptionalScopedPointer<AudioThumbnailCache> audioThumbnailCache;
-	OptionalScopedPointer<AudioThumbnailBase> audioThumbnail;
+    AudioThumbnailBase& audioThumbnail;
     int sourceSamplesPerThumbnailSample;
-	
-	Image waveformImage, tempSectionImage;
-    Colour backgroundColour;
-    Colour waveformColour;
     
+    ReadWriteLock imageLock;
+	Image waveformImage, tempSectionImage;
+
+    Colour backgroundColour, waveformColour;
+    
+    bool sourceLoaded, renderComplete;
+	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
     double lastTimeDrawn, resolution;
-    bool renderComplete;
     
     ListenerList <Listener> listeners;
 
-	//==============================================================================	
+    //==============================================================================
+    void triggerWaveformRefresh();
+	void refreshWaveform();
+
+	//==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioThumbnailImage);
 };
+
 
 #endif  // __DROWAUDIO_AUDIOTHUMBNAILIMAGE_H__

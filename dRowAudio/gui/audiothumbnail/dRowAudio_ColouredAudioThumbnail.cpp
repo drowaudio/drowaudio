@@ -18,346 +18,36 @@
   ==============================================================================
 */
 
-
-
 #undef min
 #undef max
 
 using ::std::numeric_limits;
 
 //==============================================================================
-//static void readMaxLevelsFiltering (AudioFormatReader &reader,
-//                                    BiquadFilter &filterLow, BiquadFilter& /*filterMid*/, BiquadFilter& /*filterHigh*/,
-//                                    int64 startSampleInFile,
-//                                    int64 numSamples,
-//                                    float& lowestLeft, float& highestLeft,
-//                                    float& lowestRight, float& highestRight)
-//{
-//    if (numSamples <= 0)
-//    {
-//        lowestLeft = 0;
-//        lowestRight = 0;
-//        highestLeft = 0;
-//        highestRight = 0;
-//        return;
-//    }
-//	
-//    const int bufferSize = (int) jmin (numSamples, (int64) 4096);
-//    const int heapBlockSize = bufferSize * 2 + 64;
-//    HeapBlock<int> tempSpace (heapBlockSize);
-//	
-//    int* tempBuffer[3];
-//    tempBuffer[0] = tempSpace.getData();
-//    tempBuffer[1] = tempSpace.getData() + bufferSize;
-//    tempBuffer[2] = 0;
-//	
-//    if (reader.usesFloatingPointData)
-//    {
-//        float lmin = 1.0e6f;
-//        float lmax = -lmin;
-//        float rmin = lmin;
-//        float rmax = lmax;
-//		
-//        while (numSamples > 0)
-//        {
-//            const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
-//            reader.read (tempBuffer, 2, startSampleInFile, numToDo, false);
-//			
-//			// filterLow here
-//			filterLow.processSamples(reinterpret_cast<float*> (tempBuffer[0]), numToDo);
-//			
-//            numSamples -= numToDo;
-//            startSampleInFile += numToDo;
-//			
-//            float bufMin, bufMax;
-//            findMinAndMax (reinterpret_cast<float*> (tempBuffer[0]), numToDo, bufMin, bufMax);
-//            lmin = jmin (lmin, bufMin);
-//            lmax = jmax (lmax, bufMax);
-//			
-//            if (reader.numChannels > 1)
-//            {
-//                findMinAndMax (reinterpret_cast<float*> (tempBuffer[1]), numToDo, bufMin, bufMax);
-//                rmin = jmin (rmin, bufMin);
-//                rmax = jmax (rmax, bufMax);
-//            }
-//        }
-//		
-//        if (reader.numChannels <= 1)
-//        {
-//            rmax = lmax;
-//            rmin = lmin;
-//        }
-//		
-//        lowestLeft = lmin;
-//        highestLeft = lmax;
-//        lowestRight = rmin;
-//        highestRight = rmax;
-//    }
-//    else
-//    {
-//        int lmax = std::numeric_limits<int>::min();
-//        int lmin = std::numeric_limits<int>::max();
-//        int rmax = std::numeric_limits<int>::min();
-//        int rmin = std::numeric_limits<int>::max();
-//		
-//        while (numSamples > 0)
-//        {
-//            const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
-//            if (! reader.read (tempBuffer, 2, startSampleInFile, numToDo, false))
-//                break;
-//			
-//			// filterLow here
-//			filterLow.processSamples((tempBuffer[0]), numToDo);
-//
-//            numSamples -= numToDo;
-//            startSampleInFile += numToDo;
-//			
-//            for (int j = reader.numChannels; --j >= 0;)
-//            {
-//                int bufMin, bufMax;
-//                findMinAndMax (tempBuffer[j], numToDo, bufMin, bufMax);
-//				
-//                if (j == 0)
-//                {
-//                    lmax = jmax (lmax, bufMax);
-//                    lmin = jmin (lmin, bufMin);
-//                }
-//                else
-//                {
-//                    rmax = jmax (rmax, bufMax);
-//                    rmin = jmin (rmin, bufMin);
-//                }
-//            }
-//        }
-//		
-//        if (reader.numChannels <= 1)
-//        {
-//            rmax = lmax;
-//            rmin = lmin;
-//        }
-//		
-//        lowestLeft = lmin / (float) std::numeric_limits<int>::max();
-//        highestLeft = lmax / (float) std::numeric_limits<int>::max();
-//        lowestRight = rmin / (float) std::numeric_limits<int>::max();
-//        highestRight = rmax / (float) std::numeric_limits<int>::max();
-//    }
-//}
-
-static void readMaxLevelsFilteringWithColour (AudioFormatReader &reader,
-											  BiquadFilter &filterLow, BiquadFilter &filterLowMid, BiquadFilter &filterHighMid, BiquadFilter &filterHigh,
-											  int64 startSampleInFile,
-											  int64 numSamples,
-											  float& lowestLeft, float& highestLeft,
-											  float& lowestRight, float& highestRight,
-											  Colour &colourLeft, Colour &colourRight)
+namespace
 {
-    if (numSamples <= 0)
+    //==============================================================================
+    template <typename SampleType>
+    static void getStereoMinAndMax (SampleType* const* channels, const int numChannels, const int numSamples,
+                                    SampleType& lmin, SampleType& lmax, SampleType& rmin, SampleType& rmax)
     {
-        lowestLeft = 0;
-        lowestRight = 0;
-        highestLeft = 0;
-        highestRight = 0;
+        SampleType bufMin, bufMax;
+        findMinAndMax (channels[0], numSamples, bufMin, bufMax);
+        lmax = jmax (lmax, bufMax);
+        lmin = jmin (lmin, bufMin);
         
-        colourLeft = Colours::white;
-        colourRight = Colours::white;
-        
-        return;
-    }
-	
-    const int bufferSize = (int) jmin (numSamples, (int64) 4096);
-    HeapBlock<int> tempSpace (bufferSize * 2 + 64);
-//    const int heapBlockSize = bufferSize * 2 + 64;
-//	int tempSpace[heapBlockSize];
-    
-    int* tempBuffer[3];
-    tempBuffer[0] = &tempSpace[0];//tempSpace.getData();
-    tempBuffer[1] = &tempSpace[bufferSize];//tempSpace.getData() + bufferSize;
-    tempBuffer[2] = 0;
-	
-//	HeapBlock<int> filteredBlock (bufferSize * 4);
-//	int* filteredArray[4] = {filteredBlock.getData(),
-//							 filteredBlock.getData()+bufferSize,
-//							 filteredBlock.getData()+(bufferSize*2),
-//							 filteredBlock.getData()+(bufferSize*3)};
-    const int filteredBlockSize = bufferSize * 4;
-    HeapBlock<int> filteredBlock (filteredBlockSize);
-    //int filteredBlock[filteredBlockSize];
-	int* filteredArray[4] = {&filteredBlock[0],
-							 &filteredBlock[bufferSize],
-							 &filteredBlock[bufferSize * 2],
-							 &filteredBlock[bufferSize * 3]};
-    
-    float avgLow = 0.0f, avgMid = 0.0f, avgHigh = 0.0f;
-
-    if (reader.usesFloatingPointData)
-    {
-        float lmin = 1.0e6f;
-        float lmax = -lmin;
-        float rmin = lmin;
-        float rmax = lmax;
-		
-        while (numSamples > 0)
+        if (numChannels > 1)
         {
-            const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
-            reader.read (tempBuffer, 2, startSampleInFile, numToDo, false);
-			
-			// copy samples to buffers ready to be filtered
-			memcpy(filteredArray[0], tempBuffer[0], sizeof(int)*numToDo);
-			memcpy(filteredArray[1], tempBuffer[0], sizeof(int)*numToDo);
-			memcpy(filteredArray[2], tempBuffer[0], sizeof(int)*numToDo);
-			memcpy(filteredArray[3], tempBuffer[0], sizeof(int)*numToDo);
-			
-			// filter buffers
-			filterLow.processSamples (reinterpret_cast<float*> (filteredArray[0]), numToDo);
-			filterLowMid.processSamples (reinterpret_cast<float*> (filteredArray[1]), numToDo);
-			filterHighMid.processSamples (reinterpret_cast<float*> (filteredArray[2]), numToDo);
-			filterHigh.processSamples (reinterpret_cast<float*> (filteredArray[3]), numToDo);
-			
-			// calculate colour
-			for (int i = 0; i < numToDo; i++)
-			{
-//				avgLow += fabsf((reinterpret_cast<float*>(filteredArray[0]))[i]);
-//				avgMid += fabsf((reinterpret_cast<float*>(filteredArray[1]))[i]);
-//				avgHigh += fabsf((reinterpret_cast<float*>(filteredArray[2]))[i]);
-			
-				float low = fabsf((reinterpret_cast<float*> (filteredArray[0]))[i]);
-				float mid = (fabsf((reinterpret_cast<float*> (filteredArray[1]))[i]) + fabsf((reinterpret_cast<float*>(filteredArray[2]))[i]));
-				float high = fabsf((reinterpret_cast<float*> (filteredArray[3]))[i]);
-				
-				if (low > avgLow) {
-					avgLow = low;
-				}
-				if (mid > avgMid) {
-					avgMid = mid;
-				}
-				if (high > avgHigh) {
-					avgHigh = high;
-				}
-			}
-			
-            numSamples -= numToDo;
-            startSampleInFile += numToDo;
-			
-            float bufMin, bufMax;
-            findMinAndMax (reinterpret_cast<float*> (tempBuffer[0]), numToDo, bufMin, bufMax);
-
-            lmin = jmin (lmin, bufMin);
-            lmax = jmax (lmax, bufMax);
-			
-            if (reader.numChannels > 1)
-            {
-                findMinAndMax (reinterpret_cast<float*> (tempBuffer[1]), numToDo, bufMin, bufMax);
-                rmin = jmin (rmin, bufMin);
-                rmax = jmax (rmax, bufMax);
-            }
+            findMinAndMax (channels[1], numSamples, bufMin, bufMax);
+            rmax = jmax (rmax, bufMax);
+            rmin = jmin (rmin, bufMin);
         }
-		
-        if (reader.numChannels <= 1)
+        else
         {
             rmax = lmax;
             rmin = lmin;
         }
-		
-        lowestLeft = lmin;
-        highestLeft = lmax;
-        lowestRight = rmin;
-        highestRight = rmax;
-        
-//        avgLow = (avgLow / numToAverage);
-//        avgMid = (avgMid / numToAverage);
-//        avgHigh = (avgHigh / numToAverage);
     }
-    else
-    {
-        int lmax = std::numeric_limits<int>::min();
-        int lmin = std::numeric_limits<int>::max();
-        int rmax = std::numeric_limits<int>::min();
-        int rmin = std::numeric_limits<int>::max();
-		
-        while (numSamples > 0)
-        {
-            const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
-            if (! reader.read (tempBuffer, 2, startSampleInFile, numToDo, false))
-                break;
-			
-            // copy samples to buffers ready to be filtered
-			memcpy (filteredArray[0], tempBuffer[0], sizeof (int) * numToDo);
-			memcpy (filteredArray[1], tempBuffer[0], sizeof (int) * numToDo);
-			memcpy (filteredArray[2], tempBuffer[0], sizeof (int) * numToDo);
-			memcpy (filteredArray[3], tempBuffer[0], sizeof (int) * numToDo);
-			
-			// filter buffers
-			filterLow.processSamples((filteredArray[0]), numToDo);
-			filterLowMid.processSamples((filteredArray[1]), numToDo);
-			filterHighMid.processSamples((filteredArray[2]), numToDo);
-			filterHigh.processSamples((filteredArray[3]), numToDo);
-			
-			// calculate colour
-			for (int i = 0; i < numToDo; i++)
-			{
-//				avgLow += abs(((filteredArray[0]))[i]);
-//				avgMid += abs(((filteredArray[1]))[i]);
-//				avgHigh += abs(((filteredArray[2]))[i]);
-				
-				int low = abs(filteredArray[0][i]);
-				int mid = (abs(filteredArray[1][i]) + abs(filteredArray[2][i]));
-				int high = abs(filteredArray[3][i]);
-				
-				if (low > avgLow) {
-					avgLow = (float) low;
-				}
-				if (mid > avgMid) {
-					avgMid = (float) mid;
-				}
-				if (high > avgHigh) {
-					avgHigh = (float) high;
-				}
-				
-			}
-
-            numSamples -= numToDo;
-            startSampleInFile += numToDo;
-			
-            for (int j = reader.numChannels; --j >= 0;)
-            {
-                int bufMin, bufMax;
-                findMinAndMax (tempBuffer[j], numToDo, bufMin, bufMax);
-				
-                if (j == 0)
-                {
-                    lmax = jmax (lmax, bufMax);
-                    lmin = jmin (lmin, bufMin);
-                }
-                else
-                {
-                    rmax = jmax (rmax, bufMax);
-                    rmin = jmin (rmin, bufMin);
-                }
-            }
-        }
-		
-        if (reader.numChannels <= 1)
-        {
-            rmax = lmax;
-            rmin = lmin;
-        }
-		
-        lowestLeft = lmin / (float) std::numeric_limits<int>::max();
-        highestLeft = lmax / (float) std::numeric_limits<int>::max();
-        lowestRight = rmin / (float) std::numeric_limits<int>::max();
-        highestRight = rmax / (float) std::numeric_limits<int>::max();
-
-//        avgLow = (avgLow / numToAverage) / (float) std::numeric_limits<int>::max();
-//        avgMid = (avgMid / numToAverage) / (float) std::numeric_limits<int>::max();
-//        avgHigh = (avgHigh / numToAverage) / (float) std::numeric_limits<int>::max();
-        avgLow = avgLow / (float) ::std::numeric_limits<int>::max();
-        avgMid = avgMid / (float) ::std::numeric_limits<int>::max();
-        avgHigh = avgHigh / (float) ::std::numeric_limits<int>::max();
-    }
-    
-    uint8 maxSize = ::std::numeric_limits<uint8>::max();
-    colourLeft = Colour::fromRGB((uint8) (avgLow * maxSize), (uint8) (avgMid * maxSize * 0.66f), (uint8) (avgHigh * maxSize * 0.33f));
-    colourRight = colourLeft;
 }
 
 //==============================================================================
@@ -428,13 +118,15 @@ class ColouredAudioThumbnail::LevelDataSource   :	public TimeSliceClient,
 public:
     LevelDataSource (ColouredAudioThumbnail& owner_, AudioFormatReader* newReader, int64 hash)
         : lengthInSamples (0), numSamplesFinished (0), sampleRate (0), numChannels (0),
-          hashCode (hash), owner (owner_), reader (newReader)
+          hashCode (hash), owner (owner_), reader (newReader),
+          tempSampleBufferSize (0), tempFilteredBufferSize (0)
     {
     }
 
     LevelDataSource (ColouredAudioThumbnail& owner_, InputSource* source_)
         : lengthInSamples (0), numSamplesFinished (0), sampleRate (0), numChannels (0),
-          hashCode (source_->hashCode()), owner (owner_), source (source_)
+          hashCode (source_->hashCode()), owner (owner_), source (source_),
+          tempSampleBufferSize (0), tempFilteredBufferSize (0)
     {
     }
 
@@ -459,17 +151,16 @@ public:
             numChannels = reader->numChannels;
             sampleRate = reader->sampleRate;
 
-			//drow
-//			owner.filterSetup.setUpFilter(owner.filterLow, reader->sampleRate);
-			owner.filterLow.makeBandPass(reader->sampleRate, 130.0, 2);
-			owner.filterLowMid.makeBandPass(reader->sampleRate, 650.0, 2.0);
-			owner.filterHighMid.makeBandPass(reader->sampleRate, 1300.0, 2.0);
-			owner.filterHigh.makeHighPass(reader->sampleRate, 2700.0, 0.5);
-//			owner.filterLow.makeBandPass(reader->sampleRate, 130.0, 1);
-//			owner.filterLowMid.makeBandPass(reader->sampleRate, 1000.0, 1.0);
-//			owner.filterHighMid.makeBandPass(reader->sampleRate, 1300.0, 1.0);
-//			owner.filterHigh.makeHighPass(reader->sampleRate, 2000.0);
+			filterLow.makeBandPass (reader->sampleRate, 130.0, 2);
+			filterLowMid.makeBandPass (reader->sampleRate, 650.0, 2.0);
+			filterHighMid.makeBandPass (reader->sampleRate, 1300.0, 2.0);
+			filterHigh.makeHighPass (reader->sampleRate, 2700.0, 0.5);
 			
+            filterLow.reset();
+			filterLowMid.reset();
+			filterHighMid.reset();
+			filterHigh.reset();
+
             if (lengthInSamples <= 0)
                 reader = 0;
             else if (! isFullyLoaded())
@@ -484,20 +175,18 @@ public:
         
         if (reader != 0)
         {
-//			DBG("get levels method");
             float l[4] = { 0 };
 			Colour colourLeft, colourRight;
             
-//            readMaxLevelsFiltering (*reader, owner.filterLow, startSample, numSamples, l[0], l[1], l[2], l[3]);
-            readMaxLevelsFilteringWithColour (*reader, owner.filterLow, owner.filterLowMid, owner.filterHighMid, owner.filterHigh, startSample, numSamples,
+            readMaxLevelsFilteringWithColour (startSample, numSamples,
 											  l[0], l[1], l[2], l[3], colourLeft, colourRight);
             levels.clearQuick();
             levels.addArray ((const float*) l, 4);
 
             //*** not finding colour here
             colours.clearQuick();
-            colours.add(colourLeft);
-            colours.add(colourRight);
+            colours.add (colourLeft);
+            colours.add (colourRight);
         }
     }
 	
@@ -568,6 +257,9 @@ private:
     ScopedPointer <InputSource> source;
     ScopedPointer <AudioFormatReader> reader;
     CriticalSection readerLock;
+    BiquadFilter filterLow, filterLowMid, filterHighMid, filterHigh;
+    HeapBlock<int> tempSampleBuffer, tempFilteredBuffer;
+    int tempSampleBufferSize, tempFilteredBufferSize;
 
     void createReader()
     {
@@ -604,20 +296,13 @@ private:
                     float lowestLeft, highestLeft, lowestRight, highestRight;
 					Colour colourLeft, colourRight;
 					
-//                    reader->readMaxLevels ((firstThumbIndex + i) * owner.samplesPerThumbSample, owner.samplesPerThumbSample,
-//                                           lowestLeft, highestLeft, lowestRight, highestRight);
-//                    readMaxLevelsFiltering (*reader, owner.filterLow,
-//											(firstThumbIndex + i) * owner.samplesPerThumbSample, owner.samplesPerThumbSample,
-//											lowestLeft, highestLeft, lowestRight, highestRight);
-                    readMaxLevelsFilteringWithColour (*reader, owner.filterLow, owner.filterLowMid, owner.filterHighMid, owner.filterHigh,
-													  (firstThumbIndex + i) * owner.samplesPerThumbSample, owner.samplesPerThumbSample,
+                    readMaxLevelsFilteringWithColour ((firstThumbIndex + i) * owner.samplesPerThumbSample, owner.samplesPerThumbSample,
 													  lowestLeft, highestLeft, lowestRight, highestRight,
 													  colourLeft, colourRight);
 					
                     levels[0][i].setFloat (lowestLeft, highestLeft);
                     levels[1][i].setFloat (lowestRight, highestRight);
 					
-					//drow
 					levels[0][i].setColour(colourLeft);
 					levels[1][i].setColour(colourRight);
                 }
@@ -632,6 +317,165 @@ private:
         }
 
         return isFullyLoaded();
+    }
+    
+    void readMaxLevelsFilteringWithColour (int64 startSampleInFile,
+                                           int64 numSamples,
+                                           float& lowestLeft, float& highestLeft,
+                                           float& lowestRight, float& highestRight,
+                                           Colour &colourLeft, Colour &colourRight)
+    {
+        if (numSamples <= 0)
+        {
+            lowestLeft = 0;
+            lowestRight = 0;
+            highestLeft = 0;
+            highestRight = 0;
+            
+            colourLeft = Colours::white;
+            colourRight = Colours::white;
+            
+            return;
+        }
+        
+        const int bufferSize = (int) jmin (numSamples, (int64) 4096);
+        const int newTempSampleBufferSize = bufferSize * 2 + 64;
+
+        if (tempSampleBufferSize < newTempSampleBufferSize)
+        {
+            tempSampleBuffer.malloc (newTempSampleBufferSize);
+            tempSampleBufferSize = newTempSampleBufferSize;
+        }
+        
+        int* tempSpace = tempSampleBuffer.getData();
+        int* tempBuffer[3] = {&tempSpace[0],
+                                &tempSpace[bufferSize],
+                                nullptr};
+        
+        const int filteredBlockSize = bufferSize * 4;
+        if (tempFilteredBufferSize < filteredBlockSize)
+        {
+            tempFilteredBuffer.malloc (filteredBlockSize);
+            tempFilteredBufferSize = filteredBlockSize;
+        }
+        
+        int* filteredBlock = tempFilteredBuffer.getData();
+        int* filteredArray[4] = {&filteredBlock[0],
+                                &filteredBlock[bufferSize],
+                                &filteredBlock[bufferSize * 2],
+                                &filteredBlock[bufferSize * 3]};
+        
+        float avgLow = 0.0f, avgMid = 0.0f, avgHigh = 0.0f;
+        
+        if (reader->usesFloatingPointData)
+        {
+            float lmin = std::numeric_limits<float>::max();
+            float lmax = -lmin;
+            float rmin = lmin;
+            float rmax = lmax;
+            
+            while (numSamples > 0)
+            {
+                const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
+                if (! reader->read (tempBuffer, 2, startSampleInFile, numToDo, false))
+                    break;
+                
+                // copy samples to buffers ready to be filtered
+                memcpy (filteredArray[0], tempBuffer[0], sizeof (int) * numToDo);
+                memcpy (filteredArray[1], tempBuffer[0], sizeof (int) * numToDo);
+                memcpy (filteredArray[2], tempBuffer[0], sizeof (int) * numToDo);
+                memcpy (filteredArray[3], tempBuffer[0], sizeof (int) * numToDo);
+                
+                // filter buffers
+                filterLow.processSamples (reinterpret_cast<float*> (filteredArray[0]), numToDo);
+                filterLowMid.processSamples (reinterpret_cast<float*> (filteredArray[1]), numToDo);
+                filterHighMid.processSamples (reinterpret_cast<float*> (filteredArray[2]), numToDo);
+                filterHigh.processSamples (reinterpret_cast<float*> (filteredArray[3]), numToDo);
+                
+                // calculate colour
+                for (int i = 0; i < numToDo; i++)
+                {
+                    float low = fabsf ((reinterpret_cast<float*> (filteredArray[0]))[i]);
+                    float mid = fabsf ((reinterpret_cast<float*> (filteredArray[1]))[i])
+                                + fabsf ((reinterpret_cast<float*> (filteredArray[2]))[i]);
+                    float high = fabsf ((reinterpret_cast<float*> (filteredArray[3]))[i]);
+                    
+                    if (low > avgLow)   avgLow = low;
+                    if (mid > avgMid)   avgMid = mid;
+                    if (high > avgHigh) avgHigh = high;
+                }
+                
+                numSamples -= numToDo;
+                startSampleInFile += numToDo;
+
+                getStereoMinAndMax (reinterpret_cast<float**> (&tempBuffer[0]), reader->numChannels, numToDo,
+                                    lmin, lmax, rmin, rmax);
+            }
+            
+            lowestLeft = lmin;
+            highestLeft = lmax;
+            lowestRight = rmin;
+            highestRight = rmax;
+        }
+        else
+        {
+            int lmax = std::numeric_limits<int>::min();
+            int lmin = std::numeric_limits<int>::max();
+            int rmax = std::numeric_limits<int>::min();
+            int rmin = std::numeric_limits<int>::max();
+
+            while (numSamples > 0)
+            {
+                const int numToDo = (int) jmin (numSamples, (int64) bufferSize);
+                if (! reader->read (tempBuffer, 2, startSampleInFile, numToDo, false))
+                    break;
+                
+                // copy samples to buffers ready to be filtered
+                memcpy (filteredArray[0], tempBuffer[0], sizeof (int) * numToDo);
+                memcpy (filteredArray[1], tempBuffer[0], sizeof (int) * numToDo);
+                memcpy (filteredArray[2], tempBuffer[0], sizeof (int) * numToDo);
+                memcpy (filteredArray[3], tempBuffer[0], sizeof (int) * numToDo);
+                
+                // filter buffers
+                filterLow.processSamples ((filteredArray[0]), numToDo);
+                filterLowMid.processSamples ((filteredArray[1]), numToDo);
+                filterHighMid.processSamples ((filteredArray[2]), numToDo);
+                filterHigh.processSamples ((filteredArray[3]), numToDo);
+                
+                // calculate colour
+                for (int i = 0; i < numToDo; i++)
+                {
+                    int low = abs (filteredArray[0][i]);
+                    int mid = abs (filteredArray[1][i]) + abs (filteredArray[2][i]);
+                    int high = abs (filteredArray[3][i]);
+                    
+                    if (low > avgLow)   avgLow = (float) low;
+                    if (mid > avgMid)   avgMid = (float) mid;
+                    if (high > avgHigh) avgHigh = (float) high;
+                }
+                
+                numSamples -= numToDo;
+                startSampleInFile += numToDo;
+
+                getStereoMinAndMax (reinterpret_cast<int**> (&tempBuffer[0]), reader->numChannels, numToDo,
+                                    lmin, lmax, rmin, rmax);
+            }
+            
+            lowestLeft = lmin / (float) std::numeric_limits<int>::max();
+            highestLeft = lmax / (float) std::numeric_limits<int>::max();
+            lowestRight = rmin / (float) std::numeric_limits<int>::max();
+            highestRight = rmax / (float) std::numeric_limits<int>::max();
+            
+            avgLow = avgLow / (float) ::std::numeric_limits<int>::max();
+            avgMid = avgMid / (float) ::std::numeric_limits<int>::max();
+            avgHigh = avgHigh / (float) ::std::numeric_limits<int>::max();
+        }
+        
+        uint8 maxSize = ::std::numeric_limits<uint8>::max();
+        colourLeft = Colour::fromRGB ((uint8) (avgLow * maxSize),
+                                      (uint8) (avgMid * maxSize * 0.66f),
+                                      (uint8) (avgHigh * maxSize * 0.33f));
+        colourRight = colourLeft;
     }
 };
 
@@ -898,8 +742,6 @@ private:
 
         if (timePerPixel * sampleRate <= samplesPerThumbSample && levelData != 0)
         {
-			//DBG("*** re-fetching from source");
-            
             int sample = roundToInt (startTime * sampleRate);
             Array<float> levels;
 			Array<Colour> colours;
@@ -935,7 +777,6 @@ private:
         else
         {
             jassert (channels.size() == numChannelsCached);
-			//DBG("refilling from cache");
 			
             for (int channelNum = 0; channelNum < numChannelsCached; ++channelNum)
             {
@@ -991,7 +832,6 @@ ColouredAudioThumbnail::ColouredAudioThumbnail (const int originalSamplesPerThum
     numChannels (0),
     sampleRate (0)
 {
-//	smoothingFilter.makeLowPass(originalSamplesPerThumbnailSample, originalSamplesPerThumbnailSample * 0.1);
 }
 
 ColouredAudioThumbnail::~ColouredAudioThumbnail()
@@ -1044,7 +884,7 @@ void ColouredAudioThumbnail::loadFrom (InputStream& input)
     int32 numThumbnailSamples = input.readInt();  // Number of samples in the thumbnail data.
     numChannels = input.readInt();                // Number of audio channels.
     sampleRate = input.readInt();                 // Source sample rate.
-    input.skipNextBytes (16);                           // reserved area
+    input.skipNextBytes (16);                     // reserved area
 
     createChannels (numThumbnailSamples);
 
@@ -1231,8 +1071,6 @@ void ColouredAudioThumbnail::drawChannel (Graphics& g, const juce::Rectangle<int
     const ScopedLock sl (lock);
 
     drawColouredChannel (g, area, startTime, endTime, channelNum, verticalZoomFactor);
-//    window->drawChannel (g, area, startTime, endTime, channelNum, verticalZoomFactor,
-//                         sampleRate, numChannels, samplesPerThumbSample, source, channels);
 }
 
 void ColouredAudioThumbnail::drawColouredChannel (Graphics& g, const juce::Rectangle<int>& area, double startTime,
@@ -1256,5 +1094,3 @@ void ColouredAudioThumbnail::drawChannels (Graphics& g, const juce::Rectangle<in
                      startTimeSeconds, endTimeSeconds, i, verticalZoomFactor);
     }
 }
-
-

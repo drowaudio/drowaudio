@@ -58,10 +58,10 @@ MainComponent::MainComponent()
     searchBox.addListener (this);
     searchBox.setTextToShowWhenEmpty ("search...", Colours::grey);
     
-    tabbedComponent.addTab("Audio Playback",
-                           Colours::grey, 
-                           new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource.getBuffer()), 
-                           true);
+    tabbedComponent.addTab ("Audio Playback",
+                            Colours::grey,
+                            new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource.getBuffer()),
+                            true);
     
 //    File libraryFile (File::getSpecialLocation (File::currentApplicationFile)
 //                                             .getChildFile ("dRowAudio Demo Library.xml"));
@@ -76,8 +76,8 @@ MainComponent::MainComponent()
     tabbedComponent.addTab ("Column File Browser",
                             Colours::grey, 
                             new ColumnFileBrowser (new WildcardFileFilter (audioFilePlayer.getAudioFormatManager()->getWildcardForAllFormats(),
-                                                                                          "*", 
-                                                                                          "Audio Files")), 
+                                                                           "*",
+                                                                           "Audio Files")), 
                             true);
 
     fftDemo = new FFTDemo();
@@ -94,6 +94,7 @@ MainComponent::MainComponent()
 #endif
         
     audioSourcePlayer.setSource (&bufferTransformAudioSource);
+    //audioSourcePlayer.setSource (&audioFilePlayer);
     audioDeviceManager.initialise (0, 2, nullptr, true);
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);
@@ -141,9 +142,7 @@ void MainComponent::textEditorTextChanged (TextEditor& editor)
         musicLibraryTable->setFilterText (searchBox.getText());
         
         if (tabbedComponent.getCurrentTabName() != "iTunes Library")
-        {
             tabbedComponent.setCurrentTabIndex (1, true);
-        }
         
         searchBox.grabKeyboardFocus();
     }
