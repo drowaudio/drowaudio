@@ -70,6 +70,11 @@ MainComponent::MainComponent()
     ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     MusicLibraryTable* musicLibraryTable = new MusicLibraryTable;
     musicLibraryTable->setLibraryToUse (ITunesLibrary::getInstance());
+    
+    musicLibraryTable->getTableListBox().setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
+    musicLibraryTable->getTableListBox().setColour (ListBox::outlineColourId, Colours::grey);
+    musicLibraryTable->getTableListBox().setColour (ListBox::textColourId, Colours::darkgrey);
+    
     tabbedComponent.addTab ("iTunes Library",
                             Colours::grey, musicLibraryTable, true);
 

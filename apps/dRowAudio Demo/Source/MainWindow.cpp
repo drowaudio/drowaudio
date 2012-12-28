@@ -28,11 +28,7 @@ MainAppWindow::MainAppWindow()
                       DocumentWindow::allButtons)
 {
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
-    LookAndFeel& laf = getLookAndFeel();
-    laf.setColour (TextButton::buttonColourId, Colours::lightgrey);
-    laf.setColour (TextButton::buttonOnColourId, Colours::grey);
-    laf.setColour (ToggleButton::textColourId, Colours::white);
-    laf.setColour (Slider::rotarySliderFillColourId, Colours::white);
+    setupColours();
 
     setContentOwned (new MainComponent, false);
     centreWithSize (800, 600);
@@ -47,4 +43,14 @@ MainAppWindow::~MainAppWindow()
 void MainAppWindow::closeButtonPressed()
 {
     JUCEApplication::getInstance()->systemRequestedQuit();
+}
+
+//==============================================================================
+void MainAppWindow::setupColours()
+{
+    LookAndFeel& laf = getLookAndFeel();
+    laf.setColour (TextButton::buttonColourId, Colours::lightgrey);
+    laf.setColour (TextButton::buttonOnColourId, Colours::grey);
+    laf.setColour (ToggleButton::textColourId, Colours::white);
+    laf.setColour (Slider::rotarySliderFillColourId, Colours::white);
 }

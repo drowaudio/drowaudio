@@ -25,17 +25,33 @@ MusicLibraryTable::MusicLibraryTable()
       filteredNumRows   (dataList.getNumChildren()),
       finishedLoading   (true)
 {
+    // set up default colours
+    setColour (backgroundColourId, Colour::greyLevel (0.2f));
+    setColour (unfocusedBackgroundColourId, findColour (backgroundColourId));
+    setColour (selectedBackgroundColourId, Colours::darkorange);
+    setColour (selectedUnfocusedBackgroundColourId, Colour::greyLevel (0.6f));
+    
+    setColour (textColourId, Colour::greyLevel (0.9f));
+    setColour (selectedTextColourId, Colour::greyLevel (0.2f));
+    setColour (unfocusedTextColourId, findColour (textColourId));
+    setColour (selectedUnfocusedTextColourId, findColour (unfocusedTextColourId));
+    
+    setColour (outlineColourId, Colour::greyLevel (0.9f).withAlpha (0.2f));
+    setColour (selectedOutlineColourId, findColour (outlineColourId));
+    setColour (unfocusedOutlineColourId, findColour (outlineColourId));
+    setColour (selectedUnfocusedOutlineColourId, findColour (outlineColourId));
+
 	// Create our table component and add it to this component..
 	addAndMakeVisible (&table);
     table.setModel (this);
     table.setMultipleSelectionEnabled (true);
-	table.setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
+//	table.setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
 	table.setHeaderHeight (18);
 	table.setRowHeight (16);
 	table.getViewport()->setScrollBarThickness (10);
 
 	// give it a border
-	table.setColour (ListBox::outlineColourId, Colours::grey);
+//	table.setColour (ListBox::outlineColourId, Colours::grey);
 	table.setOutlineThickness (1);
 
 	// Add some MusicColumns to the table header
@@ -149,9 +165,9 @@ void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/,
                                             int /*width*/, int /*height*/, bool rowIsSelected)
 {
 	if (rowIsSelected)
-		table.hasKeyboardFocus (true) ? g.fillAll (Colours::darkorange) : g.fillAll (Colour::greyLevel (0.6f));
+		g.fillAll (findColour (table.hasKeyboardFocus (true) ? selectedBackgroundColourId : selectedUnfocusedBackgroundColourId));
 	else
-		g.fillAll (Colour::greyLevel (0.2f));
+		g.fillAll (findColour (table.hasKeyboardFocus (true) ? backgroundColourId : unfocusedBackgroundColourId));
 }
 
 void MusicLibraryTable::paintCell (Graphics& g,
@@ -160,7 +176,11 @@ void MusicLibraryTable::paintCell (Graphics& g,
 								   int width, int height,
 								   bool rowIsSelected)
 {
-	rowIsSelected ? g.setColour (Colour::greyLevel (0.2f)) : g.setColour (Colour::greyLevel (0.9f));
+    if (table.hasKeyboardFocus (true))
+        g.setColour (findColour (rowIsSelected ? selectedTextColourId : textColourId));
+    else
+        g.setColour (findColour (rowIsSelected ? selectedUnfocusedTextColourId : unfocusedTextColourId));
+
 	g.setFont (font);
 
     {
@@ -183,7 +203,11 @@ void MusicLibraryTable::paintCell (Graphics& g,
         }
     }
 
-	g.setColour (Colour::greyLevel (0.9f).withAlpha (0.2f));
+    if (table.hasKeyboardFocus (true))
+        g.setColour (findColour (rowIsSelected ? selectedOutlineColourId : outlineColourId));
+    else
+        g.setColour (findColour (rowIsSelected ? selectedUnfocusedOutlineColourId : unfocusedOutlineColourId));
+
 	g.fillRect (width - 1, 0, 1, height);
 	g.fillRect (0, height - 1, width, 1);
 }

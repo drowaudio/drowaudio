@@ -72,6 +72,50 @@ public:
 	TableListBox& getTableListBox()	{	return table;	};
     
     //==============================================================================
+    /** A set of colour IDs to use to change the colour of various aspects of the main table.
+     
+        These constants can be used either via the Component::setColour(), or LookAndFeel::setColour()
+        methods. TextEditor
+     
+        @see Component::setColour, Component::findColour, LookAndFeel::setColour, LookAndFeel::findColour
+     */
+    enum ColourIds
+    {
+        backgroundColourId                  = 0x2000000, /**< The colour to use for the cell's background - this can be
+                                                              transparent if necessary. */
+
+        unfocusedBackgroundColourId         = 0x2000001, /**< The colour to use for the cell's background
+                                                              when the table is unfocused. */
+
+        selectedBackgroundColourId          = 0x2000002, /**< The colour to use for the cell's background if the
+                                                              row is selected. */
+        
+        selectedUnfocusedBackgroundColourId = 0x2000003, /**< The colour to use for the cell's background if the
+                                                              row is selected and the table is unfocused. */
+
+        textColourId                        = 0x2000004, /**< The colour that will be used for the cell's text. */
+        
+        selectedTextColourId                = 0x2000005, /**< The colour with which to draw the text in selected
+                                                              cells. */
+
+        unfocusedTextColourId               = 0x2000006, /**< The colour with which to draw the text in cells when
+                                                              the table is unfocused. */
+
+        selectedUnfocusedTextColourId       = 0x2000007, /**< The colour with which to draw the text in selected
+                                                              cells when the table is unfocused. */
+        
+        outlineColourId                     = 0x2000008, /**< The colour used to draw an outline around the cells. */
+
+        selectedOutlineColourId             = 0x2000009, /**< The colour used to draw an outline around selected cells. */
+
+        unfocusedOutlineColourId            = 0x2000010, /**< The colour used to draw an outline around the cells when
+                                                              the table is unfocused. */
+
+        selectedUnfocusedOutlineColourId    = 0x2000011, /**< The colour used to draw an outline around selected cells
+                                                              when the table is unfocused. */
+    };
+    
+    //==============================================================================
     /** @internal */
 	void libraryChanged (ITunesLibrary* library);
 	
