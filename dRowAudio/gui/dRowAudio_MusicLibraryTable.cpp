@@ -18,14 +18,12 @@
   ==============================================================================
 */
 
-
-
 MusicLibraryTable::MusicLibraryTable()
-:	font (12.0f),
-	currentLibrary (nullptr),
-    dataList (MusicColumns::libraryIdentifier),
-	filteredNumRows (dataList.getNumChildren()),
-	finishedLoading (true)
+    : font              (12.0f),
+      currentLibrary    (nullptr),
+      dataList          (MusicColumns::libraryIdentifier),
+      filteredNumRows   (dataList.getNumChildren()),
+      finishedLoading   (true)
 {
 	// Create our table component and add it to this component..
 	addAndMakeVisible (&table);
@@ -52,14 +50,14 @@ MusicLibraryTable::MusicLibraryTable()
     }
         
 	// we could now change some initial settings..
-	table.getHeader().setSortColumnId (MusicColumns::Artist, true); // sort forwards by the ID column
+	table.getHeader().setSortColumnId (MusicColumns::Artist, true); // sort forwards by the Artist column
 
 	table.getHeader().setColumnVisible (MusicColumns::LibID, false);
 	table.getHeader().setColumnVisible (MusicColumns::ID, false);
 	table.getHeader().setColumnVisible (MusicColumns::Rating, false);
 	table.getHeader().setColumnVisible (MusicColumns::Location, false);
 	table.getHeader().setColumnVisible (MusicColumns::Modified, false);
-		
+	
 	setFilterText (String::empty);
 }
 
@@ -73,46 +71,36 @@ void MusicLibraryTable::setLibraryToUse (ITunesLibrary* library)
 {
 	currentLibrary = library;
 	
-	DBG("ITunesLibrary to use changed");
 	filteredDataList = dataList = library->getLibraryTree();
 	dataList = library->getLibraryTree();
 	library->addListener(this);
 }
 
-void MusicLibraryTable::setFilterText (String filterString)
+void MusicLibraryTable::setFilterText (const String& filterString)
 {
     currentFilterText = filterString;
+    
     if (currentLibrary != nullptr)
         currentLibrary->getParserLock().enter();
-
-//    filteredArray.clear();
     
 	if (filterString == String::empty)
 	{
 		filteredDataList = dataList;
 		filteredNumRows = filteredDataList.getNumChildren();
-
-//        for (int e = 0; e < dataList.getNumChildren(); e++)
-//        {
-//            filteredArray.add (dataList.getChild (e));
-//        }
 	}
 	else
 	{
 		filteredDataList = ValueTree (dataList.getType());
 		
-		for (int e = 0; e < dataList.getNumChildren(); e++)
+		for (int e = 0; e < dataList.getNumChildren(); ++e)
 		{
 			for (int i = 0; i < dataList.getChild (e).getNumProperties(); i++)
 			{
 				if (dataList.getChild (e)[MusicColumns::columnNames[i]].toString().containsIgnoreCase (filterString))
 				{
-//                    filteredArray.add (dataList.getChild (e));
 					filteredDataList.addChild (dataList.getChild(e).createCopy(), -1, 0);
-					
 					break;
 				}
-				
 			}
 		}
 		
@@ -123,7 +111,6 @@ void MusicLibraryTable::setFilterText (String filterString)
         currentLibrary->getParserLock().exit();
 
 	table.getHeader().reSortTable();
-	table.updateContent();
 }
 
 //==============================================================================
@@ -131,36 +118,24 @@ void MusicLibraryTable::libraryChanged (ITunesLibrary* library)
 {
 	if (library == currentLibrary) 
 	{
-		filteredDataList = dataList = currentLibrary->getLibraryTree();
-		filteredNumRows = filteredDataList.getNumChildren();
-
 		finishedLoading = false;
-		
-		table.updateContent();
-        table.getHeader().reSortTable();
+		filteredDataList = dataList = currentLibrary->getLibraryTree();
+        updateTableFilteredAndSorted();
     }
 }
 
 void MusicLibraryTable::libraryUpdated (ITunesLibrary* library)
 {
 	if (library == currentLibrary) 
-	{
-		filteredNumRows = filteredDataList.getNumChildren();
-
-		table.updateContent();
-        table.getHeader().reSortTable();
-	}
+        updateTableFilteredAndSorted();
 }
 
 void MusicLibraryTable::libraryFinished (ITunesLibrary* library)
 {
 	if (library == currentLibrary) 
 	{
-		filteredNumRows = filteredDataList.getNumChildren();
 		finishedLoading = true;
-
-		table.updateContent();
-		table.getHeader().reSortTable();
+        updateTableFilteredAndSorted();
 	}
 }
 
@@ -189,7 +164,7 @@ void MusicLibraryTable::paintCell (Graphics& g,
 	g.setFont (font);
 
     {
-        ScopedLock sl (currentLibrary->getParserLock());
+        const ScopedLock sl (currentLibrary->getParserLock());
         const ValueTree& rowElement (filteredDataList.getChild (rowNumber));
     
         if (rowElement.isValid())
@@ -215,9 +190,11 @@ void MusicLibraryTable::paintCell (Graphics& g,
 
 void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
 {
+    findSelectedRows();
+    
 	if (newSortColumnId != 0)
 	{
-        ScopedLock sl (currentLibrary->getParserLock());
+        const ScopedLock sl (currentLibrary->getParserLock());
         
 		if (newSortColumnId == MusicColumns::Length
 			|| newSortColumnId == MusicColumns::BPM
@@ -228,22 +205,19 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
 		{
 			ValueTreeComparators::Numerical sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
 			filteredDataList.sort (sorter, 0, false);
-//            dataList.sort (sorter, 0, false);
 		}
 		else
         {
-//			ValueTreeComparators::Lexicographic sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
 			ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
                                                                   MusicColumns::columnNames[MusicColumns::LibID],
                                                                   isForwards);
-            
 			filteredDataList.sort (sorter, 0, false);
-//            dataList.sort (sorter, 0, false);
 		}
 
-//        updateFilteredSortOrder();
 		table.updateContent();
 	}
+
+    setSelectedRows();
 }
 
 //==========================================================================================
@@ -255,7 +229,7 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
 	for (int i = getNumRows(); --i >= 0;)
 	{
         {
-            ScopedLock sl (currentLibrary->getParserLock());
+            const ScopedLock sl (currentLibrary->getParserLock());
             const ValueTree& rowElement (filteredDataList.getChild (i));
 
             if (rowElement.isValid())
@@ -280,31 +254,59 @@ void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType /*cause*/)
 	repaint();
 }
 
-var MusicLibraryTable::getDragSourceDescription (const SparseSet< int > &currentlySelectedRows)
+var MusicLibraryTable::getDragSourceDescription (const SparseSet<int>& currentlySelectedRows)
 {
+    var itemsArray;
+
 	if(! currentlySelectedRows.isEmpty())
 	{
-        var itemsArray;
-                          
         for (int i = 0; i < currentlySelectedRows.size(); ++i)
         {
-            {
-                ScopedLock sl (currentLibrary->getParserLock());
-                // get child from main tree with same LibID
-                const ValueTree& tree (filteredDataList.getChild (currentlySelectedRows[i]));
-//                const ValueTree& tree (filteredArray[currentlySelectedRows[i]]);
+            const ScopedLock sl (currentLibrary->getParserLock());
 
-                ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
-                itemsArray.append (childTree.getObject());
-            }
+            // get child from main tree with same LibID
+            const ValueTree& tree (filteredDataList.getChild (currentlySelectedRows[i]));
+
+            ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
+            itemsArray.append (childTree.getObject());
         }
-            
-        return itemsArray;
-            
 	}
     
-	return var::null;
+    return itemsArray;
 }
 
+//==============================================================================
+void MusicLibraryTable::updateTableFilteredAndSorted()
+{
+    // make sure we still apply our filter
+    // this will also re-sort and update the table
+    setFilterText (currentFilterText);
+}
 
+void MusicLibraryTable::findSelectedRows()
+{
+    selectedRowsLibIds.clear();
+    const SparseSet<int> selectedRowNumbers (table.getSelectedRows());
+    
+    for (int i = 0; i < selectedRowNumbers.size(); ++i)
+    {
+        const int oldIndex = selectedRowNumbers[i];
+        const int libId = int (filteredDataList.getChild (oldIndex)[MusicColumns::columnNames[MusicColumns::LibID]]);
+        selectedRowsLibIds.add (libId);
+    }
+}
 
+void MusicLibraryTable::setSelectedRows()
+{
+    SparseSet<int> newSelectedRowNumbers;
+    
+    for (int i = 0; i < selectedRowsLibIds.size(); ++i)
+    {
+        const int libId = selectedRowsLibIds.getReference (i);
+        const int index = filteredDataList.indexOf (filteredDataList.getChildWithProperty (MusicColumns::columnNames[MusicColumns::LibID],
+                                                                                           libId));
+        newSelectedRowNumbers.addRange (Range<int> (index, index + 1));
+    }
+    
+    table.setSelectedRows (newSelectedRowNumbers, sendNotification);
+}

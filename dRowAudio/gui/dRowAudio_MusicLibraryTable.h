@@ -41,9 +41,9 @@
         ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     @endcode
 */
-class MusicLibraryTable	: public Component,
-                          public TableListBoxModel,
-						  public ITunesLibrary::Listener
+class MusicLibraryTable	:   public Component,
+                            public TableListBoxModel,
+                            public ITunesLibrary::Listener
 {
 public:
     //==============================================================================
@@ -65,7 +65,7 @@ public:
 
     /** Filters the table to only rows containing the given text.
      */
-	void setFilterText (String filterText);
+	void setFilterText (const String& filterText);
     
 	/**	Returns the table list box component.
      */
@@ -122,14 +122,19 @@ private:
     
     ValueTree dataList;
 	ValueTree filteredDataList;
+    SortedSet<int> selectedRowsLibIds;
         
     int filteredNumRows;
 	bool finishedLoading;
 	
-    void updateFilteredSortOrder();
+    //==============================================================================
+    void updateTableFilteredAndSorted();
+    void findSelectedRows();
+    void setSelectedRows();
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MusicLibraryTable);
 };
+
 
 #endif // __DROWAUDIO_MUSICLIBRARYTABLE_H__
