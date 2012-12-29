@@ -39,6 +39,11 @@ BufferTransformAudioSource::~BufferTransformAudioSource()
 {
 }
 
+void BufferTransformAudioSource::setBypass (bool shouldBypass)
+{
+    isBypassed = shouldBypass;
+}
+
 void BufferTransformAudioSource::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
     source->prepareToPlay (samplesPerBlockExpected, sampleRate);
@@ -53,28 +58,31 @@ void BufferTransformAudioSource::getNextAudioBlock (const AudioSourceChannelInfo
 {
     source->getNextAudioBlock (info);
     
-    const int bufferSize = buffer.getSize();
-    float** channelData = info.buffer->getArrayOfChannels();
-    float sample;
-
-    for (int c = 0; c < info.buffer->getNumChannels(); ++c)
+    if (! isBypassed)
     {
-        for (int s = 0; s < info.numSamples; ++s)
+        const int bufferSize = buffer.getSize() - 1;
+        float** channelData = info.buffer->getArrayOfChannels();
+        float sample;
+
+        for (int c = 0; c < info.buffer->getNumChannels(); ++c)
         {
-            sample = channelData[c][s];
-            
-            if (sample < 0.0f && sample > -1.0f)
+            for (int s = 0; s < info.numSamples; ++s)
             {
-                sample *= -1.0f;
-                sample = linearInterpolate (buffer.getData(), bufferSize, sample * bufferSize);
-                sample *= -1.0f;
+                sample = channelData[c][s];
+                
+                if (sample < 0.0f && sample >= -1.0f)
+                {
+                    sample *= -1.0f;
+                    sample = linearInterpolate (buffer.getData(), bufferSize, sample * bufferSize);
+                    sample *= -1.0f;
+                }
+                else if (sample >= 0.0f && sample <= 1.0f)
+                {
+                    sample = linearInterpolate (buffer.getData(), bufferSize, sample * bufferSize);
+                }
+                
+                channelData[c][s] = sample;
             }
-            else if (sample > 0.0f && sample < 1.0f)
-            {
-                sample = linearInterpolate (buffer.getData(), bufferSize, sample * bufferSize);
-            }
-            
-            channelData[c][s] = sample;
         }
     }
 }

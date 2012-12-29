@@ -59,6 +59,7 @@ OBJECTS := \
   $(OBJDIR)/LocalDirectoryListBox_9a5523eb.o \
   $(OBJDIR)/RemoteDirectoryListBox_1e458a90.o \
   $(OBJDIR)/FFTDemo_183d0bd.o \
+  $(OBJDIR)/PitchDetectorComponent_ecaa29bb.o \
   $(OBJDIR)/BinaryData_ce4232d4.o \
   $(OBJDIR)/dRowAudio_77fd40e6.o \
   $(OBJDIR)/juce_audio_basics_15b0217e.o \
@@ -170,6 +171,11 @@ $(OBJDIR)/RemoteDirectoryListBox_1e458a90.o: ../../Source/network/RemoteDirector
 $(OBJDIR)/FFTDemo_183d0bd.o: ../../Source/fft/FFTDemo.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling FFTDemo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/PitchDetectorComponent_ecaa29bb.o: ../../Source/fft/PitchDetectorComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling PitchDetectorComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp

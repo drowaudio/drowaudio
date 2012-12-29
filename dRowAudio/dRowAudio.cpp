@@ -61,6 +61,8 @@ namespace drow {
 #include "audio/dRowAudio_ReversibleAudioSource.cpp"
 #include "audio/dRowAudio_LoopingAudioSource.cpp"
 
+#include "audio/dRowAudio_PitchDetector.cpp"
+
 #include "audio/dRowAudio_AudioUtilityUnitTests.cpp"
 
 #include "audio/dRowAudio_Buffer.cpp"

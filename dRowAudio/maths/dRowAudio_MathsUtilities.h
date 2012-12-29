@@ -157,6 +157,47 @@ inline float findRMS (float* samples, int numSamples) noexcept
 }
 
 //==============================================================================
+/** Finds the maximum value and location of this in a buffer regardless of sign.
+ */
+inline void findAbsoluteMax (const float* samples, int numSamples, int& maxSampleLocation, float& maxSampleValue) noexcept
+{
+    maxSampleValue = 0.0f;
+    
+    for (int i = 0; i < numSamples; ++i)
+    {
+        const float absoluteSample = fabsf (samples[i]);
+        
+        if (absoluteSample > maxSampleValue)
+        {
+            maxSampleValue = absoluteSample;
+            maxSampleLocation = i;
+        }
+    }
+}
+
+/** Normalises a set of samples to the absolute maximum contained within the buffer.
+ */
+inline void normalise (float* samples, int numSamples) noexcept
+{
+    float max = 0.0f;
+    int location;
+    
+    findAbsoluteMax (samples, numSamples, location, max);
+    
+    if (max != 0.0f)
+    {
+        const float oneOverMax = 1.0f / max;
+        
+        for (int i = 0; i < numSamples; ++i)
+            samples[i] *= oneOverMax;
+    }
+    else
+    {
+        zeromem (samples, numSamples * sizeof (float));
+    }
+}
+
+//==============================================================================
 /**	Linear Interpolater.
 	Performs a linear interpolation for a fractional buffer position.
 	Note: For speed no bounds checking is performed on the buffer position so it is

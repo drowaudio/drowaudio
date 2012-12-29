@@ -24,6 +24,7 @@
 #include "../DemoHeader.h"
 #include "LoopComponent.h"
 #include "DistortionDemo.h"
+#include "BufferTransformAudioSource.h"
 
 //==============================================================================
 class AudioPlaybackDemo :   public Component,
@@ -32,7 +33,7 @@ class AudioPlaybackDemo :   public Component,
 public:    
     //==============================================================================
     AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer,
-                       Buffer& distortionBuffer);
+                       BufferTransformAudioSource& bufferTransformAudioSource);
     
     ~AudioPlaybackDemo();
     

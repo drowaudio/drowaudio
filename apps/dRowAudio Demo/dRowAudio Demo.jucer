@@ -113,6 +113,10 @@
       <GROUP id="{50DE6A5F-C9E3-CD4F-BF06-B5BCABCFD369}" name="fft">
         <FILE id="AckS5U" name="FFTDemo.h" compile="0" resource="0" file="Source/fft/FFTDemo.h"/>
         <FILE id="i3ULgs" name="FFTDemo.cpp" compile="1" resource="0" file="Source/fft/FFTDemo.cpp"/>
+        <FILE id="T6UY75" name="PitchDetectorComponent.h" compile="0" resource="0"
+              file="Source/fft/PitchDetectorComponent.h"/>
+        <FILE id="mwMkvV" name="PitchDetectorComponent.cpp" compile="1" resource="0"
+              file="Source/fft/PitchDetectorComponent.cpp"/>
       </GROUP>
       <GROUP id="{1E2BBBF0-70BF-AD30-B2B2-70A04B86A489}" name="resources">
         <FILE id="vTRqOY" name="icon.png" compile="0" resource="0" file="Source/resources/icon.png"/>

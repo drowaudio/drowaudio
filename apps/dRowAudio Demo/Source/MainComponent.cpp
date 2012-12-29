@@ -60,7 +60,7 @@ MainComponent::MainComponent()
     
     tabbedComponent.addTab ("Audio Playback",
                             Colours::grey,
-                            new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource.getBuffer()),
+                            new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource),
                             true);
     
 //    File libraryFile (File::getSpecialLocation (File::currentApplicationFile)
@@ -177,6 +177,7 @@ void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
 void MainComponent::audioDeviceAboutToStart (AudioIODevice* device)
 {
     audioSourcePlayer.audioDeviceAboutToStart (device);
+    fftDemo->setSampleRate (device->getCurrentSampleRate());
 }
 
 void MainComponent::audioDeviceStopped()

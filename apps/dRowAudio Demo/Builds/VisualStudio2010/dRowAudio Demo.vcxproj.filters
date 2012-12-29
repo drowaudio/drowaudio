@@ -376,6 +376,9 @@
     <ClCompile Include="..\..\Source\fft\FFTDemo.cpp">
       <Filter>dRowAudio Demo\Source\fft</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\fft\PitchDetectorComponent.cpp">
+      <Filter>dRowAudio Demo\Source\fft</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClCompile>
@@ -398,6 +401,9 @@
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_LoopingAudioSource.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_PitchDetector.cpp">
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_ReversibleAudioSource.cpp">
@@ -1677,6 +1683,9 @@
     <ClInclude Include="..\..\Source\fft\FFTDemo.h">
       <Filter>dRowAudio Demo\Source\fft</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\fft\PitchDetectorComponent.h">
+      <Filter>dRowAudio Demo\Source\fft</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_AudioFilePlayer.h">
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClInclude>
@@ -1702,6 +1711,9 @@
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_LoopingAudioSource.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_PitchDetector.h">
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_ReversibleAudioSource.h">

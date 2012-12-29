@@ -20,6 +20,7 @@
 
 #include "../DemoHeader.h"
 #include "DistortionComponent.h"
+#include "BufferTransformAudioSource.h"
 
 //==============================================================================
 class DistortionDemo :  public Component,
@@ -27,7 +28,7 @@ class DistortionDemo :  public Component,
 {
 public:
     //==============================================================================
-    DistortionDemo (Buffer& bufferToControl);
+    DistortionDemo (BufferTransformAudioSource& bufferTransformAudioSource);
     
     ~DistortionDemo();
     
@@ -39,8 +40,9 @@ public:
     
 private:
     //==============================================================================
+    BufferTransformAudioSource& bufferTransformAudioSource;
     DistortionComponent distortionComponent;
-    TextButton resetButton;
+    TextButton resetButton, bypassButton;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionDemo);

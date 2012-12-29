@@ -22,6 +22,7 @@
 #define __DROWAUDIODEMO_FFTDEMO_H__
 
 #include "../DemoHeader.h"
+#include "PitchDetectorComponent.h"
 
 //==============================================================================
 class FFTDemo : public Component,
@@ -43,6 +44,8 @@ public:
     void sliderValueChanged (Slider* slider);
     
 	//==============================================================================
+    void setSampleRate (double sampleRate);
+    
     void processBlock (const float* inputChannelData, int numSamples);
     
 private:
@@ -50,6 +53,7 @@ private:
     TimeSliceThread renderThread;
     AudioOscilloscope audioOscilloscope;
     Spectroscope spectroscope;
+    PitchDetectorComponent pitchDetector;
     Sonogram sonogram;
 
 	//==============================================================================

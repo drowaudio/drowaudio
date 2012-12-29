@@ -21,29 +21,37 @@
 #include "DistortionDemo.h"
 #include "../DemoLookAndFeel.h"
 
-DistortionDemo::DistortionDemo (Buffer& bufferToControl)
-    : distortionComponent (bufferToControl)
+DistortionDemo::DistortionDemo (BufferTransformAudioSource& bufferTransformAudioSource_)
+    : bufferTransformAudioSource (bufferTransformAudioSource_),
+      distortionComponent (bufferTransformAudioSource.getBuffer())
 {
     addAndMakeVisible (&distortionComponent);
 
     addAndMakeVisible (&resetButton);
     resetButton.setButtonText ("Reset");
     resetButton.addListener (this);
+    
+    addAndMakeVisible (&bypassButton);
+    bypassButton.setButtonText ("Bypass");
+    bypassButton.setClickingTogglesState (true);
+    bypassButton.addListener (this);
 }
 
 DistortionDemo::~DistortionDemo()
 {
     resetButton.removeListener (this);
+    bypassButton.removeListener (this);
 }
 
 void DistortionDemo::resized()
 {
     const int w = getWidth();
     const int h = getHeight();
-    const int m = 5;
+    const int m = 4;
     
     distortionComponent.setBounds (m, m, (w / 2) - (2 * m), h - (2 * m));
-    resetButton.setBounds ((int) (w * 0.75f) - 40, h - 20 - m, 80, 20);
+    resetButton.setBounds ((int) (w * 0.75f) - 80 - (m / 2), h - 20 - m, 80, 20);
+    bypassButton.setBounds (resetButton.getBounds().translated (resetButton.getWidth() + m, 0));
 }
 
 void DistortionDemo::paint (Graphics& g)
@@ -81,5 +89,9 @@ void DistortionDemo::buttonClicked (Button* button)
     if (button == &resetButton)
     {
         distortionComponent.resetBuffer();
+    }
+    else if (button == &bypassButton)
+    {
+        bufferTransformAudioSource.setBypass (bypassButton.getToggleState());
     }
 }

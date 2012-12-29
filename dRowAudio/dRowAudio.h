@@ -215,6 +215,10 @@ using juce::MemoryBlock;
     #include "audio/dRowAudio_LoopingAudioSource.h"
 #endif
 
+#ifndef __DROWAUDIO_PITCHDETECTOR_H__
+    #include "audio/dRowAudio_PitchDetector.h"
+#endif
+    
 #ifndef __DROWAUDIO_AUDIOUTILITY_H__
     #include "audio/dRowAudio_AudioUtility.h"
 #endif

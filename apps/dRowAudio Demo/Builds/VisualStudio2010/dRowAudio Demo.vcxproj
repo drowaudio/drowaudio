@@ -146,6 +146,7 @@
     <ClCompile Include="..\..\Source\network\LocalDirectoryListBox.cpp"/>
     <ClCompile Include="..\..\Source\network\RemoteDirectoryListBox.cpp"/>
     <ClCompile Include="..\..\Source\fft\FFTDemo.cpp"/>
+    <ClCompile Include="..\..\Source\fft\PitchDetectorComponent.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -168,6 +169,9 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_LoopingAudioSource.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_PitchDetector.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_ReversibleAudioSource.cpp">
@@ -1309,6 +1313,7 @@
     <ClInclude Include="..\..\Source\network\LocalDirectoryListBox.h"/>
     <ClInclude Include="..\..\Source\network\RemoteDirectoryListBox.h"/>
     <ClInclude Include="..\..\Source\fft\FFTDemo.h"/>
+    <ClInclude Include="..\..\Source\fft\PitchDetectorComponent.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_AudioFilePlayer.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h"/>
@@ -1318,6 +1323,7 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_FifoBuffer.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_FilteringAudioSource.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_LoopingAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_PitchDetector.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_ReversibleAudioSource.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_SampleRateConverter.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h"/>

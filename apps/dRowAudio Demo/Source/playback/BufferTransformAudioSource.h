@@ -34,6 +34,9 @@ public:
     /** Destructor. */
     ~BufferTransformAudioSource();
     
+    /** Setting this to true does not apply the buffer. */
+    void setBypass (bool shouldBypass);
+    
     /** Returns all of the settings.
      */
     Buffer& getBuffer()     {   return buffer;    }
@@ -51,9 +54,10 @@ public:
 private:
     //==============================================================================
     OptionalScopedPointer<AudioSource> source;
-    CriticalSection lock;
     Buffer buffer;
+    bool isBypassed;
     
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BufferTransformAudioSource);
 };
 

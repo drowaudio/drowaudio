@@ -22,13 +22,13 @@
 
 
 AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
-                                      Buffer& distortionBuffer)
+                                      BufferTransformAudioSource& bufferTransformAudioSource)
     : audioFilePlayer (audioFilePlayer_),
       loopComponent (audioFilePlayer),
       backgroundThread ("Waveform Thread"),
       audioThumbnailCache (10),
       audioThumbnail (512, *audioFilePlayer.getAudioFormatManager(), audioThumbnailCache),
-      distortionDemo (distortionBuffer)
+      distortionDemo (bufferTransformAudioSource)
 {
 //    addAndMakeVisible (positionalDisplay = new ColouredPositionableWaveDisplay (&audioFilePlayer,
 //                                                                                &thumbnailCache, 

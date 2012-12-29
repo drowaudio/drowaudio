@@ -25,8 +25,11 @@ FFTDemo::FFTDemo()
       spectroscope (11),
       sonogram (11)
 {
+    pitchDetector.setSampleRate (44100.0);
+    
     addAndMakeVisible (&audioOscilloscope);
     addAndMakeVisible (&spectroscope);
+    addAndMakeVisible (&pitchDetector);
     addAndMakeVisible (&sonogram);
     
     renderThread.addTimeSliceClient (&spectroscope);
@@ -76,6 +79,7 @@ void FFTDemo::resized()
     
     audioOscilloscope.setBounds (m, m, w - (2 * m), ch);
     spectroscope.setBounds (m, ch + (2 * m), w - (2 * m), ch);
+    pitchDetector.setBounds (spectroscope.getBounds());
     sonogram.setBounds (m, (2 * ch) + (3 * m), w - (2 * m), (2 * ch) + m);
     
     logSpectroscopeButton.setBounds (spectroscope.getX(), spectroscope.getY(), 150, 18);
@@ -90,6 +94,7 @@ void FFTDemo::buttonClicked (Button* button)
     if (button == &logSpectroscopeButton)
     {
         spectroscope.setLogFrequencyDisplay (logSpectroscopeButton.getToggleState());
+        pitchDetector.setLogFrequencyDisplay (logSpectroscopeButton.getToggleState());
     }
     else if (button == &logSonogramButton)
     {
@@ -106,11 +111,17 @@ void FFTDemo::sliderValueChanged (Slider* slider)
 }
 
 //==============================================================================
+void FFTDemo::setSampleRate (double sampleRate)
+{
+    pitchDetector.setSampleRate (sampleRate);
+}
+
 void FFTDemo::processBlock (const float* inputChannelData, int numSamples)
 {
     if (inputChannelData != nullptr)
     {
         audioOscilloscope.processBlock (inputChannelData, numSamples);
+        pitchDetector.processBlock (inputChannelData, numSamples);
         spectroscope.copySamples (inputChannelData, numSamples);
         sonogram.copySamples (inputChannelData, numSamples);
     }
