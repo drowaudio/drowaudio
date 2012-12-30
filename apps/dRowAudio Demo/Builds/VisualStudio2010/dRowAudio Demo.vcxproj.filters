@@ -1713,6 +1713,9 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_LoopingAudioSource.h">
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_Pitch.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\audio\dRowAudio_PitchDetector.h">
       <Filter>Juce Modules\dRowAudio\audio</Filter>
     </ClInclude>

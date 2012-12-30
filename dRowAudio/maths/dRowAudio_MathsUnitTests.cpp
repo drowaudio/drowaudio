@@ -63,6 +63,41 @@ public:
 static MathsUnitTests mathsUnitTests;
 
 //==============================================================================
+class PitchTests  : public UnitTest
+{
+public:
+    PitchTests() : UnitTest ("Pitch") {}
+    
+    void runTest()
+    {
+        beginTest ("Pitch");
+        
+        Pitch pitch (Pitch::fromFrequency (440));
+        expectEquals (pitch.getFrequencyHz(), 440.0);
+        expectEquals (pitch.getMidiNote(), 69.0);
+        expectEquals (pitch.getMidiNoteName(), String ("A4"));
 
+        pitch = Pitch::fromMidiNote (68);
+        expect (almostEqual (pitch.getFrequencyHz(), 415.304698, 0.000001));
+        expectEquals (pitch.getMidiNote(), 68.0);
+        expectEquals (pitch.getMidiNoteName(), String ("G#4"));
+        
+        pitch = Pitch::fromNoteName ("A#3");
+        expect (almostEqual (pitch.getFrequencyHz(), 116.54094, 0.000001));
+        expectEquals (pitch.getMidiNote(), 46.0);
+        expectEquals (pitch.getMidiNoteName(), String ("A#2"));
+        
+        String fFlatThree;
+        fFlatThree << "F" << Pitch::getFlatSymbol() << "2";
+        pitch = Pitch::fromNoteName (fFlatThree);
+        expect (almostEqual (pitch.getFrequencyHz(), 41.2034446, 0.000001));
+        expectEquals (pitch.getMidiNote(), 28.0);
+        expectEquals (pitch.getMidiNoteName(), String ("E1"));
+    }
+};
+
+static PitchTests pitchTests;
+
+//==============================================================================
 
 #endif // DROWAUDIO_UNIT_TESTS

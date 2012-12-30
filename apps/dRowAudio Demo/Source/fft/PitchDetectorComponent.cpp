@@ -47,7 +47,7 @@ void PitchDetectorComponent::resized()
 void PitchDetectorComponent::timerCallback()
 {
     pitchString = String (pitch, 2);
-    pitchString << " Hz" << "";
+    pitchString << " Hz" << " (" << Pitch::fromFrequency (pitch).getMidiNoteName() << ")";
     pitchLabel.setText (pitchString, false);
 
     const double proportion = pitch / (sampleRate / 2);

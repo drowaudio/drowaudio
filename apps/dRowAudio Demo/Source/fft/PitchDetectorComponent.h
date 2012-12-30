@@ -12,6 +12,7 @@
 #define __PITCHDETECTORCOMPONENT_H_FCCBFF40__
 
 #include "../DemoHeader.h"
+#include "dRowAudio_Pitch.h"
 
 //==============================================================================
 /*

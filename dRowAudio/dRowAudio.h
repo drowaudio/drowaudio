@@ -74,7 +74,7 @@
 
   ## Integration
 
-  dRowAudio requires recent versions of JUCE. It won't work with versions 2.20 or
+  dRowAudio requires recent versions of JUCE. It won't work with versions 2.28 or
   earlier. To use the library it is necessary to first download JUCE to a
   location where your development environment can find it. Or, you can use your
   existing installation of JUCE.
@@ -213,6 +213,10 @@ using juce::MemoryBlock;
 
 #ifndef __DROWAUDIO_LOOPINGAUDIOSOURCE_H__
     #include "audio/dRowAudio_LoopingAudioSource.h"
+#endif
+
+#ifndef __DROWAUDIO_PITCH_H__
+    #include "audio/dRowAudio_Pitch.h"
 #endif
 
 #ifndef __DROWAUDIO_PITCHDETECTOR_H__
