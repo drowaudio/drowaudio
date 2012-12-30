@@ -347,6 +347,10 @@ using juce::MemoryBlock;
 #ifndef __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__
     #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h"
 #endif
+    
+#ifndef __DROWAUDIO_DEFAULTCOLOURS_H__
+    #include "gui/dRowAudio_DefaultColours.h"
+#endif
 
 // maths
 #ifndef __DROWAUDIO_MATHSUTILITIES_H__

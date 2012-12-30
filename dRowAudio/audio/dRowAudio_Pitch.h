@@ -64,11 +64,15 @@ public:
     //==============================================================================
     /** Returns a unicode sharp symbol.
      */
-    static const juce_wchar getSharpSymbol()    {   return *CharPointer_UTF8 ("\xe2\x99\xaf");  }
+    static const juce_wchar getSharpSymbol() noexcept   {   return *CharPointer_UTF8 ("\xe2\x99\xaf");  }
     
     /** Returns a unicode flat symbol.
      */
-    static const juce_wchar getFlatSymbol()     {   return *CharPointer_UTF8 ("\xe2\x99\xad");  }
+    static const juce_wchar getFlatSymbol() noexcept    {   return *CharPointer_UTF8 ("\xe2\x99\xad");  }
+    
+    /** Returns a unicode natural symbol.
+     */
+    static const juce_wchar getNaturalSymbol() noexcept {   return *CharPointer_UTF8 ("\xe2\x99\xae");  }
     
     //==============================================================================
     /** Creates a Pitch object from a given frequency in Hertz e.g 440.
@@ -142,7 +146,7 @@ public:
         const int octave = midiNote / 12 - 1;
         
         String noteName;
-        noteName << getNoteName (pitchClass) << octave;
+        noteName << getNoteName (pitchClass, true) << octave;
 
         return noteName;
     }
@@ -154,24 +158,15 @@ private:
     //==============================================================================
     /*  Converts a pitch class number in the range of 0-12 to a letter.
      */
-    static String getNoteName (int pitchClass) noexcept
+    static String getNoteName (int pitchClass, bool asSharps) noexcept
     {
-        switch (pitchClass)
-        {
-            case 0:     return "C";
-            case 1:     return "C#";
-            case 2:     return "D";
-            case 3:     return "D#";
-            case 4:     return "E";
-            case 5:     return "F";
-            case 6:     return "F#";
-            case 7:     return "G";
-            case 8:     return "G#";
-            case 9:     return "A";
-            case 10:    return "A#";
-            case 11:    return "B";
-            default:    return String::empty;
-        }
+        static const char* const sharpNoteNames[] = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+        static const char* const flatNoteNames[]  = { "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B" };
+
+        if (isPositiveAndBelow (pitchClass, 12))
+            return asSharps ? sharpNoteNames[pitchClass] : flatNoteNames[pitchClass];
+        else
+            return String::empty;
     }
         
     /*  Returns the pitch class number for a given string.

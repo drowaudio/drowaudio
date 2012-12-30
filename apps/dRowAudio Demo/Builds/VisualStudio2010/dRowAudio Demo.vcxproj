@@ -1341,6 +1341,7 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CentreAlignViewport.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_Clock.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CpuMeter.h"/>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_DefaultColours.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_GraphicalComponent.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_GuiHelpers.h"/>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_MusicLibraryTable.h"/>

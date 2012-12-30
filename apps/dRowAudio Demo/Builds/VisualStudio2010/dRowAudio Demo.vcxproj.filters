@@ -1767,6 +1767,9 @@
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_CpuMeter.h">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_DefaultColours.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\juce_source\juce\modules\dRowAudio\gui\dRowAudio_GraphicalComponent.h">
       <Filter>Juce Modules\dRowAudio\gui</Filter>
     </ClInclude>

@@ -25,22 +25,6 @@ MusicLibraryTable::MusicLibraryTable()
       filteredNumRows   (dataList.getNumChildren()),
       finishedLoading   (true)
 {
-    // set up default colours
-    setColour (backgroundColourId, Colour::greyLevel (0.2f));
-    setColour (unfocusedBackgroundColourId, findColour (backgroundColourId));
-    setColour (selectedBackgroundColourId, Colours::darkorange);
-    setColour (selectedUnfocusedBackgroundColourId, Colour::greyLevel (0.6f));
-    
-    setColour (textColourId, Colour::greyLevel (0.9f));
-    setColour (selectedTextColourId, Colour::greyLevel (0.2f));
-    setColour (unfocusedTextColourId, findColour (textColourId));
-    setColour (selectedUnfocusedTextColourId, findColour (unfocusedTextColourId));
-    
-    setColour (outlineColourId, Colour::greyLevel (0.9f).withAlpha (0.2f));
-    setColour (selectedOutlineColourId, findColour (outlineColourId));
-    setColour (unfocusedOutlineColourId, findColour (outlineColourId));
-    setColour (selectedUnfocusedOutlineColourId, findColour (outlineColourId));
-
 	// Create our table component and add it to this component..
 	addAndMakeVisible (&table);
     table.setModel (this);
@@ -165,9 +149,11 @@ void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/,
                                             int /*width*/, int /*height*/, bool rowIsSelected)
 {
 	if (rowIsSelected)
-		g.fillAll (findColour (table.hasKeyboardFocus (true) ? selectedBackgroundColourId : selectedUnfocusedBackgroundColourId));
+		g.fillAll (defaultColours.findColour (*this, table.hasKeyboardFocus (true) ? selectedBackgroundColourId
+                                                                                    : selectedUnfocusedBackgroundColourId));
 	else
-		g.fillAll (findColour (table.hasKeyboardFocus (true) ? backgroundColourId : unfocusedBackgroundColourId));
+		g.fillAll (defaultColours.findColour (*this, table.hasKeyboardFocus (true) ? backgroundColourId
+                                                                                    : unfocusedBackgroundColourId));
 }
 
 void MusicLibraryTable::paintCell (Graphics& g,
@@ -177,9 +163,9 @@ void MusicLibraryTable::paintCell (Graphics& g,
 								   bool rowIsSelected)
 {
     if (table.hasKeyboardFocus (true))
-        g.setColour (findColour (rowIsSelected ? selectedTextColourId : textColourId));
+        g.setColour (defaultColours.findColour (*this, rowIsSelected ? selectedTextColourId : textColourId));
     else
-        g.setColour (findColour (rowIsSelected ? selectedUnfocusedTextColourId : unfocusedTextColourId));
+        g.setColour (defaultColours.findColour (*this, rowIsSelected ? selectedUnfocusedTextColourId : unfocusedTextColourId));
 
 	g.setFont (font);
 
@@ -204,9 +190,9 @@ void MusicLibraryTable::paintCell (Graphics& g,
     }
 
     if (table.hasKeyboardFocus (true))
-        g.setColour (findColour (rowIsSelected ? selectedOutlineColourId : outlineColourId));
+        g.setColour (defaultColours.findColour (*this, rowIsSelected ? selectedOutlineColourId : outlineColourId));
     else
-        g.setColour (findColour (rowIsSelected ? selectedUnfocusedOutlineColourId : unfocusedOutlineColourId));
+        g.setColour (defaultColours.findColour (*this, rowIsSelected ? selectedUnfocusedOutlineColourId : unfocusedOutlineColourId));
 
 	g.fillRect (width - 1, 0, 1, height);
 	g.fillRect (0, height - 1, width, 1);
