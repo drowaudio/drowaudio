@@ -53,7 +53,9 @@ void ITunesLibraryParser::run()
     currentElement = iTunesLibraryTracks->getFirstChildElement();
     
     // find any existing elements
-    SortedSet<int> existingIds;
+    Array<int> existingIds;
+    Array<ValueTree> existingItems;
+
     if (! threadShouldExit())
     {
         const ScopedLock sl (lock);
@@ -62,8 +64,11 @@ void ITunesLibraryParser::run()
         {
             for (int i = 0; i < treeToFill.getNumChildren(); ++i)
             {
-                int idOfChild = int (treeToFill.getChild (i).getProperty (MusicColumns::columnNames[MusicColumns::ID]));
+                ValueTree currentItem (treeToFill.getChild (i));
+                int idOfChild = int (currentItem.getProperty (MusicColumns::columnNames[MusicColumns::ID]));
+                
                 existingIds.add (idOfChild);
+                existingItems.add (currentItem);
             }
         }
     }
@@ -87,9 +92,9 @@ void ITunesLibraryParser::run()
                 if (alreadyExists)
                 {
                     // first get the relevant tree item
-                    existingIds.removeValue (currentItemId);
                     lock.enter();
-                    ValueTree existingElement = treeToFill.getChildWithProperty (MusicColumns::columnNames[MusicColumns::ID], currentItemId);
+                    const int index = existingIds.indexOf (currentItemId);
+                    ValueTree existingElement (existingItems.getUnchecked (index));
                     lock.exit();
 
                     // and then check the modification dates

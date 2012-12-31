@@ -68,7 +68,7 @@ MainComponent::MainComponent()
     ValueTree libraryTree (readValueTreeFromFile (libraryFile));
     ITunesLibrary::getInstance()->setLibraryTree (libraryTree);
     ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
-    MusicLibraryTable* musicLibraryTable = new MusicLibraryTable;
+    MusicLibraryTable* musicLibraryTable = new MusicLibraryTable();
     musicLibraryTable->setLibraryToUse (ITunesLibrary::getInstance());
     
     musicLibraryTable->getTableListBox().setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
