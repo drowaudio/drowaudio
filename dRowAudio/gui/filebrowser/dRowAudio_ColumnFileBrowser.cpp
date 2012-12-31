@@ -121,8 +121,10 @@ private:
 	
 	int activeColumn;
     
-    ScopedPointer<ColumnFileBrowserLookAndFeel> activeLookAndFeel;  
-    ScopedPointer<ColumnFileBrowserLookAndFeel> inactiveLookAndFeel;  
+    friend class ColumnFileBrowser;
+    
+    ScopedPointer<LookAndFeel> activeLookAndFeel;
+    ScopedPointer<LookAndFeel> inactiveLookAndFeel;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowserContents);
 };
@@ -133,7 +135,7 @@ ColumnFileBrowserContents::ColumnFileBrowserContents (WildcardFileFilter* filesT
 	  viewport (parentViewport)
 {
     activeLookAndFeel = new ColumnFileBrowserLookAndFeel();
-    activeLookAndFeel->setColour (DirectoryContentsDisplayComponent::highlightColourId, 
+    activeLookAndFeel->setColour (DirectoryContentsDisplayComponent::highlightColourId,
                                   Colours::darkorange);
     inactiveLookAndFeel = new ColumnFileBrowserLookAndFeel();
     
@@ -248,6 +250,7 @@ void ColumnFileBrowserContents::changeListenerCallback (ChangeBroadcaster* chang
         columns[activeColumn]->setLookAndFeel (inactiveLookAndFeel);
         activeColumn = columns.indexOf (changedColumn);
         columns[activeColumn]->setLookAndFeel (activeLookAndFeel);
+        columns[activeColumn]->repaint();
         
         selectedFileChanged (changedColumn->getHighlightedFile());
     }
@@ -308,8 +311,8 @@ bool ColumnFileBrowserContents::keyPressed (const KeyPress& key)
 
 //==================================================================================
 ColumnFileBrowser::ColumnFileBrowser (WildcardFileFilter* filesToDisplay_)
-    : Viewport("ColumnFileBrowser"),
-      wildcard(filesToDisplay_)
+    : Viewport ("ColumnFileBrowser"),
+      wildcard (filesToDisplay_)
 {
     addMouseListener (this, true);
     setWantsKeyboardFocus (false);
@@ -323,6 +326,12 @@ ColumnFileBrowser::ColumnFileBrowser (WildcardFileFilter* filesToDisplay_)
 
 ColumnFileBrowser::~ColumnFileBrowser()
 {
+}
+
+void ColumnFileBrowser::setActiveColumHighlightColour (const Colour& colour)
+{
+    fileBrowser->activeLookAndFeel->setColour (DirectoryContentsDisplayComponent::highlightColourId,
+                                               colour);
 }
 
 void ColumnFileBrowser::resized()
@@ -346,4 +355,3 @@ void ColumnFileBrowser::mouseWheelMove (const MouseEvent& e, const MouseWheelDet
             Viewport::useMouseWheelMoveIfNeeded (e, wheel);
     }
 }
-

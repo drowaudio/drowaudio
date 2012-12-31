@@ -59,7 +59,7 @@ private:
         {
             MusicLibraryTable::backgroundColourId,                      Colour::greyLevel (0.2f).getARGB(),
             MusicLibraryTable::unfocusedBackgroundColourId,             Colour::greyLevel (0.2f).getARGB(),
-            MusicLibraryTable::selectedBackgroundColourId,              Colours::darkorange.getARGB(),
+            MusicLibraryTable::selectedBackgroundColourId,              Colour (Colours::darkorange).getARGB(),
             MusicLibraryTable::selectedUnfocusedBackgroundColourId,     Colour::greyLevel (0.6f).getARGB(),
             MusicLibraryTable::textColourId,                            Colour::greyLevel (0.9f).getARGB(),
             MusicLibraryTable::selectedTextColourId,                    Colour::greyLevel (0.2f).getARGB(),

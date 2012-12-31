@@ -63,25 +63,25 @@ inline static String stripFileProtocolForLocal (String pathToStrip)
 /** Converts an iTunes formatted date string (e.g. 2010-12-27T17:44:32Z)
     into a Time object.
  */
-inline static Time parseITunesDateString (String dateString)
+inline static Time parseITunesDateString (const String& dateString)
 {
-    int year =      dateString.substring (0, 4).getIntValue();
-    int month =     dateString.substring (5, 7).getIntValue();
-    int day =       dateString.substring (8, 10).getIntValue();
-    int hours =     dateString.substring (11, 13).getIntValue();
-    int minutes =   dateString.substring (14, 16).getIntValue();
-    int seconds =   dateString.substring (17, 19).getIntValue();
-    int milliseconds = 0;
-    bool useLocalTime = true;                     
+    int year            = dateString.substring (0, 4).getIntValue();
+    int month           = dateString.substring (5, 7).getIntValue() - 1;
+    int day             = dateString.substring (8, 10).getIntValue();
+    int hours           = dateString.substring (11, 13).getIntValue();
+    int minutes         = dateString.substring (14, 16).getIntValue();
+    int seconds         = dateString.substring (17, 19).getIntValue();
+    int milliseconds    = 0;
+    bool useLocalTime   = true;
     
-    return Time(year,
-                month,
-                day,
-                hours,
-                minutes,
-                seconds,
-                milliseconds,
-                useLocalTime);
+    return Time (year,
+                 month,
+                 day,
+                 hours,
+                 minutes,
+                 seconds,
+                 milliseconds,
+                 useLocalTime);
 }
 
 /**	Reverses an array.

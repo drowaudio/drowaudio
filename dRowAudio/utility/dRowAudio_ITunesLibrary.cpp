@@ -42,7 +42,7 @@ void ITunesLibrary::setLibraryFile (File newFile)
 }
 
 //==============================================================================
-File ITunesLibrary::getDefaultITunesLibraryFile()
+const File ITunesLibrary::getDefaultITunesLibraryFile()
 {
     return File::getSpecialLocation (File::userMusicDirectory).getChildFile ("iTunes/iTunes Music Library.xml");
 }
@@ -51,9 +51,7 @@ File ITunesLibrary::getDefaultITunesLibraryFile()
 void ITunesLibrary::setLibraryTree (ValueTree& newTreeToUse)
 {
     if (! newTreeToUse.isValid()) 
-    {
         newTreeToUse = ValueTree (MusicColumns::libraryIdentifier);
-    }
 
     libraryTree = newTreeToUse;
 }
@@ -83,6 +81,3 @@ void ITunesLibrary::removeListener (ITunesLibrary::Listener* const listener)
 {
     listeners.remove (listener);
 }
-
-//==============================================================================
-

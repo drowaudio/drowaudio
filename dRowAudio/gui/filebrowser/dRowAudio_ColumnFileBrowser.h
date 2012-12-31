@@ -45,6 +45,12 @@ public:
      */
 	~ColumnFileBrowser();
 	
+    /** Sets the highlight colour for the active column.
+        For the rest of the colours, use the normal DirectoryContentsDisplayComponent
+        colourIds.
+     */
+    void setActiveColumHighlightColour (const Colour& colour);
+    
     /** @internal */
 	void resized();
 		

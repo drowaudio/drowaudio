@@ -62,11 +62,11 @@ MainComponent::MainComponent()
                             Colours::grey,
                             new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource),
                             true);
-    
-//    File libraryFile (File::getSpecialLocation (File::currentApplicationFile)
-//                                             .getChildFile ("dRowAudio Demo Library.xml"));
-//    ValueTree libraryTree (readValueTreeFromFile (libraryFile));
-//    ITunesLibrary::getInstance()->setLibraryTree (libraryTree);
+        
+    File libraryFile (File::getSpecialLocation (File::userDesktopDirectory)
+                                                .getChildFile ("dRowAudio Demo Library.xml"));
+    ValueTree libraryTree (readValueTreeFromFile (libraryFile));
+    ITunesLibrary::getInstance()->setLibraryTree (libraryTree);
     ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     MusicLibraryTable* musicLibraryTable = new MusicLibraryTable;
     musicLibraryTable->setLibraryToUse (ITunesLibrary::getInstance());
@@ -78,11 +78,12 @@ MainComponent::MainComponent()
     tabbedComponent.addTab ("iTunes Library",
                             Colours::grey, musicLibraryTable, true);
 
+    ColumnFileBrowser* columnFileBrowser = new ColumnFileBrowser (new WildcardFileFilter (audioFilePlayer.getAudioFormatManager()->getWildcardForAllFormats(),
+                                                                                          "*",
+                                                                                          "Audio Files"));
     tabbedComponent.addTab ("Column File Browser",
                             Colours::grey, 
-                            new ColumnFileBrowser (new WildcardFileFilter (audioFilePlayer.getAudioFormatManager()->getWildcardForAllFormats(),
-                                                                           "*",
-                                                                           "Audio Files")), 
+                            columnFileBrowser, 
                             true);
 
     fftDemo = new FFTDemo();
@@ -97,7 +98,7 @@ MainComponent::MainComponent()
                             new NetworkDemo(), 
                             true);
 #endif
-        
+
     audioSourcePlayer.setSource (&bufferTransformAudioSource);
     //audioSourcePlayer.setSource (&audioFilePlayer);
     audioDeviceManager.initialise (0, 2, nullptr, true);
@@ -116,7 +117,7 @@ MainComponent::~MainComponent()
     audioDeviceManager.removeAudioCallback (this);
 //    audioDeviceManager.removeAudioCallback (fftDemo);
     
-    File libraryFile (File::getSpecialLocation (File::currentApplicationFile).getChildFile ("dRowAudio Demo Library.xml"));
+    File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
     ValueTree libraryTree (ITunesLibrary::getInstance()->getLibraryTree());
     writeValueTreeToFile (libraryTree, libraryFile);
 }
