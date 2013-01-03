@@ -154,6 +154,15 @@ void ITunesLibraryParser::run()
 						numAdded++;
 					}
 				}
+				else if (elementKey == "Track Type")
+                {
+                    // this is a file in iCloud, not a local, readable one
+					if (e2->getNextElement()->getAllSubText().contains ("Remote"))
+					{
+                        isAudioFile = false;
+                        break;
+					}
+				}
 				
                 // and check the entry against each column
 				for(int i = 2; i < MusicColumns::numColumns; i++)
