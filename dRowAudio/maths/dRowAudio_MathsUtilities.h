@@ -26,6 +26,21 @@
 #endif
 
 //==============================================================================
+/** Returns true if the given integer number is even.
+ */
+inline bool isEven (int number) noexcept
+{
+    return ! (number & 0x1);
+}
+
+/** Returns true if the given integer number is odd.
+ */
+inline bool isOdd (int number) noexcept
+{
+    return number & 0x1;
+}
+
+//==============================================================================
 /** Finds the autocorrelation of a set of given samples.
  
     This will cross-correlate inputSamples with itself and put the result in
@@ -33,17 +48,17 @@
     values outside of numSamples are 0. This leads to an exponetially decreasing
     autocorrelation function.
  */
-inline void autocorrelate (const float* inputSamples, int numSamples, float* outputSamples) noexcept
+template <typename FloatingPointType>
+inline void autocorrelate (const FloatingPointType* inputSamples, int numSamples, FloatingPointType* outputSamples) noexcept
 {
     for (int i = 0; i < numSamples; i++)
     {
-        float sum = 0.0f;
+        FloatingPointType sum = 0;
         
         for (int j = 0; j < numSamples - i; j++)
             sum += inputSamples[j] * inputSamples[j + i];
         
-        outputSamples[i] = sum * (1.0f / numSamples);
-        //outputSamples[i] = sum;
+        outputSamples[i] = sum * (static_cast<FloatingPointType> (1) / numSamples);
     }
 }
 
@@ -55,11 +70,12 @@ inline void autocorrelate (const float* inputSamples, int numSamples, float* out
     values outside of numSamples are 0. This leads to an exponetially decreasing
     autocorrelation function.
  */
-inline void sdfAutocorrelate (const float* inputSamples, int numSamples, float* outputSamples) noexcept
+template <typename FloatingPointType>
+inline void sdfAutocorrelate (const FloatingPointType* inputSamples, int numSamples, FloatingPointType* outputSamples) noexcept
 {
     for (int i = 0; i < numSamples; i++)
     {
-        float sum = 0.0f;
+        FloatingPointType sum = 0;
         
         for (int j = 0; j < numSamples - i; j++)
             sum += squareNumber (inputSamples[j] - inputSamples[j + i]);
@@ -73,13 +89,14 @@ inline void sdfAutocorrelate (const float* inputSamples, int numSamples, float* 
     This is the same as finding the difference between each sample and the previous.
     Note that outputSamples can point to the same location as inputSamples.
  */
-inline void differentiate (const float* inputSamples, int numSamples, float* outputSamples) noexcept
+template <typename FloatingPointType>
+inline void differentiate (const FloatingPointType* inputSamples, int numSamples, FloatingPointType* outputSamples) noexcept
 {
-    float lastSample = 0.0f;
+    FloatingPointType lastSample = 0.0;
     
     for (int i = 0; i < numSamples; ++i)
     {
-        float currentSample = inputSamples[i];
+        FloatingPointType currentSample = inputSamples[i];
         outputSamples[i] = currentSample - lastSample;
         lastSample = currentSample;
     }
@@ -87,9 +104,10 @@ inline void differentiate (const float* inputSamples, int numSamples, float* out
 
 /** Finds the mean of a set of samples.
  */
-inline float findMean (float* samples, int numSamples) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType findMean (const FloatingPointType* samples, int numSamples) noexcept
 {
-    float total = 0.0f;
+    FloatingPointType total = 0;
     
     for (int i = 0; i < numSamples; ++i)
         total += samples[i];
@@ -99,29 +117,31 @@ inline float findMean (float* samples, int numSamples) noexcept
 
 /** Returns the median of a set of samples assuming they are sorted.
  */
-inline float findMedian (float* samples, int numSamples) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType findMedian (const FloatingPointType* samples, int numSamples) noexcept
 {
-    if ((numSamples % 2) == 0)  // is even
+    if (isEven (numSamples % 2))  // is even
     {
         return samples[numSamples / 2];
     }
     else
     {
         const int lowerIndex = int (numSamples / 2);
-        const float lowerSample = samples[lowerIndex];
-        const float upperSample = samples[lowerIndex + 1];
+        const FloatingPointType lowerSample = samples[lowerIndex];
+        const FloatingPointType upperSample = samples[lowerIndex + 1];
         
-        return (lowerSample + upperSample) / 2.0f;
+        return (lowerSample + upperSample) / 2;
     }
 }
 
 /** Finds the variance of a set of samples.
  */
-inline float findVariance (float* samples, int numSamples) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType findVariance (const FloatingPointType* samples, int numSamples) noexcept
 {
-    const float mean = findMean (samples, numSamples);
+    const FloatingPointType mean = findMean (samples, numSamples);
 
-    float total = 0.0f;
+    FloatingPointType total = 0;
     for (int i = 0; i < numSamples; ++i)
         total += squareNumber (samples[i] - mean);
 
@@ -131,11 +151,12 @@ inline float findVariance (float* samples, int numSamples) noexcept
 /** Finds the corrected variance for a set of samples suitable for a sample standard deviation.
     Note the N - 1 in the formular to correct for small data sets.
  */
-inline float findCorrectedVariance (float* samples, int numSamples) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType findCorrectedVariance (const FloatingPointType* samples, int numSamples) noexcept
 {
-    const float mean = findMean (samples, numSamples);
+    const FloatingPointType mean = findMean (samples, numSamples);
     
-    float total = 0.0f;
+    FloatingPointType total = 0;
     for (int i = 0; i < numSamples; ++i)
         total += squareNumber (samples[i] - mean);
     
@@ -144,28 +165,32 @@ inline float findCorrectedVariance (float* samples, int numSamples) noexcept
 
 /** Finds the sample standard deviation for a set of samples.
  */
-inline float findStandardDeviation (float* samples, int numSamples) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType findStandardDeviation (const FloatingPointType* samples, int numSamples) noexcept
 {
-    return sqrtf (findCorrectedVariance (samples, numSamples));
+    return sqrt (findCorrectedVariance (samples, numSamples));
 }
 
 /** Finds the RMS for a set of samples.
  */
-inline float findRMS (float* samples, int numSamples) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType findRMS (const FloatingPointType* samples, int numSamples) noexcept
 {
-    return sqrtf (squareNumber (findMean (samples, numSamples)));
+    return sqrt (squareNumber (findMean (samples, numSamples)));
 }
 
 //==============================================================================
 /** Finds the maximum value and location of this in a buffer regardless of sign.
  */
-inline void findAbsoluteMax (const float* samples, int numSamples, int& maxSampleLocation, float& maxSampleValue) noexcept
+template <typename FloatingPointType>
+inline void findAbsoluteMax (const FloatingPointType* samples, int numSamples,
+                             int& maxSampleLocation, FloatingPointType& maxSampleValue) noexcept
 {
-    maxSampleValue = 0.0f;
+    maxSampleValue = 0;
     
     for (int i = 0; i < numSamples; ++i)
     {
-        const float absoluteSample = fabsf (samples[i]);
+        const FloatingPointType absoluteSample = fabs (samples[i]);
         
         if (absoluteSample > maxSampleValue)
         {
@@ -177,16 +202,17 @@ inline void findAbsoluteMax (const float* samples, int numSamples, int& maxSampl
 
 /** Normalises a set of samples to the absolute maximum contained within the buffer.
  */
-inline void normalise (float* samples, int numSamples) noexcept
+template <typename FloatingPointType>
+inline void normalise (FloatingPointType* samples, int numSamples) noexcept
 {
-    float max = 0.0f;
+    FloatingPointType max = 0;
     int location;
     
     findAbsoluteMax (samples, numSamples, location, max);
     
-    if (max != 0.0f)
+    if (max != 0)
     {
-        const float oneOverMax = 1.0f / max;
+        const FloatingPointType oneOverMax = 1 / max;
         
         for (int i = 0; i < numSamples; ++i)
             samples[i] *= oneOverMax;
@@ -204,21 +230,22 @@ inline void normalise (float* samples, int numSamples) noexcept
 	up to the caller to make sure it is less than the buffer size or you will be
 	reading random memory and probably get an audio blow-up.
  */
-inline float linearInterpolate (const float* buffer, int bufferSize, float bufferPosition) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType linearInterpolate (const FloatingPointType* buffer, int bufferSize, FloatingPointType bufferPosition) noexcept
 {
-	int iPos1 = (int) bufferPosition;
-	int iPos2 = iPos1 + 1;
-	if (iPos2 == bufferSize)
-		iPos2 = 0;
-	float fDiff = bufferPosition - iPos1;		
+	int lower = (int) bufferPosition;
+	int upper = lower + 1;
+	if (upper == bufferSize)
+		upper = 0;
+	FloatingPointType difference = bufferPosition - lower;
 
-	float fOutput = (buffer[iPos2] * fDiff) + (buffer[iPos1] * (1.0f - fDiff));
-	return fOutput;
+	return (buffer[upper] * difference) + (buffer[lower] * (static_cast<FloatingPointType> (1) - difference));
 }
 
 /** Checks to see if two values are equal within a given precision.
  */
-inline static bool almostEqual (double firstValue, double secondValue, double precision = 0.00001)
+template <typename FloatingPointType>
+inline bool almostEqual (FloatingPointType firstValue, FloatingPointType secondValue, FloatingPointType precision = 0.00001)
 {
 	if (fabs (firstValue - secondValue) < precision)
 		return true;
@@ -230,8 +257,8 @@ inline static bool almostEqual (double firstValue, double secondValue, double pr
     This is just a quick function to make more readable code and desn't do any error checking.
     If your value is outside the range you will get a normalised value < 0 or > 1.
  */
-template <typename Type>
-inline Type normalise (const Type valueToNormalise, const Type minimum, const Type maximum) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType normalise (const FloatingPointType valueToNormalise, const FloatingPointType minimum, const FloatingPointType maximum) noexcept
 {
     return (valueToNormalise - minimum) / (maximum - minimum);
 }
@@ -241,12 +268,15 @@ inline Type normalise (const Type valueToNormalise, const Type minimum, const Ty
     This is useful when scaling values for meters etc. A good starting point is a normalised
     input value, minimum of 1 and maximum of 40.
  */
-template <typename Type>
-inline Type logBase10Scale (const Type valueToScale, const Type minimum, const Type maximum) noexcept
+template <typename FloatingPointType>
+inline FloatingPointType logBase10Scale (const FloatingPointType valueToScale,
+                                         const FloatingPointType minimum,
+                                         const FloatingPointType maximum) noexcept
 {
     return log10 (minimum + ((maximum - minimum) * valueToScale)) / log10 (maximum);
 }
 
+//==============================================================================
 /** Checks to see if a number is NaN eg. sqrt (-1).
  */
 template <typename Type>
@@ -273,44 +303,58 @@ inline static bool isinf (Type value)
 #endif
 }
 
+//==============================================================================
 /**	Sinc function.
  */
-inline double sinc (const double x) noexcept
+template <typename Type>
+inline Type sinc (const Type x) noexcept
 {
     if (x == 0)
-        return 1;
+        return static_cast<Type> (1);
     
     return sin (x) / x;
 }
 
 /**	Sinc function normalised with PI for audio applications.
+    N.B. For accuracy this needs to use a double precision PI value internally
+    so a cast will occur if floats are used.
  */
-inline double sincPi (const double x) noexcept
+template<typename FloatingPointType>
+inline FloatingPointType sincPi (const FloatingPointType x) noexcept
 {
     if (x == 0)
-        return 1;
+        return static_cast<FloatingPointType> (1);
     
-    return sin (double_Pi * x) / (double_Pi * x);
+    return static_cast<FloatingPointType> (sin (double_Pi * x) / (double_Pi * x));
 }
 
+//==============================================================================
 /** Converts a number of degrees to radians
  */
-inline double degreesToRadians (const double degrees) noexcept
+template<typename FloatingPointType>
+inline FloatingPointType degreesToRadians (const FloatingPointType degrees) noexcept
 {
     return (degrees / 180.0) * double_Pi;
+}
+
+template<>
+inline float degreesToRadians<float> (const float degrees) noexcept
+{
+    return (degrees / 180.0f) * float_Pi;
 }
 
 /**	Returns true if the argument is a power of 2.
     This will return false if 0 is passed.
  */
-inline bool isPowerOfTwo (int number) noexcept
+template <typename IntegerType>
+inline bool isPowerOfTwo (IntegerType number) noexcept
 {
 	return (number) && ! (number & (number - 1));
 }
 
 /**	Returns the next power of 2 of the given number.
  */
-inline int nextPowerOf2 (int number) noexcept
+inline int nextPowerOfTwo (int number) noexcept
 {
 	if (isPowerOfTwo (number))
 		return number;
@@ -321,7 +365,7 @@ inline int nextPowerOf2 (int number) noexcept
 /**	Returns the previous power of 2.
     This may return 0 if a number < 1 is passed.
  */
-inline int prevPowerOf2 (int number) noexcept
+inline int prevPowerOfTwo (int number) noexcept
 {
 	if (isPowerOfTwo (number))
 		return number;
@@ -333,12 +377,12 @@ inline int prevPowerOf2 (int number) noexcept
     If the given number is not an exact power of 2 the next nearest power will be given.
     E.g. 1024 will return 10 as will 1023.
  */
-inline int findPowerForBase2 (int number) noexcept
+inline int findPowerForBaseTwo (int number) noexcept
 {
 	if (isPowerOfTwo (number))
 		return (int) (log ((double) number) / log(2.0));
 	else
-		return (int) (log ((double) nextPowerOf2 (number)) / log(2.0));
+		return (int) (log ((double) nextPowerOfTwo (number)) / log(2.0));
 }
 
 #if JUCE_MSVC || DOXYGEN

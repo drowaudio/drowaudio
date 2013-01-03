@@ -23,6 +23,12 @@
 #include "network/NetworkDemo.h"
 #include "fft/FFTDemo.h"
 
+namespace
+{
+    //==============================================================================
+
+}
+
 MainComponent::MainComponent()
     : bufferTransformAudioSource    (&audioFilePlayer),
       trackInfoComponent            (audioFilePlayer),

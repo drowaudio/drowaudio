@@ -55,6 +55,20 @@ public:
     {
         beginTest ("Maths Utilities");
 
+        expectEquals (isEven (0), true);
+        expectEquals (isEven (4), true);
+        expectEquals (isEven (746352), true);
+        expectEquals (isEven (-0), true);
+        expectEquals (isEven (-4), true);
+        expectEquals (isEven (-746352), true);
+
+        expectEquals (isOdd (1), true);
+        expectEquals (isOdd (23), true);
+        expectEquals (isOdd (1763523), true);
+        expectEquals (isOdd (-1), true);
+        expectEquals (isOdd (-23), true);
+        expectEquals (isOdd (-1763523), true);
+
         expectEquals ((int) isnan (1), 0);
         expectEquals ((int) isnan (sqrt (-1.0)), 1);
     }

@@ -23,7 +23,7 @@ PitchDetector::PitchDetector()
       sampleRate (44100.0),
       minFrequency (50), maxFrequency (1600),
       buffer1 (512), buffer2 (512),
-      numSamplesNeededForDetection ((sampleRate / minFrequency) * 2),
+      numSamplesNeededForDetection (int ((sampleRate / minFrequency) * 2)),
       currentBlockBuffer (numSamplesNeededForDetection),
       inputFifoBuffer (numSamplesNeededForDetection * 2),
       mostRecentPitch (0.0)
@@ -55,7 +55,7 @@ void PitchDetector::processSamples (const float* samples, int numSamples) noexce
 
 double PitchDetector::detectPitch (float* samples, int numSamples) noexcept
 {
-    Array<float> pitches;
+    Array<double> pitches;
     pitches.ensureStorageAllocated (int (numSamples / numSamplesNeededForDetection));
     
     while (numSamples >= numSamplesNeededForDetection)
@@ -75,15 +75,15 @@ double PitchDetector::detectPitch (float* samples, int numSamples) noexcept
     }
     else if (pitches.size() > 1)
     {
-        DefaultElementComparator<float> sorter;
+        DefaultElementComparator<double> sorter;
         pitches.sort (sorter);
         
-        const float stdDev = findStandardDeviation (pitches.getRawDataPointer(), pitches.size());
-        const float medianSample = findMedian (pitches.getRawDataPointer(), pitches.size());
-        const float lowerLimit = medianSample - stdDev;
-        const float upperLimit = medianSample + stdDev;
+        const double stdDev = findStandardDeviation (pitches.getRawDataPointer(), pitches.size());
+        const double medianSample = findMedian (pitches.getRawDataPointer(), pitches.size());
+        const double lowerLimit = medianSample - stdDev;
+        const double upperLimit = medianSample + stdDev;
         
-        Array<float> correctedPitches;
+        Array<double> correctedPitches;
         correctedPitches.ensureStorageAllocated (pitches.size());
         
         for (int i = 0; i < pitches.size(); ++i)
@@ -99,7 +99,7 @@ double PitchDetector::detectPitch (float* samples, int numSamples) noexcept
         return finalPitch;
     }
     
-    return 0.0f;
+    return 0.0;
 }
 
 void PitchDetector::setMinMaxFrequency (float newMinFrequency, float newMaxFrequency) noexcept
@@ -150,8 +150,8 @@ double PitchDetector::detectPitchForBlock (float* samples, int numSamples)
 
 double PitchDetector::detectAcfPitchForBlock (float* samples, int numSamples)
 {
-    const int minSample = sampleRate / maxFrequency;
-    const int maxSample = sampleRate / minFrequency;
+    const int minSample = int (sampleRate / maxFrequency);
+    const int maxSample = int (sampleRate / minFrequency);
 
     lowFilter.reset();
     highFilter.reset();
@@ -252,8 +252,8 @@ double PitchDetector::detectAcfPitchForBlock (float* samples, int numSamples)
 
 double PitchDetector::detectSdfPitchForBlock (float* samples, int numSamples)
 {
-    const int minSample = sampleRate / maxFrequency;
-    const int maxSample = sampleRate / minFrequency;
+    const int minSample = int (sampleRate / maxFrequency);
+    const int maxSample = int (sampleRate / minFrequency);
     
     lowFilter.reset();
     highFilter.reset();
