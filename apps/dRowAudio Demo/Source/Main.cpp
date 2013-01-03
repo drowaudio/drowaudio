@@ -46,8 +46,12 @@ public:
         SplashScreen* splash = new SplashScreen();
         splash->show ("dRowAudio Demo",
                       ImageCache::getFromMemory (BinaryData::splash_screen_png, BinaryData::splash_screen_pngSize),
-                      0, true);
-
+                      0,
+#if JUCE_MAC
+                      true);
+#else
+                      false);
+#endif
         // Do your application's initialisation code here..
         mainWindow = new MainAppWindow();
     }

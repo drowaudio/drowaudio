@@ -74,7 +74,7 @@ private:
     
     GroupComponent filterGroup, rateGroup;
     Slider resolutionSlider, zoomSlider;
-    Label zoomLabel;
+    Label resolutionLabel, zoomLabel;
 
     OwnedArray<Slider> playerControls;
     OwnedArray<Label> playerControlLabels;

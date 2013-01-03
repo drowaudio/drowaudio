@@ -53,6 +53,13 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     resolutionSlider.setSkewFactorFromMidPoint (3.0);
     resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
     
+    addAndMakeVisible (&resolutionLabel);
+    resolutionLabel.setText ("Detail", false);
+    resolutionLabel.setFont (12.0f);
+    resolutionLabel.setJustificationType (Justification::centred);
+    resolutionLabel.attachToComponent (&resolutionSlider, false);
+    resolutionLabel.setColour (Label::textColourId, Colours::white);
+
     addAndMakeVisible (&zoomSlider);
     zoomSlider.addListener (this);
     zoomSlider.setRange (0.01, 2);
@@ -139,13 +146,17 @@ void AudioPlaybackDemo::resized()
     int m = 5;
     const int bevelSize = 2;
     
-    resolutionSlider.setBounds (0, 0, 50, 50);
-    positionableWaveDisplay->setBounds (resolutionSlider.getRight() + bevelSize, bevelSize,
-                                        w - (resolutionSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
+    Rectangle<int> posBounds (0, 0, w, 50);
+    resolutionSlider.setBounds (posBounds.removeFromLeft (50).removeFromBottom (35));
+    positionableWaveDisplay->setBounds (posBounds.reduced (bevelSize));//resolutionSlider.getRight() + bevelSize, bevelSize,
+                                        //w - (resolutionSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
     
-    zoomSlider.setBounds (0, resolutionSlider.getBottom() + m, 50, 50);
-    draggableWaveDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionableWaveDisplay->getBottom() + m + bevelSize,
-                                 w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
+    Rectangle<int> dragBounds (0, 50 + m, w, 50);
+    zoomSlider.setBounds (dragBounds.removeFromLeft (50).removeFromBottom (35));
+    draggableWaveDisplay->setBounds (dragBounds.reduced (bevelSize));//resolutionSlider.getRight() + bevelSize, bevelSize,
+//    zoomSlider.setBounds (0, resolutionSlider.getBottom() + m, 50, 50);
+//    draggableWaveDisplay->setBounds (zoomSlider.getRight() + bevelSize, positionableWaveDisplay->getBottom() + m + bevelSize,
+//                                 w - (zoomSlider.getWidth() + 2 * bevelSize), 50 - (2 * bevelSize));
 
     const int centre = w / 2;
     int offset = (centre - (80 * 3)) / 2;
