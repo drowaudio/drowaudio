@@ -125,10 +125,15 @@ private:
     ScopedPointer<ReversibleAudioSource> reversibleAudioSource;
     ScopedPointer<FilteringAudioSource> filteringAudioSource;
 
+    SoundTouchProcessor::PlaybackSettings currentSoundtouchSettings;
+    bool shouldBeLooping;
+    double currentLoopStartTime, currentLoopEndTime;
+    
     ValueTree libraryEntry;
 
     //==============================================================================
 	bool setSourceWithReader (AudioFormatReader* reader);
+    void updateLoopTimes();
     
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);

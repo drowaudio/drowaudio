@@ -53,6 +53,13 @@ forcedinline static double secondsToMins (double seconds)
     return seconds * oneOver60;
 }
 
+/** Converts a time in seconds to a number of samples for a given sample rate.
+ */
+forcedinline static int secondsToSamples (float timeMs, double sampleRate)
+{
+    return (int) (timeMs * sampleRate);
+}
+
 /** Converts a time in milliseconds to a number of samples for a given sample rate.
  */
 forcedinline static int msToSamples (float timeMs, double sampleRate)
