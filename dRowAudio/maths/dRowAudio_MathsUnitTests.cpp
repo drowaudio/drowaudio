@@ -20,6 +20,7 @@
 
 #if DROWAUDIO_UNIT_TESTS
 
+#include <modules/juce_core/juce_core.h>
 
 //==============================================================================
 class CumulativeMovingAverageTests  : public UnitTest
@@ -55,22 +56,22 @@ public:
     {
         beginTest ("Maths Utilities");
 
-        expectEquals (isEven (0), true);
-        expectEquals (isEven (4), true);
-        expectEquals (isEven (746352), true);
-        expectEquals (isEven (-0), true);
-        expectEquals (isEven (-4), true);
-        expectEquals (isEven (-746352), true);
+        expectEquals ((int) isEven (0), (int) true);
+        expectEquals ((int) isEven (4), (int) true);
+        expectEquals ((int) isEven (746352), (int) true);
+        expectEquals ((int) isEven (-0), (int) true);
+        expectEquals ((int) isEven (-4), (int) true);
+        expectEquals ((int) isEven (-746352), (int) true);
 
-        expectEquals (isOdd (1), true);
-        expectEquals (isOdd (23), true);
-        expectEquals (isOdd (1763523), true);
-        expectEquals (isOdd (-1), true);
-        expectEquals (isOdd (-23), true);
-        expectEquals (isOdd (-1763523), true);
+        expectEquals ((int) isOdd (1), (int) true);
+        expectEquals ((int) isOdd (23), (int) true);
+        expectEquals ((int) isOdd (1763523), (int) true);
+        expectEquals ((int) isOdd (-1), (int) true);
+        expectEquals ((int) isOdd (-23), (int) true);
+        expectEquals ((int) isOdd (-1763523), (int) true);
 
-        expectEquals ((int) isnan (1), 0);
-        expectEquals ((int) isnan (sqrt (-1.0)), 1);
+		expectEquals ((int) isnan (1), (int) false);
+        expectEquals ((int) isnan (sqrt (-1.0)), (int) true);
     }
 };
 

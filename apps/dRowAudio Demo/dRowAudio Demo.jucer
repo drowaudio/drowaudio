@@ -16,7 +16,7 @@
                        headerPath="" defines=""/>
       </CONFIGURATIONS>
     </XCODE_MAC>
-    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../juce_source/juce/modules"
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="C:\Users\Dave\Documents\Dev\juce\modules"
             extraDefs="CURL_STATICLIB" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}"
             bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>

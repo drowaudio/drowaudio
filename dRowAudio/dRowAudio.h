@@ -180,6 +180,7 @@ using juce::int64;
 using juce::uint32;
 using juce::int32;
 using juce::MemoryBlock;
+using juce::UnitTest;
 //using juce::Rectangle;
 
 // Audio

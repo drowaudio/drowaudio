@@ -88,13 +88,13 @@ double PitchDetector::detectPitch (float* samples, int numSamples) noexcept
         
         for (int i = 0; i < pitches.size(); ++i)
         {
-            const float pitch = pitches.getUnchecked (i);
+            const double pitch = pitches.getUnchecked (i);
             
             if (pitch >= lowerLimit && pitch <= upperLimit)
                 correctedPitches.add (pitch);
         }
         
-        const float finalPitch = findMean (correctedPitches.getRawDataPointer(), correctedPitches.size());
+        const double finalPitch = findMean (correctedPitches.getRawDataPointer(), correctedPitches.size());
         
         return finalPitch;
     }
@@ -110,7 +110,7 @@ void PitchDetector::setMinMaxFrequency (float newMinFrequency, float newMaxFrequ
     lowFilter.makeLowPass (sampleRate, maxFrequency);
     highFilter.makeHighPass (sampleRate, minFrequency);
 
-    numSamplesNeededForDetection = (sampleRate / minFrequency) * 2;
+    numSamplesNeededForDetection = int (sampleRate / minFrequency) * 2;
 
     inputFifoBuffer.setSizeKeepingExisting (numSamplesNeededForDetection * 2);
     currentBlockBuffer.setSize (numSamplesNeededForDetection);
