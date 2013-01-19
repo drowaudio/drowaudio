@@ -76,7 +76,7 @@ public:
      
         @see AudioPicker::addListener, AudioPicker::removeListener
      */
-    class JUCE_API  Listener
+    class Listener
     {
     public:
         /** Destructor. */

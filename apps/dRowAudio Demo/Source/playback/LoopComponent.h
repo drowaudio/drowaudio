@@ -102,7 +102,7 @@ public:
     void fileChanged (AudioFilePlayer* player);
     
     void audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode);
-        
+
 private:
     //==============================================================================
     AudioFilePlayerExt& audioFilePlayer;

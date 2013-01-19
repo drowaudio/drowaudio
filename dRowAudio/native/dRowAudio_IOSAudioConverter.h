@@ -92,7 +92,7 @@ public:
      
         @see IOSAudioConverter::addListener, IOSAudioConverter::removeListener
      */
-    class JUCE_API  Listener
+    class Listener
     {
     public:
         /** Destructor. */

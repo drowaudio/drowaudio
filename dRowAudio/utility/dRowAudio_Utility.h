@@ -45,7 +45,7 @@ inline static File getResourcesFolder()
 /** If the String passed in is a local path, this will return a string with the file://localhost part
 	of the file path stripped and any escaped characters (e.g. %20) converted to ascii
  */
-inline static String stripFileProtocolForLocal (String pathToStrip)
+inline static String stripFileProtocolForLocal (const String& pathToStrip)
 {
 	if (pathToStrip.startsWith ("file://localhost"))
 	{
@@ -54,7 +54,7 @@ inline static String stripFileProtocolForLocal (String pathToStrip)
 #else
 		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
 #endif   
-		return temp.replace ("%20", " ").replace ("%5B", "[").replace ("%5D", "]").replace ("%23", "#");
+		return URL::removeEscapeChars (temp);
 	}
 	
 	return String::empty;
@@ -253,7 +253,19 @@ public:
     }
     
     typedef ReferenceCountedObjectPtr<ReferenceCountedIdentifier> Ptr;
-    
+
+    //==============================================================================
+    /** Provides a simple way of getting the Identifier from a var object which
+        is a ReferenceCountedIdentifier.
+     */
+    static Identifier getIdentifierFromObject (const var& identiferObject)
+    {
+        ReferenceCountedIdentifier* refIdentifer
+        = dynamic_cast<ReferenceCountedIdentifier*> (identiferObject.getObject());
+        
+        return refIdentifer == nullptr ? Identifier::null : refIdentifer->getIdentifier();
+    }
+
 private:
     //==============================================================================
     Identifier identifier;
