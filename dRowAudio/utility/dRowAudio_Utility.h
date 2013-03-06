@@ -224,6 +224,8 @@ public:
 private:
     //==============================================================================
     ValueTree tree;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferenceCountedValueTree);
 };
 
 //==============================================================================
@@ -280,6 +282,8 @@ public:
 private:
     //==============================================================================
     Identifier identifier;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferenceCountedIdentifier);
 };
 
 //==============================================================================
@@ -344,6 +348,8 @@ public:
 private:
     //==============================================================================
     MemoryBlock memoryBlock;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferencedCountedMemoryBlock);
 };
 
 //==============================================================================
@@ -465,22 +471,5 @@ static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 
 #endif // #ifndef UNUSED_NOWARN
 
-//==============================================================================
-/** This is a platform independent way of aligning variables.
- */
-#ifndef ALIGN_DATA
-
-	#if defined(JUCE_MAC)		// gcc
-		#define ALIGN_DATA(x) __attribute__ ((aligned (x)))
-
-	#elif defined(JUCE_MSVC)	// MSVC
-		#define ALIGN_DATA(x) __declspec (align(x))
-
-	#else
-		#define ALIGN_DATA(x)
-
-	#endif
-
-#endif // ALIGN_DATA
 
 #endif //__DROWAUDIO_UTILITY_H__
