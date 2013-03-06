@@ -272,6 +272,70 @@ private:
 };
 
 //==============================================================================
+/**
+    Holds a MemoryBlock as a ReferenceCountedObject.
+
+    This can be a useful way of managing a MemoryBlock's lifetime and also enables
+    you to pass it around in a ValueTree.
+ */
+class ReferencedCountedMemoryBlock : public ReferenceCountedObject
+{
+public:
+    //==============================================================================
+    /** Creates a ReferencedCountedMemoryBlock with a blank MemoryBlock.
+     */
+    ReferencedCountedMemoryBlock()
+    {
+    }
+
+    /** Creates a ReferencedCountedMemoryBlock for a given MemoryBlock.
+        Note that this will take a copy of the data so you can dispose of the the
+        block passed in as you like.
+     */
+    ReferencedCountedMemoryBlock (const MemoryBlock& memoryBlockToReference)
+        : memoryBlock (memoryBlockToReference)
+    {
+    }
+    
+#if JUCE_COMPILER_SUPPORTS_MOVE_SEMANTICS
+    /** Creates a ReferencedCountedMemoryBlock for a given MemoryBlock.
+        This will move the data from the given memory block so don't expect to
+        use it afterwards.
+     */
+    ReferencedCountedMemoryBlock (MemoryBlock&& other)
+        : memoryBlock (other)
+    {
+    }
+#endif
+
+    /** Destructor. */
+    ~ReferencedCountedMemoryBlock()
+    {
+    }
+    
+    /** Returns the MemoryBlock being held.
+     */
+    MemoryBlock& getMemoryBlock()   {   return memoryBlock; }
+    
+    /** Provides a simple way of getting the MemoryBlock from a var object which
+        is a ReferencedCountedMemoryBlock.
+     */
+    static MemoryBlock* getMemoryBlockFromObject (const var& blockObject)
+    {
+        ReferencedCountedMemoryBlock* refBlock
+            = dynamic_cast<ReferencedCountedMemoryBlock*> (blockObject.getObject());
+        
+        return refBlock == nullptr ? nullptr : &refBlock->getMemoryBlock();
+    }
+
+    typedef ReferenceCountedObjectPtr<ReferencedCountedMemoryBlock> Ptr;
+
+private:
+    //==============================================================================
+    MemoryBlock memoryBlock;
+};
+
+//==============================================================================
 /** Writes a ValueTree to a specified file.
     This is a helper method to conveniently write a ValueTree to a File,
     optionally storing it as Xml.
@@ -339,6 +403,31 @@ static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 /** Useful macro to print a rectangle to the console.
  */
 #define DBG_RECT(dbgrect)   {DBG ("x: " << dbgrect.getX() << " y: " << dbgrect.getY() << " w: " << dbgrect.getWidth() << " h: " << dbgrect.getHeight()) }
+
+/** Useful macro to print a Range to the console.
+ */
+#define DBG_RANGE(dbgrange) {DBG ("s: " << dbgrange.getStart() << " e: " << dbgrange.getEnd() << " l: " << dbgrange.getLength()) }
+
+/** Useful macro to print a XML to the console.
+ */
+#define DBG_XML(dbgxml)                                         \
+{                                                               \
+    if (dbgxml != nullptr)                                      \
+        {DBG (dbgxml->createDocument (String::empty));}         \
+    else                                                        \
+        {DBG ("invalid XML: " << JUCE_STRINGIFY(dbgxml));}      \
+}
+
+/** Useful macro to print a ValueTree to the console as XML.
+ */
+#define DBG_TREE(dbgtree)                                       \
+{                                                               \
+    ScopedPointer<XmlElement> dbgxml (dbgtree.createXml());     \
+    if (dbgxml != nullptr)                                      \
+        {DBG (dbgxml->createDocument (String::empty));}         \
+    else                                                        \
+        {DBG ("invalid tree: " << JUCE_STRINGIFY(dbgtree));}    \
+}
 
 //==============================================================================
 /** This handy macro is a platform independent way of stopping compiler

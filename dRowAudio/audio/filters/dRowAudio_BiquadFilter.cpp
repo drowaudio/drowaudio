@@ -18,6 +18,13 @@
   ==============================================================================
 */
 
+#if JUCE_INTEL
+ #define JUCE_SNAP_TO_ZERO(n)    if (! (n < -1.0e-8 || n > 1.0e-8)) n = 0;
+#else
+ #define JUCE_SNAP_TO_ZERO(n)
+#endif
+
+//==============================================================================
 void BiquadFilter::processSamples (float* const samples,
                                    const int numSamples) noexcept
 {
@@ -27,21 +34,29 @@ void BiquadFilter::processSamples (float* const samples,
 void BiquadFilter::processSamples (int* const samples,
 								   const int numSamples) noexcept
 {
-    const ScopedLock sl (processLock);
+    const SpinLock::ScopedLockType sl (processLock);
     
     if (active)
     {
+        const float c0 = coefficients[0];
+        const float c1 = coefficients[1];
+        const float c2 = coefficients[2];
+        const float c3 = coefficients[3];
+        const float c4 = coefficients[4];
+        float lv1 = v1, lv2 = v2;
+
         for (int i = 0; i < numSamples; ++i)
         {
-            const int in = samples[i];
+            const float in = (float) samples[i];
+            const float out = c0 * in + lv1;
+            samples[i] = (float) out;
             
-            const int out = (int) (coefficients[0] * in) + (int) v1;
-            
-            v1 = coefficients[1] * (float) in - coefficients[4] * (float) out + v2;
-            v2 = coefficients[2] * (float) in - coefficients[5] * (float) out;
-            
-            samples[i] = out;
+            lv1 = c1 * in - c3 * out + lv2;
+            lv2 = c2 * in - c4 * out;
         }
+
+        JUCE_SNAP_TO_ZERO (lv1);  v1 = lv1;
+        JUCE_SNAP_TO_ZERO (lv2);  v2 = lv2;
     }
 }
 
@@ -153,7 +168,6 @@ void BiquadFilter::makeAllpass (const double sampleRate,
 	const double qFactor = jlimit(0.00001, 1000.0, Q);
 	const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 	
-	
 	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
 	float cos_w0 = cos(w0);
 	float sin_w0 = sin(w0);
@@ -169,7 +183,7 @@ void BiquadFilter::makeAllpass (const double sampleRate,
 
 void BiquadFilter::copyCoefficientsFrom (const BiquadFilter& other) noexcept
 {
-    const ScopedLock sl (processLock);
+    const SpinLock::ScopedLockType sl (processLock);
 	
     memcpy (coefficients, other.coefficients, sizeof (coefficients));
     active = other.active;
@@ -180,3 +194,5 @@ void BiquadFilter::copyOutputsFrom (const BiquadFilter& other) noexcept
 	v1 = other.v1;
 	v2 = other.v2;
 }
+
+#undef JUCE_SNAP_TO_ZERO

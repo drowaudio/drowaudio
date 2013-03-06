@@ -36,7 +36,8 @@ AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
       resolution                        (3.0)
 {
     waveformImage = Image (Image::RGB, 1, 1, false);
-
+    refreshFromFilePlayer();
+    
 	// register with the file player to recieve update messages
 	filePlayer.addListener (this);
 }
@@ -105,59 +106,10 @@ int AudioThumbnailImage::useTimeSlice()
     return 25;
 }
 
-void AudioThumbnailImage::fileChanged (AudioFilePlayer *player)
+void AudioThumbnailImage::fileChanged (AudioFilePlayer* player)
 {
-    sourceLoaded = false;
-    
-	if (player == &filePlayer)
-	{
-        if (filePlayer.getAudioFormatReaderSource() != nullptr)
-        {
-            currentSampleRate = filePlayer.getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
-
-            if (currentSampleRate > 0.0)
-            {
-                oneOverSampleRate = 1.0 / currentSampleRate;
-                fileLength = filePlayer.getLengthInSeconds();
-                
-                if (fileLength > 0)
-                {
-                    oneOverFileLength = 1.0 / fileLength;
-                    
-                    const ScopedWriteLock sl (imageLock);
-
-                    const int imageWidth = roundToInt (filePlayer.getTotalLength() / sourceSamplesPerThumbnailSample);
-                    waveformImage = Image (Image::RGB, jmax (1, imageWidth), 100, true);
-                    // image will be cleared in triggerWaveformRefresh()
-                    
-                    const File newFile (filePlayer.getFile());
-                    
-                    if (newFile.existsAsFile()) 
-                    {
-                        audioThumbnail.setSource (new FileInputSource (newFile));
-                        sourceLoaded = true;
-                    }
-                    else if (filePlayer.sourceIsMemoryBlock())
-                    {
-                        audioThumbnail.setSource (new MemoryInputSource (filePlayer.getInputStream()));
-                        sourceLoaded = true;
-                    }
-                }
-            }
-        }
-
-        if (sourceLoaded)
-        {
-            renderComplete = false;
-        }
-        else
-        {
-            audioThumbnail.setSource (nullptr);
-            renderComplete = true;
-        }
-        
-        triggerWaveformRefresh();
-    }
+    if (player == &filePlayer)
+        refreshFromFilePlayer();
 }
 
 //==============================================================================
@@ -171,7 +123,65 @@ void AudioThumbnailImage::removeListener (AudioThumbnailImage::Listener* const l
     listeners.remove (listener);
 }
 
-//==============================================================================	
+//==============================================================================
+void AudioThumbnailImage::refreshFromFilePlayer()
+{
+    sourceLoaded = false;
+    
+    if (filePlayer.getAudioFormatReaderSource() != nullptr)
+    {
+        currentSampleRate = filePlayer.getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
+        
+        if (currentSampleRate > 0.0)
+        {
+            oneOverSampleRate = 1.0 / currentSampleRate;
+            fileLength = filePlayer.getLengthInSeconds();
+            
+            if (fileLength > 0)
+            {
+                oneOverFileLength = 1.0 / fileLength;
+                
+                const ScopedWriteLock sl (imageLock);
+                
+                const int imageWidth = roundToInt (filePlayer.getTotalLength() / sourceSamplesPerThumbnailSample);
+                waveformImage = Image (Image::RGB, jmax (1, imageWidth), 100, true);
+                // image will be cleared in triggerWaveformRefresh()
+                
+                const File newFile (filePlayer.getFile());
+                
+                if (newFile.existsAsFile())
+                {
+                    audioThumbnail.setSource (new FileInputSource (newFile));
+                    sourceLoaded = true;
+                }
+                else if (filePlayer.getInputType() == AudioFilePlayer::memoryInputStream
+                         || filePlayer.getInputType() == AudioFilePlayer::memoryBlock)
+                {
+                    MemoryInputStream* memoryInputStream = dynamic_cast<MemoryInputStream*> (filePlayer.getInputStream());
+
+                    if (memoryInputStream != nullptr)
+                    {
+                        audioThumbnail.setSource (new MemoryInputSource (memoryInputStream));
+                        sourceLoaded = true;
+                    }
+                }
+            }
+        }
+    }
+    
+    if (sourceLoaded)
+    {
+        renderComplete = false;
+    }
+    else
+    {
+        audioThumbnail.setSource (nullptr);
+        renderComplete = true;
+    }
+    
+    triggerWaveformRefresh();
+}
+
 void AudioThumbnailImage::triggerWaveformRefresh()
 {
     // we need to remove ourselves from the thread first so we don't

@@ -166,6 +166,7 @@ private:
     ListenerList <Listener> listeners;
 
     //==============================================================================
+    void refreshFromFilePlayer();
     void triggerWaveformRefresh();
 	void refreshWaveform();
 

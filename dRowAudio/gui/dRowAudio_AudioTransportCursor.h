@@ -105,6 +105,7 @@ private:
 	double currentMouseX;
 
     //==============================================================================
+    void refreshFromFilePlayer();
     void startTimerIfNeeded();
     void setPlayerPosition (int mousePosX, bool ignoreAnyLoopPoints);
     

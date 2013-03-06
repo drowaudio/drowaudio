@@ -28,6 +28,7 @@ AudioTransportCursor::AudioTransportCursor (AudioFilePlayer& sourceToBeUsed)
       shouldStopTimer       (false),
       showTransportCursor   (true)
 {
+    refreshFromFilePlayer();
     audioFilePlayer.addListener (this);
 }
 
@@ -88,7 +89,7 @@ void AudioTransportCursor::timerCallback()
 
     const int startPixel = roundToInt (w * startOffsetRatio);
     transportLineXCoord = startPixel + roundToInt ((w * oneOverFileLength * audioFilePlayer.getCurrentPosition()) / zoomRatio);
-    
+
     // if the line has moved repaint the old and new positions of it
     if (! transportLineXCoord.areEqual())
     {
@@ -107,29 +108,7 @@ void AudioTransportCursor::timerCallback()
 void AudioTransportCursor::fileChanged (AudioFilePlayer* player)
 {
 	if (player == &audioFilePlayer)
-	{
-        AudioFormatReaderSource* readerSource = audioFilePlayer.getAudioFormatReaderSource();
-        
-        AudioFormatReader* reader = nullptr;
-        if (readerSource != nullptr)
-            reader = readerSource->getAudioFormatReader();
-        
-        if (reader != nullptr && reader->sampleRate > 0.0
-            && audioFilePlayer.getLengthInSeconds() > 0.0)
-        {
-            currentSampleRate = reader->sampleRate;
-            fileLength = audioFilePlayer.getLengthInSeconds();
-            oneOverFileLength = 1.0 / fileLength;
-        }
-        else 
-        {
-            currentSampleRate = 44100;
-            fileLength = 0.0;
-            oneOverFileLength = 1.0;
-        }
-        
-        startTimerIfNeeded();
-	}
+        refreshFromFilePlayer();
 }
 
 void AudioTransportCursor::playerStoppedOrStarted (AudioFilePlayer* player)
@@ -172,6 +151,31 @@ void AudioTransportCursor::mouseDrag (const MouseEvent& e)
 }
 
 //==============================================================================
+void AudioTransportCursor::refreshFromFilePlayer()
+{
+    AudioFormatReaderSource* readerSource = audioFilePlayer.getAudioFormatReaderSource();
+    
+    AudioFormatReader* reader = nullptr;
+    if (readerSource != nullptr)
+        reader = readerSource->getAudioFormatReader();
+    
+    if (reader != nullptr && reader->sampleRate > 0.0
+        && audioFilePlayer.getLengthInSeconds() > 0.0)
+    {
+        currentSampleRate = reader->sampleRate;
+        fileLength = audioFilePlayer.getLengthInSeconds();
+        oneOverFileLength = 1.0 / fileLength;
+    }
+    else
+    {
+        currentSampleRate = 44100;
+        fileLength = 0.0;
+        oneOverFileLength = 1.0;
+    }
+    
+    startTimerIfNeeded();
+}
+
 void AudioTransportCursor::startTimerIfNeeded()
 {
     if (showTransportCursor)

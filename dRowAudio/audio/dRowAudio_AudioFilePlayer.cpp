@@ -19,20 +19,26 @@
 */
 
 
-
 AudioFilePlayer::AudioFilePlayer()
-    : bufferingTimeSliceThread ("Shared Buffering Thread"),
-      formatManager (new AudioFormatManager(), true),
-      currentMemoryBlock (nullptr)
+    : bufferingTimeSliceThread (new TimeSliceThread ("Shared Buffering Thread"), true),
+      formatManager (new AudioFormatManager(), true)
 {
-    bufferingTimeSliceThread.startThread (3);
-    
-    audioTransportSource = new AudioTransportSource();
-    audioTransportSource->addChangeListener (this);
-    masterSource = audioTransportSource;
-    
+    bufferingTimeSliceThread->startThread (3);
 	formatManager->registerBasicFormats();
-    //formatManager->registerFormat (new AudioSampleBufferAudioFormat(), false);
+    
+    commonInitialise();
+}
+
+AudioFilePlayer::AudioFilePlayer (TimeSliceThread* threadToUse,
+                                  AudioFormatManager* formatManagerToUse)
+    : bufferingTimeSliceThread ((threadToUse == nullptr ? new TimeSliceThread ("Shared Buffering Thread")
+                                                        : threadToUse),
+                                threadToUse == nullptr),
+      formatManager ((formatManagerToUse == nullptr ? new AudioFormatManager()
+                                                    : formatManagerToUse),
+                     formatManagerToUse == nullptr)
+{
+    commonInitialise();
 }
 
 AudioFilePlayer::~AudioFilePlayer()
@@ -42,10 +48,72 @@ AudioFilePlayer::~AudioFilePlayer()
 }
 
 //==============================================================================
+bool AudioFilePlayer::setInputStream (InputStream* inputStream)
+{
+    inputType = unknownStream;
+    
+    return setSourceWithReader (formatManager->createReaderFor (inputStream));
+}
+
+InputStream* AudioFilePlayer::getInputStream()
+{
+    switch (inputType)
+    {
+        case file:
+            return new FileInputStream (currentFile);
+
+        case memoryBlock:
+        case memoryInputStream:
+        {
+            MemoryInputStream* memoryStream = dynamic_cast<MemoryInputStream*> (inputStream);
+            
+            if (memoryStream != nullptr)
+                return new MemoryInputStream (memoryStream->getData(), memoryStream->getDataSize(), false);
+            else
+                return nullptr;
+        }
+
+        case unknownStream:
+            return inputStream;
+
+        default:
+            return nullptr;
+    }
+}
+
+//==============================================================================
+bool AudioFilePlayer::setFile (const File& newFile)
+{
+    inputType = file;
+    inputStream = nullptr;
+    currentFile = newFile;
+    
+    return setSourceWithReader (formatManager->createReaderFor (currentFile));
+}
+
+bool AudioFilePlayer::setMemoryInputStream (MemoryInputStream* newMemoryInputStream)
+{
+    inputType = memoryInputStream;
+    currentFile = File::nonexistent;
+    inputStream = newMemoryInputStream;
+    
+    return setSourceWithReader (formatManager->createReaderFor (inputStream));
+}
+
+bool AudioFilePlayer::setMemoryBlock (MemoryBlock& inputBlock)
+{
+    inputType = memoryBlock;
+    currentFile = File::nonexistent;
+    inputStream = new MemoryInputStream (inputBlock, false);
+
+    return setSourceWithReader (formatManager->createReaderFor (inputStream));
+}
+
+//==============================================================================
 void AudioFilePlayer::start()
 {
     audioTransportSource->start();
-
+    
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
@@ -77,62 +145,21 @@ void AudioFilePlayer::pause()
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
+//==============================================================================
 void AudioFilePlayer::setPosition (double newPosition, bool /*ignoreAnyLoopPoints*/)
 {
     audioTransportSource->setPosition (newPosition);
 }
 
 //==============================================================================
-bool AudioFilePlayer::setFile (const File& newFile)
+void AudioFilePlayer::setAudioFormatManager (AudioFormatManager* newManager, bool deleteWhenNotNeeded)
 {
-    currentMemoryBlock = nullptr;
-    memoryInputStream = nullptr;
-    
-    file = newFile;
-    
-    return setSourceWithReader (formatManager->createReaderFor (file));
+    formatManager.set (newManager, deleteWhenNotNeeded);
 }
 
-bool AudioFilePlayer::setMemoryInputStream (MemoryInputStream* newMemoryInputStream)
+void AudioFilePlayer::setTimeSliceThread (TimeSliceThread* newThreadToUse, bool deleteWhenNotNeeded)
 {
-    file = File::nonexistent;
-    memoryInputStream = newMemoryInputStream;
-    
-    return setSourceWithReader (formatManager->createReaderFor (memoryInputStream));
-}
-
-bool AudioFilePlayer::setMemoryBlock (MemoryBlock* inputBlock)
-{
-    file = File::nonexistent;
-    currentMemoryBlock = inputBlock;
-    
-    if (currentMemoryBlock != nullptr)
-        memoryInputStream = new MemoryInputStream (*currentMemoryBlock, false);
-    else 
-        memoryInputStream = nullptr;
-    
-    return setMemoryInputStream (memoryInputStream);
-}
-
-MemoryInputStream* AudioFilePlayer::getInputStream()
-{   
-    if (memoryInputStream != nullptr)
-        return new MemoryInputStream (memoryInputStream->getData(), memoryInputStream->getDataSize(), false);
-    else if (currentMemoryBlock != nullptr)
-        return new MemoryInputStream (*currentMemoryBlock, false);
-
-    return nullptr;
-}
-
-bool AudioFilePlayer::sourceIsMemoryBlock()
-{
-    return file == File::nonexistent;
-}
-
-void AudioFilePlayer::setAudioFormatManager (AudioFormatManager* newManager,  bool deleteWhenNotNeeded)
-{
-    OptionalScopedPointer<AudioFormatManager> newFormatManager (newManager, deleteWhenNotNeeded);
-	formatManager = newFormatManager;
+    bufferingTimeSliceThread.set (newThreadToUse, deleteWhenNotNeeded);
 }
 
 //==============================================================================
@@ -189,7 +216,7 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
         audioTransportSource->setSource (audioFormatReaderSource,
                                          32768,
-                                         &bufferingTimeSliceThread);
+                                         bufferingTimeSliceThread);
         
         if (shouldBeLooping)
             audioFormatReaderSource->setLooping (true);
@@ -207,3 +234,14 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
     return false;    
 }
 
+//==============================================================================
+void AudioFilePlayer::commonInitialise()
+{
+    inputType = noInput;
+    currentFile = File::nonexistent;
+    inputStream = nullptr;
+    
+    audioTransportSource = new AudioTransportSource();
+    audioTransportSource->addChangeListener (this);
+    masterSource = audioTransportSource;
+}

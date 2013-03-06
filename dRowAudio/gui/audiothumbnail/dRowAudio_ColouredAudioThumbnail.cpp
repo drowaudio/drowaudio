@@ -871,12 +871,12 @@ void ColouredAudioThumbnail::createChannels (const int length)
 }
 
 //==============================================================================
-void ColouredAudioThumbnail::loadFrom (InputStream& input)
+bool ColouredAudioThumbnail::loadFrom (InputStream& input)
 {
     clear();
 
     if (input.readByte() != 'j' || input.readByte() != 'a' || input.readByte() != 't' || input.readByte() != 'm')
-        return;
+        return false;
 
     samplesPerThumbSample = input.readInt();
     totalSamples = input.readInt64();             // Total number of source samples.
@@ -891,6 +891,8 @@ void ColouredAudioThumbnail::loadFrom (InputStream& input)
     for (int i = 0; i < numThumbnailSamples; ++i)
         for (int chan = 0; chan < numChannels; ++chan)
             channels.getUnchecked(chan)->getData(i)->read (input);
+    
+    return true;
 }
 
 void ColouredAudioThumbnail::saveTo (OutputStream& output) const

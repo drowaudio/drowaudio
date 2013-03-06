@@ -22,7 +22,8 @@
 #define __DROWAUDIO_AUDIOFILEPLAYER_H__
 
 //==============================================================================
-/** This class can be used to load and play an audio file from disk.
+/**
+    This class can be used to load and play an audio file from disk.
  
     This combines the functionality of an AudioTransportSource, 
     AudioFormatReader and AudioFormatReaderSource.
@@ -37,19 +38,62 @@ class AudioFilePlayer : public PositionableAudioSource,
 {
 public:
     //==============================================================================
+    /** An enum to distinguish between the different input types.
+     */
+    enum InputType
+    {
+        file,
+        memoryBlock,
+        memoryInputStream,
+        unknownStream,
+        noInput
+    };
+    
+    //==============================================================================
 	/** Creates an empty AudioFilePlayer.
+        This is a quick way to create an AudioFilePlayer as it will use its own
+        AudioFormatManager and TimeSliceThread.
      */
 	AudioFilePlayer();
-    
+
+	/** Creates an empty AudioFilePlayer that will use a supplied background thread
+        and format manager.
+        If either of these parameters is nullptr the AudioFilePlayer will create its
+        own. This constructor is useful if you have lots of players and don't want
+        loads of background thread running etc. If you supply your own thread
+        remember to start it!
+     */
+    explicit AudioFilePlayer (TimeSliceThread* threadToUse,
+                              AudioFormatManager* formatManagerToUse);
+
 	/** Destructor.
      
         If you subclass from this, make sure to call
         audioTransportSource->setSource (nullptr) in your destructor so you don't
         mess up the audio chain dependancies and crash
      */
-	~AudioFilePlayer();
+	virtual ~AudioFilePlayer();
 	
-	/** Open and get ready to play a given audio file. 
+    //==============================================================================
+    /** Returns the type of input that was last used.
+     */
+    inline InputType getInputType() const noexcept  {   return inputType;   }
+    
+    /** Sets the source of the player using any kind of InputStream.
+        The stream will be deleted by the player when it is no longer needed.
+     */
+    bool setInputStream (InputStream* inputStream);
+    
+    /** Returns a stream to the current source, you can find this out using
+        getInputType().
+        It is the caller's responsibility to delete this stream unless it has the
+        type unknownStream which it can't make a copy of. You could use a
+        dynamic_cast to do this yourself if you know the type.
+     */
+    InputStream* getInputStream();
+    
+    //==============================================================================
+	/** Open and get ready to play a given audio file.
      */
 	bool setFile (const File& newFile);
     
@@ -62,20 +106,12 @@ public:
         The player will use this so should not be deleted until a new file is
         set or a nullptr is passed in here to clear the loaded file.
      */
-    bool setMemoryBlock (MemoryBlock* inputBlock);
+    bool setMemoryBlock (MemoryBlock& inputBlock);
         
-	/** Returns the absolute path of the current audio file if it was set with a file.
+	/** Returns the current file if it was set with a one.
+        If a stream was used this will return File::nonexistant.
      */
-	File getFile()                                        {	return file;                }
-    
-    /** Returns the current stream if a the source was set with one.
-        It is the caller's responsibility to delete this stream.
-     */
-    MemoryInputStream* getInputStream();
-    
-    /** Returns true of the source was set from a MemoryBlock, falst if it was a File.
-     */
-    bool sourceIsMemoryBlock();
+	File getFile() const noexcept               {   return currentFile;    }
     
     //==============================================================================
     /** Starts playing (if a source has been selected). */
@@ -113,19 +149,27 @@ public:
     //==============================================================================
 	/** Returns the AudioFormatReaderSource currently being used.
      */
-	inline AudioFormatReaderSource* getAudioFormatReaderSource()   {   return audioFormatReaderSource; }
-	
+	inline AudioFormatReaderSource* getAudioFormatReaderSource()   {   return audioFormatReaderSource;      }
+	   
+    /** Returns the AudioTransportSource being used.
+     */
+    inline AudioTransportSource* getAudioTransportSource()         {   return audioTransportSource;         }
+
     /** Sets the AudioFormatManager to use.
      */
-    void setAudioFormatManager (AudioFormatManager* newManager,  bool deleteWhenNotNeeded = true);
+    void setAudioFormatManager (AudioFormatManager* newManager, bool deleteWhenNotNeeded);
     
 	/** Returns the AudioFormatManager being used.
      */
-	inline AudioFormatManager* getAudioFormatManager()             {   return formatManager;           }
-        
-    /** Returns the AudioTransportSource being used.
+	inline AudioFormatManager* getAudioFormatManager()             {   return formatManager;                }
+
+    /** Sets the TimeSliceThread to use.
      */
-    inline AudioTransportSource* getAudioTransportSource()         {   return audioTransportSource;    }
+    void setTimeSliceThread (TimeSliceThread* newThreadToUse, bool deleteWhenNotNeeded);
+    
+	/** Returns the background TimeSliceThread being used.
+     */
+	inline TimeSliceThread* getTimeSliceThread()                    {   return bufferingTimeSliceThread;    }
 
     //==============================================================================
     /** A class for receiving callbacks from a AudioFilePlayer.
@@ -200,17 +244,16 @@ public:
     
 protected:	
     //==============================================================================
-	TimeSliceThread bufferingTimeSliceThread;
-
+	OptionalScopedPointer<TimeSliceThread> bufferingTimeSliceThread;
 	OptionalScopedPointer<AudioFormatManager> formatManager;
 
     AudioSource* masterSource;
     ScopedPointer<AudioFormatReaderSource> audioFormatReaderSource;
 	ScopedPointer<AudioTransportSource> audioTransportSource;
 
-	File file;
-    MemoryBlock* currentMemoryBlock;
-    MemoryInputStream* memoryInputStream;
+    InputType inputType;
+	File currentFile;
+    InputStream* inputStream;
     
     ListenerList <Listener> listeners;
 
@@ -223,6 +266,10 @@ protected:
         of your audio source chain.
      */
 	virtual bool setSourceWithReader (AudioFormatReader* reader);
+    
+private:
+    //==============================================================================
+    void commonInitialise();
     
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayer);
