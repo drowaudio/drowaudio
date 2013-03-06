@@ -1,20 +1,31 @@
 /*
   ==============================================================================
-  
+
   This file is part of the dRowAudio JUCE module
-  Copyright 2004-12 by dRowAudio.
-  
+  Copyright 2004-13 by dRowAudio.
+
   ------------------------------------------------------------------------------
- 
-  dRowAudio can be redistributed and/or modified under the terms of the GNU General
-  Public License (Version 2), as published by the Free Software Foundation.
-  A copy of the license is included in the module distribution, or can be found
-  online at www.gnu.org/licenses.
-  
-  dRowAudio is distributed in the hope that it will be useful, but WITHOUT ANY
-  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-  A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-  
+
+  dRowAudio is provided under the terms of The MIT License (MIT):
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  SOFTWARE.
+
   ==============================================================================
 */
 
@@ -86,13 +97,31 @@
 
   ## License
 
-  Copyright (C) 2010 by David Rowland ([e-mail][0])
+  Copyright (C) 2013 by David Rowland ([e-mail][0])
 
-  Unless otherwise marked, files in dRowAudio are published under the [GNU General
-  Public License v2][7]. A copy of the licence is contained within each source file.
-  Commercial licences are available on request please [contact][0] the author for
-  details.
-
+  dRowAudio is provided under the terms of The MIT License (MIT):
+ 
+  Permission is hereby granted, free of charge, to any person obtaining a copy of
+  this software and associated documentation files (the "Software"), to deal in the
+  Software without restriction, including without limitation the rights to use,
+  copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+  Software, and to permit persons to whom the Software is furnished to do so,
+  subject to the following conditions:
+ 
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+ 
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+  Some portions of the software including but not limited to [SoundTouch][5] and
+  [FFTReal][6] are included with in the repository but released under separate
+  licences. Please see the individual source files for details.
+ 
   [0]: mailto:dave@drowaudio.co.uk "David Rowland (Email)"
   [1]: http://www.rawmaterialsoftware.com/wiki/index.php/Coding_Standards
   [2]: https://github.com/drowaudio/drowaudio
@@ -101,12 +130,13 @@
   [5]: http://www.surina.net/soundtouch/index.html
   [6]: http://ldesoras.free.fr/prod.html
   [7]: http://www.gnu.org/licenses/gpl-2.0.html
-
+  [8]: http://www.opensource.org/licenses/mit-license.html "The MIT License"
+ 
   @author David Rowland (<a href="mailto:dave@drowaudio.co.uk">email</a>)
   @version 1.0
   @date 2008
-  @copyright Copyright (C) 2008 by David Rowland.
-  @copyright Provided under the [GNU General Public License][5]
+  @copyright Copyright (C) 2013 by David Rowland.
+  @copyright Provided under the [The MIT License][5]
 */
 
 #include <modules/juce_audio_basics/juce_audio_basics.h>
