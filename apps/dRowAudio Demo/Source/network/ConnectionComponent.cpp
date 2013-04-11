@@ -48,11 +48,11 @@ ConnectionComponent::ConnectionComponent()
 	passwordLabel.setComponentID("passwordLabel");
 	protocolLabel.setComponentID("protocolLabel");
 	
-	urlLabel.setText("URL", false);
-	hostnameLabel.setText("Hostname", false);
-	usernameLabel.setText("Username", false);
-	passwordLabel.setText("Password", false);
-	protocolLabel.setText("Protocol", false);
+	urlLabel.setText("URL", dontSendNotification);
+	hostnameLabel.setText("Hostname", dontSendNotification);
+	usernameLabel.setText("Username", dontSendNotification);
+	passwordLabel.setText("Password", dontSendNotification);
+	protocolLabel.setText("Protocol", dontSendNotification);
 	
 	addAndMakeVisible(&urlEditor);
 	addAndMakeVisible(&hostnameEditor);

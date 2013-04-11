@@ -42,8 +42,8 @@ TrackInfoComponent::TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer_)
     bpmLabel.setJustificationType (Justification::centredRight);
     remainLabel.setJustificationType (Justification::centredRight);
 
-    bpmLabel.setText ("...", false);
-    remainLabel.setText ("--:--", false);
+    bpmLabel.setText ("...", dontSendNotification);
+    remainLabel.setText ("--:--", dontSendNotification);
     
     bpmLabel.setColour (Label::textColourId, Colours::white);
     remainLabel.setColour (Label::textColourId, Colours::white);
@@ -139,7 +139,7 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
         if (audioFilePlayer.getSoundTouchAudioSource() != nullptr)
             bpm *= audioFilePlayer.getSoundTouchAudioSource()->getSoundTouchProcessor().getEffectivePlaybackRatio();
         
-        bpmLabel.setText (String (bpm, 2), false);
+        bpmLabel.setText (String (bpm, 2), dontSendNotification);
     }
 }
 
@@ -148,5 +148,5 @@ void TrackInfoComponent::timerCallback()
     double timeRemaining = audioFilePlayer.getLengthInSeconds() - audioFilePlayer.getCurrentPosition();
     String remain (timeRemaining < 0.0 ? String::empty : "-");
     remain << timeToTimecodeStringLowRes (timeRemaining);
-    remainLabel.setText (remain, false);
+    remainLabel.setText (remain, dontSendNotification);
 }

@@ -35,6 +35,15 @@
 namespace XmlHelpers
 {
     //==============================================================================
+    /** Adds an XML style comment to a string.
+        Useful if you're constructing a string to be parsed into and XmlElement.
+     */
+    static String& addXmlComment (String& string, const String& comment)
+    {
+        return string << "<!-- " << comment << " -->" << newLine;
+    }
+
+    //==============================================================================
     /** Searches an XmlElement for an element with a given attribute name with
         the given attribute value.
      */

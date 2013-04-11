@@ -77,6 +77,6 @@ void Clock::timerCallback()
 	if (formatString != String::empty)
 		timeAsString << currentTime.formatted (formatString);
 	
-	setText (timeAsString, false);
+	setText (timeAsString, dontSendNotification);
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.6.0"
-              bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.0.0"
+              bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.1.0"
               defines="DROWAUDIO_UNIT_TESTS">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"

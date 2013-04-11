@@ -432,6 +432,10 @@ using juce::UnitTest;
     #include "utility/dRowAudio_Constants.h"
 #endif
 
+#ifndef __DROWAUDIO_DEBUGOBJECT_H__
+    #include "utility/dRowAudio_DebugObject.h"
+#endif
+    
 #ifndef __DROWAUDIO_ENCRYPTEDSTRING_H__
     #include "utility/dRowAudio_EncryptedString.h"
 #endif

@@ -538,6 +538,9 @@
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\buffers\juce_AudioSampleBuffer.cpp">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.cpp">
+      <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\midi\juce_MidiBuffer.cpp">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClCompile>
@@ -554,6 +557,9 @@
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\effects\juce_IIRFilter.cpp">
+      <Filter>Juce Modules\juce_audio_basics\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.cpp">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\sources\juce_BufferingAudioSource.cpp">
@@ -676,6 +682,9 @@
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\format\juce_AudioSubsectionReader.cpp">
       <Filter>Juce Modules\juce_audio_formats\format</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\format\juce_BufferingAudioFormatReader.cpp">
+      <Filter>Juce Modules\juce_audio_formats\format</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\codecs\juce_AiffAudioFormat.cpp">
       <Filter>Juce Modules\juce_audio_formats\codecs</Filter>
     </ClCompile>
@@ -683,6 +692,9 @@
       <Filter>Juce Modules\juce_audio_formats\codecs</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\codecs\juce_FlacAudioFormat.cpp">
+      <Filter>Juce Modules\juce_audio_formats\codecs</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\codecs\juce_LAMEEncoderAudioFormat.cpp">
       <Filter>Juce Modules\juce_audio_formats\codecs</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\codecs\juce_MP3AudioFormat.cpp">
@@ -725,6 +737,9 @@
       <Filter>Juce Modules\juce_audio_processors\format</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_processors\format_types\juce_AudioUnitPluginFormat.mm">
+      <Filter>Juce Modules\juce_audio_processors\format_types</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_processors\format_types\juce_LADSPAPluginFormat.cpp">
       <Filter>Juce Modules\juce_audio_processors\format_types</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_processors\format_types\juce_VSTPluginFormat.cpp">
@@ -806,6 +821,9 @@
       <Filter>Juce Modules\juce_core\containers</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_core\threads\juce_ChildProcess.cpp">
+      <Filter>Juce Modules\juce_core\threads</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_core\threads\juce_HighResolutionTimer.cpp">
       <Filter>Juce Modules\juce_core\threads</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_core\threads\juce_ReadWriteLock.cpp">
@@ -1848,6 +1866,9 @@
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\dRowAudio\utility\dRowAudio_Constants.h">
       <Filter>Juce Modules\dRowAudio\utility</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\dRowAudio\utility\dRowAudio_DebugObject.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\dRowAudio\utility\dRowAudio_EncryptedString.h">
       <Filter>Juce Modules\dRowAudio\utility</Filter>
     </ClInclude>
@@ -1881,6 +1902,9 @@
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\buffers\juce_AudioSampleBuffer.h">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.h">
+      <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\midi\juce_MidiBuffer.h">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClInclude>
@@ -1900,6 +1924,9 @@
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\effects\juce_IIRFilter.h">
+      <Filter>Juce Modules\juce_audio_basics\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.h">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_basics\effects\juce_Reverb.h">
@@ -1947,6 +1974,9 @@
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_devices\audio_io\juce_AudioIODeviceType.h">
       <Filter>Juce Modules\juce_audio_devices\audio_io</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_devices\audio_io\juce_SystemAudioVolume.h">
+      <Filter>Juce Modules\juce_audio_devices\audio_io</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_devices\midi_io\juce_MidiInput.h">
       <Filter>Juce Modules\juce_audio_devices\midi_io</Filter>
     </ClInclude>
@@ -1992,6 +2022,12 @@
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\format\juce_AudioSubsectionReader.h">
       <Filter>Juce Modules\juce_audio_formats\format</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\format\juce_BufferingAudioFormatReader.h">
+      <Filter>Juce Modules\juce_audio_formats\format</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\format\juce_MemoryMappedAudioFormatReader.h">
+      <Filter>Juce Modules\juce_audio_formats\format</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\codecs\juce_AiffAudioFormat.h">
       <Filter>Juce Modules\juce_audio_formats\codecs</Filter>
     </ClInclude>
@@ -1999,6 +2035,9 @@
       <Filter>Juce Modules\juce_audio_formats\codecs</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\codecs\juce_FlacAudioFormat.h">
+      <Filter>Juce Modules\juce_audio_formats\codecs</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\codecs\juce_LAMEEncoderAudioFormat.h">
       <Filter>Juce Modules\juce_audio_formats\codecs</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_formats\codecs\juce_MP3AudioFormat.h">
@@ -2053,9 +2092,6 @@
       <Filter>Juce Modules\juce_audio_processors\format</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_processors\format_types\juce_AudioUnitPluginFormat.h">
-      <Filter>Juce Modules\juce_audio_processors\format_types</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_processors\format_types\juce_DirectXPluginFormat.h">
       <Filter>Juce Modules\juce_audio_processors\format_types</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_audio_processors\format_types\juce_LADSPAPluginFormat.h">
@@ -2239,6 +2275,9 @@
       <Filter>Juce Modules\juce_core\threads</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_core\threads\juce_DynamicLibrary.h">
+      <Filter>Juce Modules\juce_core\threads</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_core\threads\juce_HighResolutionTimer.h">
       <Filter>Juce Modules\juce_core\threads</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Dave\Documents\Dev\juce\modules\juce_core\threads\juce_InterProcessLock.h">

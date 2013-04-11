@@ -65,7 +65,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
     
     addAndMakeVisible (&resolutionLabel);
-    resolutionLabel.setText ("Detail", false);
+    resolutionLabel.setText ("Detail", dontSendNotification);
     resolutionLabel.setFont (12.0f);
     resolutionLabel.setJustificationType (Justification::centred);
     resolutionLabel.attachToComponent (&resolutionSlider, false);
@@ -80,7 +80,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     zoomSlider.setSliderStyle (Slider::RotaryVerticalDrag);
     
     addAndMakeVisible (&zoomLabel);
-    zoomLabel.setText ("Zoom", false);
+    zoomLabel.setText ("Zoom", dontSendNotification);
     zoomLabel.setFont (12.0f);
     zoomLabel.setJustificationType (Justification::centred);
     zoomLabel.attachToComponent (&zoomSlider, false);
@@ -127,12 +127,12 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     for (int i = 0; i < numControls; i++)
         playerControls[i]->setSkewFactorFromMidPoint (1.0);
 
-    playerControlLabels[lowEQ]->setText ("Low EQ", false);
-    playerControlLabels[midEQ]->setText ("Mid EQ", false);
-    playerControlLabels[highEQ]->setText ("High EQ", false);
-    playerControlLabels[rate]->setText ("Rate", false);
-    playerControlLabels[tempo]->setText ("Tempo", false);
-    playerControlLabels[pitch]->setText ("Pitch", false);
+    playerControlLabels[lowEQ]->setText ("Low EQ", dontSendNotification);
+    playerControlLabels[midEQ]->setText ("Mid EQ", dontSendNotification);
+    playerControlLabels[highEQ]->setText ("High EQ", dontSendNotification);
+    playerControlLabels[rate]->setText ("Rate", dontSendNotification);
+    playerControlLabels[tempo]->setText ("Tempo", dontSendNotification);
+    playerControlLabels[pitch]->setText ("Pitch", dontSendNotification);
     
     addAndMakeVisible (&distortionDemo);
     

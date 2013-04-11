@@ -37,6 +37,7 @@
 #endif
 
 #include "dRowAudio_XmlHelpers.h"
+#include "dRowAudio_DebugObject.h"
 
 //==============================================================================
 /** @file
@@ -415,36 +416,28 @@ static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 //==============================================================================
 /** Useful macro to print a variable name and value to the console.
  */
-#define DBG_VAR(dbgvar)     {DBG (JUCE_STRINGIFY(dbgvar) << ": " << dbgvar) }
+#define DBG_VAR(dbgvar)     {DBG (JUCE_STRINGIFY(dbgvar) << ": " << dbgvar)}
 
-/** Useful macro to print a rectangle to the console.
+/** Useful macro to print a Point to the console.
  */
-#define DBG_RECT(dbgrect)   {DBG ("x: " << dbgrect.getX() << " y: " << dbgrect.getY() << " w: " << dbgrect.getWidth() << " h: " << dbgrect.getHeight()) }
+#define DBG_POINT(dbgpoint) {DBG (JUCE_STRINGIFY(dbgpoint) << ": " << dbgpoint.toString())}
 
 /** Useful macro to print a Range to the console.
  */
-#define DBG_RANGE(dbgrange) {DBG ("s: " << dbgrange.getStart() << " e: " << dbgrange.getEnd() << " l: " << dbgrange.getLength()) }
+#define DBG_RANGE(dbgrange) {DBG (JUCE_STRINGIFY(dbgrange) << ": " << dbgrange.getStart() << " - " << dbgrange.getEnd() << " (" << dbgrange.getLength() << ")")}
 
-/** Useful macro to print a XML to the console.
+/** Useful macro to print a Line to the console.
  */
-#define DBG_XML(dbgxml)                                         \
-{                                                               \
-    if (dbgxml != nullptr)                                      \
-        {DBG (dbgxml->createDocument (String::empty));}         \
-    else                                                        \
-        {DBG ("invalid XML: " << JUCE_STRINGIFY(dbgxml));}      \
-}
+#define DBG_LINE(dbgline)   {DBG (JUCE_STRINGIFY(dbgline) << ": " << "(" << dbgline.getStart().toString() << ") - (" << dbgline.getEnd().toString() << ")")}
 
-/** Useful macro to print a ValueTree to the console as XML.
+/** Useful macro to print a Rectangle to the console.
  */
-#define DBG_TREE(dbgtree)                                       \
-{                                                               \
-    ScopedPointer<XmlElement> dbgxml (dbgtree.createXml());     \
-    if (dbgxml != nullptr)                                      \
-        {DBG (dbgxml->createDocument (String::empty));}         \
-    else                                                        \
-        {DBG ("invalid tree: " << JUCE_STRINGIFY(dbgtree));}    \
-}
+#define DBG_RECT(dbgrect)   {DBG (JUCE_STRINGIFY(dbgrect) << ": " << dbgrect.toString())}
+
+/** Prints a string representation of a lot of common objects to the console for
+    debugging purposes.
+ */
+#define DBG_OBJ(dbgobj)     {DBG (JUCE_STRINGIFY(dbgobj) << ": " << DebugObject (dbgobj).toString())}
 
 //==============================================================================
 /** This handy macro is a platform independent way of stopping compiler

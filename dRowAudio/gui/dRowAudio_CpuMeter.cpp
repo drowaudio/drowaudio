@@ -59,6 +59,6 @@ void CpuMeter::timerCallback()
 	String displayString (currentCpuUsage, 2);
 	displayString << "%";
     
-	setText (displayString, false);
+	setText (displayString, dontSendNotification);
 }
 

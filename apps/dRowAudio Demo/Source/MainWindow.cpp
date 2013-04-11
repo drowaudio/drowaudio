@@ -38,6 +38,37 @@ MainAppWindow::MainAppWindow()
                       Colours::darkgrey,
                       DocumentWindow::allButtons)
 {
+    ValueTree testTree ("test");
+    testTree.setProperty ("prop_1", 10, nullptr);
+    testTree.setProperty ("prop_2", "string", nullptr);
+    ValueTree childTree ("child");
+    childTree.setProperty ("prop_3", 123.0456, nullptr);
+    testTree.addChild (childTree, -1, nullptr);
+    DBG_OBJ (testTree);
+    
+    XmlElement xml ("test");
+    xml.setAttribute ("prop_1", "value_1");
+    xml.setAttribute ("prop_2", "value_2");
+    XmlElement* xml2 = new XmlElement ("child");
+    xml2->setAttribute ("prop_3", "value_3");
+    xml.addChildElement (xml2);
+    DBG_OBJ (&xml);
+
+    const double test = 32762.32569;
+    const String st ("hello world");
+    DBG_VAR (test);
+    DBG_OBJ (st);
+    
+    Point<double> point (45.947, 23239.8236);
+    Range<float> range (45.947f, 23239.8236f);
+    Line<int> line (4, 5, 6, 7);
+    Rectangle<double> rect (636, 546, 456, 345);
+    
+    DBG_POINT (point);
+    DBG_RANGE (range);
+    DBG_LINE (line);
+    DBG_RECT (rect);
+
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     setupColours();
 
