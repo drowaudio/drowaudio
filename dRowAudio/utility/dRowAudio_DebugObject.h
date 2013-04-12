@@ -114,9 +114,6 @@ public:
     };
     
     //==============================================================================
-    DebugObject (const var& arg)
-        : type (varType), objectVar (arg) {}
-
     explicit DebugObject (const XmlElement* arg)
         : type (xmlType), objectXml (arg) {}
 
