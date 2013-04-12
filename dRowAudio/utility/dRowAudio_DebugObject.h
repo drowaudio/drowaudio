@@ -45,6 +45,9 @@
     If you do want to e.g. for saving to a file etc. never hang on for long to
     avoid deleting any variables it may be referencing. Simply create one on the
     stack and immidiately use its toString() method.
+ 
+    Alternatively just use one of the statis convertToString methods to convert
+    almost any common JUCE object to a string.
     
     @example
     @code
@@ -56,9 +59,56 @@ class DebugObject
 {
 public:
     //==============================================================================
+    static String convertToString (const var& arg)
+    {
+        return arg.toString();
+    }
+
+    template <typename ValueType>
+    static String convertToString (const Range<ValueType>& arg)
+    {
+        String os;
+        return os << arg.getStart() << " - " << arg.getEnd() << " (" << arg.getLength() << ")";
+    }
+
+    template <typename ValueType>
+    static String convertToString (const Point<ValueType>& arg)
+    {
+        return arg.toString();
+    }
+
+    template <typename ValueType>
+    static String convertToString (const Line<ValueType>& arg)
+    {
+        String os;
+        return os << "(" << arg.getStart().toString()
+                << ") - (" << arg.getEnd().toString() << ")";
+    }
+
+    template <typename ValueType>
+    static String convertToString (const Rectangle<ValueType>& arg)
+    {
+        return arg.toString();
+    }
+
+    static String convertToString (const XmlElement* arg)
+    {
+        return DebugObject (arg).toString();
+    }
+
+    static String convertToString (const XmlElement& arg)
+    {
+        return DebugObject (arg).toString();
+    }
+
+    static String convertToString (const ValueTree& arg)
+    {
+        return DebugObject (arg).toString();
+    }
+
+    //==============================================================================
     enum ObjectType
     {
-        varType,
         xmlType,
         valueTreeType
     };
@@ -80,7 +130,6 @@ public:
     {
         switch (type)
         {
-            case varType:           return objectVar.toString();
             case xmlType:           return getStringFromXml (objectXml, true);
             case valueTreeType:     return getStringFromValueTree();
             default:                return String::empty;
@@ -91,7 +140,6 @@ private:
     //==============================================================================
     ObjectType type;
 
-    var objectVar;
     const XmlElement* objectXml;
     ValueTree objectValueTree;
 

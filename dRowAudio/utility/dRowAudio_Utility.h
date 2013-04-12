@@ -420,24 +420,24 @@ static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 
 /** Useful macro to print a Point to the console.
  */
-#define DBG_POINT(dbgpoint) {DBG (JUCE_STRINGIFY(dbgpoint) << ": " << dbgpoint.toString())}
+#define DBG_POINT(dbgpoint) {DBG (JUCE_STRINGIFY(dbgpoint) << ": " << DebugObject::convertToString (dbgpoint))}
 
 /** Useful macro to print a Range to the console.
  */
-#define DBG_RANGE(dbgrange) {DBG (JUCE_STRINGIFY(dbgrange) << ": " << dbgrange.getStart() << " - " << dbgrange.getEnd() << " (" << dbgrange.getLength() << ")")}
+#define DBG_RANGE(dbgrange) {DBG (JUCE_STRINGIFY(dbgrange) << ": " << DebugObject::convertToString (dbgrange))}
 
 /** Useful macro to print a Line to the console.
  */
-#define DBG_LINE(dbgline)   {DBG (JUCE_STRINGIFY(dbgline) << ": " << "(" << dbgline.getStart().toString() << ") - (" << dbgline.getEnd().toString() << ")")}
+#define DBG_LINE(dbgline)   {DBG (JUCE_STRINGIFY(dbgline) << ": " << DebugObject::convertToString (dbgline))}
 
 /** Useful macro to print a Rectangle to the console.
  */
-#define DBG_RECT(dbgrect)   {DBG (JUCE_STRINGIFY(dbgrect) << ": " << dbgrect.toString())}
+#define DBG_RECT(dbgrect)   {DBG (JUCE_STRINGIFY(dbgrect) << ": " << DebugObject::convertToString (dbgrect))}
 
 /** Prints a string representation of a lot of common objects to the console for
     debugging purposes.
  */
-#define DBG_OBJ(dbgobj)     {DBG (JUCE_STRINGIFY(dbgobj) << ": " << DebugObject (dbgobj).toString())}
+#define DBG_OBJ(dbgobj)     {DBG (JUCE_STRINGIFY(dbgobj) << ": " << DebugObject::convertToString (dbgobj))}
 
 //==============================================================================
 /** This handy macro is a platform independent way of stopping compiler
