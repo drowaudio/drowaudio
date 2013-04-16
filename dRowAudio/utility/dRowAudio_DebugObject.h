@@ -106,6 +106,16 @@ public:
         return DebugObject (arg).toString();
     }
 
+    static String convertToString (const StringArray& arg)
+    {
+        return arg.joinIntoString (",");
+    }
+
+    static String convertToString (const StringPairArray& arg)
+    {
+        return arg.getDescription();
+    }
+
     //==============================================================================
     enum ObjectType
     {
