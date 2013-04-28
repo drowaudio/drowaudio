@@ -31,8 +31,17 @@
 
 #if DROWAUDIO_USE_CURL
 
+} //namespace drow
 
+#if JUCE_WINDOWS
+ #include "curl/include/curl/curl.h"
+#else
+ #include <curl/curl.h>
+#endif
 
+namespace drow {
+
+//==============================================================================
 CURLEasySession::CURLEasySession()
 :	handle      (nullptr),
 	remotePath  (String::empty),
@@ -270,7 +279,7 @@ int CURLEasySession::internalProgressCallback (CURLEasySession* session, double 
 }
 
 //==============================================================================
-CURLcode CURLEasySession::performTransfer (bool transferIsUpload)
+int CURLEasySession::performTransfer (bool transferIsUpload)
 {
 	curl_easy_setopt (handle, CURLOPT_URL, remotePath.toUTF8().getAddress());
     curl_easy_setopt (handle, CURLOPT_UPLOAD, (long) transferIsUpload);

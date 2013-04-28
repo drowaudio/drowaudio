@@ -115,7 +115,7 @@ void AudioFilePlayerExt::setPosition (double newPosition, bool ignoreAnyLoopBoun
         const double sampleRate = audioFormatReaderSource->getAudioFormatReader()->sampleRate;
         
         if (sampleRate > 0.0)
-            loopingAudioSource->setNextReadPositionIgnoringLoop ((int64) secondsToSamples (newPosition, sampleRate));
+            loopingAudioSource->setNextReadPositionIgnoringLoop (secondsToSamples (newPosition, sampleRate));
     }
     else
     {

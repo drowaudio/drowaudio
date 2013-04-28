@@ -11,6 +11,8 @@ Release/
 *.mode1v3
 *.mode2v3
 xcuserdata
+*.suo
+*.vcxproj.user
 *.psd
 .svn/
 html/

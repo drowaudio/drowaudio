@@ -187,7 +187,7 @@ private:
     ListenerList <Listener> listeners;
 
     //==============================================================================
-    CURLcode performTransfer (bool transferIsUpload);
+    int performTransfer (bool transferIsUpload);
     
     static size_t writeCallback (void* sourcePointer, size_t blockSize, size_t numBlocks, CURLEasySession* session);
 	static size_t readCallback (void* destinationPointer, size_t blockSize, size_t numBlocks, CURLEasySession* session);

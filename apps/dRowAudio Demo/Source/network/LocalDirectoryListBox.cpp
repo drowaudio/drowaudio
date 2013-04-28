@@ -82,7 +82,7 @@ void LocalDirectoryListBoxModel::paintListBoxItem (int rowNumber,
 	const int h = height;
 	const int m = (int) (height * 0.15f);
 
-	juce::Rectangle<float> imageRect ((float) m, (float) m, (float) (h - (2 * m)),  (float) (h - (2 * m)));
+	Rectangle<float> imageRect ((float) m, (float) m, (float) (h - (2 * m)),  (float) (h - (2 * m)));
 
 	if (currentWorkingDirectory.getChildFile(itemList[rowNumber]).isDirectory()) {
 		LookAndFeel::getDefaultLookAndFeel().getDefaultFolderImage()->drawWithin(g, imageRect, RectanglePlacement(0), 1.0f);

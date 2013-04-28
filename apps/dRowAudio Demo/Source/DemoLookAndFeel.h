@@ -16,9 +16,9 @@ public:
     
     ~DemoLookAndFeel();
 
-//    static void drawBevel (Graphics& g, juce::Rectangle<int> innerBevelBounds, float bevelThickness, Colour baseColour);
+//    static void drawBevel (Graphics& g, Rectangle<int> innerBevelBounds, float bevelThickness, Colour baseColour);
 //
-//    static void drawBevel (Graphics& g, juce::Rectangle<float> innerBevelBounds, float bevelThickness, Colour baseColour);
+//    static void drawBevel (Graphics& g, Rectangle<float> innerBevelBounds, float bevelThickness, Colour baseColour);
     
     void drawButtonBackground (Graphics& g,
                                Button& button,

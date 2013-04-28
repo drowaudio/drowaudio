@@ -4,7 +4,7 @@
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.1.0"
               defines="DROWAUDIO_UNIT_TESTS">
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../juce_source/juce"
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../"
                extraLinkerFlags="-lcurl" bigIcon="vTRqOY" smallIcon="vTRqOY"
                extraCompilerFlags="-Wall">
       <CONFIGURATIONS>
@@ -16,22 +16,20 @@
                        headerPath="" defines=""/>
       </CONFIGURATIONS>
     </XCODE_MAC>
-    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="C:\Users\Dave\Documents\Dev\juce\modules"
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../"
             extraDefs="CURL_STATICLIB" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}"
             bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       headerPath="../../../../dRowAudio/network/curl/include" defines="CURL_LIB=libcurldebug.lib"
-                       winWarningLevel="4" winArchitecture="32-bit" generateManifest="1"
-                       libraryPath="../../../../dRowAudio/network/curl/lib"/>
+                       headerPath="" defines="CURL_LIB=libcurldebug.lib" winWarningLevel="4"
+                       winArchitecture="32-bit" generateManifest="1" libraryPath="../../../../dRowAudio/network/curl/lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       headerPath="../../../../dRowAudio/network/curl/include" defines="CURL_LIB=libcurlrelease.lib"
-                       winWarningLevel="4" winArchitecture="32-bit" generateManifest="1"
-                       libraryPath="../../../../dRowAudio/network/curl/lib"/>
+                       headerPath="" defines="CURL_LIB=libcurlrelease.lib" winWarningLevel="4"
+                       winArchitecture="32-bit" generateManifest="1" libraryPath="../../../../dRowAudio/network/curl/lib"/>
       </CONFIGURATIONS>
     </VS2010>
-    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../juce_source/juce/modules"
-                bigIcon="vTRqOY" smallIcon="vTRqOY" extraLinkerFlags="-lcurl">
+    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../" bigIcon="vTRqOY"
+                smallIcon="vTRqOY" extraLinkerFlags="-lcurl">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        headerPath="" defines="" libraryPath="/usr/X11R6/lib/"/>
@@ -39,7 +37,7 @@
                        headerPath="" defines="" libraryPath="/usr/X11R6/lib/"/>
       </CONFIGURATIONS>
     </LINUX_MAKE>
-    <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" juceFolder="../../../../juce_source/juce"
+    <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" juceFolder="../../../../"
                   UIStatusBarHidden="1" bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"

@@ -377,7 +377,7 @@ void ColumnFileBrowser::resized()
     fileBrowser->setSize (fileBrowser->getWidth(), getMaximumVisibleHeight());
 }
 
-void ColumnFileBrowser::visibleAreaChanged (const juce::Rectangle<int>& /*newVisibleArea*/)
+void ColumnFileBrowser::visibleAreaChanged (const Rectangle<int>& /*newVisibleArea*/)
 {
     resized();
 }

@@ -60,7 +60,7 @@ void BiquadFilter::processSamples (int* const samples,
         {
             const float in = (float) samples[i];
             const float out = c0 * in + lv1;
-            samples[i] = (float) out;
+            samples[i] = (int) out;
             
             lv1 = c1 * in - c3 * out + lv2;
             lv2 = c2 * in - c4 * out;
