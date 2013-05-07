@@ -43,27 +43,26 @@ namespace drow {
 
 //==============================================================================
 CURLEasySession::CURLEasySession()
-:	handle      (nullptr),
-	remotePath  (String::empty),
-	progress    (1.0f)
+    : handle      (CURLManager::getInstance()->createEasyCurlHandle()),
+	  remotePath  (String::empty),
+	  progress    (1.0f)
 {
-	handle = CURLManager::getInstance()->createEasyCurlHandle();
-
-	enableFullDebugging(true);
-	curl_easy_setopt(handle, CURLOPT_NOPROGRESS, false);
+	enableFullDebugging (true);
+	curl_easy_setopt (handle, CURLOPT_NOPROGRESS, false);
 }
 
-CURLEasySession::CURLEasySession(String localPath,
-								 String remotePath,
-								 bool upload,
-								 String username,
-								 String password)
+CURLEasySession::CURLEasySession (String localPath,
+                                  String remotePath,
+                                  bool upload,
+                                  String username,
+                                  String password)
+    : handle      (CURLManager::getInstance()->createEasyCurlHandle())
 {
 	handle = CURLManager::getInstance()->createEasyCurlHandle();
 	enableFullDebugging (true);
 	curl_easy_setopt (handle, CURLOPT_NOPROGRESS, false);
 
-	setLocalFile (File (localPath));
+	setLocalFile (localPath);
 	setRemotePath (remotePath);
 	setUserNameAndPassword (username, password);
 	beginTransfer (upload);

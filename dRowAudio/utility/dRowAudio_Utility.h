@@ -414,6 +414,74 @@ static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 }
 
 //==============================================================================
+/**
+    Simple class that reads a ValueTree from a file and saves it back again on
+    destruction.
+ */
+class ScopedValueTreeFile
+{
+public:
+    //==============================================================================
+    /** Creates a blank ScopedValueTreeFile.
+        This initially does nothing, use the setFile() method to read the contents
+        into the internal tree and then retrieve it using getTree().
+     */
+    ScopedValueTreeFile()
+        : asXml (true)
+    {
+    }
+
+    /** Creates a ScopedValueTreeFile for a given file.
+        Thsi will read the contents of the File into the internal ValueTree which
+        you can then retrieve with the getTree() method.
+     */
+    ScopedValueTreeFile (const File& sourceFile)
+        : asXml (true)
+    {
+        setFile (file);
+    }
+
+    /** Destructor.
+        Saves the contents of the tree to the current file.
+     */
+    ~ScopedValueTreeFile()
+    {
+        writeValueTreeToFile (tree, file, asXml);
+    }
+
+    /** Sets the file to use.
+        This will attempt to read the contents of the File into the ValueTree which
+        you can obtain using the getTree() method.
+     */
+    inline void setFile (const File& newFile)   {   tree = readValueTreeFromFile (file = newFile);  }
+
+    /** Returns the ValueTree being used.
+     */
+    inline ValueTree& getTree()                 {    return tree;           }
+
+    /** Returns the File being used.
+     */
+    inline File getFile() const                 {    return file;           }
+    
+    /** Sets the tree to save to the file as XML or binary data.
+     */
+    inline void setSaveAsXml (bool saveAsXml)   {   asXml = saveAsXml;      }
+    
+    /** Returns true if the file will be saved as XML.
+     */
+    inline bool getSaveAsXml() const            {   return asXml;           }
+    
+private:
+    //==============================================================================
+    bool asXml;
+    File file;
+    ValueTree tree;
+    
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ScopedValueTreeFile);
+};
+
+//==============================================================================
 /** Useful macro to print a variable name and value to the console.
  */
 #define DBG_VAR(dbgvar)     {DBG (JUCE_STRINGIFY(dbgvar) << ": " << dbgvar)}
