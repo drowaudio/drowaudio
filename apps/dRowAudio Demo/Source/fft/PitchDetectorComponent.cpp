@@ -52,7 +52,7 @@ void PitchDetectorComponent::timerCallback()
 
     const double proportion = pitch / (sampleRate / 2);
     const int w = getWidth();
-    pitchXCoord = int (displayLogFrequency ? logBase10Scale (proportion, 1.0, 40.0) : proportion) * w;
+    pitchXCoord = roundToInt ((displayLogFrequency ? logBase10Scale (proportion, 1.0, 40.0) : proportion) * w);
 
     if (! pitchXCoord.areEqual())
     {
@@ -65,10 +65,14 @@ void PitchDetectorComponent::timerCallback()
 void PitchDetectorComponent::setSampleRate (double newSampleRate)
 {
     sampleRate = newSampleRate;
+    
+    const ScopedLock sl (detectorLock);
+    pitchDetector.setSampleRate (sampleRate);
 }
 
 void PitchDetectorComponent::processBlock (const float* inputChannelData, int numSamples)
 {
+    const ScopedLock sl (detectorLock);
     pitchDetector.processSamples (inputChannelData, numSamples);
     pitch = pitchDetector.getPitch();
 }

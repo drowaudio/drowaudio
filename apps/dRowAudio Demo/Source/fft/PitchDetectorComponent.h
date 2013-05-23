@@ -49,6 +49,8 @@ private:
     String pitchString;
     Label pitchLabel;
     
+    CriticalSection detectorLock;
+    
 	//==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PitchDetectorComponent)
 };
