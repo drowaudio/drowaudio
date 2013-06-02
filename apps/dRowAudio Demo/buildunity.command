@@ -1,3 +1,3 @@
 #!/bin/bash
 cd "$(dirname "$0")";
-./UnityProjectBuilder "dRowAudio Demo.jucer" /Applications/Introjucer.app
+./UnityProjectBuilderApp "dRowAudio Demo.jucer" /Applications/Introjucer.app

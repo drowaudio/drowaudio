@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F207FCC6-F1AE-4206-4F70-28637FE14065}") = "UnityProjectBuilder", "UnityProjectBuilder.vcxproj", "{75376B24-6766-BF11-567F-77529AA5B19A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75376B24-6766-BF11-567F-77529AA5B19A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{75376B24-6766-BF11-567F-77529AA5B19A}.Debug|Win32.Build.0 = Debug|Win32
+		{75376B24-6766-BF11-567F-77529AA5B19A}.Release|Win32.ActiveCfg = Release|Win32
+		{75376B24-6766-BF11-567F-77529AA5B19A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
