@@ -454,6 +454,10 @@ using juce::UnitTest;
     #include "utility/dRowAudio_UnityBuilder.h"
 #endif
 
+#ifndef __UNITYPROJECTBUILDER_H_27A8CF68__
+    #include "utility/dRowAudio_UnityProjectBuilder.h"
+#endif
+    
 #ifndef __DROWAUDIO_UTILITY_H__
     #include "utility/dRowAudio_Utility.h"
 #endif

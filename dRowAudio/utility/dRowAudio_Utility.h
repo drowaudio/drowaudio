@@ -438,7 +438,7 @@ public:
     ScopedValueTreeFile (const File& sourceFile)
         : asXml (true)
     {
-        setFile (file);
+        setFile (sourceFile);
     }
 
     /** Destructor.

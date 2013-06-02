@@ -9,6 +9,9 @@
 
 #include "DemoHeader.h"
 
+#ifndef __DROWAUDIO_DEMOLOOKANDFEEL_H__
+#define __DROWAUDIO_DEMOLOOKANDFEEL_H__
+
 class DemoLookAndFeel : public LookAndFeel
 {
 public:
@@ -28,3 +31,5 @@ public:
     
 private:
 };
+
+#endif  // __DROWAUDIO_DEMOLOOKANDFEEL_H__

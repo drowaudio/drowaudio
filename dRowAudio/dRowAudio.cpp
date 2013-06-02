@@ -121,6 +121,7 @@ namespace drow {
 #include "utility/dRowAudio_ITunesLibrary.cpp"
 #include "utility/dRowAudio_ITunesLibraryParser.cpp"
 #include "utility/dRowAudio_UnityBuilder.cpp"
+#include "utility/dRowAudio_UnityProjectBuilder.cpp"
 #include "parameters/dRowAudio_PluginParameter.cpp"
 
 }

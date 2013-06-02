@@ -385,7 +385,16 @@
     <ClCompile Include="..\..\Source\fft\PitchDetectorComponent.cpp">
       <Filter>dRowAudio Demo\Source\fft</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\UnityBuild.cpp">
+    <ClCompile Include="..\..\Source\UnityBuild0.cpp">
+      <Filter>dRowAudio Demo\Unity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UnityBuild1.cpp">
+      <Filter>dRowAudio Demo\Unity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UnityBuild2.cpp">
+      <Filter>dRowAudio Demo\Unity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UnityBuild3.cpp">
       <Filter>dRowAudio Demo\Unity</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
@@ -539,6 +548,9 @@
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
+      <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1719,9 +1731,6 @@
     <ClInclude Include="..\..\Source\fft\PitchDetectorComponent.h">
       <Filter>dRowAudio Demo\Source\fft</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\UnityBuild.h">
-      <Filter>dRowAudio Demo\Unity</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
@@ -1903,6 +1912,9 @@
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.h">
+      <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Utility.h">

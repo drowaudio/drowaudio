@@ -15,12 +15,12 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_1C83C68C=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0
   CXXFLAGS += $(CFLAGS) 
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt -lcurl
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
+  RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_1C83C68C=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
   TARGET := dRowAudio\ Demo
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
@@ -35,12 +35,12 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_1C83C68C=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os
   CXXFLAGS += $(CFLAGS) 
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -fvisibility=hidden -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt -lcurl
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
+  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_1C83C68C=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
   TARGET := dRowAudio\ Demo
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
 endif
@@ -49,7 +49,10 @@ endif
 DEPFLAGS := $(if $(word 2, $(TARGET_ARCH)), , -MMD)
 
 OBJECTS := \
-  $(OBJDIR)/UnityBuild_a75dd102.o \
+  $(OBJDIR)/UnityBuild0_44603638.o \
+  $(OBJDIR)/UnityBuild1_446e4db9.o \
+  $(OBJDIR)/UnityBuild2_447c653a.o \
+  $(OBJDIR)/UnityBuild3_448a7cbb.o \
   $(OBJDIR)/BinaryData_ce4232d4.o \
   $(OBJDIR)/dRowAudio_77fd40e6.o \
   $(OBJDIR)/juce_audio_basics_de3ff517.o \
@@ -83,9 +86,24 @@ strip:
 	@echo Stripping dRowAudio Demo
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
 
-$(OBJDIR)/UnityBuild_a75dd102.o: ../../Source/UnityBuild.cpp
+$(OBJDIR)/UnityBuild0_44603638.o: ../../Source/UnityBuild0.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling UnityBuild.cpp"
+	@echo "Compiling UnityBuild0.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/UnityBuild1_446e4db9.o: ../../Source/UnityBuild1.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling UnityBuild1.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/UnityBuild2_447c653a.o: ../../Source/UnityBuild2.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling UnityBuild2.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/UnityBuild3_448a7cbb.o: ../../Source/UnityBuild3.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling UnityBuild3.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp

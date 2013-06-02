@@ -56,7 +56,7 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DROWAUDIO_UNIT_TESTS;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DROWAUDIO_UNIT_TESTS;CURL_LIB=libcurldebug.lib;CURL_STATICLIB;JUCER_VS2010_3743327B=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -99,7 +99,7 @@
     <ClCompile>
       <Optimization>MinSpace</Optimization>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DROWAUDIO_UNIT_TESTS;CURL_LIB=libcurlrelease.lib;CURL_STATICLIB;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DROWAUDIO_UNIT_TESTS;CURL_LIB=libcurlrelease.lib;CURL_STATICLIB;JUCER_VS2010_3743327B=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -184,7 +184,10 @@
     <ClCompile Include="..\..\Source\fft\PitchDetectorComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Source\UnityBuild.cpp"/>
+    <ClCompile Include="..\..\Source\UnityBuild0.cpp"/>
+    <ClCompile Include="..\..\Source\UnityBuild1.cpp"/>
+    <ClCompile Include="..\..\Source\UnityBuild2.cpp"/>
+    <ClCompile Include="..\..\Source\UnityBuild3.cpp"/>
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -327,6 +330,9 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1376,7 +1382,6 @@
     <ClInclude Include="..\..\Source\network\RemoteDirectoryListBox.h"/>
     <ClInclude Include="..\..\Source\fft\FFTDemo.h"/>
     <ClInclude Include="..\..\Source\fft\PitchDetectorComponent.h"/>
-    <ClInclude Include="..\..\Source\UnityBuild.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h"/>
@@ -1438,6 +1443,7 @@
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_MusicLibraryHelpers.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_StateVariable.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Utility.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_XmlHelpers.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio.h"/>
