@@ -70,18 +70,18 @@ void FilteringAudioSource::setGain (FilterType setting, float newGain)
     {
         case Low:
             gains[Low] = newGain;
-            filter[0][Low].makeLowShelf     (sampleRate, defaultSettings[Low][CF], defaultSettings[Low][Q], gains[Low]);
-            filter[1][Low].makeLowShelf     (sampleRate, defaultSettings[Low][CF], defaultSettings[Low][Q], gains[Low]);
+            filter[0][Low].getCoefficients().makeLowShelf     (sampleRate, defaultSettings[Low][CF], defaultSettings[Low][Q], gains[Low]);
+            filter[1][Low].getCoefficients().makeLowShelf     (sampleRate, defaultSettings[Low][CF], defaultSettings[Low][Q], gains[Low]);
             break;
         case Mid:
             gains[Mid] = newGain;
-            filter[0][Mid].makeBandPass     (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
-            filter[1][Mid].makeBandPass     (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
+            filter[0][Mid].getCoefficients().makePeakFilter     (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
+            filter[1][Mid].getCoefficients().makePeakFilter     (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
             break;
         case High:
             gains[High] = newGain;
-            filter[0][High].makeHighShelf   (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
-            filter[1][High].makeHighShelf   (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
+            filter[0][High].getCoefficients().makeHighShelf   (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
+            filter[1][High].getCoefficients().makeHighShelf   (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
             break;
         default:
             break;
@@ -137,11 +137,11 @@ void FilteringAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info
 
 void FilteringAudioSource::resetFilters()
 {
-	filter[0][Low].makeLowShelf   (sampleRate, defaultSettings[Low][CF], defaultSettings[Low][Q], gains[Low]);
-	filter[1][Low].makeLowShelf   (sampleRate, defaultSettings[Low][CF], defaultSettings[Low][Q], gains[Low]);
-	filter[0][Mid].makeBandPass   (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
-	filter[1][Mid].makeBandPass   (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
-	filter[0][High].makeHighShelf (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
-	filter[1][High].makeHighShelf (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);	
+	filter[0][Low].getCoefficients().makeLowShelf   (sampleRate, defaultSettings[Low][CF], defaultSettings[Low][Q], gains[Low]);
+	filter[1][Low].getCoefficients().makeLowShelf   (sampleRate, defaultSettings[Low][CF], defaultSettings[Low][Q], gains[Low]);
+	filter[0][Mid].getCoefficients().makePeakFilter   (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
+	filter[1][Mid].getCoefficients().makePeakFilter   (sampleRate, defaultSettings[Mid][CF], defaultSettings[Mid][Q], gains[Mid]);
+	filter[0][High].getCoefficients().makeHighShelf (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);
+	filter[1][High].getCoefficients().makeHighShelf (sampleRate, defaultSettings[High][CF], defaultSettings[High][Q], gains[High]);	
 }
 
