@@ -9,7 +9,7 @@
                extraCompilerFlags="-Wall">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
                        headerPath="" defines=""/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"

@@ -20,9 +20,6 @@
     <Filter Include="dRowAudio Demo\Source\resources">
       <UniqueIdentifier>{9356FF3E-920E-63E4-E831-33F73F8493A9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="dRowAudio Demo\Unity">
-      <UniqueIdentifier>{9F491F24-4ED6-9DE0-683E-379BE413EB1A}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Juce Modules">
       <UniqueIdentifier>{422C46B7-0467-2DB0-BF3C-16DFCAFD69AC}</UniqueIdentifier>
     </Filter>
@@ -385,9 +382,6 @@
     <ClCompile Include="..\..\Source\fft\PitchDetectorComponent.cpp">
       <Filter>dRowAudio Demo\Source\fft</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\UnityBuild.cpp">
-      <Filter>dRowAudio Demo\Unity</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
@@ -539,6 +533,9 @@
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
+      <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1126,9 +1123,6 @@
     <ClCompile Include="..\..\..\..\..\juce_graphics\geometry\juce_PathStrokeType.cpp">
       <Filter>Juce Modules\juce_graphics\geometry</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\juce_graphics\geometry\juce_RectangleList.cpp">
-      <Filter>Juce Modules\juce_graphics\geometry</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_graphics\placement\juce_Justification.cpp">
       <Filter>Juce Modules\juce_graphics\placement</Filter>
     </ClCompile>
@@ -1211,6 +1205,9 @@
       <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_gui_basics\mouse\juce_MouseEvent.cpp">
+      <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce_gui_basics\mouse\juce_MouseInactivityDetector.cpp">
       <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_gui_basics\mouse\juce_MouseInputSource.cpp">
@@ -1612,6 +1609,9 @@
     <ClCompile Include="..\..\..\..\..\juce_gui_extra\native\juce_mac_NSViewComponent.mm">
       <Filter>Juce Modules\juce_gui_extra\native</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce_gui_extra\native\juce_mac_SystemTrayIcon.cpp">
+      <Filter>Juce Modules\juce_gui_extra\native</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_gui_extra\native\juce_mac_WebBrowserComponent.mm">
       <Filter>Juce Modules\juce_gui_extra\native</Filter>
     </ClCompile>
@@ -1718,9 +1718,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\fft\PitchDetectorComponent.h">
       <Filter>dRowAudio Demo\Source\fft</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\UnityBuild.h">
-      <Filter>dRowAudio Demo\Unity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
@@ -1903,6 +1900,9 @@
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.h">
+      <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Utility.h">
@@ -2703,6 +2703,9 @@
     <ClInclude Include="..\..\..\..\..\juce_gui_basics\mouse\juce_MouseEvent.h">
       <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce_gui_basics\mouse\juce_MouseInactivityDetector.h">
+      <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce_gui_basics\mouse\juce_MouseInputSource.h">
       <Filter>Juce Modules\juce_gui_basics\mouse</Filter>
     </ClInclude>
@@ -2822,6 +2825,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce_gui_basics\menus\juce_PopupMenu.h">
       <Filter>Juce Modules\juce_gui_basics\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce_gui_basics\layout\juce_AnimatedPosition.h">
+      <Filter>Juce Modules\juce_gui_basics\layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce_gui_basics\layout\juce_AnimatedPositionBehaviours.h">
+      <Filter>Juce Modules\juce_gui_basics\layout</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce_gui_basics\layout\juce_ComponentAnimator.h">
       <Filter>Juce Modules\juce_gui_basics\layout</Filter>

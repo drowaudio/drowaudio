@@ -54,8 +54,8 @@ AudioFilePlayer::AudioFilePlayer (TimeSliceThread* threadToUse,
 
 AudioFilePlayer::~AudioFilePlayer()
 {
-	audioTransportSource->setSource (nullptr);
-    audioTransportSource->removeChangeListener (this);
+	audioTransportSource.setSource (nullptr);
+    audioTransportSource.removeChangeListener (this);
 }
 
 //==============================================================================
@@ -77,7 +77,7 @@ InputStream* AudioFilePlayer::getInputStream()
         case memoryInputStream:
         {
             MemoryInputStream* memoryStream = dynamic_cast<MemoryInputStream*> (inputStream);
-            
+
             if (memoryStream != nullptr)
                 return new MemoryInputStream (memoryStream->getData(), memoryStream->getDataSize(), false);
             else
@@ -87,6 +87,29 @@ InputStream* AudioFilePlayer::getInputStream()
         case unknownStream:
             return inputStream;
 
+        default:
+            return nullptr;
+    }
+}
+
+InputSource* AudioFilePlayer::getInputSource()
+{
+    switch (inputType)
+    {
+        case file:
+            return new FileInputSource (currentFile);
+            
+        case memoryBlock:
+        case memoryInputStream:
+        {
+            MemoryInputStream* memoryStream = dynamic_cast<MemoryInputStream*> (getInputStream());
+
+            if (memoryStream != nullptr)
+                return new MemoryInputSource (memoryStream);
+            else
+                return nullptr;
+        }
+            
         default:
             return nullptr;
     }
@@ -123,14 +146,14 @@ bool AudioFilePlayer::setMemoryBlock (MemoryBlock& inputBlock)
 //==============================================================================
 void AudioFilePlayer::start()
 {
-    audioTransportSource->start();
+    audioTransportSource.start();
     
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
 void AudioFilePlayer::stop()
 {
-    audioTransportSource->stop();
+    audioTransportSource.stop();
     
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
@@ -140,18 +163,18 @@ void AudioFilePlayer::startFromZero()
 	if (audioFormatReaderSource == nullptr)
         return;
 	
-	audioTransportSource->setPosition (0.0);
-	audioTransportSource->start();
+	audioTransportSource.setPosition (0.0);
+	audioTransportSource.start();
     
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
 void AudioFilePlayer::pause()
 {
-	if (audioTransportSource->isPlaying())
-		audioTransportSource->stop();
+	if (audioTransportSource.isPlaying())
+		audioTransportSource.stop();
 	else
-		audioTransportSource->start();
+		audioTransportSource.start();
     
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
@@ -159,7 +182,7 @@ void AudioFilePlayer::pause()
 //==============================================================================
 void AudioFilePlayer::setPosition (double newPosition, bool /*ignoreAnyLoopPoints*/)
 {
-    audioTransportSource->setPosition (newPosition);
+    audioTransportSource.setPosition (newPosition);
 }
 
 //==============================================================================
@@ -200,7 +223,7 @@ void AudioFilePlayer::setLooping (bool shouldLoop)
 
 void AudioFilePlayer::changeListenerCallback (ChangeBroadcaster* source)
 {
-    if (source == audioTransportSource)
+    if (source == &audioTransportSource)
         listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
@@ -219,27 +242,27 @@ void AudioFilePlayer::removeListener (AudioFilePlayer::Listener* const listener)
 bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
     bool shouldBeLooping = isLooping();
-	audioTransportSource->setSource (nullptr);
+	audioTransportSource.setSource (nullptr);
 
 	if (reader != nullptr)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
-        audioTransportSource->setSource (audioFormatReaderSource,
-                                         32768,
-                                         bufferingTimeSliceThread);
+        audioTransportSource.setSource (audioFormatReaderSource,
+                                        32768,
+                                        bufferingTimeSliceThread);
         
         if (shouldBeLooping)
             audioFormatReaderSource->setLooping (true);
         
 		// let our listeners know that we have loaded a new file
-		audioTransportSource->sendChangeMessage();
+		audioTransportSource.sendChangeMessage();
         listeners.call (&Listener::fileChanged, this);
 
 		return true;
 	}
 	
-    audioTransportSource->sendChangeMessage();
+    audioTransportSource.sendChangeMessage();
     listeners.call (&Listener::fileChanged, this);
 
     return false;    
@@ -252,7 +275,6 @@ void AudioFilePlayer::commonInitialise()
     currentFile = File::nonexistent;
     inputStream = nullptr;
     
-    audioTransportSource = new AudioTransportSource();
-    audioTransportSource->addChangeListener (this);
-    masterSource = audioTransportSource;
+    audioTransportSource.addChangeListener (this);
+    masterSource = &audioTransportSource;
 }

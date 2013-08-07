@@ -102,7 +102,13 @@ public:
         dynamic_cast to do this yourself if you know the type.
      */
     InputStream* getInputStream();
-    
+
+    /** Returns an InputSource to the current stream if it knows the type of stream.
+        For example, if the input is a file this will return a FileInputStream etc.
+        It is the callers responsibility to delete this source when finished.
+     */
+    InputSource* getInputSource();
+
     //==============================================================================
 	/** Open and get ready to play a given audio file.
      */
@@ -138,7 +144,7 @@ public:
 	void pause();
     
     /** Returns true if it's currently playing. */
-    bool isPlaying() const noexcept             { return audioTransportSource->isPlaying(); }
+    bool isPlaying() const noexcept             { return audioTransportSource.isPlaying(); }
     
     //==============================================================================
     /** Changes the current playback position in the source stream.
@@ -147,15 +153,15 @@ public:
     
     /** Returns the position that the next data block will be read from in seconds.
      */
-    double getCurrentPosition() const           { return audioTransportSource->getCurrentPosition();}
+    double getCurrentPosition() const           { return audioTransportSource.getCurrentPosition();}
     
     /** Returns the stream's length in seconds.
      */
-    double getLengthInSeconds() const           { return audioTransportSource->getLengthInSeconds();}
+    double getLengthInSeconds() const           { return audioTransportSource.getLengthInSeconds();}
     
     /** Returns true if the player has stopped because its input stream ran out of data.
      */
-    bool hasStreamFinished() const noexcept     { return audioTransportSource->hasStreamFinished(); }
+    bool hasStreamFinished() const noexcept     { return audioTransportSource.hasStreamFinished(); }
     
     //==============================================================================
 	/** Returns the AudioFormatReaderSource currently being used.
@@ -164,7 +170,7 @@ public:
 	   
     /** Returns the AudioTransportSource being used.
      */
-    inline AudioTransportSource* getAudioTransportSource()         {   return audioTransportSource;         }
+    inline AudioTransportSource* getAudioTransportSource()         {   return &audioTransportSource;         }
 
     /** Sets the AudioFormatManager to use.
      */
@@ -233,19 +239,17 @@ public:
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
     
     //==============================================================================
-    /** Sets the next read position in samples.
-     */
-    void setNextReadPosition (int64 newPosition)    {   audioTransportSource->setNextReadPosition (newPosition);    }
+    /** Sets the next read position in samples. */
+    void setNextReadPosition (int64 newPosition)    {   audioTransportSource.setNextReadPosition (newPosition);    }
     
-    /** Returns the position from which the next block will be returned.
-     */
-    int64 getNextReadPosition() const   {   return audioTransportSource->getNextReadPosition();    }
+    /** Returns the position from which the next block will be returned. */
+    int64 getNextReadPosition() const   {   return audioTransportSource.getNextReadPosition();    }
     
     /** Returns the total length of the stream (in samples). */
-    int64 getTotalLength() const        {   return audioTransportSource->getTotalLength(); }
+    int64 getTotalLength() const        {   return audioTransportSource.getTotalLength(); }
     
     /** Returns true if this source is actually playing in a loop. */
-    bool isLooping() const              {   return audioTransportSource->isLooping();      }
+    bool isLooping() const              {   return audioTransportSource.isLooping();      }
     
     /** Tells the source whether you'd like it to play in a loop. */
     virtual void setLooping (bool shouldLoop);
@@ -260,7 +264,7 @@ protected:
 
     AudioSource* masterSource;
     ScopedPointer<AudioFormatReaderSource> audioFormatReaderSource;
-	ScopedPointer<AudioTransportSource> audioTransportSource;
+	AudioTransportSource audioTransportSource;
 
     InputType inputType;
 	File currentFile;

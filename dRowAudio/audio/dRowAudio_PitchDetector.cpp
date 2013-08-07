@@ -147,8 +147,8 @@ Buffer* PitchDetector::getBuffer (int stageIndex)
 //==============================================================================
 void PitchDetector::updateFiltersAndBlockSizes()
 {
-    lowFilter.makeLowPass (sampleRate, maxFrequency);
-    highFilter.makeHighPass (sampleRate, minFrequency);
+    lowFilter.setCoefficients (IIRCoefficients::makeLowPass (sampleRate, maxFrequency));
+    highFilter.setCoefficients (IIRCoefficients::makeHighPass (sampleRate, minFrequency));
     
     numSamplesNeededForDetection = int (sampleRate / minFrequency) * 2;
     

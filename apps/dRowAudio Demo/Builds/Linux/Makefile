@@ -17,7 +17,7 @@ ifeq ($(CONFIG),Debug)
 
   CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0
-  CXXFLAGS += $(CFLAGS) 
+  CXXFLAGS += $(CFLAGS)
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt -lcurl
   LDDEPS :=
   RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
@@ -37,7 +37,7 @@ ifeq ($(CONFIG),Release)
 
   CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os
-  CXXFLAGS += $(CFLAGS) 
+  CXXFLAGS += $(CFLAGS)
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -fvisibility=hidden -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt -lcurl
   LDDEPS :=
   RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
@@ -49,7 +49,23 @@ endif
 DEPFLAGS := $(if $(word 2, $(TARGET_ARCH)), , -MMD)
 
 OBJECTS := \
-  $(OBJDIR)/UnityBuild_a75dd102.o \
+  $(OBJDIR)/Main_90ebc5c2.o \
+  $(OBJDIR)/DemoLookAndFeel_74df4d7c.o \
+  $(OBJDIR)/MainWindow_499ac812.o \
+  $(OBJDIR)/MainComponent_a6ffb4a5.o \
+  $(OBJDIR)/TrackInfoComponent_5f5fdbed.o \
+  $(OBJDIR)/TransportComponent_2551bb5d.o \
+  $(OBJDIR)/AudioPlaybackDemo_f7ebabe9.o \
+  $(OBJDIR)/LoopComponent_29b26e8e.o \
+  $(OBJDIR)/BufferTransformAudioSource_866e3b7a.o \
+  $(OBJDIR)/DistortionDemo_6a738135.o \
+  $(OBJDIR)/DistortionComponent_ccf4c935.o \
+  $(OBJDIR)/NetworkDemo_34cd0d31.o \
+  $(OBJDIR)/ConnectionComponent_50a9adbf.o \
+  $(OBJDIR)/LocalDirectoryListBox_9a5523eb.o \
+  $(OBJDIR)/RemoteDirectoryListBox_1e458a90.o \
+  $(OBJDIR)/FFTDemo_183d0bd.o \
+  $(OBJDIR)/PitchDetectorComponent_ecaa29bb.o \
   $(OBJDIR)/BinaryData_ce4232d4.o \
   $(OBJDIR)/dRowAudio_77fd40e6.o \
   $(OBJDIR)/juce_audio_basics_de3ff517.o \
@@ -83,9 +99,89 @@ strip:
 	@echo Stripping dRowAudio Demo
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
 
-$(OBJDIR)/UnityBuild_a75dd102.o: ../../Source/UnityBuild.cpp
+$(OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling UnityBuild.cpp"
+	@echo "Compiling Main.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/DemoLookAndFeel_74df4d7c.o: ../../Source/DemoLookAndFeel.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling DemoLookAndFeel.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/MainWindow_499ac812.o: ../../Source/MainWindow.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling MainWindow.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/MainComponent_a6ffb4a5.o: ../../Source/MainComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling MainComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/TrackInfoComponent_5f5fdbed.o: ../../Source/TrackInfoComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TrackInfoComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/TransportComponent_2551bb5d.o: ../../Source/TransportComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TransportComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/AudioPlaybackDemo_f7ebabe9.o: ../../Source/playback/AudioPlaybackDemo.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling AudioPlaybackDemo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/LoopComponent_29b26e8e.o: ../../Source/playback/LoopComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LoopComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/BufferTransformAudioSource_866e3b7a.o: ../../Source/playback/BufferTransformAudioSource.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling BufferTransformAudioSource.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/DistortionDemo_6a738135.o: ../../Source/playback/DistortionDemo.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling DistortionDemo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/DistortionComponent_ccf4c935.o: ../../Source/playback/DistortionComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling DistortionComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/NetworkDemo_34cd0d31.o: ../../Source/network/NetworkDemo.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling NetworkDemo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/ConnectionComponent_50a9adbf.o: ../../Source/network/ConnectionComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling ConnectionComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/LocalDirectoryListBox_9a5523eb.o: ../../Source/network/LocalDirectoryListBox.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LocalDirectoryListBox.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/RemoteDirectoryListBox_1e458a90.o: ../../Source/network/RemoteDirectoryListBox.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling RemoteDirectoryListBox.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/FFTDemo_183d0bd.o: ../../Source/fft/FFTDemo.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling FFTDemo.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/PitchDetectorComponent_ecaa29bb.o: ../../Source/fft/PitchDetectorComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling PitchDetectorComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
