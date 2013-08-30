@@ -312,6 +312,7 @@ using juce::UnitTest;
 #ifndef __DROWAUDIO_AUDIOFILEDROPTARGET_H__
     #include "gui/dRowAudio_AudioFileDropTarget.h"
 #endif
+    
 #ifndef __DROWAUDIO_GUIHELPERS_H__
     #include "gui/dRowAudio_GuiHelpers.h"
 #endif
@@ -336,6 +337,10 @@ using juce::UnitTest;
     #include "gui/dRowAudio_Sonogram.h"
 #endif
 
+#ifndef __DROWAUDIO_SPECTROGRAPH_H__
+    #include "gui/dRowAudio_Spectrograph.h"
+#endif
+    
 #ifndef __DROWAUDIO_SPECTROSCOPE_H__
     #include "gui/dRowAudio_Spectroscope.h"
 #endif
@@ -484,6 +489,10 @@ using juce::UnitTest;
 
 #ifndef __DROWAUDIO_ITUNESLIBRARYPARSER_H__
     #include "utility/dRowAudio_ITunesLibraryParser.h"
+#endif
+
+#ifndef __DROWAUDIO_LOCKEDPOINTER_H__
+    #include "utility/dRowAudio_LockedPointer.h"
 #endif
 
 }

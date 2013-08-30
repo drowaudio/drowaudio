@@ -119,6 +119,7 @@ template <class Type>
 void reverseTwoArrays (Type* array1, Type* array2, int length)
 {
     Type swap;
+    
     for (int a = 0; a < --length; a++)  //increment a and decrement b until they meet eachother
     {
         swap = array1[a];               //put what's in a into swap space
@@ -170,6 +171,50 @@ static String findKeyFromChemicalWebsite (const String& releaseNo, const String&
     }
     
     return String::empty;
+}
+
+//==============================================================================
+/** Draws a line representing the normalised set of samples to the given Image.
+    Note the samples must be in the range of 1-0 and the line will be stretched to fit the whole image.
+ */
+static void drawBufferToImage (const Image& image, const float* samples, int numSamples, Colour colour, float thickness)
+{
+    if (image.isNull())
+        return;
+    
+    jassert (image.getWidth() > 0 && image.getHeight() > 0);
+    
+    Graphics g (image);
+    g.setColour (colour);
+    const float imageXScale = image.getWidth() / (float) numSamples;
+    float y1 = image.getHeight();
+    
+    for (int i = 0; i < numSamples; ++i)
+    {
+        const float x1 = i * imageXScale;
+        const float x2 = x1 + imageXScale;
+        const float y2 = image.getHeight() - (samples[i] * image.getHeight());
+        
+        const Line<float> line (Point<float> (x1, y1), Point<float> (x2, y2));
+        g.drawLine (line, thickness);
+        
+        y1 = y2;
+    }
+}
+
+/** Dumps a given image to a File in png format.
+    If the file parameter is nonexistant a temp file will be created on the desktop.
+ */
+static void saveImageToFile (const Image& image, File file = File::nonexistent)
+{
+    if (! file.exists())
+        file = File::getSpecialLocation (File::userDesktopDirectory).getNonexistentChildFile ("tempImage", ".png");
+    
+    PNGImageFormat format;
+    ScopedPointer<OutputStream> os (file.createOutputStream());
+    
+    if (os != nullptr)
+        format.writeImageToStream (image, *os);
 }
 
 //==============================================================================
@@ -301,8 +346,7 @@ public:
     /** Creates a ReferencedCountedMemoryBlock with a blank MemoryBlock.
      */
     ReferencedCountedMemoryBlock()
-    {
-    }
+    {}
 
     /** Creates a ReferencedCountedMemoryBlock for a given MemoryBlock.
         Note that this will take a copy of the data so you can dispose of the the
@@ -310,8 +354,7 @@ public:
      */
     ReferencedCountedMemoryBlock (const MemoryBlock& memoryBlockToReference)
         : memoryBlock (memoryBlockToReference)
-    {
-    }
+    {}
     
 #if JUCE_COMPILER_SUPPORTS_MOVE_SEMANTICS
     /** Creates a ReferencedCountedMemoryBlock for a given MemoryBlock.
@@ -320,14 +363,12 @@ public:
      */
     ReferencedCountedMemoryBlock (MemoryBlock&& other)
         : memoryBlock (other)
-    {
-    }
+    {}
 #endif
 
     /** Destructor. */
     ~ReferencedCountedMemoryBlock()
-    {
-    }
+    {}
     
     /** Returns the MemoryBlock being held.
      */

@@ -43,15 +43,13 @@ namespace ValueTreeComparators
     public:
         Lexicographic (const Identifier attributeToSort_, bool forwards)
         :	attributeToSort (attributeToSort_),
-            direction (forwards ? 1 : -1)
+            direction       (forwards ? 1 : -1)
         {
         }
         
         int compareElements (const ValueTree &first, const ValueTree &second) const
         {
-            int result = 0;
-            
-            result = first[attributeToSort].toString().compareLexicographically(second[attributeToSort].toString());
+            const int result = first[attributeToSort].toString().compareLexicographically (second[attributeToSort].toString());
             
             return direction * result;
         }
@@ -71,15 +69,13 @@ namespace ValueTreeComparators
     public:
         Numerical (const Identifier attributeToSort_, bool forwards)
         :	attributeToSort (attributeToSort_),
-            direction (forwards ? 1 : -1)
+            direction       (forwards ? 1 : -1)
         {
         }
         
         int compareElements (const ValueTree &first, const ValueTree &second) const
         {
-            int result = 0;
-            
-            result = (double(first[attributeToSort]) > double(second[attributeToSort])) ? 1 : -1;
+            const int result = (double (first[attributeToSort]) > double (second[attributeToSort])) ? 1 : -1;
             
             return direction * result;
         }
@@ -100,17 +96,15 @@ namespace ValueTreeComparators
     {
     public:
         LexicographicWithBackup (const Identifier attributeToSort_, const Identifier backupAttribute_, bool forwards)
-            : attributeToSort (attributeToSort_),
-              backupAttribute (backupAttribute_),
-              direction (forwards ? 1 : -1)
+            : attributeToSort   (attributeToSort_),
+              backupAttribute   (backupAttribute_),
+              direction         (forwards ? 1 : -1)
         {
         }
         
         int compareElements (const ValueTree &first, const ValueTree &second) const
         {
-            int result = 0;
-            
-            result = first[attributeToSort].toString().compareLexicographically (second[attributeToSort].toString());
+            int result = first[attributeToSort].toString().compareLexicographically (second[attributeToSort].toString());
             
             if (result == 0)
                 result = first[backupAttribute].toString().compareLexicographically (second[backupAttribute].toString());

@@ -60,14 +60,13 @@ public:
 		  fftSizeHalved (fftSize >> 1),
 		  oneOverFFTSizeMinus1 (1.0 / fftSizeMinus1),
 		  oneOverFFTSize (1.0 / fftSize)
-	{
-	}
+	{}
 	
     //==============================================================================
-	long fftSizeLog2;
-	long fftSize;
-	long fftSizeMinus1;
-	long fftSizeHalved;
+	int fftSizeLog2;
+	int fftSize;
+	int fftSizeMinus1;
+	int fftSizeHalved;
 	
 	double oneOverFFTSizeMinus1;
 	double oneOverFFTSize;	
