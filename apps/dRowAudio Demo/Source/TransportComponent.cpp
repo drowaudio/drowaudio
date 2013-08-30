@@ -98,7 +98,7 @@ void TransportComponent::buttonClicked (Button* button)
 void TransportComponent::showAudioSettings()
 {
     AudioDeviceSelectorComponent settingsComp (audioDeviceManager,
-                                               0, 2,
+                                               1, 2,
                                                1, 2,
                                                false, false,
                                                true, false);

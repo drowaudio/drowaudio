@@ -118,7 +118,7 @@ MainComponent::MainComponent()
 
     audioSourcePlayer.setSource (&bufferTransformAudioSource);
     //audioSourcePlayer.setSource (&audioFilePlayer);
-    audioDeviceManager.initialise (0, 2, nullptr, true);
+    audioDeviceManager.initialise (1, 2, nullptr, true);
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);
 //    audioDeviceManager.addAudioCallback (fftDemo);
