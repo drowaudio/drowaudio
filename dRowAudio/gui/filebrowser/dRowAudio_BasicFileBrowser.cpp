@@ -117,6 +117,11 @@ void BasicFileBrowser::mouseDoubleClick (const MouseEvent &e)
 	}
 }
 
+//void BasicFileBrowser::mouseWheelMove (const MouseEvent &e, const MouseWheelDetails& d)
+//{
+//    // Only pass up horizontal
+//}
+
 //==============================================================================
 bool BasicFileBrowser::isSaveMode() const noexcept
 {

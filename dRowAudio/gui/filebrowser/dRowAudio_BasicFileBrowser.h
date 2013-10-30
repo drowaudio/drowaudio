@@ -178,6 +178,8 @@ public:
     /** @internal */
     void mouseDoubleClick (const MouseEvent &e);
     /** @internal */
+//    void mouseWheelMove (const MouseEvent &e, const MouseWheelDetails& d) override;
+    /** @internal */
     void selectionChanged();
     /** @internal */
     void fileClicked (const File& f, const MouseEvent& e);

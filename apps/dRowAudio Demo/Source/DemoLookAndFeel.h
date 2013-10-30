@@ -12,7 +12,7 @@
 #ifndef __DROWAUDIO_DEMOLOOKANDFEEL_H__
 #define __DROWAUDIO_DEMOLOOKANDFEEL_H__
 
-class DemoLookAndFeel : public LookAndFeel
+class DemoLookAndFeel : public LookAndFeel_V3
 {
 public:
     DemoLookAndFeel();

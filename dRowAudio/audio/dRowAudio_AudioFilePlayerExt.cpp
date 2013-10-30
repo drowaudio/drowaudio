@@ -143,7 +143,7 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
                                                          false,
                                                          32768);
         soundTouchAudioSource = new SoundTouchAudioSource (bufferingAudioSource);
-        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
+        loopingAudioSource = new LoopingAudioSource (bufferingAudioSource, false);
         loopingAudioSource->setLoopBetweenTimes (shouldBeLooping);
         updateLoopTimes();
         

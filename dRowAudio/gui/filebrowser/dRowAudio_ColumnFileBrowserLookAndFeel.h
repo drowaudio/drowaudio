@@ -36,7 +36,7 @@
 /** The LookAndFeel of the ColumnFileBrowser.
     This is not intended for public use.
  */
-class ColumnFileBrowserLookAndFeel : public LookAndFeel
+class ColumnFileBrowserLookAndFeel : public LookAndFeel_V2
 {
 public:
     //==================================================================================

@@ -103,7 +103,7 @@ void TransportComponent::showAudioSettings()
                                                false, false,
                                                true, false);
     settingsComp.setSize (500, 400);
-    LookAndFeel settingsLaf;
+    LookAndFeel_V3 settingsLaf;
     settingsLaf.setColour (Label::textColourId, Colours::white);
     settingsLaf.setColour (TextButton::buttonColourId, Colours::white);
     settingsLaf.setColour (TextButton::textColourOffId, Colours::black);
