@@ -47,7 +47,7 @@ public:
                             filesToDisplay_),
           fileDragEnabled (false)
 	{
-        //addMouseListener (this, true);
+        addMouseListener (this, true);
 	}
 	
 	~BrowserColumn()
