@@ -307,10 +307,12 @@ int CURLEasySession::performTransfer (bool transferIsUpload)
     
 	//perform the transfer
 	progress = 0.0f;
+    listeners.call (&CURLEasySession::Listener::transferAboutToStart, this);
 	CURLcode result = curl_easy_perform (handle);
 	
 	// delete the streams to flush the buffers
 	outputStream = nullptr;
+    listeners.call (&CURLEasySession::Listener::transferEnded, this);
     
     return result;
 }
