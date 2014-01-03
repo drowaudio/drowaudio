@@ -297,7 +297,7 @@ static bool isAudioSampleBuffer (void* sourceData, size_t sourceDataSize, int ma
         return false;
     
     const size_t channelListSize = (channelPointers.size() + 1) * sizeof (float*);
-    const int expectedNumSamples = (sourceDataSize - channelListSize) / (channelPointers.size() * sizeof (float));
+    const size_t expectedNumSamples = (sourceDataSize - channelListSize) / (channelPointers.size() * sizeof (float));
     const size_t bytesPerChannel = expectedNumSamples * sizeof (float);
 
     const float* startOfChannels = reinterpret_cast<float*> (addBytesToPointer (sourceData, channelListSize));

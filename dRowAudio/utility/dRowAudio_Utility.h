@@ -187,7 +187,7 @@ static void drawBufferToImage (const Image& image, const float* samples, int num
     Graphics g (image);
     g.setColour (colour);
     const float imageXScale = image.getWidth() / (float) numSamples;
-    float y1 = image.getHeight();
+    float y1 = (float) image.getHeight();
     
     for (int i = 0; i < numSamples; ++i)
     {
