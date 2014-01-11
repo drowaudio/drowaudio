@@ -61,11 +61,11 @@ inline static String stripFileProtocolForLocal (const String& pathToStrip)
 {
 	if (pathToStrip.startsWith ("file://localhost"))
 	{
-#if JUCE_WINDOWS
+       #if JUCE_WINDOWS
 		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/") + 1));
-#else
+       #else
 		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
-#endif   
+       #endif
 		return URL::removeEscapeChars (temp);
 	}
 	
@@ -86,14 +86,7 @@ inline static Time parseITunesDateString (const String& dateString)
     int milliseconds    = 0;
     bool useLocalTime   = true;
     
-    return Time (year,
-                 month,
-                 day,
-                 hours,
-                 minutes,
-                 seconds,
-                 milliseconds,
-                 useLocalTime);
+    return Time (year, month, day, hours, minutes, seconds, milliseconds, useLocalTime);
 }
 
 /**	Reverses an array.
@@ -399,7 +392,7 @@ private:
     This is a helper method to conveniently write a ValueTree to a File,
     optionally storing it as Xml.
  */
-static bool writeValueTreeToFile (ValueTree& treeToWrite, File& fileToWriteTo, bool asXml = true)
+static bool writeValueTreeToFile (const ValueTree& treeToWrite, const File& fileToWriteTo, bool asXml = true)
 {
     if (fileToWriteTo.hasWriteAccess())
     {
