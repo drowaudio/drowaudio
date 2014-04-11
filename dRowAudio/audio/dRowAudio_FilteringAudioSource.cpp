@@ -127,7 +127,7 @@ void FilteringAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info
     if (filterSource && info.buffer->getNumChannels() > 0)
     {
         const int bufferNumSamples = info.numSamples;
-        float* sampleDataL = info.buffer->getSampleData (0, info.startSample);
+        float* sampleDataL = info.buffer->getWritePointer (0, info.startSample);
         
         filter[0][Low].processSamples   (sampleDataL, bufferNumSamples);
         filter[0][Mid].processSamples   (sampleDataL, bufferNumSamples);
@@ -135,7 +135,7 @@ void FilteringAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info
 
         if (info.buffer->getNumChannels() > 1)
         {
-            float* sampleDataR = info.buffer->getSampleData (1, info.startSample);
+            float* sampleDataR = info.buffer->getWritePointer (1, info.startSample);
 
             filter[1][Low].processSamples   (sampleDataR, bufferNumSamples);
             filter[1][Mid].processSamples   (sampleDataR, bufferNumSamples);

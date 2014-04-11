@@ -998,7 +998,7 @@ void ColouredAudioThumbnail::addBlock (const int64 startSample, const AudioSampl
 
         for (int chan = 0; chan < numChans; ++chan)
         {
-            const float* const sourceData = incoming.getSampleData (chan, startOffsetInBuffer);
+            const float* const sourceData = incoming.getReadPointer (chan, startOffsetInBuffer);
             MinMaxColourValue* const dest = thumbData + numToDo * chan;
             thumbChannels [chan] = dest;
 
