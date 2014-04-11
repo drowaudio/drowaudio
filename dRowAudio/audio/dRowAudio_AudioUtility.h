@@ -66,9 +66,9 @@ forcedinline static double secondsToMins (double seconds)
 
 /** Converts a time in seconds to a number of samples for a given sample rate.
  */
-forcedinline static int64 secondsToSamples (double timeMs, double sampleRate)
+forcedinline static int64 secondsToSamples (double timeSeconds, double sampleRate)
 {
-    return (int64) (timeMs * sampleRate);
+    return (int64) (timeSeconds * sampleRate);
 }
 
 /** Converts a time in milliseconds to a number of samples for a given sample rate.

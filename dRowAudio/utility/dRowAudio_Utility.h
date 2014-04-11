@@ -516,6 +516,16 @@ private:
 };
 
 //==============================================================================
+/** Simple utility class to send a change message when it goes out of scope. */
+struct ScopedChangeSender
+{
+    ScopedChangeSender (ChangeBroadcaster& owner) : broadcaster (owner) {}
+    ~ScopedChangeSender() { broadcaster.sendChangeMessage(); }
+    
+    ChangeBroadcaster& broadcaster;
+};
+
+//==============================================================================
 /** Useful macro to print a variable name and value to the console.
  */
 #define DBG_VAR(dbgvar)     {DBG (JUCE_STRINGIFY(dbgvar) << ": " << dbgvar)}
