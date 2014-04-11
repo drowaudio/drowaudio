@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>DA62D09C-3D2D-48F1-9663-DF505F75821C</string>
+	<string>579FB82A-EFC5-4E01-BB40-96888C962E29</string>
 	<key>IDESourceControlProjectName</key>
 	<string>dRowAudio Demo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -25,7 +25,7 @@
 		<string>../../../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/julianstorer/JUCE.git</string>
+	<string>https://github.com/drowaudio/drowaudio.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

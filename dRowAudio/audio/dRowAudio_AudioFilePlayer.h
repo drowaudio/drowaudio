@@ -32,6 +32,8 @@
 #ifndef __DROWAUDIO_AUDIOFILEPLAYER_H__
 #define __DROWAUDIO_AUDIOFILEPLAYER_H__
 
+#include "../streams/dRowAudio_StreamAndFileHandler.h"
+
 //==============================================================================
 /**
     This class can be used to load and play an audio file from disk.
@@ -44,22 +46,11 @@
     @see AudioFormatReaderSource
     @see AudioFilePlayerExt
  */
-class AudioFilePlayer : public PositionableAudioSource,
+class AudioFilePlayer : public StreamAndFileHandler,
+                        public PositionableAudioSource,
                         public ChangeListener
 {
 public:
-    //==============================================================================
-    /** An enum to distinguish between the different input types.
-     */
-    enum InputType
-    {
-        file,
-        memoryBlock,
-        memoryInputStream,
-        unknownStream,
-        noInput
-    };
-    
     //==============================================================================
 	/** Creates an empty AudioFilePlayer.
         This is a quick way to create an AudioFilePlayer as it will use its own
@@ -85,51 +76,6 @@ public:
      */
 	virtual ~AudioFilePlayer();
 	
-    //==============================================================================
-    /** Returns the type of input that was last used.
-     */
-    inline InputType getInputType() const noexcept  {   return inputType;   }
-    
-    /** Sets the source of the player using any kind of InputStream.
-        The stream will be deleted by the player when it is no longer needed.
-     */
-    bool setInputStream (InputStream* inputStream);
-    
-    /** Returns a stream to the current source, you can find this out using
-        getInputType().
-        It is the caller's responsibility to delete this stream unless it has the
-        type unknownStream which it can't make a copy of. You could use a
-        dynamic_cast to do this yourself if you know the type.
-     */
-    InputStream* getInputStream();
-
-    /** Returns an InputSource to the current stream if it knows the type of stream.
-        For example, if the input is a file this will return a FileInputStream etc.
-        It is the callers responsibility to delete this source when finished.
-     */
-    InputSource* getInputSource();
-
-    //==============================================================================
-	/** Open and get ready to play a given audio file.
-     */
-	bool setFile (const File& newFile);
-    
-    /** Sets the source of the player using a MemoryInputStream.
-        The stream will be deleted by the player when it is no longer needed.
-     */
-    bool setMemoryInputStream (MemoryInputStream* memoryInputStream);
-    
-    /** Sets the source of the player using a memory block.
-        The player will use this so should not be deleted until a new file is
-        set or a nullptr is passed in here to clear the loaded file.
-     */
-    bool setMemoryBlock (MemoryBlock& inputBlock);
-        
-	/** Returns the current file if it was set with a one.
-        If a stream was used this will return File::nonexistant.
-     */
-	File getFile() const noexcept               {   return currentFile;    }
-    
     //==============================================================================
     /** Starts playing (if a source has been selected). */
     void start();
@@ -254,8 +200,15 @@ public:
     /** Tells the source whether you'd like it to play in a loop. */
     virtual void setLooping (bool shouldLoop);
 
+    //==============================================================================
     /** @internal. */
-    void changeListenerCallback (ChangeBroadcaster* source);
+    bool fileChanged (const File& file) override;
+
+    /** @internal. */
+    bool streamChanged (InputStream* inputStream) override;
+
+    /** @internal. */
+    void changeListenerCallback (ChangeBroadcaster* source) override;
     
 protected:	
     //==============================================================================
@@ -266,10 +219,6 @@ protected:
     ScopedPointer<AudioFormatReaderSource> audioFormatReaderSource;
 	AudioTransportSource audioTransportSource;
 
-    InputType inputType;
-	File currentFile;
-    InputStream* inputStream;
-    
     ListenerList <Listener> listeners;
 
     //==============================================================================

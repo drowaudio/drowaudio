@@ -59,91 +59,6 @@ AudioFilePlayer::~AudioFilePlayer()
 }
 
 //==============================================================================
-bool AudioFilePlayer::setInputStream (InputStream* inputStream)
-{
-    inputType = unknownStream;
-    
-    return setSourceWithReader (formatManager->createReaderFor (inputStream));
-}
-
-InputStream* AudioFilePlayer::getInputStream()
-{
-    switch (inputType)
-    {
-        case file:
-            return new FileInputStream (currentFile);
-
-        case memoryBlock:
-        case memoryInputStream:
-        {
-            MemoryInputStream* memoryStream = dynamic_cast<MemoryInputStream*> (inputStream);
-
-            if (memoryStream != nullptr)
-                return new MemoryInputStream (memoryStream->getData(), memoryStream->getDataSize(), false);
-            else
-                return nullptr;
-        }
-
-        case unknownStream:
-            return inputStream;
-
-        default:
-            return nullptr;
-    }
-}
-
-InputSource* AudioFilePlayer::getInputSource()
-{
-    switch (inputType)
-    {
-        case file:
-            return new FileInputSource (currentFile);
-            
-        case memoryBlock:
-        case memoryInputStream:
-        {
-            MemoryInputStream* memoryStream = dynamic_cast<MemoryInputStream*> (getInputStream());
-
-            if (memoryStream != nullptr)
-                return new MemoryInputSource (memoryStream);
-            else
-                return nullptr;
-        }
-            
-        default:
-            return nullptr;
-    }
-}
-
-//==============================================================================
-bool AudioFilePlayer::setFile (const File& newFile)
-{
-    inputType = file;
-    inputStream = nullptr;
-    currentFile = newFile;
-    
-    return setSourceWithReader (formatManager->createReaderFor (currentFile));
-}
-
-bool AudioFilePlayer::setMemoryInputStream (MemoryInputStream* newMemoryInputStream)
-{
-    inputType = memoryInputStream;
-    currentFile = File::nonexistent;
-    inputStream = newMemoryInputStream;
-    
-    return setSourceWithReader (formatManager->createReaderFor (inputStream));
-}
-
-bool AudioFilePlayer::setMemoryBlock (MemoryBlock& inputBlock)
-{
-    inputType = memoryBlock;
-    currentFile = File::nonexistent;
-    inputStream = new MemoryInputStream (inputBlock, false);
-
-    return setSourceWithReader (formatManager->createReaderFor (inputStream));
-}
-
-//==============================================================================
 void AudioFilePlayer::start()
 {
     audioTransportSource.start();
@@ -221,6 +136,25 @@ void AudioFilePlayer::setLooping (bool shouldLoop)
         audioFormatReaderSource->setLooping (shouldLoop); 
 }
 
+//==============================================================================
+bool AudioFilePlayer::fileChanged (const File& file)
+{
+    if (setSourceWithReader (formatManager->createReaderFor (file)))
+        return true;
+    
+    clear();
+    return false;
+}
+
+bool AudioFilePlayer::streamChanged (InputStream* inputStream)
+{
+    if (setSourceWithReader (formatManager->createReaderFor (inputStream)))
+        return true;
+    
+    clear();
+    return false;
+}
+
 void AudioFilePlayer::changeListenerCallback (ChangeBroadcaster* source)
 {
     if (source == &audioTransportSource)
@@ -271,10 +205,6 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 //==============================================================================
 void AudioFilePlayer::commonInitialise()
 {
-    inputType = noInput;
-    currentFile = File::nonexistent;
-    inputStream = nullptr;
-    
     audioTransportSource.addChangeListener (this);
     masterSource = &audioTransportSource;
 }

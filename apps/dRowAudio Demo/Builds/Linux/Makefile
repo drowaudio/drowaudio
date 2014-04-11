@@ -1,6 +1,9 @@
 # Automatically generated makefile, created by the Introjucer
 # Don't edit this file! Your changes will be overwritten when you re-save the Introjucer project!
 
+# (this disables dependency generation if multiple architectures are set)
+DEPFLAGS := $(if $(word 2, $(TARGET_ARCH)), , -MMD)
+
 ifndef CONFIG
   CONFIG=Debug
 endif
@@ -15,14 +18,15 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=0.6.0" -D "JUCE_APP_VERSION_HEX=0x600" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../../modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0
   CXXFLAGS += $(CFLAGS)
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt -lcurl
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
+  RESFLAGS :=  -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=0.6.0" -D "JUCE_APP_VERSION_HEX=0x600" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../../modules
   TARGET := dRowAudio\ Demo
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
+  CLEANCMD = rm -rf $(OUTDIR)/$(TARGET) $(OBJDIR)
 endif
 
 ifeq ($(CONFIG),Release)
@@ -35,18 +39,16 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=0.6.0" -D "JUCE_APP_VERSION_HEX=0x600" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../../modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os
   CXXFLAGS += $(CFLAGS)
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -fvisibility=hidden -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt -lcurl
   LDDEPS :=
-  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode
+  RESFLAGS :=  -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=0.6.0" -D "JUCE_APP_VERSION_HEX=0x600" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../../modules
   TARGET := dRowAudio\ Demo
   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
+  CLEANCMD = rm -rf $(OUTDIR)/$(TARGET) $(OBJDIR)
 endif
-
-# (this disables dependency generation if multiple architectures are set)
-DEPFLAGS := $(if $(word 2, $(TARGET_ARCH)), , -MMD)
 
 OBJECTS := \
   $(OBJDIR)/Main_90ebc5c2.o \
@@ -91,9 +93,7 @@ $(OUTDIR)/$(TARGET): $(OBJECTS) $(LDDEPS) $(RESOURCES)
 
 clean:
 	@echo Cleaning dRowAudio Demo
-	-@rm -f $(OUTDIR)/$(TARGET)
-	-@rm -rf $(OBJDIR)/*
-	-@rm -rf $(OBJDIR)
+	@$(CLEANCMD)
 
 strip:
 	@echo Stripping dRowAudio Demo

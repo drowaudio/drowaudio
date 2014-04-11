@@ -2,11 +2,10 @@
 
 <JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.6.0"
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.1.0"
-              defines="DROWAUDIO_UNIT_TESTS">
+              defines="DROWAUDIO_UNIT_TESTS" includeBinaryInAppConfig="1">
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" juceFolder="../../../../"
-               extraLinkerFlags="-lcurl" bigIcon="vTRqOY" smallIcon="vTRqOY"
-               extraCompilerFlags="-Wall">
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" extraLinkerFlags="-lcurl"
+               bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
@@ -15,10 +14,25 @@
                        osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
                        headerPath="" defines=""/>
       </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_audio" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../modules"/>
+        <MODULEPATH id="juce_events" path="../../../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../modules"/>
+        <MODULEPATH id="juce_core" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../../modules"/>
+      </MODULEPATHS>
     </XCODE_MAC>
-    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../../"
-            extraDefs="CURL_STATICLIB" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}"
-            bigIcon="vTRqOY" smallIcon="vTRqOY">
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" extraDefs="CURL_STATICLIB"
+            extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}" bigIcon="vTRqOY"
+            smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        headerPath="" defines="CURL_LIB=libcurldebug.lib" winWarningLevel="4"
@@ -27,18 +41,48 @@
                        headerPath="" defines="CURL_LIB=libcurlrelease.lib" winWarningLevel="4"
                        winArchitecture="32-bit" generateManifest="1" libraryPath="../../../../dRowAudio/network/curl/lib"/>
       </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_audio" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../modules"/>
+        <MODULEPATH id="juce_events" path="../../../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../modules"/>
+        <MODULEPATH id="juce_core" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../../modules"/>
+      </MODULEPATHS>
     </VS2010>
-    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../../" bigIcon="vTRqOY"
-                smallIcon="vTRqOY" extraLinkerFlags="-lcurl">
+    <LINUX_MAKE targetFolder="Builds/Linux" bigIcon="vTRqOY" smallIcon="vTRqOY"
+                extraLinkerFlags="-lcurl">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        headerPath="" defines="" libraryPath="/usr/X11R6/lib/"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        headerPath="" defines="" libraryPath="/usr/X11R6/lib/"/>
       </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_audio" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../modules"/>
+        <MODULEPATH id="juce_events" path="../../../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../modules"/>
+        <MODULEPATH id="juce_core" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../../modules"/>
+      </MODULEPATHS>
     </LINUX_MAKE>
-    <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" juceFolder="../../../../"
-                  UIStatusBarHidden="1" bigIcon="vTRqOY" smallIcon="vTRqOY">
+    <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" UIStatusBarHidden="1"
+                  bigIcon="vTRqOY" smallIcon="vTRqOY">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
@@ -47,6 +91,21 @@
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        headerPath="" defines="" iosCompatibility="default"/>
       </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_audio" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../modules"/>
+        <MODULEPATH id="juce_events" path="../../../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../modules"/>
+        <MODULEPATH id="juce_core" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../../modules"/>
+      </MODULEPATHS>
     </XCODE_IPHONE>
   </EXPORTFORMATS>
   <MAINGROUP id="BrdxWp" name="dRowAudio Demo">
@@ -124,19 +183,19 @@
     </GROUP>
   </MAINGROUP>
   <MODULES>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS/>
 </JUCERPROJECT>
