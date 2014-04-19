@@ -5,12 +5,12 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>579FB82A-EFC5-4E01-BB40-96888C962E29</string>
+	<string>0EBE35D0-8D8F-4C38-BC82-953EF45F39BA</string>
 	<key>IDESourceControlProjectName</key>
 	<string>dRowAudio Demo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>464273CE-ED31-4C12-932B-67DA8F9A27E4</key>
+		<key>74B6049E-A2CD-41BB-9D21-2C73B219213C</key>
 		<string>https://github.com/drowaudio/drowaudio.git</string>
 		<key>C6F3CED2-0E61-4D95-8D6C-B9D848170F75</key>
 		<string>https://github.com/julianstorer/JUCE.git</string>
@@ -19,13 +19,13 @@
 	<string>modules/dRowAudio/apps/dRowAudio Demo/Builds/MacOSX/dRowAudio Demo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>464273CE-ED31-4C12-932B-67DA8F9A27E4</key>
+		<key>74B6049E-A2CD-41BB-9D21-2C73B219213C</key>
 		<string>../../../../../..</string>
 		<key>C6F3CED2-0E61-4D95-8D6C-B9D848170F75</key>
 		<string>../../../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/drowaudio/drowaudio.git</string>
+	<string>https://github.com/julianstorer/JUCE.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -36,7 +36,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>464273CE-ED31-4C12-932B-67DA8F9A27E4</string>
+			<string>74B6049E-A2CD-41BB-9D21-2C73B219213C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>dRowAudio</string>
 		</dict>

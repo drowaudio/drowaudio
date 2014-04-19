@@ -83,6 +83,35 @@ public:
 
 		expectEquals ((int) isnan (1), (int) false);
         expectEquals ((int) isnan (sqrt (-1.0)), (int) true);
+        
+        // RMS
+        {
+            const int numSamples = 512;
+            AudioSampleBuffer asb (1, numSamples);
+
+            // Sin
+            {
+                const double delta = numSamples / (2 * double_Pi);
+                float* data = asb.getWritePointer (0);
+
+                for (int i = 0; i < numSamples; ++i)
+                    *data++ = (float) std::sin (i * delta);
+
+                const float rms = findRMS<float> (asb.getReadPointer (0), numSamples);
+                expect (almostEqual (rms, 0.707f, 0.001f));
+            }
+            
+            // Square
+            {
+                float* data = asb.getWritePointer (0);
+
+                for (int i = 0; i < numSamples; ++i)
+                    *data++ = isOdd (i) ? 1.0f : -1.0f;
+
+                const float rms = findRMS<float> (asb.getReadPointer (0), numSamples);
+                expect (almostEqual (rms, 1.0f, 0.001f));
+            }
+        }
     }
 };
 

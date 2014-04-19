@@ -50,6 +50,56 @@ inline bool isOdd (int number) noexcept
 }
 
 //==============================================================================
+/** Finds the maximum value and location of this in a buffer regardless of sign. */
+template <typename FloatingPointType>
+inline void findAbsoluteMax (const FloatingPointType* samples, int numSamples,
+                             int& maxSampleLocation, FloatingPointType& maxSampleValue) noexcept
+{
+    maxSampleValue = 0;
+    
+    for (int i = 0; i < numSamples; ++i)
+    {
+        const FloatingPointType absoluteSample = fabs (samples[i]);
+        
+        if (absoluteSample > maxSampleValue)
+        {
+            maxSampleValue = absoluteSample;
+            maxSampleLocation = i;
+        }
+    }
+}
+
+/** Normalises a set of samples to the absolute maximum contained within the buffer. */
+template <typename FloatingPointType>
+inline void normalise (FloatingPointType* samples, int numSamples) noexcept
+{
+    FloatingPointType max = 0;
+    int location;
+    
+    findAbsoluteMax (samples, numSamples, location, max);
+    
+    if (max != 0)
+    {
+        const FloatingPointType oneOverMax = 1 / max;
+        
+        for (int i = 0; i < numSamples; ++i)
+            samples[i] *= oneOverMax;
+    }
+    else
+    {
+        zeromem (samples, numSamples * sizeof (float));
+    }
+}
+
+/** Squares all the values in an array. */
+template <typename FloatingPointType>
+inline void square (FloatingPointType* samples, int numSamples)
+{
+    for (int i = 0; i < numSamples; ++i)
+        samples[i] = juce::square<FloatingPointType> (samples[i]);
+}
+
+//==============================================================================
 /** Finds the autocorrelation of a set of given samples.
  
     This will cross-correlate inputSamples with itself and put the result in
@@ -176,61 +226,25 @@ inline FloatingPointType findStandardDeviation (const FloatingPointType* samples
     return sqrt (findCorrectedVariance (samples, numSamples));
 }
 
-/** Finds the RMS for a set of samples. */
+/** Finds the RMS for a set of squared samples.
+ */
+template <typename FloatingPointType>
+inline FloatingPointType findRMSPreSquared (const FloatingPointType* squaredSamples, int numSamples) noexcept
+{
+    return sqrt (findMean (squaredSamples, numSamples));
+}
+
+/** Finds the RMS for a set of samples.
+    Note that this will create a copy of all the samples so you might want to use the other version to avoid these allocations in time-critical situations.
+ */
 template <typename FloatingPointType>
 inline FloatingPointType findRMS (const FloatingPointType* samples, int numSamples) noexcept
 {
-    return sqrt (squareNumber (findMean (samples, numSamples)));
-}
-
-//==============================================================================
-/** Finds the maximum value and location of this in a buffer regardless of sign. */
-template <typename FloatingPointType>
-inline void findAbsoluteMax (const FloatingPointType* samples, int numSamples,
-                             int& maxSampleLocation, FloatingPointType& maxSampleValue) noexcept
-{
-    maxSampleValue = 0;
+    HeapBlock<FloatingPointType> data (numSamples);
+    memcpy (data.getData(), samples, numSamples * sizeof (FloatingPointType));
+    square (data.getData(), numSamples);
     
-    for (int i = 0; i < numSamples; ++i)
-    {
-        const FloatingPointType absoluteSample = fabs (samples[i]);
-        
-        if (absoluteSample > maxSampleValue)
-        {
-            maxSampleValue = absoluteSample;
-            maxSampleLocation = i;
-        }
-    }
-}
-
-/** Normalises a set of samples to the absolute maximum contained within the buffer. */
-template <typename FloatingPointType>
-inline void normalise (FloatingPointType* samples, int numSamples) noexcept
-{
-    FloatingPointType max = 0;
-    int location;
-    
-    findAbsoluteMax (samples, numSamples, location, max);
-    
-    if (max != 0)
-    {
-        const FloatingPointType oneOverMax = 1 / max;
-        
-        for (int i = 0; i < numSamples; ++i)
-            samples[i] *= oneOverMax;
-    }
-    else
-    {
-        zeromem (samples, numSamples * sizeof (float));
-    }
-}
-
-/** Squares all the values in an array. */
-template <typename FloatingPointType>
-inline void square (FloatingPointType* samples, int numSamples)
-{
-    for (int i = 0; i < numSamples; ++i)
-        samples[i] = squareNumber (samples[i]);
+    return findRMSPreSquared (data.getData(), numSamples);
 }
 
 //==============================================================================
