@@ -480,7 +480,12 @@ public:
      */
     ~ScopedValueTreeFile()
     {
-        writeValueTreeToFile (tree, file, asXml);
+        const File f (file);
+        TemporaryFile temp (f);
+        writeValueTreeToFile (tree, temp.getFile(), asXml);
+        
+        if (temp.getFile().existsAsFile())
+            temp.overwriteTargetFileWithTemporary();
     }
 
     /** Sets the file to use.
