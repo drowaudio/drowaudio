@@ -175,7 +175,7 @@ public:
                                                  &dataPointer);
                     if (bufferRef != NULL)
                     {
-                        const int samplesExpected = CMSampleBufferGetNumSamples (sampleRef);
+                        const int samplesExpected = (int) CMSampleBufferGetNumSamples (sampleRef);
                               
                         const int numSamplesNeeded = fifoBuffer.getNumAvailable() + (samplesExpected * numChannels);
                         if (numSamplesNeeded > fifoBuffer.getSize()) //*** need to keep existing
