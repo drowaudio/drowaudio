@@ -5,38 +5,38 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0EBE35D0-8D8F-4C38-BC82-953EF45F39BA</string>
+	<string>03E95E2B-A374-4779-9951-FD38F4F09E46</string>
 	<key>IDESourceControlProjectName</key>
 	<string>dRowAudio Demo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>74B6049E-A2CD-41BB-9D21-2C73B219213C</key>
-		<string>https://github.com/drowaudio/drowaudio.git</string>
-		<key>C6F3CED2-0E61-4D95-8D6C-B9D848170F75</key>
+		<key>35E92FA0-0109-4470-BDC2-4DD9920530CD</key>
 		<string>https://github.com/julianstorer/JUCE.git</string>
+		<key>BBF76FF4-2ACA-40D9-8333-AD05A5774BE4</key>
+		<string>https://github.com/drowaudio/drowaudio.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>modules/dRowAudio/apps/dRowAudio Demo/Builds/MacOSX/dRowAudio Demo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>74B6049E-A2CD-41BB-9D21-2C73B219213C</key>
-		<string>../../../../../..</string>
-		<key>C6F3CED2-0E61-4D95-8D6C-B9D848170F75</key>
+		<key>35E92FA0-0109-4470-BDC2-4DD9920530CD</key>
 		<string>../../../../../../../..</string>
+		<key>BBF76FF4-2ACA-40D9-8333-AD05A5774BE4</key>
+		<string>../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/julianstorer/JUCE.git</string>
+	<string>https://github.com/drowaudio/drowaudio.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C6F3CED2-0E61-4D95-8D6C-B9D848170F75</string>
+	<string>35E92FA0-0109-4470-BDC2-4DD9920530CD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>74B6049E-A2CD-41BB-9D21-2C73B219213C</string>
+			<string>BBF76FF4-2ACA-40D9-8333-AD05A5774BE4</string>
 			<key>IDESourceControlWCCName</key>
 			<string>dRowAudio</string>
 		</dict>
@@ -44,7 +44,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C6F3CED2-0E61-4D95-8D6C-B9D848170F75</string>
+			<string>35E92FA0-0109-4470-BDC2-4DD9920530CD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>juce</string>
 		</dict>

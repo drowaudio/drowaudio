@@ -31,6 +31,12 @@
 
 #if JUCE_IOS
 
+} // namespace drow
+#include <AudioToolbox/AudioToolbox.h>
+#include <AVFoundation/AVFoundation.h>
+
+namespace drow {
+    
 //==============================================================================
 namespace
 {

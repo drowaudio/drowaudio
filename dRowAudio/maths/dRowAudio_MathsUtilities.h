@@ -226,25 +226,16 @@ inline FloatingPointType findStandardDeviation (const FloatingPointType* samples
     return sqrt (findCorrectedVariance (samples, numSamples));
 }
 
-/** Finds the RMS for a set of squared samples.
- */
-template <typename FloatingPointType>
-inline FloatingPointType findRMSPreSquared (const FloatingPointType* squaredSamples, int numSamples) noexcept
-{
-    return sqrt (findMean (squaredSamples, numSamples));
-}
-
-/** Finds the RMS for a set of samples.
-    Note that this will create a copy of all the samples so you might want to use the other version to avoid these allocations in time-critical situations.
- */
+/** Finds the RMS for a set of samples. */
 template <typename FloatingPointType>
 inline FloatingPointType findRMS (const FloatingPointType* samples, int numSamples) noexcept
 {
-    HeapBlock<FloatingPointType> data (numSamples);
-    memcpy (data.getData(), samples, numSamples * sizeof (FloatingPointType));
-    square (data.getData(), numSamples);
+    FloatingPointType sum = 0;
     
-    return findRMSPreSquared (data.getData(), numSamples);
+    for (int i = 0; i < numSamples; ++i)
+        sum += juce::square (*samples++);
+    
+    return std::sqrt (sum / numSamples);
 }
 
 //==============================================================================

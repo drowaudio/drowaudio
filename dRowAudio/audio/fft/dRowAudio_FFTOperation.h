@@ -55,7 +55,7 @@ public:
     //==============================================================================
 	FFTProperties (int fftSizeLog2_)
         : fftSizeLog2 (fftSizeLog2_),
-		  fftSize (1L << fftSizeLog2),
+		  fftSize (1 << fftSizeLog2),
 		  fftSizeMinus1 (fftSize - 1),
 		  fftSizeHalved (fftSize >> 1),
 		  oneOverFFTSizeMinus1 (1.0 / fftSizeMinus1),
@@ -80,7 +80,7 @@ private:
 	void setFFTSizeLog2 (int newFFTSizeLog2)
 	{
 		fftSizeLog2 = newFFTSizeLog2;
-		fftSize = (1L << fftSizeLog2);
+		fftSize = (1 << fftSizeLog2);
 		fftSizeMinus1 = (fftSize - 1);
 		fftSizeHalved = (fftSize >> 1);
 		oneOverFFTSizeMinus1 = (1.0 / fftSizeMinus1);
