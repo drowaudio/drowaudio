@@ -408,7 +408,7 @@ static bool writeValueTreeToFile (const ValueTree& treeToWrite, const File& file
         else 
         {
             TemporaryFile tempFile (fileToWriteTo);
-            ScopedPointer <FileOutputStream> outputStream (tempFile.getFile().createOutputStream());
+            ScopedPointer<FileOutputStream> outputStream (tempFile.getFile().createOutputStream());
             
             if (outputStream != nullptr)
             {
@@ -480,12 +480,7 @@ public:
      */
     ~ScopedValueTreeFile()
     {
-        const File f (file);
-        TemporaryFile temp (f);
-        writeValueTreeToFile (tree, temp.getFile(), asXml);
-        
-        if (temp.getFile().existsAsFile())
-            temp.overwriteTargetFileWithTemporary();
+        save();
     }
 
     /** Sets the file to use.
@@ -493,21 +488,24 @@ public:
         you can obtain using the getTree() method.
      */
     inline void setFile (const File& newFile)   {   tree = readValueTreeFromFile (file = newFile);  }
+    
+    /** Saves the file to disk using a TemporaryFile in case there are any problems. */
+    inline Result save()
+    {
+        return writeValueTreeToFile (tree, file, asXml) ? Result::ok()
+                                                        : Result::fail (TRANS("Error saving file to disk"));
+    }
 
-    /** Returns the ValueTree being used.
-     */
+    /** Returns the ValueTree being used. */
     inline ValueTree& getTree()                 {    return tree;           }
 
-    /** Returns the File being used.
-     */
+    /** Returns the File being used. */
     inline File getFile() const                 {    return file;           }
     
-    /** Sets the tree to save to the file as XML or binary data.
-     */
+    /** Sets the tree to save to the file as XML or binary data. */
     inline void setSaveAsXml (bool saveAsXml)   {   asXml = saveAsXml;      }
     
-    /** Returns true if the file will be saved as XML.
-     */
+    /** Returns true if the file will be saved as XML. */
     inline bool getSaveAsXml() const            {   return asXml;           }
     
 private:
