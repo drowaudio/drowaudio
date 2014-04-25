@@ -87,6 +87,15 @@ public:
     {
         inputType = unknownStream;
         
+        if (MemoryInputStream* mis = dynamic_cast<MemoryInputStream*> (inputStream))
+            return setMemoryInputStream (mis);
+        
+        if (FileInputStream* fis = dynamic_cast<FileInputStream*> (inputStream))
+        {
+            const ScopedPointer<FileInputStream> deleter (fis);
+            return setFile (fis->getFile());
+        }
+        
         return streamChanged (inputStream);
     }
     
