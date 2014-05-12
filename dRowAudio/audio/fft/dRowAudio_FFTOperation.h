@@ -36,11 +36,10 @@
     typedef FFTSetup FFTConfig;
     typedef DSPSplitComplex SplitComplex;
 #elif DROWAUDIO_USE_FFTREAL
-    
-    //#include "fftreal/FFTReal.h"
-    
     typedef ScopedPointer< ffft::FFTReal<float> > FFTConfig;
-    struct SplitComplex {
+
+    struct SplitComplex
+    {
         float* realp;
         float* imagp;
     };
@@ -88,7 +87,7 @@ private:
 	}
 	
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTProperties);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTProperties)
 };
 
 //==============================================================================
@@ -110,7 +109,12 @@ public:
 	const SplitComplex& getFFTBuffer()      {	return fftBufferSplit;		}
 	
 	void performFFT (float* samples);
-	
+
+    /** Performs an inverse FFT.
+        N.B. frequencyDomainSamples must be the same size as the FFTProperties fftSize.
+     */
+    void performIFFT (float* frequencyDomainSamples);
+
 private:
     //==============================================================================
 	FFTProperties fftProperties;
@@ -120,7 +124,7 @@ private:
 	SplitComplex fftBufferSplit;
 	
 	//==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTOperation);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTOperation)
 };
 
 #endif // JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL

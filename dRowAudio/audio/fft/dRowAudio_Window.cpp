@@ -30,11 +30,22 @@
 */
 
 
+Window::Window()
+    : windowType (Window::Hann),
+      windowBuffer (1, 0)
+{
+}
 
 Window::Window (int windowSize_)
-    : windowSize (windowSize_),
-      windowType (Window::Hann),
-      windowBuffer (windowSize)
+    : windowType (Window::Hann),
+      windowBuffer (1, windowSize_)
+{
+	setUpWindowBuffer();
+}
+
+Window::Window (int windowSize_, WindowType type)
+    : windowType (type),
+      windowBuffer (1, windowSize_)
 {
 	setUpWindowBuffer();
 }
@@ -43,30 +54,29 @@ Window::~Window()
 {
 }
 
-void Window::setWindowType(WindowType newType)
+void Window::setWindowType (WindowType newType)
 {
 	windowType = newType;
 	setUpWindowBuffer();
 }
 
-void Window::applyWindow (float *samples, const int numSamples)
+void Window::applyWindow (float* samples, const int numSamples)
 {
-	windowBuffer.applyBuffer (samples, numSamples);
+    const float* window = windowBuffer.getReadPointer (0);
+    const int windowSize = windowBuffer.getNumSamples();
+    jassert (numSamples == windowSize); // Set your window size properly!
 
-	if (numSamples > windowBuffer.getSize())
-    {
-        jassertfalse; // set your window size properly!
-		zeromem (samples + windowBuffer.getSize(), (numSamples - windowBuffer.getSize()) * sizeof (float));
-    }
+    FloatVectorOperations::multiply (samples, window, numSamples);
+
+	if (numSamples > windowSize)
+        FloatVectorOperations::clear (samples + windowSize, numSamples - windowSize);
 }
 
 void Window::setUpWindowBuffer()
 {
-	const int bufferSize = windowBuffer.getSize();
-	float *bufferSample = windowBuffer.getData();
-	
-    for (int i = 0; i < windowSize; i++)
-		bufferSample[i] = 1.0f;
+    const int bufferSize = windowBuffer.getNumSamples();
+    float* bufferSample = windowBuffer.getWritePointer (0);
+    FloatVectorOperations::fill (bufferSample, 1.0f, bufferSize);
 	
 	switch (windowType)
 	{

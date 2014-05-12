@@ -69,7 +69,7 @@ MainComponent::MainComponent()
 
     cpuMeter.setTextColour (Colours::red);
     cpuMeter.setJustificationType (Justification::centred);
-    cpuMeter.setBorderSize (0, 0);
+    cpuMeter.setBorderSize (BorderSize<int>());
     
     addAndMakeVisible (&searchBox);
     searchBox.addListener (this);

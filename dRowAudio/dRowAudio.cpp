@@ -66,7 +66,6 @@ namespace drow {
 
 #include "audio/dRowAudio_AudioUtilityUnitTests.cpp"
 
-#include "audio/dRowAudio_Buffer.cpp"
 #include "audio/dRowAudio_EnvelopeFollower.cpp"
 #include "audio/dRowAudio_SampleRateConverter.cpp"
 

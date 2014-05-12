@@ -37,11 +37,16 @@
 #include "../../maths/dRowAudio_MathsUtilities.h"
 
 //==============================================================================
+/**
+    A pre-calculated Window buffer used for audio processing.
+ */
 class Window
 {
 public:
     //==============================================================================
-	enum WindowType {
+    /** Window types supported. */
+	enum WindowType
+    {
 		Rectangular,
 		Hann,
 		Hamming,
@@ -59,7 +64,14 @@ public:
 	};
 	
     //==============================================================================
+    /** Creates a default Hann Window with 0 size. */
+    Window();
+
+    /** Creates a Hann Window with a given size. */
 	Window (int windowSize);
+
+    /** Creates a Window with a given size. */
+	Window (int windowSize, WindowType type);
 
 	~Window();
 
@@ -93,12 +105,11 @@ private:
 	void applyFlatTopWindow (float *samples,  const int numSamples);
 	
     //==============================================================================
-	int windowSize;
 	WindowType windowType;
 	float windowFactor;
 	float oneOverWindowFactor;
 	
-	Buffer windowBuffer;
+	AudioSampleBuffer windowBuffer;
     
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Window);
