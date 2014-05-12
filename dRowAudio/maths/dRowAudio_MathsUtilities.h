@@ -70,7 +70,13 @@ public:
     }
 
     /** Sets the value updating the reciprocal. */
-    FloatingPointType operator= (FloatingPointType newValue) const noexcept     { set (newValue); }
+    FloatingPointType operator= (FloatingPointType newValue) noexcept           { return set (newValue); }
+
+    FloatingPointType operator+ (FloatingPointType operand) const noexcept      { return value + operand; }
+    FloatingPointType operator+= (FloatingPointType operand) noexcept           { return set (value + operand); }
+
+    FloatingPointType operator- (FloatingPointType operand) const noexcept      { return value - operand; }
+    FloatingPointType operator-= (FloatingPointType operand) noexcept           { return set (value - operand); }
 
     FloatingPointType operator* (FloatingPointType operand) const noexcept      { return value * operand; }
     FloatingPointType operator/ (FloatingPointType operand) const noexcept      { return operand * reciprocal * value; }

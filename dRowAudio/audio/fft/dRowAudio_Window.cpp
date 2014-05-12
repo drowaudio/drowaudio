@@ -31,20 +31,20 @@
 
 
 Window::Window()
-    : windowType (Window::Hann),
+    : windowType (Window::Hann), windowFactor (1.0f), oneOverWindowFactor (1.0f),
       windowBuffer (1, 0)
 {
 }
 
 Window::Window (int windowSize_)
-    : windowType (Window::Hann),
+    : windowType (Window::Hann), windowFactor (1.0f), oneOverWindowFactor (1.0f),
       windowBuffer (1, windowSize_)
 {
 	setUpWindowBuffer();
 }
 
 Window::Window (int windowSize_, WindowType type)
-    : windowType (type),
+    : windowType (type), windowFactor (1.0f), oneOverWindowFactor (1.0f),
       windowBuffer (1, windowSize_)
 {
 	setUpWindowBuffer();
@@ -60,7 +60,7 @@ void Window::setWindowType (WindowType newType)
 	setUpWindowBuffer();
 }
 
-void Window::applyWindow (float* samples, const int numSamples)
+void Window::applyWindow (float* samples, const int numSamples) const noexcept
 {
     const float* window = windowBuffer.getReadPointer (0);
     const int windowSize = windowBuffer.getNumSamples();
@@ -96,10 +96,11 @@ void Window::setUpWindowBuffer()
 		case FlatTop:               applyFlatTopWindow (bufferSample, bufferSize);              break;
 		default:                    applyRectangularWindow (bufferSample, bufferSize);          break;
 	}
-    
+
 	oneOverWindowFactor = 1.0f / windowFactor;
 }
 
+//==============================================================================
 void Window::applyRectangularWindow (float *samples, const int numSamples)
 {
 	const double oneOverSize = (1.0f / numSamples);

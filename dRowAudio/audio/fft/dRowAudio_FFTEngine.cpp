@@ -32,16 +32,13 @@
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
 
-
 //============================================================================
 namespace 
 {
-    inline float magnitude (const float real, 
-                            const float imag, 
-                            const float oneOverFFTSize, 
-                            const float oneOverWindowFactor)
+    inline float magnitude (const float real, const float imag,
+                            const float oneOverFFTSize,  const float oneOverWindowFactor)
     {
-        const float rawMagnitude = hypotf (real, imag);
+        const float rawMagnitude = hypot (real, imag);
         const float magnitudeForFFTSize = rawMagnitude * oneOverFFTSize;
         const float magnitudeForWindowFactor = magnitudeForFFTSize * oneOverWindowFactor;
         
