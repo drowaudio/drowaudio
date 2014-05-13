@@ -168,7 +168,7 @@ Array<File> UnityProjectBuilder::buildUnityCpp (const File& destDir)
     if (filesToAdd.size() == 0)
         return files;
 
-    const int filesPerUnityFile = ceil (filesToAdd.size() / (float) numFiles);
+    const int filesPerUnityFile = (int) std::ceil (filesToAdd.size() / (float) numFiles);
     
     for (int i = 0; i < numFiles; ++i)
     {

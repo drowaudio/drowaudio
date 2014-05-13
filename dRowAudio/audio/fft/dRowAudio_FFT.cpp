@@ -68,9 +68,9 @@ void FFT::performFFT (float* samples)
 
 void FFT::performIFFT (float* fftBuffer)
 {
-    jassertfalse;
+    config->do_ifft (fftBuffer, buffer.getData());
 }
-    
+
 #elif JUCE_MAC || JUCE_IOS
     
 FFT::FFT (int fftSizeLog2)
@@ -105,13 +105,20 @@ void FFT::setFFTSizeLog2 (int newFFTSizeLog2)
 
 void FFT::performFFT (float* samples)
 {
-	vDSP_ctoz ((COMPLEX *) samples, 2, &bufferSplit, 1, properties.fftSizeHalved);
+	vDSP_ctoz ((COMPLEX*) samples, 2, &bufferSplit, 1, properties.fftSizeHalved);
 	vDSP_fft_zrip (config, &bufferSplit, 1, properties.fftSizeLog2, FFT_FORWARD);
 }
 
 void FFT::performIFFT (float* fftBuffer)
 {
-    jassertfalse;
+    SplitComplex split;
+    split.realp = fftBuffer;
+	split.imagp = fftBuffer + properties.fftSizeHalved;
+
+    jassert (split.realp != bufferSplit.realp); // These can't point to the same data!
+
+	vDSP_fft_zrip (config, &split, 1, properties.fftSizeLog2, FFT_INVERSE);
+    vDSP_ztoc (&split, 1, (COMPLEX*) buffer.getData(), 2, properties.fftSizeHalved);
 }
 
 #endif
@@ -139,7 +146,7 @@ void FFTEngine::findMagnitues (float* magBuf, bool onlyIfBigger)
             magBuf[0] = newMag;
     }
     
-    for (int i = 1; i < fftSizeHalved; i++)
+    for (int i = 1; i < fftSizeHalved; ++i)
     {
         const float newMag = FFT::magnitude (fftSplit.realp[i], fftSplit.imagp[i], oneOverFFTSize, oneOverWindowFactor);
         

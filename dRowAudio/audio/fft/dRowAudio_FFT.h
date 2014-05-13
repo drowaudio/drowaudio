@@ -64,7 +64,9 @@ class FFT
 {
 public:
     //==============================================================================
-    /** Holds the properties for an FFT operation. */
+    /** Holds the properties for an FFT operation.
+        Essentially pre-calculates some commonly used values for a given FFT size.
+     */
     class Properties
     {
     public:
@@ -127,21 +129,36 @@ public:
     
     /** Returns the Properties in use. */
     Properties getProperties() const noexcept           { return properties; }
+
+    /** Returns the internal buffer.
+        The contents of this will vary depending on whether you've just performed an FFT or IFFT but
+        will be the result of the operation either way..
+     */
+    float* getBuffer()                                  { return buffer.getData(); }
+
+    /** Returns the SplitComplex of the buffer.
+        This is basically just a pair of pointers to the real and imag parts of the buffer.
+     */
+    SplitComplex& getFFTBuffer()                        { return bufferSplit; }
     
-    const SplitComplex& getFFTBuffer()                  { return bufferSplit; }
-    
+    /** Performs an FFT operation on a set of samples.
+        N.B. samples must be an array the same size as the FFT. After processing you can retrive the 
+        buffer using getBuffer or getFFTBuffer.
+     */
     void performFFT (float* samples);
     
     /** Performs an inverse FFT.
-        N.B. fftBuffer must be the same size as the FFTProperties fftSize.
+        fftBuffer should be in SplitComplex format where [0] = realp & [fftSize / 2] = imagp.
+        N.B. fftBuffer must be the same size as the FFTProperties fftSize and the buffer must not be 
+        the same as that retrieved from getBuffer.
      */
     void performIFFT (float* fftBuffer);
-    
+
     /** Calculates the magnitude of an FFT bin. */
     static float magnitude (const float real, const float imag,
                             const float oneOverFFTSize,  const float oneOverWindowFactor)
     {
-        const float rawMagnitude = hypot (real, imag);
+        const float rawMagnitude = hypotf (real, imag);
         const float magnitudeForFFTSize = rawMagnitude * oneOverFFTSize;
         const float magnitudeForWindowFactor = magnitudeForFFTSize * oneOverWindowFactor;
         
