@@ -112,6 +112,29 @@ public:
                 expect (almostEqual (rms, 1.0f, 0.001f));
             }
         }
+        
+        // Reciprocal
+        {
+            Reciprocal<float> r;
+            expectEquals (r.get(), 1.0f);
+            expectEquals (r.getReciprocal(), 1.0f);
+            
+            Reciprocal<double> r2 (10.0);
+            expectEquals (r2.get(), 10.0);
+            expectEquals (r2.getReciprocal(), 1.0 / 10.0);
+            expectEquals (r2 * 10, 100.0);
+            expectEquals (r2 *= 10, 100.0);
+            expectEquals (r2.get(), 100.0);
+            expectEquals (r2.getReciprocal(), 1.0 / 100.0);
+            
+            expectEquals (r2 / 10, 10.0);
+            expectEquals (r2.get(), 100.0);
+            expectEquals (r2.getReciprocal(), 1.0 / 100.0);
+            
+            expectEquals (r2 /= 10, 10.0);
+            expectEquals (r2.get(), 10.0);
+            expectEquals (r2.getReciprocal(), 1.0 / 10.0);
+        }
     }
 };
 

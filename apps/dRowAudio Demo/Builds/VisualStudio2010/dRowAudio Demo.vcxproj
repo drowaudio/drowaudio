@@ -160,9 +160,6 @@
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_Buffer.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_EnvelopeFollower.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -187,13 +184,7 @@
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFTEngine.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFTReal_FFTOperation.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_ios_FFTOperation.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
@@ -1387,8 +1378,7 @@
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SampleRateConverter.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFTEngine.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFTOperation.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_Window.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h"/>
@@ -1552,6 +1542,7 @@
     <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_OptionalScopedPointer.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_ReferenceCountedObject.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_ScopedPointer.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_SharedResourcePointer.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_Singleton.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_WeakReference.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\containers\juce_AbstractFifo.h"/>

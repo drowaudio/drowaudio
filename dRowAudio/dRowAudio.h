@@ -287,12 +287,8 @@ using juce::UnitTest;
  #include "audio/fft/dRowAudio_Window.h"
 #endif
 
-#ifndef __DROWAUDIO_FFTENGINE_H__
- #include "audio/fft/dRowAudio_FFTEngine.h"
-#endif
-
-#ifndef __DROWAUDIO_FFTOPERATION_H__
- #include "audio/fft/dRowAudio_FFTOperation.h"
+#ifndef DROWAUDIO_FFT_H_INCLUDED
+ #include "audio/fft/dRowAudio_FFT.h"
 #endif
 
 #ifndef __DROWAUDIO_LTAS_H__

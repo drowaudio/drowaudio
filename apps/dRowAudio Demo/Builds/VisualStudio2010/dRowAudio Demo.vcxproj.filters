@@ -391,9 +391,6 @@
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_Buffer.cpp">
-      <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_EnvelopeFollower.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
@@ -418,13 +415,7 @@
     <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFTEngine.cpp">
-      <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFTReal_FFTOperation.cpp">
-      <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_ios_FFTOperation.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
@@ -1788,10 +1779,7 @@
     <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFTEngine.h">
-      <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFTOperation.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.h">
@@ -2281,6 +2269,9 @@
       <Filter>Juce Modules\juce_core\memory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_ScopedPointer.h">
+      <Filter>Juce Modules\juce_core\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_SharedResourcePointer.h">
       <Filter>Juce Modules\juce_core\memory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_Singleton.h">
