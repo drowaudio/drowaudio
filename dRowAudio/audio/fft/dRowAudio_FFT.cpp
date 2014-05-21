@@ -66,6 +66,18 @@ void FFT::performFFT (float* samples)
     config->do_fft (buffer.getData(), samples);
 }
 
+void FFT::getPhase (float* phaseBuffer)
+{
+    const int numSamples = properties.fftSizeHalved;
+    float* real = bufferSplit.realp;
+    float* img = bufferSplit.imagp;
+    
+    for (int i = 1; i < numSamples; ++i)
+        phaseBuffer[i] = std::atan2 (img[i], real[i]);
+
+    phaseBuffer[0] = 0.0f;
+}
+
 void FFT::performIFFT (float* fftBuffer)
 {
     config->do_ifft (fftBuffer, buffer.getData());
@@ -109,6 +121,12 @@ void FFT::performFFT (float* samples)
 	vDSP_fft_zrip (config, &bufferSplit, 1, properties.fftSizeLog2, FFT_FORWARD);
 }
 
+void FFT::getPhase (float* phaseBuffer)
+{
+    vDSP_zvphas (&bufferSplit, 1, phaseBuffer, 1, properties.fftSizeHalved);
+    phaseBuffer[0] = 0.0f;
+}
+
 void FFT::performIFFT (float* fftBuffer)
 {
     SplitComplex split;
@@ -122,6 +140,24 @@ void FFT::performIFFT (float* fftBuffer)
 }
 
 #endif
+
+void FFT::getMagnitudes (float* magnitudes)
+{
+    const float oneOverFFTSize = (float) properties.oneOverFFTSize;
+    const int fftSizeHalved = properties.fftSizeHalved;
+    const float oneOverWindowFactor = 1.0f;
+
+    SplitComplex fftSplit;
+    fftSplit.realp = buffer.getData();
+    fftSplit.imagp = fftSplit.realp + fftSizeHalved;
+    
+    magnitudes[0] = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor);
+    
+    for (int i = 1; i < fftSizeHalved; ++i)
+        magnitudes[i] = magnitude (fftSplit.realp[i], fftSplit.imagp[i], oneOverFFTSize, oneOverWindowFactor);
+    
+    magnitudes[fftSizeHalved] = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor);
+}
 
 //============================================================================
 void FFTEngine::performFFT (float* samples)

@@ -146,7 +146,17 @@ public:
         buffer using getBuffer or getFFTBuffer.
      */
     void performFFT (float* samples);
-    
+
+    /** Calculates and returns the magnitudes of the previous buffer.
+        N.B. magnitudes should be as at least half the FFT size.
+     */
+    void getMagnitudes (float* magnitudes);
+
+    /** Calculates and returns the phase of the previous buffer.
+        N.B. phaseBuffer should be as at least half the FFT size.
+     */
+    void getPhase (float* phaseBuffer);
+
     /** Performs an inverse FFT.
         fftBuffer should be in SplitComplex format where [0] = realp & [fftSize / 2] = imagp.
         N.B. fftBuffer must be the same size as the FFTProperties fftSize and the buffer must not be 
