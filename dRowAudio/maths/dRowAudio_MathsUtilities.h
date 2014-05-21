@@ -398,7 +398,7 @@ inline FloatingPointType sincPi (const FloatingPointType x) noexcept
     if (x == 0)
         return static_cast<FloatingPointType> (1);
     
-    return static_cast<FloatingPointType> (sin (double_Pi * x) / (double_Pi * x));
+    return static_cast<FloatingPointType> (std::sin (double_Pi * x) / (double_Pi * x));
 }
 
 //==============================================================================

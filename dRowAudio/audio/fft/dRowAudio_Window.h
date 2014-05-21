@@ -79,7 +79,10 @@ public:
 
     /** Sets the window type. */
 	void setWindowType (WindowType newType);
-    
+
+    /** Sets the window size. */
+	void setWindowSize (int newSize);
+
     /** Returns the window type. */
 	WindowType getWindowType() const noexcept           { return windowType; }
 	
