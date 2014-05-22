@@ -56,12 +56,18 @@ Window::~Window()
 
 void Window::setWindowType (WindowType newType)
 {
+    if (windowType == newType)
+        return;
+
 	windowType = newType;
 	setUpWindowBuffer();
 }
 
 void Window::setWindowSize (int newSize)
 {
+    if (windowBuffer.getNumSamples() == newSize)
+        return;
+    
     windowBuffer.setSize (1, newSize);
 	setUpWindowBuffer();
 }

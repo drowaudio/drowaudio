@@ -69,10 +69,10 @@ public:
     Window();
 
     /** Creates a Hann Window with a given size. */
-	Window (int windowSize);
+	explicit Window (int windowSize);
 
     /** Creates a Window with a given size. */
-	Window (int windowSize, WindowType type);
+	explicit Window (int windowSize, WindowType type);
 
     /** Destructor. */
 	~Window();
