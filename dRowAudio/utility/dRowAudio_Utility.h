@@ -180,19 +180,25 @@ static void drawBufferToImage (const Image& image, const float* samples, int num
     Graphics g (image);
     g.setColour (colour);
     const float imageXScale = image.getWidth() / (float) numSamples;
-    float y1 = (float) image.getHeight();
     
+    Path p;
+    bool isFirst = true;
+
     for (int i = 0; i < numSamples; ++i)
     {
-        const float x1 = i * imageXScale;
-        const float x2 = x1 + imageXScale;
-        const float y2 = image.getHeight() - (samples[i] * image.getHeight());
+        const float x = i * imageXScale;
+        const float y = image.getHeight() - (samples[i] * image.getHeight());
+
+        if (isFirst)
+        {
+            p.startNewSubPath (x, y);
+            isFirst = false;
+        }
         
-        const Line<float> line (Point<float> (x1, y1), Point<float> (x2, y2));
-        g.drawLine (line, thickness);
-        
-        y1 = y2;
+        p.lineTo (x, y);
     }
+    
+    g.strokePath (p, PathStrokeType (thickness));
 }
 
 /** Dumps a given image to a File in png format.
