@@ -537,24 +537,19 @@ struct ScopedChangeSender
 };
 
 //==============================================================================
-/** Useful macro to print a variable name and value to the console.
- */
+/** Useful macro to print a variable name and value to the console. */
 #define DBG_VAR(dbgvar)     {DBG (JUCE_STRINGIFY(dbgvar) << ": " << dbgvar)}
 
-/** Useful macro to print a Point to the console.
- */
+/** Useful macro to print a Point to the console. */
 #define DBG_POINT(dbgpoint) {DBG (JUCE_STRINGIFY(dbgpoint) << ": " << DebugObject::convertToString (dbgpoint))}
 
-/** Useful macro to print a Range to the console.
- */
+/** Useful macro to print a Range to the console. */
 #define DBG_RANGE(dbgrange) {DBG (JUCE_STRINGIFY(dbgrange) << ": " << DebugObject::convertToString (dbgrange))}
 
-/** Useful macro to print a Line to the console.
- */
+/** Useful macro to print a Line to the console. */
 #define DBG_LINE(dbgline)   {DBG (JUCE_STRINGIFY(dbgline) << ": " << DebugObject::convertToString (dbgline))}
 
-/** Useful macro to print a Rectangle to the console.
- */
+/** Useful macro to print a Rectangle to the console. */
 #define DBG_RECT(dbgrect)   {DBG (JUCE_STRINGIFY(dbgrect) << ": " << DebugObject::convertToString (dbgrect))}
 
 /** Prints a string representation of a lot of common objects to the console for
