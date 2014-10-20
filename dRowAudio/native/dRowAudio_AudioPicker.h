@@ -101,7 +101,7 @@ public:
          
             @see IOSAudioConverter, mpMediaItemToAvassetUrl, AudioPicker::audioPickerCancelled
          */
-        virtual void audioPickerFinished (const Array<void*> mpMediaItems) = 0;
+        virtual void audioPickerFinished (const Array<void*>& mpMediaItems) = 0;
         
         /** Called when the audio picker has been canceled by the user.
          

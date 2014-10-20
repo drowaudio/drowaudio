@@ -60,7 +60,7 @@ public:
 	
     /** @internal */
 	void paint (Graphics &g);
-	
+
     //==============================================================================
     /** Sets the scope to display in log or normal mode.
      */

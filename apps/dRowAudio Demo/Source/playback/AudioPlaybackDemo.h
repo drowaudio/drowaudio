@@ -65,22 +65,10 @@ public:
         numControls
     };
 
-    //==============================================================================
-//    void imageChanged (AudioThumbnailImage* audioThumbnailImage);
-//    
-//    void imageUpdated (AudioThumbnailImage* audioThumbnailImage);
-//    
-//    void imageFinished (AudioThumbnailImage* audioThumbnailImage);
-
 private:
     //==============================================================================
     AudioFilePlayerExt& audioFilePlayer;
-    
-//    MultipleAudioThumbnailCache thumbnailCache;
-//    ColouredAudioThumbnail audioThumbnail;
-//    ScopedPointer<ColouredPositionableWaveDisplay> positionalDisplay;
-//    ScopedPointer<ColouredDraggableWaveDisplay> draggableDisplay;
-    
+
     LoopComponent loopComponent;
     
     GroupComponent filterGroup, rateGroup;

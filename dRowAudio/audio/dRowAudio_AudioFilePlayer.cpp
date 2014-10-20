@@ -182,9 +182,8 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 	{										
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
-        audioTransportSource.setSource (audioFormatReaderSource,
-                                        32768,
-                                        bufferingTimeSliceThread);
+        audioTransportSource.setSource (audioFormatReaderSource, 32768,
+                                        bufferingTimeSliceThread, reader->sampleRate);
         
         if (shouldBeLooping)
             audioFormatReaderSource->setLooping (true);
