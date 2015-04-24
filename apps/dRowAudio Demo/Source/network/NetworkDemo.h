@@ -69,7 +69,7 @@ private:
 	LocalDirectoryListBox localBrowser;
 	RemoteDirectoryListBox remoteBrowser;
     
-    MemoryBlock block;
+    juce::MemoryBlock block;
     ScopedPointer<MemoryInputStream> inputStream;
     ScopedPointer<CURLEasySession> curlSession;
 };

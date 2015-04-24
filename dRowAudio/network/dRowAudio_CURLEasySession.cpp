@@ -250,7 +250,7 @@ size_t CURLEasySession::readCallback (void* destinationPointer, size_t blockSize
 			return CURL_READFUNC_ABORT; /* failure, can't open file to read */ 
 		}
 		
-		return session->inputStream->read (destinationPointer, blockSize * numBlocks);
+		return session->inputStream->read (destinationPointer, int (blockSize * numBlocks));
 	}
 	
 	return CURL_READFUNC_ABORT;

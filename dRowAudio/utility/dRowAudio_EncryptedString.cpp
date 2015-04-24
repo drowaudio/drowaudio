@@ -56,7 +56,7 @@ String EncryptedString::encrypt (const String& stringToEncrypt, const String& pu
     if (resultAsHex)
     {
         MemoryBlock encryptedMemoryBlock (stringAsData.toMemoryBlock());
-        return String::toHexString ((char*) encryptedMemoryBlock.getData(), encryptedMemoryBlock.getSize(), 0);
+        return String::toHexString ((char*) encryptedMemoryBlock.getData(), (int) encryptedMemoryBlock.getSize(), 0);
     }
     else
     {

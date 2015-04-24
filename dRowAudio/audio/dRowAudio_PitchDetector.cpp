@@ -138,7 +138,6 @@ Buffer* PitchDetector::getBuffer (int stageIndex)
     {
         case 1:     return &buffer1;    break;
         case 2:     return &buffer2;    break;
-        default:    return nullptr;
     }
     
     return nullptr;

@@ -33,11 +33,9 @@
   <PropertyGroup Label="UserMacros"/>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">dRowAudio Demo</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath);../../../../dRowAudio/network/curl/lib</LibraryPath>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">dRowAudio Demo</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath);../../../../dRowAudio/network/curl/lib</LibraryPath>
@@ -313,6 +311,9 @@
     <ClCompile Include="..\..\..\..\..\juce_audio_basics\midi\juce_MidiMessageSequence.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce_audio_basics\effects\juce_FFT.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_audio_basics\effects\juce_IIRFilter.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -503,6 +504,9 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_audio_processors\scanning\juce_PluginListComponent.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce_audio_utils\gui\juce_AudioAppComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.cpp">
@@ -749,6 +753,9 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_data_structures\values\juce_ValueTree.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce_data_structures\values\juce_ValueTreeSynchroniser.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_data_structures\undomanager\juce_UndoManager.cpp">
@@ -1285,6 +1292,9 @@
     <ClCompile Include="..\..\..\..\..\juce_gui_extra\documents\juce_FileBasedDocument.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce_gui_extra\misc\juce_AnimatedAppComponent.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce_gui_extra\misc\juce_BubbleMessageComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1439,6 +1449,7 @@
     <ClInclude Include="..\..\..\..\..\juce_audio_basics\midi\juce_MidiMessage.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_basics\midi\juce_MidiMessageSequence.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_basics\effects\juce_Decibels.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_audio_basics\effects\juce_FFT.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_basics\effects\juce_IIRFilter.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_basics\effects\juce_LagrangeInterpolator.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_basics\effects\juce_Reverb.h"/>
@@ -1491,6 +1502,7 @@
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\processors\juce_AudioProcessorEditor.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\processors\juce_AudioProcessorGraph.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\processors\juce_AudioProcessorListener.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_audio_processors\processors\juce_AudioProcessorParameter.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\processors\juce_GenericAudioProcessorEditor.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\processors\juce_PluginDescription.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\format\juce_AudioPluginFormat.h"/>
@@ -1506,6 +1518,7 @@
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\scanning\juce_PluginDirectoryScanner.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\scanning\juce_PluginListComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_processors\juce_audio_processors.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_audio_utils\gui\juce_AudioAppComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_utils\gui\juce_AudioThumbnail.h"/>
     <ClInclude Include="..\..\..\..\..\juce_audio_utils\gui\juce_AudioThumbnailBase.h"/>
@@ -1515,9 +1528,9 @@
     <ClInclude Include="..\..\..\..\..\juce_audio_utils\juce_audio_utils.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\text\juce_CharacterFunctions.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\text\juce_CharPointer_ASCII.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_core\text\juce_CharPointer_UTF8.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\text\juce_CharPointer_UTF16.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\text\juce_CharPointer_UTF32.h"/>
-    <ClInclude Include="..\..\..\..\..\juce_core\text\juce_CharPointer_UTF8.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\text\juce_Identifier.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\text\juce_LocalisedStrings.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\text\juce_NewLine.h"/>
@@ -1530,6 +1543,7 @@
     <ClInclude Include="..\..\..\..\..\juce_core\maths\juce_BigInteger.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\maths\juce_Expression.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\maths\juce_MathsFunctions.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_core\maths\juce_NormalisableRange.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\maths\juce_Random.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\maths\juce_Range.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\memory\juce_Atomic.h"/>
@@ -1603,6 +1617,7 @@
     <ClInclude Include="..\..\..\..\..\juce_core\streams\juce_SubregionStream.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\logging\juce_FileLogger.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\logging\juce_Logger.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_core\system\juce_CompilerSupport.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\system\juce_PlatformDefs.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\system\juce_StandardHeader.h"/>
     <ClInclude Include="..\..\..\..\..\juce_core\system\juce_SystemStats.h"/>
@@ -1626,6 +1641,7 @@
     <ClInclude Include="..\..\..\..\..\juce_core\juce_core.h"/>
     <ClInclude Include="..\..\..\..\..\juce_data_structures\values\juce_Value.h"/>
     <ClInclude Include="..\..\..\..\..\juce_data_structures\values\juce_ValueTree.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_data_structures\values\juce_ValueTreeSynchroniser.h"/>
     <ClInclude Include="..\..\..\..\..\juce_data_structures\undomanager\juce_UndoableAction.h"/>
     <ClInclude Include="..\..\..\..\..\juce_data_structures\undomanager\juce_UndoManager.h"/>
     <ClInclude Include="..\..\..\..\..\juce_data_structures\app_properties\juce_ApplicationProperties.h"/>
@@ -1638,6 +1654,7 @@
     <ClInclude Include="..\..\..\..\..\juce_events\messages\juce_Message.h"/>
     <ClInclude Include="..\..\..\..\..\juce_events\messages\juce_MessageListener.h"/>
     <ClInclude Include="..\..\..\..\..\juce_events\messages\juce_MessageManager.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_events\messages\juce_MountedVolumeListChangeDetector.h"/>
     <ClInclude Include="..\..\..\..\..\juce_events\messages\juce_NotificationType.h"/>
     <ClInclude Include="..\..\..\..\..\juce_events\timers\juce_MultiTimer.h"/>
     <ClInclude Include="..\..\..\..\..\juce_events\timers\juce_Timer.h"/>
@@ -1831,6 +1848,7 @@
     <ClInclude Include="..\..\..\..\..\juce_gui_extra\embedding\juce_ActiveXControlComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce_gui_extra\embedding\juce_NSViewComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce_gui_extra\embedding\juce_UIViewComponent.h"/>
+    <ClInclude Include="..\..\..\..\..\juce_gui_extra\misc\juce_AnimatedAppComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce_gui_extra\misc\juce_AppleRemote.h"/>
     <ClInclude Include="..\..\..\..\..\juce_gui_extra\misc\juce_BubbleMessageComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce_gui_extra\misc\juce_ColourSelector.h"/>

@@ -46,7 +46,9 @@
 
 #include "dRowAudio.h"
 
-#include "audio/soundtouch/SoundTouch_Source.cpp"
+#if DROWAUDIO_USE_SOUNDTOUCH
+ #include "audio/soundtouch/SoundTouch_Source.cpp"
+#endif
 
 namespace drow {
 

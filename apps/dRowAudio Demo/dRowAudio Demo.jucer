@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.6.0"
-              bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.1.0"
+              bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="3.1.1"
               defines="DROWAUDIO_UNIT_TESTS" includeBinaryInAppConfig="1">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" extraLinkerFlags="-lcurl"
                bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
+                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="64BitUniversal"
                        headerPath="" defines=""/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
@@ -57,6 +57,39 @@
         <MODULEPATH id="dRowAudio" path="../../../../modules"/>
       </MODULEPATHS>
     </VS2010>
+    <VS2013 targetFolder="Builds/VisualStudio2013" extraDefs="CURL_STATICLIB"
+            extraCompilerFlags="" extraLinkerFlags="Wldap32.lib ws2_32.lib ${CURL_LIB}"
+            smallIcon="vTRqOY" bigIcon="vTRqOY">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="dRowAudio Demo" libraryPath="../../../../dRowAudio/network/curl/lib"
+                       defines="CURL_LIB=libcurldebug.lib"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="dRowAudio Demo" libraryPath="../../../../dRowAudio/network/curl/lib"
+                       defines="CURL_LIB=libcurlrelease.lib"/>
+        <CONFIGURATION name="Debug64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="dRowAudio Demo (64-bit)"
+                       libraryPath="" defines="DROWAUDIO_USE_CURL = 0"/>
+        <CONFIGURATION name="Release64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="2" targetName="dRowAudio Demo (64-bit)"
+                       libraryPath="" defines="DROWAUDIO_USE_CURL = 0"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_audio" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../modules"/>
+        <MODULEPATH id="juce_events" path="../../../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../modules"/>
+        <MODULEPATH id="juce_core" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../../modules"/>
+      </MODULEPATHS>
+    </VS2013>
     <LINUX_MAKE targetFolder="Builds/Linux" bigIcon="vTRqOY" smallIcon="vTRqOY"
                 extraLinkerFlags="-lcurl">
       <CONFIGURATIONS>
