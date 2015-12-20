@@ -18,21 +18,33 @@
 // [BEGIN_USER_CODE_SECTION]
 
 // (You can add your own code in this section, and the Introjucer will not overwrite it)
+
 // [END_USER_CODE_SECTION]
 
 //==============================================================================
-#define JUCE_MODULE_AVAILABLE_dRowAudio                  1
-#define JUCE_MODULE_AVAILABLE_juce_audio_basics          1
-#define JUCE_MODULE_AVAILABLE_juce_audio_devices         1
-#define JUCE_MODULE_AVAILABLE_juce_audio_formats         1
-#define JUCE_MODULE_AVAILABLE_juce_audio_processors      1
-#define JUCE_MODULE_AVAILABLE_juce_audio_utils           1
-#define JUCE_MODULE_AVAILABLE_juce_core                  1
-#define JUCE_MODULE_AVAILABLE_juce_data_structures       1
-#define JUCE_MODULE_AVAILABLE_juce_events                1
-#define JUCE_MODULE_AVAILABLE_juce_graphics              1
-#define JUCE_MODULE_AVAILABLE_juce_gui_basics            1
-#define JUCE_MODULE_AVAILABLE_juce_gui_extra             1
+#define JUCE_MODULE_AVAILABLE_dRowAudio                       1
+#define JUCE_MODULE_AVAILABLE_juce_audio_basics               1
+#define JUCE_MODULE_AVAILABLE_juce_audio_devices              1
+#define JUCE_MODULE_AVAILABLE_juce_audio_formats              1
+#define JUCE_MODULE_AVAILABLE_juce_audio_processors           1
+#define JUCE_MODULE_AVAILABLE_juce_audio_utils                1
+#define JUCE_MODULE_AVAILABLE_juce_box2d                      1
+#define JUCE_MODULE_AVAILABLE_juce_core                       1
+#define JUCE_MODULE_AVAILABLE_juce_cryptography               1
+#define JUCE_MODULE_AVAILABLE_juce_data_structures            1
+#define JUCE_MODULE_AVAILABLE_juce_events                     1
+#define JUCE_MODULE_AVAILABLE_juce_graphics                   1
+#define JUCE_MODULE_AVAILABLE_juce_gui_basics                 1
+#define JUCE_MODULE_AVAILABLE_juce_gui_extra                  1
+#define JUCE_MODULE_AVAILABLE_juce_opengl                     1
+#define JUCE_MODULE_AVAILABLE_juce_osc                        1
+#define JUCE_MODULE_AVAILABLE_juce_tracktion_marketplace      1
+#define JUCE_MODULE_AVAILABLE_juce_video                      1
+
+//==============================================================================
+#ifndef    JUCE_STANDALONE_APPLICATION
+ #define   JUCE_STANDALONE_APPLICATION 1
+#endif
 
 //==============================================================================
 // dRowAudio flags:
@@ -149,6 +161,10 @@
  //#define JUCE_INCLUDE_ZLIB_CODE
 #endif
 
+#ifndef    JUCE_USE_CURL
+ //#define JUCE_USE_CURL
+#endif
+
 //==============================================================================
 // juce_graphics flags:
 
@@ -188,6 +204,25 @@
 
 #ifndef    JUCE_ENABLE_LIVE_CONSTANT_EDITOR
  //#define JUCE_ENABLE_LIVE_CONSTANT_EDITOR
+#endif
+
+//==============================================================================
+// juce_video flags:
+
+#ifndef    JUCE_DIRECTSHOW
+ #define   JUCE_DIRECTSHOW 0
+#endif
+
+#ifndef    JUCE_MEDIAFOUNDATION
+ #define   JUCE_MEDIAFOUNDATION 0
+#endif
+
+#ifndef    JUCE_QUICKTIME
+ #define   JUCE_QUICKTIME 0
+#endif
+
+#ifndef    JUCE_USE_CAMERA
+ #define   JUCE_USE_CAMERA 0
 #endif
 
 

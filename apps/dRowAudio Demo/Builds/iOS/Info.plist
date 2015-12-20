@@ -9,8 +9,6 @@
     <false/>
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
-    <key>CFBundleIconFile</key>
-    <string>Icon.icns</string>
     <key>CFBundleIdentifier</key>
     <string>com.dRowAudio.dRowAudioDemo</string>
     <key>CFBundleName</key>
@@ -29,5 +27,14 @@
     <true/>
     <key>UIStatusBarHidden</key>
     <true/>
+    <key>UIRequiresFullScreen</key>
+    <true/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
   </dict>
 </plist>
