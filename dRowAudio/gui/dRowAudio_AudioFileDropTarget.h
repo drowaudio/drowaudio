@@ -34,8 +34,6 @@
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
-#include "../audio/dRowAudio_AudioFilePlayer.h"
-
 //==============================================================================
 /** A Component that acts as a drag and drop target for audio files and
     MusicLibraryTable drag sources. This will draw a coloured bezel if it can

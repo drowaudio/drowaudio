@@ -47,6 +47,14 @@
  #include "audio/soundtouch/SoundTouch_Source.cpp"
 #endif
 
+#if DROWAUDIO_USE_CURL && JUCE_WINDOWS
+ #if JUCE_DEBUG
+  #pragma comment (lib "dRowAudio/network/curl/lib/libcurldebug.lib")
+ #else
+  #pragma comment (lib "dRowAudio/network/curl/lib/libcurlrelease.lib")
+ #endif
+#endif
+
 namespace drow
 {
     #include "audio/dRowAudio_AudioFilePlayer.cpp"

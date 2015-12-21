@@ -32,21 +32,20 @@
 #ifndef DROWAUDIO_MEMORYINPUTSOURCE_H
 #define DROWAUDIO_MEMORYINPUTSOURCE_H
 
-//==============================================================================
 /** A type of InputSource that represents a MemoryInputStream.
 
     @see InputSource
  */
-class MemoryInputSource :   public InputSource
+class MemoryInputSource : public InputSource
 {
 public:
-    //==============================================================================
     MemoryInputSource (MemoryInputStream* stream, bool useFileTimeInHashGeneration = false);
     ~MemoryInputSource();
 
-    InputStream* createInputStream();
-    InputStream* createInputStreamFor (const String& relatedItemPath);
-    int64 hashCode() const;
+    //==============================================================================
+    InputStream* createInputStream() override;
+    InputStream* createInputStreamFor (const String& relatedItemPath) override;
+    int64 hashCode() const override;
 
 private:
     //==============================================================================

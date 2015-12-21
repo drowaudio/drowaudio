@@ -52,11 +52,15 @@
 #endif
 
 /** Config: DROWAUDIO_USE_CURL
-    Enables the cURL library and the associated network classes. By default
-    this is enabled.
+    Enables the cURL library and the associated network classes.
+    By default this is enabled. Not available on Windows.
  */
-#ifndef DROWAUDIO_USE_CURL
-    #define DROWAUDIO_USE_CURL 1
+#if JUCE_WINDOWS
+ #undef DROWAUDIO_USE_CURL
+#else
+ #ifndef DROWAUDIO_USE_CURL
+  #define DROWAUDIO_USE_CURL 1
+ #endif
 #endif
     
 //=============================================================================

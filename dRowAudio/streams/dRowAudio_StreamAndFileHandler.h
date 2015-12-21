@@ -110,9 +110,8 @@ public:
         switch (inputType)
         {
             case file:
-            {
                 return new FileInputStream (currentFile);
-            }
+
             case memoryBlock:
             case memoryInputStream:
             {
@@ -120,18 +119,17 @@ public:
 
                 if (memoryStream != nullptr)
                     return new MemoryInputStream (memoryStream->getData(), memoryStream->getDataSize(), false);
-                else
-                    return nullptr;
             }
+            break;
+
             case unknownStream:
-            {
                 return inputStream;
-            }
+
             default:
-            {
-                return nullptr;
-            }
+            break;
         }
+
+        return nullptr;
     }
 
     /** Returns an InputSource to the current stream if it knows the type of stream.
@@ -143,9 +141,8 @@ public:
         switch (inputType)
         {
             case file:
-            {
                 return new FileInputSource (currentFile);
-            }
+
             case memoryBlock:
             case memoryInputStream:
             {
@@ -153,14 +150,14 @@ public:
 
                 if (memoryStream != nullptr)
                     return new MemoryInputSource (memoryStream);
-                else
-                    return nullptr;
             }
+            break;
+
             default:
-            {
-                return nullptr;
-            }
+            break;
         }
+
+        return nullptr;
     }
 
     //==============================================================================
@@ -203,7 +200,7 @@ public:
 	/** Returns the current file if it was set with a one.
         If a stream was used this will return File::nonexistant.
      */
-	File getFile() const noexcept                       { return currentFile; }
+	const File& getFile() const noexcept                       { return currentFile; }
 
     //==============================================================================
     /** Subclasses must override this to be informed of when a file changes.

@@ -35,8 +35,11 @@
 #if DROWAUDIO_USE_CURL || DOXYGEN
 
 }
+
 typedef void CURL;
-namespace drow {
+
+namespace drow
+{
 
 //==============================================================================
 class CURLManager : public TimeSliceThread,

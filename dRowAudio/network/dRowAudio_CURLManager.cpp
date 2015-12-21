@@ -39,7 +39,8 @@
  #include <curl/curl.h>
 #endif
 
-namespace drow {
+namespace drow
+{
 
 //==============================================================================
 juce_ImplementSingleton (CURLManager);
@@ -77,4 +78,4 @@ StringArray CURLManager::getSupportedProtocols()
 	return StringArray();
 }
 
-#endif
+#endif //DROWAUDIO_USE_CURL

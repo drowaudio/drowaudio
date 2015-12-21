@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef DROWAUDIO_IOSAUDIOCONVERTER__
-#define DROWAUDIO_IOSAUDIOCONVERTER__
+#ifndef DROWAUDIO_IOSAUDIOCONVERTER_H
+#define DROWAUDIO_IOSAUDIOCONVERTER_H
 
 #if JUCE_IOS || DOXYGEN
 
@@ -164,4 +164,4 @@ private:
 
 
 #endif
-#endif // DROWAUDIO_IOSAUDIOCONVERTER__
+#endif // DROWAUDIO_IOSAUDIOCONVERTER_H
