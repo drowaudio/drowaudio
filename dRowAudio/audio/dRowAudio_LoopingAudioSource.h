@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_LOOPINGAUDIOSOURCE_H__
-#define __DROWAUDIO_LOOPINGAUDIOSOURCE_H__
+#ifndef DROWAUDIO_LOOPINGAUDIOSOURCE_H
+#define DROWAUDIO_LOOPINGAUDIOSOURCE_H
 
 #include "../utility/dRowAudio_Utility.h"
 
@@ -118,4 +118,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopingAudioSource);
 };
 
-#endif   // __DROWAUDIO_LOOPINGAUDIOSOURCE_H__
+#endif   // DROWAUDIO_LOOPINGAUDIOSOURCE_H

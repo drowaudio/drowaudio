@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_GUIHELPERS_H__
-#define __DROWAUDIO_GUIHELPERS_H__
+#ifndef DROWAUDIO_GUIHELPERS_H
+#define DROWAUDIO_GUIHELPERS_H
 
 #if JUCE_MSVC
     #pragma warning (disable: 4505)
@@ -563,4 +563,4 @@ namespace GuiHelpers
     }
 }
 
-#endif // __DROWAUDIO_GUIHELPERS_H__
+#endif // DROWAUDIO_GUIHELPERS_H

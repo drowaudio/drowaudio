@@ -1,6 +1,3 @@
-
-
-
 /*
   ==============================================================================
 
@@ -32,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef _DROWAUDIOHEADER_H_
-#define _DROWAUDIOHEADER_H_
+#ifndef DROWAUDIOHEADER_H
+#define DROWAUDIOHEADER_H
 
 /**
   @mainpage dRowAudio - A JUCE module for high level audio application development.
@@ -218,75 +215,75 @@ using juce::UnitTest;
 //using juce::Rectangle;
 
 // Audio
-#ifndef __DROWAUDIO_AUDIOFILEPLAYER_H__
+#ifndef DROWAUDIO_AUDIOFILEPLAYER_H
  #include "audio/dRowAudio_AudioFilePlayer.h"
 #endif
 
-#ifndef __DROWAUDIO_AUDIOFILEPLAYEREXT_H__
+#ifndef DROWAUDIO_AUDIOFILEPLAYEREXT_H
  #include "audio/dRowAudio_AudioFilePlayerExt.h"
 #endif
 
-#ifndef __DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H__
+#ifndef DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H
  #include "audio/dRowAudio_AudioSampleBufferAudioFormat.h"
 #endif
 
-#ifndef __DROWAUDIO_SOUNDTOUCHPROCESSOR_H__
+#ifndef DROWAUDIO_SOUNDTOUCHPROCESSOR_H
  #include "audio/dRowAudio_SoundTouchProcessor.h"
 #endif
 
-#ifndef __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__
+#ifndef DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H
  #include "audio/dRowAudio_SoundTouchAudioSource.h"
 #endif
 
-#ifndef __DROWAUDIO_FILTERINGAUDIOSOURCE_H__
+#ifndef DROWAUDIO_FILTERINGAUDIOSOURCE_H
  #include "audio/dRowAudio_FilteringAudioSource.h"
 #endif
 
-#ifndef __DROWAUDIO_REVERSIBLEAUDIOSOURCE_H__
+#ifndef DROWAUDIO_REVERSIBLEAUDIOSOURCE_H
  #include "audio/dRowAudio_ReversibleAudioSource.h"
 #endif
 
-#ifndef __DROWAUDIO_LOOPINGAUDIOSOURCE_H__
+#ifndef DROWAUDIO_LOOPINGAUDIOSOURCE_H
  #include "audio/dRowAudio_LoopingAudioSource.h"
 #endif
 
-#ifndef __DROWAUDIO_PITCH_H__
+#ifndef DROWAUDIO_PITCH_H
  #include "audio/dRowAudio_Pitch.h"
 #endif
 
-#ifndef __DROWAUDIO_PITCHDETECTOR_H__
+#ifndef DROWAUDIO_PITCHDETECTOR_H
  #include "audio/dRowAudio_PitchDetector.h"
 #endif
 
-#ifndef __DROWAUDIO_AUDIOUTILITY_H__
+#ifndef DROWAUDIO_AUDIOUTILITY_H
  #include "audio/dRowAudio_AudioUtility.h"
 #endif
 
-#ifndef __DROWAUDIO_FIFOBUFFER_H__
+#ifndef DROWAUDIO_FIFOBUFFER_H
  #include "audio/dRowAudio_FifoBuffer.h"
 #endif
 
-#ifndef __DROWAUDIO_BUFFER_H__
+#ifndef DROWAUDIO_BUFFER_H
  #include "audio/dRowAudio_Buffer.h"
 #endif
 
-#ifndef __DROWAUDIO_ENVELOPEFOLLOWER_H__
+#ifndef DROWAUDIO_ENVELOPEFOLLOWER_H
  #include "audio/dRowAudio_EnvelopeFollower.h"
 #endif
 
-#ifndef __DROWAUDIO_SAMPLERATECONVERTER_H__
+#ifndef DROWAUDIO_SAMPLERATECONVERTER_H
  #include "audio/dRowAudio_SampleRateConverter.h"
 #endif
 
-#ifndef __DROWAUDIO_BIQUADFILTER_H__
+#ifndef DROWAUDIO_BIQUADFILTER_H
  #include "audio/filters/dRowAudio_BiquadFilter.h"
 #endif
 
-#ifndef __DROWAUDIO_ONEPOLEFILTER_H__
+#ifndef DROWAUDIO_ONEPOLEFILTER_H
  #include "audio/filters/dRowAudio_OnePoleFilter.h"
 #endif
 
-#ifndef __DROWAUDIO_WINDOW_H__
+#ifndef DROWAUDIO_WINDOW_H
  #include "audio/fft/dRowAudio_Window.h"
 #endif
 
@@ -294,194 +291,194 @@ using juce::UnitTest;
  #include "audio/fft/dRowAudio_FFT.h"
 #endif
 
-#ifndef __DROWAUDIO_LTAS_H__
+#ifndef DROWAUDIO_LTAS_H
  #include "audio/fft/dRowAudio_LTAS.h"
 #endif
 
 // Gui
-#ifndef __DROWAUDIO_AUDIOFILEDROPTARGET_H__
+#ifndef DROWAUDIO_AUDIOFILEDROPTARGET_H
  #include "gui/dRowAudio_AudioFileDropTarget.h"
 #endif
 
-#ifndef __DROWAUDIO_GUIHELPERS_H__
+#ifndef DROWAUDIO_GUIHELPERS_H
  #include "gui/dRowAudio_GuiHelpers.h"
 #endif
 
-#ifndef __DROWAUDIO_GRAPHICALCOMPONENT_H__
+#ifndef DROWAUDIO_GRAPHICALCOMPONENT_H
  #include "gui/dRowAudio_GraphicalComponent.h"
 #endif
 
-#ifndef __DROWAUDIO_AUDIOOSCILLOSCOPE_H__
+#ifndef DROWAUDIO_AUDIOOSCILLOSCOPE_H
  #include "gui/dRowAudio_AudioOscilloscope.h"
 #endif
 
-#ifndef __DROWAUDIO_AUDIOTRANSPORTCUROSR_H__
+#ifndef DROWAUDIO_AUDIOTRANSPORTCUROSR_H
  #include "gui/dRowAudio_AudioTransportCursor.h"
 #endif
 
-#ifndef __DROWAUDIO_SEGMENTEDMETER_H__
+#ifndef DROWAUDIO_SEGMENTEDMETER_H
  #include "gui/dRowAudio_SegmentedMeter.h"
 #endif
 
-#ifndef __DROWAUDIO_SONOGRAM_H__
+#ifndef DROWAUDIO_SONOGRAM_H
  #include "gui/dRowAudio_Sonogram.h"
 #endif
 
-#ifndef __DROWAUDIO_SPECTROGRAPH_H__
+#ifndef DROWAUDIO_SPECTROGRAPH_H
  #include "gui/dRowAudio_Spectrograph.h"
 #endif
- #ifndef __DROWAUDIO_SPECTROSCOPE_H__
+ #ifndef DROWAUDIO_SPECTROSCOPE_H
  #include "gui/dRowAudio_Spectroscope.h"
 #endif
 
-#ifndef __DROWAUDIO_TRIGGEREDSCOPE_H__
+#ifndef DROWAUDIO_TRIGGEREDSCOPE_H
  #include "gui/dRowAudio_TriggeredScope.h"
 #endif
 
-#ifndef __DROWAUDIO_CPUMETER_H__
+#ifndef DROWAUDIO_CPUMETER_H
  #include "gui/dRowAudio_CpuMeter.h"
 #endif
 
-#ifndef __DROWAUDIO_CLOCK_H__
+#ifndef DROWAUDIO_CLOCK_H
  #include "gui/dRowAudio_Clock.h"
 #endif
 
-#ifndef __DROWAUDIO_CENTREALIGNVIEWPORT_H__
+#ifndef DROWAUDIO_CENTREALIGNVIEWPORT_H
  //#include "gui/dRowAudio_CentreAlignViewport.h"
 #endif
 
-#ifndef __DROWAUDIO_MUSICLIBRARYTABLE_H__
+#ifndef DROWAUDIO_MUSICLIBRARYTABLE_H
  #include "gui/dRowAudio_MusicLibraryTable.h"
 #endif
 
-#ifndef __DROWAUDIO_BASICFILEBROWSER_H__
+#ifndef DROWAUDIO_BASICFILEBROWSER_H
  #include "gui/filebrowser/dRowAudio_BasicFileBrowser.h"
 #endif
 
-#ifndef __DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H__
+#ifndef DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H
  #include "gui/filebrowser/dRowAudio_ColumnFileBrowserLookAndFeel.h"
 #endif
 
-#ifndef __DROWAUDIO_COLUMNFILEBROWSER_H__
+#ifndef DROWAUDIO_COLUMNFILEBROWSER_H
  #include "gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
 #endif
 
 // audiothumbnail
-#ifndef __DROWAUDIO_AUDIOTHUMBNAILIMAGE_H__
+#ifndef DROWAUDIO_AUDIOTHUMBNAILIMAGE_H
  #include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.h"
 #endif
 
-#ifndef __DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__
+#ifndef DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H
  #include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
 #endif
 
-#ifndef __DROWAUDIO_POSITIONALWAVEDISPLAY_H__
+#ifndef DROWAUDIO_POSITIONALWAVEDISPLAY_H
  #include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h"
 #endif
 
-#ifndef __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__
+#ifndef DROWAUDIO_DRAGGABLEWAVEDISPLAY_H
  #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h"
 #endif
- #ifndef __DROWAUDIO_DEFAULTCOLOURS_H__
+ #ifndef DROWAUDIO_DEFAULTCOLOURS_H
  #include "gui/dRowAudio_DefaultColours.h"
 #endif
 
 // maths
-#ifndef __DROWAUDIO_MATHSUTILITIES_H__
+#ifndef DROWAUDIO_MATHSUTILITIES_H
  #include "maths/dRowAudio_MathsUtilities.h"
 #endif
 
-#ifndef __DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__
+#ifndef DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H
  #include "maths/dRowAudio_CumulativeMovingAverage.h"
 #endif
 
-#ifndef __DROWAUDIO_BEZIERCURVE_H__
+#ifndef DROWAUDIO_BEZIERCURVE_H
  #include "maths/dRowAudio_BezierCurve.h"
 #endif
 
 // native
-#ifndef __DROWAUDIO_AUDIOPICKER__
+#ifndef DROWAUDIO_AUDIOPICKER__
  #include "native/dRowAudio_AudioPicker.h"
 #endif
 
-#ifndef __DROWAUDIO_AVASSETAUDIOFORMAT_H__
+#ifndef DROWAUDIO_AVASSETAUDIOFORMAT_H
  #include "native/dRowAudio_AVAssetAudioFormat.h"
 #endif
 
-#ifndef __DROWAUDIO_IOSAUDIOCONVERTER__
+#ifndef DROWAUDIO_IOSAUDIOCONVERTER__
  #include "native/dRowAudio_IOSAudioConverter.h"
 #endif
 
 // network
-#ifndef __DROWAUDIO_CURLMANAGER_H__
+#ifndef DROWAUDIO_CURLMANAGER_H
  #include "network/dRowAudio_CURLManager.h"
 #endif
 
-#ifndef __DROWAUDIO_CURLEASYSESSION_H__
+#ifndef DROWAUDIO_CURLEASYSESSION_H
  #include "network/dRowAudio_CURLEasySession.h"
 #endif
 
 // streams
-#ifndef __DROWAUDIO_STREAMANDFILEHANDLER_H__
+#ifndef DROWAUDIO_STREAMANDFILEHANDLER_H
  #include "audio/dRowAudio_StreamAndFileHandler.h"
 #endif
 
-#ifndef __DROWAUDIO_MEMORYINPUTSOURCE_H__
+#ifndef DROWAUDIO_MEMORYINPUTSOURCE_H
  #include "streams/dRowAudio_MemoryInputSource.h"
 #endif
 
 // Utility
-#ifndef __DROWAUDIO_PLUGINPARAMETER_H__
+#ifndef DROWAUDIO_PLUGINPARAMETER_H
  #include "parameters/dRowAudio_PluginParameter.h"
 #endif
 
-#ifndef __DROWAUDIO_CONSTANTS_H__
+#ifndef DROWAUDIO_CONSTANTS_H
  #include "utility/dRowAudio_Constants.h"
 #endif
 
-#ifndef __DROWAUDIO_DEBUGOBJECT_H__
+#ifndef DROWAUDIO_DEBUGOBJECT_H
  #include "utility/dRowAudio_DebugObject.h"
 #endif
- #ifndef __DROWAUDIO_ENCRYPTEDSTRING_H__
+ #ifndef DROWAUDIO_ENCRYPTEDSTRING_H
  #include "utility/dRowAudio_EncryptedString.h"
 #endif
 
-#ifndef __DROWAUDIO_UNITYBUILDER_H__
+#ifndef DROWAUDIO_UNITYBUILDER_H
  #include "utility/dRowAudio_UnityBuilder.h"
 #endif
 
 #ifndef __UNITYPROJECTBUILDER_H_27A8CF68__
  #include "utility/dRowAudio_UnityProjectBuilder.h"
 #endif
- #ifndef __DROWAUDIO_UTILITY_H__
+ #ifndef DROWAUDIO_UTILITY_H
  #include "utility/dRowAudio_Utility.h"
 #endif
 
-#ifndef __DROWAUDIO_STATEVARIABLE_H__
+#ifndef DROWAUDIO_STATEVARIABLE_H
  #include "utility/dRowAudio_StateVariable.h"
 #endif
 
-#ifndef __DROWAUDIO_XMLHELPERS_H__
+#ifndef DROWAUDIO_XMLHELPERS_H
  #include "utility/dRowAudio_XmlHelpers.h"
 #endif
 
-#ifndef __DROWAUDIO_COMPARATORS_H__
+#ifndef DROWAUDIO_COMPARATORS_H
  #include "utility/dRowAudio_Comparators.h"
 #endif
 
-#ifndef __DROWAUDIO_MUSICLIBRARYHELPERS_H__
+#ifndef DROWAUDIO_MUSICLIBRARYHELPERS_H
  #include "utility/dRowAudio_MusicLibraryHelpers.h"
 #endif
 
-#ifndef __DROWAUDIO_ITUNESLIBRARY_H__
+#ifndef DROWAUDIO_ITUNESLIBRARY_H
  #include "utility/dRowAudio_ITunesLibrary.h"
 #endif
 
-#ifndef __DROWAUDIO_ITUNESLIBRARYPARSER_H__
+#ifndef DROWAUDIO_ITUNESLIBRARYPARSER_H
  #include "utility/dRowAudio_ITunesLibraryParser.h"
 #endif
 
-#ifndef __DROWAUDIO_LOCKEDPOINTER_H__
+#ifndef DROWAUDIO_LOCKEDPOINTER_H
  #include "utility/dRowAudio_LockedPointer.h"
 #endif
 
@@ -491,4 +488,4 @@ using juce::UnitTest;
  #pragma clang diagnostic pop
 #endif
 
-#endif //_DROWAUDIOHEADER_H
+#endif //DROWAUDIOHEADER_H

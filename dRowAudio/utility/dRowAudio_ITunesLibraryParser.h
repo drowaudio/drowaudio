@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_ITUNESLIBRARYPARSER_H__
-#define __DROWAUDIO_ITUNESLIBRARYPARSER_H__
+#ifndef DROWAUDIO_ITUNESLIBRARYPARSER_H
+#define DROWAUDIO_ITUNESLIBRARYPARSER_H
 
 #include "dRowAudio_Utility.h"
 
@@ -86,4 +86,4 @@ private:
 };
 
 
-#endif  // __DROWAUDIO_ITUNESLIBRARYPARSER_H__
+#endif  // DROWAUDIO_ITUNESLIBRARYPARSER_H

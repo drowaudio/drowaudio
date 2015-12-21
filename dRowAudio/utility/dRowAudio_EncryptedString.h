@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_ENCRYPTEDSTRING_H__
-#define __DROWAUDIO_ENCRYPTEDSTRING_H__
+#ifndef DROWAUDIO_ENCRYPTEDSTRING_H
+#define DROWAUDIO_ENCRYPTEDSTRING_H
 
 #if JUCE_MODULE_AVAILABLE_juce_cryptography
 
@@ -97,4 +97,4 @@ private:
 
 #endif // JUCE_MODULE_AVAILABLE_juce_cryptography
 
-#endif  // __DROWAUDIO_ENCRYPTEDSTRING_H__
+#endif  // DROWAUDIO_ENCRYPTEDSTRING_H

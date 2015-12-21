@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_BUFFERTRANSFORMAUDIOSOURCE_H__
-#define __DROWAUDIO_BUFFERTRANSFORMAUDIOSOURCE_H__
+#ifndef DROWAUDIO_BUFFERTRANSFORMAUDIOSOURCE_H
+#define DROWAUDIO_BUFFERTRANSFORMAUDIOSOURCE_H
 
 #include "../DemoHeader.h"
 
@@ -72,4 +72,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BufferTransformAudioSource);
 };
 
-#endif //__DROWAUDIO_BUFFERTRANSFORMAUDIOSOURCE_H__
+#endif //DROWAUDIO_BUFFERTRANSFORMAUDIOSOURCE_H

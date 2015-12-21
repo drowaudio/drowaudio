@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_UNITYBUILDER_H__
-#define __DROWAUDIO_UNITYBUILDER_H__
+#ifndef DROWAUDIO_UNITYBUILDER_H
+#define DROWAUDIO_UNITYBUILDER_H
 
 
 //==============================================================================
@@ -111,4 +111,4 @@ private:
 };
 
 
-#endif  // __DROWAUDIO_UNITYBUILDER_H__
+#endif  // DROWAUDIO_UNITYBUILDER_H

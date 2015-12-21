@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_CENTREALIGNVIEWPORT_H__
-#define __DROWAUDIO_CENTREALIGNVIEWPORT_H__
+#ifndef DROWAUDIO_CENTREALIGNVIEWPORT_H
+#define DROWAUDIO_CENTREALIGNVIEWPORT_H
 
 //==============================================================================
 class CentreAlignViewport : public Component,
@@ -270,4 +270,4 @@ private:
 	JUCE_LEAK_DETECTOR (CentreAlignViewport);
 };
 
-#endif //__DROWAUDIO_CENTREALIGNVIEWPORT_H__
+#endif //DROWAUDIO_CENTREALIGNVIEWPORT_H

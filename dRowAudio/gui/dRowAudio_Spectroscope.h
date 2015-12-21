@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_SPECTROSCOPE_H__
-#define __DROWAUDIO_SPECTROSCOPE_H__
+#ifndef DROWAUDIO_SPECTROSCOPE_H
+#define DROWAUDIO_SPECTROSCOPE_H
 
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
@@ -105,4 +105,4 @@ private:
 };
 
 #endif
-#endif  // __DROWAUDIO_SPECTROSCOPE_H__
+#endif  // DROWAUDIO_SPECTROSCOPE_H

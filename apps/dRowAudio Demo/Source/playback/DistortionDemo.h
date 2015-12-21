@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_DISTORTIONDEMO_H__
-#define __DROWAUDIO_DISTORTIONDEMO_H__
+#ifndef DROWAUDIO_DISTORTIONDEMO_H
+#define DROWAUDIO_DISTORTIONDEMO_H
 
 #include "../DemoHeader.h"
 #include "DistortionComponent.h"
@@ -62,4 +62,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionDemo);
 };
 
-#endif  // __DROWAUDIO_DISTORTIONDEMO_H__
+#endif  // DROWAUDIO_DISTORTIONDEMO_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_ITUNESLIBRARY_H__
-#define __DROWAUDIO_ITUNESLIBRARY_H__
+#ifndef DROWAUDIO_ITUNESLIBRARY_H
+#define DROWAUDIO_ITUNESLIBRARY_H
 
 #include "dRowAudio_ITunesLibraryParser.h"
 
@@ -146,4 +146,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibrary);
 };
 
-#endif  // __DROWAUDIO_ITUNESLIBRARY_H__
+#endif  // DROWAUDIO_ITUNESLIBRARY_H

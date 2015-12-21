@@ -25,8 +25,8 @@
   http://www.tinaja.com/text/bezmath.html
  */
 
-#ifndef __DROWAUDIO_BEZIERCURVE_H__
-#define __DROWAUDIO_BEZIERCURVE_H__
+#ifndef DROWAUDIO_BEZIERCURVE_H
+#define DROWAUDIO_BEZIERCURVE_H
 
 //==============================================================================
 /**	This namespace contains some very useful Bezier calculations.
@@ -212,4 +212,4 @@ namespace BezierCurve
 	//==============================================================================
 }
 
-#endif //__DROWAUDIO_BEZIERCURVE_H__
+#endif //DROWAUDIO_BEZIERCURVE_H

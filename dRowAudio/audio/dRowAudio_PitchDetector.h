@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_PITCHDETECTOR_H__
-#define __DROWAUDIO_PITCHDETECTOR_H__
+#ifndef DROWAUDIO_PITCHDETECTOR_H
+#define DROWAUDIO_PITCHDETECTOR_H
 
 #include "dRowAudio_Buffer.h"
 #include "dRowAudio_FifoBuffer.h"
@@ -177,4 +177,4 @@ private:
 };
 
 
-#endif  // __DROWAUDIO_PITCHDETECTOR_H__
+#endif  // DROWAUDIO_PITCHDETECTOR_H

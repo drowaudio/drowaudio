@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_PITCH_H__
-#define __DROWAUDIO_PITCH_H__
+#ifndef DROWAUDIO_PITCH_H
+#define DROWAUDIO_PITCH_H
 
 #include "dRowAudio_AudioUtility.h"
 
@@ -242,4 +242,4 @@ private:
 };
 
 
-#endif  // __DROWAUDIO_PITCH_H__
+#endif  // DROWAUDIO_PITCH_H

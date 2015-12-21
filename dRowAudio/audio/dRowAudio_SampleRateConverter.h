@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_SAMPLERATECONVERTER_H__
-#define __DROWAUDIO_SAMPLERATECONVERTER_H__
+#ifndef DROWAUDIO_SAMPLERATECONVERTER_H
+#define DROWAUDIO_SAMPLERATECONVERTER_H
 
 //==============================================================================
 /**

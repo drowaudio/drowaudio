@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_MEMORYINPUTSOURCE_H__
-#define __DROWAUDIO_MEMORYINPUTSOURCE_H__
+#ifndef DROWAUDIO_MEMORYINPUTSOURCE_H
+#define DROWAUDIO_MEMORYINPUTSOURCE_H
 
 //==============================================================================
 /** A type of InputSource that represents a MemoryInputStream.
@@ -57,4 +57,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MemoryInputSource);
 };
 
-#endif  // __DROWAUDIO_MEMORYINPUTSOURCE_H__
+#endif  // DROWAUDIO_MEMORYINPUTSOURCE_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_MUSICLIBRARYHELPERS_H__
-#define __DROWAUDIO_MUSICLIBRARYHELPERS_H__
+#ifndef DROWAUDIO_MUSICLIBRARYHELPERS_H
+#define DROWAUDIO_MUSICLIBRARYHELPERS_H
 
 #include "dRowAudio_Utility.h"
 
@@ -180,4 +180,4 @@ namespace MusicColumns {
 	};
 }
 
-#endif  // __DROWAUDIO_MUSICLIBRARYHELPERS_H__
+#endif  // DROWAUDIO_MUSICLIBRARYHELPERS_H

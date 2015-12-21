@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_MATHSUTILITIES_H__
-#define __DROWAUDIO_MATHSUTILITIES_H__
+#ifndef DROWAUDIO_MATHSUTILITIES_H
+#define DROWAUDIO_MATHSUTILITIES_H
 
 #if JUCE_MSVC
     #pragma warning (disable: 4505)
@@ -470,4 +470,4 @@ inline float log2f (float number)
 }
 #endif
 
-#endif //__DROWAUDIO_MATHSUTILITIES_H__
+#endif //DROWAUDIO_MATHSUTILITIES_H

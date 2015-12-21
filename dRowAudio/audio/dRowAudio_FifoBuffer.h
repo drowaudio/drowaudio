@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_FIFOBUFFER_H__
-#define __DROWAUDIO_FIFOBUFFER_H__
+#ifndef DROWAUDIO_FIFOBUFFER_H
+#define DROWAUDIO_FIFOBUFFER_H
 
 //==============================================================================
 /**
@@ -181,4 +181,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FifoBuffer);
 };
 
-#endif  // __DROWAUDIO_FIFOBUFFER_H__
+#endif  // DROWAUDIO_FIFOBUFFER_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_XMLHELPERS_H__
-#define __DROWAUDIO_XMLHELPERS_H__
+#ifndef DROWAUDIO_XMLHELPERS_H
+#define DROWAUDIO_XMLHELPERS_H
 
 namespace XmlHelpers
 {
@@ -167,4 +167,4 @@ namespace XmlHelpers
     }
 }
 
-#endif  // __DROWAUDIO_XMLHELPERS_H__
+#endif  // DROWAUDIO_XMLHELPERS_H

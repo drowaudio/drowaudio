@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H__
-#define __DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H__
+#ifndef DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H
+#define DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H
 
 //==================================================================================
 /** The LookAndFeel of the ColumnFileBrowser.
@@ -337,4 +337,4 @@ public:
 	}
 };
 
-#endif //__DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H__
+#endif //DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H

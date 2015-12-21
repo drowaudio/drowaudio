@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_CURLMANAGER_H__
-#define __DROWAUDIO_CURLMANAGER_H__
+#ifndef DROWAUDIO_CURLMANAGER_H
+#define DROWAUDIO_CURLMANAGER_H
 
 #if DROWAUDIO_USE_CURL || DOXYGEN
 
@@ -75,4 +75,4 @@ private:
 };
 
 #endif
-#endif  // __DROWAUDIO_CURLMANAGER_H__
+#endif  // DROWAUDIO_CURLMANAGER_H

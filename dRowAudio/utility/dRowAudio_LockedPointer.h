@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_LOCKEDPOINTER_H__
-#define __DROWAUDIO_LOCKEDPOINTER_H__
+#ifndef DROWAUDIO_LOCKEDPOINTER_H
+#define DROWAUDIO_LOCKEDPOINTER_H
 
 //==============================================================================
 /**
@@ -89,4 +89,4 @@ private:
 };
 
 
-#endif //__DROWAUDIO_LOCKEDPOINTER_H__
+#endif //DROWAUDIO_LOCKEDPOINTER_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H__
-#define __DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H__
+#ifndef DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H
+#define DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H
 
 //==============================================================================
 /**
@@ -75,4 +75,4 @@ private:
 };
 
 
-#endif // __DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H__
+#endif // DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H

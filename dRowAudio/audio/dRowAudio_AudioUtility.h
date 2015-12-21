@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AUDIOUTILITY_H__
-#define __DROWAUDIO_AUDIOUTILITY_H__
+#ifndef DROWAUDIO_AUDIOUTILITY_H
+#define DROWAUDIO_AUDIOUTILITY_H
 
 #if JUCE_MSVC
     #pragma warning (disable: 4505)
@@ -377,4 +377,4 @@ static bool isAudioSampleBuffer (InputStream& inputStream,
     return true;
 }
 
-#endif //__DROWAUDIO_AUDIOUTILITY_H__
+#endif //DROWAUDIO_AUDIOUTILITY_H

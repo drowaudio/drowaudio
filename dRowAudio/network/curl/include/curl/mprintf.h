@@ -1,5 +1,5 @@
-#ifndef __CURL_MPRINTF_H
-#define __CURL_MPRINTF_H
+#ifndef CURL_MPRINTF_H
+#define CURL_MPRINTF_H
 /***************************************************************************
  *                                  _   _ ____  _
  *  Project                     ___| | | |  _ \| |
@@ -78,4 +78,4 @@ CURL_EXTERN char *curl_mvaprintf(const char *format, va_list args);
 }
 #endif
 
-#endif /* __CURL_MPRINTF_H */
+#endif /* CURL_MPRINTF_H */

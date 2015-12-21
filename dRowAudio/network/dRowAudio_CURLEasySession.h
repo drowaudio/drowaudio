@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_CURLEASYSESSION_H__
-#define __DROWAUDIO_CURLEASYSESSION_H__
+#ifndef DROWAUDIO_CURLEASYSESSION_H
+#define DROWAUDIO_CURLEASYSESSION_H
 
 #if DROWAUDIO_USE_CURL || DOXYGEN
 
@@ -199,4 +199,4 @@ private:
 };
 
 #endif
-#endif  // __DROWAUDIO_CURLEASYSESSION_H__
+#endif  // DROWAUDIO_CURLEASYSESSION_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_SEGMENTEDMETER_H__
-#define __DROWAUDIO_SEGMENTEDMETER_H__
+#ifndef DROWAUDIO_SEGMENTEDMETER_H
+#define DROWAUDIO_SEGMENTEDMETER_H
 
 #include "dRowAudio_GraphicalComponent.h"
 #include "../utility/dRowAudio_StateVariable.h"
@@ -158,4 +158,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SegmentedMeter);
 };
 
-#endif //__DROWAUDIO_SEGMENTEDMETER_H__
+#endif //DROWAUDIO_SEGMENTEDMETER_H

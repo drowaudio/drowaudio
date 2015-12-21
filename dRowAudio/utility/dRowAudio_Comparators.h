@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_COMPARATORS_H__
-#define __DROWAUDIO_COMPARATORS_H__
+#ifndef DROWAUDIO_COMPARATORS_H
+#define DROWAUDIO_COMPARATORS_H
 
 //==============================================================================
 namespace ValueTreeComparators
@@ -188,4 +188,4 @@ namespace XmlComparators
     };
 } //XmlComparators
 
-#endif  // __DROWAUDIO_COMPARATORS_H__
+#endif  // DROWAUDIO_COMPARATORS_H

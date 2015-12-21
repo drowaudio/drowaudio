@@ -1,5 +1,5 @@
-#ifndef __CURL_CURLBUILD_H
-#define __CURL_CURLBUILD_H
+#ifndef CURL_CURLBUILD_H
+#define CURL_CURLBUILD_H
 /***************************************************************************
  *                                  _   _ ____  _
  *  Project                     ___| | | |  _ \| |
@@ -580,4 +580,4 @@
   typedef CURL_TYPEOF_CURL_OFF_T curl_off_t;
 #endif
 
-#endif /* __CURL_CURLBUILD_H */
+#endif /* CURL_CURLBUILD_H */

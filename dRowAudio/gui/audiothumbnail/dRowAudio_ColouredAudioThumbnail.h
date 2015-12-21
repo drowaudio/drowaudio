@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__
-#define __DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__
+#ifndef DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H
+#define DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H
 
 //==============================================================================
 /**
@@ -241,4 +241,4 @@ private:
 };
 
 
-#endif   //__DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H__
+#endif   //DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H

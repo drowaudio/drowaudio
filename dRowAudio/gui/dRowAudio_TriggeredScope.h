@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_TRIGGERED_SCOPE_H__
-#define __DROWAUDIO_TRIGGERED_SCOPE_H__
+#ifndef DROWAUDIO_TRIGGERED_SCOPE_H
+#define DROWAUDIO_TRIGGERED_SCOPE_H
 
 //==============================================================================
 /**
@@ -137,4 +137,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TriggeredScope);
 };
 
-#endif  // __DROWAUDIO_TRIGGERED_SCOPE_H__
+#endif  // DROWAUDIO_TRIGGERED_SCOPE_H

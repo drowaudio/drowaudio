@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_CLOCK_H__
-#define __DROWAUDIO_CLOCK_H__
+#ifndef DROWAUDIO_CLOCK_H
+#define DROWAUDIO_CLOCK_H
 
 //==============================================================================
 /**	A handy digital graphical clock.
@@ -93,4 +93,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Clock);
 };
 
-#endif  // __DROWAUDIO_CLOCK_H__
+#endif  // DROWAUDIO_CLOCK_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AUDIOTHUMBNAILIMAGE_H__
-#define __DROWAUDIO_AUDIOTHUMBNAILIMAGE_H__
+#ifndef DROWAUDIO_AUDIOTHUMBNAILIMAGE_H
+#define DROWAUDIO_AUDIOTHUMBNAILIMAGE_H
 
 //==============================================================================
 /** A class to display the waveform of an audio file.
@@ -186,4 +186,4 @@ private:
 };
 
 
-#endif  // __DROWAUDIO_AUDIOTHUMBNAILIMAGE_H__
+#endif  // DROWAUDIO_AUDIOTHUMBNAILIMAGE_H

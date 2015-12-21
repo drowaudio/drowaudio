@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIODEMO_FFTDEMO_H__
-#define __DROWAUDIODEMO_FFTDEMO_H__
+#ifndef DROWAUDIODEMO_FFTDEMO_H
+#define DROWAUDIODEMO_FFTDEMO_H
 
 #include "../DemoHeader.h"
 #include "PitchDetectorComponent.h"
@@ -75,4 +75,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTDemo);
 };
 
-#endif //__DROWAUDIODEMO_FFTDEMO_H__
+#endif //DROWAUDIODEMO_FFTDEMO_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_POSITIONALWAVEDISPLAY_H__
-#define __DROWAUDIO_POSITIONALWAVEDISPLAY_H__
+#ifndef DROWAUDIO_POSITIONALWAVEDISPLAY_H
+#define DROWAUDIO_POSITIONALWAVEDISPLAY_H
 
 //====================================================================================
 /**
@@ -126,4 +126,4 @@ private:
 };
 
 
-#endif //__DROWAUDIO_POSITIONALWAVEDISPLAY_H__
+#endif //DROWAUDIO_POSITIONALWAVEDISPLAY_H

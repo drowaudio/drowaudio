@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_COLUMNFILEBROWSER_H__
-#define __DROWAUDIO_COLUMNFILEBROWSER_H__
+#ifndef DROWAUDIO_COLUMNFILEBROWSER_H
+#define DROWAUDIO_COLUMNFILEBROWSER_H
 
 #include "dRowAudio_BasicFileBrowser.h"
 
@@ -79,4 +79,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowser);
 };
 
-#endif //__DROWAUDIO_COLUMNFILEBROWSER_H__
+#endif //DROWAUDIO_COLUMNFILEBROWSER_H

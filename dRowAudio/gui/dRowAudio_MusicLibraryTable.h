@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_MUSICLIBRARYTABLE_H__
-#define __DROWAUDIO_MUSICLIBRARYTABLE_H__
+#ifndef DROWAUDIO_MUSICLIBRARYTABLE_H
+#define DROWAUDIO_MUSICLIBRARYTABLE_H
 
 #include "../audio/dRowAudio_AudioUtility.h"
 #include "../utility/dRowAudio_ITunesLibrary.h"
@@ -192,4 +192,4 @@ private:
 };
 
 
-#endif // __DROWAUDIO_MUSICLIBRARYTABLE_H__
+#endif // DROWAUDIO_MUSICLIBRARYTABLE_H

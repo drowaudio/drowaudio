@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_PLUGINPARAMETER_H__
-#define __DROWAUDIO_PLUGINPARAMETER_H__
+#ifndef DROWAUDIO_PLUGINPARAMETER_H
+#define DROWAUDIO_PLUGINPARAMETER_H
 
 #include "../utility/dRowAudio_Utility.h"
 
@@ -152,4 +152,4 @@ private:
 	JUCE_LEAK_DETECTOR (PluginParameter);
 };
 
-#endif //__DROWAUDIO_PLUGINPARAMETER_H__
+#endif //DROWAUDIO_PLUGINPARAMETER_H

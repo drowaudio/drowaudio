@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_LTAS_H__
-#define __DROWAUDIO_LTAS_H__
+#ifndef DROWAUDIO_LTAS_H
+#define DROWAUDIO_LTAS_H
 
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
 
@@ -87,4 +87,4 @@ private:
 };
 
 #endif
-#endif  // __DROWAUDIO_LTAS_H__
+#endif  // DROWAUDIO_LTAS_H

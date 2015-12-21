@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_DEBUGOBJECT_H__
-#define __DROWAUDIO_DEBUGOBJECT_H__
+#ifndef DROWAUDIO_DEBUGOBJECT_H
+#define DROWAUDIO_DEBUGOBJECT_H
 
 #if JUCE_MSVC
     #pragma warning (disable: 4505)
@@ -171,4 +171,4 @@ private:
 };
 
 
-#endif //__DROWAUDIO_DEBUGOBJECT_H__
+#endif //DROWAUDIO_DEBUGOBJECT_H

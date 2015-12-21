@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_GRAPHICALCOMPONENT_H__
-#define __DROWAUDIO_GRAPHICALCOMPONENT_H__
+#ifndef DROWAUDIO_GRAPHICALCOMPONENT_H
+#define DROWAUDIO_GRAPHICALCOMPONENT_H
 
 //==============================================================================
 /**	This class is an abstract base blass for some kind of graphical component
@@ -108,4 +108,4 @@ protected:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GraphicalComponent);
 };
 
-#endif  // __DROWAUDIO_GRAPHICALCOMPONENT_H__
+#endif  // DROWAUDIO_GRAPHICALCOMPONENT_H

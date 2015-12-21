@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AVASSETAUDIOFORMAT_H__
-#define __DROWAUDIO_AVASSETAUDIOFORMAT_H__
+#ifndef DROWAUDIO_AVASSETAUDIOFORMAT_H
+#define DROWAUDIO_AVASSETAUDIOFORMAT_H
 
 #if JUCE_IOS || DOXYGEN
 
@@ -110,4 +110,4 @@ private:
 };
 
 #endif
-#endif   // __DROWAUDIO_AVASSETAUDIOFORMAT_H__
+#endif   // DROWAUDIO_AVASSETAUDIOFORMAT_H

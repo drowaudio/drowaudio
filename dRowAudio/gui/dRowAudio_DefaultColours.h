@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_DEFAULTCOLOURS_H__
-#define __DROWAUDIO_DEFAULTCOLOURS_H__
+#ifndef DROWAUDIO_DEFAULTCOLOURS_H
+#define DROWAUDIO_DEFAULTCOLOURS_H
 
 //==============================================================================
 /*
@@ -93,4 +93,4 @@ private:
 static const DefaultColours defaultColours;
 
 
-#endif // __DROWAUDIO_DEFAULTCOLOURS_H__
+#endif // DROWAUDIO_DEFAULTCOLOURS_H

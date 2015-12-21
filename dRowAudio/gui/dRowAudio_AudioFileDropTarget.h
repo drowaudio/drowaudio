@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AUDIOFILEDROPTARGET_H__
-#define __DROWAUDIO_AUDIOFILEDROPTARGET_H__
+#ifndef DROWAUDIO_AUDIOFILEDROPTARGET_H
+#define DROWAUDIO_AUDIOFILEDROPTARGET_H
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
@@ -118,4 +118,4 @@ private:
 };
 
 #endif
-#endif  // __DROWAUDIO_AUDIOFILEDROPTARGET_H__
+#endif  // DROWAUDIO_AUDIOFILEDROPTARGET_H

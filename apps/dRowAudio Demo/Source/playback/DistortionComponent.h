@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_DISTORTIONCOMPONENT_H__
-#define __DROWAUDIO_DISTORTIONCOMPONENT_H__
+#ifndef DROWAUDIO_DISTORTIONCOMPONENT_H
+#define DROWAUDIO_DISTORTIONCOMPONENT_H
 
 #include "../DemoHeader.h"
 #include "CurvePoint.h"
@@ -85,4 +85,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionComponent);
 };
 
-#endif // __DROWAUDIO_DISTORTIONCOMPONENT_H__
+#endif // DROWAUDIO_DISTORTIONCOMPONENT_H

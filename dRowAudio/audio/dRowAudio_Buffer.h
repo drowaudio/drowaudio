@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_BUFFER_H__
-#define __DROWAUDIO_BUFFER_H__
+#ifndef DROWAUDIO_BUFFER_H
+#define DROWAUDIO_BUFFER_H
 
 //==============================================================================
 /** A buffer to hold an array of floats.
@@ -204,4 +204,4 @@ private:
 	JUCE_LEAK_DETECTOR (Buffer)
 };
 
-#endif //__DROWAUDIO_BUFFER_H__
+#endif //DROWAUDIO_BUFFER_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_CPUMETER_H__
-#define __DROWAUDIO_CPUMETER_H__
+#ifndef DROWAUDIO_CPUMETER_H
+#define DROWAUDIO_CPUMETER_H
 
 //==============================================================================
 /** Handy class that will display the cpu usage of a given AudioDeviceManager
@@ -82,4 +82,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CpuMeter);
 };
 
-#endif	//__DROWAUDIO_CPUMETER_H__
+#endif	//DROWAUDIO_CPUMETER_H

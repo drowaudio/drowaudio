@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_UNITYPROJECTBUILDER_H__
-#define __DROWAUDIO_UNITYPROJECTBUILDER_H__
+#ifndef DROWAUDIO_UNITYPROJECTBUILDER_H
+#define DROWAUDIO_UNITYPROJECTBUILDER_H
 
 //==============================================================================
 /**
@@ -138,4 +138,4 @@ private:
 };
 
 
-#endif  // __DROWAUDIO_UNITYPROJECTBUILDER_H__
+#endif  // DROWAUDIO_UNITYPROJECTBUILDER_H

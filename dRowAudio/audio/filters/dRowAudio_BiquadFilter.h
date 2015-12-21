@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_BIQUADFILTER_H__
-#define __DROWAUDIO_BIQUADFILTER_H__
+#ifndef DROWAUDIO_BIQUADFILTER_H
+#define DROWAUDIO_BIQUADFILTER_H
 
 //==============================================================================
 /** A Biquad filter.
@@ -137,4 +137,4 @@ public:
 	double cf, q;
 };
 
-#endif //__DROWAUDIO_BIQUADFILTER_H__
+#endif //DROWAUDIO_BIQUADFILTER_H

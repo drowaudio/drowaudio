@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AUDIOFILEPLAYEREXT_H__
-#define __DROWAUDIO_AUDIOFILEPLAYEREXT_H__
+#ifndef DROWAUDIO_AUDIOFILEPLAYEREXT_H
+#define DROWAUDIO_AUDIOFILEPLAYEREXT_H
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
@@ -152,4 +152,4 @@ private:
 
 
 #endif
-#endif // __DROWAUDIO_AUDIOFILEPLAYEREXT_H__
+#endif // DROWAUDIO_AUDIOFILEPLAYEREXT_H

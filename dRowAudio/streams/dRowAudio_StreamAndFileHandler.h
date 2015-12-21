@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_STREAMANDFILEHANDLER_H__
-#define __DROWAUDIO_STREAMANDFILEHANDLER_H__
+#ifndef DROWAUDIO_STREAMANDFILEHANDLER_H
+#define DROWAUDIO_STREAMANDFILEHANDLER_H
 
 #include "dRowAudio_MemoryInputSource.h"
 
@@ -231,4 +231,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StreamAndFileHandler)
 };
 
-#endif // __DROWAUDIO_STREAMANDFILEHANDLER_H__
+#endif // DROWAUDIO_STREAMANDFILEHANDLER_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AUDIOFILEPLAYER_H__
-#define __DROWAUDIO_AUDIOFILEPLAYER_H__
+#ifndef DROWAUDIO_AUDIOFILEPLAYER_H
+#define DROWAUDIO_AUDIOFILEPLAYER_H
 
 #include "../streams/dRowAudio_StreamAndFileHandler.h"
 
@@ -239,4 +239,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayer);
 };
 
-#endif // __DROWAUDIO_AUDIOFILEPLAYER_H__
+#endif // DROWAUDIO_AUDIOFILEPLAYER_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_UTILITY_H__
-#define __DROWAUDIO_UTILITY_H__
+#ifndef DROWAUDIO_UTILITY_H
+#define DROWAUDIO_UTILITY_H
 
 #if JUCE_MSVC
     #pragma warning (disable: 4505)
@@ -583,4 +583,4 @@ struct ScopedChangeSender
 #endif // #ifndef UNUSED_NOWARN
 
 
-#endif //__DROWAUDIO_UTILITY_H__
+#endif //DROWAUDIO_UTILITY_H

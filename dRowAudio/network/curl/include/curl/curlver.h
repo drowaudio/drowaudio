@@ -1,5 +1,5 @@
-#ifndef __CURL_CURLVER_H
-#define __CURL_CURLVER_H
+#ifndef CURL_CURLVER_H
+#define CURL_CURLVER_H
 /***************************************************************************
  *                                  _   _ ____  _
  *  Project                     ___| | | |  _ \| |
@@ -66,4 +66,4 @@
  */
 #define LIBCURL_TIMESTAMP "Thu Nov 17 17:17:45 UTC 2011"
 
-#endif /* __CURL_CURLVER_H */
+#endif /* CURL_CURLVER_H */

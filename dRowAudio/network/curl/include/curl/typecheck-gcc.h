@@ -1,5 +1,5 @@
-#ifndef __CURL_TYPECHECK_GCC_H
-#define __CURL_TYPECHECK_GCC_H
+#ifndef CURL_TYPECHECK_GCC_H
+#define CURL_TYPECHECK_GCC_H
 /***************************************************************************
  *                                  _   _ ____  _
  *  Project                     ___| | | |  _ \| |
@@ -600,4 +600,4 @@ typedef CURLcode (*_curl_seek_callback1)(void *, curl_off_t, int);
 typedef CURLcode (*_curl_seek_callback2)(const void *, curl_off_t, int);
 
 
-#endif /* __CURL_TYPECHECK_GCC_H */
+#endif /* CURL_TYPECHECK_GCC_H */

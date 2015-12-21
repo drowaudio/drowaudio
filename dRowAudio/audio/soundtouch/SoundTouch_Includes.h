@@ -69,14 +69,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifndef _DROWAUDIO_SOUNDTOUCHINCLUDES__H_
-#define _DROWAUDIO_SOUNDTOUCHINCLUDES__H_
+#ifndef DROWAUDIO_SOUNDTOUCHINCLUDES_H
+#define DROWAUDIO_SOUNDTOUCHINCLUDES_H
 
-/** Includes all the soundtouch source files in one go.
- */
-
-//==============================================================================
-// include common header files
 #include "AAFilter.h"
 #include "BPMDetect.h"
 #include "cpu_detect.h"
@@ -89,6 +84,4 @@
 #include "STTypes.h"
 #include "TDStretch.h"
 
-//==============================================================================
-
-#endif //_DROWAUDIO_SOUNDTOUCHINCLUDES__H_
+#endif //DROWAUDIO_SOUNDTOUCHINCLUDES_H

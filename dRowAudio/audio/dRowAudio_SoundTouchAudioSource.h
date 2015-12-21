@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__
-#define __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__
+#ifndef DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H
+#define DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H
 
 #if DROWAUDIO_USE_SOUNDTOUCH || DOXYGEN
 
@@ -120,4 +120,4 @@ private:
 };
 
 #endif
-#endif // __DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H__
+#endif // DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H

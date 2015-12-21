@@ -18,8 +18,8 @@
   ==============================================================================
  */
 
-#ifndef __DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__
-#define __DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__
+#ifndef DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H
+#define DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H
 
 //==============================================================================
 /**
@@ -88,4 +88,4 @@ private:
 };
 
 
-#endif //__DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__
+#endif //DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H

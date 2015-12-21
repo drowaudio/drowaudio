@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_ENVELOPEFOLLOWER_H__
-#define __DROWAUDIO_ENVELOPEFOLLOWER_H__
+#ifndef DROWAUDIO_ENVELOPEFOLLOWER_H
+#define DROWAUDIO_ENVELOPEFOLLOWER_H
 
 #include "filters/dRowAudio_OnePoleFilter.h"
 
@@ -71,4 +71,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EnvelopeFollower);
 };
 
-#endif // __DROWAUDIO_ENVELOPEFOLLOWER_H__
+#endif // DROWAUDIO_ENVELOPEFOLLOWER_H

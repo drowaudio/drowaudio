@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_CONSTANTS_H__
-#define __DROWAUDIO_CONSTANTS_H__
+#ifndef DROWAUDIO_CONSTANTS_H
+#define DROWAUDIO_CONSTANTS_H
 
 //==============================================================================
 /** @file
@@ -71,4 +71,4 @@ inline Type log2 (Type input)
 }
 #endif
 
-#endif //__DROWAUDIO_CONSTANTS_H__
+#endif //DROWAUDIO_CONSTANTS_H

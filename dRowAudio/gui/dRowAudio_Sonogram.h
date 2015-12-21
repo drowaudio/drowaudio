@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_SONOGRAM_H__
-#define __DROWAUDIO_SONOGRAM_H__
+#ifndef DROWAUDIO_SONOGRAM_H
+#define DROWAUDIO_SONOGRAM_H
 
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
@@ -115,4 +115,4 @@ private:
 };
 
 #endif
-#endif  // __DROWAUDIO_SONOGRAM_H__
+#endif  // DROWAUDIO_SONOGRAM_H

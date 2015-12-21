@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_REVERSIBLEAUDIOSOURCE_H__
-#define __DROWAUDIO_REVERSIBLEAUDIOSOURCE_H__
+#ifndef DROWAUDIO_REVERSIBLEAUDIOSOURCE_H
+#define DROWAUDIO_REVERSIBLEAUDIOSOURCE_H
 
 #include "../utility/dRowAudio_Utility.h"
 
@@ -86,4 +86,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReversibleAudioSource);
 };
 
-#endif   // __DROWAUDIO_REVERSIBLEAUDIOSOURCE_H__
+#endif   // DROWAUDIO_REVERSIBLEAUDIOSOURCE_H

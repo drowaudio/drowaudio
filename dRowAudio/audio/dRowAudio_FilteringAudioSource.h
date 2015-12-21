@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_FILTERINGAUDIOSOURCE_H__
-#define __DROWAUDIO_FILTERINGAUDIOSOURCE_H__
+#ifndef DROWAUDIO_FILTERINGAUDIOSOURCE_H
+#define DROWAUDIO_FILTERINGAUDIOSOURCE_H
 
 //==============================================================================
 /**	An AudioSource that contains three settable filters to EQ the audio stream.
@@ -103,4 +103,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilteringAudioSource);
 };
 
-#endif //__DROWAUDIO_FILTERINGAUDIOSOURCE_H__
+#endif //DROWAUDIO_FILTERINGAUDIOSOURCE_H

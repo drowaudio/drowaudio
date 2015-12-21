@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__
-#define __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__
+#ifndef DROWAUDIO_DRAGGABLEWAVEDISPLAY_H
+#define DROWAUDIO_DRAGGABLEWAVEDISPLAY_H
 
 //==============================================================================
 /** A class to display the waveform of an audio file which can be dragged to
@@ -141,4 +141,4 @@ private:
 };
 
 
-#endif  // __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__
+#endif  // DROWAUDIO_DRAGGABLEWAVEDISPLAY_H

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AUDIOTRANSPORTCURSOR_H__
-#define __DROWAUDIO_AUDIOTRANSPORTCURSOR_H__
+#ifndef DROWAUDIO_AUDIOTRANSPORTCURSOR_H
+#define DROWAUDIO_AUDIOTRANSPORTCURSOR_H
 
 #include "../utility/dRowAudio_StateVariable.h"
 #include "../audio/dRowAudio_AudioUtility.h"
@@ -124,4 +124,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioTransportCursor);
 };
 
-#endif // __DROWAUDIO_AUDIOTRANSPORTCURSOR_H__
+#endif // DROWAUDIO_AUDIOTRANSPORTCURSOR_H

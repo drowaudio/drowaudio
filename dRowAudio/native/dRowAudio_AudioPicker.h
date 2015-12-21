@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_AUDIOPICKER__
-#define __DROWAUDIO_AUDIOPICKER__
+#ifndef DROWAUDIO_AUDIOPICKER__
+#define DROWAUDIO_AUDIOPICKER__
 
 #if JUCE_IOS || DOXYGEN
 
@@ -138,4 +138,4 @@ private:
 };
 
 #endif
-#endif   // __DROWAUDIO_AUDIOPICKER__
+#endif   // DROWAUDIO_AUDIOPICKER__

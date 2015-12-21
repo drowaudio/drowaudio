@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_BASICFILEBROWSER_H__
-#define __DROWAUDIO_BASICFILEBROWSER_H__
+#ifndef DROWAUDIO_BASICFILEBROWSER_H
+#define DROWAUDIO_BASICFILEBROWSER_H
 
 //==================================================================================
 /** A BasicFileBrowser with an optional corner resizer.
@@ -217,4 +217,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicFileBrowser);
 };
 
-#endif //__DROWAUDIO_BASICFILEBROWSER_H__
+#endif //DROWAUDIO_BASICFILEBROWSER_H

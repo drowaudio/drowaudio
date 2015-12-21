@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_WINDOW_H__
-#define __DROWAUDIO_WINDOW_H__
+#ifndef DROWAUDIO_WINDOW_H
+#define DROWAUDIO_WINDOW_H
 
 #include "../dRowAudio_Buffer.h"
 #include "../../utility/dRowAudio_Constants.h"
@@ -124,4 +124,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Window)
 };
 
-#endif //__DROWAUDIO_WINDOW_H__
+#endif //DROWAUDIO_WINDOW_H

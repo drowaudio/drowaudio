@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_STATEVARIABLE_H__
-#define __DROWAUDIO_STATEVARIABLE_H__
+#ifndef DROWAUDIO_STATEVARIABLE_H
+#define DROWAUDIO_STATEVARIABLE_H
 
 //==============================================================================
 /** Variable that holds its previous value.
@@ -152,4 +152,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StateVariable);
 };
 
-#endif //__DROWAUDIO_STATEVARIABLE_H__
+#endif //DROWAUDIO_STATEVARIABLE_H

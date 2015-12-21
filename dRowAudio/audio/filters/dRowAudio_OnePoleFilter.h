@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __DROWAUDIO_ONEPOLEFILTER_H__
-#define __DROWAUDIO_ONEPOLEFILTER_H__
+#ifndef DROWAUDIO_ONEPOLEFILTER_H
+#define DROWAUDIO_ONEPOLEFILTER_H
 
 //==============================================================================
 /**
@@ -88,4 +88,4 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OnePoleFilter);
 };
 
-#endif // __DROWAUDIO_ONEPOLEFILTER_H__
+#endif // DROWAUDIO_ONEPOLEFILTER_H
