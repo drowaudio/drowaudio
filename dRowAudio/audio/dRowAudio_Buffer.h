@@ -146,7 +146,7 @@ public:
     {
         const int numToApply = jmin (bufferSize, numSamples);
 
-        for (int i = 0; i < numToApply; i++)
+        for (int i = 0; i < numToApply; ++i)
             samples[i] *= buffer[i];
 
         if (bufferSize < numSamples)

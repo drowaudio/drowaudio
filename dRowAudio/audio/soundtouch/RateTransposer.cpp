@@ -409,7 +409,7 @@ uint RateTransposerInteger::transposeMono(SAMPLETYPE *dest, const SAMPLETYPE *sr
         vol1 = (LONG_SAMPLETYPE)(SCALE - iSlopeCount);
         temp = vol1 * sPrevSampleL + iSlopeCount * src[0];
         dest[i] = (SAMPLETYPE)(temp / SCALE);
-        i++;
+        ++i;
         iSlopeCount += iRate;
     }
     // now always (iSlopeCount > SCALE)
@@ -427,7 +427,7 @@ uint RateTransposerInteger::transposeMono(SAMPLETYPE *dest, const SAMPLETYPE *sr
         temp = src[used] * vol1 + iSlopeCount * src[used + 1];
         dest[i] = (SAMPLETYPE)(temp / SCALE);
 
-        i++;
+        ++i;
         iSlopeCount += iRate;
     }
 end:
@@ -459,7 +459,7 @@ uint RateTransposerInteger::transposeStereo(SAMPLETYPE *dest, const SAMPLETYPE *
         dest[2 * i] = (SAMPLETYPE)(temp / SCALE);
         temp = vol1 * sPrevSampleR + iSlopeCount * src[1];
         dest[2 * i + 1] = (SAMPLETYPE)(temp / SCALE);
-        i++;
+        ++i;
         iSlopeCount += iRate;
     }
     // now always (iSlopeCount > SCALE)
@@ -480,7 +480,7 @@ uint RateTransposerInteger::transposeStereo(SAMPLETYPE *dest, const SAMPLETYPE *
         temp = src[srcPos + 1] * vol1 + iSlopeCount * src[srcPos + 3];
         dest[2 * i + 1] = (SAMPLETYPE)(temp / SCALE);
 
-        i++;
+        ++i;
         iSlopeCount += iRate;
     }
 end:
@@ -545,7 +545,7 @@ uint RateTransposerFloat::transposeMono(SAMPLETYPE *dest, const SAMPLETYPE *src,
     while (fSlopeCount <= 1.0f)
     {
         dest[i] = (SAMPLETYPE)((1.0f - fSlopeCount) * sPrevSampleL + fSlopeCount * src[0]);
-        i++;
+        ++i;
         fSlopeCount += fRate;
     }
     fSlopeCount -= 1.0f;
@@ -561,7 +561,7 @@ uint RateTransposerFloat::transposeMono(SAMPLETYPE *dest, const SAMPLETYPE *src,
                 if (used >= nSamples - 1) goto end;
             }
             dest[i] = (SAMPLETYPE)((1.0f - fSlopeCount) * src[used] + fSlopeCount * src[used + 1]);
-            i++;
+            ++i;
             fSlopeCount += fRate;
         }
     }
@@ -590,7 +590,7 @@ uint RateTransposerFloat::transposeStereo(SAMPLETYPE *dest, const SAMPLETYPE *sr
     {
         dest[2 * i] = (SAMPLETYPE)((1.0f - fSlopeCount) * sPrevSampleL + fSlopeCount * src[0]);
         dest[2 * i + 1] = (SAMPLETYPE)((1.0f - fSlopeCount) * sPrevSampleR + fSlopeCount * src[1]);
-        i++;
+        ++i;
         fSlopeCount += fRate;
     }
     // now always (iSlopeCount > 1.0f)
@@ -613,7 +613,7 @@ uint RateTransposerFloat::transposeStereo(SAMPLETYPE *dest, const SAMPLETYPE *sr
             dest[2 * i + 1] = (SAMPLETYPE)((1.0f - fSlopeCount) * src[srcPos + 1]
                 + fSlopeCount * src[srcPos + 3]);
 
-            i++;
+            ++i;
             fSlopeCount += fRate;
         }
     }

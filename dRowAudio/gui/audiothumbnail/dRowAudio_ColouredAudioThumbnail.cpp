@@ -404,7 +404,7 @@ private:
                 filterHigh.processSamples (reinterpret_cast<float*> (filteredArray[3]), numToDo);
 
                 // calculate colour
-                for (int i = 0; i < numToDo; i++)
+                for (int i = 0; i < numToDo; ++i)
                 {
                     float low = fabsf ((reinterpret_cast<float*> (filteredArray[0]))[i]);
                     float mid = fabsf ((reinterpret_cast<float*> (filteredArray[1]))[i])
@@ -454,7 +454,7 @@ private:
                 filterHigh.processSamples ((filteredArray[3]), numToDo);
 
                 // calculate colour
-                for (int i = 0; i < numToDo; i++)
+                for (int i = 0; i < numToDo; ++i)
                 {
                     int low = abs (filteredArray[0][i]);
                     int mid = abs (filteredArray[1][i]) + abs (filteredArray[2][i]);

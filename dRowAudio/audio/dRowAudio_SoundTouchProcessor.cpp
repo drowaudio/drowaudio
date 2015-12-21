@@ -61,13 +61,13 @@ void SoundTouchProcessor::writeSamples (float** sourceChannelData, int numChanne
         interleavedInputBufferSize = requiredBufferSize;
     }
 
-    for (int i = 0; i < numChannels; i++)
+    for (int i = 0; i < numChannels; ++i)
         sourceChannelData[i] += startSampleOffset;
 
     AudioDataConverters::interleaveSamples ((const float**) sourceChannelData, interleavedInputBuffer,
                                             numSamples, numChannels);
 
-    for (int i = 0; i < numChannels; i++)
+    for (int i = 0; i < numChannels; ++i)
         sourceChannelData[i] -= startSampleOffset;
 
     const ScopedLock sl (lock);
@@ -105,12 +105,12 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
     if (numSamplesDone < numSamples)
         zeromem (&interleavedOutputBuffer[numChannels * numSamplesDone], numChannels * sizeof (numSamples - numSamplesDone));
 
-    for (int i = 0; i < numChannels; i++)
+    for (int i = 0; i < numChannels; ++i)
         destinationChannelData[i] += startSampleOffset;
 
     AudioDataConverters::deinterleaveSamples (interleavedOutputBuffer, destinationChannelData,
                                               numSamples, numChannels);
-    for (int i = 0; i < numChannels; i++)
+    for (int i = 0; i < numChannels; ++i)
         destinationChannelData[i] -= startSampleOffset;
 }
 

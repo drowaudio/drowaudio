@@ -53,7 +53,7 @@ public:
         {
             StringArray files;
 
-            for (int i = 0; i < getNumSelectedFiles(); i++)
+            for (int i = 0; i < getNumSelectedFiles(); ++i)
             {
                 File file (getSelectedFile (i));
 
@@ -123,7 +123,7 @@ public:
         int width = 0;
         const int height = getHeight();
 
-        for (int i = 0; i < columns.size(); i++)
+        for (int i = 0; i < columns.size(); ++i)
         {
             columns[i]->setBounds (width, 0, columns[i]->getWidth(), height);
             width += columns[i]->getWidth();
@@ -141,7 +141,7 @@ public:
         }
         else        // otherwise remove uneeded columns and change last
         {
-            for (int i = 0; i < columns.size(); i++)
+            for (int i = 0; i < columns.size(); ++i)
             {
                 if (columns[activeColumn] == columns[i])
                 {

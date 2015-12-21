@@ -118,7 +118,7 @@ void Window::applyRectangularWindow (float *samples, const int numSamples)
     const double oneOverSize = (1.0f / numSamples);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         float window = 1.0f;
         samples[i] *= window;
@@ -134,7 +134,7 @@ void Window::applyHannWindow (float* samples, const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Hann window equation
         float window = 0.5f * (1.0f - (float) (std::cos (i * oneOverSizeMinusOne * twoTimesPi)));
@@ -151,7 +151,7 @@ void Window::applyHammingWindow (float *samples, const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Hamming window equation
         float window = 0.54f - 0.46f * (float) (std::cos (twoTimesPi * i * oneOverSizeMinusOne));
@@ -168,7 +168,7 @@ void Window::applyCosineWindow (float *samples,  const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Cosine window equation
         float window = (float) std::sin (double_Pi * i * oneOverSizeMinusOne);
@@ -185,7 +185,7 @@ void Window::applyLanczosWindow (float *samples,  const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Lanczos window equation
         float window = (float) sincPi ((2.0 * i * oneOverSizeMinusOne) - 1.0);
@@ -203,7 +203,7 @@ void Window::applyZeroEndTriangleWindow (float *samples,  const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Triangle window equation
         float window = (float) ((2.0 * oneOverSizeMinusOne) * ((sizeMinusOne * 0.5) - (float) std::abs (double (i) - (sizeMinusOne * 0.5))));
@@ -220,7 +220,7 @@ void Window::applyNonZeroEndTriangleWindow(float *samples,  const int numSamples
     const double oneOverSize = (1.0 / numSamples);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Triangle window equation
         float window = (float) ((2.0 * oneOverSize) * ((numSamples * 0.5) - (float) std::abs (double (i) - (sizeMinusOne * 0.5))));
@@ -239,7 +239,7 @@ void Window::applyGaussianWindow (float *samples,  const int numSamples)
     const double oneOverSize = (1.0 / numSamples);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Gaussian window equation
         float window = (float) (std::exp (-0.5 * squareNumber ((i - sizeMinusOne * 0.5) / (sigma * sizeMinusOne * 0.5))));
@@ -260,7 +260,7 @@ void Window::applyBartlettHannWindow (float *samples,  const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Bartlett-Hann window equation
         float window = (float) (a0 - a1 * (float) std::abs (i * oneOverSizeMinusOne - 0.5) - a2 * std::cos (twoTimesPi * i * oneOverSizeMinusOne));
@@ -282,7 +282,7 @@ void Window::applyBlackmanWindow (float *samples,  const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Blackman window equation
         float window = (float) (a0 - a1 * std::cos (twoTimesPi * i * oneOverSizeMinusOne) + a2 * std::cos (fourTimesPi * i * oneOverSizeMinusOne));
@@ -304,7 +304,7 @@ void Window::applyNuttallWindow (float* samples,  const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Nuttall window equation
         float window = a0 - a1 * (float) (std::cos (twoTimesPi * i * oneOverSizeMinusOne))
@@ -328,7 +328,7 @@ void Window::applyBlackmanHarrisWindow (float* samples, const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Blackman-Harris window equation
         float window = a0 - a1 * (float) (std::cos (twoTimesPi * i * oneOverSizeMinusOne))
@@ -352,7 +352,7 @@ void Window::applyBlackmanNuttallWindow (float* samples, const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Blackman-Nuttall window equation
         float window = a0 - a1 * (float) (std::cos (twoTimesPi * i * oneOverSizeMinusOne))
@@ -377,7 +377,7 @@ void Window::applyFlatTopWindow (float* samples, const int numSamples)
     const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
     windowFactor = 0.0f;
 
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         // Flat-Top window equation
         float window = a0 - a1 * (float) (std::cos (twoTimesPi * i * oneOverSizeMinusOne))

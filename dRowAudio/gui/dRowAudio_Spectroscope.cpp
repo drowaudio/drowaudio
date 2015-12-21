@@ -81,7 +81,7 @@ void Spectroscope::timerCallback()
     renderScopeImage();
 
     // fall levels here
-    for (int i = 0; i < magnitudeBufferSize; i++)
+    for (int i = 0; i < magnitudeBufferSize; ++i)
         magnitudeBuffer[i] *= 0.707f;
 }
 

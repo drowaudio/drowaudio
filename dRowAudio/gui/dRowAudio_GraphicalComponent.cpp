@@ -95,7 +95,7 @@ void GraphicalComponent::copySamples (float **values, int numSamples_, int numCh
     // this is quicker than the generic method below
     else if (numChannels == 2)
     {
-        for (int i = 0; i < numSamples; i++)
+        for (int i = 0; i < numSamples; ++i)
         {
             samples[i] = (fabsf (values[0][i]) > fabsf (values[1][i])) ? values[0][i] : values[1][i];
         }
@@ -105,7 +105,7 @@ void GraphicalComponent::copySamples (float **values, int numSamples_, int numCh
         samples.clear (numSamples);
         for (int c = 0; c < numChannels; c++)
         {
-            for (int i = 0; i < numSamples; i++)
+            for (int i = 0; i < numSamples; ++i)
             {
                 if (fabsf (values[c][i]) > samples[i])
                 {

@@ -176,7 +176,7 @@ void ITunesLibraryParser::run()
                 }
 
                 // and check the entry against each column
-                for(int i = 2; i < MusicColumns::numColumns; i++)
+                for(int i = 2; i < MusicColumns::numColumns; ++i)
                 {
                     if (elementKey == MusicColumns::iTunesNames[i])
                     {

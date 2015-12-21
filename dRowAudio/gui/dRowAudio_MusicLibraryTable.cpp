@@ -50,7 +50,7 @@ MusicLibraryTable::MusicLibraryTable()
     table.setOutlineThickness (1);
 
     // Add some MusicColumns to the table header
-    for (int i = 1; i < MusicColumns::numColumns; i++)
+    for (int i = 1; i < MusicColumns::numColumns; ++i)
     {
         table.getHeader().addColumn (MusicColumns::columnNames[i].toString(),
                                      i,
@@ -105,7 +105,7 @@ void MusicLibraryTable::setFilterText (const String& filterString)
 
         for (int e = 0; e < dataList.getNumChildren(); ++e)
         {
-            for (int i = 0; i < dataList.getChild (e).getNumProperties(); i++)
+            for (int i = 0; i < dataList.getChild (e).getNumProperties(); ++i)
             {
                 if (dataList.getChild (e)[MusicColumns::columnNames[i]].toString().containsIgnoreCase (filterString))
                 {

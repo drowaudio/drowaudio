@@ -276,7 +276,7 @@ static inline bool isAudioSampleBuffer (void* sourceData, size_t sourceDataSize,
 
     // get channel list pointers
     Array<const float*> channelPointers;
-    for (int i = 0; i < maxNumChannels; i++)
+    for (int i = 0; i < maxNumChannels; ++i)
     {
         const float* channelPointer = channelList[i];
 
@@ -296,7 +296,7 @@ static inline bool isAudioSampleBuffer (void* sourceData, size_t sourceDataSize,
     const float* startOfChannels = reinterpret_cast<float*> (addBytesToPointer (sourceData, channelListSize));
 
     // compare to sample data pointers
-    for (int i = 0; i < channelPointers.size(); i++)
+    for (int i = 0; i < channelPointers.size(); ++i)
     {
         const float* channelPointer = addBytesToPointer (startOfChannels, (i * bytesPerChannel));
         if (channelPointer != channelPointers[i])
@@ -324,7 +324,7 @@ static inline bool isAudioSampleBuffer (InputStream& inputStream,
 {
     // get start samples
     Array<float> channelStartSamples;
-    for (int i = 0; i < maxNumChannels; i++)
+    for (int i = 0; i < maxNumChannels; ++i)
     {
         float* channelPointer;
         inputStream.read (&channelPointer, sizeof (float*));
@@ -343,7 +343,7 @@ static inline bool isAudioSampleBuffer (InputStream& inputStream,
     const int64 bytesPerChannel = expectedNumSamples * sizeof (float);
 
     // compare sample values
-    for (int i = 0; i < channelStartSamples.size(); i++)
+    for (int i = 0; i < channelStartSamples.size(); ++i)
     {
         float sample;
         inputStream.setPosition (channelListSize + (i * bytesPerChannel));
@@ -354,7 +354,7 @@ static inline bool isAudioSampleBuffer (InputStream& inputStream,
     }
 
     // slower but possibly more reliable method
-//    for (int i = 0; i < channelStartSamples.size(); i++)
+//    for (int i = 0; i < channelStartSamples.size(); ++i)
 //    {
 //        float sample;
 //        inputStream.read (&sample, sizeof (float));

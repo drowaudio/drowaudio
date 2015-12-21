@@ -138,7 +138,7 @@ namespace BezierCurve
         float currentt = x;
 
         const int nRefinementIterations = 5;
-        for (int i = 0; i < nRefinementIterations; i++)
+        for (int i = 0; i < nRefinementIterations; ++i)
         {
             const float currentx = xFromT (currentt, A, B, C, D);
             const float currentslope = slopeFromT (currentt, A, B, C);

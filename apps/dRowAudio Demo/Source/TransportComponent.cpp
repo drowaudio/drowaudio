@@ -35,7 +35,7 @@ TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
     : audioDeviceManager (audioDeviceManager_),
       audioFilePlayer (audioFilePlayer_)
 {
-    for (int i = 0; i < numButtons; i++)
+    for (int i = 0; i < numButtons; ++i)
     {
         TextButton* button = buttons.add (new TextButton());
         addAndMakeVisible (button);
@@ -59,7 +59,7 @@ void TransportComponent::resized()
     const int w = getWidth();
 //    const int h = getHeight();
 
-    for (int i = 0; i < numButtons; i++)
+    for (int i = 0; i < numButtons; ++i)
     {
         buttons[i]->setBounds (0, 20 * i + 1, w, 18);
     }

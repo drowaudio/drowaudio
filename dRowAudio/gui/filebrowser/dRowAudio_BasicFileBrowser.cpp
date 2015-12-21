@@ -229,7 +229,7 @@ int BasicFileBrowser::getLongestWidth()
     if (list != nullptr)
     {
         Font temp (list->getRowHeight() * 0.7f);
-        for (int i = 0; i < noFiles; i++)
+        for (int i = 0; i < noFiles; ++i)
         {
             int itemWidth = temp.getStringWidth (fileList->getFile(i).getFileName());
             if (itemWidth >    stringWidth)

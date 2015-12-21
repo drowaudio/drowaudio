@@ -158,7 +158,7 @@ inline void square (FloatingPointType* samples, int numSamples)
 template <typename FloatingPointType>
 inline void autocorrelate (const FloatingPointType* inputSamples, int numSamples, FloatingPointType* outputSamples) noexcept
 {
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         FloatingPointType sum = 0;
 
@@ -180,7 +180,7 @@ inline void autocorrelate (const FloatingPointType* inputSamples, int numSamples
 template <typename FloatingPointType>
 inline void sdfAutocorrelate (const FloatingPointType* inputSamples, int numSamples, FloatingPointType* outputSamples) noexcept
 {
-    for (int i = 0; i < numSamples; i++)
+    for (int i = 0; i < numSamples; ++i)
     {
         FloatingPointType sum = 0;
 
