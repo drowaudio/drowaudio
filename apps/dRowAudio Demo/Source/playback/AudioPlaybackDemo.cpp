@@ -33,13 +33,13 @@
 
 
 AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
-                                      BufferTransformAudioSource& bufferTransformAudioSource)
-    : audioFilePlayer (audioFilePlayer_),
-      loopComponent (audioFilePlayer),
-      backgroundThread ("Waveform Thread"),
-      audioThumbnailCache (10),
-      audioThumbnail (512, *audioFilePlayer.getAudioFormatManager(), audioThumbnailCache),
-      distortionDemo (bufferTransformAudioSource)
+                                      BufferTransformAudioSource& bufferTransformAudioSource) :
+    audioFilePlayer (audioFilePlayer_),
+    loopComponent (audioFilePlayer),
+    backgroundThread ("Waveform Thread"),
+    audioThumbnailCache (10),
+    audioThumbnail (512, *audioFilePlayer.getAudioFormatManager(), audioThumbnailCache),
+    distortionDemo (bufferTransformAudioSource)
 {
     audioThumbnailImage = new AudioThumbnailImage (audioFilePlayer, backgroundThread, audioThumbnail, 512);
 
@@ -91,22 +91,21 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     rateGroup.setColour (GroupComponent::outlineColourId, Colours::white);
     rateGroup.setColour (GroupComponent::textColourId, Colours::white);
 
-    for (int i = 0; i < numControls; i++)
+    for (int i = 0; i < numControls; ++i)
     {
-        playerControls.add (new Slider());
-        playerControlLabels.add (new Label ());
-        addAndMakeVisible (playerControls[i]);
-        addAndMakeVisible (playerControlLabels[i]);
-        playerControlLabels[i]->setFont (12.0f);
-        playerControlLabels[i]->attachToComponent (playerControls[i], false);
-        playerControls[i]->addListener (this);
-        playerControls[i]->setValue (1.0);
-        playerControls[i]->setSliderStyle (Slider::RotaryVerticalDrag);
-        playerControls[i]->setTextBoxStyle (Slider::TextBoxBelow, false, 50, 16);
+        Slider* slider = playerControls.add (new Slider());
+        slider->addListener (this);
+        slider->setValue (1.0);
+        slider->setSliderStyle (Slider::RotaryVerticalDrag);
+        slider->setTextBoxStyle (Slider::TextBoxBelow, false, 50, 16);
+        addAndMakeVisible (slider);
 
-        Justification centreJustification (Justification::centred);
-        playerControlLabels[i]->setJustificationType (centreJustification);
-        playerControlLabels[i]->setColour (Label::textColourId, Colours::white);
+        Label* label = playerControlLabels.add (new Label());
+        label->setFont (12.0f);
+        label->attachToComponent (label, false);
+        label->setJustificationType (Justification::centred);
+        label->setColour (Label::textColourId, Colours::white);
+        addAndMakeVisible (label);
     }
 
     playerControls[lowEQ]->setRange (0.05, 2, 0.001);
@@ -117,7 +116,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     playerControls[tempo]->setRange (0.5, 1.5, 0.001);
     playerControls[pitch]->setRange (0.5, 1.5, 0.001);
 
-    for (int i = 0; i < numControls; i++)
+    for (int i = 0; i < numControls; ++i)
         playerControls[i]->setSkewFactorFromMidPoint (1.0);
 
     playerControlLabels[lowEQ]->setText ("Low EQ", dontSendNotification);
@@ -134,13 +133,8 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
 
 AudioPlaybackDemo::~AudioPlaybackDemo()
 {
-    resolutionSlider.removeListener (this);
-    zoomSlider.removeListener (this);
-
-    for (int i = 0; i < numControls; i++)
-    {
+    for (int i = 0; i < numControls; ++i)
         playerControls[i]->removeListener (this);
-    }
 }
 
 void AudioPlaybackDemo::resized()
@@ -160,14 +154,14 @@ void AudioPlaybackDemo::resized()
 
     const int centre = w / 2;
     int offset = (centre - (80 * 3)) / 2;
-    for (int i = 0; i < rate; i++)
+    for (int i = 0; i < rate; ++i)
     {
         playerControls[i]->setBounds (offset + i * 80 + 2, zoomSlider.getBottom() + 20 + 3 * m, 76, 76);
     }
 
     offset += centre / 2;
 
-    for (int i = rate; i < numControls; i++)
+    for (int i = rate; i < numControls; ++i)
         playerControls[i]->setBounds (offset + i * 80 + 2, zoomSlider.getBottom() + 20 + 3 * m, 76, 76);
 
     m *= 2;

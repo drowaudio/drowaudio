@@ -127,4 +127,4 @@ void ConnectionComponent::removeListener (ConnectionComponent::Listener* const l
     listeners.remove (listener);
 }
 
-#endif
+#endif //DROWAUDIO_USE_CURL

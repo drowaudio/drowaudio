@@ -37,9 +37,8 @@
 #include "DistortionDemo.h"
 #include "BufferTransformAudioSource.h"
 
-//==============================================================================
-class AudioPlaybackDemo :   public Component,
-                            public Slider::Listener
+class AudioPlaybackDemo : public Component,
+                          public Slider::Listener
 {
 public:
     AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer,

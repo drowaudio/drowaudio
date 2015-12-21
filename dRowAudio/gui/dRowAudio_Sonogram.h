@@ -39,7 +39,7 @@
     This is very simple to use, it is a GraphicalComponent so just register one
     with a TimeSliceThread, make sure its running and then continually call the
     copySamples() method. The FFT itself will be performed on a background thread.
- */
+*/
 class Sonogram : public GraphicalComponent
 {
 public:
@@ -47,7 +47,7 @@ public:
 
         Note that the fft size given here is log2 of the FFT size so for example,
         for a 1024 size FFT use 10 as the argument.
-     */
+    */
     Sonogram (int fftSizeLog2);
 
     //==============================================================================
@@ -77,8 +77,6 @@ public:
 
     /** @internal */
     void process() override;
-
-    //==============================================================================
     /** @internal */
     void resized() override;
     /** @internal */
@@ -106,7 +104,7 @@ private:
     void renderScopeLine();
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram)
 };
 
 #endif

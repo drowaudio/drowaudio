@@ -31,39 +31,37 @@
 
 #include "FFTDemo.h"
 
-FFTDemo::FFTDemo()
-    : renderThread ("FFT Render Thread"),
-      spectroscope (11),
-      sonogram (11)
+FFTDemo::FFTDemo() :
+    renderThread ("FFT Render Thread"),
+    spectroscope (11),
+    sonogram (11)
 {
     pitchDetector.setSampleRate (44100.0);
 
-    addAndMakeVisible (&audioOscilloscope);
-    addAndMakeVisible (&spectroscope);
-    addAndMakeVisible (&pitchDetector);
-    addAndMakeVisible (&sonogram);
+    logSpectroscopeButton.setButtonText (TRANS ("Log Frequency Scale"));
+    logSpectroscopeButton.setClickingTogglesState (true);
+    logSpectroscopeButton.addListener (this);
+
+    logSonogramButton.setButtonText (TRANS ("Log Frequency Scale"));
+    logSonogramButton.setClickingTogglesState (true);
+    logSonogramButton.addListener (this);
+
+    sonogramSpeedSlider.setRange (1.0, 10.0, 1.0);
+    sonogramSpeedSlider.setValue (sonogram.getBlockWidth());
+    sonogramSpeedSlider.setTextBoxStyle (Slider::NoTextBox, true, 0, 0);
+    sonogramSpeedSlider.addListener (this);
 
     renderThread.addTimeSliceClient (&spectroscope);
     renderThread.addTimeSliceClient (&sonogram);
     renderThread.startThread (3);
 
+    addAndMakeVisible (&audioOscilloscope);
+    addAndMakeVisible (&spectroscope);
+    addAndMakeVisible (&pitchDetector);
+    addAndMakeVisible (&sonogram);
     addAndMakeVisible (&logSpectroscopeButton);
     addAndMakeVisible (&logSonogramButton);
-
-    logSpectroscopeButton.setButtonText ("Log Frequency Scale");
-    logSonogramButton.setButtonText ("Log Frequency Scale");
-
-    logSpectroscopeButton.setClickingTogglesState (true);
-    logSonogramButton.setClickingTogglesState (true);
-
-    logSpectroscopeButton.addListener (this);
-    logSonogramButton.addListener (this);
-
     addAndMakeVisible (&sonogramSpeedSlider);
-    sonogramSpeedSlider.setRange (1.0, 10.0, 1.0);
-    sonogramSpeedSlider.setValue (sonogram.getBlockWidth());
-    sonogramSpeedSlider.setTextBoxStyle (Slider::NoTextBox, true, 0, 0);
-    sonogramSpeedSlider.addListener (this);
 }
 
 FFTDemo::~FFTDemo()
@@ -71,10 +69,6 @@ FFTDemo::~FFTDemo()
     renderThread.removeTimeSliceClient (&spectroscope);
     renderThread.removeTimeSliceClient (&sonogram);
     renderThread.stopThread (500);
-
-    logSpectroscopeButton.removeListener (this);
-    logSonogramButton.removeListener (this);
-    sonogramSpeedSlider.removeListener (this);
 }
 
 //==============================================================================
@@ -91,10 +85,9 @@ void FFTDemo::resized()
     sonogram.setBounds (m, (2 * ch) + (3 * m), w - (2 * m), (2 * ch) + m);
 
     logSpectroscopeButton.setBounds (spectroscope.getX(), spectroscope.getY(), 150, 18);
-    logSonogramButton.setBounds     (sonogram.getX(), sonogram.getY(), 150, 18);
+    logSonogramButton.setBounds (sonogram.getX(), sonogram.getY(), 150, 18);
 
-    sonogramSpeedSlider.setBounds   (logSonogramButton.getRight() + m, logSonogramButton.getY(),
-                                     100, 18);
+    sonogramSpeedSlider.setBounds (logSonogramButton.getRight() + m, logSonogramButton.getY(), 100, 18);
 }
 
 void FFTDemo::buttonClicked (Button* button)
@@ -113,18 +106,16 @@ void FFTDemo::buttonClicked (Button* button)
 void FFTDemo::sliderValueChanged (Slider* slider)
 {
     if (slider == &sonogramSpeedSlider)
-    {
         sonogram.setBlockWidth ((int) sonogramSpeedSlider.getValue());
-    }
 }
 
 //==============================================================================
-void FFTDemo::setSampleRate (double sampleRate)
+void FFTDemo::setSampleRate (const double sampleRate)
 {
     pitchDetector.setSampleRate (sampleRate);
 }
 
-void FFTDemo::processBlock (const float* inputChannelData, int numSamples)
+void FFTDemo::processBlock (const float* inputChannelData, const int numSamples)
 {
     if (inputChannelData != nullptr)
     {
