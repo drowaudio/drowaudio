@@ -35,7 +35,7 @@ AudioFilePlayer::AudioFilePlayer()
       formatManager (new AudioFormatManager(), true)
 {
     bufferingTimeSliceThread->startThread (3);
-	formatManager->registerBasicFormats();
+    formatManager->registerBasicFormats();
 
     commonInitialise();
 }
@@ -54,7 +54,7 @@ AudioFilePlayer::AudioFilePlayer (TimeSliceThread* threadToUse,
 
 AudioFilePlayer::~AudioFilePlayer()
 {
-	audioTransportSource.setSource (nullptr);
+    audioTransportSource.setSource (nullptr);
     audioTransportSource.removeChangeListener (this);
 }
 
@@ -75,21 +75,21 @@ void AudioFilePlayer::stop()
 
 void AudioFilePlayer::startFromZero()
 {
-	if (audioFormatReaderSource == nullptr)
+    if (audioFormatReaderSource == nullptr)
         return;
 
-	audioTransportSource.setPosition (0.0);
-	audioTransportSource.start();
+    audioTransportSource.setPosition (0.0);
+    audioTransportSource.start();
 
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
 void AudioFilePlayer::pause()
 {
-	if (audioTransportSource.isPlaying())
-		audioTransportSource.stop();
-	else
-		audioTransportSource.start();
+    if (audioTransportSource.isPlaying())
+        audioTransportSource.stop();
+    else
+        audioTransportSource.start();
 
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
@@ -176,24 +176,24 @@ void AudioFilePlayer::removeListener (AudioFilePlayer::Listener* const listener)
 bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 {
     bool shouldBeLooping = isLooping();
-	audioTransportSource.setSource (nullptr);
+    audioTransportSource.setSource (nullptr);
 
-	if (reader != nullptr)
-	{
-		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
-		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
+    if (reader != nullptr)
+    {
+        // we SHOULD let the AudioFormatReaderSource delete the reader for us..
+        audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
         audioTransportSource.setSource (audioFormatReaderSource, 32768,
                                         bufferingTimeSliceThread, reader->sampleRate);
 
         if (shouldBeLooping)
             audioFormatReaderSource->setLooping (true);
 
-		// let our listeners know that we have loaded a new file
-		audioTransportSource.sendChangeMessage();
+        // let our listeners know that we have loaded a new file
+        audioTransportSource.sendChangeMessage();
         listeners.call (&Listener::fileChanged, this);
 
-		return true;
-	}
+        return true;
+    }
 
     audioTransportSource.sendChangeMessage();
     listeners.call (&Listener::fileChanged, this);

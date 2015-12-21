@@ -52,7 +52,7 @@
         ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     @endcode
 */
-class MusicLibraryTable	:   public Component,
+class MusicLibraryTable    :   public Component,
                             public TableListBoxModel,
                             public ITunesLibrary::Listener
 {
@@ -72,15 +72,15 @@ public:
     //==============================================================================
     /** Sets the ITunesLibrary to use.
      */
-	void setLibraryToUse (ITunesLibrary* library);
+    void setLibraryToUse (ITunesLibrary* library);
 
     /** Filters the table to only rows containing the given text.
      */
-	void setFilterText (const String& filterText);
+    void setFilterText (const String& filterText);
 
-	/**	Returns the table list box component.
+    /**    Returns the table list box component.
      */
-	TableListBox& getTableListBox()	{ return table;	}
+    TableListBox& getTableListBox()    { return table;    }
 
     //==============================================================================
     /** A set of colour IDs to use to change the colour of various aspects of the main table.
@@ -128,13 +128,13 @@ public:
 
     //==============================================================================
     /** @internal */
-	void libraryChanged (ITunesLibrary* library);
+    void libraryChanged (ITunesLibrary* library);
 
     /** @internal */
-	void libraryUpdated (ITunesLibrary* library);
+    void libraryUpdated (ITunesLibrary* library);
 
     /** @internal */
-	void libraryFinished (ITunesLibrary* library);
+    void libraryFinished (ITunesLibrary* library);
 
     //==============================================================================
     /** Returns the number of rows currently bein displayed in the table.
@@ -163,24 +163,24 @@ public:
     void resized();
 
     /** @internal */
-	void focusOfChildComponentChanged (FocusChangeType cause);
+    void focusOfChildComponentChanged (FocusChangeType cause);
 
     /** @internal */
-	var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
+    var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
 
 private:
     //==============================================================================
     Font font;
-	ITunesLibrary* currentLibrary;
+    ITunesLibrary* currentLibrary;
     TableListBox table;
     String currentFilterText;
 
     ValueTree dataList;
-	ValueTree filteredDataList;
+    ValueTree filteredDataList;
     SortedSet<int> selectedRowsLibIds;
 
     int filteredNumRows;
-	bool finishedLoading;
+    bool finishedLoading;
 
     //==============================================================================
     void updateTableFilteredAndSorted();

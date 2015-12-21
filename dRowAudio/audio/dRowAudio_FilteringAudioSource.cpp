@@ -45,8 +45,8 @@ namespace
 FilteringAudioSource::FilteringAudioSource (AudioSource* inputSource,
                                             bool deleteInputWhenDeleted)
     : input         (inputSource, deleteInputWhenDeleted),
-	  sampleRate    (44100.0),
-	  filterSource  (true)
+      sampleRate    (44100.0),
+      filterSource  (true)
 {
     jassert (input != nullptr);
 
@@ -54,7 +54,7 @@ FilteringAudioSource::FilteringAudioSource (AudioSource* inputSource,
     gains[Mid] = 1.0f;
     gains[High] = 1.0f;
 
-	// configure the filters
+    // configure the filters
     resetFilters();
 }
 

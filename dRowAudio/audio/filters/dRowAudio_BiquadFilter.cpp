@@ -43,7 +43,7 @@ void BiquadFilter::processSamples (float* const samples,
 }
 
 void BiquadFilter::processSamples (int* const samples,
-								   const int numSamples) noexcept
+                                   const int numSamples) noexcept
 {
     const SpinLock::ScopedLockType sl (processLock);
 
@@ -75,13 +75,13 @@ IIRCoefficients BiquadFilter::makeLowPass (const double sampleRate,
                                            const double frequency,
                                            const double Q) noexcept
 {
-	const double oneOverCurrentSampleRate = 1.0 / sampleRate;
-	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-	float cos_w0 = cos (w0);
-	float sin_w0 = sin (w0);
-	float alpha = sin_w0 / (2.0f * (float) Q);
+    const double oneOverCurrentSampleRate = 1.0 / sampleRate;
+    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float cos_w0 = cos (w0);
+    float sin_w0 = sin (w0);
+    float alpha = sin_w0 / (2.0f * (float) Q);
 
-	return IIRCoefficients ((1.0f - cos_w0) * 0.5f,
+    return IIRCoefficients ((1.0f - cos_w0) * 0.5f,
                             (1.0f - cos_w0),
                             (1.0f - cos_w0) * 0.5f,
                             (1.0f + alpha),
@@ -93,13 +93,13 @@ IIRCoefficients BiquadFilter::makeHighPass (const double sampleRate,
                                             const double frequency,
                                             const double Q) noexcept
 {
-	const double oneOverCurrentSampleRate = 1.0 / sampleRate;
-	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-	float cos_w0 = cos (w0);
-	float sin_w0 = sin (w0);
-	float alpha = sin_w0 / (2.0f * (float) Q);
+    const double oneOverCurrentSampleRate = 1.0 / sampleRate;
+    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float cos_w0 = cos (w0);
+    float sin_w0 = sin (w0);
+    float alpha = sin_w0 / (2.0f * (float) Q);
 
-	return IIRCoefficients ((1.0f + cos_w0) * 0.5f,
+    return IIRCoefficients ((1.0f + cos_w0) * 0.5f,
                             -(1.0f + cos_w0),
                             (1.0f + cos_w0) * 0.5f,
                             (1.0f + alpha),
@@ -111,16 +111,16 @@ IIRCoefficients BiquadFilter::makeBandPass (const double sampleRate,
                                             const double frequency,
                                             const double Q) noexcept
 {
-	const double qFactor = jlimit (0.00001, 1000.0, Q);
-	const double oneOverCurrentSampleRate = 1.0 / sampleRate;
+    const double qFactor = jlimit (0.00001, 1000.0, Q);
+    const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 
-	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-	float cos_w0 = cos (w0);
-	float sin_w0 = sin (w0);
-	float alpha = sin_w0 / (2.0f * (float) qFactor);
-    //	float alpha = sin_w0 * sinh( (log(2.0)/2.0) * bandwidth * w0/sin_w0 );
+    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float cos_w0 = cos (w0);
+    float sin_w0 = sin (w0);
+    float alpha = sin_w0 / (2.0f * (float) qFactor);
+    //    float alpha = sin_w0 * sinh( (log(2.0)/2.0) * bandwidth * w0/sin_w0 );
 
-	return IIRCoefficients (alpha,
+    return IIRCoefficients (alpha,
                             0.0f,
                             -alpha,
                             1.0f + alpha,
@@ -132,16 +132,16 @@ IIRCoefficients BiquadFilter::makeBandStop (const double sampleRate,
                                             const double frequency,
                                             const double Q) noexcept
 {
-	const double qFactor = jlimit(0.00001, 1000.0, Q);
-	const double oneOverCurrentSampleRate = 1.0 / sampleRate;
+    const double qFactor = jlimit(0.00001, 1000.0, Q);
+    const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 
 
-	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-	float cos_w0 = cos (w0);
-	float sin_w0 = sin (w0);
-	float alpha = (float) (sin_w0 / (2 * qFactor));
+    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float cos_w0 = cos (w0);
+    float sin_w0 = sin (w0);
+    float alpha = (float) (sin_w0 / (2 * qFactor));
 
-	return IIRCoefficients (1.0f,
+    return IIRCoefficients (1.0f,
                             -2*cos_w0,
                             1.0f,
                             1.0f + alpha,
@@ -176,15 +176,15 @@ IIRCoefficients BiquadFilter::makeAllpass (const double sampleRate,
                                            const double frequency,
                                            const double Q) noexcept
 {
-	const double qFactor = jlimit(0.00001, 1000.0, Q);
-	const double oneOverCurrentSampleRate = 1.0 / sampleRate;
+    const double qFactor = jlimit(0.00001, 1000.0, Q);
+    const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 
-	float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-	float cos_w0 = cos(w0);
-	float sin_w0 = sin(w0);
-	float alpha = (float) (sin_w0 / (2 * qFactor));
+    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float cos_w0 = cos(w0);
+    float sin_w0 = sin(w0);
+    float alpha = (float) (sin_w0 / (2 * qFactor));
 
-	return IIRCoefficients (1.0f - alpha,
+    return IIRCoefficients (1.0f - alpha,
                             -2 * cos_w0,
                             1.0f + alpha,
                             1.0f + alpha,
@@ -194,8 +194,8 @@ IIRCoefficients BiquadFilter::makeAllpass (const double sampleRate,
 
 void BiquadFilter::copyOutputsFrom (const BiquadFilter& other) noexcept
 {
-	v1 = other.v1;
-	v2 = other.v2;
+    v1 = other.v1;
+    v2 = other.v2;
 }
 
 #undef JUCE_SNAP_TO_ZERO

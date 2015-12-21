@@ -37,49 +37,49 @@
     as a percentage.
  */
 class CpuMeter : public Label,
-				 public Timer
+                 public Timer
 {
 public:
     //==============================================================================
-	/**	Creates a CpuMeter.
-		You need to provide the device manager to monitor and optionally the refresh
+    /**    Creates a CpuMeter.
+        You need to provide the device manager to monitor and optionally the refresh
         rate of the display.
-	 */
-	CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs = 50);
-
-	/**	Descructor.
      */
-	~CpuMeter();
+    CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs = 50);
 
-	/** Returns the current cpu usage as a percentage.
+    /**    Descructor.
      */
-	double getCurrentCpuUsage() const
+    ~CpuMeter();
+
+    /** Returns the current cpu usage as a percentage.
+     */
+    double getCurrentCpuUsage() const
     {
         return currentCpuUsage;
     }
 
-	/** Changes the colour of the text.
+    /** Changes the colour of the text.
      */
-	void setTextColour (const Colour& newTextColour)
+    void setTextColour (const Colour& newTextColour)
     {
         setColour (Label::textColourId, newTextColour);
     }
 
-	//==============================================================================
+    //==============================================================================
     /** @internal */
-	void resized();
+    void resized();
 
-	/** @internal */
-	void timerCallback();
+    /** @internal */
+    void timerCallback();
 
 private:
     //==============================================================================
-	AudioDeviceManager* deviceManager;
-	int updateInterval;
-	double currentCpuUsage;
+    AudioDeviceManager* deviceManager;
+    int updateInterval;
+    double currentCpuUsage;
 
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CpuMeter);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CpuMeter);
 };
 
-#endif	//DROWAUDIO_CPUMETER_H
+#endif    //DROWAUDIO_CPUMETER_H

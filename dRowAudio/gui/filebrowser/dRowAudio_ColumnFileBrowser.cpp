@@ -38,7 +38,7 @@ class BrowserColumn : public BasicFileBrowser,
 {
 public:
     //==================================================================================
-	BrowserColumn (WildcardFileFilter* filesToDisplay_)
+    BrowserColumn (WildcardFileFilter* filesToDisplay_)
         : BasicFileBrowser (BasicFileBrowser::openMode
                             + BasicFileBrowser::canSelectFiles
                             + BasicFileBrowser::canSelectDirectories
@@ -46,19 +46,19 @@ public:
                             File::getSpecialLocation (File::userMusicDirectory),
                             filesToDisplay_),
           fileDragEnabled (false)
-	{
+    {
         addMouseListener (this, true);
-	}
+    }
 
-	~BrowserColumn()
-	{
-	}
+    ~BrowserColumn()
+    {
+    }
 
-	void mouseDrag (const MouseEvent& /*e*/)
-	{
-		if (fileDragEnabled)
-		{
-			StringArray files;
+    void mouseDrag (const MouseEvent& /*e*/)
+    {
+        if (fileDragEnabled)
+        {
+            StringArray files;
 
             for (int i = 0; i < getNumSelectedFiles(); i++)
             {
@@ -70,67 +70,67 @@ public:
 
             fileDragEnabled = false;
             performExternalDragDropOfFiles (files, false);
-		}
-	}
+        }
+    }
 
-	void mouseUp (const MouseEvent& /*e*/)
-	{
-		fileDragEnabled = false;
-	}
+    void mouseUp (const MouseEvent& /*e*/)
+    {
+        fileDragEnabled = false;
+    }
 
-	void selectionChanged()
-	{
+    void selectionChanged()
+    {
         BasicFileBrowser::selectionChanged();
 
         sendSynchronousChangeMessage();
-	}
+    }
 
-	void fileClicked (const File& /*file*/, const MouseEvent& /*e*/)
-	{
-		fileDragEnabled = true;
-	}
+    void fileClicked (const File& /*file*/, const MouseEvent& /*e*/)
+    {
+        fileDragEnabled = true;
+    }
 
-	void fileDoubleClicked (const File& /*f*/) {}
+    void fileDoubleClicked (const File& /*f*/) {}
 
 private:
     //==================================================================================
-	bool fileDragEnabled;
+    bool fileDragEnabled;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BrowserColumn);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BrowserColumn);
 };
 
 
 //==================================================================================
-class ColumnFileBrowserContents	: public Component,
+class ColumnFileBrowserContents    : public Component,
                                   public FileBrowserListener,
                                   public ChangeListener,
                                   public ComponentListener
 {
 public:
     //==================================================================================
-	ColumnFileBrowserContents (WildcardFileFilter* filesToDisplay_, Viewport* parentViewport);
+    ColumnFileBrowserContents (WildcardFileFilter* filesToDisplay_, Viewport* parentViewport);
 
-	~ColumnFileBrowserContents();
+    ~ColumnFileBrowserContents();
 
-	void resized();
-	void selectionChanged () {}
-	void fileClicked (const File& /*file*/, const MouseEvent& /*e*/) {}
-	void fileDoubleClicked (const File& /*file*/) {}
-	void browserRootChanged (const File& /*newRoot*/) {}
-	void selectedFileChanged (const File& file);
-	bool addColumn (const File& rootDirectory);
-	void removeColumn (int numColumns = 1);
-	void changeListenerCallback (ChangeBroadcaster* changedComponent);
-	void componentMovedOrResized (Component &component, bool wasMoved, bool wasResized);
-	bool keyPressed (const KeyPress& key);
+    void resized();
+    void selectionChanged () {}
+    void fileClicked (const File& /*file*/, const MouseEvent& /*e*/) {}
+    void fileDoubleClicked (const File& /*file*/) {}
+    void browserRootChanged (const File& /*newRoot*/) {}
+    void selectedFileChanged (const File& file);
+    bool addColumn (const File& rootDirectory);
+    void removeColumn (int numColumns = 1);
+    void changeListenerCallback (ChangeBroadcaster* changedComponent);
+    void componentMovedOrResized (Component &component, bool wasMoved, bool wasResized);
+    bool keyPressed (const KeyPress& key);
 
 private:
     //==================================================================================
-	WildcardFileFilter* filesToDisplay;
-	Viewport* viewport;
-	OwnedArray <BrowserColumn> columns;
+    WildcardFileFilter* filesToDisplay;
+    Viewport* viewport;
+    OwnedArray <BrowserColumn> columns;
 
-	int activeColumn;
+    int activeColumn;
 
     friend class ColumnFileBrowser;
 
@@ -141,28 +141,28 @@ private:
     int getNumValidChildFiles (const File& sourceFile);
 
     //==================================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowserContents);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowserContents);
 };
 
 //==================================================================================
 ColumnFileBrowserContents::ColumnFileBrowserContents (WildcardFileFilter* filesToDisplay_, Viewport* parentViewport)
     : filesToDisplay (filesToDisplay_),
-	  viewport (parentViewport)
+      viewport (parentViewport)
 {
     activeLookAndFeel = new ColumnFileBrowserLookAndFeel();
     activeLookAndFeel->setColour (DirectoryContentsDisplayComponent::highlightColourId,
                                   Colours::darkorange);
     inactiveLookAndFeel = new ColumnFileBrowserLookAndFeel();
 
-	columns.add (new BrowserColumn (filesToDisplay_));
-	addAndMakeVisible (columns[0]);
-	columns[0]->setSize (300, 50);
-	columns[0]->addListener (this);
-	columns[0]->addChangeListener (this);
-	columns[0]->addComponentListener (this);
+    columns.add (new BrowserColumn (filesToDisplay_));
+    addAndMakeVisible (columns[0]);
+    columns[0]->setSize (300, 50);
+    columns[0]->addListener (this);
+    columns[0]->addChangeListener (this);
+    columns[0]->addComponentListener (this);
     columns[0]->setLookAndFeel (activeLookAndFeel);
 
-	activeColumn = 0;
+    activeColumn = 0;
 }
 
 ColumnFileBrowserContents::~ColumnFileBrowserContents()
@@ -171,90 +171,90 @@ ColumnFileBrowserContents::~ColumnFileBrowserContents()
 
 void ColumnFileBrowserContents::resized()
 {
-	int width = 0;
-	const int height = getHeight();
+    int width = 0;
+    const int height = getHeight();
 
-	for (int i = 0; i < columns.size(); i++)
-	{
-		columns[i]->setBounds (width, 0, columns[i]->getWidth(), height);
-		width += columns[i]->getWidth();
-	}
+    for (int i = 0; i < columns.size(); i++)
+    {
+        columns[i]->setBounds (width, 0, columns[i]->getWidth(), height);
+        width += columns[i]->getWidth();
+    }
 
-	setSize (width, height);
+    setSize (width, height);
 }
 
 void ColumnFileBrowserContents::selectedFileChanged (const File& file)
 {
     // if last column clicked add new column
-	if (columns[activeColumn] == columns.getLast())
-	{
+    if (columns[activeColumn] == columns.getLast())
+    {
         addColumn (file);
-	}
-	else        // otherwise remove uneeded columns and change last
-	{
-		for (int i = 0; i < columns.size(); i++)
-		{
-			if (columns[activeColumn] == columns[i])
+    }
+    else        // otherwise remove uneeded columns and change last
+    {
+        for (int i = 0; i < columns.size(); i++)
+        {
+            if (columns[activeColumn] == columns[i])
             {
                 const int numColumnsToRemove = columns.size() - i - (file.isDirectory() ? 1 : 0);
-				removeColumn (numColumnsToRemove);
+                removeColumn (numColumnsToRemove);
 
-				if (file.isDirectory())
-					columns.getLast()->setRoot (file);
+                if (file.isDirectory())
+                    columns.getLast()->setRoot (file);
 
                 break;
-			}
-		}
+            }
+        }
 
-		resized();
-	}
-
-	// stick to edges of viewport
-	if (getWidth() < viewport->getWidth())
-    {
-		viewport->setViewPosition (0, 0);
+        resized();
     }
-	else if (file.exists() || (getRight() < viewport->getRight()))
-	{
-		const int ammountToSubtract = viewport->getRight() - getRight();
-		viewport->setViewPosition (viewport->getViewPositionX() - ammountToSubtract, 0);
-	}
+
+    // stick to edges of viewport
+    if (getWidth() < viewport->getWidth())
+    {
+        viewport->setViewPosition (0, 0);
+    }
+    else if (file.exists() || (getRight() < viewport->getRight()))
+    {
+        const int ammountToSubtract = viewport->getRight() - getRight();
+        viewport->setViewPosition (viewport->getViewPositionX() - ammountToSubtract, 0);
+    }
 }
 
 bool ColumnFileBrowserContents::addColumn (const File& rootDirectory)
 {
-	if (rootDirectory.isDirectory() && rootDirectory.exists())
-	{
+    if (rootDirectory.isDirectory() && rootDirectory.exists())
+    {
         const int startingWidth = columns.getLast()->getWidth();
 
         BrowserColumn* newColumn = new BrowserColumn (filesToDisplay);
         newColumn->setLookAndFeel (inactiveLookAndFeel);
-		newColumn->setRoot (rootDirectory);
-		newColumn->setSize (startingWidth, 50);
-		newColumn->addListener (this);
-		newColumn->addChangeListener (this);
-		newColumn->addComponentListener (this);
-		columns.add (newColumn);
-		addAndMakeVisible (newColumn);
+        newColumn->setRoot (rootDirectory);
+        newColumn->setSize (startingWidth, 50);
+        newColumn->addListener (this);
+        newColumn->addChangeListener (this);
+        newColumn->addComponentListener (this);
+        columns.add (newColumn);
+        addAndMakeVisible (newColumn);
 
-		resized();
+        resized();
 
-		return true;
-	}
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 void ColumnFileBrowserContents::removeColumn (int numColumns)
 {
-	for (int i = numColumns; i <= 0; i--)
+    for (int i = numColumns; i <= 0; i--)
     {
-		columns[i]->removeListener (this);
-		columns[i]->removeChangeListener (this);
-		columns[i]->removeComponentListener (this);
-	}
+        columns[i]->removeListener (this);
+        columns[i]->removeChangeListener (this);
+        columns[i]->removeComponentListener (this);
+    }
 
-	columns.removeLast (numColumns - 1);
+    columns.removeLast (numColumns - 1);
 }
 
 void ColumnFileBrowserContents::changeListenerCallback (ChangeBroadcaster* changedComponent)

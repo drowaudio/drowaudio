@@ -100,24 +100,24 @@ int CentreAlignViewport::getMaximumVisibleHeight() const
 void CentreAlignViewport::setViewPosition (const int xPixelsOffset, const int yPixelsOffset)
 {
     if (contentComp != nullptr)
-	{
-		int topX = 0;
-		int topY = 0;
+    {
+        int topX = 0;
+        int topY = 0;
 
-		if (contentComp.getComponent()->getBounds().getWidth() < contentHolder.getBounds().getWidth()
-			&& shouldCentre)
-			topX = roundToInt (contentHolder.getWidth() / 2.0f - contentComp->getWidth() / 2.0f);
-		else
-			topX = jmax (jmin (0, contentHolder.getWidth() - contentComp->getWidth()), jmin (0, -xPixelsOffset));
+        if (contentComp.getComponent()->getBounds().getWidth() < contentHolder.getBounds().getWidth()
+            && shouldCentre)
+            topX = roundToInt (contentHolder.getWidth() / 2.0f - contentComp->getWidth() / 2.0f);
+        else
+            topX = jmax (jmin (0, contentHolder.getWidth() - contentComp->getWidth()), jmin (0, -xPixelsOffset));
 
-		if (contentComp.getComponent()->getBounds().getHeight() < contentHolder.getBounds().getHeight()
-			&& shouldCentre)
-			topY = roundToInt (contentHolder.getHeight() / 2.0f - contentComp->getHeight() / 2.0f);
-		else
-			topY = jmax (jmin (0, contentHolder.getHeight() - contentComp->getHeight()), jmin (0, -yPixelsOffset));
+        if (contentComp.getComponent()->getBounds().getHeight() < contentHolder.getBounds().getHeight()
+            && shouldCentre)
+            topY = roundToInt (contentHolder.getHeight() / 2.0f - contentComp->getHeight() / 2.0f);
+        else
+            topY = jmax (jmin (0, contentHolder.getHeight() - contentComp->getHeight()), jmin (0, -yPixelsOffset));
 
-		contentComp->setTopLeftPosition (topX, topY);
-	}
+        contentComp->setTopLeftPosition (topX, topY);
+    }
 }
 
 void CentreAlignViewport::setViewPosition (Point<int> newPosition)
@@ -282,7 +282,7 @@ void CentreAlignViewport::setScrollBarsShown (const bool showVerticalScrollbarIf
                                    const bool showHorizontalScrollbarIfNeeded)
 {
     if (showVScrollbar != showVerticalScrollbarIfNeeded
-		|| showHScrollbar != showHorizontalScrollbarIfNeeded)
+        || showHScrollbar != showHorizontalScrollbarIfNeeded)
     {
         showVScrollbar = showVerticalScrollbarIfNeeded;
         showHScrollbar = showHorizontalScrollbarIfNeeded;
@@ -303,7 +303,7 @@ int CentreAlignViewport::getScrollBarThickness() const
 {
     return scrollBarThickness > 0
             ? scrollBarThickness
-	        : getLookAndFeel().getDefaultScrollbarWidth();
+            : getLookAndFeel().getDefaultScrollbarWidth();
 }
 
 void CentreAlignViewport::setScrollBarButtonVisibility (const bool buttonsVisible)
@@ -349,14 +349,14 @@ bool CentreAlignViewport::useMouseWheelMoveIfNeeded (const MouseEvent& e, float 
             {
                 wheelIncrementX *= 14.0f * singleStepX;
                 wheelIncrementX = (wheelIncrementX < 0) ? jmin (wheelIncrementX, -1.0f)
-				: jmax (wheelIncrementX, 1.0f);
+                : jmax (wheelIncrementX, 1.0f);
             }
 
             if (wheelIncrementY != 0)
             {
                 wheelIncrementY *= 14.0f * singleStepY;
                 wheelIncrementY = (wheelIncrementY < 0) ? jmin (wheelIncrementY, -1.0f)
-				: jmax (wheelIncrementY, 1.0f);
+                : jmax (wheelIncrementY, 1.0f);
             }
 
             Point<int> pos (getViewPosition());
@@ -392,17 +392,17 @@ bool CentreAlignViewport::useMouseWheelMoveIfNeeded (const MouseEvent& e, float 
 bool CentreAlignViewport::keyPressed (const KeyPress& key)
 {
     const bool isUpDownKey = key.isKeyCode (KeyPress::upKey)
-	                         || key.isKeyCode (KeyPress::downKey)
-	                         || key.isKeyCode (KeyPress::pageUpKey)
-	                         || key.isKeyCode (KeyPress::pageDownKey)
-	                         || key.isKeyCode (KeyPress::homeKey)
-	                         || key.isKeyCode (KeyPress::endKey);
+                             || key.isKeyCode (KeyPress::downKey)
+                             || key.isKeyCode (KeyPress::pageUpKey)
+                             || key.isKeyCode (KeyPress::pageDownKey)
+                             || key.isKeyCode (KeyPress::homeKey)
+                             || key.isKeyCode (KeyPress::endKey);
 
     if (verticalScrollBar.isVisible() && isUpDownKey)
         return verticalScrollBar.keyPressed (key);
 
     const bool isLeftRightKey = key.isKeyCode (KeyPress::leftKey)
-	                            || key.isKeyCode (KeyPress::rightKey);
+                                || key.isKeyCode (KeyPress::rightKey);
 
     if (horizontalScrollBar.isVisible() && (isUpDownKey || isLeftRightKey))
         return horizontalScrollBar.keyPressed (key);

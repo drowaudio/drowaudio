@@ -32,16 +32,16 @@
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
 Spectroscope::Spectroscope (int fftSizeLog2)
-:	fftEngine       (fftSizeLog2),
-	needsRepaint    (true),
-	tempBlock       (fftEngine.getFFTSize()),
-	circularBuffer  (fftEngine.getMagnitudesBuffer().getSize() * 4),
-	logFrequency    (false)
+:    fftEngine       (fftSizeLog2),
+    needsRepaint    (true),
+    tempBlock       (fftEngine.getFFTSize()),
+    circularBuffer  (fftEngine.getMagnitudesBuffer().getSize() * 4),
+    logFrequency    (false)
 {
-	setOpaque (true);
+    setOpaque (true);
 
-	fftEngine.setWindowType (Window::Hann);
-	numBins = fftEngine.getFFTProperties().fftSizeHalved;
+    fftEngine.setWindowType (Window::Hann);
+    numBins = fftEngine.getFFTProperties().fftSizeHalved;
 
     circularBuffer.reset();
 
@@ -73,20 +73,20 @@ void Spectroscope::setLogFrequencyDisplay (bool shouldDisplayLog)
 //==============================================================================
 void Spectroscope::copySamples (const float* samples, int numSamples)
 {
-	circularBuffer.writeSamples (samples, numSamples);
-	needToProcess = true;
+    circularBuffer.writeSamples (samples, numSamples);
+    needToProcess = true;
 }
 
 void Spectroscope::timerCallback()
 {
-	const int magnitudeBufferSize = fftEngine.getMagnitudesBuffer().getSize();
-	float* magnitudeBuffer = fftEngine.getMagnitudesBuffer().getData();
+    const int magnitudeBufferSize = fftEngine.getMagnitudesBuffer().getSize();
+    float* magnitudeBuffer = fftEngine.getMagnitudesBuffer().getData();
 
     renderScopeImage();
 
-	// fall levels here
-	for (int i = 0; i < magnitudeBufferSize; i++)
-		magnitudeBuffer[i] *= 0.707f;
+    // fall levels here
+    for (int i = 0; i < magnitudeBufferSize; i++)
+        magnitudeBuffer[i] *= 0.707f;
 }
 
 void Spectroscope::process()
@@ -94,13 +94,13 @@ void Spectroscope::process()
     jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
 
     while (circularBuffer.getNumAvailable() > fftEngine.getFFTSize())
-	{
-		circularBuffer.readSamples (tempBlock.getData(), fftEngine.getFFTSize());
-		fftEngine.performFFT (tempBlock);
-		fftEngine.updateMagnitudesIfBigger();
+    {
+        circularBuffer.readSamples (tempBlock.getData(), fftEngine.getFFTSize());
+        fftEngine.performFFT (tempBlock);
+        fftEngine.updateMagnitudesIfBigger();
 
-		needsRepaint = true;
-	}
+        needsRepaint = true;
+    }
 }
 
 void Spectroscope::flagForRepaint()
@@ -113,16 +113,16 @@ void Spectroscope::flagForRepaint()
 void Spectroscope::renderScopeImage()
 {
     if (needsRepaint)
-	{
+    {
         Graphics g (scopeImage);
 
-		const int w = getWidth();
-		const int h = getHeight();
+        const int w = getWidth();
+        const int h = getHeight();
 
-		g.setColour (Colours::black);
-		g.fillAll();
+        g.setColour (Colours::black);
+        g.fillAll();
 
-		g.setColour (Colours::white);
+        g.setColour (Colours::white);
 
         const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
         const float xScale = (float)w / (numBins + 1);
@@ -132,38 +132,38 @@ void Spectroscope::renderScopeImage()
         float x2, x1 = 0;
 
         if (logFrequency)
-		{
-			for (int i = 0; i < numBins; ++i)
-			{
-				y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
-				x2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40.0f) * w;
+        {
+            for (int i = 0; i < numBins; ++i)
+            {
+                y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
+                x2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40.0f) * w;
 
-				g.drawLine (x1, h - h * y1,
-						    x2, h - h * y2);
+                g.drawLine (x1, h - h * y1,
+                            x2, h - h * y2);
 
-				y1 = y2;
-				x1 = x2;
-			}
-		}
-		else
-		{
-			for (int i = 0; i < numBins; ++i)
-			{
-				y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
-				x2 = (i + 1) * xScale;
+                y1 = y2;
+                x1 = x2;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < numBins; ++i)
+            {
+                y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
+                x2 = (i + 1) * xScale;
 
-				g.drawLine (x1, h - h * y1,
-						    x2, h - h * y2);
+                g.drawLine (x1, h - h * y1,
+                            x2, h - h * y2);
 
-				y1 = y2;
-				x1 = x2;
-			}
-		}
+                y1 = y2;
+                x1 = x2;
+            }
+        }
 
-		needsRepaint = false;
+        needsRepaint = false;
 
         repaint();
-	}
+    }
 }
 
 #endif // JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL

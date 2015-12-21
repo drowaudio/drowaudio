@@ -85,7 +85,7 @@ namespace LoopAndCueHelpers
     }
 }
 
-/**	Details the colums of the table.
+/**    Details the colums of the table.
  */
 namespace MusicColumns {
 
@@ -94,90 +94,90 @@ namespace MusicColumns {
     static const Identifier libraryCuePointIdentifier ("CUE");
     static const Identifier libraryLoopIdentifier ("LOOP");
 
-	enum colums {
-		Dummy,
-		LibID,
-		ID,
-		Artist,
-		Song,
-		Album,
-		Rating,
-		BPM,
-		Genre,
-		SubGenre,
-		Label,
-		Key,
-		Length,
-		Kind,
-		Added,
+    enum colums {
+        Dummy,
+        LibID,
+        ID,
+        Artist,
+        Song,
+        Album,
+        Rating,
+        BPM,
+        Genre,
+        SubGenre,
+        Label,
+        Key,
+        Length,
+        Kind,
+        Added,
         Modified,
-		Location,
-		Score,
-		numColumns
-	};
+        Location,
+        Score,
+        numColumns
+    };
 
-	static const Identifier columnNames[] = {
-		"Dummy",
-		"LibID",
-		"ID",
-		"Artist",
-		"Song",
-		"Album",
-		"Rating",
-		"BPM",
-		"Genre",
-		"Sub_Genre",
-		"Label",
-		"Key",
-		"Length",
-		"Kind",
-		"Added",
+    static const Identifier columnNames[] = {
+        "Dummy",
+        "LibID",
+        "ID",
+        "Artist",
+        "Song",
+        "Album",
+        "Rating",
+        "BPM",
+        "Genre",
+        "Sub_Genre",
+        "Label",
+        "Key",
+        "Length",
+        "Kind",
+        "Added",
         "Modified",
-		"Location",
-		"Score"
-	};
+        "Location",
+        "Score"
+    };
 
-	static const UNUSED_NOWARN char *iTunesNames[] = {
-		"",
-		"",
-		"Track ID",
-		"Artist",
-		"Name",
-		"Album",
-		"Rating",
-		"BPM",
-		"Genre",
-		"Grouping",
-		"Comments",
-		"Series",
-		"Total Time",
-		"Kind",
-		"Date Added",
+    static const UNUSED_NOWARN char *iTunesNames[] = {
+        "",
+        "",
+        "Track ID",
+        "Artist",
+        "Name",
+        "Album",
+        "Rating",
+        "BPM",
+        "Genre",
+        "Grouping",
+        "Comments",
+        "Series",
+        "Total Time",
+        "Kind",
+        "Date Added",
         "Date Modified",
-		"Location",
-		"Score"
-	};
+        "Location",
+        "Score"
+    };
 
-	static const int columnWidths[] = {
-		1,
-		30,
-		50,
-		150,
-		200,
-		150,
-		60,
-		60,
-		80,
-		100,
-		100,
-		30,
-		80,
-		60,
-		125,
-		125,
-		300,
-		60
-	};
+    static const int columnWidths[] = {
+        1,
+        30,
+        50,
+        150,
+        200,
+        150,
+        60,
+        60,
+        80,
+        100,
+        100,
+        30,
+        80,
+        60,
+        125,
+        125,
+        300,
+        60
+    };
 }
 
 #endif  // DROWAUDIO_MUSICLIBRARYHELPERS_H

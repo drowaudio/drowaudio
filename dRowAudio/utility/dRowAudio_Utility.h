@@ -42,34 +42,34 @@
 //==============================================================================
 /** @file
 
-	This file contains some useful utility functions and macros.
+    This file contains some useful utility functions and macros.
  */
 //==============================================================================
 
 /** Returns the Resources folder in the package contents on a Mac and if an equivalent exists on Windows.
-	This will return File::nonexistent if the file does not exist so check for this first.
+    This will return File::nonexistent if the file does not exist so check for this first.
  */
 inline static File getResourcesFolder()
 {
-	return File::getSpecialLocation (File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile ("Resources");
+    return File::getSpecialLocation (File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile ("Resources");
 }
 
 /** If the String passed in is a local path, this will return a string with the file://localhost part
-	of the file path stripped and any escaped characters (e.g. %20) converted to ascii
+    of the file path stripped and any escaped characters (e.g. %20) converted to ascii
  */
 inline static String stripFileProtocolForLocal (const String& pathToStrip)
 {
-	if (pathToStrip.startsWith ("file://localhost"))
-	{
+    if (pathToStrip.startsWith ("file://localhost"))
+    {
        #if JUCE_WINDOWS
-		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/") + 1));
+        String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/") + 1));
        #else
-		String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
+        String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
        #endif
-		return URL::removeEscapeChars (temp);
-	}
+        return URL::removeEscapeChars (temp);
+    }
 
-	return String::empty;
+    return String::empty;
 }
 
 /** Converts an iTunes formatted date string (e.g. 2010-12-27T17:44:32Z)
@@ -89,7 +89,7 @@ inline static Time parseITunesDateString (const String& dateString)
     return Time (year, month, day, hours, minutes, seconds, milliseconds, useLocalTime);
 }
 
-/**	Reverses an array.
+/**    Reverses an array.
  */
 template <class Type>
 void reverseArray (Type* array, int length)
@@ -104,9 +104,9 @@ void reverseArray (Type* array, int length)
     }
 }
 
-/**	Reverses two arrays at once.
-	This will be quicker than calling reverseArray twice.
-	The arrays must be the same length.
+/**    Reverses two arrays at once.
+    This will be quicker than calling reverseArray twice.
+    The arrays must be the same length.
  */
 template <class Type>
 void reverseTwoArrays (Type* array1, Type* array2, int length)
@@ -125,14 +125,14 @@ void reverseTwoArrays (Type* array1, Type* array2, int length)
     }
 }
 
-/**	Finds the key for a given track from the chemical-records website.
-	This will attempt to find the key listed on the chemical website for a given release number
-	eg. "31R038" and track title eg. "Wait For Me".
-	This is in the Mixed in Key format eg. 11A and will return an empty string if nothing could be found.
+/**    Finds the key for a given track from the chemical-records website.
+    This will attempt to find the key listed on the chemical website for a given release number
+    eg. "31R038" and track title eg. "Wait For Me".
+    This is in the Mixed in Key format eg. 11A and will return an empty string if nothing could be found.
 
-	@param	releaseNo	The catalogue number to look for.
-	@param	trackName	The track name to look for.
-	@param	retryLimit	An optional number of retries as sometimes the URL won't load first time.
+    @param    releaseNo    The catalogue number to look for.
+    @param    trackName    The track name to look for.
+    @param    retryLimit    An optional number of retries as sometimes the URL won't load first time.
  */
 static String findKeyFromChemicalWebsite (const String& releaseNo, const String& trackName)
 {
@@ -559,26 +559,26 @@ struct ScopedChangeSender
 
 //==============================================================================
 /** This handy macro is a platform independent way of stopping compiler
-	warnings when paramaters are declared but not used.
+    warnings when paramaters are declared but not used.
  */
 #ifndef UNUSED_NOWARN
 
-	#if defined(JUCE_MAC) || defined(JUCE_IOS)
-		// enable supression of unused variable is GCC
-		#define UNUSED_NOWARN __attribute__((unused))
+    #if defined(JUCE_MAC) || defined(JUCE_IOS)
+        // enable supression of unused variable is GCC
+        #define UNUSED_NOWARN __attribute__((unused))
 
-	#elif defined(JUCE_MSVC)
-	#define UNUSED_NOWARN
+    #elif defined(JUCE_MSVC)
+    #define UNUSED_NOWARN
 
-		// disable unused variable warnings in MSVC (Windows)
-		#pragma warning( push )
-		#pragma warning( disable : 4705 )
+        // disable unused variable warnings in MSVC (Windows)
+        #pragma warning( push )
+        #pragma warning( disable : 4705 )
 
-	#else
+    #else
 
-	#define UNUSED_NOWARN
+    #define UNUSED_NOWARN
 
-	#endif
+    #endif
 
 #endif // #ifndef UNUSED_NOWARN
 

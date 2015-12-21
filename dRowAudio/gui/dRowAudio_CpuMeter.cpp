@@ -32,13 +32,13 @@
 
 
 CpuMeter::CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs)
-	: Label ("CpuMeter", "00.00%"),
-	  deviceManager (deviceManagerToUse),
-	  updateInterval (updateIntervalMs),
-	  currentCpuUsage (0.0)
+    : Label ("CpuMeter", "00.00%"),
+      deviceManager (deviceManagerToUse),
+      updateInterval (updateIntervalMs),
+      currentCpuUsage (0.0)
 {
-	if (deviceManagerToUse != nullptr)
-		startTimer (updateInterval);
+    if (deviceManagerToUse != nullptr)
+        startTimer (updateInterval);
 }
 
 CpuMeter::~CpuMeter()
@@ -50,14 +50,14 @@ void CpuMeter::resized()
     const int w = getWidth();
     const int h = getHeight();
 
-	setFont ((h < (w * 0.24f) ? h : w * 0.24f));
+    setFont ((h < (w * 0.24f) ? h : w * 0.24f));
 }
 
 void CpuMeter::timerCallback()
 {
-	currentCpuUsage = (deviceManager->getCpuUsage() * 100.0);
-	String displayString (currentCpuUsage, 2);
-	displayString << "%";
+    currentCpuUsage = (deviceManager->getCpuUsage() * 100.0);
+    String displayString (currentCpuUsage, 2);
+    displayString << "%";
 
-	setText (displayString, dontSendNotification);
+    setText (displayString, dontSendNotification);
 }

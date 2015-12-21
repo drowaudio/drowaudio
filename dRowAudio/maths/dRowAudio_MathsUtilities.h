@@ -291,22 +291,22 @@ inline FloatingPointType findRMS (const FloatingPointType* samples, int numSampl
 }
 
 //==============================================================================
-/**	Linear Interpolater.
-	Performs a linear interpolation for a fractional buffer position.
-	Note: For speed no bounds checking is performed on the buffer position so it is
-	up to the caller to make sure it is less than the buffer size or you will be
-	reading random memory and probably get an audio blow-up.
+/**    Linear Interpolater.
+    Performs a linear interpolation for a fractional buffer position.
+    Note: For speed no bounds checking is performed on the buffer position so it is
+    up to the caller to make sure it is less than the buffer size or you will be
+    reading random memory and probably get an audio blow-up.
  */
 template <typename FloatingPointType>
 inline FloatingPointType linearInterpolate (const FloatingPointType* buffer, int bufferSize, FloatingPointType bufferPosition) noexcept
 {
-	int lower = (int) bufferPosition;
-	int upper = lower + 1;
-	if (upper == bufferSize)
-		upper = 0;
-	FloatingPointType difference = bufferPosition - lower;
+    int lower = (int) bufferPosition;
+    int upper = lower + 1;
+    if (upper == bufferSize)
+        upper = 0;
+    FloatingPointType difference = bufferPosition - lower;
 
-	return (buffer[upper] * difference) + (buffer[lower] * (static_cast<FloatingPointType> (1) - difference));
+    return (buffer[upper] * difference) + (buffer[lower] * (static_cast<FloatingPointType> (1) - difference));
 }
 
 /** Checks to see if two values are equal within a given precision.
@@ -314,10 +314,10 @@ inline FloatingPointType linearInterpolate (const FloatingPointType* buffer, int
 template <typename FloatingPointType>
 inline bool almostEqual (FloatingPointType firstValue, FloatingPointType secondValue, FloatingPointType precision = 0.00001)
 {
-	if (fabs (firstValue - secondValue) < precision)
-		return true;
-	else
-		return false;
+    if (fabs (firstValue - secondValue) < precision)
+        return true;
+    else
+        return false;
 }
 
 /** Normalises a value to a range of 0-1 with a given minimum & maximum.
@@ -378,7 +378,7 @@ inline static bool isinf (Type value)
 }
 
 //==============================================================================
-/**	Sinc function. */
+/**    Sinc function. */
 template <typename Type>
 inline Type sinc (const Type x) noexcept
 {
@@ -388,7 +388,7 @@ inline Type sinc (const Type x) noexcept
     return sin (x) / x;
 }
 
-/**	Sinc function normalised with PI for audio applications.
+/**    Sinc function normalised with PI for audio applications.
     N.B. For accuracy this needs to use a double precision PI value internally
     so a cast will occur if floats are used.
  */
@@ -415,45 +415,45 @@ inline float degreesToRadians<float> (const float degrees) noexcept
     return (degrees / 180.0f) * float_Pi;
 }
 
-/**	Returns true if the argument is a power of 2.
+/**    Returns true if the argument is a power of 2.
     This will return false if 0 is passed.
  */
 template <typename IntegerType>
 inline bool isPowerOfTwo (IntegerType number) noexcept
 {
-	return (number) && ! (number & (number - 1));
+    return (number) && ! (number & (number - 1));
 }
 
-/**	Returns the next power of 2 of the given number. */
+/**    Returns the next power of 2 of the given number. */
 inline int nextPowerOfTwo (int number) noexcept
 {
-	if (isPowerOfTwo (number))
-		return number;
-	else
-		return (int) pow (2.0, ceil (log ((double) number) / log (2.0)));
+    if (isPowerOfTwo (number))
+        return number;
+    else
+        return (int) pow (2.0, ceil (log ((double) number) / log (2.0)));
 }
 
-/**	Returns the previous power of 2.
+/**    Returns the previous power of 2.
     This may return 0 if a number < 1 is passed.
  */
 inline int prevPowerOfTwo (int number) noexcept
 {
-	if (isPowerOfTwo (number))
-		return number;
-	else
-		return (int) (pow (2.0, ceil (log ((double) number) / log (2.0))) * 0.5);
+    if (isPowerOfTwo (number))
+        return number;
+    else
+        return (int) (pow (2.0, ceil (log ((double) number) / log (2.0))) * 0.5);
 }
 
-/**	Returns the power which 2 has to be raised to to get the given number.
+/**    Returns the power which 2 has to be raised to to get the given number.
     If the given number is not an exact power of 2 the next nearest power will be given.
     E.g. 1024 will return 10 as will 1023.
  */
 inline int findPowerForBaseTwo (int number) noexcept
 {
-	if (isPowerOfTwo (number))
-		return (int) (log ((double) number) / log(2.0));
-	else
-		return (int) (log ((double) nextPowerOfTwo (number)) / log(2.0));
+    if (isPowerOfTwo (number))
+        return (int) (log ((double) number) / log(2.0));
+    else
+        return (int) (log ((double) nextPowerOfTwo (number)) / log(2.0));
 }
 
 #if JUCE_MSVC || DOXYGEN

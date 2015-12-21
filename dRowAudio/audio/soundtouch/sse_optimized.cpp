@@ -171,7 +171,7 @@ double TDStretchSSE::calcCrossCorrStereo(const float *pV1, const float *pV2) con
                 pV1[14] * pV2[14] +
                 pV1[15] * pV2[15];
 
-	for (j = 0; j < 15; j ++) norm += pV1[j] * pV1[j];
+    for (j = 0; j < 15; j ++) norm += pV1[j] * pV1[j];
 
         pV1 += 16;
         pV2 += 16;

@@ -88,37 +88,37 @@ void FFT::performIFFT (float* fftBuffer)
 FFT::FFT (int fftSizeLog2)
     : properties (fftSizeLog2)
 {
-	config = vDSP_create_fftsetup (properties.fftSizeLog2, 0);
+    config = vDSP_create_fftsetup (properties.fftSizeLog2, 0);
 
-	buffer.malloc (properties.fftSize);
-	bufferSplit.realp = buffer.getData();
-	bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
+    buffer.malloc (properties.fftSize);
+    bufferSplit.realp = buffer.getData();
+    bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
 }
 
 FFT::~FFT()
 {
-	vDSP_destroy_fftsetup (config);
+    vDSP_destroy_fftsetup (config);
 }
 
 void FFT::setFFTSizeLog2 (int newFFTSizeLog2)
 {
-	if (newFFTSizeLog2 != properties.fftSizeLog2)
+    if (newFFTSizeLog2 != properties.fftSizeLog2)
     {
-		vDSP_destroy_fftsetup (config);
+        vDSP_destroy_fftsetup (config);
 
-		properties = Properties (newFFTSizeLog2);
-		buffer.malloc (properties.fftSize);
-		bufferSplit.realp = buffer.getData();
-		bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
+        properties = Properties (newFFTSizeLog2);
+        buffer.malloc (properties.fftSize);
+        bufferSplit.realp = buffer.getData();
+        bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
 
-		config = vDSP_create_fftsetup (properties.fftSizeLog2, 0);
-	}
+        config = vDSP_create_fftsetup (properties.fftSizeLog2, 0);
+    }
 }
 
 void FFT::performFFT (float* samples)
 {
-	vDSP_ctoz ((COMPLEX*) samples, 2, &bufferSplit, 1, properties.fftSizeHalved);
-	vDSP_fft_zrip (config, &bufferSplit, 1, properties.fftSizeLog2, FFT_FORWARD);
+    vDSP_ctoz ((COMPLEX*) samples, 2, &bufferSplit, 1, properties.fftSizeHalved);
+    vDSP_fft_zrip (config, &bufferSplit, 1, properties.fftSizeLog2, FFT_FORWARD);
 }
 
 void FFT::getPhase (float* phaseBuffer)
@@ -131,11 +131,11 @@ void FFT::performIFFT (float* fftBuffer)
 {
     SplitComplex split;
     split.realp = fftBuffer;
-	split.imagp = fftBuffer + properties.fftSizeHalved;
+    split.imagp = fftBuffer + properties.fftSizeHalved;
 
     jassert (split.realp != bufferSplit.realp); // These can't point to the same data!
 
-	vDSP_fft_zrip (config, &split, 1, properties.fftSizeLog2, FFT_INVERSE);
+    vDSP_fft_zrip (config, &split, 1, properties.fftSizeLog2, FFT_INVERSE);
     vDSP_ztoc (&split, 1, (COMPLEX*) buffer.getData(), 2, properties.fftSizeHalved);
 }
 
@@ -162,9 +162,9 @@ void FFT::getMagnitudes (float* magnitudes)
 //============================================================================
 void FFTEngine::performFFT (float* samples)
 {
-	// First apply the current window
-	window.applyWindow (samples, getFFTProperties().fftSize);
-	fft.performFFT (samples);
+    // First apply the current window
+    window.applyWindow (samples, getFFTProperties().fftSize);
+    fft.performFFT (samples);
 }
 
 void FFTEngine::findMagnitues (float* magBuf, bool onlyIfBigger)

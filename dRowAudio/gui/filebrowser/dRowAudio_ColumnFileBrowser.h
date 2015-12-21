@@ -44,17 +44,17 @@ class ColumnFileBrowserLookAndFeel;
     using the keyboard or the mouse. Highligting a number of files and then dragging
     them will perform an external drag and drop procedure.
  */
-class ColumnFileBrowser :	public Viewport
+class ColumnFileBrowser :    public Viewport
 {
 public:
     //==================================================================================
     /** Creates a ColumnFileBrowser with a given file filter.
      */
-	ColumnFileBrowser (WildcardFileFilter* filesToDisplay);
+    ColumnFileBrowser (WildcardFileFilter* filesToDisplay);
 
     /** Destructor.
      */
-	~ColumnFileBrowser();
+    ~ColumnFileBrowser();
 
     /** Sets the highlight colour for the active column.
         For the rest of the colours, use the normal DirectoryContentsDisplayComponent
@@ -63,20 +63,20 @@ public:
     void setActiveColumHighlightColour (const Colour& colour);
 
     /** @internal */
-	void resized();
+    void resized();
 
     /** @internal */
-	void visibleAreaChanged (const Rectangle<int>& newVisibleArea);
+    void visibleAreaChanged (const Rectangle<int>& newVisibleArea);
 
     /** @internal */
-	void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel);
+    void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel);
 
 private:
     //==================================================================================
-	ScopedPointer<WildcardFileFilter> wildcard;
-	ColumnFileBrowserContents* fileBrowser;
+    ScopedPointer<WildcardFileFilter> wildcard;
+    ColumnFileBrowserContents* fileBrowser;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowser);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowser);
 };
 
 #endif //DROWAUDIO_COLUMNFILEBROWSER_H

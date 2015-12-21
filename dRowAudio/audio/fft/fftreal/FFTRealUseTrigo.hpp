@@ -16,12 +16,12 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 
 
 #if defined (ffft_FFTRealUseTrigo_CURRENT_CODEHEADER)
-	#error Recursive inclusion of FFTRealUseTrigo code header.
+    #error Recursive inclusion of FFTRealUseTrigo code header.
 #endif
-#define	ffft_FFTRealUseTrigo_CURRENT_CODEHEADER
+#define    ffft_FFTRealUseTrigo_CURRENT_CODEHEADER
 
 #if ! defined (ffft_FFTRealUseTrigo_CODEHEADER_INCLUDED)
-#define	ffft_FFTRealUseTrigo_CODEHEADER_INCLUDED
+#define    ffft_FFTRealUseTrigo_CODEHEADER_INCLUDED
 
 
 
@@ -40,32 +40,32 @@ namespace ffft
 
 
 template <int ALGO>
-void	FFTRealUseTrigo <ALGO>::prepare (OscType &osc)
+void    FFTRealUseTrigo <ALGO>::prepare (OscType &osc)
 {
-	osc.clear_buffers ();
+    osc.clear_buffers ();
 }
 
 template <>
-inline void	FFTRealUseTrigo <0>::prepare (OscType &osc)
+inline void    FFTRealUseTrigo <0>::prepare (OscType &osc)
 {
-	// Nothing
+    // Nothing
 }
 
 
 
 template <int ALGO>
-void	FFTRealUseTrigo <ALGO>::iterate (OscType &osc, DataType &c, DataType &s, const DataType cos_ptr [], long index_c, long index_s)
+void    FFTRealUseTrigo <ALGO>::iterate (OscType &osc, DataType &c, DataType &s, const DataType cos_ptr [], long index_c, long index_s)
 {
-	osc.step ();
-	c = osc.get_cos ();
-	s = osc.get_sin ();
+    osc.step ();
+    c = osc.get_cos ();
+    s = osc.get_sin ();
 }
 
 template <>
-inline void	FFTRealUseTrigo <0>::iterate (OscType &osc, DataType &c, DataType &s, const DataType cos_ptr [], long index_c, long index_s)
+inline void    FFTRealUseTrigo <0>::iterate (OscType &osc, DataType &c, DataType &s, const DataType cos_ptr [], long index_c, long index_s)
 {
-	c = cos_ptr [index_c];
-	s = cos_ptr [index_s];
+    c = cos_ptr [index_c];
+    s = cos_ptr [index_s];
 }
 
 
@@ -78,11 +78,11 @@ inline void	FFTRealUseTrigo <0>::iterate (OscType &osc, DataType &c, DataType &s
 
 
 
-}	// namespace ffft
+}    // namespace ffft
 
 
 
-#endif	// ffft_FFTRealUseTrigo_CODEHEADER_INCLUDED
+#endif    // ffft_FFTRealUseTrigo_CODEHEADER_INCLUDED
 
 #undef ffft_FFTRealUseTrigo_CURRENT_CODEHEADER
 

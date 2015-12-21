@@ -92,7 +92,7 @@
 
 #if JUCE_64BIT
     #if JUCE_WINDOWS
-		#include "cpu_detect_x64_win.cpp"
+        #include "cpu_detect_x64_win.cpp"
     #elif JUCE_MAC || JUCE_IOS || JUCE_LINUX
         #include "cpu_detect_x64_gcc.cpp"
     #endif

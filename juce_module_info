@@ -13,7 +13,7 @@
                         { "id": "juce_audio_utils",     "version": "matching" },
                         { "id": "juce_core",            "version": "matching" },
                         { "id": "juce_data_structures", "version": "matching" },
-                        { "id": "juce_events",			"version": "matching" },
+                        { "id": "juce_events",          "version": "matching" },
                         { "id": "juce_graphics",        "version": "matching" },
                         { "id": "juce_gui_basics",      "version": "matching" }
                     ],

@@ -49,9 +49,9 @@
     The thumbnail stores an internal low-res version of the wave data, and this can
     be loaded and saved to avoid having to scan the file again.
 
-	This version can draw multi coloured waveforms based on the frequency content
-	of the wave, red being low, green mid and blue high. use drawColouredChannel
-	to access this mode.
+    This version can draw multi coloured waveforms based on the frequency content
+    of the wave, red being low, green mid and blue high. use drawColouredChannel
+    to access this mode.
 
     @see AudioThumbnailCache
 */
@@ -71,8 +71,8 @@ public:
                             object can be shared between multiple thumbnails
     */
     ColouredAudioThumbnail (int sourceSamplesPerThumbnailSample,
-							AudioFormatManager& formatManagerToUse,
-							AudioThumbnailCache& cacheToUse);
+                            AudioFormatManager& formatManagerToUse,
+                            AudioThumbnailCache& cacheToUse);
 
     /** Destructor. */
     ~ColouredAudioThumbnail();
@@ -159,10 +159,10 @@ public:
                       int channelNum,
                       float verticalZoomFactor);
 
-	/**	Draws the waveform for a channel with colour coded frequency information.
-	 */
-	void drawColouredChannel (Graphics& g, const Rectangle<int>& area, double startTime,
-							  double endTime, int channelNum, float verticalZoomFactor);
+    /**    Draws the waveform for a channel with colour coded frequency information.
+     */
+    void drawColouredChannel (Graphics& g, const Rectangle<int>& area, double startTime,
+                              double endTime, int channelNum, float verticalZoomFactor);
 
     /** Draws the waveforms for all channels in the thumbnail.
 

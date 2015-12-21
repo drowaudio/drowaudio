@@ -61,13 +61,13 @@ public:
     };
 
     //==============================================================================
-	/** Creates an empty AudioFilePlayerExt.
+    /** Creates an empty AudioFilePlayerExt.
      */
-	AudioFilePlayerExt();
+    AudioFilePlayerExt();
 
-	/** Destructor.
+    /** Destructor.
      */
-	~AudioFilePlayerExt();
+    ~AudioFilePlayerExt();
 
     //==============================================================================
     /** Sets the current library entry.
@@ -89,11 +89,11 @@ public:
 
     /** Sets whether the source should play forwards or backwards.
      */
-	void setPlayDirection (bool shouldPlayForwards);
+    void setPlayDirection (bool shouldPlayForwards);
 
     /** Returns true if the source is playing forwards.
      */
-	bool getPlayDirection() const;
+    bool getPlayDirection() const;
 
     /** Sets the gain of one of the FilteringAudioSource filters.
      */
@@ -103,7 +103,7 @@ public:
     /** Sets the start and end times of the loop.
         This doesn't actually activate the loop, use setLoopBetweenTimes() to toggle this.
      */
-	void setLoopTimes (double startTime, double endTime);
+    void setLoopTimes (double startTime, double endTime);
 
     /** Enables the loop point set.
      */
@@ -122,7 +122,7 @@ public:
      */
     inline SoundTouchAudioSource* getSoundTouchAudioSource() const { return soundTouchAudioSource; }
 
-	/** Returns the FilteringAudioSource being used.
+    /** Returns the FilteringAudioSource being used.
      */
     inline FilteringAudioSource* getFilteringAudioSource() const { return filteringAudioSource; }
 
@@ -141,11 +141,11 @@ private:
     ValueTree libraryEntry;
 
     //==============================================================================
-	bool setSourceWithReader (AudioFormatReader* reader);
+    bool setSourceWithReader (AudioFormatReader* reader);
     void updateLoopTimes();
 
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);
 };
 
 #endif // DROWAUDIO_USE_SOUNDTOUCH

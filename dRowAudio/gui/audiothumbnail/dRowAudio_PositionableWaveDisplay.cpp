@@ -116,8 +116,8 @@ void PositionableWaveDisplay::resized()
 
 void PositionableWaveDisplay::paint(Graphics &g)
 {
-	const int w = getWidth();
-	const int h = getHeight();
+    const int w = getWidth();
+    const int h = getHeight();
 
     g.setColour (backgroundColour);
     g.fillAll();
@@ -137,8 +137,8 @@ void PositionableWaveDisplay::paint(Graphics &g)
 //====================================================================================
 void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThumbnailImage)
 {
-	if (changedAudioThumbnailImage == &audioThumbnailImage)
-	{
+    if (changedAudioThumbnailImage == &audioThumbnailImage)
+    {
         {
             const ScopedLock sl (imageLock);
             cachedImage.clear (cachedImage.getBounds(), backgroundColour);
@@ -168,7 +168,7 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
             fileLength = 0.0;
             oneOverFileLength = 1.0;
         }
-	}
+    }
 }
 
 int PositionableWaveDisplay::useTimeSlice()

@@ -36,37 +36,37 @@
 FFTOperation::FFTOperation (int fftSizeLog2)
     : fftProperties (fftSizeLog2)
 {
-	fftConfig = vDSP_create_fftsetup (fftProperties.fftSizeLog2, 0);
+    fftConfig = vDSP_create_fftsetup (fftProperties.fftSizeLog2, 0);
 
-	fftBuffer.malloc (fftProperties.fftSize);
-	fftBufferSplit.realp = fftBuffer.getData();
-	fftBufferSplit.imagp = fftBufferSplit.realp + getFFTProperties().fftSizeHalved;
+    fftBuffer.malloc (fftProperties.fftSize);
+    fftBufferSplit.realp = fftBuffer.getData();
+    fftBufferSplit.imagp = fftBufferSplit.realp + getFFTProperties().fftSizeHalved;
 }
 
 FFTOperation::~FFTOperation()
 {
-	vDSP_destroy_fftsetup (fftConfig);
+    vDSP_destroy_fftsetup (fftConfig);
 }
 
 void FFTOperation::setFFTSizeLog2 (int newFFTSizeLog2)
 {
-	if (newFFTSizeLog2 != fftProperties.fftSizeLog2)
+    if (newFFTSizeLog2 != fftProperties.fftSizeLog2)
     {
-		vDSP_destroy_fftsetup (fftConfig);
+        vDSP_destroy_fftsetup (fftConfig);
 
-		fftProperties.setFFTSizeLog2 (newFFTSizeLog2);
-		fftBuffer.malloc (fftProperties.fftSize);
-		fftBufferSplit.realp = fftBuffer.getData();
-		fftBufferSplit.imagp = fftBufferSplit.realp + getFFTProperties().fftSizeHalved;
+        fftProperties.setFFTSizeLog2 (newFFTSizeLog2);
+        fftBuffer.malloc (fftProperties.fftSize);
+        fftBufferSplit.realp = fftBuffer.getData();
+        fftBufferSplit.imagp = fftBufferSplit.realp + getFFTProperties().fftSizeHalved;
 
-		fftConfig = vDSP_create_fftsetup (fftProperties.fftSizeLog2, 0);
-	}
+        fftConfig = vDSP_create_fftsetup (fftProperties.fftSizeLog2, 0);
+    }
 }
 
 void FFTOperation::performFFT (float* samples)
 {
-	vDSP_ctoz ((COMPLEX *) samples, 2, &fftBufferSplit, 1, fftProperties.fftSizeHalved);
-	vDSP_fft_zrip (fftConfig, &fftBufferSplit, 1, fftProperties.fftSizeLog2, FFT_FORWARD);
+    vDSP_ctoz ((COMPLEX *) samples, 2, &fftBufferSplit, 1, fftProperties.fftSizeHalved);
+    vDSP_fft_zrip (fftConfig, &fftBufferSplit, 1, fftProperties.fftSizeLog2, FFT_FORWARD);
 }
 
 //============================================================================

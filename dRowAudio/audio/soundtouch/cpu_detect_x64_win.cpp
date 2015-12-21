@@ -71,15 +71,15 @@ uint detectCPUextensions(void)
 
     if (_dwDisabledISA == 0xffffffff) return 0;
 
-	// MSVC doesn't support inline assembly and wants you to use intrinsics instead
-	// Since I don't know how to do that and just need something working for Mixxx...
+    // MSVC doesn't support inline assembly and wants you to use intrinsics instead
+    // Since I don't know how to do that and just need something working for Mixxx...
 
-	// All 64-bit processors support MMX, SSE, and SSE2
-	res = SUPPORT_MMX + SUPPORT_SSE + SUPPORT_SSE2;
+    // All 64-bit processors support MMX, SSE, and SSE2
+    res = SUPPORT_MMX + SUPPORT_SSE + SUPPORT_SSE2;
 
 #ifdef AMD64
-	res += SUPPORT_3DNOW;
+    res += SUPPORT_3DNOW;
 #endif
 
-	return res & ~_dwDisabledISA;
+    return res & ~_dwDisabledISA;
 }

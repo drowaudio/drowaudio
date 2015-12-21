@@ -48,15 +48,15 @@ juce_ImplementSingleton (CURLManager);
 CURLManager::CURLManager()
     : TimeSliceThread ("cURL Thread")
 {
-	CURLcode result = curl_global_init (CURL_GLOBAL_ALL);
+    CURLcode result = curl_global_init (CURL_GLOBAL_ALL);
 
     (void) result;
-	jassert (result == CURLE_OK);
+    jassert (result == CURLE_OK);
 }
 
 CURLManager::~CURLManager()
 {
-	curl_global_cleanup();
+    curl_global_cleanup();
 }
 
 CURL* CURLManager::createEasyCurlHandle()
@@ -66,8 +66,8 @@ CURL* CURLManager::createEasyCurlHandle()
 
 void CURLManager::cleanUpEasyCurlHandle (CURL* handle)
 {
-	curl_easy_cleanup (handle);
-	handle = nullptr;
+    curl_easy_cleanup (handle);
+    handle = nullptr;
 }
 
 StringArray CURLManager::getSupportedProtocols()
@@ -75,7 +75,7 @@ StringArray CURLManager::getSupportedProtocols()
     if (curl_version_info_data* info = curl_version_info (CURLVERSION_NOW))
         return StringArray (info->protocols);
 
-	return StringArray();
+    return StringArray();
 }
 
 #endif //DROWAUDIO_USE_CURL

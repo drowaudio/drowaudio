@@ -35,8 +35,8 @@
 //==============================================================================
 /** @file
 
-	This file contains some useful constants for calculations such as reciprocals
-	to avoid using expensive divides in programs.
+    This file contains some useful constants for calculations such as reciprocals
+    to avoid using expensive divides in programs.
  */
 
 static const double oneOver60 = 1.0 / 60.0;

@@ -46,82 +46,82 @@ class Window
 public:
     //==============================================================================
     /** Window types supported. */
-	enum WindowType
+    enum WindowType
     {
-		Rectangular,
-		Hann,
-		Hamming,
-		Cosine,
-		Lanczos,
-		ZeroEndTriangle,
-		NonZeroEndTriangle,
-		Gaussian,
-		BartlettHann,
-		Blackman,
-		Nuttall,
-		BlackmanHarris,
-		BlackmanNuttall,
-		FlatTop
-	};
+        Rectangular,
+        Hann,
+        Hamming,
+        Cosine,
+        Lanczos,
+        ZeroEndTriangle,
+        NonZeroEndTriangle,
+        Gaussian,
+        BartlettHann,
+        Blackman,
+        Nuttall,
+        BlackmanHarris,
+        BlackmanNuttall,
+        FlatTop
+    };
 
     //==============================================================================
     /** Creates a default Hann Window with 0 size. */
     Window();
 
     /** Creates a Hann Window with a given size. */
-	explicit Window (int windowSize);
+    explicit Window (int windowSize);
 
     /** Creates a Window with a given size. */
-	explicit Window (int windowSize, WindowType type);
+    explicit Window (int windowSize, WindowType type);
 
     /** Destructor. */
-	~Window();
+    ~Window();
 
     /** Sets the window type. */
-	void setWindowType (WindowType newType);
+    void setWindowType (WindowType newType);
 
     /** Sets the window size. */
-	void setWindowSize (int newSize);
+    void setWindowSize (int newSize);
 
     /** Returns the window type. */
-	WindowType getWindowType() const noexcept           { return windowType; }
+    WindowType getWindowType() const noexcept           { return windowType; }
 
     /** Returns the window factor. */
-	float getWindowFactor() const noexcept              { return windowFactor; }
+    float getWindowFactor() const noexcept              { return windowFactor; }
 
     /** Returns the reciprocal of the window factor. */
     float getOneOverWindowFactor()                      { return oneOverWindowFactor; }
 
-	/** Applies this window to a set of samples.
+    /** Applies this window to a set of samples.
         For speed, your the number of samples passed here should be the same as the window size.
      */
-	void applyWindow (float* samples,  const int numSamples) const noexcept;
+    void applyWindow (float* samples,  const int numSamples) const noexcept;
 
 private:
     //==============================================================================
-	void setUpWindowBuffer();
+    void setUpWindowBuffer();
 
-	void applyRectangularWindow (float *samples,  const int numSamples);
-	void applyHannWindow (float *samples,  const int numSamples);
-	void applyHammingWindow (float *samples,  const int numSamples);
-	void applyCosineWindow (float *samples,  const int numSamples);
-	void applyLanczosWindow (float *samples,  const int numSamples);
-	void applyZeroEndTriangleWindow (float *samples,  const int numSamples);
-	void applyNonZeroEndTriangleWindow (float *samples,  const int numSamples);
-	void applyGaussianWindow (float *samples,  const int numSamples);
-	void applyBartlettHannWindow (float *samples,  const int numSamples);
-	void applyBlackmanWindow (float *samples,  const int numSamples);
-	void applyNuttallWindow (float *samples,  const int numSamples);
-	void applyBlackmanHarrisWindow (float *samples,  const int numSamples);
-	void applyBlackmanNuttallWindow (float *samples,  const int numSamples);
-	void applyFlatTopWindow (float *samples,  const int numSamples);
+    void applyRectangularWindow (float *samples,  const int numSamples);
+    void applyHannWindow (float *samples,  const int numSamples);
+    void applyHammingWindow (float *samples,  const int numSamples);
+    void applyCosineWindow (float *samples,  const int numSamples);
+    void applyLanczosWindow (float *samples,  const int numSamples);
+    void applyZeroEndTriangleWindow (float *samples,  const int numSamples);
+    void applyNonZeroEndTriangleWindow (float *samples,  const int numSamples);
+    void applyGaussianWindow (float *samples,  const int numSamples);
+    void applyBartlettHannWindow (float *samples,  const int numSamples);
+    void applyBlackmanWindow (float *samples,  const int numSamples);
+    void applyNuttallWindow (float *samples,  const int numSamples);
+    void applyBlackmanHarrisWindow (float *samples,  const int numSamples);
+    void applyBlackmanNuttallWindow (float *samples,  const int numSamples);
+    void applyFlatTopWindow (float *samples,  const int numSamples);
 
     //==============================================================================
-	WindowType windowType;
-	float windowFactor, oneOverWindowFactor;
-	AudioSampleBuffer windowBuffer;
+    WindowType windowType;
+    float windowFactor, oneOverWindowFactor;
+    AudioSampleBuffer windowBuffer;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Window)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Window)
 };
 
 #endif //DROWAUDIO_WINDOW_H

@@ -56,7 +56,7 @@ public:
     ~AudioPicker();
 
     //==============================================================================
-    /**	Shows the audio picker user interface.
+    /**    Shows the audio picker user interface.
 
         @param allowMultipleSelection   If true multiple items can be selected.
         @param areaToPointTo            On the iPad the picker is shown as a
@@ -110,23 +110,23 @@ public:
         virtual void audioPickerCancelled()  {}
     };
 
-    /**	Description
+    /**    Description
 
         @see removeListener
      */
     void addListener (Listener* newListener);
 
-    /**	Description
+    /**    Description
 
-    	@see addListener
+        @see addListener
      */
     void removeListener (Listener* listener);
 
     //==============================================================================
-    /**	@internal */
+    /**    @internal */
     void sendAudioPickerFinishedMessage (void* picker, void* info);
 
-    /**	@internal */
+    /**    @internal */
     void sendAudioPickerCancelledMessage (void* picker);
 
 private:

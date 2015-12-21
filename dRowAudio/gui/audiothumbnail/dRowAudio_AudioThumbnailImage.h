@@ -35,7 +35,7 @@
 //==============================================================================
 /** A class to display the waveform of an audio file.
 
-	This will load an audio file and display its waveform. All waveform rendering
+    This will load an audio file and display its waveform. All waveform rendering
     happens on a background thread. This will listen to changes in the
     AudioFilePlayer passed in and update the thumbnail accordingly.
 
@@ -53,18 +53,18 @@ public:
     //==============================================================================
     /** Creates the AudioThumbnailImage.
 
-		The file player associated with the display must be passed in.
-		To save on the number of threads in your program you can optionally pass in your own
-		AudioThumbnailCache. If you pass in your own the caller is responsible for deleting it,
-		if not the PositionableWaveform will create and delete its own when not needed.
-	 */
-	explicit AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
+        The file player associated with the display must be passed in.
+        To save on the number of threads in your program you can optionally pass in your own
+        AudioThumbnailCache. If you pass in your own the caller is responsible for deleting it,
+        if not the PositionableWaveform will create and delete its own when not needed.
+     */
+    explicit AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
                                   TimeSliceThread& backgroundThread,
                                   AudioThumbnailBase& thumbnailToUse,
                                   int sourceSamplesPerThumbnailSample);
 
-	/** Destructor. */
-	~AudioThumbnailImage();
+    /** Destructor. */
+    ~AudioThumbnailImage();
 
     /** Sets the colour to use for the background.
      */
@@ -79,7 +79,7 @@ public:
      */
     void setResolution (double newResolution);
 
-	//====================================================================================
+    //====================================================================================
     /** Returns the whole waveform image.
      */
     const Image getImage()                          {   return waveformImage;   }
@@ -104,22 +104,22 @@ public:
      */
     int getNumSourceSamplesPerThumbnailSamples()    {   return sourceSamplesPerThumbnailSample; }
 
-	//====================================================================================
-	/** @internal */
+    //====================================================================================
+    /** @internal */
     void resized ();
 
-	/** @internal */
-	void paint (Graphics &g);
+    /** @internal */
+    void paint (Graphics &g);
 
-	//====================================================================================
-	/** @internal */
-	void timerCallback ();
+    //====================================================================================
+    /** @internal */
+    void timerCallback ();
 
-	/** @internal */
+    /** @internal */
     int useTimeSlice();
 
-	/** @internal */
-	void fileChanged (AudioFilePlayer *player);
+    /** @internal */
+    void fileChanged (AudioFilePlayer *player);
 
     //==============================================================================
     /** A class for receiving callbacks from an AudioThumbnailImage.
@@ -127,7 +127,7 @@ public:
         message manager if you intend to do any graphical related stuff with the Image.
 
         @see AudioThumbnailImage::addListener, AudioThumbnailImage::removeListener
-	 */
+     */
     class  Listener
     {
     public:
@@ -137,12 +137,12 @@ public:
 
         //==============================================================================
         /** Called when the source file changes and the image starts rendering.
-		 */
+         */
         virtual void imageChanged (AudioThumbnailImage* /*audioThumbnailImage*/) {}
 
         /** Called when the the image is updated.
             This will be continuously called while the waveform is being generated.
-		 */
+         */
         virtual void imageUpdated (AudioThumbnailImage* /*audioThumbnailImage*/) {}
 
         /** Called when the the image has finished rendering.
@@ -159,19 +159,19 @@ public:
     void removeListener (Listener* listener);
 
 private:
-	//==============================================================================
+    //==============================================================================
     AudioFilePlayer& filePlayer;
     TimeSliceThread& backgroundThread;
     AudioThumbnailBase& audioThumbnail;
     int sourceSamplesPerThumbnailSample;
 
     ReadWriteLock imageLock;
-	Image waveformImage, tempSectionImage;
+    Image waveformImage, tempSectionImage;
 
     Colour backgroundColour, waveformColour;
 
     bool sourceLoaded, renderComplete;
-	double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
+    double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
     double lastTimeDrawn, resolution;
 
     ListenerList <Listener> listeners;
@@ -179,10 +179,10 @@ private:
     //==============================================================================
     void refreshFromFilePlayer();
     void triggerWaveformRefresh();
-	void refreshWaveform();
+    void refreshWaveform();
 
-	//==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioThumbnailImage);
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioThumbnailImage);
 };
 
 

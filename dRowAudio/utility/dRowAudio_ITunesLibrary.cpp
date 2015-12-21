@@ -44,12 +44,12 @@ ITunesLibrary::~ITunesLibrary()
 
 void ITunesLibrary::setLibraryFile (File newFile)
 {
-	if (newFile.existsAsFile())
-	{
-		listeners.call (&Listener::libraryChanged, this);
-		parser = new ITunesLibraryParser (newFile, libraryTree, parserLock);
-		startTimer(500);
-	}
+    if (newFile.existsAsFile())
+    {
+        listeners.call (&Listener::libraryChanged, this);
+        parser = new ITunesLibraryParser (newFile, libraryTree, parserLock);
+        startTimer(500);
+    }
 }
 
 //==============================================================================
@@ -69,17 +69,17 @@ void ITunesLibrary::setLibraryTree (ValueTree& newTreeToUse)
 
 void ITunesLibrary::timerCallback()
 {
-	if (parser != nullptr)
-	{
-		listeners.call (&Listener::libraryUpdated, this);
+    if (parser != nullptr)
+    {
+        listeners.call (&Listener::libraryUpdated, this);
 
-		if (parser->hasFinished())
+        if (parser->hasFinished())
         {
-			stopTimer();
-			parser = nullptr;
-			listeners.call (&Listener::libraryFinished, this);
-		}
-	}
+            stopTimer();
+            parser = nullptr;
+            listeners.call (&Listener::libraryFinished, this);
+        }
+    }
 }
 
 //==============================================================================

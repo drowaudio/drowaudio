@@ -41,7 +41,7 @@ AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
       waveformColour                    (Colours::green),
       sourceLoaded                      (false),
       renderComplete                    (true),
-	  currentSampleRate                 (44100.0),
+      currentSampleRate                 (44100.0),
       oneOverSampleRate                 (1.0 / currentSampleRate),
       lastTimeDrawn                     (0.0),
       resolution                        (3.0)
@@ -49,13 +49,13 @@ AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
     waveformImage = Image (Image::RGB, 1, 1, false);
     refreshFromFilePlayer();
 
-	// register with the file player to recieve update messages
-	filePlayer.addListener (this);
+    // register with the file player to recieve update messages
+    filePlayer.addListener (this);
 }
 
 AudioThumbnailImage::~AudioThumbnailImage()
 {
-	filePlayer.removeListener (this);
+    filePlayer.removeListener (this);
     backgroundThread.removeTimeSliceClient (this);
 
     stopTimer();
@@ -218,8 +218,8 @@ void AudioThumbnailImage::triggerWaveformRefresh()
 
 void AudioThumbnailImage::refreshWaveform()
 {
-	if (sourceLoaded && audioThumbnail.getNumSamplesFinished() > 0)
-	{
+    if (sourceLoaded && audioThumbnail.getNumSamplesFinished() > 0)
+    {
         const double timeRendered = audioThumbnail.getNumSamplesFinished() * oneOverSampleRate;
 
         const double timeToDraw = jmin (1.0, timeRendered - lastTimeDrawn);
@@ -266,7 +266,7 @@ void AudioThumbnailImage::refreshWaveform()
 
         if (endSamples == audioThumbnail.getNumSamplesFinished())
             renderComplete = true;
-	}
+    }
 
     if (renderComplete)
         backgroundThread.removeTimeSliceClient (this);

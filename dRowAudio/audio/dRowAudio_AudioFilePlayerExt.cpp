@@ -134,15 +134,15 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
     if (soundTouchAudioSource != nullptr)
         currentSoundtouchSettings = soundTouchAudioSource->getPlaybackSettings();
 
-	audioTransportSource.setSource (nullptr);
+    audioTransportSource.setSource (nullptr);
     loopingAudioSource = nullptr;
     soundTouchAudioSource = nullptr;
     bufferingAudioSource = nullptr;
 
-	if (reader != nullptr)
-	{
-		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
-		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
+    if (reader != nullptr)
+    {
+        // we SHOULD let the AudioFormatReaderSource delete the reader for us..
+        audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
         bufferingAudioSource = new BufferingAudioSource (audioFormatReaderSource,
                                                          *bufferingTimeSliceThread,
                                                          false,
@@ -159,8 +159,8 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
         listeners.call (&Listener::fileChanged, this);
         setPlaybackSettings (currentSoundtouchSettings);
 
-		return true;
-	}
+        return true;
+    }
 
     setLibraryEntry (ValueTree::invalid);
     listeners.call (&Listener::fileChanged, this);

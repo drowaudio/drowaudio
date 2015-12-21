@@ -49,7 +49,7 @@ public:
     Spectrograph (int fftSizeLog2);
 
     /** Destructor. */
-	~Spectrograph();
+    ~Spectrograph();
 
     //==============================================================================
     /** Creates a Spetrograph based on the whole set of samples provided.
@@ -66,12 +66,12 @@ public:
      */
     void ensureStorageAllocated (int numSamples);
 
-	/** Processes a set of samples, to be added to the graph.
+    /** Processes a set of samples, to be added to the graph.
         Once enough samples have been gathered to perform an FFT operation they will
         do so. Once you have finished prcessing all your samples use getImage to retrieve
         the Spectrograph.
      */
-	void processSamples (const float* samples, int numSamples);
+    void processSamples (const float* samples, int numSamples);
 
     /** Returns the graph of the current set of processed samples.
         Note that this actually generates a new Image based on the internal buffers so if
@@ -81,10 +81,10 @@ public:
 
     //==============================================================================
     /** Sets the scope to display in log or normal mode. */
-	void setLogFrequencyDisplay (bool shouldDisplayLog);
+    void setLogFrequencyDisplay (bool shouldDisplayLog);
 
     /** Returns true if the scope is being displayed in log mode. */
-	bool getLogFrequencyDisplay() const             { return logFrequency; }
+    bool getLogFrequencyDisplay() const             { return logFrequency; }
 
     /** Sets the size for one bin of fft data. This must be greater than 0.
         Higher values will effectively cause the graph to be wider and taller.
@@ -96,12 +96,12 @@ public:
 
 private:
     //==============================================================================
-	FFTEngine fftEngine;
-	int numBins;
-	FifoBuffer<float> circularBuffer, fftMagnitudesData;
-	HeapBlock<float> tempBlock;
+    FFTEngine fftEngine;
+    int numBins;
+    FifoBuffer<float> circularBuffer, fftMagnitudesData;
+    HeapBlock<float> tempBlock;
     Array<float*> fftMagnitudesBlocks;
-	bool logFrequency;
+    bool logFrequency;
     Rectangle<float> binSize;
 
     void addMagnitudesBlock (const float* data, int size);

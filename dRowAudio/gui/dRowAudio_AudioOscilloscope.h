@@ -34,13 +34,13 @@
 
 /** An oscilliscope class for displaying audio waveforms.
 
-	This is a high-res version of the SimpleAudioScope class and as such is
+    This is a high-res version of the SimpleAudioScope class and as such is
     slightly more CPU intensive.
-	Use this when you need detailed images of a waveform instead of a general
+    Use this when you need detailed images of a waveform instead of a general
     idea of what is passing through it.
  */
 class AudioOscilloscope : public Component,
-						  public Timer
+                          public Timer
 {
 public:
     /** Creates an AudioOscilloscope.
@@ -51,64 +51,64 @@ public:
     AudioOscilloscope();
 
     //==============================================================================
-    /**	Processes a number of samples displaying them on the scope.
+    /**    Processes a number of samples displaying them on the scope.
         The resolution will depend on how zoomed in you are @see setHorizontalZoom.
-	 */
+     */
     void processBlock (const float* inputChannelData,
                        int numSamples);
 
-	/**	Clears the internal buffers.
+    /**    Clears the internal buffers.
         It is a good idea to call this when an audio device is started or stopped
         to avoid clicks on the scope.
-	 */
-	void clear();
+     */
+    void clear();
 
-	/** Adjusts the vertical zoom of the scope.
+    /** Adjusts the vertical zoom of the scope.
         0 = nothing, 1 = normal, > 1 = zoomed.
-	 */
-	void setVerticalZoom (float newVerticalZoomFactor) { verticalZoomFactor = newVerticalZoomFactor; }
+     */
+    void setVerticalZoom (float newVerticalZoomFactor) { verticalZoomFactor = newVerticalZoomFactor; }
 
-	/**	Adjusts the horizontal zoom of the scope.
+    /**    Adjusts the horizontal zoom of the scope.
         The lower this value is the more zoomed in and detailed the image will be.
         However, as more information is passing the scope will move quicker and be
         difficult to see. Consider using Component::createComponentSnapshot() to
         capture an image of the scope.
-	 */
-	void setHorizontalZoom (float newHorizontalZoomFactor) { horizontalZoomFactor = newHorizontalZoomFactor; }
+     */
+    void setHorizontalZoom (float newHorizontalZoomFactor) { horizontalZoomFactor = newHorizontalZoomFactor; }
 
-	/** Sets the background colour of the scope. */
-	void setBackgroundColour (Colour newBackgroundColour) {	backgroundColour = newBackgroundColour; }
+    /** Sets the background colour of the scope. */
+    void setBackgroundColour (Colour newBackgroundColour) {    backgroundColour = newBackgroundColour; }
 
-	/** Sets the trace colour of the scope. */
-	void setTraceColour (Colour newTraceColour) { traceColour = newTraceColour; }
+    /** Sets the trace colour of the scope. */
+    void setTraceColour (Colour newTraceColour) { traceColour = newTraceColour; }
 
     //==============================================================================
-	/** @internal Used to add a sample to the internal buffer. */
+    /** @internal Used to add a sample to the internal buffer. */
     void addSample (const float sample);
 
     //==============================================================================
     /** @internal */
     void resized() override;
-	/** @internal */
+    /** @internal */
     void paint (Graphics& g) override;
-	/** @internal */
+    /** @internal */
     void timerCallback() override;
 
 private:
     //==============================================================================
     HeapBlock<float> circularBufferMax, circularBufferMin;
-	int bufferSizeMask;
+    int bufferSizeMask;
     float currentMax, currentMin;
     int volatile bufferPos, lastBufferPos, bufferSize, numSamplesIn;
-	float bufferLastMax, bufferLastMin;
+    float bufferLastMax, bufferLastMin;
 
     Image waveformImage;
 
-	float verticalZoomFactor, horizontalZoomFactor;
-	Colour backgroundColour, traceColour;
+    float verticalZoomFactor, horizontalZoomFactor;
+    Colour backgroundColour, traceColour;
 
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioOscilloscope);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioOscilloscope);
 };
 
 #endif //DROWAUDIO_AUDIOOSCILLOSCOPE_H

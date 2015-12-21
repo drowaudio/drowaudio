@@ -38,7 +38,7 @@ AudioOscilloscope::AudioOscilloscope()
       traceColour(Colours::green)
 {
     lastBufferPos = bufferPos = 0;
-    bufferSize = 2048;		// Needs to be a power of 2 and larger than the width of your scope!
+    bufferSize = 2048;        // Needs to be a power of 2 and larger than the width of your scope!
     bufferSizeMask = bufferSize - 1;
     circularBufferMax.calloc(bufferSize);
     circularBufferMin.calloc(bufferSize);

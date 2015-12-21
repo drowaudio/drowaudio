@@ -46,7 +46,7 @@ AudioTransportCursor::AudioTransportCursor (AudioFilePlayer& sourceToBeUsed)
 AudioTransportCursor::~AudioTransportCursor()
 {
     audioFilePlayer.removeListener (this);
-	stopTimer();
+    stopTimer();
 }
 
 void AudioTransportCursor::setZoomRatio (double newZoomRatio)
@@ -83,7 +83,7 @@ void AudioTransportCursor::resized()
     Graphics g (cursorImage);
     g.fillAll (Colours::black);
     g.setColour (Colours::white);
-	g.drawVerticalLine (1, 0.0f, (float) cursorImage.getHeight());
+    g.drawVerticalLine (1, 0.0f, (float) cursorImage.getHeight());
 }
 
 void AudioTransportCursor::paint (Graphics &g)
@@ -106,7 +106,7 @@ void AudioTransportCursor::timerCallback()
     {
         repaint (transportLineXCoord.getPrevious() - 2, 0, 5, h);
         repaint (transportLineXCoord.getCurrent() - 2, 0, 5, h);
-	}
+    }
 
     if (shouldStopTimer)
     {
@@ -118,13 +118,13 @@ void AudioTransportCursor::timerCallback()
 //====================================================================================
 void AudioTransportCursor::fileChanged (AudioFilePlayer* player)
 {
-	if (player == &audioFilePlayer)
+    if (player == &audioFilePlayer)
         refreshFromFilePlayer();
 }
 
 void AudioTransportCursor::playerStoppedOrStarted (AudioFilePlayer* player)
 {
-	if (player == &audioFilePlayer)
+    if (player == &audioFilePlayer)
         startTimerIfNeeded();
 }
 

@@ -16,20 +16,20 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 
 
 #if ! defined (ffft_FFTRealPassInverse_HEADER_INCLUDED)
-#define	ffft_FFTRealPassInverse_HEADER_INCLUDED
+#define    ffft_FFTRealPassInverse_HEADER_INCLUDED
 
 #if defined (_MSC_VER)
-	#pragma once
-	#pragma warning (4 : 4250) // "Inherits via dominance."
+    #pragma once
+    #pragma warning (4 : 4250) // "Inherits via dominance."
 #endif
 
 
 
 /*\\\ INCLUDE FILES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
-#include	"def.h"
-#include	"FFTRealFixLenParam.h"
-#include	"OscSinCos.h"
+#include    "def.h"
+#include    "FFTRealFixLenParam.h"
+#include    "OscSinCos.h"
 
 
 
@@ -47,15 +47,15 @@ class FFTRealPassInverse
 
 public:
 
-   typedef	FFTRealFixLenParam::DataType	DataType;
-	typedef	OscSinCos <DataType>	OscType;
+   typedef    FFTRealFixLenParam::DataType    DataType;
+    typedef    OscSinCos <DataType>    OscType;
 
-	ffft_FORCEINLINE static void
-						process (long len, DataType dest_ptr [], DataType src_ptr [], const DataType f_ptr [], const DataType cos_ptr [], long cos_len, const long br_ptr [], OscType osc_list []);
-	ffft_FORCEINLINE static void
-						process_rec (long len, DataType dest_ptr [], DataType src_ptr [], const DataType cos_ptr [], long cos_len, const long br_ptr [], OscType osc_list []);
-	ffft_FORCEINLINE static void
-						process_internal (long len, DataType dest_ptr [], const DataType src_ptr [], const DataType cos_ptr [], long cos_len, const long br_ptr [], OscType osc_list []);
+    ffft_FORCEINLINE static void
+                        process (long len, DataType dest_ptr [], DataType src_ptr [], const DataType f_ptr [], const DataType cos_ptr [], long cos_len, const long br_ptr [], OscType osc_list []);
+    ffft_FORCEINLINE static void
+                        process_rec (long len, DataType dest_ptr [], DataType src_ptr [], const DataType cos_ptr [], long cos_len, const long br_ptr [], OscType osc_list []);
+    ffft_FORCEINLINE static void
+                        process_internal (long len, DataType dest_ptr [], const DataType src_ptr [], const DataType cos_ptr [], long cos_len, const long br_ptr [], OscType osc_list []);
 
 
 
@@ -75,26 +75,26 @@ private:
 
 private:
 
-						FFTRealPassInverse ();
-						FFTRealPassInverse (const FFTRealPassInverse &other);
-	FFTRealPassInverse &
-						operator = (const FFTRealPassInverse &other);
-	bool				operator == (const FFTRealPassInverse &other);
-	bool				operator != (const FFTRealPassInverse &other);
+                        FFTRealPassInverse ();
+                        FFTRealPassInverse (const FFTRealPassInverse &other);
+    FFTRealPassInverse &
+                        operator = (const FFTRealPassInverse &other);
+    bool                operator == (const FFTRealPassInverse &other);
+    bool                operator != (const FFTRealPassInverse &other);
 
-};	// class FFTRealPassInverse
-
-
-
-}	// namespace ffft
+};    // class FFTRealPassInverse
 
 
 
-#include	"FFTRealPassInverse.hpp"
+}    // namespace ffft
 
 
 
-#endif	// ffft_FFTRealPassInverse_HEADER_INCLUDED
+#include    "FFTRealPassInverse.hpp"
+
+
+
+#endif    // ffft_FFTRealPassInverse_HEADER_INCLUDED
 
 
 

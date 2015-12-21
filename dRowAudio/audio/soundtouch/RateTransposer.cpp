@@ -260,7 +260,7 @@ void RateTransposer::downsample(const SAMPLETYPE *src, uint nSamples)
     count = pAAFilter->evaluate(tempBuffer.ptrEnd(sizeTemp),
         storeBuffer.ptrBegin(), sizeTemp, (uint)numChannels);
 
-	if (count == 0) return;
+    if (count == 0) return;
 
     // Remove the filtered samples from 'storeBuffer'
     storeBuffer.receiveSamples(count);
@@ -400,7 +400,7 @@ uint RateTransposerInteger::transposeMono(SAMPLETYPE *dest, const SAMPLETYPE *sr
 
     if (nSamples == 0) return 0;  // no samples, no work
 
-	used = 0;
+    used = 0;
     i = 0;
 
     // Process the last sample saved from the previous call first...

@@ -126,7 +126,7 @@ namespace soundtouch
 ///   size may wary from time to time
 /// - This parameter value is not constant but may change depending on
 ///   tempo/pitch/rate/samplerate settings.
-#define SETTING_NOMINAL_INPUT_SEQUENCE		6
+#define SETTING_NOMINAL_INPUT_SEQUENCE        6
 
 
 /// Call "getSetting" with this ID to query nominal average processing output
@@ -139,7 +139,7 @@ namespace soundtouch
 ///   size may wary from time to time
 /// - This parameter value is not constant but may change depending on
 ///   tempo/pitch/rate/samplerate settings.
-#define SETTING_NOMINAL_OUTPUT_SEQUENCE		7
+#define SETTING_NOMINAL_OUTPUT_SEQUENCE        7
 
 class SoundTouch : public FIFOProcessor
 {

@@ -81,7 +81,7 @@ public:
         expectEquals ((int) isOdd (-23), (int) true);
         expectEquals ((int) isOdd (-1763523), (int) true);
 
-		expectEquals ((int) isnan (1), (int) false);
+        expectEquals ((int) isnan (1), (int) false);
         expectEquals ((int) isnan (sqrt (-1.0)), (int) true);
 
         // RMS

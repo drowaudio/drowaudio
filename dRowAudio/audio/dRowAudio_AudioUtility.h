@@ -133,13 +133,13 @@ static const String timeToTimecodeString (const double seconds)
     const int mins  = ((int) (absSecs / 60.0)) % 60;
     const int secs  = ((int) absSecs) % 60;
 
-	String t (sign);
+    String t (sign);
 
-    t	<< String (hours).paddedLeft ('0', 2) << ":"
-		<< String (mins).paddedLeft ('0', 2) << ":"
-		<< String (secs).paddedLeft ('0', 2) << ":"
-		<< String (roundToInt (absSecs * 1000) % 1000).paddedLeft ('0', 2);
-	return t;
+    t    << String (hours).paddedLeft ('0', 2) << ":"
+        << String (mins).paddedLeft ('0', 2) << ":"
+        << String (secs).paddedLeft ('0', 2) << ":"
+        << String (roundToInt (absSecs * 1000) % 1000).paddedLeft ('0', 2);
+    return t;
 }
 
 /** Converts a time in seconds to a timecode string displaying mins, secs and 1/10th secs.
@@ -152,44 +152,44 @@ static const String timeToTimecodeStringLowRes (const double seconds)
 //    const int hours = (int) (absSecs * oneOver60Squared);
     const int mins  = ((uint32) (absSecs * oneOver60)) % 60u;
     const int secs  = ((uint32) absSecs) % 60u;
-	const int tenthSecs  = (int) ((absSecs - (int) absSecs) * 10);
+    const int tenthSecs  = (int) ((absSecs - (int) absSecs) * 10);
 
-	String t (sign);
+    String t (sign);
 
-    t	<< String (mins).paddedLeft ('0', 2) << ":"
-		<< String (secs).paddedLeft ('0', 2) << "."
-		<< String (tenthSecs).paddedLeft ('0', 0);
-	return t;
+    t    << String (mins).paddedLeft ('0', 2) << ":"
+        << String (secs).paddedLeft ('0', 2) << "."
+        << String (tenthSecs).paddedLeft ('0', 0);
+    return t;
 }
 
-/**	Converts a number of seconds to a time string.
-	This is useful when displaying times as hrs, mins secs etc.
-	as it will only display the units needed.
+/**    Converts a number of seconds to a time string.
+    This is useful when displaying times as hrs, mins secs etc.
+    as it will only display the units needed.
  */
 static const String secondsToTimeLength (double numSeconds)
 {
-	double decimalTime = numSeconds / 60000.0;
+    double decimalTime = numSeconds / 60000.0;
 
-	int hrs = 0;
-	int mins = (int) decimalTime;
-	int secs = roundToInt ((decimalTime - mins) * 60.0);
+    int hrs = 0;
+    int mins = (int) decimalTime;
+    int secs = roundToInt ((decimalTime - mins) * 60.0);
 
-	String timeString;
+    String timeString;
 
-	if (mins > 59)
-	{
-		hrs = mins / 60;
-		mins -= hrs * 60;
+    if (mins > 59)
+    {
+        hrs = mins / 60;
+        mins -= hrs * 60;
 
-		timeString << String (hrs) << ":"
-		<< String (mins).paddedLeft ('0', 2) << ":";
-	}
-	else
-		timeString << String (mins) << ":";
+        timeString << String (hrs) << ":"
+        << String (mins).paddedLeft ('0', 2) << ":";
+    }
+    else
+        timeString << String (mins) << ":";
 
-	timeString << String (secs).paddedLeft ('0', 2);
+    timeString << String (secs).paddedLeft ('0', 2);
 
-	return timeString;
+    return timeString;
 }
 
 /** Formats a CurretPositionInfo to a bars/beats string.
@@ -218,11 +218,11 @@ static const String ppqToBarsBeatsString (const double ppq,
  */
 static bool matchesAudioWildcard (const String& extensionToTest, const String& wildcard, const bool ignoreCase=true)
 {
-	if (ignoreCase ? wildcard.containsIgnoreCase (extensionToTest)
+    if (ignoreCase ? wildcard.containsIgnoreCase (extensionToTest)
                    : wildcard.contains (extensionToTest))
-		return true;
-	else
-		return false;
+        return true;
+    else
+        return false;
 }
 
 /** Converts a block of audio sample to floating point samples if the reader
@@ -230,23 +230,23 @@ static bool matchesAudioWildcard (const String& extensionToTest, const String& w
  */
 static void convertToFloat (AudioFormatReader* reader, void* sourceBuffer, float* destBuffer, int numSamples)
 {
-	if (reader != nullptr)
-	{
-		if (! reader->usesFloatingPointData)
-		{
+    if (reader != nullptr)
+    {
+        if (! reader->usesFloatingPointData)
+        {
 #if JUCE_BIG_ENDIAN
-			AudioDataConverters::convertInt32BEToFloat ((void*) sourceBuffer, destBuffer,
+            AudioDataConverters::convertInt32BEToFloat ((void*) sourceBuffer, destBuffer,
                                                         numSamples, sizeof (int));
 #else
-			AudioDataConverters::convertInt32LEToFloat ((void*) sourceBuffer, destBuffer,
+            AudioDataConverters::convertInt32LEToFloat ((void*) sourceBuffer, destBuffer,
                                                         numSamples, sizeof (int));
 #endif
-		}
-		else
+        }
+        else
         {
-			memcpy (destBuffer, sourceBuffer, sizeof (float) * numSamples);
-		}
-	}
+            memcpy (destBuffer, sourceBuffer, sizeof (float) * numSamples);
+        }
+    }
 }
 
 //==============================================================================

@@ -16,11 +16,11 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 
 
 #if ! defined (ffft_Array_HEADER_INCLUDED)
-#define	ffft_Array_HEADER_INCLUDED
+#define    ffft_Array_HEADER_INCLUDED
 
 #if defined (_MSC_VER)
-	#pragma once
-	#pragma warning (4 : 4250) // "Inherits via dominance."
+    #pragma once
+    #pragma warning (4 : 4250) // "Inherits via dominance."
 #endif
 
 
@@ -42,17 +42,17 @@ class Array
 
 public:
 
-	typedef	T	DataType;
+    typedef    T    DataType;
 
-						Array ();
+                        Array ();
 
-	inline const DataType &
-						operator [] (long pos) const;
-	inline DataType &
-						operator [] (long pos);
+    inline const DataType &
+                        operator [] (long pos) const;
+    inline DataType &
+                        operator [] (long pos);
 
-	static inline long
-						size ();
+    static inline long
+                        size ();
 
 
 
@@ -66,7 +66,7 @@ protected:
 
 private:
 
-	DataType			_data_arr [LEN];
+    DataType            _data_arr [LEN];
 
 
 
@@ -74,24 +74,24 @@ private:
 
 private:
 
-						Array (const Array &other);
-	Array &			operator = (const Array &other);
-	bool				operator == (const Array &other);
-	bool				operator != (const Array &other);
+                        Array (const Array &other);
+    Array &            operator = (const Array &other);
+    bool                operator == (const Array &other);
+    bool                operator != (const Array &other);
 
-};	// class Array
-
-
-
-}	// namespace ffft
+};    // class Array
 
 
 
-#include	"Array.hpp"
+}    // namespace ffft
 
 
 
-#endif	// ffft_Array_HEADER_INCLUDED
+#include    "Array.hpp"
+
+
+
+#endif    // ffft_Array_HEADER_INCLUDED
 
 
 

@@ -127,13 +127,13 @@ public:
         virtual void conversionFinished (const File& convertedFile)  {}
     };
 
-    /**	Description
+    /**    Description
 
         @see removeListener
      */
     void addListener (Listener* newListener);
 
-    /**	Description
+    /**    Description
 
         @see addListener
      */

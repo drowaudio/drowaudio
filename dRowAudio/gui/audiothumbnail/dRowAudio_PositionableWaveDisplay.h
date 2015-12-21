@@ -38,8 +38,8 @@
 /**
     A class to display the entire waveform of an audio file.
 
-	This will load an audio file and display its waveform. Clicking on the waveform will
-	reposition the transport source.
+    This will load an audio file and display its waveform. Clicking on the waveform will
+    reposition the transport source.
  */
 class PositionableWaveDisplay : public Component,
                                 public AudioThumbnailImage::Listener,
@@ -47,19 +47,19 @@ class PositionableWaveDisplay : public Component,
                                 public AsyncUpdater
 {
 public:
-	//====================================================================================
-	/** Creates the display.
-		The AudioThumbnailImage associated with the display must be passed in.
-	 */
-	explicit PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed,
+    //====================================================================================
+    /** Creates the display.
+        The AudioThumbnailImage associated with the display must be passed in.
+     */
+    explicit PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed,
                                       TimeSliceThread& threadToUse);
 
-	/** Destructor.
+    /** Destructor.
      */
-	~PositionableWaveDisplay();
+    ~PositionableWaveDisplay();
 
     //====================================================================================
-	/** Sets whether or not the transport cursor should be displayed;
+    /** Sets whether or not the transport cursor should be displayed;
      */
     void setCursorDisplayed (bool shoudldDisplayCursor);
 
@@ -71,50 +71,50 @@ public:
      */
     void setWaveformColour (const Colour& newWaveformColour);
 
-	/** Sets the current horizontal zoom.
+    /** Sets the current horizontal zoom.
         1.0 displays the whole waveform, 0.5 will show half etc.
      */
-	void setZoomRatio (double newZoomRatio);
+    void setZoomRatio (double newZoomRatio);
 
     /** Sets an offset used to start the waveform at a faction of the display.
         A value of 0.5 will show the waveform starting at the halfway point etc.
      */
-	void setStartOffsetRatio (double newStartOffsetRatio);
+    void setStartOffsetRatio (double newStartOffsetRatio);
 
     /** Sets a new vertical zoom ratio.
         Values greater than 1.0 will expand the waveform vertically, less will contract it.
      */
     void setVerticalZoomRatio (double newVerticalZoomRatio);
 
-	//====================================================================================
-	/** @internal */
+    //====================================================================================
+    /** @internal */
     void imageChanged (AudioThumbnailImage* audioThumbnailImage);
 
-	//====================================================================================
-	/** @internal */
+    //====================================================================================
+    /** @internal */
     void resized ();
 
-	/** @internal */
-	void paint (Graphics &g);
+    /** @internal */
+    void paint (Graphics &g);
 
-	/** @internal */
+    /** @internal */
     int useTimeSlice();
 
     /** @internal */
     void handleAsyncUpdate();
 
 private:
-	//==============================================================================
+    //==============================================================================
     AudioThumbnailImage& audioThumbnailImage;
     TimeSliceThread& threadToUse;
     CriticalSection imageLock;
 
     AudioFilePlayer& audioFilePlayer;
-	double fileLength, oneOverFileLength, currentSampleRate;
+    double fileLength, oneOverFileLength, currentSampleRate;
     double zoomRatio, startOffsetRatio, verticalZoomRatio;
 
     Colour backgroundColour, waveformColour;
-	Image cachedImage, cursorImage;
+    Image cachedImage, cursorImage;
 
     StateVariable<double> drawTimes;
 
@@ -123,8 +123,8 @@ private:
     //==============================================================================
     void refreshCachedImage();
 
-	//==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PositionableWaveDisplay);
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PositionableWaveDisplay);
 };
 
 

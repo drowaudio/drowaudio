@@ -66,15 +66,15 @@ uint detectCPUextensions(void)
 
     if (_dwDisabledISA == 0xffffffff) return 0;
 
-	// cpu_detect_x86_gcc segfaults on "%edx", "%eax", "%ecx", "%esi" );
-	// Since I don't know how to fix that and just need something working for Mixxx...
+    // cpu_detect_x86_gcc segfaults on "%edx", "%eax", "%ecx", "%esi" );
+    // Since I don't know how to fix that and just need something working for Mixxx...
 
-	// All 64-bit processors support MMX, SSE, and SSE2
-	res = SUPPORT_MMX + SUPPORT_SSE + SUPPORT_SSE2;
+    // All 64-bit processors support MMX, SSE, and SSE2
+    res = SUPPORT_MMX + SUPPORT_SSE + SUPPORT_SSE2;
 
 #ifdef x86_64
-	res += SUPPORT_3DNOW;
+    res += SUPPORT_3DNOW;
 #endif
 
-	return res & ~_dwDisabledISA;
+    return res & ~_dwDisabledISA;
 }

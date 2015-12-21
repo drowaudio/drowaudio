@@ -16,11 +16,11 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 
 
 #if ! defined (ffft_FFTRealFixLenParam_HEADER_INCLUDED)
-#define	ffft_FFTRealFixLenParam_HEADER_INCLUDED
+#define    ffft_FFTRealFixLenParam_HEADER_INCLUDED
 
 #if defined (_MSC_VER)
-	#pragma once
-	#pragma warning (4 : 4250) // "Inherits via dominance."
+    #pragma once
+    #pragma warning (4 : 4250) // "Inherits via dominance."
 #endif
 
 
@@ -42,9 +42,9 @@ class FFTRealFixLenParam
 public:
 
    // Over this bit depth, we use direct calculation for sin/cos
-   enum {	      TRIGO_BD_LIMIT	= 12  };
+   enum {          TRIGO_BD_LIMIT    = 12  };
 
-	typedef	float	DataType;
+    typedef    float    DataType;
 
 
 
@@ -64,26 +64,26 @@ private:
 
 private:
 
-						FFTRealFixLenParam ();
-						FFTRealFixLenParam (const FFTRealFixLenParam &other);
-	FFTRealFixLenParam &
-						operator = (const FFTRealFixLenParam &other);
-	bool				operator == (const FFTRealFixLenParam &other);
-	bool				operator != (const FFTRealFixLenParam &other);
+                        FFTRealFixLenParam ();
+                        FFTRealFixLenParam (const FFTRealFixLenParam &other);
+    FFTRealFixLenParam &
+                        operator = (const FFTRealFixLenParam &other);
+    bool                operator == (const FFTRealFixLenParam &other);
+    bool                operator != (const FFTRealFixLenParam &other);
 
-};	// class FFTRealFixLenParam
-
-
-
-}	// namespace ffft
+};    // class FFTRealFixLenParam
 
 
 
-//#include	"ffft/FFTRealFixLenParam.hpp"
+}    // namespace ffft
 
 
 
-#endif	// ffft_FFTRealFixLenParam_HEADER_INCLUDED
+//#include    "ffft/FFTRealFixLenParam.hpp"
+
+
+
+#endif    // ffft_FFTRealFixLenParam_HEADER_INCLUDED
 
 
 

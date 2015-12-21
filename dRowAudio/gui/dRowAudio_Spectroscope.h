@@ -50,52 +50,52 @@ public:
         Note that the fft size given here is log2 of the FFT size so for example,
         a 1024 size fft use 10.
      */
-	Spectroscope (int fftSizeLog2);
+    Spectroscope (int fftSizeLog2);
 
     /** Destructor. */
-	~Spectroscope();
+    ~Spectroscope();
 
     /** @internal */
-	void resized();
+    void resized();
 
     /** @internal */
-	void paint (Graphics &g);
+    void paint (Graphics &g);
 
     //==============================================================================
     /** Sets the scope to display in log or normal mode.
      */
-	void setLogFrequencyDisplay (bool shouldDisplayLog);
+    void setLogFrequencyDisplay (bool shouldDisplayLog);
 
     /** Returns true if the scope is being displayed in log mode.
      */
-	inline bool getLogFrequencyDisplay() const      {   return logFrequency;	}
+    inline bool getLogFrequencyDisplay() const      {   return logFrequency;    }
 
     //==============================================================================
-	/** Copy a set of samples, ready to be processed.
+    /** Copy a set of samples, ready to be processed.
         Your audio callback should continually call this method to pass it its
         audio data. When the scope has enough samples to perform an fft it will do
         so on a background thread and redraw itself.
      */
-	void copySamples (const float* samples, int numSamples);
+    void copySamples (const float* samples, int numSamples);
 
     /** @internal */
-	void timerCallback();
+    void timerCallback();
 
     /** @internal */
-	void process();
+    void process();
 
     /** @internal */
-	void flagForRepaint();
+    void flagForRepaint();
 
 private:
     //==============================================================================
-	FFTEngine fftEngine;
-	int numBins;
-	bool needsRepaint;
-	HeapBlock<float> tempBlock;
-	FifoBuffer<float> circularBuffer;
+    FFTEngine fftEngine;
+    int numBins;
+    bool needsRepaint;
+    HeapBlock<float> tempBlock;
+    FifoBuffer<float> circularBuffer;
 
-	bool logFrequency;
+    bool logFrequency;
     Image scopeImage;
 
     void renderScopeImage();

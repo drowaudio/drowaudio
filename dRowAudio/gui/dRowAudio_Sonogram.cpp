@@ -32,17 +32,17 @@
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
 Sonogram::Sonogram (int fftSizeLog2)
-:	fftEngine       (fftSizeLog2),
-	needsRepaint    (true),
-	tempBlock       (fftEngine.getFFTSize()),
-	circularBuffer  (fftEngine.getMagnitudesBuffer().getSize() * 4),
-	logFrequency    (false),
+:    fftEngine       (fftSizeLog2),
+    needsRepaint    (true),
+    tempBlock       (fftEngine.getFFTSize()),
+    circularBuffer  (fftEngine.getMagnitudesBuffer().getSize() * 4),
+    logFrequency    (false),
     scopeLineW      (1.0f)
 {
-	setOpaque (true);
+    setOpaque (true);
 
-	fftEngine.setWindowType (Window::Hann);
-	numBins = fftEngine.getFFTProperties().fftSizeHalved;
+    fftEngine.setWindowType (Window::Hann);
+    numBins = fftEngine.getFFTProperties().fftSizeHalved;
 
     circularBuffer.reset();
 
@@ -88,8 +88,8 @@ int Sonogram::getBlockWidth() const
 //==============================================================================
 void Sonogram::copySamples (const float* samples, int numSamples)
 {
-	circularBuffer.writeSamples (samples, numSamples);
-	needToProcess = true;
+    circularBuffer.writeSamples (samples, numSamples);
+    needToProcess = true;
 }
 
 void Sonogram::timerCallback()
@@ -103,15 +103,15 @@ void Sonogram::process()
     jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
 
     while (circularBuffer.getNumAvailable() > fftEngine.getFFTSize())
-	{
-		circularBuffer.readSamples (tempBlock.getData(), fftEngine.getFFTSize());
-		fftEngine.performFFT (tempBlock);
-		fftEngine.findMagnitudes();
+    {
+        circularBuffer.readSamples (tempBlock.getData(), fftEngine.getFFTSize());
+        fftEngine.performFFT (tempBlock);
+        fftEngine.findMagnitudes();
 
         renderScopeLine();
 
-		needsRepaint = true;
-	}
+        needsRepaint = true;
+    }
 }
 
 void Sonogram::flagForRepaint()

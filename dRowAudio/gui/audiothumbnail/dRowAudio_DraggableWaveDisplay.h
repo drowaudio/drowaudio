@@ -46,92 +46,92 @@ class DraggableWaveDisplay : public Component,
                              public AudioThumbnailImage::Listener
 {
 public:
-	/** Creates the display.
+    /** Creates the display.
         The file player associated with the display must be passed in along with
         the current sample rate. This can later be changed with setSampleRate.
-	 */
-	explicit DraggableWaveDisplay (AudioThumbnailImage& sourceToBeUsed);
+     */
+    explicit DraggableWaveDisplay (AudioThumbnailImage& sourceToBeUsed);
 
-	/** Destructor.
-		Your subclass will need to call signalThreadShouldExit() in its destructor as
-		it will get destructed before this superclass.
-	 */
-	~DraggableWaveDisplay();
+    /** Destructor.
+        Your subclass will need to call signalThreadShouldExit() in its destructor as
+        it will get destructed before this superclass.
+     */
+    ~DraggableWaveDisplay();
 
     //====================================================================================
-	/** Sets the current horizontal zoom.
+    /** Sets the current horizontal zoom.
         This must be greater than 0 and the larger the number the more zoomed in the wave will be.
         A value of 1 is the waveform at its rendered resolution so any larger and blocking may occur.
-	 */
-	void setHorizontalZoom (float newZoomFactor);
+     */
+    void setHorizontalZoom (float newZoomFactor);
 
-	/** Sets the offset of the white line that marks the current position.
+    /** Sets the offset of the white line that marks the current position.
         This is as a fraction of the width of the display.
-	 */
-	void setPlayheadPosition (float newPlayheadPosition);
-
-	/** Turns dragging to reposition the transport on or off.
      */
-	void setDraggable (bool isWaveformDraggable);
+    void setPlayheadPosition (float newPlayheadPosition);
 
-	/** Returns true if dragging the waveform will reposition the audio source
+    /** Turns dragging to reposition the transport on or off.
      */
-	bool getDraggable() const { return isDraggable; }
+    void setDraggable (bool isWaveformDraggable);
+
+    /** Returns true if dragging the waveform will reposition the audio source
+     */
+    bool getDraggable() const { return isDraggable; }
 
     //====================================================================================
-	/** @internal */
-    void imageChanged (AudioThumbnailImage* audioThumbnailImage) override;
-	/** @internal */
-	void resized() override;
-	/** @internal */
-	void paint (Graphics &g) override;
-	/** @internal */
-    void mouseDown (const MouseEvent &e) override;
-	/** @internal */
-	void mouseUp (const MouseEvent &e) override;
     /** @internal */
-	void timerCallback (int timerId) override;
+    void imageChanged (AudioThumbnailImage* audioThumbnailImage) override;
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void paint (Graphics &g) override;
+    /** @internal */
+    void mouseDown (const MouseEvent &e) override;
+    /** @internal */
+    void mouseUp (const MouseEvent &e) override;
+    /** @internal */
+    void timerCallback (int timerId) override;
 
 private:
-	//==============================================================================
+    //==============================================================================
     /** Converts a number of pixels to a time at the current resolution.
      */
     inline double pixelsToTime (double numPixels);
 
     /** Converts a time to a number of pixels at the current resolution.
      */
-	inline double timeToPixels (double timeInSecs);
+    inline double timeToPixels (double timeInSecs);
 
     /** Used to start and stop the various internal timers.
      */
-	enum
-	{
-		waveformUpdated,
-		waveformMoved,
+    enum
+    {
+        waveformUpdated,
+        waveformMoved,
         waveformLoading
-	};
+    };
 
     //==============================================================================
     AudioThumbnailImage& audioThumbnailImage;
     AudioFilePlayer& filePlayer;
-	double fileLengthSecs, oneOverFileLength;
+    double fileLengthSecs, oneOverFileLength;
     double currentSampleRate, oneOverSampleRate;
     double timePerPixel;
-	float zoomRatio, oneOverZoomRatio;
-	float playheadPos;
+    float zoomRatio, oneOverZoomRatio;
+    float playheadPos;
 
-	bool waveformIsFullyLoaded;
+    bool waveformIsFullyLoaded;
 
     CriticalSection lock;
     Image playheadImage;
 
-	bool isMouseDown, isDraggable, shouldBePlaying, mouseShouldTogglePlay;
-	StateVariable<int> mouseX, movedX;
+    bool isMouseDown, isDraggable, shouldBePlaying, mouseShouldTogglePlay;
+    StateVariable<int> mouseX, movedX;
 
-	friend class SwitchableDraggableWaveDisplay;
+    friend class SwitchableDraggableWaveDisplay;
 
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DraggableWaveDisplay);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DraggableWaveDisplay);
 };
 
 

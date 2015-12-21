@@ -39,8 +39,8 @@ Spectrograph::Spectrograph (int fftSizeLog2)
       logFrequency      (false),
       binSize           (0.0f, 0.0f, 1.0f, 1.0f)
 {
-	fftEngine.setWindowType (Window::Hann);
-	numBins = fftEngine.getFFTProperties().fftSizeHalved;
+    fftEngine.setWindowType (Window::Hann);
+    numBins = fftEngine.getFFTProperties().fftSizeHalved;
 
     reset();
 }

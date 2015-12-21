@@ -31,58 +31,58 @@
 
 //==============================================================================
 ReversibleAudioSource::ReversibleAudioSource (PositionableAudioSource* const inputSource,
-											  const bool deleteInputWhenDeleted)
+                                              const bool deleteInputWhenDeleted)
     : input (inputSource, deleteInputWhenDeleted),
       previousReadPosition (0),
-	  isForwards(true)
+      isForwards(true)
 {
     jassert (inputSource != 0);
 }
 
 void ReversibleAudioSource::prepareToPlay (int samplesPerBlockExpected,
-										   double sampleRate)
+                                           double sampleRate)
 {
-	input->prepareToPlay (samplesPerBlockExpected, sampleRate);
+    input->prepareToPlay (samplesPerBlockExpected, sampleRate);
 }
 
 void ReversibleAudioSource::releaseResources()
 {
-	input->releaseResources();
+    input->releaseResources();
 }
 
 void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
 {
-	if (isForwards)
+    if (isForwards)
     {
         input->getNextAudioBlock (info);
         previousReadPosition = input->getNextReadPosition();
     }
     else
-	{
+    {
         int64 nextReadPosition = previousReadPosition - info.numSamples;
 
-		if (nextReadPosition < 0 && input->isLooping())
-			nextReadPosition += input->getTotalLength();
+        if (nextReadPosition < 0 && input->isLooping())
+            nextReadPosition += input->getTotalLength();
 
-		input->setNextReadPosition (nextReadPosition);
+        input->setNextReadPosition (nextReadPosition);
         input->getNextAudioBlock (info);
 
-		if (info.buffer->getNumChannels() == 1)
-		{
-			reverseArray (info.buffer->getWritePointer (0) + info.startSample, info.numSamples);
-		}
-		else if (info.buffer->getNumChannels() == 2)
-		{
-			reverseTwoArrays (info.buffer->getWritePointer (0) + info.startSample,
+        if (info.buffer->getNumChannels() == 1)
+        {
+            reverseArray (info.buffer->getWritePointer (0) + info.startSample, info.numSamples);
+        }
+        else if (info.buffer->getNumChannels() == 2)
+        {
+            reverseTwoArrays (info.buffer->getWritePointer (0) + info.startSample,
                               info.buffer->getWritePointer (1) + info.startSample,
                               info.numSamples);
-		}
-		else
-		{
-			for (int c = 0; c < info.buffer->getNumChannels(); c++)
-				reverseArray (info.buffer->getWritePointer (c) + info.startSample, info.numSamples);
-		}
+        }
+        else
+        {
+            for (int c = 0; c < info.buffer->getNumChannels(); c++)
+                reverseArray (info.buffer->getWritePointer (c) + info.startSample, info.numSamples);
+        }
 
         previousReadPosition = nextReadPosition;
-	}
+    }
 }

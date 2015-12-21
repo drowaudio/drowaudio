@@ -51,16 +51,16 @@ public:
                                                 left up to the caller to manage its lifetime
     */
     ReversibleAudioSource (PositionableAudioSource* const inputSource,
-						   const bool deleteInputWhenDeleted);
+                           const bool deleteInputWhenDeleted);
 
     //==============================================================================
     /** Sets whether the source should play forwards or backwards.
      */
-	void setPlayDirection (bool shouldPlayForwards)	{ isForwards = shouldPlayForwards;  }
+    void setPlayDirection (bool shouldPlayForwards)    { isForwards = shouldPlayForwards;  }
 
     /** Returns true if the source is playing forwards.
      */
-	bool getPlayDirection() const {	return isForwards; }
+    bool getPlayDirection() const {    return isForwards; }
 
     //==============================================================================
     /** @internal */
@@ -74,10 +74,10 @@ private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> input;
     int64 previousReadPosition;
-	bool volatile isForwards;
+    bool volatile isForwards;
 
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReversibleAudioSource);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReversibleAudioSource);
 };
 
 #endif   // DROWAUDIO_REVERSIBLEAUDIOSOURCE_H

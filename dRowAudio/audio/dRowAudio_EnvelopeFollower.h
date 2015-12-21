@@ -44,26 +44,26 @@
 class EnvelopeFollower
 {
 public:
-	/** Constructor. */
-	EnvelopeFollower();
+    /** Constructor. */
+    EnvelopeFollower();
 
     //==============================================================================
-	/** Uses different exponential attack and release coefficients.
-		Call setTimes to setup this method, ignoring the hold time.
-	 */
-	void processEnvelope (const float* inputBuffer, float* outputBuffer, int numSamples) noexcept;
+    /** Uses different exponential attack and release coefficients.
+        Call setTimes to setup this method, ignoring the hold time.
+     */
+    void processEnvelope (const float* inputBuffer, float* outputBuffer, int numSamples) noexcept;
 
-	/** Sets the times for the vaious stages of the envelope.
+    /** Sets the times for the vaious stages of the envelope.
         1 is an instant attack/release, 0 ill never change the value.
      */
-	void setCoefficients (float attack, float release) noexcept;
+    void setCoefficients (float attack, float release) noexcept;
 
 private:
     //==============================================================================
-	float envelope, envAttack, envRelease;
+    float envelope, envAttack, envRelease;
 
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EnvelopeFollower);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EnvelopeFollower);
 };
 
 #endif // DROWAUDIO_ENVELOPEFOLLOWER_H

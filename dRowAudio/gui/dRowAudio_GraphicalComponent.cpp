@@ -33,13 +33,13 @@
 
 GraphicalComponent::GraphicalComponent()
     : paused (false),
-	  needToProcess (true),
+      needToProcess (true),
       sleepTime (5),
-	  numSamples (0)
+      numSamples (0)
 {
-	samples.malloc (numSamples);
+    samples.malloc (numSamples);
 
-	startTimer (30);
+    startTimer (30);
 }
 
 GraphicalComponent::~GraphicalComponent()
@@ -48,78 +48,78 @@ GraphicalComponent::~GraphicalComponent()
 
 int GraphicalComponent::useTimeSlice()
 {
-	if (paused)
+    if (paused)
     {
-		return sleepTime;
-	}
-	else
-	{
-		if (needToProcess)
+        return sleepTime;
+    }
+    else
+    {
+        if (needToProcess)
         {
-			process();
+            process();
             needToProcess = false;
 
             return sleepTime;
         }
 
-		return sleepTime;
-	}
+        return sleepTime;
+    }
 }
 
 void GraphicalComponent::copySamples (const float *values, int numSamples_)
 {
-		// allocate new memory only if needed
-		if (numSamples != numSamples_)
+        // allocate new memory only if needed
+        if (numSamples != numSamples_)
         {
-			numSamples = numSamples_;
-			samples.malloc (numSamples);
-		}
+            numSamples = numSamples_;
+            samples.malloc (numSamples);
+        }
 
-		// lock whilst copying
-		ScopedLock sl (lock);
-		memcpy (samples, values, numSamples * sizeof (float));
+        // lock whilst copying
+        ScopedLock sl (lock);
+        memcpy (samples, values, numSamples * sizeof (float));
 
-		needToProcess = true;
+        needToProcess = true;
 }
 
 void GraphicalComponent::copySamples (float **values, int numSamples_, int numChannels)
 {
-	// allocate new memory only if needed
-	if (numSamples != numSamples_)
+    // allocate new memory only if needed
+    if (numSamples != numSamples_)
     {
-		numSamples = numSamples_;
-		samples.malloc (numSamples);
-	}
+        numSamples = numSamples_;
+        samples.malloc (numSamples);
+    }
 
-	// lock whilst copying
-	ScopedLock sl (lock);
+    // lock whilst copying
+    ScopedLock sl (lock);
 
-	if (numChannels == 1)
+    if (numChannels == 1)
     {
-		memcpy (samples, values[0], numSamples * sizeof (float));
-	}
-	// this is quicker than the generic method below
-	else if (numChannels == 2)
+        memcpy (samples, values[0], numSamples * sizeof (float));
+    }
+    // this is quicker than the generic method below
+    else if (numChannels == 2)
     {
-		for (int i = 0; i < numSamples; i++)
+        for (int i = 0; i < numSamples; i++)
         {
-			samples[i] = (fabsf (values[0][i]) > fabsf (values[1][i])) ? values[0][i] : values[1][i];
-		}
-	}
-	else
+            samples[i] = (fabsf (values[0][i]) > fabsf (values[1][i])) ? values[0][i] : values[1][i];
+        }
+    }
+    else
     {
-		samples.clear (numSamples);
-		for (int c = 0; c < numChannels; c++)
+        samples.clear (numSamples);
+        for (int c = 0; c < numChannels; c++)
         {
-			for (int i = 0; i < numSamples; i++)
+            for (int i = 0; i < numSamples; i++)
             {
-				if (fabsf (values[c][i]) > samples[i])
+                if (fabsf (values[c][i]) > samples[i])
                 {
-					samples[i] = values[c][i];
-				}
-			}
-		}
-	}
+                    samples[i] = values[c][i];
+                }
+            }
+        }
+    }
 
-	needToProcess = true;
+    needToProcess = true;
 }

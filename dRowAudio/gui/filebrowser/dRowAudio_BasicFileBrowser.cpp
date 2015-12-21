@@ -70,8 +70,8 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
     FileListComponent* const list = new FileListComponent (*fileList);
     fileListComponent = list;
     list->setOutlineThickness (0);
-	list->getViewport()->setScrollBarThickness (10);
-	list->setRowHeight (18);
+    list->getViewport()->setScrollBarThickness (10);
+    list->setRowHeight (18);
 
     if ((flags & canSelectMultipleItems) != 0)
         list->setMultipleSelectionEnabled (true);
@@ -79,11 +79,11 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
     addAndMakeVisible (list);
 
     fileListComponent->addListener (this);
-	list->getViewport()->getVerticalScrollBar()->setAutoHide (false);
+    list->getViewport()->getVerticalScrollBar()->setAutoHide (false);
 
-	resizer = new ResizableCornerComponent (this, &resizeLimits);
-	addAndMakeVisible (resizer);
-	resizer->setMouseCursor (MouseCursor::LeftRightResizeCursor);
+    resizer = new ResizableCornerComponent (this, &resizeLimits);
+    addAndMakeVisible (resizer);
+    resizer->setMouseCursor (MouseCursor::LeftRightResizeCursor);
 
     setRoot (currentRoot);
 
@@ -111,10 +111,10 @@ void BasicFileBrowser::removeListener (FileBrowserListener* const listener)
 
 void BasicFileBrowser::mouseDoubleClick (const MouseEvent &e)
 {
-	if (resizer->contains (Point<int> (e.x, e.y)))
+    if (resizer->contains (Point<int> (e.x, e.y)))
     {
-		setSize (jmax (getLongestWidth(), resizeLimits.getMinimumWidth()), 800);
-	}
+        setSize (jmax (getLongestWidth(), resizeLimits.getMinimumWidth()), 800);
+    }
 }
 
 //==============================================================================
@@ -222,8 +222,8 @@ String BasicFileBrowser::getActionVerb() const
 
 int BasicFileBrowser::getLongestWidth()
 {
-	const int noFiles = fileList->getNumFiles();
-	int stringWidth = 0;
+    const int noFiles = fileList->getNumFiles();
+    int stringWidth = 0;
 
     FileListComponent* list = dynamic_cast<FileListComponent*> (fileListComponent.get());
     if (list != nullptr)
@@ -232,13 +232,13 @@ int BasicFileBrowser::getLongestWidth()
         for (int i = 0; i < noFiles; i++)
         {
             int itemWidth = temp.getStringWidth (fileList->getFile(i).getFileName());
-            if (itemWidth >	stringWidth)
+            if (itemWidth >    stringWidth)
                 stringWidth = itemWidth;
         }
         stringWidth += (2 * list->getRowHeight()) + 30;
     }
 
-	return stringWidth;
+    return stringWidth;
 }
 
 DirectoryContentsDisplayComponent* BasicFileBrowser::getDisplayComponent() const noexcept
@@ -249,8 +249,8 @@ DirectoryContentsDisplayComponent* BasicFileBrowser::getDisplayComponent() const
 //==============================================================================
 void BasicFileBrowser::resized()
 {
-	const int height = getHeight();
-	const int width = getWidth();
+    const int height = getHeight();
+    const int width = getWidth();
 
     FileListComponent* list = dynamic_cast<FileListComponent*> (fileListComponent.get());
 
@@ -336,7 +336,7 @@ bool BasicFileBrowser::keyPressed (const KeyPress& key)
 {
 #if JUCE_LINUX || JUCE_WINDOWS
     if (key.getModifiers().isCommandDown()
-		&& (key.getKeyCode() == 'H' || key.getKeyCode() == 'h'))
+        && (key.getKeyCode() == 'H' || key.getKeyCode() == 'h'))
     {
         fileList->setIgnoresHiddenFiles (! fileList->ignoresHiddenFiles());
         fileList->refresh();

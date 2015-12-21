@@ -42,28 +42,28 @@
     For an example of its use see the MusicLibraryTable class.
  */
 class ITunesLibrary : public Timer,
-					  public DeletedAtShutdown
+                      public DeletedAtShutdown
 {
 public:
     //==============================================================================
-	juce_DeclareSingleton (ITunesLibrary, false);
+    juce_DeclareSingleton (ITunesLibrary, false);
 
     /** Creates an ITunesLibrary.
         This class can also be used as a singleton which may be more appropriate.
         To start the parsing use the setLibraryFile method.
      */
-	ITunesLibrary();
+    ITunesLibrary();
 
     /** Destructor. */
-	~ITunesLibrary();
+    ~ITunesLibrary();
 
-	/**	Sets a new library to base the ValueTree on and starts the parse.
+    /**    Sets a new library to base the ValueTree on and starts the parse.
 
         This will merge new data into the tree if a valid tree has been set with
         the setLibraryTree method. This will preseve any child trees that may have
         been added e.g. those holding loop or cue data.
-	 */
-	void setLibraryFile (File newFile);
+     */
+    void setLibraryFile (File newFile);
 
     /** Returns the file that this library was generated from.
      */
@@ -77,7 +77,7 @@ public:
 
     /** Returns the ValueTree that is being filled.
      */
-	ValueTree getLibraryTree()      {	return libraryTree;	}
+    ValueTree getLibraryTree()      {    return libraryTree;    }
 
     /** Returns the lock being used in the parser.
         Bear in mind that if the parser has finished and been deleted this will be
@@ -85,41 +85,39 @@ public:
      */
     inline const CriticalSection& getParserLock()    {   return parserLock;   }
 
-	//==============================================================================
+    //==============================================================================
     /** This returns the default iTunes library file.
         E.g. on Mac this will be something like:
         "/Users/username/Music/iTunes/iTunes Music Library.xml"
      */
-	static const File getDefaultITunesLibraryFile();
+    static const File getDefaultITunesLibraryFile();
 
-	//==============================================================================
+    //==============================================================================
     /** A class for receiving callbacks from an ITunesLibrary.
 
-		This will repeatedly call libraryUpdated so you can respond to any changes
-		that may have happened until a single call to libraryFinished() where you
-		may want to do some additional set-up.
+        This will repeatedly call libraryUpdated so you can respond to any changes
+        that may have happened until a single call to libraryFinished() where you
+        may want to do some additional set-up.
 
-		@see ITunesLibrary::addListener, ITunesLibrary::removeListener
-	 */
+        @see ITunesLibrary::addListener, ITunesLibrary::removeListener
+     */
     class  Listener
     {
     public:
-        //==============================================================================
         /** Destructor. */
         virtual ~Listener() {}
 
-        //==============================================================================
         /** Called when the library file has changed, before it starts updating itself.
-			Use this callback to initialise any data storage you may be holding.
-		 */
+            Use this callback to initialise any data storage you may be holding.
+         */
         virtual void libraryChanged (ITunesLibrary* /*library*/) {};
 
         /** Called when the library has been updated.
-		 */
+         */
         virtual void libraryUpdated (ITunesLibrary* library) = 0;
 
         /** Called when the library has finished updating.
-		 */
+         */
         virtual void libraryFinished (ITunesLibrary* /*library*/) {}
     };
 
@@ -131,16 +129,16 @@ public:
 
     //==============================================================================
     /** @internal */
-	void timerCallback();
+    void timerCallback();
 
 private:
     //==============================================================================
     const CriticalSection parserLock;
-	ListenerList <Listener> listeners;
+    ListenerList <Listener> listeners;
 
     File libraryFile;
-	ScopedPointer<ITunesLibraryParser> parser;
-	ValueTree libraryTree;
+    ScopedPointer<ITunesLibraryParser> parser;
+    ValueTree libraryTree;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibrary);

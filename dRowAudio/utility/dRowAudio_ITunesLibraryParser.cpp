@@ -39,12 +39,12 @@ ITunesLibraryParser::ITunesLibraryParser (const File& iTunesLibraryFileToUse, co
       numAdded (0),
       finished (false)
 {
-	startThread (1);
+    startThread (1);
 }
 
 ITunesLibraryParser::~ITunesLibraryParser()
 {
-	stopThread (5000);
+    stopThread (5000);
 }
 
 void ITunesLibraryParser::run()
@@ -84,8 +84,8 @@ void ITunesLibraryParser::run()
         }
     }
 
-	while (! threadShouldExit())
-	{
+    while (! threadShouldExit())
+    {
         int currentItemId = -1;
         ValueTree newElement;
 
@@ -142,78 +142,78 @@ void ITunesLibraryParser::run()
 
         // check to see if we have reached the end
         if (currentElement == nullptr)
-		{
-			finished = true;
-			signalThreadShouldExit();
+        {
+            finished = true;
+            signalThreadShouldExit();
             break;
         }
 
-		if (currentElement->getTagName() == "dict")
-		{
+        if (currentElement->getTagName() == "dict")
+        {
             // cycle through items of each track
-			forEachXmlChildElement (*currentElement, e2)
-			{
+            forEachXmlChildElement (*currentElement, e2)
+            {
                 const String elementKey (e2->getAllSubText());
                 //const String elementValue (e2->getNextElement()->getAllSubText());
 
-				if (elementKey == "Kind")
+                if (elementKey == "Kind")
                 {
-					if (e2->getNextElement()->getAllSubText().contains ("audio file"))
-					{
+                    if (e2->getNextElement()->getAllSubText().contains ("audio file"))
+                    {
                         isAudioFile = true;
-						newElement.setProperty (MusicColumns::columnNames[MusicColumns::LibID], numAdded, nullptr);
-						numAdded++;
-					}
-				}
-				else if (elementKey == "Track Type")
+                        newElement.setProperty (MusicColumns::columnNames[MusicColumns::LibID], numAdded, nullptr);
+                        numAdded++;
+                    }
+                }
+                else if (elementKey == "Track Type")
                 {
                     // this is a file in iCloud, not a local, readable one
-					if (e2->getNextElement()->getAllSubText().contains ("Remote"))
-					{
+                    if (e2->getNextElement()->getAllSubText().contains ("Remote"))
+                    {
                         isAudioFile = false;
                         break;
-					}
-				}
+                    }
+                }
 
                 // and check the entry against each column
-				for(int i = 2; i < MusicColumns::numColumns; i++)
-				{
-					if (elementKey == MusicColumns::iTunesNames[i])
-					{
+                for(int i = 2; i < MusicColumns::numColumns; i++)
+                {
+                    if (elementKey == MusicColumns::iTunesNames[i])
+                    {
                         const String elementValue = e2->getNextElement()->getAllSubText();
 
-						if (i == MusicColumns::Length
-							|| i == MusicColumns::BPM
-							|| i == MusicColumns::LibID)
-						{
-							newElement.setProperty (MusicColumns::columnNames[i], elementValue.getIntValue(), nullptr);
-						}
+                        if (i == MusicColumns::Length
+                            || i == MusicColumns::BPM
+                            || i == MusicColumns::LibID)
+                        {
+                            newElement.setProperty (MusicColumns::columnNames[i], elementValue.getIntValue(), nullptr);
+                        }
                         else if (i == MusicColumns::Added
                                  || i == MusicColumns::Modified)
                         {
                             const int64 timeInMilliseconds (parseITunesDateString (elementValue).toMilliseconds());
                             newElement.setProperty (MusicColumns::columnNames[i], timeInMilliseconds, nullptr);
                         }
-						else
-						{
+                        else
+                        {
                             String textEntry (elementValue);
 
-							if (i == MusicColumns::Location)
-								textEntry = stripFileProtocolForLocal (elementValue);
+                            if (i == MusicColumns::Location)
+                                textEntry = stripFileProtocolForLocal (elementValue);
 
-							newElement.setProperty (MusicColumns::columnNames[i], textEntry, nullptr);
-						}
-					}
-				}
-			}
+                            newElement.setProperty (MusicColumns::columnNames[i], textEntry, nullptr);
+                        }
+                    }
+                }
+            }
 
-			if (isAudioFile == true)
+            if (isAudioFile == true)
             {
-				const ScopedLock sl (lock);
-				treeToFill.addChild (newElement, -1, nullptr);
-			}
+                const ScopedLock sl (lock);
+                treeToFill.addChild (newElement, -1, nullptr);
+            }
 
             currentElement = currentElement->getNextElement(); // move to next track
-		}
-	}
+        }
+    }
 }

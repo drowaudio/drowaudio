@@ -38,8 +38,8 @@
     This is very similar to a FileBrowserComponent expect it does not have the file
     list box, go up button etc.
  */
-class  BasicFileBrowser		:	public Component,
-								private FileBrowserListener,
+class  BasicFileBrowser        :    public Component,
+                                private FileBrowserListener,
                                 private FileFilter
 {
 public:
@@ -76,7 +76,7 @@ public:
         that a pointer is kept internally to this object, so
         make sure that it is not deleted before the browser object
         is deleted.
-	 */
+     */
     BasicFileBrowser (int flags,
                       const File& initialFileOrDirectory,
                       const FileFilter* fileFilter);
@@ -154,21 +154,21 @@ public:
      */
     void removeListener (FileBrowserListener* listener);
 
-	//==============================================================================
-	/** Enables the column resizer.
+    //==============================================================================
+    /** Enables the column resizer.
      */
-	void setResizeEnable(bool enableResize)
+    void setResizeEnable(bool enableResize)
     {
-		showResizer = enableResize;
-	}
+        showResizer = enableResize;
+    }
 
     /** Returns true if the resizer is enabled.
      */
-	bool getResizeEnabled()					{	return showResizer;			}
+    bool getResizeEnabled()                    {    return showResizer;            }
 
     /** Returns the width for the longest item in the list.
      */
-	int getLongestWidth();
+    int getLongestWidth();
 
     //==============================================================================
     /** @internal */
@@ -210,11 +210,11 @@ private:
     void sendListenerChangeMessage();
     bool isFileOrDirSuitable (const File& f) const;
 
-	bool showResizer;
-	ScopedPointer<ResizableCornerComponent> resizer;
-	ComponentBoundsConstrainer resizeLimits;
+    bool showResizer;
+    ScopedPointer<ResizableCornerComponent> resizer;
+    ComponentBoundsConstrainer resizeLimits;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicFileBrowser);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicFileBrowser);
 };
 
 #endif //DROWAUDIO_BASICFILEBROWSER_H

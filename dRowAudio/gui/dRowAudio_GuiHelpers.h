@@ -191,30 +191,30 @@ namespace GuiHelpers
      */
     enum IconType
     {
-		Stop,
-		Play,
-		Cue,
-		Pause,
-		Next,
-		Previous,
-		ShuffleForward,
-		ShuffleBack,
-		Eject,
-		Cross,
-		Add,
-		Search,
-		Power,
-		Bypass,
-		GoUp,
-		Infinity,
-		DownTriangle,
-		Info,
+        Stop,
+        Play,
+        Cue,
+        Pause,
+        Next,
+        Previous,
+        ShuffleForward,
+        ShuffleBack,
+        Eject,
+        Cross,
+        Add,
+        Search,
+        Power,
+        Bypass,
+        GoUp,
+        Infinity,
+        DownTriangle,
+        Info,
         Loop,
         Slow,
         Speaker,
         MutedSpeaker,
-		noIcons
-	};
+        noIcons
+    };
 
     /** Creates an icon in a given colour.
      */

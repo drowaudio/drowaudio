@@ -16,11 +16,11 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 
 
 #if ! defined (ffft_DynArray_HEADER_INCLUDED)
-#define	ffft_DynArray_HEADER_INCLUDED
+#define    ffft_DynArray_HEADER_INCLUDED
 
 #if defined (_MSC_VER)
-	#pragma once
-	#pragma warning (4 : 4250) // "Inherits via dominance."
+    #pragma once
+    #pragma warning (4 : 4250) // "Inherits via dominance."
 #endif
 
 
@@ -42,19 +42,19 @@ class DynArray
 
 public:
 
-	typedef	T	DataType;
+    typedef    T    DataType;
 
-						DynArray ();
-	explicit			DynArray (long size);
-						~DynArray ();
+                        DynArray ();
+    explicit            DynArray (long size);
+                        ~DynArray ();
 
-	inline long		size () const;
-	inline void		resize (long size);
+    inline long        size () const;
+    inline void        resize (long size);
 
-	inline const DataType &
-						operator [] (long pos) const;
-	inline DataType &
-						operator [] (long pos);
+    inline const DataType &
+                        operator [] (long pos) const;
+    inline DataType &
+                        operator [] (long pos);
 
 
 
@@ -68,8 +68,8 @@ protected:
 
 private:
 
-	DataType *		_data_ptr;
-	long				_len;
+    DataType *        _data_ptr;
+    long                _len;
 
 
 
@@ -77,24 +77,24 @@ private:
 
 private:
 
-						DynArray (const DynArray &other);
-	DynArray &		operator = (const DynArray &other);
-	bool				operator == (const DynArray &other);
-	bool				operator != (const DynArray &other);
+                        DynArray (const DynArray &other);
+    DynArray &        operator = (const DynArray &other);
+    bool                operator == (const DynArray &other);
+    bool                operator != (const DynArray &other);
 
-};	// class DynArray
-
-
-
-}	// namespace ffft
+};    // class DynArray
 
 
 
-#include	"DynArray.hpp"
+}    // namespace ffft
 
 
 
-#endif	// ffft_DynArray_HEADER_INCLUDED
+#include    "DynArray.hpp"
+
+
+
+#endif    // ffft_DynArray_HEADER_INCLUDED
 
 
 

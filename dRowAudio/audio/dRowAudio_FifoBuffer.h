@@ -51,19 +51,19 @@ class FifoBuffer
 {
 public:
     /** Creates a FifoBuffer with a given initial size. */
-	FifoBuffer (int initialSize)
+    FifoBuffer (int initialSize)
         : abstractFifo (initialSize)
-	{
-		buffer.malloc (abstractFifo.getTotalSize());
-	}
+    {
+        buffer.malloc (abstractFifo.getTotalSize());
+    }
 
     //==============================================================================
     /** Returns the number of samples in the buffer. */
-	inline int getNumAvailable() const
-	{
+    inline int getNumAvailable() const
+    {
         const ScopedLockType sl (lock);
-		return abstractFifo.getNumReady();
-	}
+        return abstractFifo.getNumReady();
+    }
 
     /** Returns the number of items free in the buffer. */
     inline int getNumFree() const
@@ -76,12 +76,12 @@ public:
         This does not keep any of the old data and will reset the buffer
         making the number available 0.
      */
-	inline void setSize (int newSize)
-	{
+    inline void setSize (int newSize)
+    {
         const ScopedLockType sl (lock);
-		abstractFifo.setTotalSize (newSize);
-		buffer.malloc (abstractFifo.getTotalSize());
-	}
+        abstractFifo.setTotalSize (newSize);
+        buffer.malloc (abstractFifo.getTotalSize());
+    }
 
     /** Sets the size of the buffer keeping as much of the
         existing data as possible.
@@ -89,23 +89,23 @@ public:
         This is a potentially time consuming operation and is only thread
         safe if a valid lock is used as the second template parameter.
      */
-	inline void setSizeKeepingExisting (int newSize)
-	{
+    inline void setSizeKeepingExisting (int newSize)
+    {
         const ScopedLockType sl (lock);
 
         const int numUsed = abstractFifo.getNumReady();
 
-		abstractFifo.setTotalSize (newSize);
-		buffer.realloc (newSize);
+        abstractFifo.setTotalSize (newSize);
+        buffer.realloc (newSize);
         abstractFifo.finishedWrite (numUsed);
-	}
+    }
 
     /** Returns the size of the buffer. */
-	inline int getSize() const
-	{
+    inline int getSize() const
+    {
         const ScopedLockType sl (lock);
-		return abstractFifo.getTotalSize();
-	}
+        return abstractFifo.getTotalSize();
+    }
 
     inline void reset()
     {
@@ -114,38 +114,38 @@ public:
     }
 
     /** Writes a number of samples into the buffer. */
-	void writeSamples (const ElementType* samples, int numSamples)
-	{
+    void writeSamples (const ElementType* samples, int numSamples)
+    {
         const ScopedLockType sl (lock);
 
-		int start1, size1, start2, size2;
-		abstractFifo.prepareToWrite (numSamples, start1, size1, start2, size2);
+        int start1, size1, start2, size2;
+        abstractFifo.prepareToWrite (numSamples, start1, size1, start2, size2);
 
-		if (size1 > 0)
-			memcpy (buffer.getData()+start1, samples, size1 * sizeof (ElementType));
+        if (size1 > 0)
+            memcpy (buffer.getData()+start1, samples, size1 * sizeof (ElementType));
 
-		if (size2 > 0)
-			memcpy (buffer.getData()+start2, samples+size1, size2 * sizeof (ElementType));
+        if (size2 > 0)
+            memcpy (buffer.getData()+start2, samples+size1, size2 * sizeof (ElementType));
 
-		abstractFifo.finishedWrite (size1 + size2);
-	}
+        abstractFifo.finishedWrite (size1 + size2);
+    }
 
     /** Reads a number of samples from the buffer into the array provided. */
-	void readSamples (ElementType* bufferToFill, int numSamples)
-	{
+    void readSamples (ElementType* bufferToFill, int numSamples)
+    {
         const ScopedLockType sl (lock);
 
-		int start1, size1, start2, size2;
-		abstractFifo.prepareToRead (numSamples, start1, size1, start2, size2);
+        int start1, size1, start2, size2;
+        abstractFifo.prepareToRead (numSamples, start1, size1, start2, size2);
 
-		if (size1 > 0)
-			memcpy (bufferToFill, buffer.getData() + start1, size1 * sizeof (ElementType));
+        if (size1 > 0)
+            memcpy (bufferToFill, buffer.getData() + start1, size1 * sizeof (ElementType));
 
-		if (size2 > 0)
-			memcpy (bufferToFill + size1, buffer.getData() + start2, size2 * sizeof (ElementType));
+        if (size2 > 0)
+            memcpy (bufferToFill + size1, buffer.getData() + start2, size2 * sizeof (ElementType));
 
-		abstractFifo.finishedRead (size1 + size2);
-	}
+        abstractFifo.finishedRead (size1 + size2);
+    }
 
     /** Removes a number of samples from the buffer. */
     void removeSamples (int numSamples)
@@ -172,8 +172,8 @@ public:
 
 private:
     //==============================================================================
-	AbstractFifo abstractFifo;
-	HeapBlock<ElementType> buffer;
+    AbstractFifo abstractFifo;
+    HeapBlock<ElementType> buffer;
     TypeOfCriticalSectionToUse lock;
 
     //==============================================================================

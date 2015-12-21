@@ -32,12 +32,12 @@
 #ifndef DROWAUDIO_FILTERINGAUDIOSOURCE_H
 #define DROWAUDIO_FILTERINGAUDIOSOURCE_H
 
-/**	An AudioSource that contains three settable filters to EQ the audio stream.
+/**    An AudioSource that contains three settable filters to EQ the audio stream.
  */
 class FilteringAudioSource : public AudioSource
 {
 public:
-	//==============================================================================
+    //==============================================================================
     enum FilterType
     {
         Low = 0,
@@ -53,9 +53,9 @@ public:
         numFilterSettings
     };
 
-	//==============================================================================
+    //==============================================================================
     /** Creates an FilteringAudioTransportSource.
-	 */
+     */
     FilteringAudioSource (AudioSource* inputSource,
                           bool deleteInputWhenDeleted);
 
@@ -67,13 +67,13 @@ public:
      */
     void setGain (FilterType setting, float newGain);
 
-	/** Toggles the filtering of the transport source.
-	 */
-	void setFilterSource (bool shouldFilter);
+    /** Toggles the filtering of the transport source.
+     */
+    void setFilterSource (bool shouldFilter);
 
-	/** Returns whether the source is being filtered or not.
-	 */
-	bool getFilterSource() const { return filterSource; }
+    /** Returns whether the source is being filtered or not.
+     */
+    bool getFilterSource() const { return filterSource; }
 
     //==============================================================================
     /** @internal */
@@ -87,16 +87,16 @@ private:
     //==============================================================================
     OptionalScopedPointer<AudioSource> input;
     float gains[numFilters];
-	IIRFilter filter[2][numFilters];
+    IIRFilter filter[2][numFilters];
 
     double sampleRate;
-	bool filterSource;
+    bool filterSource;
 
     //==============================================================================
     void resetFilters();
 
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilteringAudioSource);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilteringAudioSource);
 };
 
 #endif //DROWAUDIO_FILTERINGAUDIOSOURCE_H

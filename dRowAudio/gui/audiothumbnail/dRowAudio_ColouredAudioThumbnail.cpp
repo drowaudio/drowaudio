@@ -66,7 +66,7 @@ struct ColouredAudioThumbnail::MinMaxColourValue
 {
     char minValue;
     char maxValue;
-	Colour colour; //drow
+    Colour colour; //drow
 
     MinMaxColourValue() : minValue (0), maxValue (0), colour(Colour::fromHSV(0.0, 1.0f, 1.0f, 1.0f))
     {
@@ -87,10 +87,10 @@ struct ColouredAudioThumbnail::MinMaxColourValue
             maxValue = (char) jmin (127, maxValue + 1);
     }
 
-	inline void setColour(const Colour& newColour) noexcept
-	{
-		colour = newColour.withBrightness(1.0f);
-	}
+    inline void setColour(const Colour& newColour) noexcept
+    {
+        colour = newColour.withBrightness(1.0f);
+    }
 
     inline char getMinValue() const noexcept        { return minValue; }
     inline char getMaxValue() const noexcept        { return maxValue; }
@@ -108,23 +108,23 @@ struct ColouredAudioThumbnail::MinMaxColourValue
 
     inline void read (InputStream& input)
     {
-		//DBG("read from MinMaxColourValue");
+        //DBG("read from MinMaxColourValue");
         minValue = input.readByte();
         maxValue = input.readByte();
-		input.read ((void*)&colour, sizeof(Colour));
+        input.read ((void*)&colour, sizeof(Colour));
     }
 
     inline void write (OutputStream& output)
     {
         output.writeByte (minValue);
         output.writeByte (maxValue);
-		output.write ((void*)&colour, sizeof(Colour));
+        output.write ((void*)&colour, sizeof(Colour));
     }
 };
 
 //==============================================================================
-class ColouredAudioThumbnail::LevelDataSource   :	public TimeSliceClient,
-													public Timer
+class ColouredAudioThumbnail::LevelDataSource   :    public TimeSliceClient,
+                                                    public Timer
 {
 public:
     LevelDataSource (ColouredAudioThumbnail& owner_, AudioFormatReader* newReader, int64 hash)
@@ -162,15 +162,15 @@ public:
             numChannels = reader->numChannels;
             sampleRate = reader->sampleRate;
 
-			filterLow.makeBandPass (reader->sampleRate, 130.0, 2);
-			filterLowMid.makeBandPass (reader->sampleRate, 650.0, 2.0);
-			filterHighMid.makeBandPass (reader->sampleRate, 1300.0, 2.0);
-			filterHigh.makeHighPass (reader->sampleRate, 2700.0, 0.5);
+            filterLow.makeBandPass (reader->sampleRate, 130.0, 2);
+            filterLowMid.makeBandPass (reader->sampleRate, 650.0, 2.0);
+            filterHighMid.makeBandPass (reader->sampleRate, 1300.0, 2.0);
+            filterHigh.makeHighPass (reader->sampleRate, 2700.0, 0.5);
 
             filterLow.reset();
-			filterLowMid.reset();
-			filterHighMid.reset();
-			filterHigh.reset();
+            filterLowMid.reset();
+            filterHighMid.reset();
+            filterHigh.reset();
 
             if (lengthInSamples <= 0)
                 reader = 0;
@@ -187,10 +187,10 @@ public:
         if (reader != 0)
         {
             float l[4] = { 0 };
-			Colour colourLeft, colourRight;
+            Colour colourLeft, colourRight;
 
             readMaxLevelsFilteringWithColour (startSample, numSamples,
-											  l[0], l[1], l[2], l[3], colourLeft, colourRight);
+                                              l[0], l[1], l[2], l[3], colourLeft, colourRight);
             levels.clearQuick();
             levels.addArray ((const float*) l, 4);
 
@@ -305,17 +305,17 @@ private:
                 for (int i = 0; i < numThumbSamps; ++i)
                 {
                     float lowestLeft, highestLeft, lowestRight, highestRight;
-					Colour colourLeft, colourRight;
+                    Colour colourLeft, colourRight;
 
                     readMaxLevelsFilteringWithColour ((firstThumbIndex + i) * owner.samplesPerThumbSample, owner.samplesPerThumbSample,
-													  lowestLeft, highestLeft, lowestRight, highestRight,
-													  colourLeft, colourRight);
+                                                      lowestLeft, highestLeft, lowestRight, highestRight,
+                                                      colourLeft, colourRight);
 
                     levels[0][i].setFloat (lowestLeft, highestLeft);
                     levels[1][i].setFloat (lowestRight, highestRight);
 
-					levels[0][i].setColour(colourLeft);
-					levels[1][i].setColour(colourRight);
+                    levels[0][i].setColour(colourLeft);
+                    levels[1][i].setColour(colourRight);
                 }
 
                 {
@@ -491,7 +491,7 @@ private:
 };
 
 //==============================================================================
-/*	Holds the data for 1 cache sample and the methods required to rescale those.
+/*    Holds the data for 1 cache sample and the methods required to rescale those.
  */
 class ColouredAudioThumbnail::ThumbData
 {
@@ -542,42 +542,42 @@ public:
         result.set (1, 0);
     }
 
-	void getColour (int startSample, int endSample,  MinMaxColourValue& result) noexcept
-	{
-		const int numSamples = endSample - startSample;
+    void getColour (int startSample, int endSample,  MinMaxColourValue& result) noexcept
+    {
+        const int numSamples = endSample - startSample;
 
-		uint8 red = 0, green = 0, blue = 0;
+        uint8 red = 0, green = 0, blue = 0;
 
-		if (startSample >= 0)
-		{
-			endSample = jmin (endSample, data.size() - 1);
+        if (startSample >= 0)
+        {
+            endSample = jmin (endSample, data.size() - 1);
 
-			while (startSample <= endSample)
-			{
-				const MinMaxColourValue& v = data.getReference (startSample);
+            while (startSample <= endSample)
+            {
+                const MinMaxColourValue& v = data.getReference (startSample);
 
-				if (numSamples == 1)
-				{
-					result.colour = v.colour;
-					return;
-				}
+                if (numSamples == 1)
+                {
+                    result.colour = v.colour;
+                    return;
+                }
 
-				if (v.colour.getRed() > red) {
-					red = v.colour.getRed();
-				}
-				if (v.colour.getGreen() > green) {
-					green = v.colour.getGreen();
-				}
-				if (v.colour.getBlue() > blue) {
-					blue = v.colour.getBlue();
-				}
+                if (v.colour.getRed() > red) {
+                    red = v.colour.getRed();
+                }
+                if (v.colour.getGreen() > green) {
+                    green = v.colour.getGreen();
+                }
+                if (v.colour.getBlue() > blue) {
+                    blue = v.colour.getBlue();
+                }
 
-				++startSample;
-			}
-		}
+                ++startSample;
+            }
+        }
 
-		result.colour = Colour(red, green, blue);
-	}
+        result.colour = Colour(red, green, blue);
+    }
 
     void write (const MinMaxColourValue* const source, const int startIndex, const int numValues)
     {
@@ -676,11 +676,11 @@ public:
         }
     }
 
-	void drawColouredChannel (Graphics& g, const Rectangle<int>& area,
-							  const double startTime, const double endTime,
-							  const int channelNum, const float verticalZoomFactor,
-							  const double sampleRate, const int numChannels, const int samplesPerThumbSample,
-							  LevelDataSource* levelData, const OwnedArray<ThumbData>& channels)
+    void drawColouredChannel (Graphics& g, const Rectangle<int>& area,
+                              const double startTime, const double endTime,
+                              const int channelNum, const float verticalZoomFactor,
+                              const double sampleRate, const int numChannels, const int samplesPerThumbSample,
+                              LevelDataSource* levelData, const OwnedArray<ThumbData>& channels)
     {
         refillCache (area.getWidth(), startTime, endTime, sampleRate,
                      numChannels, samplesPerThumbSample, levelData, channels);
@@ -702,12 +702,12 @@ public:
                 for (int w = clip.getWidth(); --w >= 0;)
                 {
                     if (cacheData->isNonZero())
-					{
-						// set colour of line //drow
-						g.setColour (cacheData->colour);
+                    {
+                        // set colour of line //drow
+                        g.setColour (cacheData->colour);
                         g.drawVerticalLine (x, jmax (midY - cacheData->maxValue * vscale - 0.3f, topY),
-											jmin (midY - cacheData->minValue * vscale + 0.3f, bottomY));
-					}
+                                            jmin (midY - cacheData->minValue * vscale + 0.3f, bottomY));
+                    }
 
                     ++x;
                     ++cacheData;
@@ -755,7 +755,7 @@ private:
         {
             int sample = roundToInt (startTime * sampleRate);
             Array<float> levels;
-			Array<Colour> colours;
+            Array<Colour> colours;
 
             int i;
             for (i = 0; i < numSamples; ++i)
@@ -772,11 +772,11 @@ private:
                     const int numChans = jmin (levels.size() / 2, numChannelsCached);
 
                     for (int chan = 0; chan < numChans; ++chan)
-					{
+                    {
                         getData (chan, i)->setFloat (levels.getUnchecked (chan * 2),
                                                      levels.getUnchecked (chan * 2 + 1));
-						getData (chan, i)->setColour(colours.getUnchecked(chan));
-					}
+                        getData (chan, i)->setColour(colours.getUnchecked(chan));
+                    }
                 }
 
                 startTime += timePerPixel;
@@ -804,7 +804,7 @@ private:
                     const int nextSample = roundToInt ((startTime + timePerPixel) * timeToThumbSampleFactor);
 
                     channelData->getMinMax (sample, nextSample, *cacheData);
-					channelData->getColour(sample, nextSample, *cacheData);
+                    channelData->getColour(sample, nextSample, *cacheData);
 
                     ++cacheData;
                     startTime += timePerPixel;
@@ -833,9 +833,9 @@ private:
 
 //==============================================================================
 ColouredAudioThumbnail::ColouredAudioThumbnail (const int originalSamplesPerThumbnailSample,
-												AudioFormatManager& formatManagerToUse_,
-												AudioThumbnailCache& cacheToUse)
-:	formatManagerToUse (formatManagerToUse_),
+                                                AudioFormatManager& formatManagerToUse_,
+                                                AudioThumbnailCache& cacheToUse)
+:    formatManagerToUse (formatManagerToUse_),
     cache (cacheToUse),
     window (new CachedWindow()),
     samplesPerThumbSample (originalSamplesPerThumbnailSample),
@@ -981,7 +981,7 @@ int64 ColouredAudioThumbnail::getHashCode() const
 }
 
 void ColouredAudioThumbnail::addBlock (const int64 startSample, const AudioSampleBuffer& incoming,
-									   int startOffsetInBuffer, int numSamples)
+                                       int startOffsetInBuffer, int numSamples)
 {
     jassert (startSample >= 0);
 
@@ -1087,12 +1087,12 @@ void ColouredAudioThumbnail::drawChannel (Graphics& g, const Rectangle<int>& are
 }
 
 void ColouredAudioThumbnail::drawColouredChannel (Graphics& g, const Rectangle<int>& area, double startTime,
-												  double endTime, int channelNum, float verticalZoomFactor)
+                                                  double endTime, int channelNum, float verticalZoomFactor)
 {
     const ScopedLock sl (lock);
 
     window->drawColouredChannel (g, area, startTime, endTime, channelNum, verticalZoomFactor,
-								 sampleRate, numChannels, samplesPerThumbSample, source, channels);
+                                 sampleRate, numChannels, samplesPerThumbSample, source, channels);
 }
 
 void ColouredAudioThumbnail::drawChannels (Graphics& g, const Rectangle<int>& area, double startTimeSeconds,

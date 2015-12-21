@@ -16,17 +16,17 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 
 
 #if ! defined (ffft_FFTRealSelect_HEADER_INCLUDED)
-#define	ffft_FFTRealSelect_HEADER_INCLUDED
+#define    ffft_FFTRealSelect_HEADER_INCLUDED
 
 #if defined (_MSC_VER)
-	#pragma once
+    #pragma once
 #endif
 
 
 
 /*\\\ INCLUDE FILES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
-#include	"def.h"
+#include    "def.h"
 
 
 
@@ -43,8 +43,8 @@ class FFTRealSelect
 
 public:
 
-	ffft_FORCEINLINE static float *
-						sel_bin (float *e_ptr, float *o_ptr);
+    ffft_FORCEINLINE static float *
+                        sel_bin (float *e_ptr, float *o_ptr);
 
 
 
@@ -52,26 +52,26 @@ public:
 
 private:
 
-						FFTRealSelect ();
-						~FFTRealSelect ();
-						FFTRealSelect (const FFTRealSelect &other);
-	FFTRealSelect&	operator = (const FFTRealSelect &other);
-	bool				operator == (const FFTRealSelect &other);
-	bool				operator != (const FFTRealSelect &other);
+                        FFTRealSelect ();
+                        ~FFTRealSelect ();
+                        FFTRealSelect (const FFTRealSelect &other);
+    FFTRealSelect&    operator = (const FFTRealSelect &other);
+    bool                operator == (const FFTRealSelect &other);
+    bool                operator != (const FFTRealSelect &other);
 
-};	// class FFTRealSelect
-
-
-
-}	// namespace ffft
+};    // class FFTRealSelect
 
 
 
-#include	"FFTRealSelect.hpp"
+}    // namespace ffft
 
 
 
-#endif	// ffft_FFTRealSelect_HEADER_INCLUDED
+#include    "FFTRealSelect.hpp"
+
+
+
+#endif    // ffft_FFTRealSelect_HEADER_INCLUDED
 
 
 

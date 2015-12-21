@@ -53,22 +53,22 @@ public:
     Sonogram (int fftSizeLog2);
 
     /** Destructor. */
-	~Sonogram();
+    ~Sonogram();
 
     /** @internal */
-	void resized();
+    void resized();
 
     /** @internal */
-	void paint (Graphics &g);
+    void paint (Graphics &g);
 
     //==============================================================================
     /** Sets the scope to display in log or normal mode.
      */
-	void setLogFrequencyDisplay (bool shouldDisplayLog);
+    void setLogFrequencyDisplay (bool shouldDisplayLog);
 
     /** Returns true if the scope is being displayed in log mode.
      */
-	inline bool getLogFrequencyDisplay() const     {	return logFrequency;	}
+    inline bool getLogFrequencyDisplay() const     {    return logFrequency;    }
 
     /** Sets the width for one block of fft data. This must be greater than 0.
         Higher values will effectively cause the scope to move faster.
@@ -80,31 +80,31 @@ public:
     int getBlockWidth() const;
 
     //==============================================================================
-	/** Copy a set of samples, ready to be processed.
+    /** Copy a set of samples, ready to be processed.
         Your audio callback should continually call this method to pass it its
         audio data. When the scope has enough samples to perform an fft it will do
         so on a background thread and redraw itself.
      */
-	void copySamples (const float* samples, int numSamples);
+    void copySamples (const float* samples, int numSamples);
 
     /** @internal */
-	void timerCallback();
+    void timerCallback();
 
     /** @internal */
-	void process();
+    void process();
 
     //==============================================================================
     /** @internal */
-	void flagForRepaint();
+    void flagForRepaint();
 
 private:
     //==============================================================================
-	FFTEngine fftEngine;
-	int numBins;
-	bool needsRepaint;
-	HeapBlock<float> tempBlock;
-	FifoBuffer<float> circularBuffer;
-	bool logFrequency;
+    FFTEngine fftEngine;
+    int numBins;
+    bool needsRepaint;
+    HeapBlock<float> tempBlock;
+    FifoBuffer<float> circularBuffer;
+    bool logFrequency;
     float scopeLineW;
     Image scopeImage, tempImage;
 

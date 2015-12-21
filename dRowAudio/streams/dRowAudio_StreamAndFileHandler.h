@@ -57,15 +57,15 @@ public:
     };
 
     //==============================================================================
-	/** Creates an empty StreamAndFileHandler. */
-	StreamAndFileHandler()
+    /** Creates an empty StreamAndFileHandler. */
+    StreamAndFileHandler()
         : inputType (noInput),
           inputStream (nullptr)
     {
     }
 
-	/** Destructor. */
-	virtual ~StreamAndFileHandler()                     {}
+    /** Destructor. */
+    virtual ~StreamAndFileHandler()                     {}
 
     //==============================================================================
     /** Clears all the internal references to any files or streams. */
@@ -161,10 +161,10 @@ public:
     }
 
     //==============================================================================
-	/** Sets the source to a File.
+    /** Sets the source to a File.
         @returns true if the file loaded correctly
      */
-	bool setFile (const File& newFile)
+    bool setFile (const File& newFile)
     {
         inputType = file;
         inputStream = nullptr;
@@ -197,10 +197,10 @@ public:
         return streamChanged (inputStream);
     }
 
-	/** Returns the current file if it was set with a one.
+    /** Returns the current file if it was set with a one.
         If a stream was used this will return File::nonexistant.
      */
-	const File& getFile() const noexcept                       { return currentFile; }
+    const File& getFile() const noexcept                       { return currentFile; }
 
     //==============================================================================
     /** Subclasses must override this to be informed of when a file changes.
@@ -222,10 +222,10 @@ public:
 private:
     //==============================================================================
     InputType inputType;
-	File currentFile;
+    File currentFile;
     InputStream* inputStream;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StreamAndFileHandler)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StreamAndFileHandler)
 };
 
 #endif // DROWAUDIO_STREAMANDFILEHANDLER_H

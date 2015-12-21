@@ -212,16 +212,16 @@ public:
      */
     void performFFT (float* samples);
 
-    /**	This will fill the internal buffer with the magnitudes of the last performed FFT.
+    /**    This will fill the internal buffer with the magnitudes of the last performed FFT.
         You can then get this buffer using getMagnitudesBuffer(). Remember that
         the size of the buffer is the fftSizeHalved + 1 to incorporate the Nyquist.
      */
     void findMagnitudes()                               { findMagnitues (magnitutes.getData(), false); }
 
-    /**	Fills a provided buffer with the magnitudes of the last performed FFT. */
+    /**    Fills a provided buffer with the magnitudes of the last performed FFT. */
     void findMagnitudes (Buffer& bufferToFill)          { findMagnitues (bufferToFill.getData(), false); }
 
-    /**	This will fill the buffer with the magnitudes of the last performed FFT if they are bigger.
+    /**    This will fill the buffer with the magnitudes of the last performed FFT if they are bigger.
         You can then get this buffer using getMagnitudesBuffer(). Remember that
         the size of the buffer is the fftSizeHalved + 1 to incorporate the Nyquist.
      */

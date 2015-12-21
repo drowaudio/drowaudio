@@ -36,20 +36,20 @@ MusicLibraryTable::MusicLibraryTable()
       filteredNumRows   (dataList.getNumChildren()),
       finishedLoading   (true)
 {
-	// Create our table component and add it to this component..
-	addAndMakeVisible (&table);
+    // Create our table component and add it to this component..
+    addAndMakeVisible (&table);
     table.setModel (this);
     table.setMultipleSelectionEnabled (true);
-//	table.setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
-	table.setHeaderHeight (18);
-	table.setRowHeight (16);
-	table.getViewport()->setScrollBarThickness (10);
+//    table.setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
+    table.setHeaderHeight (18);
+    table.setRowHeight (16);
+    table.getViewport()->setScrollBarThickness (10);
 
-	// give it a border
-//	table.setColour (ListBox::outlineColourId, Colours::grey);
-	table.setOutlineThickness (1);
+    // give it a border
+//    table.setColour (ListBox::outlineColourId, Colours::grey);
+    table.setOutlineThickness (1);
 
-	// Add some MusicColumns to the table header
+    // Add some MusicColumns to the table header
     for (int i = 1; i < MusicColumns::numColumns; i++)
     {
         table.getHeader().addColumn (MusicColumns::columnNames[i].toString(),
@@ -60,31 +60,31 @@ MusicLibraryTable::MusicLibraryTable()
                                      TableHeaderComponent::defaultFlags);
     }
 
-	// we could now change some initial settings..
-	table.getHeader().setSortColumnId (MusicColumns::Artist, true); // sort forwards by the Artist column
+    // we could now change some initial settings..
+    table.getHeader().setSortColumnId (MusicColumns::Artist, true); // sort forwards by the Artist column
 
-	table.getHeader().setColumnVisible (MusicColumns::LibID, false);
-	table.getHeader().setColumnVisible (MusicColumns::ID, false);
-	table.getHeader().setColumnVisible (MusicColumns::Rating, false);
-	table.getHeader().setColumnVisible (MusicColumns::Location, false);
-	table.getHeader().setColumnVisible (MusicColumns::Modified, false);
+    table.getHeader().setColumnVisible (MusicColumns::LibID, false);
+    table.getHeader().setColumnVisible (MusicColumns::ID, false);
+    table.getHeader().setColumnVisible (MusicColumns::Rating, false);
+    table.getHeader().setColumnVisible (MusicColumns::Location, false);
+    table.getHeader().setColumnVisible (MusicColumns::Modified, false);
 
-	setFilterText (String::empty);
+    setFilterText (String::empty);
 }
 
 MusicLibraryTable::~MusicLibraryTable()
 {
-	if (currentLibrary != nullptr)
-		currentLibrary->removeListener(this);
+    if (currentLibrary != nullptr)
+        currentLibrary->removeListener(this);
 }
 
 void MusicLibraryTable::setLibraryToUse (ITunesLibrary* library)
 {
-	currentLibrary = library;
+    currentLibrary = library;
 
-	filteredDataList = dataList = library->getLibraryTree();
-	dataList = library->getLibraryTree();
-	library->addListener(this);
+    filteredDataList = dataList = library->getLibraryTree();
+    dataList = library->getLibraryTree();
+    library->addListener(this);
 }
 
 void MusicLibraryTable::setFilterText (const String& filterString)
@@ -94,91 +94,91 @@ void MusicLibraryTable::setFilterText (const String& filterString)
     if (currentLibrary != nullptr)
         currentLibrary->getParserLock().enter();
 
-	if (filterString == String::empty)
-	{
-		filteredDataList = dataList;
-		filteredNumRows = filteredDataList.getNumChildren();
-	}
-	else
-	{
-		filteredDataList = ValueTree (dataList.getType());
+    if (filterString == String::empty)
+    {
+        filteredDataList = dataList;
+        filteredNumRows = filteredDataList.getNumChildren();
+    }
+    else
+    {
+        filteredDataList = ValueTree (dataList.getType());
 
-		for (int e = 0; e < dataList.getNumChildren(); ++e)
-		{
-			for (int i = 0; i < dataList.getChild (e).getNumProperties(); i++)
-			{
-				if (dataList.getChild (e)[MusicColumns::columnNames[i]].toString().containsIgnoreCase (filterString))
-				{
-					filteredDataList.addChild (dataList.getChild(e).createCopy(), -1, 0);
-					break;
-				}
-			}
-		}
+        for (int e = 0; e < dataList.getNumChildren(); ++e)
+        {
+            for (int i = 0; i < dataList.getChild (e).getNumProperties(); i++)
+            {
+                if (dataList.getChild (e)[MusicColumns::columnNames[i]].toString().containsIgnoreCase (filterString))
+                {
+                    filteredDataList.addChild (dataList.getChild(e).createCopy(), -1, 0);
+                    break;
+                }
+            }
+        }
 
-		filteredNumRows = filteredDataList.getNumChildren();
-	}
+        filteredNumRows = filteredDataList.getNumChildren();
+    }
 
     if (currentLibrary != nullptr)
         currentLibrary->getParserLock().exit();
 
-	table.getHeader().reSortTable();
+    table.getHeader().reSortTable();
 }
 
 //==============================================================================
 void MusicLibraryTable::libraryChanged (ITunesLibrary* library)
 {
-	if (library == currentLibrary)
-	{
-		finishedLoading = false;
-		filteredDataList = dataList = currentLibrary->getLibraryTree();
+    if (library == currentLibrary)
+    {
+        finishedLoading = false;
+        filteredDataList = dataList = currentLibrary->getLibraryTree();
         updateTableFilteredAndSorted();
     }
 }
 
 void MusicLibraryTable::libraryUpdated (ITunesLibrary* library)
 {
-	if (library == currentLibrary)
+    if (library == currentLibrary)
         updateTableFilteredAndSorted();
 }
 
 void MusicLibraryTable::libraryFinished (ITunesLibrary* library)
 {
-	if (library == currentLibrary)
-	{
-		finishedLoading = true;
+    if (library == currentLibrary)
+    {
+        finishedLoading = true;
         updateTableFilteredAndSorted();
-	}
+    }
 }
 
 //==============================================================================
 int MusicLibraryTable::getNumRows()
 {
-	return filteredNumRows;
+    return filteredNumRows;
 }
 
 void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/,
                                             int /*width*/, int /*height*/, bool rowIsSelected)
 {
-	if (rowIsSelected)
-		g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true) ? selectedBackgroundColourId
+    if (rowIsSelected)
+        g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true) ? selectedBackgroundColourId
                                                                                     : selectedUnfocusedBackgroundColourId));
-	else
-		g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true) ? backgroundColourId
+    else
+        g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true) ? backgroundColourId
                                                                                     : unfocusedBackgroundColourId));
 }
 
 void MusicLibraryTable::paintCell (Graphics& g,
-								   int rowNumber,
-								   int columnId,
-								   int width, int height,
-								   bool rowIsSelected)
+                                   int rowNumber,
+                                   int columnId,
+                                   int width, int height,
+                                   bool rowIsSelected)
 {
     if (table.hasKeyboardFocus (true))
         g.setColour (DefaultColours::getInstance().findColour (*this, rowIsSelected ? selectedTextColourId : textColourId));
     else
         g.setColour (DefaultColours::getInstance().findColour (*this, rowIsSelected ? selectedUnfocusedTextColourId : unfocusedTextColourId));
 
-	g.setFont (font);
+    g.setFont (font);
 
     {
         const ScopedLock sl (currentLibrary->getParserLock());
@@ -205,38 +205,38 @@ void MusicLibraryTable::paintCell (Graphics& g,
     else
         g.setColour (DefaultColours::getInstance().findColour (*this, rowIsSelected ? selectedUnfocusedOutlineColourId : unfocusedOutlineColourId));
 
-	g.fillRect (width - 1, 0, 1, height);
-	g.fillRect (0, height - 1, width, 1);
+    g.fillRect (width - 1, 0, 1, height);
+    g.fillRect (0, height - 1, width, 1);
 }
 
 void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
 {
     findSelectedRows();
 
-	if (newSortColumnId != 0)
-	{
+    if (newSortColumnId != 0)
+    {
         const ScopedLock sl (currentLibrary->getParserLock());
 
-		if (newSortColumnId == MusicColumns::Length
-			|| newSortColumnId == MusicColumns::BPM
-			|| newSortColumnId == MusicColumns::LibID
-			|| newSortColumnId == MusicColumns::ID
+        if (newSortColumnId == MusicColumns::Length
+            || newSortColumnId == MusicColumns::BPM
+            || newSortColumnId == MusicColumns::LibID
+            || newSortColumnId == MusicColumns::ID
             || newSortColumnId == MusicColumns::Added
             || newSortColumnId == MusicColumns::Modified)
-		{
-			ValueTreeComparators::Numerical<double> sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
-			filteredDataList.sort (sorter, 0, false);
-		}
-		else
         {
-			ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
+            ValueTreeComparators::Numerical<double> sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
+            filteredDataList.sort (sorter, 0, false);
+        }
+        else
+        {
+            ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
                                                                   MusicColumns::columnNames[MusicColumns::LibID],
                                                                   isForwards);
-			filteredDataList.sort (sorter, 0, false);
-		}
+            filteredDataList.sort (sorter, 0, false);
+        }
 
-		table.updateContent();
-	}
+        table.updateContent();
+    }
 
     setSelectedRows();
 }
@@ -244,11 +244,11 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
 //==========================================================================================
 int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
 {
-	int widest = 32;
+    int widest = 32;
 
-	// find the widest bit of text in this column..
-	for (int i = getNumRows(); --i >= 0;)
-	{
+    // find the widest bit of text in this column..
+    for (int i = getNumRows(); --i >= 0;)
+    {
         {
             const ScopedLock sl (currentLibrary->getParserLock());
             const ValueTree& rowElement (filteredDataList.getChild (i));
@@ -259,28 +259,28 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
                 widest = jmax (widest, font.getStringWidth (text));
             }
         }
-	}
+    }
 
-	return widest + 8;
+    return widest + 8;
 }
 
 //==============================================================================
 void MusicLibraryTable::resized()
 {
-	table.setBounds (getLocalBounds());
+    table.setBounds (getLocalBounds());
 }
 
 void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType /*cause*/)
 {
-	repaint();
+    repaint();
 }
 
 var MusicLibraryTable::getDragSourceDescription (const SparseSet<int>& currentlySelectedRows)
 {
     var itemsArray;
 
-	if(! currentlySelectedRows.isEmpty())
-	{
+    if(! currentlySelectedRows.isEmpty())
+    {
         for (int i = 0; i < currentlySelectedRows.size(); ++i)
         {
             const ScopedLock sl (currentLibrary->getParserLock());
@@ -291,7 +291,7 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet<int>& currently
             ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
             itemsArray.append (childTree.getObject());
         }
-	}
+    }
 
     return itemsArray;
 }
