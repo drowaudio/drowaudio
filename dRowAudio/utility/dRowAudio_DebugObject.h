@@ -152,7 +152,7 @@ private:
         if (xml == nullptr)
             return "invalid XmlElement";
 
-        return String (newLine) + xml->createDocument (String::empty, false, includeXmlHeader);
+        return static_cast<String> (newLine) + xml->createDocument (String::empty, false, includeXmlHeader);
     }
 
     String getStringFromValueTree() const
