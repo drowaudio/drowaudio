@@ -36,8 +36,7 @@
 
 #include "dRowAudio_CURLManager.h"
 
-//==============================================================================
-/**    Creates a CURLEasySession.
+/** Creates a CURLEasySession.
 
     One of these is used to handle a specific transfer optionally on a
     background thread. Either create one on the stack for quick tranfers and
@@ -50,92 +49,89 @@
 class CURLEasySession : public TimeSliceClient
 {
 public:
-    //==============================================================================
     /** Creates an uninitialised CURLEasySession.
+
         You will need to set up the transfer using setLocalFile() and setRemotePath()
         and then call beginTransfer() to actucally perform the transfer.
-     */
+    */
     CURLEasySession();
 
     /** Creates a session and performs the transfer.
-     */
-    CURLEasySession (String localPath,
-                     String remotePath,
+    */
+    CURLEasySession (const String& localPath,
+                     const String& remotePath,
                      bool upload,
-                     String username = String::empty,
-                     String password = String::empty);
+                     const String& username = String::empty,
+                     const String& password = String::empty);
 
-    /** Destructor. */
+    /** Destructor */
     ~CURLEasySession();
 
     //==============================================================================
-    /** Sets the the source of an upload to an input stream.
-     */
+    /** Sets the the source of an upload to an input stream. */
     void setInputStream (InputStream* newInputStream);
 
-    /** Sets the local file to either upload or download into.
-     */
-    void setLocalFile (File newLocalFile);
+    /** Sets the local file to either upload or download into. */
+    void setLocalFile (const File& newLocalFile);
 
     /** Returns the local file being used.
+
         If an input stream has been specified this will return File::nonexistent.
-     */
-    File getLocalFile()     {    return localFile;    }
+    */
+    const File& getLocalFile() const { return localFile; }
 
     /** Sets the remote path to use.
+
         This can be a complete path with a file name. If so the path will be used
         as the destination file for an upload or as the source for a download.
         If this ends with a '/' character a random file name will be generated.
-     */
-    void setRemotePath (String newRemotePath);
+    */
+    void setRemotePath (const String& newRemotePath);
 
     /** Returns the remote path being used.
-        If this ends with a '/' character it specifies a directory.
-     */
-    String getRemotePath()  {    return remotePath;    }
 
-    /**    Sets the user name and password of the connection.
-     This is only used if required by the connection to the server.
-     */
-    void setUserNameAndPassword (String username, String password);
+        If this ends with a '/' character it specifies a directory.
+    */
+    const String& getRemotePath() const { return remotePath; }
+
+    /** Sets the user name and password of the connection.
+        This is only used if required by the connection to the server.
+    */
+    void setUserNameAndPassword (const String& username, const String& password);
 
     //==============================================================================
-    /** Returns the current working directory of the remote server.
-     */
-    String getCurrentWorkingDirectory();
+    /** Returns the current working directory of the remote server. */
+    String getCurrentWorkingDirectory() const;
 
-    /**    Returns the directory listing of the remote file.
-     */
+    /**    Returns the directory listing of the remote file. */
     StringArray getDirectoryListing();
 
-    /** Returns the content type of the current remote path.
-     */
+    /** Returns the content type of the current remote path. */
     //String getContentType(); // not yet ready
 
     //==============================================================================
-    /**    Turns on full debugging information.
+    /** Turns on full debugging information.
+
         This is probably best turned off in release builds to avoid littering the console.
-     */
+    */
     void enableFullDebugging (bool shouldEnableFullDebugging);
 
-    /**    Begins the transfer.
+    /** Begins the transfer.
+
         Returns an error code or an empty String if everything is set up ok.
         The transfer will actually take place on a background thread so use getLastError()
         to determine the last error that occured.
-     */
+    */
     void beginTransfer (bool transferIsUpload, bool performOnBackgroundThread = true);
 
-    /** Stops the current transfer.
-     */
+    /** Stops the current transfer. */
     void stopTransfer();
 
-    /** Resets the state of the session to the parameters that have been specified.
-     */
+    /** Resets the state of the session to the parameters that have been specified. */
     void reset();
 
-    /** Returns the progress of the current transfer.
-     */
-    float getProgress()            {   return progress.get();  }
+    /** Returns the progress of the current transfer. */
+    float getProgress() const { return progress.get(); }
 
     //==============================================================================
     /** A class for receiving callbacks from a CURLEasySession.
@@ -143,22 +139,20 @@ public:
         Note that these callbacks will be called from the transfer thread so make sure
         any code within them is thread safe!
      */
-    class  Listener
+    class Listener
     {
     public:
-        //==============================================================================
-        /** Destructor. */
+        /** Destructor */
         virtual ~Listener() {}
 
-        //==============================================================================
         /** Called when a transfer is about to start. */
-        virtual void transferAboutToStart (CURLEasySession* /*session*/) {};
+        virtual void transferAboutToStart (CURLEasySession* /*session*/) {}
 
         /** Called when a transfer is about to start. */
-        virtual void transferProgressUpdate (CURLEasySession* /*session*/) {};
+        virtual void transferProgressUpdate (CURLEasySession* /*session*/) {}
 
         /** Called when a transfer is about to start. */
-        virtual void transferEnded (CURLEasySession* /*session*/) {};
+        virtual void transferEnded (CURLEasySession* /*session*/) {}
     };
 
     /** Adds a listener to be called when this slider's value changes. */
@@ -169,7 +163,7 @@ public:
 
     //==============================================================================
     /** @internal */
-    int useTimeSlice();
+    int useTimeSlice() override;
 
 private:
     //==============================================================================

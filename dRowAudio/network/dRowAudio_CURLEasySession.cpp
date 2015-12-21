@@ -1,32 +1,32 @@
 /*
-  ==============================================================================
+    ==============================================================================
 
-  This file is part of the dRowAudio JUCE module
-  Copyright 2004-13 by dRowAudio.
+    This file is part of the dRowAudio JUCE module
+    Copyright 2004-13 by dRowAudio.
 
-  ------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------
 
-  dRowAudio is provided under the terms of The MIT License (MIT):
+    dRowAudio is provided under the terms of The MIT License (MIT):
 
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
 
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
 
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
 
-  ==============================================================================
+    ==============================================================================
 */
 
 #if DROWAUDIO_USE_CURL
@@ -34,29 +34,29 @@
 } //namespace drow
 
 #if JUCE_WINDOWS
- #include "curl/include/curl/curl.h"
+    #include "curl/include/curl/curl.h"
 #else
- #include <curl/curl.h>
+    #include <curl/curl.h>
 #endif
 
-namespace drow {
+namespace drow
+{
 
 //==============================================================================
 CURLEasySession::CURLEasySession()
-    : handle      (CURLManager::getInstance()->createEasyCurlHandle()),
-      remotePath  (String::empty),
-      progress    (1.0f)
+    : handle (CURLManager::getInstance()->createEasyCurlHandle()),
+      progress (1.0f)
 {
     enableFullDebugging (true);
     curl_easy_setopt (handle, CURLOPT_NOPROGRESS, false);
 }
 
-CURLEasySession::CURLEasySession (String localPath,
-                                  String remotePath,
+CURLEasySession::CURLEasySession (const String& localPath,
+                                  const String& remotePath,
                                   bool upload,
-                                  String username,
-                                  String password)
-    : handle      (CURLManager::getInstance()->createEasyCurlHandle())
+                                  const String& username,
+                                  const String& password)
+    : handle (CURLManager::getInstance()->createEasyCurlHandle())
 {
     handle = CURLManager::getInstance()->createEasyCurlHandle();
     enableFullDebugging (true);
@@ -84,13 +84,13 @@ void CURLEasySession::setInputStream (InputStream* newInputStream)
     inputStream = newInputStream;
 }
 
-void CURLEasySession::setLocalFile (File newLocalFile)
+void CURLEasySession::setLocalFile (const File& newLocalFile)
 {
     localFile = newLocalFile;
     inputStream = localFile.createInputStream();
 }
 
-void CURLEasySession::setRemotePath (String newRemotePath)
+void CURLEasySession::setRemotePath (const String& newRemotePath)
 {
     remotePath = newRemotePath;
 
@@ -100,23 +100,22 @@ void CURLEasySession::setRemotePath (String newRemotePath)
     curl_easy_setopt (handle, CURLOPT_URL, remotePath.toUTF8().getAddress());
 }
 
-void CURLEasySession::setUserNameAndPassword (String username, String password)
+void CURLEasySession::setUserNameAndPassword (const String& username, const String& password)
 {
-    userNameAndPassword = username << ":" << password;
+    userNameAndPassword = username + ":" + password;
     curl_easy_setopt (handle, CURLOPT_USERPWD, userNameAndPassword.toUTF8().getAddress());
 }
 
 //==============================================================================
-String CURLEasySession::getCurrentWorkingDirectory()
+String CURLEasySession::getCurrentWorkingDirectory() const
 {
     char url[1000];
-
     CURLcode res = curl_easy_getinfo (handle, CURLINFO_EFFECTIVE_URL, url);
 
     if (res == CURLE_OK && CharPointer_ASCII::isValidString (url, 1000))
         return String (url);
-    else
-        return String::empty;
+
+    return String::empty;
 }
 
 StringArray CURLEasySession::getDirectoryListing()
@@ -132,7 +131,7 @@ StringArray CURLEasySession::getDirectoryListing()
     curl_easy_setopt (handle, CURLOPT_WRITEDATA, this);
     curl_easy_setopt (handle, CURLOPT_WRITEFUNCTION, directoryListingCallback);
 
-    // perform  the tranfer
+    // perform the tranfer
     progress = 0.0f;
     CURLcode result = curl_easy_perform (handle);
     reset();
@@ -141,13 +140,10 @@ StringArray CURLEasySession::getDirectoryListing()
     {
         StringArray list;
         list.addLines (directoryContentsList.toString().trim());
-
         return list;
     }
-    else
-    {
-        return StringArray (curl_easy_strerror (result));
-    }
+
+    return StringArray (curl_easy_strerror (result));
 }
 
 // not yet ready
@@ -246,9 +242,7 @@ size_t CURLEasySession::readCallback (void* destinationPointer, size_t blockSize
     if (session != nullptr)
     {
         if (session->inputStream.get() == nullptr)
-        {
             return CURL_READFUNC_ABORT; /* failure, can't open file to read */
-        }
 
         return session->inputStream->read (destinationPointer, int (blockSize * numBlocks));
     }
@@ -285,7 +279,7 @@ int CURLEasySession::performTransfer (bool transferIsUpload)
     curl_easy_setopt (handle, CURLOPT_PROGRESSDATA, this);
     curl_easy_setopt (handle, CURLOPT_PROGRESSFUNCTION, internalProgressCallback);
 
-    if (transferIsUpload == true)
+    if (transferIsUpload)
     {
         // sets the pointer to be passed to the read callback
         curl_easy_setopt (handle, CURLOPT_READDATA, this);
@@ -317,6 +311,4 @@ int CURLEasySession::performTransfer (bool transferIsUpload)
     return result;
 }
 
-
-
-#endif
+#endif //DROWAUDIO_USE_CURL

@@ -29,8 +29,8 @@
   ==============================================================================
 */
 
-#ifndef __CONNECTIONCOMPONENT_H_48116F81__
-#define __CONNECTIONCOMPONENT_H_48116F81__
+#ifndef CONNECTION_COMPONENT_H
+#define CONNECTION_COMPONENT_H
 
 #include "../DemoHeader.h"
 
@@ -40,29 +40,20 @@ class ConnectionComponent : public Component,
                             public Button::Listener
 {
 public:
-
     ConnectionComponent();
-
-    ~ConnectionComponent();
 
     void setCURLSessionToControl (CURLEasySession* sessionToControl);
 
-    void resized();
-
-    void buttonClicked (Button* button);
-
     //==============================================================================
-    /**
-     Used to receive callbacks when a connection is changed.
-     */
+    /** Used to receive callbacks when a connection is changed. */
     class Listener
     {
     public:
-        /** Destructor. */
-        virtual ~Listener()                                     {}
+        /** Destructor */
+        virtual ~Listener() {}
 
         /** Called when the button is clicked. */
-        virtual void connectionChanged (ConnectionComponent* /*connectionComponent*/)    {}
+        virtual void connectionChanged (ConnectionComponent* /*connectionComponent*/) {}
     };
 
     void addListener (Listener* newListener);
@@ -70,9 +61,13 @@ public:
     void removeListener (Listener* listener);
 
     //==============================================================================
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void buttonClicked (Button* button) override;
 
 private:
-
+    //==============================================================================
     CURLEasySession* curlSession;
     ListenerList <Listener> listeners;
 
@@ -80,7 +75,10 @@ private:
     TextEditor urlEditor, hostnameEditor, usernameEditor, passwordEditor;
     ComboBox protocolBox;
     TextButton connectButton;
+
+    //==============================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ConnectionComponent)
 };
 
-#endif
-#endif  // __CONNECTIONCOMPONENT_H_48116F81__
+#endif  // DROWAUDIO_USE_CURL
+#endif  // CONNECTION_COMPONENT_H

@@ -48,10 +48,13 @@
 #endif
 
 #if DROWAUDIO_USE_CURL && JUCE_WINDOWS
+  #pragma comment (lib, "Wldap32.lib")
+  #pragma comment (lib, "ws2_32.lib")
+
  #if JUCE_DEBUG
-  #pragma comment (lib "dRowAudio/network/curl/lib/libcurldebug.lib")
+  #pragma comment (lib, __FILE__"/../network/curl/lib/libcurldebug.lib")
  #else
-  #pragma comment (lib "dRowAudio/network/curl/lib/libcurlrelease.lib")
+  #pragma comment (lib, __FILE__"/../network/curl/lib/libcurlrelease.lib")
  #endif
 #endif
 
@@ -75,6 +78,7 @@ namespace drow
     #include "audio/fft/dRowAudio_FFT.cpp"
     #include "audio/fft/dRowAudio_LTAS.cpp"
     #include "gui/dRowAudio_AudioFileDropTarget.cpp"
+    #include "gui/dRowAudio_DefaultColours.cpp"
     #include "gui/dRowAudio_GraphicalComponent.cpp"
     #include "gui/dRowAudio_AudioOscilloscope.cpp"
     #include "gui/dRowAudio_AudioTransportCursor.cpp"
