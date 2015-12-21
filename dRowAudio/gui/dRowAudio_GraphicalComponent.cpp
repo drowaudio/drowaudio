@@ -29,8 +29,6 @@
   ==============================================================================
 */
 
-
-
 GraphicalComponent::GraphicalComponent()
     : paused (false),
       needToProcess (true),
@@ -40,10 +38,6 @@ GraphicalComponent::GraphicalComponent()
     samples.malloc (numSamples);
 
     startTimer (30);
-}
-
-GraphicalComponent::~GraphicalComponent()
-{
 }
 
 int GraphicalComponent::useTimeSlice()

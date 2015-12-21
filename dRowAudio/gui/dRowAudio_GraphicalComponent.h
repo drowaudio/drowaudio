@@ -53,12 +53,8 @@ protected:
     GraphicalComponent();
 
 public:
-    //==============================================================================
-    /**    Destructor.
-     */
-    ~GraphicalComponent();
+    /** Overload to do your processing.
 
-    /**    Overload to do your processing.
         Once registered with a GraphicalComponentManager this will repeatedly get called.
         To save CPU cycles this will only get called if paused is false and some new data
         has been set with copySamples(). The idea is that you push some new data to your
@@ -68,11 +64,11 @@ public:
 
     /**    Pauses the processing of the GraphicalComponent.
      */
-    void pause (bool shouldPause) {    paused = shouldPause; }
+    void pause (bool shouldPause) { paused = shouldPause; }
 
     /**    Returns true if the processing is currently suspended.
      */
-    bool isPaused() const {    return paused; }
+    bool isPaused() const { return paused; }
 
     //==============================================================================
     /** Copies data to the component to use.
