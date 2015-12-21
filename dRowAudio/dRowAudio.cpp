@@ -1,30 +1,41 @@
 /*
-  ==============================================================================
-  
-  This file is part of the dRowAudio JUCE module
-  Copyright 2004-12 by dRowAudio.
-  
-  ------------------------------------------------------------------------------
- 
-  dRowAudio can be redistributed and/or modified under the terms of the GNU General
-  Public License (Version 2), as published by the Free Software Foundation.
-  A copy of the license is included in the module distribution, or can be found
-  online at www.gnu.org/licenses.
-  
-  dRowAudio is distributed in the hope that it will be useful, but WITHOUT ANY
-  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-  A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-  
-  ==============================================================================
+    ==============================================================================
+
+    This file is part of the dRowAudio JUCE module
+    Copyright 2004-13 by dRowAudio.
+
+    ------------------------------------------------------------------------------
+
+    dRowAudio is provided under the terms of The MIT License (MIT):
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+    ==============================================================================
 */
 
-#ifdef __DROWAUDIO_JUCEHEADER__
-    /*  When you add this cpp file to your project, you mustn't include it in a file where you've
+#ifdef DROWAUDIO_HEADER_H
+    /** When you add this cpp file to your project, you mustn't include it in a file where you've
         already included any other headers - just put it inside a file on its own, possibly with your config
         flags preceding it, but don't include anything else. That also includes avoiding any automatic prefix
         header files that the compiler may be using.
-     */
-#error "Incorrect use of DROWAUDIO cpp file"
+    */
+    #error "Incorrect use of DROWAUDIO cpp file"
 #endif
 
 // Your project must contain an AppConfig.h file with your project-specific settings in it,
@@ -42,6 +53,11 @@
 #endif
 
 #include "dRowAudio.h"
+
+#if JUCE_MSVC
+    #pragma warning (push)
+    #pragma warning (disable: 4458)
+#endif
 
 #if DROWAUDIO_USE_SOUNDTOUCH
  #include "audio/soundtouch/SoundTouch_Source.cpp"
@@ -114,3 +130,7 @@ namespace drow
     #include "utility/dRowAudio_UnityBuilder.cpp"
     #include "utility/dRowAudio_UnityProjectBuilder.cpp"
 }
+
+#if JUCE_MSVC
+    #pragma warning (pop)
+#endif

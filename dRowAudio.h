@@ -38,7 +38,7 @@
     enable this setting fftreal can be used for testing purposes.
 */
 #ifndef DROWAUDIO_USE_FFTREAL
-    #if (! JUCE_MAC)
+    #if ! JUCE_MAC
         #define DROWAUDIO_USE_FFTREAL 1
     #endif
 #endif

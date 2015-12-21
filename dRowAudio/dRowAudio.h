@@ -29,8 +29,8 @@
     ==============================================================================
 */
 
-#ifndef DROWAUDIOHEADER_H
-#define DROWAUDIOHEADER_H
+#ifndef DROWAUDIO_HEADER_H
+#define DROWAUDIO_HEADER_H
 
 /**
     @mainpage dRowAudio - A JUCE module for high level audio application development.
@@ -194,6 +194,12 @@
 #endif
 
 //=============================================================================
+#if JUCE_MSVC
+    #pragma warning (push)
+    #pragma warning (disable: 4458)
+#endif
+
+//=============================================================================
 // fftReal needs to be outside of the drow namespace
 #if DROWAUDIO_USE_FFTREAL
     #include "audio/fft/fftreal/FFTReal.h"
@@ -276,4 +282,8 @@ namespace drow
     #pragma clang diagnostic pop
 #endif
 
-#endif //DROWAUDIOHEADER_H
+#if JUCE_MSVC
+    #pragma warning (pop)
+#endif
+
+#endif //DROWAUDIO_HEADER_H
