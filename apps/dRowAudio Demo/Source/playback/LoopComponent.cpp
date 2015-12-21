@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -36,14 +36,14 @@ LoopComponent::LoopComponent (AudioFilePlayerExt& audioFilePlayer_)
     : audioFilePlayer (audioFilePlayer_)
 {
     setInterceptsMouseClicks (false, true);
-    
+
     audioFilePlayer.addListener (this);
-    
+
     marker1.setBounds (50, 0, 3, getHeight());
     marker2.setBounds (150, 0, 3, getHeight());
     addAndMakeVisible (&marker1);
     addAndMakeVisible (&marker2);
-    
+
     marker1.addComponentListener (this);
     marker2.addComponentListener (this);
 }
@@ -80,7 +80,7 @@ void LoopComponent::fileChanged (AudioFilePlayer* player)
             const double w = getWidth();
             const double startTime = (jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
             const double endTime = (jmax (marker1.getRight(), marker2.getRight()) / w) * audioFilePlayer.getLengthInSeconds();
-            
+
             audioFilePlayer.setLoopTimes (startTime, endTime);
         }
     }
@@ -96,7 +96,7 @@ void LoopComponent::componentMovedOrResized (Component& /*component*/, bool /*wa
 
         audioFilePlayer.setLoopTimes (startTime, endTime);
     }
-    
+
     AudioPlaybackDemo* demo = dynamic_cast<AudioPlaybackDemo*> (getParentComponent());
     if (demo != nullptr)
     {

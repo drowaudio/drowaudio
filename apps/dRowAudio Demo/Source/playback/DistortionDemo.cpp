@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -41,7 +41,7 @@ DistortionDemo::DistortionDemo (BufferTransformAudioSource& bufferTransformAudio
     addAndMakeVisible (&resetButton);
     resetButton.setButtonText ("Reset");
     resetButton.addListener (this);
-    
+
     addAndMakeVisible (&bypassButton);
     bypassButton.setButtonText ("Bypass");
     bypassButton.setClickingTogglesState (true);
@@ -53,7 +53,7 @@ void DistortionDemo::resized()
     const int w = getWidth();
     const int h = getHeight();
     const int m = 4;
-    
+
     distortionComponent.setBounds (m, m, (w / 2) - (2 * m), h - (2 * m));
     resetButton.setBounds ((int) (w * 0.75f) - 80 - (m / 2), h - 20 - m, 80, 20);
     bypassButton.setBounds (resetButton.getBounds().translated (resetButton.getWidth() + m, 0));
@@ -66,13 +66,13 @@ void DistortionDemo::paint (Graphics& g)
     const int m = 5;
 
 //    g.fillAll (Colours::darkgrey);
-    
+
     GuiHelpers::drawBevel (g, distortionComponent.getBounds().toFloat(), (float) m, Colours::darkgrey);
-    
+
     g.setColour (Colours::white);
     g.setFont (Font (20, Font::underlined));
     g.drawSingleLineText ("Distortion Demo", (int) (w * 0.75f), 20, Justification::horizontallyCentred);
-    
+
     g.setFont (Font (14, Font::plain));
     String text;
     text << "This graph demonstrates the Buffer and BufferTransformAudioSource classes." << newLine << newLine

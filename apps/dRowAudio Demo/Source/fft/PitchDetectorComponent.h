@@ -19,20 +19,20 @@ class PitchDetectorComponent :  public Component,
 public:
     PitchDetectorComponent();
 
-	//==============================================================================
+    //==============================================================================
     void setLogFrequencyDisplay (bool shouldDisplayLogFrequency);
 
     void setSampleRate (double newSampleRate);
 
     void processBlock (const float* inputChannelData, int numSamples);
 
-	//==============================================================================
+    //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
     void timerCallback() override;
 
 private:
-	//==============================================================================
+    //==============================================================================
     bool displayLogFrequency;
     double sampleRate, pitch;
     AudioSampleBuffer sampleBuffer;
@@ -41,10 +41,10 @@ private:
     StateVariable<int> pitchXCoord;
     String pitchString;
     Label pitchLabel;
-    
+
     CriticalSection detectorLock;
-    
-	//==============================================================================
+
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PitchDetectorComponent)
 };
 

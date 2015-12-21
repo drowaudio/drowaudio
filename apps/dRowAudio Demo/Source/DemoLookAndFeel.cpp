@@ -30,19 +30,19 @@ void DemoLookAndFeel::drawButtonBackground (Graphics& g,
     ColourGradient cg (baseColour.brighter (0.5f), 0.0f, 0.0f,
                        baseColour.darker (0.5f), 0.0f, (float)height,
                        false);
-    
+
     Rectangle<float> bounds (g.getClipBounds().toFloat().reduced (0.0f, 1.0f));
     g.setGradientFill (cg);
     g.fillRoundedRectangle (bounds, 4.0f);
-    
+
     bounds.setX (bounds.getX() + 0.5f);
     bounds.setWidth (bounds.getWidth() - 1.0f);
     bounds.setY (bounds.getY() - 0.5f);
     bounds.setHeight (bounds.getHeight());
-    
+
     g.setColour (Colours::black);
     g.drawRoundedRectangle (bounds, 4.0f, 1.0f);
-    
+
     ColourGradient highlight (Colours::white.withAlpha (0.1f), 2.0f, (float)height,
                               Colours::white.withAlpha (0.1f), width - 2.0f, (float)height,
                               false);

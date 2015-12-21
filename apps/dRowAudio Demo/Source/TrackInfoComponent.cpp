@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -35,7 +35,7 @@ TrackInfoComponent::TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer_)
     : audioFilePlayer (audioFilePlayer_)
 {
     audioFilePlayer.addListener (this);
-    
+
     addAndMakeVisible (&bpmLabel);
     addAndMakeVisible (&remainLabel);
 
@@ -44,10 +44,10 @@ TrackInfoComponent::TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer_)
 
     bpmLabel.setText ("...", dontSendNotification);
     remainLabel.setText ("--:--", dontSendNotification);
-    
+
     bpmLabel.setColour (Label::textColourId, Colours::white);
     remainLabel.setColour (Label::textColourId, Colours::white);
-    
+
     startTimer (40);
 }
 
@@ -61,7 +61,7 @@ void TrackInfoComponent::resized()
     const int w = getWidth();
     //const int h = getHeight();
     const int m = 5;
-    
+
     bpmLabel.setBounds (w - 50, m, 50, 20);
     remainLabel.setBounds (w - 100, bpmLabel.getBottom() + m, 100, 20);
 }
@@ -74,9 +74,9 @@ void TrackInfoComponent::paint (Graphics& g)
 
     g.setColour (Colours::white);
     g.setFont (20);
-    
+
     ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
-    
+
     if (trackInfo.isValid())
     {
         String infoText;
@@ -84,7 +84,7 @@ void TrackInfoComponent::paint (Graphics& g)
         infoText << trackInfo[MusicColumns::columnNames[MusicColumns::Song]].toString() << "\n";
         infoText << trackInfo[MusicColumns::columnNames[MusicColumns::Album]].toString() << "\n";
         infoText << trackInfo[MusicColumns::columnNames[MusicColumns::BPM]].toString();
-        
+
         g.setFont (16);
         g.drawText (trackInfo[MusicColumns::columnNames[MusicColumns::Artist]].toString(),
                     m, m, w - (2 * m), 16,
@@ -96,14 +96,14 @@ void TrackInfoComponent::paint (Graphics& g)
                           m, 16 + (2 * m), w - (2 * m), 20,
                           Justification::centredLeft,
                           true);
-        
+
         g.setColour (Colours::lightgrey);
         g.setFont (12);
         g.drawText (trackInfo[MusicColumns::columnNames[MusicColumns::Album]].toString(),
                     m, 36 + (3 * m), w - (2 * m), 12,
                     Justification::centredLeft,
                     true);
-        
+
     }
     else
     {
@@ -112,7 +112,7 @@ void TrackInfoComponent::paint (Graphics& g)
             displayText = "No Track Info Available";
         else
             displayText = "Drop Tracks Here to Begin...";
-        
+
         g.drawFittedText (displayText,
                           0, 0, w, h,
                           Justification (Justification::centred),
@@ -135,10 +135,10 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
     {
         ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
         double bpm = trackInfo[MusicColumns::columnNames[MusicColumns::BPM]].toString().getDoubleValue();
-        
+
         if (audioFilePlayer.getSoundTouchAudioSource() != nullptr)
             bpm *= audioFilePlayer.getSoundTouchAudioSource()->getSoundTouchProcessor().getEffectivePlaybackRatio();
-        
+
         bpmLabel.setText (String (bpm, 2), dontSendNotification);
     }
 }

@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -37,69 +37,69 @@
 #if DROWAUDIO_USE_CURL
 
 class RemoteDirectoryListBoxModel : public ListBoxModel,
-									public ChangeBroadcaster
+                                    public ChangeBroadcaster
 {
 public:
-	
-	RemoteDirectoryListBoxModel();
-	
-	~RemoteDirectoryListBoxModel();
-	
-	void setCURLSession(CURLEasySession *sessionToControl);
-	
-	void refresh();
-	
-	int getNumRows();
 
-	void paintListBoxItem (int rowNumber,
-						   Graphics& g,
+    RemoteDirectoryListBoxModel();
+
+    ~RemoteDirectoryListBoxModel();
+
+    void setCURLSession(CURLEasySession *sessionToControl);
+
+    void refresh();
+
+    int getNumRows();
+
+    void paintListBoxItem (int rowNumber,
+                           Graphics& g,
                            int width, int height,
-                           bool rowIsSelected);	
-	
-	void setContents(StringArray newContents);
-	
-	void listBoxItemDoubleClicked(int row, const MouseEvent &e);
-	
-	var getDragSourceDescription (const SparseSet<int> &currentlySelectedRows);
+                           bool rowIsSelected);
+
+    void setContents(StringArray newContents);
+
+    void listBoxItemDoubleClicked(int row, const MouseEvent &e);
+
+    var getDragSourceDescription (const SparseSet<int> &currentlySelectedRows);
 
 private:
-	
-	StringArray itemList;
-	CURLEasySession* curlSession;
+
+    StringArray itemList;
+    CURLEasySession* curlSession;
 };
 
 
-class RemoteDirectoryListBox :	public ListBox,
-								public ChangeListener,
-								public DragAndDropTarget
+class RemoteDirectoryListBox :    public ListBox,
+                                public ChangeListener,
+                                public DragAndDropTarget
 {
 public:
-	RemoteDirectoryListBox();
-	
-	~RemoteDirectoryListBox();
+    RemoteDirectoryListBox();
+
+    ~RemoteDirectoryListBox();
 
     void paintOverChildren (Graphics& g);
 
-	CURLEasySession& getCURLSession()	{	return session;	}
-	
-	String getLastUrl()	{	return session.getCurrentWorkingDirectory();	}
-	
-	void refresh();
-	
-	void changeListenerCallback(ChangeBroadcaster* source);
-	
-	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
-	
+    CURLEasySession& getCURLSession()    {    return session;    }
+
+    String getLastUrl()    {    return session.getCurrentWorkingDirectory();    }
+
+    void refresh();
+
+    void changeListenerCallback(ChangeBroadcaster* source);
+
+    bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
+
     void itemDragEnter (const SourceDetails& dragSourceDetails);
-    
+
     void itemDragExit (const SourceDetails& dragSourceDetails);
-    
+
     void itemDropped (const SourceDetails& dragSourceDetails);
-	
+
 private:
-	
-	RemoteDirectoryListBoxModel model;
-	CURLEasySession session;
+
+    RemoteDirectoryListBoxModel model;
+    CURLEasySession session;
     bool isInterestedInDrag;
 };
 

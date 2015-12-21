@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -34,47 +34,47 @@
 #if DROWAUDIO_USE_CURL
 
 NetworkDemo::NetworkDemo()
-//:	localBrowser(FileBrowserComponent::openMode
-//				 + FileBrowserComponent::canSelectFiles
-//				 + FileBrowserComponent::canSelectDirectories,
-//				 File::getSpecialLocation(File::currentExecutableFile),
-//				 nullptr)
+//:    localBrowser(FileBrowserComponent::openMode
+//                 + FileBrowserComponent::canSelectFiles
+//                 + FileBrowserComponent::canSelectDirectories,
+//                 File::getSpecialLocation(File::currentExecutableFile),
+//                 nullptr)
 {
-	addAndMakeVisible(&connectionComponent);
-	connectionComponent.addListener(this);
-	connectionComponent.setCURLSessionToControl(&remoteBrowser.getCURLSession());
-	
-	addAndMakeVisible(&localBrowser);
-	addAndMakeVisible(&remoteBrowser);
-	
-	localBrowser.setComponentID("local");
-	remoteBrowser.setComponentID("remote");
+    addAndMakeVisible(&connectionComponent);
+    connectionComponent.addListener(this);
+    connectionComponent.setCURLSessionToControl(&remoteBrowser.getCURLSession());
+
+    addAndMakeVisible(&localBrowser);
+    addAndMakeVisible(&remoteBrowser);
+
+    localBrowser.setComponentID("local");
+    remoteBrowser.setComponentID("remote");
 }
 
 NetworkDemo::~NetworkDemo()
 {
-	connectionComponent.removeListener(this);
+    connectionComponent.removeListener(this);
 }
 
 void NetworkDemo::resized()
 {
-	const int w = getWidth();
-	const int h = getHeight();
+    const int w = getWidth();
+    const int h = getHeight();
 
-	connectionComponent.setBounds(0, 0, w, 100);
-	localBrowser.setBounds(0, connectionComponent.getBottom()+5, w/2-2, h-connectionComponent.getBottom()-5);
-	remoteBrowser.setBounds(localBrowser.getRight()+2, connectionComponent.getBottom()+5, w/2-2, h-connectionComponent.getBottom()-5);
-//	localBrowser.setBounds("0, 0, parent.width/2-2, parent.height");
-//	remoteBrowser.setBounds("(remote.right)+2, 0, (parent.width/2)-2, parent.height");
+    connectionComponent.setBounds(0, 0, w, 100);
+    localBrowser.setBounds(0, connectionComponent.getBottom()+5, w/2-2, h-connectionComponent.getBottom()-5);
+    remoteBrowser.setBounds(localBrowser.getRight()+2, connectionComponent.getBottom()+5, w/2-2, h-connectionComponent.getBottom()-5);
+//    localBrowser.setBounds("0, 0, parent.width/2-2, parent.height");
+//    remoteBrowser.setBounds("(remote.right)+2, 0, (parent.width/2)-2, parent.height");
 }
 
 void NetworkDemo::connectionChanged (ConnectionComponent* changedConnectionComponent)
 {
-	if (changedConnectionComponent == &connectionComponent)
-	{
-		DBG("connection changed");
-		remoteBrowser.refresh();
-	}
+    if (changedConnectionComponent == &connectionComponent)
+    {
+        DBG("connection changed");
+        remoteBrowser.refresh();
+    }
 }
 
 void NetworkDemo::buttonClicked(Button* /*button*/)

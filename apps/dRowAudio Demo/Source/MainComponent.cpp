@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -56,13 +56,13 @@ MainComponent::MainComponent()
     addAndMakeVisible (&meterR);
     addAndMakeVisible (&tabbedComponent);
     addAndMakeVisible (&cpuMeter);
-              
+
     meterThread.addTimeSliceClient (&meterL);
     meterThread.addTimeSliceClient (&meterR);
     meterThread.startThread (1);
 //    meterThread.addGraphicalComponent (&meterL);
 //    meterThread.addGraphicalComponent (&meterR);
-    
+
     addAndMakeVisible (&clock);
     clock.setColour (Label::textColourId, Colours::white);
     clock.setJustificationType (Justification::centred);
@@ -70,16 +70,16 @@ MainComponent::MainComponent()
     cpuMeter.setTextColour (Colours::red);
     cpuMeter.setJustificationType (Justification::centred);
     cpuMeter.setBorderSize (BorderSize<int>());
-    
+
     addAndMakeVisible (&searchBox);
     searchBox.addListener (this);
     searchBox.setTextToShowWhenEmpty ("search...", Colours::grey);
-    
+
     tabbedComponent.addTab ("Audio Playback",
                             Colours::grey,
                             new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource),
                             true);
-        
+
     File libraryFile (File::getSpecialLocation (File::userDesktopDirectory)
                                                 .getChildFile ("dRowAudio Demo Library.xml"));
     ValueTree libraryTree (readValueTreeFromFile (libraryFile));
@@ -87,11 +87,11 @@ MainComponent::MainComponent()
     ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     MusicLibraryTable* musicLibraryTable = new MusicLibraryTable();
     musicLibraryTable->setLibraryToUse (ITunesLibrary::getInstance());
-    
+
     musicLibraryTable->getTableListBox().setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
     musicLibraryTable->getTableListBox().setColour (ListBox::outlineColourId, Colours::grey);
     musicLibraryTable->getTableListBox().setColour (ListBox::textColourId, Colours::darkgrey);
-    
+
     tabbedComponent.addTab ("iTunes Library",
                             Colours::grey, musicLibraryTable, true);
 
@@ -99,20 +99,20 @@ MainComponent::MainComponent()
                                                                                           "*",
                                                                                           "Audio Files"));
     tabbedComponent.addTab ("Column File Browser",
-                            Colours::grey, 
-                            columnFileBrowser, 
+                            Colours::grey,
+                            columnFileBrowser,
                             true);
 
     fftDemo = new FFTDemo();
     tabbedComponent.addTab ("FFT Demo",
-                            Colours::grey, 
-                            fftDemo, 
+                            Colours::grey,
+                            fftDemo,
                             true);
-    
+
 #if DROWAUDIO_USE_CURL
     tabbedComponent.addTab ("CURL Demo",
-                            Colours::grey, 
-                            new NetworkDemo(), 
+                            Colours::grey,
+                            new NetworkDemo(),
                             true);
 #endif
 
@@ -129,11 +129,11 @@ MainComponent::~MainComponent()
     meterThread.removeTimeSliceClient (&meterL);
     meterThread.removeTimeSliceClient (&meterR);
     meterThread.stopThread (500);
-    
+
     audioSourcePlayer.setSource (nullptr);
     audioDeviceManager.removeAudioCallback (this);
 //    audioDeviceManager.removeAudioCallback (fftDemo);
-    
+
     File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
     ValueTree libraryTree (ITunesLibrary::getInstance()->getLibraryTree());
     writeValueTreeToFile (libraryTree, libraryFile);
@@ -152,7 +152,7 @@ void MainComponent::resized()
     cpuMeter.setBounds (clock.getRight(), 0, w - clock.getRight(), clock.getHeight());
     meterL.setBounds(transport.getRight() + 5, cpuMeter.getBottom(), 15, trackInfoComponent.getHeight() - cpuMeter.getHeight());
     meterR.setBounds(meterL.getRight() + 5, cpuMeter.getBottom(), 15, trackInfoComponent.getHeight() - cpuMeter.getHeight());
-    
+
     tabbedComponent.setBounds (0, trackInfoComponent.getBottom(), w, h - trackInfoComponent.getBottom());
     searchBox.setBounds (transport.getX(), tabbedComponent.getY() + 5, w - transport.getX() - 5, tabbedComponent.getTabBarDepth() - 10);
 }
@@ -163,10 +163,10 @@ void MainComponent::textEditorTextChanged (TextEditor& editor)
     {
         MusicLibraryTable* musicLibraryTable = static_cast<MusicLibraryTable*> (tabbedComponent.getTabContentComponent (1));
         musicLibraryTable->setFilterText (searchBox.getText());
-        
+
         if (tabbedComponent.getCurrentTabName() != "iTunes Library")
             tabbedComponent.setCurrentTabIndex (1, true);
-        
+
         searchBox.grabKeyboardFocus();
     }
 }
@@ -182,12 +182,12 @@ void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
                                              outputChannelData,
                                              numOutputChannels,
                                              numSamples);
-    
+
     if (fftDemo->isShowing())
         fftDemo->processBlock (outputChannelData[0], numSamples);
-    
+
     meterL.copySamples (outputChannelData[0], numSamples);
-    
+
     if (numOutputChannels > 1)
         meterR.copySamples (outputChannelData[1], numSamples);
 }

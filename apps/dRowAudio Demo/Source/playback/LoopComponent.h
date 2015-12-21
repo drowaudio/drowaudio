@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -37,7 +37,7 @@
 //==============================================================================
 class LoopMarker :  public Component
 {
-public:    
+public:
     LoopMarker()
         : isMouseOver (false)
     {
@@ -48,12 +48,12 @@ public:
     {
         constrainer.setMinimumOnscreenAmounts (getHeight(), getWidth(), getHeight(), getWidth());
     }
-    
+
     void paint (Graphics& g) override
     {
         g.fillAll (isMouseOver ? Colours::red.withAlpha (0.9f) : Colours::red.withAlpha (0.7f));
     }
-    
+
     void mouseEnter (const MouseEvent&) override
     {
         setMouseCursor (MouseCursor::PointingHandCursor);
@@ -67,12 +67,12 @@ public:
         isMouseOver = false;
         repaint();
     }
-    
+
     void mouseDown (const MouseEvent& e) override
     {
         setMouseCursor (MouseCursor::DraggingHandCursor);
         dragger.startDraggingComponent (this, e);
-    } 
+    }
 
     void mouseUp (const MouseEvent&) override
     {
@@ -83,7 +83,7 @@ public:
     {
         dragger.dragComponent (this, e, &constrainer);
     }
-    
+
 private:
     //==============================================================================
     ComponentDragger dragger;
@@ -96,28 +96,28 @@ class LoopComponent :   public Component,
                         public ComponentListener,
                         public AudioFilePlayer::Listener
 {
-public:    
+public:
     //==============================================================================
     LoopComponent (AudioFilePlayerExt& audioFilePlayer);
-    
+
     ~LoopComponent();
-    
+
     void resized();
-    
+
     void paint (Graphics& g);
-    
+
     void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized);
 
     void fileChanged (AudioFilePlayer* player);
-    
+
     void audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode);
 
 private:
     //==============================================================================
     AudioFilePlayerExt& audioFilePlayer;
-    
+
     LoopMarker marker1, marker2;
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopComponent);
 };

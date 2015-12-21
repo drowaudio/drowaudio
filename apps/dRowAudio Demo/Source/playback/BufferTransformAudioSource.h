@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -43,11 +43,11 @@ public:
     //==============================================================================
     /** Setting this to true does not apply the buffer. */
     void setBypass (bool shouldBypass);
-    
+
     /** Returns all of the settings.
      */
     Buffer& getBuffer()     {   return buffer;    }
-        
+
     //==============================================================================
     /** @internal */
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
@@ -55,13 +55,13 @@ public:
     void releaseResources() override;
     /** @internal */
     void getNextAudioBlock (const AudioSourceChannelInfo& info) override;
-        
+
 private:
     //==============================================================================
     OptionalScopedPointer<AudioSource> source;
     Buffer buffer;
     bool isBypassed;
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BufferTransformAudioSource);
 };

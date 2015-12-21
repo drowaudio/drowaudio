@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -41,12 +41,12 @@
 class AudioPlaybackDemo :   public Component,
                             public Slider::Listener
 {
-public:    
+public:
     AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer,
                        BufferTransformAudioSource& bufferTransformAudioSource);
-    
+
     ~AudioPlaybackDemo();
-    
+
     //==============================================================================
     void resized() override;
     void paint (Graphics& g) override;
@@ -54,7 +54,7 @@ public:
 
 private:
     //==============================================================================
-    enum PlayerControls 
+    enum PlayerControls
     {
         lowEQ,
         midEQ,
@@ -68,14 +68,14 @@ private:
     AudioFilePlayerExt& audioFilePlayer;
 
     LoopComponent loopComponent;
-    
+
     GroupComponent filterGroup, rateGroup;
     Slider resolutionSlider, zoomSlider;
     Label resolutionLabel, zoomLabel;
 
     OwnedArray<Slider> playerControls;
     OwnedArray<Label> playerControlLabels;
-    
+
     TimeSliceThread backgroundThread;
     AudioThumbnailCache audioThumbnailCache;
 #if JUCE_MAC
@@ -86,11 +86,11 @@ private:
     ScopedPointer<AudioThumbnailImage> audioThumbnailImage;
     ScopedPointer<PositionableWaveDisplay> positionableWaveDisplay;
     ScopedPointer<DraggableWaveDisplay> draggableWaveDisplay;
-    
+
     DistortionDemo distortionDemo;
-    
+
     friend class LoopComponent;
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPlaybackDemo);
 };
 

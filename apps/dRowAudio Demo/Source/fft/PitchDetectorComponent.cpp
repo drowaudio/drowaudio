@@ -19,7 +19,7 @@ PitchDetectorComponent::PitchDetectorComponent()
 {
     addAndMakeVisible (&pitchLabel);
     pitchLabel.setColour (Label::textColourId, Colour::greyLevel (0.9f));
-    
+
     startTimer (25);
 }
 
@@ -61,7 +61,7 @@ void PitchDetectorComponent::timerCallback()
 void PitchDetectorComponent::setSampleRate (double newSampleRate)
 {
     sampleRate = newSampleRate;
-    
+
     const ScopedLock sl (detectorLock);
     pitchDetector.setSampleRate (sampleRate);
 }

@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -37,28 +37,28 @@ FFTDemo::FFTDemo()
       sonogram (11)
 {
     pitchDetector.setSampleRate (44100.0);
-    
+
     addAndMakeVisible (&audioOscilloscope);
     addAndMakeVisible (&spectroscope);
     addAndMakeVisible (&pitchDetector);
     addAndMakeVisible (&sonogram);
-    
+
     renderThread.addTimeSliceClient (&spectroscope);
     renderThread.addTimeSliceClient (&sonogram);
     renderThread.startThread (3);
-    
+
     addAndMakeVisible (&logSpectroscopeButton);
     addAndMakeVisible (&logSonogramButton);
-    
+
     logSpectroscopeButton.setButtonText ("Log Frequency Scale");
     logSonogramButton.setButtonText ("Log Frequency Scale");
 
     logSpectroscopeButton.setClickingTogglesState (true);
     logSonogramButton.setClickingTogglesState (true);
-    
+
     logSpectroscopeButton.addListener (this);
     logSonogramButton.addListener (this);
-    
+
     addAndMakeVisible (&sonogramSpeedSlider);
     sonogramSpeedSlider.setRange (1.0, 10.0, 1.0);
     sonogramSpeedSlider.setValue (sonogram.getBlockWidth());
@@ -84,15 +84,15 @@ void FFTDemo::resized()
     const int w = getWidth();
     const int m = 5;
     const int ch = (h - (5 * m)) / 4;
-    
+
     audioOscilloscope.setBounds (m, m, w - (2 * m), ch);
     spectroscope.setBounds (m, ch + (2 * m), w - (2 * m), ch);
     pitchDetector.setBounds (spectroscope.getBounds());
     sonogram.setBounds (m, (2 * ch) + (3 * m), w - (2 * m), (2 * ch) + m);
-    
+
     logSpectroscopeButton.setBounds (spectroscope.getX(), spectroscope.getY(), 150, 18);
     logSonogramButton.setBounds     (sonogram.getX(), sonogram.getY(), 150, 18);
-    
+
     sonogramSpeedSlider.setBounds   (logSonogramButton.getRight() + m, logSonogramButton.getY(),
                                      100, 18);
 }

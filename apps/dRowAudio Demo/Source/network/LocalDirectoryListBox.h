@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -37,62 +37,62 @@
 #if DROWAUDIO_USE_CURL
 
 class LocalDirectoryListBoxModel :  public ListBoxModel,
-									public ChangeBroadcaster
+                                    public ChangeBroadcaster
 {
 public:
-	
-	LocalDirectoryListBoxModel();
-	
-	~LocalDirectoryListBoxModel();
-	
-	const File& getCurrentWorkingDirectory()	{	return currentWorkingDirectory;	}
-	
-	int getNumRows();
-	
-	void paintListBoxItem (int rowNumber,
-						   Graphics& g,
-                           int width, int height,
-                           bool rowIsSelected);	
-	
-	void setContents(StringArray newContents);
-	
-	void refresh();
 
-	void listBoxItemDoubleClicked(int row, const MouseEvent &e);
-	
-	var getDragSourceDescription (const SparseSet<int> &currentlySelectedRows);
-	
+    LocalDirectoryListBoxModel();
+
+    ~LocalDirectoryListBoxModel();
+
+    const File& getCurrentWorkingDirectory()    {    return currentWorkingDirectory;    }
+
+    int getNumRows();
+
+    void paintListBoxItem (int rowNumber,
+                           Graphics& g,
+                           int width, int height,
+                           bool rowIsSelected);
+
+    void setContents(StringArray newContents);
+
+    void refresh();
+
+    void listBoxItemDoubleClicked(int row, const MouseEvent &e);
+
+    var getDragSourceDescription (const SparseSet<int> &currentlySelectedRows);
+
 private:
-	
-	StringArray itemList;
-	File currentWorkingDirectory;
+
+    StringArray itemList;
+    File currentWorkingDirectory;
 };
 
 
-class LocalDirectoryListBox :	public ListBox,
-								public ChangeListener,
-								public DragAndDropTarget
+class LocalDirectoryListBox :    public ListBox,
+                                public ChangeListener,
+                                public DragAndDropTarget
 {
 public:
-	LocalDirectoryListBox();
-	
-	~LocalDirectoryListBox();
-		
+    LocalDirectoryListBox();
+
+    ~LocalDirectoryListBox();
+
     void paintOverChildren (Graphics& g);
 
-	void changeListenerCallback(ChangeBroadcaster* source);
-	
-	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
-	
+    void changeListenerCallback(ChangeBroadcaster* source);
+
+    bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
+
     void itemDragEnter (const SourceDetails& dragSourceDetails);
-    
+
     void itemDragExit (const SourceDetails& dragSourceDetails);
-    
+
     void itemDropped (const SourceDetails& dragSourceDetails);
-	
+
 private:
-	
-	LocalDirectoryListBoxModel model;
+
+    LocalDirectoryListBoxModel model;
     bool isInterestedInDrag;
 };
 

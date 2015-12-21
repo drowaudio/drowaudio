@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -41,15 +41,15 @@ TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
         addAndMakeVisible (button);
         button->addListener (this);
     }
-    
+
     buttons[play]->setButtonText ("Play");
     buttons[stop]->setButtonText ("Stop");
     buttons[loop]->setButtonText ("Loop");
-    
+
     // we'll just use this as a settings button for now while
     // the reverse feature is being developed
     buttons[reverse]->setButtonText ("Settings");
-    
+
     buttons[loop]->setClickingTogglesState (true);
     //buttons[reverse]->setClickingTogglesState (true);
 }
@@ -58,7 +58,7 @@ void TransportComponent::resized()
 {
     const int w = getWidth();
 //    const int h = getHeight();
-    
+
     for (int i = 0; i < numButtons; i++)
     {
         buttons[i]->setBounds (0, 20 * i + 1, w, 18);
@@ -67,19 +67,19 @@ void TransportComponent::resized()
 
 void TransportComponent::buttonClicked (Button* button)
 {
-    if (button == buttons[play]) 
+    if (button == buttons[play])
     {
         audioFilePlayer.start();
     }
-    else if (button == buttons[stop]) 
+    else if (button == buttons[stop])
     {
         audioFilePlayer.stop();
     }
-    else if (button == buttons[loop]) 
+    else if (button == buttons[loop])
     {
         audioFilePlayer.setLoopBetweenTimes (button->getToggleState());
     }
-    else if (button == buttons[reverse]) 
+    else if (button == buttons[reverse])
     {
         showAudioSettings();
         //audioFilePlayer.setPlayDirection (! button->getToggleState());
@@ -100,7 +100,7 @@ void TransportComponent::showAudioSettings()
     settingsLaf.setColour (TextButton::buttonColourId, Colours::white);
     settingsLaf.setColour (TextButton::textColourOffId, Colours::black);
     settingsComp.setLookAndFeel (&settingsLaf);
-    
+
     DialogWindow::showModalDialog ("Audio Settings",
                                    &settingsComp, nullptr,
                                    Colours::darkgrey,

@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -45,11 +45,11 @@ class MainComponent :   public Component,
                         public DragAndDropContainer,
                         public AudioIODeviceCallback
 {
-public:    
+public:
     MainComponent();
-    
+
     ~MainComponent();
-    
+
     //==============================================================================
     /** @internal */
     void resized() override;
@@ -65,28 +65,28 @@ public:
     void audioDeviceAboutToStart (AudioIODevice* device) override;
     /** @internal */
     void audioDeviceStopped() override;
-    
+
 private:
     //==============================================================================
     AudioDeviceManager audioDeviceManager;
     AudioSourcePlayer audioSourcePlayer;
     AudioFilePlayerExt audioFilePlayer;
     BufferTransformAudioSource bufferTransformAudioSource;
-        
+
     TrackInfoComponent trackInfoComponent;
     AudioFileDropTarget dropTarget;
     TransportComponent transport;
-    
+
     TimeSliceThread meterThread;
     SegmentedMeter meterL, meterR;
-    
+
     Clock clock;
     CpuMeter cpuMeter;
     TabbedComponent tabbedComponent;
     TextEditor searchBox;
-    
+
     FFTDemo* fftDemo;
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent);
 };
 

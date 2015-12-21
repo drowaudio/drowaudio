@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -39,10 +39,10 @@
 
 #if DROWAUDIO_USE_CURL
 
-/**	@todo
-	Refresh directory on right click
-	Better look of file list
-	Thread CURLEasySession
+/**    @todo
+    Refresh directory on right click
+    Better look of file list
+    Thread CURLEasySession
  */
 class NetworkDemo : public Component,
                     public DragAndDropContainer,
@@ -50,25 +50,25 @@ class NetworkDemo : public Component,
                     public Button::Listener
 {
 public:
-	NetworkDemo();
-	
-	~NetworkDemo();
-	
-	void resized();
-	
-	void connectionChanged (ConnectionComponent* connectionComponent);
+    NetworkDemo();
 
-	void buttonClicked (Button* button);
-	
-	//==============================================================================
+    ~NetworkDemo();
+
+    void resized();
+
+    void connectionChanged (ConnectionComponent* connectionComponent);
+
+    void buttonClicked (Button* button);
+
+    //==============================================================================
 
 private:
-	
-//	FileBrowserComponent localBrowser;
-	ConnectionComponent connectionComponent;
-	LocalDirectoryListBox localBrowser;
-	RemoteDirectoryListBox remoteBrowser;
-    
+
+//    FileBrowserComponent localBrowser;
+    ConnectionComponent connectionComponent;
+    LocalDirectoryListBox localBrowser;
+    RemoteDirectoryListBox remoteBrowser;
+
     juce::MemoryBlock block;
     ScopedPointer<MemoryInputStream> inputStream;
     ScopedPointer<CURLEasySession> curlSession;

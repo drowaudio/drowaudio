@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -37,9 +37,9 @@ BufferTransformAudioSource::BufferTransformAudioSource (AudioSource* source_,
       buffer (512)
 {
     jassert (source_ != nullptr);
-    
+
     const float xScale = 1.0f / (buffer.getSize() - 1);
-    
+
     for (int i = 0; i < buffer.getSize(); ++i)
         buffer.getReference (i) = i * xScale;
 }
@@ -62,7 +62,7 @@ void BufferTransformAudioSource::releaseResources()
 void BufferTransformAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
 {
     source->getNextAudioBlock (info);
-    
+
     if (! isBypassed)
     {
         const int bufferSize = buffer.getSize() - 1;
@@ -73,7 +73,7 @@ void BufferTransformAudioSource::getNextAudioBlock (const AudioSourceChannelInfo
             for (int s = 0; s < info.numSamples; ++s)
             {
                 float sample = channelData[c][s];
-                
+
                 if (sample < 0.0f && sample >= -1.0f)
                 {
                     sample *= -1.0f;
@@ -84,7 +84,7 @@ void BufferTransformAudioSource::getNextAudioBlock (const AudioSourceChannelInfo
                 {
                     sample = linearInterpolate (buffer.getData(), bufferSize, sample * bufferSize);
                 }
-                
+
                 channelData[c][s] = sample;
             }
         }
