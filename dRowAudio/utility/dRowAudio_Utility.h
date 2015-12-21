@@ -226,32 +226,23 @@ static void saveImageToFile (const Image& image, File file = File::nonexistent)
 class ReferenceCountedValueTree : public ReferenceCountedObject
 {
 public:
-    //==============================================================================
-    /** Cretates a ReferenceCountedValueTree for a given ValueTree.
+    /** Creates a ReferenceCountedValueTree for a given ValueTree.
      */
     ReferenceCountedValueTree (const ValueTree& treeToReference)
         : tree (treeToReference)
     {
     }
 
-    /** Destructor. */
-    ~ReferenceCountedValueTree()
-    {
-    }
-
     /** Sets the ValueTree being held.
      */
-    void setValueTree (ValueTree newTree)
+    void setValueTree (const ValueTree& newTree)
     {
         tree = newTree;
     }
 
     /** Returns the ValueTree being held.
      */
-    ValueTree getValueTree()
-    {
-        return tree;
-    }
+    ValueTree getValueTree() const { return tree; }
 
     typedef ReferenceCountedObjectPtr<ReferenceCountedValueTree> Ptr;
 
@@ -261,7 +252,7 @@ public:
     static ValueTree getTreeFromObject (const var& treeObject)
     {
         ReferenceCountedValueTree* refTree
-        = dynamic_cast<ReferenceCountedValueTree*> (treeObject.getObject());
+            = dynamic_cast<ReferenceCountedValueTree*> (treeObject.getObject());
 
         return refTree == nullptr ? ValueTree::invalid : refTree->getValueTree();
     }
@@ -283,16 +274,10 @@ private:
 class ReferenceCountedIdentifier : public ReferenceCountedObject
 {
 public:
-    //==============================================================================
-    /** Cretates a ReferenceCountedIdentifier for a given Identifier.
+    /** Creates a ReferenceCountedIdentifier for a given Identifier.
      */
     ReferenceCountedIdentifier (const Identifier& identifierToReference)
         : identifier (identifierToReference)
-    {
-    }
-
-    /** Destructor. */
-    ~ReferenceCountedIdentifier()
     {
     }
 
@@ -305,10 +290,7 @@ public:
 
     /** Returns the Identifier being held.
      */
-    Identifier getIdentifier()
-    {
-        return identifier;
-    }
+    const Identifier& getIdentifier() const { return identifier; }
 
     typedef ReferenceCountedObjectPtr<ReferenceCountedIdentifier> Ptr;
 
@@ -319,7 +301,7 @@ public:
     static Identifier getIdentifierFromObject (const var& identiferObject)
     {
         ReferenceCountedIdentifier* refIdentifer
-        = dynamic_cast<ReferenceCountedIdentifier*> (identiferObject.getObject());
+            = dynamic_cast<ReferenceCountedIdentifier*> (identiferObject.getObject());
 
         return refIdentifer == nullptr ? Identifier::null : refIdentifer->getIdentifier();
     }
@@ -341,7 +323,6 @@ private:
 class ReferencedCountedMemoryBlock : public ReferenceCountedObject
 {
 public:
-    //==============================================================================
     /** Creates a ReferencedCountedMemoryBlock with a blank MemoryBlock.
      */
     ReferencedCountedMemoryBlock()
@@ -365,18 +346,14 @@ public:
     {}
 #endif
 
-    /** Destructor. */
-    ~ReferencedCountedMemoryBlock()
-    {}
-
     /** Returns the MemoryBlock being held.
      */
-    MemoryBlock& getMemoryBlock()   {   return memoryBlock; }
+    const MemoryBlock& getMemoryBlock() const { return memoryBlock; }
 
     /** Provides a simple way of getting the MemoryBlock from a var object which
         is a ReferencedCountedMemoryBlock.
      */
-    static MemoryBlock* getMemoryBlockFromObject (const var& blockObject)
+    static const MemoryBlock* getMemoryBlockFromObject (const var& blockObject)
     {
         ReferencedCountedMemoryBlock* refBlock
             = dynamic_cast<ReferencedCountedMemoryBlock*> (blockObject.getObject());
@@ -411,18 +388,16 @@ static bool writeValueTreeToFile (const ValueTree& treeToWrite, const File& file
 
             return false;
         }
-        else
+
+        TemporaryFile tempFile (fileToWriteTo);
+        ScopedPointer<FileOutputStream> outputStream (tempFile.getFile().createOutputStream());
+
+        if (outputStream != nullptr)
         {
-            TemporaryFile tempFile (fileToWriteTo);
-            ScopedPointer<FileOutputStream> outputStream (tempFile.getFile().createOutputStream());
+            treeToWrite.writeToStream (*outputStream);
+            outputStream = nullptr;
 
-            if (outputStream != nullptr)
-            {
-                treeToWrite.writeToStream (*outputStream);
-                outputStream = nullptr;
-
-                return tempFile.overwriteTargetFileWithTemporary();
-            }
+            return tempFile.overwriteTargetFileWithTemporary();
         }
     }
 
@@ -461,7 +436,6 @@ static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 class ScopedValueTreeFile
 {
 public:
-    //==============================================================================
     /** Creates a blank ScopedValueTreeFile.
         This initially does nothing, use the setFile() method to read the contents
         into the internal tree and then retrieve it using getTree().
@@ -493,26 +467,26 @@ public:
         This will attempt to read the contents of the File into the ValueTree which
         you can obtain using the getTree() method.
      */
-    inline void setFile (const File& newFile)   {   tree = readValueTreeFromFile (file = newFile);  }
+    void setFile (const File& newFile) { file = newFile; tree = readValueTreeFromFile (file); }
 
     /** Saves the file to disk using a TemporaryFile in case there are any problems. */
-    inline Result save()
+    Result save()
     {
         return writeValueTreeToFile (tree, file, asXml) ? Result::ok()
-                                                        : Result::fail (TRANS("Error saving file to disk"));
+                                                        : Result::fail (TRANS ("Error saving file to disk"));
     }
 
     /** Returns the ValueTree being used. */
-    inline ValueTree& getTree()                 {    return tree;           }
+    ValueTree getTree() const { return tree; }
 
     /** Returns the File being used. */
-    inline File getFile() const                 {    return file;           }
+    const File& getFile() const { return file; }
 
     /** Sets the tree to save to the file as XML or binary data. */
-    inline void setSaveAsXml (bool saveAsXml)   {   asXml = saveAsXml;      }
+    void setSaveAsXml (bool saveAsXml) { asXml = saveAsXml; }
 
     /** Returns true if the file will be saved as XML. */
-    inline bool getSaveAsXml() const            {   return asXml;           }
+    bool getSaveAsXml() const { return asXml; }
 
 private:
     //==============================================================================
@@ -531,6 +505,7 @@ struct ScopedChangeSender
     ScopedChangeSender (ChangeBroadcaster& owner) : broadcaster (owner) {}
     ~ScopedChangeSender() { broadcaster.sendChangeMessage(); }
 
+private:
     ChangeBroadcaster& broadcaster;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ScopedChangeSender)
@@ -538,49 +513,24 @@ struct ScopedChangeSender
 
 //==============================================================================
 /** Useful macro to print a variable name and value to the console. */
-#define DBG_VAR(dbgvar)     {DBG (JUCE_STRINGIFY(dbgvar) << ": " << dbgvar)}
+#define DBG_VAR(dbgvar)     { DBG (JUCE_STRINGIFY(dbgvar) << ": " << dbgvar) }
 
 /** Useful macro to print a Point to the console. */
-#define DBG_POINT(dbgpoint) {DBG (JUCE_STRINGIFY(dbgpoint) << ": " << DebugObject::convertToString (dbgpoint))}
+#define DBG_POINT(dbgpoint) { DBG (JUCE_STRINGIFY(dbgpoint) << ": " << DebugObject::convertToString (dbgpoint)) }
 
 /** Useful macro to print a Range to the console. */
-#define DBG_RANGE(dbgrange) {DBG (JUCE_STRINGIFY(dbgrange) << ": " << DebugObject::convertToString (dbgrange))}
+#define DBG_RANGE(dbgrange) { DBG (JUCE_STRINGIFY(dbgrange) << ": " << DebugObject::convertToString (dbgrange)) }
 
 /** Useful macro to print a Line to the console. */
-#define DBG_LINE(dbgline)   {DBG (JUCE_STRINGIFY(dbgline) << ": " << DebugObject::convertToString (dbgline))}
+#define DBG_LINE(dbgline)   { DBG (JUCE_STRINGIFY(dbgline) << ": " << DebugObject::convertToString (dbgline)) }
 
 /** Useful macro to print a Rectangle to the console. */
-#define DBG_RECT(dbgrect)   {DBG (JUCE_STRINGIFY(dbgrect) << ": " << DebugObject::convertToString (dbgrect))}
+#define DBG_RECT(dbgrect)   { DBG (JUCE_STRINGIFY(dbgrect) << ": " << DebugObject::convertToString (dbgrect)) }
 
 /** Prints a string representation of a lot of common objects to the console for
     debugging purposes.
  */
-#define DBG_OBJ(dbgobj)     {DBG (JUCE_STRINGIFY(dbgobj) << ": " << DebugObject::convertToString (dbgobj))}
-
-//==============================================================================
-/** This handy macro is a platform independent way of stopping compiler
-    warnings when paramaters are declared but not used.
- */
-#ifndef UNUSED_NOWARN
-
-    #if defined(JUCE_MAC) || defined(JUCE_IOS)
-        // enable supression of unused variable is GCC
-        #define UNUSED_NOWARN __attribute__((unused))
-
-    #elif defined(JUCE_MSVC)
-    #define UNUSED_NOWARN
-
-        // disable unused variable warnings in MSVC (Windows)
-        #pragma warning( push )
-        #pragma warning( disable : 4705 )
-
-    #else
-
-    #define UNUSED_NOWARN
-
-    #endif
-
-#endif // #ifndef UNUSED_NOWARN
+#define DBG_OBJ(dbgobj)     { DBG (JUCE_STRINGIFY(dbgobj) << ": " << DebugObject::convertToString (dbgobj)) }
 
 
 #endif //DROWAUDIO_UTILITY_H

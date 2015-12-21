@@ -32,13 +32,7 @@
 #ifndef DROWAUDIO_DEBUGOBJECT_H
 #define DROWAUDIO_DEBUGOBJECT_H
 
-#if JUCE_MSVC
-    #pragma warning (disable: 4505)
-#endif
-
-//==============================================================================
-/**
-    Useful class to convert some objects to a String representation.
+/** Useful class to convert some objects to a String representation.
 
     You shouldn't use one of these directly, instead use the DBG_OBJ macro to
     ensure you don't hang on for one longer than you should do.
@@ -58,6 +52,33 @@
 class DebugObject
 {
 public:
+    //==============================================================================
+    enum ObjectType
+    {
+        xmlType,
+        valueTreeType
+    };
+
+    //==============================================================================
+    explicit DebugObject (const XmlElement* arg)
+        : type (xmlType), objectXml (arg) {}
+
+    explicit DebugObject (const XmlElement& arg)
+        : type (xmlType), objectXml (&arg) {}
+
+    explicit DebugObject (const ValueTree& arg)
+        : type (valueTreeType), objectValueTree (arg) {}
+
+    String toString() const
+    {
+        switch (type)
+        {
+            case xmlType:           return getStringFromXml (objectXml, true);
+            case valueTreeType:     return getStringFromValueTree();
+            default:                return String::empty;
+        }
+    }
+
     //==============================================================================
     static String convertToString (const var& arg)
     {
@@ -116,32 +137,6 @@ public:
         return arg.getDescription();
     }
 
-    //==============================================================================
-    enum ObjectType
-    {
-        xmlType,
-        valueTreeType
-    };
-
-    //==============================================================================
-    explicit DebugObject (const XmlElement* arg)
-        : type (xmlType), objectXml (arg) {}
-
-    explicit DebugObject (const XmlElement& arg)
-        : type (xmlType), objectXml (&arg) {}
-
-    explicit DebugObject (const ValueTree arg)
-        : type (valueTreeType), objectValueTree (arg) {}
-
-    String toString() const
-    {
-        switch (type)
-        {
-            case xmlType:           return getStringFromXml (objectXml, true);
-            case valueTreeType:     return getStringFromValueTree();
-            default:                return String::empty;
-        }
-    }
 
 private:
     //==============================================================================
@@ -169,6 +164,5 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DebugObject);
 };
-
 
 #endif //DROWAUDIO_DEBUGOBJECT_H
