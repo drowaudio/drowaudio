@@ -1052,6 +1052,7 @@
 		DF37C03A3324139A165BDA43 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_CPlusPlusCodeTokeniser.cpp"; path = "../../../../../JUCE/modules/juce_gui_extra/code_editor/juce_CPlusPlusCodeTokeniser.cpp"; sourceTree = "SOURCE_ROOT"; };
 		DF4C553609FF3F5C0E05D89A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_JSON.cpp"; path = "../../../../../JUCE/modules/juce_core/javascript/juce_JSON.cpp"; sourceTree = "SOURCE_ROOT"; };
 		DFC6EEC5A42A3387C4ADBEDA = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "dRowAudio_BasicFileBrowser.h"; path = "../../../../dRowAudio/dRowAudio/gui/filebrowser/dRowAudio_BasicFileBrowser.h"; sourceTree = "SOURCE_ROOT"; };
+		DFDDDE5B0B7B14472C6CD8A0 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "dRowAudio_DefaultColours.cpp"; path = "../../../../dRowAudio/dRowAudio/gui/dRowAudio_DefaultColours.cpp"; sourceTree = "SOURCE_ROOT"; };
 		DFE5F0E29311C3F3821F4A10 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_HighResolutionTimer.h"; path = "../../../../../JUCE/modules/juce_core/threads/juce_HighResolutionTimer.h"; sourceTree = "SOURCE_ROOT"; };
 		E04273BE8B311925624F381A = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E0760B21C9B400354B985A7A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_OutputStream.cpp"; path = "../../../../../JUCE/modules/juce_core/streams/juce_OutputStream.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -1282,7 +1283,7 @@
 					52AE6DF5884D2470050D4B39,
 					9447CBEF0322057F8D699445,
 					6AA426E7AA77DF5A214CED30, ); name = audio; sourceTree = "<group>"; };
-		868F5A68AB65F32212F2E985 = {isa = PBXGroup; children = (
+		0A2CB33101BD8AFF2EB24D86 = {isa = PBXGroup; children = (
 					42D7120B19C5172C4537CA4B,
 					2239F6026840D187B76BCCBC,
 					1AAF897D68AAE5987E41DFD4,
@@ -1291,7 +1292,7 @@
 					C6C78DB5DC7A7E450F29A334,
 					3935CA75E73DF8DA5674EB06,
 					D409504FA7B7CE05467EEA61, ); name = audiothumbnail; sourceTree = "<group>"; };
-		B7EF27E5AD8B15C67A31FA74 = {isa = PBXGroup; children = (
+		FFDF7BD93CF45EEAE87127D5 = {isa = PBXGroup; children = (
 					82E54D672CE2FD113F398280,
 					DFC6EEC5A42A3387C4ADBEDA,
 					D2DD490ABFCE263789CC8F7B,
@@ -1310,6 +1311,7 @@
 					55652D06A3BB1640148C0BFD,
 					21BB6A27C77B14199A7E28F2,
 					484F8509CBD41A8CB13D0635,
+					DFDDDE5B0B7B14472C6CD8A0,
 					B032E3B6DA6B47CE2453916F,
 					9C234001B948A51F15940844,
 					3AF0936FDC366FC2002C26FC,
@@ -1326,8 +1328,8 @@
 					571133F4E55026CB83BD4630,
 					79517D10C2D38409425CB3EC,
 					563F878F6CEC41BE373C2977,
-					868F5A68AB65F32212F2E985,
-					B7EF27E5AD8B15C67A31FA74, ); name = gui; sourceTree = "<group>"; };
+					0A2CB33101BD8AFF2EB24D86,
+					FFDF7BD93CF45EEAE87127D5, ); name = gui; sourceTree = "<group>"; };
 		905BAB9408A89B18A7AB49C7 = {isa = PBXGroup; children = (
 					9CC7CF1EBFBDFFF2DFC05885,
 					A28EAACEB43718B81A12125C,
@@ -2607,12 +2609,14 @@
 					"DEBUG=1",
 					"DROWAUDIO_UNIT_TESTS=1",
 					"JUCER_XCODE_IPHONE_5BC26AE3=1",
-					"JUCE_APP_VERSION=0.6.0",
-					"JUCE_APP_VERSION_HEX=0x600", );
+					"JUCE_APP_VERSION=1.0.0",
+					"JUCE_APP_VERSION_HEX=0x10000", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../../drowaudio", "../../../../../JUCE/modules", "$(inherited)");
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications"; }; name = Debug; };
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CPLUSPLUSFLAGS = "-Wall";
+				OTHER_LDFLAGS = "-lcurl"; }; name = Debug; };
 		F78DFA4D6AD72663CF5A213A = {isa = XCBuildConfiguration; buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2628,13 +2632,15 @@
 					"NDEBUG=1",
 					"DROWAUDIO_UNIT_TESTS=1",
 					"JUCER_XCODE_IPHONE_5BC26AE3=1",
-					"JUCE_APP_VERSION=0.6.0",
-					"JUCE_APP_VERSION_HEX=0x600", );
+					"JUCE_APP_VERSION=1.0.0",
+					"JUCE_APP_VERSION_HEX=0x10000", );
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../../drowaudio", "../../../../../JUCE/modules", "$(inherited)");
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications"; }; name = Release; };
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CPLUSPLUSFLAGS = "-Wall";
+				OTHER_LDFLAGS = "-lcurl"; }; name = Release; };
 		915D883D7A39F6B886C3B5E0 = {isa = XCBuildConfiguration; buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ALWAYS_SEARCH_USER_PATHS = NO;

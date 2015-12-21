@@ -29,6 +29,7 @@
 #define JUCE_MODULE_AVAILABLE_juce_audio_processors      1
 #define JUCE_MODULE_AVAILABLE_juce_audio_utils           1
 #define JUCE_MODULE_AVAILABLE_juce_core                  1
+#define JUCE_MODULE_AVAILABLE_juce_cryptography          1
 #define JUCE_MODULE_AVAILABLE_juce_data_structures       1
 #define JUCE_MODULE_AVAILABLE_juce_events                1
 #define JUCE_MODULE_AVAILABLE_juce_graphics              1
@@ -36,18 +37,23 @@
 #define JUCE_MODULE_AVAILABLE_juce_gui_extra             1
 
 //==============================================================================
+#ifndef    JUCE_STANDALONE_APPLICATION
+ #define   JUCE_STANDALONE_APPLICATION 1
+#endif
+
+//==============================================================================
 // dRowAudio flags:
 
 #ifndef    DROWAUDIO_USE_FFTREAL
- #define   DROWAUDIO_USE_FFTREAL 0
+ //#define DROWAUDIO_USE_FFTREAL
 #endif
 
 #ifndef    DROWAUDIO_USE_SOUNDTOUCH
- #define   DROWAUDIO_USE_SOUNDTOUCH 0
+ //#define DROWAUDIO_USE_SOUNDTOUCH
 #endif
 
 #ifndef    DROWAUDIO_USE_CURL
- #define   DROWAUDIO_USE_CURL 0
+ //#define DROWAUDIO_USE_CURL
 #endif
 
 //==============================================================================
@@ -59,6 +65,10 @@
 
 #ifndef    JUCE_WASAPI
  //#define JUCE_WASAPI
+#endif
+
+#ifndef    JUCE_WASAPI_EXCLUSIVE
+ //#define JUCE_WASAPI_EXCLUSIVE
 #endif
 
 #ifndef    JUCE_DIRECTSOUND
@@ -115,6 +125,10 @@
  //#define JUCE_PLUGINHOST_VST
 #endif
 
+#ifndef    JUCE_PLUGINHOST_VST3
+ //#define JUCE_PLUGINHOST_VST3
+#endif
+
 #ifndef    JUCE_PLUGINHOST_AU
  //#define JUCE_PLUGINHOST_AU
 #endif
@@ -136,6 +150,14 @@
 
 #ifndef    JUCE_DONT_AUTOLINK_TO_WIN32_LIBRARIES
  //#define JUCE_DONT_AUTOLINK_TO_WIN32_LIBRARIES
+#endif
+
+#ifndef    JUCE_INCLUDE_ZLIB_CODE
+ //#define JUCE_INCLUDE_ZLIB_CODE
+#endif
+
+#ifndef    JUCE_USE_CURL
+ //#define JUCE_USE_CURL
 #endif
 
 //==============================================================================
@@ -173,6 +195,10 @@
 
 #ifndef    JUCE_WEB_BROWSER
  //#define JUCE_WEB_BROWSER
+#endif
+
+#ifndef    JUCE_ENABLE_LIVE_CONSTANT_EDITOR
+ //#define JUCE_ENABLE_LIVE_CONSTANT_EDITOR
 #endif
 
 

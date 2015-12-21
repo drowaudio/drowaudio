@@ -5,10 +5,10 @@
   <dict>
     <key>LSRequiresIPhoneOS</key>
     <true/>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
-    <key>CFBundleIconFile</key>
-    <string>Icon.icns</string>
     <key>CFBundleIdentifier</key>
     <string>com.dRowAudio.dRowAudioDemo</string>
     <key>CFBundleName</key>
@@ -18,14 +18,23 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>0.6.0</string>
+    <string>1.0.0</string>
     <key>CFBundleVersion</key>
-    <string>0.6.0</string>
+    <string>1.0.0</string>
     <key>NSHumanReadableCopyright</key>
-    <string></string>
+    <string>dRowAudio</string>
     <key>NSHighResolutionCapable</key>
     <true/>
     <key>UIStatusBarHidden</key>
     <true/>
+    <key>UIRequiresFullScreen</key>
+    <true/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
   </dict>
 </plist>

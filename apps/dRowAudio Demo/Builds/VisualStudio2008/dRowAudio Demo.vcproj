@@ -31,7 +31,7 @@
             BufferSecurityCheck=""
             DebugInformationFormat="4"
             AdditionalIncludeDirectories="..\..\JuceLibraryCode;..\..\..\..\..\drowaudio;..\..\..\..\..\JUCE\modules"
-            PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;DROWAUDIO_UNIT_TESTS=1;JUCER_VS2008_78A5006=1;JUCE_APP_VERSION=0.6.0;JUCE_APP_VERSION_HEX=0x600"
+            PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;DROWAUDIO_UNIT_TESTS=1;JUCER_VS2008_78A5006=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -86,7 +86,7 @@
             InlineFunctionExpansion="1"
             StringPooling="true"
             AdditionalIncludeDirectories="..\..\JuceLibraryCode;..\..\..\..\..\drowaudio;..\..\..\..\..\JUCE\modules"
-            PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;DROWAUDIO_UNIT_TESTS=1;JUCER_VS2008_78A5006=1;JUCE_APP_VERSION=0.6.0;JUCE_APP_VERSION_HEX=0x600"
+            PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;DROWAUDIO_UNIT_TESTS=1;JUCER_VS2008_78A5006=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -458,6 +458,16 @@
               </FileConfiguration>
             </File>
             <File RelativePath="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CpuMeter.h"/>
+            <File RelativePath="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_DefaultColours.cpp">
+              <FileConfiguration Name="Debug|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+              <FileConfiguration Name="Release|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+            </File>
             <File RelativePath="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_DefaultColours.h"/>
             <File RelativePath="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_GraphicalComponent.cpp">
               <FileConfiguration Name="Debug|Win32"

@@ -1,21 +1,9 @@
-/*
-  ==============================================================================
+#include "JuceHeader.h"
 
-    This file was auto-generated!
-
-    It contains the basic startup code for a Juce application.
-
-  ==============================================================================
-*/
-
-#include "../JuceLibraryCode/JuceHeader.h"
-
-
-//==============================================================================
 int main (int argc, char* argv[])
 {
     const StringArray cmd (argv, argc);
-    
+
     if (cmd.size() > 1)
     {
         drow::UnityProjectBuilder parser (cmd[1]);
@@ -23,7 +11,7 @@ int main (int argc, char* argv[])
         parser.setLogOutput (true);
         parser.setBuildDirectoryName ("BuildUnity");
         
-        if (parser.run() && cmd.size() > 1)
+        if (parser.run())
             parser.saveProject (cmd[2]);
     }
 

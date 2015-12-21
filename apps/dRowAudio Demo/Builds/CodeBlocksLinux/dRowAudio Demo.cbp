@@ -19,18 +19,20 @@
           <Add option="-std=c++11"/>
           <Add option="-mstackrealign"/>
           <Add option="-g"/>
+          <Add option="-Wall"/>
           <Add option="-DLINUX=1"/>
           <Add option="-DDEBUG=1"/>
           <Add option="-D_DEBUG=1"/>
           <Add option="-DDROWAUDIO_UNIT_TESTS=1"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=1"/>
-          <Add option="-DJUCE_APP_VERSION=0.6.0"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=0x600"/>
+          <Add option="-DJUCE_APP_VERSION=1.0.0"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=0x10000"/>
           <Add directory="."/>
           <Add directory="..\..\JuceLibraryCode"/>
           <Add directory="/usr/include/freetype2"/>
         </Compiler>
         <Linker>
+          <Add option="-lcurl"/>
           <Add library="GL"/>
           <Add library="X11"/>
           <Add library="Xext"/>
@@ -53,18 +55,20 @@
           <Add option="-O3"/>
           <Add option="-std=c++11"/>
           <Add option="-mstackrealign"/>
+          <Add option="-Wall"/>
           <Add option="-DLINUX=1"/>
           <Add option="-DNDEBUG=1"/>
           <Add option="-DDROWAUDIO_UNIT_TESTS=1"/>
           <Add option="-DJUCER_CODEBLOCKS_LINUX_191E0897=1"/>
-          <Add option="-DJUCE_APP_VERSION=0.6.0"/>
-          <Add option="-DJUCE_APP_VERSION_HEX=0x600"/>
+          <Add option="-DJUCE_APP_VERSION=1.0.0"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=0x10000"/>
           <Add directory="."/>
           <Add directory="..\..\JuceLibraryCode"/>
           <Add directory="/usr/include/freetype2"/>
         </Compiler>
         <Linker>
           <Add option="-s"/>
+          <Add option="-lcurl"/>
           <Add library="GL"/>
           <Add library="X11"/>
           <Add library="Xext"/>
@@ -377,6 +381,10 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../../../dRowAudio/dRowAudio/gui/dRowAudio_CpuMeter.h">
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../../../dRowAudio/dRowAudio/gui/dRowAudio_DefaultColours.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>

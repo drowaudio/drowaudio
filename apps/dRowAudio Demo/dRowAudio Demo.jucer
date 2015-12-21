@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="0.6.0"
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" jucerVersion="4.1.0"
-              defines="DROWAUDIO_UNIT_TESTS=1" includeBinaryInAppConfig="1">
+              defines="DROWAUDIO_UNIT_TESTS=1" includeBinaryInAppConfig="1"
+              companyName="dRowAudio">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" extraLinkerFlags="-lcurl"
                bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall">
@@ -36,7 +37,8 @@
       </MODULEPATHS>
     </XCODE_MAC>
     <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" UIStatusBarHidden="1"
-                  bigIcon="vTRqOY" smallIcon="vTRqOY">
+                  bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall"
+                  extraLinkerFlags="-lcurl">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
@@ -249,7 +251,7 @@
       </MODULEPATHS>
     </VS2005>
     <LINUX_MAKE targetFolder="Builds/Linux" bigIcon="vTRqOY" smallIcon="vTRqOY"
-                extraLinkerFlags="-lcurl">
+                extraLinkerFlags="-lcurl" extraCompilerFlags="-Wall">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        headerPath="" defines="" libraryPath="/usr/X11R6/lib/"/>
@@ -277,7 +279,8 @@
         <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
       </MODULEPATHS>
     </LINUX_MAKE>
-    <CODEBLOCKS_WINDOWS targetFolder="Builds/CodeBlocksWindows">
+    <CODEBLOCKS_WINDOWS targetFolder="Builds/CodeBlocksWindows" extraLinkerFlags="-lcurl"
+                        extraCompilerFlags="-Wall">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="dRowAudio Demo"/>
@@ -303,7 +306,8 @@
         <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
       </MODULEPATHS>
     </CODEBLOCKS_WINDOWS>
-    <CODEBLOCKS_LINUX targetFolder="Builds/CodeBlocksLinux">
+    <CODEBLOCKS_LINUX targetFolder="Builds/CodeBlocksLinux" extraLinkerFlags="-lcurl"
+                      extraCompilerFlags="-Wall">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="dRowAudio Demo"/>

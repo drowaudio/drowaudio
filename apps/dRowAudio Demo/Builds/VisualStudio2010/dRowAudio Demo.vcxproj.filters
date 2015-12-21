@@ -517,6 +517,9 @@
     <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CpuMeter.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_DefaultColours.cpp">
+      <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_GraphicalComponent.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
