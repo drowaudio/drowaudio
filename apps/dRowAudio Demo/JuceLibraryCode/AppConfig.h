@@ -210,19 +210,19 @@
 // juce_video flags:
 
 #ifndef    JUCE_DIRECTSHOW
- //#define JUCE_DIRECTSHOW
+ #define   JUCE_DIRECTSHOW 0
 #endif
 
 #ifndef    JUCE_MEDIAFOUNDATION
- //#define JUCE_MEDIAFOUNDATION
+ #define   JUCE_MEDIAFOUNDATION 0
 #endif
 
 #ifndef    JUCE_QUICKTIME
- //#define JUCE_QUICKTIME
+ #define   JUCE_QUICKTIME 0
 #endif
 
 #ifndef    JUCE_USE_CAMERA
- //#define JUCE_USE_CAMERA
+ #define   JUCE_USE_CAMERA 0
 #endif
 
 
