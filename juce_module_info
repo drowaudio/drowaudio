@@ -1,8 +1,8 @@
 {
     "id":           "dRowAudio",
-    "name":         "dRowAudio audio and gui classes",
+    "name":         "dRowAudio audio and GUI classes",
     "version":      "3.0.0",
-    "description":  "Extensions to the JUCE library including graphical component for audio",
+    "description":  "Extensions to the JUCE library, including graphical components for audio.",
     "website":      "http://www.drowaudio.co.uk",
     "license":      "MIT",
 
