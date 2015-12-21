@@ -183,14 +183,21 @@
 /** Config: DROWAUDIO_USE_CURL
     Enables the cURL library and the associated network classes.
     By default this is enabled.
+
+    On Windows, this is only available for 32-bit projects.
 */
 #ifndef DROWAUDIO_USE_CURL
     #define DROWAUDIO_USE_CURL 1
 
-    #if JUCE_WINDOWS
+    #if JUCE_WINDOWS && JUCE_32BIT
         #undef CURL_STATICLIB
         #define CURL_STATICLIB 1
     #endif
+#endif
+
+#if JUCE_WINDOWS && JUCE_64BIT
+    #undef CURL_STATICLIB
+    #undef DROWAUDIO_USE_CURL
 #endif
 
 //=============================================================================
