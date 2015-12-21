@@ -175,7 +175,7 @@ public:
     /** Calculates the magnitude of an FFT bin. */
     static inline float magnitude (float real, float imag, float oneOverFFTSize, float oneOverWindowFactor)
     {
-        const float rawMagnitude = std::hypotf (real, imag);
+        const float rawMagnitude = juce_hypot (real, imag);
         const float magnitudeForFFTSize = rawMagnitude * oneOverFFTSize;
 
         return magnitudeForFFTSize * oneOverWindowFactor;
