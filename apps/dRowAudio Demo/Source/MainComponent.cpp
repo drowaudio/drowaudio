@@ -34,36 +34,20 @@
 #include "network/NetworkDemo.h"
 #include "fft/FFTDemo.h"
 
-namespace
-{
-    //==============================================================================
-
-}
-
 MainComponent::MainComponent()
-    : bufferTransformAudioSource    (&audioFilePlayer),
-      trackInfoComponent            (audioFilePlayer),
-      dropTarget                    (&audioFilePlayer, &trackInfoComponent),
-      transport                     (audioDeviceManager, audioFilePlayer),
-      meterThread                   ("Meter Thread"),
-      cpuMeter                      (&audioDeviceManager),
-      tabbedComponent               (TabbedButtonBar::TabsAtTop)
+    : bufferTransformAudioSource (&audioFilePlayer),
+      trackInfoComponent (audioFilePlayer),
+      dropTarget (&audioFilePlayer, &trackInfoComponent),
+      transport (audioDeviceManager, audioFilePlayer),
+      meterThread ("Meter Thread"),
+      cpuMeter (&audioDeviceManager),
+      tabbedComponent (TabbedButtonBar::TabsAtTop)
 {
-    addAndMakeVisible (&trackInfoComponent);
-    addAndMakeVisible (&dropTarget);
-    addAndMakeVisible (&transport);
-    addAndMakeVisible (&meterL);
-    addAndMakeVisible (&meterR);
-    addAndMakeVisible (&tabbedComponent);
-    addAndMakeVisible (&cpuMeter);
 
     meterThread.addTimeSliceClient (&meterL);
     meterThread.addTimeSliceClient (&meterR);
     meterThread.startThread (1);
-//    meterThread.addGraphicalComponent (&meterL);
-//    meterThread.addGraphicalComponent (&meterR);
 
-    addAndMakeVisible (&clock);
     clock.setColour (Label::textColourId, Colours::white);
     clock.setJustificationType (Justification::centred);
 
@@ -80,8 +64,7 @@ MainComponent::MainComponent()
                             new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource),
                             true);
 
-    File libraryFile (File::getSpecialLocation (File::userDesktopDirectory)
-                                                .getChildFile ("dRowAudio Demo Library.xml"));
+    const File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
     ValueTree libraryTree (readValueTreeFromFile (libraryFile));
     ITunesLibrary::getInstance()->setLibraryTree (libraryTree);
     ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
@@ -122,6 +105,15 @@ MainComponent::MainComponent()
 //    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);
 //    audioDeviceManager.addAudioCallback (fftDemo);
+
+    addAndMakeVisible (&trackInfoComponent);
+    addAndMakeVisible (&dropTarget);
+    addAndMakeVisible (&transport);
+    addAndMakeVisible (&meterL);
+    addAndMakeVisible (&meterR);
+    addAndMakeVisible (&tabbedComponent);
+    addAndMakeVisible (&cpuMeter);
+    addAndMakeVisible (&clock);
 }
 
 MainComponent::~MainComponent()
@@ -134,7 +126,7 @@ MainComponent::~MainComponent()
     audioDeviceManager.removeAudioCallback (this);
 //    audioDeviceManager.removeAudioCallback (fftDemo);
 
-    File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
+    const File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
     ValueTree libraryTree (ITunesLibrary::getInstance()->getLibraryTree());
     writeValueTreeToFile (libraryTree, libraryFile);
 }
