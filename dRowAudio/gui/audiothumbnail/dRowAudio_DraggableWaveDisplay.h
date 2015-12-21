@@ -32,6 +32,8 @@
 #ifndef DROWAUDIO_DRAGGABLEWAVEDISPLAY_H
 #define DROWAUDIO_DRAGGABLEWAVEDISPLAY_H
 
+#include "../../utility/dRowAudio_StateVariable.h"
+
 //==============================================================================
 /** A class to display the waveform of an audio file which can be dragged to
     reposition the source.

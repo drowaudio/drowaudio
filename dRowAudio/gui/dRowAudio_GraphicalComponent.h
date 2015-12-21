@@ -104,8 +104,9 @@ protected:
 	int sleepTime, numSamples;
 	HeapBlock<float> samples;
 
+private:
     //==============================================================================
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GraphicalComponent);
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GraphicalComponent)
 };
 
 #endif  // DROWAUDIO_GRAPHICALCOMPONENT_H

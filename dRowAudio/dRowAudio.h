@@ -203,273 +203,71 @@ namespace drow
 {
     using namespace juce;
 
-    // Audio
-    #ifndef DROWAUDIO_AUDIOFILEPLAYER_H
-     #include "audio/dRowAudio_AudioFilePlayer.h"
-    #endif
-
-    #ifndef DROWAUDIO_AUDIOFILEPLAYEREXT_H
-     #include "audio/dRowAudio_AudioFilePlayerExt.h"
-    #endif
-
-    #ifndef DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H
-     #include "audio/dRowAudio_AudioSampleBufferAudioFormat.h"
-    #endif
-
-    #ifndef DROWAUDIO_SOUNDTOUCHPROCESSOR_H
-     #include "audio/dRowAudio_SoundTouchProcessor.h"
-    #endif
-
-    #ifndef DROWAUDIO_SOUNDTOUCHAUDIOSOURCE_H
-     #include "audio/dRowAudio_SoundTouchAudioSource.h"
-    #endif
-
-    #ifndef DROWAUDIO_FILTERINGAUDIOSOURCE_H
-     #include "audio/dRowAudio_FilteringAudioSource.h"
-    #endif
-
-    #ifndef DROWAUDIO_REVERSIBLEAUDIOSOURCE_H
-     #include "audio/dRowAudio_ReversibleAudioSource.h"
-    #endif
-
-    #ifndef DROWAUDIO_LOOPINGAUDIOSOURCE_H
-     #include "audio/dRowAudio_LoopingAudioSource.h"
-    #endif
-
-    #ifndef DROWAUDIO_PITCH_H
-     #include "audio/dRowAudio_Pitch.h"
-    #endif
-
-    #ifndef DROWAUDIO_PITCHDETECTOR_H
-     #include "audio/dRowAudio_PitchDetector.h"
-    #endif
-
-    #ifndef DROWAUDIO_AUDIOUTILITY_H
-     #include "audio/dRowAudio_AudioUtility.h"
-    #endif
-
-    #ifndef DROWAUDIO_FIFOBUFFER_H
-     #include "audio/dRowAudio_FifoBuffer.h"
-    #endif
-
-    #ifndef DROWAUDIO_BUFFER_H
-     #include "audio/dRowAudio_Buffer.h"
-    #endif
-
-    #ifndef DROWAUDIO_ENVELOPEFOLLOWER_H
-     #include "audio/dRowAudio_EnvelopeFollower.h"
-    #endif
-
-    #ifndef DROWAUDIO_SAMPLERATECONVERTER_H
-     #include "audio/dRowAudio_SampleRateConverter.h"
-    #endif
-
-    #ifndef DROWAUDIO_BIQUADFILTER_H
-     #include "audio/filters/dRowAudio_BiquadFilter.h"
-    #endif
-
-    #ifndef DROWAUDIO_ONEPOLEFILTER_H
-     #include "audio/filters/dRowAudio_OnePoleFilter.h"
-    #endif
-
-    #ifndef DROWAUDIO_WINDOW_H
-     #include "audio/fft/dRowAudio_Window.h"
-    #endif
-
-    #ifndef DROWAUDIO_FFT_H_INCLUDED
-     #include "audio/fft/dRowAudio_FFT.h"
-    #endif
-
-    #ifndef DROWAUDIO_LTAS_H
-     #include "audio/fft/dRowAudio_LTAS.h"
-    #endif
-
-    // Gui
-    #ifndef DROWAUDIO_AUDIOFILEDROPTARGET_H
-     #include "gui/dRowAudio_AudioFileDropTarget.h"
-    #endif
-
-    #ifndef DROWAUDIO_GUIHELPERS_H
-     #include "gui/dRowAudio_GuiHelpers.h"
-    #endif
-
-    #ifndef DROWAUDIO_GRAPHICALCOMPONENT_H
-     #include "gui/dRowAudio_GraphicalComponent.h"
-    #endif
-
-    #ifndef DROWAUDIO_AUDIOOSCILLOSCOPE_H
-     #include "gui/dRowAudio_AudioOscilloscope.h"
-    #endif
-
-    #ifndef DROWAUDIO_AUDIOTRANSPORTCUROSR_H
-     #include "gui/dRowAudio_AudioTransportCursor.h"
-    #endif
-
-    #ifndef DROWAUDIO_SEGMENTEDMETER_H
-     #include "gui/dRowAudio_SegmentedMeter.h"
-    #endif
-
-    #ifndef DROWAUDIO_SONOGRAM_H
-     #include "gui/dRowAudio_Sonogram.h"
-    #endif
-
-    #ifndef DROWAUDIO_SPECTROGRAPH_H
-     #include "gui/dRowAudio_Spectrograph.h"
-    #endif
-     #ifndef DROWAUDIO_SPECTROSCOPE_H
-     #include "gui/dRowAudio_Spectroscope.h"
-    #endif
-
-    #ifndef DROWAUDIO_TRIGGEREDSCOPE_H
-     #include "gui/dRowAudio_TriggeredScope.h"
-    #endif
-
-    #ifndef DROWAUDIO_CPUMETER_H
-     #include "gui/dRowAudio_CpuMeter.h"
-    #endif
-
-    #ifndef DROWAUDIO_CLOCK_H
-     #include "gui/dRowAudio_Clock.h"
-    #endif
-
-    #ifndef DROWAUDIO_CENTREALIGNVIEWPORT_H
-     //#include "gui/dRowAudio_CentreAlignViewport.h"
-    #endif
-
-    #ifndef DROWAUDIO_MUSICLIBRARYTABLE_H
-     #include "gui/dRowAudio_MusicLibraryTable.h"
-    #endif
-
-    #ifndef DROWAUDIO_BASICFILEBROWSER_H
-     #include "gui/filebrowser/dRowAudio_BasicFileBrowser.h"
-    #endif
-
-    #ifndef DROWAUDIO_COLUMNFILEBROWSERLOOKANDFEEL_H
-     #include "gui/filebrowser/dRowAudio_ColumnFileBrowserLookAndFeel.h"
-    #endif
-
-    #ifndef DROWAUDIO_COLUMNFILEBROWSER_H
-     #include "gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
-    #endif
-
-    // audiothumbnail
-    #ifndef DROWAUDIO_AUDIOTHUMBNAILIMAGE_H
-     #include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.h"
-    #endif
-
-    #ifndef DROWAUDIO_COLOUREDAUDIOTHUMBNAIL_H
-     #include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
-    #endif
-
-    #ifndef DROWAUDIO_POSITIONALWAVEDISPLAY_H
-     #include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h"
-    #endif
-
-    #ifndef DROWAUDIO_DRAGGABLEWAVEDISPLAY_H
-     #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h"
-    #endif
-     #ifndef DROWAUDIO_DEFAULTCOLOURS_H
-     #include "gui/dRowAudio_DefaultColours.h"
-    #endif
-
-    // maths
-    #ifndef DROWAUDIO_MATHSUTILITIES_H
-     #include "maths/dRowAudio_MathsUtilities.h"
-    #endif
-
-    #ifndef DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H
-     #include "maths/dRowAudio_CumulativeMovingAverage.h"
-    #endif
-
-    #ifndef DROWAUDIO_BEZIERCURVE_H
-     #include "maths/dRowAudio_BezierCurve.h"
-    #endif
-
-    // native
-    #ifndef DROWAUDIO_AUDIOPICKER__
-     #include "native/dRowAudio_AudioPicker.h"
-    #endif
-
-    #ifndef DROWAUDIO_AVASSETAUDIOFORMAT_H
-     #include "native/dRowAudio_AVAssetAudioFormat.h"
-    #endif
-
-    #ifndef DROWAUDIO_IOSAUDIOCONVERTER__
-     #include "native/dRowAudio_IOSAudioConverter.h"
-    #endif
-
-    // network
-    #ifndef DROWAUDIO_CURLMANAGER_H
-     #include "network/dRowAudio_CURLManager.h"
-    #endif
-
-    #ifndef DROWAUDIO_CURLEASYSESSION_H
-     #include "network/dRowAudio_CURLEasySession.h"
-    #endif
-
-    // streams
-    #ifndef DROWAUDIO_STREAMANDFILEHANDLER_H
-     #include "streams/dRowAudio_StreamAndFileHandler.h"
-    #endif
-
-    #ifndef DROWAUDIO_MEMORYINPUTSOURCE_H
-     #include "streams/dRowAudio_MemoryInputSource.h"
-    #endif
-
-    // Utility
-    #ifndef DROWAUDIO_PLUGINPARAMETER_H
-     #include "parameters/dRowAudio_PluginParameter.h"
-    #endif
-
-    #ifndef DROWAUDIO_CONSTANTS_H
-     #include "utility/dRowAudio_Constants.h"
-    #endif
-
-    #ifndef DROWAUDIO_DEBUGOBJECT_H
-     #include "utility/dRowAudio_DebugObject.h"
-    #endif
-     #ifndef DROWAUDIO_ENCRYPTEDSTRING_H
-     #include "utility/dRowAudio_EncryptedString.h"
-    #endif
-
-    #ifndef DROWAUDIO_UNITYBUILDER_H
-     #include "utility/dRowAudio_UnityBuilder.h"
-    #endif
-
-    #ifndef __UNITYPROJECTBUILDER_H_27A8CF68__
-     #include "utility/dRowAudio_UnityProjectBuilder.h"
-    #endif
-     #ifndef DROWAUDIO_UTILITY_H
-     #include "utility/dRowAudio_Utility.h"
-    #endif
-
-    #ifndef DROWAUDIO_STATEVARIABLE_H
-     #include "utility/dRowAudio_StateVariable.h"
-    #endif
-
-    #ifndef DROWAUDIO_XMLHELPERS_H
-     #include "utility/dRowAudio_XmlHelpers.h"
-    #endif
-
-    #ifndef DROWAUDIO_COMPARATORS_H
-     #include "utility/dRowAudio_Comparators.h"
-    #endif
-
-    #ifndef DROWAUDIO_MUSICLIBRARYHELPERS_H
-     #include "utility/dRowAudio_MusicLibraryHelpers.h"
-    #endif
-
-    #ifndef DROWAUDIO_ITUNESLIBRARY_H
-     #include "utility/dRowAudio_ITunesLibrary.h"
-    #endif
-
-    #ifndef DROWAUDIO_ITUNESLIBRARYPARSER_H
-     #include "utility/dRowAudio_ITunesLibraryParser.h"
-    #endif
-
-    #ifndef DROWAUDIO_LOCKEDPOINTER_H
-     #include "utility/dRowAudio_LockedPointer.h"
-    #endif
+    #include "audio/dRowAudio_AudioFilePlayer.h"
+    #include "audio/dRowAudio_AudioFilePlayerExt.h"
+    #include "audio/dRowAudio_AudioSampleBufferAudioFormat.h"
+    #include "audio/dRowAudio_AudioUtility.h"
+    #include "audio/dRowAudio_Buffer.h"
+    #include "audio/dRowAudio_EnvelopeFollower.h"
+    #include "audio/dRowAudio_FifoBuffer.h"
+    #include "audio/dRowAudio_FilteringAudioSource.h"
+    #include "audio/dRowAudio_LoopingAudioSource.h"
+    #include "audio/dRowAudio_Pitch.h"
+    #include "audio/dRowAudio_PitchDetector.h"
+    #include "audio/dRowAudio_ReversibleAudioSource.h"
+    #include "audio/dRowAudio_SampleRateConverter.h"
+    #include "audio/dRowAudio_SoundTouchAudioSource.h"
+    #include "audio/dRowAudio_SoundTouchProcessor.h"
+    #include "audio/fft/dRowAudio_FFT.h"
+    #include "audio/fft/dRowAudio_LTAS.h"
+    #include "audio/fft/dRowAudio_Window.h"
+    #include "audio/filters/dRowAudio_BiquadFilter.h"
+    #include "audio/filters/dRowAudio_OnePoleFilter.h"
+    #include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.h"
+    #include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h"
+    #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h"
+    #include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h"
+    #include "gui/dRowAudio_AudioFileDropTarget.h"
+    #include "gui/dRowAudio_AudioOscilloscope.h"
+    #include "gui/dRowAudio_AudioTransportCursor.h"
+    #include "gui/dRowAudio_Clock.h"
+    #include "gui/dRowAudio_CpuMeter.h"
+    #include "gui/dRowAudio_DefaultColours.h"
+    #include "gui/dRowAudio_GraphicalComponent.h"
+    #include "gui/dRowAudio_GuiHelpers.h"
+    #include "gui/dRowAudio_MusicLibraryTable.h"
+    #include "gui/dRowAudio_SegmentedMeter.h"
+    #include "gui/dRowAudio_Sonogram.h"
+    #include "gui/dRowAudio_Spectrograph.h"
+    #include "gui/dRowAudio_Spectroscope.h"
+    #include "gui/dRowAudio_TriggeredScope.h"
+    #include "gui/filebrowser/dRowAudio_BasicFileBrowser.h"
+    #include "gui/filebrowser/dRowAudio_ColumnFileBrowser.h"
+    #include "gui/filebrowser/dRowAudio_ColumnFileBrowserLookAndFeel.h"
+    #include "maths/dRowAudio_BezierCurve.h"
+    #include "maths/dRowAudio_CumulativeMovingAverage.h"
+    #include "maths/dRowAudio_MathsUtilities.h"
+    #include "native/dRowAudio_AudioPicker.h"
+    #include "native/dRowAudio_AVAssetAudioFormat.h"
+    #include "native/dRowAudio_IOSAudioConverter.h"
+    #include "network/dRowAudio_CURLEasySession.h"
+    #include "network/dRowAudio_CURLManager.h"
+    #include "parameters/dRowAudio_PluginParameter.h"
+    #include "streams/dRowAudio_MemoryInputSource.h"
+    #include "streams/dRowAudio_StreamAndFileHandler.h"
+    #include "utility/dRowAudio_Comparators.h"
+    #include "utility/dRowAudio_Constants.h"
+    #include "utility/dRowAudio_DebugObject.h"
+    #include "utility/dRowAudio_EncryptedString.h"
+    #include "utility/dRowAudio_ITunesLibrary.h"
+    #include "utility/dRowAudio_ITunesLibraryParser.h"
+    #include "utility/dRowAudio_LockedPointer.h"
+    #include "utility/dRowAudio_MusicLibraryHelpers.h"
+    #include "utility/dRowAudio_StateVariable.h"
+    #include "utility/dRowAudio_UnityBuilder.h"
+    #include "utility/dRowAudio_UnityProjectBuilder.h"
+    #include "utility/dRowAudio_Utility.h"
+    #include "utility/dRowAudio_XmlHelpers.h"
 }
 
 #ifdef __clang__

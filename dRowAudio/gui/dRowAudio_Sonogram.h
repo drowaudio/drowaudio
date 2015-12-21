@@ -34,6 +34,8 @@
 
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
+
+
 //==============================================================================
 /** Creates a standard right-left scrolling greyscale Sonogram.
     This is very simple to use, it is a GraphicalComponent so just register one

@@ -160,10 +160,10 @@ void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/,
                                             int /*width*/, int /*height*/, bool rowIsSelected)
 {
 	if (rowIsSelected)
-		g.fillAll (defaultColours.findColour (*this, table.hasKeyboardFocus (true) ? selectedBackgroundColourId
+		g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true) ? selectedBackgroundColourId
                                                                                     : selectedUnfocusedBackgroundColourId));
 	else
-		g.fillAll (defaultColours.findColour (*this, table.hasKeyboardFocus (true) ? backgroundColourId
+		g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true) ? backgroundColourId
                                                                                     : unfocusedBackgroundColourId));
 }
 
@@ -174,9 +174,9 @@ void MusicLibraryTable::paintCell (Graphics& g,
 								   bool rowIsSelected)
 {
     if (table.hasKeyboardFocus (true))
-        g.setColour (defaultColours.findColour (*this, rowIsSelected ? selectedTextColourId : textColourId));
+        g.setColour (DefaultColours::getInstance().findColour (*this, rowIsSelected ? selectedTextColourId : textColourId));
     else
-        g.setColour (defaultColours.findColour (*this, rowIsSelected ? selectedUnfocusedTextColourId : unfocusedTextColourId));
+        g.setColour (DefaultColours::getInstance().findColour (*this, rowIsSelected ? selectedUnfocusedTextColourId : unfocusedTextColourId));
 
 	g.setFont (font);
 
@@ -201,9 +201,9 @@ void MusicLibraryTable::paintCell (Graphics& g,
     }
 
     if (table.hasKeyboardFocus (true))
-        g.setColour (defaultColours.findColour (*this, rowIsSelected ? selectedOutlineColourId : outlineColourId));
+        g.setColour (DefaultColours::getInstance().findColour (*this, rowIsSelected ? selectedOutlineColourId : outlineColourId));
     else
-        g.setColour (defaultColours.findColour (*this, rowIsSelected ? selectedUnfocusedOutlineColourId : unfocusedOutlineColourId));
+        g.setColour (DefaultColours::getInstance().findColour (*this, rowIsSelected ? selectedUnfocusedOutlineColourId : unfocusedOutlineColourId));
 
 	g.fillRect (width - 1, 0, 1, height);
 	g.fillRect (0, height - 1, width, 1);

@@ -32,6 +32,8 @@
 #ifndef DROWAUDIO_POSITIONALWAVEDISPLAY_H
 #define DROWAUDIO_POSITIONALWAVEDISPLAY_H
 
+#include "../dRowAudio_AudioTransportCursor.h"
+
 //====================================================================================
 /**
     A class to display the entire waveform of an audio file.

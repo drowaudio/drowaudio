@@ -51,6 +51,8 @@ struct SplitComplex
 
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
+#include "dRowAudio_Window.h"
+
 //==============================================================================
 /** Low-level FFT class for performing single FFT calculations.
 

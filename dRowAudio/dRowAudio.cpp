@@ -50,78 +50,70 @@
  #include "audio/soundtouch/SoundTouch_Source.cpp"
 #endif
 
-namespace drow {
+namespace drow
+{
+    // Audio
+    #include "audio/dRowAudio_AudioFilePlayer.cpp"
+    #include "audio/dRowAudio_AudioFilePlayerExt.cpp"
+    #include "audio/dRowAudio_AudioSampleBufferAudioFormat.cpp"
+    #include "audio/dRowAudio_SoundTouchProcessor.cpp"
+    #include "audio/dRowAudio_SoundTouchAudioSource.cpp"
+    #include "audio/dRowAudio_FilteringAudioSource.cpp"
+    #include "audio/dRowAudio_ReversibleAudioSource.cpp"
+    #include "audio/dRowAudio_LoopingAudioSource.cpp"
+    #include "audio/dRowAudio_PitchDetector.cpp"
+    #include "audio/dRowAudio_AudioUtilityUnitTests.cpp"
+    #include "audio/dRowAudio_EnvelopeFollower.cpp"
+    #include "audio/dRowAudio_SampleRateConverter.cpp"
+    #include "audio/filters/dRowAudio_BiquadFilter.cpp"
+    #include "audio/filters/dRowAudio_OnePoleFilter.cpp"
+    #include "audio/fft/dRowAudio_Window.cpp"
+    #include "audio/fft/dRowAudio_FFT.cpp"
+    #include "audio/fft/dRowAudio_LTAS.cpp"
 
-// Audio
-#include "audio/dRowAudio_AudioFilePlayer.cpp"
-#include "audio/dRowAudio_AudioFilePlayerExt.cpp"
-#include "audio/dRowAudio_AudioSampleBufferAudioFormat.cpp"
+    // Gui
+    #include "gui/dRowAudio_AudioFileDropTarget.cpp"
+    #include "gui/dRowAudio_GraphicalComponent.cpp"
+    #include "gui/dRowAudio_AudioOscilloscope.cpp"
+    #include "gui/dRowAudio_AudioTransportCursor.cpp"
+    #include "gui/dRowAudio_SegmentedMeter.cpp"
+    #include "gui/dRowAudio_Sonogram.cpp"
+    #include "gui/dRowAudio_Spectrograph.cpp"
+    #include "gui/dRowAudio_Spectroscope.cpp"
+    #include "gui/dRowAudio_TriggeredScope.cpp"
+    #include "gui/dRowAudio_CpuMeter.cpp"
+    #include "gui/dRowAudio_Clock.cpp"
+    #include "gui/dRowAudio_DefaultColours.cpp"
+    #include "gui/dRowAudio_MusicLibraryTable.cpp"
+    #include "gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
+    #include "gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
+    #include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp"
+    #include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"
+    #include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
+    #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp"
 
-#include "audio/dRowAudio_SoundTouchProcessor.cpp"
-#include "audio/dRowAudio_SoundTouchAudioSource.cpp"
+    // maths
+    #include "maths/dRowAudio_MathsUnitTests.cpp"
 
-#include "audio/dRowAudio_FilteringAudioSource.cpp"
-#include "audio/dRowAudio_ReversibleAudioSource.cpp"
-#include "audio/dRowAudio_LoopingAudioSource.cpp"
+    // native
+   #if JUCE_IOS
+    #include "native/dRowAudio_AudioPicker.mm"
+    #include "native/dRowAudio_AVAssetAudioFormat.mm"
+    #include "native/dRowAudio_IOSAudioConverter.mm"
+   #endif
 
-#include "audio/dRowAudio_PitchDetector.cpp"
+    // network
+    #include "network/dRowAudio_CURLManager.cpp"
+    #include "network/dRowAudio_CURLEasySession.cpp"
 
-#include "audio/dRowAudio_AudioUtilityUnitTests.cpp"
+    // streams
+    #include "streams/dRowAudio_MemoryInputSource.cpp"
 
-#include "audio/dRowAudio_EnvelopeFollower.cpp"
-#include "audio/dRowAudio_SampleRateConverter.cpp"
-
-#include "audio/filters/dRowAudio_BiquadFilter.cpp"
-#include "audio/filters/dRowAudio_OnePoleFilter.cpp"
-
-#include "audio/fft/dRowAudio_Window.cpp"
-#include "audio/fft/dRowAudio_FFT.cpp"
-#include "audio/fft/dRowAudio_LTAS.cpp"
-
-// Gui
-#include "gui/dRowAudio_AudioFileDropTarget.cpp"
-#include "gui/dRowAudio_GraphicalComponent.cpp"
-#include "gui/dRowAudio_AudioOscilloscope.cpp"
-#include "gui/dRowAudio_AudioTransportCursor.cpp"
-#include "gui/dRowAudio_SegmentedMeter.cpp"
-#include "gui/dRowAudio_Sonogram.cpp"
-#include "gui/dRowAudio_Spectrograph.cpp"
-#include "gui/dRowAudio_Spectroscope.cpp"
-#include "gui/dRowAudio_TriggeredScope.cpp"
-#include "gui/dRowAudio_CpuMeter.cpp"
-#include "gui/dRowAudio_Clock.cpp"
-//#include "gui/dRowAudio_CentreAlignViewport.cpp"
-#include "gui/dRowAudio_MusicLibraryTable.cpp"
-#include "gui/filebrowser/dRowAudio_BasicFileBrowser.cpp"
-#include "gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp"
-#include "gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp"
-#include "gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp"
-#include "gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp"
-#include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp"
-
-// maths
-#include "maths/dRowAudio_MathsUnitTests.cpp"
-
-// native
-#if JUCE_IOS
- #include "native/dRowAudio_AudioPicker.mm"
- #include "native/dRowAudio_AVAssetAudioFormat.mm"
- #include "native/dRowAudio_IOSAudioConverter.mm"
-#endif
-
-// network
-#include "network/dRowAudio_CURLManager.cpp"
-#include "network/dRowAudio_CURLEasySession.cpp"
-
-// streams
-#include "streams/dRowAudio_MemoryInputSource.cpp"
-
-// Utility
-#include "utility/dRowAudio_EncryptedString.cpp"
-#include "utility/dRowAudio_ITunesLibrary.cpp"
-#include "utility/dRowAudio_ITunesLibraryParser.cpp"
-#include "utility/dRowAudio_UnityBuilder.cpp"
-#include "utility/dRowAudio_UnityProjectBuilder.cpp"
-#include "parameters/dRowAudio_PluginParameter.cpp"
-
+    // Utility
+    #include "utility/dRowAudio_EncryptedString.cpp"
+    #include "utility/dRowAudio_ITunesLibrary.cpp"
+    #include "utility/dRowAudio_ITunesLibraryParser.cpp"
+    #include "utility/dRowAudio_UnityBuilder.cpp"
+    #include "utility/dRowAudio_UnityProjectBuilder.cpp"
+    #include "parameters/dRowAudio_PluginParameter.cpp"
 }
