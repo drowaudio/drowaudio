@@ -73,10 +73,12 @@ public:
     {
         switch (type)
         {
-            case xmlType:           return getStringFromXml (objectXml, true);
-            case valueTreeType:     return getStringFromValueTree();
-            default:                return String::empty;
+            case xmlType:       return getStringFromXml (objectXml, true);
+            case valueTreeType: return getStringFromValueTree();
+            default:            break;
         }
+
+        return String::empty;
     }
 
     //==============================================================================
@@ -85,20 +87,20 @@ public:
         return arg.toString();
     }
 
-    template <typename ValueType>
+    template<typename ValueType>
     static String convertToString (const Range<ValueType>& arg)
     {
         String os;
         return os << arg.getStart() << " - " << arg.getEnd() << " (" << arg.getLength() << ")";
     }
 
-    template <typename ValueType>
+    template<typename ValueType>
     static String convertToString (const Point<ValueType>& arg)
     {
         return arg.toString();
     }
 
-    template <typename ValueType>
+    template<typename ValueType>
     static String convertToString (const Line<ValueType>& arg)
     {
         String os;
@@ -106,7 +108,7 @@ public:
                 << ") - (" << arg.getEnd().toString() << ")";
     }
 
-    template <typename ValueType>
+    template<typename ValueType>
     static String convertToString (const Rectangle<ValueType>& arg)
     {
         return arg.toString();
@@ -137,7 +139,6 @@ public:
         return arg.getDescription();
     }
 
-
 private:
     //==============================================================================
     ObjectType type;
@@ -157,12 +158,11 @@ private:
     String getStringFromValueTree() const
     {
         ScopedPointer<XmlElement> treeAsXml (objectValueTree.createXml());
-
         return treeAsXml == nullptr ? "invalid ValueTree" : getStringFromXml (treeAsXml, false);
     }
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DebugObject);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DebugObject)
 };
 
 #endif //DROWAUDIO_DEBUGOBJECT_H

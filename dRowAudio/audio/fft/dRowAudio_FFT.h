@@ -67,26 +67,32 @@ class FFT
 public:
     //==============================================================================
     /** Holds the properties for an FFT operation.
+
         Essentially pre-calculates some commonly used values for a given FFT size.
      */
     class Properties
     {
     public:
-        //==============================================================================
         /** Creates a set of proeprties for a given FFT size. */
-        Properties (int fftSizeLog2_) noexcept
-            : fftSizeLog2 (fftSizeLog2_),
-              fftSize (1 << fftSizeLog2),
-              fftSizeMinus1 (fftSize - 1),
-              fftSizeHalved (fftSize >> 1),
-              oneOverFFTSizeMinus1 (1.0 / fftSizeMinus1),
-              oneOverFFTSize (1.0 / fftSize)
-        {}
+        Properties (int fftSizeLog2_) noexcept :
+            fftSizeLog2 (fftSizeLog2_),
+            fftSize (1 << fftSizeLog2),
+            fftSizeMinus1 (fftSize - 1),
+            fftSizeHalved (fftSize >> 1),
+            oneOverFFTSizeMinus1 (1.0 / fftSizeMinus1),
+            oneOverFFTSize (1.0 / fftSize)
+        {
+        }
 
         /** Creates a copy of another set of Properties. */
-        Properties (const Properties& other) noexcept
+        Properties (const Properties& other) noexcept :
+            fftSizeLog2 (other.fftSizeLog2),
+            fftSize (other.fftSize),
+            fftSizeMinus1 (other.fftSizeMinus1),
+            fftSizeHalved (other.fftSizeHalved),
+            oneOverFFTSizeMinus1 (other.oneOverFFTSizeMinus1),
+            oneOverFFTSize (other.oneOverFFTSize)
         {
-            *this = other;
         }
 
         /** Creates a copy of another set of Properties. */
@@ -103,13 +109,9 @@ public:
         }
 
         //==============================================================================
-        int fftSizeLog2;
-        int fftSize;
-        int fftSizeMinus1;
-        int fftSizeHalved;
-
-        double oneOverFFTSizeMinus1;
-        double oneOverFFTSize;
+        int fftSizeLog2, fftSize;
+        int fftSizeMinus1, fftSizeHalved;
+        double oneOverFFTSizeMinus1, oneOverFFTSize;
 
     private:
         //==============================================================================
@@ -119,12 +121,10 @@ public:
 
     //==============================================================================
     /** Creates an FFT class that can perform various FFT operations on blocks of data.
+
         The internals will vary depending on platform e.g. one the Mac Accelerate is used, on Windows FFTReal.
      */
     FFT (int fftSizeLog2);
-
-    /** Destructor. */
-    ~FFT();
 
     /** Changes the FFT size. */
     void setFFTSizeLog2 (int newFFTSize);
@@ -133,36 +133,42 @@ public:
     const Properties& getProperties() const noexcept { return properties; }
 
     /** Returns the internal buffer.
-        The contents of this will vary depending on whether you've just performed an FFT or IFFT but
-        will be the result of the operation either way..
+
+        The contents of this will vary depending on whether you've just performed an FFT or IFFT,
+        but will be the result of the operation either way..
      */
-    float* getBuffer()                                  { return buffer.getData(); }
+    float* getBuffer() { return buffer.getData(); }
 
     /** Returns the SplitComplex of the buffer.
         This is basically just a pair of pointers to the real and imag parts of the buffer.
      */
-    SplitComplex& getFFTBuffer()                        { return bufferSplit; }
+    SplitComplex& getFFTBuffer() { return bufferSplit; }
 
     /** Performs an FFT operation on a set of samples.
-        N.B. samples must be an array the same size as the FFT. After processing you can retrive the
-        buffer using getBuffer or getFFTBuffer.
+
+        @note samples must be an array the same size as the FFT. After processing you can retrive the
+              buffer using getBuffer or getFFTBuffer.
      */
     void performFFT (float* samples);
 
     /** Calculates and returns the magnitudes of the previous buffer.
-        N.B. magnitudes should be as at least half the FFT size.
+
+        @note magnitudes should be as at least half the FFT size.
      */
     void getMagnitudes (float* magnitudes);
 
     /** Calculates and returns the phase of the previous buffer.
-        N.B. phaseBuffer should be as at least half the FFT size.
+
+        @note phaseBuffer should be as at least half the FFT size.
      */
     void getPhase (float* phaseBuffer);
 
     /** Performs an inverse FFT.
+
         fftBuffer should be in SplitComplex format where [0] = realp & [fftSize / 2] = imagp.
-        N.B. fftBuffer must be the same size as the FFTProperties fftSize and the buffer must not be
-        the same as that retrieved from getBuffer.
+
+        @note fftBuffer must be the same size as the FFTProperties fftSize and the buffer must not be
+              the same as that retrieved from getBuffer.
      */
     void performIFFT (float* fftBuffer);
 
@@ -187,9 +193,7 @@ private:
 };
 
 //==============================================================================
-/**
-    Engine to continuously perform FFT operations and easily calculate the resultant magnitudes.
- */
+/** Engine to continuously perform FFT operations and easily calculate the resultant magnitudes. */
 class FFTEngine
 {
 public:
@@ -207,16 +211,18 @@ public:
      */
     void performFFT (float* samples);
 
-    /**    This will fill the internal buffer with the magnitudes of the last performed FFT.
+    /** This will fill the internal buffer with the magnitudes of the last performed FFT.
+
         You can then get this buffer using getMagnitudesBuffer(). Remember that
         the size of the buffer is the fftSizeHalved + 1 to incorporate the Nyquist.
      */
     void findMagnitudes()                               { findMagnitues (magnitutes.getData(), false); }
 
-    /**    Fills a provided buffer with the magnitudes of the last performed FFT. */
+    /** Fills a provided buffer with the magnitudes of the last performed FFT. */
     void findMagnitudes (Buffer& bufferToFill)          { findMagnitues (bufferToFill.getData(), false); }
 
-    /**    This will fill the buffer with the magnitudes of the last performed FFT if they are bigger.
+    /** This will fill the buffer with the magnitudes of the last performed FFT if they are bigger.
+
         You can then get this buffer using getMagnitudesBuffer(). Remember that
         the size of the buffer is the fftSizeHalved + 1 to incorporate the Nyquist.
      */

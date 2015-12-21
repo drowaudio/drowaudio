@@ -42,10 +42,6 @@ FFT::FFT (int fftSizeLog2)
     bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
 }
 
-FFT::~FFT()
-{
-}
-
 void FFT::setFFTSizeLog2 (int newFFTSizeLog2)
 {
     if (newFFTSizeLog2 != properties.fftSizeLog2)
