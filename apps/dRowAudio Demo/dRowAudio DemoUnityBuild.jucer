@@ -74,6 +74,10 @@
                        isDebug="1" optimisation="1" targetName="dRowAudio Demo"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="0" optimisation="3" targetName="dRowAudio Demo"/>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="dRowAudio Demo"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="3" targetName="dRowAudio Demo"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
@@ -102,6 +106,10 @@
                        isDebug="1" optimisation="1" targetName="dRowAudio Demo"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="0" optimisation="3" targetName="dRowAudio Demo"/>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="dRowAudio Demo"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="3" targetName="dRowAudio Demo"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
@@ -129,6 +137,10 @@
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="dRowAudio Demo"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="3" targetName="dRowAudio Demo"/>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="dRowAudio Demo"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="0" optimisation="3" targetName="dRowAudio Demo"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -162,6 +174,12 @@
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        headerPath="" defines="CURL_LIB=libcurlrelease.lib" winWarningLevel="4"
                        winArchitecture="32-bit" generateManifest="1" libraryPath="../../../../dRowAudio/network/curl/lib"/>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
+                       headerPath="" defines="CURL_LIB=libcurldebug.lib" winWarningLevel="4"
+                       winArchitecture="x64" generateManifest="1" libraryPath="../../../../dRowAudio/network/curl/lib"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
+                       headerPath="" defines="CURL_LIB=libcurlrelease.lib" winWarningLevel="4"
+                       winArchitecture="x64" generateManifest="1" libraryPath="../../../../dRowAudio/network/curl/lib"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
