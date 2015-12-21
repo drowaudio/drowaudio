@@ -32,10 +32,6 @@
 #ifndef DROWAUDIO_MATHSUTILITIES_H
 #define DROWAUDIO_MATHSUTILITIES_H
 
-#if JUCE_MSVC
-    #pragma warning (disable: 4505)
-#endif
-
 //==============================================================================
 /** Contains a value and its reciprocal.
     This has some handy operator overloads to speed up multiplication and divisions.
@@ -230,17 +226,13 @@ template <typename FloatingPointType>
 inline FloatingPointType findMedian (const FloatingPointType* samples, int numSamples) noexcept
 {
     if (isEven (numSamples % 2))  // is even
-    {
         return samples[numSamples / 2];
-    }
-    else
-    {
-        const int lowerIndex = int (numSamples / 2);
-        const FloatingPointType lowerSample = samples[lowerIndex];
-        const FloatingPointType upperSample = samples[lowerIndex + 1];
 
-        return (lowerSample + upperSample) / 2;
-    }
+    const int lowerIndex = int (numSamples / 2);
+    const FloatingPointType lowerSample = samples[lowerIndex];
+    const FloatingPointType upperSample = samples[lowerIndex + 1];
+
+    return (lowerSample + upperSample) / 2;
 }
 
 /** Finds the variance of a set of samples. */
@@ -300,11 +292,12 @@ inline FloatingPointType findRMS (const FloatingPointType* samples, int numSampl
 template <typename FloatingPointType>
 inline FloatingPointType linearInterpolate (const FloatingPointType* buffer, int bufferSize, FloatingPointType bufferPosition) noexcept
 {
-    int lower = (int) bufferPosition;
+    const int lower = (int) bufferPosition;
     int upper = lower + 1;
     if (upper == bufferSize)
         upper = 0;
-    FloatingPointType difference = bufferPosition - lower;
+
+    const FloatingPointType difference = bufferPosition - lower;
 
     return (buffer[upper] * difference) + (buffer[lower] * (static_cast<FloatingPointType> (1) - difference));
 }
@@ -314,10 +307,7 @@ inline FloatingPointType linearInterpolate (const FloatingPointType* buffer, int
 template <typename FloatingPointType>
 inline bool almostEqual (FloatingPointType firstValue, FloatingPointType secondValue, FloatingPointType precision = 0.00001)
 {
-    if (fabs (firstValue - secondValue) < precision)
-        return true;
-    else
-        return false;
+    return std::abs (firstValue - secondValue) < precision;
 }
 
 /** Normalises a value to a range of 0-1 with a given minimum & maximum.
@@ -340,7 +330,7 @@ inline FloatingPointType logBase10Scale (const FloatingPointType valueToScale,
                                          const FloatingPointType minimum,
                                          const FloatingPointType maximum) noexcept
 {
-    return log10 (minimum + ((maximum - minimum) * valueToScale)) / log10 (maximum);
+    return std::log10 (minimum + ((maximum - minimum) * valueToScale)) / std::log10 (maximum);
 }
 
 /** Converts a frequency in hertz to its Mel (or melody) based scale.
@@ -349,7 +339,7 @@ inline FloatingPointType logBase10Scale (const FloatingPointType valueToScale,
 template <typename FloatingPointType>
 inline FloatingPointType melScale (const FloatingPointType frequencyInHerts) noexcept
 {
-    return 2595 * log10 (1 + (frequencyInHerts / 700.0));
+    return 2595 * std::log10 (1 + (frequencyInHerts / 700.0));
 }
 
 //==============================================================================
@@ -385,7 +375,7 @@ inline Type sinc (const Type x) noexcept
     if (x == 0)
         return static_cast<Type> (1);
 
-    return sin (x) / x;
+    return std::sin (x) / x;
 }
 
 /**    Sinc function normalised with PI for audio applications.
@@ -402,20 +392,7 @@ inline FloatingPointType sincPi (const FloatingPointType x) noexcept
 }
 
 //==============================================================================
-/** Converts a number of degrees to radians. */
-template<typename FloatingPointType>
-inline FloatingPointType degreesToRadians (const FloatingPointType degrees) noexcept
-{
-    return (degrees / 180.0) * double_Pi;
-}
-
-template<>
-inline float degreesToRadians<float> (const float degrees) noexcept
-{
-    return (degrees / 180.0f) * float_Pi;
-}
-
-/**    Returns true if the argument is a power of 2.
+/** Returns true if the argument is a power of 2.
     This will return false if 0 is passed.
  */
 template <typename IntegerType>
@@ -429,8 +406,8 @@ inline int nextPowerOfTwo (int number) noexcept
 {
     if (isPowerOfTwo (number))
         return number;
-    else
-        return (int) pow (2.0, ceil (log ((double) number) / log (2.0)));
+
+    return (int) std::pow (2.0, ceil (std::log ((double) number) / std::log (2.0)));
 }
 
 /**    Returns the previous power of 2.
@@ -440,8 +417,8 @@ inline int prevPowerOfTwo (int number) noexcept
 {
     if (isPowerOfTwo (number))
         return number;
-    else
-        return (int) (pow (2.0, ceil (log ((double) number) / log (2.0))) * 0.5);
+
+    return (int) (std::pow (2.0, std::ceil (std::log ((double) number) / std::log (2.0))) * 0.5);
 }
 
 /**    Returns the power which 2 has to be raised to to get the given number.
@@ -451,22 +428,22 @@ inline int prevPowerOfTwo (int number) noexcept
 inline int findPowerForBaseTwo (int number) noexcept
 {
     if (isPowerOfTwo (number))
-        return (int) (log ((double) number) / log(2.0));
-    else
-        return (int) (log ((double) nextPowerOfTwo (number)) / log(2.0));
+        return (int) (std::log ((double) number) / std::log (2.0));
+
+    return (int) (std::log ((double) nextPowerOfTwo (number)) / std::log (2.0));
 }
 
 #if JUCE_MSVC || DOXYGEN
 /** Log2 function for the MSVC compiler. */
 inline double log2 (double number)
 {
-    return log (number) / log (2.0);
+    return std::log (number) / std::log (2.0);
 }
 
 /** Log2f function for the MSVC compiler. */
 inline float log2f (float number)
 {
-    return log (number) / log (2.0f);
+    return std::log (number) / std::log (2.0f);
 }
 #endif
 

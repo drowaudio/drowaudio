@@ -32,15 +32,14 @@
 #ifndef DROWAUDIO_BASICFILEBROWSER_H
 #define DROWAUDIO_BASICFILEBROWSER_H
 
-//==================================================================================
 /** A BasicFileBrowser with an optional corner resizer.
 
     This is very similar to a FileBrowserComponent expect it does not have the file
     list box, go up button etc.
  */
-class  BasicFileBrowser        :    public Component,
-                                private FileBrowserListener,
-                                private FileFilter
+class  BasicFileBrowser : public Component,
+                          private FileBrowserListener,
+                          private FileFilter
 {
 public:
     //==============================================================================
@@ -67,15 +66,15 @@ public:
     /** Creates a BasicFileBrowser.
 
         @param browserMode              The intended purpose for the browser - see the
-        FileChooserMode enum for the various options
+                                        FileChooserMode enum for the various options
         @param initialFileOrDirectory   The file or directory that should be selected when
-        the component begins. If this is File::nonexistent,
-        a default directory will be chosen.
+                                        the component begins. If this is File::nonexistent,
+                                        a default directory will be chosen.
         @param fileFilter               an optional filter to use to determine which files
-        are shown. If this is 0 then all files are displayed. Note
-        that a pointer is kept internally to this object, so
-        make sure that it is not deleted before the browser object
-        is deleted.
+                                        are shown. If this is nullptr, then all files are displayed. Note
+                                        that a pointer is kept internally to this object, so
+                                        make sure that it is not deleted before the browser object
+                                        is deleted.
      */
     BasicFileBrowser (int flags,
                       const File& initialFileOrDirectory,
@@ -157,14 +156,14 @@ public:
     //==============================================================================
     /** Enables the column resizer.
      */
-    void setResizeEnable(bool enableResize)
+    void setResizeEnable (bool enableResize)
     {
         showResizer = enableResize;
     }
 
     /** Returns true if the resizer is enabled.
      */
-    bool getResizeEnabled()                    {    return showResizer;            }
+    bool getResizeEnabled() const { return showResizer; }
 
     /** Returns the width for the longest item in the list.
      */
@@ -172,23 +171,23 @@ public:
 
     //==============================================================================
     /** @internal */
-    void resized();
+    void resized() override;
     /** @internal */
-    bool keyPressed (const KeyPress& key);
+    bool keyPressed (const KeyPress& key) override;
     /** @internal */
-    void mouseDoubleClick (const MouseEvent &e);
+    void mouseDoubleClick (const MouseEvent &e) override;
     /** @internal */
-    void selectionChanged();
+    void selectionChanged() override;
     /** @internal */
-    void fileClicked (const File& f, const MouseEvent& e);
+    void fileClicked (const File& f, const MouseEvent& e) override;
     /** @internal */
-    void fileDoubleClicked (const File& f);
+    void fileDoubleClicked (const File& f) override;
     /** @internal */
-    void browserRootChanged (const File&);
+    void browserRootChanged (const File&) override;
     /** @internal */
-    bool isFileSuitable (const File&) const;
+    bool isFileSuitable (const File&) const override;
     /** @internal */
-    bool isDirectorySuitable (const File&) const;
+    bool isDirectorySuitable (const File&) const override;
 
     /** @internal */
     DirectoryContentsDisplayComponent* getDisplayComponent() const noexcept;

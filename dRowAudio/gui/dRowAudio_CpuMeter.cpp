@@ -29,8 +29,6 @@
   ==============================================================================
 */
 
-
-
 CpuMeter::CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs)
     : Label ("CpuMeter", "00.00%"),
       deviceManager (deviceManagerToUse),
@@ -39,10 +37,6 @@ CpuMeter::CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs
 {
     if (deviceManagerToUse != nullptr)
         startTimer (updateInterval);
-}
-
-CpuMeter::~CpuMeter()
-{
 }
 
 void CpuMeter::resized()

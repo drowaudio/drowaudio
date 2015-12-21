@@ -55,7 +55,7 @@
 
     @see AudioThumbnailCache
 */
-class ColouredAudioThumbnail :  public AudioThumbnailBase
+class ColouredAudioThumbnail : public AudioThumbnailBase
 {
 public:
     //==============================================================================

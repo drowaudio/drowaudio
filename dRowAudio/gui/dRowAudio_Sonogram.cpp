@@ -52,10 +52,6 @@ Sonogram::Sonogram (int fftSizeLog2)
     scopeImage.clear (scopeImage.getBounds(), Colours::black);
 }
 
-Sonogram::~Sonogram()
-{
-}
-
 void Sonogram::resized()
 {
     const ScopedLock sl (lock);

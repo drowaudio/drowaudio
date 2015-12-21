@@ -41,13 +41,7 @@ BufferTransformAudioSource::BufferTransformAudioSource (AudioSource* source_,
     const float xScale = 1.0f / (buffer.getSize() - 1);
     
     for (int i = 0; i < buffer.getSize(); ++i)
-    {
         buffer.getReference (i) = i * xScale;
-    }
-}
-
-BufferTransformAudioSource::~BufferTransformAudioSource()
-{
 }
 
 void BufferTransformAudioSource::setBypass (bool shouldBypass)
@@ -73,13 +67,12 @@ void BufferTransformAudioSource::getNextAudioBlock (const AudioSourceChannelInfo
     {
         const int bufferSize = buffer.getSize() - 1;
         float** channelData = info.buffer->getArrayOfWritePointers();
-        float sample;
 
         for (int c = 0; c < info.buffer->getNumChannels(); ++c)
         {
             for (int s = 0; s < info.numSamples; ++s)
             {
-                sample = channelData[c][s];
+                float sample = channelData[c][s];
                 
                 if (sample < 0.0f && sample >= -1.0f)
                 {

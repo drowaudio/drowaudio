@@ -32,7 +32,6 @@
 #include "MainWindow.h"
 #include "MainComponent.h"
 
-//==============================================================================
 MainAppWindow::MainAppWindow()
     : DocumentWindow (JUCEApplication::getInstance()->getApplicationName(),
                       Colours::darkgrey,
@@ -45,10 +44,6 @@ MainAppWindow::MainAppWindow()
     centreWithSize (800, 600);
     setVisible (true);
     setResizable (true, true);
-}
-
-MainAppWindow::~MainAppWindow()
-{
 }
 
 void MainAppWindow::closeButtonPressed()

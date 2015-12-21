@@ -130,7 +130,7 @@ public:
     void setFFTSizeLog2 (int newFFTSize);
 
     /** Returns the Properties in use. */
-    Properties getProperties() const noexcept           { return properties; }
+    const Properties& getProperties() const noexcept { return properties; }
 
     /** Returns the internal buffer.
         The contents of this will vary depending on whether you've just performed an FFT or IFFT but
@@ -167,14 +167,12 @@ public:
     void performIFFT (float* fftBuffer);
 
     /** Calculates the magnitude of an FFT bin. */
-    static float magnitude (const float real, const float imag,
-                            const float oneOverFFTSize,  const float oneOverWindowFactor)
+    static inline float magnitude (float real, float imag, float oneOverFFTSize, float oneOverWindowFactor)
     {
-        const float rawMagnitude = hypotf (real, imag);
+        const float rawMagnitude = std::hypotf (real, imag);
         const float magnitudeForFFTSize = rawMagnitude * oneOverFFTSize;
-        const float magnitudeForWindowFactor = magnitudeForFFTSize * oneOverWindowFactor;
 
-        return magnitudeForWindowFactor;
+        return magnitudeForFFTSize * oneOverWindowFactor;
     }
 
 private:
@@ -203,9 +201,6 @@ public:
           magnitutes (getFFTProperties().fftSizeHalved + 1)
     {
     }
-
-    /** Destructor. */
-    ~FFTEngine() {}
 
     /** Performs an FFT operation.
         The number of samples must be equal to the fftSize.

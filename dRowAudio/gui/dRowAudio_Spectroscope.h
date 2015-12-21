@@ -34,8 +34,8 @@
 
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
-//==============================================================================
 /** Creates a standard Spectroscope.
+
     This will display the amplitude of each frequency bin from an FFT in a
     continuous line which will decay with time.
     This is very simple to use, it is a GraphicalComponent so just register one
@@ -45,21 +45,12 @@
 class Spectroscope : public GraphicalComponent
 {
 public:
-    //==============================================================================
     /** Creates a spectroscope with a given FFT size.
+
         Note that the fft size given here is log2 of the FFT size so for example,
         a 1024 size fft use 10.
      */
     Spectroscope (int fftSizeLog2);
-
-    /** Destructor. */
-    ~Spectroscope();
-
-    /** @internal */
-    void resized();
-
-    /** @internal */
-    void paint (Graphics &g);
 
     //==============================================================================
     /** Sets the scope to display in log or normal mode.
@@ -68,7 +59,7 @@ public:
 
     /** Returns true if the scope is being displayed in log mode.
      */
-    inline bool getLogFrequencyDisplay() const      {   return logFrequency;    }
+    bool getLogFrequencyDisplay() const { return logFrequency; }
 
     //==============================================================================
     /** Copy a set of samples, ready to be processed.
@@ -79,13 +70,18 @@ public:
     void copySamples (const float* samples, int numSamples);
 
     /** @internal */
-    void timerCallback();
-
-    /** @internal */
     void process();
 
     /** @internal */
     void flagForRepaint();
+
+    //==============================================================================
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void paint (Graphics& g) override;
+    /** @internal */
+    void timerCallback() override;
 
 private:
     //==============================================================================

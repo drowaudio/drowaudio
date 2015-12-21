@@ -29,19 +29,12 @@
   ==============================================================================
 */
 
-
-
 Clock::Clock()
 {
     setTimeDisplayFormat (showTime + show24Hr);
 }
 
-Clock::~Clock()
-{
-    stopTimer();
-}
-
-int Clock::getRequiredWidth()
+int Clock::getRequiredWidth() const
 {
     return getFont().getStringWidth (timeAsString) + 10;
 }
@@ -56,8 +49,6 @@ void Clock::setTimeDisplayFormat(const int newFormat)
         startTimer (5900);
     if ((displayFormat & showSeconds))
         startTimer (950);
-//    if ((displayFormat & showTenthSeconds))
-//        startTimer(99);
 
     timerCallback();
 }

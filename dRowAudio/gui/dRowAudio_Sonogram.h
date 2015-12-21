@@ -34,10 +34,8 @@
 
 #if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
 
-
-
-//==============================================================================
 /** Creates a standard right-left scrolling greyscale Sonogram.
+
     This is very simple to use, it is a GraphicalComponent so just register one
     with a TimeSliceThread, make sure its running and then continually call the
     copySamples() method. The FFT itself will be performed on a background thread.
@@ -45,21 +43,11 @@
 class Sonogram : public GraphicalComponent
 {
 public:
-    //==============================================================================
     /** Creates a Sonogram with a given FFT size.
         Note that the fft size given here is log2 of the FFT size so for example,
         for a 1024 size FFT use 10 as the argument.
      */
     Sonogram (int fftSizeLog2);
-
-    /** Destructor. */
-    ~Sonogram();
-
-    /** @internal */
-    void resized();
-
-    /** @internal */
-    void paint (Graphics &g);
 
     //==============================================================================
     /** Sets the scope to display in log or normal mode.
@@ -68,7 +56,7 @@ public:
 
     /** Returns true if the scope is being displayed in log mode.
      */
-    inline bool getLogFrequencyDisplay() const     {    return logFrequency;    }
+    bool getLogFrequencyDisplay() const { return logFrequency; }
 
     /** Sets the width for one block of fft data. This must be greater than 0.
         Higher values will effectively cause the scope to move faster.
@@ -88,14 +76,19 @@ public:
     void copySamples (const float* samples, int numSamples);
 
     /** @internal */
-    void timerCallback();
-
-    /** @internal */
     void process();
 
     //==============================================================================
     /** @internal */
     void flagForRepaint();
+
+    //==============================================================================
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void paint (Graphics& g) override;
+    /** @internal */
+    void timerCallback() override;
 
 private:
     //==============================================================================

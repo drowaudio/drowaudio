@@ -34,17 +34,13 @@
 
 #include "../DemoHeader.h"
 
-//==============================================================================
 class BufferTransformAudioSource :  public AudioSource
 {
 public:
-    //==============================================================================
     BufferTransformAudioSource (AudioSource* source,
                                 bool deleteSourceWhenDeleted = false);
-    
-    /** Destructor. */
-    ~BufferTransformAudioSource();
-    
+
+    //==============================================================================
     /** Setting this to true does not apply the buffer. */
     void setBypass (bool shouldBypass);
     
@@ -53,14 +49,12 @@ public:
     Buffer& getBuffer()     {   return buffer;    }
         
     //==============================================================================
-    /** @internal. */
-    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
-    
-    /** @internal. */
-    void releaseResources();
-    
-    /** @internal. */
-    void getNextAudioBlock (const AudioSourceChannelInfo& info);
+    /** @internal */
+    void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
+    /** @internal */
+    void releaseResources() override;
+    /** @internal */
+    void getNextAudioBlock (const AudioSourceChannelInfo& info) override;
         
 private:
     //==============================================================================

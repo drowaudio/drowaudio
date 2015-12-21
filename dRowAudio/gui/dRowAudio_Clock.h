@@ -33,7 +33,7 @@
 #define DROWAUDIO_CLOCK_H
 
 //==============================================================================
-/**    A handy digital graphical clock.
+/** A handy digital graphical clock.
 
     Just add one of these to your component and it will display the time,
     continually updating itself. Set the look and feel of it as you would
@@ -63,10 +63,6 @@ public:
      */
     Clock();
 
-    /**    Destructor.
-     */
-    ~Clock();
-
     /**    Sets the display format of the clock.
 
         To specify what sort of clock to display pass in a number of the
@@ -78,11 +74,11 @@ public:
 
     /**    Returns the width required to display all of the clock's information.
      */
-    int getRequiredWidth();
+    int getRequiredWidth() const;
 
     //==============================================================================
     /** @internal */
-    void timerCallback();
+    void timerCallback() override;
 
 private:
     //==============================================================================

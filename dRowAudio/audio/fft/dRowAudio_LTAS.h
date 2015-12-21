@@ -46,7 +46,6 @@ class CumulativeMovingAverage;
 class LTAS
 {
 public:
-    //==============================================================================
     /** Creates an LTAS.
 
         This will use a given FFT size, remember this is the log2 of the FFT size
@@ -56,9 +55,7 @@ public:
      */
     LTAS (int fftSizeLog2);
 
-    /** Destructor. */
-    ~LTAS();
-
+    //==============================================================================
     /** Calculates the LTAS based on a set of samples.
 
         For this to work the number of samples must be at least as many as the size
@@ -72,7 +69,7 @@ public:
 
         @see Buffer
      */
-    Buffer& getLTASBuffer()                    {   return ltasBuffer;  }
+    Buffer& getLTASBuffer() { return ltasBuffer; }
 
 private:
     //==============================================================================

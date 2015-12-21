@@ -48,12 +48,6 @@ DistortionDemo::DistortionDemo (BufferTransformAudioSource& bufferTransformAudio
     bypassButton.addListener (this);
 }
 
-DistortionDemo::~DistortionDemo()
-{
-    resetButton.removeListener (this);
-    bypassButton.removeListener (this);
-}
-
 void DistortionDemo::resized()
 {
     const int w = getWidth();
@@ -98,11 +92,7 @@ void DistortionDemo::paint (Graphics& g)
 void DistortionDemo::buttonClicked (Button* button)
 {
     if (button == &resetButton)
-    {
         distortionComponent.resetBuffer();
-    }
     else if (button == &bypassButton)
-    {
         bufferTransformAudioSource.setBypass (bypassButton.getToggleState());
-    }
 }

@@ -37,9 +37,9 @@ DistortionComponent::DistortionComponent (Buffer& bufferToControl)
 {
     for (int i = 0; i < 2; ++i)
     {
-        curvePoints.add (new CurvePoint());
-        curvePoints[i]->addComponentListener (this);
-        addAndMakeVisible (curvePoints[i]);
+        CurvePoint* curvePoint = curvePoints.add (new CurvePoint());
+        curvePoint->addComponentListener (this);
+        addAndMakeVisible (curvePoint);
     }
         
     buffer.addListener (this);
@@ -92,9 +92,7 @@ void DistortionComponent::paint (Graphics& g)
 void DistortionComponent::bufferChanged (Buffer* changedBuffer)
 {
     if (changedBuffer == &buffer)
-    {
         refreshPath();
-    }
 }
 
 void DistortionComponent::componentMovedOrResized (Component& component, bool /*wasMoved*/, bool /*wasResized*/)
@@ -140,8 +138,7 @@ void DistortionComponent::refillBuffer (float x1, float y1, float x2, float y2)
 
 	for (int i = 0; i < bufferSize; ++i)
 	{
-		float x = jlimit (0.0f, 1.0f, i * bufferScale);
-		bufferData[i] = BezierCurve::cubicBezierNearlyThroughTwoPoints (x,
+		bufferData[i] = BezierCurve::cubicBezierNearlyThroughTwoPoints (jlimit (0.0f, 1.0f, i * bufferScale),
                                                                         x1, y1,
                                                                         x2, y2);
 	}

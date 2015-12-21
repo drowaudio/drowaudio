@@ -38,50 +38,48 @@
 class LoopMarker :  public Component
 {
 public:    
-    //==============================================================================
     LoopMarker()
         : isMouseOver (false)
     {
     }
 
-    ~LoopMarker() {}
-    
-    void resized ()
+    //==============================================================================
+    void resized() override
     {
         constrainer.setMinimumOnscreenAmounts (getHeight(), getWidth(), getHeight(), getWidth());
     }
     
-    void paint (Graphics& g)
+    void paint (Graphics& g) override
     {
         g.fillAll (isMouseOver ? Colours::red.withAlpha (0.9f) : Colours::red.withAlpha (0.7f));
     }
     
-    void mouseEnter (const MouseEvent& /*e*/)
+    void mouseEnter (const MouseEvent&) override
     {
         setMouseCursor (MouseCursor::PointingHandCursor);
         isMouseOver = true;
         repaint();
     }
 
-    void mouseExit (const MouseEvent& /*e*/)
+    void mouseExit (const MouseEvent&) override
     {
         setMouseCursor (MouseCursor::NormalCursor);
         isMouseOver = false;
         repaint();
     }
     
-    void mouseDown (const MouseEvent& e)
+    void mouseDown (const MouseEvent& e) override
     {
         setMouseCursor (MouseCursor::DraggingHandCursor);
         dragger.startDraggingComponent (this, e);
     } 
 
-    void mouseUp (const MouseEvent& /*e*/)
+    void mouseUp (const MouseEvent&) override
     {
         setMouseCursor (MouseCursor::PointingHandCursor);
     }
 
-    void mouseDrag (const MouseEvent& e)
+    void mouseDrag (const MouseEvent& e) override
     {
         dragger.dragComponent (this, e, &constrainer);
     }

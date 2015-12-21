@@ -35,26 +35,22 @@
 #include "../DemoHeader.h"
 #include "CurvePoint.h"
 
-//==============================================================================
 class DistortionComponent : public Component,
                             public Buffer::Listener,
                             public ComponentListener
 {
 public:
-    //==============================================================================
     DistortionComponent (Buffer& bufferToControl);
 
     ~DistortionComponent();
-    
-    void resized();
-    
-    void paint (Graphics& g);
-    
-    void bufferChanged (Buffer* buffer);
-    
-    void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized);
-        
+
     void resetBuffer();
+    
+    //==============================================================================
+    void resized() override;
+    void paint (Graphics& g) override;
+    void bufferChanged (Buffer* buffer) override;
+    void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized) override;
     
 private:
     //==============================================================================

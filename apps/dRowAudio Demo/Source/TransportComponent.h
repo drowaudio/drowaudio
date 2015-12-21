@@ -34,20 +34,24 @@
 
 #include "DemoHeader.h"
 
-//==============================================================================
 class TransportComponent :  public Component,
                             public Button::Listener
 {
 public:    
-    //==============================================================================
     TransportComponent (AudioDeviceManager& audioDeviceManager, AudioFilePlayerExt& audioFilePlayer);
-    
-    ~TransportComponent();
-    
-    void resized();
-        
-    void buttonClicked (Button* button);
-    
+
+    //==============================================================================
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void buttonClicked (Button* button) override;
+
+private:
+    //==============================================================================
+    AudioDeviceManager& audioDeviceManager;
+    AudioFilePlayerExt& audioFilePlayer;
+    OwnedArray<TextButton> buttons;
+
     enum Buttons
     {
         play,
@@ -56,16 +60,10 @@ public:
         reverse,
         numButtons
     };
-    
-private:
-    //==============================================================================
-    AudioDeviceManager& audioDeviceManager;
-    AudioFilePlayerExt& audioFilePlayer;
-    OwnedArray<TextButton> buttons;    
-    
+
     void showAudioSettings();
-    
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TransportComponent);
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TransportComponent)
 };
 
 #endif  // __TRANSPORTCOMPONENT_H_E0AC5162__

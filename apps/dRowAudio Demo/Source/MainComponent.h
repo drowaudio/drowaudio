@@ -46,22 +46,25 @@ class MainComponent :   public Component,
                         public AudioIODeviceCallback
 {
 public:    
-    //==============================================================================
     MainComponent();
     
     ~MainComponent();
     
-    void resized();
-    
-    void textEditorTextChanged (TextEditor& editor);
-    
+    //==============================================================================
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void textEditorTextChanged (TextEditor& editor) override;
+    /** @internal */
     void audioDeviceIOCallback (const float** inputChannelData,
                                 int numInputChannels,
                                 float** outputChannelData,
                                 int numOutputChannels,
-                                int numSamples);
-    void audioDeviceAboutToStart (AudioIODevice* device);
-    void audioDeviceStopped();
+                                int numSamples) override;
+    /** @internal */
+    void audioDeviceAboutToStart (AudioIODevice* device) override;
+    /** @internal */
+    void audioDeviceStopped() override;
     
 private:
     //==============================================================================

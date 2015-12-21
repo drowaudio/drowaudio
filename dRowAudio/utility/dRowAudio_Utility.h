@@ -32,10 +32,6 @@
 #ifndef DROWAUDIO_UTILITY_H
 #define DROWAUDIO_UTILITY_H
 
-#if JUCE_MSVC
-    #pragma warning (disable: 4505)
-#endif
-
 #include "dRowAudio_XmlHelpers.h"
 #include "dRowAudio_DebugObject.h"
 
@@ -134,7 +130,7 @@ void reverseTwoArrays (Type* array1, Type* array2, int length)
     @param    trackName    The track name to look for.
     @param    retryLimit    An optional number of retries as sometimes the URL won't load first time.
  */
-static String findKeyFromChemicalWebsite (const String& releaseNo, const String& trackName)
+static inline String findKeyFromChemicalWebsite (const String& releaseNo, const String& trackName)
 {
     URL chemicalURL ("http://www.chemical-records.co.uk/sc/servlet/Info");
     chemicalURL = chemicalURL.withParameter ("Track", releaseNo);
@@ -170,7 +166,7 @@ static String findKeyFromChemicalWebsite (const String& releaseNo, const String&
 /** Draws a line representing the normalised set of samples to the given Image.
     Note the samples must be in the range of 1-0 and the line will be stretched to fit the whole image.
  */
-static void drawBufferToImage (const Image& image, const float* samples, int numSamples, Colour colour, float thickness)
+static inline void drawBufferToImage (const Image& image, const float* samples, int numSamples, Colour colour, float thickness)
 {
     if (image.isNull())
         return;
@@ -204,7 +200,7 @@ static void drawBufferToImage (const Image& image, const float* samples, int num
 /** Dumps a given image to a File in png format.
     If the file parameter is nonexistant a temp file will be created on the desktop.
  */
-static void saveImageToFile (const Image& image, File file = File::nonexistent)
+static inline void saveImageToFile (const Image& image, File file = File::nonexistent)
 {
     if (! file.exists())
         file = File::getSpecialLocation (File::userDesktopDirectory).getNonexistentChildFile ("tempImage", ".png");
@@ -249,7 +245,7 @@ public:
     /** Provides a simple way of getting the tree from a var object which
         is a ReferencedCountedValueTree.
      */
-    static ValueTree getTreeFromObject (const var& treeObject)
+    static inline ValueTree getTreeFromObject (const var& treeObject)
     {
         ReferenceCountedValueTree* refTree
             = dynamic_cast<ReferenceCountedValueTree*> (treeObject.getObject());
@@ -298,7 +294,7 @@ public:
     /** Provides a simple way of getting the Identifier from a var object which
         is a ReferenceCountedIdentifier.
      */
-    static Identifier getIdentifierFromObject (const var& identiferObject)
+    static inline Identifier getIdentifierFromObject (const var& identiferObject)
     {
         ReferenceCountedIdentifier* refIdentifer
             = dynamic_cast<ReferenceCountedIdentifier*> (identiferObject.getObject());
@@ -353,7 +349,7 @@ public:
     /** Provides a simple way of getting the MemoryBlock from a var object which
         is a ReferencedCountedMemoryBlock.
      */
-    static const MemoryBlock* getMemoryBlockFromObject (const var& blockObject)
+    static inline const MemoryBlock* getMemoryBlockFromObject (const var& blockObject)
     {
         ReferencedCountedMemoryBlock* refBlock
             = dynamic_cast<ReferencedCountedMemoryBlock*> (blockObject.getObject());
@@ -375,7 +371,7 @@ private:
     This is a helper method to conveniently write a ValueTree to a File,
     optionally storing it as Xml.
  */
-static bool writeValueTreeToFile (const ValueTree& treeToWrite, const File& fileToWriteTo, bool asXml = true)
+static inline bool writeValueTreeToFile (const ValueTree& treeToWrite, const File& fileToWriteTo, bool asXml = true)
 {
     if (fileToWriteTo.hasWriteAccess())
     {
@@ -410,7 +406,7 @@ static bool writeValueTreeToFile (const ValueTree& treeToWrite, const File& file
     attempt to read it as binary. If this also fails it will return an invalid
     ValueTree.
  */
-static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
+static inline ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 {
     ScopedPointer<XmlElement> treeAsXml (XmlDocument::parse (fileToReadFrom));
     if (treeAsXml != nullptr)

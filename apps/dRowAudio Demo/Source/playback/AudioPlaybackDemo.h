@@ -42,18 +42,18 @@ class AudioPlaybackDemo :   public Component,
                             public Slider::Listener
 {
 public:    
-    //==============================================================================
     AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer,
                        BufferTransformAudioSource& bufferTransformAudioSource);
     
     ~AudioPlaybackDemo();
     
-    void resized();
-    
-    void paint (Graphics& g);
-        
-    void sliderValueChanged (Slider* slider);
-    
+    //==============================================================================
+    void resized() override;
+    void paint (Graphics& g) override;
+    void sliderValueChanged (Slider* slider) override;
+
+private:
+    //==============================================================================
     enum PlayerControls 
     {
         lowEQ,
@@ -65,8 +65,6 @@ public:
         numControls
     };
 
-private:
-    //==============================================================================
     AudioFilePlayerExt& audioFilePlayer;
 
     LoopComponent loopComponent;

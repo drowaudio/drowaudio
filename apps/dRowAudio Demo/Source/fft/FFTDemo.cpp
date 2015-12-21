@@ -77,10 +77,7 @@ FFTDemo::~FFTDemo()
     sonogramSpeedSlider.removeListener (this);
 }
 
-void FFTDemo::paint (Graphics& /*g*/)
-{
-}
-
+//==============================================================================
 void FFTDemo::resized()
 {
     const int h = getHeight();

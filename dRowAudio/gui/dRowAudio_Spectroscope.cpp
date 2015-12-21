@@ -51,10 +51,6 @@ Spectroscope::Spectroscope (int fftSizeLog2)
     scopeImage.clear (scopeImage.getBounds(), Colours::black);
 }
 
-Spectroscope::~Spectroscope()
-{
-}
-
 void Spectroscope::resized()
 {
     scopeImage = scopeImage.rescaled (jmax (1, getWidth()), jmax (1, getHeight()));

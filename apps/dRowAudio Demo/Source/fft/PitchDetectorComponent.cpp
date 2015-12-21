@@ -23,10 +23,6 @@ PitchDetectorComponent::PitchDetectorComponent()
     startTimer (25);
 }
 
-PitchDetectorComponent::~PitchDetectorComponent()
-{
-}
-
 void PitchDetectorComponent::setLogFrequencyDisplay (bool shouldDisplayLogFrequency)
 {
     displayLogFrequency = shouldDisplayLogFrequency;

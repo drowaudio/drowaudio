@@ -13,30 +13,23 @@
 
 #include "../DemoHeader.h"
 
-//==============================================================================
-/*
-*/
 class PitchDetectorComponent :  public Component,
                                 public Timer
 {
 public:
-	//==============================================================================
     PitchDetectorComponent();
 
-    ~PitchDetectorComponent();
-
-    void setLogFrequencyDisplay (bool shouldDisplayLogFrequency);
-    
-    void paint (Graphics&);
-    
-    void resized();
-
-    void timerCallback();
-    
 	//==============================================================================
+    void setLogFrequencyDisplay (bool shouldDisplayLogFrequency);
+
     void setSampleRate (double newSampleRate);
-    
+
     void processBlock (const float* inputChannelData, int numSamples);
+
+	//==============================================================================
+    void paint (Graphics&) override;
+    void resized() override;
+    void timerCallback() override;
 
 private:
 	//==============================================================================

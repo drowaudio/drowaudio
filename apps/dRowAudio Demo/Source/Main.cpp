@@ -32,28 +32,20 @@
 #include "DemoHeader.h"
 #include "MainWindow.h"
 
-
-//==============================================================================
 class dRowAudioDemoApplication  : public JUCEApplication
 {
 public:
-    //==============================================================================
     dRowAudioDemoApplication()
     {
     }
 
-    ~dRowAudioDemoApplication()
-    {
-    }
-
-    //==============================================================================
-    void initialise (const String& /*commandLine*/)
+    void initialise (const String&) override
     {
 #if JUCE_DEBUG && DROWAUDIO_UNIT_TESTS
         UnitTestRunner testRunner;
         testRunner.runAllTests();
 #endif
-        
+
         ScopedPointer<SplashScreen> splash = new SplashScreen ("dRowAudio Demo",
                                                                ImageCache::getFromMemory (BinaryData::splash_screen_png, BinaryData::splash_screen_pngSize),
                                                               #if JUCE_MAC
@@ -61,46 +53,25 @@ public:
                                                               #else
                                                                false);
                                                               #endif
-        
-        // Do your application's initialisation code here..
+
         mainWindow = new MainAppWindow();
     }
 
-    void shutdown()
+    void shutdown() override
     {
-        // Do your application's shutdown code here..
-        mainWindow = 0;
+        mainWindow = nullptr;
     }
 
-    //==============================================================================
-    void systemRequestedQuit()
-    {
-        quit();
-    }
-
-    //==============================================================================
-    const String getApplicationName()
-    {
-        return "dRowAudio Demo";
-    }
-
-    const String getApplicationVersion()
-    {
-        return ProjectInfo::versionString;
-    }
-
-    bool moreThanOneInstanceAllowed()
-    {
-        return true;
-    }
-
-    void anotherInstanceStarted (const String& /*commandLine*/)
-    {
-        
-    }
+    void systemRequestedQuit() override                     { quit(); }
+    const String getApplicationName() override              { return "dRowAudio Demo"; }
+    const String getApplicationVersion() override           { return ProjectInfo::versionString; }
+    bool moreThanOneInstanceAllowed() override              { return true; }
+    void anotherInstanceStarted (const String&) override    { }
 
 private:
     ScopedPointer <MainAppWindow> mainWindow;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (dRowAudioDemoApplication)
 };
 
 //==============================================================================

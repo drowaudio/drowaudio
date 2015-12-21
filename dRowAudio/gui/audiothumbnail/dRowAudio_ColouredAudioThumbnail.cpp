@@ -852,7 +852,7 @@ ColouredAudioThumbnail::~ColouredAudioThumbnail()
 
 void ColouredAudioThumbnail::clear()
 {
-    source = 0;
+    source = nullptr;
 
     const ScopedLock sl (lock);
     window->invalidate();
@@ -963,21 +963,20 @@ bool ColouredAudioThumbnail::setDataSource (LevelDataSource* newSource)
 bool ColouredAudioThumbnail::setSource (InputSource* const newSource)
 {
     clear();
-
-    return newSource != 0 && setDataSource (new LevelDataSource (*this, newSource));
+    return newSource != nullptr && setDataSource (new LevelDataSource (*this, newSource));
 }
 
 void ColouredAudioThumbnail::setReader (AudioFormatReader* newReader, int64 hash)
 {
     clear();
 
-    if (newReader != 0)
+    if (newReader != nullptr)
         setDataSource (new LevelDataSource (*this, newReader, hash));
 }
 
 int64 ColouredAudioThumbnail::getHashCode() const
 {
-    return source == 0 ? 0 : source->hashCode;
+    return source == nullptr ? 0 : source->hashCode;
 }
 
 void ColouredAudioThumbnail::addBlock (const int64 startSample, const AudioSampleBuffer& incoming,
@@ -1054,7 +1053,7 @@ float ColouredAudioThumbnail::getApproximatePeak() const
     int peak = 0;
 
     for (int i = channels.size(); --i >= 0;)
-        peak = jmax (peak, channels.getUnchecked(i)->getPeak());
+        peak = jmax (peak, channels.getUnchecked (i)->getPeak());
 
     return jlimit (0, 127, peak) / 127.0f;
 }
@@ -1079,7 +1078,7 @@ void ColouredAudioThumbnail::getApproximateMinMax (const double startTime, const
 }
 
 void ColouredAudioThumbnail::drawChannel (Graphics& g, const Rectangle<int>& area, double startTime,
-                                  double endTime, int channelNum, float verticalZoomFactor)
+                                          double endTime, int channelNum, float verticalZoomFactor)
 {
     const ScopedLock sl (lock);
 

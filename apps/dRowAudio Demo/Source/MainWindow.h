@@ -35,23 +35,14 @@
 #include "DemoHeader.h"
 #include "DemoLookAndFeel.h"
 
-//==============================================================================
 class MainAppWindow   : public DocumentWindow
 {
 public:
-    //==============================================================================
     MainAppWindow();
-    ~MainAppWindow();
 
-    void closeButtonPressed();
-
-
-    /* Note: Be careful when overriding DocumentWindow methods - the base class
-       uses a lot of them, so by overriding you might break its functionality.
-       It's best to do all your work in you content component instead, but if
-       you really have to override any DocumentWindow methods, make sure your
-       implementation calls the superclass's method.
-    */
+    //==============================================================================
+    /** @internal */
+    void closeButtonPressed() override;
 
 private:
     //==============================================================================

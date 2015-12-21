@@ -32,19 +32,15 @@
 #ifndef DROWAUDIO_GUIHELPERS_H
 #define DROWAUDIO_GUIHELPERS_H
 
-#if JUCE_MSVC
-    #pragma warning (disable: 4505)
-#endif
-
 namespace GuiHelpers
 {
     /** Creates a base colour for a component based on the current keyboard
         and mouse interactivity.
      */
-    static Colour createBaseColour (const Colour& colour,
-                                    const bool hasKeyboardFocus,
-                                    const bool isMouseOver,
-                                    const bool isButtonDown) noexcept
+    static inline Colour createBaseColour (const Colour& colour,
+                                           bool hasKeyboardFocus,
+                                           bool isMouseOver,
+                                           bool isButtonDown) noexcept
     {
         const float sat = hasKeyboardFocus ? 1.3f : 0.9f;
         const Colour baseColour (colour.withMultipliedSaturation (sat));
@@ -60,8 +56,8 @@ namespace GuiHelpers
     /** Draws a square bevel around a given rectange.
         This is useful for insetting components and givin them a border.
      */
-    static void drawBevel (Graphics& g, const Rectangle<float>& innerBevelBounds,
-                           float bevelThickness, Colour baseColour)
+    static inline void drawBevel (Graphics& g, const Rectangle<float>& innerBevelBounds,
+                                  float bevelThickness, Colour baseColour)
     {
         Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
         Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5f, bevelThickness * 0.5f));
@@ -115,8 +111,7 @@ namespace GuiHelpers
     }
 
     //==============================================================================
-    /**
-        Helper function to serialise a system font to a file.
+    /** Helper function to serialise a system font to a file.
         This is useful if you want to include a custom font in an application so that is
         guarenteed to be avialiable cross-platform.
 
@@ -172,7 +167,7 @@ namespace GuiHelpers
 
         @see Font, CustomTypeface
      */
-    static bool serializeFont (const Font& font, File& destinationFile, int maxNumChars = 127)
+    static inline bool serializeFont (const Font& font, File& destinationFile, int maxNumChars = 127)
     {
         destinationFile.deleteFile();
         ScopedPointer<FileOutputStream> outFileStream (destinationFile.createOutputStream());
@@ -218,7 +213,7 @@ namespace GuiHelpers
 
     /** Creates an icon in a given colour.
      */
-    static DrawablePath createIcon (IconType icon, Colour colour)
+    static inline DrawablePath createIcon (IconType icon, Colour colour)
     {
         switch (icon)
         {

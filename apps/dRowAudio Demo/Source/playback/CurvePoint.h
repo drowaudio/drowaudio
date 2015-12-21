@@ -15,34 +15,24 @@
 
 #include "../DemoHeader.h"
 
-class CurvePoint  : public Component,
-					public ComponentDragger
+class CurvePoint : public Component,
+                   public ComponentDragger
 {
-private:
-	//==============================================================================
-	ComponentBoundsConstrainer constrainer;
-	bool mouseIsOver;
-	
 public:
-	//==============================================================================
-	CurvePoint ()
-	:	mouseIsOver (false)
+	CurvePoint()
+	    : mouseIsOver (false)
 	{
 	}
-	
-	~CurvePoint ()
-    {
-    }
-	
+
 	//==============================================================================
-	void resized ()
+	void resized() override
 	{
 		int halfWidth = getWidth() / 2;
 		int halfHeight = getHeight() / 2;
 		constrainer.setMinimumOnscreenAmounts (halfHeight, halfWidth, halfHeight, halfWidth);
 	}
 	
-	void paint (Graphics& g)
+	void paint (Graphics& g) override
 	{
 		g.setColour (Colours::grey);
 		g.fillAll();
@@ -54,29 +44,32 @@ public:
 		}
 	}
 	
-	void mouseDown (const MouseEvent& e)
+	void mouseDown (const MouseEvent& e) override
 	{
 		startDraggingComponent (this, e);
 	}
 	
-	void mouseDrag (const MouseEvent& e)
+	void mouseDrag (const MouseEvent& e) override
 	{
 		dragComponent (this, e, &constrainer);
 	}
 	
-	void mouseEnter (const MouseEvent& /*e*/)
+	void mouseEnter (const MouseEvent&) override
 	{
 		mouseIsOver = true;
 		repaint();
 	}
 	
-	void mouseExit (const MouseEvent& /*e*/)
+	void mouseExit (const MouseEvent&) override
 	{
 		mouseIsOver = false;
 		repaint();
 	}
 	
+private:
 	//==============================================================================
+	ComponentBoundsConstrainer constrainer;
+	bool mouseIsOver;
 };
 
 #endif//_CURVEPOINT_H_

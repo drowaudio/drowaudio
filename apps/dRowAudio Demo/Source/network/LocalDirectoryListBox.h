@@ -96,34 +96,5 @@ private:
     bool isInterestedInDrag;
 };
 
-/*class LocalDirectoryListBox :	public FileBrowserComponent,
-								public DragAndDropTarget,
-								public DragAndDropContainer
-{
-public:
-	LocalDirectoryListBox(int flags,
-                          const File& initialFileOrDirectory,
-//                          const FileFilter* fileFilter,
-                          FilePreviewComponent* previewComp);
-	
-	~LocalDirectoryListBox();
-	
-	void fileClicked(const File &f, const MouseEvent &e);
-	
-	bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
-
-    void itemDropped (const SourceDetails& dragSourceDetails);
-
-//	void mouseUp(const MouseEvent& e);
-//
-//	void mouseExit(const MouseEvent& e);
-//
-//	void mouseDrag(const MouseEvent& e);
-	
-private:
-	
-//	bool isMouseDragging;
-};*/
-
 #endif
 #endif  // __LOCALDIRECTORYLISTBOX_H_AEB1756D__

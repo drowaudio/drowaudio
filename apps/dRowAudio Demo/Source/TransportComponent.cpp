@@ -37,9 +37,9 @@ TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
 {
     for (int i = 0; i < numButtons; i++)
     {
-        buttons.add (new TextButton());
-        addAndMakeVisible (buttons[i]);
-        buttons[i]->addListener (this);
+        TextButton* button = buttons.add (new TextButton());
+        addAndMakeVisible (button);
+        button->addListener (this);
     }
     
     buttons[play]->setButtonText ("Play");
@@ -52,14 +52,6 @@ TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
     
     buttons[loop]->setClickingTogglesState (true);
     //buttons[reverse]->setClickingTogglesState (true);
-}
-
-TransportComponent::~TransportComponent()
-{
-    for (int i = 0; i < numButtons; i++)
-    {
-        buttons[i]->removeListener (this);
-    }    
 }
 
 void TransportComponent::resized()
@@ -110,7 +102,7 @@ void TransportComponent::showAudioSettings()
     settingsComp.setLookAndFeel (&settingsLaf);
     
     DialogWindow::showModalDialog ("Audio Settings",
-                              &settingsComp, nullptr,
-                              Colours::darkgrey,
-                              true, true, true);
+                                   &settingsComp, nullptr,
+                                   Colours::darkgrey,
+                                   true, true, true);
 }

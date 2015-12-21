@@ -145,7 +145,7 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
 
 void TrackInfoComponent::timerCallback()
 {
-    double timeRemaining = audioFilePlayer.getLengthInSeconds() - audioFilePlayer.getCurrentPosition();
+    const double timeRemaining = audioFilePlayer.getLengthInSeconds() - audioFilePlayer.getCurrentPosition();
     String remain (timeRemaining < 0.0 ? String::empty : "-");
     remain << timeToTimecodeStringLowRes (timeRemaining);
     remainLabel.setText (remain, dontSendNotification);

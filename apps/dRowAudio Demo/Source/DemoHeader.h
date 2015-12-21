@@ -15,5 +15,4 @@
 
 using namespace drow;
 
-
 #endif  // __DEMOHEADER_H_F6E7C8DE__

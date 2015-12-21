@@ -47,10 +47,6 @@ public:
      */
     CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs = 50);
 
-    /**    Descructor.
-     */
-    ~CpuMeter();
-
     /** Returns the current cpu usage as a percentage.
      */
     double getCurrentCpuUsage() const
@@ -67,10 +63,9 @@ public:
 
     //==============================================================================
     /** @internal */
-    void resized();
-
+    void resized() override;
     /** @internal */
-    void timerCallback();
+    void timerCallback() override;
 
 private:
     //==============================================================================

@@ -9,13 +9,7 @@
 
 #include "DemoLookAndFeel.h"
 
-#define Rectangle Rectangle
-
 DemoLookAndFeel::DemoLookAndFeel()
-{
-}
-
-DemoLookAndFeel::~DemoLookAndFeel()
 {
 }
 
@@ -27,14 +21,6 @@ void DemoLookAndFeel::drawButtonBackground (Graphics& g,
 {
     const int width = button.getWidth();
     const int height = button.getHeight();
-    
-//    const float outlineThickness = button.isEnabled() ? ((isButtonDown || isMouseOverButton) ? 1.2f : 0.7f) : 0.4f;
-//    const float halfThickness = outlineThickness * 0.5f;
-    
-//    const float indentL = button.isConnectedOnLeft()   ? 0.1f : halfThickness;
-//    const float indentR = button.isConnectedOnRight()  ? 0.1f : halfThickness;
-//    const float indentT = button.isConnectedOnTop()    ? 0.1f : halfThickness;
-//    const float indentB = button.isConnectedOnBottom() ? 0.1f : halfThickness;
 
     const Colour baseColour (GuiHelpers::createBaseColour (backgroundColour,
                                                            button.hasKeyboardFocus (true),
@@ -66,14 +52,4 @@ void DemoLookAndFeel::drawButtonBackground (Graphics& g,
                          Colours::white.withAlpha (0.5f));
     g.setGradientFill (highlight);
     g.drawLine (2.0f, height - 0.5f, width - 2.0f, height - 0.5f, 0.5f);
-//    drawGlassLozenge (g,
-//                      indentL,
-//                      indentT,
-//                      width - indentL - indentR,
-//                      height - indentT - indentB,
-//                      baseColour, outlineThickness, -1.0f,
-//                      button.isConnectedOnLeft(),
-//                      button.isConnectedOnRight(),
-//                      button.isConnectedOnTop(),
-//                      button.isConnectedOnBottom());
 }

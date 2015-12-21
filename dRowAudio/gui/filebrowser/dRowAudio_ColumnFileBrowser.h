@@ -47,29 +47,25 @@ class ColumnFileBrowserLookAndFeel;
 class ColumnFileBrowser :    public Viewport
 {
 public:
-    //==================================================================================
     /** Creates a ColumnFileBrowser with a given file filter.
      */
     ColumnFileBrowser (WildcardFileFilter* filesToDisplay);
 
-    /** Destructor.
-     */
-    ~ColumnFileBrowser();
-
+    //==================================================================================
     /** Sets the highlight colour for the active column.
+
         For the rest of the colours, use the normal DirectoryContentsDisplayComponent
         colourIds.
      */
-    void setActiveColumHighlightColour (const Colour& colour);
+    void setActiveColumHighlightColour (Colour colour);
 
+    //==================================================================================
     /** @internal */
-    void resized();
-
+    void resized() override;
     /** @internal */
-    void visibleAreaChanged (const Rectangle<int>& newVisibleArea);
-
+    void visibleAreaChanged (const Rectangle<int>& newVisibleArea) override;
     /** @internal */
-    void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel);
+    void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel) override;
 
 private:
     //==================================================================================

@@ -43,11 +43,6 @@ LTAS::LTAS (int fftSizeLog2)
     ltasAvg.insertMultiple (0, CumulativeMovingAverage(), numBins);
 }
 
-LTAS::~LTAS()
-{
-
-}
-
 void LTAS::updateLTAS (float* input, int numSamples)
 {
     if (input != nullptr)

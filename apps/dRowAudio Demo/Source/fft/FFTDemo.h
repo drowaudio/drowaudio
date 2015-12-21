@@ -41,23 +41,17 @@ class FFTDemo : public Component,
                 public Slider::Listener
 {
 public:
- 	//==============================================================================
     FFTDemo();
-    
     ~FFTDemo();
-    
-    void paint (Graphics& g);
-    
-    void resized();
-    
-    void buttonClicked (Button* button);
-    
-    void sliderValueChanged (Slider* slider);
-    
+
 	//==============================================================================
     void setSampleRate (double sampleRate);
-    
     void processBlock (const float* inputChannelData, int numSamples);
+
+	//==============================================================================
+    void resized() override;
+    void buttonClicked (Button* button) override;
+    void sliderValueChanged (Slider* slider) override;
     
 private:
 	//==============================================================================
@@ -67,7 +61,6 @@ private:
     PitchDetectorComponent pitchDetector;
     Sonogram sonogram;
 
-	//==============================================================================
     ToggleButton logSpectroscopeButton, logSonogramButton;
     Slider sonogramSpeedSlider;
     

@@ -40,27 +40,27 @@ class TrackInfoComponent :  public Component,
                             public Timer
 {
 public:    
-    //==============================================================================
     TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer);
-    
     ~TrackInfoComponent();
-    
-    void resized();
-    
-    void paint (Graphics& g);
-    
-    void fileChanged (AudioFilePlayer* player);
-    
-    void audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode);
-    
-    void timerCallback();
+
+    //==============================================================================
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void paint (Graphics& g) override;
+    /** @internal */
+    void fileChanged (AudioFilePlayer* player) override;
+    /** @internal */
+    void audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode) override;
+    /** @internal */
+    void timerCallback() override;
     
 private:
     //==============================================================================
     AudioFilePlayerExt& audioFilePlayer;
     Label bpmLabel, remainLabel;
-    
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TrackInfoComponent);
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TrackInfoComponent)
 };
 
 #endif  // __TRACKINFOCOMPONENT_H_75E955F2__

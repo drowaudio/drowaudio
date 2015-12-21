@@ -36,22 +36,20 @@
 #include "DistortionComponent.h"
 #include "BufferTransformAudioSource.h"
 
-//==============================================================================
-class DistortionDemo :  public Component,
-                        public Button::Listener
+class DistortionDemo : public Component,
+                       public Button::Listener
 {
 public:
-    //==============================================================================
     DistortionDemo (BufferTransformAudioSource& bufferTransformAudioSource);
     
-    ~DistortionDemo();
-    
-    void resized();
-    
-    void paint (Graphics& g);
-    
-    void buttonClicked (Button* button);
-    
+    //==============================================================================
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void paint (Graphics& g) override;
+    /** @internal */
+    void buttonClicked (Button* button) override;
+
 private:
     //==============================================================================
     BufferTransformAudioSource& bufferTransformAudioSource;

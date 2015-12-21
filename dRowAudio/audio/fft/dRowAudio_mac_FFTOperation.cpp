@@ -31,8 +31,6 @@
 
 #if JUCE_MAC && ! DROWAUDIO_USE_FFTREAL
 
-
-
 FFTOperation::FFTOperation (int fftSizeLog2)
     : fftProperties (fftSizeLog2)
 {
@@ -69,8 +67,4 @@ void FFTOperation::performFFT (float* samples)
     vDSP_fft_zrip (fftConfig, &fftBufferSplit, 1, fftProperties.fftSizeLog2, FFT_FORWARD);
 }
 
-//============================================================================
-
-
-
-#endif //JUCE_MAC
+#endif //JUCE_MAC && ! DROWAUDIO_USE_FFTREAL
