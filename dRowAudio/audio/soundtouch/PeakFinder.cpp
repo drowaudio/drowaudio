@@ -225,7 +225,7 @@ double PeakFinder::detectPeak(const float *data, int aminPos, int amaxPos)
         i1 = (int)(highPeak + 0.5);
         i2 = (int)(peaktmp + 0.5);
         tmp = 2 * (data[i2] - data[i1]) / (data[i2] + data[i1]);
-        if (fabs(tmp) < 0.1)
+        if (std::abs (tmp) < 0.1)
         {
             // The highest peak is harmonic of almost as high base peak,
             // thus use the base peak instead

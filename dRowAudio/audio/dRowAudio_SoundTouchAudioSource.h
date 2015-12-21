@@ -60,20 +60,17 @@ public:
     ~SoundTouchAudioSource();
 
     //==============================================================================
-    /** Sets all of the settings at once.
-    */
+    /** Sets all of the settings at once. */
     void setPlaybackSettings (const SoundTouchProcessor::PlaybackSettings& newSettings);
 
     /** Returns all of the settings. */
     const SoundTouchProcessor::PlaybackSettings& getPlaybackSettings() const { return soundTouchProcessor.getPlaybackSettings(); }
 
-    /** Returns the lock used when setting the buffer read positions.
-    */
-    inline const CriticalSection& getBufferLock() { return bufferStartPosLock; }
+    /** Returns the lock used when setting the buffer read positions. */
+    const CriticalSection& getBufferLock() { return bufferStartPosLock; }
 
-    /** Returns the SoundTouchProcessor being used.
-    */
-    inline SoundTouchProcessor& getSoundTouchProcessor() { return soundTouchProcessor; }
+    /** Returns the SoundTouchProcessor being used. */
+    SoundTouchProcessor& getSoundTouchProcessor() { return soundTouchProcessor; }
 
     //==============================================================================
     /** @internal */

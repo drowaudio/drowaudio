@@ -32,10 +32,7 @@
 #ifndef DROWAUDIO_UNITYBUILDER_H
 #define DROWAUDIO_UNITYBUILDER_H
 
-
-//==============================================================================
-/**
-    UnityBuilder class.
+/** UnityBuilder class.
 
     This is a helper class used to generate "unity build" files for quick
     compilation of projects. This class will take a source directory, scan it
@@ -49,7 +46,6 @@
 class UnityBuilder
 {
 public:
-    //==============================================================================
     /** Creates a default UnityBuilder.
 
         Use the processDirectory method to actually perform the file generation.
@@ -58,9 +54,7 @@ public:
      */
     UnityBuilder();
 
-    /** Destructor. */
-    ~UnityBuilder();
-
+    //==============================================================================
     /** Processes a directory for all .h and .cpp files and generates a unity header
         and cpp file.
 

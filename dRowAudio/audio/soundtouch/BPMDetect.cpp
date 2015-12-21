@@ -265,7 +265,7 @@ void BPMDetect::calcEnvelope(SAMPLETYPE *samples, int numsamples)
     {
         // calc average RMS volume
         RMSVolumeAccu *= avgdecay;
-        val = (float)fabs((float)samples[i]);
+        val = std::abs ((float)samples[i]);
         RMSVolumeAccu += val * val;
 
         // cut amplitudes that are below cutoff ~2 times RMS volume

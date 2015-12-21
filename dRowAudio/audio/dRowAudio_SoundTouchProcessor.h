@@ -38,9 +38,9 @@
 
 #include "soundtouch/SoundTouch.h"
 
-namespace drow {
+namespace drow
+{
 
-//==============================================================================
 /** Wraps a SoundTouch object to enable pitch and tempo adjustments to an audio buffer;
 
     To use this is very simple, just create one, initialise it with the desired number
@@ -68,6 +68,7 @@ public:
 
     //==============================================================================
     /** Create a default SoundTouchProcessor.
+
         Make sure that you call initialise before any processing take place.
         This will apply no shifting/stretching by default, use setPlaybackSetting() to
         apply these effects.
@@ -76,6 +77,7 @@ public:
 
     //==============================================================================
     /** Puts the processor into a ready state.
+
         This must be set before any processing occurs as the results are undefiend if not.
         It is the callers responsibility to make sure the numChannels parameter matches
         those supplied to the read/write methods.
@@ -83,6 +85,7 @@ public:
     void initialise (int numChannels, double sampleRate);
 
     /** Writes samples into the pipline ready to be processed.
+
         Remember to keep a 1:1 ratio of input and output samples more or less samples may
         be required as input compared to output (think of a time stretch). You can find
         this ratio using getNumSamplesRequiredRatio().
@@ -90,6 +93,7 @@ public:
     void writeSamples (float** sourceChannelData, int numChannels, int numSamples, int startSampleOffset = 0);
 
     /** Reads out processed samples.
+
         This will read out as many samples as the processor has ready. Any additional
         space in the buffer will be slienced. As the processor takes a certain ammount of
         samples to calculate an output there is a latency of around 100ms involved in the process.

@@ -42,7 +42,6 @@
 class ReversibleAudioSource : public AudioSource
 {
 public:
-    //==============================================================================
     /** Creates an ReversableAudioFormatReaderSource for a given reader.
 
         @param sourceReader                     the reader to use as the data source
@@ -54,13 +53,11 @@ public:
                            const bool deleteInputWhenDeleted);
 
     //==============================================================================
-    /** Sets whether the source should play forwards or backwards.
-     */
-    void setPlayDirection (bool shouldPlayForwards)    { isForwards = shouldPlayForwards;  }
+    /** Sets whether the source should play forwards or backwards.  */
+    void setPlayDirection (bool shouldPlayForwards) { isForwards = shouldPlayForwards; }
 
-    /** Returns true if the source is playing forwards.
-     */
-    bool getPlayDirection() const {    return isForwards; }
+    /** @returns True if the source is playing forwards. */
+    bool isPlayingForwards() const { return isForwards; }
 
     //==============================================================================
     /** @internal */

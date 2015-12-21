@@ -106,9 +106,9 @@ void DraggableWaveDisplay::paint (Graphics &g)
 
     int padLeft = 0, padRight = 0;
     if (startTime < 0.0)
-        padLeft = roundToInt (timeToPixels (fabs (startTime)));
+        padLeft = roundToInt (timeToPixels (std::abs (startTime)));
     if ((startTime + timeToDisplay) > duration)
-        padRight = roundToInt (timeToPixels (fabs (duration - (startTime + timeToDisplay))));
+        padRight = roundToInt (timeToPixels (std::abs (duration - (startTime + timeToDisplay))));
 
     g.drawImage (clippedImage,
                  padLeft, 0, w - padLeft - padRight, h,

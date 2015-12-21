@@ -49,24 +49,23 @@ public:
 
         Note that the fft size given here is log2 of the FFT size so for example,
         a 1024 size fft use 10.
-     */
+    */
     Spectroscope (int fftSizeLog2);
 
     //==============================================================================
-    /** Sets the scope to display in log or normal mode.
-     */
+    /** Sets the scope to display in log or normal mode. */
     void setLogFrequencyDisplay (bool shouldDisplayLog);
 
-    /** Returns true if the scope is being displayed in log mode.
-     */
-    bool getLogFrequencyDisplay() const { return logFrequency; }
+    /** @returns True if the scope is being displayed in log mode. */
+    bool isDisplayingLog() const { return logFrequency; }
 
     //==============================================================================
     /** Copy a set of samples, ready to be processed.
+
         Your audio callback should continually call this method to pass it its
         audio data. When the scope has enough samples to perform an fft it will do
         so on a background thread and redraw itself.
-     */
+    */
     void copySamples (const float* samples, int numSamples);
 
     /** @internal */

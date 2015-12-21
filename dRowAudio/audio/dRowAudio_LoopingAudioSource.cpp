@@ -47,10 +47,6 @@ LoopingAudioSource::LoopingAudioSource (PositionableAudioSource* const inputSour
     tempInfo.buffer = &tempBuffer;
 }
 
-LoopingAudioSource::~LoopingAudioSource()
-{
-}
-
 //==============================================================================
 void LoopingAudioSource::setLoopTimes (double startTime, double endTime)
 {
@@ -79,11 +75,6 @@ void LoopingAudioSource::getLoopTimes (double& startTime, double& endTime)
 void LoopingAudioSource::setLoopBetweenTimes (bool shouldLoop)
 {
     isLoopingBetweenTimes = shouldLoop;
-}
-
-bool LoopingAudioSource::getLoopBetweenTimes()
-{
-    return isLoopingBetweenTimes;
 }
 
 //==============================================================================

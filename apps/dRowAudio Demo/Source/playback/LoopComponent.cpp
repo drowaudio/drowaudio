@@ -67,7 +67,7 @@ void LoopComponent::paint (Graphics& g)
     const int startX = jmin (marker1.getRight(), marker2.getRight());
     const int endX = jmax (marker1.getX(), marker2.getX());
 
-    g.setColour (audioFilePlayer.getLoopBetweenTimes() ? Colours::red.withAlpha (0.4f) : Colours::red.withAlpha (0.2f));
+    g.setColour (audioFilePlayer.isBetweenLoopTimes() ? Colours::red.withAlpha (0.4f) : Colours::red.withAlpha (0.2f));
     g.fillRect (startX, 0, endX - startX, getHeight());
 }
 

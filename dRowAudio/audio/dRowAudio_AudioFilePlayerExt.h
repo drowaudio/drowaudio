@@ -54,19 +54,17 @@ public:
     //==============================================================================
     enum PlayerSettingCode
     {
-        SoundTouchSetting           = 0x0001,
-        LoopBeetweenTimesSetting    = 0x0002,
-        PlayDirectionSetting        = 0x0003,
-        FilterGainSetting           = 0x0004
+        SoundTouchSetting = 1,
+        LoopBetweenTimesSetting,
+        PlayDirectionSetting,
+        FilterGainSetting
     };
 
     //==============================================================================
-    /** Creates an empty AudioFilePlayerExt.
-     */
+    /** Creates an empty AudioFilePlayerExt. */
     AudioFilePlayerExt();
 
-    /** Destructor.
-     */
+    /** Destructor. */
     ~AudioFilePlayerExt();
 
     //==============================================================================
@@ -76,7 +74,7 @@ public:
 
     /** Returns the currents library entry.
      */
-    ValueTree getLibraryEntry() const { return  libraryEntry; }
+    ValueTree getLibraryEntry() const { return libraryEntry; }
 
     //==============================================================================
     /** Sets SoundTouchProcessor settings.
@@ -91,40 +89,34 @@ public:
      */
     void setPlayDirection (bool shouldPlayForwards);
 
-    /** Returns true if the source is playing forwards.
-     */
-    bool getPlayDirection() const;
+    /** Returns true if the source is playing forwards. */
+    bool isPlayingForwards() const;
 
-    /** Sets the gain of one of the FilteringAudioSource filters.
-     */
+    /** Sets the gain of one of the FilteringAudioSource filters. */
     void setFilterGain (FilteringAudioSource::FilterType type, float newGain);
 
     //==============================================================================
     /** Sets the start and end times of the loop.
+
         This doesn't actually activate the loop, use setLoopBetweenTimes() to toggle this.
-     */
+    */
     void setLoopTimes (double startTime, double endTime);
 
-    /** Enables the loop point set.
-     */
+    /** Enables the loop point set.  */
     void setLoopBetweenTimes (bool shouldLoop);
 
-    /** Returns true if the loop is activated.
-     */
-    bool getLoopBetweenTimes();
+    /** Returns true if the loop is activated. */
+    bool isBetweenLoopTimes();
 
-    /** Sets the next play position in seconds disregarding the loop boundries.
-     */
+    /** Sets the next play position in seconds disregarding the loop boundries. */
     void setPosition (double newPosition, bool ignoreAnyLoopBounds = false);
 
     //==============================================================================
-    /** Returns the SoundTouchAudioSource being used.
-     */
-    inline SoundTouchAudioSource* getSoundTouchAudioSource() const { return soundTouchAudioSource; }
+    /** Returns the SoundTouchAudioSource being used. */
+    SoundTouchAudioSource* getSoundTouchAudioSource() const { return soundTouchAudioSource; }
 
-    /** Returns the FilteringAudioSource being used.
-     */
-    inline FilteringAudioSource* getFilteringAudioSource() const { return filteringAudioSource; }
+    /** Returns the FilteringAudioSource being used. */
+    FilteringAudioSource* getFilteringAudioSource() const { return filteringAudioSource; }
 
 private:
     //==============================================================================

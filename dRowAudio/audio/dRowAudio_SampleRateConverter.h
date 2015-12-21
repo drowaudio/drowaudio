@@ -46,8 +46,7 @@
 class SampleRateConverter
 {
 public:
-    /** Creates a SampleRateConverter with a given number of channels.
-     */
+    /** Creates a SampleRateConverter with a given number of channels. */
     SampleRateConverter (const int numChannels = 1);
 
     //==============================================================================

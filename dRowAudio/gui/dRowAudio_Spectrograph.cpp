@@ -45,10 +45,6 @@ Spectrograph::Spectrograph (int fftSizeLog2)
     reset();
 }
 
-Spectrograph::~Spectrograph()
-{
-}
-
 //==============================================================================
 Image Spectrograph::generateImage (const float* samples, int numSamples)
 {

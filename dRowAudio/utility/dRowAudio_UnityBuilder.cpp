@@ -34,10 +34,6 @@ UnityBuilder::UnityBuilder()
 {
 }
 
-UnityBuilder::~UnityBuilder()
-{
-}
-
 bool UnityBuilder::processDirectory (const File& sourceDirectory)
 {
     if (sourceDirectory.isDirectory())

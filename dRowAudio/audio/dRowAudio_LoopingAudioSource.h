@@ -52,26 +52,21 @@ public:
     LoopingAudioSource (PositionableAudioSource* const inputSource,
                         bool deleteInputWhenDeleted);
 
-    /** Destructor. */
-    ~LoopingAudioSource();
-
     //==============================================================================
     /** Sets the start and end times of the loop.
+
         This doesn't actually activate the loop, use setLoopBetweenTimes() to toggle this.
-     */
+    */
     void setLoopTimes (double startTime, double endTime);
 
-    /** Sets the arguments to the currently set start and end times.
-     */
+    /** Sets the arguments to the currently set start and end times. */
     void getLoopTimes (double& startTime, double& endTime);
 
-    /** Enables the loop point set.
-     */
+    /** Enables the loop point set. */
     void setLoopBetweenTimes (bool shouldLoop);
 
-    /** Returns true if the loop is activated.
-     */
-    bool getLoopBetweenTimes();
+    /** Returns true if the loop is activated. */
+    bool isBetweenLoopTimes() const { return isLoopingBetweenTimes; }
 
     //==============================================================================
     /** Sets the next read position ignoring the loop bounds. */

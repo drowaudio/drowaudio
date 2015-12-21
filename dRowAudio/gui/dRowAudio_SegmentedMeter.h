@@ -36,7 +36,7 @@
 #include "../utility/dRowAudio_StateVariable.h"
 
 //==============================================================================
-/**    A segmented graphical VU meter.
+/** A segmented graphical VU meter.
 
     This class is a very efficient way of creating meters as it will only repaint itself when
     necessarry and does all its processing on a shared background thread.
@@ -57,58 +57,48 @@
 
     and in your audioCallback
     @code
-        if (currentMeter != nullptr) {
+        if (currentMeter != nullptr)
             currentMeter->copyValues (outputChannelData[0], numSamples);
-        }
     @endcode
 
  */
-class SegmentedMeter :    public GraphicalComponent
+class SegmentedMeter : public GraphicalComponent
 {
 public:
-    //==============================================================================
-    /**    Creates a SegmentedMeter.
+    /** Creates a SegmentedMeter.
+
         Initially this will do nothing as you need to register it with a
         TimeSliceThread then push some values to it with copyValues().
      */
     SegmentedMeter();
 
-    /**    Destructor.
-     */
-    ~SegmentedMeter();
-
-    /**    Calculates the number of segments currently required and triggers a repaint if necessary.
-     */
+    //==============================================================================
+    /** Calculates the number of segments currently required and triggers a repaint if necessary. */
     void calculateSegments();
 
-    /**    Returns the total number of segments the meter has.
-     */
-    int getTotalNumSegments()           {    return totalNumSegs;    }
+    /** Returns the total number of segments the meter has. */
+    int getTotalNumSegments() const { return totalNumSegs; }
 
-    /**    Returns the number of segments that represent the over level.
-     */
-    int getNumOverSegments()            {   return numRedSeg;       }
+    /** Returns the number of segments that represent the over level. */
+    int getNumOverSegments() const { return numRedSeg; }
 
-    /**    Returns the total number of segments that represent the warning level.
-     */
-    int    getNumWarningSegments()         {    return numYellowSeg;    }
+    /** Returns the total number of segments that represent the warning level. */
+    int getNumWarningSegments() const { return numYellowSeg; }
 
-    /**    Returns the total number of segments that represent the safe level.
-     */
-    int    getNumSafeSegments()            {    return numGreenSeg;     }
+    /** Returns the total number of segments that represent the safe level. */
+    int getNumSafeSegments() const { return numGreenSeg; }
 
-    /**    Returns the number of decibels each segment represents.
-     */
-    float getNumDbPerSegment()          {    return decibelsPerSeg;  }
+    /** Returns the number of decibels each segment represents. */
+    float getNumDbPerSegment() const { return decibelsPerSeg; }
 
-    /**    Sets the number of decibels each segment represents.
-     */
+    /** Sets the number of decibels each segment represents. */
     void setNumDecibelsPerSeg (float numDecibelsPerSegment)
     {
         decibelsPerSeg = numDecibelsPerSegment;
     }
 
-    /**    Forces the meter to repaint itself.
+    /** Forces the meter to repaint itself.
+
         You may need to use this if a container component moves without moving
         or resizing its parent directly, eg. if you are housing your component
         in a tabbed component.
@@ -119,28 +109,18 @@ public:
         repaint();
     }
 
-    //==============================================================================
-    /**    Draws the meter. */
-    void paint (Graphics &g);
-
-    /**    @internal
-     */
-    void timerCallback();
-
-    /**    @internal
-     */
-    void resized();
-
-    /**    @internal
-     */
-    void moved()
-    {
-        needsRepaint = true;
-    }
-
-    /**    Processes the channel data for the value to display.
-     */
+    /** Processes the channel data for the value to display. */
     virtual void process();
+
+    //==============================================================================
+    /** @internal */
+    void paint (Graphics& g) override;
+    /** @internal */
+    void timerCallback() override;
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void moved() override { needsRepaint = true; }
 
 private:
     //==============================================================================

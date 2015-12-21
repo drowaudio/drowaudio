@@ -34,9 +34,7 @@
 
 #include "dRowAudio_MemoryInputSource.h"
 
-//==============================================================================
-/**
-    Abstract class which just keeps track of what type of source was last assigned.
+/** Abstract class which just keeps track of what type of source was last assigned.
     Notes this doesn't take any ownership so make sure you delete the streams and call
     clear once you do to avoid any dangling pointers.
 
@@ -77,7 +75,7 @@ public:
     }
 
     /** Returns the type of input that was last used. */
-    InputType getInputType() const noexcept             { return inputType; }
+    InputType getInputType() const noexcept { return inputType; }
 
     /** Sets the source to be any kind of InputStream.
 
@@ -162,6 +160,7 @@ public:
 
     //==============================================================================
     /** Sets the source to a File.
+
         @returns true if the file loaded correctly
      */
     bool setFile (const File& newFile)
@@ -174,6 +173,7 @@ public:
     }
 
     /** Sets the source to a MemoryInputStream.
+
         @returns true if the stream loaded correctly
      */
     bool setMemoryInputStream (MemoryInputStream* newMemoryInputStream)
@@ -186,6 +186,7 @@ public:
     }
 
     /** Sets the source to a memory block.
+
         @returns true if the block data loaded correctly
      */
     bool setMemoryBlock (MemoryBlock& inputBlock)
@@ -198,9 +199,10 @@ public:
     }
 
     /** Returns the current file if it was set with a one.
+
         If a stream was used this will return File::nonexistant.
      */
-    const File& getFile() const noexcept                       { return currentFile; }
+    const File& getFile() const noexcept { return currentFile; }
 
     //==============================================================================
     /** Subclasses must override this to be informed of when a file changes.

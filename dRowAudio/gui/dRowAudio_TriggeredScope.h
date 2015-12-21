@@ -32,9 +32,7 @@
 #ifndef DROWAUDIO_TRIGGERED_SCOPE_H
 #define DROWAUDIO_TRIGGERED_SCOPE_H
 
-//==============================================================================
-/**
-    Triggered Scope.
+/** Triggered Scope.
 
     This class is similar to the AudioOscilloscope except that it can be set to
     start on a rising or falling signal. This makes it extremely useful for very
@@ -46,14 +44,13 @@
     plugins. The addSamples method simply takes a copy of the samples, weverything
     else happens later.
  */
-class TriggeredScope :  public Component,
-                        public Timer,
-                        public TimeSliceClient
+class TriggeredScope : public Component,
+                       public Timer,
+                       public TimeSliceClient
 {
 public:
     //==============================================================================
-    /** The enum to use when setting the trace trigger mode.
-     */
+    /** The enum to use when setting the trace trigger mode. */
     enum TriggerMode
     {
         None,   /**<< The trace will just refresh at a constant rate. */
@@ -72,18 +69,17 @@ public:
     /** Destructor. */
     ~TriggeredScope();
 
+    //==============================================================================
     /** Sets the number of samples represented by each pixel on the scope.
         Setting this to a low number will give a very zoomed in display, a high
         number zoom out.
      */
     void setNumSamplesPerPixel (int newNumSamplesPerPixel);
 
-    /** Sets the vertical zoom facotr of the display.
-     */
+    /** Sets the vertical zoom facotr of the display. */
     void setVerticalZoomFactor (float newVerticalZoomFactor);
 
-    /** Sets the type of change that will trigger a trace.
-     */
+    /** Sets the type of change that will trigger a trace. */
     void setTriggerMode (TriggerMode newTriggerMode);
 
     /** Adds a block of samples to the scope.
@@ -91,21 +87,18 @@ public:
         Simply call this from your audio callback or similar to render the scope.
         This is a very quick method as it only takes a copy of the samples. All the
         processing and image rendering is performed on a backgroudn thread.
-     */
+    */
     void addSamples (const float* samples, int numSamples);
 
     //==============================================================================
     /** @internal */
-    void resized();
-
+    void resized() override;
     /** @internal */
-    void paint (Graphics& g);
-
+    void paint (Graphics& g) override;
     /** @internal */
-    void timerCallback();
-
+    void timerCallback() override;
     /** @internal */
-    int useTimeSlice();
+    int useTimeSlice() override;
 
 private:
     //==============================================================================

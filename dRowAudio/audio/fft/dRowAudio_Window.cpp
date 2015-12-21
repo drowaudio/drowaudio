@@ -206,7 +206,7 @@ void Window::applyZeroEndTriangleWindow (float *samples,  const int numSamples)
     for (int i = 0; i < numSamples; i++)
     {
         // Triangle window equation
-        float window = (float) ((2.0 * oneOverSizeMinusOne) * ((sizeMinusOne * 0.5) - std::fabs (double (i) - (sizeMinusOne * 0.5))));
+        float window = (float) ((2.0 * oneOverSizeMinusOne) * ((sizeMinusOne * 0.5) - (float) std::abs (double (i) - (sizeMinusOne * 0.5))));
         samples[i] *= window;
         windowFactor += window;
     }
@@ -223,7 +223,7 @@ void Window::applyNonZeroEndTriangleWindow(float *samples,  const int numSamples
     for (int i = 0; i < numSamples; i++)
     {
         // Triangle window equation
-        float window = (float) ((2.0 * oneOverSize) * ((numSamples * 0.5) - std::fabs (double (i) - (sizeMinusOne * 0.5))));
+        float window = (float) ((2.0 * oneOverSize) * ((numSamples * 0.5) - (float) std::abs (double (i) - (sizeMinusOne * 0.5))));
         samples[i] *= window;
         windowFactor += window;
     }
@@ -263,7 +263,7 @@ void Window::applyBartlettHannWindow (float *samples,  const int numSamples)
     for (int i = 0; i < numSamples; i++)
     {
         // Bartlett-Hann window equation
-        float window = (float) (a0 - a1 * std::fabs (i * oneOverSizeMinusOne - 0.5) - a2 * std::cos (twoTimesPi * i * oneOverSizeMinusOne));
+        float window = (float) (a0 - a1 * (float) std::abs (i * oneOverSizeMinusOne - 0.5) - a2 * std::cos (twoTimesPi * i * oneOverSizeMinusOne));
         samples[i] *= window;
         windowFactor += window;
     }

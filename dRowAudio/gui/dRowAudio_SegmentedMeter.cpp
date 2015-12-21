@@ -29,8 +29,6 @@
   ==============================================================================
 */
 
-
-
 SegmentedMeter::SegmentedMeter()
     : numRedSeg     (2),
       numYellowSeg  (4),
@@ -47,13 +45,9 @@ SegmentedMeter::SegmentedMeter()
     setOpaque (true);
 }
 
-SegmentedMeter::~SegmentedMeter()
-{
-}
-
 void SegmentedMeter::calculateSegments()
 {
-    float numDecibels = (float) toDecibels (level.getCurrent());
+    const float numDecibels = (float) toDecibels (level.getCurrent());
     // map decibels to numSegs
     numSegs = jmax (0, roundToInt ((numDecibels / decibelsPerSeg) + (totalNumSegs - numRedSeg)));
 
@@ -77,12 +71,8 @@ void SegmentedMeter::resized()
     const int w = getWidth();
     const int h = getHeight();
 
-    onImage = Image (Image::RGB,
-                     w, h,
-                     false);
-    offImage = Image (Image::RGB,
-                      w, h,
-                      false);
+    onImage = Image (Image::RGB, w, h, false);
+    offImage = Image (Image::RGB, w, h, false);
 
     Graphics gOn (onImage);
     Graphics gOff (offImage);
@@ -137,15 +127,6 @@ void SegmentedMeter::paint (Graphics &g)
         const int onHeight = roundToInt ((numSegs.getCurrent() / (float) totalNumSegs) * onImage.getHeight());
         const int offHeight = h - onHeight;
 
-//        g.drawImage (onImage,
-//                     0, offHeight, w, onHeight,
-//                     0, offHeight, w, onHeight,
-//                     false);
-//
-//        g.drawImage (offImage,
-//                     0, 0, w, offHeight,
-//                     0, 0, w, offHeight,
-//                     false);
         g.drawImage (onImage,
                      0, 0, w, h,
                      0, 0, w, h,
@@ -162,12 +143,11 @@ void SegmentedMeter::paint (Graphics &g)
 
 void SegmentedMeter::process()
 {
-    // calculate current meter level
     if (samples.getData() != nullptr)
     {
         for (int i = 0; i < numSamples; ++i)
         {
-            float sample = fabsf (samples[i]);
+            const float sample = std::abs (samples[i]);
 
             if (sample > sampleMax)
                 sampleMax = sample;

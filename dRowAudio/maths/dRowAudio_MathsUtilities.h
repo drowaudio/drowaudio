@@ -107,7 +107,7 @@ inline void findAbsoluteMax (const FloatingPointType* samples, int numSamples,
 
     for (int i = 0; i < numSamples; ++i)
     {
-        const FloatingPointType absoluteSample = fabs (samples[i]);
+        const FloatingPointType absoluteSample = std::abs (samples[i]);
 
         if (absoluteSample > maxSampleValue)
         {

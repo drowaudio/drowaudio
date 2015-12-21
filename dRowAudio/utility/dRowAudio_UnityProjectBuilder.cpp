@@ -30,28 +30,27 @@
 */
 
 //==============================================================================
-const Identifier UnityProjectBuilder::Ids::jucerProject     ("JUCERPROJECT");
-const Identifier UnityProjectBuilder::Ids::exportFormats    ("EXPORTFORMATS");
-const Identifier UnityProjectBuilder::Ids::mainGroup        ("MAINGROUP");
-const Identifier UnityProjectBuilder::Ids::group            ("GROUP");
-const Identifier UnityProjectBuilder::Ids::file             ("FILE");
-const Identifier UnityProjectBuilder::Ids::idProp           ("id");
-const Identifier UnityProjectBuilder::Ids::nameProp         ("name");
-const Identifier UnityProjectBuilder::Ids::compileProp      ("compile");
-const Identifier UnityProjectBuilder::Ids::fileProp         ("file");
-const Identifier UnityProjectBuilder::Ids::resourceProp     ("resource");
-const Identifier UnityProjectBuilder::Ids::targetFolderProp ("targetFolder");
+namespace Ids
+{
+    static const Identifier jucerProject        = "JUCERPROJECT";
+    static const Identifier exportFormats       = "EXPORTFORMATS";
+    static const Identifier mainGroup           = "MAINGROUP";
+    static const Identifier group               = "GROUP";
+    static const Identifier file                = "FILE";
+    static const Identifier idProp              = "id";
+    static const Identifier nameProp            = "name";
+    static const Identifier compileProp         = "compile";
+    static const Identifier fileProp            = "file";
+    static const Identifier resourceProp        = "resource";
+    static const Identifier targetFolderProp    = "targetFolder";
+}
 
 //==============================================================================
 UnityProjectBuilder::UnityProjectBuilder (const File& sourceProject)
-    : projectFile   (sourceProject),
-      numFiles      (1),
-      shouldLog     (false),
-      unityName     ("UnityBuild")
-{
-}
-
-UnityProjectBuilder::~UnityProjectBuilder()
+    : projectFile (sourceProject),
+      numFiles (1),
+      shouldLog (false),
+      unityName ("UnityBuild")
 {
 }
 

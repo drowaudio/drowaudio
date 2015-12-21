@@ -34,13 +34,12 @@ ReversibleAudioSource::ReversibleAudioSource (PositionableAudioSource* const inp
                                               const bool deleteInputWhenDeleted)
     : input (inputSource, deleteInputWhenDeleted),
       previousReadPosition (0),
-      isForwards(true)
+      isForwards (true)
 {
-    jassert (inputSource != 0);
+    jassert (input != nullptr);
 }
 
-void ReversibleAudioSource::prepareToPlay (int samplesPerBlockExpected,
-                                           double sampleRate)
+void ReversibleAudioSource::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
     input->prepareToPlay (samplesPerBlockExpected, sampleRate);
 }

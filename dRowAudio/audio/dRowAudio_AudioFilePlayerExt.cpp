@@ -72,10 +72,10 @@ void AudioFilePlayerExt::setPlayDirection (bool shouldPlayForwards)
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, PlayDirectionSetting);
 }
 
-bool AudioFilePlayerExt::getPlayDirection() const
+bool AudioFilePlayerExt::isPlayingForwards() const
 {
     jassert (reversibleAudioSource != nullptr);
-    return reversibleAudioSource->getPlayDirection();
+    return reversibleAudioSource->isPlayingForwards();
 }
 
 void AudioFilePlayerExt::setFilterGain (FilteringAudioSource::FilterType type, float newGain)
@@ -102,13 +102,13 @@ void AudioFilePlayerExt::setLoopBetweenTimes (bool shouldLoop)
     if (loopingAudioSource != nullptr)
         loopingAudioSource->setLoopBetweenTimes (shouldLoop);
 
-    listeners.call (&Listener::audioFilePlayerSettingChanged, this, LoopBeetweenTimesSetting);
+    listeners.call (&Listener::audioFilePlayerSettingChanged, this, LoopBetweenTimesSetting);
 }
 
-bool AudioFilePlayerExt::getLoopBetweenTimes()
+bool AudioFilePlayerExt::isBetweenLoopTimes()
 {
     if (loopingAudioSource != nullptr)
-        return loopingAudioSource->getLoopBetweenTimes();
+        return loopingAudioSource->isBetweenLoopTimes();
 
     return shouldBeLooping;
 }

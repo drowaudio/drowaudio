@@ -122,7 +122,7 @@ static inline double midiToFrequency (double midiNoteNumber)
  */
 static inline String timeToTimecodeString (const double seconds)
 {
-    const double absSecs = fabs (seconds);
+    const double absSecs = std::abs (seconds);
     const String sign ((seconds < 0) ? "-" : "");
 
     const int hours = (int) (absSecs / (60.0 * 60.0));
@@ -142,7 +142,7 @@ static inline String timeToTimecodeString (const double seconds)
  */
 static inline String timeToTimecodeStringLowRes (const double seconds)
 {
-    const double absSecs = fabs (seconds);
+    const double absSecs = std::abs (seconds);
     const String sign ((seconds < 0) ? "-" : "");
 
 //    const int hours = (int) (absSecs * oneOver60Squared);

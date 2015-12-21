@@ -52,13 +52,13 @@
 class UnityProjectBuilder
 {
 public:
-    //==============================================================================
     /** Creates a UnityProjectBuilder for a given Introjucer project. */
     UnityProjectBuilder (const File& sourceProject);
 
     /** Destructor. */
     ~UnityProjectBuilder();
 
+    //==============================================================================
     /** Actually starts the project parsing and generation.
      */
     bool run();
@@ -95,22 +95,6 @@ public:
     void saveProject (const File& introjucerAppFile);
 
 private:
-    //==============================================================================
-    struct Ids
-    {
-        static const Identifier jucerProject;
-        static const Identifier exportFormats;
-        static const Identifier mainGroup;
-        static const Identifier group;
-        static const Identifier file;
-        static const Identifier idProp;
-        static const Identifier nameProp;
-        static const Identifier compileProp;
-        static const Identifier fileProp;
-        static const Identifier resourceProp;
-        static const Identifier targetFolderProp;
-    };
-
     //==============================================================================
     File projectFile, unityProjectFile;
     ValueTree project;
