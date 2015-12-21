@@ -31,7 +31,6 @@
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
-
 AudioFilePlayerExt::AudioFilePlayerExt()
 {
     loopingAudioSource = new LoopingAudioSource (&audioTransportSource, false);
@@ -46,36 +45,42 @@ AudioFilePlayerExt::~AudioFilePlayerExt()
     audioTransportSource.setSource (nullptr);
 }
 
-void AudioFilePlayerExt::setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings)
+//==============================================================================
+void AudioFilePlayerExt::setPlaybackSettings (const SoundTouchProcessor::PlaybackSettings& newSettings)
 {
+    jassert (soundTouchAudioSource != nullptr);
+
     currentSoundtouchSettings = newSettings;
     soundTouchAudioSource->setPlaybackSettings (newSettings);
 
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, SoundTouchSetting);
 }
 
-SoundTouchProcessor::PlaybackSettings AudioFilePlayerExt::getPlaybackSettings()
+const SoundTouchProcessor::PlaybackSettings& AudioFilePlayerExt::getPlaybackSettings() const
 {
     if (soundTouchAudioSource != nullptr)
         return soundTouchAudioSource->getPlaybackSettings();
-    else
-        return currentSoundtouchSettings;
+
+    return currentSoundtouchSettings;
 }
 
 void AudioFilePlayerExt::setPlayDirection (bool shouldPlayForwards)
 {
+    jassert (reversibleAudioSource != nullptr);
     reversibleAudioSource->setPlayDirection (shouldPlayForwards);
 
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, PlayDirectionSetting);
 }
 
-bool AudioFilePlayerExt::getPlayDirection()
+bool AudioFilePlayerExt::getPlayDirection() const
 {
+    jassert (reversibleAudioSource != nullptr);
     return reversibleAudioSource->getPlayDirection();
 }
 
 void AudioFilePlayerExt::setFilterGain (FilteringAudioSource::FilterType type, float newGain)
 {
+    jassert (filteringAudioSource != nullptr);
     filteringAudioSource->setGain (type, newGain);
 
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, FilterGainSetting);
@@ -104,8 +109,8 @@ bool AudioFilePlayerExt::getLoopBetweenTimes()
 {
     if (loopingAudioSource != nullptr)
         return loopingAudioSource->getLoopBetweenTimes();
-    else
-        return shouldBeLooping;
+
+    return shouldBeLooping;
 }
 
 void AudioFilePlayerExt::setPosition (double newPosition, bool ignoreAnyLoopBounds)
@@ -172,4 +177,4 @@ void AudioFilePlayerExt::updateLoopTimes()
         currentLoopStartTime = jmax (0.0, currentLoopEndTime - 1.0);
 }
 
-#endif
+#endif //DROWAUDIO_USE_SOUNDTOUCH

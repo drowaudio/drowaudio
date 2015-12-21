@@ -72,13 +72,13 @@ struct ColouredAudioThumbnail::MinMaxColourValue
     {
     }
 
-    inline void set (const char newMin, const char newMax) throw()
+    inline void set (const char newMin, const char newMax) noexcept
     {
         minValue = newMin;
         maxValue = newMax;
     }
 
-    inline void setFloat (const float newMin, const float newMax) throw()
+    inline void setFloat (const float newMin, const float newMax) noexcept
     {
         minValue = (char) jlimit (-128, 127, roundFloatToInt (newMin * 127.0f));
         maxValue = (char) jlimit (-128, 127, roundFloatToInt (newMax * 127.0f));
@@ -87,7 +87,7 @@ struct ColouredAudioThumbnail::MinMaxColourValue
             maxValue = (char) jmin (127, maxValue + 1);
     }
 
-	inline void setColour(const Colour& newColour) throw()
+	inline void setColour(const Colour& newColour) noexcept
 	{
 		colour = newColour.withBrightness(1.0f);
 	}
@@ -95,12 +95,12 @@ struct ColouredAudioThumbnail::MinMaxColourValue
     inline char getMinValue() const noexcept        { return minValue; }
     inline char getMaxValue() const noexcept        { return maxValue; }
 
-    inline bool isNonZero() const throw()
+    inline bool isNonZero() const noexcept
     {
         return maxValue > minValue;
     }
 
-    inline int getPeak() const throw()
+    inline int getPeak() const noexcept
     {
         return jmax (::std::abs ((int) minValue),
                      ::std::abs ((int) maxValue));
@@ -248,12 +248,12 @@ public:
         releaseResources();
     }
 
-    bool isFullyLoaded() const throw()
+    bool isFullyLoaded() const noexcept
     {
         return numSamplesFinished >= lengthInSamples;
     }
 
-    inline int sampleToThumbSample (const int64 originalSample) const throw()
+    inline int sampleToThumbSample (const int64 originalSample) const noexcept
     {
         return (int) (originalSample / owner.samplesPerThumbSample);
     }
@@ -502,13 +502,13 @@ public:
         ensureSize (numThumbSamples);
     }
 
-    inline MinMaxColourValue* getData (const int thumbSampleIndex) throw()
+    inline MinMaxColourValue* getData (const int thumbSampleIndex) noexcept
     {
         jassert (thumbSampleIndex < data.size());
         return data.getRawDataPointer() + thumbSampleIndex;
     }
 
-    int getSize() const throw()
+    int getSize() const noexcept
     {
         return data.size();
     }
@@ -542,7 +542,7 @@ public:
         result.set (1, 0);
     }
 
-	void getColour (int startSample, int endSample,  MinMaxColourValue& result) throw()
+	void getColour (int startSample, int endSample,  MinMaxColourValue& result) noexcept
 	{
 		const int numSamples = endSample - startSample;
 
@@ -814,7 +814,7 @@ private:
         }
     }
 
-    MinMaxColourValue* getData (const int channelNum, const int cacheIndex) throw()
+    MinMaxColourValue* getData (const int channelNum, const int cacheIndex) noexcept
     {
         jassert (isPositiveAndBelow (channelNum, numChannelsCached) && isPositiveAndBelow (cacheIndex, data.size()));
 
@@ -1029,22 +1029,22 @@ void ColouredAudioThumbnail::setLevels (const MinMaxColourValue* const* values, 
 }
 
 //==============================================================================
-int ColouredAudioThumbnail::getNumChannels() const throw()
+int ColouredAudioThumbnail::getNumChannels() const noexcept
 {
     return numChannels;
 }
 
-double ColouredAudioThumbnail::getTotalLength() const throw()
+double ColouredAudioThumbnail::getTotalLength() const noexcept
 {
     return totalSamples / sampleRate;
 }
 
-bool ColouredAudioThumbnail::isFullyLoaded() const throw()
+bool ColouredAudioThumbnail::isFullyLoaded() const noexcept
 {
     return numSamplesFinished >= totalSamples - samplesPerThumbSample;
 }
 
-int64 ColouredAudioThumbnail::getNumSamplesFinished() const throw()
+int64 ColouredAudioThumbnail::getNumSamplesFinished() const noexcept
 {
     return numSamplesFinished;
 }

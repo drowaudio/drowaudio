@@ -80,7 +80,6 @@ enum ParameterUnit
 class PluginParameter
 {
 public:
-    //==============================================================================
 	/** Create a default parameter.
 
 		This just uses some standard default values so it can be used as a placeholder.
@@ -94,6 +93,7 @@ public:
      */
     PluginParameter (const PluginParameter& other);
 
+    //==============================================================================
 	/** Initialise the parameter.
 		Used to set up the parameter as required.
 	 */
@@ -101,34 +101,34 @@ public:
                double value_ = 0.0f, double min_ =0.0f, double max_ =1.0f, double default_ =0.0f,
                double skewFactor_ =1.0f, double smoothCoeff_ =0.1f, double step_ =0.01, String unitSuffix_ =String::empty);
 
-    inline Value& getValueObject()                              {   return valueObject;     }
+    Value& getValueObject()                              {   return valueObject;     }
 
-	inline double getValue()                                    {   return double (valueObject.getValue()); }
-	inline double getNormalisedValue()                          {   return normaliseValue (getValue());     }
-	void setValue (double value_);
+	double getValue() const                                    {   return double (valueObject.getValue()); }
+	double getNormalisedValue() const                          {   return normaliseValue (getValue());     }
+	void setValue (double value);
 	void setNormalisedValue (double normalisedValue);
-	inline double getSmoothedValue()                            {   return smoothValue;     }
-	inline double getSmoothedNormalisedValue()                  {   return normaliseValue (smoothValue);     }
+	double getSmoothedValue() const                            {   return smoothValue;     }
+	double getSmoothedNormalisedValue() const                  {   return normaliseValue (smoothValue);     }
 
-	inline double getMin()                                      {   return min;             }
-	inline double getMax()                                      {   return max;             }
-	inline double getDefault()                                  {   return defaultValue;    }
+	double getMin() const                                      {   return min;             }
+	double getMax() const                                      {   return max;             }
+	double getDefault() const                                  {   return defaultValue;    }
 
 	void smooth();
 	void setSmoothCoeff (double newSmoothCoef);
-	inline double getSmoothCoeff()                              {   return smoothCoeff;     }
+	double getSmoothCoeff() const                              {   return smoothCoeff;     }
 
 	void setSkewFactor (const double newSkewFactor);
 	void setSkewFactorFromMidPoint (const double valueToShowAtMidPoint);
-	inline double getSkewFactor()                               {   return skewFactor;      }
+	double getSkewFactor() const                               {   return skewFactor;      }
 
 	void setStep (double newStep);
-	inline double getStep()                                     {   return step;            }
+	double getStep() const                                     {   return step;            }
 
-	inline const String getName()                               {   return name;            }
-	inline ParameterUnit getUnit()                              {   return unit;            }
-	inline const String getUnitSuffix()                         {   return unitSuffix;      }
-	void setUnitSuffix (String newSuffix);
+	const String& getName() const                               {   return name;            }
+	ParameterUnit getUnit() const                              {   return unit;            }
+	const String& getUnitSuffix() const                         {   return unitSuffix;      }
+	void setUnitSuffix (const String& newSuffix);
 
 	void writeXml (XmlElement& xmlState);
 	void readXml (const XmlElement* xmlState);
@@ -146,7 +146,7 @@ private:
 	double skewFactor, step;
 	ParameterUnit unit;
 
-    double normaliseValue (double scaledValue);
+    double normaliseValue (double scaledValue) const noexcept;
 
     //==============================================================================
 	JUCE_LEAK_DETECTOR (PluginParameter);

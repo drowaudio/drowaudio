@@ -52,19 +52,13 @@ AudioOscilloscope::AudioOscilloscope()
     startTimer (1000 / 60);     // repaint every 1/50 of a second
 }
 
-AudioOscilloscope::~AudioOscilloscope()
-{
-}
-
 //==============================================================================
 void AudioOscilloscope::processBlock (const float* inputChannelData,
                                       int numSamples)
 {
-    if (inputChannelData != 0)
-    {
+    if (inputChannelData != nullptr)
         for (int i = 0; i < numSamples; ++i)
             addSample (inputChannelData [i]);
-    }
 }
 
 void AudioOscilloscope::clear()

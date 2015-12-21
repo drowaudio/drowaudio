@@ -32,12 +32,10 @@
 #ifndef DROWAUDIO_FILTERINGAUDIOSOURCE_H
 #define DROWAUDIO_FILTERINGAUDIOSOURCE_H
 
-//==============================================================================
 /**	An AudioSource that contains three settable filters to EQ the audio stream.
  */
 class FilteringAudioSource : public AudioSource
 {
-
 public:
 	//==============================================================================
     enum FilterType
@@ -75,17 +73,15 @@ public:
 
 	/** Returns whether the source is being filtered or not.
 	 */
-	bool getFilterSource()				{ return filterSource; }
+	bool getFilterSource() const { return filterSource; }
 
     //==============================================================================
-    /** Implementation of the AudioSource method. */
-    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
-
-    /** Implementation of the AudioSource method. */
-    void releaseResources();
-
-    /** Implementation of the AudioSource method. */
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
+    /** @internal */
+    void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
+    /** @internal */
+    void releaseResources() override;
+    /** @internal */
+    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
 
 private:
     //==============================================================================

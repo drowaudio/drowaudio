@@ -35,9 +35,7 @@
 #include "dRowAudio_Buffer.h"
 #include "dRowAudio_FifoBuffer.h"
 
-//==============================================================================
-/**
-    Auto correlation based pitch detector class.
+/** Auto correlation based pitch detector class.
 
     This class will calculate the pitch of a block of samples. Although this can
     be slower than an FFT approach it is much more accurate, especially at low
@@ -77,9 +75,7 @@ public:
      */
     PitchDetector();
 
-    /** Destructor. */
-    ~PitchDetector();
-
+    //==============================================================================
     /** Process a block of samples.
         Because the number of samples required to find a pitch varies depending on
         the minimum frequency set this uses an internal buffer to store samples until
@@ -90,7 +86,7 @@ public:
 
     /** Returns the most recently detected pitch.
      */
-    double getPitch() const noexcept                    {   return mostRecentPitch; }
+    double getPitch() const noexcept { return mostRecentPitch; }
 
     //==============================================================================
     /** Detects the average pitch in a block of samples.
@@ -119,7 +115,7 @@ public:
 
     /** Returns the detection method currently in use.
      */
-    inline DetectionMethod getDetectionMethod() const noexcept  {   return detectionMethod; }
+    inline DetectionMethod getDetectionMethod() const noexcept { return detectionMethod; }
 
     /** Sets the minimum and maximum frequencies that can be detected.
         Because this uses an auto-correlation algorithm the lower the minimum
@@ -130,22 +126,20 @@ public:
 
     /** Returns the minimum frequency that can currently be detected.
      */
-    inline float getMinFrequency() const noexcept               {   return minFrequency;    }
+    float getMinFrequency() const noexcept { return minFrequency; }
 
     /** Returns the maximum frequency that can currently be detected.
      */
-    inline float getMaxFrequency() const noexcept               {   return maxFrequency;    }
+    float getMaxFrequency() const noexcept { return maxFrequency; }
 
     /** Returns the minimum number of samples required to detect a pitch based on
         the minimum frequency set.
      */
-    inline int getNumSamplesNeededForDetection() const noexcept
-    {
-        return numSamplesNeededForDetection;
-    }
+    int getNumSamplesNeededForDetection() const noexcept { return numSamplesNeededForDetection; }
 
     //==============================================================================
     /** This returns the tempoary Buffer objects used to calculate the pitch.
+
         This method isn't really intended for public use but could be used for
         debugging or display purposes.
      */

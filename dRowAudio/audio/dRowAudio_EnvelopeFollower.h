@@ -44,12 +44,8 @@
 class EnvelopeFollower
 {
 public:
-    //==============================================================================
 	/** Constructor. */
 	EnvelopeFollower();
-
-	/** Destructor. */
-	~EnvelopeFollower();
 
     //==============================================================================
 	/** Uses different exponential attack and release coefficients.
@@ -64,8 +60,7 @@ public:
 
 private:
     //==============================================================================
-	float envelope;
-	float envAttack, envRelease;
+	float envelope, envAttack, envRelease;
 
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EnvelopeFollower);

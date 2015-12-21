@@ -43,8 +43,11 @@ public:
     ~MemoryInputSource();
 
     //==============================================================================
+    /** @internal */
     InputStream* createInputStream() override;
+    /** @internal */
     InputStream* createInputStreamFor (const String& relatedItemPath) override;
+    /** @internal */
     int64 hashCode() const override;
 
 private:

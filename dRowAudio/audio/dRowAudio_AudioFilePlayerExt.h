@@ -39,9 +39,7 @@
 #include "dRowAudio_LoopingAudioSource.h"
 #include "dRowAudio_FilteringAudioSource.h"
 
-//==============================================================================
-/**
-    This class can be used to load and play an audio file from disk.
+/** This class can be used to load and play an audio file from disk.
 
     This combines the functionality of an AudioTransportSource,
     AudioFormatReader and AudioFormatReaderSource.
@@ -50,7 +48,7 @@
     @see AudioFormatReader
     @see AudioFormatReaderSource
  */
-class AudioFilePlayerExt :  public AudioFilePlayer
+class AudioFilePlayerExt : public AudioFilePlayer
 {
 public:
     //==============================================================================
@@ -74,20 +72,20 @@ public:
     //==============================================================================
     /** Sets the current library entry.
      */
-    void setLibraryEntry (ValueTree newEntry)               {   libraryEntry = newEntry;    }
+    void setLibraryEntry (const ValueTree& newEntry) { libraryEntry = newEntry; }
 
     /** Returns the currents library entry.
      */
-    ValueTree getLibraryEntry()                             {   return  libraryEntry;       }
+    ValueTree getLibraryEntry() const { return  libraryEntry; }
 
     //==============================================================================
     /** Sets SoundTouchProcessor settings.
      */
-    void setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings);
+    void setPlaybackSettings (const SoundTouchProcessor::PlaybackSettings& newSettings);
 
     /** Returns the current SoundTouchProcessor settings.
      */
-    SoundTouchProcessor::PlaybackSettings getPlaybackSettings();
+    const SoundTouchProcessor::PlaybackSettings& getPlaybackSettings() const;
 
     /** Sets whether the source should play forwards or backwards.
      */
@@ -95,7 +93,7 @@ public:
 
     /** Returns true if the source is playing forwards.
      */
-	bool getPlayDirection();
+	bool getPlayDirection() const;
 
     /** Sets the gain of one of the FilteringAudioSource filters.
      */
@@ -122,11 +120,11 @@ public:
     //==============================================================================
     /** Returns the SoundTouchAudioSource being used.
      */
-    inline SoundTouchAudioSource* getSoundTouchAudioSource()       {   return soundTouchAudioSource;   }
+    inline SoundTouchAudioSource* getSoundTouchAudioSource() const { return soundTouchAudioSource; }
 
 	/** Returns the FilteringAudioSource being used.
      */
-    inline FilteringAudioSource* getFilteringAudioSource()         {   return filteringAudioSource;    }
+    inline FilteringAudioSource* getFilteringAudioSource() const { return filteringAudioSource; }
 
 private:
     //==============================================================================
@@ -150,6 +148,5 @@ private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);
 };
 
-
-#endif
+#endif // DROWAUDIO_USE_SOUNDTOUCH
 #endif // DROWAUDIO_AUDIOFILEPLAYEREXT_H

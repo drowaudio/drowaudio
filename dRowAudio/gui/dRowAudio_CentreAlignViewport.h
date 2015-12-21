@@ -32,13 +32,11 @@
 #ifndef DROWAUDIO_CENTREALIGNVIEWPORT_H
 #define DROWAUDIO_CENTREALIGNVIEWPORT_H
 
-//==============================================================================
 class CentreAlignViewport : public Component,
 							private ComponentListener,
 							private ScrollBar::Listener
 {
 public:
-    //==============================================================================
     /** Creates a Viewport that will optionally center the contenet component.
 
         The viewport is initially empty - use the setViewedComponent() method to
@@ -69,7 +67,7 @@ public:
 
         @see setViewedComponent
 	 */
-    Component* getViewedComponent() const throw()                   { return contentComp; }
+    Component* getViewedComponent() const noexcept                   { return contentComp; }
 
     //==============================================================================
     /** Changes the position of the viewed component.
@@ -94,7 +92,7 @@ public:
 
         @see getViewPositionX, getViewPositionY, setViewPositionProportionately
 	 */
-    void setViewPosition (const Point<int>& newPosition);
+    void setViewPosition (Point<int> newPosition);
 
     /** Changes the view position as a proportion of the distance it can move.
 
@@ -124,31 +122,31 @@ public:
 
     /** Returns the position within the child component of the top-left of its visible area.
 	 */
-    const Point<int> getViewPosition() const throw()        { return lastVisibleArea.getPosition(); }
+    Point<int> getViewPosition() const noexcept { return lastVisibleArea.getPosition(); }
 
     /** Returns the position within the child component of the top-left of its visible area.
         @see getViewWidth, setViewPosition
 	 */
-    int getViewPositionX() const throw()                    { return lastVisibleArea.getX(); }
+    int getViewPositionX() const noexcept { return lastVisibleArea.getX(); }
 
     /** Returns the position within the child component of the top-left of its visible area.
         @see getViewHeight, setViewPosition
 	 */
-    int getViewPositionY() const throw()                    { return lastVisibleArea.getY(); }
+    int getViewPositionY() const noexcept { return lastVisibleArea.getY(); }
 
     /** Returns the width of the visible area of the child component.
 
         This may be less than the width of this Viewport if there's a vertical scrollbar
         or if the child component is itself smaller.
 	 */
-    int getViewWidth() const throw()                        { return lastVisibleArea.getWidth(); }
+    int getViewWidth() const noexcept { return lastVisibleArea.getWidth(); }
 
     /** Returns the height of the visible area of the child component.
 
         This may be less than the height of this Viewport if there's a horizontal scrollbar
         or if the child component is itself smaller.
 	 */
-    int getViewHeight() const throw()                       { return lastVisibleArea.getHeight(); }
+    int getViewHeight() const noexcept { return lastVisibleArea.getHeight(); }
 
     /** Returns the width available within this component for the contents.
 
@@ -185,12 +183,12 @@ public:
     /** True if the vertical scrollbar is enabled.
         @see setScrollBarsShown
 	 */
-    bool isVerticalScrollBarShown() const throw()               { return showVScrollbar; }
+    bool isVerticalScrollBarShown() const noexcept { return showVScrollbar; }
 
     /** True if the horizontal scrollbar is enabled.
         @see setScrollBarsShown
 	 */
-    bool isHorizontalScrollBarShown() const throw()             { return showHScrollbar; }
+    bool isHorizontalScrollBarShown() const noexcept { return showHScrollbar; }
 
     /** Changes the width of the scrollbars.
 
@@ -220,35 +218,37 @@ public:
     /** Returns a pointer to the scrollbar component being used.
         Handy if you need to customise the bar somehow.
 	 */
-    ScrollBar* getVerticalScrollBar() throw()                   { return &verticalScrollBar;    }
+    ScrollBar* getVerticalScrollBar() noexcept                   { return &verticalScrollBar;    }
 
     /** Returns a pointer to the scrollbar component being used.
         Handy if you need to customise the bar somehow.
 	 */
-    ScrollBar* getHorizontalScrollBar() throw()                 { return &horizontalScrollBar;  }
+    ScrollBar* getHorizontalScrollBar() noexcept                 { return &horizontalScrollBar;  }
 
     //==============================================================================
     /** Tells the viewport whether or not to centre its content component.
      */
-	void setShouldCentre (bool shouldCentreComponent)			{	shouldCentre = shouldCentreComponent;	}
+	void setShouldCentre (bool shouldCentreComponent) {	shouldCentre = shouldCentreComponent; }
 
     /** Returns true if the content component is currently being deisplayed centrally.
      */
-	bool getShouldCentre()										{	return shouldCentre;        }
+	bool getShouldCentre() const { return shouldCentre; }
 
     //==============================================================================
     /** @internal */
-    void resized();
-    /** @internal */
-    void scrollBarMoved (ScrollBar* scrollBarThatHasMoved, double newRangeStart);
-    /** @internal */
-    void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel);
-    /** @internal */
-    bool keyPressed (const KeyPress& key);
-    /** @internal */
-    void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized);
-    /** @internal */
     bool useMouseWheelMoveIfNeeded (const MouseEvent& e, float wheelIncrementX, float wheelIncrementY);
+
+    //==============================================================================
+    /** @internal */
+    void resized() override;
+    /** @internal */
+    void scrollBarMoved (ScrollBar* scrollBarThatHasMoved, double newRangeStart) override;
+    /** @internal */
+    void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel) override;
+    /** @internal */
+    bool keyPressed (const KeyPress& key) override;
+    /** @internal */
+    void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized) override;
 
 private:
     //==============================================================================
@@ -262,12 +262,11 @@ private:
     ScrollBar horizontalScrollBar;
 	bool shouldCentre;
 
+    //==============================================================================
     void updateVisibleArea();
 
-    CentreAlignViewport (const CentreAlignViewport&);
-    CentreAlignViewport& operator= (const CentreAlignViewport&);
-
-	JUCE_LEAK_DETECTOR (CentreAlignViewport);
+    //==============================================================================
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CentreAlignViewport)
 };
 
 #endif //DROWAUDIO_CENTREALIGNVIEWPORT_H

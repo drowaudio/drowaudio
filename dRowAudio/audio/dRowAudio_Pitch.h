@@ -34,15 +34,12 @@
 
 #include "dRowAudio_AudioUtility.h"
 
-//==============================================================================
-/**
-    This class contains some useful methods for storing and converting different
+/** This class contains some useful methods for storing and converting different
     representations of a pitch.
  */
 class Pitch
 {
 public:
-    //==============================================================================
     /** Create a default pitch object with a frequency of 0 Hertz.
      */
     Pitch()
@@ -64,6 +61,7 @@ public:
         frequency = other.frequency;
     }
 
+    //==============================================================================
     /** Assign the frequency of anther pitch object to this one.
      */
     Pitch& operator= (const Pitch& other) noexcept
@@ -75,15 +73,15 @@ public:
     //==============================================================================
     /** Returns a unicode sharp symbol.
      */
-    static const juce_wchar getSharpSymbol() noexcept   {   return *CharPointer_UTF8 ("\xe2\x99\xaf");  }
+    static const juce_wchar getSharpSymbol() noexcept   { return *CharPointer_UTF8 ("\xe2\x99\xaf"); }
 
     /** Returns a unicode flat symbol.
      */
-    static const juce_wchar getFlatSymbol() noexcept    {   return *CharPointer_UTF8 ("\xe2\x99\xad");  }
+    static const juce_wchar getFlatSymbol() noexcept    { return *CharPointer_UTF8 ("\xe2\x99\xad"); }
 
     /** Returns a unicode natural symbol.
      */
-    static const juce_wchar getNaturalSymbol() noexcept {   return *CharPointer_UTF8 ("\xe2\x99\xae");  }
+    static const juce_wchar getNaturalSymbol() noexcept { return *CharPointer_UTF8 ("\xe2\x99\xae"); }
 
     //==============================================================================
     /** Creates a Pitch object from a given frequency in Hertz e.g 440.
@@ -129,8 +127,8 @@ public:
 
         if (pitchClass > 0)
             return fromMidiNote (midiNote);
-        else
-            return Pitch (0.0);
+
+        return Pitch();
     }
 
     //==============================================================================

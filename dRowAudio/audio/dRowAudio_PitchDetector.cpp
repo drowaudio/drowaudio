@@ -43,10 +43,7 @@ PitchDetector::PitchDetector()
     updateFiltersAndBlockSizes();
 }
 
-PitchDetector::~PitchDetector()
-{
-}
-
+//==============================================================================
 void PitchDetector::processSamples (const float* samples, int numSamples) noexcept
 {
     if (inputFifoBuffer.getNumFree() < numSamples)
@@ -79,10 +76,9 @@ double PitchDetector::detectPitch (float* samples, int numSamples) noexcept
     }
 
     if (pitches.size() == 1)
-    {
         return pitches[0];
-    }
-    else if (pitches.size() > 1)
+
+    if (pitches.size() > 1)
     {
         DefaultElementComparator<double> sorter;
         pitches.sort (sorter);
@@ -103,9 +99,8 @@ double PitchDetector::detectPitch (float* samples, int numSamples) noexcept
                 correctedPitches.add (pitch);
         }
 
-        const double finalPitch = findMean (correctedPitches.getRawDataPointer(), correctedPitches.size());
-
-        return finalPitch;
+        //Final pitch:
+        return findMean (correctedPitches.getRawDataPointer(), correctedPitches.size());
     }
 
     return 0.0;
@@ -136,8 +131,9 @@ Buffer* PitchDetector::getBuffer (int stageIndex)
 {
     switch (stageIndex)
     {
-        case 1:     return &buffer1;    break;
-        case 2:     return &buffer2;    break;
+        case 1: return &buffer1; break;
+        case 2: return &buffer2; break;
+        default: break;
     }
 
     return nullptr;
@@ -165,8 +161,10 @@ double PitchDetector::detectPitchForBlock (float* samples, int numSamples)
     {
         case autoCorrelationFunction:   return detectAcfPitchForBlock (samples, numSamples);
         case squareDifferenceFunction:  return detectSdfPitchForBlock (samples, numSamples);
-        default:                        return 0.0;
+        default: break;
     }
+
+    return 0.0;
 }
 
 double PitchDetector::detectAcfPitchForBlock (float* samples, int numSamples)
@@ -267,8 +265,8 @@ double PitchDetector::detectAcfPitchForBlock (float* samples, int numSamples)
 
     if (sampleIndex > 0)
         return sampleRate / sampleIndex;
-    else
-        return 0.0;
+
+    return 0.0;
 }
 
 double PitchDetector::detectSdfPitchForBlock (float* samples, int numSamples)

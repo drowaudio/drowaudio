@@ -30,7 +30,6 @@
 class CumulativeMovingAverage
 {
 public:
-    //==============================================================================
     /** Creates a blank CumulativeMovingAverage.
      */
     CumulativeMovingAverage() noexcept
@@ -47,12 +46,7 @@ public:
         numValues = other.numValues;
     }
 
-    /** Destructor.
-     */
-    ~CumulativeMovingAverage()
-    {
-    }
-
+    //==============================================================================
     /** Resets the CumulativeMovingAverage.
      */
     void reset() noexcept
@@ -63,7 +57,7 @@ public:
 
     /** Adds a new value to contribute to the average and returns the average.
      */
-    inline double add (double newValue) noexcept
+    double add (double newValue) noexcept
     {
         currentAverage = (newValue + (numValues * currentAverage)) / (numValues + 1);
         ++numValues;
@@ -73,19 +67,19 @@ public:
 
     /** Returns the current average.
      */
-    inline double getAverage()                      {   return currentAverage;  }
+    double getAverage() const noexcept { return currentAverage; }
 
     /** Returns the number of values that have contributed to the current average.
      */
-    inline int getNumValues()                       {   return numValues;       }
+    int getNumValues() const noexcept { return numValues; }
 
 private:
     //==============================================================================
     double currentAverage;
     int numValues;
 
+    //==============================================================================
     JUCE_LEAK_DETECTOR (CumulativeMovingAverage);
 };
-
 
 #endif //DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H

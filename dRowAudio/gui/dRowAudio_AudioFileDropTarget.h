@@ -63,46 +63,37 @@ public:
 
     /** Sets the colour of the bezel to be drawn.
      */
-    void setBezelColour (Colour& newColour);
+    void setBezelColour (Colour newColour);
 
     /** Retruns the current bezel colour being used.
      */
-    const Colour getBezelColour()            {   return bezelColour; }
+    Colour getBezelColour() const { return bezelColour; }
 
     //==============================================================================
     /** @internal */
-    void paint (Graphics& g);
-
+    void paint (Graphics& g) override;
     /** @internal */
-    bool hitTest (int x, int y);
-
+    bool hitTest (int x, int y) override;
     /** @internal */
-    void mouseEnter (const MouseEvent& e);
-
+    void mouseEnter (const MouseEvent& e) override;
     /** @internal */
-    void mouseExit (const MouseEvent& e);
-
-    //==============================================================================
+    void mouseExit (const MouseEvent& e) override;
     /** @internal */
     void componentMovedOrResized (Component& component,
                                   bool wasMoved,
-                                  bool wasResized);
-
-    //==============================================================================
+                                  bool wasResized) override;
     /** @internal */
-    bool isInterestedInDragSource (const SourceDetails& dragSourceDetails);
+    bool isInterestedInDragSource (const SourceDetails& dragSourceDetails) override;
     /** @internal */
-    void itemDragExit (const SourceDetails& dragSourceDetails);
+    void itemDragExit (const SourceDetails& dragSourceDetails) override;
     /** @internal */
-    void itemDropped (const SourceDetails& dragSourceDetails);
-
-    //==============================================================================
+    void itemDropped (const SourceDetails& dragSourceDetails) override;
     /** @internal */
-    bool isInterestedInFileDrag (const StringArray& files);
+    bool isInterestedInFileDrag (const StringArray& files) override;
     /** @internal */
-    void fileDragExit (const StringArray& files);
+    void fileDragExit (const StringArray& files) override;
     /** @internal */
-    void filesDropped (const StringArray& files, int x, int y);
+    void filesDropped (const StringArray& files, int x, int y) override;
 
 private:
     //==============================================================================

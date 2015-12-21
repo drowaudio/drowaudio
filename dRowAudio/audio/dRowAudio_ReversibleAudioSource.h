@@ -34,13 +34,12 @@
 
 #include "../utility/dRowAudio_Utility.h"
 
-//==============================================================================
 /** A type of AudioSource that can reverse the stream of samples that
     flows through it.
 
     @see PositionableAudioSource, AudioTransportSource, BufferingAudioSource
 */
-class ReversibleAudioSource :   public AudioSource
+class ReversibleAudioSource : public AudioSource
 {
 public:
     //==============================================================================
@@ -54,27 +53,22 @@ public:
     ReversibleAudioSource (PositionableAudioSource* const inputSource,
 						   const bool deleteInputWhenDeleted);
 
-    /** Destructor. */
-    ~ReversibleAudioSource();
-
     //==============================================================================
     /** Sets whether the source should play forwards or backwards.
      */
-	void setPlayDirection (bool shouldPlayForwards)	{	isForwards = shouldPlayForwards;    }
+	void setPlayDirection (bool shouldPlayForwards)	{ isForwards = shouldPlayForwards;  }
 
     /** Returns true if the source is playing forwards.
      */
-	bool getPlayDirection ()						{	return isForwards;                  }
+	bool getPlayDirection() const {	return isForwards; }
 
     //==============================================================================
-    /** Implementation of the AudioSource method. */
-    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
-
-    /** Implementation of the AudioSource method. */
-    void releaseResources();
-
-    /** Implementation of the AudioSource method. */
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
+    /** @internal */
+    void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
+    /** @internal */
+    void releaseResources() override;
+    /** @internal */
+    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
 
 private:
     //==============================================================================

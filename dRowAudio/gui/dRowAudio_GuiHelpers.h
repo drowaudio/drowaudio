@@ -60,11 +60,11 @@ namespace GuiHelpers
     /** Draws a square bevel around a given rectange.
         This is useful for insetting components and givin them a border.
      */
-    static void drawBevel (Graphics& g, Rectangle<float> innerBevelBounds,
-                           float bevelThickness, const Colour& baseColour)
+    static void drawBevel (Graphics& g, const Rectangle<float>& innerBevelBounds,
+                           float bevelThickness, Colour baseColour)
     {
-       Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
-       Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5f, bevelThickness * 0.5f));
+        Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
+        Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5f, bevelThickness * 0.5f));
 
         Path pL, pR, pT, pB, pTL, pTR, pBL, pBR;
         pL.startNewSubPath (centreBevelBounds.getTopLeft());
@@ -95,7 +95,7 @@ namespace GuiHelpers
                          outerBevelBounds.getRight(), outerBevelBounds.getBottom(),
                          innerBevelBounds.getRight(), innerBevelBounds.getBottom());
 
-        g.saveState();
+        Graphics::ScopedSaveState sss (g);
 
         g.setColour (baseColour);
         g.strokePath (pL, PathStrokeType (bevelThickness));
@@ -112,8 +112,6 @@ namespace GuiHelpers
         g.fillPath (pTR);
         g.fillPath (pBL);
         g.fillPath (pBR);
-
-        g.restoreState();
     }
 
     //==============================================================================
@@ -235,7 +233,7 @@ namespace GuiHelpers
 
                 return squareImage;
             }
-                break;
+
             case Play:
             {
                 Path trianglePath;
@@ -247,6 +245,7 @@ namespace GuiHelpers
 
                 return triangleImage;
             }
+
             case Pause:
             {
                 Path pausePath;
@@ -259,7 +258,7 @@ namespace GuiHelpers
 
                 return pauseImage;
             }
-                break;
+
             case Cue:
             {
                 Path p;
@@ -272,7 +271,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case Next:
             {
                 Path p;
@@ -285,6 +284,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
+
             case Previous:
             {
                 Path p;
@@ -297,7 +297,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case ShuffleForward:
             {
                 Path p;
@@ -310,14 +310,10 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case ShuffleBack:
             {
                 Path p;
-//                p.addTriangle (50.0f, 0.0f, 50.0f, 100.0f, 0.0f, 50.0f);
-//                p.addTriangle (100.0f, 0.0f, 100.0f, 100.0f, 50.0f, 50.0f);
-//                p.addTriangle (25.0f, 0.0f, 25.0f, 50.0f, 0.0f, 25.0f);
-//                p.addTriangle (100.0f, 0.0f, 100.0f, 50.0f, 50.0f, 25.0f);
                 p.addTriangle (0.0f, 50.0f, 75.0f, 0.0f, 75.0f, 100.0f);
                 p.addTriangle (75.0f, 50.0f, 150.0f, 0.0f, 150.0f, 100.0f);
 
@@ -327,7 +323,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case Eject:
             {
                 Path p;
@@ -340,7 +336,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case Cross:
             {
                 Path p;
@@ -357,7 +353,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case Add:
             {
                 Path p;
@@ -374,7 +370,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case Search:
             {
                 Path p;
@@ -390,7 +386,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case Power:
             {
                 Path p;
@@ -406,7 +402,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case Bypass:
             {
                 Path p;
@@ -424,7 +420,7 @@ namespace GuiHelpers
 
                 return drawablePath;
             }
-                break;
+
             case GoUp:
             {
                 Path arrowPath;
@@ -436,7 +432,7 @@ namespace GuiHelpers
 
                 return arrowImage;
             }
-                break;
+
             case Infinity:
             {
                 Path infPath;
@@ -452,7 +448,7 @@ namespace GuiHelpers
 
                 return infImg;
             }
-                break;
+
             case DownTriangle:
             {
                 Path trianglePath;
@@ -464,7 +460,7 @@ namespace GuiHelpers
 
                 return triangleImage;
             }
-                break;
+
             case Info:
             {
                 Path circlePath;
@@ -476,7 +472,7 @@ namespace GuiHelpers
 
                 return circleImage;
             }
-                break;
+
             case Loop:
             {
                 Path loopPath;
@@ -492,7 +488,7 @@ namespace GuiHelpers
 
                 return loopImage;
             }
-                break;
+
             case Slow:
             {
                 Path p;
@@ -500,13 +496,6 @@ namespace GuiHelpers
                               8,
                               50.0f,
                               -float_Pi * 0.125f);
-
-                //            GlyphArrangement text;
-                //            text.addLineOfText (Font (100), "SLOW", 0, 0);
-                //
-                //            Path p2;
-                //            text.createPath (p2);
-                //            p.addPath (p2);
 
                 DrawablePath dp;
                 dp.setFill (colour);
@@ -516,7 +505,7 @@ namespace GuiHelpers
 
                 return dp;
             }
-                break;
+
             case Speaker:
             {
                 Path p;
@@ -534,15 +523,13 @@ namespace GuiHelpers
 
                 return dp;
             }
-                break;
+
             case MutedSpeaker:
             {
                 Path p;
                 p.addRoundedRectangle (0.0f, 33.0f, 33.0f, 33.0f, 2.0f);
                 p.addTriangle (7.5f, 50.0f, 55.0f, 6.5f, 55.0f, 93.5f);
                 p.scaleToFit (0.0f, 0.0f, 100.0f, 100.0f, true);
-                //            p.addEllipse (0.0f, 0.0f, 100.0f, 100.0f);
-                //            p.addLineSegment (Line<float> (15.0f, 15.0f, 85.0f, 85.0f), 8.0f);
 
                 DrawablePath dp;
                 dp.setFill (colour);
@@ -552,14 +539,13 @@ namespace GuiHelpers
 
                 return dp;
             }
-                break;
+
             default:
-            {
-                DrawablePath blank;
-                return blank;
-            }
-                break;
+            break;
         }
+
+        DrawablePath blank;
+        return blank;
     }
 }
 

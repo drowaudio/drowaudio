@@ -31,8 +31,6 @@
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
-
-
 SoundTouchAudioSource::SoundTouchAudioSource (PositionableAudioSource* source_,
                                               bool deleteSourceWhenDeleted,
                                               int numberOfSamplesToBuffer_,
@@ -54,7 +52,7 @@ SoundTouchAudioSource::~SoundTouchAudioSource()
     releaseResources();
 }
 
-void SoundTouchAudioSource::setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings)
+void SoundTouchAudioSource::setPlaybackSettings (const SoundTouchProcessor::PlaybackSettings& newSettings)
 {
     soundTouchProcessor.setPlaybackSettings (newSettings);
 }
@@ -131,5 +129,4 @@ void SoundTouchAudioSource::readNextBufferChunk()
     soundTouchProcessor.writeSamples (buffer.getArrayOfWritePointers(), buffer.getNumChannels(), info.numSamples);
 }
 
-
-#endif
+#endif //DROWAUDIO_USE_SOUNDTOUCH

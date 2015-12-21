@@ -29,9 +29,6 @@
   ==============================================================================
 */
 
-
-
-//==============================================================================
 SampleRateConverter::SampleRateConverter (const int numChannels_)
     : ratio (1.0),
       numChannels (numChannels_)
@@ -40,10 +37,6 @@ SampleRateConverter::SampleRateConverter (const int numChannels_)
 
     createLowPass (ratio);
     resetFilters();
-}
-
-SampleRateConverter::~SampleRateConverter()
-{
 }
 
 //==============================================================================

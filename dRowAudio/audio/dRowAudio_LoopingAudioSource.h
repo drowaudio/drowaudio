@@ -34,16 +34,14 @@
 
 #include "../utility/dRowAudio_Utility.h"
 
-//==============================================================================
 /** A type of PositionalAudioSource that will read from a PositionableAudioSource
     and can loop between to set times.
 
     @see PositionableAudioSource, AudioTransportSource, BufferingAudioSource
 */
-class LoopingAudioSource  : public PositionableAudioSource
+class LoopingAudioSource : public PositionableAudioSource
 {
 public:
-    //==============================================================================
     /** Creates an LoopingAudioFormatReaderSource for a given reader.
 
         @param sourceReader                     the reader to use as the data source
@@ -52,7 +50,7 @@ public:
                                                 left up to the caller to manage its lifetime
     */
     LoopingAudioSource (PositionableAudioSource* const inputSource,
-                        const bool deleteInputWhenDeleted);
+                        bool deleteInputWhenDeleted);
 
     /** Destructor. */
     ~LoopingAudioSource();
@@ -76,37 +74,31 @@ public:
     bool getLoopBetweenTimes();
 
     //==============================================================================
-    /** Implementation of the AudioSource method. */
-    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
-
-    /** Implementation of the AudioSource method. */
-    void releaseResources();
-
-    /** Implementation of the AudioSource method. */
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
-
-    //==============================================================================
-    /** Implements the PositionableAudioSource method. */
-    void setNextReadPosition (int64 newPosition);
-
     /** Sets the next read position ignoring the loop bounds. */
     void setNextReadPositionIgnoringLoop (int64 newPosition);
 
-    /** Implements the PositionableAudioSource method. */
-    int64 getNextReadPosition() const;
-
-    /** Implements the PositionableAudioSource method. */
-    int64 getTotalLength() const;
-
-    /** Implements the PositionableAudioSource method. */
-    bool isLooping() const;
+    //==============================================================================
+    /** @internal */
+    void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
+    /** @internal */
+    void releaseResources() override;
+    /** @internal */
+    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    /** @internal */
+    void setNextReadPosition (int64 newPosition) override;
+    /** @internal */
+    int64 getNextReadPosition() const override;
+    /** @internal */
+    int64 getTotalLength() const override;
+    /** @internal */
+    bool isLooping() const override;
 
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> input;
     CriticalSection loopPosLock;
 
-    bool volatile isLoopingBetweenTimes;
+    volatile bool isLoopingBetweenTimes;
     double loopStartTime, loopEndTime;
     int64 loopStartSample, loopEndSample;
     double currentSampleRate;

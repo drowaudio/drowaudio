@@ -50,7 +50,6 @@ template <typename ElementType,
 class FifoBuffer
 {
 public:
-    //==============================================================================
     /** Creates a FifoBuffer with a given initial size. */
 	FifoBuffer (int initialSize)
         : abstractFifo (initialSize)
@@ -58,15 +57,16 @@ public:
 		buffer.malloc (abstractFifo.getTotalSize());
 	}
 
+    //==============================================================================
     /** Returns the number of samples in the buffer. */
-	inline int getNumAvailable()
+	inline int getNumAvailable() const
 	{
         const ScopedLockType sl (lock);
 		return abstractFifo.getNumReady();
 	}
 
     /** Returns the number of items free in the buffer. */
-    inline int getNumFree()
+    inline int getNumFree() const
     {
         const ScopedLockType sl (lock);
         return abstractFifo.getFreeSpace();
@@ -101,7 +101,7 @@ public:
 	}
 
     /** Returns the size of the buffer. */
-	inline int getSize()
+	inline int getSize() const
 	{
         const ScopedLockType sl (lock);
 		return abstractFifo.getTotalSize();
@@ -147,7 +147,6 @@ public:
 		abstractFifo.finishedRead (size1 + size2);
 	}
 
-
     /** Removes a number of samples from the buffer. */
     void removeSamples (int numSamples)
     {
@@ -159,14 +158,14 @@ public:
         You shouldn't need to mess with this usually but could come in handy if you want
         to use the Fifo as a buffer without clearing it regularly.
      */
-    ElementType* getData()                                  { return buffer.getData(); }
+    ElementType* getData() const { return buffer.getData(); }
 
     //==============================================================================
     /** Returns the CriticalSection that locks this fifo.
         To lock, you can call getLock().enter() and getLock().exit(), or preferably use
         an object of ScopedLockType as an RAII lock for it.
      */
-    inline const TypeOfCriticalSectionToUse& getLock() const noexcept      { return lock; }
+    inline const TypeOfCriticalSectionToUse& getLock() const noexcept { return lock; }
 
     /** Returns the type of scoped lock to use for locking this fifo */
     typedef typename TypeOfCriticalSectionToUse::ScopedLockType ScopedLockType;

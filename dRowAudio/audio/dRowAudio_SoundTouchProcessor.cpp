@@ -43,10 +43,6 @@ SoundTouchProcessor::SoundTouchProcessor()
     interleavedOutputBuffer.malloc (interleavedOutputBufferSize * 2);
 }
 
-SoundTouchProcessor::~SoundTouchProcessor()
-{
-}
-
 void SoundTouchProcessor::initialise (int numChannels, double sampleRate)
 {
     const ScopedLock sl (lock);
@@ -118,7 +114,7 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
         destinationChannelData[i] -= startSampleOffset;
 }
 
-void SoundTouchProcessor::setPlaybackSettings (PlaybackSettings newSettings)
+void SoundTouchProcessor::setPlaybackSettings (const PlaybackSettings& newSettings)
 {
     settings = newSettings;
 
@@ -138,4 +134,4 @@ int SoundTouchProcessor::getSoundTouchSetting (int settingId)
     return soundTouch.getSetting (settingId);
 }
 
-#endif
+#endif //DROWAUDIO_USE_SOUNDTOUCH

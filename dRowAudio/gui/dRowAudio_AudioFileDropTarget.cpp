@@ -31,8 +31,6 @@
 
 #if DROWAUDIO_USE_SOUNDTOUCH
 
-
-
 AudioFileDropTarget::AudioFileDropTarget (AudioFilePlayerExt* audioFilePlayerToControl,
                                           Component* componentToAttachTo)
     :  audioFilePlayer (audioFilePlayerToControl),
@@ -58,7 +56,7 @@ AudioFileDropTarget::~AudioFileDropTarget()
     }
 }
 
-void AudioFileDropTarget::setBezelColour (Colour& newColour)
+void AudioFileDropTarget::setBezelColour (Colour newColour)
 {
     bezelColour = newColour;
     repaint();
@@ -203,8 +201,4 @@ void AudioFileDropTarget::filesDropped (const StringArray &files, int /*x*/, int
     }
 }
 
-//==============================================================================
-
-
-
-#endif
+#endif //DROWAUDIO_USE_SOUNDTOUCH

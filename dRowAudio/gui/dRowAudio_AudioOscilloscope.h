@@ -32,7 +32,6 @@
 #ifndef DROWAUDIO_AUDIOOSCILLOSCOPE_H
 #define DROWAUDIO_AUDIOOSCILLOSCOPE_H
 
-//==============================================================================
 /** An oscilliscope class for displaying audio waveforms.
 
 	This is a high-res version of the SimpleAudioScope class and as such is
@@ -40,20 +39,16 @@
 	Use this when you need detailed images of a waveform instead of a general
     idea of what is passing through it.
  */
-class AudioOscilloscope  :	public Component,
-							public Timer
+class AudioOscilloscope : public Component,
+						  public Timer
 {
 public:
-	//==============================================================================
     /** Creates an AudioOscilloscope.
 
         Once created simply push data to display by repeatedly calling the
         processBlock method.
      */
     AudioOscilloscope();
-
-	/** Destructor. */
-    ~AudioOscilloscope();
 
     //==============================================================================
     /**	Processes a number of samples displaying them on the scope.
@@ -71,7 +66,7 @@ public:
 	/** Adjusts the vertical zoom of the scope.
         0 = nothing, 1 = normal, > 1 = zoomed.
 	 */
-	void setVerticalZoom (float newVerticalZoomFactor)      {   verticalZoomFactor = newVerticalZoomFactor;     }
+	void setVerticalZoom (float newVerticalZoomFactor) { verticalZoomFactor = newVerticalZoomFactor; }
 
 	/**	Adjusts the horizontal zoom of the scope.
         The lower this value is the more zoomed in and detailed the image will be.
@@ -79,26 +74,25 @@ public:
         difficult to see. Consider using Component::createComponentSnapshot() to
         capture an image of the scope.
 	 */
-	void setHorizontalZoom (float newHorizontalZoomFactor)  {	horizontalZoomFactor = newHorizontalZoomFactor; }
+	void setHorizontalZoom (float newHorizontalZoomFactor) { horizontalZoomFactor = newHorizontalZoomFactor; }
 
 	/** Sets the background colour of the scope. */
-	void setBackgroundColour (Colour newBackgroundColour)	{	backgroundColour = newBackgroundColour;         }
+	void setBackgroundColour (Colour newBackgroundColour) {	backgroundColour = newBackgroundColour; }
 
 	/** Sets the trace colour of the scope. */
-	void setTraceColour (Colour newTraceColour)             {	traceColour = newTraceColour;                   }
+	void setTraceColour (Colour newTraceColour) { traceColour = newTraceColour; }
 
     //==============================================================================
-    /** @internal. */
-    void resized();
-
-	/** @internal */
-    void paint (Graphics& g);
-
-	/** @internal */
-    void timerCallback();
-
-	/** @internal. Used to add a sample to the internal buffer. */
+	/** @internal Used to add a sample to the internal buffer. */
     void addSample (const float sample);
+
+    //==============================================================================
+    /** @internal */
+    void resized() override;
+	/** @internal */
+    void paint (Graphics& g) override;
+	/** @internal */
+    void timerCallback() override;
 
 private:
     //==============================================================================

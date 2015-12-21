@@ -34,19 +34,18 @@
 
 #include "../../utility/dRowAudio_StateVariable.h"
 
-//==============================================================================
 /** A class to display the waveform of an audio file which can be dragged to
     reposition the source.
+
     This class takes an AudioThumbnailImage as its source an then will get
     updated as the thumbnail is generated. You can set the zoom levels of the
     waveform and drag the image to reposition the source.
 */
-class DraggableWaveDisplay :    public Component,
-                                public MultiTimer,
-                                public AudioThumbnailImage::Listener
+class DraggableWaveDisplay : public Component,
+                             public MultiTimer,
+                             public AudioThumbnailImage::Listener
 {
 public:
-    //==============================================================================
 	/** Creates the display.
         The file player associated with the display must be passed in along with
         the current sample rate. This can later be changed with setSampleRate.
@@ -77,28 +76,21 @@ public:
 
 	/** Returns true if dragging the waveform will reposition the audio source
      */
-	bool getDraggable()              {   return isDraggable;   }
+	bool getDraggable() const { return isDraggable; }
 
     //====================================================================================
 	/** @internal */
-    void imageChanged (AudioThumbnailImage* audioThumbnailImage);
-
-	//====================================================================================
+    void imageChanged (AudioThumbnailImage* audioThumbnailImage) override;
 	/** @internal */
-	void resized();
-
+	void resized() override;
 	/** @internal */
-	void paint (Graphics &g);
-
+	void paint (Graphics &g) override;
 	/** @internal */
-    void mouseDown (const MouseEvent &e);
-
+    void mouseDown (const MouseEvent &e) override;
 	/** @internal */
-	void mouseUp (const MouseEvent &e);
-
-	//====================================================================================
-    /** @internal. */
-	void timerCallback (int timerId);
+	void mouseUp (const MouseEvent &e) override;
+    /** @internal */
+	void timerCallback (int timerId) override;
 
 private:
 	//==============================================================================

@@ -32,18 +32,18 @@
 #ifndef DROWAUDIO_GRAPHICALCOMPONENT_H
 #define DROWAUDIO_GRAPHICALCOMPONENT_H
 
-//==============================================================================
 /**	This class is an abstract base blass for some kind of graphical component
 	that requires some intenisve processing.
+
 	Inherit your class from this then register it with a TimeSliceThread
 	to continually call the process() method where you can do your required
 	processing on a background thread to avoid blocking the Message thread for too long.
 
 	@see SegmentedMeter
  */
-class GraphicalComponent :	public Component,
-							public TimeSliceClient,
-							public Timer
+class GraphicalComponent : public Component,
+						   public TimeSliceClient,
+						   public Timer
 {
 protected:
     //==============================================================================
@@ -68,11 +68,11 @@ public:
 
 	/**	Pauses the processing of the GraphicalComponent.
 	 */
-	void pause (bool shouldPause)	{	paused = shouldPause;	}
+	void pause (bool shouldPause) {	paused = shouldPause; }
 
 	/**	Returns true if the processing is currently suspended.
 	 */
-	bool isPaused()					{	return paused;          }
+	bool isPaused() const {	return paused; }
 
     //==============================================================================
 	/** Copies data to the component to use.
@@ -89,11 +89,11 @@ public:
 	 */
 	virtual void copySamples (float** values, int numSamples, int numChannels);
 
+    //==============================================================================
 	/** @internal */
-	int useTimeSlice();
-
+	int useTimeSlice() override;
 	/** @internal */
-	void timerCallback() {}
+	void timerCallback() override {}
 
 protected:
     //==============================================================================

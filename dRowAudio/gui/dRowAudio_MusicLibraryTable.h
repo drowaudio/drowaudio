@@ -57,7 +57,6 @@ class MusicLibraryTable	:   public Component,
                             public ITunesLibrary::Listener
 {
 public:
-    //==============================================================================
     /** Create the MusicLibraryTable.
 
         This will initially be blank, set an ITunesLibrary to use first with
@@ -70,6 +69,7 @@ public:
      */
     ~MusicLibraryTable();
 
+    //==============================================================================
     /** Sets the ITunesLibrary to use.
      */
 	void setLibraryToUse (ITunesLibrary* library);
@@ -80,7 +80,7 @@ public:
 
 	/**	Returns the table list box component.
      */
-	TableListBox& getTableListBox()	{	return table;	};
+	TableListBox& getTableListBox()	{ return table;	}
 
     //==============================================================================
     /** A set of colour IDs to use to change the colour of various aspects of the main table.

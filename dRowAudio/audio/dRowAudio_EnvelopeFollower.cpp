@@ -29,16 +29,10 @@
   ==============================================================================
 */
 
-
-
 //==============================================================================
 EnvelopeFollower::EnvelopeFollower()
     : envelope (0.0f),
       envAttack (1.0f), envRelease (1.0f)
-{
-}
-
-EnvelopeFollower::~EnvelopeFollower()
 {
 }
 

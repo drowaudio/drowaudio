@@ -55,13 +55,9 @@ public:
         }
     }
 
-    ~AudioSampleBufferReader()
-    {
-    }
-
     //==============================================================================
     bool readSamples (int** destSamples, int numDestChannels, int startOffsetInDestBuffer,
-                      int64 startSampleInFile, int numSamples)
+                      int64 startSampleInFile, int numSamples) override
     {
         jassert (destSamples != nullptr);
         const int64 samplesAvailable = lengthInSamples - startSampleInFile;
@@ -121,17 +117,15 @@ private:
 
 //==============================================================================
 AudioSampleBufferAudioFormat::AudioSampleBufferAudioFormat()
-: AudioFormat (TRANS (audioSampleBufferAudioFormatName), StringArray())
+    : AudioFormat (TRANS (audioSampleBufferAudioFormatName), StringArray())
 {
 }
 
-AudioSampleBufferAudioFormat::~AudioSampleBufferAudioFormat() {}
-
-Array<int> AudioSampleBufferAudioFormat::getPossibleSampleRates()    { return Array<int>(); }
-Array<int> AudioSampleBufferAudioFormat::getPossibleBitDepths()      { return Array<int>(); }
-
-bool AudioSampleBufferAudioFormat::canDoStereo()     { return true; }
-bool AudioSampleBufferAudioFormat::canDoMono()       { return true; }
+//==============================================================================
+Array<int> AudioSampleBufferAudioFormat::getPossibleSampleRates() { return Array<int>(); }
+Array<int> AudioSampleBufferAudioFormat::getPossibleBitDepths() { return Array<int>(); }
+bool AudioSampleBufferAudioFormat::canDoStereo() { return true; }
+bool AudioSampleBufferAudioFormat::canDoMono() { return true; }
 
 //==============================================================================
 AudioFormatReader* AudioSampleBufferAudioFormat::createReaderFor (InputStream* sourceStream,

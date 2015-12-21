@@ -39,10 +39,6 @@ ReversibleAudioSource::ReversibleAudioSource (PositionableAudioSource* const inp
     jassert (inputSource != 0);
 }
 
-ReversibleAudioSource::~ReversibleAudioSource()
-{
-}
-
 void ReversibleAudioSource::prepareToPlay (int samplesPerBlockExpected,
 										   double sampleRate)
 {
