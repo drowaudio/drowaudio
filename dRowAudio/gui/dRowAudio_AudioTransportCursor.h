@@ -76,7 +76,7 @@ public:
     /** @internal */
     void playerStoppedOrStarted (AudioFilePlayer* player) override;
     /** @internal */
-    void resized ();
+    void resized() override;
     /** @internal */
     void paint (Graphics& g) override;
     /** @internal */

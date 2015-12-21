@@ -66,13 +66,10 @@ public:
         audio data. When the scope has enough samples to perform an fft it will do
         so on a background thread and redraw itself.
     */
-    void copySamples (const float* samples, int numSamples);
+    void copySamples (const float* samples, int numSamples) override;
 
     /** @internal */
-    void process();
-
-    /** @internal */
-    void flagForRepaint();
+    void process() override;
 
     //==============================================================================
     /** @internal */
@@ -81,6 +78,10 @@ public:
     void paint (Graphics& g) override;
     /** @internal */
     void timerCallback() override;
+
+    //==============================================================================
+    /** @internal */
+    void flagForRepaint();
 
 private:
     //==============================================================================
