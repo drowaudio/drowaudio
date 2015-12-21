@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -43,19 +43,19 @@ PositionableWaveDisplay::PositionableWaveDisplay (AudioThumbnailImage& sourceToB
       audioTransportCursor  (audioFilePlayer)
 {
     setOpaque (true);
-    
+
     audioThumbnailImage.addListener (this);
-    
+
     cachedImage = Image (Image::RGB, 1, 1, false);
     cachedImage.clear (cachedImage.getBounds(), backgroundColour);
-    
+
     addAndMakeVisible (&audioTransportCursor);
 }
 
 PositionableWaveDisplay::~PositionableWaveDisplay()
 {
     threadToUse.removeTimeSliceClient (this);
-    
+
     audioThumbnailImage.removeListener (this);
 }
 
@@ -65,7 +65,7 @@ void PositionableWaveDisplay::setZoomRatio (double newZoomRatio)
 
     zoomRatio = jlimit (0.000001, 10000.0, newZoomRatio);
     audioTransportCursor.setZoomRatio (newZoomRatio);
-    
+
     resized();
 }
 
@@ -105,12 +105,12 @@ void PositionableWaveDisplay::setWaveformColour (const Colour& newWaveformColour
 void PositionableWaveDisplay::resized()
 {
     const ScopedLock sl (imageLock);
-    
+
     cachedImage = Image (Image::RGB, jmax (1, int (getWidth() / zoomRatio)), jmax (1, getHeight()), false);
     cachedImage.clear (cachedImage.getBounds(), backgroundColour);
 
     refreshCachedImage();
-    
+
     audioTransportCursor.setBounds (getLocalBounds());
 }
 
@@ -119,9 +119,9 @@ void PositionableWaveDisplay::paint(Graphics &g)
 	const int w = getWidth();
 	const int h = getHeight();
 
-    g.setColour (backgroundColour);	
+    g.setColour (backgroundColour);
     g.fillAll();
-        
+
     const int newWidth = roundToInt (w / zoomRatio);
     const int startPixelX = roundToInt (w * startOffsetRatio);
     const int newHeight = roundToInt (verticalZoomRatio * h);
@@ -130,7 +130,7 @@ void PositionableWaveDisplay::paint(Graphics &g)
     const ScopedLock sl (imageLock);
     g.drawImage (cachedImage,
                  startPixelX, startPixelY, newWidth, newHeight,
-                 0, 0, cachedImage.getWidth(), cachedImage.getHeight(), 
+                 0, 0, cachedImage.getWidth(), cachedImage.getHeight(),
                  false);
 }
 
@@ -144,25 +144,25 @@ void PositionableWaveDisplay::imageChanged (AudioThumbnailImage* changedAudioThu
             cachedImage.clear (cachedImage.getBounds(), backgroundColour);
             triggerAsyncUpdate();
         }
-        
+
         AudioFormatReaderSource* readerSource = audioFilePlayer.getAudioFormatReaderSource();
-        
+
         AudioFormatReader* reader = nullptr;
         if (readerSource != nullptr)
             reader = readerSource->getAudioFormatReader();
-        
+
         if (reader != nullptr && reader->sampleRate > 0.0
             && audioFilePlayer.getLengthInSeconds() > 0.0)
         {
             currentSampleRate = reader->sampleRate;
             fileLength = audioFilePlayer.getLengthInSeconds();
-            
+
             if (fileLength > 0.0)
                 oneOverFileLength = 1.0 / fileLength;
 
             refreshCachedImage();
         }
-        else 
+        else
         {
             currentSampleRate = 44100;
             fileLength = 0.0;
@@ -181,13 +181,13 @@ int PositionableWaveDisplay::useTimeSlice()
     {
         cachedImage = audioThumbnailImage.getImage()
                        .rescaled (cachedImage.getWidth(), cachedImage.getHeight());
-        
+
         triggerAsyncUpdate();
     }
-    
+
     if (audioThumbnailImage.hasFinishedLoading())
         threadToUse.removeTimeSliceClient (this);
-    
+
     return 100;
 }
 

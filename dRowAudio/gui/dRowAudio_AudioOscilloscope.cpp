@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -46,7 +46,7 @@ AudioOscilloscope::AudioOscilloscope()
     currentMin = bufferLastMin = 1.0e6f;
     currentMax = bufferLastMax = -currentMin;
     numSamplesIn = 0;
-    
+
     setOpaque (true);
     resized();                  // initialise image
     startTimer (1000 / 60);     // repaint every 1/50 of a second
@@ -77,11 +77,11 @@ void AudioOscilloscope::clear()
 void AudioOscilloscope::resized()
 {
     Image oldImage (waveformImage);
-    waveformImage = Image (Image::RGB, 
+    waveformImage = Image (Image::RGB,
                            jmax (1, getWidth()), jmax (1, getHeight()),
                            true);
     waveformImage.clear(waveformImage.getBounds(), Colours::black);
-    
+
     if (oldImage.isValid())
         waveformImage = oldImage.rescaled (waveformImage.getWidth(), waveformImage.getHeight());
 }
@@ -106,32 +106,32 @@ void AudioOscilloscope::timerCallback()
 
     // draw new section
     Graphics g (waveformImage);
-    
+
     g.setColour (backgroundColour);
     g.fillRect (newSectionStart, 0, numPixelsToDraw, waveformImage.getHeight());
     g.setColour (traceColour);
-    
+
     const int bp = bufferPos + bufferSize;
-    
+
     for (int x = width; --x >= newSectionStart;)
     {
         const int samplesAgo = width - x;
-        
+
         float max = circularBufferMax [(bp - samplesAgo) &bufferSizeMask];
         float min = circularBufferMin [(bp - samplesAgo) &bufferSizeMask];
-        
+
         if (min > bufferLastMax)
             min = bufferLastMax;
         if (max < bufferLastMin)
             max = bufferLastMin;
-        
+
         bufferLastMax = max;
         bufferLastMin = min;
-        
+
         g.drawLine ((float) x, halfHeight + (halfHeight * verticalZoomFactor * max),
                     (float) x, halfHeight + (halfHeight * verticalZoomFactor * min));
     }
-    
+
     lastBufferPos = bufferPos;
 
     repaint();
@@ -143,19 +143,18 @@ void AudioOscilloscope::addSample (const float sample)
         currentMax = sample;
     if (sample < currentMin)
         currentMin = sample;
-    
+
     const int samplesToAverage = 1 + (int) (127.0 * horizontalZoomFactor);
-    
+
     if (++numSamplesIn > samplesToAverage)
     {
         bufferPos = bufferPos & bufferSizeMask;
         circularBufferMax [bufferPos] = currentMax;
         circularBufferMin [bufferPos] = currentMin;
         bufferPos++;
-        
+
         numSamplesIn = 0;
         currentMin = 1.0e6f;
         currentMax = -currentMin;
     }
 }
-

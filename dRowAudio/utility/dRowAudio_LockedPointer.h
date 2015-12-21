@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -36,14 +36,14 @@
 /**
     Wrapper for a pointer that automatically locks a provided lock whilst the LockedPointer
     stays in scope. This is similar using a narrowly scoped ScopedPointer.
- 
+
     @code
         if ((LockedPointer<MyPointerType, SpinLock> pointer (getObject(), getLock()) != nullptr)
         {
             // object is now safely locked
             pointer->unthreadSafeMethodCall();
         }
- 
+
         // as pointer goes out of scope the lock will be released
     @endcode
  */
@@ -53,7 +53,7 @@ class LockedPointer
 public:
     //==============================================================================
     /** Creates a LockedPointer for a given pointer and corresponding lock.
-        You can create one of these on the stack to makes sure the provided lock is 
+        You can create one of these on the stack to makes sure the provided lock is
         locked during all operations on the object provided.
      */
     LockedPointer (Type* pointer_, LockType& lock_)
@@ -63,19 +63,19 @@ public:
     {
         jassert (pointer != nullptr);
     }
-    
+
     /** Destructor.
         Will safely unlock the lock passed in.
      */
     ~LockedPointer()
     {}
-    
+
     /** Provides access to the objects methods. */
     Type* operator->()                      { return pointer; }
-    
+
     /** Provides access to the objects methods. */
     Type const* operator->() const          { return pointer; }
-    
+
     /** Returns the type of scoped lock to use for locking this pointer. */
     typedef typename LockType::ScopedLockType ScopedLockType;
 
@@ -84,7 +84,7 @@ private:
     Type* pointer;
     LockType& lock;
     const ScopedLockType scopedLock;
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LockedPointer);
 };
 

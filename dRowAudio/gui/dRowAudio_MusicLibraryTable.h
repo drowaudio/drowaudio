@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -40,14 +40,14 @@
 /**
     Table to display and interact with a music library.
     The easiest way to use this is to load a default or saved iTunes library like so:
-    
+
     @code
         MusicLibraryTable table;
         table.setLibraryToUse (ITunesLibrary::getInstance());
 
         File parsedLibraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("saved_library_file.xml"));
         ValueTree libraryTree (readValueTreeFromFile (parsedLibraryFile));
- 
+
         ITunesLibrary::getInstance()->setLibraryTree (libraryTree);
         ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     @endcode
@@ -59,7 +59,7 @@ class MusicLibraryTable	:   public Component,
 public:
     //==============================================================================
     /** Create the MusicLibraryTable.
-     
+
         This will initially be blank, set an ITunesLibrary to use first with
         setLibraryToUse(). The table will then be continually updated as the library
         is parsed.
@@ -77,17 +77,17 @@ public:
     /** Filters the table to only rows containing the given text.
      */
 	void setFilterText (const String& filterText);
-    
+
 	/**	Returns the table list box component.
      */
 	TableListBox& getTableListBox()	{	return table;	};
-    
+
     //==============================================================================
     /** A set of colour IDs to use to change the colour of various aspects of the main table.
-     
+
         These constants can be used either via the Component::setColour(), or LookAndFeel::setColour()
         methods. TextEditor
-     
+
         @see Component::setColour, Component::findColour, LookAndFeel::setColour, LookAndFeel::findColour
      */
     enum ColourIds
@@ -100,12 +100,12 @@ public:
 
         selectedBackgroundColourId          = 0x2000002, /**< The colour to use for the cell's background if the
                                                               row is selected. */
-        
+
         selectedUnfocusedBackgroundColourId = 0x2000003, /**< The colour to use for the cell's background if the
                                                               row is selected and the table is unfocused. */
 
         textColourId                        = 0x2000004, /**< The colour that will be used for the cell's text. */
-        
+
         selectedTextColourId                = 0x2000005, /**< The colour with which to draw the text in selected
                                                               cells. */
 
@@ -114,7 +114,7 @@ public:
 
         selectedUnfocusedTextColourId       = 0x2000007, /**< The colour with which to draw the text in selected
                                                               cells when the table is unfocused. */
-        
+
         outlineColourId                     = 0x2000008, /**< The colour used to draw an outline around the cells. */
 
         selectedOutlineColourId             = 0x2000009, /**< The colour used to draw an outline around selected cells. */
@@ -125,17 +125,17 @@ public:
         selectedUnfocusedOutlineColourId    = 0x2000011, /**< The colour used to draw an outline around selected cells
                                                               when the table is unfocused. */
     };
-    
+
     //==============================================================================
     /** @internal */
 	void libraryChanged (ITunesLibrary* library);
-	
+
     /** @internal */
 	void libraryUpdated (ITunesLibrary* library);
-	
+
     /** @internal */
 	void libraryFinished (ITunesLibrary* library);
-	
+
     //==============================================================================
     /** Returns the number of rows currently bein displayed in the table.
      */
@@ -157,31 +157,31 @@ public:
 
     /** @internal */
     int getColumnAutoSizeWidth (int columnId);
-	
+
     //==============================================================================
     /** @internal */
     void resized();
 
     /** @internal */
-	void focusOfChildComponentChanged (FocusChangeType cause); 
+	void focusOfChildComponentChanged (FocusChangeType cause);
 
     /** @internal */
 	var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
-	
+
 private:
     //==============================================================================
-    Font font;	
+    Font font;
 	ITunesLibrary* currentLibrary;
     TableListBox table;
     String currentFilterText;
-    
+
     ValueTree dataList;
 	ValueTree filteredDataList;
     SortedSet<int> selectedRowsLibIds;
-        
+
     int filteredNumRows;
 	bool finishedLoading;
-	
+
     //==============================================================================
     void updateTableFilteredAndSorted();
     void findSelectedRows();

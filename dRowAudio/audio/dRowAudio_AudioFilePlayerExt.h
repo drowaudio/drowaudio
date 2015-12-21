@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -45,7 +45,7 @@
 
     This combines the functionality of an AudioTransportSource,
     AudioFormatReader and AudioFormatReaderSource.
- 
+
     @see AudioTransportSource
     @see AudioFormatReader
     @see AudioFormatReaderSource
@@ -61,16 +61,16 @@ public:
         PlayDirectionSetting        = 0x0003,
         FilterGainSetting           = 0x0004
     };
-    
+
     //==============================================================================
 	/** Creates an empty AudioFilePlayerExt.
      */
 	AudioFilePlayerExt();
-    
+
 	/** Destructor.
      */
 	~AudioFilePlayerExt();
-	
+
     //==============================================================================
     /** Sets the current library entry.
      */
@@ -79,20 +79,20 @@ public:
     /** Returns the currents library entry.
      */
     ValueTree getLibraryEntry()                             {   return  libraryEntry;       }
-    
+
     //==============================================================================
     /** Sets SoundTouchProcessor settings.
      */
     void setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings);
-    
+
     /** Returns the current SoundTouchProcessor settings.
      */
     SoundTouchProcessor::PlaybackSettings getPlaybackSettings();
-    
+
     /** Sets whether the source should play forwards or backwards.
      */
 	void setPlayDirection (bool shouldPlayForwards);
-    
+
     /** Returns true if the source is playing forwards.
      */
 	bool getPlayDirection();
@@ -100,25 +100,25 @@ public:
     /** Sets the gain of one of the FilteringAudioSource filters.
      */
     void setFilterGain (FilteringAudioSource::FilterType type, float newGain);
-    
+
     //==============================================================================
     /** Sets the start and end times of the loop.
         This doesn't actually activate the loop, use setLoopBetweenTimes() to toggle this.
      */
 	void setLoopTimes (double startTime, double endTime);
-	
+
     /** Enables the loop point set.
      */
     void setLoopBetweenTimes (bool shouldLoop);
-    
+
     /** Returns true if the loop is activated.
      */
     bool getLoopBetweenTimes();
-    
+
     /** Sets the next play position in seconds disregarding the loop boundries.
      */
     void setPosition (double newPosition, bool ignoreAnyLoopBounds = false);
-    
+
     //==============================================================================
     /** Returns the SoundTouchAudioSource being used.
      */
@@ -127,8 +127,8 @@ public:
 	/** Returns the FilteringAudioSource being used.
      */
     inline FilteringAudioSource* getFilteringAudioSource()         {   return filteringAudioSource;    }
-    
-private:	
+
+private:
     //==============================================================================
     ScopedPointer<BufferingAudioSource> bufferingAudioSource;
     ScopedPointer<LoopingAudioSource> loopingAudioSource;
@@ -139,13 +139,13 @@ private:
     SoundTouchProcessor::PlaybackSettings currentSoundtouchSettings;
     bool shouldBeLooping;
     double currentLoopStartTime, currentLoopEndTime;
-    
+
     ValueTree libraryEntry;
 
     //==============================================================================
 	bool setSourceWithReader (AudioFormatReader* reader);
     void updateLoopTimes();
-    
+
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);
 };

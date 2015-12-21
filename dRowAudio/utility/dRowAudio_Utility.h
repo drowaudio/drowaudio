@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -41,7 +41,7 @@
 
 //==============================================================================
 /** @file
- 
+
 	This file contains some useful utility functions and macros.
  */
 //==============================================================================
@@ -68,7 +68,7 @@ inline static String stripFileProtocolForLocal (const String& pathToStrip)
        #endif
 		return URL::removeEscapeChars (temp);
 	}
-	
+
 	return String::empty;
 }
 
@@ -85,7 +85,7 @@ inline static Time parseITunesDateString (const String& dateString)
     int seconds         = dateString.substring (17, 19).getIntValue();
     int milliseconds    = 0;
     bool useLocalTime   = true;
-    
+
     return Time (year, month, day, hours, minutes, seconds, milliseconds, useLocalTime);
 }
 
@@ -95,7 +95,7 @@ template <class Type>
 void reverseArray (Type* array, int length)
 {
     Type swap;
-	
+
     for (int a = 0; a < --length; a++)  //increment a and decrement b until they meet eachother
     {
         swap = array[a];                //put what's in a into swap space
@@ -112,7 +112,7 @@ template <class Type>
 void reverseTwoArrays (Type* array1, Type* array2, int length)
 {
     Type swap;
-    
+
     for (int a = 0; a < --length; a++)  //increment a and decrement b until they meet eachother
     {
         swap = array1[a];               //put what's in a into swap space
@@ -129,7 +129,7 @@ void reverseTwoArrays (Type* array1, Type* array2, int length)
 	This will attempt to find the key listed on the chemical website for a given release number
 	eg. "31R038" and track title eg. "Wait For Me".
 	This is in the Mixed in Key format eg. 11A and will return an empty string if nothing could be found.
-	
+
 	@param	releaseNo	The catalogue number to look for.
 	@param	trackName	The track name to look for.
 	@param	retryLimit	An optional number of retries as sometimes the URL won't load first time.
@@ -138,31 +138,31 @@ static String findKeyFromChemicalWebsite (const String& releaseNo, const String&
 {
     URL chemicalURL ("http://www.chemical-records.co.uk/sc/servlet/Info");
     chemicalURL = chemicalURL.withParameter ("Track", releaseNo);
-    
+
     String pageAsString (chemicalURL.readEntireTextStream());
     String trackInfo (pageAsString.fromFirstOccurrenceOf ("<table class=\"tracks\" cellspacing=\"0\" cellpadding=\"4\">", true, false));
     trackInfo = trackInfo.upToFirstOccurrenceOf("</table>", true, false);
-    
+
     ScopedPointer<XmlElement> tracksXml (XmlDocument::parse (trackInfo));
-    
+
     if (tracksXml != nullptr)
     {
         XmlElement* tracksElem (XmlHelpers::findXmlElementContainingSubText (tracksXml, trackName));
-        
+
         if (tracksElem != nullptr)
         {
             XmlElement* nextElem = tracksElem->getNextElement();
-            
+
             if (nextElem != nullptr)
             {
                 XmlElement* keyElem = nextElem->getFirstChildElement();
-                
-                if (keyElem != nullptr) 
+
+                if (keyElem != nullptr)
                     return keyElem->getAllSubText();
             }
         }
     }
-    
+
     return String::empty;
 }
 
@@ -174,13 +174,13 @@ static void drawBufferToImage (const Image& image, const float* samples, int num
 {
     if (image.isNull())
         return;
-    
+
     jassert (image.getWidth() > 0 && image.getHeight() > 0);
-    
+
     Graphics g (image);
     g.setColour (colour);
     const float imageXScale = image.getWidth() / (float) numSamples;
-    
+
     Path p;
     bool isFirst = true;
 
@@ -194,10 +194,10 @@ static void drawBufferToImage (const Image& image, const float* samples, int num
             p.startNewSubPath (x, y);
             isFirst = false;
         }
-        
+
         p.lineTo (x, y);
     }
-    
+
     g.strokePath (p, PathStrokeType (thickness));
 }
 
@@ -208,10 +208,10 @@ static void saveImageToFile (const Image& image, File file = File::nonexistent)
 {
     if (! file.exists())
         file = File::getSpecialLocation (File::userDesktopDirectory).getNonexistentChildFile ("tempImage", ".png");
-    
+
     PNGImageFormat format;
     ScopedPointer<OutputStream> os (file.createOutputStream());
-    
+
     if (os != nullptr)
         format.writeImageToStream (image, *os);
 }
@@ -219,7 +219,7 @@ static void saveImageToFile (const Image& image, File file = File::nonexistent)
 //==============================================================================
 /**
     Holds a ValueTree as a ReferenceCountedObject.
-    
+
     This is somewhat obfuscated but makes it easy to transfer ValueTrees as var objects
     such as when using them as DragAndDropTarget::SourceDetails::description members.
  */
@@ -233,28 +233,28 @@ public:
         : tree (treeToReference)
     {
     }
-    
+
     /** Destructor. */
     ~ReferenceCountedValueTree()
     {
     }
-    
+
     /** Sets the ValueTree being held.
      */
     void setValueTree (ValueTree newTree)
     {
         tree = newTree;
     }
-    
+
     /** Returns the ValueTree being held.
      */
     ValueTree getValueTree()
     {
         return tree;
     }
-    
+
     typedef ReferenceCountedObjectPtr<ReferenceCountedValueTree> Ptr;
-    
+
     /** Provides a simple way of getting the tree from a var object which
         is a ReferencedCountedValueTree.
      */
@@ -262,7 +262,7 @@ public:
     {
         ReferenceCountedValueTree* refTree
         = dynamic_cast<ReferenceCountedValueTree*> (treeObject.getObject());
-        
+
         return refTree == nullptr ? ValueTree::invalid : refTree->getValueTree();
     }
 
@@ -290,12 +290,12 @@ public:
         : identifier (identifierToReference)
     {
     }
-    
+
     /** Destructor. */
     ~ReferenceCountedIdentifier()
     {
     }
-    
+
     /** Sets the Identifier to be held.
      */
     void setIdentifier (const Identifier& newIdentifier)
@@ -309,7 +309,7 @@ public:
     {
         return identifier;
     }
-    
+
     typedef ReferenceCountedObjectPtr<ReferenceCountedIdentifier> Ptr;
 
     //==============================================================================
@@ -320,14 +320,14 @@ public:
     {
         ReferenceCountedIdentifier* refIdentifer
         = dynamic_cast<ReferenceCountedIdentifier*> (identiferObject.getObject());
-        
+
         return refIdentifer == nullptr ? Identifier::null : refIdentifer->getIdentifier();
     }
 
 private:
     //==============================================================================
     Identifier identifier;
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferenceCountedIdentifier);
 };
 
@@ -354,7 +354,7 @@ public:
     ReferencedCountedMemoryBlock (const MemoryBlock& memoryBlockToReference)
         : memoryBlock (memoryBlockToReference)
     {}
-    
+
 #if JUCE_COMPILER_SUPPORTS_MOVE_SEMANTICS
     /** Creates a ReferencedCountedMemoryBlock for a given MemoryBlock.
         This will move the data from the given memory block so don't expect to
@@ -368,11 +368,11 @@ public:
     /** Destructor. */
     ~ReferencedCountedMemoryBlock()
     {}
-    
+
     /** Returns the MemoryBlock being held.
      */
     MemoryBlock& getMemoryBlock()   {   return memoryBlock; }
-    
+
     /** Provides a simple way of getting the MemoryBlock from a var object which
         is a ReferencedCountedMemoryBlock.
      */
@@ -380,7 +380,7 @@ public:
     {
         ReferencedCountedMemoryBlock* refBlock
             = dynamic_cast<ReferencedCountedMemoryBlock*> (blockObject.getObject());
-        
+
         return refBlock == nullptr ? nullptr : &refBlock->getMemoryBlock();
     }
 
@@ -389,7 +389,7 @@ public:
 private:
     //==============================================================================
     MemoryBlock memoryBlock;
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferencedCountedMemoryBlock);
 };
 
@@ -402,35 +402,35 @@ static bool writeValueTreeToFile (const ValueTree& treeToWrite, const File& file
 {
     if (fileToWriteTo.hasWriteAccess())
     {
-        if (asXml) 
+        if (asXml)
         {
             ScopedPointer<XmlElement> treeAsXml (treeToWrite.createXml());
-            
+
             if (treeAsXml != nullptr)
                 return treeAsXml->writeToFile (fileToWriteTo, String::empty, "UTF-8", 200);
-            
+
             return false;
         }
-        else 
+        else
         {
             TemporaryFile tempFile (fileToWriteTo);
             ScopedPointer<FileOutputStream> outputStream (tempFile.getFile().createOutputStream());
-            
+
             if (outputStream != nullptr)
             {
                 treeToWrite.writeToStream (*outputStream);
                 outputStream = nullptr;
-                
+
                 return tempFile.overwriteTargetFileWithTemporary();
             }
         }
     }
-    
+
     return false;
 }
 
 /** Reads a ValueTree from a stored file.
- 
+
     This will first attempt to parse the file as Xml, if this fails it will
     attempt to read it as binary. If this also fails it will return an invalid
     ValueTree.
@@ -449,7 +449,7 @@ static ValueTree readValueTreeFromFile (const File& fileToReadFrom)
     {
         return ValueTree::readFromStream (*fileInputStream);
     }
-    
+
     return ValueTree::invalid;
 }
 
@@ -494,7 +494,7 @@ public:
         you can obtain using the getTree() method.
      */
     inline void setFile (const File& newFile)   {   tree = readValueTreeFromFile (file = newFile);  }
-    
+
     /** Saves the file to disk using a TemporaryFile in case there are any problems. */
     inline Result save()
     {
@@ -507,19 +507,19 @@ public:
 
     /** Returns the File being used. */
     inline File getFile() const                 {    return file;           }
-    
+
     /** Sets the tree to save to the file as XML or binary data. */
     inline void setSaveAsXml (bool saveAsXml)   {   asXml = saveAsXml;      }
-    
+
     /** Returns true if the file will be saved as XML. */
     inline bool getSaveAsXml() const            {   return asXml;           }
-    
+
 private:
     //==============================================================================
     bool asXml;
     File file;
     ValueTree tree;
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ScopedValueTreeFile);
 };
@@ -530,7 +530,7 @@ struct ScopedChangeSender
 {
     ScopedChangeSender (ChangeBroadcaster& owner) : broadcaster (owner) {}
     ~ScopedChangeSender() { broadcaster.sendChangeMessage(); }
-    
+
     ChangeBroadcaster& broadcaster;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ScopedChangeSender)

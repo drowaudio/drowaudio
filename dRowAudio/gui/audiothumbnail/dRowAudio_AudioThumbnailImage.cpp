@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -48,7 +48,7 @@ AudioThumbnailImage::AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
 {
     waveformImage = Image (Image::RGB, 1, 1, false);
     refreshFromFilePlayer();
-    
+
 	// register with the file player to recieve update messages
 	filePlayer.addListener (this);
 }
@@ -57,7 +57,7 @@ AudioThumbnailImage::~AudioThumbnailImage()
 {
 	filePlayer.removeListener (this);
     backgroundThread.removeTimeSliceClient (this);
-	
+
     stopTimer();
 }
 
@@ -86,7 +86,7 @@ const Image AudioThumbnailImage::getImageAtTime (double startTime, double durati
     {
         const int startPixel = roundToInt (startTime * oneOverFileLength * waveformImage.getWidth());
         const int numPixels = roundToInt (duration * oneOverFileLength * waveformImage.getWidth());
-        
+
         return waveformImage.getClippedImage (Rectangle<int> (startPixel, 0, numPixels, waveformImage.getHeight()));
     }
     else
@@ -113,7 +113,7 @@ void AudioThumbnailImage::timerCallback()
 int AudioThumbnailImage::useTimeSlice()
 {
     refreshWaveform();
-    
+
     return 25;
 }
 
@@ -138,28 +138,28 @@ void AudioThumbnailImage::removeListener (AudioThumbnailImage::Listener* const l
 void AudioThumbnailImage::refreshFromFilePlayer()
 {
     sourceLoaded = false;
-    
+
     if (filePlayer.getAudioFormatReaderSource() != nullptr)
     {
         currentSampleRate = filePlayer.getAudioFormatReaderSource()->getAudioFormatReader()->sampleRate;
-        
+
         if (currentSampleRate > 0.0)
         {
             oneOverSampleRate = 1.0 / currentSampleRate;
             fileLength = filePlayer.getLengthInSeconds();
-            
+
             if (fileLength > 0)
             {
                 oneOverFileLength = 1.0 / fileLength;
-                
+
                 const ScopedWriteLock sl (imageLock);
-                
+
                 const int imageWidth = roundToInt (filePlayer.getTotalLength() / sourceSamplesPerThumbnailSample);
                 waveformImage = Image (Image::RGB, jmax (1, imageWidth), 100, true);
                 // image will be cleared in triggerWaveformRefresh()
-                
+
                 const File newFile (filePlayer.getFile());
-                
+
                 if (newFile.existsAsFile())
                 {
                     audioThumbnail.setSource (new FileInputSource (newFile));
@@ -179,7 +179,7 @@ void AudioThumbnailImage::refreshFromFilePlayer()
             }
         }
     }
-    
+
     if (sourceLoaded)
     {
         renderComplete = false;
@@ -189,7 +189,7 @@ void AudioThumbnailImage::refreshFromFilePlayer()
         audioThumbnail.setSource (nullptr);
         renderComplete = true;
     }
-    
+
     triggerWaveformRefresh();
 }
 
@@ -206,9 +206,9 @@ void AudioThumbnailImage::triggerWaveformRefresh()
         waveformImage.clear (waveformImage.getBounds(), backgroundColour);
         renderComplete = false;
     }
-    
+
     listeners.call (&Listener::imageChanged, this);
-    
+
     if (sourceLoaded)
         backgroundThread.addTimeSliceClient (this);
 
@@ -221,21 +221,21 @@ void AudioThumbnailImage::refreshWaveform()
 	if (sourceLoaded && audioThumbnail.getNumSamplesFinished() > 0)
 	{
         const double timeRendered = audioThumbnail.getNumSamplesFinished() * oneOverSampleRate;
-        
+
         const double timeToDraw = jmin (1.0, timeRendered - lastTimeDrawn);
         const double endTime = lastTimeDrawn + timeToDraw;
         const int64 endSamples = roundToInt (endTime * currentSampleRate);
-        
+
         imageLock.enterRead();
         const int waveformImageWidth = waveformImage.getWidth();
         const int waveformImageHeight = waveformImage.getHeight();
         imageLock.exitRead();
-        
+
         const int nextPixel = roundToInt (endTime * oneOverFileLength * waveformImageWidth);
         const int startPixelX = roundToInt (lastTimeDrawn * oneOverFileLength * waveformImageWidth);
         const int numPixels = nextPixel - startPixelX;
         const int numTempPixels = roundToInt (numPixels * resolution);
-        
+
         if (numTempPixels > 0)
         {
             if (tempSectionImage.getWidth() < numTempPixels)
@@ -244,30 +244,30 @@ void AudioThumbnailImage::refreshWaveform()
                                           numTempPixels, waveformImageHeight,
                                           false);
             }
-            
+
             Rectangle<int> rectangleToDraw (0, 0, numTempPixels, waveformImageHeight);
-            
+
             Graphics gTemp (tempSectionImage);
             tempSectionImage.clear (tempSectionImage.getBounds(), backgroundColour);
             gTemp.setColour (waveformColour);
             audioThumbnail.drawChannel (gTemp, rectangleToDraw,
                                         lastTimeDrawn, endTime,
                                         0, 1.0f);
-            
+
             lastTimeDrawn = endTime;
-            
+
             const ScopedWriteLock sl (imageLock);
-            
+
             Graphics g (waveformImage);
             g.drawImage (tempSectionImage,
                          startPixelX, 0, numPixels, waveformImageHeight,
                          0, 0, numTempPixels, tempSectionImage.getHeight());
         }
-        
+
         if (endSamples == audioThumbnail.getNumSamplesFinished())
             renderComplete = true;
 	}
-    
+
     if (renderComplete)
         backgroundThread.removeTimeSliceClient (this);
 }

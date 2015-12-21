@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -66,14 +66,14 @@ enum ParameterUnit
     UnitBeats               = 23,	/* time relative to tempo, ie. 1.0 at 120 BPM would equal 1/2 a second */
 	UnitMilliseconds		= 24,	/* parameter is expressed in milliseconds */
 	UnitRatio				= 25,	/* for compression, expansion ratio, etc. */
-	
+
 	UnitCustomUnit			= 26	/* this is the parameter unit type for parameters that present a custom unit name */
 };
 
 
 //==============================================================================
 /**	This file defines a parameter used in an application.
- 
+
 	Both full-scale and normalised values must be present for
 	AU and VST host campatability.
  */
@@ -82,10 +82,10 @@ class PluginParameter
 public:
     //==============================================================================
 	/** Create a default parameter.
-	 
+
 		This just uses some standard default values so it can be used as a placeholder.
 		Call init() once you know the parameter values.
-     
+
 		@see init()
 	 */
 	PluginParameter();
@@ -93,7 +93,7 @@ public:
     /** Creates a copy of another parameter.
      */
     PluginParameter (const PluginParameter& other);
-    
+
 	/** Initialise the parameter.
 		Used to set up the parameter as required.
 	 */
@@ -102,41 +102,41 @@ public:
                double skewFactor_ =1.0f, double smoothCoeff_ =0.1f, double step_ =0.01, String unitSuffix_ =String::empty);
 
     inline Value& getValueObject()                              {   return valueObject;     }
-    
+
 	inline double getValue()                                    {   return double (valueObject.getValue()); }
 	inline double getNormalisedValue()                          {   return normaliseValue (getValue());     }
 	void setValue (double value_);
 	void setNormalisedValue (double normalisedValue);
 	inline double getSmoothedValue()                            {   return smoothValue;     }
 	inline double getSmoothedNormalisedValue()                  {   return normaliseValue (smoothValue);     }
-	
+
 	inline double getMin()                                      {   return min;             }
 	inline double getMax()                                      {   return max;             }
 	inline double getDefault()                                  {   return defaultValue;    }
-	
+
 	void smooth();
 	void setSmoothCoeff (double newSmoothCoef);
 	inline double getSmoothCoeff()                              {   return smoothCoeff;     }
-	
+
 	void setSkewFactor (const double newSkewFactor);
 	void setSkewFactorFromMidPoint (const double valueToShowAtMidPoint);
 	inline double getSkewFactor()                               {   return skewFactor;      }
-	
+
 	void setStep (double newStep);
 	inline double getStep()                                     {   return step;            }
-	
+
 	inline const String getName()                               {   return name;            }
 	inline ParameterUnit getUnit()                              {   return unit;            }
 	inline const String getUnitSuffix()                         {   return unitSuffix;      }
 	void setUnitSuffix (String newSuffix);
-	
+
 	void writeXml (XmlElement& xmlState);
 	void readXml (const XmlElement* xmlState);
-	
+
 	/** Sets up a given slider with the parmeters properties.
      */
 	void setupSlider (Slider& slider);
-	
+
 private:
     //==============================================================================
     Value valueObject;
@@ -145,7 +145,7 @@ private:
 	double smoothCoeff, smoothValue;
 	double skewFactor, step;
 	ParameterUnit unit;
-	
+
     double normaliseValue (double scaledValue);
 
     //==============================================================================

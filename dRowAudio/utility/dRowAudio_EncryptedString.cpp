@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -44,7 +44,7 @@ EncryptedString::~EncryptedString()
 String EncryptedString::encrypt (const String& stringToEncrypt, const String& publicKey, bool resultAsHex)
 {
     RSAKey rsaKey (publicKey);
-    
+
     CharPointer_UTF8 stringPointer (stringToEncrypt.toUTF8());
     MemoryBlock stringMemoryBlock (stringPointer.getAddress(), stringPointer.sizeInBytes());
 
@@ -52,7 +52,7 @@ String EncryptedString::encrypt (const String& stringToEncrypt, const String& pu
     stringAsData.loadFromMemoryBlock (stringMemoryBlock);
 
     rsaKey.applyToValue (stringAsData);
-    
+
     if (resultAsHex)
     {
         MemoryBlock encryptedMemoryBlock (stringAsData.toMemoryBlock());
@@ -67,9 +67,9 @@ String EncryptedString::encrypt (const String& stringToEncrypt, const String& pu
 String EncryptedString::decrypt (const String& encryptedString, const String& privateKey, bool inputIsHex)
 {
     RSAKey rsaKey (privateKey);
-    
+
     MemoryBlock encryptedMemoryBlock;
-    
+
     if (inputIsHex)
     {
         encryptedMemoryBlock.loadFromHexString (encryptedString);
@@ -81,9 +81,9 @@ String EncryptedString::decrypt (const String& encryptedString, const String& pr
 
     BigInteger stringAsData;
     stringAsData.loadFromMemoryBlock (encryptedMemoryBlock);
-    
+
     rsaKey.applyToValue (stringAsData);
-    
+
     return stringAsData.toMemoryBlock().toString();
 }
 
@@ -94,32 +94,32 @@ class EncryptedStringTests  : public UnitTest
 {
 public:
     EncryptedStringTests() : UnitTest ("EncryptedString") {}
-    
+
     void runTest()
     {
         beginTest ("EncryptedString");
-        
+
         // test with some known keys
         const String knownPublicKey ("11,7eb9c1c3bc8360d1f263f8ee45d98b01");
         const String knownPrivateKey ("2545b175ce0885e2fb72f1b59bbf8261,7eb9c1c3bc8360d1f263f8ee45d98b01");
-        
+
         expectEquals (EncryptedString::encrypt ("hello world!", knownPublicKey),
                       String ("16.PcHEsm3XRKxv0V8hMeKv5A"));
         expectEquals (EncryptedString::decrypt ("16.PcHEsm3XRKxv0V8hMeKv5A", knownPrivateKey),
                       String ("hello world!"));
-        
+
         expectEquals (EncryptedString::encrypt ("hello world!", knownPublicKey, true),
                       String ("508714ed8963d222c3b5d58bcdb7c07a"));
         expectEquals (EncryptedString::decrypt ("508714ed8963d222c3b5d58bcdb7c07a", knownPrivateKey, true),
                       String ("hello world!"));
-        
+
         // test with some generated keys
         RSAKey publicKey, privateKey;
         RSAKey::createKeyPair (publicKey, privateKey, 128);
-        
+
         String encryptedString (EncryptedString::encrypt ("hello world!", publicKey.toString()));
         String decryptedString (EncryptedString::decrypt (encryptedString, privateKey.toString()));
-        
+
         expectEquals (decryptedString, String ("hello world!"));
     }
 };

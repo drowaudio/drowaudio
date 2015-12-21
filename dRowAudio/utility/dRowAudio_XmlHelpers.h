@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -53,27 +53,27 @@ namespace XmlHelpers
     {
         if (element == nullptr)
             return nullptr;
-        
+
         if (element->hasAttribute (attributeName))
             if (element->compareAttribute (attributeName, attributeValue, true))
                 return element;
-        
+
         XmlElement* child = element->getFirstChildElement();
-        
+
         while (child != nullptr)
         {
             if (child->hasAttribute (attributeName))
                 if(element->compareAttribute (attributeName, attributeValue, true))
                     return element;
-            
+
             XmlElement* const found = findXmlElementWithAttributeWithValue (child, attributeName, attributeValue);
-            
+
             if (found != nullptr)
                 return found;
-            
+
             child = child->getNextElement();
         }
-        
+
         return nullptr;
     }
 
@@ -84,25 +84,25 @@ namespace XmlHelpers
     {
         if (element == nullptr)
             return nullptr;
-        
+
         if (element->hasAttribute (attributeName))
             return element;
-        
+
         XmlElement* child = element->getFirstChildElement();
-        
+
         while (child != nullptr)
         {
             if (child->hasAttribute (attributeName))
                 return element;
-            
+
             XmlElement* const found = findXmlElementWithAttribute (child, attributeName);
-            
+
             if (found != nullptr)
                 return found;
-            
+
             child = child->getNextElement();
         }
-        
+
         return nullptr;
     }
 
@@ -113,28 +113,28 @@ namespace XmlHelpers
     {
         if (element == nullptr)
             return nullptr;
-        
+
         if (element->getAllSubText() == subtext)
             return element;
-        
+
         XmlElement* child = element->getFirstChildElement();
-        
+
         while (child != nullptr)
         {
             if (child->getAllSubText() == subtext)
                 return child;
-            
+
             XmlElement* const found = findXmlElementWithSubText (child, subtext);
-            
+
             if (found != nullptr)
                 return found;
-            
+
             child = child->getNextElement();
         }
-        
+
         return nullptr;
     }
-    
+
     //==============================================================================
     /** Searches for an element with subtext contains the given text.
      */
@@ -142,27 +142,27 @@ namespace XmlHelpers
     {
         if (element == nullptr || element->getFirstChildElement() == nullptr)
             return nullptr;
-        
+
         if (element->getFirstChildElement()->isTextElement()
             && element->getFirstChildElement()->getText().contains (subtext))
             return element;
-        
+
         XmlElement* child = element->getFirstChildElement();
-        
+
         while (child != nullptr)
         {
             if (child->isTextElement()
                 && child->getText().contains (subtext))
                 return child;
-            
+
             XmlElement* const found = findXmlElementContainingSubText (child, subtext);
-            
+
             if (found != nullptr)
                 return found;
-            
+
             child = child->getNextElement();
         }
-        
+
         return nullptr;
     }
 }

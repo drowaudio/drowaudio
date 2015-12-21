@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -46,18 +46,18 @@ public:
         rate of the display.
 	 */
 	CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs = 50);
-	
+
 	/**	Descructor.
      */
 	~CpuMeter();
-	
+
 	/** Returns the current cpu usage as a percentage.
      */
 	double getCurrentCpuUsage() const
     {
         return currentCpuUsage;
     }
-	
+
 	/** Changes the colour of the text.
      */
 	void setTextColour (const Colour& newTextColour)
@@ -71,13 +71,13 @@ public:
 
 	/** @internal */
 	void timerCallback();
-	
+
 private:
     //==============================================================================
 	AudioDeviceManager* deviceManager;
 	int updateInterval;
 	double currentCpuUsage;
-	
+
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CpuMeter);
 };

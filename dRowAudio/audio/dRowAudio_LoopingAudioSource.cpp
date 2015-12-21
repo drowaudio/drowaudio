@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -41,7 +41,7 @@ LoopingAudioSource::LoopingAudioSource (PositionableAudioSource* const inputSour
       tempBuffer (2, 512)
 {
     jassert (inputSource != nullptr);
-    
+
     tempInfo.numSamples = tempBuffer.getNumSamples();
     tempInfo.startSample = 0;
     tempInfo.buffer = &tempBuffer;
@@ -55,13 +55,13 @@ LoopingAudioSource::~LoopingAudioSource()
 void LoopingAudioSource::setLoopTimes (double startTime, double endTime)
 {
     jassert (endTime > startTime); // end time has to be after start!
-    
+
     {
         const ScopedLock sl (loopPosLock);
-        
+
         loopStartTime = startTime;
         loopEndTime = endTime;
-        
+
         loopStartSample = (int64) (startTime * currentSampleRate);
         loopEndSample = (int64) (endTime * currentSampleRate);
     }
@@ -92,7 +92,7 @@ void LoopingAudioSource::prepareToPlay (int samplesPerBlockExpected,
 {
     currentSampleRate = sampleRate;
     input->prepareToPlay (samplesPerBlockExpected, sampleRate);
-    
+
     if (tempBuffer.getNumSamples() < samplesPerBlockExpected)
     {
         tempBuffer.setSize (2, samplesPerBlockExpected);
@@ -115,10 +115,10 @@ void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
 
             const int64 newStart = getNextReadPosition();
             int64 newEnd = loopStartSample + ((newStart + info.numSamples) % loopEndSample);
-            
+
             if (newStart > loopEndSample)
                 newEnd = newStart + info.numSamples;
-            
+
             if (newEnd > newStart)
             {
                 input->getNextAudioBlock (info);
@@ -127,18 +127,18 @@ void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
             {
                 const int64 numEndSamps = loopEndSample - newStart;
                 const int64 numStartSamps = newEnd - loopStartSample;
-                
+
                 tempInfo.startSample = 0;
                 tempInfo.numSamples = (int) numEndSamps;
                 input->getNextAudioBlock (tempInfo);
-                
+
                 tempInfo.startSample = (int) numEndSamps;
                 tempInfo.numSamples = (int) numStartSamps;
                 input->setNextReadPosition (loopStartSample);
                 input->getNextAudioBlock (tempInfo);
 
                 for (int i = 0; i < info.buffer->getNumChannels(); ++i)
-                    info.buffer->copyFrom (i, info.startSample, 
+                    info.buffer->copyFrom (i, info.startSample,
                                            tempBuffer,
                                            i, 0, info.numSamples);
             }
@@ -147,26 +147,26 @@ void LoopingAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
         {
             input->getNextAudioBlock (info);
         }
-    }    
+    }
 }
 
 //==============================================================================
 void LoopingAudioSource::setNextReadPosition (int64 newPosition)
 {
     const ScopedLock sl (loopPosLock);
-    
-    if (isLoopingBetweenTimes 
+
+    if (isLoopingBetweenTimes
         && getNextReadPosition() > loopStartSample
         && getNextReadPosition() < loopEndSample)
     {
         const int64 numLoopSamples = loopEndSample - loopStartSample;
-        
+
         if (newPosition > loopEndSample)
             newPosition = loopStartSample + ((newPosition - loopEndSample) % numLoopSamples);
         else if (newPosition < loopStartSample)
             newPosition = loopEndSample - ((loopStartSample - newPosition) % numLoopSamples);
     }
-    
+
     input->setNextReadPosition (newPosition);
 }
 
@@ -189,4 +189,3 @@ bool LoopingAudioSource::isLooping() const
 {
     return input->isLooping();
 }
-

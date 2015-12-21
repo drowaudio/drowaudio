@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -46,10 +46,10 @@ namespace LoopAndCueHelpers
             const String property(cueTree.getProperty(cueTree.getPropertyName(index)).toString());
             return property.upToFirstOccurrenceOf(",", false, false).getDoubleValue();
         }
-        
+
         return 0.0;
     }
-    
+
     /** Returns the time from a give cue point index in a cue point tree.
         The index starts at 0 and will return white if the index is out of range.
      */
@@ -60,10 +60,10 @@ namespace LoopAndCueHelpers
             const String property(cueTree.getProperty(cueTree.getPropertyName(index)).toString());
             return (uint32)property.fromLastOccurrenceOf(",", false, false).getLargeIntValue();
         }
-        
+
         return 0xffffffff;
     }
-    
+
     /** Returns the start time, end time and Colour of a give loop point in a loop tree.
         The index starts at 0 and will return 0.0's if the index is out of range.
      */
@@ -77,10 +77,10 @@ namespace LoopAndCueHelpers
             colour = (uint32)property.fromLastOccurrenceOf(",", false, false).getLargeIntValue();
             return;
         }
-        
+
         startTime = endTime = 0.0;
         colour = 0xffffffff;
-        
+
         return;
     }
 }
@@ -88,7 +88,7 @@ namespace LoopAndCueHelpers
 /**	Details the colums of the table.
  */
 namespace MusicColumns {
-    
+
     static const Identifier libraryIdentifier ("MUSICLIBRARY");
     static const Identifier libraryItemIdentifier ("ITEM");
     static const Identifier libraryCuePointIdentifier ("CUE");
@@ -115,11 +115,11 @@ namespace MusicColumns {
 		Score,
 		numColumns
 	};
-	
-	static const Identifier columnNames[] = { 
+
+	static const Identifier columnNames[] = {
 		"Dummy",
 		"LibID",
-		"ID",						
+		"ID",
 		"Artist",
 		"Song",
 		"Album",
@@ -136,7 +136,7 @@ namespace MusicColumns {
 		"Location",
 		"Score"
 	};
-	
+
 	static const UNUSED_NOWARN char *iTunesNames[] = {
 		"",
 		"",
@@ -157,7 +157,7 @@ namespace MusicColumns {
 		"Location",
 		"Score"
 	};
-	
+
 	static const int columnWidths[] = {
 		1,
 		30,

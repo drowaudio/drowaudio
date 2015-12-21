@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -36,7 +36,7 @@
 #include <AVFoundation/AVFoundation.h>
 
 namespace drow {
-    
+
 //==============================================================================
 namespace
 {
@@ -58,12 +58,12 @@ namespace
 
         return extensionsArray;
     }
-    
+
     String nsStringToJuce (NSString* s)
     {
         return CharPointer_UTF8 ([s UTF8String]);
     }
-    
+
     NSString* juceStringToNS (const String& s)
     {
         return [NSString stringWithUTF8String: s.toUTF8()];
@@ -84,26 +84,26 @@ public:
           tempDeinterleavedBlock(tempBlockSize)
     {
         @autoreleasepool {
-        
+
         usesFloatingPointData = true;
 
         songAsset = [AVURLAsset URLAssetWithURL: assetURL options: nil];
         avAssetTrack = [songAsset.tracks objectAtIndex: 0];
         [songAsset retain];
         [avAssetTrack retain];
-        
+
         NSError* status = nil;
         assetReader = [AVAssetReader assetReaderWithAsset: songAsset    // dont need to retain as a new one
                                                     error: &status];    // will be created in updateReadPosition()
         [assetReader retain];
         assetReaderOutput = nil;
-        
+
         if (! status)
         {
             // fill in format information
             CMAudioFormatDescriptionRef formatDescription = (CMAudioFormatDescriptionRef) [avAssetTrack.formatDescriptions objectAtIndex: 0];
             const AudioStreamBasicDescription* audioDesc = CMAudioFormatDescriptionGetStreamBasicDescription (formatDescription);
-            
+
             if (audioDesc != nullptr)
             {
                 numChannels = audioDesc->mChannelsPerFrame;
@@ -112,7 +112,7 @@ public:
                 lengthInSamples = avAssetTrack.timeRange.duration.value;
 
                 outputSettings = [[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSNumber numberWithInt: kAudioFormatLinearPCM], AVFormatIDKey, 
+                                    [NSNumber numberWithInt: kAudioFormatLinearPCM], AVFormatIDKey,
 //                                            [NSNumber numberWithFloat:44100.0], AVSampleRateKey,
 //                                            [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
 //                                            [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
@@ -133,7 +133,7 @@ public:
         [songAsset release];
         [avAssetTrack release];
         [outputSettings release];
-        
+
         [assetReader release];
         [assetReaderOutput release];
     }
@@ -144,7 +144,7 @@ public:
     {
         jassert (destSamples != nullptr);
         jassert (numDestChannels == numChannels);
-        
+
         @autoreleasepool // not sure if there is a better method than this
         {
             const int numBufferSamplesNeeded = numChannels * numSamples;
@@ -168,19 +168,19 @@ public:
                     size_t lengthAtOffset;
                     size_t totalLength;
                     char* dataPointer;
-                    CMBlockBufferGetDataPointer (bufferRef, 
-                                                 0, 
-                                                 &lengthAtOffset, 
-                                                 &totalLength, 
+                    CMBlockBufferGetDataPointer (bufferRef,
+                                                 0,
+                                                 &lengthAtOffset,
+                                                 &totalLength,
                                                  &dataPointer);
                     if (bufferRef != NULL)
                     {
                         const int samplesExpected = (int) CMSampleBufferGetNumSamples (sampleRef);
-                              
+
                         const int numSamplesNeeded = fifoBuffer.getNumAvailable() + (samplesExpected * numChannels);
                         if (numSamplesNeeded > fifoBuffer.getSize()) //*** need to keep existing
                             fifoBuffer.setSize (numSamplesNeeded);
-                        
+
                         fifoBuffer.writeSamples ((float*) dataPointer, samplesExpected * numChannels);
                     }
 
@@ -195,22 +195,22 @@ public:
                 tempDeinterleavedBlock.malloc (numBufferSamplesNeeded);
                 tempBlockSize = numBufferSamplesNeeded;
             }
-                    
+
             fifoBuffer.readSamples (tempInterleavedBlock, numBufferSamplesNeeded);
-            
+
             float* deinterleavedSamples[numChannels];
             for (int i = 0; i < numChannels; i++)
                 deinterleavedSamples[i] = &tempDeinterleavedBlock[i * numSamples];
 
             AudioDataConverters::deinterleaveSamples (tempInterleavedBlock, deinterleavedSamples,
                                                       numSamples, numChannels);
-                
+
             for (int i = 0; i < numChannels; i++)
                 memcpy (destSamples[i] + startOffsetInDestBuffer, deinterleavedSamples[i], sizeof (float) * numSamples);
-                        
+
             lastReadPosition += numSamples;
         }
-        
+
         return true;
     }
 
@@ -219,17 +219,17 @@ public:
 private:
     //==============================================================================
     NSAutoreleasePool* pool;
-    
+
     AVURLAsset* songAsset;
     AVAssetTrack* avAssetTrack;
     NSDictionary* outputSettings;
-    
+
     AVAssetReader* assetReader;
     AVAssetReaderTrackOutput* assetReaderOutput;
     CMTime startCMTime;
     CMTimeRange playbackCMTimeRange;
     int64 lastReadPosition;
-    
+
     FifoBuffer<float> fifoBuffer;
     int tempBlockSize;
     HeapBlock<float> tempInterleavedBlock, tempDeinterleavedBlock;
@@ -242,7 +242,7 @@ private:
         [assetReader cancelReading];
         [assetReader release];
         [assetReaderOutput release];
-        
+
         NSError* error = nil;
         assetReader = [AVAssetReader assetReaderWithAsset: songAsset
                                                     error: &error];
@@ -254,25 +254,25 @@ private:
                                                                             outputSettings: outputSettings]
                                  retain];
             assetReaderOutput.alwaysCopiesSampleData = NO;
-                        
+
             if ([assetReader canAddOutput: assetReaderOutput])
             {
                 [assetReader addOutput: assetReaderOutput];
-                
+
                 startCMTime = CMTimeMake (startSample, sampleRate);
                 playbackCMTimeRange = CMTimeRangeMake (startCMTime, kCMTimePositiveInfinity);
-                assetReader.timeRange = playbackCMTimeRange;                
-                
+                assetReader.timeRange = playbackCMTimeRange;
+
                 if ([assetReader startReading])
                 {
                     return true;
                 }
             }
         }
-        
+
         return false;
     }
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AVAssetAudioReader);
 };
@@ -302,12 +302,12 @@ AudioFormatReader* AVAssetAudioFormat::createReaderFor (String assetNSURLAsStrin
 {
     NSString* assetNSString = [NSString stringWithUTF8String:assetNSURLAsString.toUTF8()];
     NSURL* assetNSURL = [NSURL URLWithString:assetNSString];
-    
+
     ScopedPointer<AVAssetAudioReader> r (new AVAssetAudioReader (assetNSURL));
 
     [assetNSString release];
     [assetNSURL release];
-    
+
     if (r->ok)
         return r.release();
 
@@ -320,23 +320,23 @@ AudioFormatReader* AVAssetAudioFormat::createReaderFor (InputStream* sourceStrea
     if (sourceStream != nullptr)
     {
         const String nsUrlString (sourceStream->readString());
-        
+
         if (nsUrlString.startsWith ("ipod-library://"))
         {
             NSURL* sourceUrl = [NSURL URLWithString: juceStringToNS (nsUrlString)];
-            
+
             ScopedPointer<AVAssetAudioReader> r (new AVAssetAudioReader (sourceUrl));
-            
+
             if (r->ok)
                 return r.release();
-            
+
             if (! deleteStreamIfOpeningFails)
                 r->input = nullptr;
         }
     }
-    
+
     return nullptr;
-        
+
     jassertfalse;
     /*  Can't read from a stream, has to be from an AVURLAsset compatible string.
         see createReaderFor (String assetNSURLAsString).

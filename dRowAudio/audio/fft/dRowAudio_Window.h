@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -63,7 +63,7 @@ public:
 		BlackmanNuttall,
 		FlatTop
 	};
-	
+
     //==============================================================================
     /** Creates a default Hann Window with 0 size. */
     Window();
@@ -85,7 +85,7 @@ public:
 
     /** Returns the window type. */
 	WindowType getWindowType() const noexcept           { return windowType; }
-	
+
     /** Returns the window factor. */
 	float getWindowFactor() const noexcept              { return windowFactor; }
 
@@ -96,11 +96,11 @@ public:
         For speed, your the number of samples passed here should be the same as the window size.
      */
 	void applyWindow (float* samples,  const int numSamples) const noexcept;
-	
+
 private:
     //==============================================================================
 	void setUpWindowBuffer();
-	
+
 	void applyRectangularWindow (float *samples,  const int numSamples);
 	void applyHannWindow (float *samples,  const int numSamples);
 	void applyHammingWindow (float *samples,  const int numSamples);
@@ -115,12 +115,12 @@ private:
 	void applyBlackmanHarrisWindow (float *samples,  const int numSamples);
 	void applyBlackmanNuttallWindow (float *samples,  const int numSamples);
 	void applyFlatTopWindow (float *samples,  const int numSamples);
-	
+
     //==============================================================================
 	WindowType windowType;
 	float windowFactor, oneOverWindowFactor;
 	AudioSampleBuffer windowBuffer;
-    
+
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Window)
 };
 

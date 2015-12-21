@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -36,8 +36,8 @@
 
 //==============================================================================
 /** An ITunesLibrary manages the parsing of an iTunes library into a ValueTree.
-    You can register yourselves as a listener to recieve callbacks when its 
-    content has changed. You can also load a previously generated library tree 
+    You can register yourselves as a listener to recieve callbacks when its
+    content has changed. You can also load a previously generated library tree
     for data to me merged into if it is newer.
     For an example of its use see the MusicLibraryTable class.
  */
@@ -47,20 +47,20 @@ class ITunesLibrary : public Timer,
 public:
     //==============================================================================
 	juce_DeclareSingleton (ITunesLibrary, false);
-	
+
     /** Creates an ITunesLibrary.
         This class can also be used as a singleton which may be more appropriate.
         To start the parsing use the setLibraryFile method.
      */
 	ITunesLibrary();
-	
+
     /** Destructor. */
 	~ITunesLibrary();
-	
+
 	/**	Sets a new library to base the ValueTree on and starts the parse.
-     
+
         This will merge new data into the tree if a valid tree has been set with
-        the setLibraryTree method. This will preseve any child trees that may have 
+        the setLibraryTree method. This will preseve any child trees that may have
         been added e.g. those holding loop or cue data.
 	 */
 	void setLibraryFile (File newFile);
@@ -78,27 +78,27 @@ public:
     /** Returns the ValueTree that is being filled.
      */
 	ValueTree getLibraryTree()      {	return libraryTree;	}
-        
+
     /** Returns the lock being used in the parser.
         Bear in mind that if the parser has finished and been deleted this will be
         an unused lock so is not worth using it.
      */
     inline const CriticalSection& getParserLock()    {   return parserLock;   }
-    
+
 	//==============================================================================
     /** This returns the default iTunes library file.
         E.g. on Mac this will be something like:
         "/Users/username/Music/iTunes/iTunes Music Library.xml"
      */
 	static const File getDefaultITunesLibraryFile();
-    
+
 	//==============================================================================
     /** A class for receiving callbacks from an ITunesLibrary.
-	 
+
 		This will repeatedly call libraryUpdated so you can respond to any changes
 		that may have happened until a single call to libraryFinished() where you
 		may want to do some additional set-up.
-	 
+
 		@see ITunesLibrary::addListener, ITunesLibrary::removeListener
 	 */
     class  Listener
@@ -107,7 +107,7 @@ public:
         //==============================================================================
         /** Destructor. */
         virtual ~Listener() {}
-		
+
         //==============================================================================
         /** Called when the library file has changed, before it starts updating itself.
 			Use this callback to initialise any data storage you may be holding.
@@ -122,17 +122,17 @@ public:
 		 */
         virtual void libraryFinished (ITunesLibrary* /*library*/) {}
     };
-	
+
     /** Adds a listener to be called when this slider's value changes. */
     void addListener (Listener* listener);
-	
+
     /** Removes a previously-registered listener. */
     void removeListener (Listener* listener);
-	
+
     //==============================================================================
     /** @internal */
 	void timerCallback();
-    
+
 private:
     //==============================================================================
     const CriticalSection parserLock;
@@ -141,7 +141,7 @@ private:
     File libraryFile;
 	ScopedPointer<ITunesLibraryParser> parser;
 	ValueTree libraryTree;
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibrary);
 };

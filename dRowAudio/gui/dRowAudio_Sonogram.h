@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -49,25 +49,25 @@ public:
         for a 1024 size FFT use 10 as the argument.
      */
     Sonogram (int fftSizeLog2);
-	
+
     /** Destructor. */
 	~Sonogram();
-	
+
     /** @internal */
 	void resized();
-	
+
     /** @internal */
 	void paint (Graphics &g);
-	
+
     //==============================================================================
     /** Sets the scope to display in log or normal mode.
      */
 	void setLogFrequencyDisplay (bool shouldDisplayLog);
-	
+
     /** Returns true if the scope is being displayed in log mode.
      */
 	inline bool getLogFrequencyDisplay() const     {	return logFrequency;	}
-    
+
     /** Sets the width for one block of fft data. This must be greater than 0.
         Higher values will effectively cause the scope to move faster.
      */
@@ -76,7 +76,7 @@ public:
     /** Returns the current block width.
      */
     int getBlockWidth() const;
-    
+
     //==============================================================================
 	/** Copy a set of samples, ready to be processed.
         Your audio callback should continually call this method to pass it its
@@ -87,10 +87,10 @@ public:
 
     /** @internal */
 	void timerCallback();
-	
+
     /** @internal */
 	void process();
-	
+
     //==============================================================================
     /** @internal */
 	void flagForRepaint();
@@ -100,7 +100,7 @@ private:
 	FFTEngine fftEngine;
 	int numBins;
 	bool needsRepaint;
-	HeapBlock<float> tempBlock;			
+	HeapBlock<float> tempBlock;
 	FifoBuffer<float> circularBuffer;
 	bool logFrequency;
     float scopeLineW;
@@ -109,7 +109,7 @@ private:
     CriticalSection lock;
 
     void renderScopeLine();
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram);
 };

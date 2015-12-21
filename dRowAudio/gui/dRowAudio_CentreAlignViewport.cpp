@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -49,10 +49,10 @@ CentreAlignViewport::CentreAlignViewport (const String& componentName)
 
     addChildComponent (&verticalScrollBar);
     addChildComponent (&horizontalScrollBar);
-	
+
     verticalScrollBar.addListener (this);
     horizontalScrollBar.addListener (this);
-	
+
     setInterceptsMouseClicks (false, true);
     setWantsKeyboardFocus (true);
 }
@@ -76,16 +76,16 @@ void CentreAlignViewport::setViewedComponent (Component* const newViewedComponen
             ScopedPointer<Component> oldCompDeleter (contentComp);
             contentComp = 0;
         }
-		
+
         contentComp = newViewedComponent;
-		
+
         if (contentComp != 0)
         {
             contentComp->setTopLeftPosition (0, 0);
             contentHolder.addAndMakeVisible (contentComp);
             contentComp->addComponentListener (this);
         }
-		
+
         updateVisibleArea();
     }
 }
@@ -118,7 +118,7 @@ void CentreAlignViewport::setViewPosition (const int xPixelsOffset, const int yP
 			topY = roundToInt (contentHolder.getHeight() / 2.0f - contentComp->getHeight() / 2.0f);
 		else
 			topY = jmax (jmin (0, contentHolder.getHeight() - contentComp->getHeight()), jmin (0, -yPixelsOffset));
-				  
+
 		contentComp->setTopLeftPosition (topX, topY);
 	}
 }
@@ -140,42 +140,42 @@ bool CentreAlignViewport::autoScroll (const int mouseX, const int mouseY, const 
     if (contentComp != 0)
     {
         int dx = 0, dy = 0;
-		
+
         if (horizontalScrollBar.isVisible() || contentComp->getX() < 0 || contentComp->getRight() > getWidth())
         {
             if (mouseX < activeBorderThickness)
                 dx = activeBorderThickness - mouseX;
             else if (mouseX >= contentHolder.getWidth() - activeBorderThickness)
                 dx = (contentHolder.getWidth() - activeBorderThickness) - mouseX;
-			
+
             if (dx < 0)
                 dx = jmax (dx, -maximumSpeed, contentHolder.getWidth() - contentComp->getRight());
             else
                 dx = jmin (dx, maximumSpeed, -contentComp->getX());
         }
-		
+
         if (verticalScrollBar.isVisible() || contentComp->getY() < 0 || contentComp->getBottom() > getHeight())
         {
             if (mouseY < activeBorderThickness)
                 dy = activeBorderThickness - mouseY;
             else if (mouseY >= contentHolder.getHeight() - activeBorderThickness)
                 dy = (contentHolder.getHeight() - activeBorderThickness) - mouseY;
-			
+
             if (dy < 0)
                 dy = jmax (dy, -maximumSpeed, contentHolder.getHeight() - contentComp->getBottom());
             else
                 dy = jmin (dy, maximumSpeed, -contentComp->getY());
         }
-		
+
         if (dx != 0 || dy != 0)
         {
             contentComp->setTopLeftPosition (contentComp->getX() + dx,
                                              contentComp->getY() + dy);
-			
+
             return true;
         }
     }
-	
+
     return false;
 }
 
@@ -196,44 +196,44 @@ void CentreAlignViewport::updateVisibleArea()
     const bool canShowAnyBars = getWidth() > scrollbarWidth && getHeight() > scrollbarWidth;
     const bool canShowHBar = showHScrollbar && canShowAnyBars;
     const bool canShowVBar = showVScrollbar && canShowAnyBars;
-	
+
     bool hBarVisible = canShowHBar && ! horizontalScrollBar.autoHides();
     bool vBarVisible = canShowVBar && ! verticalScrollBar.autoHides();
-	
+
     Rectangle<int> contentArea (getLocalBounds());
 
     if (contentComp != 0 && ! contentArea.contains (contentComp->getBounds()))
     {
         hBarVisible = canShowHBar && (hBarVisible || contentComp->getX() < 0 || contentComp->getRight() > contentArea.getWidth());
         vBarVisible = canShowVBar && (vBarVisible || contentComp->getY() < 0 || contentComp->getBottom() > contentArea.getHeight());
-		
+
         if (vBarVisible)
             contentArea.setWidth (getWidth() - scrollbarWidth);
-		
+
         if (hBarVisible)
             contentArea.setHeight (getHeight() - scrollbarWidth);
-		
+
         if (! contentArea.contains (contentComp->getBounds()))
         {
             hBarVisible = canShowHBar && (hBarVisible || contentComp->getRight() > contentArea.getWidth());
             vBarVisible = canShowVBar && (vBarVisible || contentComp->getBottom() > contentArea.getHeight());
         }
     }
-	
+
     if (vBarVisible)
         contentArea.setWidth (getWidth() - scrollbarWidth);
-	
+
     if (hBarVisible)
         contentArea.setHeight (getHeight() - scrollbarWidth);
-	
+
     contentHolder.setBounds (contentArea);
-	
+
     Rectangle<int> contentBounds;
     if (contentComp != 0)
         contentBounds = contentComp->getBounds();
-	
+
     const Point<int> visibleOrigin (-contentBounds.getPosition());
-	
+
     if (hBarVisible)
     {
         horizontalScrollBar.setBounds (0, contentArea.getHeight(), contentArea.getWidth(), scrollbarWidth);
@@ -242,7 +242,7 @@ void CentreAlignViewport::updateVisibleArea()
         horizontalScrollBar.setSingleStepSize (singleStepX);
         horizontalScrollBar.cancelPendingUpdate();
     }
-	
+
     if (vBarVisible)
     {
         verticalScrollBar.setBounds (contentArea.getWidth(), 0, scrollbarWidth, contentArea.getHeight());
@@ -251,21 +251,21 @@ void CentreAlignViewport::updateVisibleArea()
         verticalScrollBar.setSingleStepSize (singleStepY);
         verticalScrollBar.cancelPendingUpdate();
     }
-	
+
     // Force the visibility *after* setting the ranges to avoid flicker caused by edge conditions in the numbers.
     horizontalScrollBar.setVisible (hBarVisible);
     verticalScrollBar.setVisible (vBarVisible);
-	
+
     const Rectangle<int> visibleArea (visibleOrigin.getX(), visibleOrigin.getY(),
                                       jmin (contentBounds.getWidth() - visibleOrigin.getX(),  contentArea.getWidth()),
                                       jmin (contentBounds.getHeight() - visibleOrigin.getY(), contentArea.getHeight()));
-	
+
     if (lastVisibleArea != visibleArea)
     {
         lastVisibleArea = visibleArea;
         visibleAreaChanged (visibleArea.getX(), visibleArea.getY(), visibleArea.getWidth(), visibleArea.getHeight());
     }
-	
+
     horizontalScrollBar.handleUpdateNowIfNeeded();
     verticalScrollBar.handleUpdateNowIfNeeded();
 }
@@ -317,7 +317,7 @@ void CentreAlignViewport::setScrollBarButtonVisibility (const bool buttonsVisibl
 void CentreAlignViewport::scrollBarMoved (ScrollBar* scrollBarThatHasMoved, double newRangeStart)
 {
     const int newRangeStartInt = roundToInt (newRangeStart);
-	
+
     if (scrollBarThatHasMoved == &horizontalScrollBar)
     {
         setViewPosition (newRangeStartInt, getViewPositionY());
@@ -340,7 +340,7 @@ bool CentreAlignViewport::useMouseWheelMoveIfNeeded (const MouseEvent& e, float 
     {
         const bool hasVertBar = verticalScrollBar.isVisible();
         const bool hasHorzBar = horizontalScrollBar.isVisible();
-		
+
         if (hasHorzBar || hasVertBar)
         {
             if (wheelIncrementX != 0)
@@ -349,16 +349,16 @@ bool CentreAlignViewport::useMouseWheelMoveIfNeeded (const MouseEvent& e, float 
                 wheelIncrementX = (wheelIncrementX < 0) ? jmin (wheelIncrementX, -1.0f)
 				: jmax (wheelIncrementX, 1.0f);
             }
-			
+
             if (wheelIncrementY != 0)
             {
                 wheelIncrementY *= 14.0f * singleStepY;
                 wheelIncrementY = (wheelIncrementY < 0) ? jmin (wheelIncrementY, -1.0f)
 				: jmax (wheelIncrementY, 1.0f);
             }
-			
+
             Point<int> pos (getViewPosition());
-			
+
             if (wheelIncrementX != 0 && wheelIncrementY != 0 && hasHorzBar && hasVertBar)
             {
                 pos.setX (pos.getX() - roundToInt (wheelIncrementX));
@@ -368,14 +368,14 @@ bool CentreAlignViewport::useMouseWheelMoveIfNeeded (const MouseEvent& e, float 
             {
                 if (wheelIncrementX == 0 && ! hasVertBar)
                     wheelIncrementX = wheelIncrementY;
-				
+
                 pos.setX (pos.getX() - roundToInt (wheelIncrementX));
             }
             else if (hasVertBar && wheelIncrementY != 0)
             {
                 pos.setY (pos.getY() - roundToInt (wheelIncrementY));
             }
-			
+
             if (pos != getViewPosition())
             {
                 setViewPosition (pos);
@@ -383,7 +383,7 @@ bool CentreAlignViewport::useMouseWheelMoveIfNeeded (const MouseEvent& e, float 
             }
         }
     }
-	
+
     return false;
 }
 
@@ -395,16 +395,15 @@ bool CentreAlignViewport::keyPressed (const KeyPress& key)
 	|| key.isKeyCode (KeyPress::pageDownKey)
 	|| key.isKeyCode (KeyPress::homeKey)
 	|| key.isKeyCode (KeyPress::endKey);
-	
+
     if (verticalScrollBar.isVisible() && isUpDownKey)
         return verticalScrollBar.keyPressed (key);
-	
+
     const bool isLeftRightKey = key.isKeyCode (KeyPress::leftKey)
 	|| key.isKeyCode (KeyPress::rightKey);
-	
+
     if (horizontalScrollBar.isVisible() && (isUpDownKey || isLeftRightKey))
         return horizontalScrollBar.keyPressed (key);
-	
+
     return false;
 }
-

@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -61,7 +61,7 @@ using drow::AudioPicker;
 
         self.delegate = self;
     }
-    
+
     return self;
 }
 
@@ -95,12 +95,12 @@ using drow::AudioPicker;
 + (UIViewController*) topLevelViewController
 {
     UIResponder* responder = ((UIView*) [[UIApplication sharedApplication].keyWindow.subviews objectAtIndex: 0]).nextResponder;
-    
+
     if ([responder isKindOfClass: [UIViewController class]])
     {
         return (UIViewController*) responder;
     }
-    
+
     return nil;
 }
 @end
@@ -120,16 +120,16 @@ AudioPicker::~AudioPicker()
 void AudioPicker::show (bool allowMultipleSelection, Rectangle<int> areaToPointTo)
 {
     UIViewController* controller = [JuceUIAudioPicker topLevelViewController];
-    
+
     if (controller != nil)
     {
         JuceUIAudioPicker* audioPicker = [[JuceUIAudioPicker alloc] initWithOwner: this];
-        
+
         if (audioPicker != nil)
         {
             [audioPicker retain];
             audioPicker.allowsPickingMultipleItems = allowMultipleSelection;
-            
+
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
             {
                 [controller presentViewController: audioPicker animated: YES completion: nil];
@@ -138,28 +138,28 @@ void AudioPicker::show (bool allowMultipleSelection, Rectangle<int> areaToPointT
             {
                 UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController: audioPicker];
                 popover.popoverContentSize = CGSizeMake (320.0f, 480.0f);
-                
+
                 audioPicker.popover = popover;
-                
+
                 CGRect fromFrame = CGRectMake (controller.view.center.x - 160.0f, controller.view.center.y, 320.0f, 480.0f);
-                
+
                 if (! areaToPointTo.isEmpty())
                 {
                     fromFrame = CGRectMake (areaToPointTo.getX(), areaToPointTo.getY(), areaToPointTo.getWidth(), areaToPointTo.getHeight());
                 }
-                
+
                 [popover presentPopoverFromRect: fromFrame
-                                         inView: controller.view 
-                       permittedArrowDirections: UIPopoverArrowDirectionAny 
+                                         inView: controller.view
+                       permittedArrowDirections: UIPopoverArrowDirectionAny
                                        animated: YES];
             }
         }
         else
         {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle: @"Error"
-                                                            message: @"Could not load iPod library" 
+                                                            message: @"Could not load iPod library"
                                                            delegate: nil
-                                                  cancelButtonTitle: @"Ok" 
+                                                  cancelButtonTitle: @"Ok"
                                                   otherButtonTitles: nil];
             [alert show];
         }
@@ -171,7 +171,7 @@ String AudioPicker::mpMediaItemToAvassetUrl (void* mpMediaItem)
 {
     MPMediaItem* item = (MPMediaItem*) mpMediaItem;
     NSURL* location = [item valueForProperty: MPMediaItemPropertyAssetURL];
-    
+
     return [location.absoluteString UTF8String];
 }
 
@@ -203,7 +203,7 @@ void AudioPicker::sendAudioPickerFinishedMessage (void* picker, void* info)
             MPMediaItem* mediaItem = [mediaItemCollection.items objectAtIndex: i];
             pickedMPMediaItems.add (mediaItem);
         }
-        
+
         listeners.call (&Listener::audioPickerFinished, pickedMPMediaItems);
     }
 }

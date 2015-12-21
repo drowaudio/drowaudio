@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -52,7 +52,7 @@
 	This version can draw multi coloured waveforms based on the frequency content
 	of the wave, red being low, green mid and blue high. use drawColouredChannel
 	to access this mode.
- 
+
     @see AudioThumbnailCache
 */
 class ColouredAudioThumbnail :  public AudioThumbnailBase
@@ -186,7 +186,7 @@ public:
     /** Returns the number of samples per thumbnail sample being used.
      */
     //int32 getNumSamplesPerThumbnailSample()     {   return samplesPerThumbSample;   }
-    
+
     /** Returns the highest level in the thumbnail.
         Note that because the thumb only stores low-resolution data, this isn't
         an accurate representation of the highest value, it's only a rough approximation.
@@ -230,7 +230,7 @@ private:
     int32 numChannels;
     double sampleRate;
     CriticalSection lock;
-	
+
     //==============================================================================
     bool setDataSource (LevelDataSource* newSource);
     void setLevels (const MinMaxColourValue* const* values, int thumbIndex, int numChans, int numValues);

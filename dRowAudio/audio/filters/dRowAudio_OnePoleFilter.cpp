@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -45,7 +45,7 @@ void OnePoleFilter::processSamples (float* const samples,
 {
     // make sure sample values are locked
     const ScopedLock sl (lock);
-    
+
     for (int i = 0; i < numSamples; ++i)
     {
         samples[i] = (b0 * samples[i]) + (a1 * y1);
@@ -63,7 +63,7 @@ void OnePoleFilter::makeLowPass (const double sampleRate,
     const double alpha = (2.0f - cos_w0) - sqrt ((2.0 - cos_w0) * (2.0 - cos_w0) - 1.0);
 
     const ScopedLock sl (lock);
-    
+
     b0 = 1.0f - (float) alpha;
     a1 = (float) alpha;
 }
@@ -73,7 +73,7 @@ void OnePoleFilter::makeHighPass (const double sampleRate,
 {
     const double w0 = 2.0 * double_Pi * (frequency / sampleRate);
     const double cos_w0 = cos (w0);
-    
+
     const double alpha = (2.0 + cos_w0) - sqrt ((2.0 + cos_w0) * (2.0 + cos_w0) - 1.0);
 
     const ScopedLock sl (lock);
@@ -81,4 +81,3 @@ void OnePoleFilter::makeHighPass (const double sampleRate,
     b0 = (float) alpha - 1.0f;
     a1 = (float) -alpha;
 }
-

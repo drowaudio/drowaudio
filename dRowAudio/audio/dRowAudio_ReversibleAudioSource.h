@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -61,11 +61,11 @@ public:
     /** Sets whether the source should play forwards or backwards.
      */
 	void setPlayDirection (bool shouldPlayForwards)	{	isForwards = shouldPlayForwards;    }
-    
+
     /** Returns true if the source is playing forwards.
      */
 	bool getPlayDirection ()						{	return isForwards;                  }
-    
+
     //==============================================================================
     /** Implementation of the AudioSource method. */
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
@@ -75,13 +75,13 @@ public:
 
     /** Implementation of the AudioSource method. */
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
-    
+
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> input;
     int64 previousReadPosition;
 	bool volatile isForwards;
-	
+
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReversibleAudioSource);
 };

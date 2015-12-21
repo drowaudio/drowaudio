@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -50,7 +50,7 @@ void AudioFilePlayerExt::setPlaybackSettings (SoundTouchProcessor::PlaybackSetti
 {
     currentSoundtouchSettings = newSettings;
     soundTouchAudioSource->setPlaybackSettings (newSettings);
-    
+
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, SoundTouchSetting);
 }
 
@@ -86,14 +86,14 @@ void AudioFilePlayerExt::setLoopTimes (double startTime, double endTime)
 {
     currentLoopStartTime = startTime;
     currentLoopEndTime = endTime;
-    
+
     loopingAudioSource->setLoopTimes (startTime, endTime);
 }
 
 void AudioFilePlayerExt::setLoopBetweenTimes (bool shouldLoop)
 {
     shouldBeLooping = shouldLoop;
-    
+
     if (loopingAudioSource != nullptr)
         loopingAudioSource->setLoopBetweenTimes (shouldLoop);
 
@@ -113,7 +113,7 @@ void AudioFilePlayerExt::setPosition (double newPosition, bool ignoreAnyLoopBoun
     if (ignoreAnyLoopBounds && loopingAudioSource != nullptr)
     {
         const double sampleRate = audioFormatReaderSource->getAudioFormatReader()->sampleRate;
-        
+
         if (sampleRate > 0.0)
             loopingAudioSource->setNextReadPositionIgnoringLoop (secondsToSamples (newPosition, sampleRate));
     }
@@ -128,14 +128,14 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
 {
     if (soundTouchAudioSource != nullptr)
         currentSoundtouchSettings = soundTouchAudioSource->getPlaybackSettings();
-    
+
 	audioTransportSource.setSource (nullptr);
     loopingAudioSource = nullptr;
     soundTouchAudioSource = nullptr;
     bufferingAudioSource = nullptr;
-    
+
 	if (reader != nullptr)
-	{										
+	{
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
         bufferingAudioSource = new BufferingAudioSource (audioFormatReaderSource,
@@ -146,28 +146,28 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
         loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
         loopingAudioSource->setLoopBetweenTimes (shouldBeLooping);
         updateLoopTimes();
-        
+
         audioTransportSource.setSource (loopingAudioSource,
                                         0, nullptr,
                                         reader->sampleRate);
-        
+
         listeners.call (&Listener::fileChanged, this);
         setPlaybackSettings (currentSoundtouchSettings);
 
 		return true;
 	}
-	
+
     setLibraryEntry (ValueTree::invalid);
     listeners.call (&Listener::fileChanged, this);
 
-    return false;    
+    return false;
 }
 
 void AudioFilePlayerExt::updateLoopTimes()
 {
     const double duration = audioTransportSource.getLengthInSeconds();
     currentLoopEndTime = jmin (currentLoopEndTime, duration);
-    
+
     if (currentLoopStartTime > currentLoopEndTime)
         currentLoopStartTime = jmax (0.0, currentLoopEndTime - 1.0);
 }

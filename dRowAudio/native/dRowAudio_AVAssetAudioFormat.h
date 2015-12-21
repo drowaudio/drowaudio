@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -40,7 +40,7 @@
     format that the system has a codec for.
 
     This should be able to understand formats such as mp3, m4a, etc.
- 
+
     Because the underlying AVFoundation framework buffers the reading of the
     audio on a background thread already, it shouldn't be necessarry to use your
     own BufferingAudioSource (unless of course you need to). The other
@@ -73,14 +73,14 @@ public:
     //==============================================================================
     /** Converts an AVAssetURL String to a MemoryInputStream ready to pass to
         createReaderFor().
-        
+
         Because we need a common interface to create the AudioFormatReader this
         helper method converts an AVAssetURL encoded as a String (such as that
         returned by an AudioPicker::mpMediaItemToAvassetUrl) to an InputStream.
-        
+
         The caller is responsible for deleting the stream but this is usually taken
         care of by the createReaderFor method.
-     
+
         @see AudioPicker
      */
     static MemoryInputStream* avAssetUrlStringToStream (const String& avAssetUrlString);

@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -35,11 +35,11 @@
 //==============================================================================
 /**
     Triggered Scope.
-    
+
     This class is similar to the AudioOscilloscope except that it can be set to
     start on a rising or falling signal. This makes it extremely useful for very
     zommed-in waveform viewing.
-    
+
     At the expense of a large memory footpring this is also highly efficient,
     performing all its processing and image rendering on a background thread.
     This makes it suitable for use in time critical situationas such as audio
@@ -60,7 +60,7 @@ public:
         Up,     /**<< The start of the trace will be a rising edge. */
         Down    /**<< The start of the trace will be a falling edge. */
     };
-    
+
     //==============================================================================
     /** Creates a Triggered scope.
         You should really specify a backGroundThread to use and make sure you start
@@ -68,7 +68,7 @@ public:
         its own thread and manage its lifetime internally.
      */
     TriggeredScope (TimeSliceThread* backgroundThreadToUse = nullptr);
-    
+
     /** Destructor. */
     ~TriggeredScope();
 
@@ -77,17 +77,17 @@ public:
         number zoom out.
      */
     void setNumSamplesPerPixel (int newNumSamplesPerPixel);
-    
+
     /** Sets the vertical zoom facotr of the display.
      */
     void setVerticalZoomFactor (float newVerticalZoomFactor);
-    
+
     /** Sets the type of change that will trigger a trace.
      */
     void setTriggerMode (TriggerMode newTriggerMode);
-    
+
     /** Adds a block of samples to the scope.
-        
+
         Simply call this from your audio callback or similar to render the scope.
         This is a very quick method as it only takes a copy of the samples. All the
         processing and image rendering is performed on a backgroudn thread.
@@ -97,29 +97,29 @@ public:
     //==============================================================================
     /** @internal */
     void resized();
-    
+
     /** @internal */
     void paint (Graphics& g);
 
     /** @internal */
     void timerCallback();
-    
+
     /** @internal */
     int useTimeSlice();
-    
+
 private:
     //==============================================================================
     OptionalScopedPointer<TimeSliceThread> backgroundThreadToUse;
-    
+
     int numSamplesPerPixel;
     float verticalZoomFactor;
     TriggerMode triggerMode;
-    
+
     int numLeftToAverage;
 
     int bufferSize, bufferWritePos;
     HeapBlock<float> minBuffer, maxBuffer;
-    
+
     float currentMax, currentMin;
     FifoBuffer<float> samplesToProcess;
     HeapBlock<float> tempProcessingBlock;
@@ -132,7 +132,7 @@ private:
     //==============================================================================
     void processPendingSamples();
     void renderImage();
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TriggeredScope);
 };

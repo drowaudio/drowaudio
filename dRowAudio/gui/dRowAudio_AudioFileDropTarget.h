@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -49,20 +49,20 @@ class AudioFileDropTarget : public Component,
 public:
     //==============================================================================
     /** Creates an AudioFileDropTarget, which controls an AudioFilePlayer.
-        
+
         If you supply a component to attach itself to, the AudioFileDropTarget
         will automatically position itself around that component and pass any
         mouse events which are not drags onto it.
-     
+
         @see AudioFilePlayer
      */
     AudioFileDropTarget (AudioFilePlayerExt* audioFilePlayerToControl,
                          Component* componentToAttachTo = nullptr);
-    
+
     /** Destructor.
      */
     ~AudioFileDropTarget();
-    
+
     /** Sets the colour of the bezel to be drawn.
      */
     void setBezelColour (Colour& newColour);
@@ -74,7 +74,7 @@ public:
     //==============================================================================
     /** @internal */
     void paint (Graphics& g);
-    
+
     /** @internal */
     bool hitTest (int x, int y);
 
@@ -83,7 +83,7 @@ public:
 
     /** @internal */
     void mouseExit (const MouseEvent& e);
-    
+
     //==============================================================================
     /** @internal */
     void componentMovedOrResized (Component& component,
@@ -97,7 +97,7 @@ public:
     void itemDragExit (const SourceDetails& dragSourceDetails);
     /** @internal */
     void itemDropped (const SourceDetails& dragSourceDetails);
-    
+
     //==============================================================================
     /** @internal */
     bool isInterestedInFileDrag (const StringArray& files);
@@ -112,7 +112,7 @@ private:
     SafePointer<Component> attachedComponent;
     bool dragTested, interestedInDrag;
     Colour bezelColour;
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFileDropTarget);
 };

@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -44,9 +44,9 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
     {
         Array<File> files;
         sourceDirectory.findChildFiles (files, File::findFiles + File::ignoreHiddenFiles, true);
-        
+
         String includeString, sourceString;
-        
+
         for (int i = 0; i < files.size(); ++i)
         {
             bool includeFile = true;
@@ -67,7 +67,7 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
                         break;
                     }
                 }
-                
+
                 if (includeFile)
                 {
                     const String relativePath (currentFile.getRelativePathFrom (sourceDirectory));
@@ -79,18 +79,18 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
                 }
             }
         }
-        
+
         // now write the output files
         File outputFile (destinationFile == File::nonexistent ? sourceDirectory : destinationFile);
-        
+
         if (outputFile.hasWriteAccess())
         {
             File headerFile, cppFile;
-            
+
             if (outputFile.isDirectory())
             {
                 const String baseName ("UnityBuild");
-                
+
                 headerFile = outputFile.getNonexistentChildFile (baseName, ".h");
                 cppFile = outputFile.getNonexistentChildFile (baseName, ".cpp");
             }
@@ -102,18 +102,18 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
 
             String headerOutput (preInclusionString);
             String sourceOutput (preInclusionString);
-            
+
             headerOutput << includeString << postInclusionString;
             sourceOutput << "#include \"" << headerFile.getFileName() << "\"" << newLine << newLine
                 << sourceString << postInclusionString;
-            
+
             headerFile.replaceWithText (headerOutput);
             cppFile.replaceWithText (sourceOutput);
-            
+
             return true;
         }
     }
-    
+
     return false;
 }
 

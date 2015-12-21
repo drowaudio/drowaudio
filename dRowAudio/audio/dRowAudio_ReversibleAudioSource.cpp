@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -56,7 +56,7 @@ void ReversibleAudioSource::releaseResources()
 
 void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
 {
-	if (isForwards) 
+	if (isForwards)
     {
         input->getNextAudioBlock (info);
         previousReadPosition = input->getNextReadPosition();
@@ -64,10 +64,10 @@ void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
     else
 	{
         int64 nextReadPosition = previousReadPosition - info.numSamples;
-        
+
 		if (nextReadPosition < 0 && input->isLooping())
 			nextReadPosition += input->getTotalLength();
-		
+
 		input->setNextReadPosition (nextReadPosition);
         input->getNextAudioBlock (info);
 
@@ -75,7 +75,7 @@ void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
 		{
 			reverseArray (info.buffer->getWritePointer (0) + info.startSample, info.numSamples);
 		}
-		else if (info.buffer->getNumChannels() == 2) 
+		else if (info.buffer->getNumChannels() == 2)
 		{
 			reverseTwoArrays (info.buffer->getWritePointer (0) + info.startSample,
                               info.buffer->getWritePointer (1) + info.startSample,
@@ -86,8 +86,7 @@ void ReversibleAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
 			for (int c = 0; c < info.buffer->getNumChannels(); c++)
 				reverseArray (info.buffer->getWritePointer (c) + info.startSample, info.numSamples);
 		}
-        
+
         previousReadPosition = nextReadPosition;
 	}
 }
-

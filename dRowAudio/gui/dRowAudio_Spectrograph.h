@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -47,45 +47,45 @@ public:
         for a 1024 size FFT use 10 as the argument.
      */
     Spectrograph (int fftSizeLog2);
-	
+
     /** Destructor. */
 	~Spectrograph();
-	
+
     //==============================================================================
     /** Creates a Spetrograph based on the whole set of samples provided.
         This effectively calls reset, preAllocateStorage, processSamples and then getImage.
      */
     Image generateImage (const float* samples, int numSamples);
-    
+
     /** Clears all the internal buffers ready for a new set of samples. */
     void reset() noexcept;
 
     /** Pre-allocates the internal storage required for a number of samples.
-        If you are creating a graph of an existing buffer it is more efficient to call this 
+        If you are creating a graph of an existing buffer it is more efficient to call this
         first. Other wise there may be many re-allocations goinf on as data is added to be processed.
      */
     void ensureStorageAllocated (int numSamples);
-    
+
 	/** Processes a set of samples, to be added to the graph.
-        Once enough samples have been gathered to perform an FFT operation they will 
-        do so. Once you have finished prcessing all your samples use getImage to retrieve 
+        Once enough samples have been gathered to perform an FFT operation they will
+        do so. Once you have finished prcessing all your samples use getImage to retrieve
         the Spectrograph.
      */
 	void processSamples (const float* samples, int numSamples);
-    
+
     /** Returns the graph of the current set of processed samples.
-        Note that this actually generates a new Image based on the internal buffers so if 
+        Note that this actually generates a new Image based on the internal buffers so if
         you need to take copies etc. don't repeatedly call this method.
      */
     Image createImage() const;
-    
+
     //==============================================================================
     /** Sets the scope to display in log or normal mode. */
 	void setLogFrequencyDisplay (bool shouldDisplayLog);
-	
+
     /** Returns true if the scope is being displayed in log mode. */
 	bool getLogFrequencyDisplay() const             { return logFrequency; }
-    
+
     /** Sets the size for one bin of fft data. This must be greater than 0.
         Higher values will effectively cause the graph to be wider and taller.
      */
@@ -93,7 +93,7 @@ public:
 
     /** Returns the current bin size. */
     Rectangle<float> getBinSize() const             { return binSize; }
-    
+
 private:
     //==============================================================================
 	FFTEngine fftEngine;
@@ -106,8 +106,8 @@ private:
 
     void addMagnitudesBlock (const float* data, int size);
     void renderScopeLine();
-    
-    
+
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectrograph);
 };

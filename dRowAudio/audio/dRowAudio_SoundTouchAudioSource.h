@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -55,52 +55,52 @@ public:
                            bool deleteSourceWhenDeleted = false,
                            int numberOfSamplesToBuffer = 2048,
                            int numberOfChannels = 2);
-    
+
     /** Destructor. */
     ~SoundTouchAudioSource();
-    
+
     /** Sets all of the settings at once.
      */
     void setPlaybackSettings (SoundTouchProcessor::PlaybackSettings newSettings);
-    
+
     /** Returns all of the settings.
      */
     SoundTouchProcessor::PlaybackSettings getPlaybackSettings() {   return soundTouchProcessor.getPlaybackSettings();    }
-    
+
     /** Returns the lock used when setting the buffer read positions.
      */
     inline const CriticalSection& getBufferLock()               {   return bufferStartPosLock;  }
-    
+
     /** Returns the SoundTouchProcessor being used.
      */
     inline SoundTouchProcessor& getSoundTouchProcessor()        {   return soundTouchProcessor; }
-    
+
     //==============================================================================
     /** @internal. */
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
-    
+
     /** @internal. */
     void releaseResources();
-    
+
     /** @internal. */
     void getNextAudioBlock (const AudioSourceChannelInfo& info);
-    
+
     //==============================================================================
     /** Implements the PositionableAudioSource method. */
     void setNextReadPosition (int64 newPosition);
-    
+
     /** Implements the PositionableAudioSource method. */
     int64 getNextReadPosition() const;
-    
+
     /** Implements the PositionableAudioSource method. */
     int64 getTotalLength() const                { return source->getTotalLength();  }
-    
+
     /** Implements the PositionableAudioSource method. */
     bool isLooping() const                      { return source->isLooping();       }
-    
+
     /** Implements the PositionableAudioSource method. */
     void setLooping (bool shouldLoop)           { source->setLooping (shouldLoop);  }
-    
+
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> source;
@@ -110,11 +110,11 @@ private:
     int64 volatile nextReadPos, effectiveNextPlayPos;
     double volatile sampleRate;
     bool isPrepared;
-    
+
     SoundTouchProcessor soundTouchProcessor;
-    
+
     void readNextBufferChunk();
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchAudioSource);
 };

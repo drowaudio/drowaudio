@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -45,7 +45,7 @@ LTAS::LTAS (int fftSizeLog2)
 
 LTAS::~LTAS()
 {
-    
+
 }
 
 void LTAS::updateLTAS (float* input, int numSamples)
@@ -61,17 +61,17 @@ void LTAS::updateLTAS (float* input, int numSamples)
             memcpy (tempBuffer, input, fftSize * sizeof (float));
             fftEngine.performFFT (tempBuffer);
             fftEngine.findMagnitudes();
-            
+
             for (int i = 0; i < numBins; ++i)
                 ltasAvg.getReference (i).add (fftBuffer[i]);
-            
+
             input += fftSize;
             numSamples -= fftSize;
         }
-        
+
         for (int i = 0; i < numBins; ++i)
             ltasBuffer.getReference (i) = (float) ltasAvg.getReference (i).getAverage();
-        
+
         ltasBuffer.updateListeners();
     }
 }

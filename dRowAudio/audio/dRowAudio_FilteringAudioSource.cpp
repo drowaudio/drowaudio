@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -49,7 +49,7 @@ FilteringAudioSource::FilteringAudioSource (AudioSource* inputSource,
 	  filterSource  (true)
 {
     jassert (input != nullptr);
-    
+
     gains[Low] = 1.0f;
     gains[Mid] = 1.0f;
     gains[High] = 1.0f;
@@ -109,7 +109,7 @@ void FilteringAudioSource::prepareToPlay (int samplesPerBlockExpected,
     sampleRate = sampleRate_;
 
     resetFilters();
-    
+
     if (input != nullptr)
         input->prepareToPlay (samplesPerBlockExpected, sampleRate);
 }
@@ -128,7 +128,7 @@ void FilteringAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info
     {
         const int bufferNumSamples = info.numSamples;
         float* sampleDataL = info.buffer->getWritePointer (0, info.startSample);
-        
+
         filter[0][Low].processSamples   (sampleDataL, bufferNumSamples);
         filter[0][Mid].processSamples   (sampleDataL, bufferNumSamples);
         filter[0][High].processSamples  (sampleDataL, bufferNumSamples);
@@ -157,4 +157,3 @@ void FilteringAudioSource::resetFilters()
     filter[0][High].setCoefficients (highCoeff);
     filter[1][High].setCoefficients (highCoeff);
 }
-

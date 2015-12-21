@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 ///
-/// The routine detects highest value on an array of values and calculates the 
+/// The routine detects highest value on an array of values and calculates the
 /// precise peak location as a mass-center of the 'hump' around the peak value.
 ///
 /// Author        : Copyright (c) Olli Parviainen
@@ -63,7 +63,7 @@ protected:
                             int direction       /// Direction where to proceed from the peak: 1 = right, -1 = left.
                             ) const;
 
-    /// Finds the 'ground' level, i.e. smallest level between two neighbouring peaks, to right- 
+    /// Finds the 'ground' level, i.e. smallest level between two neighbouring peaks, to right-
     /// or left-hand side of the given peak position.
     int   findGround(const float *data,     /// Data vector.
                      int peakpos,           /// Peak position index within the data vector.
@@ -74,7 +74,7 @@ protected:
     double getPeakCenter(const float *data, int peakpos) const;
 
 public:
-    /// Constructor. 
+    /// Constructor.
     PeakFinder();
 
     /// Detect exact peak position of the data vector by finding the largest peak 'hump'

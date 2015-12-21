@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -35,7 +35,7 @@
 //==============================================================================
 /**
     Simple sample rate converter class.
- 
+
     This converts a block of samples from one sample rate to another. It is
     based on a linear interpolation algorithm.
     To use it simply create one with the desired number of channels and then
@@ -55,7 +55,7 @@ public:
     /** Destructor.
      */
     ~SampleRateConverter();
-    
+
     /** Performs the conversion.
         The minimum number of channels will be processed here so it is a good idea
         to make sure that the number of input channels is equal to the number of
@@ -70,20 +70,20 @@ private:
     double ratio;
     double coefficients[6];
     const int numChannels;
-    
+
     void setFilterCoefficients (double c1, double c2, double c3, double c4, double c5, double c6);
     void createLowPass (double proportionalRate);
-    
+
     struct FilterState
     {
         double x1, x2, y1, y2;
     };
-    
+
     HeapBlock<FilterState> filterStates;
     void resetFilters();
-    
+
     void applyFilter (float* samples, int num, FilterState& fs);
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SampleRateConverter);
 };

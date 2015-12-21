@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -38,11 +38,11 @@
 //==============================================================================
 /**
     Auto correlation based pitch detector class.
- 
+
     This class will calculate the pitch of a block of samples. Although this can
     be slower than an FFT approach it is much more accurate, especially at low
     frequencies (due to not having to lie on a bin boundry).
- 
+
     The number of samples required to calculate a pitch will vary depending on
     the minimum frequency set. This will also determine the number of calculations
     required so set these to some sensible estimates first. Internally this uses a
@@ -50,10 +50,10 @@
     certain number of samples have been gathered. This number can be found with
     getNumSamplesNeededForDetection(). The last detected pitch can be returned
     with the getPitch() method. This does introduce some latency into the detection.
- 
+
     Alternatively you can pass a whole block of samples with the detectPitch
     method and a smart average will be calculated.
- 
+
     @see setSampleRate, setMinMaxFrequency, getPitch, processSamples, detectPitch
  */
 class PitchDetector
@@ -67,19 +67,19 @@ public:
         autoCorrelationFunction,
         squareDifferenceFunction,
     };
-    
+
     //==============================================================================
     /** Creates a PitchDetector.
         Make sure you specify the sample rate and some sensible min/max frequencies
         to get the best out of this class.
-        
+
         @see setSampleRate, setMinMaxFrequency
      */
     PitchDetector();
-    
+
     /** Destructor. */
     ~PitchDetector();
-    
+
     /** Process a block of samples.
         Because the number of samples required to find a pitch varies depending on
         the minimum frequency set this uses an internal buffer to store samples until
@@ -98,7 +98,7 @@ public:
         compute the average pitch of a block of samples. This can be useful if used
         in conjunction with some other splicing techniques such as onset detection
         for finding the frequency of whole notes.
-     
+
         Note that the sample array passed in is not marked const and will alter the
         samples. Be sure to pass in a copy if this is undesireable.
      */
@@ -111,23 +111,23 @@ public:
         to the process methods.
      */
     void setSampleRate (double newSampleRate) noexcept;
-    
+
     /** Sets the detection algorithm to use.
         By default this is autoCorrelationFunction.
      */
     void setDetectionMethod (DetectionMethod newMethod);
-    
+
     /** Returns the detection method currently in use.
      */
     inline DetectionMethod getDetectionMethod() const noexcept  {   return detectionMethod; }
-    
+
     /** Sets the minimum and maximum frequencies that can be detected.
         Because this uses an auto-correlation algorithm the lower the minimum
         frequency, the more cpu intensive the calculation will be. Therefore it is
         a good idea to set the values to some realistic expectations.
      */
     void setMinMaxFrequency (float newMinFrequency, float newMaxFrequency) noexcept;
-    
+
     /** Returns the minimum frequency that can currently be detected.
      */
     inline float getMinFrequency() const noexcept               {   return minFrequency;    }
@@ -143,7 +143,7 @@ public:
     {
         return numSamplesNeededForDetection;
     }
-    
+
     //==============================================================================
     /** This returns the tempoary Buffer objects used to calculate the pitch.
         This method isn't really intended for public use but could be used for
@@ -171,7 +171,7 @@ private:
     double detectPitchForBlock (float* samples, int numSamples);
     double detectAcfPitchForBlock (float* samples, int numSamples);
     double detectSdfPitchForBlock (float* samples, int numSamples);
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PitchDetector);
 };

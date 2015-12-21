@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 ///
-/// Peak detection routine. 
+/// Peak detection routine.
 ///
-/// The routine detects highest value on an array of values and calculates the 
+/// The routine detects highest value on an array of values and calculates the
 /// precise peak location as a mass-center of the 'hump' around the peak value.
 ///
 /// Author        : Copyright (c) Olli Parviainen
@@ -56,7 +56,7 @@ PeakFinder::PeakFinder()
 
 
 // Finds 'ground level' of a peak hump by starting from 'peakpos' and proceeding
-// to direction defined by 'direction' until next 'hump' after minimum value will 
+// to direction defined by 'direction' until next 'hump' after minimum value will
 // begin
 int PeakFinder::findGround(const float *data, int peakpos, int direction) const
 {
@@ -181,7 +181,7 @@ double PeakFinder::getPeakCenter(const float *data, int peakpos) const
 
 
 
-double PeakFinder::detectPeak(const float *data, int aminPos, int amaxPos) 
+double PeakFinder::detectPeak(const float *data, int aminPos, int amaxPos)
 {
 
     int i;
@@ -196,19 +196,19 @@ double PeakFinder::detectPeak(const float *data, int aminPos, int amaxPos)
     peak = data[minPos];
     for (i = minPos + 1; i < maxPos; i ++)
     {
-        if (data[i] > peak) 
+        if (data[i] > peak)
         {
             peak = data[i];
             peakpos = i;
         }
     }
-    
+
     // Calculate exact location of the highest peak mass center
     highPeak = getPeakCenter(data, peakpos);
     peak = highPeak;
 
-    // Now check if the highest peak were in fact harmonic of the true base beat peak 
-    // - sometimes the highest peak can be Nth harmonic of the true base peak yet 
+    // Now check if the highest peak were in fact harmonic of the true base beat peak
+    // - sometimes the highest peak can be Nth harmonic of the true base peak yet
     // just a slightly higher than the true base
     for (i = 2; i < 10; i ++)
     {
@@ -235,5 +235,3 @@ double PeakFinder::detectPeak(const float *data, int aminPos, int amaxPos)
 
     return peak;
 }
-
-

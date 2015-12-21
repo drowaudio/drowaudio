@@ -2,8 +2,8 @@
 ///
 /// Win32 version of the x64 CPU detect routine.
 ///
-/// This file is to be compiled in Windows platform with Microsoft Visual C++ 
-/// Compiler. Please see 'cpu_detect_x86_gcc.cpp' for the gcc compiler version 
+/// This file is to be compiled in Windows platform with Microsoft Visual C++
+/// Compiler. Please see 'cpu_detect_x86_gcc.cpp' for the gcc compiler version
 /// for all GNU platforms.
 ///
 /// Author        : Copyright (c) Olli Parviainen
@@ -80,6 +80,6 @@ uint detectCPUextensions(void)
 #ifdef AMD64
 	res += SUPPORT_3DNOW;
 #endif
-	
+
 	return res & ~_dwDisabledISA;
 }

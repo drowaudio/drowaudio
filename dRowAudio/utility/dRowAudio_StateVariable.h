@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -34,7 +34,7 @@
 
 //==============================================================================
 /** Variable that holds its previous value.
- 
+
 	This can be used instead of keeping track of a current and previous state
 	of a primitive variable. Just calling set() will automatically update the
 	new and previous states.
@@ -50,7 +50,7 @@ public:
 	{
 		previous = current = 0;
 	}
-	
+
 	/**	Create a StateVariable with an initial value.
 		To begin with the previous value will be the same as the initial.
 	 */
@@ -58,10 +58,10 @@ public:
 	{
 		previous = current = initialValue;
 	}
-	
+
 	/** Destructor. */
 	~StateVariable() {}
-	
+
     /** Returns the current value.
      */
 	inline VariableType getCurrent()	{	return current;		}
@@ -69,7 +69,7 @@ public:
     /** Returns the previous value.
      */
     inline VariableType getPrevious()	{	return previous;	}
-	
+
     /** Sets a new value, copying the current to the previous.
      */
 	inline void set (VariableType newValue)
@@ -77,14 +77,14 @@ public:
 		previous = current;
 		current = newValue;
 	}
-	
+
     /** Sets the current value, leaving the previous unchanged.
      */
 	inline void setOnlyCurrent (VariableType newValue)
 	{
 		current = newValue;
 	}
-	
+
     /** Sets the previous value, leaving the current unchanged.
      */
 	inline void setPrevious(VariableType newValue)
@@ -98,14 +98,14 @@ public:
 	{
 		current = previous = newValue;
 	}
-	
+
 	/**	Returns true if the current and previous states are equal.
 	 */
 	inline bool areEqual()
 	{
 		return (previous == current);
 	}
-	
+
     /** Returns true if the two are almost equal to a given precision.
      */
 	inline bool areAlmostEqual (double precision = 0.00001)
@@ -136,18 +136,18 @@ public:
 		previous = current;
 		current *= newValue;
 	}
-		
+
 	/**	This returns the difference between the current and the previous state.
 	 */
 	inline VariableType getDifference()
 	{
 		return current - previous;
 	}
-	
+
 private:
     //==============================================================================
 	VariableType current, previous;
-	
+
     //==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StateVariable);
 };

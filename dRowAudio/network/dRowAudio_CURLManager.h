@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -45,11 +45,11 @@ class CURLManager : public TimeSliceThread,
 public:
 	//==============================================================================
 	juce_DeclareSingleton (CURLManager, true);
-	
+
 	CURLManager();
-	
+
 	~CURLManager();
-	
+
 	//==============================================================================
 	/**	Creates a new easy curl session handle.
 		This simply creates the handle for you, it is the caller's responsibility
@@ -57,18 +57,18 @@ public:
 		cleanUpEasyCurlHandle().
 	 */
 	CURL* createEasyCurlHandle();
-	
+
 	/**	Cleans up an easy curl session for you.
 		You can pass this a handle generated with createEasyCurlHandle() to clean
 		up any resources associated with it. Be careful not to use the handle after
 		calling this function as it will be a nullptr.
 	 */
 	void cleanUpEasyCurlHandle (CURL* handle);
-	
+
 	/**	Returns a list of the supported protocols.
 	 */
 	StringArray getSupportedProtocols();
-    
+
 private:
 	//==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CURLManager);

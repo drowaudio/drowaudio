@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -45,18 +45,18 @@ namespace ValueTreeComparators
             direction (forwards ? 1 : -1)
         {
         }
-        
+
         int compareElements (const ValueTree& first, const ValueTree& second) const
         {
             const int result = first[attributeToSort].toString().compareNatural (second[attributeToSort].toString());
-            
+
             return direction * result;
         }
-        
+
     private:
         const Identifier attributeToSort;
         const int direction;
-        
+
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Lexicographic)
     };
 
@@ -71,21 +71,21 @@ namespace ValueTreeComparators
               direction (forwards ? 1 : -1)
         {
         }
-        
+
         int compareElements (const ValueTree& first, const ValueTree& second) const
         {
             const int result = (NumericalType (first[attributeToSort]) > NumericalType (second[attributeToSort])) ? 1 : -1;
-            
+
             return direction * result;
         }
-        
+
     private:
         const Identifier attributeToSort;
         const int direction;
-        
+
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Numerical)
     };
-    
+
     //==============================================================================
     /** A Lexiographc ValueTreeComparator which will use a second comparitor if the
         result is the same, useful when sorting tables without using the much
@@ -100,25 +100,25 @@ namespace ValueTreeComparators
               direction (forwards ? 1 : -1)
         {
         }
-        
+
         int compareElements (const ValueTree& first, const ValueTree& second) const
         {
             int result = first[attributeToSort].toString().compareNatural (second[attributeToSort].toString());
-            
+
             if (result == 0)
                 result = first[backupAttribute].toString().compareNatural (second[backupAttribute].toString());
-            
+
             return direction * result;
         }
-        
+
     private:
         const Identifier attributeToSort;
         const Identifier backupAttribute;
         const int direction;
-        
+
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LexicographicWithBackup)
     };
-    
+
 } //ValueTreeComparators
 
 namespace XmlComparators
@@ -150,7 +150,7 @@ namespace XmlComparators
     private:
         const String attributeToSort;
         const int direction;
-        
+
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LexicographicSorter);
     };
 
@@ -165,25 +165,25 @@ namespace XmlComparators
           direction (forwards ? 1 : -1)
         {
         }
-        
+
         int compareElements (XmlElement* first, XmlElement* second) const
         {
             if (first->getStringAttribute (attributeToSort).isEmpty()
                 || second->getStringAttribute (attributeToSort).isEmpty()) {
                 return direction * -1;
             }
-            
-            int result = ((first->getStringAttribute (attributeToSort).getDoubleValue() 
+
+            int result = ((first->getStringAttribute (attributeToSort).getDoubleValue()
                            <= (second->getStringAttribute (attributeToSort).getDoubleValue()))
                           ? -1 : 1);
-            
+
             return direction * result;
         }
-        
+
     private:
         const String attributeToSort;
         const int direction;
-        
+
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NumberDataSorter);
     };
 } //XmlComparators

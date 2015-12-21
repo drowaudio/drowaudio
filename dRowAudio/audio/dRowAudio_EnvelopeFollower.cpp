@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -48,12 +48,12 @@ void EnvelopeFollower::processEnvelope (const float* inputBuffer, float* outputB
     for (int i = 0; i < numSamples; ++i)
     {
         float envIn = fabsf (inputBuffer[i]);
-        
+
         if (envelope < envIn)
             envelope += envAttack * (envIn - envelope);
         else if (envelope > envIn)
             envelope -= envRelease * (envelope - envIn);
-        
+
         outputBuffer[i] = envelope;
     }
 }
@@ -63,4 +63,3 @@ void EnvelopeFollower::setCoefficients (float attack, float release) noexcept
     envAttack = attack;
     envRelease = release;
 }
-

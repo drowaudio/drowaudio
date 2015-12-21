@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -35,12 +35,12 @@
 //==============================================================================
 /**
     Streams data from an AudioSampleBuffer.
- 
+
     This reads from a stream that has been initialised from the AudioSampleBuffer
     method getArrayOfChannels(). The AudioSampleBuffer needs to stay in exisistance
     for the duration of this object and not be changed as the stream is unique to
     the memory layout of the buffer.
- 
+
     @see AudioFormat
  */
 class AudioSampleBufferAudioFormat :    public AudioFormat
@@ -49,27 +49,27 @@ public:
     //==============================================================================
     /** Creates a format object. */
     AudioSampleBufferAudioFormat();
-    
+
     /** Destructor. */
     ~AudioSampleBufferAudioFormat();
-    
+
     //==============================================================================
     Array<int> getPossibleSampleRates();
     Array<int> getPossibleBitDepths();
     bool canDoStereo();
     bool canDoMono();
-    
+
     //==============================================================================
     AudioFormatReader* createReaderFor (InputStream* sourceStream,
                                         bool deleteStreamIfOpeningFails);
-    
+
     AudioFormatWriter* createWriterFor (OutputStream* streamToWriteTo,
                                         double sampleRateToUse,
                                         unsigned int numberOfChannels,
                                         int bitsPerSample,
                                         const StringPairArray& metadataValues,
                                         int qualityOptionIndex);
-    
+
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioSampleBufferAudioFormat);
 };

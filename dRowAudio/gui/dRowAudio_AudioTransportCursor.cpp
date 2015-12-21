@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -58,21 +58,21 @@ void AudioTransportCursor::setZoomRatio (double newZoomRatio)
     }
 
     zoomRatio = newZoomRatio;
-    
+
     repaint();
 }
 
 void AudioTransportCursor::setStartOffsetRatio (double newStartOffsetRatio)
 {
     startOffsetRatio = newStartOffsetRatio;
-    
+
     repaint();
 }
 
 void AudioTransportCursor::setCursorDisplayed (bool shouldDisplayCursor)
 {
     showTransportCursor = shouldDisplayCursor;
-    
+
     startTimerIfNeeded();
 }
 
@@ -107,7 +107,7 @@ void AudioTransportCursor::timerCallback()
         repaint (transportLineXCoord.getPrevious() - 2, 0, 5, h);
         repaint (transportLineXCoord.getCurrent() - 2, 0, 5, h);
 	}
-    
+
     if (shouldStopTimer)
     {
         shouldStopTimer = false;
@@ -140,7 +140,7 @@ void AudioTransportCursor::mouseDown (const MouseEvent &e)
 
         shouldStopTimer = false;
         startTimer (40);
-        
+
         repaint();
     }
 }
@@ -150,7 +150,7 @@ void AudioTransportCursor::mouseUp (const MouseEvent& /*e*/)
     if (showTransportCursor)
     {
         setMouseCursor (MouseCursor::NormalCursor);
-        
+
         startTimerIfNeeded();
     }
 }
@@ -165,11 +165,11 @@ void AudioTransportCursor::mouseDrag (const MouseEvent& e)
 void AudioTransportCursor::refreshFromFilePlayer()
 {
     AudioFormatReaderSource* readerSource = audioFilePlayer.getAudioFormatReaderSource();
-    
+
     AudioFormatReader* reader = nullptr;
     if (readerSource != nullptr)
         reader = readerSource->getAudioFormatReader();
-    
+
     if (reader != nullptr && reader->sampleRate > 0.0
         && audioFilePlayer.getLengthInSeconds() > 0.0)
     {
@@ -183,7 +183,7 @@ void AudioTransportCursor::refreshFromFilePlayer()
         fileLength = 0.0;
         oneOverFileLength = 1.0;
     }
-    
+
     startTimerIfNeeded();
 }
 

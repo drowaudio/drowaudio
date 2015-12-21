@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -53,10 +53,10 @@ struct SplitComplex
 
 //==============================================================================
 /** Low-level FFT class for performing single FFT calculations.
- 
-    This wraps together all the various set-up steps to perform an FFT so you can just 
+
+    This wraps together all the various set-up steps to perform an FFT so you can just
     create one of these and call its performFFT method and retrieve the result with getFFTBuffer().
- 
+
     If you are doing lots of FFT operations take a look at FFTEngine which is better suited to
     easily finding magnitude bins.
  */
@@ -80,13 +80,13 @@ public:
               oneOverFFTSizeMinus1 (1.0 / fftSizeMinus1),
               oneOverFFTSize (1.0 / fftSize)
         {}
-        
+
         /** Creates a copy of another set of Properties. */
         Properties (const Properties& other) noexcept
         {
             *this = other;
         }
-        
+
         /** Creates a copy of another set of Properties. */
         Properties& operator= (const Properties& other) noexcept
         {
@@ -96,7 +96,7 @@ public:
             fftSizeHalved           = other.fftSizeHalved;
             oneOverFFTSizeMinus1    = other.oneOverFFTSizeMinus1;
             oneOverFFTSize          = other.oneOverFFTSize;
-            
+
             return *this;
         }
 
@@ -105,28 +105,28 @@ public:
         int fftSize;
         int fftSizeMinus1;
         int fftSizeHalved;
-        
+
         double oneOverFFTSizeMinus1;
         double oneOverFFTSize;
-        
+
     private:
         //==============================================================================
         Properties() JUCE_DELETED_FUNCTION;
         JUCE_LEAK_DETECTOR (Properties)
     };
-    
+
     //==============================================================================
     /** Creates an FFT class that can perform various FFT operations on blocks of data.
         The internals will vary depending on platform e.g. one the Mac Accelerate is used, on Windows FFTReal.
      */
     FFT (int fftSizeLog2);
-    
+
     /** Destructor. */
     ~FFT();
 
     /** Changes the FFT size. */
     void setFFTSizeLog2 (int newFFTSize);
-    
+
     /** Returns the Properties in use. */
     Properties getProperties() const noexcept           { return properties; }
 
@@ -140,9 +140,9 @@ public:
         This is basically just a pair of pointers to the real and imag parts of the buffer.
      */
     SplitComplex& getFFTBuffer()                        { return bufferSplit; }
-    
+
     /** Performs an FFT operation on a set of samples.
-        N.B. samples must be an array the same size as the FFT. After processing you can retrive the 
+        N.B. samples must be an array the same size as the FFT. After processing you can retrive the
         buffer using getBuffer or getFFTBuffer.
      */
     void performFFT (float* samples);
@@ -159,7 +159,7 @@ public:
 
     /** Performs an inverse FFT.
         fftBuffer should be in SplitComplex format where [0] = realp & [fftSize / 2] = imagp.
-        N.B. fftBuffer must be the same size as the FFTProperties fftSize and the buffer must not be 
+        N.B. fftBuffer must be the same size as the FFTProperties fftSize and the buffer must not be
         the same as that retrieved from getBuffer.
      */
     void performIFFT (float* fftBuffer);
@@ -171,7 +171,7 @@ public:
         const float rawMagnitude = hypotf (real, imag);
         const float magnitudeForFFTSize = rawMagnitude * oneOverFFTSize;
         const float magnitudeForWindowFactor = magnitudeForFFTSize * oneOverWindowFactor;
-        
+
         return magnitudeForWindowFactor;
     }
 
@@ -179,7 +179,7 @@ private:
     //==============================================================================
     Properties properties;
     HeapBlock<float> buffer;
-    
+
     FFTConfig config;
     SplitComplex bufferSplit;
 
@@ -201,15 +201,15 @@ public:
           magnitutes (getFFTProperties().fftSizeHalved + 1)
     {
     }
-    
+
     /** Destructor. */
     ~FFTEngine() {}
-    
+
     /** Performs an FFT operation.
         The number of samples must be equal to the fftSize.
      */
     void performFFT (float* samples);
-    
+
     /**	This will fill the internal buffer with the magnitudes of the last performed FFT.
         You can then get this buffer using getMagnitudesBuffer(). Remember that
         the size of the buffer is the fftSizeHalved + 1 to incorporate the Nyquist.
@@ -224,30 +224,30 @@ public:
         the size of the buffer is the fftSizeHalved + 1 to incorporate the Nyquist.
      */
     void updateMagnitudesIfBigger()                     { findMagnitues (magnitutes.getData(), true); }
-    
+
     /** Changes the Window type. */
     void setWindowType (Window::WindowType type)        { window.setWindowType (type); }
-    
+
     /** Returns the FFT size. */
     int getFFTSize()const noexcept                      { return getFFTProperties().fftSize; }
-    
+
     /** Returns the magnitutes buffer. */
     Buffer& getMagnitudesBuffer()                       { return magnitutes; }
-    
+
     /** Returns the Window buffer. */
     Window& getWindow()                                 { return window; }
-    
+
     /** Returns a copy of the FFT Properties. */
     FFT::Properties getFFTProperties() const noexcept   { return fft.getProperties(); }
-    
+
 private:
     //==============================================================================
     FFT fft;
     Window window;
     Buffer magnitutes;
-    
+
     void findMagnitues (float* magBuf, bool onlyIfBigger);
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTEngine)
 };
 

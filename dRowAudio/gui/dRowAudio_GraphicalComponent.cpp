@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -58,10 +58,10 @@ int GraphicalComponent::useTimeSlice()
         {
 			process();
             needToProcess = false;
-            
+
             return sleepTime;
         }
-        
+
 		return sleepTime;
 	}
 }
@@ -74,23 +74,23 @@ void GraphicalComponent::copySamples (const float *values, int numSamples_)
 			numSamples = numSamples_;
 			samples.malloc (numSamples);
 		}
-		
+
 		// lock whilst copying
 		ScopedLock sl (lock);
 		memcpy (samples, values, numSamples * sizeof (float));
-		
+
 		needToProcess = true;
 }
 
 void GraphicalComponent::copySamples (float **values, int numSamples_, int numChannels)
 {
 	// allocate new memory only if needed
-	if (numSamples != numSamples_) 
+	if (numSamples != numSamples_)
     {
 		numSamples = numSamples_;
 		samples.malloc (numSamples);
 	}
-	
+
 	// lock whilst copying
 	ScopedLock sl (lock);
 
@@ -99,7 +99,7 @@ void GraphicalComponent::copySamples (float **values, int numSamples_, int numCh
 		memcpy (samples, values[0], numSamples * sizeof (float));
 	}
 	// this is quicker than the generic method below
-	else if (numChannels == 2) 
+	else if (numChannels == 2)
     {
 		for (int i = 0; i < numSamples; i++)
         {
@@ -109,18 +109,17 @@ void GraphicalComponent::copySamples (float **values, int numSamples_, int numCh
 	else
     {
 		samples.clear (numSamples);
-		for (int c = 0; c < numChannels; c++) 
+		for (int c = 0; c < numChannels; c++)
         {
-			for (int i = 0; i < numSamples; i++) 
+			for (int i = 0; i < numSamples; i++)
             {
 				if (fabsf (values[c][i]) > samples[i])
                 {
 					samples[i] = values[c][i];
 				}
-			}			
+			}
 		}
 	}
-	
+
 	needToProcess = true;
 }
-

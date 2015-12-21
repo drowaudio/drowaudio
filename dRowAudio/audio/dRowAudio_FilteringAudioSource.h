@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -47,23 +47,23 @@ public:
         High,
         numFilters
     };
-    
+
     enum FilterSetting
     {
         CF = 0,
         Q,
         numFilterSettings
     };
-    
+
 	//==============================================================================
     /** Creates an FilteringAudioTransportSource.
 	 */
     FilteringAudioSource (AudioSource* inputSource,
                           bool deleteInputWhenDeleted);
-	
+
     /** Destructor. */
     ~FilteringAudioSource();
-    
+
     //==============================================================================
     /** Changes one of the filter gains.
      */
@@ -80,19 +80,19 @@ public:
     //==============================================================================
     /** Implementation of the AudioSource method. */
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
-	
+
     /** Implementation of the AudioSource method. */
     void releaseResources();
-	
+
     /** Implementation of the AudioSource method. */
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
-		
+
 private:
     //==============================================================================
     OptionalScopedPointer<AudioSource> input;
     float gains[numFilters];
 	IIRFilter filter[2][numFilters];
-	
+
     double sampleRate;
 	bool filterSource;
 

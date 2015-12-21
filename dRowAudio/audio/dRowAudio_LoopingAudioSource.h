@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -62,11 +62,11 @@ public:
         This doesn't actually activate the loop, use setLoopBetweenTimes() to toggle this.
      */
     void setLoopTimes (double startTime, double endTime);
-    
+
     /** Sets the arguments to the currently set start and end times.
      */
     void getLoopTimes (double& startTime, double& endTime);
-    
+
     /** Enables the loop point set.
      */
     void setLoopBetweenTimes (bool shouldLoop);
@@ -74,7 +74,7 @@ public:
     /** Returns true if the loop is activated.
      */
     bool getLoopBetweenTimes();
-    
+
     //==============================================================================
     /** Implementation of the AudioSource method. */
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
@@ -94,13 +94,13 @@ public:
 
     /** Implements the PositionableAudioSource method. */
     int64 getNextReadPosition() const;
-    
+
     /** Implements the PositionableAudioSource method. */
     int64 getTotalLength() const;
-    
+
     /** Implements the PositionableAudioSource method. */
     bool isLooping() const;
-    
+
 private:
     //==============================================================================
     OptionalScopedPointer<PositionableAudioSource> input;
@@ -113,7 +113,7 @@ private:
 
     AudioSourceChannelInfo tempInfo;
     AudioSampleBuffer tempBuffer;
-        
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopingAudioSource);
 };

@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -44,12 +44,12 @@ ITunesLibrary::~ITunesLibrary()
 
 void ITunesLibrary::setLibraryFile (File newFile)
 {
-	if (newFile.existsAsFile()) 
+	if (newFile.existsAsFile())
 	{
 		listeners.call (&Listener::libraryChanged, this);
 		parser = new ITunesLibraryParser (newFile, libraryTree, parserLock);
 		startTimer(500);
-	}	
+	}
 }
 
 //==============================================================================
@@ -61,7 +61,7 @@ const File ITunesLibrary::getDefaultITunesLibraryFile()
 //==============================================================================
 void ITunesLibrary::setLibraryTree (ValueTree& newTreeToUse)
 {
-    if (! newTreeToUse.isValid()) 
+    if (! newTreeToUse.isValid())
         newTreeToUse = ValueTree (MusicColumns::libraryIdentifier);
 
     libraryTree = newTreeToUse;

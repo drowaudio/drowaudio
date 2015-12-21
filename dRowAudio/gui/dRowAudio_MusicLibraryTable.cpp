@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -59,7 +59,7 @@ MusicLibraryTable::MusicLibraryTable()
                                      800,
                                      TableHeaderComponent::defaultFlags);
     }
-        
+
 	// we could now change some initial settings..
 	table.getHeader().setSortColumnId (MusicColumns::Artist, true); // sort forwards by the Artist column
 
@@ -68,7 +68,7 @@ MusicLibraryTable::MusicLibraryTable()
 	table.getHeader().setColumnVisible (MusicColumns::Rating, false);
 	table.getHeader().setColumnVisible (MusicColumns::Location, false);
 	table.getHeader().setColumnVisible (MusicColumns::Modified, false);
-	
+
 	setFilterText (String::empty);
 }
 
@@ -81,7 +81,7 @@ MusicLibraryTable::~MusicLibraryTable()
 void MusicLibraryTable::setLibraryToUse (ITunesLibrary* library)
 {
 	currentLibrary = library;
-	
+
 	filteredDataList = dataList = library->getLibraryTree();
 	dataList = library->getLibraryTree();
 	library->addListener(this);
@@ -90,10 +90,10 @@ void MusicLibraryTable::setLibraryToUse (ITunesLibrary* library)
 void MusicLibraryTable::setFilterText (const String& filterString)
 {
     currentFilterText = filterString;
-    
+
     if (currentLibrary != nullptr)
         currentLibrary->getParserLock().enter();
-    
+
 	if (filterString == String::empty)
 	{
 		filteredDataList = dataList;
@@ -102,7 +102,7 @@ void MusicLibraryTable::setFilterText (const String& filterString)
 	else
 	{
 		filteredDataList = ValueTree (dataList.getType());
-		
+
 		for (int e = 0; e < dataList.getNumChildren(); ++e)
 		{
 			for (int i = 0; i < dataList.getChild (e).getNumProperties(); i++)
@@ -114,10 +114,10 @@ void MusicLibraryTable::setFilterText (const String& filterString)
 				}
 			}
 		}
-		
+
 		filteredNumRows = filteredDataList.getNumChildren();
 	}
-	
+
     if (currentLibrary != nullptr)
         currentLibrary->getParserLock().exit();
 
@@ -127,7 +127,7 @@ void MusicLibraryTable::setFilterText (const String& filterString)
 //==============================================================================
 void MusicLibraryTable::libraryChanged (ITunesLibrary* library)
 {
-	if (library == currentLibrary) 
+	if (library == currentLibrary)
 	{
 		finishedLoading = false;
 		filteredDataList = dataList = currentLibrary->getLibraryTree();
@@ -137,13 +137,13 @@ void MusicLibraryTable::libraryChanged (ITunesLibrary* library)
 
 void MusicLibraryTable::libraryUpdated (ITunesLibrary* library)
 {
-	if (library == currentLibrary) 
+	if (library == currentLibrary)
         updateTableFilteredAndSorted();
 }
 
 void MusicLibraryTable::libraryFinished (ITunesLibrary* library)
 {
-	if (library == currentLibrary) 
+	if (library == currentLibrary)
 	{
 		finishedLoading = true;
         updateTableFilteredAndSorted();
@@ -183,11 +183,11 @@ void MusicLibraryTable::paintCell (Graphics& g,
     {
         const ScopedLock sl (currentLibrary->getParserLock());
         const ValueTree& rowElement (filteredDataList.getChild (rowNumber));
-    
+
         if (rowElement.isValid())
         {
             String text;
-            
+
             if(columnId == MusicColumns::Length)
                 text = secondsToTimeLength (rowElement[MusicColumns::columnNames[columnId]].toString().getIntValue());
             else if(columnId == MusicColumns::Added
@@ -195,7 +195,7 @@ void MusicLibraryTable::paintCell (Graphics& g,
                 text = Time (int64 (rowElement[MusicColumns::columnNames[columnId]])).formatted ("%d/%m/%Y - %H:%M");
             else
                 text = rowElement[MusicColumns::columnNames[columnId]].toString();
-            
+
             g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);
         }
     }
@@ -212,11 +212,11 @@ void MusicLibraryTable::paintCell (Graphics& g,
 void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
 {
     findSelectedRows();
-    
+
 	if (newSortColumnId != 0)
 	{
         const ScopedLock sl (currentLibrary->getParserLock());
-        
+
 		if (newSortColumnId == MusicColumns::Length
 			|| newSortColumnId == MusicColumns::BPM
 			|| newSortColumnId == MusicColumns::LibID
@@ -292,7 +292,7 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet<int>& currently
             itemsArray.append (childTree.getObject());
         }
 	}
-    
+
     return itemsArray;
 }
 
@@ -308,7 +308,7 @@ void MusicLibraryTable::findSelectedRows()
 {
     selectedRowsLibIds.clear();
     const SparseSet<int> selectedRowNumbers (table.getSelectedRows());
-    
+
     for (int i = 0; i < selectedRowNumbers.size(); ++i)
     {
         const int oldIndex = selectedRowNumbers[i];
@@ -320,7 +320,7 @@ void MusicLibraryTable::findSelectedRows()
 void MusicLibraryTable::setSelectedRows()
 {
     SparseSet<int> newSelectedRowNumbers;
-    
+
     for (int i = 0; i < selectedRowsLibIds.size(); ++i)
     {
         const int libId = selectedRowsLibIds.getReference (i);
@@ -328,6 +328,6 @@ void MusicLibraryTable::setSelectedRows()
                                                                                            libId));
         newSelectedRowNumbers.addRange (Range<int> (index, index + 1));
     }
-    
+
     table.setSelectedRows (newSelectedRowNumbers, sendNotification);
 }

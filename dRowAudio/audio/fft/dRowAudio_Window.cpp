@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -67,7 +67,7 @@ void Window::setWindowSize (int newSize)
 {
     if (windowBuffer.getNumSamples() == newSize)
         return;
-    
+
     windowBuffer.setSize (1, newSize);
 	setUpWindowBuffer();
 }
@@ -89,7 +89,7 @@ void Window::setUpWindowBuffer()
     const int bufferSize = windowBuffer.getNumSamples();
     float* bufferSample = windowBuffer.getWritePointer (0);
     FloatVectorOperations::fill (bufferSample, 1.0f, bufferSize);
-	
+
 	switch (windowType)
 	{
 		case Rectangular:           applyRectangularWindow (bufferSample, bufferSize);          break;
@@ -117,23 +117,23 @@ void Window::applyRectangularWindow (float *samples, const int numSamples)
 {
 	const double oneOverSize = (1.0f / numSamples);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		float window = 1.0f;
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
+
 	windowFactor *= (float) oneOverSize;
-}	
+}
 
 void Window::applyHannWindow (float* samples, const int numSamples)
 {
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Hann window equation
@@ -141,7 +141,7 @@ void Window::applyHannWindow (float* samples, const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-	
+
     windowFactor *= (float) oneOverSize;
 }
 
@@ -150,7 +150,7 @@ void Window::applyHammingWindow (float *samples, const int numSamples)
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Hamming window equation
@@ -158,8 +158,8 @@ void Window::applyHammingWindow (float *samples, const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;	
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyCosineWindow (float *samples,  const int numSamples)
@@ -167,7 +167,7 @@ void Window::applyCosineWindow (float *samples,  const int numSamples)
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Cosine window equation
@@ -175,8 +175,8 @@ void Window::applyCosineWindow (float *samples,  const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;		
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyLanczosWindow (float *samples,  const int numSamples)
@@ -184,7 +184,7 @@ void Window::applyLanczosWindow (float *samples,  const int numSamples)
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Lanczos window equation
@@ -192,8 +192,8 @@ void Window::applyLanczosWindow (float *samples,  const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;			
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyZeroEndTriangleWindow (float *samples,  const int numSamples)
@@ -202,7 +202,7 @@ void Window::applyZeroEndTriangleWindow (float *samples,  const int numSamples)
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Triangle window equation
@@ -210,8 +210,8 @@ void Window::applyZeroEndTriangleWindow (float *samples,  const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;			
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyNonZeroEndTriangleWindow(float *samples,  const int numSamples)
@@ -219,7 +219,7 @@ void Window::applyNonZeroEndTriangleWindow(float *samples,  const int numSamples
 	const int sizeMinusOne = numSamples - 1;
 	const double oneOverSize = (1.0 / numSamples);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Triangle window equation
@@ -227,8 +227,8 @@ void Window::applyNonZeroEndTriangleWindow(float *samples,  const int numSamples
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;			
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyGaussianWindow (float *samples,  const int numSamples)
@@ -238,7 +238,7 @@ void Window::applyGaussianWindow (float *samples,  const int numSamples)
 	const int sizeMinusOne = numSamples - 1;
 	const double oneOverSize = (1.0 / numSamples);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Gaussian window equation
@@ -246,8 +246,8 @@ void Window::applyGaussianWindow (float *samples,  const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;				
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyBartlettHannWindow (float *samples,  const int numSamples)
@@ -255,11 +255,11 @@ void Window::applyBartlettHannWindow (float *samples,  const int numSamples)
 	const float a0 = 0.62f;
 	const float a1 = 0.48f;
 	const float a2 = 0.38f;
-	
+
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Bartlett-Hann window equation
@@ -267,8 +267,8 @@ void Window::applyBartlettHannWindow (float *samples,  const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;			
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyBlackmanWindow (float *samples,  const int numSamples)
@@ -277,11 +277,11 @@ void Window::applyBlackmanWindow (float *samples,  const int numSamples)
 	const float a0 = (1.0f - alpha) * 0.5f;
 	const float a1 = 0.5f;
 	const float a2 = alpha * 0.5f;
-	
+
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Blackman window equation
@@ -289,8 +289,8 @@ void Window::applyBlackmanWindow (float *samples,  const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-	
-    windowFactor *= (float) oneOverSize;			
+
+    windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyNuttallWindow (float* samples,  const int numSamples)
@@ -299,11 +299,11 @@ void Window::applyNuttallWindow (float* samples,  const int numSamples)
 	const float a1 = 0.487396f;
 	const float a2 = 0.144232f;
 	const float a3 = 0.012604f;
-	
+
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Nuttall window equation
@@ -313,8 +313,8 @@ void Window::applyNuttallWindow (float* samples,  const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;				
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyBlackmanHarrisWindow (float* samples, const int numSamples)
@@ -323,11 +323,11 @@ void Window::applyBlackmanHarrisWindow (float* samples, const int numSamples)
 	const float a1 = 0.48829f;
 	const float a2 = 0.14128f;
 	const float a3 = 0.01168f;
-	
+
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Blackman-Harris window equation
@@ -337,8 +337,8 @@ void Window::applyBlackmanHarrisWindow (float* samples, const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;				
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyBlackmanNuttallWindow (float* samples, const int numSamples)
@@ -347,11 +347,11 @@ void Window::applyBlackmanNuttallWindow (float* samples, const int numSamples)
 	const float a1 = 0.4891775f;
 	const float a2 = 0.1365995f;
 	const float a3 = 0.0106411f;
-	
+
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Blackman-Nuttall window equation
@@ -361,8 +361,8 @@ void Window::applyBlackmanNuttallWindow (float* samples, const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;				
+
+	windowFactor *= (float) oneOverSize;
 }
 
 void Window::applyFlatTopWindow (float* samples, const int numSamples)
@@ -372,11 +372,11 @@ void Window::applyFlatTopWindow (float* samples, const int numSamples)
 	const float a2 = 1.29f;
 	const float a3 = 0.388f;
 	const float a4 = 0.032f;
-	
+
 	const double oneOverSize = (1.0 / numSamples);
 	const double oneOverSizeMinusOne = 1.0 / (numSamples - 1.0);
 	windowFactor = 0.0f;
-    
+
 	for (int i = 0; i < numSamples; i++)
 	{
 		// Flat-Top window equation
@@ -387,7 +387,6 @@ void Window::applyFlatTopWindow (float* samples, const int numSamples)
 		samples[i] *= window;
 		windowFactor += window;
 	}
-    
-	windowFactor *= (float) oneOverSize;				
-}
 
+	windowFactor *= (float) oneOverSize;
+}

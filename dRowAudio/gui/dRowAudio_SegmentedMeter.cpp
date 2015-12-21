@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -56,11 +56,11 @@ void SegmentedMeter::calculateSegments()
 	float numDecibels = (float) toDecibels (level.getCurrent());
 	// map decibels to numSegs
 	numSegs = jmax (0, roundToInt ((numDecibels / decibelsPerSeg) + (totalNumSegs - numRedSeg)));
-	
+
 	// impliment slow decay
 	//	level.set((0.5f * level.getCurrent()) + (0.1f * level.getPrevious()));
 	level *= 0.8f;
-	
+
 	// only actually need to repaint if the numSegs has changed
 	if (! numSegs.areEqual() || needsRepaint)
 		repaint();
@@ -83,14 +83,14 @@ void SegmentedMeter::resized()
     offImage = Image (Image::RGB,
                       w, h,
                       false);
-    
+
     Graphics gOn (onImage);
     Graphics gOff (offImage);
-    
+
     const int numSegments = (numRedSeg + numYellowSeg + numGreenSeg);
 	const float segmentHeight = (h - m) / (float) numSegments;
     const float segWidth = w - (2.0f * m);
-	
+
 	for (int i = 1; i <= numSegments; ++i)
 	{
 		if (i <= numGreenSeg)
@@ -112,17 +112,17 @@ void SegmentedMeter::resized()
 		gOn.fillRect ((float) m, h - m - (i * segmentHeight), segWidth, segmentHeight);
 		gOn.setColour (Colours::black);
 		gOn.drawLine ((float) m, h - m - (i * segmentHeight), (float) w - m, h - m - (i * segmentHeight), (float) m);
-		
+
         gOff.fillRect ((float) m, h - m - (i * segmentHeight), segWidth, segmentHeight);
 		gOff.setColour (Colours::black);
 		gOff.drawLine ((float) m, h - m - (i * segmentHeight), (float) w - m, h - m - (i * segmentHeight), (float) m);
 	}
-	
+
 	gOn.setColour (Colours::black);
-	gOn.drawRect (0, 0, w, h, m);    
+	gOn.drawRect (0, 0, w, h, m);
 
     gOff.setColour (Colours::black);
-	gOff.drawRect (0, 0, w, h, m);    
+	gOff.drawRect (0, 0, w, h, m);
 
     needsRepaint = true;
 }
@@ -132,31 +132,31 @@ void SegmentedMeter::paint (Graphics &g)
 	const int w = getWidth();
 	const int h = getHeight();
 
-    if (onImage.isValid()) 
+    if (onImage.isValid())
     {
         const int onHeight = roundToInt ((numSegs.getCurrent() / (float) totalNumSegs) * onImage.getHeight());
         const int offHeight = h - onHeight;
-        
+
 //        g.drawImage (onImage,
-//                     0, offHeight, w, onHeight, 
+//                     0, offHeight, w, onHeight,
 //                     0, offHeight, w, onHeight,
 //                     false);
 //
 //        g.drawImage (offImage,
-//                     0, 0, w, offHeight, 
+//                     0, 0, w, offHeight,
 //                     0, 0, w, offHeight,
 //                     false);
         g.drawImage (onImage,
                      0, 0, w, h,
                      0, 0, w, h,
                      false);
-        
+
         g.drawImage (offImage,
-                     0, 0, w, offHeight, 
+                     0, 0, w, offHeight,
                      0, 0, w, offHeight,
                      false);
     }
-    
+
     needsRepaint = false;
 }
 
@@ -168,19 +168,18 @@ void SegmentedMeter::process()
 		for (int i = 0; i < numSamples; ++i)
 		{
 			float sample = fabsf (samples[i]);
-			
+
 			if (sample > sampleMax)
 				sampleMax = sample;
-			
-			if (++sampleCount == samplesToCount) 
+
+			if (++sampleCount == samplesToCount)
             {
 				if (sampleMax > level.getCurrent())
 					level = sampleMax;
-				
+
 				sampleMax = 0.0f;
 				sampleCount = 0;
 			}
 		}
 	}
 }
-

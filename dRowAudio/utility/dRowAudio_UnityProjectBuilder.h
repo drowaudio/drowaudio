@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -34,17 +34,17 @@
 
 //==============================================================================
 /**
-    Nifty class that bundles up all the source files in an existing Introjucer 
+    Nifty class that bundles up all the source files in an existing Introjucer
     project and spits out a new project with a single "unity build" file to compile.
- 
-    This is similar to how the JUCE module system works and can greatly improve 
-    build times on slow or single core CPUs. The main advantage here is when 
-    building large projects over VM's where mapping files across the virtual 
+
+    This is similar to how the JUCE module system works and can greatly improve
+    build times on slow or single core CPUs. The main advantage here is when
+    building large projects over VM's where mapping files across the virtual
     memory space takes a long time.
- 
+
     If memory is a problem you can split the build between several files.
- 
-    To use it just create one of these with an existing Introjcuer project and 
+
+    To use it just create one of these with an existing Introjcuer project and
     call the run() method. It will create a unity cpp file in the project's source
     directory and a new Introjucer project that still references all teh same files
     so you can browse and edit them but only compiles the unity build.
@@ -55,33 +55,33 @@ public:
     //==============================================================================
     /** Creates a UnityProjectBuilder for a given Introjucer project. */
     UnityProjectBuilder (const File& sourceProject);
-    
+
     /** Destructor. */
     ~UnityProjectBuilder();
 
     /** Actually starts the project parsing and generation.
      */
     bool run();
-    
+
     /** Optionally sets a number of files to split the unity build into. This could
-        speed up compile times on multicore CPUs. A good idea might be to set 
+        speed up compile times on multicore CPUs. A good idea might be to set
         SystemStats::getNumCpus()
      */
     void setNumFilesToSplitBetween (int numFiles);
-    
+
     /** Sets whether the progress should be written to std::out or not.
         By default this is off but is useful in command line apps.
      */
     void setLogOutput (bool shouldOutput);
-    
+
     /** Sets the name to use for the output file.
      */
     void setUnityFileName (const String& fileName);
-    
+
     /** Returns the name to be used for the output file.
      */
     String getUnityFileName() const noexcept    {   return unityName;   }
-    
+
     /** If this is not an empty string it will set the build directory of the given
         project to this. This means you can have normal and unity projects running in tandem.
         Note that this will replace everything except the exporter name.
@@ -132,7 +132,7 @@ private:
     static bool isValidSourceFile (const File& file);
     static File getExeFromApp (const File& app);
     static String createAlphaNumericUID();
-    
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UnityProjectBuilder)
 };

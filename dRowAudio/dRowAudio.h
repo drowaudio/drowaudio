@@ -1,3 +1,6 @@
+
+
+
 /*
   ==============================================================================
 
@@ -19,11 +22,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -55,7 +58,7 @@
   All platforms supported by JUCE are also supported by dRowAudio. Currently these
   platforms include:
 
-  - **Windows**: Applications and VST/RTAS/NPAPI/ActiveX plugins can be built 
+  - **Windows**: Applications and VST/RTAS/NPAPI/ActiveX plugins can be built
   using MS Visual Studio. The results are all fully compatible with Windows
   XP, Vista or Windows 7.
 
@@ -100,28 +103,28 @@
   Copyright (C) 2013 by David Rowland ([e-mail][0])
 
   dRowAudio is provided under the terms of The MIT License (MIT):
- 
+
   Permission is hereby granted, free of charge, to any person obtaining a copy of
   this software and associated documentation files (the "Software"), to deal in the
   Software without restriction, including without limitation the rights to use,
   copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
   Software, and to permit persons to whom the Software is furnished to do so,
   subject to the following conditions:
- 
+
   The above copyright notice and this permission notice shall be included in all
   copies or substantial portions of the Software.
- 
+
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
   FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
   COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
   IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- 
+
   Some portions of the software including but not limited to [SoundTouch][5] and
   [FFTReal][6] are included with in the repository but released under separate
   licences. Please see the individual source files for details.
- 
+
   [0]: mailto:dave@drowaudio.co.uk "David Rowland (Email)"
   [1]: http://www.rawmaterialsoftware.com/wiki/index.php/Coding_Standards
   [2]: https://github.com/drowaudio/drowaudio
@@ -131,7 +134,7 @@
   [6]: http://ldesoras.free.fr/prod.html
   [7]: http://www.gnu.org/licenses/gpl-2.0.html
   [8]: http://www.opensource.org/licenses/mit-license.html "The MIT License"
- 
+
   @author David Rowland (<a href="mailto:dave@drowaudio.co.uk">email</a>)
   @version 1.0
   @date 2008
@@ -173,7 +176,7 @@
 //=============================================================================
 /** Config: DROWAUDIO_USE_FFTREAL
     Enables the FFTReal library. By default this is enabled except on the Mac
-    where the Accelerate framework is preferred. However, if you do explicity 
+    where the Accelerate framework is preferred. However, if you do explicity
     enable this setting fftreal can be used for testing purposes.
  */
 #ifndef DROWAUDIO_USE_FFTREAL
@@ -326,7 +329,7 @@ using juce::UnitTest;
 
 #ifndef __DROWAUDIO_SPECTROGRAPH_H__
  #include "gui/dRowAudio_Spectrograph.h"
-#endif 
+#endif
  #ifndef __DROWAUDIO_SPECTROSCOPE_H__
  #include "gui/dRowAudio_Spectroscope.h"
 #endif
@@ -378,7 +381,7 @@ using juce::UnitTest;
 
 #ifndef __DROWAUDIO_DRAGGABLEWAVEDISPLAY_H__
  #include "gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h"
-#endif 
+#endif
  #ifndef __DROWAUDIO_DEFAULTCOLOURS_H__
  #include "gui/dRowAudio_DefaultColours.h"
 #endif
@@ -390,7 +393,7 @@ using juce::UnitTest;
 
 #ifndef __DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H__
  #include "maths/dRowAudio_CumulativeMovingAverage.h"
-#endif 
+#endif
 
 #ifndef __DROWAUDIO_BEZIERCURVE_H__
  #include "maths/dRowAudio_BezierCurve.h"
@@ -412,17 +415,17 @@ using juce::UnitTest;
 // network
 #ifndef __DROWAUDIO_CURLMANAGER_H__
  #include "network/dRowAudio_CURLManager.h"
-#endif 
+#endif
 
 #ifndef __DROWAUDIO_CURLEASYSESSION_H__
  #include "network/dRowAudio_CURLEasySession.h"
-#endif 
+#endif
 
 // streams
 #ifndef __DROWAUDIO_STREAMANDFILEHANDLER_H__
  #include "audio/dRowAudio_StreamAndFileHandler.h"
 #endif
-    
+
 #ifndef __DROWAUDIO_MEMORYINPUTSOURCE_H__
  #include "streams/dRowAudio_MemoryInputSource.h"
 #endif
@@ -438,7 +441,7 @@ using juce::UnitTest;
 
 #ifndef __DROWAUDIO_DEBUGOBJECT_H__
  #include "utility/dRowAudio_DebugObject.h"
-#endif 
+#endif
  #ifndef __DROWAUDIO_ENCRYPTEDSTRING_H__
  #include "utility/dRowAudio_EncryptedString.h"
 #endif
@@ -449,7 +452,7 @@ using juce::UnitTest;
 
 #ifndef __UNITYPROJECTBUILDER_H_27A8CF68__
  #include "utility/dRowAudio_UnityProjectBuilder.h"
-#endif 
+#endif
  #ifndef __DROWAUDIO_UTILITY_H__
  #include "utility/dRowAudio_Utility.h"
 #endif
@@ -488,4 +491,4 @@ using juce::UnitTest;
  #pragma clang diagnostic pop
 #endif
 
-#endif //_DROWAUDIOHEADER_H_
+#endif //_DROWAUDIOHEADER_H

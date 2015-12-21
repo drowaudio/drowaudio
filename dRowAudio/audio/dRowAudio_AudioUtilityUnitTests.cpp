@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -37,12 +37,12 @@ class AudioUtilityUnitTests  : public UnitTest
 {
 public:
     AudioUtilityUnitTests() : UnitTest ("AudioUtilityUnitTests") {}
-    
+
     void runTest()
     {
         beginTest ("AudioUtilityUnitTests");
-        
-        
+
+
         expectEquals (semitonesToPitchRatio (12.0), 2.0);
         expectEquals (semitonesToPitchRatio (-12.0), 0.5);
         expectEquals (semitonesToPitchRatio (-24.0), 0.25);
@@ -60,11 +60,11 @@ class AudioSampleBufferUnitTests  : public UnitTest
 {
 public:
     AudioSampleBufferUnitTests() : UnitTest ("AudioSampleBufferUnitTests") {}
-    
+
     void runTest()
     {
         beginTest ("AudioSampleBufferUnitTests");
-        
+
         {
             AudioSampleBuffer buffer (1, 512);
             expect (isAudioSampleBuffer (buffer.getArrayOfReadPointers(), getNumBytesForAudioSampleBuffer (buffer)));
@@ -74,7 +74,7 @@ public:
             AudioSampleBuffer buffer (6, 1024);
             expect (isAudioSampleBuffer (buffer.getArrayOfReadPointers(), getNumBytesForAudioSampleBuffer (buffer)));
         }
-        
+
         {
             AudioSampleBuffer buffer (3, 256);
 

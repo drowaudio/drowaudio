@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -45,10 +45,10 @@
     If you do want to e.g. for saving to a file etc. never hang on for long to
     avoid deleting any variables it may be referencing. Simply create one on the
     stack and immidiately use its toString() method.
- 
+
     Alternatively just use one of the statis convertToString methods to convert
     almost any common JUCE object to a string.
-    
+
     @example
     @code
         ValueTree myValueTree ("my_tree_type");
@@ -122,7 +122,7 @@ public:
         xmlType,
         valueTreeType
     };
-    
+
     //==============================================================================
     explicit DebugObject (const XmlElement* arg)
         : type (xmlType), objectXml (arg) {}
@@ -142,7 +142,7 @@ public:
             default:                return String::empty;
         }
     }
-    
+
 private:
     //==============================================================================
     ObjectType type;
@@ -155,14 +155,14 @@ private:
     {
         if (xml == nullptr)
             return "invalid XmlElement";
-        
+
         return String (newLine) + xml->createDocument (String::empty, false, includeXmlHeader);
     }
 
     String getStringFromValueTree() const
     {
         ScopedPointer<XmlElement> treeAsXml (objectValueTree.createXml());
-        
+
         return treeAsXml == nullptr ? "invalid ValueTree" : getStringFromXml (treeAsXml, false);
     }
 

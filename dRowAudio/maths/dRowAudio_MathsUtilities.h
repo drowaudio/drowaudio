@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -46,7 +46,7 @@ class Reciprocal
 public:
     /** Creates a 1/1 value/reciprocal pair. */
     Reciprocal()                                        { set (1.0); }
-    
+
     /** Creates a 1/x value/reciprocal pair. */
     Reciprocal (FloatingPointType initalValue)          { set (initalValue); }
 
@@ -55,7 +55,7 @@ public:
 
     /** Returns the value. */
     FloatingPointType getValue() const noexcept         { return value; }
-    
+
     /** Returns the reciprocal. */
     FloatingPointType getReciprocal() const noexcept    { return reciprocal; }
 
@@ -65,7 +65,7 @@ public:
         jassert (newValue != 0);
         value = newValue;
         reciprocal = (FloatingPointType) (1.0 / value);
-        
+
         return value;
     }
 
@@ -108,11 +108,11 @@ inline void findAbsoluteMax (const FloatingPointType* samples, int numSamples,
                              int& maxSampleLocation, FloatingPointType& maxSampleValue) noexcept
 {
     maxSampleValue = 0;
-    
+
     for (int i = 0; i < numSamples; ++i)
     {
         const FloatingPointType absoluteSample = fabs (samples[i]);
-        
+
         if (absoluteSample > maxSampleValue)
         {
             maxSampleValue = absoluteSample;
@@ -127,13 +127,13 @@ inline void normalise (FloatingPointType* samples, int numSamples) noexcept
 {
     FloatingPointType max = 0;
     int location;
-    
+
     findAbsoluteMax (samples, numSamples, location, max);
-    
+
     if (max != 0)
     {
         const FloatingPointType oneOverMax = 1 / max;
-        
+
         for (int i = 0; i < numSamples; ++i)
             samples[i] *= oneOverMax;
     }
@@ -153,7 +153,7 @@ inline void square (FloatingPointType* samples, int numSamples)
 
 //==============================================================================
 /** Finds the autocorrelation of a set of given samples.
- 
+
     This will cross-correlate inputSamples with itself and put the result in
     output samples. Note that this uses a shrinking integration window, assuming
     values outside of numSamples are 0. This leads to an exponetially decreasing
@@ -165,17 +165,17 @@ inline void autocorrelate (const FloatingPointType* inputSamples, int numSamples
     for (int i = 0; i < numSamples; i++)
     {
         FloatingPointType sum = 0;
-        
+
         for (int j = 0; j < numSamples - i; j++)
             sum += inputSamples[j] * inputSamples[j + i];
-        
+
         outputSamples[i] = sum * (static_cast<FloatingPointType> (1) / numSamples);
     }
 }
 
 /** Finds the autocorrelation of a set of given samples using a
     square-difference function.
- 
+
     This will cross-correlate inputSamples with itself and put the result in
     output samples. Note that this uses a shrinking integration window, assuming
     values outside of numSamples are 0. This leads to an exponetially decreasing
@@ -187,16 +187,16 @@ inline void sdfAutocorrelate (const FloatingPointType* inputSamples, int numSamp
     for (int i = 0; i < numSamples; i++)
     {
         FloatingPointType sum = 0;
-        
+
         for (int j = 0; j < numSamples - i; j++)
             sum += squareNumber (inputSamples[j] - inputSamples[j + i]);
-            
+
         outputSamples[i] = sum;
     }
 }
 
 /** Performs a first order differential on the set of given samples.
- 
+
     This is the same as finding the difference between each sample and the previous.
     Note that outputSamples can point to the same location as inputSamples.
  */
@@ -204,7 +204,7 @@ template <typename FloatingPointType>
 inline void differentiate (const FloatingPointType* inputSamples, int numSamples, FloatingPointType* outputSamples) noexcept
 {
     FloatingPointType lastSample = 0.0;
-    
+
     for (int i = 0; i < numSamples; ++i)
     {
         FloatingPointType currentSample = inputSamples[i];
@@ -218,7 +218,7 @@ template <typename FloatingPointType>
 inline FloatingPointType findMean (const FloatingPointType* samples, int numSamples) noexcept
 {
     FloatingPointType total = 0;
-    
+
     for (int i = 0; i < numSamples; ++i)
         total += samples[i];
 
@@ -238,7 +238,7 @@ inline FloatingPointType findMedian (const FloatingPointType* samples, int numSa
         const int lowerIndex = int (numSamples / 2);
         const FloatingPointType lowerSample = samples[lowerIndex];
         const FloatingPointType upperSample = samples[lowerIndex + 1];
-        
+
         return (lowerSample + upperSample) / 2;
     }
 }
@@ -263,11 +263,11 @@ template <typename FloatingPointType>
 inline FloatingPointType findCorrectedVariance (const FloatingPointType* samples, int numSamples) noexcept
 {
     const FloatingPointType mean = findMean (samples, numSamples);
-    
+
     FloatingPointType total = 0;
     for (int i = 0; i < numSamples; ++i)
         total += squareNumber (samples[i] - mean);
-    
+
     return total / (numSamples - 1);
 }
 
@@ -283,10 +283,10 @@ template <typename FloatingPointType>
 inline FloatingPointType findRMS (const FloatingPointType* samples, int numSamples) noexcept
 {
     FloatingPointType sum = 0;
-    
+
     for (int i = 0; i < numSamples; ++i)
         sum += juce::square (*samples++);
-    
+
     return std::sqrt (sum / numSamples);
 }
 
@@ -361,7 +361,7 @@ inline static bool isnan (Type value)
     return std::isnan (value);
 #else
     volatile Type num = value;
-    
+
     return num != num;
 #endif
 }
@@ -384,7 +384,7 @@ inline Type sinc (const Type x) noexcept
 {
     if (x == 0)
         return static_cast<Type> (1);
-    
+
     return sin (x) / x;
 }
 
@@ -397,7 +397,7 @@ inline FloatingPointType sincPi (const FloatingPointType x) noexcept
 {
     if (x == 0)
         return static_cast<FloatingPointType> (1);
-    
+
     return static_cast<FloatingPointType> (std::sin (double_Pi * x) / (double_Pi * x));
 }
 

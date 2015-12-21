@@ -2,7 +2,7 @@
 ///
 /// Generic version of the x64 CPU detect routine.
 ///
-/// This file is for GNU & other non-Windows compilers, see 'cpu_detect_x64_win.cpp' 
+/// This file is for GNU & other non-Windows compilers, see 'cpu_detect_x64_win.cpp'
 /// for the Microsoft compiler version.
 ///
 /// Author        : Copyright (c) Olli Parviainen
@@ -75,6 +75,6 @@ uint detectCPUextensions(void)
 #ifdef x86_64
 	res += SUPPORT_3DNOW;
 #endif
-	
+
 	return res & ~_dwDisabledISA;
 }

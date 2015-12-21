@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -36,11 +36,11 @@
 
 //==============================================================================
 /** Parses an iTunes Xml library into a ValueTree using a background thread.
- 
+
     If the tree passed in already contains a generated library this will merge
     any new data from the file into it preserving any sub-trees or attributes
     that may have been added.
- 
+
     You shouldn't need to use this directly, use the higher-level iTunesLibrary
     instead.
  */
@@ -53,7 +53,7 @@ public:
      */
 	ITunesLibraryParser (const File& iTunesLibraryFileToUse, const ValueTree& elementToFill,
                          const CriticalSection& lockToUse);
-	
+
     /** Destructor.
      */
 	~ITunesLibraryParser();
@@ -68,11 +68,11 @@ public:
     /** Returns the lock being used.
      */
     const CriticalSection& getLock ()       {   return lock;        }
-    
+
 private:
     //==============================================================================
     const CriticalSection& lock;
-	
+
     const File iTunesLibraryFile;
 	ValueTree treeToFill, partialTree;
 	ScopedPointer<XmlElement> iTunesDatabase;

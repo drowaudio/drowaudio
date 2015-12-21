@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -36,7 +36,7 @@ AudioFilePlayer::AudioFilePlayer()
 {
     bufferingTimeSliceThread->startThread (3);
 	formatManager->registerBasicFormats();
-    
+
     commonInitialise();
 }
 
@@ -62,14 +62,14 @@ AudioFilePlayer::~AudioFilePlayer()
 void AudioFilePlayer::start()
 {
     audioTransportSource.start();
-    
+
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
 void AudioFilePlayer::stop()
 {
     audioTransportSource.stop();
-    
+
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
@@ -77,10 +77,10 @@ void AudioFilePlayer::startFromZero()
 {
 	if (audioFormatReaderSource == nullptr)
         return;
-	
+
 	audioTransportSource.setPosition (0.0);
 	audioTransportSource.start();
-    
+
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
@@ -90,7 +90,7 @@ void AudioFilePlayer::pause()
 		audioTransportSource.stop();
 	else
 		audioTransportSource.start();
-    
+
     listeners.call (&Listener::playerStoppedOrStarted, this);
 }
 
@@ -131,9 +131,9 @@ void AudioFilePlayer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToF
 }
 
 void AudioFilePlayer::setLooping (bool shouldLoop)
-{   
+{
     if (audioFormatReaderSource != nullptr)
-        audioFormatReaderSource->setLooping (shouldLoop); 
+        audioFormatReaderSource->setLooping (shouldLoop);
 }
 
 //==============================================================================
@@ -141,7 +141,7 @@ bool AudioFilePlayer::fileChanged (const File& file)
 {
     if (setSourceWithReader (formatManager->createReaderFor (file)))
         return true;
-    
+
     clear();
     return false;
 }
@@ -150,7 +150,7 @@ bool AudioFilePlayer::streamChanged (InputStream* inputStream)
 {
     if (setSourceWithReader (formatManager->createReaderFor (inputStream)))
         return true;
-    
+
     clear();
     return false;
 }
@@ -179,26 +179,26 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 	audioTransportSource.setSource (nullptr);
 
 	if (reader != nullptr)
-	{										
+	{
 		// we SHOULD let the AudioFormatReaderSource delete the reader for us..
 		audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
         audioTransportSource.setSource (audioFormatReaderSource, 32768,
                                         bufferingTimeSliceThread, reader->sampleRate);
-        
+
         if (shouldBeLooping)
             audioFormatReaderSource->setLooping (true);
-        
+
 		// let our listeners know that we have loaded a new file
 		audioTransportSource.sendChangeMessage();
         listeners.call (&Listener::fileChanged, this);
 
 		return true;
 	}
-	
+
     audioTransportSource.sendChangeMessage();
     listeners.call (&Listener::fileChanged, this);
 
-    return false;    
+    return false;
 }
 
 //==============================================================================

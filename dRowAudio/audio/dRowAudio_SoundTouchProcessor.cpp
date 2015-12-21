@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -38,7 +38,7 @@ SoundTouchProcessor::SoundTouchProcessor()
       interleavedOutputBufferSize (512)
 {
     setPlaybackSettings (settings);
-    
+
     interleavedInputBuffer.malloc (interleavedInputBufferSize * 2);
     interleavedOutputBuffer.malloc (interleavedOutputBufferSize * 2);
 }
@@ -58,22 +58,22 @@ void SoundTouchProcessor::initialise (int numChannels, double sampleRate)
 void SoundTouchProcessor::writeSamples (float** sourceChannelData, int numChannels, int numSamples, int startSampleOffset)
 {
     const int requiredBufferSize = numSamples * numChannels;
-    
-    if (interleavedInputBufferSize < requiredBufferSize) 
+
+    if (interleavedInputBufferSize < requiredBufferSize)
     {
         interleavedInputBuffer.malloc (requiredBufferSize);
         interleavedInputBufferSize = requiredBufferSize;
     }
-    
+
     for (int i = 0; i < numChannels; i++)
         sourceChannelData[i] += startSampleOffset;
-    
-    AudioDataConverters::interleaveSamples ((const float**) sourceChannelData, interleavedInputBuffer,                                        
+
+    AudioDataConverters::interleaveSamples ((const float**) sourceChannelData, interleavedInputBuffer,
                                             numSamples, numChannels);
-    
+
     for (int i = 0; i < numChannels; i++)
         sourceChannelData[i] -= startSampleOffset;
-    
+
     const ScopedLock sl (lock);
     soundTouch.putSamples ((SAMPLETYPE*) interleavedInputBuffer, numSamples);
 }
@@ -81,38 +81,38 @@ void SoundTouchProcessor::writeSamples (float** sourceChannelData, int numChanne
 void SoundTouchProcessor::readSamples (float** destinationChannelData, int numChannels, int numSamples, int startSampleOffset)
 {
     const int requiredBufferSize = numSamples * numChannels;
-    
-    if (interleavedOutputBufferSize < requiredBufferSize) 
+
+    if (interleavedOutputBufferSize < requiredBufferSize)
     {
         interleavedOutputBuffer.malloc (requiredBufferSize);
         interleavedOutputBufferSize = requiredBufferSize;
     }
-    
+
     int numSamplesDone = 0;
     int numThisTime = 0;
-    
+
     {
         const ScopedLock sl (lock);
-    
+
         for (;;)
         {
             const int maxNumSamples = numSamples - numSamplesDone;
             numThisTime = soundTouch.receiveSamples ((SAMPLETYPE*) &interleavedOutputBuffer[numChannels * numSamplesDone], maxNumSamples);
-            
+
             numSamplesDone += numThisTime;
-            
+
             if (numSamplesDone == numSamples || numThisTime == 0)
                 break;
         }
     }
-    
+
     if (numSamplesDone < numSamples)
         zeromem (&interleavedOutputBuffer[numChannels * numSamplesDone], numChannels * sizeof (numSamples - numSamplesDone));
-    
+
     for (int i = 0; i < numChannels; i++)
         destinationChannelData[i] += startSampleOffset;
-    
-    AudioDataConverters::deinterleaveSamples (interleavedOutputBuffer, destinationChannelData,                                        
+
+    AudioDataConverters::deinterleaveSamples (interleavedOutputBuffer, destinationChannelData,
                                               numSamples, numChannels);
     for (int i = 0; i < numChannels; i++)
         destinationChannelData[i] -= startSampleOffset;
@@ -121,7 +121,7 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
 void SoundTouchProcessor::setPlaybackSettings (PlaybackSettings newSettings)
 {
     settings = newSettings;
-    
+
     const ScopedLock sl (lock);
     soundTouch.setRate (settings.rate);
     soundTouch.setTempo (settings.tempo);

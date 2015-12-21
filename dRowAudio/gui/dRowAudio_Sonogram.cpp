@@ -19,11 +19,11 @@
   copies or substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
   ==============================================================================
@@ -43,9 +43,9 @@ Sonogram::Sonogram (int fftSizeLog2)
 
 	fftEngine.setWindowType (Window::Hann);
 	numBins = fftEngine.getFFTProperties().fftSizeHalved;
-    
+
     circularBuffer.reset();
-    
+
     scopeImage = Image (Image::RGB,
                         100, 100,
                         false);
@@ -101,7 +101,7 @@ void Sonogram::timerCallback()
 void Sonogram::process()
 {
     jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
-    
+
     while (circularBuffer.getNumAvailable() > fftEngine.getFFTSize())
 	{
 		circularBuffer.readSamples (tempBlock.getData(), fftEngine.getFFTSize());
@@ -109,13 +109,13 @@ void Sonogram::process()
 		fftEngine.findMagnitudes();
 
         renderScopeLine();
-        
+
 		needsRepaint = true;
 	}
 }
 
 void Sonogram::flagForRepaint()
-{	
+{
     needsRepaint = true;
     repaint();
 }
@@ -128,17 +128,17 @@ void Sonogram::renderScopeLine()
                                  scopeImage.getWidth(), scopeImage.getHeight());
 
     const int h = scopeImage.getHeight();
-    
+
     Graphics g (scopeImage);
     const int x = scopeImage.getWidth() - (int) scopeLineW;
-        
+
     const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
     const float yScale = (float) h / (numBins + 1);
     const float* data = fftEngine.getMagnitudesBuffer().getData();
-    
+
     float amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[0]) / 100.0f)));
     float y2, y1 = 0;
-    
+
     if (logFrequency)
     {
         for (int i = 0; i < numBins; ++i)
@@ -148,9 +148,9 @@ void Sonogram::renderScopeLine()
 
             g.setColour (Colour::greyLevel (amp));
             g.fillRect ((float)x, h - y2, scopeLineW, y1 - y2);
-            
+
             y1 = y2;
-        }	
+        }
     }
     else
     {
@@ -158,12 +158,12 @@ void Sonogram::renderScopeLine()
         {
             amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[i]) / 100.0f)));
             y2 = (i + 1) * yScale;
-            
+
             g.setColour (Colour::greyLevel (amp));
             g.fillRect ((float) x, h - y2, scopeLineW, y1 - y2);
 
             y1 = y2;
-        }	
+        }
     }
 }
 
