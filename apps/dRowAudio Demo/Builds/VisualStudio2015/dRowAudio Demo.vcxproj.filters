@@ -365,12 +365,6 @@
     <Filter Include="Juce Modules\juce_opengl\native">
       <UniqueIdentifier>{151B49D8-6102-F802-1C07-D59931BC0574}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Juce Modules\juce_osc">
-      <UniqueIdentifier>{1A62F82C-C14A-E14A-94DE-8A27E0F8A090}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Juce Modules\juce_osc\osc">
-      <UniqueIdentifier>{3D19F603-7985-B222-DFDA-9B83329ACA9D}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Juce Modules\juce_tracktion_marketplace">
       <UniqueIdentifier>{1A956A34-A2BA-5894-7841-93F85BA2ADF1}</UniqueIdentifier>
     </Filter>
@@ -1828,30 +1822,6 @@
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_opengl\utils\juce_OpenGLAppComponent.cpp">
       <Filter>Juce Modules\juce_opengl\utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.cpp">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.cpp">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.cpp">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.cpp">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.cpp">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.cpp">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.cpp">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.cpp">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\marketplace\juce_OnlineUnlockForm.cpp">
       <Filter>Juce Modules\juce_tracktion_marketplace\marketplace</Filter>
     </ClCompile>
@@ -1928,9 +1898,6 @@
       <Filter>Juce Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_opengl\juce_opengl.cpp">
-      <Filter>Juce Library Code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\juce_tracktion_marketplace.cpp">
@@ -3621,33 +3588,6 @@
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_opengl\juce_opengl.h">
       <Filter>Juce Modules\juce_opengl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.h">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.h">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.h">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.h">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.h">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.h">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.h">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.h">
-      <Filter>Juce Modules\juce_osc\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.h">
-      <Filter>Juce Modules\juce_osc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\marketplace\juce_KeyFileGeneration.h">
       <Filter>Juce Modules\juce_tracktion_marketplace\marketplace</Filter>
     </ClInclude>
@@ -3739,9 +3679,6 @@
     </None>
     <None Include="..\..\..\..\..\JUCE\modules\juce_opengl\juce_module_info">
       <Filter>Juce Modules\juce_opengl</Filter>
-    </None>
-    <None Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_module_info">
-      <Filter>Juce Modules\juce_osc</Filter>
     </None>
     <None Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\juce_module_info">
       <Filter>Juce Modules\juce_tracktion_marketplace</Filter>

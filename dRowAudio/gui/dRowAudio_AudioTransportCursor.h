@@ -111,7 +111,7 @@ private:
     void setPlayerPosition (int mousePosX, bool ignoreAnyLoopPoints);
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioTransportCursor);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioTransportCursor)
 };
 
 #endif // DROWAUDIO_AUDIOTRANSPORTCURSOR_H

@@ -96,7 +96,7 @@ private:
     void resetFilters();
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilteringAudioSource);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilteringAudioSource)
 };
 
 #endif //DROWAUDIO_FILTERINGAUDIOSOURCE_H

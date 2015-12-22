@@ -237,7 +237,7 @@ private:
     void createChannels (int length);
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColouredAudioThumbnail);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColouredAudioThumbnail)
 };
 
 

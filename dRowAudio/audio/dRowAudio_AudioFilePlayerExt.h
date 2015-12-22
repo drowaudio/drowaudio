@@ -137,7 +137,7 @@ private:
     void updateLoopTimes();
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayerExt)
 };
 
 #endif // DROWAUDIO_USE_SOUNDTOUCH

@@ -219,7 +219,7 @@ private:
     void commonInitialise();
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayer);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFilePlayer)
 };
 
 #endif // DROWAUDIO_AUDIOFILEPLAYER_H

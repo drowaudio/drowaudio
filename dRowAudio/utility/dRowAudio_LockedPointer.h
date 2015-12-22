@@ -85,7 +85,7 @@ private:
     LockType& lock;
     const ScopedLockType scopedLock;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LockedPointer);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LockedPointer)
 };
 
 

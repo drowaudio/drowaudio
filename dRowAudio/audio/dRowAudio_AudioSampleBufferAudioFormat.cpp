@@ -112,7 +112,7 @@ private:
         return sampleStartByte;
     }
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioSampleBufferReader);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioSampleBufferReader)
 };
 
 //==============================================================================

@@ -87,7 +87,7 @@ private:
 
     FFTDemo* fftDemo;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 
 #endif  // MAIN_COMPONENT_H

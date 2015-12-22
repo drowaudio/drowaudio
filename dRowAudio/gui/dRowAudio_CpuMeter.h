@@ -74,7 +74,7 @@ private:
     double currentCpuUsage;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CpuMeter);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CpuMeter)
 };
 
 #endif    //DROWAUDIO_CPUMETER_H

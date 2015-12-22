@@ -72,7 +72,7 @@ private:
     ScopedPointer<WildcardFileFilter> wildcard;
     ColumnFileBrowserContents* fileBrowser;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowser);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowser)
 };
 
 #endif //DROWAUDIO_COLUMNFILEBROWSER_H

@@ -150,6 +150,7 @@
     #include <Accelerate/Accelerate.h>
     #undef Point
     #undef Component
+    #undef MemoryBlock
 #endif
 
 #undef min
@@ -216,6 +217,7 @@
 namespace drow
 {
     using namespace juce;
+    using juce::MemoryBlock;
 
     #include "audio/dRowAudio_AudioFilePlayer.h"
     #include "audio/dRowAudio_AudioFilePlayerExt.h"

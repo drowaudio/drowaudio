@@ -97,7 +97,7 @@ private:
     void renderScopeImage();
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectroscope);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Spectroscope)
 };
 
 #endif

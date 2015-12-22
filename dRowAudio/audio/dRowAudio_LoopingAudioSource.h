@@ -102,7 +102,7 @@ private:
     AudioSampleBuffer tempBuffer;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopingAudioSource);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopingAudioSource)
 };
 
 #endif   // DROWAUDIO_LOOPINGAUDIOSOURCE_H

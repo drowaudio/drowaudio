@@ -189,7 +189,7 @@ private:
     static int internalProgressCallback (CURLEasySession* session, double dltotal, double dlnow, double ultotal, double ulnow);
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CURLEasySession);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CURLEasySession)
 };
 
 #endif

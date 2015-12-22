@@ -94,7 +94,7 @@ public:
 
 private:
     //==============================================================================
-    JUCE_LEAK_DETECTOR (BiquadFilter);
+    JUCE_LEAK_DETECTOR (BiquadFilter)
 };
 
 

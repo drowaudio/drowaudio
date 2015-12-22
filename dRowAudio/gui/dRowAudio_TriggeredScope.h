@@ -127,7 +127,7 @@ private:
     void renderImage();
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TriggeredScope);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TriggeredScope)
 };
 
 #endif  // DROWAUDIO_TRIGGERED_SCOPE_H

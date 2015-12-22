@@ -86,7 +86,7 @@ private:
     String timeAsString;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Clock);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Clock)
 };
 
 #endif  // DROWAUDIO_CLOCK_H

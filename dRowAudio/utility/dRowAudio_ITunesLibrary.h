@@ -141,7 +141,7 @@ private:
     ValueTree libraryTree;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibrary);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibrary)
 };
 
 #endif  // DROWAUDIO_ITUNESLIBRARY_H

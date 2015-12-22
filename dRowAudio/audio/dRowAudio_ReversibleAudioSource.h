@@ -74,7 +74,7 @@ private:
     bool volatile isForwards;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReversibleAudioSource);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReversibleAudioSource)
 };
 
 #endif   // DROWAUDIO_REVERSIBLEAUDIOSOURCE_H

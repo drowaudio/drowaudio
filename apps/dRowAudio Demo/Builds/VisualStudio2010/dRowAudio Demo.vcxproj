@@ -1543,30 +1543,6 @@
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_opengl\utils\juce_OpenGLAppComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\marketplace\juce_OnlineUnlockForm.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1607,7 +1583,6 @@
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_gui_basics\juce_gui_basics.cpp"/>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.cpp"/>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_opengl\juce_opengl.cpp"/>
-    <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.cpp"/>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\juce_tracktion_marketplace.cpp"/>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_video\juce_video.cpp"/>
   </ItemGroup>
@@ -2172,15 +2147,6 @@
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_opengl\native\juce_OpenGL_win32.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_opengl\native\juce_OpenGLExtensions.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_opengl\juce_opengl.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.h"/>
-    <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\marketplace\juce_KeyFileGeneration.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\marketplace\juce_OnlineUnlockForm.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\marketplace\juce_OnlineUnlockStatus.h"/>
@@ -2213,7 +2179,6 @@
     <None Include="..\..\..\..\..\JUCE\modules\juce_gui_basics\juce_module_info"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_module_info"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_opengl\juce_module_info"/>
-    <None Include="..\..\..\..\..\JUCE\modules\juce_osc\juce_module_info"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\juce_module_info"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_video\juce_module_info"/>
   </ItemGroup>

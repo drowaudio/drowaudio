@@ -56,7 +56,7 @@ private:
     bool useFileTimeInHashGeneration;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MemoryInputSource);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MemoryInputSource)
 };
 
 #endif  // DROWAUDIO_MEMORYINPUTSOURCE_H

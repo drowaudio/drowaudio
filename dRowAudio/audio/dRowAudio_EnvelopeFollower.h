@@ -63,7 +63,7 @@ private:
     float envelope, envAttack, envRelease;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EnvelopeFollower);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EnvelopeFollower)
 };
 
 #endif // DROWAUDIO_ENVELOPEFOLLOWER_H

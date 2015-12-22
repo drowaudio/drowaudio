@@ -257,7 +257,7 @@ private:
     //==============================================================================
     ValueTree tree;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferenceCountedValueTree);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferenceCountedValueTree)
 };
 
 //==============================================================================
@@ -306,7 +306,7 @@ private:
     //==============================================================================
     Identifier identifier;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferenceCountedIdentifier);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferenceCountedIdentifier)
 };
 
 //==============================================================================
@@ -363,7 +363,7 @@ private:
     //==============================================================================
     MemoryBlock memoryBlock;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferencedCountedMemoryBlock);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferencedCountedMemoryBlock)
 };
 
 //==============================================================================
@@ -491,7 +491,7 @@ private:
     ValueTree tree;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ScopedValueTreeFile);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ScopedValueTreeFile)
 };
 
 //==============================================================================

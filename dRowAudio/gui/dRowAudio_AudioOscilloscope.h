@@ -108,7 +108,7 @@ private:
     Colour backgroundColour, traceColour;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioOscilloscope);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioOscilloscope)
 };
 
 #endif //DROWAUDIO_AUDIOOSCILLOSCOPE_H

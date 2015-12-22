@@ -65,7 +65,7 @@ private:
     Slider sonogramSpeedSlider;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTDemo);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTDemo)
 };
 
 #endif //DROWAUDIODEMO_FFTDEMO_H

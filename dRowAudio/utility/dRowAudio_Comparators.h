@@ -149,7 +149,7 @@ namespace XmlComparators
         const String attributeToSort;
         const int direction;
 
-        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LexicographicSorter);
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LexicographicSorter)
     };
 
     //==============================================================================
@@ -181,7 +181,7 @@ namespace XmlComparators
         const String attributeToSort;
         const int direction;
 
-        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NumberDataSorter);
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NumberDataSorter)
     };
 }
 

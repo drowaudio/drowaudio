@@ -236,7 +236,7 @@ private:
     }
 
     //==============================================================================
-    JUCE_LEAK_DETECTOR (Pitch);
+    JUCE_LEAK_DETECTOR (Pitch)
 };
 
 

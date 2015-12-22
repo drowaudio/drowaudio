@@ -79,7 +79,7 @@ private:
     int numValues;
 
     //==============================================================================
-    JUCE_LEAK_DETECTOR (CumulativeMovingAverage);
+    JUCE_LEAK_DETECTOR (CumulativeMovingAverage)
 };
 
 #endif //DROWAUDIO_CUMULATIVEMOVINGAVERAGE_H

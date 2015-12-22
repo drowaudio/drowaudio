@@ -64,7 +64,7 @@ public:
 
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioSampleBufferAudioFormat);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioSampleBufferAudioFormat)
 };
 
 #endif // DROWAUDIO_AUDIOSAMPLEBUFFERAUDIOFORMAT_H

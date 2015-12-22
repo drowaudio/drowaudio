@@ -56,7 +56,7 @@ private:
     TextButton resetButton, bypassButton;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionDemo);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionDemo)
 };
 
 #endif  // DISTORTION_DEMO_H

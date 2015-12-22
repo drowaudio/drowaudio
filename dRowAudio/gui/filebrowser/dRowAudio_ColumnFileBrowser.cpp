@@ -88,7 +88,7 @@ public:
 private:
     bool fileDragEnabled;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BrowserColumn);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BrowserColumn)
 };
 
 //==================================================================================
@@ -294,7 +294,7 @@ private:
     ScopedPointer<LookAndFeel> activeLookAndFeel;
     ScopedPointer<LookAndFeel> inactiveLookAndFeel;
 
-    //================================================================================#==
+    //==================================================================================
     int getNumValidChildFiles (const File& sourceFile) const
     {
         return sourceFile.getNumberOfChildFiles (File::findFilesAndDirectories + File::ignoreHiddenFiles,
@@ -304,7 +304,7 @@ private:
     }
 
     //==================================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowserContents);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowserContents)
 };
 
 //==================================================================================

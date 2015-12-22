@@ -5471,109 +5471,6 @@
         </File>
         <File RelativePath="..\..\..\..\..\JUCE\modules\juce_opengl\juce_opengl.h"/>
       </Filter>
-      <Filter Name="juce_osc">
-        <Filter Name="osc">
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCAddress.h"/>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCArgument.h"/>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCBundle.h"/>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCMessage.h"/>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCReceiver.h"/>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCSender.h"/>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTimeTag.h"/>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\osc\juce_OSCTypes.h"/>
-        </Filter>
-        <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\juce_module_info">
-          <FileConfiguration Name="Debug|Win32"
-                             ExcludedFromBuild="true">
-            <Tool Name="VCCLCompilerTool"/>
-          </FileConfiguration>
-          <FileConfiguration Name="Release|Win32"
-                             ExcludedFromBuild="true">
-            <Tool Name="VCCLCompilerTool"/>
-          </FileConfiguration>
-        </File>
-        <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.h"/>
-      </Filter>
       <Filter Name="juce_tracktion_marketplace">
         <Filter Name="marketplace">
           <File RelativePath="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\marketplace\juce_KeyFileGeneration.h"/>
@@ -5717,7 +5614,6 @@
       <File RelativePath="..\..\..\..\..\JUCE\modules\juce_gui_basics\juce_gui_basics.cpp"/>
       <File RelativePath="..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.cpp"/>
       <File RelativePath="..\..\..\..\..\JUCE\modules\juce_opengl\juce_opengl.cpp"/>
-      <File RelativePath="..\..\..\..\..\JUCE\modules\juce_osc\juce_osc.cpp"/>
       <File RelativePath="..\..\..\..\..\JUCE\modules\juce_tracktion_marketplace\juce_tracktion_marketplace.cpp"/>
       <File RelativePath="..\..\..\..\..\JUCE\modules\juce_video\juce_video.cpp"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>

@@ -92,7 +92,7 @@ private:
     EncryptedString();      // don't instantiate this object, just use its static methods!
     ~EncryptedString();
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EncryptedString);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EncryptedString)
 };
 
 #endif // JUCE_MODULE_AVAILABLE_juce_cryptography

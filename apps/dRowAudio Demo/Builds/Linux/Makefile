@@ -82,7 +82,6 @@ OBJECTS := \
   $(OBJDIR)/juce_gui_basics_d5c7a3e1.o \
   $(OBJDIR)/juce_gui_extra_13d359a9.o \
   $(OBJDIR)/juce_opengl_6fe9682d.o \
-  $(OBJDIR)/juce_osc_3f1ff649.o \
   $(OBJDIR)/juce_tracktion_marketplace_305e0fc9.o \
   $(OBJDIR)/juce_video_72be35c9.o \
 
@@ -266,11 +265,6 @@ $(OBJDIR)/juce_gui_extra_13d359a9.o: ../../../../../JUCE/modules/juce_gui_extra/
 $(OBJDIR)/juce_opengl_6fe9682d.o: ../../../../../JUCE/modules/juce_opengl/juce_opengl.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling juce_opengl.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/juce_osc_3f1ff649.o: ../../../../../JUCE/modules/juce_osc/juce_osc.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling juce_osc.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/juce_tracktion_marketplace_305e0fc9.o: ../../../../../JUCE/modules/juce_tracktion_marketplace/juce_tracktion_marketplace.cpp

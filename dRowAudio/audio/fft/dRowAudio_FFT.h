@@ -126,6 +126,9 @@ public:
      */
     FFT (int fftSizeLog2);
 
+    /** Destructor */
+    ~FFT();
+
     /** Changes the FFT size. */
     void setFFTSizeLog2 (int newFFTSize);
 

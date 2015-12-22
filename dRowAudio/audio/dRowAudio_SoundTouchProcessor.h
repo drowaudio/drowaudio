@@ -148,7 +148,7 @@ private:
     PlaybackSettings settings;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchProcessor);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchProcessor)
 };
 
 #endif

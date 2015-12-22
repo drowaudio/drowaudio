@@ -62,7 +62,7 @@ private:
     bool isBypassed;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BufferTransformAudioSource);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BufferTransformAudioSource)
 };
 
 #endif //BUFFER_TRANSFORM_AUDIO_SOURCE_H

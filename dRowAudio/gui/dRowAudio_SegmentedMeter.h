@@ -110,7 +110,7 @@ public:
     }
 
     /** Processes the channel data for the value to display. */
-    virtual void process();
+    void process() override;
 
     //==============================================================================
     /** @internal */
@@ -135,7 +135,7 @@ private:
     Image onImage, offImage;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SegmentedMeter);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SegmentedMeter)
 };
 
 #endif //DROWAUDIO_SEGMENTEDMETER_H

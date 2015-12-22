@@ -168,15 +168,13 @@ void RemoteDirectoryListBox::itemDragExit (const SourceDetails&)
 
 void RemoteDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails)
 {
-    if (LocalDirectoryListBox* local = dynamic_cast<LocalDirectoryListBox*> (dragSourceDetails.sourceComponent.get()))
+    if (dynamic_cast<LocalDirectoryListBox*> (dragSourceDetails.sourceComponent.get()) != nullptr)
     {
-        DBG (dragSourceDetails.description.toString());
-        {
-            String localFileName (File (dragSourceDetails.description.toString()).getFileName());
+        const File file (dragSourceDetails.description.toString());
+        String localFileName (File (dragSourceDetails.description.toString()).getFileName());
 
-            session.setRemotePath (session.getRemotePath().upToLastOccurrenceOf ("/", true, false) + localFileName);
-            session.setLocalFile (File (dragSourceDetails.description.toString()));
-        }
+        session.setRemotePath (session.getRemotePath().upToLastOccurrenceOf ("/", true, false) + file.getFullPathName());
+        session.setLocalFile (file);
         session.beginTransfer (true);
     }
 

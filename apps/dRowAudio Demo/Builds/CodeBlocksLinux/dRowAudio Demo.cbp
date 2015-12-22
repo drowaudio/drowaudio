@@ -4260,78 +4260,6 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCAddress.cpp">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCAddress.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCArgument.cpp">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCArgument.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCBundle.cpp">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCBundle.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCMessage.cpp">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCMessage.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCReceiver.cpp">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCReceiver.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCSender.cpp">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCSender.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCTimeTag.cpp">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCTypes.cpp">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/osc/juce_OSCTypes.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/juce_module_info">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/juce_osc.h">
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
     <Unit filename="../../../../../JUCE/modules/juce_tracktion_marketplace/marketplace/juce_KeyFileGeneration.h">
       <Option compile="0"/>
       <Option link="0"/>
@@ -4440,7 +4368,6 @@
     <Unit filename="../../../../../JUCE/modules/juce_gui_basics/juce_gui_basics.cpp"/>
     <Unit filename="../../../../../JUCE/modules/juce_gui_extra/juce_gui_extra.cpp"/>
     <Unit filename="../../../../../JUCE/modules/juce_opengl/juce_opengl.cpp"/>
-    <Unit filename="../../../../../JUCE/modules/juce_osc/juce_osc.cpp"/>
     <Unit filename="../../../../../JUCE/modules/juce_tracktion_marketplace/juce_tracktion_marketplace.cpp"/>
     <Unit filename="../../../../../JUCE/modules/juce_video/juce_video.cpp"/>
     <Unit filename="../../JuceLibraryCode/JuceHeader.h">

@@ -129,7 +129,7 @@ public:
 
 private:
     //==============================================================================
-    Type current, previous;
+    Type previous, current;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StateVariable)

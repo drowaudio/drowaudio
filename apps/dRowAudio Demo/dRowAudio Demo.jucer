@@ -6,14 +6,14 @@
               companyName="dRowAudio">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" extraLinkerFlags="-lcurl"
-               bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall">
+               bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall&#10;-pedantic">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="64BitUniversal"
-                       headerPath="" defines=""/>
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="64BitUniversal"
+                       headerPath="" defines="" cppLanguageStandard="" cppLibType="libc++"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
-                       headerPath="" defines=""/>
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="64BitUniversal"
+                       headerPath="" defines="" cppLanguageStandard="" cppLibType="libc++"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
@@ -30,22 +30,23 @@
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" UIStatusBarHidden="1"
-                  bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall"
+                  bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall&#10;-pedantic"
                   extraLinkerFlags="-lcurl">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="" defines="" iosCompatibility="default"/>
+                       headerPath="" defines="" iosCompatibility="default" cppLanguageStandard=""
+                       cppLibType=""/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       headerPath="" defines="" iosCompatibility="default"/>
+                       headerPath="" defines="" iosCompatibility="default" cppLanguageStandard=""
+                       cppLibType=""/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
@@ -62,7 +63,6 @@
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
@@ -82,7 +82,6 @@
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
@@ -114,7 +113,6 @@
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
@@ -146,7 +144,6 @@
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
@@ -178,7 +175,6 @@
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
@@ -206,7 +202,6 @@
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
@@ -234,7 +229,6 @@
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
@@ -275,7 +269,6 @@
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
@@ -290,7 +283,6 @@
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
@@ -317,7 +309,6 @@
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
@@ -426,7 +417,6 @@
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_tracktion_marketplace" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
   </MODULES>

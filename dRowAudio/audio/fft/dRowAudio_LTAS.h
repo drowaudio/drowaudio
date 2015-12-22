@@ -80,7 +80,7 @@ private:
     Array<CumulativeMovingAverage> ltasAvg;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LTAS);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LTAS)
 };
 
 #endif

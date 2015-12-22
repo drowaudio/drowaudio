@@ -77,7 +77,7 @@ private:
     bool isInitialised;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionComponent);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionComponent)
 };
 
 #endif // DISTORTION_COMPONENT_H

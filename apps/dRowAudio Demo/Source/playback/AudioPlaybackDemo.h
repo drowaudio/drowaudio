@@ -90,7 +90,7 @@ private:
 
     friend class LoopComponent;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPlaybackDemo);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPlaybackDemo)
 };
 
 #endif  // __AUDIOPLAYBACKDEMO_H_4F99037A__
