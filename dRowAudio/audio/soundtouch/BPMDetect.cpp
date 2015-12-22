@@ -145,7 +145,7 @@ BPMDetect::BPMDetect(int numChannels, int aSampleRate)
 
     // allocate new working objects
     xcorr = new float[windowLen];
-    memset(xcorr, 0, windowLen * sizeof(float));
+    memset(xcorr, 0, (uint) windowLen * (uint) sizeof(float));
 
     // allocate processing buffer
     buffer = new FIFOSampleBuffer();
@@ -335,7 +335,7 @@ void BPMDetect::inputSamples(const SAMPLETYPE *samples, int numSamples)
 
         // envelope new samples and add them to buffer
         calcEnvelope(decimated, decSamples);
-        buffer->putSamples(decimated, decSamples);
+        buffer->putSamples(decimated, (uint) decSamples);
     }
 
     // when the buffer has enought samples for processing...
@@ -349,7 +349,7 @@ void BPMDetect::inputSamples(const SAMPLETYPE *samples, int numSamples)
         // ... calculate autocorrelations for oldest samples...
         updateXCorr(processLength);
         // ... and remove them from the buffer
-        buffer->receiveSamples(processLength);
+        buffer->receiveSamples((uint) processLength);
     }
 }
 

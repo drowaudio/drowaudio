@@ -66,7 +66,7 @@ public:
         {
             for (int i = numDestChannels; --i >= 0;)
                 if (destSamples[i] != nullptr)
-                    zeromem (destSamples[i] + startOffsetInDestBuffer, sizeof (int) * numSamples);
+                    zeromem (destSamples[i] + startOffsetInDestBuffer, sizeof (int) * (size_t) numSamples);
 
             numSamples = (int) samplesAvailable;
         }
@@ -77,7 +77,7 @@ public:
         while (numSamples > 0)
         {
             const int numThisTime = jmin (8192, numSamples);
-            const int numBytes = numThisTime * sizeof (float);
+            const int numBytes = numThisTime * (int) sizeof (float);
 
             for (int c = (int) numChannels; --c >= 0;)
             {
@@ -89,7 +89,7 @@ public:
                     if (c < (int) numChannels)
                         input->read (destSamples[c] + startOffsetInDestBuffer, numBytes);
                     else
-                        zeromem (destSamples[c] + startOffsetInDestBuffer, numBytes);
+                        zeromem (destSamples[c] + startOffsetInDestBuffer, (size_t) numBytes);
                 }
             }
 
@@ -106,8 +106,8 @@ private:
     int64 sampleToReadPosition (int channel, int64 samplePosition)
     {
         const size_t startPosition = (numChannels + 1) * sizeof (float*);
-        const int64 channelStartByte = startPosition + (channel * lengthInSamples * sizeof (float));
-        const int64 sampleStartByte = channelStartByte + (samplePosition * sizeof (float));
+        const int64 channelStartByte = (int64) startPosition + (channel * lengthInSamples * (int64) sizeof (float));
+        const int64 sampleStartByte = channelStartByte + (samplePosition * (int64) sizeof (float));
 
         return sampleStartByte;
     }

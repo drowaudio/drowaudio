@@ -33,7 +33,7 @@ TriggeredScope::TriggeredScope (TimeSliceThread* backgroundThreadToUse_)
     : backgroundThreadToUse (backgroundThreadToUse_, backgroundThreadToUse_ == nullptr ? true : false),
       numSamplesPerPixel (4), verticalZoomFactor (1.0f), triggerMode (Up), numLeftToAverage (numSamplesPerPixel),
       bufferSize (2048), bufferWritePos (0),
-      minBuffer (bufferSize), maxBuffer (bufferSize),
+      minBuffer ((size_t) bufferSize), maxBuffer ((size_t) bufferSize),
       currentMax (-1.0f), currentMin (1.0f),
       samplesToProcess (32768),
       tempProcessingBlock (32768),
@@ -54,8 +54,8 @@ TriggeredScope::TriggeredScope (TimeSliceThread* backgroundThreadToUse_)
 
     backgroundThreadToUse->addTimeSliceClient (this);
 
-    minBuffer.clear (bufferSize);
-    maxBuffer.clear (bufferSize);
+    minBuffer.clear ((size_t) bufferSize);
+    maxBuffer.clear ((size_t) bufferSize);
 
     startTimer (1000 / 60);
 }

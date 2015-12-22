@@ -114,10 +114,10 @@ public:
     void flush() { soundTouch.flush(); }
 
     /** Returns the number of samples ready. */
-    int getNumReady() const { return soundTouch.numSamples(); }
+    int getNumReady() const { return (int) soundTouch.numSamples(); }
 
     /** Returns the number of samples in the pipeline but currently unprocessed. */
-    int getNumUnprocessedSamples() const { return soundTouch.numUnprocessedSamples(); }
+    int getNumUnprocessedSamples() const { return (int) soundTouch.numUnprocessedSamples(); }
 
     /** Sets all of the settings at once. */
     void setPlaybackSettings (const PlaybackSettings& newSettings);

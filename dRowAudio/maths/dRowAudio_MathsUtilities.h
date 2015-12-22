@@ -135,7 +135,7 @@ inline void normalise (FloatingPointType* samples, int numSamples) noexcept
     }
     else
     {
-        zeromem (samples, numSamples * sizeof (float));
+        zeromem (samples, (size_t) numSamples * sizeof (float));
     }
 }
 

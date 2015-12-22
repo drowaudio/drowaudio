@@ -205,7 +205,7 @@ public:
     FFTEngine (int fftSizeLog2)
         : fft (fftSizeLog2),
           window (getFFTProperties().fftSize),
-          magnitutes (getFFTProperties().fftSizeHalved + 1)
+          magnitutes ((size_t) getFFTProperties().fftSizeHalved + 1)
     {
     }
 

@@ -33,7 +33,7 @@ SampleRateConverter::SampleRateConverter (const int numChannels_)
     : ratio (1.0),
       numChannels (numChannels_)
 {
-    filterStates.calloc (numChannels);
+    filterStates.calloc ((size_t) numChannels);
 
     createLowPass (ratio);
     resetFilters();
@@ -142,7 +142,7 @@ void SampleRateConverter::createLowPass (const double frequencyRatio)
 
 void SampleRateConverter::resetFilters()
 {
-    filterStates.clear (numChannels);
+    filterStates.clear ((size_t) numChannels);
 }
 
 void SampleRateConverter::applyFilter (float* samples, int num, FilterState& fs)

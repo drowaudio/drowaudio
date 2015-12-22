@@ -36,7 +36,7 @@ PitchDetector::PitchDetector()
       minFrequency          (50), maxFrequency (1600),
       buffer1               (512), buffer2 (512),
       numSamplesNeededForDetection (int ((sampleRate / minFrequency) * 2)),
-      currentBlockBuffer    (numSamplesNeededForDetection),
+      currentBlockBuffer    ((size_t) numSamplesNeededForDetection),
       inputFifoBuffer       (numSamplesNeededForDetection * 2),
       mostRecentPitch       (0.0)
 {

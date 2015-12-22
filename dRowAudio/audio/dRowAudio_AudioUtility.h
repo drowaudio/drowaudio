@@ -237,7 +237,7 @@ static inline void convertToFloat (AudioFormatReader* reader, void* sourceBuffer
         }
         else
         {
-            std::memcpy (destBuffer, sourceBuffer, sizeof (float) * numSamples);
+            std::memcpy (destBuffer, sourceBuffer, sizeof (float) * (size_t) numSamples);
         }
     }
 }
@@ -250,10 +250,10 @@ static inline void convertToFloat (AudioFormatReader* reader, void* sourceBuffer
  */
 static inline size_t getNumBytesForAudioSampleBuffer (const AudioSampleBuffer& buffer)
 {
-    const size_t channelListSize = (buffer.getNumChannels() + 1) * sizeof (float*);
-    const size_t sampleDataSize = buffer.getNumSamples() * buffer.getNumChannels() * sizeof (float);
+    const int channelListSize = (buffer.getNumChannels() + 1) * (int) sizeof (float*);
+    const int sampleDataSize = buffer.getNumSamples() * buffer.getNumChannels() * (int) sizeof (float);
 
-    return channelListSize + sampleDataSize;
+    return (size_t) (channelListSize + sampleDataSize);
 }
 
 /** Parses a block of memory to see if it represents an AudioSampleBuffer.
@@ -289,9 +289,9 @@ static inline bool isAudioSampleBuffer (void* sourceData, size_t sourceDataSize,
     if (channelPointers.size() == 0)
         return false;
 
-    const size_t channelListSize = (channelPointers.size() + 1) * sizeof (float*);
-    const size_t expectedNumSamples = (sourceDataSize - channelListSize) / (channelPointers.size() * sizeof (float));
-    const size_t bytesPerChannel = expectedNumSamples * sizeof (float);
+    const int channelListSize = (channelPointers.size() + 1) * (int) sizeof (float*);
+    const int expectedNumSamples = ((int) sourceDataSize - channelListSize) / (channelPointers.size() * (int) sizeof (float));
+    const int bytesPerChannel = expectedNumSamples * (int) sizeof (float);
 
     const float* startOfChannels = reinterpret_cast<float*> (addBytesToPointer (sourceData, channelListSize));
 
@@ -338,9 +338,10 @@ static inline bool isAudioSampleBuffer (InputStream& inputStream,
     if (channelStartSamples.size() == 0)
         return false;
 
-    const size_t channelListSize = (channelStartSamples.size() + 1) * sizeof (float*);
-    const int64 expectedNumSamples = (inputStream.getTotalLength() - channelListSize) / (channelStartSamples.size() * sizeof (float));
-    const int64 bytesPerChannel = expectedNumSamples * sizeof (float);
+    const int64 numChannelStartSamples = (int64) channelStartSamples.size();
+    const int64 channelListSize = (numChannelStartSamples + 1) * (int64) sizeof (float*);
+    const int64 expectedNumSamples = (inputStream.getTotalLength() - channelListSize) / (numChannelStartSamples * (int64) sizeof (float));
+    const int bytesPerChannel = (int) expectedNumSamples * (int) sizeof (float);
 
     // compare sample values
     for (int i = 0; i < channelStartSamples.size(); ++i)
@@ -364,7 +365,7 @@ static inline bool isAudioSampleBuffer (InputStream& inputStream,
 //            return false;
 //    }
 
-    numChannels = channelStartSamples.size();
+    numChannels = (uint32) numChannelStartSamples;
     numSamples = expectedNumSamples;
 
     return true;

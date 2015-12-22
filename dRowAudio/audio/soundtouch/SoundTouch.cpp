@@ -387,7 +387,7 @@ bool SoundTouch::setSetting(int settingId, int value)
 
         case SETTING_AA_FILTER_LENGTH :
             // sets anti-alias filter length
-            pRateTransposer->getAAFilter()->setLength(value);
+            pRateTransposer->getAAFilter()->setLength((uint) value);
             return TRUE;
 
         case SETTING_USE_QUICKSEEK :
@@ -427,13 +427,13 @@ int SoundTouch::getSetting(int settingId) const
     switch (settingId)
     {
         case SETTING_USE_AA_FILTER :
-            return (uint)pRateTransposer->isAAFilterEnabled();
+            return (int) pRateTransposer->isAAFilterEnabled();
 
         case SETTING_AA_FILTER_LENGTH :
-            return pRateTransposer->getAAFilter()->getLength();
+            return (int) pRateTransposer->getAAFilter()->getLength();
 
         case SETTING_USE_QUICKSEEK :
-            return (uint)   pTDStretch->isQuickSeekEnabled();
+            return (int) pTDStretch->isQuickSeekEnabled();
 
         case SETTING_SEQUENCE_MS:
             pTDStretch->getParameters(NULL, &temp, NULL, NULL);

@@ -208,7 +208,7 @@ void TDStretch::overlapMono(SAMPLETYPE *pOutput, const SAMPLETYPE *pInput) const
 
 void TDStretch::clearMidBuffer()
 {
-    memset(pMidBuffer, 0, 2 * sizeof(SAMPLETYPE) * overlapLength);
+    memset(pMidBuffer, 0, 2 * sizeof(SAMPLETYPE) * (size_t) overlapLength);
 }
 
 
@@ -676,7 +676,7 @@ void TDStretch::processSamples()
         // processing sequence and so on
         assert((offset + temp + overlapLength * 2) <= (int)inputBuffer.numSamples());
         memcpy(pMidBuffer, inputBuffer.ptrBegin() + channels * (offset + temp + overlapLength),
-            channels * sizeof(SAMPLETYPE) * overlapLength);
+            (size_t) channels * sizeof(SAMPLETYPE) * (size_t) overlapLength);
 
         // Remove the processed samples from the input buffer. Update
         // the difference between integer & nominal skip step to 'skipFract'
@@ -718,7 +718,7 @@ void TDStretch::acceptNewOverlapLength(int newOverlapLength)
         pMidBuffer = new SAMPLETYPE[overlapLength * 2];
         clearMidBuffer();
 
-        pRefMidBufferUnaligned = new SAMPLETYPE[2 * overlapLength + 16 / sizeof(SAMPLETYPE)];
+        pRefMidBufferUnaligned = new SAMPLETYPE[2 * (size_t) overlapLength + 16 / sizeof(SAMPLETYPE)];
         // ensure that 'pRefMidBuffer' is aligned to 16 byte boundary for efficiency
         pRefMidBuffer = (SAMPLETYPE *)((((ulong)pRefMidBufferUnaligned) + 15) & (ulong)-16);
     }

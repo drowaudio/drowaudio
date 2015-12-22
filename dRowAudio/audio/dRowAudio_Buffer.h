@@ -46,7 +46,6 @@
 class Buffer
 {
 public:
-    //==============================================================================
     /** Creates an empty Buffer. */
     Buffer()
         : bufferSize (0)
@@ -54,7 +53,7 @@ public:
     }
 
     /** Creates a buffer with a given size. */
-    Buffer (int size)
+    Buffer (size_t size)
         : bufferSize (size)
     {
         buffer.allocate (bufferSize, true);
@@ -68,16 +67,15 @@ public:
         memcpy (buffer, otherBuffer.buffer, bufferSize * sizeof (float));
     }
 
-    /**    Destructor. */
-    ~Buffer() {}
-
+    //==============================================================================
     /** Changes the size of the buffer.
+
         This will change the size of the buffer, keeping as much of the existing data
         as possible. Any elements beyond the orginal ones will have a value of zero.
         Therefore it is best to either reset the whole buffer or refill it from your own
         algorithm before using it.
-     */
-    void setSize (int newSize)
+    */
+    void setSize (size_t newSize)
     {
         buffer.realloc (newSize);
 
@@ -87,11 +85,12 @@ public:
         bufferSize = newSize;
     }
 
-    /**    Changes the size of the buffer.
+    /** Changes the size of the buffer.
+
         This does the same as setSize() but slightly quicker with the expense of possibly
         having rubbish in the buffer. Be sure to either refill or reset the buffer before using it.
-     */
-    inline void setSizeQuick (int newSize)
+    */
+    inline void setSizeQuick (size_t newSize)
     {
         buffer.malloc (newSize);
         bufferSize = newSize;
@@ -100,29 +99,28 @@ public:
     /** Returns a value from the buffer.
         This method performs no bounds checking so if the index is out of the internal array
         bounds will contain garbage.
-     */
-    inline float operator[](const int index)        { return buffer[index]; }
+    */
+    inline float operator[](int index)      { return buffer[index]; }
 
     /** Returns a reference to a value from the buffer.
         This method returns a reference to an element from the buffer so can therefore be changed.
         This method also performs no bounds checking so if the index is out of the internal array
         bounds will contain garbage.
-     */
-    inline float& getReference (const int index)    { return buffer[index]; }
+    */
+    inline float& getReference (int index)  { return buffer[index]; }
 
-    /** Zeros the buffer's contents.
-     */
-    inline void reset()                             { zeromem (buffer, bufferSize * sizeof (float)); }
+    /** Zeros the buffer's contents. */
+    inline void reset()                     { zeromem (buffer, bufferSize * sizeof (float)); }
 
     /** Returns a pointer to the beggining of the data.
         Don't hang on to this pointer as it may change if the buffer is internally re-allocated.
      */
-    inline float* getData()                         { return buffer.getData(); }
+    inline float* getData()                 { return buffer.getData(); }
 
     /** Returns the current size of the buffer. */
-    inline int getSize() const                      { return bufferSize; }
+    inline size_t getSize() const           { return bufferSize; }
 
-    /**    Copies the contents of a section of memory into the internal buffer.
+    /** Copies the contents of a section of memory into the internal buffer.
 
         This is simpler than using the [] operator or getData and your own for loop if you are
         copying a buffer you have already created, especially if the sizes may be different.
@@ -130,8 +128,8 @@ public:
         to it. If it is false and the internal array is larger than the size passed in any
         extra elements will be left alone. If the internal array is smaller only enough data
         will be copied to fit so you may lose the end of the data passed in.
-     */
-    void copyFrom (float* data, int size, bool resizeToFit = true)
+    */
+    void copyFrom (float* data, size_t size, bool resizeToFit = true)
     {
         if (resizeToFit)
             setSizeQuick (size);
@@ -139,12 +137,13 @@ public:
         quickCopy (data, size);
     }
 
-    /**    Applys the current buffer to a number of samples.
+    /** Applys the current buffer to a number of samples.
+
         This is done via a straight multiplication and will zero any out of range source samples.
-     */
-    void applyBuffer (float* samples, int numSamples)
+    */
+    void applyBuffer (float* samples, size_t numSamples)
     {
-        const int numToApply = jmin (bufferSize, numSamples);
+        const size_t numToApply = jmin (bufferSize, numSamples);
 
         for (int i = 0; i < numToApply; ++i)
             samples[i] *= buffer[i];
@@ -153,11 +152,11 @@ public:
             zeromem (samples + numToApply, (numSamples - numToApply) * sizeof (float));
     }
 
-    /**    This performs a very quick copy of some data given to it.
+    /** This performs a very quick copy of some data given to it.
         No resizing is done so if the size of the data passed is less than or equal to the size of the internal array
         it will be filled, otherwise elements will be left.
-     */
-    void quickCopy (float* data, int size)
+    */
+    void quickCopy (float* data, size_t size)
     {
         if (size > bufferSize)
             size = bufferSize;
@@ -166,8 +165,9 @@ public:
     }
 
     /** Updates the buffer's listeners.
+
         Call this to explicitly tell any registerd listeners that the buffer has changed.
-     */
+    */
     void updateListeners()
     {
         listeners.call (&Listener::bufferChanged, this);
@@ -175,16 +175,15 @@ public:
 
     //==============================================================================
     /** Receives callbacks when a Buffer object changes.
+
         @see Buffer::addListener
-     */
-    class  Listener
+    */
+    class Listener
     {
     public:
-        Listener()          {}
         virtual ~Listener() {}
 
-        /** Called when a Buffer object is changed.
-         */
+        /** Called when a Buffer object is changed. */
         virtual void bufferChanged (Buffer* buffer) = 0;
     };
 
@@ -197,7 +196,7 @@ public:
 private:
     //==============================================================================
     HeapBlock<float> buffer;
-    int bufferSize;
+    size_t bufferSize;
 
     ListenerList<Listener> listeners;
 

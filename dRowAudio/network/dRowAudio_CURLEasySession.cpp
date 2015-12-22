@@ -244,7 +244,7 @@ size_t CURLEasySession::readCallback (void* destinationPointer, size_t blockSize
         if (session->inputStream.get() == nullptr)
             return CURL_READFUNC_ABORT; /* failure, can't open file to read */
 
-        return session->inputStream->read (destinationPointer, int (blockSize * numBlocks));
+        return session->inputStream->read (destinationPointer, (int) (blockSize * numBlocks));
     }
 
     return CURL_READFUNC_ABORT;
@@ -254,7 +254,7 @@ size_t CURLEasySession::directoryListingCallback (void* sourcePointer, size_t bl
 {
     if (session != nullptr)
     {
-        session->directoryContentsList.append (sourcePointer, (int) (blockSize * numBlocks));
+        session->directoryContentsList.append (sourcePointer, (size_t) (blockSize * numBlocks));
 
         return blockSize * numBlocks;
     }

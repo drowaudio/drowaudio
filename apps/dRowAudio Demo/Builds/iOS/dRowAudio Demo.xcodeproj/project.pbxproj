@@ -2572,7 +2572,7 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../../../Work", "../../../../../JUCE/modules", "$(inherited)");
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_CPLUSPLUSFLAGS = "-Wall -pedantic";
+				OTHER_CPLUSPLUSFLAGS = "-Wall -pedantic -Wconversion";
 				OTHER_LDFLAGS = "-lcurl"; }; name = Debug; };
 		F78DFA4D6AD72663CF5A213A = {isa = XCBuildConfiguration; buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2596,7 +2596,7 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../../../Work", "../../../../../JUCE/modules", "$(inherited)");
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_CPLUSPLUSFLAGS = "-Wall -pedantic";
+				OTHER_CPLUSPLUSFLAGS = "-Wall -pedantic -Wconversion";
 				OTHER_LDFLAGS = "-lcurl"; }; name = Release; };
 		915D883D7A39F6B886C3B5E0 = {isa = XCBuildConfiguration; buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

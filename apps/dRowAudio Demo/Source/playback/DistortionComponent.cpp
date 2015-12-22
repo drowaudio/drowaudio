@@ -112,7 +112,7 @@ void DistortionComponent::componentMovedOrResized (Component& component, bool /*
 //==============================================================================
 void DistortionComponent::refreshPath()
 {
-    const int bufferSize = buffer.getSize();
+    const int bufferSize = (int) buffer.getSize();
     const int w = getWidth();
     const int h = getHeight();
 
@@ -133,7 +133,7 @@ void DistortionComponent::refreshPath()
 void DistortionComponent::refillBuffer (float x1, float y1, float x2, float y2)
 {
     float* bufferData = buffer.getData();
-    const int bufferSize = buffer.getSize();
+    const int bufferSize = (int) buffer.getSize();
     const float bufferScale = 1.0f / (float) bufferSize;
 
     for (int i = 0; i < bufferSize; ++i)
@@ -149,7 +149,7 @@ void DistortionComponent::refillBuffer (float x1, float y1, float x2, float y2)
 void DistortionComponent::resetBuffer()
 {
     float* bufferData = buffer.getData();
-    const int bufferSize = buffer.getSize();
+    const int bufferSize = (int) buffer.getSize();
     const float bufferScale = 1.0f / bufferSize;
 
     for (int i = 0; i < bufferSize; ++i)
@@ -164,7 +164,7 @@ void DistortionComponent::resetPoints()
     const int w = getWidth();
     const int h = getHeight();
 
-    const int bufferSize = buffer.getSize();
+    const int bufferSize = (int) buffer.getSize();
     const float* bufferData = buffer.getData();
 
     float x1 = w * 0.25f;

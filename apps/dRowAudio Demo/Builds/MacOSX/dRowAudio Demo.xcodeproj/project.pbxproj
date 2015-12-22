@@ -2570,7 +2570,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = "-Wall -pedantic";
+				OTHER_CPLUSPLUSFLAGS = "-Wall -pedantic -Wconversion";
 				OTHER_LDFLAGS = "-lcurl";
 				SDKROOT_ppc = macosx10.5; }; name = Debug; };
 		F78DFA4D6AD72663CF5A213A = {isa = XCBuildConfiguration; buildSettings = {
@@ -2596,7 +2596,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = "-Wall -pedantic";
+				OTHER_CPLUSPLUSFLAGS = "-Wall -pedantic -Wconversion";
 				OTHER_LDFLAGS = "-lcurl";
 				SDKROOT_ppc = macosx10.5; }; name = Release; };
 		915D883D7A39F6B886C3B5E0 = {isa = XCBuildConfiguration; buildSettings = {

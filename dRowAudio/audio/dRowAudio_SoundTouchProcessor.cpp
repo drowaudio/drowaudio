@@ -39,14 +39,14 @@ SoundTouchProcessor::SoundTouchProcessor()
 {
     setPlaybackSettings (settings);
 
-    interleavedInputBuffer.malloc (interleavedInputBufferSize * 2);
-    interleavedOutputBuffer.malloc (interleavedOutputBufferSize * 2);
+    interleavedInputBuffer.malloc ((size_t) interleavedInputBufferSize * 2);
+    interleavedOutputBuffer.malloc ((size_t) interleavedOutputBufferSize * 2);
 }
 
 void SoundTouchProcessor::initialise (int numChannels, double sampleRate)
 {
     const ScopedLock sl (lock);
-    soundTouch.setChannels (numChannels);
+    soundTouch.setChannels ((uint32) numChannels);
     soundTouch.setSampleRate ((uint32) sampleRate);
     soundTouch.clear();
 }
@@ -57,7 +57,7 @@ void SoundTouchProcessor::writeSamples (float** sourceChannelData, int numChanne
 
     if (interleavedInputBufferSize < requiredBufferSize)
     {
-        interleavedInputBuffer.malloc (requiredBufferSize);
+        interleavedInputBuffer.malloc ((size_t) requiredBufferSize);
         interleavedInputBufferSize = requiredBufferSize;
     }
 
@@ -71,7 +71,7 @@ void SoundTouchProcessor::writeSamples (float** sourceChannelData, int numChanne
         sourceChannelData[i] -= startSampleOffset;
 
     const ScopedLock sl (lock);
-    soundTouch.putSamples ((SAMPLETYPE*) interleavedInputBuffer, numSamples);
+    soundTouch.putSamples ((SAMPLETYPE*) interleavedInputBuffer, (uint32) numSamples);
 }
 
 void SoundTouchProcessor::readSamples (float** destinationChannelData, int numChannels, int numSamples, int startSampleOffset)
@@ -80,7 +80,7 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
 
     if (interleavedOutputBufferSize < requiredBufferSize)
     {
-        interleavedOutputBuffer.malloc (requiredBufferSize);
+        interleavedOutputBuffer.malloc ((size_t) requiredBufferSize);
         interleavedOutputBufferSize = requiredBufferSize;
     }
 
@@ -93,7 +93,7 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
         for (;;)
         {
             const int maxNumSamples = numSamples - numSamplesDone;
-            numThisTime = soundTouch.receiveSamples ((SAMPLETYPE*) &interleavedOutputBuffer[numChannels * numSamplesDone], maxNumSamples);
+            numThisTime = (int) soundTouch.receiveSamples ((SAMPLETYPE*) &interleavedOutputBuffer[numChannels * numSamplesDone], (uint32) maxNumSamples);
 
             numSamplesDone += numThisTime;
 
@@ -103,7 +103,7 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
     }
 
     if (numSamplesDone < numSamples)
-        zeromem (&interleavedOutputBuffer[numChannels * numSamplesDone], numChannels * sizeof (numSamples - numSamplesDone));
+        zeromem (&interleavedOutputBuffer[numChannels * numSamplesDone], (size_t) numChannels * sizeof (numSamples - numSamplesDone));
 
     for (int i = 0; i < numChannels; ++i)
         destinationChannelData[i] += startSampleOffset;
