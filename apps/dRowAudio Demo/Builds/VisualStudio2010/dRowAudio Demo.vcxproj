@@ -72,7 +72,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\..\drowaudio;..\..\..\..\..\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\..\..\Work;..\..\..\..\..\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;DROWAUDIO_UNIT_TESTS=1;JUCER_VS2010_78A501D=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -113,7 +113,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\..\drowaudio;..\..\..\..\..\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\..\..\Work;..\..\..\..\..\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;DROWAUDIO_UNIT_TESTS=1;JUCER_VS2010_78A501D=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -156,7 +156,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\..\drowaudio;..\..\..\..\..\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\..\..\Work;..\..\..\..\..\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;DROWAUDIO_UNIT_TESTS=1;JUCER_VS2010_78A501D=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -195,7 +195,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\..\drowaudio;..\..\..\..\..\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\..\..\Work;..\..\..\..\..\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;DROWAUDIO_UNIT_TESTS=1;JUCER_VS2010_78A501D=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -244,148 +244,148 @@
     <ClCompile Include="..\..\Source\MainWindow.cpp"/>
     <ClCompile Include="..\..\Source\TrackInfoComponent.cpp"/>
     <ClCompile Include="..\..\Source\TransportComponent.cpp"/>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_EnvelopeFollower.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_EnvelopeFollower.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_FilteringAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_FilteringAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_LoopingAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_LoopingAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_PitchDetector.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_PitchDetector.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_ReversibleAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_ReversibleAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SampleRateConverter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_SampleRateConverter.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_FFT.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_Window.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_Window.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\filters\dRowAudio_BiquadFilter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_BiquadFilter.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioFileDropTarget.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioFileDropTarget.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioOscilloscope.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioOscilloscope.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioTransportCursor.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioTransportCursor.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CentreAlignViewport.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_CentreAlignViewport.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Clock.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_Clock.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CpuMeter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_CpuMeter.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_DefaultColours.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_DefaultColours.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_GraphicalComponent.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_GraphicalComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_MusicLibraryTable.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_MusicLibraryTable.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_SegmentedMeter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_SegmentedMeter.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Sonogram.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_Sonogram.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Spectrograph.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_Spectrograph.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Spectroscope.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_Spectroscope.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_TriggeredScope.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_TriggeredScope.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\network\dRowAudio_CURLEasySession.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\network\dRowAudio_CURLEasySession.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\network\dRowAudio_CURLManager.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\network\dRowAudio_CURLManager.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\parameters\dRowAudio_PluginParameter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\parameters\dRowAudio_PluginParameter.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\streams\dRowAudio_MemoryInputSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\streams\dRowAudio_MemoryInputSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_EncryptedString.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_EncryptedString.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_ITunesLibrary.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibrary.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_ITunesLibraryParser.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibraryParser.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1605,72 +1605,72 @@
     <ClInclude Include="..\..\Source\MainWindow.h"/>
     <ClInclude Include="..\..\Source\TrackInfoComponent.h"/>
     <ClInclude Include="..\..\Source\TransportComponent.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioFilePlayer.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioUtility.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_Buffer.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_EnvelopeFollower.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_FifoBuffer.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_FilteringAudioSource.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_LoopingAudioSource.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_Pitch.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_PitchDetector.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_ReversibleAudioSource.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SampleRateConverter.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_FFT.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_LTAS.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_Window.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioOscilloscope.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioTransportCursor.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CentreAlignViewport.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Clock.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CpuMeter.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_DefaultColours.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_GraphicalComponent.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_GuiHelpers.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_MusicLibraryTable.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_SegmentedMeter.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Sonogram.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Spectrograph.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Spectroscope.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_TriggeredScope.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\maths\dRowAudio_BezierCurve.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\maths\dRowAudio_CumulativeMovingAverage.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\maths\dRowAudio_MathsUtilities.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_AudioPicker.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_AVAssetAudioFormat.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_IOSAudioConverter.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\network\dRowAudio_CURLEasySession.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\network\dRowAudio_CURLManager.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\parameters\dRowAudio_PluginParameter.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\streams\dRowAudio_MemoryInputSource.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\streams\dRowAudio_StreamAndFileHandler.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_Comparators.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_Constants.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_DebugObject.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_EncryptedString.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_ITunesLibrary.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_ITunesLibraryParser.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_LockedPointer.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_MusicLibraryHelpers.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_StateVariable.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_UnityBuilder.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_Utility.h"/>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_XmlHelpers.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioUtility.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_Buffer.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_EnvelopeFollower.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_FifoBuffer.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_FilteringAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_LoopingAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_Pitch.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_PitchDetector.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_ReversibleAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SampleRateConverter.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_Window.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioOscilloscope.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioTransportCursor.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_CentreAlignViewport.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_Clock.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_CpuMeter.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_DefaultColours.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_GraphicalComponent.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_GuiHelpers.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_MusicLibraryTable.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_SegmentedMeter.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_Sonogram.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_Spectrograph.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_Spectroscope.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_TriggeredScope.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\maths\dRowAudio_BezierCurve.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\maths\dRowAudio_CumulativeMovingAverage.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\maths\dRowAudio_MathsUtilities.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\native\dRowAudio_AudioPicker.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\native\dRowAudio_AVAssetAudioFormat.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\native\dRowAudio_IOSAudioConverter.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\network\dRowAudio_CURLEasySession.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\network\dRowAudio_CURLManager.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\parameters\dRowAudio_PluginParameter.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\streams\dRowAudio_MemoryInputSource.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\streams\dRowAudio_StreamAndFileHandler.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Comparators.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Constants.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_DebugObject.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_EncryptedString.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibrary.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibraryParser.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_LockedPointer.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_MusicLibraryHelpers.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_StateVariable.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Utility.h"/>
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_XmlHelpers.h"/>
     <ClInclude Include="..\..\..\..\dRowAudio.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioSampleBuffer.h"/>
