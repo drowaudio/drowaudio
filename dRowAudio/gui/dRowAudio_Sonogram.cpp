@@ -143,7 +143,7 @@ void Sonogram::renderScopeLine()
             y2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40.0f) * h;
 
             g.setColour (Colour::greyLevel (amp));
-            g.fillRect ((float)x, h - y2, scopeLineW, y1 - y2);
+            g.fillRect ((float)x, std::abs (h - y2), scopeLineW, std::abs (y1 - y2));
 
             y1 = y2;
         }

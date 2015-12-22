@@ -40,10 +40,10 @@ MainAppWindow::MainAppWindow()
     LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     setupColours();
 
-    setContentOwned (new MainComponent, false);
-    centreWithSize (800, 600);
+    setContentOwned (new MainComponent(), true);
+    setResizable (true, false);
+    centreWithSize (getWidth(), getHeight());
     setVisible (true);
-    setResizable (true, true);
 }
 
 void MainAppWindow::closeButtonPressed()

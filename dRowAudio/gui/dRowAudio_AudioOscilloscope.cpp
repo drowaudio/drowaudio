@@ -29,27 +29,28 @@
   ==============================================================================
 */
 
-
-
-AudioOscilloscope::AudioOscilloscope()
-    : verticalZoomFactor (1.0f),
-      horizontalZoomFactor (1.0f),
-      backgroundColour(Colours::black),
-      traceColour(Colours::green)
+AudioOscilloscope::AudioOscilloscope() :
+    bufferSizeMask (2047),
+    currentMax (-1.0f),
+    currentMin (1.0f),
+    bufferPos (0),
+    lastBufferPos (0),
+    bufferSize (2048), // Needs to be a power of 2 and larger than the width of your scope!
+    numSamplesIn (0),
+    bufferLastMax (-1.0f),
+    bufferLastMin (1.0f),
+    verticalZoomFactor (1.0f),
+    horizontalZoomFactor (1.0f),
+    backgroundColour (Colours::black),
+    traceColour (Colours::green)
 {
-    lastBufferPos = bufferPos = 0;
-    bufferSize = 2048;        // Needs to be a power of 2 and larger than the width of your scope!
-    bufferSizeMask = bufferSize - 1;
-    circularBufferMax.calloc(bufferSize);
-    circularBufferMin.calloc(bufferSize);
+    circularBufferMax.calloc (bufferSize);
+    circularBufferMin.calloc (bufferSize);
     clear();
-    currentMin = bufferLastMin = 1.0e6f;
-    currentMax = bufferLastMax = -currentMin;
-    numSamplesIn = 0;
 
     setOpaque (true);
-    resized();                  // initialise image
-    startTimer (1000 / 60);     // repaint every 1/50 of a second
+    resized(); //Initialises the image
+    startTimerHz (50);
 }
 
 //==============================================================================

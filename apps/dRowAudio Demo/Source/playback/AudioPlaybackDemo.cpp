@@ -55,7 +55,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     resolutionSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
     resolutionSlider.setValue (3.0);
     resolutionSlider.setSkewFactorFromMidPoint (3.0);
-    resolutionSlider.setSliderStyle (Slider::RotaryHorizontalDrag);
+    resolutionSlider.setSliderStyle (Slider::RotaryVerticalDrag);
 
     addAndMakeVisible (&resolutionLabel);
     resolutionLabel.setText ("Detail", dontSendNotification);
@@ -94,15 +94,15 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     for (int i = 0; i < numControls; ++i)
     {
         Slider* slider = playerControls.add (new Slider());
-        slider->addListener (this);
         slider->setValue (1.0);
         slider->setSliderStyle (Slider::RotaryVerticalDrag);
         slider->setTextBoxStyle (Slider::TextBoxBelow, false, 50, 16);
+        slider->addListener (this);
         addAndMakeVisible (slider);
 
         Label* label = playerControlLabels.add (new Label());
         label->setFont (12.0f);
-        label->attachToComponent (label, false);
+        label->attachToComponent (slider, false);
         label->setJustificationType (Justification::centred);
         label->setColour (Label::textColourId, Colours::white);
         addAndMakeVisible (label);

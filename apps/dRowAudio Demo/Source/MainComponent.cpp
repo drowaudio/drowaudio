@@ -43,11 +43,6 @@ MainComponent::MainComponent()
       cpuMeter (&audioDeviceManager),
       tabbedComponent (TabbedButtonBar::TabsAtTop)
 {
-
-    meterThread.addTimeSliceClient (&meterL);
-    meterThread.addTimeSliceClient (&meterR);
-    meterThread.startThread (1);
-
     clock.setColour (Label::textColourId, Colours::white);
     clock.setJustificationType (Justification::centred);
 
@@ -114,6 +109,12 @@ MainComponent::MainComponent()
     addAndMakeVisible (&tabbedComponent);
     addAndMakeVisible (&cpuMeter);
     addAndMakeVisible (&clock);
+
+    meterThread.addTimeSliceClient (&meterL);
+    meterThread.addTimeSliceClient (&meterR);
+    meterThread.startThread (1);
+
+    setSize (800, 600);
 }
 
 MainComponent::~MainComponent()
