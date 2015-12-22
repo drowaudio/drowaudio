@@ -337,157 +337,157 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>UnityProjectBuilder\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_EnvelopeFollower.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_EnvelopeFollower.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_FilteringAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_FilteringAudioSource.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_LoopingAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_LoopingAudioSource.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_PitchDetector.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_PitchDetector.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_ReversibleAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_ReversibleAudioSource.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SampleRateConverter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_SampleRateConverter.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_FFT.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_Window.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_Window.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\filters\dRowAudio_BiquadFilter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_BiquadFilter.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\filters</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\filters</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioFileDropTarget.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioFileDropTarget.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioOscilloscope.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioOscilloscope.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioTransportCursor.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioTransportCursor.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CentreAlignViewport.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_CentreAlignViewport.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Clock.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_Clock.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CpuMeter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_CpuMeter.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_DefaultColours.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_DefaultColours.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_GraphicalComponent.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_GraphicalComponent.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_MusicLibraryTable.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_MusicLibraryTable.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_SegmentedMeter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_SegmentedMeter.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Sonogram.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_Sonogram.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Spectrograph.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_Spectrograph.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Spectroscope.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_Spectroscope.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_TriggeredScope.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\dRowAudio_TriggeredScope.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\audiothumbnail</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\audiothumbnail</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\audiothumbnail</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\audiothumbnail</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\filebrowser</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\filebrowser</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\maths</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_AudioPicker.mm">
+    <ClCompile Include="..\..\..\..\dRowAudio\native\dRowAudio_AudioPicker.mm">
       <Filter>Juce Modules\dRowAudio\dRowAudio\native</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_AVAssetAudioFormat.mm">
+    <ClCompile Include="..\..\..\..\dRowAudio\native\dRowAudio_AVAssetAudioFormat.mm">
       <Filter>Juce Modules\dRowAudio\dRowAudio\native</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_IOSAudioConverter.mm">
+    <ClCompile Include="..\..\..\..\dRowAudio\native\dRowAudio_IOSAudioConverter.mm">
       <Filter>Juce Modules\dRowAudio\dRowAudio\native</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\network\dRowAudio_CURLEasySession.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\network\dRowAudio_CURLEasySession.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\network</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\network\dRowAudio_CURLManager.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\network\dRowAudio_CURLManager.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\network</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\parameters\dRowAudio_PluginParameter.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\parameters\dRowAudio_PluginParameter.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\parameters</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\streams\dRowAudio_MemoryInputSource.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\streams\dRowAudio_MemoryInputSource.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\streams</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_EncryptedString.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_EncryptedString.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_ITunesLibrary.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibrary.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_ITunesLibraryParser.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibraryParser.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
+    <ClCompile Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1731,202 +1731,202 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioFilePlayer.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_AudioUtility.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_AudioUtility.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_Buffer.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_Buffer.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_EnvelopeFollower.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_EnvelopeFollower.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_FifoBuffer.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_FifoBuffer.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_FilteringAudioSource.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_FilteringAudioSource.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_LoopingAudioSource.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_LoopingAudioSource.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_Pitch.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_Pitch.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_PitchDetector.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_PitchDetector.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_ReversibleAudioSource.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_ReversibleAudioSource.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SampleRateConverter.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SampleRateConverter.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_FFT.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_LTAS.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\fft\dRowAudio_Window.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\fft\dRowAudio_Window.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\fft</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\filters</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\audio\filters</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioOscilloscope.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioOscilloscope.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_AudioTransportCursor.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_AudioTransportCursor.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CentreAlignViewport.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_CentreAlignViewport.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Clock.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_Clock.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_CpuMeter.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_CpuMeter.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_DefaultColours.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_DefaultColours.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_GraphicalComponent.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_GraphicalComponent.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_GuiHelpers.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_GuiHelpers.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_MusicLibraryTable.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_MusicLibraryTable.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_SegmentedMeter.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_SegmentedMeter.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Sonogram.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_Sonogram.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Spectrograph.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_Spectrograph.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_Spectroscope.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_Spectroscope.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\dRowAudio_TriggeredScope.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\dRowAudio_TriggeredScope.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\audiothumbnail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\audiothumbnail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\audiothumbnail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\audiothumbnail</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\filebrowser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\filebrowser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\gui\filebrowser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\maths\dRowAudio_BezierCurve.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\maths\dRowAudio_BezierCurve.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\maths</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\maths\dRowAudio_CumulativeMovingAverage.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\maths\dRowAudio_CumulativeMovingAverage.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\maths</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\maths\dRowAudio_MathsUtilities.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\maths\dRowAudio_MathsUtilities.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\maths</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_AudioPicker.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\native\dRowAudio_AudioPicker.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_AVAssetAudioFormat.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\native\dRowAudio_AVAssetAudioFormat.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\native\dRowAudio_IOSAudioConverter.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\native\dRowAudio_IOSAudioConverter.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\network\dRowAudio_CURLEasySession.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\network\dRowAudio_CURLEasySession.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\network\dRowAudio_CURLManager.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\network\dRowAudio_CURLManager.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\parameters\dRowAudio_PluginParameter.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\parameters\dRowAudio_PluginParameter.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\parameters</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\streams\dRowAudio_MemoryInputSource.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\streams\dRowAudio_MemoryInputSource.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\streams</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\streams\dRowAudio_StreamAndFileHandler.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\streams\dRowAudio_StreamAndFileHandler.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\streams</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_Comparators.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Comparators.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_Constants.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Constants.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_DebugObject.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_DebugObject.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_EncryptedString.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_EncryptedString.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_ITunesLibrary.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibrary.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_ITunesLibraryParser.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibraryParser.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_LockedPointer.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_LockedPointer.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_MusicLibraryHelpers.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_MusicLibraryHelpers.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_StateVariable.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_StateVariable.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_UnityBuilder.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_Utility.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_Utility.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\dRowAudio\dRowAudio\utility\dRowAudio_XmlHelpers.h">
+    <ClInclude Include="..\..\..\..\dRowAudio\utility\dRowAudio_XmlHelpers.h">
       <Filter>Juce Modules\dRowAudio\dRowAudio\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\dRowAudio.h">

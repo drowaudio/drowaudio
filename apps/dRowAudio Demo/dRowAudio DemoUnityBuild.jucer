@@ -12,7 +12,7 @@
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        headerPath="" defines=""/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        headerPath="" defines=""/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -27,13 +27,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <XCODE_IPHONE targetFolder="BuildUnity/iOS" objCExtraSuffix="FuN3DO" UIStatusBarHidden="1"
@@ -59,13 +58,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </XCODE_IPHONE>
     <VS2015 targetFolder="BuildUnity/VisualStudio2015">
@@ -91,13 +89,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </VS2015>
     <VS2013 targetFolder="BuildUnity/VisualStudio2013">
@@ -123,13 +120,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </VS2013>
     <VS2012 targetFolder="BuildUnity/VisualStudio2012">
@@ -155,13 +151,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </VS2012>
     <VS2010 targetFolder="BuildUnity/VisualStudio2010" libraryType="1" extraDefs="CURL_STATICLIB"
@@ -193,13 +188,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </VS2010>
     <VS2008 targetFolder="BuildUnity/VisualStudio2008">
@@ -221,13 +215,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </VS2008>
     <VS2005 targetFolder="BuildUnity/VisualStudio2005">
@@ -249,13 +242,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </VS2005>
     <LINUX_MAKE targetFolder="BuildUnity/Linux" bigIcon="vTRqOY" smallIcon="vTRqOY"
@@ -278,13 +270,12 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </LINUX_MAKE>
     <CODEBLOCKS_WINDOWS targetFolder="BuildUnity/CodeBlocksWindows" extraCompilerFlags="-Wall"
@@ -306,12 +297,11 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </CODEBLOCKS_WINDOWS>
     <CODEBLOCKS_LINUX targetFolder="BuildUnity/CodeBlocksLinux" extraLinkerFlags="-lcurl"
@@ -333,12 +323,11 @@
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../drowaudio"/>
         <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_osc" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../../../"/>
       </MODULEPATHS>
     </CODEBLOCKS_LINUX>
   </EXPORTFORMATS>
@@ -442,7 +431,6 @@
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_tracktion_marketplace" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
   </MODULES>

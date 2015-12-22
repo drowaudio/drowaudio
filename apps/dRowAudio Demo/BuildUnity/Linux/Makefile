@@ -18,7 +18,7 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS=1" -D "JUCER_LINUX_MAKE_1C83C68C=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../drowaudio -I ../../../../../JUCE/modules
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "DROWAUDIO_UNIT_TESTS=1" -D "JUCER_LINUX_MAKE_1C83C68C=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../../Work -I ../../../../../JUCE/modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0 -Wall
   CXXFLAGS += $(CFLAGS) -std=c++11
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -L/usr/X11R6/lib/ -lGL -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt -lcurl
@@ -38,7 +38,7 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS=1" -D "JUCER_LINUX_MAKE_1C83C68C=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../drowaudio -I ../../../../../JUCE/modules
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "DROWAUDIO_UNIT_TESTS=1" -D "JUCER_LINUX_MAKE_1C83C68C=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../../Work -I ../../../../../JUCE/modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os -Wall
   CXXFLAGS += $(CFLAGS) -std=c++11
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -fvisibility=hidden -L/usr/X11R6/lib/ -lGL -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt -lcurl
@@ -69,7 +69,6 @@ OBJECTS := \
   $(OBJDIR)/juce_gui_basics_d5c7a3e1.o \
   $(OBJDIR)/juce_gui_extra_13d359a9.o \
   $(OBJDIR)/juce_opengl_6fe9682d.o \
-  $(OBJDIR)/juce_osc_3f1ff649.o \
   $(OBJDIR)/juce_tracktion_marketplace_305e0fc9.o \
   $(OBJDIR)/juce_video_72be35c9.o \
 
@@ -188,11 +187,6 @@ $(OBJDIR)/juce_gui_extra_13d359a9.o: ../../../../../JUCE/modules/juce_gui_extra/
 $(OBJDIR)/juce_opengl_6fe9682d.o: ../../../../../JUCE/modules/juce_opengl/juce_opengl.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling juce_opengl.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/juce_osc_3f1ff649.o: ../../../../../JUCE/modules/juce_osc/juce_osc.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling juce_osc.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/juce_tracktion_marketplace_305e0fc9.o: ../../../../../JUCE/modules/juce_tracktion_marketplace/juce_tracktion_marketplace.cpp
