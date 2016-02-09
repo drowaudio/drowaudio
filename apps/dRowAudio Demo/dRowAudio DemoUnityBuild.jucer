@@ -32,7 +32,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <XCODE_IPHONE targetFolder="BuildUnity/iOS" objCExtraSuffix="FuN3DO" UIStatusBarHidden="1"
@@ -63,7 +63,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </XCODE_IPHONE>
     <VS2015 targetFolder="BuildUnity/VisualStudio2015">
@@ -94,7 +94,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2015>
     <VS2013 targetFolder="BuildUnity/VisualStudio2013">
@@ -125,7 +125,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2013>
     <VS2012 targetFolder="BuildUnity/VisualStudio2012">
@@ -156,7 +156,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2012>
     <VS2010 targetFolder="BuildUnity/VisualStudio2010" libraryType="1" extraDefs="CURL_STATICLIB"
@@ -193,7 +193,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2010>
     <VS2008 targetFolder="BuildUnity/VisualStudio2008">
@@ -220,7 +220,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2008>
     <VS2005 targetFolder="BuildUnity/VisualStudio2005">
@@ -247,7 +247,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2005>
     <LINUX_MAKE targetFolder="BuildUnity/Linux" bigIcon="vTRqOY" smallIcon="vTRqOY"
@@ -275,7 +275,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </LINUX_MAKE>
     <CODEBLOCKS_WINDOWS targetFolder="BuildUnity/CodeBlocksWindows" extraCompilerFlags="-Wall"
@@ -301,7 +301,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </CODEBLOCKS_WINDOWS>
     <CODEBLOCKS_LINUX targetFolder="BuildUnity/CodeBlocksLinux" extraLinkerFlags="-lcurl"
@@ -327,7 +327,7 @@
         <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </CODEBLOCKS_LINUX>
   </EXPORTFORMATS>
@@ -416,7 +416,7 @@
     </GROUP>
   </MAINGROUP>
   <MODULES>
-    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="drowaudio" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
@@ -434,5 +434,6 @@
     <MODULE id="juce_tracktion_marketplace" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
-  <JUCEOPTIONS/>
+  <JUCEOPTIONS DROWAUDIO_USE_FFTREAL="enabled" DROWAUDIO_USE_SOUNDTOUCH="enabled"
+               DROWAUDIO_USE_CURL="enabled"/>
 </JUCERPROJECT>

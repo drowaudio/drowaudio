@@ -9,7 +9,7 @@
     </GROUP>
   </MAINGROUP>
   <MODULES>
-    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="drowaudio" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
@@ -44,7 +44,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015">
@@ -71,7 +71,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2015>
     <VS2013 targetFolder="Builds/VisualStudio2013">
@@ -98,7 +98,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2013>
     <VS2012 targetFolder="Builds/VisualStudio2012">
@@ -125,7 +125,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2012>
     <VS2010 targetFolder="Builds/VisualStudio2010">
@@ -152,7 +152,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2010>
     <VS2008 targetFolder="Builds/VisualStudio2008">
@@ -175,7 +175,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2008>
     <VS2005 targetFolder="Builds/VisualStudio2005">
@@ -198,7 +198,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </VS2005>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
@@ -221,7 +221,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </LINUX_MAKE>
     <CODEBLOCKS_WINDOWS targetFolder="Builds/CodeBlocksWindows">
@@ -242,7 +242,7 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </CODEBLOCKS_WINDOWS>
     <CODEBLOCKS_LINUX targetFolder="Builds/CodeBlocksLinux">
@@ -263,9 +263,10 @@
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="dRowAudio" path="../../../"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
       </MODULEPATHS>
     </CODEBLOCKS_LINUX>
   </EXPORTFORMATS>
-  <JUCEOPTIONS/>
+  <JUCEOPTIONS DROWAUDIO_USE_FFTREAL="enabled" DROWAUDIO_USE_SOUNDTOUCH="enabled"
+               DROWAUDIO_USE_CURL="enabled"/>
 </JUCERPROJECT>

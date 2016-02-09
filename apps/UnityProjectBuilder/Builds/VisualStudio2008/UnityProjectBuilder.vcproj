@@ -30,7 +30,7 @@
             Optimization="0"
             BufferSecurityCheck=""
             DebugInformationFormat="4"
-            AdditionalIncludeDirectories="..\..\JuceLibraryCode;..\..\..\..\..\..\Work;..\..\..\..\..\JUCE\modules"
+            AdditionalIncludeDirectories="..\..\JuceLibraryCode;..\..\..\..\module;..\..\..\..\..\JUCE\modules"
             PreprocessorDefinitions="_CONSOLE;_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2008_78A5006=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
@@ -85,7 +85,7 @@
             Optimization="3"
             InlineFunctionExpansion="1"
             StringPooling="true"
-            AdditionalIncludeDirectories="..\..\JuceLibraryCode;..\..\..\..\..\..\Work;..\..\..\..\..\JUCE\modules"
+            AdditionalIncludeDirectories="..\..\JuceLibraryCode;..\..\..\..\module;..\..\..\..\..\JUCE\modules"
             PreprocessorDefinitions="_CONSOLE;_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2008_78A5006=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
@@ -130,10 +130,145 @@
       </Filter>
     </Filter>
     <Filter Name="Juce Modules">
-      <Filter Name="dRowAudio">
-        <Filter Name="dRowAudio">
-          <Filter Name="audio">
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
+      <Filter Name="drowaudio">
+        <Filter Name="audio">
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_AudioFilePlayer.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_AudioFilePlayer.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_AudioFilePlayerExt.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_AudioFilePlayerExt.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_AudioSampleBufferAudioFormat.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_AudioUtility.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_Buffer.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_EnvelopeFollower.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_EnvelopeFollower.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_FifoBuffer.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_FilteringAudioSource.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_FilteringAudioSource.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_LoopingAudioSource.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_LoopingAudioSource.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_Pitch.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_PitchDetector.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_PitchDetector.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_ReversibleAudioSource.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_ReversibleAudioSource.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_SampleRateConverter.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_SampleRateConverter.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_SoundTouchAudioSource.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_SoundTouchAudioSource.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_SoundTouchProcessor.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\audio\dRowAudio_SoundTouchProcessor.h"/>
+          <Filter Name="fft">
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\fft\dRowAudio_FFT.cpp">
               <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
@@ -143,8 +278,8 @@
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
             </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayer.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.cpp">
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\fft\dRowAudio_FFT.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\fft\dRowAudio_LTAS.cpp">
               <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
@@ -154,8 +289,8 @@
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
             </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.cpp">
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\fft\dRowAudio_LTAS.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
               <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
@@ -165,9 +300,7 @@
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
             </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_AudioUtility.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\fft\dRowAudio_Window.cpp">
               <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
@@ -177,169 +310,10 @@
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
             </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_Buffer.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_EnvelopeFollower.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_EnvelopeFollower.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_FifoBuffer.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_FilteringAudioSource.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_FilteringAudioSource.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_LoopingAudioSource.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_LoopingAudioSource.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_Pitch.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_PitchDetector.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_PitchDetector.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_ReversibleAudioSource.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_ReversibleAudioSource.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_SampleRateConverter.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_SampleRateConverter.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h"/>
-            <Filter Name="fft">
-              <File RelativePath="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\fft\dRowAudio_FFT.h"/>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\fft\dRowAudio_LTAS.h"/>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\fft\dRowAudio_Window.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\fft\dRowAudio_Window.h"/>
-            </Filter>
-            <Filter Name="filters">
-              <File RelativePath="..\..\..\..\dRowAudio\audio\filters\dRowAudio_BiquadFilter.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h"/>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h"/>
-            </Filter>
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\fft\dRowAudio_Window.h"/>
           </Filter>
-          <Filter Name="gui">
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_AudioFileDropTarget.cpp">
+          <Filter Name="filters">
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\filters\dRowAudio_BiquadFilter.cpp">
               <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
@@ -349,8 +323,8 @@
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
             </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_AudioOscilloscope.cpp">
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\filters\dRowAudio_BiquadFilter.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
               <FileConfiguration Name="Debug|Win32"
                                  ExcludedFromBuild="true">
                 <Tool Name="VCCLCompilerTool"/>
@@ -360,353 +334,377 @@
                 <Tool Name="VCCLCompilerTool"/>
               </FileConfiguration>
             </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_AudioOscilloscope.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_AudioTransportCursor.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_AudioTransportCursor.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_CentreAlignViewport.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_CentreAlignViewport.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_Clock.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_Clock.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_CpuMeter.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_CpuMeter.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_DefaultColours.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_DefaultColours.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_GraphicalComponent.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_GraphicalComponent.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_GuiHelpers.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_MusicLibraryTable.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_MusicLibraryTable.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_SegmentedMeter.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_SegmentedMeter.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_Sonogram.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_Sonogram.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_Spectrograph.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_Spectrograph.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_Spectroscope.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_Spectroscope.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_TriggeredScope.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\gui\dRowAudio_TriggeredScope.h"/>
-            <Filter Name="audiothumbnail">
-              <File RelativePath="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h"/>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h"/>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h"/>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h"/>
-            </Filter>
-            <Filter Name="filebrowser">
-              <File RelativePath="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h"/>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
-                <FileConfiguration Name="Debug|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-                <FileConfiguration Name="Release|Win32"
-                                   ExcludedFromBuild="true">
-                  <Tool Name="VCCLCompilerTool"/>
-                </FileConfiguration>
-              </File>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h"/>
-              <File RelativePath="..\..\..\..\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h"/>
-            </Filter>
-          </Filter>
-          <Filter Name="maths">
-            <File RelativePath="..\..\..\..\dRowAudio\maths\dRowAudio_BezierCurve.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\maths\dRowAudio_CumulativeMovingAverage.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\maths\dRowAudio_MathsUtilities.h"/>
-          </Filter>
-          <Filter Name="native">
-            <File RelativePath="..\..\..\..\dRowAudio\native\dRowAudio_AudioPicker.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\native\dRowAudio_AudioPicker.mm"/>
-            <File RelativePath="..\..\..\..\dRowAudio\native\dRowAudio_AVAssetAudioFormat.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\native\dRowAudio_AVAssetAudioFormat.mm"/>
-            <File RelativePath="..\..\..\..\dRowAudio\native\dRowAudio_IOSAudioConverter.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\native\dRowAudio_IOSAudioConverter.mm"/>
-          </Filter>
-          <Filter Name="network">
-            <File RelativePath="..\..\..\..\dRowAudio\network\dRowAudio_CURLEasySession.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\network\dRowAudio_CURLEasySession.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\network\dRowAudio_CURLManager.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\network\dRowAudio_CURLManager.h"/>
-          </Filter>
-          <Filter Name="parameters">
-            <File RelativePath="..\..\..\..\dRowAudio\parameters\dRowAudio_PluginParameter.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\parameters\dRowAudio_PluginParameter.h"/>
-          </Filter>
-          <Filter Name="streams">
-            <File RelativePath="..\..\..\..\dRowAudio\streams\dRowAudio_MemoryInputSource.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\streams\dRowAudio_MemoryInputSource.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\streams\dRowAudio_StreamAndFileHandler.h"/>
-          </Filter>
-          <Filter Name="utility">
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_Comparators.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_Constants.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_DebugObject.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_EncryptedString.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_EncryptedString.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibrary.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibrary.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibraryParser.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_ITunesLibraryParser.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_LockedPointer.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_MusicLibraryHelpers.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_StateVariable.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_UnityBuilder.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
-              <FileConfiguration Name="Debug|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-              <FileConfiguration Name="Release|Win32"
-                                 ExcludedFromBuild="true">
-                <Tool Name="VCCLCompilerTool"/>
-              </FileConfiguration>
-            </File>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_Utility.h"/>
-            <File RelativePath="..\..\..\..\dRowAudio\utility\dRowAudio_XmlHelpers.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\audio\filters\dRowAudio_OnePoleFilter.h"/>
           </Filter>
         </Filter>
-        <File RelativePath="..\..\..\..\juce_module_info">
+        <Filter Name="gui">
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_AudioFileDropTarget.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_AudioFileDropTarget.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_AudioOscilloscope.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_AudioOscilloscope.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_AudioTransportCursor.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_AudioTransportCursor.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_CentreAlignViewport.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_CentreAlignViewport.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_Clock.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_Clock.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_CpuMeter.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_CpuMeter.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_DefaultColours.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_DefaultColours.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_GraphicalComponent.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_GraphicalComponent.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_GuiHelpers.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_MusicLibraryTable.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_MusicLibraryTable.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_SegmentedMeter.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_SegmentedMeter.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_Sonogram.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_Sonogram.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_Spectrograph.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_Spectrograph.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_Spectroscope.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_Spectroscope.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_TriggeredScope.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\gui\dRowAudio_TriggeredScope.h"/>
+          <Filter Name="audiothumbnail">
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
+              <FileConfiguration Name="Debug|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+              <FileConfiguration Name="Release|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+            </File>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
+              <FileConfiguration Name="Debug|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+              <FileConfiguration Name="Release|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+            </File>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
+              <FileConfiguration Name="Debug|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+              <FileConfiguration Name="Release|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+            </File>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
+              <FileConfiguration Name="Debug|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+              <FileConfiguration Name="Release|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+            </File>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h"/>
+          </Filter>
+          <Filter Name="filebrowser">
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
+              <FileConfiguration Name="Debug|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+              <FileConfiguration Name="Release|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+            </File>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
+              <FileConfiguration Name="Debug|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+              <FileConfiguration Name="Release|Win32"
+                                 ExcludedFromBuild="true">
+                <Tool Name="VCCLCompilerTool"/>
+              </FileConfiguration>
+            </File>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h"/>
+            <File RelativePath="..\..\..\..\module\drowaudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h"/>
+          </Filter>
+        </Filter>
+        <Filter Name="maths">
+          <File RelativePath="..\..\..\..\module\drowaudio\maths\dRowAudio_BezierCurve.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\maths\dRowAudio_CumulativeMovingAverage.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\maths\dRowAudio_MathsUnitTests.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\maths\dRowAudio_MathsUtilities.h"/>
+        </Filter>
+        <Filter Name="native">
+          <File RelativePath="..\..\..\..\module\drowaudio\native\dRowAudio_AudioPicker.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\native\dRowAudio_AudioPicker.mm"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\native\dRowAudio_AVAssetAudioFormat.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\native\dRowAudio_AVAssetAudioFormat.mm"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\native\dRowAudio_IOSAudioConverter.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\native\dRowAudio_IOSAudioConverter.mm"/>
+        </Filter>
+        <Filter Name="network">
+          <File RelativePath="..\..\..\..\module\drowaudio\network\dRowAudio_CURLEasySession.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\network\dRowAudio_CURLEasySession.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\network\dRowAudio_CURLManager.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\network\dRowAudio_CURLManager.h"/>
+        </Filter>
+        <Filter Name="parameters">
+          <File RelativePath="..\..\..\..\module\drowaudio\parameters\dRowAudio_PluginParameter.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\parameters\dRowAudio_PluginParameter.h"/>
+        </Filter>
+        <Filter Name="streams">
+          <File RelativePath="..\..\..\..\module\drowaudio\streams\dRowAudio_MemoryInputSource.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\streams\dRowAudio_MemoryInputSource.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\streams\dRowAudio_StreamAndFileHandler.h"/>
+        </Filter>
+        <Filter Name="utility">
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_Comparators.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_Constants.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_DebugObject.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_EncryptedString.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_EncryptedString.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_ITunesLibrary.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_ITunesLibrary.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_ITunesLibraryParser.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_ITunesLibraryParser.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_LockedPointer.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_MusicLibraryHelpers.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_StateVariable.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_UnityBuilder.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_UnityBuilder.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_UnityProjectBuilder.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_UnityProjectBuilder.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_Utility.h"/>
+          <File RelativePath="..\..\..\..\module\drowaudio\utility\dRowAudio_XmlHelpers.h"/>
+        </Filter>
+        <File RelativePath="..\..\..\..\module\drowaudio\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -716,7 +714,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\dRowAudio.h"/>
+        <File RelativePath="..\..\..\..\module\drowaudio\dRowAudio.h"/>
       </Filter>
       <Filter Name="juce_audio_basics">
         <Filter Name="buffers">
@@ -5250,7 +5248,7 @@
     </Filter>
     <Filter Name="Juce Library Code">
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
-      <File RelativePath="..\..\..\..\dRowAudio\dRowAudio.cpp"/>
+      <File RelativePath="..\..\..\..\module\drowaudio\dRowAudio.cpp"/>
       <File RelativePath="..\..\..\..\..\JUCE\modules\juce_audio_basics\juce_audio_basics.cpp"/>
       <File RelativePath="..\..\..\..\..\JUCE\modules\juce_audio_devices\juce_audio_devices.cpp"/>
       <File RelativePath="..\..\..\..\..\JUCE\modules\juce_audio_formats\juce_audio_formats.cpp"/>

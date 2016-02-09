@@ -40,8 +40,8 @@ BufferTransformAudioSource::BufferTransformAudioSource (AudioSource* source_,
 
     const float xScale = 1.0f / (buffer.getSize() - 1);
 
-    for (int i = 0; i < buffer.getSize(); ++i)
-        buffer.getReference (i) = i * xScale;
+    for (size_t i = 0; i < buffer.getSize(); ++i)
+        buffer.getReference ((int) i) = (float) i * xScale;
 }
 
 void BufferTransformAudioSource::setBypass (bool shouldBypass)

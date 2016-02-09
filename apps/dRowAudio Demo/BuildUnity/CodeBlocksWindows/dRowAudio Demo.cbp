@@ -252,479 +252,479 @@
     <Unit filename="../../Source/UnityBuild1.cpp"/>
     <Unit filename="../../Source/UnityBuild2.cpp"/>
     <Unit filename="../../Source/UnityBuild3.cpp"/>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_AudioFilePlayer.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_AudioFilePlayer.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_AudioFilePlayer.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_AudioFilePlayer.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_AudioFilePlayerExt.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_AudioFilePlayerExt.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_AudioFilePlayerExt.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_AudioFilePlayerExt.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_AudioSampleBufferAudioFormat.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_AudioSampleBufferAudioFormat.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_AudioSampleBufferAudioFormat.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_AudioSampleBufferAudioFormat.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_AudioUtility.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_AudioUtility.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_AudioUtilityUnitTests.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_AudioUtilityUnitTests.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_Buffer.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_Buffer.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_EnvelopeFollower.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_EnvelopeFollower.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_EnvelopeFollower.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_EnvelopeFollower.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_FifoBuffer.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_FifoBuffer.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_FilteringAudioSource.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_FilteringAudioSource.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_FilteringAudioSource.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_FilteringAudioSource.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_LoopingAudioSource.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_LoopingAudioSource.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_LoopingAudioSource.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_LoopingAudioSource.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_Pitch.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_Pitch.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_PitchDetector.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_PitchDetector.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_PitchDetector.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_PitchDetector.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_ReversibleAudioSource.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_ReversibleAudioSource.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_ReversibleAudioSource.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_ReversibleAudioSource.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_SampleRateConverter.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_SampleRateConverter.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_SampleRateConverter.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_SampleRateConverter.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_SoundTouchAudioSource.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_SoundTouchAudioSource.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_SoundTouchAudioSource.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_SoundTouchAudioSource.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_SoundTouchProcessor.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_SoundTouchProcessor.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/dRowAudio_SoundTouchProcessor.h">
+    <Unit filename="../../../../module/drowaudio/audio/dRowAudio_SoundTouchProcessor.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/fft/dRowAudio_FFT.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/fft/dRowAudio_FFT.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/fft/dRowAudio_FFT.h">
+    <Unit filename="../../../../module/drowaudio/audio/fft/dRowAudio_FFT.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/fft/dRowAudio_LTAS.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/fft/dRowAudio_LTAS.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/fft/dRowAudio_LTAS.h">
+    <Unit filename="../../../../module/drowaudio/audio/fft/dRowAudio_LTAS.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/fft/dRowAudio_mac_FFTOperation.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/fft/dRowAudio_mac_FFTOperation.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/fft/dRowAudio_Window.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/fft/dRowAudio_Window.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/fft/dRowAudio_Window.h">
+    <Unit filename="../../../../module/drowaudio/audio/fft/dRowAudio_Window.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/filters/dRowAudio_BiquadFilter.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/filters/dRowAudio_BiquadFilter.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/filters/dRowAudio_BiquadFilter.h">
+    <Unit filename="../../../../module/drowaudio/audio/filters/dRowAudio_BiquadFilter.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/filters/dRowAudio_OnePoleFilter.cpp">
+    <Unit filename="../../../../module/drowaudio/audio/filters/dRowAudio_OnePoleFilter.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/audio/filters/dRowAudio_OnePoleFilter.h">
+    <Unit filename="../../../../module/drowaudio/audio/filters/dRowAudio_OnePoleFilter.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_AudioFileDropTarget.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_AudioFileDropTarget.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_AudioFileDropTarget.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_AudioFileDropTarget.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_AudioOscilloscope.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_AudioOscilloscope.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_AudioOscilloscope.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_AudioOscilloscope.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_AudioTransportCursor.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_AudioTransportCursor.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_AudioTransportCursor.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_AudioTransportCursor.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_CentreAlignViewport.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_CentreAlignViewport.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_CentreAlignViewport.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_CentreAlignViewport.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_Clock.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_Clock.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_Clock.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_Clock.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_CpuMeter.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_CpuMeter.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_CpuMeter.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_CpuMeter.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_DefaultColours.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_DefaultColours.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_DefaultColours.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_DefaultColours.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_GraphicalComponent.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_GraphicalComponent.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_GraphicalComponent.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_GraphicalComponent.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_GuiHelpers.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_GuiHelpers.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_MusicLibraryTable.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_MusicLibraryTable.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_MusicLibraryTable.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_MusicLibraryTable.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_SegmentedMeter.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_SegmentedMeter.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_SegmentedMeter.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_SegmentedMeter.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_Sonogram.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_Sonogram.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_Sonogram.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_Sonogram.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_Spectrograph.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_Spectrograph.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_Spectrograph.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_Spectrograph.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_Spectroscope.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_Spectroscope.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_Spectroscope.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_Spectroscope.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_TriggeredScope.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_TriggeredScope.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/dRowAudio_TriggeredScope.h">
+    <Unit filename="../../../../module/drowaudio/gui/dRowAudio_TriggeredScope.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/audiothumbnail/dRowAudio_AudioThumbnailImage.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/audiothumbnail/dRowAudio_AudioThumbnailImage.h">
+    <Unit filename="../../../../module/drowaudio/gui/audiothumbnail/dRowAudio_AudioThumbnailImage.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h">
+    <Unit filename="../../../../module/drowaudio/gui/audiothumbnail/dRowAudio_ColouredAudioThumbnail.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h">
+    <Unit filename="../../../../module/drowaudio/gui/audiothumbnail/dRowAudio_DraggableWaveDisplay.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h">
+    <Unit filename="../../../../module/drowaudio/gui/audiothumbnail/dRowAudio_PositionableWaveDisplay.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/filebrowser/dRowAudio_BasicFileBrowser.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/filebrowser/dRowAudio_BasicFileBrowser.h">
+    <Unit filename="../../../../module/drowaudio/gui/filebrowser/dRowAudio_BasicFileBrowser.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp">
+    <Unit filename="../../../../module/drowaudio/gui/filebrowser/dRowAudio_ColumnFileBrowser.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/filebrowser/dRowAudio_ColumnFileBrowser.h">
+    <Unit filename="../../../../module/drowaudio/gui/filebrowser/dRowAudio_ColumnFileBrowser.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/gui/filebrowser/dRowAudio_ColumnFileBrowserLookAndFeel.h">
+    <Unit filename="../../../../module/drowaudio/gui/filebrowser/dRowAudio_ColumnFileBrowserLookAndFeel.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/maths/dRowAudio_BezierCurve.h">
+    <Unit filename="../../../../module/drowaudio/maths/dRowAudio_BezierCurve.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/maths/dRowAudio_CumulativeMovingAverage.h">
+    <Unit filename="../../../../module/drowaudio/maths/dRowAudio_CumulativeMovingAverage.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/maths/dRowAudio_MathsUnitTests.cpp">
+    <Unit filename="../../../../module/drowaudio/maths/dRowAudio_MathsUnitTests.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/maths/dRowAudio_MathsUtilities.h">
+    <Unit filename="../../../../module/drowaudio/maths/dRowAudio_MathsUtilities.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/native/dRowAudio_AudioPicker.h">
+    <Unit filename="../../../../module/drowaudio/native/dRowAudio_AudioPicker.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/native/dRowAudio_AudioPicker.mm">
+    <Unit filename="../../../../module/drowaudio/native/dRowAudio_AudioPicker.mm">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/native/dRowAudio_AVAssetAudioFormat.h">
+    <Unit filename="../../../../module/drowaudio/native/dRowAudio_AVAssetAudioFormat.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/native/dRowAudio_AVAssetAudioFormat.mm">
+    <Unit filename="../../../../module/drowaudio/native/dRowAudio_AVAssetAudioFormat.mm">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/native/dRowAudio_IOSAudioConverter.h">
+    <Unit filename="../../../../module/drowaudio/native/dRowAudio_IOSAudioConverter.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/native/dRowAudio_IOSAudioConverter.mm">
+    <Unit filename="../../../../module/drowaudio/native/dRowAudio_IOSAudioConverter.mm">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/network/dRowAudio_CURLEasySession.cpp">
+    <Unit filename="../../../../module/drowaudio/network/dRowAudio_CURLEasySession.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/network/dRowAudio_CURLEasySession.h">
+    <Unit filename="../../../../module/drowaudio/network/dRowAudio_CURLEasySession.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/network/dRowAudio_CURLManager.cpp">
+    <Unit filename="../../../../module/drowaudio/network/dRowAudio_CURLManager.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/network/dRowAudio_CURLManager.h">
+    <Unit filename="../../../../module/drowaudio/network/dRowAudio_CURLManager.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/parameters/dRowAudio_PluginParameter.cpp">
+    <Unit filename="../../../../module/drowaudio/parameters/dRowAudio_PluginParameter.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/parameters/dRowAudio_PluginParameter.h">
+    <Unit filename="../../../../module/drowaudio/parameters/dRowAudio_PluginParameter.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/streams/dRowAudio_MemoryInputSource.cpp">
+    <Unit filename="../../../../module/drowaudio/streams/dRowAudio_MemoryInputSource.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/streams/dRowAudio_MemoryInputSource.h">
+    <Unit filename="../../../../module/drowaudio/streams/dRowAudio_MemoryInputSource.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/streams/dRowAudio_StreamAndFileHandler.h">
+    <Unit filename="../../../../module/drowaudio/streams/dRowAudio_StreamAndFileHandler.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_Comparators.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_Comparators.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_Constants.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_Constants.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_DebugObject.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_DebugObject.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_EncryptedString.cpp">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_EncryptedString.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_EncryptedString.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_EncryptedString.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_ITunesLibrary.cpp">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_ITunesLibrary.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_ITunesLibrary.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_ITunesLibrary.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_ITunesLibraryParser.cpp">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_ITunesLibraryParser.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_ITunesLibraryParser.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_ITunesLibraryParser.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_LockedPointer.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_LockedPointer.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_MusicLibraryHelpers.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_MusicLibraryHelpers.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_StateVariable.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_StateVariable.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_UnityBuilder.cpp">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_UnityBuilder.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_UnityBuilder.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_UnityBuilder.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_UnityProjectBuilder.cpp">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_UnityProjectBuilder.cpp">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_UnityProjectBuilder.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_UnityProjectBuilder.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_Utility.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_Utility.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/utility/dRowAudio_XmlHelpers.h">
+    <Unit filename="../../../../module/drowaudio/utility/dRowAudio_XmlHelpers.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../juce_module_info">
+    <Unit filename="../../../../module/drowaudio/juce_module_info">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio.h">
+    <Unit filename="../../../../module/drowaudio/dRowAudio.h">
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
@@ -4421,7 +4421,7 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../../../dRowAudio/dRowAudio.cpp"/>
+    <Unit filename="../../../../module/drowaudio/dRowAudio.cpp"/>
     <Unit filename="../../../../../JUCE/modules/juce_audio_basics/juce_audio_basics.cpp"/>
     <Unit filename="../../../../../JUCE/modules/juce_audio_devices/juce_audio_devices.cpp"/>
     <Unit filename="../../../../../JUCE/modules/juce_audio_formats/juce_audio_formats.cpp"/>

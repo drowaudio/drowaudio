@@ -18,7 +18,7 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_6D53C8B4=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../../Work -I ../../../../../JUCE/modules
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_6D53C8B4=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../module -I ../../../../../JUCE/modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0
   CXXFLAGS += $(CFLAGS) -std=c++11
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt 
@@ -38,7 +38,7 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_6D53C8B4=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../../../Work -I ../../../../../JUCE/modules
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_6D53C8B4=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../module -I ../../../../../JUCE/modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -O3
   CXXFLAGS += $(CFLAGS) -std=c++11
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -fvisibility=hidden -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt 
@@ -50,7 +50,7 @@ endif
 
 OBJECTS := \
   $(OBJDIR)/Main_90ebc5c2.o \
-  $(OBJDIR)/dRowAudio_77fd40e6.o \
+  $(OBJDIR)/dRowAudio_7c3808c3.o \
   $(OBJDIR)/juce_audio_basics_89a6632b.o \
   $(OBJDIR)/juce_audio_devices_3f459929.o \
   $(OBJDIR)/juce_audio_formats_6dc6e2c9.o \
@@ -86,7 +86,7 @@ $(OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp
 	@echo "Compiling Main.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/dRowAudio_77fd40e6.o: ../../../../dRowAudio/dRowAudio.cpp
+$(OBJDIR)/dRowAudio_7c3808c3.o: ../../../../module/drowaudio/dRowAudio.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling dRowAudio.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
