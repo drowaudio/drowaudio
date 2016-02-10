@@ -12,6 +12,12 @@ dRowAudio is written following JUCE's [Coding Standard](http://www.juce.com/lear
 This library is hosted on [GitHub](https://github.com/drowaudio/drowaudio).
 Please find the online documentation [here](http://drowaudio.co.uk/docs/).
 
+## Build Status
+
+| [Travis-CI](https://travis-ci.org/) |
+| :-------: |
+| [![Build Status](https://travis-ci.org/jrlanglois/drowaudio.svg?branch=master)](https://travis-ci.org/jrlanglois/drowaudio) |
+
 ## Prerequisites
 
 This documentation assumes that the reader has a working knowledge of [JUCE](https://github.com/julianstorer/JUCE).
@@ -36,7 +42,7 @@ using MS Visual Studio. The results are all fully compatible with Windows XP, Vi
 
 ## License
 
-Copyright (C) 2013 by [David Rowland](mailto:dave@drowaudio.co.uk)
+Copyright (C) 2013 - Present by [David Rowland](mailto:dave@drowaudio.co.uk)
 
 dRowAudio is provided under the terms of The MIT License (MIT):
 
@@ -47,3 +53,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Some portions of the software including but not limited to [SoundTouch](http://www.surina.net/soundtouch/index.html) and [FFTReal](http://ldesoras.free.fr/prod.html) are included with in the repository but released under separate licences. Please see the individual source files for details.
+
+## Other Contributors
+
+* [Joël R. Langlois](https://github.com/jrlanglois)
