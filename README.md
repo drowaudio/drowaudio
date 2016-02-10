@@ -26,7 +26,7 @@ This documentation assumes that the reader has a working knowledge of [JUCE](htt
 
 dRowAudio requires the most recent version of JUCE.
 
-Simply drag the [juce_module_info](https://github.com/jrlanglois/drowaudio/blob/master/juce_module_info) file into the modules section of your Introjucer project.
+Simply drag the [juce_module_info](https://github.com/jrlanglois/drowaudio/blob/master/module/drowaudio/juce_module_info) file into the modules section of your Introjucer project.
 
 ## Platforms
 
