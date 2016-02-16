@@ -105,21 +105,25 @@ strip:
 $(OBJDIR)/FFTDemo_183d0bd.o: ../../Source/fft/FFTDemo.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling FFTDemo.cpp"
+	@echo "CXXFLAGS=$(CXXFLAGS)"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/PitchDetectorComponent_ecaa29bb.o: ../../Source/fft/PitchDetectorComponent.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling PitchDetectorComponent.cpp"
+	@echo "CXXFLAGS=$(CXXFLAGS)"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/ConnectionComponent_50a9adbf.o: ../../Source/network/ConnectionComponent.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling ConnectionComponent.cpp"
+	@echo "CXXFLAGS=$(CXXFLAGS)"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/LocalDirectoryListBox_9a5523eb.o: ../../Source/network/LocalDirectoryListBox.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling LocalDirectoryListBox.cpp"
+	@echo "CXXFLAGS=$(CXXFLAGS)"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/NetworkDemo_34cd0d31.o: ../../Source/network/NetworkDemo.cpp
