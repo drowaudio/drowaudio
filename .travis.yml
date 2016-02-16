@@ -41,4 +41,9 @@ branches:
         - master
 
 script:
-    - make -C "drowaudio/apps/dRowAudio Demo/Builds/Linux/"
+    - make -C "drowaudio/apps/dRowAudio Demo/Builds/Linux/" JUCE_STRING_UTF_TYPE=8
+    - make -C "drowaudio/apps/dRowAudio Demo/Builds/Linux/" clean
+    - make -C "drowaudio/apps/dRowAudio Demo/Builds/Linux/" JUCE_STRING_UTF_TYPE=16
+    - make -C "drowaudio/apps/dRowAudio Demo/Builds/Linux/" clean
+    - make -C "drowaudio/apps/dRowAudio Demo/Builds/Linux/" JUCE_STRING_UTF_TYPE=32
+    - make -C "drowaudio/apps/dRowAudio Demo/Builds/Linux/" clean
