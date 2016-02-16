@@ -32,14 +32,12 @@
 #ifndef MAIN_COMPONENT_H
 #define MAIN_COMPONENT_H
 
-#include "DemoHeader.h"
 #include "TrackInfoComponent.h"
 #include "TransportComponent.h"
 #include "playback/BufferTransformAudioSource.h"
 
 class FFTDemo;
 
-//==============================================================================
 class MainComponent : public Component,
                       public TextEditor::Listener,
                       public DragAndDropContainer,
@@ -87,7 +85,8 @@ private:
 
     FFTDemo* fftDemo;
 
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
 
-#endif  // MAIN_COMPONENT_H
+#endif //MAIN_COMPONENT_H

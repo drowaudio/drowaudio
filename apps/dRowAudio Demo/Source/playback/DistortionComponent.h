@@ -80,4 +80,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionComponent)
 };
 
-#endif // DISTORTION_COMPONENT_H
+#endif //DISTORTION_COMPONENT_H

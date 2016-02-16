@@ -34,12 +34,11 @@
 
 #include "../DemoHeader.h"
 
-//==============================================================================
 class LoopMarker : public Component
 {
 public:
-    LoopMarker()
-        : isMouseOver (false)
+    LoopMarker() :
+        isMouseOver (false)
     {
     }
 
@@ -120,4 +119,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopComponent)
 };
 
-#endif  // LOOP_COMPONENT_H
+#endif //LOOP_COMPONENT_H

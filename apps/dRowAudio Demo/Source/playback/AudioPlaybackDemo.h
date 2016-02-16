@@ -32,7 +32,6 @@
 #ifndef AUDIO_PLAYBACK_DEMO_H
 #define AUDIO_PLAYBACK_DEMO_H
 
-#include "../DemoHeader.h"
 #include "LoopComponent.h"
 #include "DistortionDemo.h"
 #include "BufferTransformAudioSource.h"
@@ -43,8 +42,6 @@ class AudioPlaybackDemo : public Component,
 public:
     AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer,
                        BufferTransformAudioSource& bufferTransformAudioSource);
-
-    ~AudioPlaybackDemo();
 
     //==============================================================================
     void resized() override;
@@ -93,4 +90,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPlaybackDemo)
 };
 
-#endif  // __AUDIOPLAYBACKDEMO_H_4F99037A__
+#endif //AUDIO_PLAYBACK_DEMO_H

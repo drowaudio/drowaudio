@@ -34,8 +34,8 @@
 
 #if DROWAUDIO_USE_CURL
 
-RemoteDirectoryListBoxModel::RemoteDirectoryListBoxModel()
-    : curlSession (nullptr)
+RemoteDirectoryListBoxModel::RemoteDirectoryListBoxModel() :
+    curlSession (nullptr)
 {
 }
 
@@ -78,12 +78,9 @@ void RemoteDirectoryListBoxModel::setContents (const StringArray& newContents)
 
 void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked (int row, const MouseEvent& /*e*/)
 {
-    DBG (itemList[row]);
-
     //*** Need to navigate session here
     if (itemList[row] == "..")
     {
-        DBG ("move up");
         curlSession->setRemotePath (curlSession->getRemotePath().upToLastOccurrenceOf ("/", false, false));
         setContents (curlSession->getDirectoryListing());
     }
@@ -91,10 +88,8 @@ void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked (int row, const Mouse
     {
         if (! itemList[row].contains ("."))
         {
-            DBG ("directory");
             String newCWD (curlSession->getRemotePath().upToLastOccurrenceOf ("/", true, false));
             newCWD << itemList[row] << "/";
-            DBG (newCWD);
             curlSession->setRemotePath (newCWD);
             setContents (curlSession->getDirectoryListing());
         }
@@ -112,10 +107,10 @@ var RemoteDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int>&
 }
 
 //==============================================================================
-RemoteDirectoryListBox::RemoteDirectoryListBox()
-    : isInterestedInDrag (false)
+RemoteDirectoryListBox::RemoteDirectoryListBox() :
+    isInterestedInDrag (false)
 {
-    //    session.setRemotePath("ftp://www.aggravatedmusic.co.uk/rss/agro_news_feed.xml");
+    //session.setRemotePath ("ftp://www.aggravatedmusic.co.uk/rss/agro_news_feed.xml");
     session.setLocalFile (File::getSpecialLocation (File::userDesktopDirectory));
 
     model.addChangeListener (this);
@@ -182,4 +177,4 @@ void RemoteDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails
     repaint();
 }
 
-#endif
+#endif //DROWAUDIO_USE_CURL

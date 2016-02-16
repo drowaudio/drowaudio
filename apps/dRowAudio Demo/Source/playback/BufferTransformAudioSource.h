@@ -34,7 +34,7 @@
 
 #include "../DemoHeader.h"
 
-class BufferTransformAudioSource :  public AudioSource
+class BufferTransformAudioSource : public AudioSource
 {
 public:
     BufferTransformAudioSource (AudioSource* source,

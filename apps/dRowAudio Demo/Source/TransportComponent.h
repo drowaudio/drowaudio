@@ -66,4 +66,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TransportComponent)
 };
 
-#endif  // TRANSPORT_COMPONENT_H
+#endif //TRANSPORT_COMPONENT_H

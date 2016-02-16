@@ -33,8 +33,8 @@
 
 #if DROWAUDIO_USE_CURL
 
-ConnectionComponent::ConnectionComponent()
-    : curlSession (nullptr)
+ConnectionComponent::ConnectionComponent() :
+    curlSession (nullptr)
 {
     urlLabel.setComponentID ("urlLabel");
     hostnameLabel.setComponentID ("hostnameLabel");

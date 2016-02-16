@@ -32,9 +32,9 @@
 #include "BufferTransformAudioSource.h"
 
 BufferTransformAudioSource::BufferTransformAudioSource (AudioSource* source_,
-                                                        bool deleteSourceWhenDeleted)
-    : source (source_, deleteSourceWhenDeleted),
-      buffer (512)
+                                                        bool deleteSourceWhenDeleted) :
+    source (source_, deleteSourceWhenDeleted),
+    buffer (512)
 {
     jassert (source_ != nullptr);
 

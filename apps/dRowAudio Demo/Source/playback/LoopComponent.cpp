@@ -32,8 +32,8 @@
 #include "LoopComponent.h"
 #include "AudioPlaybackDemo.h"
 
-LoopComponent::LoopComponent (AudioFilePlayerExt& audioFilePlayer_)
-    : audioFilePlayer (audioFilePlayer_)
+LoopComponent::LoopComponent (AudioFilePlayerExt& audioFilePlayer_) :
+    audioFilePlayer (audioFilePlayer_)
 {
     setInterceptsMouseClicks (false, true);
 
@@ -51,9 +51,6 @@ LoopComponent::LoopComponent (AudioFilePlayerExt& audioFilePlayer_)
 LoopComponent::~LoopComponent()
 {
     audioFilePlayer.removeListener (this);
-
-    marker1.removeComponentListener (this);
-    marker2.removeComponentListener (this);
 }
 
 void LoopComponent::resized()

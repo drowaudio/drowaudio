@@ -32,7 +32,6 @@
 #ifndef NETWORK_DEMO_H
 #define NETWORK_DEMO_H
 
-#include "../DemoHeader.h"
 #include "ConnectionComponent.h"
 #include "LocalDirectoryListBox.h"
 #include "RemoteDirectoryListBox.h"
@@ -70,5 +69,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NetworkDemo)
 };
 
-#endif  // DROWAUDIO_USE_CURL
-#endif  // NETWORK_DEMO_H
+#endif //DROWAUDIO_USE_CURL
+#endif //NETWORK_DEMO_H

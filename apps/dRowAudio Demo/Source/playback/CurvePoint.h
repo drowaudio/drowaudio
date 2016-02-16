@@ -38,8 +38,8 @@ class CurvePoint : public Component,
                    public ComponentDragger
 {
 public:
-    CurvePoint()
-        : mouseIsOver (false)
+    CurvePoint() :
+        mouseIsOver (false)
     {
     }
 

@@ -31,9 +31,10 @@
 
 #include "TransportComponent.h"
 
-TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_, AudioFilePlayerExt& audioFilePlayer_)
-    : audioDeviceManager (audioDeviceManager_),
-      audioFilePlayer (audioFilePlayer_)
+TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
+                                        AudioFilePlayerExt& audioFilePlayer_) :
+    audioDeviceManager (audioDeviceManager_),
+    audioFilePlayer (audioFilePlayer_)
 {
     for (int i = 0; i < numButtons; ++i)
     {
@@ -57,12 +58,9 @@ TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
 void TransportComponent::resized()
 {
     const int w = getWidth();
-//    const int h = getHeight();
 
     for (int i = 0; i < numButtons; ++i)
-    {
         buttons[i]->setBounds (0, 20 * i + 1, w, 18);
-    }
 }
 
 void TransportComponent::buttonClicked (Button* button)

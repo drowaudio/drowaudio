@@ -31,8 +31,8 @@
 
 #include "TrackInfoComponent.h"
 
-TrackInfoComponent::TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer_)
-    : audioFilePlayer (audioFilePlayer_)
+TrackInfoComponent::TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer_) :
+    audioFilePlayer (audioFilePlayer_)
 {
     audioFilePlayer.addListener (this);
 
@@ -59,7 +59,6 @@ TrackInfoComponent::~TrackInfoComponent()
 void TrackInfoComponent::resized()
 {
     const int w = getWidth();
-    //const int h = getHeight();
     const int m = 5;
 
     bpmLabel.setBounds (w - 50, m, 50, 20);
@@ -123,9 +122,7 @@ void TrackInfoComponent::paint (Graphics& g)
 void TrackInfoComponent::fileChanged (AudioFilePlayer* player)
 {
     if (player == &audioFilePlayer)
-    {
         repaint();
-    }
 }
 
 void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode)

@@ -35,7 +35,7 @@
 #include "DemoHeader.h"
 #include "DemoLookAndFeel.h"
 
-class MainAppWindow   : public DocumentWindow
+class MainAppWindow : public DocumentWindow
 {
 public:
     MainAppWindow();
@@ -55,5 +55,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainAppWindow)
 };
 
-
-#endif  // MAIN_WINDOW_H
+#endif //MAIN_WINDOW_H

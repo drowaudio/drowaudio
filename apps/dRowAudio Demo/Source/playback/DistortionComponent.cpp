@@ -31,9 +31,9 @@
 
 #include "DistortionComponent.h"
 
-DistortionComponent::DistortionComponent (Buffer& bufferToControl)
-    : buffer (bufferToControl),
-      isInitialised (false)
+DistortionComponent::DistortionComponent (Buffer& bufferToControl) :
+    buffer (bufferToControl),
+    isInitialised (false)
 {
     for (int i = 0; i < 2; ++i)
     {
@@ -47,9 +47,6 @@ DistortionComponent::DistortionComponent (Buffer& bufferToControl)
 
 DistortionComponent::~DistortionComponent()
 {
-    for (int i = 0; i < 2; ++i)
-        curvePoints[i]->removeComponentListener (this);
-
     buffer.removeListener (this);
 }
 
@@ -69,6 +66,7 @@ void DistortionComponent::resized()
     g.fillAll (Colours::black);
 
     g.setColour (Colour::greyLevel (0.25f));
+
     const float xScale = w / 10.0f;
     const float yScale = h / 10.0f;
     for (int i = 1; i < 10; ++i)
@@ -76,6 +74,7 @@ void DistortionComponent::resized()
         g.drawHorizontalLine ((int) (i * yScale), 0.0f, (float) w);
         g.drawVerticalLine ((int) (i * xScale), 0.0f, (float) h);
     }
+
     g.drawLine (0.0f, (float) h, (float) w, 0.0f);
 
     refreshPath();

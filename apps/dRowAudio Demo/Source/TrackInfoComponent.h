@@ -59,7 +59,8 @@ private:
     AudioFilePlayerExt& audioFilePlayer;
     Label bpmLabel, remainLabel;
 
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TrackInfoComponent)
 };
 
-#endif  // TRACK_INFO_COMPONENT_H
+#endif //TRACK_INFO_COMPONENT_H

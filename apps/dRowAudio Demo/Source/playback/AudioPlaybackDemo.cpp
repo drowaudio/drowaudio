@@ -31,7 +31,6 @@
 
 #include "AudioPlaybackDemo.h"
 
-
 AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
                                       BufferTransformAudioSource& bufferTransformAudioSource) :
     audioFilePlayer (audioFilePlayer_),
@@ -129,12 +128,6 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     addAndMakeVisible (&distortionDemo);
 
     backgroundThread.startThread (1);
-}
-
-AudioPlaybackDemo::~AudioPlaybackDemo()
-{
-    for (int i = 0; i < numControls; ++i)
-        playerControls[i]->removeListener (this);
 }
 
 void AudioPlaybackDemo::resized()

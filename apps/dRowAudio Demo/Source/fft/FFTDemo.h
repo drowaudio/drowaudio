@@ -32,7 +32,6 @@
 #ifndef DROWAUDIODEMO_FFTDEMO_H
 #define DROWAUDIODEMO_FFTDEMO_H
 
-#include "../DemoHeader.h"
 #include "PitchDetectorComponent.h"
 
 //==============================================================================

@@ -32,20 +32,20 @@
 #include "DistortionDemo.h"
 #include "../DemoLookAndFeel.h"
 
-DistortionDemo::DistortionDemo (BufferTransformAudioSource& bufferTransformAudioSource_)
-    : bufferTransformAudioSource (bufferTransformAudioSource_),
-      distortionComponent (bufferTransformAudioSource.getBuffer())
+DistortionDemo::DistortionDemo (BufferTransformAudioSource& bufferTransformAudioSource_) :
+    bufferTransformAudioSource (bufferTransformAudioSource_),
+    distortionComponent (bufferTransformAudioSource.getBuffer())
 {
-    addAndMakeVisible (&distortionComponent);
-
-    addAndMakeVisible (&resetButton);
     resetButton.setButtonText ("Reset");
     resetButton.addListener (this);
 
-    addAndMakeVisible (&bypassButton);
     bypassButton.setButtonText ("Bypass");
     bypassButton.setClickingTogglesState (true);
     bypassButton.addListener (this);
+
+    addAndMakeVisible (&distortionComponent);
+    addAndMakeVisible (&resetButton);
+    addAndMakeVisible (&bypassButton);
 }
 
 void DistortionDemo::resized()

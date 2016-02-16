@@ -36,4 +36,4 @@
 
 using namespace drow;
 
-#endif  // DEMO_HEADER_H
+#endif //DEMO_HEADER_H

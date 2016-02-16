@@ -29,10 +29,9 @@
     ==============================================================================
 */
 
-#include "DemoHeader.h"
 #include "MainWindow.h"
 
-class dRowAudioDemoApplication  : public JUCEApplication
+class dRowAudioDemoApplication : public JUCEApplication
 {
 public:
     dRowAudioDemoApplication()
@@ -46,7 +45,7 @@ public:
         testRunner.runAllTests();
 #endif
 
-        ScopedPointer<SplashScreen> splash = new SplashScreen ("dRowAudio Demo",
+        ScopedPointer<SplashScreen> splash = new SplashScreen (getApplicationName(),
                                                                ImageCache::getFromMemory (BinaryData::splash_screen_png, BinaryData::splash_screen_pngSize),
                                                               #if JUCE_MAC
                                                                true);
@@ -63,13 +62,13 @@ public:
     }
 
     void systemRequestedQuit() override                     { quit(); }
-    const String getApplicationName() override              { return "dRowAudio Demo"; }
+    const String getApplicationName() override              { return ProjectInfo::projectName; }
     const String getApplicationVersion() override           { return ProjectInfo::versionString; }
     bool moreThanOneInstanceAllowed() override              { return true; }
     void anotherInstanceStarted (const String&) override    { }
 
 private:
-    ScopedPointer <MainAppWindow> mainWindow;
+    ScopedPointer<MainAppWindow> mainWindow;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (dRowAudioDemoApplication)
 };
