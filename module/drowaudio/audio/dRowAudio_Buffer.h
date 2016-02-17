@@ -47,21 +47,21 @@ class Buffer
 {
 public:
     /** Creates an empty Buffer. */
-    Buffer()
-        : bufferSize (0)
+    Buffer() :
+        bufferSize (0)
     {
     }
 
     /** Creates a buffer with a given size. */
-    Buffer (size_t size)
-        : bufferSize (size)
+    Buffer (size_t size) :
+        bufferSize (size)
     {
         buffer.allocate (bufferSize, true);
     }
 
     /** Creates a copy of another buffer. */
-    Buffer (const Buffer& otherBuffer)
-        : bufferSize (otherBuffer.bufferSize)
+    Buffer (const Buffer& otherBuffer) :
+        bufferSize (otherBuffer.bufferSize)
     {
         buffer.allocate (bufferSize, false);
         memcpy (buffer, otherBuffer.buffer, bufferSize * sizeof (float));
@@ -153,6 +153,7 @@ public:
     }
 
     /** This performs a very quick copy of some data given to it.
+
         No resizing is done so if the size of the data passed is less than or equal to the size of the internal array
         it will be filled, otherwise elements will be left.
     */
