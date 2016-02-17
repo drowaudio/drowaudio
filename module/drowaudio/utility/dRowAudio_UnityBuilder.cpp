@@ -46,15 +46,15 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
         for (int i = 0; i < files.size(); ++i)
         {
             bool includeFile = true;
-            File& currentFile (files.getReference (i));
+            const File& currentFile = files.getReference (i);
 
             // first check files
             if (! filesToIgnore.contains (currentFile))
             {
                 // now check for directories
-                for (int i = 0; i < filesToIgnore.size(); ++i)
+                for (int f = 0; f < filesToIgnore.size(); ++f)
                 {
-                    File& currentDir (filesToIgnore.getReference (i));
+                    const File& currentDir = filesToIgnore.getReference (f);
 
                     if (currentDir.isDirectory()
                         && currentFile.isAChildOf (currentDir))

@@ -123,14 +123,14 @@ Image Spectrograph::createImage() const
         const float* data = fftMagnitudesBlocks.getUnchecked (i);
 
         float amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[0]) / 100.0f)));
-        float y2, y1 = 0.0f;
+        float y1 = 0.0f;
 
         if (logFrequency)
         {
-            for (int i = 0; i < numBins; ++i)
+            for (int k = 0; k < numBins; ++k)
             {
-                amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[i]) / 100.0f)));
-                y2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40.0f) * h;
+                amp = (float) jlimit (0.0, 1.0, 1.0 + (toDecibels (data[k]) / 100.0));
+                const float y2 = log10 (1 + 39 * ((k + 1.0f) / numBins)) / log10 (40.0f) * h;
 
                 g.setColour (Colour::greyLevel (amp));
                 g.fillRect (x1, h - y2, bW, y1 - y2);
@@ -140,10 +140,10 @@ Image Spectrograph::createImage() const
         }
         else
         {
-            for (int i = 0; i < numBins; ++i)
+            for (int k = 0; k < numBins; ++k)
             {
-                amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[i]) / 100.0f)));
-                y2 = (i + 1) * yScale;
+                amp = (float) jlimit (0.0, 1.0, 1.0 + (toDecibels (data[k]) / 100.0));
+                const float y2 = (k + 1) * yScale;
 
                 g.setColour (Colour::greyLevel (amp));
                 g.fillRect (x1, h - y2, bW, y1 - y2);
