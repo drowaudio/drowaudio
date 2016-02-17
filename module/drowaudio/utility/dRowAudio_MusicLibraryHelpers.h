@@ -83,8 +83,7 @@ namespace LoopAndCueHelpers
     }
 }
 
-/** Table column details
-*/
+/** Table column details */
 namespace MusicColumns
 {
     static const Identifier libraryIdentifier ("MUSICLIBRARY");

@@ -35,8 +35,7 @@
 #if JUCE_IOS || DOXYGEN
 
 //==============================================================================
-/**
-    This class converts an iPod Library track to a PCM Wav format suitable for
+/** This class converts an iPod Library track to a PCM Wav format suitable for
     reading using a CoreAudioFormatReader.
 
     Because of iOS app sandboxing, we don't have direct access to the source
@@ -50,20 +49,19 @@
     updated about the conversion process.
 
     @see AudioPicker, AudioPicker::mpMediaItemToAvassetUrl
- */
+*/
 class IOSAudioConverter
 {
 public:
-    //==============================================================================
     /** Creates an IOSAudioConverter.
 
         Initially this does nothing, use the startConversion method to convert a
         file.
-     */
+    */
     IOSAudioConverter();
 
     /** Destructor.
-     */
+    */
     ~IOSAudioConverter();
 
     /** Starts the conversion process.
@@ -77,22 +75,22 @@ public:
         @param  convertedFileName   A name for the converted file. This will have
                                     the extension .caf and if left blank will be
                                     called "convertedFile".
-     */
+    */
     void startConversion (const String& avAssetUrl, const String& convertedFileName = String::empty);
 
     /** Cancels the current conversion.
         A file may be partially converted and can be obtained using the
         getConvertedFile method.
-     */
+    */
     void cancel();
 
-    /** Returns the most recently converted file.
-     */
+    /** Returns the most recently converted file. */
     const File& getConvertedFile() const { return convertedFile; }
 
     /** Returns the progress of the current conversion.
+
         @returns The current progress, a value between 0 and 1.
-     */
+    */
     double getProgress() const { return progress; }
 
     //==============================================================================
@@ -102,50 +100,46 @@ public:
         an IOSAudioConverter::Listener object using IOSAudioConverter::addListener().
 
         @see IOSAudioConverter::addListener, IOSAudioConverter::removeListener
-     */
+    */
     class Listener
     {
     public:
         /** Destructor. */
         virtual ~Listener() {}
 
-        //==============================================================================
-        /** Called when a conversion has been started using the startConversion method.
-         */
+        /** Called when a conversion has been started using the startConversion method. */
         virtual void conversionStarted() {}
 
         /** Called repeatedly during the conversion process.
 
             @param progress The current progress between 1 and 0.
-         */
+        */
         virtual void conversionUpdated (double progress) {}
 
         /** Called when the conversion process has finished.
 
-            @param convertedFile    The fully converted .caf file.
-         */
+            @param convertedFile The fully converted .caf file.
+        */
         virtual void conversionFinished (const File& convertedFile)  {}
     };
 
-    /**    Description
+    /** Description
 
         @see removeListener
-     */
+    */
     void addListener (Listener* newListener);
 
-    /**    Description
+    /** Description
 
         @see addListener
-     */
+    */
     void removeListener (Listener* listener);
 
     //==============================================================================
     /** @internal */
     void sendConverstionStartedMessage (void* juceIOSAudioConverter);
-
     /** @internal */
     void sendConverstionUpdatedMessage (void* juceIOSAudioConverter);
-
     /** @internal */
     void sendConverstionFinishedMessage (void* juceIOSAudioConverter, void* convertedUrl);
 
@@ -162,6 +156,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (IOSAudioConverter);
 };
 
-
-#endif
-#endif // DROWAUDIO_IOSAUDIOCONVERTER_H
+#endif //JUCE_IOS || DOXYGEN
+#endif //DROWAUDIO_IOSAUDIOCONVERTER_H

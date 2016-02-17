@@ -43,7 +43,7 @@ SampleRateConverter::SampleRateConverter (const int numChannels_)
 void SampleRateConverter::process (float** inputChannelData, int numInputChannels, int numInputSamples,
                                    float** outputChannelData, int numOutputChannels, int numOutputSamples)
 {
-    // take a copy of the outpur channel pointers so they can be re-used afterwards
+    // take a copy of the output channel pointers so they can be re-used afterwards
     float* outputChannels[256];
     for (int i = 0; i < numOutputChannels; ++i)
         outputChannels[i] = outputChannelData[i];
@@ -70,7 +70,11 @@ void SampleRateConverter::process (float** inputChannelData, int numInputChannel
     for (int s = 0; s < numOutputSamples; ++s)
     {
         for (int channel = 0; channel < channelsToProcess; ++channel)
+        {
+            jassert (outputChannels[channel] != nullptr); //(VS2012 static analyser warning)
+
             *outputChannels[channel]++ = linearInterpolate (inputChannelData[channel], numInputSamples, nextSample);
+        }
 
         nextSample += (float) localRatio;
     }

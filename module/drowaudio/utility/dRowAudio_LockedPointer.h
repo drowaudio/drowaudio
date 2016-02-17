@@ -32,9 +32,7 @@
 #ifndef DROWAUDIO_LOCKEDPOINTER_H
 #define DROWAUDIO_LOCKEDPOINTER_H
 
-//==============================================================================
-/**
-    Wrapper for a pointer that automatically locks a provided lock whilst the LockedPointer
+/** Wrapper for a pointer that automatically locks a provided lock whilst the LockedPointer
     stays in scope. This is similar using a narrowly scoped ScopedPointer.
 
     @code
@@ -51,30 +49,24 @@ template<typename Type, typename LockType>
 class LockedPointer
 {
 public:
-    //==============================================================================
     /** Creates a LockedPointer for a given pointer and corresponding lock.
+
         You can create one of these on the stack to makes sure the provided lock is
         locked during all operations on the object provided.
      */
-    LockedPointer (Type* pointer_, LockType& lock_)
-        : pointer       (pointer_),
-          lock          (lock_),
-          scopedLock    (lock)
+    LockedPointer (Type* pointer_, LockType& l) :
+        pointer (pointer_),
+        lock (l),
+        scopedLock (l)
     {
         jassert (pointer != nullptr);
     }
 
-    /** Destructor.
-        Will safely unlock the lock passed in.
-     */
-    ~LockedPointer()
-    {}
+    /** Provides access to the objects methods. */
+    Type* operator->()              { return pointer; }
 
     /** Provides access to the objects methods. */
-    Type* operator->()                      { return pointer; }
-
-    /** Provides access to the objects methods. */
-    Type const* operator->() const          { return pointer; }
+    Type const* operator->() const  { return pointer; }
 
     /** Returns the type of scoped lock to use for locking this pointer. */
     typedef typename LockType::ScopedLockType ScopedLockType;
@@ -85,8 +77,8 @@ private:
     LockType& lock;
     const ScopedLockType scopedLock;
 
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LockedPointer)
 };
-
 
 #endif //DROWAUDIO_LOCKEDPOINTER_H

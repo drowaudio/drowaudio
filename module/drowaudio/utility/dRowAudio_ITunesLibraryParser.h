@@ -34,7 +34,6 @@
 
 #include "dRowAudio_Utility.h"
 
-//==============================================================================
 /** Parses an iTunes Xml library into a ValueTree using a background thread.
 
     If the tree passed in already contains a generated library this will merge
@@ -47,27 +46,26 @@
 class ITunesLibraryParser : public Thread
 {
 public:
-    //==============================================================================
     /** Creates a parser with a given valid library file and a ValueTree with which
         to put the parsed data.
-     */
-    ITunesLibraryParser (const File& iTunesLibraryFileToUse, const ValueTree& elementToFill,
+    */
+    ITunesLibraryParser (const File& iTunesLibraryFileToUse,
+                         const ValueTree& elementToFill,
                          const CriticalSection& lockToUse);
 
-    /** Destructor.
-     */
+    /** Destructor. */
     ~ITunesLibraryParser();
 
-    /** Returns true if the parser has finished.
-     */
-    bool hasFinished()                      {    return finished;    }
+    //==============================================================================
+    /** Returns true if the parser has finished. */
+    bool hasFinished() const { return finished; }
 
+    /** Returns the lock being used. */
+    const CriticalSection& getLock() const { return lock; }
+
+    //==============================================================================
     /** @internal */
-    void run();
-
-    /** Returns the lock being used.
-     */
-    const CriticalSection& getLock ()       {   return lock;        }
+    void run() override;
 
 private:
     //==============================================================================
@@ -84,6 +82,5 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibraryParser)
 };
-
 
 #endif  // DROWAUDIO_ITUNESLIBRARYPARSER_H

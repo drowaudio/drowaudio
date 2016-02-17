@@ -32,9 +32,7 @@
 #ifndef DROWAUDIO_UNITYPROJECTBUILDER_H
 #define DROWAUDIO_UNITYPROJECTBUILDER_H
 
-//==============================================================================
-/**
-    Nifty class that bundles up all the source files in an existing Introjucer
+/** Nifty class that bundles up all the source files in an existing Introjucer
     project and spits out a new project with a single "unity build" file to compile.
 
     This is similar to how the JUCE module system works and can greatly improve
@@ -59,39 +57,39 @@ public:
     ~UnityProjectBuilder();
 
     //==============================================================================
-    /** Actually starts the project parsing and generation.
-     */
+    /** Actually starts the project parsing and generation. */
     bool run();
 
     /** Optionally sets a number of files to split the unity build into. This could
         speed up compile times on multicore CPUs. A good idea might be to set
         SystemStats::getNumCpus()
-     */
+    */
     void setNumFilesToSplitBetween (int numFiles);
 
     /** Sets whether the progress should be written to std::out or not.
+
         By default this is off but is useful in command line apps.
-     */
+    */
     void setLogOutput (bool shouldOutput);
 
-    /** Sets the name to use for the output file.
-     */
+    /** Sets the name to use for the output file. */
     void setUnityFileName (const String& fileName);
 
-    /** Returns the name to be used for the output file.
-     */
-    String getUnityFileName() const noexcept    {   return unityName;   }
+    /** Returns the name to be used for the output file. */
+    const String& getUnityFileName() const noexcept { return unityName; }
 
     /** If this is not an empty string it will set the build directory of the given
         project to this. This means you can have normal and unity projects running in tandem.
+
         Note that this will replace everything except the exporter name.
+
         e.g. setting this to "BuildsUnity" will replace "Builds/MacOSX" with "BuildsUnity/MacOSX"
-     */
+    */
     void setBuildDirectoryName (const String& buildDirName);
 
     /** This optional extra step resaves the project with a provided Introjucer
         executable so is useful for generating the new project files.
-     */
+    */
     void saveProject (const File& introjucerAppFile);
 
 private:
@@ -121,5 +119,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UnityProjectBuilder)
 };
 
-
-#endif  // DROWAUDIO_UNITYPROJECTBUILDER_H
+#endif //DROWAUDIO_UNITYPROJECTBUILDER_H

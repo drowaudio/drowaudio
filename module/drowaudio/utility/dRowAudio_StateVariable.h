@@ -119,7 +119,7 @@ public:
     bool areEqual() const { return previous == current; }
 
     /** Returns true if the two are almost equal to a given precision. */
-    bool areAlmostEqual (double precision = 0.00001)
+    bool areAlmostEqual (double precision = 0.00001) const
     {
         return almostEqual (current, previous, precision);
     }

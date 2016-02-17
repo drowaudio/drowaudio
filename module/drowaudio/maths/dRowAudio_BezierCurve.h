@@ -33,8 +33,7 @@
 namespace BezierCurve
 {
     //==============================================================================
-    /*  Cubic bezier
-    */
+    /** Cubic bezier */
     inline float slopeFromT (float t, float A, float B, float C)
     {
         return 1.0f / (3.0f * A * t * t + 2.0f * B * t + C);
@@ -51,8 +50,7 @@ namespace BezierCurve
     }
 
     //==============================================================================
-    /*  Cubic bezier through two points
-    */
+    /** Cubic bezier through two points */
     inline float B0 (float t)
     {
         return (1 - t) * (1 - t) * (1 - t);
@@ -85,6 +83,7 @@ namespace BezierCurve
 
     //==============================================================================
     /** Quadratic Bezier.
+
         This will calculate the quadratic Bezier of a given input x based on a co-ordinate pair (a, b).
         All points have to be within a unit square ie. 0 < x < 1
     */
@@ -109,6 +108,7 @@ namespace BezierCurve
 
     //==============================================================================
     /** Cubic Bezier.
+
         This will calculate the cubic Bezier of a given input x based on two co-ordinate pairs (a, b) & (c, d).
         All points have to be within a unit square ie. 0 < x < 1.
     */
@@ -151,6 +151,7 @@ namespace BezierCurve
 
     //==============================================================================
     /** Cubic Bezier Nearly Through Two Points.
+
         This will calculate the cubic Bezier of a given input x based on two co-ordinate pairs (a, b) & (c, d).
         The Bezier curve calculated will try to go through both the given points within reason.
         All points have to be within a unit square ie. 0 < x < 1

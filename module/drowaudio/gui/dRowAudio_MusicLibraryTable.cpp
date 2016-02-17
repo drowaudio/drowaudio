@@ -156,15 +156,16 @@ int MusicLibraryTable::getNumRows()
     return filteredNumRows;
 }
 
-void MusicLibraryTable::paintRowBackground (Graphics& g, int /*rowNumber*/,
-                                            int /*width*/, int /*height*/, bool rowIsSelected)
+void MusicLibraryTable::paintRowBackground (Graphics& g, int, int, int, bool rowIsSelected)
 {
     if (rowIsSelected)
-        g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true) ? selectedBackgroundColourId
-                                                                                    : selectedUnfocusedBackgroundColourId));
+        g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true)
+                                                                ? selectedBackgroundColourId
+                                                                : selectedUnfocusedBackgroundColourId));
     else
-        g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true) ? backgroundColourId
-                                                                                    : unfocusedBackgroundColourId));
+        g.fillAll (DefaultColours::getInstance().findColour (*this, table.hasKeyboardFocus (true)
+                                                                ? backgroundColourId
+                                                                : unfocusedBackgroundColourId));
 }
 
 void MusicLibraryTable::paintCell (Graphics& g,
@@ -182,17 +183,16 @@ void MusicLibraryTable::paintCell (Graphics& g,
 
     {
         const ScopedLock sl (currentLibrary->getParserLock());
-        const ValueTree& rowElement (filteredDataList.getChild (rowNumber));
+        const ValueTree rowElement (filteredDataList.getChild (rowNumber));
 
         if (rowElement.isValid())
         {
             String text;
 
-            if(columnId == MusicColumns::Length)
+            if (columnId == MusicColumns::Length)
                 text = secondsToTimeLength (rowElement[MusicColumns::columnNames[columnId]].toString().getIntValue());
-            else if(columnId == MusicColumns::Added
-                    || columnId == MusicColumns::Modified)
-                text = Time (int64 (rowElement[MusicColumns::columnNames[columnId]])).formatted ("%d/%m/%Y - %H:%M");
+            else if (columnId == MusicColumns::Added || columnId == MusicColumns::Modified)
+                text = Time ((int64) rowElement[MusicColumns::columnNames[columnId]]).formatted ("%d/%m/%Y - %H:%M");
             else
                 text = rowElement[MusicColumns::columnNames[columnId]].toString();
 
@@ -249,15 +249,13 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
     // find the widest bit of text in this column..
     for (int i = getNumRows(); --i >= 0;)
     {
-        {
-            const ScopedLock sl (currentLibrary->getParserLock());
-            const ValueTree& rowElement (filteredDataList.getChild (i));
+        const ScopedLock sl (currentLibrary->getParserLock());
+        const ValueTree rowElement (filteredDataList.getChild (i));
 
-            if (rowElement.isValid())
-            {
-                const String text (rowElement[MusicColumns::columnNames[columnId]].toString());
-                widest = jmax (widest, font.getStringWidth (text));
-            }
+        if (rowElement.isValid())
+        {
+            const String text (rowElement[MusicColumns::columnNames[columnId]].toString());
+            widest = jmax (widest, font.getStringWidth (text));
         }
     }
 
@@ -270,7 +268,7 @@ void MusicLibraryTable::resized()
     table.setBounds (getLocalBounds());
 }
 
-void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType /*cause*/)
+void MusicLibraryTable::focusOfChildComponentChanged (FocusChangeType)
 {
     repaint();
 }

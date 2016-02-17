@@ -45,7 +45,7 @@
 
     @todo directory list is returned if this is found before a file transfer
     @todo rename remote file if it already exists
- */
+*/
 class CURLEasySession : public TimeSliceClient
 {
 public:
@@ -56,8 +56,7 @@ public:
     */
     CURLEasySession();
 
-    /** Creates a session and performs the transfer.
-    */
+    /** Creates a session and performs the transfer. */
     CURLEasySession (const String& localPath,
                      const String& remotePath,
                      bool upload,

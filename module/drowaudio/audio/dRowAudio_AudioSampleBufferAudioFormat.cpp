@@ -60,6 +60,7 @@ public:
                       int64 startSampleInFile, int numSamples) override
     {
         jassert (destSamples != nullptr);
+
         const int64 samplesAvailable = lengthInSamples - startSampleInFile;
 
         if (samplesAvailable < numSamples)

@@ -29,17 +29,17 @@
   ==============================================================================
 */
 
-
-ITunesLibraryParser::ITunesLibraryParser (const File& iTunesLibraryFileToUse, const ValueTree& elementToFill,
-                                          const CriticalSection& lockToUse)
-    : Thread ("iTunesLibraryParser"),
-      lock (lockToUse),
-      iTunesLibraryFile (iTunesLibraryFileToUse),
-      treeToFill (elementToFill),
-      numAdded (0),
-      finished (false)
+ITunesLibraryParser::ITunesLibraryParser (const File& iTunesLibraryFileToUse,
+                                          const ValueTree& elementToFill,
+                                          const CriticalSection& lockToUse) :
+    Thread ("iTunesLibraryParser"),
+    lock (lockToUse),
+    iTunesLibraryFile (iTunesLibraryFileToUse),
+    treeToFill (elementToFill),
+    numAdded (0),
+    finished (false)
 {
-    startThread (1);
+    startThread();
 }
 
 ITunesLibraryParser::~ITunesLibraryParser()
@@ -176,7 +176,7 @@ void ITunesLibraryParser::run()
                 }
 
                 // and check the entry against each column
-                for(int i = 2; i < MusicColumns::numColumns; ++i)
+                for (int i = 2; i < MusicColumns::numColumns; ++i)
                 {
                     if (elementKey == MusicColumns::iTunesNames[i])
                     {
@@ -207,7 +207,7 @@ void ITunesLibraryParser::run()
                 }
             }
 
-            if (isAudioFile == true)
+            if (isAudioFile)
             {
                 const ScopedLock sl (lock);
                 treeToFill.addChild (newElement, -1, nullptr);

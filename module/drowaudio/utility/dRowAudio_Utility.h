@@ -44,7 +44,7 @@
 
 /** Returns the Resources folder in the package contents on a Mac and if an equivalent exists on Windows.
     This will return File::nonexistent if the file does not exist so check for this first.
- */
+*/
 inline static File getResourcesFolder()
 {
     return File::getSpecialLocation (File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile ("Resources");
@@ -73,21 +73,18 @@ inline static String stripFileProtocolForLocal (const String& pathToStrip)
  */
 inline static Time parseITunesDateString (const String& dateString)
 {
-    int year            = dateString.substring (0, 4).getIntValue();
-    int month           = dateString.substring (5, 7).getIntValue() - 1;
-    int day             = dateString.substring (8, 10).getIntValue();
-    int hours           = dateString.substring (11, 13).getIntValue();
-    int minutes         = dateString.substring (14, 16).getIntValue();
-    int seconds         = dateString.substring (17, 19).getIntValue();
-    int milliseconds    = 0;
-    bool useLocalTime   = true;
+    int year    = dateString.substring (0, 4).getIntValue();
+    int month   = dateString.substring (5, 7).getIntValue() - 1;
+    int day     = dateString.substring (8, 10).getIntValue();
+    int hours   = dateString.substring (11, 13).getIntValue();
+    int minutes = dateString.substring (14, 16).getIntValue();
+    int seconds = dateString.substring (17, 19).getIntValue();
 
-    return Time (year, month, day, hours, minutes, seconds, milliseconds, useLocalTime);
+    return Time (year, month, day, hours, minutes, seconds, 0, true);
 }
 
-/**    Reverses an array.
- */
-template <class Type>
+/** Reverses an array */
+template<class Type>
 void reverseArray (Type* array, int length)
 {
     Type swap;
@@ -100,10 +97,12 @@ void reverseArray (Type* array, int length)
     }
 }
 
-/**    Reverses two arrays at once.
+/** Reverses two arrays at once.
+
     This will be quicker than calling reverseArray twice.
+
     The arrays must be the same length.
- */
+*/
 template <class Type>
 void reverseTwoArrays (Type* array1, Type* array2, int length)
 {
@@ -121,15 +120,15 @@ void reverseTwoArrays (Type* array1, Type* array2, int length)
     }
 }
 
-/**    Finds the key for a given track from the chemical-records website.
+/**  Finds the key for a given track from the chemical-records website.
     This will attempt to find the key listed on the chemical website for a given release number
     eg. "31R038" and track title eg. "Wait For Me".
     This is in the Mixed in Key format eg. 11A and will return an empty string if nothing could be found.
 
-    @param    releaseNo    The catalogue number to look for.
-    @param    trackName    The track name to look for.
-    @param    retryLimit    An optional number of retries as sometimes the URL won't load first time.
- */
+    @param releaseNo    The catalogue number to look for.
+    @param trackName    The track name to look for.
+    @param retryLimit    An optional number of retries as sometimes the URL won't load first time.
+*/
 static inline String findKeyFromChemicalWebsite (const String& releaseNo, const String& trackName)
 {
     URL chemicalURL ("http://www.chemical-records.co.uk/sc/servlet/Info");
@@ -164,8 +163,9 @@ static inline String findKeyFromChemicalWebsite (const String& releaseNo, const 
 
 //==============================================================================
 /** Draws a line representing the normalised set of samples to the given Image.
+
     Note the samples must be in the range of 1-0 and the line will be stretched to fit the whole image.
- */
+*/
 static inline void drawBufferToImage (const Image& image, const float* samples, int numSamples, Colour colour, float thickness)
 {
     if (image.isNull())
@@ -198,8 +198,9 @@ static inline void drawBufferToImage (const Image& image, const float* samples, 
 }
 
 /** Dumps a given image to a File in png format.
+
     If the file parameter is nonexistant a temp file will be created on the desktop.
- */
+*/
 static inline void saveImageToFile (const Image& image, File file = File::nonexistent)
 {
     if (! file.exists())
@@ -213,38 +214,34 @@ static inline void saveImageToFile (const Image& image, File file = File::nonexi
 }
 
 //==============================================================================
-/**
-    Holds a ValueTree as a ReferenceCountedObject.
+/** Holds a ValueTree as a ReferenceCountedObject.
 
     This is somewhat obfuscated but makes it easy to transfer ValueTrees as var objects
     such as when using them as DragAndDropTarget::SourceDetails::description members.
- */
+*/
 class ReferenceCountedValueTree : public ReferenceCountedObject
 {
 public:
-    /** Creates a ReferenceCountedValueTree for a given ValueTree.
-     */
-    ReferenceCountedValueTree (const ValueTree& treeToReference)
-        : tree (treeToReference)
+    /** Creates a ReferenceCountedValueTree for a given ValueTree. */
+    ReferenceCountedValueTree (const ValueTree& treeToReference) :
+        tree (treeToReference)
     {
     }
 
-    /** Sets the ValueTree being held.
-     */
+    /** Sets the ValueTree being held. */
     void setValueTree (const ValueTree& newTree)
     {
         tree = newTree;
     }
 
-    /** Returns the ValueTree being held.
-     */
+    /** Returns the ValueTree being held. */
     ValueTree getValueTree() const { return tree; }
 
     typedef ReferenceCountedObjectPtr<ReferenceCountedValueTree> Ptr;
 
     /** Provides a simple way of getting the tree from a var object which
         is a ReferencedCountedValueTree.
-     */
+    */
     static inline ValueTree getTreeFromObject (const var& treeObject)
     {
         ReferenceCountedValueTree* refTree
@@ -261,8 +258,7 @@ private:
 };
 
 //==============================================================================
-/**
-    Holds an Identifier as a ReferenceCountedObject.
+/** Holds an Identifier as a ReferenceCountedObject.
 
     This is useful so that Identifiers can be passed around as var objects
     without having to convert them to Strings and back which defeats the point of them.
@@ -270,10 +266,9 @@ private:
 class ReferenceCountedIdentifier : public ReferenceCountedObject
 {
 public:
-    /** Creates a ReferenceCountedIdentifier for a given Identifier.
-     */
-    ReferenceCountedIdentifier (const Identifier& identifierToReference)
-        : identifier (identifierToReference)
+    /** Creates a ReferenceCountedIdentifier for a given Identifier. */
+    ReferenceCountedIdentifier (const Identifier& identifierToReference) :
+        identifier (identifierToReference)
     {
     }
 
@@ -284,8 +279,7 @@ public:
         identifier = newIdentifier;
     }
 
-    /** Returns the Identifier being held.
-     */
+    /** Returns the Identifier being held. */
     const Identifier& getIdentifier() const { return identifier; }
 
     typedef ReferenceCountedObjectPtr<ReferenceCountedIdentifier> Ptr;
@@ -293,7 +287,7 @@ public:
     //==============================================================================
     /** Provides a simple way of getting the Identifier from a var object which
         is a ReferenceCountedIdentifier.
-     */
+    */
     static inline Identifier getIdentifierFromObject (const var& identiferObject)
     {
         ReferenceCountedIdentifier* refIdentifer
@@ -310,12 +304,11 @@ private:
 };
 
 //==============================================================================
-/**
-    Holds a MemoryBlock as a ReferenceCountedObject.
+/** Holds a MemoryBlock as a ReferenceCountedObject.
 
     This can be a useful way of managing a MemoryBlock's lifetime and also enables
     you to pass it around in a ValueTree.
- */
+*/
 class ReferencedCountedMemoryBlock : public ReferenceCountedObject
 {
 public:
@@ -368,9 +361,10 @@ private:
 
 //==============================================================================
 /** Writes a ValueTree to a specified file.
+
     This is a helper method to conveniently write a ValueTree to a File,
     optionally storing it as Xml.
- */
+*/
 static inline bool writeValueTreeToFile (const ValueTree& treeToWrite, const File& fileToWriteTo, bool asXml = true)
 {
     if (fileToWriteTo.hasWriteAccess())
@@ -405,7 +399,7 @@ static inline bool writeValueTreeToFile (const ValueTree& treeToWrite, const Fil
     This will first attempt to parse the file as Xml, if this fails it will
     attempt to read it as binary. If this also fails it will return an invalid
     ValueTree.
- */
+*/
 static inline ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 {
     ScopedPointer<XmlElement> treeAsXml (XmlDocument::parse (fileToReadFrom));
@@ -425,17 +419,14 @@ static inline ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 }
 
 //==============================================================================
-/**
-    Simple class that reads a ValueTree from a file and saves it back again on
-    destruction.
- */
+/** Simple class that reads a ValueTree from a file and saves it back again on destruction. */
 class ScopedValueTreeFile
 {
 public:
     /** Creates a blank ScopedValueTreeFile.
         This initially does nothing, use the setFile() method to read the contents
         into the internal tree and then retrieve it using getTree().
-     */
+    */
     ScopedValueTreeFile()
         : asXml (true)
     {
@@ -444,7 +435,7 @@ public:
     /** Creates a ScopedValueTreeFile for a given file.
         Thsi will read the contents of the File into the internal ValueTree which
         you can then retrieve with the getTree() method.
-     */
+    */
     ScopedValueTreeFile (const File& sourceFile)
         : asXml (true)
     {
@@ -453,7 +444,7 @@ public:
 
     /** Destructor.
         Saves the contents of the tree to the current file.
-     */
+    */
     ~ScopedValueTreeFile()
     {
         save();
@@ -527,6 +518,5 @@ private:
     debugging purposes.
  */
 #define DBG_OBJ(dbgobj)     { DBG (JUCE_STRINGIFY(dbgobj) << ": " << DebugObject::convertToString (dbgobj)) }
-
 
 #endif //DROWAUDIO_UTILITY_H

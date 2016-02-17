@@ -42,7 +42,7 @@
     speed up build times.
 
     If you need to set custom defines or pragmas use the setPreAndPostString method.
- */
+*/
 class UnityBuilder
 {
 public:
@@ -51,7 +51,7 @@ public:
         Use the processDirectory method to actually perform the file generation.
         If you need additional options call the other set-up methods before process
         processDirectory;
-     */
+    */
     UnityBuilder();
 
     //==============================================================================
@@ -64,7 +64,7 @@ public:
         already exist non-existent ones will be created with numbers in brackets.
 
         @param sourceDirectory  The source directory to "unify".
-     */
+    */
     bool processDirectory (const File& sourceDirectory);
 
     /** Sets the location and name of the output unity build files.
@@ -72,7 +72,7 @@ public:
         always generate a header and cpp file if needed.
 
         @param newDestinationFile   The output location for the unity build files.
-     */
+    */
     void setDestinationFile (const File& newDestinationFile);
 
     /** Sets a number of files to ignore.
@@ -82,7 +82,7 @@ public:
         files will be included.
 
         @param filesToIgnore    An arry of files ot ignore.
-     */
+    */
     void setFilesToIgnore (const Array<File>& filesToIgnore);
 
     /** This enables you to include a block of text before and after the source
@@ -90,7 +90,7 @@ public:
 
         @param preInclusionString   The text to include before the files.
         @param postInclusionString  The text to include after the files.
-     */
+    */
     void setPreAndPostString (const String& preInclusionString,
                               const String& postInclusionString);
 

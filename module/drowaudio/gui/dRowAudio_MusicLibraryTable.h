@@ -36,9 +36,7 @@
 #include "../utility/dRowAudio_ITunesLibrary.h"
 #include "../utility/dRowAudio_Comparators.h"
 
-//==============================================================================
-/**
-    Table to display and interact with a music library.
+/** Table to display and interact with a music library.
     The easiest way to use this is to load a default or saved iTunes library like so:
 
     @code
@@ -52,9 +50,9 @@
         ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     @endcode
 */
-class MusicLibraryTable    :   public Component,
-                            public TableListBoxModel,
-                            public ITunesLibrary::Listener
+class MusicLibraryTable : public Component,
+                          public TableListBoxModel,
+                          public ITunesLibrary::Listener
 {
 public:
     /** Create the MusicLibraryTable.
@@ -62,25 +60,21 @@ public:
         This will initially be blank, set an ITunesLibrary to use first with
         setLibraryToUse(). The table will then be continually updated as the library
         is parsed.
-     */
+    */
     MusicLibraryTable();
 
-    /** Destructor.
-     */
+    /** Destructor. */
     ~MusicLibraryTable();
 
     //==============================================================================
-    /** Sets the ITunesLibrary to use.
-     */
+    /** Sets the ITunesLibrary to use. */
     void setLibraryToUse (ITunesLibrary* library);
 
-    /** Filters the table to only rows containing the given text.
-     */
+    /** Filters the table to only rows containing the given text. */
     void setFilterText (const String& filterText);
 
-    /**    Returns the table list box component.
-     */
-    TableListBox& getTableListBox()    { return table;    }
+    /** Returns the table list box component. */
+    TableListBox& getTableListBox() { return table; }
 
     //==============================================================================
     /** A set of colour IDs to use to change the colour of various aspects of the main table.
@@ -128,45 +122,31 @@ public:
 
     //==============================================================================
     /** @internal */
-    void libraryChanged (ITunesLibrary* library);
-
+    void libraryChanged (ITunesLibrary* library) override;
     /** @internal */
-    void libraryUpdated (ITunesLibrary* library);
-
+    void libraryUpdated (ITunesLibrary* library) override;
     /** @internal */
-    void libraryFinished (ITunesLibrary* library);
-
-    //==============================================================================
-    /** Returns the number of rows currently bein displayed in the table.
-     */
-    int getNumRows();
-
+    void libraryFinished (ITunesLibrary* library) override;
     /** @internal */
-    void paintRowBackground (Graphics& g, int rowNumber,
-                             int width, int height, bool rowIsSelected);
-
+    int getNumRows() override;
+    /** @internal */
+    void paintRowBackground (Graphics& g, int rowNumber, int width, int height, bool rowIsSelected) override;
     /** @internal */
     void paintCell (Graphics& g,
                     int rowNumber,
                     int columnId,
                     int width, int height,
-                    bool rowIsSelected);
-
+                    bool rowIsSelected) override;
     /** @internal */
-    void sortOrderChanged (int newSortColumnId, bool isForwards);
-
+    void sortOrderChanged (int newSortColumnId, bool isForwards) override;
     /** @internal */
-    int getColumnAutoSizeWidth (int columnId);
-
-    //==============================================================================
+    int getColumnAutoSizeWidth (int columnId) override;
     /** @internal */
-    void resized();
-
+    void resized() override;
     /** @internal */
-    void focusOfChildComponentChanged (FocusChangeType cause);
-
+    void focusOfChildComponentChanged (FocusChangeType cause) override;
     /** @internal */
-    var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows);
+    var getDragSourceDescription (const SparseSet<int>& currentlySelectedRows) override;
 
 private:
     //==============================================================================
@@ -190,6 +170,5 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MusicLibraryTable)
 };
-
 
 #endif // DROWAUDIO_MUSICLIBRARYTABLE_H

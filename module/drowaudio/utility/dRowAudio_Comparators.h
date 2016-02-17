@@ -122,8 +122,7 @@ namespace ValueTreeComparators
 //==============================================================================
 namespace XmlComparators
 {
-    /** An Xml comparator used to sort Lexicographical data.
-    */
+    /** An Xml comparator used to sort Lexicographical data. */
     class LexicographicSorter
     {
     public:
@@ -153,8 +152,7 @@ namespace XmlComparators
     };
 
     //==============================================================================
-    /** An Xml comparator used to sort number data.
-    */
+    /** An Xml comparator used to sort number data. */
     class NumberDataSorter
     {
     public:

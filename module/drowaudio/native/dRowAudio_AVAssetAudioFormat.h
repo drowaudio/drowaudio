@@ -34,9 +34,7 @@
 
 #if JUCE_IOS || DOXYGEN
 
-//==============================================================================
-/**
-    OSX and iOS only - This uses the AVFoundation framework to read any audio
+/** OSX and iOS only - This uses the AVFoundation framework to read any audio
     format that the system has a codec for.
 
     This should be able to understand formats such as mp3, m4a, etc.
@@ -59,7 +57,7 @@
     @endcode
 
     @see AudioFormat, AudioPicker, IOSAudioConverter
- */
+*/
 class AVAssetAudioFormat : public AudioFormat
 {
 public:
@@ -108,5 +106,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AVAssetAudioFormat);
 };
 
-#endif
-#endif   // DROWAUDIO_AVASSETAUDIOFORMAT_H
+#endif //JUCE_IOS || DOXYGEN
+#endif //DROWAUDIO_AVASSETAUDIOFORMAT_H

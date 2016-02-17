@@ -34,13 +34,11 @@
 
 #if JUCE_IOS || DOXYGEN
 
-//==============================================================================
-/**
-    AudioPicker class
+/** AudioPicker class
 
     An iOS-specific class that can be used for choosing audio files on
     supported devices.
- */
+*/
 class AudioPicker
 {
 public:
@@ -48,21 +46,20 @@ public:
 
         Register yourself as a listener to this by inheriting from
         AudioPicker::Listener and then call the show method to display the picker.
-     */
+    */
     AudioPicker();
 
-    /** Destructor.
-     */
+    /** Destructor. */
     ~AudioPicker();
 
     //==============================================================================
-    /**    Shows the audio picker user interface.
+    /** Shows the audio picker user interface.
 
         @param allowMultipleSelection   If true multiple items can be selected.
         @param areaToPointTo            On the iPad the picker is shown as a
                                         pop-over, this rectangle represents an area
                                         that the arrow of the pop-over should point to.
-     */
+    */
     void show (bool allowMultipleSelection = false, Rectangle<int> areaToPointTo = Rectangle<int>());
 
     //==============================================================================
@@ -76,7 +73,7 @@ public:
         @returns AVAssetUrl String
 
         @see IOSAudioConverter
-     */
+    */
     static String mpMediaItemToAvassetUrl (void* mpMediaItem);
 
     //==============================================================================
@@ -93,20 +90,19 @@ public:
         /** Destructor. */
         virtual ~Listener() {}
 
-        //==============================================================================
         /** Called when the audio picker has finished loading the selected track.
 
             This callback recieves an array of MPMediaItems. They are presented as
             void*'s to avoid Obj-C clashes.
 
             @see IOSAudioConverter, mpMediaItemToAvassetUrl, AudioPicker::audioPickerCancelled
-         */
+        */
         virtual void audioPickerFinished (const Array<void*>& mpMediaItems) = 0;
 
         /** Called when the audio picker has been canceled by the user.
 
             @see AudioPicker::audioPickerFinished
-         */
+        */
         virtual void audioPickerCancelled()  {}
     };
 
@@ -116,17 +112,16 @@ public:
      */
     void addListener (Listener* newListener);
 
-    /**    Description
+    /** Description
 
         @see addListener
-     */
+    */
     void removeListener (Listener* listener);
 
     //==============================================================================
-    /**    @internal */
+    /** @internal */
     void sendAudioPickerFinishedMessage (void* picker, void* info);
-
-    /**    @internal */
+    /** @internal */
     void sendAudioPickerCancelledMessage (void* picker);
 
 private:
@@ -137,5 +132,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPicker);
 };
 
-#endif
-#endif   // DROWAUDIO_AUDIOPICKER_H
+#endif //JUCE_IOS || DOXYGEN
+#endif //DROWAUDIO_AUDIOPICKER_H

@@ -196,7 +196,7 @@ public:
 
     void removeColumn (int numColumns)
     {
-        for (int i = numColumns; i <= 0; i--)
+        for (int i = numColumns; --i >= 0;)
         {
             columns[i]->removeListener (this);
             columns[i]->removeChangeListener (this);

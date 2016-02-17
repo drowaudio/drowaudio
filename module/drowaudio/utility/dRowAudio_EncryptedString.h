@@ -34,9 +34,7 @@
 
 #if JUCE_MODULE_AVAILABLE_juce_cryptography
 
-//==============================================================================
-/**
-    This class contains some simple methods to encrypt and decrypt Strings.
+/** This class contains some simple methods to encrypt and decrypt Strings.
 
     This uses RSA encryption and can convert between a 64-bit encoded string
     and optionally Hex.
