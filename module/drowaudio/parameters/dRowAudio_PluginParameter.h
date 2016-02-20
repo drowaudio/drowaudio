@@ -97,10 +97,10 @@ public:
         Used to set up the parameter as required.
     */
     void init (const String& name_, ParameterUnit unit_ = UnitGeneric, String description_ = String::empty,
-               double value_ = 0.0f, double min_ = 0.0f, double max_ = 1.0f, double default_ =0 .0f,
-               double skewFactor_ = 1.0f, double smoothCoeff_ = 0.1f, double step_ = 0.01, String unitSuffix_ = String::empty);
+               double value_ = 0.0, double min_ = 0.0, double max_ = 1.0, double default_ = 0.0,
+               double skewFactor_ = 1.0, double smoothCoeff_ = 0.1, double step_ = 0.01, String unitSuffix_ = String::empty);
 
-    Value& getValueObject() const { return valueObject; }
+    Value& getValueObject() { return valueObject; }
 
     double getValue() const                                     { return double (valueObject.getValue()); }
     double getNormalisedValue() const                           { return normaliseValue (getValue()); }
