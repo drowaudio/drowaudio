@@ -91,7 +91,9 @@ namespace drow
     #include "audio/filters/dRowAudio_BiquadFilter.cpp"
     #include "audio/filters/dRowAudio_OnePoleFilter.cpp"
     #include "audio/fft/dRowAudio_Window.cpp"
+   #if DROWAUDIO_USE_FFTREAL
     #include "audio/fft/dRowAudio_FFT.cpp"
+   #endif
     #include "audio/fft/dRowAudio_LTAS.cpp"
     #include "gui/dRowAudio_AudioFileDropTarget.cpp"
     #include "gui/dRowAudio_DefaultColours.cpp"

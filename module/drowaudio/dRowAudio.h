@@ -166,11 +166,18 @@
     Enables the FFTReal library. By default this is enabled except on the Mac
     where the Accelerate framework is preferred. However, if you do explicity
     enable this setting fftreal can be used for testing purposes.
+
+    Not available when building RTAS plugins.
 */
 #ifndef DROWAUDIO_USE_FFTREAL
     #if ! JUCE_MAC
         #define DROWAUDIO_USE_FFTREAL 1
     #endif
+#endif
+
+#if JucePlugin_Build_RTAS
+    #undef DROWAUDIO_USE_FFTREAL
+    #define DROWAUDIO_USE_FFTREAL 0
 #endif
 
 /** Config: DROWAUDIO_USE_SOUNDTOUCH
@@ -234,7 +241,9 @@ namespace drow
     #include "audio/dRowAudio_SampleRateConverter.h"
     #include "audio/dRowAudio_SoundTouchAudioSource.h"
     #include "audio/dRowAudio_SoundTouchProcessor.h"
+   #if DROWAUDIO_USE_FFTREAL
     #include "audio/fft/dRowAudio_FFT.h"
+   #endif
     #include "audio/fft/dRowAudio_LTAS.h"
     #include "audio/fft/dRowAudio_Window.h"
     #include "audio/filters/dRowAudio_BiquadFilter.h"
