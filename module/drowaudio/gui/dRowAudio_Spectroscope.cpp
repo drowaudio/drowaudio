@@ -29,7 +29,7 @@
   ==============================================================================
 */
 
-#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
+#if DROWAUDIO_USE_FFTREAL
 
 Spectroscope::Spectroscope (int fftSizeLog2)
 :    fftEngine       (fftSizeLog2),
@@ -162,4 +162,4 @@ void Spectroscope::renderScopeImage()
     }
 }
 
-#endif // JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
+#endif //DROWAUDIO_USE_FFTREAL

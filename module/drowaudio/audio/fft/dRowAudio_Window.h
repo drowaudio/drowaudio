@@ -36,15 +36,13 @@
 #include "../../utility/dRowAudio_Constants.h"
 #include "../../maths/dRowAudio_MathsUtilities.h"
 
-//==============================================================================
-/**
-    A pre-calculated Window buffer used for audio processing.
+/** A pre-calculated Window buffer used for audio processing.
+
     @see FFT
  */
 class Window
 {
 public:
-    //==============================================================================
     /** Window types supported. */
     enum WindowType
     {
@@ -64,7 +62,6 @@ public:
         FlatTop
     };
 
-    //==============================================================================
     /** Creates a default Hann Window with 0 size. */
     Window();
 
@@ -84,18 +81,18 @@ public:
     void setWindowSize (int newSize);
 
     /** Returns the window type. */
-    WindowType getWindowType() const noexcept           { return windowType; }
+    WindowType getWindowType() const noexcept       { return windowType; }
 
     /** Returns the window factor. */
-    float getWindowFactor() const noexcept              { return windowFactor; }
+    float getWindowFactor() const noexcept          { return windowFactor; }
 
     /** Returns the reciprocal of the window factor. */
-    float getOneOverWindowFactor()                      { return oneOverWindowFactor; }
+    float getOneOverWindowFactor() const noexcept   { return oneOverWindowFactor; }
 
     /** Applies this window to a set of samples.
         For speed, your the number of samples passed here should be the same as the window size.
      */
-    void applyWindow (float* samples,  const int numSamples) const noexcept;
+    void applyWindow (float* samples, int numSamples) const noexcept;
 
 private:
     //==============================================================================

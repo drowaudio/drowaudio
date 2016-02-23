@@ -29,7 +29,6 @@
   ==============================================================================
 */
 
-
 Window::Window()
     : windowType (Window::Hann), windowFactor (1.0f), oneOverWindowFactor (1.0f),
       windowBuffer (1, 0)

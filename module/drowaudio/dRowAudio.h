@@ -241,9 +241,7 @@ namespace drow
     #include "audio/dRowAudio_SampleRateConverter.h"
     #include "audio/dRowAudio_SoundTouchAudioSource.h"
     #include "audio/dRowAudio_SoundTouchProcessor.h"
-   #if DROWAUDIO_USE_FFTREAL
     #include "audio/fft/dRowAudio_FFT.h"
-   #endif
     #include "audio/fft/dRowAudio_LTAS.h"
     #include "audio/fft/dRowAudio_Window.h"
     #include "audio/filters/dRowAudio_BiquadFilter.h"

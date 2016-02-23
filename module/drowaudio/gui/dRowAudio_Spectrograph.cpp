@@ -29,7 +29,7 @@
   ==============================================================================
 */
 
-#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
+#if DROWAUDIO_USE_FFTREAL
 
 Spectrograph::Spectrograph (int fftSizeLog2)
     : fftEngine         (fftSizeLog2),

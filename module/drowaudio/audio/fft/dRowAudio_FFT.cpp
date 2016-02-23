@@ -139,7 +139,6 @@ void FFT::performIFFT (float* fftBuffer)
     vDSP_ztoc (&split, 1, (COMPLEX*) buffer.getData(), 2, properties.fftSizeHalved);
 }
 
-#endif
 
 void FFT::getMagnitudes (float* magnitudes)
 {
@@ -199,3 +198,5 @@ void FFTEngine::findMagnitues (float* magBuf, bool onlyIfBigger)
 
     magnitutes.updateListeners();
 }
+
+#endif

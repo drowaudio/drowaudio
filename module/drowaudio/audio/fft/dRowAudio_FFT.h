@@ -32,12 +32,9 @@
 #ifndef DROWAUDIO_FFT_H_INCLUDED
 #define DROWAUDIO_FFT_H_INCLUDED
 
-#if (JUCE_MAC || JUCE_IOS) && ! DROWAUDIO_USE_FFTREAL
+#if DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
 
-typedef FFTSetup FFTConfig;
-typedef DSPSplitComplex SplitComplex;
-
-#elif DROWAUDIO_USE_FFTREAL
+#include "dRowAudio_Window.h"
 
 typedef ScopedPointer< ffft::FFTReal<float> > FFTConfig;
 
@@ -46,12 +43,6 @@ struct SplitComplex
     float* realp;
     float* imagp;
 };
-
-#endif
-
-#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
-
-#include "dRowAudio_Window.h"
 
 //==============================================================================
 /** Low-level FFT class for performing single FFT calculations.

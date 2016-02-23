@@ -32,7 +32,7 @@
 #ifndef DROWAUDIO_SONOGRAM_H
 #define DROWAUDIO_SONOGRAM_H
 
-#if JUCE_MAC || JUCE_IOS || DROWAUDIO_USE_FFTREAL
+#if DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
 
 /** Creates a standard right-left scrolling greyscale Sonogram.
 
@@ -107,5 +107,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Sonogram)
 };
 
-#endif
-#endif  // DROWAUDIO_SONOGRAM_H
+#endif //DROWAUDIO_USE_FFTREAL
+#endif //DROWAUDIO_SONOGRAM_H
