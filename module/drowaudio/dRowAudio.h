@@ -144,15 +144,6 @@
 #include <modules/juce_gui_basics/juce_gui_basics.h>
 #include <modules/juce_cryptography/juce_cryptography.h>
 
-#if JUCE_MAC || JUCE_IOS
-    #define Point CarbonDummyPointName
-    #define Component CarbonDummyCompName
-    #include <Accelerate/Accelerate.h>
-    #undef Point
-    #undef Component
-    #undef MemoryBlock
-#endif
-
 #undef min
 #undef max
 
@@ -171,7 +162,7 @@
 */
 #ifndef DROWAUDIO_USE_FFTREAL
     #if ! JUCE_MAC
-        #define DROWAUDIO_USE_FFTREAL 1
+        #define DROWAUDIO_USE_FFTREAL 0
     #endif
 #endif
 
@@ -198,7 +189,7 @@
     independant pitch and tempo scaling. By default this is enabled.
 */
 #ifndef DROWAUDIO_USE_SOUNDTOUCH
-    #define DROWAUDIO_USE_SOUNDTOUCH 1
+    #define DROWAUDIO_USE_SOUNDTOUCH 0
 #endif
 
 /** Config: DROWAUDIO_USE_CURL
@@ -208,7 +199,7 @@
     On Windows, this is only available for 32-bit projects.
 */
 #ifndef DROWAUDIO_USE_CURL
-    #define DROWAUDIO_USE_CURL 1
+    #define DROWAUDIO_USE_CURL 0
 
     #if JUCE_WINDOWS && JUCE_32BIT
         #undef CURL_STATICLIB
