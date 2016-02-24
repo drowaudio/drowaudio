@@ -180,6 +180,19 @@
     #define DROWAUDIO_USE_FFTREAL 0
 #endif
 
+/** Config: DROWAUDIO_USE_VDSP
+    Will use VDSP where available.
+    MacOSX and iOS only.
+*/
+#ifndef DROWAUDIO_USE_VDSP
+    #define DROWAUDIO_USE_VDSP 0
+#endif
+
+#if ! (JUCE_MAC || JUCE_IOS)
+    #undef DROWAUDIO_USE_VDSP
+    #define DROWAUDIO_USE_VDSP 0
+#endif
+
 /** Config: DROWAUDIO_USE_SOUNDTOUCH
     Enables the SoundTouch library and the associated SoundTouch classes for
     independant pitch and tempo scaling. By default this is enabled.

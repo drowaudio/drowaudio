@@ -114,7 +114,7 @@ public:
     /** Creates an FFT class that can perform various FFT operations on blocks of data.
 
         The internals will vary depending on platform e.g. one the Mac Accelerate is used, on Windows FFTReal.
-     */
+    */
     FFT (int fftSizeLog2);
 
     /** Destructor */
@@ -130,31 +130,31 @@ public:
 
         The contents of this will vary depending on whether you've just performed an FFT or IFFT,
         but will be the result of the operation either way..
-     */
+    */
     float* getBuffer() { return buffer.getData(); }
 
     /** Returns the SplitComplex of the buffer.
         This is basically just a pair of pointers to the real and imag parts of the buffer.
-     */
+    */
     SplitComplex& getFFTBuffer() { return bufferSplit; }
 
     /** Performs an FFT operation on a set of samples.
 
         @note samples must be an array the same size as the FFT. After processing you can retrive the
               buffer using getBuffer or getFFTBuffer.
-     */
+    */
     void performFFT (float* samples);
 
     /** Calculates and returns the magnitudes of the previous buffer.
 
         @note magnitudes should be as at least half the FFT size.
-     */
+    */
     void getMagnitudes (float* magnitudes);
 
     /** Calculates and returns the phase of the previous buffer.
 
         @note phaseBuffer should be as at least half the FFT size.
-     */
+    */
     void getPhase (float* phaseBuffer);
 
     /** Performs an inverse FFT.
@@ -163,7 +163,7 @@ public:
 
         @note fftBuffer must be the same size as the FFTProperties fftSize and the buffer must not be
               the same as that retrieved from getBuffer.
-     */
+    */
     void performIFFT (float* fftBuffer);
 
     /** Calculates the magnitude of an FFT bin. */
@@ -191,25 +191,25 @@ private:
 class FFTEngine
 {
 public:
-    //==============================================================================
     /** Creates an FFTEngine with a given size. */
-    FFTEngine (int fftSizeLog2)
-        : fft (fftSizeLog2),
-          window (getFFTProperties().fftSize),
-          magnitutes ((size_t) getFFTProperties().fftSizeHalved + 1)
+    FFTEngine (int fftSizeLog2) :
+        fft (fftSizeLog2),
+        window (getFFTProperties().fftSize),
+        magnitutes ((size_t) getFFTProperties().fftSizeHalved + 1)
     {
     }
 
     /** Performs an FFT operation.
+
         The number of samples must be equal to the fftSize.
-     */
+    */
     void performFFT (float* samples);
 
     /** This will fill the internal buffer with the magnitudes of the last performed FFT.
 
         You can then get this buffer using getMagnitudesBuffer(). Remember that
         the size of the buffer is the fftSizeHalved + 1 to incorporate the Nyquist.
-     */
+    */
     void findMagnitudes()                               { findMagnitues (magnitutes.getData(), false); }
 
     /** Fills a provided buffer with the magnitudes of the last performed FFT. */
@@ -219,7 +219,7 @@ public:
 
         You can then get this buffer using getMagnitudesBuffer(). Remember that
         the size of the buffer is the fftSizeHalved + 1 to incorporate the Nyquist.
-     */
+    */
     void updateMagnitudesIfBigger()                     { findMagnitues (magnitutes.getData(), true); }
 
     /** Changes the Window type. */
@@ -235,7 +235,7 @@ public:
     Window& getWindow()                                 { return window; }
 
     /** Returns a copy of the FFT Properties. */
-    FFT::Properties getFFTProperties() const noexcept   { return fft.getProperties(); }
+    const FFT::Properties& getFFTProperties() const noexcept { return fft.getProperties(); }
 
 private:
     //==============================================================================
@@ -243,8 +243,10 @@ private:
     Window window;
     Buffer magnitutes;
 
+    //==============================================================================
     void findMagnitues (float* magBuf, bool onlyIfBigger);
 
+    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTEngine)
 };
 

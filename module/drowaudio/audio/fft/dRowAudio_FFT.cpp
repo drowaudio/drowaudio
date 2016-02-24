@@ -32,61 +32,10 @@
 //==============================================================================
 #if DROWAUDIO_USE_FFTREAL
 
-FFT::FFT (int fftSizeLog2)
-    : properties (fftSizeLog2)
-{
-    config = new ffft::FFTReal<float> (properties.fftSize);
+#if DROWAUDIO_USE_VDSP
 
-    buffer.malloc (properties.fftSize);
-    bufferSplit.realp = buffer.getData();
-    bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
-}
-
-FFT::~FFT()
-{
-}
-
-void FFT::setFFTSizeLog2 (int newFFTSizeLog2)
-{
-    if (newFFTSizeLog2 != properties.fftSizeLog2)
-    {
-        config = nullptr;
-
-        properties = Properties (newFFTSizeLog2);
-        buffer.malloc (properties.fftSize);
-        bufferSplit.realp = buffer.getData();
-        bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
-
-        config = new ffft::FFTReal<float> (properties.fftSize);
-    }
-}
-
-void FFT::performFFT (float* samples)
-{
-    config->do_fft (buffer.getData(), samples);
-}
-
-void FFT::getPhase (float* phaseBuffer)
-{
-    const int numSamples = properties.fftSizeHalved;
-    float* real = bufferSplit.realp;
-    float* img = bufferSplit.imagp;
-
-    for (int i = 1; i < numSamples; ++i)
-        phaseBuffer[i] = std::atan2 (img[i], real[i]);
-
-    phaseBuffer[0] = 0.0f;
-}
-
-void FFT::performIFFT (float* fftBuffer)
-{
-    config->do_ifft (fftBuffer, buffer.getData());
-}
-
-#elif JUCE_MAC || JUCE_IOS
-
-FFT::FFT (int fftSizeLog2)
-    : properties (fftSizeLog2)
+FFT::FFT (int fftSizeLog2) :
+    properties (fftSizeLog2)
 {
     config = vDSP_create_fftsetup (properties.fftSizeLog2, 0);
 
@@ -139,7 +88,6 @@ void FFT::performIFFT (float* fftBuffer)
     vDSP_ztoc (&split, 1, (COMPLEX*) buffer.getData(), 2, properties.fftSizeHalved);
 }
 
-
 void FFT::getMagnitudes (float* magnitudes)
 {
     const float oneOverFFTSize = (float) properties.oneOverFFTSize;
@@ -158,7 +106,61 @@ void FFT::getMagnitudes (float* magnitudes)
     magnitudes[fftSizeHalved] = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor);
 }
 
-//============================================================================
+#else
+
+FFT::FFT (int fftSizeLog2) :
+    properties (fftSizeLog2)
+{
+    config = new ffft::FFTReal<float> (properties.fftSize);
+
+    buffer.malloc (properties.fftSize);
+    bufferSplit.realp = buffer.getData();
+    bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
+}
+
+FFT::~FFT()
+{
+}
+
+void FFT::setFFTSizeLog2 (int newFFTSizeLog2)
+{
+    if (newFFTSizeLog2 != properties.fftSizeLog2)
+    {
+        config = nullptr;
+
+        properties = Properties (newFFTSizeLog2);
+        buffer.malloc (properties.fftSize);
+        bufferSplit.realp = buffer.getData();
+        bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
+
+        config = new ffft::FFTReal<float> (properties.fftSize);
+    }
+}
+
+void FFT::performFFT (float* samples)
+{
+    config->do_fft (buffer.getData(), samples);
+}
+
+void FFT::getPhase (float* phaseBuffer)
+{
+    const int numSamples = properties.fftSizeHalved;
+    float* real = bufferSplit.realp;
+    float* img = bufferSplit.imagp;
+
+    for (int i = 1; i < numSamples; ++i)
+        phaseBuffer[i] = std::atan2 (img[i], real[i]);
+
+    phaseBuffer[0] = 0.0f;
+}
+
+void FFT::performIFFT (float* fftBuffer)
+{
+    config->do_ifft (fftBuffer, buffer.getData());
+}
+
+#endif //DROWAUDIO_USE_VDSP
+
 void FFTEngine::performFFT (float* samples)
 {
     // First apply the current window
@@ -199,4 +201,4 @@ void FFTEngine::findMagnitues (float* magBuf, bool onlyIfBigger)
     magnitutes.updateListeners();
 }
 
-#endif
+#endif //DROWAUDIO_USE_FFTREAL
