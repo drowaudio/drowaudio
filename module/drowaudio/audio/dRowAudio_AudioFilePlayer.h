@@ -50,6 +50,7 @@ class AudioFilePlayer : public StreamAndFileHandler,
 {
 public:
     /** Creates an empty AudioFilePlayer.
+
         This is a quick way to create an AudioFilePlayer as it will use its own
         AudioFormatManager and TimeSliceThread.
     */
@@ -57,6 +58,7 @@ public:
 
     /** Creates an empty AudioFilePlayer that will use a supplied background thread
         and format manager.
+
         If either of these parameters is nullptr the AudioFilePlayer will create its
         own. This constructor is useful if you have lots of players and don't want
         loads of background thread running etc. If you supply your own thread
@@ -90,45 +92,35 @@ public:
     bool isPlaying() const noexcept { return audioTransportSource.isPlaying(); }
 
     //==============================================================================
-    /** Changes the current playback position in the source stream.
-    */
+    /** Changes the current playback position in the source stream.  */
     virtual void setPosition (double newPosition, bool ignoreAnyLoopBounds = false);
 
-    /** Returns the position that the next data block will be read from in seconds.
-    */
+    /** Returns the position that the next data block will be read from in seconds.  */
     double getCurrentPosition() const { return audioTransportSource.getCurrentPosition(); }
 
-    /** Returns the stream's length in seconds.
-    */
+    /** Returns the stream's length in seconds. */
     double getLengthInSeconds() const { return audioTransportSource.getLengthInSeconds(); }
 
-    /** Returns true if the player has stopped because its input stream ran out of data.
-    */
+    /** Returns true if the player has stopped because its input stream ran out of data. */
     bool hasStreamFinished() const noexcept { return audioTransportSource.hasStreamFinished(); }
 
     //==============================================================================
-    /** Returns the AudioFormatReaderSource currently being used.
-    */
+    /** Returns the AudioFormatReaderSource currently being used. */
     AudioFormatReaderSource* getAudioFormatReaderSource() const { return audioFormatReaderSource; }
 
-    /** Returns the AudioTransportSource being used.
-    */
+    /** Returns the AudioTransportSource being used. */
     AudioTransportSource* getAudioTransportSource() { return &audioTransportSource; }
 
-    /** Sets the AudioFormatManager to use.
-    */
+    /** Sets the AudioFormatManager to use. */
     void setAudioFormatManager (AudioFormatManager* newManager, bool deleteWhenNotNeeded);
 
-    /** Returns the AudioFormatManager being used.
-    */
+    /** Returns the AudioFormatManager being used. */
     AudioFormatManager* getAudioFormatManager() const { return formatManager; }
 
-    /** Sets the TimeSliceThread to use.
-    */
+    /** Sets the TimeSliceThread to use. */
     void setTimeSliceThread (TimeSliceThread* newThreadToUse, bool deleteWhenNotNeeded);
 
-    /** Returns the background TimeSliceThread being used.
-    */
+    /** Returns the background TimeSliceThread being used. */
     TimeSliceThread* getTimeSliceThread() const { return bufferingTimeSliceThread; }
 
     //==============================================================================

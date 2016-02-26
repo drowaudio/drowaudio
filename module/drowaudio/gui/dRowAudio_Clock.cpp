@@ -39,15 +39,15 @@ int Clock::getRequiredWidth() const
     return getFont().getStringWidth (timeAsString) + 10;
 }
 
-void Clock::setTimeDisplayFormat(const int newFormat)
+void Clock::setTimeDisplayFormat (const int newFormat)
 {
     displayFormat = newFormat;
 
-    if ((displayFormat & showDayShort) && (displayFormat & showDayLong))
+    if ((displayFormat & showDayShort) != 0 && (displayFormat & showDayLong) != 0)
         displayFormat -= showDayShort;
-    if ((displayFormat & showTime))
+    if ((displayFormat & showTime) != 0)
         startTimer (5900);
-    if ((displayFormat & showSeconds))
+    if ((displayFormat & showSeconds) != 0)
         startTimer (950);
 
     timerCallback();
@@ -55,18 +55,17 @@ void Clock::setTimeDisplayFormat(const int newFormat)
 
 void Clock::timerCallback()
 {
-    Time currentTime = Time::getCurrentTime();
-    timeAsString = String::empty;
+    timeAsString = String();
 
     String formatString;
-    formatString    << ((displayFormat & showDayShort)  ? "%a " : "")
-                    << ((displayFormat & showDayLong)   ? "%A " : "")
-                    << ((displayFormat & showDate)      ? "%x " : "")
-                    << ((displayFormat & showTime)      ? ((displayFormat & show24Hr) ? "%H:%M" : "%I:%M") : "")
-                    << ((displayFormat & showSeconds)   ? ":%S " : "");
+    formatString << ((displayFormat & showDayShort)  ? "%a " : "")
+                 << ((displayFormat & showDayLong)   ? "%A " : "")
+                 << ((displayFormat & showDate)      ? "%x " : "")
+                 << ((displayFormat & showTime)      ? ((displayFormat & show24Hr) ? "%H:%M" : "%I:%M") : "")
+                 << ((displayFormat & showSeconds)   ? ":%S " : "");
 
-    if (formatString != String::empty)
-        timeAsString << currentTime.formatted (formatString);
+    if (formatString.isNotEmpty())
+        timeAsString << Time::getCurrentTime().formatted (formatString);
 
     setText (timeAsString, dontSendNotification);
 }

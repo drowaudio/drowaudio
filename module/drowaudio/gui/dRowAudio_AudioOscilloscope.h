@@ -47,25 +47,30 @@ public:
 
         Once created simply push data to display by repeatedly calling the
         processBlock method.
-     */
+    */
     AudioOscilloscope();
 
     //==============================================================================
-    /**    Processes a number of samples displaying them on the scope.
-        The resolution will depend on how zoomed in you are @see setHorizontalZoom.
-     */
+    /** Processes a number of samples displaying them on the scope.
+
+        The resolution will depend on how zoomed in you are.
+
+        @see setHorizontalZoom.
+    */
     void processBlock (const float* inputChannelData,
                        int numSamples);
 
-    /**    Clears the internal buffers.
+    /** Clears the internal buffers.
+
         It is a good idea to call this when an audio device is started or stopped
         to avoid clicks on the scope.
-     */
+    */
     void clear();
 
     /** Adjusts the vertical zoom of the scope.
+
         0 = nothing, 1 = normal, > 1 = zoomed.
-     */
+    */
     void setVerticalZoom (float newVerticalZoomFactor) { verticalZoomFactor = newVerticalZoomFactor; }
 
     /**    Adjusts the horizontal zoom of the scope.
@@ -77,7 +82,7 @@ public:
     void setHorizontalZoom (float newHorizontalZoomFactor) { horizontalZoomFactor = newHorizontalZoomFactor; }
 
     /** Sets the background colour of the scope. */
-    void setBackgroundColour (Colour newBackgroundColour) {    backgroundColour = newBackgroundColour; }
+    void setBackgroundColour (Colour newBackgroundColour) { backgroundColour = newBackgroundColour; }
 
     /** Sets the trace colour of the scope. */
     void setTraceColour (Colour newTraceColour) { traceColour = newTraceColour; }

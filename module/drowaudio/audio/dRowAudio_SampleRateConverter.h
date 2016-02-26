@@ -47,7 +47,7 @@ class SampleRateConverter
 {
 public:
     /** Creates a SampleRateConverter with a given number of channels. */
-    SampleRateConverter (const int numChannels = 1);
+    SampleRateConverter (int numChannels = 1);
 
     //==============================================================================
     /** Performs the conversion.
@@ -56,7 +56,7 @@ public:
         to make sure that the number of input channels is equal to the number of
         output channels. The input channel data is filtered during this process so
         if you don't want to lose it then make a copy before calling this method.
-     */
+    */
     void process (float** inputChannelData, int numInputChannels, int numInputSamples,
                   float** outputChannelData, int numOutputChannels, int numOutputSamples);
 

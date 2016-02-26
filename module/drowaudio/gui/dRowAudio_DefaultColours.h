@@ -32,11 +32,11 @@
 #ifndef DROWAUDIO_DEFAULTCOLOURS_H
 #define DROWAUDIO_DEFAULTCOLOURS_H
 
-/* This class is used internally by the module to handle it's own colourIds and
+/** This class is used internally by the module to handle it's own colourIds and
     maintain compatibility with the normal JUCE setColour etc. methods.
 
     You should never have to use this yourself.
- */
+*/
 class DefaultColours
 {
 public:
@@ -60,4 +60,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DefaultColours)
 };
 
-#endif // DROWAUDIO_DEFAULTCOLOURS_H
+#endif //DROWAUDIO_DEFAULTCOLOURS_H

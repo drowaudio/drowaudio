@@ -32,34 +32,25 @@
 #ifndef DROWAUDIO_CPUMETER_H
 #define DROWAUDIO_CPUMETER_H
 
-//==============================================================================
 /** Handy class that will display the cpu usage of a given AudioDeviceManager
     as a percentage.
- */
+*/
 class CpuMeter : public Label,
                  public Timer
 {
 public:
-    //==============================================================================
-    /**    Creates a CpuMeter.
+    /** Creates a CpuMeter.
+
         You need to provide the device manager to monitor and optionally the refresh
         rate of the display.
-     */
+    */
     CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs = 50);
 
-    /** Returns the current cpu usage as a percentage.
-     */
-    double getCurrentCpuUsage() const
-    {
-        return currentCpuUsage;
-    }
+    /** Returns the current cpu usage as a percentage. */
+    double getCurrentCpuUsage() const { return currentCpuUsage; }
 
-    /** Changes the colour of the text.
-     */
-    void setTextColour (const Colour& newTextColour)
-    {
-        setColour (Label::textColourId, newTextColour);
-    }
+    /** Changes the colour of the text. */
+    void setTextColour (Colour newTextColour);
 
     //==============================================================================
     /** @internal */
@@ -77,4 +68,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CpuMeter)
 };
 
-#endif    //DROWAUDIO_CPUMETER_H
+#endif //DROWAUDIO_CPUMETER_H

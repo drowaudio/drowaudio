@@ -29,16 +29,22 @@
   ==============================================================================
 */
 
-TriggeredScope::TriggeredScope (TimeSliceThread* backgroundThreadToUse_)
-    : backgroundThreadToUse (backgroundThreadToUse_, backgroundThreadToUse_ == nullptr ? true : false),
-      numSamplesPerPixel (4), verticalZoomFactor (1.0f), triggerMode (Up), numLeftToAverage (numSamplesPerPixel),
-      bufferSize (2048), bufferWritePos (0),
-      minBuffer ((size_t) bufferSize), maxBuffer ((size_t) bufferSize),
-      currentMax (-1.0f), currentMin (1.0f),
-      samplesToProcess (32768),
-      tempProcessingBlock (32768),
-      needToUpdate (false),
-      needToRepaint (true)
+TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
+    backgroundThreadToUse (tst, tst == nullptr),
+    triggerMode (Up),
+    numSamplesPerPixel (4),
+    numLeftToAverage (numSamplesPerPixel),
+    verticalZoomFactor (1.0f),
+    bufferSize (2048),
+    bufferWritePos (0),
+    minBuffer ((size_t) bufferSize),
+    maxBuffer ((size_t) bufferSize),
+    currentMax (-1.0f),
+    currentMin (1.0f),
+    samplesToProcess (32768),
+    tempProcessingBlock (32768),
+    needToUpdate (false),
+    needToRepaint (true)
 {
     const ScopedLock sl (imageLock);
     image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), false);
@@ -72,17 +78,17 @@ TriggeredScope::~TriggeredScope()
         backgroundThreadToUse->stopThread (500);
 }
 
-void TriggeredScope::setNumSamplesPerPixel (int newNumSamplesPerPixel)
+void TriggeredScope::setNumSamplesPerPixel (const int newNumSamplesPerPixel)
 {
     numSamplesPerPixel = newNumSamplesPerPixel;
 }
 
-void TriggeredScope::setVerticalZoomFactor (float newVerticalZoomFactor)
+void TriggeredScope::setVerticalZoomFactor (const float newVerticalZoomFactor)
 {
     verticalZoomFactor = newVerticalZoomFactor;
 }
 
-void TriggeredScope::setTriggerMode (TriggerMode newTriggerMode)
+void TriggeredScope::setTriggerMode (const TriggerMode newTriggerMode)
 {
     if (newTriggerMode == None
         || newTriggerMode == Up
@@ -92,7 +98,7 @@ void TriggeredScope::setTriggerMode (TriggerMode newTriggerMode)
     }
 }
 
-void TriggeredScope::addSamples (const float* samples, int numSamples)
+void TriggeredScope::addSamples (const float* samples, const int numSamples)
 {
     // if we don't have enough space in the fifo, clear out some old samples
     const int numFreeInBuffer = samplesToProcess.getNumFree();
@@ -179,7 +185,6 @@ void TriggeredScope::renderImage()
     Graphics g (image);
 
     g.fillAll (Colours::black);
-    g.setColour (Colours::white);
 
     const int w = image.getWidth();
     const int h = image.getHeight();
@@ -221,6 +226,8 @@ void TriggeredScope::renderImage()
                 posToTest += bufferSize;
         }
     }
+
+    g.setColour (Colours::white);
 
     int currentX = 0;
     while (currentX < w)

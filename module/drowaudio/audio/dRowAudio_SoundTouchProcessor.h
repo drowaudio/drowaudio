@@ -72,7 +72,7 @@ public:
         Make sure that you call initialise before any processing take place.
         This will apply no shifting/stretching by default, use setPlaybackSetting() to
         apply these effects.
-     */
+    */
     SoundTouchProcessor();
 
     //==============================================================================
@@ -81,7 +81,7 @@ public:
         This must be set before any processing occurs as the results are undefiend if not.
         It is the callers responsibility to make sure the numChannels parameter matches
         those supplied to the read/write methods.
-     */
+    */
     void initialise (int numChannels, double sampleRate);
 
     /** Writes samples into the pipline ready to be processed.
@@ -89,7 +89,7 @@ public:
         Remember to keep a 1:1 ratio of input and output samples more or less samples may
         be required as input compared to output (think of a time stretch). You can find
         this ratio using getNumSamplesRequiredRatio().
-     */
+    */
     void writeSamples (float** sourceChannelData, int numChannels, int numSamples, int startSampleOffset = 0);
 
     /** Reads out processed samples.
@@ -97,7 +97,7 @@ public:
         This will read out as many samples as the processor has ready. Any additional
         space in the buffer will be slienced. As the processor takes a certain ammount of
         samples to calculate an output there is a latency of around 100ms involved in the process.
-     */
+    */
     void readSamples (float** destinationChannelData, int numChannels, int numSamples, int startSampleOffset = 0);
 
     /** Clears the pipeline of all samples, ready for new processing. */
@@ -110,7 +110,7 @@ public:
         stream. This function may introduce additional blank samples in the end
         of the sound stream, and thus it's not recommended to call this function
         in the middle of a sound stream.
-     */
+    */
     void flush() { soundTouch.flush(); }
 
     /** Returns the number of samples ready. */
@@ -123,16 +123,18 @@ public:
     void setPlaybackSettings (const PlaybackSettings& newSettings);
 
     /** Returns all of the settings. */
-    const PlaybackSettings& getPlaybackSettings() const {return settings; }
+    const PlaybackSettings& getPlaybackSettings() const { return settings; }
 
     /** Sets a custom SoundTouch setting.
+
         See SoundTouch.h for details.
-     */
+    */
     void setSoundTouchSetting (int settingId, int settingValue);
 
     /** Gets a custom SoundTouch setting.
+
         See SoundTouch.h for details.
-     */
+    */
     int getSoundTouchSetting (int settingId);
 
     /** Returns the effective playback ratio i.e. the number of output samples produced per input sample. */
@@ -151,5 +153,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundTouchProcessor)
 };
 
-#endif
-#endif // DROWAUDIO_SOUNDTOUCHPROCESSOR_H
+#endif //DROWAUDIO_USE_SOUNDTOUCH || DOXYGEN
+#endif //DROWAUDIO_SOUNDTOUCHPROCESSOR_H

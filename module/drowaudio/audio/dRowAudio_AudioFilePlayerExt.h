@@ -47,7 +47,7 @@
     @see AudioTransportSource
     @see AudioFormatReader
     @see AudioFormatReaderSource
- */
+*/
 class AudioFilePlayerExt : public AudioFilePlayer
 {
 public:

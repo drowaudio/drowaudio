@@ -36,7 +36,7 @@ namespace GuiHelpers
 {
     /** Creates a base colour for a component based on the current keyboard
         and mouse interactivity.
-     */
+    */
     static inline Colour createBaseColour (const Colour& colour,
                                            bool hasKeyboardFocus,
                                            bool isMouseOver,
@@ -54,8 +54,9 @@ namespace GuiHelpers
     }
 
     /** Draws a square bevel around a given rectange.
+
         This is useful for insetting components and givin them a border.
-     */
+    */
     static inline void drawBevel (Graphics& g, const Rectangle<float>& innerBevelBounds,
                                   float bevelThickness, Colour baseColour)
     {
@@ -166,7 +167,7 @@ namespace GuiHelpers
         @return                 True if the font was written successfully, false otherwise
 
         @see Font, CustomTypeface
-     */
+    */
     static inline bool serializeFont (const Font& font, File& destinationFile, int maxNumChars = 127)
     {
         destinationFile.deleteFile();

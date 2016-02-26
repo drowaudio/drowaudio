@@ -32,9 +32,7 @@
 #ifndef DROWAUDIO_FIFOBUFFER_H
 #define DROWAUDIO_FIFOBUFFER_H
 
-//==============================================================================
-/**
-    This is a simple implementation of a lock free Fifo buffer that uses
+/** This is a simple implementation of a lock free Fifo buffer that uses
     a template parameter for the sample type. This should be a primitive type
     that is capable of being copied using only memcpy.
 
@@ -44,7 +42,7 @@
     optionally pass in a lock type. Of course if you are taking care of your own
     thread safety a DummyCriticalSection will be used which should be optimised
     out by the compiler.
- */
+*/
 template <typename ElementType,
           typename TypeOfCriticalSectionToUse = DummyCriticalSection>
 class FifoBuffer
@@ -73,9 +71,10 @@ public:
     }
 
     /** Sets the size of the buffer.
+
         This does not keep any of the old data and will reset the buffer
         making the number available 0.
-     */
+    */
     inline void setSize (int newSize)
     {
         const ScopedLockType sl (lock);
@@ -88,7 +87,7 @@ public:
 
         This is a potentially time consuming operation and is only thread
         safe if a valid lock is used as the second template parameter.
-     */
+    */
     inline void setSizeKeepingExisting (int newSize)
     {
         const ScopedLockType sl (lock);
@@ -155,16 +154,18 @@ public:
     }
 
     /** Returns the raw block of data.
+
         You shouldn't need to mess with this usually but could come in handy if you want
         to use the Fifo as a buffer without clearing it regularly.
-     */
+    */
     ElementType* getData() const { return buffer.getData(); }
 
     //==============================================================================
     /** Returns the CriticalSection that locks this fifo.
+
         To lock, you can call getLock().enter() and getLock().exit(), or preferably use
         an object of ScopedLockType as an RAII lock for it.
-     */
+    */
     inline const TypeOfCriticalSectionToUse& getLock() const noexcept { return lock; }
 
     /** Returns the type of scoped lock to use for locking this fifo */

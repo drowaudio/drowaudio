@@ -46,34 +46,32 @@ int GraphicalComponent::useTimeSlice()
     {
         return sleepTime;
     }
-    else
-    {
-        if (needToProcess)
-        {
-            process();
-            needToProcess = false;
 
-            return sleepTime;
-        }
+    if (needToProcess)
+    {
+        process();
+        needToProcess = false;
 
         return sleepTime;
     }
+
+    return sleepTime;
 }
 
 void GraphicalComponent::copySamples (const float *values, int numSamples_)
 {
-        // allocate new memory only if needed
-        if (numSamples != numSamples_)
-        {
-            numSamples = numSamples_;
-            samples.malloc (numSamples);
-        }
+    // allocate new memory only if needed
+    if (numSamples != numSamples_)
+    {
+        numSamples = numSamples_;
+        samples.malloc (numSamples);
+    }
 
-        // lock whilst copying
-        ScopedLock sl (lock);
-        memcpy (samples, values, numSamples * sizeof (float));
+    // lock whilst copying
+    ScopedLock sl (lock);
+    std::memcpy (samples, values, numSamples * sizeof (float));
 
-        needToProcess = true;
+    needToProcess = true;
 }
 
 void GraphicalComponent::copySamples (float **values, int numSamples_, int numChannels)
@@ -90,29 +88,21 @@ void GraphicalComponent::copySamples (float **values, int numSamples_, int numCh
 
     if (numChannels == 1)
     {
-        memcpy (samples, values[0], numSamples * sizeof (float));
+        std::memcpy (samples, values[0], numSamples * sizeof (float));
     }
-    // this is quicker than the generic method below
     else if (numChannels == 2)
-    {
+    { //This is quicker than the generic method below
         for (int i = 0; i < numSamples; ++i)
-        {
-            samples[i] = (fabsf (values[0][i]) > fabsf (values[1][i])) ? values[0][i] : values[1][i];
-        }
+            samples[i] = (std::abs (values[0][i]) > std::abs (values[1][i])) ? values[0][i] : values[1][i];
     }
     else
     {
         samples.clear (numSamples);
-        for (int c = 0; c < numChannels; c++)
-        {
+
+        for (int c = 0; c < numChannels; ++c)
             for (int i = 0; i < numSamples; ++i)
-            {
-                if (fabsf (values[c][i]) > samples[i])
-                {
+                if (std::abs (values[c][i]) > samples[i])
                     samples[i] = values[c][i];
-                }
-            }
-        }
     }
 
     needToProcess = true;

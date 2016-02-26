@@ -32,7 +32,6 @@
 #ifndef DROWAUDIO_CLOCK_H
 #define DROWAUDIO_CLOCK_H
 
-//==============================================================================
 /** A handy digital graphical clock.
 
     Just add one of these to your component and it will display the time,
@@ -43,9 +42,7 @@ class Clock : public Label,
               public Timer
 {
 public:
-    //==============================================================================
-    /**    A number of flags to set what sort of clock is displayed
-     */
+    /** A number of flags to set what sort of clock is displayed */
     enum TimeDisplayFormat
     {
         showDate = 1,
@@ -56,24 +53,23 @@ public:
         showDayLong = 32,
     };
 
-    //==============================================================================
-    /**    Constructor.
+    /** Constructor.
+
         Just add and make visible one of these to your component and it
         will display the current time and continually update itself.
-     */
+    */
     Clock();
 
-    /**    Sets the display format of the clock.
+    /** Sets the display format of the clock.
 
         To specify what sort of clock to display pass in a number of the
         TimeDisplayFormat flags. This is semi-inteligent so may choose to
         ignore certain flags such as the short day name if you have also
         specified the long day name.
-     */
+    */
     void setTimeDisplayFormat (const int newFormat);
 
-    /**    Returns the width required to display all of the clock's information.
-     */
+    /**  Returns the width required to display all of the clock's information. */
     int getRequiredWidth() const;
 
     //==============================================================================

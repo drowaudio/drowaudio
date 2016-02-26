@@ -53,13 +53,12 @@
     method and a smart average will be calculated.
 
     @see setSampleRate, setMinMaxFrequency, getPitch, processSamples, detectPitch
- */
+*/
 class PitchDetector
 {
 public:
     //==============================================================================
-    /** An enum to specify the detection algorithm used.
-     */
+    /** An enum to specify the detection algorithm used. */
     enum DetectionMethod
     {
         autoCorrelationFunction,
@@ -68,28 +67,30 @@ public:
 
     //==============================================================================
     /** Creates a PitchDetector.
+
         Make sure you specify the sample rate and some sensible min/max frequencies
         to get the best out of this class.
 
         @see setSampleRate, setMinMaxFrequency
-     */
+    */
     PitchDetector();
 
     //==============================================================================
     /** Process a block of samples.
+
         Because the number of samples required to find a pitch varies depending on
         the minimum frequency set this uses an internal buffer to store samples until
         enough have been gathered. This does have the side effect of introducing some
         latency.
-     */
+    */
     void processSamples (const float* samples, int numSamples) noexcept;
 
-    /** Returns the most recently detected pitch.
-     */
+    /** Returns the most recently detected pitch. */
     double getPitch() const noexcept { return mostRecentPitch; }
 
     //==============================================================================
     /** Detects the average pitch in a block of samples.
+
         This alternative detection method uses some clever averaging techniques to
         compute the average pitch of a block of samples. This can be useful if used
         in conjunction with some other splicing techniques such as onset detection
@@ -97,7 +98,7 @@ public:
 
         Note that the sample array passed in is not marked const and will alter the
         samples. Be sure to pass in a copy if this is undesireable.
-     */
+    */
     double detectPitch (float* samples, int numSamples) noexcept;
 
     //==============================================================================
@@ -105,36 +106,35 @@ public:
         This needs to be set before any detection can be made.
         Note that this isn't thread safe so don't call it concurrently with any calls
         to the process methods.
-     */
+    */
     void setSampleRate (double newSampleRate) noexcept;
 
     /** Sets the detection algorithm to use.
+
         By default this is autoCorrelationFunction.
-     */
+    */
     void setDetectionMethod (DetectionMethod newMethod);
 
-    /** Returns the detection method currently in use.
-     */
+    /** Returns the detection method currently in use. */
     inline DetectionMethod getDetectionMethod() const noexcept { return detectionMethod; }
 
     /** Sets the minimum and maximum frequencies that can be detected.
+
         Because this uses an auto-correlation algorithm the lower the minimum
         frequency, the more cpu intensive the calculation will be. Therefore it is
         a good idea to set the values to some realistic expectations.
-     */
+    */
     void setMinMaxFrequency (float newMinFrequency, float newMaxFrequency) noexcept;
 
-    /** Returns the minimum frequency that can currently be detected.
-     */
+    /** Returns the minimum frequency that can currently be detected. */
     float getMinFrequency() const noexcept { return minFrequency; }
 
-    /** Returns the maximum frequency that can currently be detected.
-     */
+    /** Returns the maximum frequency that can currently be detected. */
     float getMaxFrequency() const noexcept { return maxFrequency; }
 
     /** Returns the minimum number of samples required to detect a pitch based on
         the minimum frequency set.
-     */
+    */
     int getNumSamplesNeededForDetection() const noexcept { return numSamplesNeededForDetection; }
 
     //==============================================================================
@@ -142,7 +142,7 @@ public:
 
         This method isn't really intended for public use but could be used for
         debugging or display purposes.
-     */
+    */
     Buffer* getBuffer (int stageIndex);
 
 private:

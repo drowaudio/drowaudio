@@ -39,6 +39,11 @@ CpuMeter::CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs
         startTimer (updateInterval);
 }
 
+void CpuMeter::setTextColour (const Colour newTextColour)
+{
+    setColour (Label::textColourId, newTextColour);
+}
+
 void CpuMeter::resized()
 {
     const int w = getWidth();
@@ -50,8 +55,5 @@ void CpuMeter::resized()
 void CpuMeter::timerCallback()
 {
     currentCpuUsage = (deviceManager->getCpuUsage() * 100.0);
-    String displayString (currentCpuUsage, 2);
-    displayString << "%";
-
-    setText (displayString, dontSendNotification);
+    setText (String (currentCpuUsage, 2) + "%", dontSendNotification);
 }

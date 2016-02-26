@@ -35,8 +35,7 @@
 #include "../utility/dRowAudio_Utility.h"
 
 //==============================================================================
-/** Parameter Units - currently values are the same as the AudioUnit enums
- */
+/** Parameter Units - currently values are the same as the AudioUnit enums */
 enum ParameterUnit
 {
     UnitGeneric,                /* untyped value generally between 0.0 and 1.0 */

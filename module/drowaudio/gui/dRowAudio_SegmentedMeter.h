@@ -69,7 +69,7 @@ public:
 
         Initially this will do nothing as you need to register it with a
         TimeSliceThread then push some values to it with copyValues().
-     */
+    */
     SegmentedMeter();
 
     //==============================================================================
@@ -102,7 +102,7 @@ public:
         You may need to use this if a container component moves without moving
         or resizing its parent directly, eg. if you are housing your component
         in a tabbed component.
-     */
+    */
     void flagForRepaint()
     {
         needsRepaint = true;

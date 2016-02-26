@@ -34,13 +34,11 @@
 
 #include "filters/dRowAudio_OnePoleFilter.h"
 
-//==============================================================================
-/**
-    EnvelopeFollower.
+/** EnvelopeFollower.
 
     Envelope follower class that gives an overall amplitude response of a set of
     samples.
- */
+*/
 class EnvelopeFollower
 {
 public:
@@ -49,13 +47,15 @@ public:
 
     //==============================================================================
     /** Uses different exponential attack and release coefficients.
+
         Call setTimes to setup this method, ignoring the hold time.
-     */
+    */
     void processEnvelope (const float* inputBuffer, float* outputBuffer, int numSamples) noexcept;
 
     /** Sets the times for the vaious stages of the envelope.
-        1 is an instant attack/release, 0 ill never change the value.
-     */
+
+        1 is an instant attack/release, 0 will never change the value.
+    */
     void setCoefficients (float attack, float release) noexcept;
 
 private:

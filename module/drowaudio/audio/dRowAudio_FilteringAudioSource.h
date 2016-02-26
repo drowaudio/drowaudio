@@ -32,8 +32,7 @@
 #ifndef DROWAUDIO_FILTERINGAUDIOSOURCE_H
 #define DROWAUDIO_FILTERINGAUDIOSOURCE_H
 
-/**    An AudioSource that contains three settable filters to EQ the audio stream.
- */
+/** An AudioSource that contains three settable filters to EQ the audio stream. */
 class FilteringAudioSource : public AudioSource
 {
 public:
@@ -54,8 +53,7 @@ public:
     };
 
     //==============================================================================
-    /** Creates an FilteringAudioTransportSource.
-     */
+    /** Creates an FilteringAudioTransportSource. */
     FilteringAudioSource (AudioSource* inputSource,
                           bool deleteInputWhenDeleted);
 
@@ -63,16 +61,13 @@ public:
     ~FilteringAudioSource();
 
     //==============================================================================
-    /** Changes one of the filter gains.
-     */
+    /** Changes one of the filter gains. */
     void setGain (FilterType setting, float newGain);
 
-    /** Toggles the filtering of the transport source.
-     */
+    /** Toggles the filtering of the transport source. */
     void setFilterSource (bool shouldFilter);
 
-    /** Returns whether the source is being filtered or not.
-     */
+    /** Returns whether the source is being filtered or not. */
     bool getFilterSource() const { return filterSource; }
 
     //==============================================================================

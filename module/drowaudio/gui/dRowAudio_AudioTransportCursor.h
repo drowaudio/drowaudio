@@ -45,12 +45,12 @@ class AudioTransportCursor : public Component,
 {
 public:
     /** Creates the display.
+
         The AudioFilePlayer associated with the display must be passed in.
     */
     explicit AudioTransportCursor (AudioFilePlayer& sourceToBeUsed);
 
-    /** Destructor.
-    */
+    /** Destructor. */
     ~AudioTransportCursor();
 
     //====================================================================================
