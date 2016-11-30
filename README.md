@@ -12,12 +12,6 @@ dRowAudio is written following JUCE's [Coding Standard](http://www.juce.com/lear
 This library is hosted on [GitHub](https://github.com/drowaudio/drowaudio).
 Please find the online documentation [here](http://drowaudio.co.uk/docs/).
 
-## Build Status
-
-| [Travis-CI](https://travis-ci.org/) |
-| :-------: |
-| [![Build Status](https://travis-ci.org/jrlanglois/drowaudio.svg?branch=master)](https://travis-ci.org/jrlanglois/drowaudio) |
-
 ## Prerequisites
 
 This documentation assumes that the reader has a working knowledge of [JUCE](https://github.com/julianstorer/JUCE).
