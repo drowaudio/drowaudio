@@ -29,6 +29,37 @@
     ==============================================================================
 */
 
+
+/*******************************************************************************
+ The block below describes the properties of this module, and is read by
+ the Projucer to automatically generate project code that uses it.
+ For details about the syntax and how to create or use a module, see the
+ JUCE Module Format.txt file.
+
+#if 0
+BEGIN_JUCE_MODULE_DECLARATION
+
+    ID:             dRowAudio
+    vendor:         jrlanglois
+    name:           dRowAudio audio and gui classes
+    version:        4.3.0
+    description:    Extensions to the JUCE library including graphical components for audio
+    website:        http://www.drowaudio.co.uk
+    license:        MIT
+
+    dependencies:   juce_audio_basics, juce_audio_devices, juce_audio_formats, juce_audio_utils, juce_core, juce_cryptography, juce_data_structures, juce_events, juce_graphics, juce_gui_basics
+    searchpaths:    drowaudio/audio/* drowaudio/audio/fft/* drowaudio/audio/filters/* drowaudio/gui/* drowaudio/gui/audiothumbnail/* drowaudio/gui/filebrowser/* drowaudio/maths/* drowaudio/native/* drowaudio/network/* drowaudio/parameters/* drowaudio/streams/* drowaudio/utility/*
+
+    OSXFrameworks   Accelerate
+    iOSFrameworks   Accelerate AVFoundation MediaPlayer CoreMedia
+
+END_JUCE_MODULE_DECLARATION
+
+#endif
+
+*******************************************************************************/
+
+
 #ifndef DROWAUDIO_HEADER_H
 #define DROWAUDIO_HEADER_H
 
@@ -140,9 +171,9 @@
 */
 
 //=============================================================================
-#include <modules/juce_audio_utils/juce_audio_utils.h>
-#include <modules/juce_gui_basics/juce_gui_basics.h>
-#include <modules/juce_cryptography/juce_cryptography.h>
+#include <juce_audio_utils/juce_audio_utils.h>
+#include <juce_gui_basics/juce_gui_basics.h>
+#include <juce_cryptography/juce_cryptography.h>
 
 #undef min
 #undef max
