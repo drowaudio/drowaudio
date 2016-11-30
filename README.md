@@ -18,9 +18,8 @@ This documentation assumes that the reader has a working knowledge of [JUCE](htt
 
 ## Integration
 
-dRowAudio requires the most recent version of JUCE.
+This fork of dRowAudio requires JUCE 4.3.0.
 
-Simply drag the [juce_module_info](https://github.com/jrlanglois/drowaudio/blob/master/module/drowaudio/juce_module_info) file into the modules section of your Introjucer project.
 
 ## Platforms
 
