@@ -9,7 +9,7 @@ Additionally, there are several wrappers around 3rd party libraries including:
 
 dRowAudio is written following JUCE's [Coding Standard](http://www.juce.com/learn/coding-standards).
 
-This library is hosted on [GitHub](https://github.com/drowaudio/drowaudio).
+This library is hosted on [GitHub](https://github.com/m-rest/drowaudio).
 Please find the online documentation [here](http://drowaudio.co.uk/docs/).
 
 ## Prerequisites
