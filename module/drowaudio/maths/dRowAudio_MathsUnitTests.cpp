@@ -31,7 +31,7 @@
 
 #if DROWAUDIO_UNIT_TESTS
 
-#include <modules/juce_core/juce_core.h>
+#include <juce_core/juce_core.h>
 
 //==============================================================================
 class CumulativeMovingAverageTests  : public UnitTest
