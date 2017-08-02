@@ -48,7 +48,6 @@ BEGIN_JUCE_MODULE_DECLARATION
     license:        MIT
 
     dependencies:   juce_audio_basics, juce_audio_devices, juce_audio_formats, juce_audio_utils, juce_core, juce_cryptography, juce_data_structures, juce_events, juce_graphics, juce_gui_basics
-    searchpaths:    drowaudio/audio/* drowaudio/audio/fft/* drowaudio/audio/filters/* drowaudio/gui/* drowaudio/gui/audiothumbnail/* drowaudio/gui/filebrowser/* drowaudio/maths/* drowaudio/native/* drowaudio/network/* drowaudio/parameters/* drowaudio/streams/* drowaudio/utility/*
 
     OSXFrameworks   Accelerate
     iOSFrameworks   Accelerate AVFoundation MediaPlayer CoreMedia
