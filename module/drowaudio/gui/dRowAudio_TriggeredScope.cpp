@@ -228,7 +228,8 @@ void TriggeredScope::renderImage()
     }
 
     g.setColour (Colours::white);
-
+    g.drawRect (0, 0, w, h);
+    
     int currentX = 0;
     while (currentX < w)
     {
@@ -239,7 +240,8 @@ void TriggeredScope::renderImage()
         const float top = (1.0f - (0.5f + (0.5f * verticalZoomFactor * maxBuffer[bufferReadPos]))) * h;
         const float bottom = (1.0f - (0.5f + (0.5f * verticalZoomFactor * minBuffer[bufferReadPos]))) * h;
 
-        g.drawVerticalLine (currentX, top, bottom);
+        //g.drawVerticalLine (currentX, top, bottom);
+         g.drawLine (currentX - 1, bottom, currentX, top);
         ++currentX;
     }
 
