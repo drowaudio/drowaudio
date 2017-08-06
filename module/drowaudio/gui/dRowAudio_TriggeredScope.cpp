@@ -231,6 +231,7 @@ void TriggeredScope::renderImage()
     g.drawRect (0, 0, w, h);
     
     int currentX = 0;
+    Range<float> r0;
     while (currentX < w)
     {
         ++bufferReadPos;
@@ -239,10 +240,22 @@ void TriggeredScope::renderImage()
 
         const float top = (1.0f - (0.5f + (0.5f * verticalZoomFactor * maxBuffer[bufferReadPos]))) * h;
         const float bottom = (1.0f - (0.5f + (0.5f * verticalZoomFactor * minBuffer[bufferReadPos]))) * h;
+        
+        jassert (top <= bottom);
+        
+        Range<float> r1 (top, bottom);
 
-        //g.drawVerticalLine (currentX, top, bottom);
-         g.drawLine (currentX - 1, bottom, currentX, top);
+        if (currentX == 0 || r1.intersects(r0))
+            g.drawVerticalLine (currentX, top, bottom);
+        else if (r0.getEnd() < r1.getStart())
+            g.drawLine (currentX - 1, r0.getEnd(), currentX, r1.getEnd());
+        else if (r0.getStart() > r1.getEnd())
+            g.drawLine (currentX - 1, r0.getStart(), currentX, r1.getStart());
+        else
+            g.drawLine (currentX - 1, top, currentX, bottom);
+        
         ++currentX;
+        r0 = r1;
     }
 
     needToRepaint = true;
