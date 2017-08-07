@@ -39,7 +39,7 @@
 #if 0
 BEGIN_JUCE_MODULE_DECLARATION
 
-    ID:             drowaudio
+    ID:             dRowAudio
     vendor:         jrlanglois
     name:           dRowAudio audio and gui classes
     version:        4.3.0
