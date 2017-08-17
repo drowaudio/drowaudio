@@ -49,7 +49,7 @@ TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
     const ScopedLock sl (imageLock);
     image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), false);
     Graphics g (image);
-    g.fillAll (Colours::black);
+    g.fillAll (Colours::transparentBlack);
 
     if (backgroundThreadToUse == nullptr)
     {
@@ -182,9 +182,11 @@ void TriggeredScope::renderImage()
 {
     const ScopedLock sl (imageLock);
 
+    image.clear ({0, 0, image.getWidth(), image.getHeight()}, Colours::transparentBlack);
+    
     Graphics g (image);
 
-    g.fillAll (Colours::black);
+    g.fillAll (Colours::transparentBlack);
 
     const int w = image.getWidth();
     const int h = image.getHeight();
