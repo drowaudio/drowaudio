@@ -250,7 +250,7 @@ void TriggeredScope::renderImage()
         if (currentX == 0 || r1.intersects(r0))
             g.drawVerticalLine (currentX, top, bottom);
         else if (r0.getEnd() < r1.getStart())
-            g.drawLine (currentX - 1, r0.getEnd(), currentX, r1.getEnd());
+            g.drawLine (currentX - 1.0f, float (r0.getEnd()), float (currentX), float (r1.getEnd()));
         else if (r0.getStart() > r1.getEnd())
             g.drawLine (currentX - 1, r0.getStart(), currentX, r1.getStart());
         else

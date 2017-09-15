@@ -178,7 +178,7 @@ double PitchDetector::detectAcfPitchForBlock (float* samples, int numSamples)
     highFilter.processSamples (samples, numSamples);
 
     autocorrelate (samples, numSamples, buffer1.getData());
-    normalise (buffer1.getData(), buffer1.getSize());
+    normalise (buffer1.getData(), int (buffer1.getSize()));
 
 //    float max = 0.0f;
 //    int sampleIndex = 0;
@@ -280,7 +280,7 @@ double PitchDetector::detectSdfPitchForBlock (float* samples, int numSamples)
     highFilter.processSamples (samples, numSamples);
 
     sdfAutocorrelate (samples, numSamples, buffer1.getData());
-    normalise (buffer1.getData(), buffer1.getSize());
+    normalise (buffer1.getData(), int (buffer1.getSize()));
 
     // find first minimum that is below a threshold
     const float threshold = 0.25f;
