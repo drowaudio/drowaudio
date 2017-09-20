@@ -53,8 +53,8 @@ void PitchDetector::processSamples (const float* samples, int numSamples) noexce
 
     while (inputFifoBuffer.getNumAvailable() >= numSamplesNeededForDetection)
     {
-        inputFifoBuffer.readSamples (currentBlockBuffer.getData(), currentBlockBuffer.getSize());
-        mostRecentPitch = detectPitchForBlock (currentBlockBuffer.getData(), currentBlockBuffer.getSize());
+        inputFifoBuffer.readSamples (currentBlockBuffer.getData(), (int) currentBlockBuffer.getSize());
+        mostRecentPitch = detectPitchForBlock (currentBlockBuffer.getData(), (int) currentBlockBuffer.getSize());
     }
 }
 

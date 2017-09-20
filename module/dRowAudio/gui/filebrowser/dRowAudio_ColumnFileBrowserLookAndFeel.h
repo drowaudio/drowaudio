@@ -61,7 +61,7 @@ public:
                                      FilePreviewComponent* /*previewComp*/,
                                      ComboBox* /*currentPathBox*/,
                                      TextEditor* /*filenameBox*/,
-                                     Button* /*goUpButton*/)
+                                     Button* /*goUpButton*/) override
     {
         int w = browserComp.getWidth();
         int x = 2;
@@ -74,13 +74,10 @@ public:
     }
 
     void drawFileBrowserRow (Graphics& g, int width, int height,
-                             const String& filename, Image* icon,
-                             const String& fileSizeDescription,
-                             const String& fileTimeDescription,
-                             bool isDirectory,
-                             bool isItemSelected,
-                             int /*itemIndex*/,
-                             DirectoryContentsDisplayComponent& /*component*/)
+                             const File& /*file*/, const String& filename, Image* icon,
+                             const String& fileSizeDescription, const String& fileTimeDescription,
+                             bool isDirectory, bool isItemSelected, int /*itemIndex*/,
+                             DirectoryContentsDisplayComponent&) override
     {
         if (isItemSelected)
             g.fillAll (findColour (DirectoryContentsDisplayComponent::highlightColourId));
@@ -189,7 +186,7 @@ public:
                               int buttonDirection,
                               bool /*isScrollbarVertical*/,
                               bool /*isMouseOverButton*/,
-                              bool isButtonDown)
+                              bool isButtonDown) override
     {
         Path p;
 
@@ -229,7 +226,7 @@ public:
                         int thumbStartPosition,
                         int thumbSize,
                         bool /*isMouseOver*/,
-                        bool /*isMouseDown*/)
+                        bool /*isMouseDown*/) override
     {
         g.fillAll (scrollbar.findColour (ScrollBar::backgroundColourId));
 
@@ -322,7 +319,7 @@ public:
     void drawCornerResizer (Graphics& g,
                             int w, int h,
                             bool /*isMouseOver*/,
-                            bool /*isMouseDragging*/)
+                            bool /*isMouseDragging*/) override
     {
         const float lineThickness = 1.0f;//jmin (w, h) * 0.075f;
         const float xGap = w / 3.0f;

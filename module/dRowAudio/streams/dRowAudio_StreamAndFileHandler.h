@@ -81,20 +81,20 @@ public:
 
         @returns true if the stream loaded correctly
      */
-    bool setInputStream (InputStream* inputStream)
+    bool setInputStream (InputStream* inputStreamIn)
     {
         inputType = unknownStream;
 
-        if (MemoryInputStream* mis = dynamic_cast<MemoryInputStream*> (inputStream))
+        if (MemoryInputStream* mis = dynamic_cast<MemoryInputStream*> (inputStreamIn))
             return setMemoryInputStream (mis);
 
-        if (FileInputStream* fis = dynamic_cast<FileInputStream*> (inputStream))
+        if (FileInputStream* fis = dynamic_cast<FileInputStream*> (inputStreamIn))
         {
             const ScopedPointer<FileInputStream> deleter (fis);
             return setFile (fis->getFile());
         }
 
-        return streamChanged (inputStream);
+        return streamChanged (inputStreamIn);
     }
 
     /** Returns a stream to the current source, you can find this out using getInputType().

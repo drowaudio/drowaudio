@@ -579,7 +579,7 @@ public:
         result.colour = Colour(red, green, blue);
     }
 
-    void write (const MinMaxColourValue* const source, const int startIndex, const int numValues)
+    void write (const MinMaxColourValue* const sourceIn, const int startIndex, const int numValues)
     {
         resetPeak();
 
@@ -589,7 +589,7 @@ public:
         MinMaxColourValue* const dest = getData (startIndex);
 
         for (int i = 0; i < numValues; ++i)
-            dest[i] = source[i];
+            dest[i] = sourceIn[i];
     }
 
     void resetPeak()
@@ -643,11 +643,11 @@ public:
     void drawChannel (Graphics& g, const Rectangle<int>& area,
                       const double startTime, const double endTime,
                       const int channelNum, const float verticalZoomFactor,
-                      const double sampleRate, const int numChannels, const int samplesPerThumbSample,
-                      LevelDataSource* levelData, const OwnedArray<ThumbData>& channels)
+                      const double sampleRateIn, const int numChannelsIn, const int samplesPerThumbSampleIn,
+                      LevelDataSource* levelData, const OwnedArray<ThumbData>& channelsIn)
     {
-        refillCache (area.getWidth(), startTime, endTime, sampleRate,
-                     numChannels, samplesPerThumbSample, levelData, channels);
+        refillCache (area.getWidth(), startTime, endTime, sampleRateIn,
+                     numChannelsIn, samplesPerThumbSampleIn, levelData, channelsIn);
 
         if (isPositiveAndBelow (channelNum, numChannelsCached))
         {
@@ -679,11 +679,11 @@ public:
     void drawColouredChannel (Graphics& g, const Rectangle<int>& area,
                               const double startTime, const double endTime,
                               const int channelNum, const float verticalZoomFactor,
-                              const double sampleRate, const int numChannels, const int samplesPerThumbSample,
-                              LevelDataSource* levelData, const OwnedArray<ThumbData>& channels)
+                              const double sampleRateIn, const int numChannelsIn, const int samplesPerThumbSampleIn,
+                              LevelDataSource* levelData, const OwnedArray<ThumbData>& channelsIn)
     {
-        refillCache (area.getWidth(), startTime, endTime, sampleRate,
-                     numChannels, samplesPerThumbSample, levelData, channels);
+        refillCache (area.getWidth(), startTime, endTime, sampleRateIn,
+                     numChannelsIn, samplesPerThumbSampleIn, levelData, channelsIn);
 
         if (isPositiveAndBelow (channelNum, numChannelsCached))
         {
@@ -723,19 +723,19 @@ private:
     bool cacheNeedsRefilling;
 
     void refillCache (const int numSamples, double startTime, const double endTime,
-                      const double sampleRate, const int numChannels, const int samplesPerThumbSample,
-                      LevelDataSource* levelData, const OwnedArray<ThumbData>& channels)
+                      const double sampleRateIn, const int numChannelsIn, const int samplesPerThumbSampleIn,
+                      LevelDataSource* levelData, const OwnedArray<ThumbData>& channelsIn)
     {
         const double timePerPixel = (endTime - startTime) / numSamples;
 
-        if (numSamples <= 0 || timePerPixel <= 0.0 || sampleRate <= 0)
+        if (numSamples <= 0 || timePerPixel <= 0.0 || sampleRateIn <= 0)
         {
             invalidate();
             return;
         }
 
         if (numSamples == numSamplesCached
-             && numChannelsCached == numChannels
+             && numChannelsCached == numChannelsIn
              && startTime == cachedStart
              && timePerPixel == cachedTimePerPixel
              && ! cacheNeedsRefilling)
@@ -744,23 +744,23 @@ private:
         }
 
         numSamplesCached = numSamples;
-        numChannelsCached = numChannels;
+        numChannelsCached = numChannelsIn;
         cachedStart = startTime;
         cachedTimePerPixel = timePerPixel;
         cacheNeedsRefilling = false;
 
         ensureSize (numSamples);
 
-        if (timePerPixel * sampleRate <= samplesPerThumbSample && levelData != 0)
+        if (timePerPixel * sampleRateIn <= samplesPerThumbSampleIn && levelData != 0)
         {
-            int sample = roundToInt (startTime * sampleRate);
+            int sample = roundToInt (startTime * sampleRateIn);
             Array<float> levels;
             Array<Colour> colours;
 
             int i;
             for (i = 0; i < numSamples; ++i)
             {
-                const int nextSample = roundToInt ((startTime + timePerPixel) * sampleRate);
+                const int nextSample = roundToInt ((startTime + timePerPixel) * sampleRateIn);
 
                 if (sample >= 0)
                 {
@@ -787,14 +787,14 @@ private:
         }
         else
         {
-            jassert (channels.size() == numChannelsCached);
+            jassert (channelsIn.size() == numChannelsCached);
 
             for (int channelNum = 0; channelNum < numChannelsCached; ++channelNum)
             {
-                ThumbData* channelData = channels.getUnchecked (channelNum);
+                ThumbData* channelData = channelsIn.getUnchecked (channelNum);
                 MinMaxColourValue* cacheData = getData (channelNum, 0);
 
-                const double timeToThumbSampleFactor = sampleRate / (double) samplesPerThumbSample;
+                const double timeToThumbSampleFactor = sampleRateIn / (double) samplesPerThumbSampleIn;
 
                 startTime = cachedStart;
                 int sample = roundToInt (startTime * timeToThumbSampleFactor);
