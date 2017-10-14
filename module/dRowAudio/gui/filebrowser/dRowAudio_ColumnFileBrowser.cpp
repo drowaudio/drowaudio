@@ -342,7 +342,7 @@ void ColumnFileBrowser::mouseWheelMove (const MouseEvent& e, const MouseWheelDet
 {
     if (! (e.mods.isAltDown() || e.mods.isCtrlDown()))
     {
-        if (e.eventComponent != this && e.eventComponent != getHorizontalScrollBar())
+        if (e.eventComponent != this && e.eventComponent != &getHorizontalScrollBar())
             if (wheel.deltaX != 0.0f)
                 Viewport::useMouseWheelMoveIfNeeded (e, wheel);
     }

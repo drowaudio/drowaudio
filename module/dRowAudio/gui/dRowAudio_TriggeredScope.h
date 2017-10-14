@@ -62,7 +62,13 @@ public:
 
     /** Destructor. */
     ~TriggeredScope();
-
+    
+    enum ColourIds
+    {
+        lineColourId             = 0x1231e10,
+        backgroundColourId       = 0x1231e11
+    };
+    
     //==============================================================================
     /** Sets the number of samples represented by each pixel on the scope.
         Setting this to a low number will give a very zoomed in display, a high

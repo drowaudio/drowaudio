@@ -46,6 +46,9 @@ TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
     needToUpdate (false),
     needToRepaint (true)
 {
+    setColour (lineColourId, Colours::white);
+    setColour (backgroundColourId, Colours::black);
+    
     const ScopedLock sl (imageLock);
     image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), false);
     Graphics g (image);
@@ -117,7 +120,7 @@ void TriggeredScope::resized()
 
     image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), false);
     Graphics g (image);
-    g.fillAll (Colours::black);
+    g.fillAll (findColour (backgroundColourId));
 
     needToRepaint = true;
 }
@@ -127,6 +130,9 @@ void TriggeredScope::paint (Graphics& g)
     const ScopedLock sl (imageLock);
 
     g.drawImageAt (image, 0, 0);
+    
+    g.setColour (findColour (lineColourId));
+    g.drawRect (getLocalBounds());
 }
 
 void TriggeredScope::timerCallback()
@@ -229,8 +235,7 @@ void TriggeredScope::renderImage()
         }
     }
 
-    g.setColour (Colours::white);
-    g.drawRect (0, 0, w, h);
+    g.setColour (findColour (lineColourId));
     
     int currentX = 0;
     Range<float> r0;
