@@ -50,7 +50,7 @@ TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
     setColour (backgroundColourId, Colours::black);
     
     const ScopedLock sl (imageLock);
-    image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), false);
+    image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), true);
     Graphics g (image);
     g.fillAll (Colours::transparentBlack);
 
@@ -118,7 +118,7 @@ void TriggeredScope::resized()
 {
     const ScopedLock sl (imageLock);
 
-    image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), false);
+    image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), true);
     Graphics g (image);
     g.fillAll (findColour (backgroundColourId));
 
