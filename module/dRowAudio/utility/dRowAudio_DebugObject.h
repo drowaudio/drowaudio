@@ -109,7 +109,7 @@ public:
     }
 
     template<typename ValueType>
-    static String convertToString (const Rectangle<ValueType>& arg)
+    static String convertToString (const juce::Rectangle<ValueType>& arg)
     {
         return arg.toString();
     }

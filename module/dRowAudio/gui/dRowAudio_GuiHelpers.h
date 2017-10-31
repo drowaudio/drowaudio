@@ -57,11 +57,11 @@ namespace GuiHelpers
 
         This is useful for insetting components and givin them a border.
     */
-    static inline void drawBevel (Graphics& g, const Rectangle<float>& innerBevelBounds,
+    static inline void drawBevel (Graphics& g, const juce::Rectangle<float>& innerBevelBounds,
                                   float bevelThickness, Colour baseColour)
     {
-        Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
-        Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5f, bevelThickness * 0.5f));
+        juce::Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
+        juce::Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5f, bevelThickness * 0.5f));
 
         Path pL, pR, pT, pB, pTL, pTR, pBL, pBR;
         pL.startNewSubPath (centreBevelBounds.getTopLeft());

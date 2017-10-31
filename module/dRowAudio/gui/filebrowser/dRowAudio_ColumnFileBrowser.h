@@ -63,7 +63,7 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    void visibleAreaChanged (const Rectangle<int>& newVisibleArea) override;
+    void visibleAreaChanged (const juce::Rectangle<int>& newVisibleArea) override;
     /** @internal */
     void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel) override;
 
