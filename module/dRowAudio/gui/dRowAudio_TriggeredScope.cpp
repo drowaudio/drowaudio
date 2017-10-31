@@ -118,7 +118,7 @@ void TriggeredScope::resized()
 {
     const ScopedLock sl (imageLock);
 
-    image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), true);
+    image = Image (Image::ARGB, jmax (1, getWidth()), jmax (1, getHeight()), true);
     Graphics g (image);
     g.fillAll (findColour (backgroundColourId));
 
@@ -129,7 +129,7 @@ void TriggeredScope::paint (Graphics& g)
 {
     const ScopedLock sl (imageLock);
 
-    g.drawImageAt (image, 0, 0);
+    //g.drawImageAt (image, 0, 0);
     
     g.setColour (findColour (lineColourId));
     g.drawRect (getLocalBounds());
