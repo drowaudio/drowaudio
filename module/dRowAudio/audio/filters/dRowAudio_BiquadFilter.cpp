@@ -71,8 +71,8 @@ IIRCoefficients BiquadFilter::makeLowPass (const double sampleRate,
 {
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
     float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-    float cos_w0 = cos (w0);
-    float sin_w0 = sin (w0);
+    float cos_w0 = std::cos (w0);
+    float sin_w0 = std::sin (w0);
     float alpha = sin_w0 / (2.0f * (float) Q);
 
     return IIRCoefficients ((1.0f - cos_w0) * 0.5f,
@@ -89,8 +89,8 @@ IIRCoefficients BiquadFilter::makeHighPass (const double sampleRate,
 {
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
     float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-    float cos_w0 = cos (w0);
-    float sin_w0 = sin (w0);
+    float cos_w0 = std::cos (w0);
+    float sin_w0 = std::sin (w0);
     float alpha = sin_w0 / (2.0f * (float) Q);
 
     return IIRCoefficients ((1.0f + cos_w0) * 0.5f,
@@ -109,8 +109,8 @@ IIRCoefficients BiquadFilter::makeBandPass (const double sampleRate,
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 
     float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-    float cos_w0 = cos (w0);
-    float sin_w0 = sin (w0);
+    float cos_w0 = std::cos (w0);
+    float sin_w0 = std::sin (w0);
     float alpha = sin_w0 / (2.0f * (float) qFactor);
     //    float alpha = sin_w0 * sinh( (log(2.0)/2.0) * bandwidth * w0/sin_w0 );
 
@@ -131,8 +131,8 @@ IIRCoefficients BiquadFilter::makeBandStop (const double sampleRate,
 
 
     float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-    float cos_w0 = cos (w0);
-    float sin_w0 = sin (w0);
+    float cos_w0 = std::cos (w0);
+    float sin_w0 = std::sin (w0);
     float alpha = (float) (sin_w0 / (2 * qFactor));
 
     return IIRCoefficients (1.0f,
@@ -153,8 +153,8 @@ IIRCoefficients BiquadFilter::makePeakNotch (const double sampleRate,
 
     const double A = jmax (0.0f, gainFactor);
     const double omega = (double_Pi * 2.0 * jmax (centreFrequency, 2.0)) / sampleRate;
-    const double alpha = 0.5 * sin (omega) / Q;
-    const double c2 = -2.0 * cos (omega);
+    const double alpha = 0.5 * std::sin (omega) / Q;
+    const double c2 = -2.0 * std::cos (omega);
     const double alphaTimesA = alpha * A;
     const double alphaOverA = alpha / A;
 
@@ -174,7 +174,7 @@ IIRCoefficients BiquadFilter::makeAllpass (const double sampleRate,
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 
     float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
-    float cos_w0 = cos(w0);
+    float cos_w0 = std::cos (w0);
     float sin_w0 = sin(w0);
     float alpha = (float) (sin_w0 / (2 * qFactor));
 
