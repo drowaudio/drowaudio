@@ -211,6 +211,87 @@ void TriggeredScope::processPendingSamples()
     }
 }
 
+int TriggeredScope::getTriggerPos()
+{
+    const int w = image.getWidth();
+    
+    int bufferReadPos = 0;
+    
+    auto minBuffer = [&] (int i) -> float
+    {
+        if (triggerChannel == -1)
+        {
+            float sum = 0;
+            for (auto c : channels)
+                sum += c->minBuffer[i];
+            
+            return sum / channels.size();
+        }
+        else
+        {
+            return channels[triggerChannel]->minBuffer[i];
+        }
+    };
+    
+    auto maxBuffer = [&] (int i) -> float
+    {
+        if (triggerChannel == -1)
+        {
+            float sum = 0;
+            for (auto c : channels)
+                sum += c->maxBuffer[i];
+            
+            return sum / channels.size();
+        }
+        else
+        {
+            return channels[triggerChannel]->maxBuffer[i];
+        }
+    };
+    
+    if (auto* c = triggerChannel >= 0 ? channels[triggerChannel] : channels.getFirst())
+    {
+        bufferReadPos = c->bufferWritePos - w;
+        if (bufferReadPos < 0 )
+            bufferReadPos += c->bufferSize;
+        
+        if (triggerMode != None)
+        {
+            int posToTest = bufferReadPos;
+            int numToSearch = c->bufferSize;
+            while (--numToSearch >= 0)
+            {
+                int prevPosToTest = posToTest - 1;
+                if (prevPosToTest < 0)
+                    prevPosToTest += c->bufferSize;
+                
+                if (triggerMode == Up)
+                {
+                    if (minBuffer (prevPosToTest) <= triggerLevel
+                        && maxBuffer (posToTest) > triggerLevel)
+                    {
+                        bufferReadPos = posToTest;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (minBuffer (prevPosToTest) > triggerLevel
+                        && maxBuffer (posToTest) <= triggerLevel)
+                    {
+                        bufferReadPos = posToTest;
+                        break;
+                    }
+                }
+                
+                if (--posToTest < 0)
+                    posToTest += c->bufferSize;
+            }
+        }
+    }
+    return bufferReadPos;
+}
+
 void TriggeredScope::renderImage()
 {
     const ScopedLock sl (imageLock);
@@ -224,50 +305,9 @@ void TriggeredScope::renderImage()
     const int w = image.getWidth();
     const int h = image.getHeight();
 
-    int bufferReadPos = 0;
-    
-    for (auto c : channels)
-    {
-        bufferReadPos = c->bufferWritePos - w;
-        if (bufferReadPos < 0 )
-            bufferReadPos += c->bufferSize;
-
-        if (triggerMode != None)
-        {
-            int posToTest = bufferReadPos;
-            int numToSearch = c->bufferSize;
-            while (--numToSearch >= 0)
-            {
-                int prevPosToTest = posToTest - 1;
-                if (prevPosToTest < 0)
-                    prevPosToTest += c->bufferSize;
-
-                if (triggerMode == Up)
-                {
-                    if (c->minBuffer[prevPosToTest] <= 0.0f
-                        && c->maxBuffer[posToTest] > 0.0f)
-                    {
-                        bufferReadPos = posToTest;
-                        break;
-                    }
-                }
-                else
-                {
-                    if (c->minBuffer[prevPosToTest] > 0.0f
-                        && c->maxBuffer[posToTest] <= 0.0f)
-                    {
-                        bufferReadPos = posToTest;
-                        break;
-                    }
-                }
-
-                if (--posToTest < 0)
-                    posToTest += c->bufferSize;
-            }
-        }
-    }
-
     g.setColour (findColour (lineColourId));
+    
+    const int bufferReadPos = getTriggerPos();
     
     for (auto c : channels)
     {

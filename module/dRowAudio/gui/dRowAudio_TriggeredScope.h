@@ -85,13 +85,19 @@ public:
     /** The enum to use when setting the trace trigger mode. */
     enum TriggerMode
     {
-        None,   //< The trace will just refresh at a constant rate.
-        Up,     //< The start of the trace will be a rising edge.
-        Down    //< The start of the trace will be a falling edge.
+        None = 0,   //< The trace will just refresh at a constant rate.
+        Up,         //< The start of the trace will be a rising edge.
+        Down        //< The start of the trace will be a falling edge.
     };
 
     /** Sets the type of change that will trigger a trace. */
     void setTriggerMode (TriggerMode newTriggerMode);
+    
+    /** Set channel to trigger on, -1 ave of all channels */
+    void setTriggerChannel (int ch) { triggerChannel = ch; }
+    
+    /** Set level to trigger on */
+    void setTriggerLevel (float l)  { triggerLevel = l; }
 
     //==============================================================================
     /** Adds a block of samples to the scope.
@@ -121,6 +127,8 @@ private:
     TriggerMode triggerMode;
     int numSamplesPerPixel;
     float verticalZoomFactor;
+    float triggerLevel = 0.0;
+    int triggerChannel = -1;
     
     struct Channel
     {
@@ -157,6 +165,7 @@ private:
     //==============================================================================
     void processPendingSamples();
     void renderImage();
+    int getTriggerPos();
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TriggeredScope)
