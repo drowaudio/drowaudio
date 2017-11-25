@@ -78,8 +78,11 @@ public:
      */
     void setNumSamplesPerPixel (int newNumSamplesPerPixel);
 
-    /** Sets the vertical zoom facotr of the display. */
+    /** Sets the vertical zoom factor of the display. */
     void setVerticalZoomFactor (float newVerticalZoomFactor);
+
+    /** Sets the vertical zoom offset of the display. */
+    void setVerticalZoomOffset (float newVerticalZoomOffset, int ch);
 
     //==============================================================================
     /** The enum to use when setting the trace trigger mode. */
@@ -98,6 +101,8 @@ public:
     
     /** Set level to trigger on */
     void setTriggerLevel (float l)  { triggerLevel = l; }
+
+    void setTriggerPos (float l)  { triggerPos = l; }
 
     //==============================================================================
     /** Adds a block of samples to the scope.
@@ -127,14 +132,16 @@ private:
     TriggerMode triggerMode;
     int numSamplesPerPixel;
     float verticalZoomFactor;
-    float triggerLevel = 0.0;
+    Array<float> verticalZoomOffset;
+    float triggerLevel = 0.0f;
+    float triggerPos = 0.0f;
     int triggerChannel = -1;
     
     struct Channel
     {
         Channel() :
           numLeftToAverage (4),
-          bufferSize (2048),
+          bufferSize (4096),
           bufferWritePos (0),
           minBuffer ((size_t) bufferSize),
           maxBuffer ((size_t) bufferSize),

@@ -100,6 +100,14 @@ void TriggeredScope::setVerticalZoomFactor (const float newVerticalZoomFactor)
     verticalZoomFactor = newVerticalZoomFactor;
 }
 
+void TriggeredScope::setVerticalZoomOffset (float newVerticalZoomOffset, int ch)
+{
+    if (verticalZoomOffset.size() < ch + 1)
+        verticalZoomOffset.resize (ch + 1);
+    
+    verticalZoomOffset.set (ch, newVerticalZoomOffset);
+}
+
 void TriggeredScope::setTriggerMode (const TriggerMode newTriggerMode)
 {
     if (newTriggerMode == None
@@ -157,6 +165,19 @@ void TriggeredScope::paint (Graphics& g)
     
     g.setColour (findColour (lineColourId));
     g.drawRect (getLocalBounds());
+    
+    g.setColour (findColour (lineColourId).withMultipliedAlpha (0.5f));
+    if (triggerMode != None)
+    {
+        const int w = image.getWidth();
+        const int h = image.getHeight();
+        
+        int ch = jmax (0, triggerChannel);
+        const float y = (1.0f - (0.5f + (0.5f * verticalZoomFactor * (verticalZoomOffset[ch] + triggerLevel)))) * h;
+        
+        g.drawHorizontalLine (y, 0, w);
+        g.drawVerticalLine (w * triggerPos, 0, h);
+    }
 }
 
 void TriggeredScope::timerCallback()
@@ -307,8 +328,13 @@ void TriggeredScope::renderImage()
 
     g.setColour (findColour (lineColourId));
     
-    const int bufferReadPos = getTriggerPos();
+    int bufferReadPos = getTriggerPos();
     
+    bufferReadPos -= w * triggerPos;
+    if (bufferReadPos < 0 )
+        bufferReadPos += channels[0]->bufferSize;
+    
+    int ch = 0;
     for (auto c : channels)
     {
         int pos = bufferReadPos;
@@ -320,8 +346,8 @@ void TriggeredScope::renderImage()
             if (pos == c->bufferSize)
                 pos = 0;
 
-            const float top = (1.0f - (0.5f + (0.5f * verticalZoomFactor * c->maxBuffer[pos]))) * h;
-            const float bottom = (1.0f - (0.5f + (0.5f * verticalZoomFactor * c->minBuffer[pos]))) * h;
+            const float top = (1.0f - (0.5f + (0.5f * verticalZoomFactor * (verticalZoomOffset[ch] + c->maxBuffer[pos])))) * h;
+            const float bottom = (1.0f - (0.5f + (0.5f * verticalZoomFactor * (verticalZoomOffset[ch] + c->minBuffer[pos])))) * h;
             
             //jassert (top <= bottom);
             
@@ -339,6 +365,7 @@ void TriggeredScope::renderImage()
             ++currentX;
             r0 = r1;
         }
+        ch++;
     }
 
     needToRepaint = true;
