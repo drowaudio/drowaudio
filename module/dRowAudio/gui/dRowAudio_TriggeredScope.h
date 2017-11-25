@@ -69,6 +69,8 @@ public:
         backgroundColourId       = 0x1231e11
     };
     
+    void setNumChannels (int num);
+    
     //==============================================================================
     /** Sets the number of samples represented by each pixel on the scope.
         Setting this to a low number will give a very zoomed in display, a high
@@ -99,6 +101,8 @@ public:
         processing and image rendering is performed on a backgroudn thread.
     */
     void addSamples (const float* samples, int numSamples);
+    
+    void addSamples (const AudioSampleBuffer& buffer);
 
     //==============================================================================
     /** @internal */
@@ -116,14 +120,34 @@ private:
 
     TriggerMode triggerMode;
     int numSamplesPerPixel;
-    int numLeftToAverage;
     float verticalZoomFactor;
-    int bufferSize, bufferWritePos;
-    HeapBlock<float> minBuffer, maxBuffer;
+    
+    struct Channel
+    {
+        Channel() :
+          numLeftToAverage (4),
+          bufferSize (2048),
+          bufferWritePos (0),
+          minBuffer ((size_t) bufferSize),
+          maxBuffer ((size_t) bufferSize),
+          currentMax (-1.0f),
+          currentMin (1.0f),
+          samplesToProcess (32768),
+          tempProcessingBlock (32768)
+        {}
+        
+        int numLeftToAverage;
+        int bufferSize, bufferWritePos;
 
-    float currentMax, currentMin;
-    FifoBuffer<float> samplesToProcess;
-    HeapBlock<float> tempProcessingBlock;
+        HeapBlock<float> minBuffer, maxBuffer;
+
+        float currentMax, currentMin;
+        FifoBuffer<float> samplesToProcess;
+        HeapBlock<float> tempProcessingBlock;
+    };
+    
+    OwnedArray<Channel> channels;
+    
     bool needToUpdate;
 
     bool needToRepaint;

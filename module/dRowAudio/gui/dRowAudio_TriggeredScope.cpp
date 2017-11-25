@@ -33,19 +33,11 @@ TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
     backgroundThreadToUse (tst, tst == nullptr),
     triggerMode (Up),
     numSamplesPerPixel (4),
-    numLeftToAverage (numSamplesPerPixel),
     verticalZoomFactor (1.0f),
-    bufferSize (2048),
-    bufferWritePos (0),
-    minBuffer ((size_t) bufferSize),
-    maxBuffer ((size_t) bufferSize),
-    currentMax (-1.0f),
-    currentMin (1.0f),
-    samplesToProcess (32768),
-    tempProcessingBlock (32768),
     needToUpdate (false),
     needToRepaint (true)
 {
+    setNumChannels (1);
     setColour (lineColourId, Colours::white);
     setColour (backgroundColourId, Colours::black);
     
@@ -63,8 +55,11 @@ TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
 
     backgroundThreadToUse->addTimeSliceClient (this);
 
-    minBuffer.clear ((size_t) bufferSize);
-    maxBuffer.clear ((size_t) bufferSize);
+    for (auto c : channels)
+    {
+        c->minBuffer.clear ((size_t) c->bufferSize);
+        c->maxBuffer.clear ((size_t) c->bufferSize);
+    }
 
     startTimer (1000 / 60);
 }
@@ -79,6 +74,20 @@ TriggeredScope::~TriggeredScope()
 
     if (backgroundThreadToUse.willDeleteObject())
         backgroundThreadToUse->stopThread (500);
+}
+
+void TriggeredScope::setNumChannels (int num)
+{
+    channels.clear();
+
+    while (channels.size() < num)
+        channels.add (new Channel());
+    
+    for (auto c : channels)
+    {
+        c->minBuffer.clear ((size_t) c->bufferSize);
+        c->maxBuffer.clear ((size_t) c->bufferSize);
+    }
 }
 
 void TriggeredScope::setNumSamplesPerPixel (const int newNumSamplesPerPixel)
@@ -103,13 +112,28 @@ void TriggeredScope::setTriggerMode (const TriggerMode newTriggerMode)
 
 void TriggeredScope::addSamples (const float* samples, const int numSamples)
 {
-    // if we don't have enough space in the fifo, clear out some old samples
-    const int numFreeInBuffer = samplesToProcess.getNumFree();
-    if (numFreeInBuffer < numSamples)
-        samplesToProcess.removeSamples (numFreeInBuffer);
+    const float* const data[] = { samples };
+    
+    AudioSampleBuffer buffer ((float* const *)data, 1, numSamples);
+    addSamples (buffer);
+}
 
-    samplesToProcess.writeSamples (samples, numSamples);
-
+void TriggeredScope::addSamples (const AudioSampleBuffer& buffer)
+{
+    jassert (buffer.getNumChannels() == channels.size());
+    
+    for (int i = 0; i < jmin (buffer.getNumChannels(), channels.size()); i++)
+    {
+        const float* samples = buffer.getReadPointer (i);
+        const int numSamples = buffer.getNumSamples();
+        
+        // if we don't have enough space in the fifo, clear out some old samples
+        const int numFreeInBuffer = channels[i]->samplesToProcess.getNumFree();
+        if (numFreeInBuffer < numSamples)
+            channels[i]->samplesToProcess.removeSamples (numFreeInBuffer);
+        
+        channels[i]->samplesToProcess.writeSamples (samples, numSamples);
+    }
     needToUpdate = true;
 }
 
@@ -129,7 +153,7 @@ void TriggeredScope::paint (Graphics& g)
 {
     const ScopedLock sl (imageLock);
 
-    //g.drawImageAt (image, 0, 0);
+    g.drawImageAt (image, 0, 0);
     
     g.setColour (findColour (lineColourId));
     g.drawRect (getLocalBounds());
@@ -157,29 +181,32 @@ int TriggeredScope::useTimeSlice()
 //==============================================================================
 void TriggeredScope::processPendingSamples()
 {
-    int numSamples = samplesToProcess.getNumAvailable();
-    samplesToProcess.readSamples (tempProcessingBlock, numSamples);
-    float* samples = tempProcessingBlock.getData();
-
-    while (--numSamples >= 0)
+    for (auto c : channels)
     {
-        const float currentSample = *samples++;
+        int numSamples = c->samplesToProcess.getNumAvailable();
+        c->samplesToProcess.readSamples (c->tempProcessingBlock, numSamples);
+        float* samples = c->tempProcessingBlock.getData();
 
-        if (currentSample < currentMin)
-            currentMin = currentSample;
-        if (currentSample > currentMax)
-            currentMax = currentSample;
-
-        if (--numLeftToAverage == 0)
+        while (--numSamples >= 0)
         {
-            minBuffer[bufferWritePos] = currentMin;
-            maxBuffer[bufferWritePos] = currentMax;
+            const float currentSample = *samples++;
 
-            currentMax = -1.0f;
-            currentMin = 1.0f;
+            if (currentSample < c->currentMin)
+                c->currentMin = currentSample;
+            if (currentSample > c->currentMax)
+                c->currentMax = currentSample;
 
-            ++bufferWritePos %= bufferSize;
-            numLeftToAverage = numSamplesPerPixel;
+            if (--c->numLeftToAverage == 0)
+            {
+                c->minBuffer[c->bufferWritePos] = c->currentMin;
+                c->maxBuffer[c->bufferWritePos] = c->currentMax;
+
+                c->currentMax = -1.0f;
+                c->currentMin = 1.0f;
+
+                ++c->bufferWritePos %= c->bufferSize;
+                c->numLeftToAverage = numSamplesPerPixel;
+            }
         }
     }
 }
@@ -197,72 +224,81 @@ void TriggeredScope::renderImage()
     const int w = image.getWidth();
     const int h = image.getHeight();
 
-    int bufferReadPos = bufferWritePos - w;
-    if (bufferReadPos < 0 )
-        bufferReadPos += bufferSize;
-
-    if (triggerMode != None)
+    int bufferReadPos = 0;
+    
+    for (auto c : channels)
     {
-        int posToTest = bufferReadPos;
-        int numToSearch = bufferSize;
-        while (--numToSearch >= 0)
+        bufferReadPos = c->bufferWritePos - w;
+        if (bufferReadPos < 0 )
+            bufferReadPos += c->bufferSize;
+
+        if (triggerMode != None)
         {
-            int prevPosToTest = posToTest - 1;
-            if (prevPosToTest < 0)
-                prevPosToTest += bufferSize;
-
-            if (triggerMode == Up)
+            int posToTest = bufferReadPos;
+            int numToSearch = c->bufferSize;
+            while (--numToSearch >= 0)
             {
-                if (minBuffer[prevPosToTest] <= 0.0f
-                    && maxBuffer[posToTest] > 0.0f)
-                {
-                    bufferReadPos = posToTest;
-                    break;
-                }
-            }
-            else
-            {
-                if (minBuffer[prevPosToTest] > 0.0f
-                    && maxBuffer[posToTest] <= 0.0f)
-                {
-                    bufferReadPos = posToTest;
-                    break;
-                }
-            }
+                int prevPosToTest = posToTest - 1;
+                if (prevPosToTest < 0)
+                    prevPosToTest += c->bufferSize;
 
-            if (--posToTest < 0)
-                posToTest += bufferSize;
+                if (triggerMode == Up)
+                {
+                    if (c->minBuffer[prevPosToTest] <= 0.0f
+                        && c->maxBuffer[posToTest] > 0.0f)
+                    {
+                        bufferReadPos = posToTest;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (c->minBuffer[prevPosToTest] > 0.0f
+                        && c->maxBuffer[posToTest] <= 0.0f)
+                    {
+                        bufferReadPos = posToTest;
+                        break;
+                    }
+                }
+
+                if (--posToTest < 0)
+                    posToTest += c->bufferSize;
+            }
         }
     }
 
     g.setColour (findColour (lineColourId));
     
-    int currentX = 0;
-    Range<float> r0;
-    while (currentX < w)
+    for (auto c : channels)
     {
-        ++bufferReadPos;
-        if (bufferReadPos == bufferSize)
-            bufferReadPos = 0;
+        int pos = bufferReadPos;
+        int currentX = 0;
+        Range<float> r0;
+        while (currentX < w)
+        {
+            ++pos;
+            if (pos == c->bufferSize)
+                pos = 0;
 
-        const float top = (1.0f - (0.5f + (0.5f * verticalZoomFactor * maxBuffer[bufferReadPos]))) * h;
-        const float bottom = (1.0f - (0.5f + (0.5f * verticalZoomFactor * minBuffer[bufferReadPos]))) * h;
-        
-        jassert (top <= bottom);
-        
-        Range<float> r1 (top, bottom);
+            const float top = (1.0f - (0.5f + (0.5f * verticalZoomFactor * c->maxBuffer[pos]))) * h;
+            const float bottom = (1.0f - (0.5f + (0.5f * verticalZoomFactor * c->minBuffer[pos]))) * h;
+            
+            //jassert (top <= bottom);
+            
+            Range<float> r1 (top, bottom);
 
-        if (currentX == 0 || r1.intersects(r0))
-            g.drawVerticalLine (currentX, top, bottom);
-        else if (r0.getEnd() < r1.getStart())
-            g.drawLine (currentX - 1.0f, float (r0.getEnd()), float (currentX), float (r1.getEnd()));
-        else if (r0.getStart() > r1.getEnd())
-            g.drawLine (currentX - 1, r0.getStart(), currentX, r1.getStart());
-        else
-            g.drawLine (currentX - 1, top, currentX, bottom);
-        
-        ++currentX;
-        r0 = r1;
+            if (currentX == 0 || r1.intersects(r0))
+                g.drawVerticalLine (currentX, top, bottom);
+            else if (r0.getEnd() < r1.getStart())
+                g.drawLine (currentX - 1.0f, float (r0.getEnd()), float (currentX), float (r1.getEnd()));
+            else if (r0.getStart() > r1.getEnd())
+                g.drawLine (currentX - 1, r0.getStart(), currentX, r1.getStart());
+            else
+                g.drawLine (currentX - 1, top, currentX, bottom);
+            
+            ++currentX;
+            r0 = r1;
+        }
     }
 
     needToRepaint = true;
