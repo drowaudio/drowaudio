@@ -35,7 +35,7 @@ Sonogram::Sonogram (int fftSizeLog2)
 :    fftEngine       (fftSizeLog2),
     needsRepaint    (true),
     tempBlock       (fftEngine.getFFTSize()),
-    circularBuffer  (fftEngine.getMagnitudesBuffer().getSize() * 4),
+    circularBuffer  (int (fftEngine.getMagnitudesBuffer().getSize() * 4)),
     logFrequency    (false),
     scopeLineW      (1.0f)
 {
@@ -128,7 +128,7 @@ void Sonogram::renderScopeLine()
     Graphics g (scopeImage);
     const int x = scopeImage.getWidth() - (int) scopeLineW;
 
-    const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
+    const int numBins = int (fftEngine.getMagnitudesBuffer().getSize() - 1);
     const float yScale = (float) h / (numBins + 1);
     const float* data = fftEngine.getMagnitudesBuffer().getData();
 

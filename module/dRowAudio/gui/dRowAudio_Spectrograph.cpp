@@ -89,7 +89,7 @@ void Spectrograph::processSamples (const float* samples, int numSamples)
             fftEngine.findMagnitudes();
 
             addMagnitudesBlock (fftEngine.getMagnitudesBuffer().getData(),
-                                fftEngine.getMagnitudesBuffer().getSize() - 1);
+                                int (fftEngine.getMagnitudesBuffer().getSize() - 1));
         }
 
         data += numThisTime;

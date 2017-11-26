@@ -35,7 +35,7 @@ LTAS::LTAS (int fftSizeLog2)
     : fftEngine     (fftSizeLog2),
       ltasBuffer    (fftEngine.getMagnitudesBuffer().getSize()),
       fftSize       (fftEngine.getFFTSize()),
-      numBins       (ltasBuffer.getSize()),
+      numBins       (int (ltasBuffer.getSize())),
       tempBuffer    (fftSize)
 {
     ltasBuffer.reset();

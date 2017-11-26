@@ -35,20 +35,20 @@ Spectroscope::Spectroscope (int fftSizeLog2)
 :    fftEngine       (fftSizeLog2),
     needsRepaint    (true),
     tempBlock       (fftEngine.getFFTSize()),
-    circularBuffer  (fftEngine.getMagnitudesBuffer().getSize() * 4),
+    circularBuffer  (int (fftEngine.getMagnitudesBuffer().getSize() * 4)),
     logFrequency    (false)
 {
-    setOpaque (true);
+    setColour (lineColourId, Colours::white);
+    setColour (backgroundColourId, Colours::transparentBlack);
+    setColour (traceColourId, Colours::white);
 
     fftEngine.setWindowType (Window::Hann);
     numBins = fftEngine.getFFTProperties().fftSizeHalved;
 
     circularBuffer.reset();
 
-    scopeImage = Image (Image::RGB,
-                        100, 100,
-                        false);
-    scopeImage.clear (scopeImage.getBounds(), Colours::black);
+    scopeImage = Image (Image::ARGB, 100, 100, false);
+    scopeImage.clear (scopeImage.getBounds(), Colours::transparentBlack);
 }
 
 void Spectroscope::resized()
@@ -58,6 +58,9 @@ void Spectroscope::resized()
 
 void Spectroscope::paint(Graphics& g)
 {
+    g.setColour (findColour (lineColourId));
+    g.drawRect (getLocalBounds());
+
     g.drawImageAt (scopeImage, 0, 0, false);
 }
 
@@ -75,7 +78,7 @@ void Spectroscope::copySamples (const float* samples, int numSamples)
 
 void Spectroscope::timerCallback()
 {
-    const int magnitudeBufferSize = fftEngine.getMagnitudesBuffer().getSize();
+    const int magnitudeBufferSize = int (fftEngine.getMagnitudesBuffer().getSize());
     float* magnitudeBuffer = fftEngine.getMagnitudesBuffer().getData();
 
     renderScopeImage();
@@ -110,17 +113,16 @@ void Spectroscope::renderScopeImage()
 {
     if (needsRepaint)
     {
+        scopeImage.clear (scopeImage.getBounds(), Colours::transparentBlack);
+        
         Graphics g (scopeImage);
 
         const int w = getWidth();
         const int h = getHeight();
 
-        g.setColour (Colours::black);
-        g.fillAll();
+        g.setColour (findColour (traceColourId));
 
-        g.setColour (Colours::white);
-
-        const int numBins = fftEngine.getMagnitudesBuffer().getSize() - 1;
+        const int numBins = int (fftEngine.getMagnitudesBuffer().getSize() - 1);
         const float xScale = (float)w / (numBins + 1);
         const float* data = fftEngine.getMagnitudesBuffer().getData();
 
