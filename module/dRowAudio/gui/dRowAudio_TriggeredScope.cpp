@@ -41,6 +41,9 @@ TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
     setColour (lineColourId, Colours::white);
     setColour (backgroundColourId, Colours::black);
     
+    for (int i = 0; i < 32; i++)
+        setColour (traceColourId + i, Colours::white);
+    
     const ScopedLock sl (imageLock);
     image = Image (Image::RGB, jmax (1, getWidth()), jmax (1, getHeight()), true);
     Graphics g (image);
@@ -167,7 +170,7 @@ void TriggeredScope::paint (Graphics& g)
     g.drawRect (getLocalBounds());
     
     g.setColour (findColour (lineColourId).withMultipliedAlpha (0.5f));
-    if (triggerMode != None)
+    if (triggerMode != None && drawTriggerPos)
     {
         const int w = image.getWidth();
         const int h = image.getHeight();
@@ -326,7 +329,7 @@ void TriggeredScope::renderImage()
     const int w = image.getWidth();
     const int h = image.getHeight();
 
-    g.setColour (findColour (lineColourId));
+    
     
     int bufferReadPos = getTriggerPos();
     
@@ -337,6 +340,8 @@ void TriggeredScope::renderImage()
     int ch = 0;
     for (auto c : channels)
     {
+        g.setColour (findColour (traceColourId + ch));
+        
         int pos = bufferReadPos;
         int currentX = 0;
         Range<float> r0;

@@ -66,7 +66,8 @@ public:
     enum ColourIds
     {
         lineColourId             = 0x1231e10,
-        backgroundColourId       = 0x1231e11
+        backgroundColourId       = 0x1231e11, 
+        traceColourId            = 0x1231e12
     };
     
     void setNumChannels (int num);
@@ -100,9 +101,11 @@ public:
     void setTriggerChannel (int ch) { triggerChannel = ch; }
     
     /** Set level to trigger on */
-    void setTriggerLevel (float l)  { triggerLevel = l; }
+    void setTriggerLevel (float l)  { triggerLevel = l;     }
 
-    void setTriggerPos (float l)  { triggerPos = l; }
+    void setTriggerPos (float l)    { triggerPos = l;       }
+    
+    void setDrawTriggerPos (bool d) { drawTriggerPos = d;   }
 
     //==============================================================================
     /** Adds a block of samples to the scope.
@@ -136,6 +139,7 @@ private:
     float triggerLevel = 0.0f;
     float triggerPos = 0.0f;
     int triggerChannel = -1;
+    bool drawTriggerPos = false;
     
     struct Channel
     {
