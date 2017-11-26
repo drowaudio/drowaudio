@@ -32,7 +32,7 @@
 #ifndef DROWAUDIO_AUDIOOSCILLOSCOPE_H
 #define DROWAUDIO_AUDIOOSCILLOSCOPE_H
 
-/** An oscilliscope class for displaying audio waveforms.
+/** An oscilloscope class for displaying audio waveforms.
 
     This is a high-res version of the SimpleAudioScope class and as such is
     slightly more CPU intensive.
