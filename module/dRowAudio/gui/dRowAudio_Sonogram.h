@@ -49,6 +49,13 @@ public:
         for a 1024 size FFT use 10 as the argument.
     */
     Sonogram (int fftSizeLog2);
+    
+    enum ColourIds
+    {
+        lineColourId             = 0x1331e10,
+        backgroundColourId       = 0x1331e11,
+        traceColourId            = 0x1331e12
+    };
 
     //==============================================================================
     /** Sets the scope to display in log or normal mode. */

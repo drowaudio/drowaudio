@@ -90,7 +90,7 @@ void Spectroscope::timerCallback()
 
 void Spectroscope::process()
 {
-    jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
+    //jassert (circularBuffer.getNumFree() != 0); // buffer is too small!
 
     while (circularBuffer.getNumAvailable() > fftEngine.getFFTSize())
     {

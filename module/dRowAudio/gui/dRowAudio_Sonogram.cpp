@@ -39,17 +39,17 @@ Sonogram::Sonogram (int fftSizeLog2)
     logFrequency    (false),
     scopeLineW      (1.0f)
 {
-    setOpaque (true);
+    setColour (lineColourId, Colours::white);
+    setColour (backgroundColourId, Colours::transparentBlack);
+    setColour (traceColourId, Colours::white);
 
     fftEngine.setWindowType (Window::Hann);
     numBins = fftEngine.getFFTProperties().fftSizeHalved;
 
     circularBuffer.reset();
 
-    scopeImage = Image (Image::RGB,
-                        100, 100,
-                        false);
-    scopeImage.clear (scopeImage.getBounds(), Colours::black);
+    scopeImage = Image (Image::ARGB, 100, 100, false);
+    scopeImage.clear (scopeImage.getBounds(), Colours::transparentWhite);
 }
 
 void Sonogram::resized()
@@ -61,7 +61,11 @@ void Sonogram::resized()
 void Sonogram::paint(Graphics &g)
 {
     const ScopedLock sl (lock);
+    
     g.drawImageAt (scopeImage, 0, 0, false);
+    
+    g.setColour (findColour (lineColourId));
+    g.drawRect (getLocalBounds());
 }
 
 //==============================================================================
