@@ -69,7 +69,7 @@ void GraphicalComponent::copySamples (const float *values, int numSamples_)
 
     // lock whilst copying
     ScopedLock sl (lock);
-    std::memcpy (samples, values, size_t (numSamples * sizeof (float)));
+    std::memcpy (samples, values, size_t (numSamples) * sizeof (float));
 
     needToProcess = true;
 }
@@ -88,7 +88,7 @@ void GraphicalComponent::copySamples (float **values, int numSamples_, int numCh
 
     if (numChannels == 1)
     {
-        std::memcpy (samples, values[0], size_t (numSamples * sizeof (float)));
+        std::memcpy (samples, values[0], size_t (numSamples) * sizeof (float));
     }
     else if (numChannels == 2)
     { //This is quicker than the generic method below

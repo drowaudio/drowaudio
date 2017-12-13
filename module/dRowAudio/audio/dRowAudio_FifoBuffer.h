@@ -121,10 +121,10 @@ public:
         abstractFifo.prepareToWrite (numSamples, start1, size1, start2, size2);
 
         if (size1 > 0)
-            memcpy (buffer.getData()+start1, samples, size_t (size1 * sizeof (ElementType)));
+            memcpy (buffer.getData()+start1, samples, size_t (size1) * sizeof (ElementType));
 
         if (size2 > 0)
-            memcpy (buffer.getData()+start2, samples+size1, size_t (size2 * sizeof (ElementType)));
+            memcpy (buffer.getData()+start2, samples+size1, size_t (size2) * sizeof (ElementType));
 
         abstractFifo.finishedWrite (size1 + size2);
     }
@@ -138,10 +138,10 @@ public:
         abstractFifo.prepareToRead (numSamples, start1, size1, start2, size2);
 
         if (size1 > 0)
-            memcpy (bufferToFill, buffer.getData() + start1, size1 * sizeof (ElementType));
+            memcpy (bufferToFill, buffer.getData() + start1, size_t (size1) * sizeof (ElementType));
 
         if (size2 > 0)
-            memcpy (bufferToFill + size1, buffer.getData() + start2, size2 * sizeof (ElementType));
+            memcpy (bufferToFill + size1, buffer.getData() + start2, size_t (size2) * sizeof (ElementType));
 
         abstractFifo.finishedRead (size1 + size2);
     }
