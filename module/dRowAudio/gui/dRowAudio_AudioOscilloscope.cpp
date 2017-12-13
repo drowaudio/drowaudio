@@ -64,8 +64,8 @@ void AudioOscilloscope::processBlock (const float* inputChannelData,
 
 void AudioOscilloscope::clear()
 {
-    zeromem (circularBufferMax, sizeof (float) * bufferSize);
-    zeromem (circularBufferMin, sizeof (float) * bufferSize);
+    zeromem (circularBufferMax, size_t (sizeof (float) * bufferSize));
+    zeromem (circularBufferMin, size_t (sizeof (float) * bufferSize));
 }
 
 //==============================================================================

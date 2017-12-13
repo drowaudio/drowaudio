@@ -148,10 +148,10 @@ void PitchDetector::updateFiltersAndBlockSizes()
     numSamplesNeededForDetection = int (sampleRate / minFrequency) * 2;
 
     inputFifoBuffer.setSizeKeepingExisting (numSamplesNeededForDetection * 2);
-    currentBlockBuffer.setSize (numSamplesNeededForDetection);
+    currentBlockBuffer.setSize (size_t (numSamplesNeededForDetection));
 
-    buffer1.setSizeQuick (numSamplesNeededForDetection);
-    buffer2.setSizeQuick (numSamplesNeededForDetection);
+    buffer1.setSizeQuick (size_t (numSamplesNeededForDetection));
+    buffer2.setSizeQuick (size_t (numSamplesNeededForDetection));
 }
 
 //==============================================================================

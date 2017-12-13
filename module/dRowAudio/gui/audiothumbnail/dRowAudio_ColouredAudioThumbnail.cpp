@@ -159,7 +159,7 @@ public:
         if (reader != 0)
         {
             lengthInSamples = reader->lengthInSamples;
-            numChannels = reader->numChannels;
+            numChannels = int (reader->numChannels);
             sampleRate = reader->sampleRate;
 
             filterLow.makeBandPass (reader->sampleRate, 130.0, 2);
@@ -392,10 +392,10 @@ private:
                     break;
 
                 // copy samples to buffers ready to be filtered
-                memcpy (filteredArray[0], tempBuffer[0], sizeof (int) * numToDo);
-                memcpy (filteredArray[1], tempBuffer[0], sizeof (int) * numToDo);
-                memcpy (filteredArray[2], tempBuffer[0], sizeof (int) * numToDo);
-                memcpy (filteredArray[3], tempBuffer[0], sizeof (int) * numToDo);
+                memcpy (filteredArray[0], tempBuffer[0], size_t (sizeof (int) * numToDo));
+                memcpy (filteredArray[1], tempBuffer[0], size_t (sizeof (int) * numToDo));
+                memcpy (filteredArray[2], tempBuffer[0], size_t (sizeof (int) * numToDo));
+                memcpy (filteredArray[3], tempBuffer[0], size_t (sizeof (int) * numToDo));
 
                 // filter buffers
                 filterLow.processSamples (reinterpret_cast<float*> (filteredArray[0]), numToDo);
@@ -419,7 +419,7 @@ private:
                 numSamples -= numToDo;
                 startSampleInFile += numToDo;
 
-                getStereoMinAndMax (reinterpret_cast<float**> (&tempBuffer[0]), reader->numChannels, numToDo,
+                getStereoMinAndMax (reinterpret_cast<float**> (&tempBuffer[0]), int (reader->numChannels), numToDo,
                                     lmin, lmax, rmin, rmax);
             }
 
@@ -442,10 +442,10 @@ private:
                     break;
 
                 // copy samples to buffers ready to be filtered
-                memcpy (filteredArray[0], tempBuffer[0], sizeof (int) * numToDo);
-                memcpy (filteredArray[1], tempBuffer[0], sizeof (int) * numToDo);
-                memcpy (filteredArray[2], tempBuffer[0], sizeof (int) * numToDo);
-                memcpy (filteredArray[3], tempBuffer[0], sizeof (int) * numToDo);
+                memcpy (filteredArray[0], tempBuffer[0], size_t (sizeof (int) * numToDo));
+                memcpy (filteredArray[1], tempBuffer[0], size_t (sizeof (int) * numToDo));
+                memcpy (filteredArray[2], tempBuffer[0], size_t (sizeof (int) * numToDo));
+                memcpy (filteredArray[3], tempBuffer[0], size_t (sizeof (int) * numToDo));
 
                 // filter buffers
                 filterLow.processSamples ((filteredArray[0]), numToDo);
