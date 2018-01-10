@@ -80,8 +80,8 @@ struct ColouredAudioThumbnail::MinMaxColourValue
 
     inline void setFloat (const float newMin, const float newMax) noexcept
     {
-        minValue = (char) jlimit (-128, 127, roundFloatToInt (newMin * 127.0f));
-        maxValue = (char) jlimit (-128, 127, roundFloatToInt (newMax * 127.0f));
+        minValue = (char) jlimit (-128, 127, roundToInt (newMin * 127.0f));
+        maxValue = (char) jlimit (-128, 127, roundToInt (newMax * 127.0f));
 
         if (maxValue == minValue)
             maxValue = (char) jmin (127, maxValue + 1);

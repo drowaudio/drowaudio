@@ -178,8 +178,8 @@ void TriggeredScope::paint (Graphics& g)
         int ch = jmax (0, triggerChannel);
         const float y = (1.0f - (0.5f + (0.5f * verticalZoomFactor * (verticalZoomOffset[ch] + triggerLevel)))) * h;
         
-        g.drawHorizontalLine (roundFloatToInt (y), 0.0f, float (w));
-        g.drawVerticalLine (roundFloatToInt (w * triggerPos), 0.0f, float (h));
+        g.drawHorizontalLine (roundToInt (y), 0.0f, float (w));
+        g.drawVerticalLine (roundToInt (w * triggerPos), 0.0f, float (h));
     }
 }
 
@@ -333,7 +333,7 @@ void TriggeredScope::renderImage()
     
     int bufferReadPos = getTriggerPos();
     
-    bufferReadPos -= roundFloatToInt (w * triggerPos);
+    bufferReadPos -= roundToInt (w * triggerPos);
     if (bufferReadPos < 0 )
         bufferReadPos += channels[0]->bufferSize;
     

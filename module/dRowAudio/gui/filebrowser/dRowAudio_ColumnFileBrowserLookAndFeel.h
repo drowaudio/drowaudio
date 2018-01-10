@@ -134,8 +134,8 @@ public:
 
         if (width > 450 && ! isDirectory)
         {
-            const int sizeX = roundFloatToInt (width * 0.7f);
-            const int dateX = roundFloatToInt (width * 0.8f);
+            const int sizeX = roundToInt (width * 0.7f);
+            const int dateX = roundToInt (width * 0.8f);
 
             g.drawFittedText (filename,
                               x, 0, sizeX - x, height,
