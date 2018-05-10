@@ -35,7 +35,7 @@
 BasicFileBrowser::BasicFileBrowser (int flags_,
                                     const File& initialFileOrDirectory,
                                     const FileFilter* fileFilter_)
-    : FileFilter (String::empty),
+    : FileFilter (""),
       fileFilter (fileFilter_),
       flags (flags_),
       thread ("Juce BasicFileBrowser"),
@@ -50,7 +50,7 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
 
     String filename;
 
-    if (initialFileOrDirectory == File::nonexistent)
+    if (initialFileOrDirectory == File())
     {
         currentRoot = File::getCurrentWorkingDirectory();
     }
@@ -270,7 +270,7 @@ void BasicFileBrowser::resized()
         }
         else
         {
-            bar.setTransform (AffineTransform::identity);
+            bar.setTransform ({});
         }
     }
 }

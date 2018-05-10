@@ -65,7 +65,7 @@ inline static String stripFileProtocolForLocal (const String& pathToStrip)
         return URL::removeEscapeChars (temp);
     }
 
-    return String::empty;
+    return {};
 }
 
 /** Converts an iTunes formatted date string (e.g. 2010-12-27T17:44:32Z)
@@ -158,7 +158,7 @@ static inline String findKeyFromChemicalWebsite (const String& releaseNo, const 
         }
     }
 
-    return String::empty;
+    return {};
 }
 
 //==============================================================================
@@ -201,7 +201,7 @@ static inline void drawBufferToImage (const Image& image, const float* samples, 
 
     If the file parameter is nonexistant a temp file will be created on the desktop.
 */
-static inline void saveImageToFile (const Image& image, File file = File::nonexistent)
+static inline void saveImageToFile (const Image& image, File file = {})
 {
     if (! file.exists())
         file = File::getSpecialLocation (File::userDesktopDirectory).getNonexistentChildFile ("tempImage", ".png");
@@ -247,7 +247,7 @@ public:
         ReferenceCountedValueTree* refTree
             = dynamic_cast<ReferenceCountedValueTree*> (treeObject.getObject());
 
-        return refTree == nullptr ? ValueTree::invalid : refTree->getValueTree();
+        return refTree == nullptr ? ValueTree() : refTree->getValueTree();
     }
 
 private:
@@ -374,7 +374,7 @@ static inline bool writeValueTreeToFile (const ValueTree& treeToWrite, const Fil
             ScopedPointer<XmlElement> treeAsXml (treeToWrite.createXml());
 
             if (treeAsXml != nullptr)
-                return treeAsXml->writeToFile (fileToWriteTo, String::empty, "UTF-8", 200);
+                return treeAsXml->writeToFile (fileToWriteTo, "", "UTF-8", 200);
 
             return false;
         }
@@ -415,7 +415,7 @@ static inline ValueTree readValueTreeFromFile (const File& fileToReadFrom)
         return ValueTree::readFromStream (*fileInputStream);
     }
 
-    return ValueTree::invalid;
+    return {};
 }
 
 //==============================================================================
