@@ -36,7 +36,7 @@
 
 #include "dRowAudio_Window.h"
 
-typedef ScopedPointer< ffft::FFTReal<float> > FFTConfig;
+typedef std::unique_ptr<ffft::FFTReal<float>> FFTConfig;
 
 struct SplitComplex
 {

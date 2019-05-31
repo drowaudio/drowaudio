@@ -111,7 +111,7 @@ void FFT::getMagnitudes (float* magnitudes)
 FFT::FFT (int fftSizeLog2) :
     properties (fftSizeLog2)
 {
-    config = new ffft::FFTReal<float> (properties.fftSize);
+    config = std::make_unique<ffft::FFTReal<float>> (properties.fftSize);
 
     buffer.malloc (properties.fftSize);
     bufferSplit.realp = buffer.getData();
@@ -133,7 +133,7 @@ void FFT::setFFTSizeLog2 (int newFFTSizeLog2)
         bufferSplit.realp = buffer.getData();
         bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
 
-        config = new ffft::FFTReal<float> (properties.fftSize);
+        config = std::make_unique<ffft::FFTReal<float>> (properties.fftSize);
     }
 }
 
