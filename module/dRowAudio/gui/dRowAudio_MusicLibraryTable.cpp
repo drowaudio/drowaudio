@@ -287,7 +287,7 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet<int>& currently
             const ValueTree& tree (filteredDataList.getChild (currentlySelectedRows[i]));
 
             ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
-            itemsArray.append (childTree.getObject());
+            itemsArray.append (childTree.get());
         }
     }
 
