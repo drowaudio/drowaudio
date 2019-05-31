@@ -90,7 +90,7 @@ public:
 
         if (FileInputStream* fis = dynamic_cast<FileInputStream*> (inputStreamIn))
         {
-            const ScopedPointer<FileInputStream> deleter (fis);
+            const std::unique_ptr<FileInputStream> deleter (fis);
             return setFile (fis->getFile());
         }
 

@@ -152,13 +152,17 @@ private:
         if (xml == nullptr)
             return "invalid XmlElement";
 
-        return String (NewLine::getDefault()) + xml->createDocument ("", false, includeXmlHeader);
+        XmlElement::TextFormat fmt;
+        fmt.addDefaultHeader = includeXmlHeader;
+        fmt.newLineChars = nullptr;
+        
+        return String (NewLine::getDefault()) + xml->toString (fmt);
     }
 
     String getStringFromValueTree() const
     {
-        ScopedPointer<XmlElement> treeAsXml (objectValueTree.createXml());
-        return treeAsXml == nullptr ? "invalid ValueTree" : getStringFromXml (treeAsXml, false);
+        std::unique_ptr<XmlElement> treeAsXml (objectValueTree.createXml());
+        return treeAsXml == nullptr ? "invalid ValueTree" : getStringFromXml (treeAsXml.get(), false);
     }
 
     //==============================================================================

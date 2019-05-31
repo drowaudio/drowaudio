@@ -139,7 +139,7 @@ private:
     ListenerList<Listener> listeners;
 
     File libraryFile;
-    ScopedPointer<ITunesLibraryParser> parser;
+    std::unique_ptr<ITunesLibraryParser> parser;
     ValueTree libraryTree;
 
     //==============================================================================

@@ -65,10 +65,10 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
         filename = initialFileOrDirectory.getFileName();
     }
 
-    fileList = new DirectoryContentsList (this, thread);
+    fileList = std::make_unique<DirectoryContentsList> ((FileFilter*)this, thread);
 
     FileListComponent* const list = new FileListComponent (*fileList);
-    fileListComponent = list;
+    fileListComponent.reset (list);
     list->setOutlineThickness (0);
     list->getViewport()->setScrollBarThickness (10);
     list->setRowHeight (18);
@@ -81,8 +81,8 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
     fileListComponent->addListener (this);
     list->getViewport()->getVerticalScrollBar().setAutoHide (false);
 
-    resizer = new ResizableCornerComponent (this, &resizeLimits);
-    addAndMakeVisible (resizer);
+    resizer = std::make_unique<ResizableCornerComponent> (this, &resizeLimits);
+    addAndMakeVisible (*resizer);
     resizer->setMouseCursor (MouseCursor::LeftRightResizeCursor);
 
     setRoot (currentRoot);
@@ -243,7 +243,7 @@ int BasicFileBrowser::getLongestWidth()
 
 DirectoryContentsDisplayComponent* BasicFileBrowser::getDisplayComponent() const noexcept
 {
-    return fileListComponent;
+    return fileListComponent.get();
 }
 
 //==============================================================================

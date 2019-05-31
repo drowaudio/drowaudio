@@ -141,7 +141,7 @@ namespace GuiHelpers
         //==============================================================================
         FontLookAndFeel::FontLookAndFeel()
         {
-            ScopedPointer<MemoryInputStream> fontStream (new MemoryInputStream (BinaryData::Custom_Font,
+            std::unique_ptr<MemoryInputStream> fontStream (new MemoryInputStream (BinaryData::Custom_Font,
                                                                                 BinaryData::Custom_FontSize,
                                                                                 false));
 
@@ -171,7 +171,7 @@ namespace GuiHelpers
     static inline bool serializeFont (const Font& font, File& destinationFile, int maxNumChars = 127)
     {
         destinationFile.deleteFile();
-        ScopedPointer<FileOutputStream> outFileStream (destinationFile.createOutputStream());
+        std::unique_ptr<FileOutputStream> outFileStream (destinationFile.createOutputStream());
 
         CustomTypeface customTypeface;
         customTypeface.setCharacteristics (font.getTypefaceName(), font.getAscent(),

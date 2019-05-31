@@ -215,14 +215,14 @@ private:
     class CachedWindow;
 
     friend class LevelDataSource;
-    friend class ScopedPointer<LevelDataSource>;
+    friend class std::unique_ptr<LevelDataSource>;
     friend class ThumbData;
     friend class OwnedArray<ThumbData>;
     friend class CachedWindow;
-    friend class ScopedPointer<CachedWindow>;
+    friend class std::unique_ptr<CachedWindow>;
 
-    ScopedPointer<LevelDataSource> source;
-    ScopedPointer<CachedWindow> window;
+    std::unique_ptr<LevelDataSource> source;
+    std::unique_ptr<CachedWindow> window;
     OwnedArray<ThumbData> channels;
 
     int32 samplesPerThumbSample;

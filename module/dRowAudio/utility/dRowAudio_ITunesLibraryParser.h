@@ -73,7 +73,7 @@ private:
 
     const File iTunesLibraryFile;
     ValueTree treeToFill, partialTree;
-    ScopedPointer<XmlElement> iTunesDatabase;
+    std::unique_ptr<XmlElement> iTunesDatabase;
     XmlElement *iTunesLibraryTracks, *currentElement;
 
     int numAdded;

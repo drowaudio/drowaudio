@@ -132,7 +132,7 @@ bool AudioSampleBufferAudioFormat::canDoMono() { return true; }
 AudioFormatReader* AudioSampleBufferAudioFormat::createReaderFor (InputStream* sourceStream,
                                                                   bool deleteStreamIfOpeningFails)
 {
-    ScopedPointer<AudioSampleBufferReader> r (new AudioSampleBufferReader (sourceStream));
+    std::unique_ptr<AudioSampleBufferReader> r (new AudioSampleBufferReader (sourceStream));
 
     if (r->ok)
         return r.release();

@@ -102,10 +102,10 @@ public:
         : filesToDisplay (filesToDisplay_),
           viewport (parentViewport)
     {
-        activeLookAndFeel = new ColumnFileBrowserLookAndFeel();
+        activeLookAndFeel = std::make_unique<ColumnFileBrowserLookAndFeel>();
         activeLookAndFeel->setColour (DirectoryContentsDisplayComponent::highlightColourId,
                                       Colours::darkorange);
-        inactiveLookAndFeel = new ColumnFileBrowserLookAndFeel();
+        inactiveLookAndFeel = std::make_unique<ColumnFileBrowserLookAndFeel>();
 
         columns.add (new BrowserColumn (filesToDisplay_));
         addAndMakeVisible (columns[0]);
@@ -113,7 +113,7 @@ public:
         columns[0]->addListener (this);
         columns[0]->addChangeListener (this);
         columns[0]->addComponentListener (this);
-        columns[0]->setLookAndFeel (activeLookAndFeel);
+        columns[0]->setLookAndFeel (activeLookAndFeel.get());
 
         activeColumn = 0;
     }
@@ -177,7 +177,7 @@ public:
             const int startingWidth = columns.getLast()->getWidth();
 
             BrowserColumn* newColumn = new BrowserColumn (filesToDisplay);
-            newColumn->setLookAndFeel (inactiveLookAndFeel);
+            newColumn->setLookAndFeel (inactiveLookAndFeel.get());
             newColumn->setRoot (rootDirectory);
             newColumn->setSize (startingWidth, 50);
             newColumn->addListener (this);
@@ -212,9 +212,9 @@ public:
 
         if (changedColumn->getHighlightedFile().getFileName().isNotEmpty())
         {
-            columns[activeColumn]->setLookAndFeel (inactiveLookAndFeel);
+            columns[activeColumn]->setLookAndFeel (inactiveLookAndFeel.get());
             activeColumn = columns.indexOf (changedColumn);
-            columns[activeColumn]->setLookAndFeel (activeLookAndFeel);
+            columns[activeColumn]->setLookAndFeel (activeLookAndFeel.get());
             columns[activeColumn]->repaint();
 
             selectedFileChanged (changedColumn->getHighlightedFile());
@@ -291,8 +291,8 @@ private:
 
     friend class ColumnFileBrowser;
 
-    ScopedPointer<LookAndFeel> activeLookAndFeel;
-    ScopedPointer<LookAndFeel> inactiveLookAndFeel;
+    std::unique_ptr<LookAndFeel> activeLookAndFeel;
+    std::unique_ptr<LookAndFeel> inactiveLookAndFeel;
 
     //==================================================================================
     int getNumValidChildFiles (const File& sourceFile) const

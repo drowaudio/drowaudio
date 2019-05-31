@@ -106,7 +106,7 @@ public:
 
     //==============================================================================
     /** Returns the AudioFormatReaderSource currently being used. */
-    AudioFormatReaderSource* getAudioFormatReaderSource() const { return audioFormatReaderSource; }
+    AudioFormatReaderSource* getAudioFormatReaderSource() const { return audioFormatReaderSource.get(); }
 
     /** Returns the AudioTransportSource being used. */
     AudioTransportSource* getAudioTransportSource() { return &audioTransportSource; }
@@ -191,7 +191,7 @@ protected:
     OptionalScopedPointer<AudioFormatManager> formatManager;
 
     AudioSource* masterSource;
-    ScopedPointer<AudioFormatReaderSource> audioFormatReaderSource;
+    std::unique_ptr<AudioFormatReaderSource> audioFormatReaderSource;
     AudioTransportSource audioTransportSource;
 
     ListenerList <Listener> listeners;

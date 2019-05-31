@@ -138,11 +138,11 @@ static inline String findKeyFromChemicalWebsite (const String& releaseNo, const 
     String trackInfo (pageAsString.fromFirstOccurrenceOf ("<table class=\"tracks\" cellspacing=\"0\" cellpadding=\"4\">", true, false));
     trackInfo = trackInfo.upToFirstOccurrenceOf("</table>", true, false);
 
-    ScopedPointer<XmlElement> tracksXml (XmlDocument::parse (trackInfo));
+    std::unique_ptr<XmlElement> tracksXml (XmlDocument::parse (trackInfo));
 
     if (tracksXml != nullptr)
     {
-        XmlElement* tracksElem (XmlHelpers::findXmlElementContainingSubText (tracksXml, trackName));
+        XmlElement* tracksElem (XmlHelpers::findXmlElementContainingSubText (tracksXml.get(), trackName));
 
         if (tracksElem != nullptr)
         {
@@ -207,7 +207,7 @@ static inline void saveImageToFile (const Image& image, File file = {})
         file = File::getSpecialLocation (File::userDesktopDirectory).getNonexistentChildFile ("tempImage", ".png");
 
     PNGImageFormat format;
-    ScopedPointer<OutputStream> os (file.createOutputStream());
+    std::unique_ptr<OutputStream> os (file.createOutputStream());
 
     if (os != nullptr)
         format.writeImageToStream (image, *os);
@@ -371,16 +371,19 @@ static inline bool writeValueTreeToFile (const ValueTree& treeToWrite, const Fil
     {
         if (asXml)
         {
-            ScopedPointer<XmlElement> treeAsXml (treeToWrite.createXml());
+            std::unique_ptr<XmlElement> treeAsXml (treeToWrite.createXml());
 
             if (treeAsXml != nullptr)
-                return treeAsXml->writeToFile (fileToWriteTo, "", "UTF-8", 200);
+            {
+                fileToWriteTo.replaceWithText (treeAsXml->toString());
+                return true;
+            }
 
             return false;
         }
 
         TemporaryFile tempFile (fileToWriteTo);
-        ScopedPointer<FileOutputStream> outputStream (tempFile.getFile().createOutputStream());
+        std::unique_ptr<FileOutputStream> outputStream (tempFile.getFile().createOutputStream());
 
         if (outputStream != nullptr)
         {
@@ -402,13 +405,13 @@ static inline bool writeValueTreeToFile (const ValueTree& treeToWrite, const Fil
 */
 static inline ValueTree readValueTreeFromFile (const File& fileToReadFrom)
 {
-    ScopedPointer<XmlElement> treeAsXml (XmlDocument::parse (fileToReadFrom));
+    std::unique_ptr<XmlElement> treeAsXml (XmlDocument::parse (fileToReadFrom));
     if (treeAsXml != nullptr)
     {
         return ValueTree::fromXml (*treeAsXml);
     }
 
-    ScopedPointer<FileInputStream> fileInputStream (fileToReadFrom.createInputStream());
+    std::unique_ptr<FileInputStream> fileInputStream (fileToReadFrom.createInputStream());
     if (fileInputStream != nullptr
         && fileInputStream->openedOk())
     {

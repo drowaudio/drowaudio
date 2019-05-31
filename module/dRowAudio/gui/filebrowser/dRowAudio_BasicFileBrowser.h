@@ -194,7 +194,7 @@ public:
 
 private:
     //==============================================================================
-    ScopedPointer <DirectoryContentsList> fileList;
+    std::unique_ptr<DirectoryContentsList> fileList;
     const FileFilter* fileFilter;
 
     int flags;
@@ -202,7 +202,7 @@ private:
     Array<File> chosenFiles;
     ListenerList <FileBrowserListener> listeners;
 
-    ScopedPointer<DirectoryContentsDisplayComponent> fileListComponent;
+    std::unique_ptr<DirectoryContentsDisplayComponent> fileListComponent;
 
     TimeSliceThread thread;
 
@@ -210,7 +210,7 @@ private:
     bool isFileOrDirSuitable (const File& f) const;
 
     bool showResizer;
-    ScopedPointer<ResizableCornerComponent> resizer;
+    std::unique_ptr<ResizableCornerComponent> resizer;
     ComponentBoundsConstrainer resizeLimits;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicFileBrowser)

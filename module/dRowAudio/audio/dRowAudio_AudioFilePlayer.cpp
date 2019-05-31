@@ -181,8 +181,8 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
     if (reader != nullptr)
     {
         // we SHOULD let the AudioFormatReaderSource delete the reader for us..
-        audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
-        audioTransportSource.setSource (audioFormatReaderSource, 32768,
+        audioFormatReaderSource = std::make_unique<AudioFormatReaderSource> (reader, true);
+        audioTransportSource.setSource (audioFormatReaderSource.get(), 32768,
                                         bufferingTimeSliceThread, reader->sampleRate);
 
         if (shouldBeLooping)

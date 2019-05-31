@@ -47,7 +47,7 @@ void ITunesLibrary::setLibraryFile (File newFile)
     if (newFile.existsAsFile())
     {
         listeners.call (&Listener::libraryChanged, this);
-        parser = new ITunesLibraryParser (newFile, libraryTree, parserLock);
+        parser = std::make_unique<ITunesLibraryParser> (newFile, libraryTree, parserLock);
         startTimer(500);
     }
 }
