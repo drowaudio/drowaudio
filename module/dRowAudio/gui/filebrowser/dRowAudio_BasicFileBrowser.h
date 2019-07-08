@@ -81,7 +81,7 @@ public:
                       const FileFilter* fileFilter);
 
     /** Destructor. */
-    ~BasicFileBrowser();
+    ~BasicFileBrowser() override;
 
     //==============================================================================
     /** Returns the number of files that the user has got selected.

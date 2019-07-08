@@ -54,7 +54,7 @@ public:
                          const CriticalSection& lockToUse);
 
     /** Destructor. */
-    ~ITunesLibraryParser();
+    ~ITunesLibraryParser() override;
 
     //==============================================================================
     /** Returns true if the parser has finished. */

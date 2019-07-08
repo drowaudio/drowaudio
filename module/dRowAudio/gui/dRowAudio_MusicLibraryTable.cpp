@@ -109,7 +109,7 @@ void MusicLibraryTable::setFilterText (const String& filterString)
             {
                 if (dataList.getChild (e)[MusicColumns::columnNames[i]].toString().containsIgnoreCase (filterString))
                 {
-                    filteredDataList.addChild (dataList.getChild(e).createCopy(), -1, 0);
+                    filteredDataList.addChild (dataList.getChild(e).createCopy(), -1, nullptr);
                     break;
                 }
             }
@@ -225,14 +225,14 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
             || newSortColumnId == MusicColumns::Modified)
         {
             ValueTreeComparators::Numerical<double> sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
-            filteredDataList.sort (sorter, 0, false);
+            filteredDataList.sort (sorter, nullptr, false);
         }
         else
         {
             ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
                                                                   MusicColumns::columnNames[MusicColumns::LibID],
                                                                   isForwards);
-            filteredDataList.sort (sorter, 0, false);
+            filteredDataList.sort (sorter, nullptr, false);
         }
 
         table.updateContent();

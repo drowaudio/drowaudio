@@ -58,7 +58,7 @@ public:
                           bool deleteInputWhenDeleted);
 
     /** Destructor. */
-    ~FilteringAudioSource();
+    ~FilteringAudioSource() override;
 
     //==============================================================================
     /** Changes one of the filter gains. */

@@ -64,7 +64,7 @@ public:
     MusicLibraryTable();
 
     /** Destructor. */
-    ~MusicLibraryTable();
+    ~MusicLibraryTable() override;
 
     //==============================================================================
     /** Sets the ITunesLibrary to use. */

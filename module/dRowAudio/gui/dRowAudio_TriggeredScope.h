@@ -61,7 +61,7 @@ public:
     TriggeredScope (TimeSliceThread* backgroundThreadToUse = nullptr);
 
     /** Destructor. */
-    ~TriggeredScope();
+    ~TriggeredScope() override;
     
     enum ColourIds
     {

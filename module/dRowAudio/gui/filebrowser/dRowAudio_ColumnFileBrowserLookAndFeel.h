@@ -52,7 +52,7 @@ public:
         setColour (ScrollBar::trackColourId, Colour::greyLevel (0.3f));
     }
 
-    ~ColumnFileBrowserLookAndFeel()
+    ~ColumnFileBrowserLookAndFeel() override
     {
     }
 
@@ -110,7 +110,7 @@ public:
         const int x = 32;
         g.setColour (Colours::black);
 
-        if (icon != 0 && icon->isValid())
+        if (icon != nullptr && icon->isValid())
         {
             g.drawImageWithin (*icon, 2, 2, x - 4, height - 4,
                                RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize,
@@ -121,7 +121,7 @@ public:
             const Drawable* d = isDirectory ? getDefaultFolderImage()
             : getDefaultDocumentFileImage();
 
-            if (d != 0)
+            if (d != nullptr)
                 d->drawWithin (g, juce::Rectangle<float> (2.0f, 2.0f, x - 4.0f, height - 4.0f),
                                RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize, 1.0f);
         }

@@ -49,7 +49,7 @@ class ITunesLibrary : public Timer,
 {
 public:
     //==============================================================================
-    juce_DeclareSingleton (ITunesLibrary, false);
+    juce_DeclareSingleton (ITunesLibrary, false)
 
     /** Creates an ITunesLibrary.
         This class can also be used as a singleton which may be more appropriate.
@@ -58,7 +58,7 @@ public:
     ITunesLibrary();
 
     /** Destructor */
-    ~ITunesLibrary();
+    ~ITunesLibrary() override;
 
     /** Sets a new library to base the ValueTree on and starts the parse.
 

@@ -45,7 +45,7 @@ public:
     explicit CentreAlignViewport (const String& componentName = {});
 
     /** Destructor. */
-    ~CentreAlignViewport();
+    ~CentreAlignViewport() override;
 
     //==============================================================================
     /** Sets the component that this viewport will contain and scroll around.

@@ -156,7 +156,7 @@ public:
 
         createReader();
 
-        if (reader != 0)
+        if (reader != nullptr)
         {
             lengthInSamples = reader->lengthInSamples;
             numChannels = int (reader->numChannels);
@@ -173,7 +173,7 @@ public:
             filterHigh.reset();
 
             if (lengthInSamples <= 0)
-                reader = 0;
+                reader = nullptr;
             else if (! isFullyLoaded())
                 owner.cache.getTimeSliceThread().addTimeSliceClient (this);
         }
@@ -184,7 +184,7 @@ public:
         const ScopedLock sl (readerLock);
         createReader();
 
-        if (reader != 0)
+        if (reader != nullptr)
         {
             float l[4] = { 0 };
             Colour colourLeft, colourRight;
@@ -204,14 +204,14 @@ public:
     void releaseResources()
     {
         const ScopedLock sl (readerLock);
-        reader = 0;
+        reader = nullptr;
     }
 
     int useTimeSlice()
     {
         if (isFullyLoaded())
         {
-            if (reader != 0 && source != 0)
+            if (reader != nullptr && source != nullptr)
                 startTimer (timeBeforeDeletingReader);
 
             owner.cache.getTimeSliceThread().removeTimeSliceClient (this);
@@ -227,7 +227,7 @@ public:
 
             createReader();
 
-            if (reader != 0)
+            if (reader != nullptr)
             {
                 if (! readNextBlock())
                     return true;
@@ -274,7 +274,7 @@ private:
 
     void createReader()
     {
-        if (reader == 0 && source != nullptr)
+        if (reader == nullptr && source != nullptr)
         {
             InputStream* audioFileStream = source->createInputStream();
 
@@ -751,7 +751,7 @@ private:
 
         ensureSize (numSamples);
 
-        if (timePerPixel * sampleRateIn <= samplesPerThumbSampleIn && levelData != 0)
+        if (timePerPixel * sampleRateIn <= samplesPerThumbSampleIn && levelData != nullptr)
         {
             int sample = roundToInt (startTime * sampleRateIn);
             Array<float> levels;

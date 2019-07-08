@@ -40,7 +40,7 @@ class MemoryInputSource : public InputSource
 {
 public:
     MemoryInputSource (MemoryInputStream* stream, bool useFileTimeInHashGeneration = false);
-    ~MemoryInputSource();
+    ~MemoryInputSource() override;
 
     //==============================================================================
     /** @internal */

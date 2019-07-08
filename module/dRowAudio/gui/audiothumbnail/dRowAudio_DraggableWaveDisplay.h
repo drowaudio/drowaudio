@@ -56,7 +56,7 @@ public:
         Your subclass will need to call signalThreadShouldExit() in its destructor as
         it will get destructed before this superclass.
      */
-    ~DraggableWaveDisplay();
+    ~DraggableWaveDisplay() override;
 
     //====================================================================================
     /** Sets the current horizontal zoom.

@@ -51,7 +51,7 @@ public:
     explicit AudioTransportCursor (AudioFilePlayer& sourceToBeUsed);
 
     /** Destructor. */
-    ~AudioTransportCursor();
+    ~AudioTransportCursor() override;
 
     //====================================================================================
     /** Sets whether or not the transport cursor should be displayed. */

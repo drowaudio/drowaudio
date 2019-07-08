@@ -73,7 +73,7 @@ public:
         audioTransportSource->setSource (nullptr) in your destructor so you don't
         mess up the audio chain dependancies and crash
     */
-    virtual ~AudioFilePlayer();
+    virtual ~AudioFilePlayer() override;
 
     //==============================================================================
     /** Starts playing (if a source has been selected). */
