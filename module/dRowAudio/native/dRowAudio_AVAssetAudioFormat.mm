@@ -301,7 +301,7 @@ AudioFormatReader* AVAssetAudioFormat::createReaderFor (const String& assetNSURL
     NSString* assetNSString = [NSString stringWithUTF8String:assetNSURLAsString.toUTF8()];
     NSURL* assetNSURL = [NSURL URLWithString:assetNSString];
 
-    ScopedPointer<AVAssetAudioReader> r (new AVAssetAudioReader (assetNSURL));
+    auto r = std::make_unique<AVAssetAudioReader> (assetNSURL);
 
     [assetNSString release];
     [assetNSURL release];
@@ -323,7 +323,7 @@ AudioFormatReader* AVAssetAudioFormat::createReaderFor (InputStream* sourceStrea
         {
             NSURL* sourceUrl = [NSURL URLWithString: juceStringToNS (nsUrlString)];
 
-            ScopedPointer<AVAssetAudioReader> r (new AVAssetAudioReader (sourceUrl));
+            auto r = std::make_unique<AVAssetAudioReader> (sourceUrl);
 
             if (r->ok)
                 return r.release();
