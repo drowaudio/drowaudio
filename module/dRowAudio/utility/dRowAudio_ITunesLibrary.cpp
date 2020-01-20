@@ -31,7 +31,7 @@
 
 
 
-juce_ImplementSingleton(ITunesLibrary);
+juce_ImplementSingleton(ITunesLibrary)
 
 ITunesLibrary::ITunesLibrary()
     : libraryTree (MusicColumns::libraryIdentifier)
