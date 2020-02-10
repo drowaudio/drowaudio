@@ -106,8 +106,6 @@ private:
     float scopeLineW;
     Image scopeImage, tempImage;
 
-    CriticalSection lock;
-
     void renderScopeLine();
 
     //==============================================================================

@@ -42,7 +42,7 @@ namespace ffft
 
 template <class T>
 DynArray <T>::DynArray ()
-:    _data_ptr (0)
+:    _data_ptr (nullptr)
 ,    _len (0)
 {
     // Nothing
@@ -52,13 +52,13 @@ DynArray <T>::DynArray ()
 
 template <class T>
 DynArray <T>::DynArray (long size)
-:    _data_ptr (0)
+:    _data_ptr (nullptr)
 ,    _len (0)
 {
     assert (size >= 0);
     if (size > 0)
     {
-        _data_ptr = new DataType [size];
+        _data_ptr = new DataType [size_t (size)];
         _len = size;
     }
 }
@@ -69,7 +69,7 @@ template <class T>
 DynArray <T>::~DynArray ()
 {
     delete [] _data_ptr;
-    _data_ptr = 0;
+    _data_ptr = nullptr;
     _len = 0;
 }
 
@@ -90,7 +90,7 @@ void    DynArray <T>::resize (long size)
     if (size > 0)
     {
         DataType *        old_data_ptr = _data_ptr;
-        DataType *        tmp_data_ptr = new DataType [size];
+        DataType *        tmp_data_ptr = new DataType [size_t (size)];
 
         _data_ptr = tmp_data_ptr;
         _len = size;

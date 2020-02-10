@@ -86,9 +86,9 @@ int Sonogram::getBlockWidth() const
 }
 
 //==============================================================================
-void Sonogram::copySamples (const float* samples, int numSamples)
+void Sonogram::copySamples (const float* samplesIn, int numSamplesIn)
 {
-    circularBuffer.writeSamples (samples, numSamples);
+    circularBuffer.writeSamples (samplesIn, numSamplesIn);
     needToProcess = true;
 }
 
@@ -132,8 +132,8 @@ void Sonogram::renderScopeLine()
     Graphics g (scopeImage);
     const int x = scopeImage.getWidth() - (int) scopeLineW;
 
-    const int numBins = int (fftEngine.getMagnitudesBuffer().getSize() - 1);
-    const float yScale = (float) h / (numBins + 1);
+    const int numBinsX = int (fftEngine.getMagnitudesBuffer().getSize() - 1);
+    const float yScale = (float) h / (numBinsX + 1);
     const float* data = fftEngine.getMagnitudesBuffer().getData();
 
     float amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[0]) / 100.0f)));
@@ -141,10 +141,10 @@ void Sonogram::renderScopeLine()
 
     if (logFrequency)
     {
-        for (int i = 0; i < numBins; ++i)
+        for (int i = 0; i < numBinsX; ++i)
         {
             amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[i]) / 100.0f)));
-            y2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40.0f) * h;
+            y2 = log10 (1 + 39 * ((i + 1.0f) / numBinsX)) / log10 (40.0f) * h;
 
             g.setColour (Colour::greyLevel (amp));
             g.fillRect ((float)x, std::abs (h - y2), scopeLineW, std::abs (y1 - y2));
@@ -154,7 +154,7 @@ void Sonogram::renderScopeLine()
     }
     else
     {
-        for (int i = 0; i < numBins; ++i)
+        for (int i = 0; i < numBinsX; ++i)
         {
             amp = jlimit (0.0f, 1.0f, (float) (1 + (toDecibels (data[i]) / 100.0f)));
             y2 = (i + 1) * yScale;

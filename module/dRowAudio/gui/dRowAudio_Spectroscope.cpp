@@ -70,9 +70,9 @@ void Spectroscope::setLogFrequencyDisplay (bool shouldDisplayLog)
 }
 
 //==============================================================================
-void Spectroscope::copySamples (const float* samples, int numSamples)
+void Spectroscope::copySamples (const float* samplesIn, int numSamplesIn)
 {
-    circularBuffer.writeSamples (samples, numSamples);
+    circularBuffer.writeSamples (samplesIn, numSamplesIn);
     needToProcess = true;
 }
 
@@ -122,8 +122,8 @@ void Spectroscope::renderScopeImage()
 
         g.setColour (findColour (traceColourId));
 
-        const int numBins = int (fftEngine.getMagnitudesBuffer().getSize() - 1);
-        const float xScale = (float)w / (numBins + 1);
+        const int numBinsX = int (fftEngine.getMagnitudesBuffer().getSize() - 1);
+        const float xScale = (float)w / (numBinsX + 1);
         const float* data = fftEngine.getMagnitudesBuffer().getData();
 
         float y2, y1 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[0]) / 100.0f)));
@@ -131,10 +131,10 @@ void Spectroscope::renderScopeImage()
 
         if (logFrequency)
         {
-            for (int i = 0; i < numBins; ++i)
+            for (int i = 0; i < numBinsX; ++i)
             {
                 y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
-                x2 = log10 (1 + 39 * ((i + 1.0f) / numBins)) / log10 (40.0f) * w;
+                x2 = log10 (1 + 39 * ((i + 1.0f) / numBinsX)) / log10 (40.0f) * w;
 
                 g.drawLine (x1, h - h * y1,
                             x2, h - h * y2);
@@ -145,7 +145,7 @@ void Spectroscope::renderScopeImage()
         }
         else
         {
-            for (int i = 0; i < numBins; ++i)
+            for (int i = 0; i < numBinsX; ++i)
             {
                 y2 = jlimit (0.0f, 1.0f, float (1 + (toDecibels (data[i]) / 100.0f)));
                 x2 = (i + 1) * xScale;

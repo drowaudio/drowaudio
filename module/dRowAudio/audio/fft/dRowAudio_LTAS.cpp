@@ -53,7 +53,7 @@ void LTAS::updateLTAS (float* input, int numSamples)
 
         while (numSamples >= fftSize)
         {
-            memcpy (tempBuffer, input, fftSize * sizeof (float));
+            memcpy (tempBuffer, input, size_t (fftSize) * sizeof (float));
             fftEngine.performFFT (tempBuffer);
             fftEngine.findMagnitudes();
 
