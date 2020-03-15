@@ -32,9 +32,8 @@
 
 
 //==============================================================================
-MemoryInputSource::MemoryInputSource (MemoryInputStream* stream, bool useFileTimeInHashGeneration_)
-    : memoryInputStream (stream),
-      useFileTimeInHashGeneration (useFileTimeInHashGeneration_)
+MemoryInputSource::MemoryInputSource (MemoryInputStream* stream)
+    : memoryInputStream (stream)
 {
 }
 

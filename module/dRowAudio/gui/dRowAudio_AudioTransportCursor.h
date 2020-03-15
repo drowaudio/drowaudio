@@ -102,9 +102,6 @@ private:
     float currentXScale;
     bool showTransportCursor;
 
-    bool interestedInDrag;
-    double currentMouseX;
-
     //==============================================================================
     void refreshFromFilePlayer();
     void startTimerIfNeeded();

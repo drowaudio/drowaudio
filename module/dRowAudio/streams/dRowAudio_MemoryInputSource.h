@@ -39,7 +39,7 @@
 class MemoryInputSource : public InputSource
 {
 public:
-    MemoryInputSource (MemoryInputStream* stream, bool useFileTimeInHashGeneration = false);
+    MemoryInputSource (MemoryInputStream* stream);
     ~MemoryInputSource() override;
 
     //==============================================================================
@@ -53,7 +53,6 @@ public:
 private:
     //==============================================================================
     MemoryInputStream* memoryInputStream;
-    bool useFileTimeInHashGeneration;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MemoryInputSource)

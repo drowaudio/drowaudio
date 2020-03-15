@@ -52,7 +52,7 @@ TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
     if (backgroundThreadToUse == nullptr)
     {
         OptionalScopedPointer<TimeSliceThread> newThread (new TimeSliceThread ("Triggered Scope Rendering Thread"), true);
-        backgroundThreadToUse = newThread;
+        backgroundThreadToUse.swapWith (newThread);
         backgroundThreadToUse->startThread (1);
     }
 
