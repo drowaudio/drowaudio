@@ -148,8 +148,9 @@ bool AudioFilePlayer::fileChanged (const File& file)
 
 bool AudioFilePlayer::streamChanged (InputStream* inputStream)
 {
-    if (setSourceWithReader (formatManager->createReaderFor (inputStream)))
-        return true;
+    if (auto reader = formatManager->createReaderFor (std::unique_ptr<InputStream> (inputStream)))
+        if (setSourceWithReader (reader))
+            return true;
 
     clear();
     return false;
