@@ -92,7 +92,7 @@ public:
 
         @see getViewPositionX, getViewPositionY, setViewPositionProportionately
     */
-    void setViewPosition (Point<int> newPosition);
+    void setViewPosition (juce::Point<int> newPosition);
 
     /** Changes the view position as a proportion of the distance it can move.
 
@@ -122,7 +122,7 @@ public:
 
     /** Returns the position within the child component of the top-left of its visible area.
     */
-    Point<int> getViewPosition() const noexcept { return lastVisibleArea.getPosition(); }
+    juce::Point<int> getViewPosition() const noexcept { return lastVisibleArea.getPosition(); }
 
     /** Returns the position within the child component of the top-left of its visible area.
         @see getViewWidth, setViewPosition
