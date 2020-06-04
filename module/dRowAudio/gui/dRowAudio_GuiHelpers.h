@@ -536,8 +536,9 @@ namespace GuiHelpers
                 return dp;
             }
 
+            case noIcons:
             default:
-            break;
+                break;
         }
 
         DrawablePath blank;

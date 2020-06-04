@@ -91,6 +91,7 @@ void FilteringAudioSource::setGain (FilterType setting, float newGain)
             filter[1][High].setCoefficients (highCoeff);
             break;
         }
+        case numFilters:
         default:
             break;
     }

@@ -123,8 +123,9 @@ public:
             case unknownStream:
                 return inputStream;
 
+            case noInput:
             default:
-            break;
+                break;
         }
 
         return nullptr;
@@ -149,10 +150,12 @@ public:
                 if (memoryStream != nullptr)
                     return new MemoryInputSource (memoryStream);
             }
-            break;
+                break;
 
+            case unknownStream:
+            case noInput:
             default:
-            break;
+                break;
         }
 
         return nullptr;

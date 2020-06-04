@@ -82,6 +82,11 @@ void PluginParameter::init (const String& name_, ParameterUnit unit_, String des
     unitSuffix = unitSuffix_;
 
     // default label suffix's, these can be changed later
+    #if __clang__
+     #pragma clang diagnostic push
+     #pragma clang diagnostic ignored "-Wswitch-enum"
+    #endif
+
     switch (unit)
     {
         case UnitPercent:       setUnitSuffix ("%");                         break;
@@ -93,8 +98,12 @@ void PluginParameter::init (const String& name_, ParameterUnit unit_, String des
         case UnitMeters:        setUnitSuffix ("m");                         break;
         case UnitBPM:           setUnitSuffix ("BPM");                       break;
         case UnitMilliseconds:  setUnitSuffix ("ms");                        break;
-        default:                                                            break;
+        default:                                                             break;
     }
+
+   #if __clang__
+    #pragma clang diagnostic push
+   #endif
 }
 
 void PluginParameter::setValue (double value)
