@@ -170,7 +170,7 @@ void Window::applyCosineWindow (float *samples,  const int numSamples)
     for (int i = 0; i < numSamples; ++i)
     {
         // Cosine window equation
-        float window = (float) std::sin (double_Pi * i * oneOverSizeMinusOne);
+        float window = (float) std::sin (juce::MathConstants<double>::pi * i * oneOverSizeMinusOne);
         samples[i] *= window;
         windowFactor += window;
     }

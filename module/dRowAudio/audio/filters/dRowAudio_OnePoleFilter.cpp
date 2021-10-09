@@ -57,7 +57,7 @@ void OnePoleFilter::processSamples (float* const samples,
 void OnePoleFilter::makeLowPass (const double sampleRate,
                                  const double frequency) noexcept
 {
-    const double w0 = 2.0 * double_Pi * (frequency / sampleRate);
+    const double w0 = 2.0 * juce::MathConstants<double>::pi * (frequency / sampleRate);
     const double cos_w0 = cos (w0);
 
     const double alpha = (2.0f - cos_w0) - sqrt ((2.0 - cos_w0) * (2.0 - cos_w0) - 1.0);
@@ -71,7 +71,7 @@ void OnePoleFilter::makeLowPass (const double sampleRate,
 void OnePoleFilter::makeHighPass (const double sampleRate,
                                   const double frequency) noexcept
 {
-    const double w0 = 2.0 * double_Pi * (frequency / sampleRate);
+    const double w0 = 2.0 * juce::MathConstants<double>::pi * (frequency / sampleRate);
     const double cos_w0 = cos (w0);
 
     const double alpha = (2.0 + cos_w0) - sqrt ((2.0 + cos_w0) * (2.0 + cos_w0) - 1.0);

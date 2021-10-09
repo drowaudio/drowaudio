@@ -91,7 +91,7 @@ public:
 
             // Sin
             {
-                const double delta = numSamples / (2 * double_Pi);
+                const double delta = numSamples / (2 * juce::MathConstants<double>::pi);
                 float* data = asb.getWritePointer (0);
 
                 for (int i = 0; i < numSamples; ++i)

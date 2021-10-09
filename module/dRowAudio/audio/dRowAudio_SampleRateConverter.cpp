@@ -132,7 +132,7 @@ void SampleRateConverter::createLowPass (const double frequencyRatio)
     const double proportionalRate = (frequencyRatio > 1.0) ? 0.5 / frequencyRatio
                                                            : 0.5 * frequencyRatio;
 
-    const double n = 1.0 / std::tan (double_Pi * jmax (0.001, proportionalRate));
+    const double n = 1.0 / std::tan (juce::MathConstants<double>::pi * jmax (0.001, proportionalRate));
     const double nSquared = n * n;
     const double c1 = 1.0 / (1.0 + std::sqrt (2.0) * n + nSquared);
 

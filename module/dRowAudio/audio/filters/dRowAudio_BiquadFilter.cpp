@@ -70,7 +70,7 @@ IIRCoefficients BiquadFilter::makeLowPass (const double sampleRate,
                                            const double Q) noexcept
 {
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
-    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float w0 = (float) (2.0f * juce::MathConstants<float>::pi * frequency * oneOverCurrentSampleRate);
     float cos_w0 = std::cos (w0);
     float sin_w0 = std::sin (w0);
     float alpha = sin_w0 / (2.0f * (float) Q);
@@ -88,7 +88,7 @@ IIRCoefficients BiquadFilter::makeHighPass (const double sampleRate,
                                             const double Q) noexcept
 {
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
-    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float w0 = (float) (2.0f * juce::MathConstants<float>::pi * frequency * oneOverCurrentSampleRate);
     float cos_w0 = std::cos (w0);
     float sin_w0 = std::sin (w0);
     float alpha = sin_w0 / (2.0f * (float) Q);
@@ -108,7 +108,7 @@ IIRCoefficients BiquadFilter::makeBandPass (const double sampleRate,
     const double qFactor = jlimit (0.00001, 1000.0, Q);
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 
-    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float w0 = (float) (2.0f * juce::MathConstants<float>::pi * frequency * oneOverCurrentSampleRate);
     float cos_w0 = std::cos (w0);
     float sin_w0 = std::sin (w0);
     float alpha = sin_w0 / (2.0f * (float) qFactor);
@@ -130,7 +130,7 @@ IIRCoefficients BiquadFilter::makeBandStop (const double sampleRate,
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 
 
-    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float w0 = (float) (2.0f * juce::MathConstants<float>::pi * frequency * oneOverCurrentSampleRate);
     float cos_w0 = std::cos (w0);
     float sin_w0 = std::sin (w0);
     float alpha = (float) (sin_w0 / (2 * qFactor));
@@ -152,7 +152,7 @@ IIRCoefficients BiquadFilter::makePeakNotch (const double sampleRate,
     jassert (Q > 0);
 
     const double A = jmax (0.0f, gainFactor);
-    const double omega = (double_Pi * 2.0 * jmax (centreFrequency, 2.0)) / sampleRate;
+    const double omega = (juce::MathConstants<double>::pi * 2.0 * jmax (centreFrequency, 2.0)) / sampleRate;
     const double alpha = 0.5 * std::sin (omega) / Q;
     const double c2 = -2.0 * std::cos (omega);
     const double alphaTimesA = alpha * A;
@@ -173,7 +173,7 @@ IIRCoefficients BiquadFilter::makeAllpass (const double sampleRate,
     const double qFactor = jlimit(0.00001, 1000.0, Q);
     const double oneOverCurrentSampleRate = 1.0 / sampleRate;
 
-    float w0 = (float) (2.0f * float_Pi * frequency * oneOverCurrentSampleRate);
+    float w0 = (float) (2.0f * juce::MathConstants<float>::pi * frequency * oneOverCurrentSampleRate);
     float cos_w0 = std::cos (w0);
     float sin_w0 = sin(w0);
     float alpha = (float) (sin_w0 / (2 * qFactor));

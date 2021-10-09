@@ -176,7 +176,7 @@ namespace GuiHelpers
         CustomTypeface customTypeface;
         customTypeface.setCharacteristics (font.getTypefaceName(), font.getAscent(),
                                            font.isBold(), font.isItalic(), ' ');
-        customTypeface.addGlyphsFromOtherTypeface (*font.getTypeface(), 0, maxNumChars);
+        customTypeface.addGlyphsFromOtherTypeface (*font.getTypefacePtr(), 0, maxNumChars);
 
         return customTypeface.writeToStream (*outFileStream);
     }
@@ -386,7 +386,7 @@ namespace GuiHelpers
             case Power:
             {
                 Path p;
-                p.addArc (0.0f, 20.0f, 100.0f, 100.0f, 0.18f * float_Pi, 2.0f * float_Pi - (0.18f * float_Pi), true);
+                p.addArc (0.0f, 20.0f, 100.0f, 100.0f, 0.18f * juce::MathConstants<float>::pi, 2.0f * juce::MathConstants<float>::pi - (0.18f * juce::MathConstants<float>::pi), true);
                 p.startNewSubPath (50.0f, 0.0f);
                 p.lineTo (50.0f, 70.0f);
 
@@ -491,7 +491,7 @@ namespace GuiHelpers
                 p.addPolygon (juce::Point<float> (50.0f, 50.0f),
                               8,
                               50.0f,
-                              -float_Pi * 0.125f);
+                              -juce::MathConstants<float>::pi * 0.125f);
 
                 DrawablePath dp;
                 dp.setFill (colour);
@@ -507,9 +507,9 @@ namespace GuiHelpers
                 Path p;
                 p.addRoundedRectangle (0.0f, 33.0f, 33.0f, 33.0f, 2.0f);
                 p.addTriangle (7.5f, 50.0f, 55.0f, 6.5f, 55.0f, 93.5f);
-                p.addArc (60.0f, 30.0f, 12.0f, 40.0f, float_Pi * 0.15f, float_Pi * 0.85f, true);
-                p.addArc (70.0f, 20.0f, 16.0f, 60.0f, float_Pi * 0.15f, float_Pi * 0.85f, true);
-                p.addArc (80.0f, 10.0f, 20.0f, 80.0f, float_Pi * 0.15f, float_Pi * 0.85f, true);
+                p.addArc (60.0f, 30.0f, 12.0f, 40.0f, juce::MathConstants<float>::pi * 0.15f, juce::MathConstants<float>::pi * 0.85f, true);
+                p.addArc (70.0f, 20.0f, 16.0f, 60.0f, juce::MathConstants<float>::pi * 0.15f, juce::MathConstants<float>::pi * 0.85f, true);
+                p.addArc (80.0f, 10.0f, 20.0f, 80.0f, juce::MathConstants<float>::pi * 0.15f, juce::MathConstants<float>::pi * 0.85f, true);
 
                 DrawablePath dp;
                 dp.setFill (colour);
