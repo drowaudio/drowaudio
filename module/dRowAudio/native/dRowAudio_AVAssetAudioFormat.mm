@@ -292,8 +292,8 @@ MemoryInputStream* AVAssetAudioFormat::avAssetUrlStringToStream (const String& a
 
 Array<int> AVAssetAudioFormat::getPossibleSampleRates() { return Array<int>(); }
 Array<int> AVAssetAudioFormat::getPossibleBitDepths()   { return Array<int>(); }
-bool AVAssetAudioFormat::canDoStereo()					{ return true; }
-bool AVAssetAudioFormat::canDoMono()					{ return true; }
+bool AVAssetAudioFormat::canDoStereo()                  { return true; }
+bool AVAssetAudioFormat::canDoMono()                    { return true; }
 
 //==============================================================================
 AudioFormatReader* AVAssetAudioFormat::createReaderFor (const String& assetNSURLAsString)
