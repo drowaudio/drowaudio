@@ -227,13 +227,10 @@ static inline void convertToFloat (AudioFormatReader* reader, void* sourceBuffer
     {
         if (! reader->usesFloatingPointData)
         {
-#if JUCE_BIG_ENDIAN
-            AudioDataConverters::convertInt32BEToFloat ((void*) sourceBuffer, destBuffer,
-                                                        numSamples, sizeof (int));
-#else
-            AudioDataConverters::convertInt32LEToFloat ((void*) sourceBuffer, destBuffer,
-                                                        numSamples, sizeof (int));
-#endif
+            juce::AudioData::ConverterInstance<juce::AudioData::Pointer<juce::AudioData::Int32,   juce::AudioData::NativeEndian, AudioData::NonInterleaved, AudioData::Const>,
+                                               juce::AudioData::Pointer<juce::AudioData::Float32, juce::AudioData::NativeEndian, AudioData::NonInterleaved, AudioData::NonConst>> converter;
+
+            converter.convertSamples ( destBuffer, sourceBuffer, numSamples );
         }
         else
         {

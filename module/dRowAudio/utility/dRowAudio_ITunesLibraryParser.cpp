@@ -111,7 +111,7 @@ void ITunesLibraryParser::run()
                     // and then check the modification dates
                     XmlElement* trackDetails = currentElement->getNextElement(); // move on to the <dict>
 
-                    forEachXmlChildElement (*trackDetails, e)
+                    for (auto e : trackDetails->getChildIterator())
                     {
                         if (e->getAllSubText() == MusicColumns::iTunesNames[MusicColumns::Modified])
                         {
@@ -151,7 +151,7 @@ void ITunesLibraryParser::run()
         if (currentElement->getTagName() == "dict")
         {
             // cycle through items of each track
-            forEachXmlChildElement (*currentElement, e2)
+            for (auto e2 : currentElement->getChildIterator())
             {
                 const String elementKey (e2->getAllSubText());
                 //const String elementValue (e2->getNextElement()->getAllSubText());
