@@ -49,8 +49,8 @@ BEGIN_JUCE_MODULE_DECLARATION
 
     dependencies:   juce_audio_basics, juce_audio_devices, juce_audio_formats, juce_audio_utils, juce_core, juce_cryptography, juce_data_structures, juce_events, juce_graphics, juce_gui_basics
 
-    OSXFrameworks   Accelerate
-    iOSFrameworks   Accelerate AVFoundation MediaPlayer CoreMedia
+    OSXFrameworks:   Accelerate
+    iOSFrameworks:   Accelerate AVFoundation MediaPlayer CoreMedia
 
 END_JUCE_MODULE_DECLARATION
 
