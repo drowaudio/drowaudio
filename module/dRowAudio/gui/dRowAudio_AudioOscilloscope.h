@@ -104,7 +104,7 @@ private:
     HeapBlock<float> circularBufferMax, circularBufferMin;
     int bufferSizeMask;
     float currentMax, currentMin;
-    int volatile bufferPos, lastBufferPos, bufferSize, numSamplesIn;
+    std::atomic<int> bufferPos, lastBufferPos, bufferSize, numSamplesIn;
     float bufferLastMax, bufferLastMin;
 
     Image waveformImage;

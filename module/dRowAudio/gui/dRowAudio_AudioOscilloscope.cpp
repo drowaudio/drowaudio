@@ -44,8 +44,8 @@ AudioOscilloscope::AudioOscilloscope() :
     backgroundColour (Colours::black),
     traceColour (Colours::green)
 {
-    circularBufferMax.calloc (bufferSize);
-    circularBufferMin.calloc (bufferSize);
+    circularBufferMax.calloc (bufferSize.load());
+    circularBufferMin.calloc (bufferSize.load());
     clear();
 
     setOpaque (true);
@@ -127,7 +127,7 @@ void AudioOscilloscope::timerCallback()
                     (float) x, halfHeight + (halfHeight * verticalZoomFactor * min));
     }
 
-    lastBufferPos = bufferPos;
+    lastBufferPos = bufferPos.load();
 
     repaint();
 }
@@ -144,8 +144,8 @@ void AudioOscilloscope::addSample (const float sample)
     if (++numSamplesIn > samplesToAverage)
     {
         bufferPos = bufferPos & bufferSizeMask;
-        circularBufferMax [bufferPos] = currentMax;
-        circularBufferMin [bufferPos] = currentMin;
+        circularBufferMax [bufferPos.load()] = currentMax;
+        circularBufferMin [bufferPos.load()] = currentMin;
         bufferPos++;
 
         numSamplesIn = 0;
