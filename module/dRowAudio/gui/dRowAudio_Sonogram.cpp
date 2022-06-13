@@ -61,7 +61,10 @@ void Sonogram::resized()
 void Sonogram::paint(Graphics &g)
 {
     const ScopedLock sl (lock);
-    
+
+    g.setColour (findColour (backgroundColourId));
+    g.fillRect (getLocalBounds());
+
     g.drawImageAt (scopeImage, 0, 0, false);
     
     g.setColour (findColour (lineColourId));
