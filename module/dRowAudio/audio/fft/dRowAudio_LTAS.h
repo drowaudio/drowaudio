@@ -34,7 +34,7 @@
 
 #if DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
 
-class CumulativeMovingAverage;
+#include "../../maths/dRowAudio_CumulativeMovingAverage.h"
 
 //==============================================================================
 /** Calculates the Long Term Average Spectrum of a set of samples.
