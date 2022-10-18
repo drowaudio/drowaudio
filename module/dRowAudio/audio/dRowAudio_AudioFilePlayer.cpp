@@ -34,7 +34,7 @@ AudioFilePlayer::AudioFilePlayer()
     : bufferingTimeSliceThread (new TimeSliceThread ("Shared Buffering Thread"), true),
       formatManager (new AudioFormatManager(), true)
 {
-    bufferingTimeSliceThread->startThread (3);
+    bufferingTimeSliceThread->startThread();
     formatManager->registerBasicFormats();
 
     commonInitialise();

@@ -53,7 +53,7 @@ TriggeredScope::TriggeredScope (TimeSliceThread* tst) :
     {
         OptionalScopedPointer<TimeSliceThread> newThread (new TimeSliceThread ("Triggered Scope Rendering Thread"), true);
         backgroundThreadToUse.swapWith (newThread);
-        backgroundThreadToUse->startThread (1);
+        backgroundThreadToUse->startThread();
     }
 
     backgroundThreadToUse->addTimeSliceClient (this);

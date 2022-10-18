@@ -87,7 +87,7 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
 
     setRoot (currentRoot);
 
-    thread.startThread (4);
+    thread.startThread();
 }
 
 BasicFileBrowser::~BasicFileBrowser()
