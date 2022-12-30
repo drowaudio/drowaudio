@@ -48,6 +48,9 @@ VersionX-revision.h
 build/
 *.[oa]
 
+demo/Builds
+demo/JuceLibraryCode
+
 # Other source repository archive directories (protects when importing)
 .hg
 .svn
