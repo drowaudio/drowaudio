@@ -12,7 +12,7 @@
 
 AudioManager::AudioManager()
 {
-    audioDeviceManager.initialise (0, 2, nullptr, true);
+    audioDeviceManager.initialiseWithDefaultDevices (0, 2);
     audioDeviceManager.addAudioCallback (this);
     
     audioSourcePlayer.setSource (&audioFilePlayer);
@@ -28,17 +28,19 @@ AudioManager::~AudioManager()
 }
 
 //==============================================================================
-void AudioManager::audioDeviceIOCallback (const float** inputChannelData,
-                                          int numInputChannels,
-                                          float** outputChannelData,
-                                          int numOutputChannels,
-                                          int numSamples)
+void AudioManager::audioDeviceIOCallbackWithContext (const float* const* inputChannelData,
+                                                     int numInputChannels,
+                                                     float* const* outputChannelData,
+                                                     int numOutputChannels,
+                                                     int numSamples,
+                                                     const AudioIODeviceCallbackContext& context)
 {
-    audioSourcePlayer.audioDeviceIOCallback (inputChannelData,
-                                             numInputChannels,
-                                             outputChannelData,
-                                             numOutputChannels,
-                                             numSamples);
+    audioSourcePlayer.audioDeviceIOCallbackWithContext (inputChannelData,
+                                                        numInputChannels,
+                                                        outputChannelData,
+                                                        numOutputChannels,
+                                                        numSamples,
+                                                        context);
 }
 
 void AudioManager::audioDeviceAboutToStart (AudioIODevice* device)

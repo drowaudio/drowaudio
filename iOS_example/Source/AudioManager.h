@@ -25,11 +25,12 @@ public:
     AudioFilePlayer& getAudioFilePlayer()   {   return audioFilePlayer; }
     
     //==============================================================================
-    void audioDeviceIOCallback (const float** inputChannelData,
-                                int numInputChannels,
-                                float** outputChannelData,
-                                int numOutputChannels,
-                                int numSamples);
+    void audioDeviceIOCallbackWithContext (const float* const* inputChannelData,
+                                           int numInputChannels,
+                                           float* const* outputChannelData,
+                                           int numOutputChannels,
+                                           int numSamples,
+                                           const AudioIODeviceCallbackContext& context);
     
     void audioDeviceAboutToStart (AudioIODevice* device);
     
