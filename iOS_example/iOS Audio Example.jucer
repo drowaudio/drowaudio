@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="iKDxa2" name="iOS Audio Example" projectType="guiapp" version="1.0.0"
+              jucerVersion="3.0.0" companyName="dRowAudio" bundleIdentifier="com.dRowAudio.iOSAudioExample">
+  <EXPORTFORMATS>
+    <XCODE_IPHONE targetFolder="Builds/iOS" juceFolder="Source/modules" UIStatusBarHidden="1">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="iOS Audio Example"
+                       iosCompatibility="default" cppLibType="libc++"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="iOS Audio Example"
+                       iosCompatibility="default" cppLibType="libc++"/>
+      </CONFIGURATIONS>
+    </XCODE_IPHONE>
+  </EXPORTFORMATS>
+  <MAINGROUP id="RBITi8" name="iOS Audio Example">
+    <GROUP id="{2F3D5B61-3EE9-DA13-0B1C-95AB4A9D2C60}" name="Source">
+      <FILE id="Vq6cam" name="StandardHeader.h" compile="0" resource="0"
+            file="Source/StandardHeader.h"/>
+      <FILE id="TurzQ8" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="kfcEe5" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
+      <FILE id="H0C0Qj" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
+      <FILE id="G49wwt" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="Hm2bio" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="RDhLVH" name="AudioManager.h" compile="0" resource="0" file="Source/AudioManager.h"/>
+      <FILE id="LSOCns" name="AudioManager.cpp" compile="1" resource="0"
+            file="Source/AudioManager.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS DROWAUDIO_USE_FFTREAL="disabled" DROWAUDIO_USE_SOUNDTOUCH="disabled"
+               DROWAUDIO_USE_CURL="disabled" JUCE_WEB_BROWSER="disabled"/>
+</JUCERPROJECT>
