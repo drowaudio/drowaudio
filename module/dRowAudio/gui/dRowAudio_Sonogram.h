@@ -32,7 +32,7 @@
 #ifndef DROWAUDIO_SONOGRAM_H
 #define DROWAUDIO_SONOGRAM_H
 
-#if DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
+#if DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP || defined (DOXYGEN)
 
 /** Creates a standard right-left scrolling greyscale Sonogram.
 
