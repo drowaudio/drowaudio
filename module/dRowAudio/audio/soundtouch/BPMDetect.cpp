@@ -144,7 +144,7 @@ BPMDetect::BPMDetect(int numChannels, int aSampleRate)
     assert(windowLen > windowStart);
 
     // allocate new working objects
-    xcorr = new float[windowLen];
+    xcorr = new float[(uint) windowLen]; 
     memset(xcorr, 0, (uint) windowLen * (uint) sizeof(float));
 
     // allocate processing buffer
