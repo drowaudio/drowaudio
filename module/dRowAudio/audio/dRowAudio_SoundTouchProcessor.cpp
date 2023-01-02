@@ -41,6 +41,8 @@ SoundTouchProcessor::SoundTouchProcessor()
 
     interleavedInputBuffer.malloc ((size_t) interleavedInputBufferSize * 2);
     interleavedOutputBuffer.malloc ((size_t) interleavedOutputBufferSize * 2);
+    
+    soundTouch.setSetting (SETTING_USE_QUICKSEEK, 1);
 }
 
 void SoundTouchProcessor::initialise (int numChannels, double sampleRate)
@@ -63,9 +65,13 @@ void SoundTouchProcessor::writeSamples (float** sourceChannelData, int numChanne
 
     for (int i = 0; i < numChannels; ++i)
         sourceChannelData[i] += startSampleOffset;
+                                            
+    using SourceFormat = AudioData::Format<AudioData::Float32, AudioData::NativeEndian>;
+    using DestFormat   = AudioData::Format<AudioData::Float32, AudioData::NativeEndian>;
 
-    AudioDataConverters::interleaveSamples ((const float**) sourceChannelData, interleavedInputBuffer,
-                                            numSamples, numChannels);
+    AudioData::interleaveSamples (AudioData::NonInterleavedSource<SourceFormat> { sourceChannelData, numChannels },
+                                  AudioData::InterleavedDest<DestFormat> { interleavedInputBuffer, numChannels },
+                                  numSamples);                 
 
     for (int i = 0; i < numChannels; ++i)
         sourceChannelData[i] -= startSampleOffset;
@@ -107,9 +113,14 @@ void SoundTouchProcessor::readSamples (float** destinationChannelData, int numCh
 
     for (int i = 0; i < numChannels; ++i)
         destinationChannelData[i] += startSampleOffset;
+                                              
+    using SourceFormat = AudioData::Format<AudioData::Float32, AudioData::NativeEndian>;
+    using DestFormat   = AudioData::Format<AudioData::Float32, AudioData::NativeEndian>;
 
-    AudioDataConverters::deinterleaveSamples (interleavedOutputBuffer, destinationChannelData,
-                                              numSamples, numChannels);
+    AudioData::deinterleaveSamples (AudioData::InterleavedSource<SourceFormat> { interleavedOutputBuffer, numChannels },
+                                    AudioData::NonInterleavedDest<DestFormat>  { destinationChannelData,  numChannels },
+                                    numSamples);                                          
+                                              
     for (int i = 0; i < numChannels; ++i)
         destinationChannelData[i] -= startSampleOffset;
 }
