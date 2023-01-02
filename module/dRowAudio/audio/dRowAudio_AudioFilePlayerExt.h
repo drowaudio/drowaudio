@@ -113,21 +113,21 @@ public:
 
     //==============================================================================
     /** Returns the SoundTouchAudioSource being used. */
-    SoundTouchAudioSource* getSoundTouchAudioSource() const { return soundTouchAudioSource; }
+    SoundTouchAudioSource* getSoundTouchAudioSource() const { return soundTouchAudioSource.get(); }
 
     /** Returns the FilteringAudioSource being used. */
-    FilteringAudioSource* getFilteringAudioSource() const { return filteringAudioSource; }
+    FilteringAudioSource* getFilteringAudioSource() const { return filteringAudioSource.get(); }
 
 private:
     //==============================================================================
-    ScopedPointer<BufferingAudioSource> bufferingAudioSource;
-    ScopedPointer<LoopingAudioSource> loopingAudioSource;
-    ScopedPointer<SoundTouchAudioSource> soundTouchAudioSource;
-    ScopedPointer<ReversibleAudioSource> reversibleAudioSource;
-    ScopedPointer<FilteringAudioSource> filteringAudioSource;
+    std::unique_ptr<BufferingAudioSource> bufferingAudioSource;
+    std::unique_ptr<LoopingAudioSource> loopingAudioSource;
+    std::unique_ptr<SoundTouchAudioSource> soundTouchAudioSource;
+    std::unique_ptr<ReversibleAudioSource> reversibleAudioSource;
+    std::unique_ptr<FilteringAudioSource> filteringAudioSource;
 
     SoundTouchProcessor::PlaybackSettings currentSoundtouchSettings;
-    bool shouldBeLooping;
+    bool shouldBeLooping = false;
     double currentLoopStartTime, currentLoopEndTime;
 
     ValueTree libraryEntry;
