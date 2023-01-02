@@ -50,10 +50,6 @@ MainComponent::MainComponent()
     cpuMeter.setJustificationType (Justification::centred);
     cpuMeter.setBorderSize (BorderSize<int>());
 
-    addAndMakeVisible (&searchBox);
-    searchBox.addListener (this);
-    searchBox.setTextToShowWhenEmpty ("search...", Colours::grey);
-
     tabbedComponent.addTab ("Audio Playback",
                             Colours::grey,
                             new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource),
@@ -95,11 +91,8 @@ MainComponent::MainComponent()
 #endif
 
     audioSourcePlayer.setSource (&bufferTransformAudioSource);
-    //audioSourcePlayer.setSource (&audioFilePlayer);
     audioDeviceManager.initialise (1, 2, nullptr, true);
-//    audioDeviceManager.addAudioCallback (&audioSourcePlayer);
     audioDeviceManager.addAudioCallback (this);
-//    audioDeviceManager.addAudioCallback (fftDemo);
 
     addAndMakeVisible (&trackInfoComponent);
     addAndMakeVisible (&dropTarget);
@@ -112,9 +105,25 @@ MainComponent::MainComponent()
 
     meterThread.addTimeSliceClient (&meterL);
     meterThread.addTimeSliceClient (&meterR);
-    meterThread.startThread (1);
+    meterThread.startThread (Thread::Priority::low);
+    
+    addAndMakeVisible (&searchBox);
+    searchBox.addListener (this);
+    searchBox.setTextToShowWhenEmpty ("search...", Colours::grey);
 
     setSize (800, 600);
+    
+//    #if DROWAUDIO_USE_FFTREAL
+//    DBG ("Using FFTREAL");
+//    #endif
+//    
+//    #if DROWAUDIO_USE_VDSP
+//    DBG ("Using VDSP");
+//    #endif
+//    
+//    #if DROWAUDIO_USE_SOUNDTOUCH
+//    DBG ("Using SOUNDTOUCH"); 
+//    #endif
 }
 
 MainComponent::~MainComponent()
@@ -125,7 +134,6 @@ MainComponent::~MainComponent()
 
     audioSourcePlayer.setSource (nullptr);
     audioDeviceManager.removeAudioCallback (this);
-//    audioDeviceManager.removeAudioCallback (fftDemo);
 
     const File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
     ValueTree libraryTree (ITunesLibrary::getInstance()->getLibraryTree());
@@ -134,9 +142,27 @@ MainComponent::~MainComponent()
 
 void MainComponent::resized()
 {
+//    const int w = getWidth();
+//    const int h = getHeight();
+//    
+//    int trackInfoHeight = 120;
+//    int searchHeight = 20;
+//
+//    trackInfoComponent.setBounds (0, 0, w - 145, trackInfoHeight + 5);
+//    transport.setBounds (w - 145, 20, 100, h - 20);
+//    clock.setBounds (transport.getX(), 0, transport.getWidth(), 20);
+//
+//    cpuMeter.setBounds (clock.getRight(), 0, w - clock.getRight(), clock.getHeight());
+//    
+//    int meterHeight = trackInfoHeight - cpuMeter.getHeight() - searchHeight;
+//    meterL.setBounds(transport.getRight() + 5, cpuMeter.getBottom(), 15, meterHeight);
+//    meterR.setBounds(meterL.getRight() + 5, cpuMeter.getBottom(), 15, meterHeight);
+//
+//    searchBox.setBounds (transport.getX(), meterL.getBottom() + 5, w - transport.getX() - 5, searchHeight);
+//    tabbedComponent.setBounds (0, searchBox.getBottom() + 5, w, h - searchBox.getBottom() - 5);
+    
     const int w = getWidth();
     const int h = getHeight();
-//    const int m = 5;
 
     trackInfoComponent.setBounds (0, 0, w - 145, 100);
     transport.setBounds (w - 145, 20, 100, h - 20);
@@ -154,7 +180,7 @@ void MainComponent::textEditorTextChanged (TextEditor& editor)
 {
     if (&editor == &searchBox)
     {
-        MusicLibraryTable* musicLibraryTable = static_cast<MusicLibraryTable*> (tabbedComponent.getTabContentComponent (1));
+        auto musicLibraryTable = static_cast<MusicLibraryTable*> (tabbedComponent.getTabContentComponent (1));
         musicLibraryTable->setFilterText (searchBox.getText());
 
         if (tabbedComponent.getCurrentTabName() != "iTunes Library")
@@ -164,19 +190,21 @@ void MainComponent::textEditorTextChanged (TextEditor& editor)
     }
 }
 
-void MainComponent::audioDeviceIOCallback (const float** inputChannelData,
-                                           int numInputChannels,
-                                           float** outputChannelData,
-                                           int numOutputChannels,
-                                           int numSamples)
+void MainComponent::audioDeviceIOCallbackWithContext (const float* const* inputChannelData,
+                                                      int numInputChannels,
+                                                      float* const* outputChannelData,
+                                                      int numOutputChannels,
+                                                      int numSamples,
+                                                      const AudioIODeviceCallbackContext& context)
 {
-    audioSourcePlayer.audioDeviceIOCallback (inputChannelData,
-                                             numInputChannels,
-                                             outputChannelData,
-                                             numOutputChannels,
-                                             numSamples);
+    audioSourcePlayer.audioDeviceIOCallbackWithContext (inputChannelData,
+                                                        numInputChannels,
+                                                        outputChannelData,
+                                                        numOutputChannels,
+                                                        numSamples,
+                                                        context);
 
-    if (fftDemo->isShowing())
+    if (fftDemo->isCurrentlyShowing) 
         fftDemo->processBlock (outputChannelData[0], numSamples);
 
     meterL.copySamples (outputChannelData[0], numSamples);

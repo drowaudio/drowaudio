@@ -40,13 +40,13 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     audioThumbnail (512, *audioFilePlayer.getAudioFormatManager(), audioThumbnailCache),
     distortionDemo (bufferTransformAudioSource)
 {
-    audioThumbnailImage = new AudioThumbnailImage (audioFilePlayer, backgroundThread, audioThumbnail, 512);
+    audioThumbnailImage = std::make_unique<AudioThumbnailImage> (audioFilePlayer, backgroundThread, audioThumbnail, 512);
 
-    positionableWaveDisplay = new PositionableWaveDisplay (*audioThumbnailImage, backgroundThread);
-    addAndMakeVisible (positionableWaveDisplay);
+    positionableWaveDisplay = std::make_unique<PositionableWaveDisplay> (*audioThumbnailImage, backgroundThread);
+    addAndMakeVisible (*positionableWaveDisplay);
 
-    draggableWaveDisplay = new DraggableWaveDisplay (*audioThumbnailImage);
-    addAndMakeVisible (draggableWaveDisplay);
+    draggableWaveDisplay = std::make_unique<DraggableWaveDisplay> (*audioThumbnailImage);
+    addAndMakeVisible (*draggableWaveDisplay);
 
     addAndMakeVisible (&resolutionSlider);
     resolutionSlider.addListener (this);
@@ -127,7 +127,7 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
 
     addAndMakeVisible (&distortionDemo);
 
-    backgroundThread.startThread (1);
+    backgroundThread.startThread (Thread::Priority::background);
 }
 
 void AudioPlaybackDemo::resized()
@@ -144,25 +144,20 @@ void AudioPlaybackDemo::resized()
     Rectangle<int> dragBounds (0, 50 + m, w, 50);
     zoomSlider.setBounds (dragBounds.removeFromLeft (50).removeFromBottom (35));
     draggableWaveDisplay->setBounds (dragBounds.reduced (bevelSize));
-
-    const int centre = w / 2;
-    int offset = (centre - (80 * 3)) / 2;
-    for (int i = 0; i < rate; ++i)
-    {
-        playerControls[i]->setBounds (offset + i * 80 + 2, zoomSlider.getBottom() + 20 + 3 * m, 76, 76);
-    }
-
-    offset += centre / 2;
-
-    for (int i = rate; i < numControls; ++i)
-        playerControls[i]->setBounds (offset + i * 80 + 2, zoomSlider.getBottom() + 20 + 3 * m, 76, 76);
+    
+    for (int i = 0; i < numControls; ++i)
+        playerControls[i]->setBounds (i * 80 + 3 * m, zoomSlider.getBottom() + 20 + 3 * m, 50, 50);
 
     m *= 2;
-    filterGroup.setBounds (playerControls[0]->getX() - m, playerControlLabels[0]->getY() - m,
-                           playerControls[2]->getRight() - playerControls[0]->getX() + (2 * m), playerControls[0]->getBottom() - playerControlLabels[0]->getY() + (2 * m));
+    filterGroup.setBounds (playerControls[0]->getX() - m, 
+                           playerControlLabels[0]->getY() - m,
+                           playerControls[2]->getRight() - playerControls[0]->getX() + (2 * m), 
+                           playerControls[0]->getBottom() - playerControlLabels[0]->getY() + (2 * m));
 
-    rateGroup.setBounds (playerControls[3]->getX() - m, playerControlLabels[3]->getY() - m,
-                         playerControls[5]->getRight() - playerControls[3]->getX() + (2 * m), playerControls[3]->getBottom() - playerControlLabels[3]->getY() + (2 * m));
+    rateGroup.setBounds (playerControls[3]->getX() - m, 
+                         playerControlLabels[3]->getY() - m,
+                         playerControls[5]->getRight() - playerControls[3]->getX() + (2 * m), 
+                         playerControls[3]->getBottom() - playerControlLabels[3]->getY() + (2 * m));
 
     loopComponent.setBounds (positionableWaveDisplay->getBounds());
 

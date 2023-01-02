@@ -51,7 +51,9 @@ public:
     void resized() override;
     void buttonClicked (Button* button) override;
     void sliderValueChanged (Slider* slider) override;
-
+    
+    void visibilityChanged() override;
+    bool isCurrentlyShowing = false;
 private:
     //==============================================================================
     TimeSliceThread renderThread;

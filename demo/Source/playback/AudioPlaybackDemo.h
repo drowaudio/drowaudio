@@ -79,9 +79,9 @@ private:
 #else
     AudioThumbnail audioThumbnail;
 #endif
-    ScopedPointer<AudioThumbnailImage> audioThumbnailImage;
-    ScopedPointer<PositionableWaveDisplay> positionableWaveDisplay;
-    ScopedPointer<DraggableWaveDisplay> draggableWaveDisplay;
+    std::unique_ptr<AudioThumbnailImage> audioThumbnailImage;
+    std::unique_ptr<PositionableWaveDisplay> positionableWaveDisplay;
+    std::unique_ptr<DraggableWaveDisplay> draggableWaveDisplay;
 
     DistortionDemo distortionDemo;
 

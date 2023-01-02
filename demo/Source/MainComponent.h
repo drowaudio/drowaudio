@@ -45,7 +45,6 @@ class MainComponent : public Component,
 {
 public:
     MainComponent();
-
     ~MainComponent();
 
     //==============================================================================
@@ -54,11 +53,12 @@ public:
     /** @internal */
     void textEditorTextChanged (TextEditor& editor) override;
     /** @internal */
-    void audioDeviceIOCallback (const float** inputChannelData,
-                                int numInputChannels,
-                                float** outputChannelData,
-                                int numOutputChannels,
-                                int numSamples) override;
+    void audioDeviceIOCallbackWithContext (const float* const* inputChannelData,
+                                           int numInputChannels,
+                                           float* const* outputChannelData,
+                                           int numOutputChannels,
+                                           int numSamples,
+                                           const AudioIODeviceCallbackContext& context) override;
     /** @internal */
     void audioDeviceAboutToStart (AudioIODevice* device) override;
     /** @internal */
@@ -66,6 +66,8 @@ public:
 
 private:
     //==============================================================================
+    TextEditor searchBox;
+    
     AudioDeviceManager audioDeviceManager;
     AudioSourcePlayer audioSourcePlayer;
     AudioFilePlayerExt audioFilePlayer;
@@ -81,7 +83,6 @@ private:
     Clock clock;
     CpuMeter cpuMeter;
     TabbedComponent tabbedComponent;
-    TextEditor searchBox;
 
     FFTDemo* fftDemo;
 

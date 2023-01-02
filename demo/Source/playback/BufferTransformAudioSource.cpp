@@ -66,7 +66,7 @@ void BufferTransformAudioSource::getNextAudioBlock (const AudioSourceChannelInfo
     if (! isBypassed)
     {
         const int bufferSize = (int) buffer.getSize() - 1;
-        float** channelData = info.buffer->getArrayOfWritePointers();
+        float** channelData = (float**) info.buffer->getArrayOfWritePointers();
 
         for (int c = 0; c < info.buffer->getNumChannels(); ++c)
         {

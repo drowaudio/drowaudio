@@ -108,7 +108,7 @@ void TrackInfoComponent::paint (Graphics& g)
     {
         String displayText;
         if (audioFilePlayer.getTotalLength() > 0)
-            displayText = "No Track Info Available";
+            displayText = audioFilePlayer.getFile().getFileName();
         else
             displayText = "Drop Tracks Here to Begin...";
 
@@ -143,7 +143,7 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
 void TrackInfoComponent::timerCallback()
 {
     const double timeRemaining = audioFilePlayer.getLengthInSeconds() - audioFilePlayer.getCurrentPosition();
-    String remain (timeRemaining < 0.0 ? String::empty : "-");
+    String remain (timeRemaining < 0.0 ? String() : "-");
     remain << timeToTimecodeStringLowRes (timeRemaining);
     remainLabel.setText (remain, dontSendNotification);
 }

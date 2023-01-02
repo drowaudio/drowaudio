@@ -39,7 +39,8 @@ class TransportComponent : public Component,
 {
 public:
     TransportComponent (AudioDeviceManager& audioDeviceManager, AudioFilePlayerExt& audioFilePlayer);
-
+    ~TransportComponent();
+    
     //==============================================================================
     /** @internal */
     void resized() override;
@@ -48,6 +49,8 @@ public:
 
 private:
     //==============================================================================
+    LookAndFeel_V3 settingsLaf;
+    std::unique_ptr <AudioDeviceSelectorComponent> settingsComp;
     AudioDeviceManager& audioDeviceManager;
     AudioFilePlayerExt& audioFilePlayer;
     OwnedArray<TextButton> buttons;

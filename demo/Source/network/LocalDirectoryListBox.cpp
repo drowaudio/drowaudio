@@ -128,7 +128,7 @@ var LocalDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int>& 
         if (currentWorkingDirectory.getChildFile (itemList[currentlySelectedRows[0]]).existsAsFile())
             return currentWorkingDirectory.getChildFile (itemList[currentlySelectedRows[0]]).getFullPathName();
 
-    return String::empty;
+    return String();
 }
 
 //==============================================================================

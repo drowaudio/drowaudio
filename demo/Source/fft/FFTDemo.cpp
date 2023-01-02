@@ -33,8 +33,8 @@
 
 FFTDemo::FFTDemo() :
     renderThread ("FFT Render Thread"),
-    spectroscope (11),
-    sonogram (11)
+    spectroscope (12),
+    sonogram (12)
 {
     pitchDetector.setSampleRate (44100.0);
 
@@ -53,7 +53,7 @@ FFTDemo::FFTDemo() :
 
     renderThread.addTimeSliceClient (&spectroscope);
     renderThread.addTimeSliceClient (&sonogram);
-    renderThread.startThread (3);
+    renderThread.startThread();
 
     addAndMakeVisible (&audioOscilloscope);
     addAndMakeVisible (&spectroscope);
@@ -72,6 +72,11 @@ FFTDemo::~FFTDemo()
 }
 
 //==============================================================================
+void FFTDemo::visibilityChanged()
+{
+    isCurrentlyShowing = isShowing();
+}
+
 void FFTDemo::resized()
 {
     const int h = getHeight();

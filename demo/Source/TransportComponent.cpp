@@ -53,6 +53,19 @@ TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
 
     buttons[loop]->setClickingTogglesState (true);
     //buttons[reverse]->setClickingTogglesState (true);
+    
+    settingsComp = std::make_unique<AudioDeviceSelectorComponent>
+        (audioDeviceManager, 1, 2, 1, 2, false, false, true, false);
+        
+    settingsLaf.setColour (Label::textColourId, Colours::white);
+    settingsLaf.setColour (TextButton::buttonColourId, Colours::white);
+    settingsLaf.setColour (TextButton::textColourOffId, Colours::black);
+    settingsComp->setLookAndFeel (&settingsLaf);
+}
+
+TransportComponent::~TransportComponent()
+{
+    settingsComp->setLookAndFeel (nullptr);
 }
 
 void TransportComponent::resized()
@@ -87,20 +100,10 @@ void TransportComponent::buttonClicked (Button* button)
 //==============================================================================
 void TransportComponent::showAudioSettings()
 {
-    AudioDeviceSelectorComponent settingsComp (audioDeviceManager,
-                                               1, 2,
-                                               1, 2,
-                                               false, false,
-                                               true, false);
-    settingsComp.setSize (500, 400);
-    LookAndFeel_V3 settingsLaf;
-    settingsLaf.setColour (Label::textColourId, Colours::white);
-    settingsLaf.setColour (TextButton::buttonColourId, Colours::white);
-    settingsLaf.setColour (TextButton::textColourOffId, Colours::black);
-    settingsComp.setLookAndFeel (&settingsLaf);
+    settingsComp->setSize (500, 400);
 
-    DialogWindow::showModalDialog ("Audio Settings",
-                                   &settingsComp, nullptr,
-                                   Colours::darkgrey,
-                                   true, true, true);
+    DialogWindow::showDialog ("Audio Settings",
+                                dynamic_cast<Component*>(settingsComp.get()), nullptr,
+                                Colours::darkgrey,
+                                true, true, true);
 }

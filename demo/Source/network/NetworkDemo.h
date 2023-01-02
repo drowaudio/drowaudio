@@ -62,8 +62,9 @@ private:
     LocalDirectoryListBox localBrowser;
     RemoteDirectoryListBox remoteBrowser;
 
-    ScopedPointer<MemoryInputStream> inputStream;
-    ScopedPointer<CURLEasySession> curlSession;
+    // unused:
+    std::unique_ptr<MemoryInputStream> inputStream;
+    std::unique_ptr<CURLEasySession> curlSession;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NetworkDemo)

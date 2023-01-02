@@ -103,7 +103,7 @@ var RemoteDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int>&
     if (curlSession != nullptr && currentlySelectedRows.size() > 0)
         return curlSession->getRemotePath().upToLastOccurrenceOf ("/", true, false) + itemList[currentlySelectedRows[0]];
 
-    return String::empty;
+    return String();
 }
 
 //==============================================================================

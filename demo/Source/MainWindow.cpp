@@ -44,6 +44,11 @@ MainAppWindow::MainAppWindow() :
     setVisible (true);
 }
 
+MainAppWindow::~MainAppWindow()
+{
+    LookAndFeel::setDefaultLookAndFeel (nullptr);
+}
+
 void MainAppWindow::closeButtonPressed()
 {
     JUCEApplication::getInstance()->systemRequestedQuit();

@@ -39,6 +39,7 @@ class MainAppWindow : public DocumentWindow
 {
 public:
     MainAppWindow();
+    ~MainAppWindow();
 
     //==============================================================================
     /** @internal */
