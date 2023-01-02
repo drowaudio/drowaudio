@@ -32,7 +32,7 @@
 #ifndef DROWAUDIO_LTAS_H
 #define DROWAUDIO_LTAS_H
 
-#if DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
+#if DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP || defined (DOXYGEN)
 
 #include "../../maths/dRowAudio_CumulativeMovingAverage.h"
 
