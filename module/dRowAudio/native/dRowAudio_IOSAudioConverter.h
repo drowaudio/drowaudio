@@ -137,11 +137,11 @@ public:
 
     //==============================================================================
     /** @internal */
-    void sendConverstionStartedMessage (void* juceIOSAudioConverter);
+    void sendConvertionStartedMessage (void* juceIOSAudioConverter);
     /** @internal */
-    void sendConverstionUpdatedMessage (void* juceIOSAudioConverter);
+    void sendConvertionUpdatedMessage (void* juceIOSAudioConverter);
     /** @internal */
-    void sendConverstionFinishedMessage (void* juceIOSAudioConverter, void* convertedUrl);
+    void sendConvertionFinishedMessage (void* juceIOSAudioConverter, void* convertedUrl);
 
 private:
     //==============================================================================
@@ -153,7 +153,7 @@ private:
     void* currentAudioConverter;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (IOSAudioConverter);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (IOSAudioConverter)
 };
 
 #endif //JUCE_IOS || DOXYGEN
