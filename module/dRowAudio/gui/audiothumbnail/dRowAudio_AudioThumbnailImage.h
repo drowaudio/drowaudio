@@ -42,7 +42,7 @@
     You can either get the whole image using getImage() or you can get a scaled
     section using getImageAtTime().
 
-    You can also register as a listener to recive update when the sourc changes
+    You can also register as a listener to recive update when the source changes
     or new data has been generated.
  */
 class AudioThumbnailImage : public Timer,
@@ -55,7 +55,7 @@ public:
 
         The file player associated with the display must be passed in.
         To save on the number of threads in your program you can optionally pass in your own
-        AudioThumbnailCache. If you pass in your own the caller is responsible for deleting it,
+        AudioThumbnailCache. If you pass in your own, the caller is responsible for deleting it,
         if not the PositionableWaveform will create and delete its own when not needed.
      */
     explicit AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
