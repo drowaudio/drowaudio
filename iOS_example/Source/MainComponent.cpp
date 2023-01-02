@@ -25,10 +25,13 @@ MainComponent::MainComponent()
     positionSlider.setSliderStyle (Slider::LinearBar);
     positionSlider.setTextBoxStyle (Slider::NoTextBox, false, 100, 20);
     positionSlider.addListener (this);
+    positionSlider.setColour (positionSlider.trackColourId, 
+                              Colours::darkgreen.withAlpha (0.5f));
     
     audioPicker.addListener (this);
+    audioConverter.addListener (this);
     
-    startTimer (1000 / 10);
+    startTimer (500);
 }
 
 MainComponent::~MainComponent()
@@ -65,24 +68,20 @@ void MainComponent::resized()
 
 void MainComponent::paint (Graphics& g)
 {
+    auto textBounds = positionSlider.getBounds();
+    
+    if (title != String())
+        g.drawText (artist + " - " + title, textBounds, Justification::centred);
 }
 
 //==============================================================================
 void MainComponent::timerCallback()
 {
-    const double trackLength = audioManager.getAudioFilePlayer().getLengthInSeconds();
+    auto trackLength = audioManager.getAudioFilePlayer().getLengthInSeconds();
+    auto position = audioManager.getAudioFilePlayer().getCurrentPosition();
     
-    if (trackLength > 0.0)
-    {
-        const double position = audioManager.getAudioFilePlayer().getCurrentPosition()
-                                  / trackLength;
-        
-        positionSlider.setValue (position, false);
-    }
-    else
-    {
-        positionSlider.setValue (0.0, false);
-    }
+    auto sliderPosition = trackLength > 0.0 ? position / trackLength : 0.0;
+    positionSlider.setValue (sliderPosition, NotificationType::dontSendNotification);
 }
 
 void MainComponent::buttonClicked (Button* button)
@@ -109,17 +108,34 @@ void MainComponent::sliderValueChanged (Slider* slider)
 }
 
 //==============================================================================
-void MainComponent::audioPickerFinished (const Array<void*> mpMediaItems)
-{
-    const bool shouldBePlaying = audioManager.getAudioFilePlayer().isPlaying();
-    
-    const String avAssetUrlString (AudioPicker::mpMediaItemToAvassetUrl (mpMediaItems[0]));
-    audioManager.getAudioFilePlayer().setMemoryInputStream (AVAssetAudioFormat::avAssetUrlStringToStream (avAssetUrlString));
-    
-    if (shouldBePlaying)
-        audioManager.getAudioFilePlayer().start();
-}
-
 void MainComponent::audioPickerCancelled()
 {
+}
+
+void MainComponent::audioPickerFinished (const Array<void*>& mpMediaItems)
+{
+    artist = AudioPicker::mpMediaItemToArtist (mpMediaItems[0]);
+    title = AudioPicker::mpMediaItemToTitle (mpMediaItems[0]);
+    
+    auto url = AudioPicker::mpMediaItemToAvassetUrl (mpMediaItems[0]);
+    
+    const bool convertToWavBeforePlaying = false;
+    
+    if (convertToWavBeforePlaying)
+    {
+        audioConverter.startConversion (url); 
+    }
+    else
+    {
+        auto stream = AVAssetAudioFormat::avAssetUrlStringToStream (url);
+        
+        if (audioManager.getAudioFilePlayer().setMemoryInputStream (stream))
+            audioManager.getAudioFilePlayer().startFromZero();
+    }
+}
+
+void MainComponent::conversionFinished (const File& convertedFile)
+{   
+    if (audioManager.getAudioFilePlayer().setFile (convertedFile))
+        audioManager.getAudioFilePlayer().startFromZero();
 }
