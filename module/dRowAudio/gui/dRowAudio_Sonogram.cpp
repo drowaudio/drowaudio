@@ -29,7 +29,7 @@
   ==============================================================================
 */
 
-#if DROWAUDIO_USE_FFTREAL
+#if DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP
 
 Sonogram::Sonogram (int fftSizeLog2)
 :    fftEngine       (fftSizeLog2),
@@ -65,6 +65,7 @@ void Sonogram::paint(Graphics &g)
     g.setColour (findColour (backgroundColourId));
     g.fillRect (getLocalBounds());
 
+    g.setOpacity (1.0f);
     g.drawImageAt (scopeImage, 0, 0, false);
     
     g.setColour (findColour (lineColourId));
