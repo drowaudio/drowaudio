@@ -50,6 +50,8 @@ build/
 
 demo/Builds
 demo/JuceLibraryCode
+iOS_example/Builds
+iOS_example/JuceLibraryCode
 
 # Other source repository archive directories (protects when importing)
 .hg
