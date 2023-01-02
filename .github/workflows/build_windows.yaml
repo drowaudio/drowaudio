@@ -1,0 +1,17 @@
+name: Build Windows
+on: [push]
+
+jobs:
+  build:
+    name: Build Windows
+    timeout-minutes: 40
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Run script"
+        run: .\ci\win\build.bat
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Windows
+          path: ci/win/bin
