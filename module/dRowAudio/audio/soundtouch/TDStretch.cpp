@@ -666,7 +666,7 @@ void TDStretch::processSamples()
         // crosscheck that we don't have buffer overflow...
         if ((int)inputBuffer.numSamples() < (offset + temp + overlapLength * 2))
         {
-            continue;    // just in case, shouldn't really happen
+            break;
         }
 
         outputBuffer.putSamples(inputBuffer.ptrBegin() + channels * (offset + overlapLength), (uint)temp);
@@ -715,7 +715,7 @@ void TDStretch::acceptNewOverlapLength(int newOverlapLength)
         delete[] pMidBuffer;
         delete[] pRefMidBufferUnaligned;
 
-        pMidBuffer = new SAMPLETYPE[overlapLength * 2];
+        pMidBuffer = new SAMPLETYPE[(uint)overlapLength * 2];
         clearMidBuffer();
 
         pRefMidBufferUnaligned = new SAMPLETYPE[2 * (size_t) overlapLength + 16 / sizeof(SAMPLETYPE)];
