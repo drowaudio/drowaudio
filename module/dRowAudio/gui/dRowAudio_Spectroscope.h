@@ -32,7 +32,7 @@
 #ifndef DROWAUDIO_SPECTROSCOPE_H
 #define DROWAUDIO_SPECTROSCOPE_H
 
-#if DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
+#if DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP || defined (DOXYGEN)
 
 /** Creates a standard Spectroscope.
 
