@@ -80,8 +80,8 @@ CURLEasySession::~CURLEasySession()
 //==============================================================================
 void CURLEasySession::setInputStream (InputStream* newInputStream)
 {
-    localFile = File::nonexistent;
-    inputStream = newInputStream;
+    localFile = File();
+    inputStream = rawToUniquePtr (newInputStream); 
 }
 
 void CURLEasySession::setLocalFile (const File& newLocalFile)
@@ -115,7 +115,7 @@ String CURLEasySession::getCurrentWorkingDirectory() const
     if (res == CURLE_OK && CharPointer_ASCII::isValidString (url, 1000))
         return String (url);
 
-    return String::empty;
+    return String();
 }
 
 StringArray CURLEasySession::getDirectoryListing()
@@ -244,7 +244,7 @@ size_t CURLEasySession::readCallback (void* destinationPointer, size_t blockSize
         if (session->inputStream.get() == nullptr)
             return CURL_READFUNC_ABORT; /* failure, can't open file to read */
 
-        return session->inputStream->read (destinationPointer, (int) (blockSize * numBlocks));
+        return (size_t) session->inputStream->read (destinationPointer, (int) (blockSize * numBlocks));
     }
 
     return CURL_READFUNC_ABORT;
