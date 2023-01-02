@@ -30,14 +30,13 @@
 */
 
 //==============================================================================
-#if DROWAUDIO_USE_FFTREAL
 
 #if DROWAUDIO_USE_VDSP
 
 FFT::FFT (int fftSizeLog2) :
-    properties (fftSizeLog2)
+    properties (fftSizeLog2) 
 {
-    config = vDSP_create_fftsetup (properties.fftSizeLog2, 0);
+    config = vDSP_create_fftsetup ((uint32) properties.fftSizeLog2, 0);
 
     buffer.malloc (properties.fftSize);
     bufferSplit.realp = buffer.getData();
@@ -60,19 +59,19 @@ void FFT::setFFTSizeLog2 (int newFFTSizeLog2)
         bufferSplit.realp = buffer.getData();
         bufferSplit.imagp = bufferSplit.realp + properties.fftSizeHalved;
 
-        config = vDSP_create_fftsetup (properties.fftSizeLog2, 0);
+        config = vDSP_create_fftsetup ((uint32) properties.fftSizeLog2, 0);
     }
 }
 
 void FFT::performFFT (float* samples)
 {
-    vDSP_ctoz ((COMPLEX*) samples, 2, &bufferSplit, 1, properties.fftSizeHalved);
-    vDSP_fft_zrip (config, &bufferSplit, 1, properties.fftSizeLog2, FFT_FORWARD);
+    vDSP_ctoz ((COMPLEX*) samples, 2, &bufferSplit, 1, (uint32) properties.fftSizeHalved);
+    vDSP_fft_zrip (config, &bufferSplit, 1, (uint32) properties.fftSizeLog2, FFT_FORWARD);
 }
 
 void FFT::getPhase (float* phaseBuffer)
 {
-    vDSP_zvphas (&bufferSplit, 1, phaseBuffer, 1, properties.fftSizeHalved);
+    vDSP_zvphas (&bufferSplit, 1, phaseBuffer, 1, (uint32) properties.fftSizeHalved);
     phaseBuffer[0] = 0.0f;
 }
 
@@ -84,8 +83,8 @@ void FFT::performIFFT (float* fftBuffer)
 
     jassert (split.realp != bufferSplit.realp); // These can't point to the same data!
 
-    vDSP_fft_zrip (config, &split, 1, properties.fftSizeLog2, FFT_INVERSE);
-    vDSP_ztoc (&split, 1, (COMPLEX*) buffer.getData(), 2, properties.fftSizeHalved);
+    vDSP_fft_zrip (config, &split, 1, (uint32) properties.fftSizeLog2, FFT_INVERSE);
+    vDSP_ztoc (&split, 1, (COMPLEX*) buffer.getData(), 2, (uint32) properties.fftSizeHalved);
 }
 
 void FFT::getMagnitudes (float* magnitudes)
@@ -106,7 +105,12 @@ void FFT::getMagnitudes (float* magnitudes)
     magnitudes[fftSizeHalved] = magnitude (fftSplit.realp[0], 0.0f, oneOverFFTSize, oneOverWindowFactor);
 }
 
-#else
+#endif // DROWAUDIO_USE_VDSP
+
+
+
+
+#if DROWAUDIO_USE_FFTREAL && ! DROWAUDIO_USE_VDSP
 
 FFT::FFT (int fftSizeLog2) :
     properties (fftSizeLog2)
@@ -159,7 +163,12 @@ void FFT::performIFFT (float* fftBuffer)
     config->do_ifft (fftBuffer, buffer.getData());
 }
 
-#endif //DROWAUDIO_USE_VDSP
+#endif // DROWAUDIO_USE_FFTREAL && ! DROWAUDIO_USE_VDSP
+
+
+
+
+#if DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP
 
 void FFTEngine::performFFT (float* samples)
 {
@@ -201,4 +210,4 @@ void FFTEngine::findMagnitues (float* magBuf, bool onlyIfBigger)
     magnitutes.updateListeners();
 }
 
-#endif //DROWAUDIO_USE_FFTREAL
+#endif // DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP
