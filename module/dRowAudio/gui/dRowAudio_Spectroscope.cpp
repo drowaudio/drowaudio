@@ -29,7 +29,7 @@
   ==============================================================================
 */
 
-#if DROWAUDIO_USE_FFTREAL
+#if DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP
 
 Spectroscope::Spectroscope (int fftSizeLog2)
 :    fftEngine       (fftSizeLog2),

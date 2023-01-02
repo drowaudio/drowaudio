@@ -18,7 +18,7 @@ This documentation assumes that the reader has a working knowledge of [JUCE](htt
 
 ## Integration
 
-This fork of dRowAudio requires JUCE 4.3.0.
+This fork of dRowAudio requires JUCE 7.0.3.
 
 
 ## Platforms
@@ -50,3 +50,7 @@ Some portions of the software including but not limited to [SoundTouch](http://w
 ## Other Contributors
 
 * [Joël R. Langlois](https://github.com/jrlanglois)
+* [Maximilian Rest](https://github.com/m-rest)
+* [Roland Rabien](https://github.com/FigBug) 
+* [Atilio Menéndez](https://github.com/atiliomf)
+

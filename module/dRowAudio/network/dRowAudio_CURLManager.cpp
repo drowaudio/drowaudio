@@ -57,6 +57,7 @@ CURLManager::CURLManager()
 CURLManager::~CURLManager()
 {
     curl_global_cleanup();
+    clearSingletonInstance();
 }
 
 CURL* CURLManager::createEasyCurlHandle()

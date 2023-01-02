@@ -47,7 +47,7 @@ BEGIN_JUCE_MODULE_DECLARATION
     website:        http://www.drowaudio.co.uk
     license:        MIT
 
-    dependencies:   juce_audio_basics, juce_audio_devices, juce_audio_formats, juce_audio_utils, juce_core, juce_cryptography, juce_data_structures, juce_events, juce_graphics, juce_gui_basics
+    dependencies:   juce_audio_basics, juce_audio_devices, juce_audio_formats, juce_audio_utils, juce_core, juce_data_structures, juce_events, juce_graphics, juce_gui_basics
 
     OSXFrameworks:   Accelerate
     iOSFrameworks:   Accelerate AVFoundation MediaPlayer CoreMedia
@@ -105,7 +105,7 @@ END_JUCE_MODULE_DECLARATION
     ## External Modules
 
     In order to use the cURL classes you will need to link to the cURL library.
-    This is included as part of Mac OSX, for Windows there pre-built 32-bit binaries
+    This is included as part of Mac OSX, for Windows there are pre-built 32-bit binaries
     or you can download the library yourself for the most recent version.
     Instructions for linkage are detailed on the [dRowAudio wiki][4].
 
@@ -172,7 +172,18 @@ END_JUCE_MODULE_DECLARATION
 //=============================================================================
 #include <juce_audio_utils/juce_audio_utils.h>
 #include <juce_gui_basics/juce_gui_basics.h>
-#include <juce_cryptography/juce_cryptography.h>
+
+#if JUCE_MODULE_AVAILABLE_juce_cryptography
+    #include <juce_cryptography/juce_cryptography.h>
+#endif
+
+#if JUCE_MAC || JUCE_IOS
+ #define Point CarbonDummyPointName
+ #define Component CarbonDummyCompName
+ #include <Accelerate/Accelerate.h>
+ #undef Point
+ #undef Component
+#endif
 
 #undef min
 #undef max
@@ -186,14 +197,11 @@ END_JUCE_MODULE_DECLARATION
 /** Config: DROWAUDIO_USE_FFTREAL
     Enables the FFTReal library. By default this is enabled except on the Mac
     where the Accelerate framework is preferred. However, if you do explicity
-    enable this setting fftreal can be used for testing purposes.
-
+    enable this setting and disable VDSP, FFTReal can be used for testing purposes.
     Not available when building RTAS plugins.
 */
 #ifndef DROWAUDIO_USE_FFTREAL
-    #if ! JUCE_MAC
-        #define DROWAUDIO_USE_FFTREAL 0
-    #endif
+ #define DROWAUDIO_USE_FFTREAL 1
 #endif
 
 #if JucePlugin_Build_RTAS
@@ -206,7 +214,7 @@ END_JUCE_MODULE_DECLARATION
     MacOSX and iOS only.
 */
 #ifndef DROWAUDIO_USE_VDSP
-    #define DROWAUDIO_USE_VDSP 0
+    #define DROWAUDIO_USE_VDSP 1
 #endif
 
 #if ! (JUCE_MAC || JUCE_IOS)
@@ -216,17 +224,16 @@ END_JUCE_MODULE_DECLARATION
 
 /** Config: DROWAUDIO_USE_SOUNDTOUCH
     Enables the SoundTouch library and the associated SoundTouch classes for
-    independant pitch and tempo scaling. By default this is enabled.
+    independent pitch and tempo scaling. By default this is enabled.
 */
 #ifndef DROWAUDIO_USE_SOUNDTOUCH
-    #define DROWAUDIO_USE_SOUNDTOUCH 0
+    #define DROWAUDIO_USE_SOUNDTOUCH 1
 #endif
 
 /** Config: DROWAUDIO_USE_CURL
     Enables the cURL library and the associated network classes.
-    By default this is enabled.
-
-    On Windows, this is only available for 32-bit projects.
+    You might need to add -lcurl under Extra Linker Flags.
+    On Windows, this is only available for 32-bit projects, and it is not available for iOS or Android.
 */
 #ifndef DROWAUDIO_USE_CURL
     #define DROWAUDIO_USE_CURL 0
@@ -240,6 +247,11 @@ END_JUCE_MODULE_DECLARATION
 #if JUCE_WINDOWS// && JUCE_64BIT
     #undef CURL_STATICLIB
     #undef DROWAUDIO_USE_CURL
+#endif
+
+#if JUCE_IOS || JUCE_ANDROID
+    #undef DROWAUDIO_USE_CURL
+    #define DROWAUDIO_USE_CURL 0
 #endif
 
 //=============================================================================

@@ -38,6 +38,9 @@
 
     An iOS-specific class that can be used for choosing audio files on
     supported devices.
+    
+    Note that this only works on actual devices, not on the simulator.
+    Also, you must add an 'NSAppleMusicUsageDescription' to your Info.plist.
 */
 class AudioPicker
 {
@@ -75,6 +78,28 @@ public:
         @see IOSAudioConverter
     */
     static String mpMediaItemToAvassetUrl (void* mpMediaItem);
+
+    /** This helper method returns the MPMediaItemPropertyTitle for a MPMediaItem
+        such as those passed to Listener::audioPickerFinished.
+
+        To keep the obj-C code behind the scenes the argument is a void* but should
+        be a valid MPMediaItem. 
+
+        @returns String
+    */    
+    
+    static String mpMediaItemToTitle (void* mpMediaItem);
+    
+    /** This helper method returns the MPMediaItemPropertyArtist for a MPMediaItem
+        such as those passed to Listener::audioPickerFinished.
+
+        To keep the obj-C code behind the scenes the argument is a void* but should
+        be a valid MPMediaItem. 
+
+        @returns String
+    */     
+    
+    static String mpMediaItemToArtist (void* mpMediaItem);
 
     //==============================================================================
     /** A class for receiving callbacks from a AudioPicker.
@@ -129,7 +154,7 @@ private:
     ListenerList<Listener> listeners;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPicker);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPicker)
 };
 
 #endif //JUCE_IOS || DOXYGEN

@@ -40,6 +40,7 @@ ITunesLibrary::ITunesLibrary()
 
 ITunesLibrary::~ITunesLibrary()
 {
+    clearSingletonInstance();
 }
 
 void ITunesLibrary::setLibraryFile (File newFile)

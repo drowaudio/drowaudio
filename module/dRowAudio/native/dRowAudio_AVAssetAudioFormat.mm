@@ -60,11 +60,6 @@ namespace
         return extensionsArray;
     }
 
-    String nsStringToJuce (NSString* s)
-    {
-        return CharPointer_UTF8 ([s UTF8String]);
-    }
-
     NSString* juceStringToNS (const String& s)
     {
         return [NSString stringWithUTF8String: s.toUTF8()];
@@ -114,13 +109,9 @@ public:
 
                 outputSettings = [[NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt: kAudioFormatLinearPCM], AVFormatIDKey,
-//                                            [NSNumber numberWithFloat:44100.0], AVSampleRateKey,
-//                                            [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
-//                                            [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
                                     [NSNumber numberWithBool: NO], AVLinearPCMIsNonInterleaved,
                                     [NSNumber numberWithBool: YES], AVLinearPCMIsFloatKey,
                                     [NSNumber numberWithInt: 32], AVLinearPCMBitDepthKey,
-//                                            [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
                                     nil]
                                   retain];
 
@@ -140,7 +131,7 @@ public:
     }
 
     //==============================================================================
-    bool readSamples (int** destSamples, int numDestChannels, int startOffsetInDestBuffer,
+    bool readSamples (int* const* destSamples, int numDestChannels, int startOffsetInDestBuffer,
                       int64 startSampleInFile, int numSamples)
     {
         jassert (destSamples != nullptr);
@@ -148,7 +139,7 @@ public:
 
         @autoreleasepool // not sure if there is a better method than this
         {
-            const int numBufferSamplesNeeded = numChannels * numSamples;
+            const int numBufferSamplesNeeded = (int)numChannels * numSamples;
 
             // check if position has changed
             if (lastReadPosition != startSampleInFile)
@@ -178,11 +169,11 @@ public:
                     {
                         const int samplesExpected = (int) CMSampleBufferGetNumSamples (sampleRef);
 
-                        const int numSamplesNeeded = fifoBuffer.getNumAvailable() + (samplesExpected * numChannels);
+                        const int numSamplesNeeded = fifoBuffer.getNumAvailable() + (samplesExpected * (int) numChannels);
                         if (numSamplesNeeded > fifoBuffer.getSize()) //*** need to keep existing
                             fifoBuffer.setSize (numSamplesNeeded);
 
-                        fifoBuffer.writeSamples ((float*) dataPointer, samplesExpected * numChannels);
+                        fifoBuffer.writeSamples ((float*) dataPointer, samplesExpected * (int) numChannels);
                     }
 
                     CFRelease (sampleRef);
@@ -203,11 +194,15 @@ public:
             for (int i = 0; i < numChannels; i++)
                 deinterleavedSamples[i] = &tempDeinterleavedBlock[i * numSamples];
 
-            AudioDataConverters::deinterleaveSamples (tempInterleavedBlock, deinterleavedSamples,
-                                                      numSamples, numChannels);
+            using Format = AudioData::Format<AudioData::Float32, AudioData::NativeEndian>;
+
+            AudioData::deinterleaveSamples
+                (AudioData::InterleavedSource<Format>  { tempInterleavedBlock, static_cast<int>(numChannels) },
+                 AudioData::NonInterleavedDest<Format> { deinterleavedSamples, static_cast<int>(numChannels) },
+                 numSamples);                                         
 
             for (int i = 0; i < numChannels; i++)
-                memcpy (destSamples[i] + startOffsetInDestBuffer, deinterleavedSamples[i], sizeof (float) * numSamples);
+                memcpy (destSamples[i] + startOffsetInDestBuffer, deinterleavedSamples[i], sizeof (float) * (uint64)numSamples);
 
             lastReadPosition += numSamples;
         }
@@ -260,7 +255,7 @@ private:
             {
                 [assetReader addOutput: assetReaderOutput];
 
-                startCMTime = CMTimeMake (startSample, sampleRate);
+                startCMTime = CMTimeMake (startSample, (int32_t) sampleRate);
                 playbackCMTimeRange = CMTimeRangeMake (startCMTime, kCMTimePositiveInfinity);
                 assetReader.timeRange = playbackCMTimeRange;
 
@@ -275,7 +270,7 @@ private:
     }
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AVAssetAudioReader);
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AVAssetAudioReader)
 };
 
 //==============================================================================
@@ -333,12 +328,11 @@ AudioFormatReader* AVAssetAudioFormat::createReaderFor (InputStream* sourceStrea
         }
     }
 
-    return nullptr;
-
     jassertfalse;
     /*  Can't read from a stream, has to be from an AVURLAsset compatible string.
         see createReaderFor (String assetNSURLAsString).
      */
+
     return nullptr;
 }
 

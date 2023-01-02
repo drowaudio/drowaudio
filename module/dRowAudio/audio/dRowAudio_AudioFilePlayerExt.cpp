@@ -33,11 +33,11 @@
 
 AudioFilePlayerExt::AudioFilePlayerExt()
 {
-    loopingAudioSource = new LoopingAudioSource (&audioTransportSource, false);
-    reversibleAudioSource = new ReversibleAudioSource (&audioTransportSource, false);
-    filteringAudioSource = new FilteringAudioSource (reversibleAudioSource, false);
+    loopingAudioSource = std::make_unique<LoopingAudioSource>(&audioTransportSource, false);
+    reversibleAudioSource = std::make_unique<ReversibleAudioSource>(&audioTransportSource, false);
+    filteringAudioSource = std::make_unique<FilteringAudioSource>(reversibleAudioSource.get(), false);
 
-    masterSource = filteringAudioSource;
+    masterSource = filteringAudioSource.get();
 }
 
 AudioFilePlayerExt::~AudioFilePlayerExt()
@@ -142,17 +142,17 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
     if (reader != nullptr)
     {
         // we SHOULD let the AudioFormatReaderSource delete the reader for us..
-        audioFormatReaderSource = new AudioFormatReaderSource (reader, true);
-        bufferingAudioSource = new BufferingAudioSource (audioFormatReaderSource,
-                                                         *bufferingTimeSliceThread,
-                                                         false,
-                                                         32768);
-        soundTouchAudioSource = new SoundTouchAudioSource (bufferingAudioSource);
-        loopingAudioSource = new LoopingAudioSource (soundTouchAudioSource, false);
+        audioFormatReaderSource = std::make_unique<AudioFormatReaderSource>(reader, true); 
+        bufferingAudioSource = std::make_unique<BufferingAudioSource>(audioFormatReaderSource.get(),
+                                                                      *bufferingTimeSliceThread,
+                                                                      false,
+                                                                      32768);
+        soundTouchAudioSource = std::make_unique<SoundTouchAudioSource>(bufferingAudioSource.get());
+        loopingAudioSource = std::make_unique<LoopingAudioSource>(soundTouchAudioSource.get(), false);
         loopingAudioSource->setLoopBetweenTimes (shouldBeLooping);
         updateLoopTimes();
 
-        audioTransportSource.setSource (loopingAudioSource,
+        audioTransportSource.setSource (loopingAudioSource.get(),
                                         0, nullptr,
                                         reader->sampleRate);
 
@@ -162,7 +162,7 @@ bool AudioFilePlayerExt::setSourceWithReader (AudioFormatReader* reader)
         return true;
     }
 
-    setLibraryEntry (ValueTree::invalid);
+    setLibraryEntry (ValueTree());
     listeners.call (&Listener::fileChanged, this);
 
     return false;

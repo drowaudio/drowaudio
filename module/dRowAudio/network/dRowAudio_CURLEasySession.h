@@ -60,8 +60,8 @@ public:
     CURLEasySession (const String& localPath,
                      const String& remotePath,
                      bool upload,
-                     const String& username = String::empty,
-                     const String& password = String::empty);
+                     const String& username = String(),
+                     const String& password = String());
 
     /** Destructor */
     ~CURLEasySession();
@@ -172,8 +172,8 @@ private:
     Atomic<float> progress;
 
     File localFile;
-    ScopedPointer<FileOutputStream> outputStream;
-    ScopedPointer<InputStream> inputStream;
+    std::unique_ptr<FileOutputStream> outputStream;
+    std::unique_ptr<InputStream> inputStream;
     MemoryBlock directoryContentsList;
 
     CriticalSection transferLock;

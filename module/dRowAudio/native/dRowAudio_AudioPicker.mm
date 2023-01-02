@@ -37,21 +37,15 @@ using drow::AudioPicker;
 #include <MediaPlayer/MediaPlayer.h>
 
 //==============================================================================
-@interface JuceUIAudioPicker : MPMediaPickerController <MPMediaPickerControllerDelegate,
-                                                        UIPopoverControllerDelegate>
+@interface JuceUIAudioPicker : MPMediaPickerController <MPMediaPickerControllerDelegate>
 {
 @private
     AudioPicker* owner;
-    UIPopoverController* popover;
 }
-
-@property (nonatomic, assign) UIPopoverController* popover;
 
 @end
 
 @implementation JuceUIAudioPicker
-
-@synthesize popover;
 
 - (id) initWithOwner: (AudioPicker*) owner_
 {
@@ -70,6 +64,16 @@ using drow::AudioPicker;
     [super dealloc];
 }
 
+- (void) selectFile
+{
+    MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeMusic];
+    mediaPicker.delegate = self;
+    mediaPicker.allowsPickingMultipleItems = YES;
+    mediaPicker.prompt = @"Select Your Favourite Song!";
+    [mediaPicker loadView];
+    [self.navigationController presentViewController:mediaPicker animated:YES completion:nil]; 
+}
+
 - (void) mediaPicker: (MPMediaPickerController*) mediaPicker didPickMediaItems: (MPMediaItemCollection*) mediaItemCollection
 {
     owner->sendAudioPickerFinishedMessage (mediaPicker, mediaItemCollection);
@@ -81,28 +85,11 @@ using drow::AudioPicker;
     owner->sendAudioPickerCancelledMessage (mediaPicker);
 }
 
-- (void) setPopover: (UIPopoverController*) newPopover
-{
-    popover = newPopover;
-    popover.delegate = self;
-}
-
-- (void) popoverControllerDidDismissPopover: (UIPopoverController*) popoverController
-{
-    [popoverController release];
-}
-
 + (UIViewController*) topLevelViewController
 {
-    UIResponder* responder = ((UIView*) [[UIApplication sharedApplication].keyWindow.subviews objectAtIndex: 0]).nextResponder;
-
-    if ([responder isKindOfClass: [UIViewController class]])
-    {
-        return (UIViewController*) responder;
-    }
-
-    return nil;
+    return [UIApplication sharedApplication].keyWindow.rootViewController;
 }
+
 @end
 
 namespace drow {
@@ -119,7 +106,7 @@ AudioPicker::~AudioPicker()
 //==============================================================================
 void AudioPicker::show (bool allowMultipleSelection, Rectangle<int> areaToPointTo)
 {
-    UIViewController* controller = [JuceUIAudioPicker topLevelViewController];
+    auto* controller = [JuceUIAudioPicker topLevelViewController];
 
     if (controller != nil)
     {
@@ -136,32 +123,40 @@ void AudioPicker::show (bool allowMultipleSelection, Rectangle<int> areaToPointT
             }
             else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
             {
-                UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController: audioPicker];
-                popover.popoverContentSize = CGSizeMake (320.0f, 480.0f);
-
-                audioPicker.popover = popover;
-
-                CGRect fromFrame = CGRectMake (controller.view.center.x - 160.0f, controller.view.center.y, 320.0f, 480.0f);
+                controller.modalPresentationStyle = UIModalPresentationPopover;
+            
+                CGRect fromFrame = CGRectMake (controller.view.center.x - 160.0f, 
+                                               controller.view.center.y, 
+                                               320.0f, 480.0f);
 
                 if (! areaToPointTo.isEmpty())
                 {
-                    fromFrame = CGRectMake (areaToPointTo.getX(), areaToPointTo.getY(), areaToPointTo.getWidth(), areaToPointTo.getHeight());
+                    fromFrame = CGRectMake (areaToPointTo.getX(), areaToPointTo.getY(), 
+                                            areaToPointTo.getWidth(), areaToPointTo.getHeight());
                 }
-
-                [popover presentPopoverFromRect: fromFrame
-                                         inView: controller.view
-                       permittedArrowDirections: UIPopoverArrowDirectionAny
-                                       animated: YES];
+                
+                controller.popoverPresentationController.sourceView = controller.view;
+                controller.popoverPresentationController.sourceRect = fromFrame;
+                
+                [controller presentViewController: audioPicker animated: YES completion: nil];
             }
         }
         else
-        {
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle: @"Error"
-                                                            message: @"Could not load iPod library"
-                                                           delegate: nil
-                                                  cancelButtonTitle: @"Ok"
-                                                  otherButtonTitles: nil];
-            [alert show];
+        {            
+            UIAlertController* alert = [UIAlertController
+                                         alertControllerWithTitle:@"Error"
+                                         message:@"Could not load music library"
+                                         preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* okAction = [UIAlertAction
+                                        actionWithTitle:@"Ok"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction* action) { /* ok button action */ }];
+            
+            [alert addAction:okAction];
+            
+            UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+            [vc presentViewController:alert animated:YES completion:nil];
         }
     }
 }
@@ -173,6 +168,23 @@ String AudioPicker::mpMediaItemToAvassetUrl (void* mpMediaItem)
     NSURL* location = [item valueForProperty: MPMediaItemPropertyAssetURL];
 
     return [location.absoluteString UTF8String];
+}
+
+//==============================================================================
+String AudioPicker::mpMediaItemToTitle (void* mpMediaItem)
+{
+    MPMediaItem* item = (MPMediaItem*) mpMediaItem;
+    NSString* property = [item valueForProperty: MPMediaItemPropertyTitle];
+
+    return CharPointer_UTF8 ([property UTF8String]);
+}
+
+String AudioPicker::mpMediaItemToArtist (void* mpMediaItem)
+{
+    MPMediaItem* item = (MPMediaItem*) mpMediaItem;
+    NSString* property = [item valueForProperty: MPMediaItemPropertyArtist];
+
+    return CharPointer_UTF8 ([property UTF8String]);
 }
 
 //==============================================================================
@@ -198,7 +210,7 @@ void AudioPicker::sendAudioPickerFinishedMessage (void* picker, void* info)
         MPMediaItemCollection* mediaItemCollection = (MPMediaItemCollection*) info;
 
         Array<void*> pickedMPMediaItems;
-        for (int i = 0; i < mediaItemCollection.count; ++i)
+        for (uint64 i = 0; i < mediaItemCollection.count; ++i)
         {
             MPMediaItem* mediaItem = [mediaItemCollection.items objectAtIndex: i];
             pickedMPMediaItems.add (mediaItem);

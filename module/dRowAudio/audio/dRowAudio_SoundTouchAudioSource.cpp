@@ -60,7 +60,7 @@ void SoundTouchAudioSource::setPlaybackSettings (const SoundTouchProcessor::Play
 //==============================================================================
 void SoundTouchAudioSource::prepareToPlay (int /*samplesPerBlockExpected*/, double sampleRate_)
 {
-    soundTouchProcessor.initialise (numberOfChannels, sampleRate);
+    soundTouchProcessor.initialise (numberOfChannels, sampleRate_);
 
     if (sampleRate_ != sampleRate
         || numberOfSamplesToBuffer != buffer.getNumSamples()
@@ -88,8 +88,8 @@ void SoundTouchAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& inf
     while (soundTouchProcessor.getNumReady() < info.numSamples)
         readNextBufferChunk();
 
-    soundTouchProcessor.readSamples (info.buffer->getArrayOfWritePointers(), buffer.getNumChannels(),
-                                     info.numSamples, info.startSample);
+    soundTouchProcessor.readSamples ((float**) info.buffer->getArrayOfWritePointers(),
+                                     buffer.getNumChannels(), info.numSamples, info.startSample);
 
     effectiveNextPlayPos += (int64) (info.numSamples * soundTouchProcessor.getEffectivePlaybackRatio());
 }
@@ -126,7 +126,8 @@ void SoundTouchAudioSource::readNextBufferChunk()
     source->getNextAudioBlock (info);
     nextReadPos += info.numSamples;
 
-    soundTouchProcessor.writeSamples (buffer.getArrayOfWritePointers(), buffer.getNumChannels(), info.numSamples);
+    soundTouchProcessor.writeSamples ((float**) buffer.getArrayOfWritePointers(), 
+                                      buffer.getNumChannels(), info.numSamples);
 }
 
 #endif //DROWAUDIO_USE_SOUNDTOUCH

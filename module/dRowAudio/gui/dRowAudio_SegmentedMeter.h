@@ -50,7 +50,7 @@
     Eg. in your Component
     @code
         graphicalManager = new TimeSliceThread();
-        graphicalManager->startThread (2);
+        graphicalManager->startThread (Thread::Priority::low);
         addAndMakeVisible (meter = new SegmentedMeter());
         graphicalManager->addTimeSliceClient (meter);
     @endcode

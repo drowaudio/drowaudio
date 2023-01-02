@@ -127,7 +127,7 @@ using drow::IOSAudioConverter;
     NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt: kAudioFormatLinearPCM],        AVFormatIDKey,
                                     [NSNumber numberWithFloat: 44100.0],                    AVSampleRateKey,
-                                    [NSNumber numberWithInt: audioDesc->mChannelsPerFrame], AVNumberOfChannelsKey,
+                                    [NSNumber numberWithInt: (int)audioDesc->mChannelsPerFrame], AVNumberOfChannelsKey,  
                                     [NSData dataWithBytes: &channelLayout length: sizeof (AudioChannelLayout)], AVChannelLayoutKey,
                                     [NSNumber numberWithInt: 16],                           AVLinearPCMBitDepthKey,
                                     [NSNumber numberWithBool: NO],                          AVLinearPCMIsNonInterleaved,
@@ -141,7 +141,7 @@ using drow::IOSAudioConverter;
     {
         [assetWriter addInput: assetWriterInput];
 
-        owner->sendConverstionStartedMessage (self);
+        owner->sendConvertionStartedMessage (self);
     }
     else
     {
@@ -159,7 +159,7 @@ using drow::IOSAudioConverter;
     [assetWriter startSessionAtSourceTime: startTime];
 
     NSLog (@"duration: %f", CMTimeGetSeconds (soundTrack.timeRange.duration));
-    double finalSizeByteCount = soundTrack.timeRange.duration.value * 2 * sizeof (SInt16);
+    double finalSizeByteCount = (double) soundTrack.timeRange.duration.value * 2 * sizeof (SInt16);
 
     __block UInt64 convertedByteCount = 0;
 
@@ -191,7 +191,7 @@ using drow::IOSAudioConverter;
              {
                  // done!
                  [assetWriterInput markAsFinished];
-                 [assetWriter finishWriting];
+                 [assetWriter finishWritingWithCompletionHandler: ^{ }];
                  [assetReader cancelReading];
                  NSDictionary *outputFileAttributes = [[NSFileManager defaultManager]
                                                        attributesOfItemAtPath: exportPath
@@ -223,18 +223,18 @@ using drow::IOSAudioConverter;
 
 - (void) updateProgress: (NSNumber*) progressFloat
 {
-    owner->sendConverstionUpdatedMessage (self);
+    owner->sendConvertionUpdatedMessage (self);
 }
 
 - (void) finishedConverting: (NSURL*) exportURL
 {
     if (cancelConverting)
     {
-        owner->sendConverstionFinishedMessage (self, exportURL);
+        owner->sendConvertionFinishedMessage (self, exportURL);
     }
     else
     {
-        owner->sendConverstionFinishedMessage (self, exportURL);
+        owner->sendConvertionFinishedMessage (self, exportURL);
     }
 }
 
@@ -293,25 +293,26 @@ void IOSAudioConverter::removeListener (Listener* const listener)
 }
 
 //==============================================================================
-void IOSAudioConverter::sendConverstionStartedMessage (void* juceIOSAudioConverter)
+void IOSAudioConverter::sendConvertionStartedMessage (void* juceIOSAudioConverter)
 {
     listeners.call (&Listener::conversionStarted);
 }
 
-void IOSAudioConverter::sendConverstionUpdatedMessage (void* juceIOSAudioConverter)
+void IOSAudioConverter::sendConvertionUpdatedMessage (void* juceIOSAudioConverter)
 {
     JuceIOSAudioConverter* converter = (JuceIOSAudioConverter*) juceIOSAudioConverter;
     progress = converter.progress;
     listeners.call (&Listener::conversionUpdated, converter.progress);
 }
 
-void IOSAudioConverter::sendConverstionFinishedMessage (void* juceIOSAudioConverter, void* convertedUrl)
+void IOSAudioConverter::sendConvertionFinishedMessage (void* juceIOSAudioConverter, void* convertedUrl)
 {
     JuceIOSAudioConverter* converter = (JuceIOSAudioConverter*) juceIOSAudioConverter;
     currentAudioConverter = nullptr;
     [converter release];
 
-    convertedFile = File (stripFileProtocolForLocal (String ([((NSURL*) convertedUrl).absoluteString UTF8String])));
+    URL juceUrl ([((NSURL*) convertedUrl).absoluteString UTF8String]);
+    convertedFile = juceUrl.getLocalFile();
     listeners.call (&Listener::conversionFinished, convertedFile);
 }
 

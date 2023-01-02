@@ -46,6 +46,11 @@ public:
     {
         addMouseListener (this, true);
     }
+    
+    ~BrowserColumn()
+    {
+        setLookAndFeel (nullptr);
+    }
 
     void mouseDrag (const MouseEvent&) override
     {
@@ -92,10 +97,10 @@ private:
 };
 
 //==================================================================================
-class ColumnFileBrowserContents    : public Component,
-                                  public FileBrowserListener,
-                                  public ChangeListener,
-                                  public ComponentListener
+class ColumnFileBrowserContents   : public Component,
+                                    public FileBrowserListener,
+                                    public ChangeListener,
+                                    public ComponentListener
 {
 public:
     ColumnFileBrowserContents (WildcardFileFilter* filesToDisplay_, Viewport* parentViewport)
@@ -106,16 +111,22 @@ public:
         activeLookAndFeel->setColour (DirectoryContentsDisplayComponent::highlightColourId,
                                       Colours::darkorange);
         inactiveLookAndFeel = std::make_unique<ColumnFileBrowserLookAndFeel>();
-
-        columns.add (new BrowserColumn (filesToDisplay_));
-        addAndMakeVisible (columns[0]);
-        columns[0]->setSize (300, 50);
-        columns[0]->addListener (this);
-        columns[0]->addChangeListener (this);
-        columns[0]->addComponentListener (this);
-        columns[0]->setLookAndFeel (activeLookAndFeel.get());
-
+    
+        auto* firstColumn = new BrowserColumn (filesToDisplay_);
+        columns.add (firstColumn);
+        addAndMakeVisible (firstColumn);
+        firstColumn->setSize (300, 50);
+        addListenersToColumn (firstColumn);
+        firstColumn->setLookAndFeel (activeLookAndFeel.get());
+        
         activeColumn = 0;
+    }
+    
+    void addListenersToColumn (BrowserColumn* column)
+    {
+        column->addListener (this);
+        column->addChangeListener (this);
+        column->addComponentListener (this);
     }
 
     void resized() override
@@ -139,14 +150,13 @@ public:
         {
             addColumn (file);
         }
-        else        // otherwise remove uneeded columns and change last
+        else // otherwise remove uneeded columns and change last
         {
             for (int i = 0; i < columns.size(); ++i)
             {
                 if (columns[activeColumn] == columns[i])
                 {
-                    const int numColumnsToRemove = columns.size() - i - (file.isDirectory() ? 1 : 0);
-                    removeColumn (numColumnsToRemove);
+                    columns.removeLast (columns.size() - 1 - i - (file.isDirectory() ? 1 : 0));
 
                     if (file.isDirectory())
                         columns.getLast()->setRoot (file);
@@ -176,15 +186,13 @@ public:
         {
             const int startingWidth = columns.getLast()->getWidth();
 
-            BrowserColumn* newColumn = new BrowserColumn (filesToDisplay);
-            newColumn->setLookAndFeel (inactiveLookAndFeel.get());
-            newColumn->setRoot (rootDirectory);
-            newColumn->setSize (startingWidth, 50);
-            newColumn->addListener (this);
-            newColumn->addChangeListener (this);
-            newColumn->addComponentListener (this);
+            auto* newColumn = new BrowserColumn (filesToDisplay);
             columns.add (newColumn);
             addAndMakeVisible (newColumn);
+            newColumn->setSize (startingWidth, 50);
+            newColumn->setLookAndFeel (inactiveLookAndFeel.get());
+            newColumn->setRoot (rootDirectory);
+            addListenersToColumn (newColumn);
 
             resized();
 
@@ -194,21 +202,9 @@ public:
         return false;
     }
 
-    void removeColumn (int numColumns)
-    {
-        for (int i = numColumns; --i >= 0;)
-        {
-            columns[i]->removeListener (this);
-            columns[i]->removeChangeListener (this);
-            columns[i]->removeComponentListener (this);
-        }
-
-        columns.removeLast (numColumns - 1);
-    }
-
     void changeListenerCallback (ChangeBroadcaster* changedComponent) override
     {
-        BrowserColumn* changedColumn = static_cast<BrowserColumn*> (changedComponent);
+        auto changedColumn = static_cast<BrowserColumn*> (changedComponent);
 
         if (changedColumn->getHighlightedFile().getFileName().isNotEmpty())
         {
@@ -283,6 +279,9 @@ public:
 
 private:
     //==================================================================================
+    std::unique_ptr<LookAndFeel> activeLookAndFeel;
+    std::unique_ptr<LookAndFeel> inactiveLookAndFeel;
+    
     WildcardFileFilter* filesToDisplay;
     Viewport* viewport;
     OwnedArray <BrowserColumn> columns;
@@ -290,9 +289,6 @@ private:
     int activeColumn;
 
     friend class ColumnFileBrowser;
-
-    std::unique_ptr<LookAndFeel> activeLookAndFeel;
-    std::unique_ptr<LookAndFeel> inactiveLookAndFeel;
 
     //==================================================================================
     int getNumValidChildFiles (const File& sourceFile) const
@@ -318,8 +314,8 @@ ColumnFileBrowser::ColumnFileBrowser (WildcardFileFilter* filesToDisplay_)
     setScrollBarsShown (false, true);
     setScrollBarThickness (10);
 
-    fileBrowser = new ColumnFileBrowserContents (filesToDisplay_, this);
-    setViewedComponent (fileBrowser);
+    fileBrowser = std::make_unique<ColumnFileBrowserContents> (filesToDisplay_, this);
+    setViewedComponent (fileBrowser.get());
 }
 
 void ColumnFileBrowser::setActiveColumHighlightColour (Colour colour)

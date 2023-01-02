@@ -32,7 +32,7 @@
 #ifndef DROWAUDIO_SPECTROGRAPH_H
 #define DROWAUDIO_SPECTROGRAPH_H
 
-#if DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
+#if DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP || defined (DOXYGEN)
 
 /** Creates a standard right-left greyscale Spectrograph. */
 class Spectrograph

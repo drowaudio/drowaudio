@@ -32,9 +32,14 @@
 #ifndef DROWAUDIO_FFT_H_INCLUDED
 #define DROWAUDIO_FFT_H_INCLUDED
 
-#if DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
-
 #include "dRowAudio_Window.h"
+
+#if DROWAUDIO_USE_VDSP
+
+typedef FFTSetup FFTConfig;
+typedef DSPSplitComplex SplitComplex;
+
+#elif DROWAUDIO_USE_FFTREAL || defined (DOXYGEN)
 
 typedef std::unique_ptr<ffft::FFTReal<float>> FFTConfig;
 
@@ -43,6 +48,10 @@ struct SplitComplex
     float* realp;
     float* imagp;
 };
+
+#endif
+
+#if DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP
 
 //==============================================================================
 /** Low-level FFT class for performing single FFT calculations.
@@ -250,5 +259,5 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTEngine)
 };
 
-#endif
+#endif  // DROWAUDIO_USE_FFTREAL || DROWAUDIO_USE_VDSP
 #endif  // DROWAUDIO_FFT_H_INCLUDED

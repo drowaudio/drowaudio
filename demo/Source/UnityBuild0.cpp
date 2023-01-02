@@ -1,0 +1,5 @@
+#include "Main.cpp"
+#include "DemoLookAndFeel.cpp"
+#include "MainWindow.cpp"
+#include "MainComponent.cpp"
+#include "TrackInfoComponent.cpp"

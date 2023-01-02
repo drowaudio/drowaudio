@@ -41,8 +41,7 @@ namespace
 }
 
 //========================================================================
-FilteringAudioSource::FilteringAudioSource (AudioSource* inputSource,
-        bool deleteInputWhenDeleted)
+FilteringAudioSource::FilteringAudioSource (AudioSource* inputSource, bool deleteInputWhenDeleted)
     : input         (inputSource, deleteInputWhenDeleted),
       sampleRate    (44100.0),
       filterSource  (true)

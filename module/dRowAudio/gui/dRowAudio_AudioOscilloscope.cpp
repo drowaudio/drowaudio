@@ -91,7 +91,7 @@ void AudioOscilloscope::timerCallback()
     const int width = getWidth();
     const float halfHeight = getHeight() * 0.5f;
 
-    const int numPixelsToDraw = bufferPos - lastBufferPos;
+    const int numPixelsToDraw = abs (bufferPos - lastBufferPos);
     const int newSectionStart = width - numPixelsToDraw;
 
     // shuffle image along
