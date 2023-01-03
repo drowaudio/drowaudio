@@ -41,21 +41,21 @@
 
     @see AudioFormat
  */
-class AudioSampleBufferAudioFormat : public AudioFormat
+class AudioSampleBufferAudioFormat : public juce::AudioFormat
 {
 public:
     /** Creates a format object. */
     AudioSampleBufferAudioFormat();
 
     //==============================================================================
-    Array<int> getPossibleSampleRates() override;
-    Array<int> getPossibleBitDepths() override;
+    juce::Array<int> getPossibleSampleRates() override;
+    juce::Array<int> getPossibleBitDepths() override;
     bool canDoStereo() override;
     bool canDoMono() override;
-    AudioFormatReader* createReaderFor (InputStream* sourceStream,
+    juce::AudioFormatReader* createReaderFor (juce::InputStream* sourceStream,
                                         bool deleteStreamIfOpeningFails) override;
 
-    AudioFormatWriter* createWriterFor (OutputStream* streamToWriteTo,
+    juce::AudioFormatWriter* createWriterFor (juce::OutputStream* streamToWriteTo,
                                         double sampleRateToUse,
                                         unsigned int numberOfChannels,
                                         int bitsPerSample,

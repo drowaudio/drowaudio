@@ -38,7 +38,7 @@
     This filter is a subclass of the Juce IIR filter but uses
     some additional methods to give more filter designs.
  */
-class BiquadFilter : public IIRFilter
+class BiquadFilter : public juce::IIRFilter
 {
 public:
     //==============================================================================
@@ -54,29 +54,29 @@ public:
 
     //==============================================================================
     /**    Makes the filter a Low-pass filter. */
-    static IIRCoefficients makeLowPass (const double sampleRate,
+    static juce::IIRCoefficients makeLowPass (const double sampleRate,
                                         const double frequency,
                                         const double Q) noexcept;
 
     /**    Makes the filter a High-pass filter. */
-    static IIRCoefficients  makeHighPass (const double sampleRate,
+    static juce::IIRCoefficients  makeHighPass (const double sampleRate,
                                           const double frequency,
                                           const double Q) noexcept;
 
     /**    Makes the filter a Band-pass filter. */
-    static IIRCoefficients  makeBandPass (const double sampleRate,
+    static juce::IIRCoefficients  makeBandPass (const double sampleRate,
                                           const double frequency,
                                           const double Q) noexcept;
 
     /**    Makes the filter a Band-stop filter. */
-    static IIRCoefficients  makeBandStop (const double sampleRate,
+    static juce::IIRCoefficients  makeBandStop (const double sampleRate,
                                           const double frequency,
                                           const double Q) noexcept;
 
     /**    Makes the filter a peak/notch filter. This type of filter
         adds or subtracts from the unfiltered signal.
      */
-    static IIRCoefficients  makePeakNotch (const double sampleRate,
+    static juce::IIRCoefficients  makePeakNotch (const double sampleRate,
                                            const double frequency,
                                            const double Q,
                                            const float gainFactor) noexcept;
@@ -85,7 +85,7 @@ public:
         This type of filter has a complex phase response so will give a comb
         filtered effect when combined with an unfilterd copy of the signal.
      */
-    static IIRCoefficients  makeAllpass (const double sampleRate,
+    static juce::IIRCoefficients  makeAllpass (const double sampleRate,
                                          const double frequency,
                                          const double Q) noexcept;
 

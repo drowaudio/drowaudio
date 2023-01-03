@@ -41,10 +41,10 @@
     This will load an audio file and display its waveform. Clicking on the waveform will
     reposition the transport source.
  */
-class PositionableWaveDisplay : public Component,
+class PositionableWaveDisplay : public juce::Component,
                                 public AudioThumbnailImage::Listener,
-                                public TimeSliceClient,
-                                public AsyncUpdater
+                                public juce::TimeSliceClient,
+                                public juce::AsyncUpdater
 {
 public:
     //====================================================================================
@@ -52,7 +52,7 @@ public:
         The AudioThumbnailImage associated with the display must be passed in.
      */
     explicit PositionableWaveDisplay (AudioThumbnailImage& sourceToBeUsed,
-                                      TimeSliceThread& threadToUse);
+                                      juce::TimeSliceThread& threadToUse);
 
     /** Destructor.
      */
@@ -65,11 +65,11 @@ public:
 
     /** Sets the colour to use for the background.
      */
-    void setBackgroundColour (const Colour& newBackgroundColour);
+    void setBackgroundColour (const juce::Colour& newBackgroundColour);
 
     /** Sets the colour to use for the waveform.
      */
-    void setWaveformColour (const Colour& newWaveformColour);
+    void setWaveformColour (const juce::Colour& newWaveformColour);
 
     /** Sets the current horizontal zoom.
         1.0 displays the whole waveform, 0.5 will show half etc.
@@ -95,7 +95,7 @@ public:
     void resized ();
 
     /** @internal */
-    void paint (Graphics &g);
+    void paint (juce::Graphics &g);
 
     /** @internal */
     int useTimeSlice();
@@ -106,15 +106,15 @@ public:
 private:
     //==============================================================================
     AudioThumbnailImage& audioThumbnailImage;
-    TimeSliceThread& threadToUse;
-    CriticalSection imageLock;
+    juce::TimeSliceThread& threadToUse;
+    juce::CriticalSection imageLock;
 
     AudioFilePlayer& audioFilePlayer;
     double fileLength, oneOverFileLength, currentSampleRate;
     double zoomRatio, startOffsetRatio, verticalZoomRatio;
 
-    Colour backgroundColour, waveformColour;
-    Image cachedImage, cursorImage;
+    juce::Colour backgroundColour, waveformColour;
+    juce::Image cachedImage, cursorImage;
 
     StateVariable<double> drawTimes;
 

@@ -41,8 +41,8 @@
     updated as the thumbnail is generated. You can set the zoom levels of the
     waveform and drag the image to reposition the source.
 */
-class DraggableWaveDisplay : public Component,
-                             public MultiTimer,
+class DraggableWaveDisplay : public juce::Component,
+                             public juce::MultiTimer,
                              public AudioThumbnailImage::Listener
 {
 public:
@@ -84,11 +84,11 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    void paint (Graphics &g) override;
+    void paint (juce::Graphics &g) override;
     /** @internal */
-    void mouseDown (const MouseEvent &e) override;
+    void mouseDown (const juce::MouseEvent &e) override;
     /** @internal */
-    void mouseUp (const MouseEvent &e) override;
+    void mouseUp (const juce::MouseEvent &e) override;
     /** @internal */
     void timerCallback (int timerId) override;
 
@@ -122,8 +122,8 @@ private:
 
     bool waveformIsFullyLoaded;
 
-    CriticalSection lock;
-    Image playheadImage;
+    juce::CriticalSection lock;
+    juce::Image playheadImage;
 
     bool isMouseDown, isDraggable, shouldBePlaying, mouseShouldTogglePlay;
     StateVariable<int> mouseX, movedX;

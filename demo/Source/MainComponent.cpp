@@ -56,7 +56,7 @@ MainComponent::MainComponent()
                             true);
 
     const File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
-    ValueTree libraryTree (readValueTreeFromFile (libraryFile));
+    juce::ValueTree libraryTree (readValueTreeFromFile (libraryFile));
     ITunesLibrary::getInstance()->setLibraryTree (libraryTree);
     ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     MusicLibraryTable* musicLibraryTable = new MusicLibraryTable();
@@ -136,7 +136,7 @@ MainComponent::~MainComponent()
     audioDeviceManager.removeAudioCallback (this);
 
     const File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
-    ValueTree libraryTree (ITunesLibrary::getInstance()->getLibraryTree());
+    juce::ValueTree libraryTree (ITunesLibrary::getInstance()->getLibraryTree());
     writeValueTreeToFile (libraryTree, libraryFile);
 }
 

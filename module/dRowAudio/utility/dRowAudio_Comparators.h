@@ -44,7 +44,7 @@ namespace ValueTreeComparators
         {
         }
 
-        int compareElements (const ValueTree& first, const ValueTree& second) const
+        int compareElements (const juce::ValueTree& first, const juce::ValueTree& second) const
         {
             const int result = first[attributeToSort].toString().compareNatural (second[attributeToSort].toString());
 
@@ -70,7 +70,7 @@ namespace ValueTreeComparators
         {
         }
 
-        int compareElements (const ValueTree& first, const ValueTree& second) const
+        int compareElements (const juce::ValueTree& first, const juce::ValueTree& second) const
         {
             const int result = (NumericalType (first[attributeToSort]) > NumericalType (second[attributeToSort])) ? 1 : -1;
 
@@ -99,7 +99,7 @@ namespace ValueTreeComparators
         {
         }
 
-        int compareElements (const ValueTree& first, const ValueTree& second) const
+        int compareElements (const juce::ValueTree& first, const juce::ValueTree& second) const
         {
             int result = first[attributeToSort].toString().compareNatural (second[attributeToSort].toString());
 

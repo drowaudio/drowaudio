@@ -40,7 +40,7 @@ public:
                             + BasicFileBrowser::canSelectFiles
                             + BasicFileBrowser::canSelectDirectories
                             + BasicFileBrowser::canSelectMultipleItems,
-                            File::getSpecialLocation (File::userMusicDirectory),
+                            juce::File::getSpecialLocation (File::userMusicDirectory),
                             filesToDisplay_),
           fileDragEnabled (false)
     {
@@ -293,7 +293,7 @@ private:
     //==================================================================================
     int getNumValidChildFiles (const File& sourceFile) const
     {
-        return sourceFile.getNumberOfChildFiles (File::findFilesAndDirectories + File::ignoreHiddenFiles,
+        return sourceFile.getNumberOfChildFiles (File::findFilesAndDirectories + juce::File::ignoreHiddenFiles,
                                                  filesToDisplay == nullptr
                                                     ? "*"
                                                     : filesToDisplay->getDescription().fromFirstOccurrenceOf ("(", false, false).upToFirstOccurrenceOf (")", false, false));

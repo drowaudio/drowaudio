@@ -71,7 +71,7 @@ private:
         double x1, x2, y1, y2;
     };
 
-    HeapBlock<FilterState> filterStates;
+    juce::HeapBlock<FilterState> filterStates;
 
     //==============================================================================
     void setFilterCoefficients (double c1, double c2, double c3, double c4, double c5, double c6);

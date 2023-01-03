@@ -44,7 +44,7 @@
     out by the compiler.
 */
 template <typename ElementType,
-          typename TypeOfCriticalSectionToUse = DummyCriticalSection>
+          typename TypeOfCriticalSectionToUse = juce::DummyCriticalSection>
 class FifoBuffer
 {
 public:
@@ -173,8 +173,8 @@ public:
 
 private:
     //==============================================================================
-    AbstractFifo abstractFifo;
-    HeapBlock<ElementType> buffer;
+    juce::AbstractFifo abstractFifo;
+    juce::HeapBlock<ElementType> buffer;
     TypeOfCriticalSectionToUse lock;
 
     //==============================================================================

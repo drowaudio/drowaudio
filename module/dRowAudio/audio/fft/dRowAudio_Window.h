@@ -116,7 +116,7 @@ private:
     //==============================================================================
     WindowType windowType;
     float windowFactor, oneOverWindowFactor;
-    AudioSampleBuffer windowBuffer;
+    juce::AudioSampleBuffer windowBuffer;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Window)
 };

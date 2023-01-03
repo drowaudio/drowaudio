@@ -146,7 +146,7 @@ void AudioFileDropTarget::itemDropped (const SourceDetails& dragSourceDetails)
         ReferenceCountedValueTree::Ptr childTree (dynamic_cast<ReferenceCountedValueTree*> (dragSourceDetails.description[0].getObject()));
         if (childTree != nullptr)
         {
-            ValueTree itemTree (childTree->getValueTree());
+            juce::ValueTree itemTree (childTree->getValueTree());
             File newFile (itemTree.getProperty (MusicColumns::columnNames[MusicColumns::Location]));
 
             if (newFile.existsAsFile())

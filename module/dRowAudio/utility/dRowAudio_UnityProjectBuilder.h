@@ -95,7 +95,7 @@ public:
 private:
     //==============================================================================
     File projectFile, unityProjectFile;
-    ValueTree project;
+    juce::ValueTree project;
     juce::StringArray filesToAdd;
     int numFiles;
     bool shouldLog;

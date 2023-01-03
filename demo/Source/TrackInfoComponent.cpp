@@ -74,7 +74,7 @@ void TrackInfoComponent::paint (Graphics& g)
     g.setColour (Colours::white);
     g.setFont (20);
 
-    ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
+    juce::ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
 
     if (trackInfo.isValid())
     {
@@ -130,7 +130,7 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
     if (player == &audioFilePlayer
         && settingCode == AudioFilePlayerExt::SoundTouchSetting)
     {
-        ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
+        juce::ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
         double bpm = trackInfo[MusicColumns::columnNames[MusicColumns::BPM]].toString().getDoubleValue();
 
         if (audioFilePlayer.getSoundTouchAudioSource() != nullptr)

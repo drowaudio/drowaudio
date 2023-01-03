@@ -35,8 +35,8 @@
 /** Handy class that will display the cpu usage of a given AudioDeviceManager
     as a percentage.
 */
-class CpuMeter : public Label,
-                 public Timer
+class CpuMeter : public juce::Label,
+                 public juce::Timer
 {
 public:
     /** Creates a CpuMeter.
@@ -44,13 +44,13 @@ public:
         You need to provide the device manager to monitor and optionally the refresh
         rate of the display.
     */
-    CpuMeter (AudioDeviceManager* deviceManagerToUse, int updateIntervalMs = 50);
+    CpuMeter (juce::AudioDeviceManager* deviceManagerToUse, int updateIntervalMs = 50);
 
     /** Returns the current cpu usage as a percentage. */
     double getCurrentCpuUsage() const { return currentCpuUsage; }
 
     /** Changes the colour of the text. */
-    void setTextColour (Colour newTextColour);
+    void setTextColour (juce::Colour newTextColour);
 
     //==============================================================================
     /** @internal */
@@ -60,7 +60,7 @@ public:
 
 private:
     //==============================================================================
-    AudioDeviceManager* deviceManager;
+    juce::AudioDeviceManager* deviceManager;
     int updateInterval;
     double currentCpuUsage;
 

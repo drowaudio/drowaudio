@@ -80,7 +80,7 @@ public:
         buffer.realloc (newSize);
 
         if (newSize > bufferSize)
-            zeromem (buffer + bufferSize, (newSize - bufferSize) * sizeof (float));
+            juce::zeromem (buffer + bufferSize, (newSize - bufferSize) * sizeof (float));
 
         bufferSize = newSize;
     }
@@ -143,13 +143,13 @@ public:
     */
     void applyBuffer (float* samples, size_t numSamples)
     {
-        const size_t numToApply = jmin (bufferSize, numSamples);
+        const size_t numToApply = juce::jmin (bufferSize, numSamples);
 
         for (size_t i = 0; i < numToApply; ++i)
             samples[i] *= buffer[i];
 
         if (bufferSize < numSamples)
-            zeromem (samples + numToApply, (numSamples - numToApply) * sizeof (float));
+            juce::zeromem (samples + numToApply, (numSamples - numToApply) * sizeof (float));
     }
 
     /** This performs a very quick copy of some data given to it.
@@ -196,10 +196,10 @@ public:
 
 private:
     //==============================================================================
-    HeapBlock<float> buffer;
+    juce::HeapBlock<float> buffer;
     size_t bufferSize;
 
-    ListenerList<Listener> listeners;
+    juce::ListenerList<Listener> listeners;
 
     JUCE_LEAK_DETECTOR (Buffer)
 };

@@ -73,15 +73,15 @@ public:
     //==============================================================================
     /** Returns a unicode sharp symbol.
      */
-    static const juce_wchar getSharpSymbol() noexcept   { return *CharPointer_UTF8 ("\xe2\x99\xaf"); }
+    static const juce::juce_wchar getSharpSymbol() noexcept   { return *juce::CharPointer_UTF8 ("\xe2\x99\xaf"); }
 
     /** Returns a unicode flat symbol.
      */
-    static const juce_wchar getFlatSymbol() noexcept    { return *CharPointer_UTF8 ("\xe2\x99\xad"); }
+    static const juce::juce_wchar getFlatSymbol() noexcept    { return *juce::CharPointer_UTF8 ("\xe2\x99\xad"); }
 
     /** Returns a unicode natural symbol.
      */
-    static const juce_wchar getNaturalSymbol() noexcept { return *CharPointer_UTF8 ("\xe2\x99\xae"); }
+    static const juce::juce_wchar getNaturalSymbol() noexcept { return *juce::CharPointer_UTF8 ("\xe2\x99\xae"); }
 
     //==============================================================================
     /** Creates a Pitch object from a given frequency in Hertz e.g 440.
@@ -172,7 +172,7 @@ private:
         static const char* const sharpNoteNames[] = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         static const char* const flatNoteNames[]  = { "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B" };
 
-        if (isPositiveAndBelow (pitchClass, 12))
+        if (juce::isPositiveAndBelow (pitchClass, 12))
             return asSharps ? sharpNoteNames[pitchClass] : flatNoteNames[pitchClass];
         else
             return {};
@@ -189,7 +189,7 @@ private:
 
         if (numChars > 0)
         {
-            const juce_wchar base = pitchClassName.toLowerCase()[0];
+            const juce::juce_wchar base = pitchClassName.toLowerCase()[0];
 
             switch (base)
             {
@@ -206,7 +206,7 @@ private:
 
         if (numChars > 1)
         {
-            const juce_wchar sharpOrFlat = pitchClassName[1];
+            const juce::juce_wchar sharpOrFlat = pitchClassName[1];
 
             switch (sharpOrFlat)
             {

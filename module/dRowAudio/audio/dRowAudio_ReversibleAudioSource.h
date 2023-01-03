@@ -39,7 +39,7 @@
 
     @see PositionableAudioSource, AudioTransportSource, BufferingAudioSource
 */
-class ReversibleAudioSource : public AudioSource
+class ReversibleAudioSource : public juce::AudioSource
 {
 public:
     /** Creates an ReversableAudioFormatReaderSource for a given reader.
@@ -49,7 +49,7 @@ public:
                                                 when this object is deleted; if false it will be
                                                 left up to the caller to manage its lifetime
     */
-    ReversibleAudioSource (PositionableAudioSource* const inputSource,
+    ReversibleAudioSource (juce::PositionableAudioSource* const inputSource,
                            const bool deleteInputWhenDeleted);
 
     //==============================================================================
@@ -65,12 +65,12 @@ public:
     /** @internal */
     void releaseResources() override;
     /** @internal */
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
 
 private:
     //==============================================================================
-    OptionalScopedPointer<PositionableAudioSource> input;
-    int64 previousReadPosition;
+    juce::OptionalScopedPointer<juce::PositionableAudioSource> input;
+    juce::int64 previousReadPosition;
     bool volatile isForwards;
 
     //==============================================================================

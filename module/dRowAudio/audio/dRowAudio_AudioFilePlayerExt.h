@@ -70,11 +70,11 @@ public:
     //==============================================================================
     /** Sets the current library entry.
      */
-    void setLibraryEntry (const ValueTree& newEntry) { libraryEntry = newEntry; }
+    void setLibraryEntry (const juce::ValueTree& newEntry) { libraryEntry = newEntry; }
 
     /** Returns the currents library entry.
      */
-    ValueTree getLibraryEntry() const { return libraryEntry; }
+    juce::ValueTree getLibraryEntry() const { return libraryEntry; }
 
     //==============================================================================
     /** Sets SoundTouchProcessor settings.
@@ -120,7 +120,7 @@ public:
 
 private:
     //==============================================================================
-    std::unique_ptr<BufferingAudioSource> bufferingAudioSource;
+    std::unique_ptr<juce::BufferingAudioSource> bufferingAudioSource;
     std::unique_ptr<LoopingAudioSource> loopingAudioSource;
     std::unique_ptr<SoundTouchAudioSource> soundTouchAudioSource;
     std::unique_ptr<ReversibleAudioSource> reversibleAudioSource;
@@ -130,10 +130,10 @@ private:
     bool shouldBeLooping = false;
     double currentLoopStartTime, currentLoopEndTime;
 
-    ValueTree libraryEntry;
+    juce::ValueTree libraryEntry;
 
     //==============================================================================
-    bool setSourceWithReader (AudioFormatReader* reader);
+    bool setSourceWithReader (juce::AudioFormatReader* reader);
     void updateLoopTimes();
 
     //==============================================================================

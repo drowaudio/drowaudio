@@ -178,7 +178,7 @@ public:
     /** Calculates the magnitude of an FFT bin. */
     static inline float magnitude (float real, float imag, float oneOverFFTSize, float oneOverWindowFactor)
     {
-        const float rawMagnitude = juce_hypot (real, imag);
+        const float rawMagnitude = juce::juce_hypot (real, imag);
         const float magnitudeForFFTSize = rawMagnitude * oneOverFFTSize;
 
         return magnitudeForFFTSize * oneOverWindowFactor;
@@ -187,7 +187,7 @@ public:
 private:
     //==============================================================================
     Properties properties;
-    HeapBlock<float> buffer;
+    juce::HeapBlock<float> buffer;
 
     FFTConfig config;
     SplitComplex bufferSplit;

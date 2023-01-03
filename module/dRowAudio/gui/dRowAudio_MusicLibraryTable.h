@@ -155,8 +155,8 @@ private:
     TableListBox table;
     juce::String currentFilterText;
 
-    ValueTree dataList;
-    ValueTree filteredDataList;
+    juce::ValueTree dataList;
+    juce::ValueTree filteredDataList;
     SortedSet<int> selectedRowsLibIds;
 
     int filteredNumRows;

@@ -39,7 +39,7 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
     if (sourceDirectory.isDirectory())
     {
         Array<File> files;
-        sourceDirectory.findChildFiles (files, File::findFiles + File::ignoreHiddenFiles, true);
+        sourceDirectory.findChildFiles (files, juce::File::findFiles + juce::File::ignoreHiddenFiles, true);
 
         juce::String includeString, sourceString;
 

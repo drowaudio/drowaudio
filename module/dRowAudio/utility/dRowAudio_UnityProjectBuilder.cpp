@@ -66,7 +66,7 @@ bool UnityProjectBuilder::run()
     }
 
     logOutput ("Valid project found...");
-    ValueTree mainGroupTree (project.getChildWithName (Ids::mainGroup));
+    juce::ValueTree mainGroupTree (project.getChildWithName (Ids::mainGroup));
 
     if (! mainGroupTree.isValid())
     {
@@ -84,7 +84,7 @@ bool UnityProjectBuilder::run()
     const Array<File> cppFiles (buildUnityCpp (sourceDir));
 
     // add unity files
-    ValueTree unityGroup (Ids::group);
+    juce::ValueTree unityGroup (Ids::group);
     unityGroup.setProperty (Ids::idProp, createAlphaNumericUID(), nullptr);
     unityGroup.setProperty (Ids::nameProp, "Unity", nullptr);
     mainGroupTree.addChild (unityGroup, -1, nullptr);
@@ -95,7 +95,7 @@ bool UnityProjectBuilder::run()
 
         if (cppFile.exists())
         {
-            ValueTree cppTree (Ids::file);
+            juce::ValueTree cppTree (Ids::file);
             cppTree.setProperty (Ids::idProp, createAlphaNumericUID(), nullptr);
             cppTree.setProperty (Ids::nameProp, cppFile.getFileName(), nullptr);
             cppTree.setProperty (Ids::compileProp, true, nullptr);
@@ -137,7 +137,7 @@ void UnityProjectBuilder::recurseGroup (ValueTree group, const File& sourceDir)
 
     for (int i = 0; i < numChildren; ++i)
     {
-        ValueTree child (group.getChild (i));
+        juce::ValueTree child (group.getChild (i));
 
         if (child.hasType (Ids::group))
             recurseGroup (child, sourceDir);
@@ -201,7 +201,7 @@ void UnityProjectBuilder::updateBuildDirectories()
     if (buildDir.isEmpty())
         return;
 
-    ValueTree exportsTree (project.getChildWithName (Ids::exportFormats));
+    juce::ValueTree exportsTree (project.getChildWithName (Ids::exportFormats));
 
     if (! exportsTree.isValid())
         return;
@@ -210,7 +210,7 @@ void UnityProjectBuilder::updateBuildDirectories()
 
     for (int i = 0; i < numExports; ++i)
     {
-        ValueTree exporter (exportsTree.getChild (i));
+        juce::ValueTree exporter (exportsTree.getChild (i));
 
         if (exporter.hasProperty (Ids::targetFolderProp))
         {

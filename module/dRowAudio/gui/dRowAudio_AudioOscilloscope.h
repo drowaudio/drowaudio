@@ -39,8 +39,8 @@
     Use this when you need detailed images of a waveform instead of a general
     idea of what is passing through it.
  */
-class AudioOscilloscope : public Component,
-                          public Timer
+class AudioOscilloscope : public juce::Component,
+                          public juce::Timer
 {
 public:
     /** Creates an AudioOscilloscope.
@@ -82,10 +82,10 @@ public:
     void setHorizontalZoom (float newHorizontalZoomFactor) { horizontalZoomFactor = newHorizontalZoomFactor; }
 
     /** Sets the background colour of the scope. */
-    void setBackgroundColour (Colour newBackgroundColour) { backgroundColour = newBackgroundColour; }
+    void setBackgroundColour (juce::Colour newBackgroundColour) { backgroundColour = newBackgroundColour; }
 
     /** Sets the trace colour of the scope. */
-    void setTraceColour (Colour newTraceColour) { traceColour = newTraceColour; }
+    void setTraceColour (juce::Colour newTraceColour) { traceColour = newTraceColour; }
 
     //==============================================================================
     /** @internal Used to add a sample to the internal buffer. */
@@ -95,22 +95,22 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     /** @internal */
     void timerCallback() override;
 
 private:
     //==============================================================================
-    HeapBlock<float> circularBufferMax, circularBufferMin;
+    juce::HeapBlock<float> circularBufferMax, circularBufferMin;
     int bufferSizeMask;
     float currentMax, currentMin;
     std::atomic<int> bufferPos, lastBufferPos, bufferSize, numSamplesIn;
     float bufferLastMax, bufferLastMin;
 
-    Image waveformImage;
+    juce::Image waveformImage;
 
     float verticalZoomFactor, horizontalZoomFactor;
-    Colour backgroundColour, traceColour;
+    juce::Colour backgroundColour, traceColour;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioOscilloscope)

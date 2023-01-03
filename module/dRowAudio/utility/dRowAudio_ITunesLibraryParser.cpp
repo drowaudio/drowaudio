@@ -30,7 +30,7 @@
 */
 
 ITunesLibraryParser::ITunesLibraryParser (const File& iTunesLibraryFileToUse,
-                                          const ValueTree& elementToFill,
+                                          const juce::ValueTree& elementToFill,
                                           const CriticalSection& lockToUse) :
     Thread ("iTunesLibraryParser"),
     lock (lockToUse),
@@ -75,7 +75,7 @@ void ITunesLibraryParser::run()
         {
             for (int i = 0; i < treeToFill.getNumChildren(); ++i)
             {
-                ValueTree currentItem (treeToFill.getChild (i));
+                juce::ValueTree currentItem (treeToFill.getChild (i));
                 int idOfChild = int (currentItem.getProperty (MusicColumns::columnNames[MusicColumns::ID]));
 
                 existingIds.add (idOfChild);
@@ -87,7 +87,7 @@ void ITunesLibraryParser::run()
     while (! threadShouldExit())
     {
         int currentItemId = -1;
-        ValueTree newElement;
+        juce::ValueTree newElement;
 
         bool alreadyExists = false;
         bool needToModify = false;
@@ -105,7 +105,7 @@ void ITunesLibraryParser::run()
                     // first get the relevant tree item
                     lock.enter();
                     const int index = existingIds.indexOf (currentItemId);
-                    ValueTree existingElement (existingItems.getUnchecked (index));
+                    juce::ValueTree existingElement (existingItems.getUnchecked (index));
                     lock.exit();
 
                     // and then check the modification dates
@@ -130,7 +130,7 @@ void ITunesLibraryParser::run()
                     }
                 }
 
-                newElement = ValueTree (MusicColumns::libraryItemIdentifier);
+                newElement = juce::ValueTree (MusicColumns::libraryItemIdentifier);
                 newElement.setProperty (MusicColumns::columnNames[MusicColumns::ID], currentItemId, nullptr);
             }
 

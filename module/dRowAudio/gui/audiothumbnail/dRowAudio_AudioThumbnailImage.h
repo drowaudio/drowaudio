@@ -45,8 +45,8 @@
     You can also register as a listener to recive update when the source changes
     or new data has been generated.
  */
-class AudioThumbnailImage : public Timer,
-                            public TimeSliceClient,
+class AudioThumbnailImage : public juce::Timer,
+                            public juce::TimeSliceClient,
                             public AudioFilePlayer::Listener
 {
 public:
@@ -59,8 +59,8 @@ public:
         if not the PositionableWaveform will create and delete its own when not needed.
      */
     explicit AudioThumbnailImage (AudioFilePlayer& sourceToBeUsed,
-                                  TimeSliceThread& backgroundThread,
-                                  AudioThumbnailBase& thumbnailToUse,
+                                  juce::TimeSliceThread& backgroundThread,
+                                  juce::AudioThumbnailBase& thumbnailToUse,
                                   int sourceSamplesPerThumbnailSample);
 
     /** Destructor. */
@@ -68,11 +68,11 @@ public:
 
     /** Sets the colour to use for the background.
      */
-    void setBackgroundColour (const Colour& newBackgroundColour);
+    void setBackgroundColour (const juce::Colour& newBackgroundColour);
 
     /** Sets the colour to use for the waveform.
      */
-    void setWaveformColour (const Colour& newWaveformColour);
+    void setWaveformColour (const juce::Colour& newWaveformColour);
 
     /** Sets the image resolution in lines per pixel.
         This will cause the waveform to be re-generated from the source.
@@ -82,11 +82,11 @@ public:
     //====================================================================================
     /** Returns the whole waveform image.
      */
-    const Image getImage()                          {   return waveformImage;   }
+    const juce::Image getImage()                          {   return waveformImage;   }
 
     /** Returns a section of the image at a given time for a given duration.
      */
-    const Image getImageAtTime (double startTime, double duration);
+    const juce::Image getImageAtTime (double startTime, double duration);
 
     /** Returns the AudioFilePlayer currently being used.
      */
@@ -109,7 +109,7 @@ public:
     void resized ();
 
     /** @internal */
-    void paint (Graphics &g);
+    void paint (juce::Graphics &g);
 
     //====================================================================================
     /** @internal */
@@ -161,20 +161,20 @@ public:
 private:
     //==============================================================================
     AudioFilePlayer& filePlayer;
-    TimeSliceThread& backgroundThread;
-    AudioThumbnailBase& audioThumbnail;
+    juce::TimeSliceThread& backgroundThread;
+    juce::AudioThumbnailBase& audioThumbnail;
     int sourceSamplesPerThumbnailSample;
 
-    ReadWriteLock imageLock;
-    Image waveformImage, tempSectionImage;
+    juce::ReadWriteLock imageLock;
+    juce::Image waveformImage, tempSectionImage;
 
-    Colour backgroundColour, waveformColour;
+    juce::Colour backgroundColour, waveformColour;
 
     bool sourceLoaded, renderComplete;
     double fileLength, oneOverFileLength, currentSampleRate, oneOverSampleRate;
     double lastTimeDrawn, resolution;
 
-    ListenerList <Listener> listeners;
+    juce::ListenerList <Listener> listeners;
 
     //==============================================================================
     void refreshFromFilePlayer();

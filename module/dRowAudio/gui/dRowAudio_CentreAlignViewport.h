@@ -32,9 +32,9 @@
 #ifndef DROWAUDIO_CENTREALIGNVIEWPORT_H
 #define DROWAUDIO_CENTREALIGNVIEWPORT_H
 
-class CentreAlignViewport : public Component,
-                            private ComponentListener,
-                            private ScrollBar::Listener
+class CentreAlignViewport : public juce::Component,
+                            private juce::ComponentListener,
+                            private juce::ScrollBar::Listener
 {
 public:
     /** Creates a Viewport that will optionally center the contenet component.
@@ -219,13 +219,13 @@ public:
 
         Handy if you need to customise the bar somehow.
     */
-    ScrollBar* getVerticalScrollBar() noexcept { return &verticalScrollBar; }
+    juce::ScrollBar* getVerticalScrollBar() noexcept { return &verticalScrollBar; }
 
     /** Returns a pointer to the scrollbar component being used.
 
         Handy if you need to customise the bar somehow.
     */
-    ScrollBar* getHorizontalScrollBar() noexcept { return &horizontalScrollBar; }
+    juce::ScrollBar* getHorizontalScrollBar() noexcept { return &horizontalScrollBar; }
 
     //==============================================================================
     /** Tells the viewport whether or not to centre its content component. */
@@ -236,17 +236,17 @@ public:
 
     //==============================================================================
     /** @internal */
-    bool useMouseWheelMoveIfNeeded (const MouseEvent& e, float wheelIncrementX, float wheelIncrementY);
+    bool useMouseWheelMoveIfNeeded (const juce::MouseEvent& e, float wheelIncrementX, float wheelIncrementY);
 
     //==============================================================================
     /** @internal */
     void resized() override;
     /** @internal */
-    void scrollBarMoved (ScrollBar* scrollBarThatHasMoved, double newRangeStart) override;
+    void scrollBarMoved (juce::ScrollBar* scrollBarThatHasMoved, double newRangeStart) override;
     /** @internal */
-    void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel) override;
+    void mouseWheelMove (const juce::MouseEvent& event, const juce::MouseWheelDetails& wheel) override;
     /** @internal */
-    bool keyPressed (const KeyPress& key) override;
+    bool keyPressed (const juce::KeyPress& key) override;
     /** @internal */
     void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized) override;
 
@@ -257,9 +257,9 @@ private:
     int scrollBarThickness;
     int singleStepX, singleStepY;
     bool showHScrollbar, showVScrollbar;
-    Component contentHolder;
-    ScrollBar verticalScrollBar;
-    ScrollBar horizontalScrollBar;
+    juce::Component contentHolder;
+    juce::ScrollBar verticalScrollBar;
+    juce::ScrollBar horizontalScrollBar;
     bool shouldCentre;
 
     //==============================================================================

@@ -52,7 +52,7 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
 
     if (initialFileOrDirectory == File())
     {
-        currentRoot = File::getCurrentWorkingDirectory();
+        currentRoot = juce::File::getCurrentWorkingDirectory();
     }
     else if (initialFileOrDirectory.isDirectory())
     {

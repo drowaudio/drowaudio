@@ -50,7 +50,7 @@ public:
         to put the parsed data.
     */
     ITunesLibraryParser (const File& iTunesLibraryFileToUse,
-                         const ValueTree& elementToFill,
+                         const juce::ValueTree& elementToFill,
                          const CriticalSection& lockToUse);
 
     /** Destructor. */
@@ -72,7 +72,7 @@ private:
     const CriticalSection& lock;
 
     const File iTunesLibraryFile;
-    ValueTree treeToFill, partialTree;
+    juce::ValueTree treeToFill, partialTree;
     std::unique_ptr<XmlElement> iTunesDatabase;
     XmlElement *iTunesLibraryTracks, *currentElement;
 

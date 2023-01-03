@@ -76,8 +76,8 @@ private:
     FFTEngine fftEngine;
     Buffer ltasBuffer;
     const int fftSize, numBins;
-    HeapBlock<float> tempBuffer;
-    Array<CumulativeMovingAverage> ltasAvg;
+    juce::HeapBlock<float> tempBuffer;
+    juce::Array<CumulativeMovingAverage> ltasAvg;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LTAS)

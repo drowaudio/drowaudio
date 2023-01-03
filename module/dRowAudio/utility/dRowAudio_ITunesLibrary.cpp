@@ -56,14 +56,14 @@ void ITunesLibrary::setLibraryFile (File newFile)
 //==============================================================================
 const File ITunesLibrary::getDefaultITunesLibraryFile()
 {
-    return File::getSpecialLocation (File::userMusicDirectory).getChildFile ("iTunes/iTunes Music Library.xml");
+    return juce::File::getSpecialLocation (File::userMusicDirectory).getChildFile ("iTunes/iTunes Music Library.xml");
 }
 
 //==============================================================================
 void ITunesLibrary::setLibraryTree (ValueTree& newTreeToUse)
 {
     if (! newTreeToUse.isValid())
-        newTreeToUse = ValueTree (MusicColumns::libraryIdentifier);
+        newTreeToUse = juce::ValueTree (MusicColumns::libraryIdentifier);
 
     libraryTree = newTreeToUse;
 }

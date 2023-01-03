@@ -101,7 +101,7 @@ void MusicLibraryTable::setFilterText (const juce::String& filterString)
     }
     else
     {
-        filteredDataList = ValueTree (dataList.getType());
+        filteredDataList = juce::ValueTree (dataList.getType());
 
         for (int e = 0; e < dataList.getNumChildren(); ++e)
         {
@@ -183,7 +183,7 @@ void MusicLibraryTable::paintCell (Graphics& g,
 
     {
         const ScopedLock sl (currentLibrary->getParserLock());
-        const ValueTree rowElement (filteredDataList.getChild (rowNumber));
+        const juce::ValueTree rowElement (filteredDataList.getChild (rowNumber));
 
         if (rowElement.isValid())
         {
@@ -224,12 +224,12 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
             || newSortColumnId == MusicColumns::Added
             || newSortColumnId == MusicColumns::Modified)
         {
-            ValueTreeComparators::Numerical<double> sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
+            juce::ValueTreeComparators::Numerical<double> sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
             filteredDataList.sort (sorter, nullptr, false);
         }
         else
         {
-            ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
+            juce::ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
                                                                   MusicColumns::columnNames[MusicColumns::LibID],
                                                                   isForwards);
             filteredDataList.sort (sorter, nullptr, false);
@@ -250,7 +250,7 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
     for (int i = getNumRows(); --i >= 0;)
     {
         const ScopedLock sl (currentLibrary->getParserLock());
-        const ValueTree rowElement (filteredDataList.getChild (i));
+        const juce::ValueTree rowElement (filteredDataList.getChild (i));
 
         if (rowElement.isValid())
         {
@@ -284,7 +284,7 @@ var MusicLibraryTable::getDragSourceDescription (const SparseSet<int>& currently
             const ScopedLock sl (currentLibrary->getParserLock());
 
             // get child from main tree with same LibID
-            const ValueTree& tree (filteredDataList.getChild (currentlySelectedRows[i]));
+            const juce::ValueTree& tree (filteredDataList.getChild (currentlySelectedRows[i]));
 
             ReferenceCountedValueTree::Ptr childTree = new ReferenceCountedValueTree (tree);
             itemsArray.append (childTree.get());

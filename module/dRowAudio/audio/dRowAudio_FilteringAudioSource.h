@@ -33,7 +33,7 @@
 #define DROWAUDIO_FILTERINGAUDIOSOURCE_H
 
 /** An AudioSource that contains three settable filters to EQ the audio stream. */
-class FilteringAudioSource : public AudioSource
+class FilteringAudioSource : public juce::AudioSource
 {
 public:
     //==============================================================================
@@ -76,13 +76,13 @@ public:
     /** @internal */
     void releaseResources() override;
     /** @internal */
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
 
 private:
     //==============================================================================
-    OptionalScopedPointer<AudioSource> input;
+    juce::OptionalScopedPointer<AudioSource> input;
     float gains[numFilters];
-    IIRFilter filter[2][numFilters];
+    juce::IIRFilter filter[2][numFilters];
 
     double sampleRate;
     bool filterSource;

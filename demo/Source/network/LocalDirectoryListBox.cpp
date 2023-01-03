@@ -40,11 +40,11 @@ static juce::StringArray getFilesForDirectory (const juce::String& fullPath)
     juce::StringArray files;
     files.add ("..");
 
-    File cwd (fullPath);
+    juce::File cwd (fullPath);
     if (cwd.isDirectory())
     {
         Array<File> childFiles;
-        cwd.findChildFiles (childFiles, File::findFilesAndDirectories, false);
+        cwd.findChildFiles (childFiles, juce::File::findFilesAndDirectories, false);
 
         for (int i = 0; i < childFiles.size(); ++i)
             files.add (childFiles[i].getFileName());

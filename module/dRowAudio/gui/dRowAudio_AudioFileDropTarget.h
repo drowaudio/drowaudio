@@ -39,10 +39,10 @@
     MusicLibraryTable drag sources. This will draw a coloured bezel if it can
     read the drag source provided.
  */
-class AudioFileDropTarget : public Component,
-                            public ComponentListener,
-                            public DragAndDropTarget,
-                            public FileDragAndDropTarget
+class AudioFileDropTarget : public juce::Component,
+                            public juce::ComponentListener,
+                            public juce::DragAndDropTarget,
+                            public juce::FileDragAndDropTarget
 {
 public:
     //==============================================================================
@@ -55,7 +55,7 @@ public:
         @see AudioFilePlayer
      */
     AudioFileDropTarget (AudioFilePlayerExt* audioFilePlayerToControl,
-                         Component* componentToAttachTo = nullptr);
+                         juce::Component* componentToAttachTo = nullptr);
 
     /** Destructor.
      */
@@ -63,23 +63,23 @@ public:
 
     /** Sets the colour of the bezel to be drawn.
      */
-    void setBezelColour (Colour newColour);
+    void setBezelColour (juce::Colour newColour);
 
     /** Retruns the current bezel colour being used.
      */
-    Colour getBezelColour() const { return bezelColour; }
+    juce::Colour getBezelColour() const { return bezelColour; }
 
     //==============================================================================
     /** @internal */
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     /** @internal */
     bool hitTest (int x, int y) override;
     /** @internal */
-    void mouseEnter (const MouseEvent& e) override;
+    void mouseEnter (const juce::MouseEvent& e) override;
     /** @internal */
-    void mouseExit (const MouseEvent& e) override;
+    void mouseExit (const juce::MouseEvent& e) override;
     /** @internal */
-    void componentMovedOrResized (Component& component,
+    void componentMovedOrResized (juce::Component& component,
                                   bool wasMoved,
                                   bool wasResized) override;
     /** @internal */
@@ -98,9 +98,9 @@ public:
 private:
     //==============================================================================
     AudioFilePlayerExt* audioFilePlayer;
-    SafePointer<Component> attachedComponent;
+    SafePointer<juce::Component> attachedComponent;
     bool dragTested, interestedInDrag;
-    Colour bezelColour;
+    juce::Colour bezelColour;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFileDropTarget)

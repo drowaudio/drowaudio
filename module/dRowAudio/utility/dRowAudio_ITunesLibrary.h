@@ -78,7 +78,7 @@ public:
     void setLibraryTree (ValueTree& newTreeToUse);
 
     /** Returns the ValueTree that is being filled. */
-    ValueTree getLibraryTree() const { return libraryTree; }
+    juce::ValueTree getLibraryTree() const { return libraryTree; }
 
     /** Returns the lock being used in the parser.
 
@@ -140,7 +140,7 @@ private:
 
     File libraryFile;
     std::unique_ptr<ITunesLibraryParser> parser;
-    ValueTree libraryTree;
+    juce::ValueTree libraryTree;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ITunesLibrary)

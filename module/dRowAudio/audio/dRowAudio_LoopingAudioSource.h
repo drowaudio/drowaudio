@@ -39,7 +39,7 @@
 
     @see PositionableAudioSource, AudioTransportSource, BufferingAudioSource
 */
-class LoopingAudioSource : public PositionableAudioSource
+class LoopingAudioSource : public juce::PositionableAudioSource
 {
 public:
     /** Creates an LoopingAudioFormatReaderSource for a given reader.
@@ -49,7 +49,7 @@ public:
                                                 when this object is deleted; if false it will be
                                                 left up to the caller to manage its lifetime
     */
-    LoopingAudioSource (PositionableAudioSource* const inputSource,
+    LoopingAudioSource (juce::PositionableAudioSource* const inputSource,
                         bool deleteInputWhenDeleted);
 
     //==============================================================================
@@ -70,7 +70,7 @@ public:
 
     //==============================================================================
     /** Sets the next read position ignoring the loop bounds. */
-    void setNextReadPositionIgnoringLoop (int64 newPosition);
+    void setNextReadPositionIgnoringLoop (juce::int64 newPosition);
 
     //==============================================================================
     /** @internal */
@@ -78,28 +78,28 @@ public:
     /** @internal */
     void releaseResources() override;
     /** @internal */
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
     /** @internal */
-    void setNextReadPosition (int64 newPosition) override;
+    void setNextReadPosition (juce::int64 newPosition) override;
     /** @internal */
-    int64 getNextReadPosition() const override;
+    juce::int64 getNextReadPosition() const override;
     /** @internal */
-    int64 getTotalLength() const override;
+    juce::int64 getTotalLength() const override;
     /** @internal */
     bool isLooping() const override;
 
 private:
     //==============================================================================
-    OptionalScopedPointer<PositionableAudioSource> input;
-    CriticalSection loopPosLock;
+    juce::OptionalScopedPointer<PositionableAudioSource> input;
+    juce::CriticalSection loopPosLock;
 
     volatile bool isLoopingBetweenTimes;
     double loopStartTime, loopEndTime;
-    int64 loopStartSample, loopEndSample;
+    juce::int64 loopStartSample, loopEndSample;
     double currentSampleRate;
 
-    AudioSourceChannelInfo tempInfo;
-    AudioSampleBuffer tempBuffer;
+    juce::AudioSourceChannelInfo tempInfo;
+    juce::AudioSampleBuffer tempBuffer;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LoopingAudioSource)

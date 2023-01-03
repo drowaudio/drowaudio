@@ -39,8 +39,8 @@
 
     Clicking and dragging on the display will reposition the transport source.
 */
-class AudioTransportCursor : public Component,
-                             public Timer,
+class AudioTransportCursor : public juce::Component,
+                             public juce::Timer,
                              public AudioFilePlayer::Listener
 {
 public:
@@ -78,13 +78,13 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     /** @internal */
-    void mouseDown (const MouseEvent& e) override;
+    void mouseDown (const juce::MouseEvent& e) override;
     /** @internal */
-    void mouseUp (const MouseEvent& e) override;
+    void mouseUp (const juce::MouseEvent& e) override;
     /** @internal */
-    void mouseDrag (const MouseEvent& e) override;
+    void mouseDrag (const juce::MouseEvent& e) override;
     /** @internal */
     void timerCallback() override;
 
@@ -96,7 +96,7 @@ private:
     double zoomRatio, startOffsetRatio;
     bool shouldStopTimer;
 
-    Image cursorImage;
+    juce::Image cursorImage;
 
     StateVariable<int> transportLineXCoord;
     float currentXScale;

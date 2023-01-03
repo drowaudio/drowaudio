@@ -152,7 +152,7 @@ private:
     float minFrequency, maxFrequency;
     Buffer buffer1, buffer2;
 
-    IIRFilter highFilter, lowFilter;
+    juce::IIRFilter highFilter, lowFilter;
     int numSamplesNeededForDetection;
     Buffer currentBlockBuffer;
     FifoBuffer<float> inputFifoBuffer;

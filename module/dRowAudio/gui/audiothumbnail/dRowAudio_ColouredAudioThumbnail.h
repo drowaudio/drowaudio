@@ -55,7 +55,7 @@
 
     @see AudioThumbnailCache
 */
-class ColouredAudioThumbnail : public AudioThumbnailBase
+class ColouredAudioThumbnail : public juce::AudioThumbnailBase
 {
 public:
     //==============================================================================
@@ -71,8 +71,8 @@ public:
                             object can be shared between multiple thumbnails
     */
     ColouredAudioThumbnail (int sourceSamplesPerThumbnailSample,
-                            AudioFormatManager& formatManagerToUse,
-                            AudioThumbnailCache& cacheToUse);
+                            juce::AudioFormatManager& formatManagerToUse,
+                            juce::AudioThumbnailCache& cacheToUse);
 
     /** Destructor. */
     ~ColouredAudioThumbnail();
@@ -93,7 +93,7 @@ public:
         @returns true if the source could be opened as a valid audio file, false if this failed for
         some reason.
     */
-    bool setSource (InputSource* newSource);
+    bool setSource (juce::InputSource* newSource);
 
     /** Gives the thumbnail an AudioFormatReader to use directly.
         This will start parsing the audio in a background thread (unless the hash code
@@ -105,18 +105,18 @@ public:
         should use the setSource() method instead, which will only open the file when
         it needs to.
     */
-    void setReader (AudioFormatReader* newReader, int64 hashCode);
+    void setReader (juce::AudioFormatReader* newReader, juce::int64 hashCode);
 
     /** Resets the thumbnail, ready for adding data with the specified format.
         If you're going to generate a thumbnail yourself, call this before using addBlock()
         to add the data.
     */
-    void reset (int numChannels, double sampleRate, int64 totalSamplesInSource = 0);
+    void reset (int numChannels, double sampleRate, juce::int64 totalSamplesInSource = 0);
 
     /** Adds a block of level data to the thumbnail.
         Call reset() before using this, to tell the thumbnail about the data format.
     */
-    void addBlock (int64 sampleNumberInSource, const AudioSampleBuffer& newData,
+    void addBlock (juce::int64 sampleNumberInSource, const juce::AudioSampleBuffer& newData,
                    int startOffsetInBuffer, int numSamples);
 
     //==============================================================================
@@ -126,14 +126,14 @@ public:
         previously have been created by the saveTo() method.
         @see saveTo
     */
-    bool loadFrom (InputStream& input);
+    bool loadFrom (juce::InputStream& input);
 
     /** Saves the low res thumbnail data to an output stream.
 
         The data that is written can later be reloaded using loadFrom().
         @see loadFrom
     */
-    void saveTo (OutputStream& output) const;
+    void saveTo (juce::OutputStream& output) const;
 
     //==============================================================================
     /** Returns the number of channels in the file. */
@@ -152,7 +152,7 @@ public:
         the rectangle vertically, but you can also specify an extra vertical scale factor
         with the verticalZoomFactor parameter.
     */
-    void drawChannel (Graphics& g,
+    void drawChannel (juce::Graphics& g,
                       const juce::Rectangle<int>& area,
                       double startTimeSeconds,
                       double endTimeSeconds,
@@ -161,7 +161,7 @@ public:
 
     /**    Draws the waveform for a channel with colour coded frequency information.
      */
-    void drawColouredChannel (Graphics& g, const juce::Rectangle<int>& area, double startTime,
+    void drawColouredChannel (juce::Graphics& g, const juce::Rectangle<int>& area, double startTime,
                               double endTime, int channelNum, float verticalZoomFactor);
 
     /** Draws the waveforms for all channels in the thumbnail.
@@ -171,7 +171,7 @@ public:
 
         @see drawChannel
     */
-    void drawChannels (Graphics& g,
+    void drawChannels (juce::Graphics& g,
                        const juce::Rectangle<int>& area,
                        double startTimeSeconds,
                        double endTimeSeconds,
@@ -181,7 +181,7 @@ public:
     bool isFullyLoaded() const noexcept;
 
     /** Returns the number of samples that have been set in the thumbnail. */
-    int64 getNumSamplesFinished() const noexcept;
+    juce::int64 getNumSamplesFinished() const noexcept;
 
     /** Returns the number of samples per thumbnail sample being used.
      */
@@ -202,12 +202,12 @@ public:
                                float& minValue, float& maxValue) const noexcept;
 
     /** Returns the hash code that was set by setSource() or setReader(). */
-    int64 getHashCode() const;
+    juce::int64 getHashCode() const;
 
 private:
     //==============================================================================
-    AudioFormatManager& formatManagerToUse;
-    AudioThumbnailCache& cache;
+    juce::AudioFormatManager& formatManagerToUse;
+    juce::AudioThumbnailCache& cache;
 
     class LevelDataSource;
     struct MinMaxColourValue;
@@ -217,19 +217,19 @@ private:
     friend class LevelDataSource;
     friend class std::unique_ptr<LevelDataSource>;
     friend class ThumbData;
-    friend class OwnedArray<ThumbData>;
+    friend class juce::OwnedArray<ThumbData>;
     friend class CachedWindow;
     friend class std::unique_ptr<CachedWindow>;
 
     std::unique_ptr<LevelDataSource> source;
     std::unique_ptr<CachedWindow> window;
-    OwnedArray<ThumbData> channels;
+    juce::OwnedArray<ThumbData> channels;
 
-    int32 samplesPerThumbSample;
-    int64 totalSamples, numSamplesFinished;
-    int32 numChannels;
+    juce::int32 samplesPerThumbSample;
+    juce::int64 totalSamples, numSamplesFinished;
+    juce::int32 numChannels;
     double sampleRate;
-    CriticalSection lock;
+    juce::CriticalSection lock;
 
     //==============================================================================
     bool setDataSource (LevelDataSource* newSource);
