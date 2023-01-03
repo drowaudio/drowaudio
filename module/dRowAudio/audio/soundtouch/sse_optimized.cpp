@@ -54,6 +54,11 @@
 #include "cpu_detect.h"
 #include "STTypes.h"
 
+#if defined(_MSC_VER)
+ #pragma warning (push)
+ #pragma warning (disable : 4311 4302 4312)
+#endif
+
 using namespace soundtouch;
 
 #ifdef SOUNDTOUCH_ALLOW_SSE
@@ -426,3 +431,7 @@ uint FIRFilterSSE::evaluateFilterStereo(float *dest, const float *source, uint n
 }
 
 #endif  // SOUNDTOUCH_ALLOW_SSE
+
+#if defined(_MSC_VER)
+ #pragma warning (pop)
+#endif

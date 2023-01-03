@@ -50,6 +50,11 @@
 
 #include "FIFOSampleBuffer.h"
 
+#if defined(_MSC_VER)
+ #pragma warning (push)
+ #pragma warning (disable : 4311 4302 4312)
+#endif
+
 using namespace soundtouch;
 
 // Constructor
@@ -259,3 +264,7 @@ void FIFOSampleBuffer::clear()
     samplesInBuffer = 0;
     bufferPos = 0;
 }
+
+#if defined(_MSC_VER)
+ #pragma warning (pop)
+#endif

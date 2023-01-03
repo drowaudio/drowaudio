@@ -57,6 +57,10 @@ using namespace soundtouch;
 
 #define max(x, y) (((x) > (y)) ? (x) : (y))
 
+#if defined(_MSC_VER)
+ #pragma warning (push)
+ #pragma warning (disable : 4311 4302 4312)
+#endif
 
 /*****************************************************************************
  *
@@ -1023,3 +1027,7 @@ double TDStretch::calcCrossCorrStereo(const float *mixingPos, const float *compa
 }
 
 #endif // SOUNDTOUCH_FLOAT_SAMPLES
+
+#if defined(_MSC_VER)
+ #pragma warning (pop)
+#endif
