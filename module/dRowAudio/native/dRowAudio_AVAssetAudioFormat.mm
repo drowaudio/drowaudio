@@ -293,7 +293,7 @@ bool AVAssetAudioFormat::canDoMono()                    { return true; }
 //==============================================================================
 AudioFormatReader* AVAssetAudioFormat::createReaderFor (const juce::String& assetNSURLAsString)
 {
-    NSString* assetNSString = [NSString juce::StringWithUTF8String:assetNSURLAsString.toUTF8()];
+    NSString* assetNSString = [NSString stringWithUTF8String:assetNSURLAsString.toUTF8()];
     NSURL* assetNSURL = [NSURL URLWithString:assetNSString];
 
     auto r = std::make_unique<AVAssetAudioReader> (assetNSURL);
