@@ -41,9 +41,9 @@
 
     @see SegmentedMeter
  */
-class GraphicalComponent : public Component,
-                           public TimeSliceClient,
-                           public Timer
+class GraphicalComponent : public juce::Component,
+                           public juce::TimeSliceClient,
+                           public juce::Timer
 {
 
 public:
@@ -94,10 +94,10 @@ protected:
     GraphicalComponent();
 
     //==============================================================================
-    CriticalSection lock;
+    juce::CriticalSection lock;
     bool paused, needToProcess;
     int sleepTime, numSamples;
-    HeapBlock<float> samples;
+    juce::HeapBlock<float> samples;
 
 private:
     //==============================================================================

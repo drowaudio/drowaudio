@@ -114,7 +114,7 @@ public:
 
     //==============================================================================
     /** @internal */
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     /** @internal */
     void timerCallback() override;
     /** @internal */
@@ -132,7 +132,7 @@ private:
     StateVariable<float> level;
     bool needsRepaint;
 
-    Image onImage, offImage;
+    juce::Image onImage, offImage;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SegmentedMeter)

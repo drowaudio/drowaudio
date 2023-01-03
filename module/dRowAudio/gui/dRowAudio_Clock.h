@@ -38,8 +38,8 @@
     continually updating itself. Set the look and feel of it as you would
     a normal label.
  */
-class Clock : public Label,
-              public Timer
+class Clock : public juce::Label,
+              public juce::Timer
 {
 public:
     /** A number of flags to set what sort of clock is displayed */

@@ -44,9 +44,9 @@
     plugins. The addSamples method simply takes a copy of the samples, weverything
     else happens later.
 */
-class TriggeredScope : public Component,
-                       public Timer,
-                       public TimeSliceClient
+class TriggeredScope : public juce::Component,
+                       public juce::Timer,
+                       public juce::TimeSliceClient
 {
 public:
 
@@ -58,7 +58,7 @@ public:
         If you pass a nullptr in here, it will create its own thread
         and manage its lifetime internally.
     */
-    TriggeredScope (TimeSliceThread* backgroundThreadToUse = nullptr);
+    TriggeredScope (juce::TimeSliceThread* backgroundThreadToUse = nullptr);
 
     /** Destructor. */
     ~TriggeredScope() override;
@@ -130,7 +130,7 @@ public:
 
 private:
     //==============================================================================
-    OptionalScopedPointer<TimeSliceThread> backgroundThreadToUse;
+    juce::OptionalScopedPointer<TimeSliceThread> backgroundThreadToUse;
 
     TriggerMode triggerMode;
     int numSamplesPerPixel;

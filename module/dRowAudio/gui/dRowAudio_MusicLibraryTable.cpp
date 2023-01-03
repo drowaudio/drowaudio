@@ -224,12 +224,12 @@ void MusicLibraryTable::sortOrderChanged (int newSortColumnId, bool isForwards)
             || newSortColumnId == MusicColumns::Added
             || newSortColumnId == MusicColumns::Modified)
         {
-            juce::ValueTreeComparators::Numerical<double> sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
+            ValueTreeComparators::Numerical<double> sorter (MusicColumns::columnNames[newSortColumnId], isForwards);
             filteredDataList.sort (sorter, nullptr, false);
         }
         else
         {
-            juce::ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
+            ValueTreeComparators::LexicographicWithBackup sorter (MusicColumns::columnNames[newSortColumnId],
                                                                   MusicColumns::columnNames[MusicColumns::LibID],
                                                                   isForwards);
             filteredDataList.sort (sorter, nullptr, false);

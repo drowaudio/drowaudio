@@ -46,12 +46,12 @@ public:
     static DefaultColours& getInstance();
 
     //==============================================================================
-    Colour findColour (const Component& source, const int colourId) const noexcept;
+    juce::Colour findColour (const juce::Component& source, const int colourId) const noexcept;
 
 private:
     //==============================================================================
-    Array<int> colourIds;
-    Array<Colour> colours;
+    juce::Array<int> colourIds;
+    juce::Array<juce::Colour> colours;
 
     //==============================================================================
     void fillDefaultColours() noexcept;

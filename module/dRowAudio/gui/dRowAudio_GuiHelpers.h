@@ -37,13 +37,13 @@ namespace GuiHelpers
     /** Creates a base colour for a component based on the current keyboard
         and mouse interactivity.
     */
-    static inline Colour createBaseColour (const Colour& colour,
+    static inline juce::Colour createBaseColour (const juce::Colour& colour,
                                            bool hasKeyboardFocus,
                                            bool isMouseOver,
                                            bool isButtonDown) noexcept
     {
         const float sat = hasKeyboardFocus ? 1.3f : 0.9f;
-        const Colour baseColour (colour.withMultipliedSaturation (sat));
+        const juce::Colour baseColour (colour.withMultipliedSaturation (sat));
 
         if (isButtonDown)
             return baseColour.contrasting (0.2f);
@@ -57,13 +57,13 @@ namespace GuiHelpers
 
         This is useful for insetting components and givin them a border.
     */
-    static inline void drawBevel (Graphics& g, const juce::Rectangle<float>& innerBevelBounds,
-                                  float bevelThickness, Colour baseColour)
+    static inline void drawBevel (juce::Graphics& g, const juce::Rectangle<float>& innerBevelBounds,
+                                  float bevelThickness, juce::Colour baseColour)
     {
         juce::Rectangle<float> outerBevelBounds (innerBevelBounds.expanded (bevelThickness, bevelThickness));
         juce::Rectangle<float> centreBevelBounds (innerBevelBounds.expanded (bevelThickness * 0.5f, bevelThickness * 0.5f));
 
-        Path pL, pR, pT, pB, pTL, pTR, pBL, pBR;
+        juce::Path pL, pR, pT, pB, pTL, pTR, pBL, pBR;
         pL.startNewSubPath (centreBevelBounds.getTopLeft());
         pL.lineTo (centreBevelBounds.getBottomLeft());
 
@@ -92,17 +92,17 @@ namespace GuiHelpers
                          outerBevelBounds.getRight(), outerBevelBounds.getBottom(),
                          innerBevelBounds.getRight(), innerBevelBounds.getBottom());
 
-        Graphics::ScopedSaveState sss (g);
+        juce::Graphics::ScopedSaveState sss (g);
 
         g.setColour (baseColour);
-        g.strokePath (pL, PathStrokeType (bevelThickness));
-        g.strokePath (pR, PathStrokeType (bevelThickness));
+        g.strokePath (pL, juce::PathStrokeType (bevelThickness));
+        g.strokePath (pR, juce::PathStrokeType (bevelThickness));
 
         g.setColour (baseColour.darker (0.5f));
-        g.strokePath (pT, PathStrokeType (bevelThickness, PathStrokeType::mitered, PathStrokeType::square));
+        g.strokePath (pT, juce::PathStrokeType (bevelThickness, juce::PathStrokeType::mitered, juce::PathStrokeType::square));
 
         g.setColour (baseColour.brighter (0.5f));
-        g.strokePath (pB, PathStrokeType (bevelThickness, PathStrokeType::mitered, PathStrokeType::square));
+        g.strokePath (pB, juce::PathStrokeType (bevelThickness, juce::PathStrokeType::mitered, juce::PathStrokeType::square));
 
         g.setColour (baseColour);
         g.fillPath (pTL);
@@ -168,12 +168,12 @@ namespace GuiHelpers
 
         @see Font, CustomTypeface
     */
-    static inline bool serializeFont (const Font& font, File& destinationFile, int maxNumChars = 127)
+    static inline bool serializeFont (const juce::Font& font, juce::File& destinationFile, int maxNumChars = 127)
     {
         destinationFile.deleteFile();
-        std::unique_ptr<FileOutputStream> outFileStream (destinationFile.createOutputStream());
+        std::unique_ptr<juce::FileOutputStream> outFileStream (destinationFile.createOutputStream());
 
-        CustomTypeface customTypeface;
+        juce::CustomTypeface customTypeface;
         customTypeface.setCharacteristics (font.getTypefaceName(), font.getAscent(),
                                            font.isBold(), font.isItalic(), ' ');
         customTypeface.addGlyphsFromOtherTypeface (*font.getTypefacePtr(), 0, maxNumChars);
@@ -214,16 +214,16 @@ namespace GuiHelpers
 
     /** Creates an icon in a given colour.
      */
-    static inline DrawablePath createIcon (IconType icon, Colour colour)
+    static inline juce::DrawablePath createIcon (IconType icon, juce::Colour colour)
     {
         switch (icon)
         {
             case Stop:
             {
-                Path squarePath;
+                juce::Path squarePath;
                 squarePath.addRectangle (100.0f, 100.0f, 100.0f, 100.0f);
 
-                DrawablePath squareImage;
+                juce::DrawablePath squareImage;
                 squareImage.setFill (colour);
                 squareImage.setPath (squarePath);
 
@@ -232,10 +232,10 @@ namespace GuiHelpers
 
             case Play:
             {
-                Path trianglePath;
+                juce::Path trianglePath;
                 trianglePath.addTriangle (0.0f, 0.0f, 0.0f, 100.0f, 100.0f, 50.0f);
 
-                DrawablePath triangleImage;
+                juce::DrawablePath triangleImage;
                 triangleImage.setFill (colour);
                 triangleImage.setPath (trianglePath);
 
@@ -244,11 +244,11 @@ namespace GuiHelpers
 
             case Pause:
             {
-                Path pausePath;
+                juce::Path pausePath;
                 pausePath.addRectangle (0.0f, 0.0f, 20.0f, 100.0f);
                 pausePath.addRectangle (60.0f, 0.0f, 20.0f, 100.0f);
 
-                DrawablePath pauseImage;
+                juce::DrawablePath pauseImage;
                 pauseImage.setFill (colour);
                 pauseImage.setPath (pausePath);
 
@@ -257,11 +257,11 @@ namespace GuiHelpers
 
             case Cue:
             {
-                Path p;
+                juce::Path p;
                 p.addRectangle (0, 0, 30, 50);
-                p.addArrow (Line<float> (0.0f, 50.0f, 100.0f, 50.0f), 30.0f, 100.0f, 40.0f);
+                p.addArrow (juce::Line<float> (0.0f, 50.0f, 100.0f, 50.0f), 30.0f, 100.0f, 40.0f);
 
-                DrawablePath drawablePath;
+                juce::DrawablePath drawablePath;
                 drawablePath.setFill (colour);
                 drawablePath.setPath (p);
 
@@ -270,11 +270,11 @@ namespace GuiHelpers
 
             case Next:
             {
-                Path p;
+                juce::Path p;
                 p.addTriangle (0.0f, 0.0f, 0.0f, 100.0f, 90.0f, 50.0f);
                 p.addRectangle (90, 0, 10, 100);
 
-                DrawablePath drawablePath;
+                juce::DrawablePath drawablePath;
                 drawablePath.setFill (colour);
                 drawablePath.setPath (p);
 
@@ -283,11 +283,11 @@ namespace GuiHelpers
 
             case Previous:
             {
-                Path p;
+                juce::Path p;
                 p.addTriangle (100.0f, 100.0f, 100.0f, 0.0f, 10.0f, 50.0f);
                 p.addRectangle (0, 0, 10, 100);
 
-                DrawablePath drawablePath;
+                juce::DrawablePath drawablePath;
                 drawablePath.setFill (colour);
                 drawablePath.setPath (p);
 
@@ -296,11 +296,11 @@ namespace GuiHelpers
 
             case ShuffleForward:
             {
-                Path p;
+                juce::Path p;
                 p.addTriangle (0.0f, 0.0f, 0.0f, 100.0f, 50.0f, 50.0f);
                 p.addTriangle (50.0f, 0.0f, 50.0f, 100.0f, 100.0f, 50.0f);
 
-                DrawablePath drawablePath;
+                juce::DrawablePath drawablePath;
                 drawablePath.setFill (colour);
                 drawablePath.setPath (p);
 
@@ -309,11 +309,11 @@ namespace GuiHelpers
 
             case ShuffleBack:
             {
-                Path p;
+                juce::Path p;
                 p.addTriangle (0.0f, 50.0f, 75.0f, 0.0f, 75.0f, 100.0f);
                 p.addTriangle (75.0f, 50.0f, 150.0f, 0.0f, 150.0f, 100.0f);
 
-                DrawablePath drawablePath;
+                juce::DrawablePath drawablePath;
                 drawablePath.setFill (colour);
                 drawablePath.setPath (p);
 
@@ -322,11 +322,11 @@ namespace GuiHelpers
 
             case Eject:
             {
-                Path p;
+                juce::Path p;
                 p.addTriangle (0, 65, 100, 65, 50, 0);
                 p.addRectangle (0, 80, 100, 20);
 
-                DrawablePath drawablePath;
+                juce::DrawablePath drawablePath;
                 drawablePath.setFill (colour);
                 drawablePath.setPath (p);
 
@@ -335,14 +335,14 @@ namespace GuiHelpers
 
             case Cross:
             {
-                Path p;
+                juce::Path p;
                 p.startNewSubPath (0.0f, 0.0f);
                 p.lineTo (100.0f, 100.0f);
                 p.startNewSubPath (100.0f, 0.0f);
                 p.lineTo (0.0f, 100.0f);
 
-                DrawablePath drawablePath;
-                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                juce::DrawablePath drawablePath;
+                drawablePath.setFill (juce::Colours::white.withAlpha (0.0f));
                 drawablePath.setStrokeFill (colour);
                 drawablePath.setStrokeThickness (15);
                 drawablePath.setPath (p);
@@ -352,14 +352,14 @@ namespace GuiHelpers
 
             case Add:
             {
-                Path p;
+                juce::Path p;
                 p.startNewSubPath (50.0f, 0.0f);
                 p.lineTo (50.0f, 100.0f);
                 p.startNewSubPath (0.0f, 50.0f);
                 p.lineTo (100.0f, 50.0f);
 
-                DrawablePath drawablePath;
-                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                juce::DrawablePath drawablePath;
+                drawablePath.setFill (juce::Colours::white.withAlpha (0.0f));
                 drawablePath.setStrokeFill (colour);
                 drawablePath.setStrokeThickness (15);
                 drawablePath.setPath (p);
@@ -369,13 +369,13 @@ namespace GuiHelpers
 
             case Search:
             {
-                Path p;
+                juce::Path p;
                 p.addEllipse (20, 0, 80, 80);
                 p.startNewSubPath (0.0f, 100.0f);
                 p.lineTo (35.0f, 65.0f);
 
-                DrawablePath drawablePath;
-                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                juce::DrawablePath drawablePath;
+                drawablePath.setFill (juce::Colours::white.withAlpha (0.0f));
                 drawablePath.setStrokeFill (colour);
                 drawablePath.setStrokeThickness (15);
                 drawablePath.setPath (p);
@@ -385,13 +385,13 @@ namespace GuiHelpers
 
             case Power:
             {
-                Path p;
+                juce::Path p;
                 p.addArc (0.0f, 20.0f, 100.0f, 100.0f, 0.18f * juce::MathConstants<float>::pi, 2.0f * juce::MathConstants<float>::pi - (0.18f * juce::MathConstants<float>::pi), true);
                 p.startNewSubPath (50.0f, 0.0f);
                 p.lineTo (50.0f, 70.0f);
 
-                DrawablePath drawablePath;
-                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                juce::DrawablePath drawablePath;
+                drawablePath.setFill (juce::Colours::white.withAlpha (0.0f));
                 drawablePath.setStrokeFill (colour);
                 drawablePath.setStrokeThickness (10.0f);
                 drawablePath.setPath (p);
@@ -401,15 +401,15 @@ namespace GuiHelpers
 
             case Bypass:
             {
-                Path p;
+                juce::Path p;
                 p.startNewSubPath (50.0f, 0.0f);
                 p.lineTo (50.0f, 30.0f);
                 p.lineTo (80.0f, 70.0f);
                 p.startNewSubPath (50.0f, 70.0f);
                 p.lineTo (50.0f, 100.0f);
 
-                DrawablePath drawablePath;
-                drawablePath.setFill (Colours::white.withAlpha (0.0f));
+                juce::DrawablePath drawablePath;
+                drawablePath.setFill (juce::Colours::white.withAlpha (0.0f));
                 drawablePath.setStrokeFill (colour);
                 drawablePath.setStrokeThickness (10);
                 drawablePath.setPath (p);
@@ -419,10 +419,10 @@ namespace GuiHelpers
 
             case GoUp:
             {
-                Path arrowPath;
-                arrowPath.addArrow (Line<float> (50.0f, 100.0f, 50.0f, 0.0f), 40.0f, 100.0f, 50.0f);
+                juce::Path arrowPath;
+                arrowPath.addArrow (juce::Line<float> (50.0f, 100.0f, 50.0f, 0.0f), 40.0f, 100.0f, 50.0f);
 
-                DrawablePath arrowImage;
+                juce::DrawablePath arrowImage;
                 arrowImage.setFill (colour);
                 arrowImage.setPath (arrowPath);
 
@@ -431,13 +431,13 @@ namespace GuiHelpers
 
             case Infinity:
             {
-                Path infPath;
+                juce::Path infPath;
                 infPath.addEllipse (0.0f, 0.0f, 50.0f, 50.0f);
                 infPath.startNewSubPath (50.0f, 0.0f);
                 infPath.addEllipse (50.0f, 0.0f, 50.0f, 50.0f);
 
-                DrawablePath infImg;
-                infImg.setFill (Colours::white.withAlpha (0.0f));
+                juce::DrawablePath infImg;
+                infImg.setFill (juce::Colours::white.withAlpha (0.0f));
                 infImg.setStrokeFill (colour);
                 infImg.setStrokeThickness (10.0f);
                 infImg.setPath (infPath);
@@ -447,10 +447,10 @@ namespace GuiHelpers
 
             case DownTriangle:
             {
-                Path trianglePath;
+                juce::Path trianglePath;
                 trianglePath.addTriangle (0.0f, 0.0f, 100.0f, 0.0f, 50.0f, 100.0f);
 
-                DrawablePath triangleImage;
+                juce::DrawablePath triangleImage;
                 triangleImage.setFill (colour);
                 triangleImage.setPath (trianglePath);
 
@@ -459,10 +459,10 @@ namespace GuiHelpers
 
             case Info:
             {
-                Path circlePath;
+                juce::Path circlePath;
                 circlePath.addEllipse (0.0f, 0.0f, 100.0f, 100.0f);
 
-                DrawablePath circleImage;
+                juce::DrawablePath circleImage;
                 circleImage.setFill (colour);
                 circleImage.setPath (circlePath);
 
@@ -471,13 +471,13 @@ namespace GuiHelpers
 
             case Loop:
             {
-                Path loopPath;
+                juce::Path loopPath;
                 loopPath.addRoundedRectangle (0.0f, 0.0f, 150.0f, 50.0f, 25.0f);
                 loopPath.addTriangle (100.0f, -10.0f, 100.0f, 10.0f, 110.0f, 0.0f);
                 loopPath.addTriangle (40.0f, 50.0f, 50.0f, 60.0f, 50.0f, 40.0f);
 
-                DrawablePath loopImage;
-                loopImage.setFill (Colours::white.withAlpha(0.0f));
+                juce::DrawablePath loopImage;
+                loopImage.setFill (juce::Colours::white.withAlpha(0.0f));
                 loopImage.setStrokeFill (colour);
                 loopImage.setStrokeThickness (15.0f);
                 loopImage.setPath (loopPath);
@@ -487,13 +487,13 @@ namespace GuiHelpers
 
             case Slow:
             {
-                Path p;
+                juce::Path p;
                 p.addPolygon (juce::Point<float> (50.0f, 50.0f),
                               8,
                               50.0f,
                               -juce::MathConstants<float>::pi * 0.125f);
 
-                DrawablePath dp;
+                juce::DrawablePath dp;
                 dp.setFill (colour);
                 dp.setStrokeFill (colour);
                 dp.setStrokeThickness (0.0f);
@@ -504,14 +504,14 @@ namespace GuiHelpers
 
             case Speaker:
             {
-                Path p;
+                juce::Path p;
                 p.addRoundedRectangle (0.0f, 33.0f, 33.0f, 33.0f, 2.0f);
                 p.addTriangle (7.5f, 50.0f, 55.0f, 6.5f, 55.0f, 93.5f);
                 p.addArc (60.0f, 30.0f, 12.0f, 40.0f, juce::MathConstants<float>::pi * 0.15f, juce::MathConstants<float>::pi * 0.85f, true);
                 p.addArc (70.0f, 20.0f, 16.0f, 60.0f, juce::MathConstants<float>::pi * 0.15f, juce::MathConstants<float>::pi * 0.85f, true);
                 p.addArc (80.0f, 10.0f, 20.0f, 80.0f, juce::MathConstants<float>::pi * 0.15f, juce::MathConstants<float>::pi * 0.85f, true);
 
-                DrawablePath dp;
+                juce::DrawablePath dp;
                 dp.setFill (colour);
                 dp.setStrokeFill (colour);
                 dp.setStrokeThickness (5.0f);
@@ -522,12 +522,12 @@ namespace GuiHelpers
 
             case MutedSpeaker:
             {
-                Path p;
+                juce::Path p;
                 p.addRoundedRectangle (0.0f, 33.0f, 33.0f, 33.0f, 2.0f);
                 p.addTriangle (7.5f, 50.0f, 55.0f, 6.5f, 55.0f, 93.5f);
                 p.scaleToFit (0.0f, 0.0f, 100.0f, 100.0f, true);
 
-                DrawablePath dp;
+                juce::DrawablePath dp;
                 dp.setFill (colour);
                 dp.setStrokeFill (colour);
                 dp.setStrokeThickness (5.0f);
@@ -541,7 +541,7 @@ namespace GuiHelpers
                 break;
         }
 
-        DrawablePath blank;
+        juce::DrawablePath blank;
         return blank;
     }
 }

@@ -87,7 +87,7 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     /** @internal */
     void timerCallback() override;
 
@@ -100,11 +100,11 @@ private:
     FFTEngine fftEngine;
     int numBins;
     bool needsRepaint;
-    HeapBlock<float> tempBlock;
+    juce::HeapBlock<float> tempBlock;
     FifoBuffer<float> circularBuffer;
     bool logFrequency;
     float scopeLineW;
-    Image scopeImage, tempImage;
+    juce::Image scopeImage, tempImage;
 
     void renderScopeLine();
 

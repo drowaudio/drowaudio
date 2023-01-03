@@ -38,7 +38,7 @@ namespace ValueTreeComparators
     class Lexicographic
     {
     public:
-        Lexicographic (const Identifier attributeToSort_, bool forwards)
+        Lexicographic (const juce::Identifier attributeToSort_, bool forwards)
             : attributeToSort (attributeToSort_),
               direction (forwards ? 1 : -1)
         {
@@ -52,7 +52,7 @@ namespace ValueTreeComparators
         }
 
     private:
-        const Identifier attributeToSort;
+        const juce::Identifier attributeToSort;
         const int direction;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Lexicographic)
@@ -64,7 +64,7 @@ namespace ValueTreeComparators
     class Numerical
     {
     public:
-        Numerical (const Identifier attributeToSort_, bool forwards)
+        Numerical (const juce::Identifier attributeToSort_, bool forwards)
             : attributeToSort (attributeToSort_),
               direction (forwards ? 1 : -1)
         {
@@ -78,7 +78,7 @@ namespace ValueTreeComparators
         }
 
     private:
-        const Identifier attributeToSort;
+        const juce::Identifier attributeToSort;
         const int direction;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Numerical)
@@ -92,7 +92,7 @@ namespace ValueTreeComparators
     class LexicographicWithBackup
     {
     public:
-        LexicographicWithBackup (const Identifier attributeToSort_, const Identifier backupAttribute_, bool forwards)
+        LexicographicWithBackup (const juce::Identifier attributeToSort_, const juce::Identifier backupAttribute_, bool forwards)
             : attributeToSort (attributeToSort_),
               backupAttribute (backupAttribute_),
               direction (forwards ? 1 : -1)
@@ -110,8 +110,8 @@ namespace ValueTreeComparators
         }
 
     private:
-        const Identifier attributeToSort;
-        const Identifier backupAttribute;
+        const juce::Identifier attributeToSort;
+        const juce::Identifier backupAttribute;
         const int direction;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LexicographicWithBackup)
@@ -132,7 +132,7 @@ namespace XmlComparators
         {
         }
 
-        int compareElements (XmlElement* first, XmlElement* second) const
+        int compareElements (juce::XmlElement* first, juce::XmlElement* second) const
         {
             int result = first->getStringAttribute (attributeToSort)
                          .compareNatural (second->getStringAttribute (attributeToSort));
@@ -162,7 +162,7 @@ namespace XmlComparators
         {
         }
 
-        int compareElements (XmlElement* first, XmlElement* second) const
+        int compareElements (juce::XmlElement* first, juce::XmlElement* second) const
         {
             if (first->getStringAttribute (attributeToSort).isEmpty()
                     || second->getStringAttribute (attributeToSort).isEmpty())

@@ -50,7 +50,7 @@ public:
 
         This effectively calls reset, preAllocateStorage, processSamples and then getImage.
     */
-    Image generateImage (const float* samples, int numSamples);
+    juce::Image generateImage (const float* samples, int numSamples);
 
     /** Clears all the internal buffers ready for a new set of samples. */
     void reset() noexcept;
@@ -75,7 +75,7 @@ public:
         @note This generates a new Image based on the internal buffers.
               If you need to take copies, don't repeatedly call this method!
     */
-    Image createImage() const;
+    juce::Image createImage() const;
 
     //==============================================================================
     /** Sets the scope to display in log or normal mode. */
@@ -88,20 +88,20 @@ public:
 
         Higher values will effectively cause the graph to be wider and taller.
     */
-    void setBinSize (const Rectangle<float>& size) noexcept;
+    void setBinSize (const juce::Rectangle<float>& size) noexcept;
 
     /** Returns the current bin size. */
-    const Rectangle<float>& getBinSize() const { return binSize; }
+    const juce::Rectangle<float>& getBinSize() const { return binSize; }
 
 private:
     //==============================================================================
     FFTEngine fftEngine;
     int numBins;
     FifoBuffer<float> circularBuffer, fftMagnitudesData;
-    HeapBlock<float> tempBlock;
-    Array<float*> fftMagnitudesBlocks;
+    juce::HeapBlock<float> tempBlock;
+    juce::Array<float*> fftMagnitudesBlocks;
     bool logFrequency;
-    Rectangle<float> binSize;
+    juce::Rectangle<float> binSize;
 
     //==============================================================================
     void addMagnitudesBlock (const float* data, int size);

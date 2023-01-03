@@ -43,15 +43,15 @@
     You shouldn't need to use this directly, use the higher-level iTunesLibrary
     instead.
  */
-class ITunesLibraryParser : public Thread
+class ITunesLibraryParser : public juce::Thread
 {
 public:
     /** Creates a parser with a given valid library file and a ValueTree with which
         to put the parsed data.
     */
-    ITunesLibraryParser (const File& iTunesLibraryFileToUse,
+    ITunesLibraryParser (const juce::File& iTunesLibraryFileToUse,
                          const juce::ValueTree& elementToFill,
-                         const CriticalSection& lockToUse);
+                         const juce::CriticalSection& lockToUse);
 
     /** Destructor. */
     ~ITunesLibraryParser() override;
@@ -61,7 +61,7 @@ public:
     bool hasFinished() const { return finished; }
 
     /** Returns the lock being used. */
-    const CriticalSection& getLock() const { return lock; }
+    const juce::CriticalSection& getLock() const { return lock; }
 
     //==============================================================================
     /** @internal */
@@ -69,12 +69,12 @@ public:
 
 private:
     //==============================================================================
-    const CriticalSection& lock;
+    const juce::CriticalSection& lock;
 
-    const File iTunesLibraryFile;
+    const juce::File iTunesLibraryFile;
     juce::ValueTree treeToFill, partialTree;
-    std::unique_ptr<XmlElement> iTunesDatabase;
-    XmlElement *iTunesLibraryTracks, *currentElement;
+    std::unique_ptr<juce::XmlElement> iTunesDatabase;
+    juce::XmlElement *iTunesLibraryTracks, *currentElement;
 
     int numAdded;
     bool finished;
