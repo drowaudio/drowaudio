@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="iKDxa2" name="iOS Audio Example" projectType="guiapp" version="1.0.0"
+              companyName="dRowAudio" bundleIdentifier="com.dRowAudio.iOSAudioExample"
+              jucerFormatVersion="1" useAppConfig="0" addUsingNamespaceToJuceHeader="0">
+  <EXPORTFORMATS>
+    <XCODE_IPHONE targetFolder="Builds/iOS" UIStatusBarHidden="1" iosDevelopmentTeamID="QW276UHF22"
+                  customPList="&lt;plist&gt;&#10;&lt;dict&gt;&#10;&#9;&lt;key&gt;NSAppleMusicUsageDescription&lt;/key&gt;&#10;&lt;string&gt;This app requires access to the music library to function correctly.&lt;/string&gt;&#10;&lt;/dict&gt;&#10;&lt;/plist&gt;"
+                  pListPreprocess="1" smallIcon="rgEc8A" bigIcon="rgEc8A">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="iOS Audio Example"
+                       iosCompatibility="default" cppLibType="libc++"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="iOS Audio Example"
+                       iosCompatibility="default" cppLibType="libc++"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../module"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_IPHONE>
+  </EXPORTFORMATS>
+  <MAINGROUP id="RBITi8" name="iOS Audio Example">
+    <GROUP id="{A93D7A54-8ECD-FE4F-DE17-4408946C55F1}" name="Resources">
+      <FILE id="rgEc8A" name="icon.png" compile="0" resource="0" file="Source/resources/icon.png"
+            xcodeResource="1"/>
+    </GROUP>
+    <GROUP id="{2F3D5B61-3EE9-DA13-0B1C-95AB4A9D2C60}" name="Source">
+      <FILE id="Vq6cam" name="StandardHeader.h" compile="0" resource="0"
+            file="Source/StandardHeader.h"/>
+      <FILE id="TurzQ8" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="kfcEe5" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
+      <FILE id="H0C0Qj" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
+      <FILE id="G49wwt" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="Hm2bio" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="RDhLVH" name="AudioManager.h" compile="0" resource="0" file="Source/AudioManager.h"/>
+      <FILE id="LSOCns" name="AudioManager.cpp" compile="1" resource="0"
+            file="Source/AudioManager.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS DROWAUDIO_USE_FFTREAL="0" JUCE_WEB_BROWSER="0" JUCE_USE_MP3AUDIOFORMAT="0"/>
+</JUCERPROJECT>

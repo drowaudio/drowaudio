@@ -1,51 +1,41 @@
-# dRowAudio - A JUCE module for high level audio application development.
+# A JUCE module for high level audio application development.
 
-dRowAudio is a 3rd party JUCE module designed for rapid audio application development. It contains classes for audio processing and gui elements. Additionally there are several wrappers around 3rd party libraries including cURL, FFTReal and SoundTouch. dRowAudio is written in the strict JUCE style, closely following the style guide set out at [JUCE Coding Standards][1].
+dRowAudio is a 3rd party JUCE module designed for rapid audio application development. It contains classes for audio processing and GUI elements.
 
-dRowAudio is hosted on Github at [https://github.com/drowaudio/drowaudio][2]
+Additionally, there are several wrappers around 3rd party libraries including:
+* [cURL](https://github.com/bagder/curl)
+* [FFTReal](http://ldesoras.free.fr/prod.html)
+* [SoundTouch](http://www.surina.net/soundtouch/index.html)
 
-The online documentation is at [http://drowaudio.co.uk/docs/][3]
+dRowAudio is written following JUCE's [Coding Standard](http://www.juce.com/learn/coding-standards).
 
-## Platforms
-
-All platforms supported by JUCE are also supported by dRowAudio. Currently these
-platforms include:
-
-- **Windows**: Applications and VST/RTAS/NPAPI/ActiveX plugins can be built 
-using MS Visual Studio. The results are all fully compatible with Windows
-XP, Vista or Windows 7.
-
-- **Mac OS X**: Applications and VST/AudioUnit/RTAS/NPAPI plugins with Xcode.
-
-- **GNU/Linux**: Applications and plugins can be built for any kernel 2.6 or
-later.
-
-- **iOS**: Native iPhone and iPad apps.
-
-- **Android**: Supported.
+This library is hosted on [GitHub](https://github.com/m-rest/drowaudio).
+Please find the online documentation [here](http://drowaudio.co.uk/docs/).
 
 ## Prerequisites
 
-This documentation assumes that the reader has a working knowledge of JUCE.
-
-## External Modules
-
-In order to use the cURL classes you will need to link to the cURL library. This is included as part of Mac OSX, for Windows there pre-built 32-bit binaries or you can download the library yourself for the most recent version.
-
-Although some aspects of dRowAudio rely on other 3rd party modules such as [SoundTouch][5] and [FFTReal][6], these are included as part of the module so no external linking is required. Their use should be transparent to the user.
+This documentation assumes that the reader has a working knowledge of [JUCE](https://github.com/julianstorer/JUCE).
 
 ## Integration
 
-dRowAudio requires recent versions of JUCE. It won't work with versions 2.36 or
-earlier. To use the library it is necessary to first download JUCE to a
-location where your development environment can find it. Or, you can use your
-existing installation of JUCE.
+This fork of dRowAudio requires JUCE 7.0.3.
 
-To use the module simply include it, or a symbolic link to it, in your juce/modules folder. Simply them run the Introjucer as normal and tick the dRowAudio module. Config flags are provided to disable some functionality if not required.
+
+## Platforms
+
+All platforms supported by JUCE are also supported by dRowAudio.
+
+Currently, these platforms include:
+* **Windows**: Applications and VST/VST3/RTAS/AAX/NPAPI/ActiveX plugins can be built 
+using MS Visual Studio. The results are all fully compatible with Windows XP, Vista, 7, 8, 8.1 and 10.
+* **Mac OS X**: Applications and VST/VST3/AudioUnit/RTAS/AAX/NPAPI plugins with Xcode.
+* **GNU/Linux**: Applications and plugins can be built for any kernel 2.6 or later.
+* **iOS**: Native iPhone and iPad apps.
+* **Android**: Supported.
 
 ## License
 
-Copyright (C) 2013 by David Rowland ([e-mail][0])
+Copyright (C) 2013 - Present by [David Rowland](mailto:dave@drowaudio.co.uk)
 
 dRowAudio is provided under the terms of The MIT License (MIT):
 
@@ -55,13 +45,12 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Some portions of the software including but not limited to [SoundTouch][5] and [FFTReal][6] are included with in the repository but released under separate licences. Please see the individual source files for details.
+Some portions of the software including but not limited to [SoundTouch](http://www.surina.net/soundtouch/index.html) and [FFTReal](http://ldesoras.free.fr/prod.html) are included with in the repository but released under separate licences. Please see the individual source files for details.
 
-[0]: mailto:dave@drowaudio.co.uk "David Rowland (Email)"
-[1]: http://www.rawmaterialsoftware.com/wiki/index.php/Coding_Standards
-[2]: https://github.com/drowaudio/drowaudio
-[3]: http://drowaudio.co.uk/docs/
-[5]: http://www.surina.net/soundtouch/index.html
-[6]: http://ldesoras.free.fr/prod.html
-[7]: http://www.gnu.org/licenses/gpl-2.0.html
-[8]: http://www.opensource.org/licenses/mit-license.html "The MIT License"
+## Other Contributors
+
+* [Joël R. Langlois](https://github.com/jrlanglois)
+* [Maximilian Rest](https://github.com/m-rest)
+* [Roland Rabien](https://github.com/FigBug) 
+* [Atilio Menéndez](https://github.com/atiliomf)
+

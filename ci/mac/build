@@ -1,0 +1,45 @@
+#!/bin/sh -e
+set -x
+
+OS=mac
+
+ROOT=$(cd "$(dirname "$0")/../.."; pwd)
+cd "$ROOT"
+
+if [ ! -d "juce" ]; then
+  git clone https://github.com/WeAreROLI/JUCE.git --branch develop --single-branch juce
+fi
+
+# Get the hash
+cd "$ROOT/juce"
+HASH=`git rev-parse HEAD`
+echo "Hash: $HASH"
+
+# Get the Projucer
+mkdir -p "$ROOT/ci/bin"
+cd "$ROOT/ci/bin"
+while true
+do
+  PROJUCER_URL=$(curl -s -S "https://projucer.rabien.com/get_projucer.php?hash=$HASH&os=$OS")
+  echo "Response: $PROJUCER_URL"
+  if [[ $PROJUCER_URL == http* ]]; then
+    curl -s -S $PROJUCER_URL -o "$ROOT/ci/bin/Projucer.zip"
+    unzip Projucer.zip
+    break
+  fi
+  sleep 15
+done
+
+$ROOT/ci/bin/Projucer.app/Contents/MacOS/Projucer --set-global-search-path osx defaultJuceModulePath "$ROOT/juce/modules" 
+$ROOT/ci/bin/Projucer.app/Contents/MacOS/Projucer --resave "$ROOT/demo/dRowAudio Demo.jucer"
+
+cd "$ROOT/demo/Builds/MacOSX"
+xcodebuild -configuration Release GCC_TREAT_WARNINGS_AS_ERRORS=YES || exit 1
+
+rm -Rf "$ROOT/ci/mac/bin"
+mkdir -p "$ROOT/ci/mac/bin"
+cp -R "$ROOT/demo/Builds/MacOSX/build/Release/dRowAudio Demo.app" "$ROOT/ci/mac/bin"
+
+cd "$ROOT/ci/mac/bin"
+zip -r Demo.zip "dRowAudio Demo.app"
+rm -Rf "dRowAudio Demo.app"

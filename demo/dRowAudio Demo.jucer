@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.dRowAudio.dRowAudioDemo" defines="DROWAUDIO_UNIT_TESTS=1"
+              includeBinaryInAppConfig="1" companyName="dRowAudio" jucerFormatVersion="1"
+              useAppConfig="0" addUsingNamespaceToJuceHeader="0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" extraLinkerFlags="-lcurl"
+               bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall&#10;-pedantic&#10;-Wconversion">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="Native"
+                       headerPath="" defines="" cppLanguageStandard="" cppLibType="libc++"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="64BitIntel"
+                       headerPath="" defines="" cppLanguageStandard="" cppLibType="libc++"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../module"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <XCODE_IPHONE targetFolder="Builds/iOS" objCExtraSuffix="FuN3DO" UIStatusBarHidden="1"
+                  bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall&#10;-pedantic&#10;-Wconversion"
+                  iosDevelopmentTeamID="QW276UHF22" iosScreenOrientation="UIInterfaceOrientationPortrait"
+                  iPadScreenOrientation="UIInterfaceOrientationPortrait" microphonePermissionNeeded="1">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
+                       osxSDK="default" osxCompatibility="default" headerPath="" defines=""
+                       iosCompatibility="default" cppLanguageStandard="" cppLibType=""/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
+                       osxSDK="default" osxCompatibility="default" headerPath="" defines=""
+                       iosCompatibility="default" cppLanguageStandard="" cppLibType=""/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="dRowAudio" path="../module"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_IPHONE>
+    <VS2008 targetFolder="Builds/VisualStudio2008">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" isDebug="1"
+                       optimisation="1" targetName="dRowAudio Demo"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" isDebug="0"
+                       optimisation="3" targetName="dRowAudio Demo"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
+      </MODULEPATHS>
+    </VS2008>
+    <VS2005 targetFolder="Builds/VisualStudio2005">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" isDebug="1"
+                       optimisation="1" targetName="dRowAudio Demo"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" isDebug="0"
+                       optimisation="3" targetName="dRowAudio Demo"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_tracktion_marketplace" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_box2d" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="drowaudio" path="../../module"/>
+      </MODULEPATHS>
+    </VS2005>
+    <ANDROIDSTUDIO targetFolder="Builds/Android">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="dRowAudio" path="../module"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </ANDROIDSTUDIO>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" warningsAreErrors="1"/>
+        <CONFIGURATION isDebug="0" name="Release" warningsAreErrors="1"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="dRowAudio" path="../module"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2022>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="dRowAudio" path="../module"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/rrabien/dev.github/Gin/juce/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <MAINGROUP id="BrdxWp" name="dRowAudio Demo">
+    <GROUP id="{AFE8D6EB-4CF8-11B9-1E00-7B7F3155DBD4}" name="Source">
+      <GROUP id="{50DE6A5F-C9E3-CD4F-BF06-B5BCABCFD369}" name="fft">
+        <FILE id="i3ULgs" name="FFTDemo.cpp" compile="1" resource="0" file="Source/fft/FFTDemo.cpp"/>
+        <FILE id="AckS5U" name="FFTDemo.h" compile="0" resource="0" file="Source/fft/FFTDemo.h"/>
+        <FILE id="mwMkvV" name="PitchDetectorComponent.cpp" compile="1" resource="0"
+              file="Source/fft/PitchDetectorComponent.cpp"/>
+        <FILE id="T6UY75" name="PitchDetectorComponent.h" compile="0" resource="0"
+              file="Source/fft/PitchDetectorComponent.h"/>
+      </GROUP>
+      <GROUP id="{69A1ACF5-AF98-59D3-BF52-A08933F42269}" name="network">
+        <FILE id="dhIpN3" name="ConnectionComponent.cpp" compile="1" resource="0"
+              file="Source/network/ConnectionComponent.cpp"/>
+        <FILE id="uFMCiE" name="ConnectionComponent.h" compile="0" resource="0"
+              file="Source/network/ConnectionComponent.h"/>
+        <FILE id="A2mT5N" name="LocalDirectoryListBox.cpp" compile="1" resource="0"
+              file="Source/network/LocalDirectoryListBox.cpp"/>
+        <FILE id="kQ0U4o" name="LocalDirectoryListBox.h" compile="0" resource="0"
+              file="Source/network/LocalDirectoryListBox.h"/>
+        <FILE id="k8vJKh" name="NetworkDemo.cpp" compile="1" resource="0" file="Source/network/NetworkDemo.cpp"/>
+        <FILE id="mxJRrs" name="NetworkDemo.h" compile="0" resource="0" file="Source/network/NetworkDemo.h"/>
+        <FILE id="mCcwTv" name="RemoteDirectoryListBox.cpp" compile="1" resource="0"
+              file="Source/network/RemoteDirectoryListBox.cpp"/>
+        <FILE id="rITj5Z" name="RemoteDirectoryListBox.h" compile="0" resource="0"
+              file="Source/network/RemoteDirectoryListBox.h"/>
+      </GROUP>
+      <GROUP id="{5D295506-0E8D-16BD-29DE-50507A147413}" name="playback">
+        <FILE id="oyrE4v" name="AudioPlaybackDemo.cpp" compile="1" resource="0"
+              file="Source/playback/AudioPlaybackDemo.cpp"/>
+        <FILE id="QPcnOj" name="AudioPlaybackDemo.h" compile="0" resource="0"
+              file="Source/playback/AudioPlaybackDemo.h"/>
+        <FILE id="bP0Ui8" name="BufferTransformAudioSource.cpp" compile="1"
+              resource="0" file="Source/playback/BufferTransformAudioSource.cpp"/>
+        <FILE id="jUU9Fr" name="BufferTransformAudioSource.h" compile="0" resource="0"
+              file="Source/playback/BufferTransformAudioSource.h"/>
+        <FILE id="WwlQbQ" name="CurvePoint.h" compile="0" resource="0" file="Source/playback/CurvePoint.h"/>
+        <FILE id="JJKeWL" name="DistortionComponent.cpp" compile="1" resource="0"
+              file="Source/playback/DistortionComponent.cpp"/>
+        <FILE id="kE1OIt" name="DistortionComponent.h" compile="0" resource="0"
+              file="Source/playback/DistortionComponent.h"/>
+        <FILE id="DlfH2t" name="DistortionDemo.cpp" compile="1" resource="0"
+              file="Source/playback/DistortionDemo.cpp"/>
+        <FILE id="hI97tx" name="DistortionDemo.h" compile="0" resource="0"
+              file="Source/playback/DistortionDemo.h"/>
+        <FILE id="ThDzfm" name="LoopComponent.cpp" compile="1" resource="0"
+              file="Source/playback/LoopComponent.cpp"/>
+        <FILE id="JtL4EB" name="LoopComponent.h" compile="0" resource="0" file="Source/playback/LoopComponent.h"/>
+      </GROUP>
+      <GROUP id="{1E2BBBF0-70BF-AD30-B2B2-70A04B86A489}" name="resources">
+        <FILE id="vTRqOY" name="icon.png" compile="0" resource="0" file="Source/resources/icon.png"/>
+        <FILE id="EBeRpY" name="splash_screen.png" compile="0" resource="1"
+              file="Source/resources/splash_screen.png"/>
+      </GROUP>
+      <FILE id="t4AsoP" name="DemoHeader.h" compile="0" resource="0" file="Source/DemoHeader.h"/>
+      <FILE id="dOsZ5c" name="DemoLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/DemoLookAndFeel.cpp"/>
+      <FILE id="eGm8s3" name="DemoLookAndFeel.h" compile="0" resource="0"
+            file="Source/DemoLookAndFeel.h"/>
+      <FILE id="TWwywT" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="vlrjLG" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="zrWibh" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="R22AoS" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
+      <FILE id="KDkXiB" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
+      <FILE id="E32aFG" name="TrackInfoComponent.cpp" compile="1" resource="0"
+            file="Source/TrackInfoComponent.cpp"/>
+      <FILE id="yOmXGw" name="TrackInfoComponent.h" compile="0" resource="0"
+            file="Source/TrackInfoComponent.h"/>
+      <FILE id="zu4RI7" name="TransportComponent.cpp" compile="1" resource="0"
+            file="Source/TransportComponent.cpp"/>
+      <FILE id="PfbZ5Z" name="TransportComponent.h" compile="0" resource="0"
+            file="Source/TransportComponent.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_DIRECTSHOW="disabled" JUCE_MEDIAFOUNDATION="disabled" JUCE_QUICKTIME="disabled"
+               JUCE_USE_CAMERA="0" DROWAUDIO_USE_CURL="1" DROWAUDIO_USE_VDSP="1"
+               DROWAUDIO_USE_FFTREAL="1" DROWAUDIO_USE_SOUNDTOUCH="1"/>
+</JUCERPROJECT>

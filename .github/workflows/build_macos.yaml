@@ -1,0 +1,18 @@
+name: Build macOS
+on: [push]
+
+jobs:
+  build:
+    name: Build macOS
+    timeout-minutes: 60
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Run script"
+        run: ./ci/mac/build
+        shell: bash
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Mac
+          path: ci/mac/bin
+

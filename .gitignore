@@ -1,39 +1,71 @@
-dRowAudio Notes.rtf
-dRowAudio Notes (Autosaved).rtf
-build/
-DerivedData/
-Debug/
-Release/
-*.pbxuser
-*.perspective
-*.perspectivev3
-*.pbxbtree
+# Windows Temp Cache Files
+[Tt]humbs.db
+ 
+#Visual Studio files
+*.[Oo]bj
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+ipch/
+obj/
+x64/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+ 
+ # Mac OS X Finder and whatnot
+.DS_Store
+*.DS_Store
+
+# XCode (and ancestors) per-user config (very noisy, and not relevant)
+*.mode1
 *.mode1v3
 *.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
 xcuserdata
-*.suo
-*.vcxproj.user
-*.psd
-.svn/
-html/
-docs/
-dRowAudio_old/
-juce_audio_basics/
-juce_audio_devices/
-juce_audio_formats/
-juce_audio_processors/
-juce_audio_utils/
-juce_core/
-juce_cryptography/
-juce_data_structures/
-juce_events/
-juce_graphics/
-juce_gui_basics/
-juce_gui_extra/
-juce_opengl/
-Band Practice Assistant/
-dRowAudio Demo_dev/
-Tremolo_old
-*.trak
-.DS_Store
-UnityProjectBuilderApp
+
+# Generated files
+VersionX-revision.h
+
+# build products
+build/
+*.[oa]
+
+demo/Builds
+demo/JuceLibraryCode
+iOS_example/Builds
+iOS_example/JuceLibraryCode
+
+# Other source repository archive directories (protects when importing)
+.hg
+.svn
+CVS
+
+# automatic backup files
+*~.nib
+*.swp
+*~
+*(Autosaved).rtfd/
+Backup[ ]of[ ]*.pages/
+Backup[ ]of[ ]*.key/
+Backup[ ]of[ ]*.numbers/
+*.xccheckout
+*.xcworkspacedata
+juce
