@@ -59,7 +59,7 @@ void DistortionDemo::resized()
     bypassButton.setBounds (resetButton.getBounds().translated (resetButton.getWidth() + m, 0));
 }
 
-void DistortionDemo::paint (Graphics& g)
+void DistortionDemo::paint (juce::Graphics& g)
 {
     const int w = getWidth();
     //const int h = getHeight();
@@ -67,17 +67,17 @@ void DistortionDemo::paint (Graphics& g)
 
 //    g.fillAll (Colours::darkgrey);
 
-    GuiHelpers::drawBevel (g, distortionComponent.getBounds().toFloat(), (float) m, Colours::darkgrey);
+    GuiHelpers::drawBevel (g, distortionComponent.getBounds().toFloat(), (float) m, juce::Colours::darkgrey);
 
-    g.setColour (Colours::white);
-    g.setFont (Font (20, Font::underlined));
-    g.drawSingleLineText ("Distortion Demo", (int) (w * 0.75f), 20, Justification::horizontallyCentred);
+    g.setColour (juce::Colours::white);
+    g.setFont (juce::Font (20, juce::Font::underlined));
+    g.drawSingleLineText ("Distortion Demo", (int) (w * 0.75f), 20, juce::Justification::horizontallyCentred);
 
-    g.setFont (Font (14, Font::plain));
+    g.setFont (juce::Font (14, juce::Font::plain));
     juce::String text;
-    text << "This graph demonstrates the Buffer and BufferTransformAudioSource classes." << newLine << newLine
-    << "Drag the points around to change the buffer belonging to the audio chain's BufferTransformAudioSource." << newLine
-    << "The Buffer's contents are used as a transform in the source which will distort the audio passing through it." << newLine << newLine
+    text << "This graph demonstrates the Buffer and BufferTransformAudioSource classes." << juce::newLine << juce::newLine
+    << "Drag the points around to change the buffer belonging to the audio chain's BufferTransformAudioSource." << juce::newLine
+    << "The Buffer's contents are used as a transform in the source which will distort the audio passing through it." << juce::newLine << juce::newLine
     << "Aditionally, Buffers can have listeners. Resetting the buffer to unity using the button below will update the graph.";
 //    g.drawMultiLineText (text,
 //                         (w * 0.5) + m, 20 + 28,
@@ -85,11 +85,11 @@ void DistortionDemo::paint (Graphics& g)
     g.drawFittedText (text,
                       (int) ((w * 0.5f) + m), 28,
                       (int) ((w * 0.5f) - (2 * m)), resetButton.getY() - (28) - m,
-                      Justification::left,
+                      juce::Justification::left,
                       100, 1.0f);
 }
 
-void DistortionDemo::buttonClicked (Button* button)
+void DistortionDemo::buttonClicked (juce::Button* button)
 {
     if (button == &resetButton)
         distortionComponent.resetBuffer();

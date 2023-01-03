@@ -46,7 +46,7 @@
     @todo directory list is returned if this is found before a file transfer
     @todo rename remote file if it already exists
 */
-class CURLEasySession : public TimeSliceClient
+class CURLEasySession : public juce::TimeSliceClient
 {
 public:
     /** Creates an uninitialised CURLEasySession.
@@ -68,16 +68,16 @@ public:
 
     //==============================================================================
     /** Sets the the source of an upload to an input stream. */
-    void setInputStream (InputStream* newInputStream);
+    void setInputStream (juce::InputStream* newInputStream);
 
     /** Sets the local file to either upload or download into. */
-    void setLocalFile (const File& newLocalFile);
+    void setLocalFile (const juce::File& newLocalFile);
 
     /** Returns the local file being used.
 
         If an input stream has been specified this will return File::nonexistent.
     */
-    const File& getLocalFile() const { return localFile; }
+    const juce::File& getLocalFile() const { return localFile; }
 
     /** Sets the remote path to use.
 
@@ -169,15 +169,15 @@ private:
     CURL* handle;
     juce::String remotePath, userNameAndPassword;
     bool isUpload, shouldStopTransfer;
-    Atomic<float> progress;
+    juce::Atomic<float> progress;
 
-    File localFile;
-    std::unique_ptr<FileOutputStream> outputStream;
-    std::unique_ptr<InputStream> inputStream;
+    juce::File localFile;
+    std::unique_ptr<juce::FileOutputStream> outputStream;
+    std::unique_ptr<juce::InputStream> inputStream;
     juce::MemoryBlock directoryContentsList;
 
-    CriticalSection transferLock;
-    ListenerList<Listener> listeners;
+    juce::CriticalSection transferLock;
+    juce::ListenerList<Listener> listeners;
 
     //==============================================================================
     int performTransfer (bool transferIsUpload);

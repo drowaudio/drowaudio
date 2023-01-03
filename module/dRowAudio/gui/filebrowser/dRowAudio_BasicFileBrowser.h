@@ -37,9 +37,9 @@
     This is very similar to a FileBrowserComponent expect it does not have the file
     list box, go up button etc.
  */
-class  BasicFileBrowser : public Component,
-                          private FileBrowserListener,
-                          private FileFilter
+class  BasicFileBrowser : public juce::Component,
+                          private juce::FileBrowserListener,
+                          private juce::FileFilter
 {
 public:
     //==============================================================================
@@ -77,7 +77,7 @@ public:
                                         is deleted.
      */
     BasicFileBrowser (int flags,
-                      const File& initialFileOrDirectory,
+                      const juce::File& initialFileOrDirectory,
                       const FileFilter* fileFilter);
 
     /** Destructor. */
@@ -95,7 +95,7 @@ public:
         to get - see getNumSelectedFiles() to find out how many files were chosen.
         @see getHighlightedFile
      */
-    File getSelectedFile (int index) const noexcept;
+    juce::File getSelectedFile (int index) const noexcept;
 
     /** Deselects any files that are currently selected.
      */
@@ -116,14 +116,14 @@ public:
         this will only return one of them.
         @see getSelectedFile
      */
-    File getHighlightedFile() const noexcept;
+    juce::File getHighlightedFile() const noexcept;
 
     //==============================================================================
     /** Returns the directory whose contents are currently being shown in the listbox. */
-    const File& getRoot() const;
+    const juce::File& getRoot() const;
 
     /** Changes the directory that's being shown in the listbox. */
-    void setRoot (const File& newRootDirectory);
+    void setRoot (const juce::File& newRootDirectory);
 
     /** Refreshes the directory that's currently being listed. */
     void refresh();
@@ -173,45 +173,45 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    bool keyPressed (const KeyPress& key) override;
+    bool keyPressed (const juce::KeyPress& key) override;
     /** @internal */
-    void mouseDoubleClick (const MouseEvent &e) override;
+    void mouseDoubleClick (const juce::MouseEvent &e) override;
     /** @internal */
     void selectionChanged() override;
     /** @internal */
-    void fileClicked (const File& f, const MouseEvent& e) override;
+    void fileClicked (const juce::File& f, const juce::MouseEvent& e) override;
     /** @internal */
-    void fileDoubleClicked (const File& f) override;
+    void fileDoubleClicked (const juce::File& f) override;
     /** @internal */
-    void browserRootChanged (const File&) override;
+    void browserRootChanged (const juce::File&) override;
     /** @internal */
-    bool isFileSuitable (const File&) const override;
+    bool isFileSuitable (const juce::File&) const override;
     /** @internal */
-    bool isDirectorySuitable (const File&) const override;
+    bool isDirectorySuitable (const juce::File&) const override;
 
     /** @internal */
-    DirectoryContentsDisplayComponent* getDisplayComponent() const noexcept;
+    juce::DirectoryContentsDisplayComponent* getDisplayComponent() const noexcept;
 
 private:
     //==============================================================================
-    std::unique_ptr<DirectoryContentsList> fileList;
+    std::unique_ptr<juce::DirectoryContentsList> fileList;
     const FileFilter* fileFilter;
 
     int flags;
-    File currentRoot;
-    Array<File> chosenFiles;
-    ListenerList <FileBrowserListener> listeners;
+    juce::File currentRoot;
+    juce::Array<juce::File> chosenFiles;
+    juce::ListenerList <FileBrowserListener> listeners;
 
-    std::unique_ptr<DirectoryContentsDisplayComponent> fileListComponent;
+    std::unique_ptr<juce::DirectoryContentsDisplayComponent> fileListComponent;
 
-    TimeSliceThread thread;
+    juce::TimeSliceThread thread;
 
     void sendListenerChangeMessage();
-    bool isFileOrDirSuitable (const File& f) const;
+    bool isFileOrDirSuitable (const juce::File& f) const;
 
     bool showResizer;
-    std::unique_ptr<ResizableCornerComponent> resizer;
-    ComponentBoundsConstrainer resizeLimits;
+    std::unique_ptr<juce::ResizableCornerComponent> resizer;
+    juce::ComponentBoundsConstrainer resizeLimits;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicFileBrowser)
 };

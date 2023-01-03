@@ -34,8 +34,8 @@
 
 #include "../DemoHeader.h"
 
-class CurvePoint : public Component,
-                   public ComponentDragger
+class CurvePoint : public juce::Component,
+                   public juce::ComponentDragger
 {
 public:
     CurvePoint() :
@@ -51,35 +51,35 @@ public:
         constrainer.setMinimumOnscreenAmounts (halfHeight, halfWidth, halfHeight, halfWidth);
     }
 
-    void paint (Graphics& g) override
+    void paint (juce::Graphics& g) override
     {
-        g.setColour (Colours::grey);
+        g.setColour (juce::Colours::grey);
         g.fillAll();
 
         if (mouseIsOver)
         {
-            g.setColour (Colours::lightgrey);
+            g.setColour (juce::Colours::lightgrey);
             g.drawRect (0, 0, getWidth(), getHeight(), 2);
         }
     }
 
-    void mouseDown (const MouseEvent& e) override
+    void mouseDown (const juce::MouseEvent& e) override
     {
         startDraggingComponent (this, e);
     }
 
-    void mouseDrag (const MouseEvent& e) override
+    void mouseDrag (const juce::MouseEvent& e) override
     {
         dragComponent (this, e, &constrainer);
     }
 
-    void mouseEnter (const MouseEvent&) override
+    void mouseEnter (const juce::MouseEvent&) override
     {
         mouseIsOver = true;
         repaint();
     }
 
-    void mouseExit (const MouseEvent&) override
+    void mouseExit (const juce::MouseEvent&) override
     {
         mouseIsOver = false;
         repaint();
@@ -87,7 +87,7 @@ public:
 
 private:
     //==============================================================================
-    ComponentBoundsConstrainer constrainer;
+    juce::ComponentBoundsConstrainer constrainer;
     bool mouseIsOver;
 
     //==============================================================================

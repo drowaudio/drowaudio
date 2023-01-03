@@ -34,26 +34,26 @@
 
 #include "DemoHeader.h"
 
-class TransportComponent : public Component,
-                           public Button::Listener
+class TransportComponent : public juce::Component,
+                           public juce::Button::Listener
 {
 public:
-    TransportComponent (AudioDeviceManager& audioDeviceManager, AudioFilePlayerExt& audioFilePlayer);
+    TransportComponent (juce::AudioDeviceManager& audioDeviceManager, AudioFilePlayerExt& audioFilePlayer);
     ~TransportComponent();
     
     //==============================================================================
     /** @internal */
     void resized() override;
     /** @internal */
-    void buttonClicked (Button* button) override;
+    void buttonClicked (juce::Button* button) override;
 
 private:
-    //==============================================================================
+    juce:://==============================================================================
     LookAndFeel_V3 settingsLaf;
-    std::unique_ptr <AudioDeviceSelectorComponent> settingsComp;
-    AudioDeviceManager& audioDeviceManager;
+    std::unique_ptr <juce::AudioDeviceSelectorComponent> settingsComp;
+    juce::AudioDeviceManager& audioDeviceManager;
     AudioFilePlayerExt& audioFilePlayer;
-    OwnedArray<TextButton> buttons;
+    juce::OwnedArray<juce::TextButton> buttons;
 
     enum Buttons
     {

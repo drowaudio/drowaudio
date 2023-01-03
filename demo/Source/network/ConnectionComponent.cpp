@@ -42,18 +42,18 @@ ConnectionComponent::ConnectionComponent() :
     passwordLabel.setComponentID ("passwordLabel");
     protocolLabel.setComponentID ("protocolLabel");
 
-    urlLabel.setText ("URL", dontSendNotification);
-    hostnameLabel.setText ("Hostname", dontSendNotification);
-    usernameLabel.setText ("Username", dontSendNotification);
-    passwordLabel.setText ("Password", dontSendNotification);
-    protocolLabel.setText ("Protocol", dontSendNotification);
+    urlLabel.setText ("URL", juce::dontSendNotification);
+    hostnameLabel.setText ("Hostname", juce::dontSendNotification);
+    usernameLabel.setText ("Username", juce::dontSendNotification);
+    passwordLabel.setText ("Password", juce::dontSendNotification);
+    protocolLabel.setText ("Protocol", juce::dontSendNotification);
 
     urlEditor.setComponentID ("urlEditor");
     hostnameEditor.setComponentID ("hostnameEditor");
     usernameEditor.setComponentID ("usernameEditor");
     passwordEditor.setComponentID ("passwordEditor");
 
-    passwordEditor.setPasswordCharacter ((juce_wchar) 0x2022);
+    passwordEditor.setPasswordCharacter ((juce::juce_wchar) 0x2022);
 
     protocolBox.addItemList (CURLManager::getInstance()->getSupportedProtocols(), 1);
     for (int i = 0; i < protocolBox.getNumItems(); ++i)
@@ -100,7 +100,7 @@ void ConnectionComponent::resized()
     connectButton.setBounds (protocolBox.getRight() + m, protocolBox.getY(), buttonW, protocolBox.getHeight());
 }
 
-void ConnectionComponent::buttonClicked (Button* button)
+void ConnectionComponent::buttonClicked (juce::Button* button)
 {
     if (button == &connectButton)
     {

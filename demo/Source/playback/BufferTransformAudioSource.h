@@ -34,7 +34,7 @@
 
 #include "../DemoHeader.h"
 
-class BufferTransformAudioSource : public AudioSource
+class BufferTransformAudioSource : public juce::AudioSource
 {
 public:
     BufferTransformAudioSource (AudioSource* source,
@@ -53,11 +53,11 @@ public:
     /** @internal */
     void releaseResources() override;
     /** @internal */
-    void getNextAudioBlock (const AudioSourceChannelInfo& info) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& info) override;
 
 private:
     //==============================================================================
-    OptionalScopedPointer<AudioSource> source;
+    juce::OptionalScopedPointer<AudioSource> source;
     Buffer buffer;
     bool isBypassed;
 

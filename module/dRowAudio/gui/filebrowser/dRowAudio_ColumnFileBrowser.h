@@ -44,12 +44,12 @@ class ColumnFileBrowserLookAndFeel;
     using the keyboard or the mouse. Highligting a number of files and then dragging
     them will perform an external drag and drop procedure.
  */
-class ColumnFileBrowser :    public Viewport
+class ColumnFileBrowser :    public juce::Viewport
 {
 public:
     /** Creates a ColumnFileBrowser with a given file filter.
      */
-    ColumnFileBrowser (WildcardFileFilter* filesToDisplay);
+    ColumnFileBrowser (juce::WildcardFileFilter* filesToDisplay);
 
     //==================================================================================
     /** Sets the highlight colour for the active column.
@@ -57,7 +57,7 @@ public:
         For the rest of the colours, use the normal DirectoryContentsDisplayComponent
         colourIds.
      */
-    void setActiveColumHighlightColour (Colour colour);
+    void setActiveColumHighlightColour (juce::Colour colour);
 
     //==================================================================================
     /** @internal */
@@ -65,11 +65,11 @@ public:
     /** @internal */
     void visibleAreaChanged (const juce::Rectangle<int>& newVisibleArea) override;
     /** @internal */
-    void mouseWheelMove (const MouseEvent& event, const MouseWheelDetails& wheel) override;
+    void mouseWheelMove (const juce::MouseEvent& event, const juce::MouseWheelDetails& wheel) override;
 
 private:
     //==================================================================================
-    std::unique_ptr<WildcardFileFilter> wildcard;
+    std::unique_ptr<juce::WildcardFileFilter> wildcard;
     std::unique_ptr<ColumnFileBrowserContents> fileBrowser;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ColumnFileBrowser)

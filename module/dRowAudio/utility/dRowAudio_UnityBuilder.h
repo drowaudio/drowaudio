@@ -65,7 +65,7 @@ public:
 
         @param sourceDirectory  The source directory to "unify".
     */
-    bool processDirectory (const File& sourceDirectory);
+    bool processDirectory (const juce::File& sourceDirectory);
 
     /** Sets the location and name of the output unity build files.
         Note that the extension of this file is not taken into account and will
@@ -73,7 +73,7 @@ public:
 
         @param newDestinationFile   The output location for the unity build files.
     */
-    void setDestinationFile (const File& newDestinationFile);
+    void setDestinationFile (const juce::File& newDestinationFile);
 
     /** Sets a number of files to ignore.
         This may be useful of you have some working files that you don't currently
@@ -83,7 +83,7 @@ public:
 
         @param filesToIgnore    An arry of files ot ignore.
     */
-    void setFilesToIgnore (const Array<File>& filesToIgnore);
+    void setFilesToIgnore (const juce::Array<juce::File>& filesToIgnore);
 
     /** This enables you to include a block of text before and after the source
         files. This can be handy if you need extra defines or pragmas.
@@ -91,14 +91,14 @@ public:
         @param preInclusionString   The text to include before the files.
         @param postInclusionString  The text to include after the files.
     */
-    void setPreAndPostString (const String& preInclusionString,
-                              const String& postInclusionString);
+    void setPreAndPostString (const juce::String& preInclusionString,
+                              const juce::String& postInclusionString);
 
 private:
     //==============================================================================
-    String preInclusionString, postInclusionString;
-    Array<File> filesToIgnore;
-    File destinationFile;
+    juce::String preInclusionString, postInclusionString;
+    juce::Array<juce::File> filesToIgnore;
+    juce::File destinationFile;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UnityBuilder)

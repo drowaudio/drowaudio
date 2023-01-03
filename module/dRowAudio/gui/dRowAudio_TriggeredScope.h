@@ -116,13 +116,13 @@ public:
     */
     void addSamples (const float* samples, int numSamples);
     
-    void addSamples (const AudioSampleBuffer& buffer);
+    void addSamples (const juce::AudioSampleBuffer& buffer);
 
     //==============================================================================
     /** @internal */
     void resized() override;
     /** @internal */
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     /** @internal */
     void timerCallback() override;
     /** @internal */
@@ -130,12 +130,12 @@ public:
 
 private:
     //==============================================================================
-    juce::OptionalScopedPointer<TimeSliceThread> backgroundThreadToUse;
+    juce::OptionalScopedPointer<juce::TimeSliceThread> backgroundThreadToUse;
 
     TriggerMode triggerMode;
     int numSamplesPerPixel;
     float verticalZoomFactor;
-    Array<float> verticalZoomOffset;
+    juce::Array<float> verticalZoomOffset;
     float triggerLevel = 0.0f;
     float triggerPos = 0.0f;
     int triggerChannel = -1;
@@ -158,20 +158,20 @@ private:
         int numLeftToAverage;
         int bufferSize, bufferWritePos;
 
-        HeapBlock<float> minBuffer, maxBuffer;
+        juce::HeapBlock<float> minBuffer, maxBuffer;
 
         float currentMax, currentMin;
         FifoBuffer<float> samplesToProcess;
-        HeapBlock<float> tempProcessingBlock;
+        juce::HeapBlock<float> tempProcessingBlock;
     };
     
-    OwnedArray<Channel> channels;
+    juce::OwnedArray<Channel> channels;
     
     bool needToUpdate;
 
     bool needToRepaint;
-    Image image;
-    CriticalSection imageLock;
+    juce::Image image;
+    juce::CriticalSection imageLock;
 
     //==============================================================================
     void processPendingSamples();

@@ -228,7 +228,7 @@ void * FIRFilter::operator new(size_t /*s*/)
 
 FIRFilter * FIRFilter::newInstance()
 {
-    uint uExtensions;
+    [[maybe_unused]] uint uExtensions;
 
     uExtensions = detectCPUextensions();
 

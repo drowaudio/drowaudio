@@ -51,32 +51,32 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     addAndMakeVisible (&resolutionSlider);
     resolutionSlider.addListener (this);
     resolutionSlider.setRange (0, 20);
-    resolutionSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
+    resolutionSlider.setTextBoxStyle (juce::Slider::NoTextBox, false, 50, 20);
     resolutionSlider.setValue (3.0);
     resolutionSlider.setSkewFactorFromMidPoint (3.0);
-    resolutionSlider.setSliderStyle (Slider::RotaryVerticalDrag);
+    resolutionSlider.setSliderStyle (juce::Slider::RotaryVerticalDrag);
 
     addAndMakeVisible (&resolutionLabel);
-    resolutionLabel.setText ("Detail", dontSendNotification);
+    resolutionLabel.setText ("Detail", juce::dontSendNotification);
     resolutionLabel.setFont (12.0f);
-    resolutionLabel.setJustificationType (Justification::centred);
+    resolutionLabel.setJustificationType (juce::Justification::centred);
     resolutionLabel.attachToComponent (&resolutionSlider, false);
-    resolutionLabel.setColour (Label::textColourId, Colours::white);
+    resolutionLabel.setColour (juce::Label::textColourId, juce::Colours::white);
 
     addAndMakeVisible (&zoomSlider);
     zoomSlider.addListener (this);
     zoomSlider.setRange (0.01, 2);
-    zoomSlider.setTextBoxStyle (Slider::NoTextBox, false, 50, 20);
+    zoomSlider.setTextBoxStyle (juce::Slider::NoTextBox, false, 50, 20);
     zoomSlider.setSkewFactorFromMidPoint (1.0);
     zoomSlider.setValue (1.0);
-    zoomSlider.setSliderStyle (Slider::RotaryVerticalDrag);
+    zoomSlider.setSliderStyle (juce::Slider::RotaryVerticalDrag);
 
     addAndMakeVisible (&zoomLabel);
-    zoomLabel.setText ("Zoom", dontSendNotification);
+    zoomLabel.setText ("Zoom", juce::dontSendNotification);
     zoomLabel.setFont (12.0f);
-    zoomLabel.setJustificationType (Justification::centred);
+    zoomLabel.setJustificationType (juce::Justification::centred);
     zoomLabel.attachToComponent (&zoomSlider, false);
-    zoomLabel.setColour (Label::textColourId, Colours::white);
+    zoomLabel.setColour (juce::Label::textColourId, juce::Colours::white);
 
     addAndMakeVisible (&loopComponent);
 
@@ -85,25 +85,25 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     filterGroup.setText ("Filter");
     rateGroup.setText ("Tempo and Pitch");
 
-    filterGroup.setColour (GroupComponent::outlineColourId, Colours::white);
-    filterGroup.setColour (GroupComponent::textColourId, Colours::white);
-    rateGroup.setColour (GroupComponent::outlineColourId, Colours::white);
-    rateGroup.setColour (GroupComponent::textColourId, Colours::white);
+    filterGroup.setColour (juce::GroupComponent::outlineColourId, juce::Colours::white);
+    filterGroup.setColour (juce::GroupComponent::textColourId, juce::Colours::white);
+    rateGroup.setColour (juce::GroupComponent::outlineColourId, juce::Colours::white);
+    rateGroup.setColour (juce::GroupComponent::textColourId, juce::Colours::white);
 
     for (int i = 0; i < numControls; ++i)
     {
-        Slider* slider = playerControls.add (new Slider());
+        juce::Slider* slider = playerControls.add (new juce::Slider());
         slider->setValue (1.0);
-        slider->setSliderStyle (Slider::RotaryVerticalDrag);
-        slider->setTextBoxStyle (Slider::TextBoxBelow, false, 50, 16);
+        slider->setSliderStyle (juce::Slider::RotaryVerticalDrag);
+        slider->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 50, 16);
         slider->addListener (this);
         addAndMakeVisible (slider);
 
-        Label* label = playerControlLabels.add (new Label());
+        juce::Label* label = playerControlLabels.add (new juce::Label());
         label->setFont (12.0f);
         label->attachToComponent (slider, false);
-        label->setJustificationType (Justification::centred);
-        label->setColour (Label::textColourId, Colours::white);
+        label->setJustificationType (juce::Justification::centred);
+        label->setColour (juce::Label::textColourId, juce::Colours::white);
         addAndMakeVisible (label);
     }
 
@@ -118,16 +118,16 @@ AudioPlaybackDemo::AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer_,
     for (int i = 0; i < numControls; ++i)
         playerControls[i]->setSkewFactorFromMidPoint (1.0);
 
-    playerControlLabels[lowEQ]->setText ("Low EQ", dontSendNotification);
-    playerControlLabels[midEQ]->setText ("Mid EQ", dontSendNotification);
-    playerControlLabels[highEQ]->setText ("High EQ", dontSendNotification);
-    playerControlLabels[rate]->setText ("Rate", dontSendNotification);
-    playerControlLabels[tempo]->setText ("Tempo", dontSendNotification);
-    playerControlLabels[pitch]->setText ("Pitch", dontSendNotification);
+    playerControlLabels[lowEQ]->setText ("Low EQ", juce::dontSendNotification);
+    playerControlLabels[midEQ]->setText ("Mid EQ", juce::dontSendNotification);
+    playerControlLabels[highEQ]->setText ("High EQ", juce::dontSendNotification);
+    playerControlLabels[rate]->setText ("Rate", juce::dontSendNotification);
+    playerControlLabels[tempo]->setText ("Tempo", juce::dontSendNotification);
+    playerControlLabels[pitch]->setText ("Pitch", juce::dontSendNotification);
 
     addAndMakeVisible (&distortionDemo);
 
-    backgroundThread.startThread (Thread::Priority::background);
+    backgroundThread.startThread (juce::Thread::Priority::background);
 }
 
 void AudioPlaybackDemo::resized()
@@ -137,11 +137,11 @@ void AudioPlaybackDemo::resized()
     int m = 5;
     const int bevelSize = 2;
 
-    Rectangle<int> posBounds (0, 0, w, 50);
+    juce::Rectangle<int> posBounds (0, 0, w, 50);
     resolutionSlider.setBounds (posBounds.removeFromLeft (50).removeFromBottom (35));
     positionableWaveDisplay->setBounds (posBounds.reduced (bevelSize));
 
-    Rectangle<int> dragBounds (0, 50 + m, w, 50);
+    juce::Rectangle<int> dragBounds (0, 50 + m, w, 50);
     zoomSlider.setBounds (dragBounds.removeFromLeft (50).removeFromBottom (35));
     draggableWaveDisplay->setBounds (dragBounds.reduced (bevelSize));
     
@@ -165,16 +165,16 @@ void AudioPlaybackDemo::resized()
     distortionDemo.setBounds (0, filterGroup.getBottom() + (2 * m), w, h - filterGroup.getBottom() - (2 * m));
 }
 
-void AudioPlaybackDemo::paint (Graphics& g)
+void AudioPlaybackDemo::paint (juce::Graphics& g)
 {
-    GuiHelpers::drawBevel (g, positionableWaveDisplay->getBounds().toFloat(), 2.0f, Colours::darkgrey);
-    GuiHelpers::drawBevel (g, draggableWaveDisplay->getBounds().toFloat(), 2.0f, Colours::darkgrey);
+    GuiHelpers::drawBevel (g, positionableWaveDisplay->getBounds().toFloat(), 2.0f, juce::Colours::darkgrey);
+    GuiHelpers::drawBevel (g, draggableWaveDisplay->getBounds().toFloat(), 2.0f, juce::Colours::darkgrey);
 
-    g.setColour (Colours::grey.brighter());
+    g.setColour (juce::Colours::grey.brighter());
     g.drawHorizontalLine (filterGroup.getBottom() + 5, 5.0f, getWidth() - 5.0f);
 }
 
-void AudioPlaybackDemo::sliderValueChanged (Slider* slider)
+void AudioPlaybackDemo::sliderValueChanged (juce::Slider* slider)
 {
     if (slider == &resolutionSlider)
     {

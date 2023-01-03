@@ -99,7 +99,7 @@ public:
                double value_ = 0.0, double min_ = 0.0, double max_ = 1.0, double default_ = 0.0,
                double skewFactor_ = 1.0, double smoothCoeff_ = 0.1, double step_ = 0.01, juce::String unitSuffix_ = {});
 
-    Value& getValueObject() { return valueObject; }
+    juce::Value& getValueObject() { return valueObject; }
 
     double getValue() const                                     { return double (valueObject.getValue()); }
     double getNormalisedValue() const                           { return normaliseValue (getValue()); }
@@ -128,15 +128,15 @@ public:
     const juce::String& getUnitSuffix() const                   { return unitSuffix; }
     void setUnitSuffix (const juce::String& newSuffix);
 
-    void writeXml (XmlElement& xmlState);
-    void readXml (const XmlElement* xmlState);
+    void writeXml (juce::XmlElement& xmlState);
+    void readXml (const juce::XmlElement* xmlState);
 
     /** Sets up a given slider with the parmeters properties. */
-    void setupSlider (Slider& slider);
+    void setupSlider (juce::Slider& slider);
 
 private:
     //==============================================================================
-    Value valueObject;
+    juce::Value valueObject;
     juce::String name, description, unitSuffix;
     double min, max, defaultValue;
     double smoothCoeff, smoothValue;

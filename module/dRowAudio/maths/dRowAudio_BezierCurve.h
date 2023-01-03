@@ -94,8 +94,8 @@ namespace BezierCurve
         // http://www.tinaja.com/text/bezmath.html
 
         const float epsilon = 0.00001f;
-        a = jmax (0.0f, jmin (1.0f, a));
-        b = jmax (0.0f, jmin (1.0f, b));
+        a = juce::jmax (0.0f, juce::jmin (1.0f, a));
+        b = juce::jmax (0.0f, juce::jmin (1.0f, b));
         if (a == 0.5)
             a += epsilon;
 
@@ -143,7 +143,7 @@ namespace BezierCurve
             const float currentx = xFromT (currentt, A, B, C, D);
             const float currentslope = slopeFromT (currentt, A, B, C);
             currentt -= (currentx - x) * (currentslope);
-            currentt = jlimit (0.0f, 1.0f, currentt);
+            currentt = juce::jlimit (0.0f, 1.0f, currentt);
         }
 
         return yFromT (currentt,  E, F, G, H);
@@ -164,8 +164,8 @@ namespace BezierCurve
         float max_param_a = 1.0f - epsilon;
         float min_param_b = 0.0f + epsilon;
         float max_param_b = 1.0f - epsilon;
-        a = jmax (min_param_a, jmin (max_param_a, a));
-        b = jmax (min_param_b, jmin (max_param_b, b));
+        a = juce::jmax (min_param_a, juce::jmin (max_param_a, a));
+        b = juce::jmax (min_param_b, juce::jmin (max_param_b, b));
 
         float x0 = 0;
         float y0 = 0;
@@ -201,13 +201,13 @@ namespace BezierCurve
         x1 = (ccx - x2 * B2t1) / B1t1;
         y1 = (ccy - y2 * B2t1) / B1t1;
 
-        x1 = jmax (0 + epsilon, jmin (1 - epsilon, x1));
-        x2 = jmax (0 + epsilon, jmin (1 - epsilon, x2));
+        x1 = juce::jmax (0 + epsilon, juce::jmin (1 - epsilon, x1));
+        x2 = juce::jmax (0 + epsilon, juce::jmin (1 - epsilon, x2));
 
         // Note that this function also requires cubicBezier()!
         y = cubicBezier (x, x1, y1, x2, y2);
 
-        return jmax (0.0f, jmin (1.0f, y));
+        return juce::jmax (0.0f, juce::jmin (1.0f, y));
     }
 }
 

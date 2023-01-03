@@ -41,51 +41,51 @@ MainComponent::MainComponent()
       transport (audioDeviceManager, audioFilePlayer),
       meterThread ("Meter Thread"),
       cpuMeter (&audioDeviceManager),
-      tabbedComponent (TabbedButtonBar::TabsAtTop)
+      tabbedComponent (juce::TabbedButtonBar::TabsAtTop)
 {
-    clock.setColour (Label::textColourId, Colours::white);
-    clock.setJustificationType (Justification::centred);
+    clock.setColour (juce::Label::textColourId, juce::Colours::white);
+    clock.setJustificationType (juce::Justification::centred);
 
-    cpuMeter.setTextColour (Colours::red);
-    cpuMeter.setJustificationType (Justification::centred);
-    cpuMeter.setBorderSize (BorderSize<int>());
+    cpuMeter.setTextColour (juce::Colours::red);
+    cpuMeter.setJustificationType (juce::Justification::centred);
+    cpuMeter.setBorderSize (juce::BorderSize<int>());
 
     tabbedComponent.addTab ("Audio Playback",
-                            Colours::grey,
+                            juce::Colours::grey,
                             new AudioPlaybackDemo (audioFilePlayer, bufferTransformAudioSource),
                             true);
 
-    const File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
+    const juce::File libraryFile (juce::File::getSpecialLocation (juce::File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
     juce::ValueTree libraryTree (readValueTreeFromFile (libraryFile));
     ITunesLibrary::getInstance()->setLibraryTree (libraryTree);
     ITunesLibrary::getInstance()->setLibraryFile (ITunesLibrary::getDefaultITunesLibraryFile());
     MusicLibraryTable* musicLibraryTable = new MusicLibraryTable();
     musicLibraryTable->setLibraryToUse (ITunesLibrary::getInstance());
 
-    musicLibraryTable->getTableListBox().setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
-    musicLibraryTable->getTableListBox().setColour (ListBox::outlineColourId, Colours::grey);
-    musicLibraryTable->getTableListBox().setColour (ListBox::textColourId, Colours::darkgrey);
+    musicLibraryTable->getTableListBox().setColour (juce::ListBox::backgroundColourId, juce::Colour::greyLevel (0.2f));
+    musicLibraryTable->getTableListBox().setColour (juce::ListBox::outlineColourId, juce::Colours::grey);
+    musicLibraryTable->getTableListBox().setColour (juce::ListBox::textColourId, juce::Colours::darkgrey);
 
     tabbedComponent.addTab ("iTunes Library",
-                            Colours::grey, musicLibraryTable, true);
+                            juce::Colours::grey, musicLibraryTable, true);
 
-    ColumnFileBrowser* columnFileBrowser = new ColumnFileBrowser (new WildcardFileFilter (audioFilePlayer.getAudioFormatManager()->getWildcardForAllFormats(),
+    ColumnFileBrowser* columnFileBrowser = new ColumnFileBrowser (new juce::WildcardFileFilter (audioFilePlayer.getAudioFormatManager()->getWildcardForAllFormats(),
                                                                                           "*",
                                                                                           "Audio Files"));
     tabbedComponent.addTab ("Column File Browser",
-                            Colours::grey,
+                            juce::Colours::grey,
                             columnFileBrowser,
                             true);
 
     fftDemo = new FFTDemo();
     tabbedComponent.addTab ("FFT Demo",
-                            Colours::grey,
+                            juce::Colours::grey,
                             fftDemo,
                             true);
 
 #if DROWAUDIO_USE_CURL
     tabbedComponent.addTab ("CURL Demo",
-                            Colours::grey,
+                            juce::Colours::grey,
                             new NetworkDemo(),
                             true);
 #endif
@@ -105,11 +105,11 @@ MainComponent::MainComponent()
 
     meterThread.addTimeSliceClient (&meterL);
     meterThread.addTimeSliceClient (&meterR);
-    meterThread.startThread (Thread::Priority::low);
+    meterThread.startThread (juce::Thread::Priority::low);
     
     addAndMakeVisible (&searchBox);
     searchBox.addListener (this);
-    searchBox.setTextToShowWhenEmpty ("search...", Colours::grey);
+    searchBox.setTextToShowWhenEmpty ("search...", juce::Colours::grey);
 
     setSize (800, 600);
     
@@ -135,7 +135,7 @@ MainComponent::~MainComponent()
     audioSourcePlayer.setSource (nullptr);
     audioDeviceManager.removeAudioCallback (this);
 
-    const File libraryFile (File::getSpecialLocation (File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
+    const juce::File libraryFile (juce::File::getSpecialLocation (juce::File::userDesktopDirectory).getChildFile ("dRowAudio Demo Library.xml"));
     juce::ValueTree libraryTree (ITunesLibrary::getInstance()->getLibraryTree());
     writeValueTreeToFile (libraryTree, libraryFile);
 }
@@ -176,7 +176,7 @@ void MainComponent::resized()
     searchBox.setBounds (transport.getX(), tabbedComponent.getY() + 5, w - transport.getX() - 5, tabbedComponent.getTabBarDepth() - 10);
 }
 
-void MainComponent::textEditorTextChanged (TextEditor& editor)
+void MainComponent::textEditorTextChanged (juce::TextEditor& editor)
 {
     if (&editor == &searchBox)
     {
@@ -195,7 +195,7 @@ void MainComponent::audioDeviceIOCallbackWithContext (const float* const* inputC
                                                       float* const* outputChannelData,
                                                       int numOutputChannels,
                                                       int numSamples,
-                                                      const AudioIODeviceCallbackContext& context)
+                                                      const juce::AudioIODeviceCallbackContext& context)
 {
     audioSourcePlayer.audioDeviceIOCallbackWithContext (inputChannelData,
                                                         numInputChannels,
@@ -213,7 +213,7 @@ void MainComponent::audioDeviceIOCallbackWithContext (const float* const* inputC
         meterR.copySamples (outputChannelData[1], numSamples);
 }
 
-void MainComponent::audioDeviceAboutToStart (AudioIODevice* device)
+void MainComponent::audioDeviceAboutToStart (juce::AudioIODevice* device)
 {
     audioSourcePlayer.audioDeviceAboutToStart (device);
     fftDemo->setSampleRate (device->getCurrentSampleRate());

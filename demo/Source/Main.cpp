@@ -31,7 +31,7 @@
 
 #include "MainWindow.h"
 
-class dRowAudioDemoApplication : public JUCEApplication
+class dRowAudioDemoApplication : public juce::JUCEApplication
 {
 public:
     dRowAudioDemoApplication()
@@ -41,7 +41,7 @@ public:
     void initialise (const juce::String&) override
     {
 #if JUCE_DEBUG && DROWAUDIO_UNIT_TESTS
-        UnitTestRunner testRunner;
+        juce::UnitTestRunner testRunner;
         testRunner.runAllTests();
 #endif
        

@@ -38,10 +38,10 @@
 
 class FFTDemo;
 
-class MainComponent : public Component,
-                      public TextEditor::Listener,
-                      public DragAndDropContainer,
-                      public AudioIODeviceCallback
+class MainComponent : public juce::Component,
+                      public juce::TextEditor::Listener,
+                      public juce::DragAndDropContainer,
+                      public juce::AudioIODeviceCallback
 {
 public:
     MainComponent();
@@ -51,25 +51,25 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    void textEditorTextChanged (TextEditor& editor) override;
+    void textEditorTextChanged (juce::TextEditor& editor) override;
     /** @internal */
     void audioDeviceIOCallbackWithContext (const float* const* inputChannelData,
                                            int numInputChannels,
                                            float* const* outputChannelData,
                                            int numOutputChannels,
                                            int numSamples,
-                                           const AudioIODeviceCallbackContext& context) override;
+                                           const juce::AudioIODeviceCallbackContext& context) override;
     /** @internal */
-    void audioDeviceAboutToStart (AudioIODevice* device) override;
+    void audioDeviceAboutToStart (juce::AudioIODevice* device) override;
     /** @internal */
     void audioDeviceStopped() override;
 
 private:
     //==============================================================================
-    TextEditor searchBox;
+    juce::TextEditor searchBox;
     
-    AudioDeviceManager audioDeviceManager;
-    AudioSourcePlayer audioSourcePlayer;
+    juce::AudioDeviceManager audioDeviceManager;
+    juce::AudioSourcePlayer audioSourcePlayer;
     AudioFilePlayerExt audioFilePlayer;
     BufferTransformAudioSource bufferTransformAudioSource;
 
@@ -77,12 +77,12 @@ private:
     AudioFileDropTarget dropTarget;
     TransportComponent transport;
 
-    TimeSliceThread meterThread;
+    juce::TimeSliceThread meterThread;
     SegmentedMeter meterL, meterR;
 
     Clock clock;
     CpuMeter cpuMeter;
-    TabbedComponent tabbedComponent;
+    juce::TabbedComponent tabbedComponent;
 
     FFTDemo* fftDemo;
 

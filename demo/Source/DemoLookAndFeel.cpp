@@ -35,25 +35,25 @@ DemoLookAndFeel::DemoLookAndFeel()
 {
 }
 
-void DemoLookAndFeel::drawButtonBackground (Graphics& g,
-                                            Button& button,
-                                            const Colour& backgroundColour,
+void DemoLookAndFeel::drawButtonBackground (juce::Graphics& g,
+                                            juce::Button& button,
+                                            const juce::Colour& backgroundColour,
                                             bool isMouseOverButton,
                                             bool isButtonDown)
 {
     const int width = button.getWidth();
     const int height = button.getHeight();
 
-    const Colour baseColour (GuiHelpers::createBaseColour (backgroundColour,
+    const juce::Colour baseColour (GuiHelpers::createBaseColour (backgroundColour,
                                                            button.hasKeyboardFocus (true),
                                                            isMouseOverButton, isButtonDown)
                              .withMultipliedAlpha (button.isEnabled() ? 1.0f : 0.5f));
 
-    ColourGradient cg (baseColour.brighter (0.5f), 0.0f, 0.0f,
+    juce::ColourGradient cg (baseColour.brighter (0.5f), 0.0f, 0.0f,
                        baseColour.darker (0.5f), 0.0f, (float)height,
                        false);
 
-    Rectangle<float> bounds (g.getClipBounds().toFloat().reduced (0.0f, 1.0f));
+    juce::Rectangle<float> bounds (g.getClipBounds().toFloat().reduced (0.0f, 1.0f));
     g.setGradientFill (cg);
     g.fillRoundedRectangle (bounds, 4.0f);
 
@@ -62,16 +62,16 @@ void DemoLookAndFeel::drawButtonBackground (Graphics& g,
     bounds.setY (bounds.getY() - 0.5f);
     bounds.setHeight (bounds.getHeight());
 
-    g.setColour (Colours::black);
+    g.setColour (juce::Colours::black);
     g.drawRoundedRectangle (bounds, 4.0f, 1.0f);
 
-    ColourGradient highlight (Colours::white.withAlpha (0.1f), 2.0f, (float)height,
-                              Colours::white.withAlpha (0.1f), width - 2.0f, (float)height,
+    juce::ColourGradient highlight (juce::Colours::white.withAlpha (0.1f), 2.0f, (float)height,
+                                    juce::Colours::white.withAlpha (0.1f), width - 2.0f, (float)height,
                               false);
     highlight.addColour (2.0f / (width - 4.0f),
-                         Colours::white.withAlpha (0.5f));
+                         juce::Colours::white.withAlpha (0.5f));
     highlight.addColour (1.0f - (2.0f / (width - 4.0f)),
-                         Colours::white.withAlpha (0.5f));
+                         juce::Colours::white.withAlpha (0.5f));
     g.setGradientFill (highlight);
     g.drawLine (2.0f, height - 0.5f, width - 2.0f, height - 0.5f, 0.5f);
 }

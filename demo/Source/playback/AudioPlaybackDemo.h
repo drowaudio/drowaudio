@@ -36,8 +36,8 @@
 #include "DistortionDemo.h"
 #include "BufferTransformAudioSource.h"
 
-class AudioPlaybackDemo : public Component,
-                          public Slider::Listener
+class AudioPlaybackDemo : public juce::Component,
+                          public juce::Slider::Listener
 {
 public:
     AudioPlaybackDemo (AudioFilePlayerExt& audioFilePlayer,
@@ -45,8 +45,8 @@ public:
 
     //==============================================================================
     void resized() override;
-    void paint (Graphics& g) override;
-    void sliderValueChanged (Slider* slider) override;
+    void paint (juce::Graphics& g) override;
+    void sliderValueChanged (juce::Slider* slider) override;
 
 private:
     //==============================================================================
@@ -65,15 +65,15 @@ private:
 
     LoopComponent loopComponent;
 
-    GroupComponent filterGroup, rateGroup;
-    Slider resolutionSlider, zoomSlider;
-    Label resolutionLabel, zoomLabel;
+    juce::GroupComponent filterGroup, rateGroup;
+    juce::Slider resolutionSlider, zoomSlider;
+    juce::Label resolutionLabel, zoomLabel;
 
-    OwnedArray<Slider> playerControls;
-    OwnedArray<Label> playerControlLabels;
+    juce::OwnedArray<juce::Slider> playerControls;
+    juce::OwnedArray<juce::Label> playerControlLabels;
 
-    TimeSliceThread backgroundThread;
-    AudioThumbnailCache audioThumbnailCache;
+    juce::TimeSliceThread backgroundThread;
+    juce::AudioThumbnailCache audioThumbnailCache;
 #if JUCE_MAC
     ColouredAudioThumbnail audioThumbnail;
 #else

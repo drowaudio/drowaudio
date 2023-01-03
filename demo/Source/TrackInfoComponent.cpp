@@ -39,14 +39,14 @@ TrackInfoComponent::TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer_) :
     addAndMakeVisible (&bpmLabel);
     addAndMakeVisible (&remainLabel);
 
-    bpmLabel.setJustificationType (Justification::centredRight);
-    remainLabel.setJustificationType (Justification::centredRight);
+    bpmLabel.setJustificationType (juce::Justification::centredRight);
+    remainLabel.setJustificationType (juce::Justification::centredRight);
 
-    bpmLabel.setText ("...", dontSendNotification);
-    remainLabel.setText ("--:--", dontSendNotification);
+    bpmLabel.setText ("...", juce::dontSendNotification);
+    remainLabel.setText ("--:--", juce::dontSendNotification);
 
-    bpmLabel.setColour (Label::textColourId, Colours::white);
-    remainLabel.setColour (Label::textColourId, Colours::white);
+    bpmLabel.setColour (juce::Label::textColourId, juce::Colours::white);
+    remainLabel.setColour (juce::Label::textColourId, juce::Colours::white);
 
     startTimer (40);
 }
@@ -65,13 +65,13 @@ void TrackInfoComponent::resized()
     remainLabel.setBounds (w - 100, bpmLabel.getBottom() + m, 100, 20);
 }
 
-void TrackInfoComponent::paint (Graphics& g)
+void TrackInfoComponent::paint (juce::Graphics& g)
 {
     const int w = getWidth();
     const int h = getHeight();
     const int m = 5;
 
-    g.setColour (Colours::white);
+    g.setColour (juce::Colours::white);
     g.setFont (20);
 
     juce::ValueTree trackInfo (audioFilePlayer.getLibraryEntry());
@@ -87,20 +87,20 @@ void TrackInfoComponent::paint (Graphics& g)
         g.setFont (16);
         g.drawText (trackInfo[MusicColumns::columnNames[MusicColumns::Artist]].toString(),
                     m, m, w - (2 * m), 16,
-                    Justification::centredLeft,
+                    juce::Justification::centredLeft,
                     true);
 
         g.setFont (20);
         g.drawText (trackInfo[MusicColumns::columnNames[MusicColumns::Song]].toString(),
                           m, 16 + (2 * m), w - (2 * m), 20,
-                          Justification::centredLeft,
+                          juce::Justification::centredLeft,
                           true);
 
-        g.setColour (Colours::lightgrey);
+        g.setColour (juce::Colours::lightgrey);
         g.setFont (12);
         g.drawText (trackInfo[MusicColumns::columnNames[MusicColumns::Album]].toString(),
                     m, 36 + (3 * m), w - (2 * m), 12,
-                    Justification::centredLeft,
+                    juce::Justification::centredLeft,
                     true);
 
     }
@@ -114,7 +114,7 @@ void TrackInfoComponent::paint (Graphics& g)
 
         g.drawFittedText (displayText,
                           0, 0, w, h,
-                          Justification (Justification::centred),
+                          juce::Justification (juce::Justification::centred),
                           2);
     }
 }
@@ -136,7 +136,7 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
         if (audioFilePlayer.getSoundTouchAudioSource() != nullptr)
             bpm *= audioFilePlayer.getSoundTouchAudioSource()->getSoundTouchProcessor().getEffectivePlaybackRatio();
 
-        bpmLabel.setText (String (bpm, 2), dontSendNotification);
+        bpmLabel.setText (juce::String (bpm, 2), juce::dontSendNotification);
     }
 }
 
@@ -145,5 +145,5 @@ void TrackInfoComponent::timerCallback()
     const double timeRemaining = audioFilePlayer.getLengthInSeconds() - audioFilePlayer.getCurrentPosition();
     juce::String remain (timeRemaining < 0.0 ? juce::String() : "-");
     remain << timeToTimecodeStringLowRes (timeRemaining);
-    remainLabel.setText (remain, dontSendNotification);
+    remainLabel.setText (remain, juce::dontSendNotification);
 }

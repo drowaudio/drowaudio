@@ -31,14 +31,14 @@
 
 #include "TransportComponent.h"
 
-TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
+TransportComponent::TransportComponent (juce::AudioDeviceManager& audioDeviceManager_,
                                         AudioFilePlayerExt& audioFilePlayer_) :
     audioDeviceManager (audioDeviceManager_),
     audioFilePlayer (audioFilePlayer_)
 {
     for (int i = 0; i < numButtons; ++i)
     {
-        TextButton* button = buttons.add (new TextButton());
+        juce::TextButton* button = buttons.add (new juce::TextButton());
         addAndMakeVisible (button);
         button->addListener (this);
     }
@@ -54,12 +54,12 @@ TransportComponent::TransportComponent (AudioDeviceManager& audioDeviceManager_,
     buttons[loop]->setClickingTogglesState (true);
     //buttons[reverse]->setClickingTogglesState (true);
     
-    settingsComp = std::make_unique<AudioDeviceSelectorComponent>
+    settingsComp = std::make_unique<juce::AudioDeviceSelectorComponent>
         (audioDeviceManager, 1, 2, 1, 2, false, false, true, false);
         
-    settingsLaf.setColour (Label::textColourId, Colours::white);
-    settingsLaf.setColour (TextButton::buttonColourId, Colours::white);
-    settingsLaf.setColour (TextButton::textColourOffId, Colours::black);
+    settingsLaf.setColour (juce::Label::textColourId, juce::Colours::white);
+    settingsLaf.setColour (juce::TextButton::buttonColourId, juce::Colours::white);
+    settingsLaf.setColour (juce::TextButton::textColourOffId, juce::Colours::black);
     settingsComp->setLookAndFeel (&settingsLaf);
 }
 
@@ -76,7 +76,7 @@ void TransportComponent::resized()
         buttons[i]->setBounds (0, 20 * i + 1, w, 18);
 }
 
-void TransportComponent::buttonClicked (Button* button)
+void TransportComponent::buttonClicked (juce::Button* button)
 {
     if (button == buttons[play])
     {
@@ -102,8 +102,8 @@ void TransportComponent::showAudioSettings()
 {
     settingsComp->setSize (500, 400);
 
-    DialogWindow::showDialog ("Audio Settings",
+    juce::DialogWindow::showDialog ("Audio Settings",
                                 dynamic_cast<Component*>(settingsComp.get()), nullptr,
-                                Colours::darkgrey,
+                                juce::Colours::darkgrey,
                                 true, true, true);
 }

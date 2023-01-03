@@ -42,8 +42,8 @@ namespace drow
 {
 
 //==============================================================================
-class CURLManager : public TimeSliceThread,
-                    public DeletedAtShutdown
+class CURLManager : public juce::TimeSliceThread,
+                    public juce::DeletedAtShutdown
 {
 public:
     //==============================================================================

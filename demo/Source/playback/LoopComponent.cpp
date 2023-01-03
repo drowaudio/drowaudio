@@ -59,12 +59,12 @@ void LoopComponent::resized()
     marker2.setBounds (marker2.getX(), 0, marker2.getWidth(), getHeight());
 }
 
-void LoopComponent::paint (Graphics& g)
+void LoopComponent::paint (juce::Graphics& g)
 {
-    const int startX = jmin (marker1.getRight(), marker2.getRight());
-    const int endX = jmax (marker1.getX(), marker2.getX());
+    const int startX = juce::jmin (marker1.getRight(), marker2.getRight());
+    const int endX = juce::jmax (marker1.getX(), marker2.getX());
 
-    g.setColour (audioFilePlayer.isBetweenLoopTimes() ? Colours::red.withAlpha (0.4f) : Colours::red.withAlpha (0.2f));
+    g.setColour (audioFilePlayer.isBetweenLoopTimes() ? juce::Colours::red.withAlpha (0.4f) : juce::Colours::red.withAlpha (0.2f));
     g.fillRect (startX, 0, endX - startX, getHeight());
 }
 
@@ -75,8 +75,8 @@ void LoopComponent::fileChanged (AudioFilePlayer* player)
         if (audioFilePlayer.getLengthInSeconds() > 0)
         {
             const double w = getWidth();
-            const double startTime = (jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
-            const double endTime = (jmax (marker1.getRight(), marker2.getRight()) / w) * audioFilePlayer.getLengthInSeconds();
+            const double startTime = (juce::jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
+            const double endTime = (juce::jmax (marker1.getRight(), marker2.getRight()) / w) * audioFilePlayer.getLengthInSeconds();
 
             audioFilePlayer.setLoopTimes (startTime, endTime);
         }
@@ -88,8 +88,8 @@ void LoopComponent::componentMovedOrResized (Component& /*component*/, bool /*wa
     if (audioFilePlayer.getLengthInSeconds() > 0.0)
     {
         const double w = getWidth();
-        const double startTime = (jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
-        const double endTime = (jmax (marker1.getRight(), marker2.getRight()) / w) * audioFilePlayer.getLengthInSeconds();
+        const double startTime = (juce::jmin (marker1.getX(), marker2.getX()) / w) * audioFilePlayer.getLengthInSeconds();
+        const double endTime = (juce::jmax (marker1.getRight(), marker2.getRight()) / w) * audioFilePlayer.getLengthInSeconds();
 
         audioFilePlayer.setLoopTimes (startTime, endTime);
     }

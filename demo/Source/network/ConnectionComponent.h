@@ -36,8 +36,8 @@
 
 #if DROWAUDIO_USE_CURL
 
-class ConnectionComponent : public Component,
-                            public Button::Listener
+class ConnectionComponent : public juce::Component,
+                            public juce::Button::Listener
 {
 public:
     ConnectionComponent();
@@ -64,17 +64,17 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    void buttonClicked (Button* button) override;
+    void buttonClicked (juce::Button* button) override;
 
 private:
     //==============================================================================
     CURLEasySession* curlSession;
-    ListenerList <Listener> listeners;
+    juce::ListenerList <Listener> listeners;
 
-    Label urlLabel, hostnameLabel, usernameLabel, passwordLabel, protocolLabel;
-    TextEditor urlEditor, hostnameEditor, usernameEditor, passwordEditor;
-    ComboBox protocolBox;
-    TextButton connectButton;
+    juce::Label urlLabel, hostnameLabel, usernameLabel, passwordLabel, protocolLabel;
+    juce::TextEditor urlEditor, hostnameEditor, usernameEditor, passwordEditor;
+    juce::ComboBox protocolBox;
+    juce::TextButton connectButton;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ConnectionComponent)

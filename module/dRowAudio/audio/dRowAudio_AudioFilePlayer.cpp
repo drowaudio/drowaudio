@@ -31,8 +31,8 @@
 
 
 AudioFilePlayer::AudioFilePlayer()
-    : bufferingTimeSliceThread (new TimeSliceThread ("Shared Buffering Thread"), true),
-      formatManager (new AudioFormatManager(), true)
+    : bufferingTimeSliceThread (new juce::TimeSliceThread ("Shared Buffering Thread"), true),
+      formatManager (new juce::AudioFormatManager(), true)
 {
     bufferingTimeSliceThread->startThread();
     formatManager->registerBasicFormats();
@@ -40,12 +40,12 @@ AudioFilePlayer::AudioFilePlayer()
     commonInitialise();
 }
 
-AudioFilePlayer::AudioFilePlayer (TimeSliceThread* threadToUse,
-                                  AudioFormatManager* formatManagerToUse)
-    : bufferingTimeSliceThread ((threadToUse == nullptr ? new TimeSliceThread ("Shared Buffering Thread")
+AudioFilePlayer::AudioFilePlayer (juce::TimeSliceThread* threadToUse,
+                                  juce::AudioFormatManager* formatManagerToUse)
+    : bufferingTimeSliceThread ((threadToUse == nullptr ? new juce::TimeSliceThread ("Shared Buffering Thread")
                                                         : threadToUse),
                                 threadToUse == nullptr),
-      formatManager ((formatManagerToUse == nullptr ? new AudioFormatManager()
+      formatManager ((formatManagerToUse == nullptr ? new juce::AudioFormatManager()
                                                     : formatManagerToUse),
                      formatManagerToUse == nullptr)
 {

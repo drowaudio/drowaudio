@@ -36,51 +36,51 @@
 /** The LookAndFeel of the ColumnFileBrowser.
     This is not intended for public use.
  */
-class ColumnFileBrowserLookAndFeel : public LookAndFeel_V2
+class ColumnFileBrowserLookAndFeel : public juce::LookAndFeel_V2
 {
 public:
     //==================================================================================
     ColumnFileBrowserLookAndFeel()
     {
-        setColour (ListBox::backgroundColourId, Colour::greyLevel (0.2f));
-        setColour (DirectoryContentsDisplayComponent::highlightColourId, Colour::greyLevel (0.9f));
-        setColour (DirectoryContentsDisplayComponent::textColourId, Colour::greyLevel (0.9f));
+        setColour (juce::ListBox::backgroundColourId, juce::Colour::greyLevel (0.2f));
+        setColour (juce::DirectoryContentsDisplayComponent::highlightColourId, juce::Colour::greyLevel (0.9f));
+        setColour (juce::DirectoryContentsDisplayComponent::textColourId, juce::Colour::greyLevel (0.9f));
 
         // scrollbars
-        setColour (ScrollBar::backgroundColourId, Colour::greyLevel (0.5f));
-        setColour (ScrollBar::thumbColourId, Colour::greyLevel (0.8f));
-        setColour (ScrollBar::trackColourId, Colour::greyLevel (0.3f));
+        setColour (juce::ScrollBar::backgroundColourId, juce::Colour::greyLevel (0.5f));
+        setColour (juce::ScrollBar::thumbColourId, juce::Colour::greyLevel (0.8f));
+        setColour (juce::ScrollBar::trackColourId, juce::Colour::greyLevel (0.3f));
     }
 
     ~ColumnFileBrowserLookAndFeel() override
     {
     }
 
-    void layoutFileBrowserComponent (FileBrowserComponent& browserComp,
-                                     DirectoryContentsDisplayComponent* fileListComponent,
-                                     FilePreviewComponent* /*previewComp*/,
-                                     ComboBox* /*currentPathBox*/,
-                                     TextEditor* /*filenameBox*/,
-                                     Button* /*goUpButton*/) override
+    void layoutFileBrowserComponent (juce::FileBrowserComponent& browserComp,
+                                     juce::DirectoryContentsDisplayComponent* fileListComponent,
+                                     juce::FilePreviewComponent* /*previewComp*/,
+                                     juce::ComboBox* /*currentPathBox*/,
+                                     juce::TextEditor* /*filenameBox*/,
+                                     juce::Button* /*goUpButton*/) override
     {
         int w = browserComp.getWidth();
         int x = 2;
         int y = 2;
 
-        Component* const listAsComp = dynamic_cast <Component*> (fileListComponent);
+        juce::Component* const listAsComp = dynamic_cast <juce::Component*> (fileListComponent);
         listAsComp->setBounds (x, y, w, browserComp.getHeight() - y);// - bottomSectionHeight);
 
         y = listAsComp->getBottom();
     }
 
-    void drawFileBrowserRow (Graphics& g, int width, int height,
-                             const File& /*file*/, const juce::String& filename, Image* icon,
+    void drawFileBrowserRow (juce::Graphics& g, int width, int height,
+                             const juce::File& /*file*/, const juce::String& filename, juce::Image* icon,
                              const juce::String& fileSizeDescription, const juce::String& fileTimeDescription,
                              bool isDirectory, bool isItemSelected, int /*itemIndex*/,
-                             DirectoryContentsDisplayComponent&) override
+                             juce::DirectoryContentsDisplayComponent&) override
     {
         if (isItemSelected)
-            g.fillAll (findColour (DirectoryContentsDisplayComponent::highlightColourId));
+            g.fillAll (findColour (juce::DirectoryContentsDisplayComponent::highlightColourId));
         //        else if ((itemIndex % 2) != 0)
         //            g.fillAll (findColour(ListBox::backgroundColourId).withBrightness(0.95f));
         //        else if ((itemIndex % 2) == 0)
@@ -108,87 +108,87 @@ public:
         //                               false);
         //        }
         const int x = 32;
-        g.setColour (Colours::black);
+        g.setColour (juce::Colours::black);
 
         if (icon != nullptr && icon->isValid())
         {
             g.drawImageWithin (*icon, 2, 2, x - 4, height - 4,
-                               RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize,
+                               juce::RectanglePlacement::centred | juce::RectanglePlacement::onlyReduceInSize,
                                false);
         }
         else
         {
-            const Drawable* d = isDirectory ? getDefaultFolderImage()
+            const juce::Drawable* d = isDirectory ? getDefaultFolderImage()
             : getDefaultDocumentFileImage();
 
             if (d != nullptr)
                 d->drawWithin (g, juce::Rectangle<float> (2.0f, 2.0f, x - 4.0f, height - 4.0f),
-                               RectanglePlacement::centred | RectanglePlacement::onlyReduceInSize, 1.0f);
+                               juce::RectanglePlacement::centred | juce::RectanglePlacement::onlyReduceInSize, 1.0f);
         }
 
-        g.setColour (findColour (DirectoryContentsDisplayComponent::textColourId));
+        g.setColour (findColour (juce::DirectoryContentsDisplayComponent::textColourId));
         if (isItemSelected)
-            g.setColour (findColour (DirectoryContentsDisplayComponent::highlightColourId).contrasting(1.0f));
+            g.setColour (findColour (juce::DirectoryContentsDisplayComponent::highlightColourId).contrasting(1.0f));
 
         g.setFont (height * 0.7f);
 
         if (width > 450 && ! isDirectory)
         {
-            const int sizeX = roundToInt (width * 0.7f);
-            const int dateX = roundToInt (width * 0.8f);
+            const int sizeX = juce::roundToInt (width * 0.7f);
+            const int dateX = juce::roundToInt (width * 0.8f);
 
             g.drawFittedText (filename,
                               x, 0, sizeX - x, height,
-                              Justification::centredLeft, 1);
+                              juce::Justification::centredLeft, 1);
 
             g.setFont (height * 0.5f);
-            g.setColour (Colours::darkgrey);
+            g.setColour (juce::Colours::darkgrey);
 
             if (! isDirectory)
             {
                 g.drawFittedText (fileSizeDescription,
                                   sizeX, 0, dateX - sizeX - 8, height,
-                                  Justification::centredRight, 1);
+                                  juce::Justification::centredRight, 1);
 
                 g.drawFittedText (fileTimeDescription,
                                   dateX, 0, width - 8 - dateX, height,
-                                  Justification::centredRight, 1);
+                                  juce::Justification::centredRight, 1);
             }
         }
         else
         {
             g.drawFittedText (filename,
                               x, 0, (int) (width - x - (height * 0.7f)), height,
-                              Justification::centredLeft, 1);
+                              juce::Justification::centredLeft, 1);
 
         }
 
         // draw directory triangles
         if (isDirectory)
         {
-            int diameter = roundToInt (height * 0.5f);
-            Path p;
+            int diameter = juce::roundToInt (height * 0.5f);
+            juce::Path p;
             p.addTriangle (width - (height * 0.2f), height * 0.5f,
                            (float) (width - diameter), height * 0.3f,
                            (float) (width - diameter), height * 0.7f);
-            g.setColour (findColour (ScrollBar::thumbColourId));
+            g.setColour (findColour (juce::ScrollBar::thumbColourId));
             g.fillPath (p);
 
-            g.setColour (Colour (0x80000000));
-            g.strokePath (p, PathStrokeType (0.5f));
+            g.setColour (juce::Colour (0x80000000));
+            g.strokePath (p, juce::PathStrokeType (0.5f));
         }
     }
 
     //============================================================
-    void drawScrollbarButton (Graphics& g,
-                              ScrollBar& scrollbar,
+    void drawScrollbarButton (juce::Graphics& g,
+                              juce::ScrollBar& scrollbar,
                               int width, int height,
                               int buttonDirection,
                               bool /*isScrollbarVertical*/,
                               bool /*isMouseOverButton*/,
                               bool isButtonDown) override
     {
-        Path p;
+        juce::Path p;
 
         if (buttonDirection == 0)
             p.addTriangle (width * 0.5f, height * 0.2f,
@@ -208,18 +208,18 @@ public:
                            width * 0.7f, height * 0.9f);
 
         if (isButtonDown)
-            g.setColour (scrollbar.findColour (ScrollBar::thumbColourId).contrasting (0.2f));
+            g.setColour (scrollbar.findColour (juce::ScrollBar::thumbColourId).contrasting (0.2f));
         else
-            g.setColour (scrollbar.findColour (ScrollBar::thumbColourId));
+            g.setColour (scrollbar.findColour (juce::ScrollBar::thumbColourId));
 
         g.fillPath (p);
 
-        g.setColour (Colour (0x80000000));
-        g.strokePath (p, PathStrokeType (0.5f));
+        g.setColour (juce::Colour (0x80000000));
+        g.strokePath (p, juce::PathStrokeType (0.5f));
     }
 
-    void drawScrollbar (Graphics& g,
-                        ScrollBar& scrollbar,
+    void drawScrollbar (juce::Graphics& g,
+                        juce::ScrollBar& scrollbar,
                         int x, int y,
                         int width, int height,
                         bool isScrollbarVertical,
@@ -228,9 +228,9 @@ public:
                         bool /*isMouseOver*/,
                         bool /*isMouseDown*/) override
     {
-        g.fillAll (scrollbar.findColour (ScrollBar::backgroundColourId));
+        g.fillAll (scrollbar.findColour (juce::ScrollBar::backgroundColourId));
 
-        Path slotPath, thumbPath;
+        juce::Path slotPath, thumbPath;
 
         float gx1 = 0.0f, gy1 = 0.0f, gx2 = 0.0f, gy2 = 0.0f;
 
@@ -269,13 +269,13 @@ public:
             gy2 = y + height * 0.7f;
         }
 
-        const Colour thumbColour (scrollbar.findColour (ScrollBar::thumbColourId));
-        Colour trackColour1, trackColour2;
+        const juce::Colour thumbColour (scrollbar.findColour (juce::ScrollBar::thumbColourId));
+        juce::Colour trackColour1, trackColour2;
 
-        trackColour1 = scrollbar.findColour (ScrollBar::trackColourId);
-        trackColour2 = trackColour1.overlaidWith (Colour (0x19000000));
+        trackColour1 = scrollbar.findColour (juce::ScrollBar::trackColourId);
+        trackColour2 = trackColour1.overlaidWith (juce::Colour (0x19000000));
 
-        g.setGradientFill (ColourGradient (trackColour1, gx1, gy1,
+        g.setGradientFill (juce::ColourGradient (trackColour1, gx1, gy1,
                                            trackColour2, gx2, gy2, false));
         g.fillPath (slotPath);
 
@@ -290,8 +290,8 @@ public:
             gy2 = (float) y + height;
         }
 
-        g.setGradientFill (ColourGradient (Colours::transparentBlack,gx1, gy1,
-                                           Colour (0x19000000), gx2, gy2, false));
+        g.setGradientFill (juce::ColourGradient (juce::Colours::transparentBlack,gx1, gy1,
+                                           juce::Colour (0x19000000), gx2, gy2, false));
         g.fillPath (slotPath);
 
         g.setColour (thumbColour);
@@ -316,7 +316,7 @@ public:
     }
 
     //============================================================
-    void drawCornerResizer (Graphics& g,
+    void drawCornerResizer (juce::Graphics& g,
                             int w, int h,
                             bool /*isMouseOver*/,
                             bool /*isMouseDragging*/) override
@@ -325,10 +325,10 @@ public:
         const float xGap = w / 3.0f;
         const float yGap = h * 0.25f;
 
-        g.setColour (findColour (ScrollBar::backgroundColourId));
+        g.setColour (findColour (juce::ScrollBar::backgroundColourId));
         g.fillAll();
 
-        g.setColour (findColour (ScrollBar::thumbColourId));
+        g.setColour (findColour (juce::ScrollBar::thumbColourId));
         g.drawLine (xGap + lineThickness * 0.5f, yGap, xGap + lineThickness * 0.5f, h - yGap, lineThickness);
         g.drawLine ((2 * xGap) - lineThickness * 0.5f, yGap, (2 * xGap) - lineThickness * 0.5f, h - yGap, lineThickness);
     }

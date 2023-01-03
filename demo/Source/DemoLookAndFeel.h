@@ -34,14 +34,14 @@
 
 #include "DemoHeader.h"
 
-class DemoLookAndFeel : public LookAndFeel_V3
+class DemoLookAndFeel : public juce::LookAndFeel_V3
 {
 public:
     DemoLookAndFeel();
 
-    void drawButtonBackground (Graphics& g,
-                               Button& button,
-                               const Colour& backgroundColour,
+    void drawButtonBackground (juce::Graphics& g,
+                               juce::Button& button,
+                               const juce::Colour& backgroundColour,
                                bool isMouseOverButton,
                                bool isButtonDown) override;
 

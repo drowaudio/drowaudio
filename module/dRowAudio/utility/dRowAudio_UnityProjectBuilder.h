@@ -51,7 +51,7 @@ class UnityProjectBuilder
 {
 public:
     /** Creates a UnityProjectBuilder for a given Introjucer project. */
-    UnityProjectBuilder (const File& sourceProject);
+    UnityProjectBuilder (const juce::File& sourceProject);
 
     /** Destructor. */
     ~UnityProjectBuilder();
@@ -90,11 +90,11 @@ public:
     /** This optional extra step resaves the project with a provided Introjucer
         executable so is useful for generating the new project files.
     */
-    void saveProject (const File& introjucerAppFile);
+    void saveProject (const juce::File& introjucerAppFile);
 
 private:
     //==============================================================================
-    File projectFile, unityProjectFile;
+    juce::File projectFile, unityProjectFile;
     juce::ValueTree project;
     juce::StringArray filesToAdd;
     int numFiles;
@@ -102,17 +102,17 @@ private:
     juce::String unityName, buildDir;
 
     //==============================================================================
-    void recurseGroup (ValueTree group, const File& sourceDir);
-    void parseFile (ValueTree file, const File& sourceDir);
-    Array<File> buildUnityCpp (const File& destDir);
-    File buildUnityCpp (const File& destDir, int unityNum, const Range<int> fileRange);
+    void recurseGroup (juce::ValueTree group, const juce::File& sourceDir);
+    void parseFile (juce::ValueTree file, const juce::File& sourceDir);
+    juce::Array<juce::File> buildUnityCpp (const juce::File& destDir);
+    juce::File buildUnityCpp (const juce::File& destDir, int unityNum, const juce::Range<int> fileRange);
     void updateBuildDirectories();
     void logOutput (const juce::String& output);
 
     //==============================================================================
-    static bool isValidHeaderFile (const File& file);
-    static bool isValidSourceFile (const File& file);
-    static File getExeFromApp (const File& app);
+    static bool isValidHeaderFile (const juce::File& file);
+    static bool isValidSourceFile (const juce::File& file);
+    static juce::File getExeFromApp (const juce::File& app);
     static juce::String createAlphaNumericUID();
 
     //==============================================================================

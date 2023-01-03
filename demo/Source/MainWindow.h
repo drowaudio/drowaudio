@@ -35,7 +35,7 @@
 #include "DemoHeader.h"
 #include "DemoLookAndFeel.h"
 
-class MainAppWindow : public DocumentWindow
+class MainAppWindow : public juce::DocumentWindow
 {
 public:
     MainAppWindow();

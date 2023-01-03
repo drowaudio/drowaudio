@@ -43,8 +43,8 @@
     Better look of file list
     Thread CURLEasySession
 */
-class NetworkDemo : public Component,
-                    public DragAndDropContainer,
+class NetworkDemo : public juce::Component,
+                    public juce::DragAndDropContainer,
                     public ConnectionComponent::Listener
 {
 public:
@@ -63,7 +63,7 @@ private:
     RemoteDirectoryListBox remoteBrowser;
 
     // unused:
-    std::unique_ptr<MemoryInputStream> inputStream;
+    std::unique_ptr<juce::MemoryInputStream> inputStream;
     std::unique_ptr<CURLEasySession> curlSession;
 
     //==============================================================================

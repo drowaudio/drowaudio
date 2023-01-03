@@ -6,14 +6,13 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" extraLinkerFlags="-lcurl"
-               bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall&#10;-pedantic&#10;-Wconversion"
-               xcodeValidArchs="x86_64">
+               bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall&#10;-pedantic&#10;-Wconversion">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="dRowAudio Demo"
-                       osxSDK="default" osxCompatibility="default" osxArchitecture="64BitUniversal"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="Native"
                        headerPath="" defines="" cppLanguageStandard="" cppLibType="libc++"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="dRowAudio Demo"
-                       osxSDK="default" osxCompatibility="default" osxArchitecture="64BitUniversal"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="64BitIntel"
                        headerPath="" defines="" cppLanguageStandard="" cppLibType="libc++"/>
       </CONFIGURATIONS>
       <MODULEPATHS>

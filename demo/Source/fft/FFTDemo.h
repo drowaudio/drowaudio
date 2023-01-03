@@ -35,9 +35,9 @@
 #include "PitchDetectorComponent.h"
 
 //==============================================================================
-class FFTDemo : public Component,
-                public Button::Listener,
-                public Slider::Listener
+class FFTDemo : public juce::Component,
+                public juce::Button::Listener,
+                public juce::Slider::Listener
 {
 public:
     FFTDemo();
@@ -49,21 +49,21 @@ public:
 
     //==============================================================================
     void resized() override;
-    void buttonClicked (Button* button) override;
-    void sliderValueChanged (Slider* slider) override;
+    void buttonClicked (juce::Button* button) override;
+    void sliderValueChanged (juce::Slider* slider) override;
     
     void visibilityChanged() override;
     bool isCurrentlyShowing = false;
 private:
     //==============================================================================
-    TimeSliceThread renderThread;
+    juce::TimeSliceThread renderThread;
     AudioOscilloscope audioOscilloscope;
     Spectroscope spectroscope;
     PitchDetectorComponent pitchDetector;
     Sonogram sonogram;
 
-    ToggleButton logSpectroscopeButton, logSonogramButton;
-    Slider sonogramSpeedSlider;
+    juce::ToggleButton logSpectroscopeButton, logSonogramButton;
+    juce::Slider sonogramSpeedSlider;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTDemo)

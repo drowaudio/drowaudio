@@ -59,7 +59,7 @@ void BufferTransformAudioSource::releaseResources()
     source->releaseResources();
 }
 
-void BufferTransformAudioSource::getNextAudioBlock (const AudioSourceChannelInfo& info)
+void BufferTransformAudioSource::getNextAudioBlock (const juce::AudioSourceChannelInfo& info)
 {
     source->getNextAudioBlock (info);
 

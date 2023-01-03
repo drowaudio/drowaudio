@@ -34,9 +34,9 @@
 
 #include "DemoHeader.h"
 
-class TrackInfoComponent : public Component,
+class TrackInfoComponent : public juce::Component,
                            public AudioFilePlayer::Listener,
-                           public Timer
+                           public juce::Timer
 {
 public:
     TrackInfoComponent (AudioFilePlayerExt& audioFilePlayer);
@@ -46,7 +46,7 @@ public:
     /** @internal */
     void resized() override;
     /** @internal */
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     /** @internal */
     void fileChanged (AudioFilePlayer* player) override;
     /** @internal */
@@ -57,7 +57,7 @@ public:
 private:
     //==============================================================================
     AudioFilePlayerExt& audioFilePlayer;
-    Label bpmLabel, remainLabel;
+    juce::Label bpmLabel, remainLabel;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TrackInfoComponent)

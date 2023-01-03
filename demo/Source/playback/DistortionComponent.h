@@ -34,9 +34,9 @@
 
 #include "CurvePoint.h"
 
-class DistortionComponent : public Component,
+class DistortionComponent : public juce::Component,
                             public Buffer::Listener,
-                            public ComponentListener
+                            public juce::ComponentListener
 {
 public:
     DistortionComponent (Buffer& bufferToControl);
@@ -47,9 +47,9 @@ public:
 
     //==============================================================================
     void resized() override;
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     void bufferChanged (Buffer* buffer) override;
-    void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized) override;
+    void componentMovedOrResized (juce::Component& component, bool wasMoved, bool wasResized) override;
 
 private:
     //==============================================================================
@@ -64,16 +64,16 @@ private:
 
     //==============================================================================
     Buffer& buffer;
-    Path path;
+    juce::Path path;
 
-    OwnedArray<CurvePoint> curvePoints;
-    OwnedArray<Value> values;
+    juce::OwnedArray<CurvePoint> curvePoints;
+    juce::OwnedArray<juce::Value> values;
 
     void refreshPath();
     void refillBuffer (float x1, float y1, float x2, float y2);
     void resetPoints();
 
-    Image background;
+    juce::Image background;
     bool isInitialised;
 
     //==============================================================================

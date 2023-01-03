@@ -61,11 +61,11 @@ void DistortionComponent::resized()
         isInitialised = true;
     }
 
-    background = Image (Image::RGB, jmax (1, w), jmax (1, h), false);
-    Graphics g (background);
-    g.fillAll (Colours::black);
+    background = juce::Image (juce::Image::RGB, juce::jmax (1, w), juce::jmax (1, h), false);
+    juce::Graphics g (background);
+    g.fillAll (juce::Colours::black);
 
-    g.setColour (Colour::greyLevel (0.25f));
+    g.setColour (juce::Colour::greyLevel (0.25f));
 
     const float xScale = w / 10.0f;
     const float yScale = h / 10.0f;
@@ -80,12 +80,12 @@ void DistortionComponent::resized()
     refreshPath();
 }
 
-void DistortionComponent::paint (Graphics& g)
+void DistortionComponent::paint (juce::Graphics& g)
 {
     g.drawImageAt (background, 0, 0);
 
-    g.setColour (Colours::white);
-    g.strokePath (path, PathStrokeType (2.0f));
+    g.setColour (juce::Colours::white);
+    g.strokePath (path, juce::PathStrokeType (2.0f));
 }
 
 void DistortionComponent::bufferChanged (Buffer* changedBuffer)
@@ -137,7 +137,7 @@ void DistortionComponent::refillBuffer (float x1, float y1, float x2, float y2)
 
     for (int i = 0; i < bufferSize; ++i)
     {
-        bufferData[i] = BezierCurve::cubicBezierNearlyThroughTwoPoints (jlimit (0.0f, 1.0f, i * bufferScale),
+        bufferData[i] = BezierCurve::cubicBezierNearlyThroughTwoPoints (juce::jlimit (0.0f, 1.0f, i * bufferScale),
                                                                         x1, y1,
                                                                         x2, y2);
     }

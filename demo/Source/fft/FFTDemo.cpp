@@ -48,7 +48,7 @@ FFTDemo::FFTDemo() :
 
     sonogramSpeedSlider.setRange (1.0, 10.0, 1.0);
     sonogramSpeedSlider.setValue (sonogram.getBlockWidth());
-    sonogramSpeedSlider.setTextBoxStyle (Slider::NoTextBox, true, 0, 0);
+    sonogramSpeedSlider.setTextBoxStyle (juce::Slider::NoTextBox, true, 0, 0);
     sonogramSpeedSlider.addListener (this);
 
     renderThread.addTimeSliceClient (&spectroscope);
@@ -95,7 +95,7 @@ void FFTDemo::resized()
     sonogramSpeedSlider.setBounds (logSonogramButton.getRight() + m, logSonogramButton.getY(), 100, 18);
 }
 
-void FFTDemo::buttonClicked (Button* button)
+void FFTDemo::buttonClicked (juce::Button* button)
 {
     if (button == &logSpectroscopeButton)
     {
@@ -108,7 +108,7 @@ void FFTDemo::buttonClicked (Button* button)
     }
 }
 
-void FFTDemo::sliderValueChanged (Slider* slider)
+void FFTDemo::sliderValueChanged (juce::Slider* slider)
 {
     if (slider == &sonogramSpeedSlider)
         sonogram.setBlockWidth ((int) sonogramSpeedSlider.getValue());

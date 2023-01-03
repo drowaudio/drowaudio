@@ -73,6 +73,9 @@
 
 namespace drow
 {
+    using namespace juce;
+    using juce::MemoryBlock;
+
     #include "audio/dRowAudio_AudioFilePlayer.cpp"
     #include "audio/dRowAudio_AudioFilePlayerExt.cpp"
     #include "audio/dRowAudio_AudioSampleBufferAudioFormat.cpp"

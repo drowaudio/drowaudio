@@ -56,19 +56,19 @@ int RemoteDirectoryListBoxModel::getNumRows()
     return itemList.size();
 }
 
-void RemoteDirectoryListBoxModel::paintListBoxItem (int rowNumber, Graphics& g,
+void RemoteDirectoryListBoxModel::paintListBoxItem (int rowNumber, juce::Graphics& g,
                                                     int width, int height, bool rowIsSelected)
 {
     if (rowIsSelected)
     {
-        g.setColour (Colours::lightblue);
+        g.setColour (juce::Colours::lightblue);
         g.fillAll();
     }
 
-    g.setColour (Colours::black);
+    g.setColour (juce::Colours::black);
     g.drawFittedText (itemList[rowNumber],
                       0, 0, width, height,
-                      Justification::centredLeft, 1);
+                      juce::Justification::centredLeft, 1);
 }
 
 void RemoteDirectoryListBoxModel::setContents (const juce::StringArray& newContents)
@@ -76,7 +76,7 @@ void RemoteDirectoryListBoxModel::setContents (const juce::StringArray& newConte
     itemList = newContents;
 }
 
-void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked (int row, const MouseEvent& /*e*/)
+void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked (int row, const juce::MouseEvent& /*e*/)
 {
     //*** Need to navigate session here
     if (itemList[row] == "..")
@@ -98,7 +98,7 @@ void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked (int row, const Mouse
     sendChangeMessage();
 }
 
-var RemoteDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int>& currentlySelectedRows)
+juce::var RemoteDirectoryListBoxModel::getDragSourceDescription (const juce::SparseSet<int>& currentlySelectedRows)
 {
     if (curlSession != nullptr && currentlySelectedRows.size() > 0)
         return curlSession->getRemotePath().upToLastOccurrenceOf ("/", true, false) + itemList[currentlySelectedRows[0]];
@@ -111,7 +111,7 @@ RemoteDirectoryListBox::RemoteDirectoryListBox() :
     isInterestedInDrag (false)
 {
     //session.setRemotePath ("ftp://www.aggravatedmusic.co.uk/rss/agro_news_feed.xml");
-    session.setLocalFile (File::getSpecialLocation (File::userDesktopDirectory));
+    session.setLocalFile (juce::File::getSpecialLocation (juce::File::userDesktopDirectory));
 
     model.addChangeListener (this);
     model.setCURLSession (&session);
@@ -123,11 +123,11 @@ RemoteDirectoryListBox::~RemoteDirectoryListBox()
     model.removeChangeListener (this);
 }
 
-void RemoteDirectoryListBox::paintOverChildren (Graphics& g)
+void RemoteDirectoryListBox::paintOverChildren (juce::Graphics& g)
 {
     if (isInterestedInDrag)
     {
-        g.setColour (Colours::orange);
+        g.setColour (juce::Colours::orange);
         g.drawRect (getLocalBounds(), 3);
     }
 }
@@ -138,7 +138,7 @@ void RemoteDirectoryListBox::refresh()
     updateContent();
 }
 
-void RemoteDirectoryListBox::changeListenerCallback (ChangeBroadcaster* source)
+void RemoteDirectoryListBox::changeListenerCallback (juce::ChangeBroadcaster* source)
 {
     if (source == &model)
         updateContent();
@@ -165,8 +165,8 @@ void RemoteDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails
 {
     if (dynamic_cast<LocalDirectoryListBox*> (dragSourceDetails.sourceComponent.get()) != nullptr)
     {
-        const File file (dragSourceDetails.description.toString());
-        juce::String localFileName (File (dragSourceDetails.description.toString()).getFileName());
+        const juce::File file (dragSourceDetails.description.toString());
+        juce::String localFileName (juce::File (dragSourceDetails.description.toString()).getFileName());
 
         session.setRemotePath (session.getRemotePath().upToLastOccurrenceOf ("/", true, false) + file.getFullPathName());
         session.setLocalFile (file);

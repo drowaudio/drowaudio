@@ -33,9 +33,9 @@
 #include "MainComponent.h"
 
 MainAppWindow::MainAppWindow() :
-    DocumentWindow (JUCEApplication::getInstance()->getApplicationName(), Colours::darkgrey, DocumentWindow::allButtons)
+    DocumentWindow (juce::JUCEApplication::getInstance()->getApplicationName(), juce::Colours::darkgrey, DocumentWindow::allButtons)
 {
-    LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
+    juce::LookAndFeel::setDefaultLookAndFeel (&lookAndFeel);
     setupColours();
 
     setContentOwned (new MainComponent(), true);
@@ -46,20 +46,20 @@ MainAppWindow::MainAppWindow() :
 
 MainAppWindow::~MainAppWindow()
 {
-    LookAndFeel::setDefaultLookAndFeel (nullptr);
+    juce::LookAndFeel::setDefaultLookAndFeel (nullptr);
 }
 
 void MainAppWindow::closeButtonPressed()
 {
-    JUCEApplication::getInstance()->systemRequestedQuit();
+    juce::JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
 //==============================================================================
 void MainAppWindow::setupColours()
 {
-    LookAndFeel& laf = getLookAndFeel();
-    laf.setColour (TextButton::buttonColourId, Colours::lightgrey);
-    laf.setColour (TextButton::buttonOnColourId, Colours::grey);
-    laf.setColour (ToggleButton::textColourId, Colours::white);
-    laf.setColour (Slider::rotarySliderFillColourId, Colours::white);
+    juce::LookAndFeel& laf = getLookAndFeel();
+    laf.setColour (juce::TextButton::buttonColourId, juce::Colours::lightgrey);
+    laf.setColour (juce::TextButton::buttonOnColourId, juce::Colours::grey);
+    laf.setColour (juce::ToggleButton::textColourId, juce::Colours::white);
+    laf.setColour (juce::Slider::rotarySliderFillColourId, juce::Colours::white);
 }

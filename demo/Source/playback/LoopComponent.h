@@ -34,7 +34,7 @@
 
 #include "../DemoHeader.h"
 
-class LoopMarker : public Component
+class LoopMarker : public juce::Component
 {
 public:
     LoopMarker() :
@@ -48,45 +48,45 @@ public:
         constrainer.setMinimumOnscreenAmounts (getHeight(), getWidth(), getHeight(), getWidth());
     }
 
-    void paint (Graphics& g) override
+    void paint (juce::Graphics& g) override
     {
-        g.fillAll (isMouseOver ? Colours::red.withAlpha (0.9f) : Colours::red.withAlpha (0.7f));
+        g.fillAll (isMouseOver ? juce::Colours::red.withAlpha (0.9f) : juce::Colours::red.withAlpha (0.7f));
     }
 
-    void mouseEnter (const MouseEvent&) override
+    void mouseEnter (const juce::MouseEvent&) override
     {
-        setMouseCursor (MouseCursor::PointingHandCursor);
+        setMouseCursor (juce::MouseCursor::PointingHandCursor);
         isMouseOver = true;
         repaint();
     }
 
-    void mouseExit (const MouseEvent&) override
+    void mouseExit (const juce::MouseEvent&) override
     {
-        setMouseCursor (MouseCursor::NormalCursor);
+        setMouseCursor (juce::MouseCursor::NormalCursor);
         isMouseOver = false;
         repaint();
     }
 
-    void mouseDown (const MouseEvent& e) override
+    void mouseDown (const juce::MouseEvent& e) override
     {
-        setMouseCursor (MouseCursor::DraggingHandCursor);
+        setMouseCursor (juce::MouseCursor::DraggingHandCursor);
         dragger.startDraggingComponent (this, e);
     }
 
-    void mouseUp (const MouseEvent&) override
+    void mouseUp (const juce::MouseEvent&) override
     {
-        setMouseCursor (MouseCursor::PointingHandCursor);
+        setMouseCursor (juce::MouseCursor::PointingHandCursor);
     }
 
-    void mouseDrag (const MouseEvent& e) override
+    void mouseDrag (const juce::MouseEvent& e) override
     {
         dragger.dragComponent (this, e, &constrainer);
     }
 
 private:
     //==============================================================================
-    ComponentDragger dragger;
-    ComponentBoundsConstrainer constrainer;
+    juce::ComponentDragger dragger;
+    juce::ComponentBoundsConstrainer constrainer;
     bool isMouseOver;
 
     //==============================================================================
@@ -94,8 +94,8 @@ private:
 };
 
 //==============================================================================
-class LoopComponent : public Component,
-                      public ComponentListener,
+class LoopComponent : public juce::Component,
+                      public juce::ComponentListener,
                       public AudioFilePlayer::Listener
 {
 public:
@@ -105,8 +105,8 @@ public:
 
     //==============================================================================
     void resized() override;
-    void paint (Graphics& g) override;
-    void componentMovedOrResized (Component& component, bool wasMoved, bool wasResized) override;
+    void paint (juce::Graphics& g) override;
+    void componentMovedOrResized (juce::Component& component, bool wasMoved, bool wasResized) override;
     void fileChanged (AudioFilePlayer* player) override;
     void audioFilePlayerSettingChanged (AudioFilePlayer* player, int settingCode) override;
 

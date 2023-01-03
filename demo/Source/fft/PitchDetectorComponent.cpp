@@ -38,7 +38,7 @@ PitchDetectorComponent::PitchDetectorComponent() :
     sampleBuffer (1, 512)
 {
     addAndMakeVisible (&pitchLabel);
-    pitchLabel.setColour (Label::textColourId, Colour::greyLevel (0.9f));
+    pitchLabel.setColour (juce::Label::textColourId, juce::Colour::greyLevel (0.9f));
 
     startTimer (25);
 }
@@ -49,9 +49,9 @@ void PitchDetectorComponent::setLogFrequencyDisplay (bool shouldDisplayLogFreque
     repaint();
 }
 
-void PitchDetectorComponent::paint (Graphics& g)
+void PitchDetectorComponent::paint (juce::Graphics& g)
 {
-    g.setColour (Colours::green);
+    g.setColour (juce::Colours::green);
     g.drawVerticalLine (pitchXCoord.getCurrent(), 0.0f, (float) getHeight());
 }
 
@@ -64,11 +64,11 @@ void PitchDetectorComponent::timerCallback()
 {
     pitchString = juce::String (pitch, 2);
     pitchString << " Hz" << " (" << Pitch::fromFrequency (pitch).getMidiNoteName() << ")";
-    pitchLabel.setText (pitchString, dontSendNotification);
+    pitchLabel.setText (pitchString, juce::dontSendNotification);
 
     const double proportion = pitch / (sampleRate / 2);
     const int w = getWidth();
-    pitchXCoord = roundToInt ((displayLogFrequency ? logBase10Scale (proportion, 1.0, 40.0) : proportion) * w);
+    pitchXCoord = juce::roundToInt ((displayLogFrequency ? logBase10Scale (proportion, 1.0, 40.0) : proportion) * w);
 
     if (! pitchXCoord.areEqual())
     {
@@ -82,13 +82,13 @@ void PitchDetectorComponent::setSampleRate (double newSampleRate)
 {
     sampleRate = newSampleRate;
 
-    const ScopedLock sl (detectorLock);
+    const juce::ScopedLock sl (detectorLock);
     pitchDetector.setSampleRate (sampleRate);
 }
 
 void PitchDetectorComponent::processBlock (const float* inputChannelData, int numSamples)
 {
-    const ScopedLock sl (detectorLock);
+    const juce::ScopedLock sl (detectorLock);
     pitchDetector.processSamples (inputChannelData, numSamples);
     pitch = pitchDetector.getPitch();
 }

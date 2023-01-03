@@ -34,8 +34,8 @@
 
 #include "../DemoHeader.h"
 
-class PitchDetectorComponent : public Component,
-                               public Timer
+class PitchDetectorComponent : public juce::Component,
+                               public juce::Timer
 {
 public:
     PitchDetectorComponent();
@@ -48,7 +48,7 @@ public:
     void processBlock (const float* inputChannelData, int numSamples);
 
     //==============================================================================
-    void paint (Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
     void timerCallback() override;
 
@@ -56,14 +56,14 @@ private:
     //==============================================================================
     bool displayLogFrequency;
     double sampleRate, pitch;
-    AudioSampleBuffer sampleBuffer;
+    juce::AudioSampleBuffer sampleBuffer;
     PitchDetector pitchDetector;
 
     StateVariable<int> pitchXCoord;
     juce::String pitchString;
-    Label pitchLabel;
+    juce::Label pitchLabel;
 
-    CriticalSection detectorLock;
+    juce::CriticalSection detectorLock;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PitchDetectorComponent)
