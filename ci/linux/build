@@ -44,6 +44,6 @@ mkdir -p "$ROOT/ci/linux/bin"
 cp -R "$ROOT/demo/Builds/LinuxMakefile/build/dRowAudio Demo" "$ROOT/ci/linux/bin"
 
 cd "$ROOT/ci/linux/bin"
-zip -r Demo.zip Demo
+zip -r Demo.zip "dRowAudio Demo"
 
-rm -Rf Demo
+rm -Rf "dRowAudio Demo"
