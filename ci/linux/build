@@ -36,12 +36,12 @@ done
 "$ROOT/ci/bin/Projucer" --set-global-search-path linux defaultJuceModulePath "$ROOT/juce/modules" 
 "$ROOT/ci/bin/Projucer" --resave "$ROOT/demo/dRowAudio Demo.jucer"
 
-cd "$ROOT/demo/dRowAudio Demo/Builds/LinuxMakefile"
+cd "$ROOT/demo/Builds/LinuxMakefile"
 make CONFIG=Release
 
 rm -Rf "$ROOT/ci/linux/bin"
 mkdir -p "$ROOT/ci/linux/bin"
-cp -R "$ROOT/demo/dRowAudio Demo/Builds/LinuxMakefile/build/dRowAudio Demo" "$ROOT/ci/linux/bin"
+cp -R "$ROOT/demo/Builds/LinuxMakefile/build/dRowAudio Demo" "$ROOT/ci/linux/bin"
 
 cd "$ROOT/ci/linux/bin"
 zip -r Demo.zip Demo

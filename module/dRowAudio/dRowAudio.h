@@ -269,9 +269,6 @@ END_JUCE_MODULE_DECLARATION
 //=============================================================================
 namespace drow
 {
-    using namespace juce;
-    using juce::MemoryBlock;
-
     #include "audio/dRowAudio_AudioFilePlayer.h"
     #include "audio/dRowAudio_AudioFilePlayerExt.h"
     #include "audio/dRowAudio_AudioSampleBufferAudioFormat.h"

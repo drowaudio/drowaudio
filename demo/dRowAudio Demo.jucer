@@ -2,7 +2,8 @@
 
 <JUCERPROJECT id="mG07tn" name="dRowAudio Demo" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.dRowAudio.dRowAudioDemo" defines="DROWAUDIO_UNIT_TESTS=1"
-              includeBinaryInAppConfig="1" companyName="dRowAudio" jucerFormatVersion="1">
+              includeBinaryInAppConfig="1" companyName="dRowAudio" jucerFormatVersion="1"
+              useAppConfig="0" addUsingNamespaceToJuceHeader="0">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="U6uyAt" extraLinkerFlags="-lcurl"
                bigIcon="vTRqOY" smallIcon="vTRqOY" extraCompilerFlags="-Wall&#10;-pedantic&#10;-Wconversion"

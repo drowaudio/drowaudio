@@ -11,7 +11,7 @@ if [ ! -d "juce" ]; then
 fi
 
 # Get the hash
-cd "$ROOT/module/juce"
+cd "$ROOT/juce"
 HASH=`git rev-parse HEAD`
 echo "Hash: $HASH"
 
