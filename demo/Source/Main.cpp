@@ -44,18 +44,7 @@ public:
         UnitTestRunner testRunner;
         testRunner.runAllTests();
 #endif
-
-//        splash = new SplashScreen (getApplicationName(),
-//                                   ImageCache::getFromMemory (BinaryData::splash_screen_png, 
-//                                                              BinaryData::splash_screen_pngSize),
-//                                   #if JUCE_MAC
-//                                    true);
-//                                   #else
-//                                    false);
-//                                   #endif
-//
-//        splash->deleteAfterDelay (RelativeTime (2.0), true);
-        
+       
         mainWindow = std::make_unique<MainAppWindow>(); 
     }
 
@@ -71,7 +60,6 @@ public:
     void anotherInstanceStarted (const String&) override    { }
 
 private:
-    SplashScreen* splash;
     std::unique_ptr<MainAppWindow> mainWindow;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (dRowAudioDemoApplication)

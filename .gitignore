@@ -68,3 +68,4 @@ Backup[ ]of[ ]*.key/
 Backup[ ]of[ ]*.numbers/
 *.xccheckout
 *.xcworkspacedata
+juce
