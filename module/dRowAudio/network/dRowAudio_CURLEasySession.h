@@ -57,11 +57,11 @@ public:
     CURLEasySession();
 
     /** Creates a session and performs the transfer. */
-    CURLEasySession (const String& localPath,
-                     const String& remotePath,
+    CURLEasySession (const juce::String& localPath,
+                     const juce::String& remotePath,
                      bool upload,
-                     const String& username = String(),
-                     const String& password = String());
+                     const juce::String& username = juce::String(),
+                     const juce::String& password = juce::String());
 
     /** Destructor */
     ~CURLEasySession();
@@ -85,25 +85,25 @@ public:
         as the destination file for an upload or as the source for a download.
         If this ends with a '/' character a random file name will be generated.
     */
-    void setRemotePath (const String& newRemotePath);
+    void setRemotePath (const juce::String& newRemotePath);
 
     /** Returns the remote path being used.
 
         If this ends with a '/' character it specifies a directory.
     */
-    const String& getRemotePath() const { return remotePath; }
+    const juce::String& getRemotePath() const { return remotePath; }
 
     /** Sets the user name and password of the connection.
         This is only used if required by the connection to the server.
     */
-    void setUserNameAndPassword (const String& username, const String& password);
+    void setUserNameAndPassword (const juce::String& username, const juce::String& password);
 
     //==============================================================================
     /** Returns the current working directory of the remote server. */
-    String getCurrentWorkingDirectory() const;
+    juce::String getCurrentWorkingDirectory() const;
 
     /**    Returns the directory listing of the remote file. */
-    StringArray getDirectoryListing();
+    juce::StringArray getDirectoryListing();
 
     /** Returns the content type of the current remote path. */
     //String getContentType(); // not yet ready
@@ -167,14 +167,14 @@ public:
 private:
     //==============================================================================
     CURL* handle;
-    String remotePath, userNameAndPassword;
+    juce::String remotePath, userNameAndPassword;
     bool isUpload, shouldStopTransfer;
     Atomic<float> progress;
 
     File localFile;
     std::unique_ptr<FileOutputStream> outputStream;
     std::unique_ptr<InputStream> inputStream;
-    MemoryBlock directoryContentsList;
+    juce::MemoryBlock directoryContentsList;
 
     CriticalSection transferLock;
     ListenerList<Listener> listeners;

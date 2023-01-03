@@ -74,7 +74,7 @@ void DistortionDemo::paint (Graphics& g)
     g.drawSingleLineText ("Distortion Demo", (int) (w * 0.75f), 20, Justification::horizontallyCentred);
 
     g.setFont (Font (14, Font::plain));
-    String text;
+    juce::String text;
     text << "This graph demonstrates the Buffer and BufferTransformAudioSource classes." << newLine << newLine
     << "Drag the points around to change the buffer belonging to the audio chain's BufferTransformAudioSource." << newLine
     << "The Buffer's contents are used as a transform in the source which will distort the audio passing through it." << newLine << newLine

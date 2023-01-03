@@ -74,8 +74,8 @@ public:
     }
 
     void drawFileBrowserRow (Graphics& g, int width, int height,
-                             const File& /*file*/, const String& filename, Image* icon,
-                             const String& fileSizeDescription, const String& fileTimeDescription,
+                             const File& /*file*/, const juce::String& filename, Image* icon,
+                             const juce::String& fileSizeDescription, const juce::String& fileTimeDescription,
                              bool isDirectory, bool isItemSelected, int /*itemIndex*/,
                              DirectoryContentsDisplayComponent&) override
     {

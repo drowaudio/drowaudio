@@ -44,7 +44,7 @@ public:
 
     //==============================================================================
     void setCURLSession (CURLEasySession* sessionToControl);
-    void setContents (const StringArray& newContents);
+    void setContents (const juce::StringArray& newContents);
 
     void refresh();
 
@@ -60,7 +60,7 @@ public:
 
 private:
     //==============================================================================
-    StringArray itemList;
+    juce::StringArray itemList;
     CURLEasySession* curlSession;
 
     //==============================================================================
@@ -80,7 +80,7 @@ public:
     //==============================================================================
     CURLEasySession& getCURLSession() { return session; }
 
-    String getLastUrl() const { return session.getCurrentWorkingDirectory(); }
+    juce::String getLastUrl() const { return session.getCurrentWorkingDirectory(); }
 
     void refresh();
 

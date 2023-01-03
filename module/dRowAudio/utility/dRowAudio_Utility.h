@@ -45,24 +45,24 @@
 /** Returns the Resources folder in the package contents on a Mac and if an equivalent exists on Windows.
     This will return File::nonexistent if the file does not exist so check for this first.
 */
-inline static File getResourcesFolder()
+inline static juce::File getResourcesFolder()
 {
-    return File::getSpecialLocation (File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile ("Resources");
+    return juce::File::getSpecialLocation (juce::File::currentExecutableFile).getParentDirectory().getParentDirectory().getChildFile ("Resources");
 }
 
 /** If the String passed in is a local path, this will return a string with the file://localhost part
     of the file path stripped and any escaped characters (e.g. %20) converted to ascii
  */
-inline static String stripFileProtocolForLocal (const String& pathToStrip)
+inline static juce::String stripFileProtocolForLocal (const juce::String& pathToStrip)
 {
     if (pathToStrip.startsWith ("file://localhost"))
     {
        #if JUCE_WINDOWS
-        String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/") + 1));
+        juce::String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/") + 1));
        #else
-        String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
+        juce::String temp (pathToStrip.substring (pathToStrip.indexOf (7, "/")));
        #endif
-        return URL::removeEscapeChars (temp);
+        return juce::URL::removeEscapeChars (temp);
     }
 
     return {};
@@ -71,7 +71,7 @@ inline static String stripFileProtocolForLocal (const String& pathToStrip)
 /** Converts an iTunes formatted date string (e.g. 2010-12-27T17:44:32Z)
     into a Time object.
  */
-inline static Time parseITunesDateString (const String& dateString)
+inline static juce::Time parseITunesDateString (const juce::String& dateString)
 {
     int year    = dateString.substring (0, 4).getIntValue();
     int month   = dateString.substring (5, 7).getIntValue() - 1;
@@ -80,7 +80,7 @@ inline static Time parseITunesDateString (const String& dateString)
     int minutes = dateString.substring (14, 16).getIntValue();
     int seconds = dateString.substring (17, 19).getIntValue();
 
-    return Time (year, month, day, hours, minutes, seconds, 0, true);
+    return juce::Time (year, month, day, hours, minutes, seconds, 0, true);
 }
 
 /** Reverses an array */
@@ -129,28 +129,28 @@ void reverseTwoArrays (Type* array1, Type* array2, int length)
     @param trackName    The track name to look for.
     @param retryLimit    An optional number of retries as sometimes the URL won't load first time.
 */
-static inline String findKeyFromChemicalWebsite (const String& releaseNo, const String& trackName)
+static inline juce::String findKeyFromChemicalWebsite (const juce::String& releaseNo, const juce::String& trackName)
 {
-    URL chemicalURL ("http://www.chemical-records.co.uk/sc/servlet/Info");
+    juce::URL chemicalURL ("http://www.chemical-records.co.uk/sc/servlet/Info");
     chemicalURL = chemicalURL.withParameter ("Track", releaseNo);
 
-    String pageAsString (chemicalURL.readEntireTextStream());
-    String trackInfo (pageAsString.fromFirstOccurrenceOf ("<table class=\"tracks\" cellspacing=\"0\" cellpadding=\"4\">", true, false));
+    juce::String pageAsString (chemicalURL.readEntireTextStream());
+    juce::String trackInfo (pageAsString.fromFirstOccurrenceOf ("<table class=\"tracks\" cellspacing=\"0\" cellpadding=\"4\">", true, false));
     trackInfo = trackInfo.upToFirstOccurrenceOf("</table>", true, false);
 
-    std::unique_ptr<XmlElement> tracksXml (XmlDocument::parse (trackInfo));
+    std::unique_ptr<juce::XmlElement> tracksXml (juce::XmlDocument::parse (trackInfo));
 
     if (tracksXml != nullptr)
     {
-        XmlElement* tracksElem (XmlHelpers::findXmlElementContainingSubText (tracksXml.get(), trackName));
+        juce::XmlElement* tracksElem (XmlHelpers::findXmlElementContainingSubText (tracksXml.get(), trackName));
 
         if (tracksElem != nullptr)
         {
-            XmlElement* nextElem = tracksElem->getNextElement();
+            juce::XmlElement* nextElem = tracksElem->getNextElement();
 
             if (nextElem != nullptr)
             {
-                XmlElement* keyElem = nextElem->getFirstChildElement();
+                juce::XmlElement* keyElem = nextElem->getFirstChildElement();
 
                 if (keyElem != nullptr)
                     return keyElem->getAllSubText();
@@ -166,18 +166,18 @@ static inline String findKeyFromChemicalWebsite (const String& releaseNo, const 
 
     Note the samples must be in the range of 1-0 and the line will be stretched to fit the whole image.
 */
-static inline void drawBufferToImage (const Image& image, const float* samples, int numSamples, Colour colour, float thickness)
+static inline void drawBufferToImage (const juce::Image& image, const float* samples, int numSamples, juce::Colour colour, float thickness)
 {
     if (image.isNull())
         return;
 
     jassert (image.getWidth() > 0 && image.getHeight() > 0);
 
-    Graphics g (image);
+    juce::Graphics g (image);
     g.setColour (colour);
     const float imageXScale = image.getWidth() / (float) numSamples;
 
-    Path p;
+    juce::Path p;
     bool isFirst = true;
 
     for (int i = 0; i < numSamples; ++i)
@@ -201,13 +201,13 @@ static inline void drawBufferToImage (const Image& image, const float* samples, 
 
     If the file parameter is nonexistant a temp file will be created on the desktop.
 */
-static inline void saveImageToFile (const Image& image, File file = {})
+static inline void saveImageToFile (const juce::Image& image, juce::File file = {})
 {
     if (! file.exists())
-        file = File::getSpecialLocation (File::userDesktopDirectory).getNonexistentChildFile ("tempImage", ".png");
+        file = File::getSpecialLocation (juce::File::userDesktopDirectory).getNonexistentChildFile ("tempImage", ".png");
 
-    PNGImageFormat format;
-    std::unique_ptr<OutputStream> os (file.createOutputStream());
+    juce::PNGImageFormat format;
+    std::unique_ptr<juce::OutputStream> os (file.createOutputStream());
 
     if (os != nullptr)
         format.writeImageToStream (image, *os);
@@ -219,25 +219,25 @@ static inline void saveImageToFile (const Image& image, File file = {})
     This is somewhat obfuscated but makes it easy to transfer ValueTrees as var objects
     such as when using them as DragAndDropTarget::SourceDetails::description members.
 */
-class ReferenceCountedValueTree : public ReferenceCountedObject
+class ReferenceCountedValueTree : public juce::ReferenceCountedObject
 {
 public:
     /** Creates a ReferenceCountedValueTree for a given ValueTree. */
-    ReferenceCountedValueTree (const ValueTree& treeToReference) :
+    ReferenceCountedValueTree (const juce::ValueTree& treeToReference) :
         tree (treeToReference)
     {
     }
 
     /** Sets the ValueTree being held. */
-    void setValueTree (const ValueTree& newTree)
+    void setValueTree (const juce::ValueTree& newTree)
     {
         tree = newTree;
     }
 
     /** Returns the ValueTree being held. */
-    ValueTree getValueTree() const { return tree; }
+    juce::ValueTree getValueTree() const { return tree; }
 
-    typedef ReferenceCountedObjectPtr<ReferenceCountedValueTree> Ptr;
+    typedef juce::ReferenceCountedObjectPtr<ReferenceCountedValueTree> Ptr;
 
     /** Provides a simple way of getting the tree from a var object which
         is a ReferencedCountedValueTree.
@@ -321,7 +321,7 @@ public:
         Note that this will take a copy of the data so you can dispose of the the
         block passed in as you like.
      */
-    ReferencedCountedMemoryBlock (const MemoryBlock& memoryBlockToReference)
+    ReferencedCountedMemoryBlock (const juce::MemoryBlock& memoryBlockToReference)
         : memoryBlock (memoryBlockToReference)
     {}
 
@@ -337,12 +337,12 @@ public:
 
     /** Returns the MemoryBlock being held.
      */
-    const MemoryBlock& getMemoryBlock() const { return memoryBlock; }
+    const juce::MemoryBlock& getMemoryBlock() const { return memoryBlock; }
 
     /** Provides a simple way of getting the MemoryBlock from a var object which
         is a ReferencedCountedMemoryBlock.
      */
-    static inline const MemoryBlock* getMemoryBlockFromObject (const var& blockObject)
+    static inline const juce::MemoryBlock* getMemoryBlockFromObject (const var& blockObject)
     {
         ReferencedCountedMemoryBlock* refBlock
             = dynamic_cast<ReferencedCountedMemoryBlock*> (blockObject.getObject());
@@ -354,7 +354,7 @@ public:
 
 private:
     //==============================================================================
-    MemoryBlock memoryBlock;
+    juce::MemoryBlock memoryBlock;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReferencedCountedMemoryBlock)
 };

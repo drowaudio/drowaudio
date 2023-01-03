@@ -38,18 +38,18 @@ namespace XmlHelpers
 
         Useful if you're constructing a string to be parsed into and XmlElement.
     */
-    static inline String& addXmlComment (String& string, const String& comment)
+    static inline juce::String& addXmlComment (juce::String& string, const juce::String& comment)
     {
-        return string << "<!-- " << comment << " -->" << newLine;
+        return string << "<!-- " << comment << " -->" << juce::newLine;
     }
 
     //==============================================================================
     /** Searches an XmlElement for an element with a given attribute name with
         the given attribute value.
     */
-    static inline XmlElement* findXmlElementWithAttributeWithValue (XmlElement* element,
-                                                                    const String& attributeName,
-                                                                    const String& attributeValue)
+    static inline juce::XmlElement* findXmlElementWithAttributeWithValue (juce::XmlElement* element,
+                                                                          const juce::String& attributeName,
+                                                                          const juce::String& attributeValue)
     {
         if (element == nullptr)
             return nullptr;
@@ -58,7 +58,7 @@ namespace XmlHelpers
             if (element->compareAttribute (attributeName, attributeValue, true))
                 return element;
 
-        XmlElement* child = element->getFirstChildElement();
+        juce::XmlElement* child = element->getFirstChildElement();
 
         while (child != nullptr)
         {
@@ -66,7 +66,7 @@ namespace XmlHelpers
                 if(element->compareAttribute (attributeName, attributeValue, true))
                     return element;
 
-            XmlElement* const found = findXmlElementWithAttributeWithValue (child, attributeName, attributeValue);
+            juce::XmlElement* const found = findXmlElementWithAttributeWithValue (child, attributeName, attributeValue);
 
             if (found != nullptr)
                 return found;
@@ -79,7 +79,7 @@ namespace XmlHelpers
 
     //==============================================================================
     /** Searches an XmlElement for an element with a given attribute name. */
-    static inline XmlElement* findXmlElementWithAttribute (XmlElement* element, const String& attributeName)
+    static inline juce::XmlElement* findXmlElementWithAttribute (juce::XmlElement* element, const juce::String& attributeName)
     {
         if (element == nullptr)
             return nullptr;
@@ -87,14 +87,14 @@ namespace XmlHelpers
         if (element->hasAttribute (attributeName))
             return element;
 
-        XmlElement* child = element->getFirstChildElement();
+        juce::XmlElement* child = element->getFirstChildElement();
 
         while (child != nullptr)
         {
             if (child->hasAttribute (attributeName))
                 return element;
 
-            XmlElement* const found = findXmlElementWithAttribute (child, attributeName);
+            juce::XmlElement* const found = findXmlElementWithAttribute (child, attributeName);
 
             if (found != nullptr)
                 return found;
@@ -107,7 +107,7 @@ namespace XmlHelpers
 
     //==============================================================================
     /** Searches for an element with subtext that is an exact match. */
-    static inline XmlElement* findXmlElementWithSubText (XmlElement* element, const String& subtext)
+    static inline juce::XmlElement* findXmlElementWithSubText (juce::XmlElement* element, const juce::String& subtext)
     {
         if (element == nullptr)
             return nullptr;
@@ -115,14 +115,14 @@ namespace XmlHelpers
         if (element->getAllSubText() == subtext)
             return element;
 
-        XmlElement* child = element->getFirstChildElement();
+        juce::XmlElement* child = element->getFirstChildElement();
 
         while (child != nullptr)
         {
             if (child->getAllSubText() == subtext)
                 return child;
 
-            XmlElement* const found = findXmlElementWithSubText (child, subtext);
+            juce::XmlElement* const found = findXmlElementWithSubText (child, subtext);
 
             if (found != nullptr)
                 return found;
@@ -135,7 +135,7 @@ namespace XmlHelpers
 
     //==============================================================================
     /** Searches for an element with subtext contains the given text. */
-    static inline XmlElement* findXmlElementContainingSubText (XmlElement* element, const String& subtext)
+    static inline juce::XmlElement* findXmlElementContainingSubText (juce::XmlElement* element, const juce::String& subtext)
     {
         if (element == nullptr || element->getFirstChildElement() == nullptr)
             return nullptr;
@@ -144,7 +144,7 @@ namespace XmlHelpers
             && element->getFirstChildElement()->getText().contains (subtext))
             return element;
 
-        XmlElement* child = element->getFirstChildElement();
+        juce::XmlElement* child = element->getFirstChildElement();
 
         while (child != nullptr)
         {
@@ -152,7 +152,7 @@ namespace XmlHelpers
                 && child->getText().contains (subtext))
                 return child;
 
-            XmlElement* const found = findXmlElementContainingSubText (child, subtext);
+            juce::XmlElement* const found = findXmlElementContainingSubText (child, subtext);
 
             if (found != nullptr)
                 return found;

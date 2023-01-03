@@ -62,7 +62,7 @@ void PitchDetectorComponent::resized()
 
 void PitchDetectorComponent::timerCallback()
 {
-    pitchString = String (pitch, 2);
+    pitchString = juce::String (pitch, 2);
     pitchString << " Hz" << " (" << Pitch::fromFrequency (pitch).getMidiNoteName() << ")";
     pitchLabel.setText (pitchString, dontSendNotification);
 

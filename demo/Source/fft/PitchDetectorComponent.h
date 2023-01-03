@@ -60,7 +60,7 @@ private:
     PitchDetector pitchDetector;
 
     StateVariable<int> pitchXCoord;
-    String pitchString;
+    juce::String pitchString;
     Label pitchLabel;
 
     CriticalSection detectorLock;

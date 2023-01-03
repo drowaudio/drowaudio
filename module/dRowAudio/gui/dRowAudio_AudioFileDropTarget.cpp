@@ -162,7 +162,7 @@ void AudioFileDropTarget::itemDropped (const SourceDetails& dragSourceDetails)
 }
 
 //==============================================================================
-bool AudioFileDropTarget::isInterestedInFileDrag (const StringArray &files)
+bool AudioFileDropTarget::isInterestedInFileDrag (const juce::StringArray &files)
 {
     if (matchesAudioWildcard (File (files[0]).getFileExtension(),
                               audioFilePlayer->getAudioFormatManager()->getWildcardForAllFormats(), true))
@@ -178,7 +178,7 @@ bool AudioFileDropTarget::isInterestedInFileDrag (const StringArray &files)
     return false;
 }
 
-void AudioFileDropTarget::fileDragExit (const StringArray& /*files*/)
+void AudioFileDropTarget::fileDragExit (const juce::StringArray& /*files*/)
 {
     if (interestedInDrag)
     {
@@ -189,7 +189,7 @@ void AudioFileDropTarget::fileDragExit (const StringArray& /*files*/)
     }
 }
 
-void AudioFileDropTarget::filesDropped (const StringArray &files, int /*x*/, int /*y*/)
+void AudioFileDropTarget::filesDropped (const juce::StringArray &files, int /*x*/, int /*y*/)
 {
     if (interestedInDrag)
     {

@@ -74,9 +74,9 @@ void CURLManager::cleanUpEasyCurlHandle (CURL* handle)
 StringArray CURLManager::getSupportedProtocols()
 {
     if (curl_version_info_data* info = curl_version_info (CURLVERSION_NOW))
-        return StringArray (info->protocols);
+        return juce::StringArray (info->protocols);
 
-    return StringArray();
+    return juce::StringArray();
 }
 
 #endif //DROWAUDIO_USE_CURL

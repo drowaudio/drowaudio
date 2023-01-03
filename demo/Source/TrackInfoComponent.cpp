@@ -78,7 +78,7 @@ void TrackInfoComponent::paint (Graphics& g)
 
     if (trackInfo.isValid())
     {
-        String infoText;
+        juce::String infoText;
         infoText << trackInfo[MusicColumns::columnNames[MusicColumns::Artist]].toString() << "\n";
         infoText << trackInfo[MusicColumns::columnNames[MusicColumns::Song]].toString() << "\n";
         infoText << trackInfo[MusicColumns::columnNames[MusicColumns::Album]].toString() << "\n";
@@ -106,7 +106,7 @@ void TrackInfoComponent::paint (Graphics& g)
     }
     else
     {
-        String displayText;
+        juce::String displayText;
         if (audioFilePlayer.getTotalLength() > 0)
             displayText = audioFilePlayer.getFile().getFileName();
         else
@@ -143,7 +143,7 @@ void TrackInfoComponent::audioFilePlayerSettingChanged (AudioFilePlayer* player,
 void TrackInfoComponent::timerCallback()
 {
     const double timeRemaining = audioFilePlayer.getLengthInSeconds() - audioFilePlayer.getCurrentPosition();
-    String remain (timeRemaining < 0.0 ? String() : "-");
+    juce::String remain (timeRemaining < 0.0 ? juce::String() : "-");
     remain << timeToTimecodeStringLowRes (timeRemaining);
     remainLabel.setText (remain, dontSendNotification);
 }

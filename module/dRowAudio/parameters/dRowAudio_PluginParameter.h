@@ -95,9 +95,9 @@ public:
 
         Used to set up the parameter as required.
     */
-    void init (const String& name_, ParameterUnit unit_ = UnitGeneric, String description_ = {},
+    void init (const juce::String& name_, ParameterUnit unit_ = UnitGeneric, juce::String description_ = {},
                double value_ = 0.0, double min_ = 0.0, double max_ = 1.0, double default_ = 0.0,
-               double skewFactor_ = 1.0, double smoothCoeff_ = 0.1, double step_ = 0.01, String unitSuffix_ = {});
+               double skewFactor_ = 1.0, double smoothCoeff_ = 0.1, double step_ = 0.01, juce::String unitSuffix_ = {});
 
     Value& getValueObject() { return valueObject; }
 
@@ -123,10 +123,10 @@ public:
     void setStep (double newStep);
     double getStep() const                                      { return step; }
 
-    const String& getName() const                               { return name; }
+    const juce::String& getName() const                         { return name; }
     ParameterUnit getUnit() const                               { return unit; }
-    const String& getUnitSuffix() const                         { return unitSuffix; }
-    void setUnitSuffix (const String& newSuffix);
+    const juce::String& getUnitSuffix() const                   { return unitSuffix; }
+    void setUnitSuffix (const juce::String& newSuffix);
 
     void writeXml (XmlElement& xmlState);
     void readXml (const XmlElement* xmlState);
@@ -137,7 +137,7 @@ public:
 private:
     //==============================================================================
     Value valueObject;
-    String name, description, unitSuffix;
+    juce::String name, description, unitSuffix;
     double min, max, defaultValue;
     double smoothCoeff, smoothValue;
     double skewFactor, step;

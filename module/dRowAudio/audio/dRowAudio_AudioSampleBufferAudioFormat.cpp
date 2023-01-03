@@ -118,7 +118,7 @@ private:
 
 //==============================================================================
 AudioSampleBufferAudioFormat::AudioSampleBufferAudioFormat()
-    : AudioFormat (TRANS (audioSampleBufferAudioFormatName), StringArray())
+    : AudioFormat (TRANS (audioSampleBufferAudioFormatName), juce::StringArray())
 {
 }
 
@@ -147,7 +147,7 @@ AudioFormatWriter* AudioSampleBufferAudioFormat::createWriterFor (OutputStream* 
                                                                   double /*sampleRateToUse*/,
                                                                   unsigned int /*numberOfChannels*/,
                                                                   int /*bitsPerSample*/,
-                                                                  const StringPairArray& /*metadataValues*/,
+                                                                  const juce::StringPairArray& /*metadataValues*/,
                                                                   int /*qualityOptionIndex*/)
 {
     jassertfalse; // not yet implemented!

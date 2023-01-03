@@ -71,7 +71,7 @@ public:
     void setLibraryToUse (ITunesLibrary* library);
 
     /** Filters the table to only rows containing the given text. */
-    void setFilterText (const String& filterText);
+    void setFilterText (const juce::String& filterText);
 
     /** Returns the table list box component. */
     TableListBox& getTableListBox() { return table; }
@@ -153,7 +153,7 @@ private:
     Font font;
     ITunesLibrary* currentLibrary;
     TableListBox table;
-    String currentFilterText;
+    juce::String currentFilterText;
 
     ValueTree dataList;
     ValueTree filteredDataList;

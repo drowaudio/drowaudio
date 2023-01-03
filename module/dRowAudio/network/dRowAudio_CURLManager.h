@@ -71,7 +71,7 @@ public:
     void cleanUpEasyCurlHandle (CURL* handle);
 
     /** Returns a list of the supported protocols. */
-    StringArray getSupportedProtocols();
+    juce::StringArray getSupportedProtocols();
 
 private:
     //==============================================================================

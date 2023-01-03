@@ -87,7 +87,7 @@ void MusicLibraryTable::setLibraryToUse (ITunesLibrary* library)
     library->addListener(this);
 }
 
-void MusicLibraryTable::setFilterText (const String& filterString)
+void MusicLibraryTable::setFilterText (const juce::String& filterString)
 {
     currentFilterText = filterString;
 
@@ -187,7 +187,7 @@ void MusicLibraryTable::paintCell (Graphics& g,
 
         if (rowElement.isValid())
         {
-            String text;
+            juce::String text;
 
             if (columnId == MusicColumns::Length)
                 text = secondsToTimeLength (rowElement[MusicColumns::columnNames[columnId]].toString().getIntValue());
@@ -254,7 +254,7 @@ int MusicLibraryTable::getColumnAutoSizeWidth (int columnId)
 
         if (rowElement.isValid())
         {
-            const String text (rowElement[MusicColumns::columnNames[columnId]].toString());
+            const juce::String text (rowElement[MusicColumns::columnNames[columnId]].toString());
             widest = jmax (widest, font.getStringWidth (text));
         }
     }

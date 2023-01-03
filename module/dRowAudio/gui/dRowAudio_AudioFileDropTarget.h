@@ -89,11 +89,11 @@ public:
     /** @internal */
     void itemDropped (const SourceDetails& dragSourceDetails) override;
     /** @internal */
-    bool isInterestedInFileDrag (const StringArray& files) override;
+    bool isInterestedInFileDrag (const juce::StringArray& files) override;
     /** @internal */
-    void fileDragExit (const StringArray& files) override;
+    void fileDragExit (const juce::StringArray& files) override;
     /** @internal */
-    void filesDropped (const StringArray& files, int x, int y) override;
+    void filesDropped (const juce::StringArray& files, int x, int y) override;
 
 private:
     //==============================================================================

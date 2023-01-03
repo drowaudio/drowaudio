@@ -41,7 +41,7 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
         Array<File> files;
         sourceDirectory.findChildFiles (files, File::findFiles + File::ignoreHiddenFiles, true);
 
-        String includeString, sourceString;
+        juce::String includeString, sourceString;
 
         for (int i = 0; i < files.size(); ++i)
         {
@@ -66,7 +66,7 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
 
                 if (includeFile)
                 {
-                    const String relativePath (currentFile.getRelativePathFrom (sourceDirectory));
+                    const juce::String relativePath (currentFile.getRelativePathFrom (sourceDirectory));
 
                     if (currentFile.hasFileExtension (".h"))
                         includeString << "#include \"" << relativePath << "\"" << newLine;
@@ -85,7 +85,7 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
 
             if (outputFile.isDirectory())
             {
-                const String baseName ("UnityBuild");
+                const juce::String baseName ("UnityBuild");
 
                 headerFile = outputFile.getNonexistentChildFile (baseName, ".h");
                 cppFile = outputFile.getNonexistentChildFile (baseName, ".cpp");
@@ -96,8 +96,8 @@ bool UnityBuilder::processDirectory (const File& sourceDirectory)
                 cppFile = outputFile.getNonexistentSibling().withFileExtension (".cpp");
             }
 
-            String headerOutput (preInclusionString);
-            String sourceOutput (preInclusionString);
+            juce::String headerOutput (preInclusionString);
+            juce::String sourceOutput (preInclusionString);
 
             headerOutput << includeString << postInclusionString;
             sourceOutput << "#include \"" << headerFile.getFileName() << "\"" << newLine << newLine
@@ -123,8 +123,8 @@ void UnityBuilder::setFilesToIgnore (const Array<File>& filesToIgnore_)
     filesToIgnore = filesToIgnore_;
 }
 
-void UnityBuilder::setPreAndPostString (const String& preInclusionString_,
-                                        const String& postInclusionString_)
+void UnityBuilder::setPreAndPostString (const juce::String& preInclusionString_,
+                                        const juce::String& postInclusionString_)
 {
     preInclusionString = preInclusionString_;
     postInclusionString = postInclusionString_;

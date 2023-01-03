@@ -38,7 +38,7 @@ public:
     {
     }
 
-    void initialise (const String&) override
+    void initialise (const juce::String&) override
     {
 #if JUCE_DEBUG && DROWAUDIO_UNIT_TESTS
         UnitTestRunner testRunner;
@@ -53,11 +53,11 @@ public:
         mainWindow = nullptr;
     }
 
-    void systemRequestedQuit() override                     { quit(); }
-    const String getApplicationName() override              { return ProjectInfo::projectName; }
-    const String getApplicationVersion() override           { return ProjectInfo::versionString; }
-    bool moreThanOneInstanceAllowed() override              { return true; }
-    void anotherInstanceStarted (const String&) override    { }
+    void systemRequestedQuit() override                             { quit(); }
+    const juce::String getApplicationName() override                { return ProjectInfo::projectName; }
+    const juce::String getApplicationVersion() override             { return ProjectInfo::versionString; }
+    bool moreThanOneInstanceAllowed() override                      { return true; }
+    void anotherInstanceStarted (const juce::String&) override      { }
 
 private:
     std::unique_ptr<MainAppWindow> mainWindow;

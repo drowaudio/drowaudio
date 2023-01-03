@@ -120,41 +120,41 @@ static inline double midiToFrequency (double midiNoteNumber)
 
 /** Converts a time in seconds to a timecode string.
  */
-static inline String timeToTimecodeString (const double seconds)
+static inline juce::String timeToTimecodeString (const double seconds)
 {
     const double absSecs = std::abs (seconds);
-    const String sign ((seconds < 0) ? "-" : "");
+    const juce::String sign ((seconds < 0) ? "-" : "");
 
     const int hours = (int) (absSecs / (60.0 * 60.0));
     const int mins  = ((int) (absSecs / 60.0)) % 60;
     const int secs  = ((int) absSecs) % 60;
 
-    String t (sign);
+    juce::String t (sign);
 
-    t << String (hours).paddedLeft ('0', 2) << ":"
-      << String (mins).paddedLeft ('0', 2) << ":"
-      << String (secs).paddedLeft ('0', 2) << ":"
-      << String (roundToInt (absSecs * 1000) % 1000).paddedLeft ('0', 2);
+    t << juce::String (hours).paddedLeft ('0', 2) << ":"
+      << juce::String (mins).paddedLeft ('0', 2) << ":"
+      << juce::String (secs).paddedLeft ('0', 2) << ":"
+      << juce::String (roundToInt (absSecs * 1000) % 1000).paddedLeft ('0', 2);
     return t;
 }
 
 /** Converts a time in seconds to a timecode string displaying mins, secs and 1/10th secs.
  */
-static inline String timeToTimecodeStringLowRes (const double seconds)
+static inline juce::String timeToTimecodeStringLowRes (const double seconds)
 {
     const double absSecs = std::abs (seconds);
-    const String sign ((seconds < 0) ? "-" : "");
+    const juce::String sign ((seconds < 0) ? "-" : "");
 
 //    const int hours = (int) (absSecs * oneOver60Squared);
     const int mins  = ((uint32) (absSecs * oneOver60)) % 60u;
     const int secs  = ((uint32) absSecs) % 60u;
     const int tenthSecs  = (int) ((absSecs - (int) absSecs) * 10);
 
-    String t (sign);
+    juce::String t (sign);
 
-    t << String (mins).paddedLeft ('0', 2) << ":"
-      << String (secs).paddedLeft ('0', 2) << "."
-      << String (tenthSecs).paddedLeft ('0', 0);
+    t << juce::String (mins).paddedLeft ('0', 2) << ":"
+      << juce::String (secs).paddedLeft ('0', 2) << "."
+      << juce::String (tenthSecs).paddedLeft ('0', 0);
     return t;
 }
 
@@ -162,7 +162,7 @@ static inline String timeToTimecodeStringLowRes (const double seconds)
     This is useful when displaying times as hrs, mins secs etc.
     as it will only display the units needed.
  */
-static inline String secondsToTimeLength (double numSeconds)
+static inline juce::String secondsToTimeLength (double numSeconds)
 {
     double decimalTime = numSeconds / 60000.0;
 
@@ -170,27 +170,27 @@ static inline String secondsToTimeLength (double numSeconds)
     int mins = (int) decimalTime;
     int secs = roundToInt ((decimalTime - mins) * 60.0);
 
-    String timeString;
+    juce::String timeString;
 
     if (mins > 59)
     {
         hrs = mins / 60;
         mins -= hrs * 60;
 
-        timeString << String (hrs) << ":"
-        << String (mins).paddedLeft ('0', 2) << ":";
+        timeString << juce::String (hrs) << ":"
+        << juce::String (mins).paddedLeft ('0', 2) << ":";
     }
     else
-        timeString << String (mins) << ":";
+        timeString << juce::String (mins) << ":";
 
-    timeString << String (secs).paddedLeft ('0', 2);
+    timeString << juce::String (secs).paddedLeft ('0', 2);
 
     return timeString;
 }
 
 /** Formats a CurretPositionInfo to a bars/beats string.
  */
-static inline String ppqToBarsBeatsString (double ppq,
+static inline juce::String ppqToBarsBeatsString (double ppq,
                                            double /*lastBarPPQ*/,
                                            int numerator,
                                            int denominator)
@@ -205,14 +205,14 @@ static inline String ppqToBarsBeatsString (double ppq,
     const int beat      = ((int) beats) + 1;
     const int ticks     = ((int) (fmod (beats, 1.0) * 960.0));
 
-    String s;
+    juce::String s;
     s << bar << '|' << beat << '|' << ticks;
     return s;
 }
 
 /** Compares a filename extension with a wildcard string.
  */
-static inline bool matchesAudioWildcard (const String& extensionToTest, const String& wildcard, const bool ignoreCase=true)
+static inline bool matchesAudioWildcard (const juce::String& extensionToTest, const juce::String& wildcard, const bool ignoreCase=true)
 {
     return ignoreCase ? wildcard.containsIgnoreCase (extensionToTest)
                       : wildcard.contains (extensionToTest);

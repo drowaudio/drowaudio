@@ -106,7 +106,7 @@ void ConnectionComponent::buttonClicked (Button* button)
     {
         if (curlSession != nullptr)
         {
-            const String path (protocolBox.getItemText (protocolBox.getSelectedItemIndex()) + "://" + hostnameEditor.getText());
+            const juce::String path (protocolBox.getItemText (protocolBox.getSelectedItemIndex()) + "://" + hostnameEditor.getText());
             DBG (path);
             curlSession->setRemotePath (path);
             curlSession->setUserNameAndPassword (usernameEditor.getText(), passwordEditor.getText());

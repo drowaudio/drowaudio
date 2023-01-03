@@ -70,7 +70,7 @@ public:
     void clear()
     {
         inputType = noInput;
-        currentFile = File();
+        currentFile = juce::File();
         inputStream = nullptr;
     }
 
@@ -81,16 +81,16 @@ public:
 
         @returns true if the stream loaded correctly
      */
-    bool setInputStream (InputStream* inputStreamIn)
+    bool setInputStream (juce::InputStream* inputStreamIn)
     {
         inputType = unknownStream;
 
-        if (MemoryInputStream* mis = dynamic_cast<MemoryInputStream*> (inputStreamIn))
+        if (juce::MemoryInputStream* mis = dynamic_cast<juce::MemoryInputStream*> (inputStreamIn))
             return setMemoryInputStream (mis);
 
-        if (FileInputStream* fis = dynamic_cast<FileInputStream*> (inputStreamIn))
+        if (auto fis = dynamic_cast<juce::FileInputStream*> (inputStreamIn))
         {
-            const std::unique_ptr<FileInputStream> deleter (fis);
+            const std::unique_ptr<juce::FileInputStream> deleter (fis);
             return setFile (fis->getFile());
         }
 
@@ -103,20 +103,20 @@ public:
         type unknownStream which it can't make a copy of. You could use a
         dynamic_cast to do this yourself if you know the type.
      */
-    InputStream* getInputStream()
+    juce::InputStream* getInputStream()
     {
         switch (inputType)
         {
             case file:
-                return new FileInputStream (currentFile);
+                return new juce::FileInputStream (currentFile);
 
             case memoryBlock:
             case memoryInputStream:
             {
-                MemoryInputStream* memoryStream = dynamic_cast<MemoryInputStream*> (inputStream);
+                auto memoryStream = dynamic_cast<juce::MemoryInputStream*> (inputStream);
 
                 if (memoryStream != nullptr)
-                    return new MemoryInputStream (memoryStream->getData(), memoryStream->getDataSize(), false);
+                    return new juce::MemoryInputStream (memoryStream->getData(), memoryStream->getDataSize(), false);
             }
             break;
 
@@ -135,17 +135,17 @@ public:
         For example, if the input is a file this will return a FileInputStream etc.
         It is the callers responsibility to delete this source when finished.
      */
-    InputSource* getInputSource()
+    juce::InputSource* getInputSource()
     {
         switch (inputType)
         {
             case file:
-                return new FileInputSource (currentFile);
+                return new juce::FileInputSource (currentFile);
 
             case memoryBlock:
             case memoryInputStream:
             {
-                MemoryInputStream* memoryStream = dynamic_cast<MemoryInputStream*> (getInputStream());
+                auto memoryStream = dynamic_cast<juce::MemoryInputStream*> (getInputStream());
 
                 if (memoryStream != nullptr)
                     return new MemoryInputSource (memoryStream);
@@ -166,7 +166,7 @@ public:
 
         @returns true if the file loaded correctly
      */
-    bool setFile (const File& newFile)
+    bool setFile (const juce::File& newFile)
     {
         inputType = file;
         inputStream = nullptr;
@@ -179,10 +179,10 @@ public:
 
         @returns true if the stream loaded correctly
      */
-    bool setMemoryInputStream (MemoryInputStream* newMemoryInputStream)
+    bool setMemoryInputStream (juce::MemoryInputStream* newMemoryInputStream)
     {
         inputType = memoryInputStream;
-        currentFile = File();
+        currentFile = juce::File();
         inputStream = newMemoryInputStream;
 
         return streamChanged (inputStream);
@@ -192,11 +192,11 @@ public:
 
         @returns true if the block data loaded correctly
      */
-    bool setMemoryBlock (MemoryBlock& inputBlock)
+    bool setMemoryBlock (juce::MemoryBlock& inputBlock)
     {
         inputType = memoryBlock;
-        currentFile = File();
-        inputStream = new MemoryInputStream (inputBlock, false);
+        currentFile = juce::File();
+        inputStream = new juce::MemoryInputStream (inputBlock, false);
 
         return streamChanged (inputStream);
     }
@@ -205,14 +205,14 @@ public:
 
         If a stream was used this will return File::nonexistant.
      */
-    const File& getFile() const noexcept { return currentFile; }
+    const juce::File& getFile() const noexcept { return currentFile; }
 
     //==============================================================================
     /** Subclasses must override this to be informed of when a file changes.
 
         @returns true if the file was able to be loaded correctly
      */
-    virtual bool fileChanged (const File& file) = 0;
+    virtual bool fileChanged (const juce::File& file) = 0;
 
     /** Subclasses must override this to be informed of when a stream changes.
         Note that this class doesn't retain any ownership of the stream so subclasses should
@@ -222,13 +222,13 @@ public:
 
         @returns true if the stream was able to be loaded correctly
      */
-    virtual bool streamChanged (InputStream* inputStream) = 0;
+    virtual bool streamChanged (juce::InputStream* inputStream) = 0;
 
 private:
     //==============================================================================
     InputType inputType;
-    File currentFile;
-    InputStream* inputStream;
+    juce::File currentFile;
+    juce::InputStream* inputStream;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StreamAndFileHandler)
 };

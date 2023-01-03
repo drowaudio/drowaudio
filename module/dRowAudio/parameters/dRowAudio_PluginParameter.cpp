@@ -60,9 +60,9 @@ PluginParameter::PluginParameter (const PluginParameter& other)
     setValue (static_cast<double> (other.valueObject.getValue()));
 }
 
-void PluginParameter::init (const String& name_, ParameterUnit unit_, String description_,
+void PluginParameter::init (const juce::String& name_, ParameterUnit unit_, juce::String description_,
                             double value_, double min_, double max_, double default_,
-                            double skewFactor_, double smoothCoeff_, double step_, String unitSuffix_)
+                            double skewFactor_, double smoothCoeff_, double step_, juce::String unitSuffix_)
 {
     name = name_;
     unit = unit_;
@@ -116,7 +116,7 @@ void PluginParameter::setNormalisedValue (double normalisedValue)
     setValue ((max - min) * jlimit (0.0, 1.0, normalisedValue) + min);
 }
 
-void PluginParameter::setUnitSuffix (const String& newSuffix)
+void PluginParameter::setUnitSuffix (const juce::String& newSuffix)
 {
     unitSuffix = newSuffix;
 }

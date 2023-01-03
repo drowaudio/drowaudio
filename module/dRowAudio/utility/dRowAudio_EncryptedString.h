@@ -67,7 +67,7 @@ public:
 
         @see RSAKey
      */
-    static String encrypt (const String& stringToEncrypt, const String& publicKey,
+    static juce::String encrypt (const juce::String& stringToEncrypt, const juce::String& publicKey,
                            bool resultAsHex = false);
 
     /** Decrypts a String that was encrypted using the encrypt method.
@@ -82,7 +82,7 @@ public:
 
         @see RSAKey
      */
-    static String decrypt (const String& encryptedString, const String& privateKey,
+    static juce::String decrypt (const juce::String& encryptedString, const juce::String& privateKey,
                            bool inputIsHex = false);
 
 private:

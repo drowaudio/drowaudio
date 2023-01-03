@@ -153,8 +153,8 @@ void ITunesLibraryParser::run()
             // cycle through items of each track
             for (auto e2 : currentElement->getChildIterator())
             {
-                const String elementKey (e2->getAllSubText());
-                //const String elementValue (e2->getNextElement()->getAllSubText());
+                const juce::String elementKey (e2->getAllSubText());
+                //const juce::String elementValue (e2->getNextElement()->getAllSubText());
 
                 if (elementKey == "Kind")
                 {
@@ -180,7 +180,7 @@ void ITunesLibraryParser::run()
                 {
                     if (elementKey == MusicColumns::iTunesNames[i])
                     {
-                        const String elementValue = e2->getNextElement()->getAllSubText();
+                        const juce::String elementValue = e2->getNextElement()->getAllSubText();
 
                         if (i == MusicColumns::Length
                             || i == MusicColumns::BPM
@@ -196,7 +196,7 @@ void ITunesLibraryParser::run()
                         }
                         else
                         {
-                            String textEntry (elementValue);
+                            juce::String textEntry (elementValue);
 
                             if (i == MusicColumns::Location)
                                 textEntry = stripFileProtocolForLocal (elementValue);

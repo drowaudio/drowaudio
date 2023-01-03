@@ -45,8 +45,8 @@
     @see AudioFilePlayerExt
 */
 class AudioFilePlayer : public StreamAndFileHandler,
-                        public PositionableAudioSource,
-                        public ChangeListener
+                        public juce::PositionableAudioSource,
+                        public juce::ChangeListener
 {
 public:
     /** Creates an empty AudioFilePlayer.
@@ -64,8 +64,8 @@ public:
         loads of background thread running etc. If you supply your own thread
         remember to start it!
     */
-    explicit AudioFilePlayer (TimeSliceThread* threadToUse,
-                              AudioFormatManager* formatManagerToUse);
+    explicit AudioFilePlayer (juce::TimeSliceThread* threadToUse,
+                              juce::AudioFormatManager* formatManagerToUse);
 
     /** Destructor.
 
@@ -106,22 +106,22 @@ public:
 
     //==============================================================================
     /** Returns the AudioFormatReaderSource currently being used. */
-    AudioFormatReaderSource* getAudioFormatReaderSource() const { return audioFormatReaderSource.get(); }
+    juce::AudioFormatReaderSource* getAudioFormatReaderSource() const { return audioFormatReaderSource.get(); }
 
     /** Returns the AudioTransportSource being used. */
-    AudioTransportSource* getAudioTransportSource() { return &audioTransportSource; }
+    juce::AudioTransportSource* getAudioTransportSource() { return &audioTransportSource; }
 
     /** Sets the AudioFormatManager to use. */
-    void setAudioFormatManager (AudioFormatManager* newManager, bool deleteWhenNotNeeded);
+    void setAudioFormatManager (juce::AudioFormatManager* newManager, bool deleteWhenNotNeeded);
 
     /** Returns the AudioFormatManager being used. */
-    AudioFormatManager* getAudioFormatManager() const { return formatManager; }
+    juce::AudioFormatManager* getAudioFormatManager() const { return formatManager; }
 
     /** Sets the TimeSliceThread to use. */
-    void setTimeSliceThread (TimeSliceThread* newThreadToUse, bool deleteWhenNotNeeded);
+    void setTimeSliceThread (juce::TimeSliceThread* newThreadToUse, bool deleteWhenNotNeeded);
 
     /** Returns the background TimeSliceThread being used. */
-    TimeSliceThread* getTimeSliceThread() const { return bufferingTimeSliceThread; }
+    juce::TimeSliceThread* getTimeSliceThread() const { return bufferingTimeSliceThread; }
 
     //==============================================================================
     /** A class for receiving callbacks from a AudioFilePlayer.
@@ -167,34 +167,34 @@ public:
     /** @internal */
     void releaseResources() override;
     /** @internal */
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
     /** @internal */
-    void setNextReadPosition (int64 newPosition) override { audioTransportSource.setNextReadPosition (newPosition); }
+    void setNextReadPosition (juce::int64 newPosition) override { audioTransportSource.setNextReadPosition (newPosition); }
     /** @internal */
-    int64 getNextReadPosition() const override { return audioTransportSource.getNextReadPosition(); }
+    juce::int64 getNextReadPosition() const override { return audioTransportSource.getNextReadPosition(); }
     /** @internal */
-    int64 getTotalLength() const override { return audioTransportSource.getTotalLength(); }
+    juce::int64 getTotalLength() const override { return audioTransportSource.getTotalLength(); }
     /** @internal */
     bool isLooping() const override { return audioTransportSource.isLooping(); }
     /** @internal */
     void setLooping (bool shouldLoop) override;
     /** @internal */
-    bool fileChanged (const File& file) override;
+    bool fileChanged (const juce::File& file) override;
     /** @internal */
-    bool streamChanged (InputStream* inputStream) override;
+    bool streamChanged (juce::InputStream* inputStream) override;
     /** @internal */
-    void changeListenerCallback (ChangeBroadcaster* source) override;
+    void changeListenerCallback (juce::ChangeBroadcaster* source) override;
 
 protected:
     //==============================================================================
-    OptionalScopedPointer<TimeSliceThread> bufferingTimeSliceThread;
-    OptionalScopedPointer<AudioFormatManager> formatManager;
+    juce::OptionalScopedPointer<juce::TimeSliceThread> bufferingTimeSliceThread;
+    juce::OptionalScopedPointer<juce::AudioFormatManager> formatManager;
 
     AudioSource* masterSource;
-    std::unique_ptr<AudioFormatReaderSource> audioFormatReaderSource;
-    AudioTransportSource audioTransportSource;
+    std::unique_ptr<juce::AudioFormatReaderSource> audioFormatReaderSource;
+    juce::AudioTransportSource audioTransportSource;
 
-    ListenerList <Listener> listeners;
+    juce::ListenerList<Listener> listeners;
 
     //==============================================================================
     /** Sets up the audio chain when a new source is chosen.
@@ -204,7 +204,7 @@ protected:
         If you do change this make sure you set the masterSource member to the top level
         of your audio source chain.
     */
-    virtual bool setSourceWithReader (AudioFormatReader* reader);
+    virtual bool setSourceWithReader (juce::AudioFormatReader* reader);
 
 private:
     //==============================================================================

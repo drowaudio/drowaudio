@@ -60,16 +60,16 @@ public:
     };
 
     //==============================================================================
-    explicit DebugObject (const XmlElement* arg)
+    explicit DebugObject (const juce::XmlElement* arg)
         : type (xmlType), objectXml (arg) {}
 
-    explicit DebugObject (const XmlElement& arg)
+    explicit DebugObject (const juce::XmlElement& arg)
         : type (xmlType), objectXml (&arg) {}
 
-    explicit DebugObject (const ValueTree& arg)
+    explicit DebugObject (const juce::ValueTree& arg)
         : type (valueTreeType), objectValueTree (arg) {}
 
-    String toString() const
+    juce::String toString() const
     {
         switch (type)
         {
@@ -82,59 +82,59 @@ public:
     }
 
     //==============================================================================
-    static String convertToString (const var& arg)
+    static juce::String convertToString (const juce::var& arg)
     {
         return arg.toString();
     }
 
     template<typename ValueType>
-    static String convertToString (const Range<ValueType>& arg)
+    static juce::String convertToString (const juce::Range<ValueType>& arg)
     {
-        String os;
+        juce::String os;
         return os << arg.getStart() << " - " << arg.getEnd() << " (" << arg.getLength() << ")";
     }
 
     template<typename ValueType>
-    static String convertToString (const juce::Point<ValueType>& arg)
+    static juce::String convertToString (const juce::Point<ValueType>& arg)
     {
         return arg.toString();
     }
 
     template<typename ValueType>
-    static String convertToString (const Line<ValueType>& arg)
+    static juce::String convertToString (const juce::Line<ValueType>& arg)
     {
-        String os;
+        juce::String os;
         return os << "(" << arg.getStart().toString()
                 << ") - (" << arg.getEnd().toString() << ")";
     }
 
     template<typename ValueType>
-    static String convertToString (const juce::Rectangle<ValueType>& arg)
+    static juce::String convertToString (const juce::Rectangle<ValueType>& arg)
     {
         return arg.toString();
     }
 
-    static String convertToString (const XmlElement* arg)
+    static juce::String convertToString (const juce::XmlElement* arg)
     {
         return DebugObject (arg).toString();
     }
 
-    static String convertToString (const XmlElement& arg)
+    static juce::String convertToString (const juce::XmlElement& arg)
     {
         return DebugObject (arg).toString();
     }
 
-    static String convertToString (const ValueTree& arg)
+    static juce::String convertToString (const juce::ValueTree& arg)
     {
         return DebugObject (arg).toString();
     }
 
-    static String convertToString (const StringArray& arg)
+    static juce::String convertToString (const juce::StringArray& arg)
     {
         return arg.joinIntoString (",");
     }
 
-    static String convertToString (const StringPairArray& arg)
+    static juce::String convertToString (const juce::StringPairArray& arg)
     {
         return arg.getDescription();
     }
@@ -143,25 +143,25 @@ private:
     //==============================================================================
     ObjectType type;
 
-    const XmlElement* objectXml;
-    ValueTree objectValueTree;
+    const juce::XmlElement* objectXml;
+    juce::ValueTree objectValueTree;
 
     //==============================================================================
-    static String getStringFromXml (const XmlElement* xml, bool includeXmlHeader)
+    static juce::String getStringFromXml (const juce::XmlElement* xml, bool includeXmlHeader)
     {
         if (xml == nullptr)
             return "invalid XmlElement";
 
-        XmlElement::TextFormat fmt;
+        juce::XmlElement::TextFormat fmt;
         fmt.addDefaultHeader = includeXmlHeader;
         fmt.newLineChars = nullptr;
         
-        return String (NewLine::getDefault()) + xml->toString (fmt);
+        return juce::String (juce::NewLine::getDefault()) + xml->toString (fmt);
     }
 
-    String getStringFromValueTree() const
+    juce::String getStringFromValueTree() const
     {
-        std::unique_ptr<XmlElement> treeAsXml (objectValueTree.createXml());
+        std::unique_ptr<juce::XmlElement> treeAsXml (objectValueTree.createXml());
         return treeAsXml == nullptr ? "invalid ValueTree" : getStringFromXml (treeAsXml.get(), false);
     }
 

@@ -79,7 +79,7 @@ public:
 private:
     //==============================================================================
     int displayFormat;
-    String timeAsString;
+    juce::String timeAsString;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Clock)

@@ -46,7 +46,7 @@ InputStream* MemoryInputSource::createInputStream()
     return memoryInputStream;
 }
 
-InputStream* MemoryInputSource::createInputStreamFor (const String& /*relatedItemPath*/)
+InputStream* MemoryInputSource::createInputStreamFor (const juce::String& /*relatedItemPath*/)
 {
     return nullptr;
 }

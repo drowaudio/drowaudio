@@ -48,7 +48,7 @@ BasicFileBrowser::BasicFileBrowser (int flags_,
     // You need to specify at least one of these flags..
     jassert ((flags & (canSelectFiles | canSelectDirectories)) != 0);
 
-    String filename;
+    juce::String filename;
 
     if (initialFileOrDirectory == File())
     {
@@ -288,7 +288,7 @@ void BasicFileBrowser::sendListenerChangeMessage()
 
 void BasicFileBrowser::selectionChanged()
 {
-    StringArray newFilenames;
+    juce::StringArray newFilenames;
     bool resetChosenFiles = true;
 
     for (int i = 0; i < fileListComponent->getNumSelectedFiles(); ++i)

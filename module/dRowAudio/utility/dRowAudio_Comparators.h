@@ -126,7 +126,7 @@ namespace XmlComparators
     class LexicographicSorter
     {
     public:
-        LexicographicSorter (const String attributeToSort_, bool forwards)
+        LexicographicSorter (const juce::String attributeToSort_, bool forwards)
             : attributeToSort (attributeToSort_),
               direction (forwards ? 1 : -1)
         {
@@ -145,7 +145,7 @@ namespace XmlComparators
         }
 
     private:
-        const String attributeToSort;
+        const juce::String attributeToSort;
         const int direction;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LexicographicSorter)
@@ -156,7 +156,7 @@ namespace XmlComparators
     class NumberDataSorter
     {
     public:
-        NumberDataSorter (const String attributeToSort_, bool forwards)
+        NumberDataSorter (const juce::String attributeToSort_, bool forwards)
             : attributeToSort (attributeToSort_),
               direction (forwards ? 1 : -1)
         {
@@ -176,7 +176,7 @@ namespace XmlComparators
         }
 
     private:
-        const String attributeToSort;
+        const juce::String attributeToSort;
         const int direction;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NumberDataSorter)

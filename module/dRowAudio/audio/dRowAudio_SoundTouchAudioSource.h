@@ -41,7 +41,7 @@
 
     This uses the SoundTouch library to perform the processing.
 */
-class SoundTouchAudioSource : public PositionableAudioSource
+class SoundTouchAudioSource : public juce::PositionableAudioSource
 {
 public:
     /** Creates a SoundTouchAudio source.
@@ -51,7 +51,7 @@ public:
         of samples has been process. For fine control try reducing this but beware
         the extra function calls will use more CPU.
     */
-    SoundTouchAudioSource (PositionableAudioSource* source,
+    SoundTouchAudioSource (juce::PositionableAudioSource* source,
                            bool deleteSourceWhenDeleted = false,
                            int numberOfSamplesToBuffer = 2048,
                            int numberOfChannels = 2);
@@ -67,7 +67,7 @@ public:
     const SoundTouchProcessor::PlaybackSettings& getPlaybackSettings() const { return soundTouchProcessor.getPlaybackSettings(); }
 
     /** Returns the lock used when setting the buffer read positions. */
-    const CriticalSection& getBufferLock() { return bufferStartPosLock; }
+    const juce::CriticalSection& getBufferLock() { return bufferStartPosLock; }
 
     /** Returns the SoundTouchProcessor being used. */
     SoundTouchProcessor& getSoundTouchProcessor() { return soundTouchProcessor; }
@@ -78,13 +78,13 @@ public:
     /** @internal */
     void releaseResources() override;
     /** @internal */
-    void getNextAudioBlock (const AudioSourceChannelInfo& info) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& info) override;
     /** @internal */
-    void setNextReadPosition (int64 newPosition) override;
+    void setNextReadPosition (juce::int64 newPosition) override;
     /** @internal */
-    int64 getNextReadPosition() const override;
+    juce::int64 getNextReadPosition() const override;
     /** @internal */
-    int64 getTotalLength() const override { return source->getTotalLength(); }
+    juce::int64 getTotalLength() const override { return source->getTotalLength(); }
     /** @internal */
     bool isLooping() const override { return source->isLooping(); }
     /** @internal */
@@ -92,11 +92,11 @@ public:
 
 private:
     //==============================================================================
-    OptionalScopedPointer<PositionableAudioSource> source;
+    juce::OptionalScopedPointer<juce::PositionableAudioSource> source;
     int numberOfSamplesToBuffer, numberOfChannels;
-    AudioSampleBuffer buffer;
-    CriticalSection bufferStartPosLock;
-    int64 volatile nextReadPos, effectiveNextPlayPos;
+    juce::AudioSampleBuffer buffer;
+    juce::CriticalSection bufferStartPosLock;
+    juce::int64 volatile nextReadPos, effectiveNextPlayPos;
     double volatile sampleRate;
     bool isPrepared;
 

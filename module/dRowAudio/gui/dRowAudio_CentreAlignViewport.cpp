@@ -29,7 +29,7 @@
   ==============================================================================
 */
 
-CentreAlignViewport::CentreAlignViewport (const String& componentName)
+CentreAlignViewport::CentreAlignViewport (const juce::String& componentName)
     : Component (componentName),
       scrollBarThickness (0),
       singleStepX (16),

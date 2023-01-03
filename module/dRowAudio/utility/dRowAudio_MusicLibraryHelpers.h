@@ -43,7 +43,7 @@ namespace LoopAndCueHelpers
     {
         if (index < cueTree.getNumProperties())
         {
-            const String property (cueTree.getProperty (cueTree.getPropertyName (index)).toString());
+            const juce::String property (cueTree.getProperty (cueTree.getPropertyName (index)).toString());
             return property.upToFirstOccurrenceOf (",", false, false).getDoubleValue();
         }
 
@@ -57,7 +57,7 @@ namespace LoopAndCueHelpers
     {
         if (index < cueTree.getNumProperties())
         {
-            const String property (cueTree.getProperty (cueTree.getPropertyName (index)).toString());
+            const juce::String property (cueTree.getProperty (cueTree.getPropertyName (index)).toString());
             return (uint32)property.fromLastOccurrenceOf (",", false, false).getLargeIntValue();
         }
 
@@ -71,7 +71,7 @@ namespace LoopAndCueHelpers
     {
         if (index < loopTree.getNumProperties())
         {
-            const String property (loopTree.getProperty (loopTree.getPropertyName (index)).toString());
+            const juce::String property (loopTree.getProperty (loopTree.getPropertyName (index)).toString());
             startTime = property.upToFirstOccurrenceOf (",", false, false).getDoubleValue();
             endTime = property.fromFirstOccurrenceOf (",", false, false).upToLastOccurrenceOf (",", false, false).getDoubleValue();
             colour = (uint32) property.fromLastOccurrenceOf (",", false, false).getLargeIntValue();

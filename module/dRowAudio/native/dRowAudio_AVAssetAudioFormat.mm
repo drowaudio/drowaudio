@@ -43,9 +43,9 @@ namespace
 {
     const char* const AVAssetAudioFormatName = "AVAsset supported file";
 
-    StringArray findFileExtensionsForCoreAudioCodecs()
+    juce::StringArray findFileExtensionsForCoreAudioCodecs()
     {
-        StringArray extensionsArray;
+        juce::StringArray extensionsArray;
         CFMutableArrayRef extensions = CFArrayCreateMutable (0, 0, 0);
         UInt32 sizeOfArray = sizeof (CFMutableArrayRef);
 
@@ -54,13 +54,13 @@ namespace
             const CFIndex numValues = CFArrayGetCount (extensions);
 
             for (CFIndex i = 0; i < numValues; ++i)
-                extensionsArray.add ("." + String::fromCFString ((CFStringRef) CFArrayGetValueAtIndex (extensions, i)));
+                extensionsArray.add ("." + juce::String::fromCFString ((CFStringRef) CFArrayGetValueAtIndex (extensions, i)));
         }
 
         return extensionsArray;
     }
 
-    NSString* juceStringToNS (const String& s)
+    NSString* juceStringToNS (const juce::String& s)
     {
         return [NSString stringWithUTF8String: s.toUTF8()];
     }
@@ -279,7 +279,7 @@ AVAssetAudioFormat::AVAssetAudioFormat()
 {
 }
 
-MemoryInputStream* AVAssetAudioFormat::avAssetUrlStringToStream (const String& avAssetUrlString)
+MemoryInputStream* AVAssetAudioFormat::avAssetUrlStringToStream (const juce::String& avAssetUrlString)
 {
     const CharPointer_UTF8 urlUTF8 (avAssetUrlString.toUTF8());
     return new MemoryInputStream (urlUTF8.getAddress(), urlUTF8.sizeInBytes(), false);
@@ -291,9 +291,9 @@ bool AVAssetAudioFormat::canDoStereo()                  { return true; }
 bool AVAssetAudioFormat::canDoMono()                    { return true; }
 
 //==============================================================================
-AudioFormatReader* AVAssetAudioFormat::createReaderFor (const String& assetNSURLAsString)
+AudioFormatReader* AVAssetAudioFormat::createReaderFor (const juce::String& assetNSURLAsString)
 {
-    NSString* assetNSString = [NSString stringWithUTF8String:assetNSURLAsString.toUTF8()];
+    NSString* assetNSString = [NSString juce::StringWithUTF8String:assetNSURLAsString.toUTF8()];
     NSURL* assetNSURL = [NSURL URLWithString:assetNSString];
 
     auto r = std::make_unique<AVAssetAudioReader> (assetNSURL);
@@ -312,7 +312,7 @@ AudioFormatReader* AVAssetAudioFormat::createReaderFor (InputStream* sourceStrea
 {
     if (sourceStream != nullptr)
     {
-        const String nsUrlString (sourceStream->readString());
+        const juce::String nsUrlString (sourceStream->readString());
 
         if (nsUrlString.startsWith ("ipod-library://"))
         {
@@ -340,7 +340,7 @@ AudioFormatWriter* AVAssetAudioFormat::createWriterFor (OutputStream* streamToWr
                                                         double sampleRateToUse,
                                                         unsigned int numberOfChannels,
                                                         int bitsPerSample,
-                                                        const StringPairArray& metadataValues,
+                                                        const juce::StringPairArray& metadataValues,
                                                         int qualityOptionIndex)
 {
     jassertfalse; // not yet implemented!

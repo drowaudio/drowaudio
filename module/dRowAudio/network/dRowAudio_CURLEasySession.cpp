@@ -51,11 +51,11 @@ CURLEasySession::CURLEasySession()
     curl_easy_setopt (handle, CURLOPT_NOPROGRESS, false);
 }
 
-CURLEasySession::CURLEasySession (const String& localPath,
-                                  const String& remotePath,
+CURLEasySession::CURLEasySession (const juce::String& localPath,
+                                  const juce::String& remotePath,
                                   bool upload,
-                                  const String& username,
-                                  const String& password)
+                                  const juce::String& username,
+                                  const juce::String& password)
     : handle (CURLManager::getInstance()->createEasyCurlHandle())
 {
     handle = CURLManager::getInstance()->createEasyCurlHandle();
@@ -90,7 +90,7 @@ void CURLEasySession::setLocalFile (const File& newLocalFile)
     inputStream = localFile.createInputStream();
 }
 
-void CURLEasySession::setRemotePath (const String& newRemotePath)
+void CURLEasySession::setRemotePath (const juce::String& newRemotePath)
 {
     remotePath = newRemotePath;
 
@@ -100,7 +100,7 @@ void CURLEasySession::setRemotePath (const String& newRemotePath)
     curl_easy_setopt (handle, CURLOPT_URL, remotePath.toUTF8().getAddress());
 }
 
-void CURLEasySession::setUserNameAndPassword (const String& username, const String& password)
+void CURLEasySession::setUserNameAndPassword (const juce::String& username, const juce::String& password)
 {
     userNameAndPassword = username + ":" + password;
     curl_easy_setopt (handle, CURLOPT_USERPWD, userNameAndPassword.toUTF8().getAddress());
@@ -113,14 +113,14 @@ String CURLEasySession::getCurrentWorkingDirectory() const
     CURLcode res = curl_easy_getinfo (handle, CURLINFO_EFFECTIVE_URL, url);
 
     if (res == CURLE_OK && CharPointer_ASCII::isValidString (url, 1000))
-        return String (url);
+        return juce::String (url);
 
-    return String();
+    return juce::String();
 }
 
 StringArray CURLEasySession::getDirectoryListing()
 {
-    String remoteUrl (remotePath.upToLastOccurrenceOf ("/", true, false));
+    juce::String remoteUrl (remotePath.upToLastOccurrenceOf ("/", true, false));
     curl_easy_setopt (handle, CURLOPT_URL, remoteUrl.toUTF8().getAddress());
 
     directoryContentsList.setSize (0);
@@ -138,12 +138,12 @@ StringArray CURLEasySession::getDirectoryListing()
 
     if (result == CURLE_OK)
     {
-        StringArray list;
+        juce::StringArray list;
         list.addLines (directoryContentsList.toString().trim());
         return list;
     }
 
-    return StringArray (curl_easy_strerror (result));
+    return juce::StringArray (curl_easy_strerror (result));
 }
 
 // not yet ready
@@ -161,7 +161,7 @@ StringArray CURLEasySession::getDirectoryListing()
 //    else
 //    {
 //        DBG("CURLE_NOT_OK");
-//        return String::empty;
+//        return juce::String::empty;
 //    }
 //}
 

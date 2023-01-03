@@ -55,9 +55,9 @@ void Clock::setTimeDisplayFormat (const int newFormat)
 
 void Clock::timerCallback()
 {
-    timeAsString = String();
+    timeAsString = juce::String();
 
-    String formatString;
+    juce::String formatString;
     formatString << ((displayFormat & showDayShort)  ? "%a " : "")
                  << ((displayFormat & showDayLong)   ? "%A " : "")
                  << ((displayFormat & showDate)      ? "%x " : "")

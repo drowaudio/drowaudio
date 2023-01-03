@@ -77,7 +77,7 @@ public:
 
         @see IOSAudioConverter
     */
-    static String mpMediaItemToAvassetUrl (void* mpMediaItem);
+    static juce::String mpMediaItemToAvassetUrl (void* mpMediaItem);
 
     /** This helper method returns the MPMediaItemPropertyTitle for a MPMediaItem
         such as those passed to Listener::audioPickerFinished.
@@ -88,7 +88,7 @@ public:
         @returns String
     */    
     
-    static String mpMediaItemToTitle (void* mpMediaItem);
+    static juce::String mpMediaItemToTitle (void* mpMediaItem);
     
     /** This helper method returns the MPMediaItemPropertyArtist for a MPMediaItem
         such as those passed to Listener::audioPickerFinished.
@@ -99,7 +99,7 @@ public:
         @returns String
     */     
     
-    static String mpMediaItemToArtist (void* mpMediaItem);
+    static juce::String mpMediaItemToArtist (void* mpMediaItem);
 
     //==============================================================================
     /** A class for receiving callbacks from a AudioPicker.

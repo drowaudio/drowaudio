@@ -252,7 +252,7 @@ IOSAudioConverter::~IOSAudioConverter()
 {
 }
 
-void IOSAudioConverter::startConversion (const String& avAssetUrl, const String& convertedFileName)
+void IOSAudioConverter::startConversion (const juce::String& avAssetUrl, const juce::String& convertedFileName)
 {
     [(JuceIOSAudioConverter*) currentAudioConverter release];
     JuceIOSAudioConverter* audioConverter = [[JuceIOSAudioConverter alloc] initWithOwner: this];
@@ -262,7 +262,7 @@ void IOSAudioConverter::startConversion (const String& avAssetUrl, const String&
         currentAudioConverter = audioConverter;
         [audioConverter retain];
 
-        String fileName (convertedFileName);
+        juce::String fileName (convertedFileName);
         if (fileName.isEmpty())
             fileName = "convertedFile";
 

@@ -77,7 +77,7 @@ public:
 
         @see AudioPicker
      */
-    static MemoryInputStream* avAssetUrlStringToStream (const String& avAssetUrlString);
+    static MemoryInputStream* avAssetUrlStringToStream (const juce::String& avAssetUrlString);
 
     //==============================================================================
     /** @internal */
@@ -89,7 +89,7 @@ public:
     /** @internal */
     bool canDoMono() override;
     /** @internal */
-    AudioFormatReader* createReaderFor (const String& assetNSURLAsString);
+    AudioFormatReader* createReaderFor (const juce::String& assetNSURLAsString);
     /** @internal */
     AudioFormatReader* createReaderFor (InputStream* sourceStream,
                                         bool deleteStreamIfOpeningFails) override;
@@ -98,7 +98,7 @@ public:
                                         double sampleRateToUse,
                                         unsigned int numberOfChannels,
                                         int bitsPerSample,
-                                        const StringPairArray& metadataValues,
+                                        const juce::StringPairArray& metadataValues,
                                         int qualityOptionIndex) override;
 
 private:

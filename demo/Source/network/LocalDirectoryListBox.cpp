@@ -35,9 +35,9 @@
 #if DROWAUDIO_USE_CURL
 
 //==============================================================================
-static StringArray getFilesForDirectory (const String& fullPath)
+static juce::StringArray getFilesForDirectory (const juce::String& fullPath)
 {
-    StringArray files;
+    juce::StringArray files;
     files.add ("..");
 
     File cwd (fullPath);
@@ -90,7 +90,7 @@ void LocalDirectoryListBoxModel::paintListBoxItem (int rowNumber, Graphics& g,
                       Justification::centredLeft, 1);
 }
 
-void LocalDirectoryListBoxModel::setContents (const StringArray& newContents)
+void LocalDirectoryListBoxModel::setContents (const juce::StringArray& newContents)
 {
     itemList = newContents;
 }
@@ -128,7 +128,7 @@ var LocalDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int>& 
         if (currentWorkingDirectory.getChildFile (itemList[currentlySelectedRows[0]]).existsAsFile())
             return currentWorkingDirectory.getChildFile (itemList[currentlySelectedRows[0]]).getFullPathName();
 
-    return String();
+    return juce::String();
 }
 
 //==============================================================================
@@ -185,7 +185,7 @@ void LocalDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails)
     if (RemoteDirectoryListBox* remote = dynamic_cast<RemoteDirectoryListBox*> (dragSourceDetails.sourceComponent.get()))
     {
         DBG (dragSourceDetails.description.toString());
-        const String remoteFileName (dragSourceDetails.description.toString().fromLastOccurrenceOf ("/", true, false));
+        const juce::String remoteFileName (dragSourceDetails.description.toString().fromLastOccurrenceOf ("/", true, false));
 
         CURLEasySession& session (remote->getCURLSession());
         session.setRemotePath (dragSourceDetails.description.toString());

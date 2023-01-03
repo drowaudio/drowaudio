@@ -71,7 +71,7 @@ void RemoteDirectoryListBoxModel::paintListBoxItem (int rowNumber, Graphics& g,
                       Justification::centredLeft, 1);
 }
 
-void RemoteDirectoryListBoxModel::setContents (const StringArray& newContents)
+void RemoteDirectoryListBoxModel::setContents (const juce::StringArray& newContents)
 {
     itemList = newContents;
 }
@@ -88,7 +88,7 @@ void RemoteDirectoryListBoxModel::listBoxItemDoubleClicked (int row, const Mouse
     {
         if (! itemList[row].contains ("."))
         {
-            String newCWD (curlSession->getRemotePath().upToLastOccurrenceOf ("/", true, false));
+            juce::String newCWD (curlSession->getRemotePath().upToLastOccurrenceOf ("/", true, false));
             newCWD << itemList[row] << "/";
             curlSession->setRemotePath (newCWD);
             setContents (curlSession->getDirectoryListing());
@@ -103,7 +103,7 @@ var RemoteDirectoryListBoxModel::getDragSourceDescription (const SparseSet<int>&
     if (curlSession != nullptr && currentlySelectedRows.size() > 0)
         return curlSession->getRemotePath().upToLastOccurrenceOf ("/", true, false) + itemList[currentlySelectedRows[0]];
 
-    return String();
+    return juce::String();
 }
 
 //==============================================================================
@@ -166,7 +166,7 @@ void RemoteDirectoryListBox::itemDropped (const SourceDetails& dragSourceDetails
     if (dynamic_cast<LocalDirectoryListBox*> (dragSourceDetails.sourceComponent.get()) != nullptr)
     {
         const File file (dragSourceDetails.description.toString());
-        String localFileName (File (dragSourceDetails.description.toString()).getFileName());
+        juce::String localFileName (File (dragSourceDetails.description.toString()).getFileName());
 
         session.setRemotePath (session.getRemotePath().upToLastOccurrenceOf ("/", true, false) + file.getFullPathName());
         session.setLocalFile (file);

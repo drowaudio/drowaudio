@@ -56,7 +56,7 @@ public:
     {
         if (fileDragEnabled)
         {
-            StringArray files;
+            juce::StringArray files;
 
             for (int i = 0; i < getNumSelectedFiles(); ++i)
             {

@@ -36,23 +36,23 @@
 
     @see InputSource
  */
-class MemoryInputSource : public InputSource
+class MemoryInputSource : public juce::InputSource
 {
 public:
-    MemoryInputSource (MemoryInputStream* stream);
+    MemoryInputSource (juce::MemoryInputStream* stream);
     ~MemoryInputSource() override;
 
     //==============================================================================
     /** @internal */
-    InputStream* createInputStream() override;
+    juce::InputStream* createInputStream() override;
     /** @internal */
-    InputStream* createInputStreamFor (const String& relatedItemPath) override;
+    juce::InputStream* createInputStreamFor (const juce::String& relatedItemPath) override;
     /** @internal */
-    int64 hashCode() const override;
+    juce::int64 hashCode() const override;
 
 private:
     //==============================================================================
-    MemoryInputStream* memoryInputStream;
+    juce::MemoryInputStream* memoryInputStream;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MemoryInputSource)

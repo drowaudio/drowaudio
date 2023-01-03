@@ -59,7 +59,7 @@ public:
                                         double sampleRateToUse,
                                         unsigned int numberOfChannels,
                                         int bitsPerSample,
-                                        const StringPairArray& metadataValues,
+                                        const juce::StringPairArray& metadataValues,
                                         int qualityOptionIndex) override;
 
 private:

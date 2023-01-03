@@ -46,7 +46,7 @@ public:
     const File& getCurrentWorkingDirectory() const { return currentWorkingDirectory; }
 
     void refresh();
-    void setContents (const StringArray& newContents);
+    void setContents (const juce::StringArray& newContents);
 
     //==============================================================================
     int getNumRows() override;
@@ -59,7 +59,7 @@ public:
 
 private:
     //==============================================================================
-    StringArray itemList;
+    juce::StringArray itemList;
     File currentWorkingDirectory;
 
     //==============================================================================

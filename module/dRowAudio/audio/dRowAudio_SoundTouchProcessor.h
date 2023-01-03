@@ -144,8 +144,8 @@ private:
     //==============================================================================
     soundtouch::SoundTouch soundTouch;
 
-    CriticalSection lock;
-    HeapBlock<float> interleavedInputBuffer, interleavedOutputBuffer;
+    juce::CriticalSection lock;
+    juce::HeapBlock<float> interleavedInputBuffer, interleavedOutputBuffer;
     int interleavedInputBufferSize, interleavedOutputBufferSize;
     PlaybackSettings settings;
 
